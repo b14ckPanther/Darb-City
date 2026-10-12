@@ -3,7 +3,6 @@ import { Protocol } from "pmtiles";
 import type { Locale } from "@darb/core";
 import {
   cityCollection,
-  easeOut,
   ISRAEL_NORTH,
   pinCollection,
   zoomedOut,
@@ -11,6 +10,7 @@ import {
   type CityDot,
   type StagePin,
 } from "@darb/stage";
+import { moveCamera } from "./camera-move";
 import { loadMapLibre } from "./load-maplibre";
 import { CITY_DOT, CITY_GLOW, CITY_SOURCE, darbLayers, PIN_LAYER, PIN_SOURCE } from "./map-layers";
 import { prepareStyle, PROTOMAPS_SOURCE } from "./map-style";
@@ -131,44 +131,10 @@ export class CityMap implements StageMap {
   }
 
   move(camera: Camera, duration: number, insetEnd: number): Promise<void> {
-    const start = this.dir === "rtl" ? insetEnd : 0;
-    const end = this.dir === "rtl" ? 0 : insetEnd;
-    return new Promise((resolve) => {
-      let settled = false;
-      const done = () => {
-        if (settled) return;
-        settled = true;
-        window.clearTimeout(timer);
-        this.map.off("moveend", done);
-        this.target = this.map.getZoom();
-        resolve();
-      };
-      const timer = window.setTimeout(done, duration + 250);
-      this.map.on("moveend", done);
-      if ("bounds" in camera) {
-        // fitBounds adds the map's own padding to its own: reset it first.
-        this.map.setPadding({ top: 0, bottom: 0, left: 0, right: 0 });
-        this.map.fitBounds(camera.bounds, {
-          padding: { top: PADDING, bottom: PADDING, left: PADDING + start, right: PADDING + end },
-          maxZoom: camera.maxZoom,
-          duration,
-          easing: easeOut,
-          essential: true,
-        });
-        return;
-      }
-      const padding = { top: 0, bottom: 0, left: start, right: end };
-      if (duration > 0)
-        this.map.flyTo({
-          center: camera.center,
-          zoom: camera.zoom,
-          padding,
-          duration,
-          easing: easeOut,
-          essential: true,
-        });
-      else this.map.jumpTo({ center: camera.center, zoom: camera.zoom, padding });
-    });
+    const side = this.dir === "rtl" ? { left: insetEnd, right: 0 } : { left: 0, right: insetEnd };
+    const { target, arrived } = moveCamera(this.map, camera, duration, { top: 0, ...side });
+    this.target = target;
+    return arrived;
   }
 
   setDots(dots: readonly CityDot[]): void {
