@@ -144,7 +144,7 @@
     "name": {
       "he": "אעצם (שבט)",
       "ar": "أعصم",
-      "en": "A'Sam"
+      "en": "A'sam"
     },
     "aliases": [
       "A'SAM"
@@ -224,7 +224,7 @@
   {
     "slug": "abu-gosh",
     "cbsCode": "472",
-    "type": "village",
+    "type": "town",
     "parent": "jerusalem-district",
     "name": {
       "he": "אבו גוש",
@@ -246,7 +246,7 @@
     "name": {
       "he": "אבו ג'ווייעד (שבט)",
       "ar": "أبو جويعد",
-      "en": "Abu Juwei'Id"
+      "en": "Abu Juwei'id"
     },
     "aliases": [
       "ABU JUWEI'ID"
@@ -297,7 +297,7 @@
     "name": {
       "he": "אבו רובייעה (שבט)",
       "ar": "أبو ربيعة",
-      "en": "Abu Rubei'A"
+      "en": "Abu Rubei'a"
     },
     "aliases": [
       "ABU RUBEI'A"
@@ -326,7 +326,7 @@
   {
     "slug": "abu-snan",
     "cbsCode": "473",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "אבו סנאן",
@@ -530,7 +530,7 @@
   {
     "slug": "afula",
     "cbsCode": "7700",
-    "type": "town",
+    "type": "city",
     "parent": "northern-district",
     "name": {
       "he": "עפולה",
@@ -683,7 +683,7 @@
   {
     "slug": "akko",
     "cbsCode": "7600",
-    "type": "town",
+    "type": "city",
     "parent": "northern-district",
     "name": {
       "he": "עכו",
@@ -1111,7 +1111,7 @@
   {
     "slug": "arara",
     "cbsCode": "637",
-    "type": "village",
+    "type": "town",
     "parent": "haifa-district",
     "name": {
       "he": "ערערה",
@@ -1128,7 +1128,7 @@
   {
     "slug": "ararat-an-naqab",
     "cbsCode": "1192",
-    "type": "village",
+    "type": "town",
     "parent": "southern-district",
     "name": {
       "he": "ערערה-בנגב",
@@ -1145,7 +1145,7 @@
   {
     "slug": "arad",
     "cbsCode": "2560",
-    "type": "town",
+    "type": "city",
     "parent": "southern-district",
     "name": {
       "he": "ערד",
@@ -1315,7 +1315,7 @@
   {
     "slug": "ashdod",
     "cbsCode": "70",
-    "type": "town",
+    "type": "city",
     "parent": "southern-district",
     "name": {
       "he": "אשדוד",
@@ -1383,7 +1383,7 @@
   {
     "slug": "ashkelon",
     "cbsCode": "7100",
-    "type": "town",
+    "type": "city",
     "parent": "southern-district",
     "name": {
       "he": "אשקלון",
@@ -1689,7 +1689,7 @@
   {
     "slug": "azor",
     "cbsCode": "565",
-    "type": "village",
+    "type": "town",
     "parent": "tel-aviv-district",
     "name": {
       "he": "אזור",
@@ -1774,7 +1774,7 @@
   {
     "slug": "baqa-al-gharbiyye",
     "cbsCode": "6000",
-    "type": "town",
+    "type": "city",
     "parent": "haifa-district",
     "name": {
       "he": "באקה אל-גרביה",
@@ -1893,7 +1893,7 @@
   {
     "slug": "basma",
     "cbsCode": "1326",
-    "type": "city",
+    "type": "town",
     "parent": "haifa-district",
     "name": {
       "he": "בסמ\"ה",
@@ -1910,7 +1910,7 @@
   {
     "slug": "basmat-tabun",
     "cbsCode": "944",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "בסמת טבעון",
@@ -1995,7 +1995,7 @@
   {
     "slug": "bat-yam",
     "cbsCode": "6200",
-    "type": "town",
+    "type": "city",
     "parent": "tel-aviv-district",
     "name": {
       "he": "בת ים",
@@ -2051,7 +2051,7 @@
     "name": {
       "he": "באר אורה",
       "ar": "بئر أورا",
-      "en": "Be'Er Ora"
+      "en": "Be'er Ora"
     },
     "aliases": [
       "BE'ER ORA"
@@ -2182,7 +2182,7 @@
   {
     "slug": "bet-jan",
     "cbsCode": "480",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "בית ג'ן",
@@ -2231,14 +2231,14 @@
     "status": "soon"
   },
   {
-    "slug": "ben-shemen-k-noar",
+    "slug": "ben-shemen-youth-village",
     "cbsCode": "1084",
     "type": "village",
     "parent": "central-district",
     "name": {
       "he": "בן שמן (כפר נוער)",
       "ar": "بن شيمن (قرية شبيبة)",
-      "en": "Ben Shemen(K.no'Ar)"
+      "en": "Ben Shemen (Youth Village)"
     },
     "aliases": [
       "BEN SHEMEN(K.NO'AR)"
@@ -2301,7 +2301,7 @@
   {
     "slug": "bnei-ayish",
     "cbsCode": "1066",
-    "type": "village",
+    "type": "town",
     "parent": "central-district",
     "name": {
       "he": "בני עי\"ש",
@@ -2318,7 +2318,7 @@
   {
     "slug": "bnei-brak",
     "cbsCode": "6100",
-    "type": "town",
+    "type": "city",
     "parent": "tel-aviv-district",
     "name": {
       "he": "בני ברק",
@@ -2539,7 +2539,7 @@
   {
     "slug": "beit-berl",
     "cbsCode": "1076",
-    "type": "neighbourhood",
+    "type": "village",
     "parent": "central-district",
     "name": {
       "he": "בית ברל",
@@ -2998,7 +2998,7 @@
   {
     "slug": "beit-shean",
     "cbsCode": "9200",
-    "type": "town",
+    "type": "city",
     "parent": "northern-district",
     "name": {
       "he": "בית שאן",
@@ -3032,7 +3032,7 @@
   {
     "slug": "beit-shemesh",
     "cbsCode": "2610",
-    "type": "town",
+    "type": "city",
     "parent": "jerusalem-district",
     "name": {
       "he": "בית שמש",
@@ -3253,7 +3253,7 @@
   {
     "slug": "binyamina-givat-ada",
     "cbsCode": "9800",
-    "type": "village",
+    "type": "town",
     "parent": "haifa-district",
     "name": {
       "he": "בנימינה-גבעת עדה",
@@ -3270,7 +3270,7 @@
   {
     "slug": "bir-al-maksur",
     "cbsCode": "998",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "ביר אל-מכסור",
@@ -3389,12 +3389,12 @@
   {
     "slug": "bueine-nujeidat",
     "cbsCode": "482",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "בועיינה-נוג'ידאת",
-      "ar": "البعينة",
-      "en": "Bu'Eine-Nujeidat"
+      "ar": "البعينة-نجيدات",
+      "en": "Bu'eine-Nujeidat"
     },
     "aliases": [
       "BU'EINE-NUJEIDAT"
@@ -3406,7 +3406,7 @@
   {
     "slug": "buqatha",
     "cbsCode": "4001",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "בוקעאתא",
@@ -3457,7 +3457,7 @@
   {
     "slug": "daburiya",
     "cbsCode": "489",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "דבוריה",
@@ -3491,7 +3491,7 @@
   {
     "slug": "dahi",
     "cbsCode": "475",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "דחי",
@@ -3508,7 +3508,7 @@
   {
     "slug": "daliyat-al-karmel",
     "cbsCode": "494",
-    "type": "village",
+    "type": "town",
     "parent": "haifa-district",
     "name": {
       "he": "דאלית אל-כרמל",
@@ -3627,7 +3627,7 @@
   {
     "slug": "deir-al-asad",
     "cbsCode": "490",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "דייר אל-אסד",
@@ -3644,7 +3644,7 @@
   {
     "slug": "deir-hanna",
     "cbsCode": "492",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "דייר חנא",
@@ -3712,7 +3712,7 @@
   {
     "slug": "drijat",
     "cbsCode": "1349",
-    "type": "village",
+    "type": "town",
     "parent": "southern-district",
     "name": {
       "he": "דריג'את",
@@ -3746,7 +3746,7 @@
   {
     "slug": "dimona",
     "cbsCode": "2200",
-    "type": "town",
+    "type": "city",
     "parent": "southern-district",
     "name": {
       "he": "דימונה",
@@ -3848,7 +3848,7 @@
   {
     "slug": "eilabun",
     "cbsCode": "530",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "עיילבון",
@@ -3916,7 +3916,7 @@
   {
     "slug": "ein-nakuba",
     "cbsCode": "521",
-    "type": "village",
+    "type": "town",
     "parent": "jerusalem-district",
     "name": {
       "he": "עין נקובא",
@@ -3967,7 +3967,7 @@
   {
     "slug": "elad",
     "cbsCode": "1309",
-    "type": "town",
+    "type": "city",
     "parent": "central-district",
     "name": {
       "he": "אלעד",
@@ -4492,14 +4492,14 @@
     "status": "live"
   },
   {
-    "slug": "en-karem-b-s-haqlai",
+    "slug": "en-karem-agricultural-school",
     "cbsCode": "1056",
     "type": "village",
     "parent": "jerusalem-district",
     "name": {
       "he": "עין כרם-בי\"ס חקלאי",
       "ar": "عين كارم - مدرسة زراعية",
-      "en": "En Karem-B.s.haqla'I"
+      "en": "Ein Karem (Agricultural School)"
     },
     "aliases": [
       "EN KAREM-B.S.HAQLA'I"
@@ -4868,7 +4868,7 @@
   {
     "slug": "even-yehuda",
     "cbsCode": "182",
-    "type": "village",
+    "type": "town",
     "parent": "central-district",
     "name": {
       "he": "אבן יהודה",
@@ -4890,7 +4890,7 @@
     "name": {
       "he": "גלעד (אבן יצחק)",
       "ar": "چلعاد (إيڤن يتسحاك)",
-      "en": "Even Yizhaq(Gal'Ed)"
+      "en": "Even Yizhaq (Gal'ed)"
     },
     "aliases": [
       "EVEN YIZHAQ(GAL'ED)"
@@ -4970,7 +4970,7 @@
   {
     "slug": "fassuta",
     "cbsCode": "535",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "פסוטה",
@@ -4987,7 +4987,7 @@
   {
     "slug": "fureidis",
     "cbsCode": "537",
-    "type": "village",
+    "type": "town",
     "parent": "haifa-district",
     "name": {
       "he": "פוריידיס",
@@ -5140,7 +5140,7 @@
   {
     "slug": "gan-ner",
     "cbsCode": "1274",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "גן נר",
@@ -5208,7 +5208,7 @@
   {
     "slug": "gan-yavne",
     "cbsCode": "166",
-    "type": "village",
+    "type": "city",
     "parent": "central-district",
     "name": {
       "he": "גן יבנה",
@@ -5293,7 +5293,7 @@
   {
     "slug": "ganei-tikva",
     "cbsCode": "229",
-    "type": "village",
+    "type": "town",
     "parent": "central-district",
     "name": {
       "he": "גני תקווה",
@@ -5383,7 +5383,7 @@
     "name": {
       "he": "גת (קיבוץ)",
       "ar": "چات (كيبوتس)",
-      "en": "Gat(Qibbuz)"
+      "en": "Gat (Qibbuz)"
     },
     "aliases": [
       "GAT(QIBBUZ)"
@@ -5463,7 +5463,7 @@
   {
     "slug": "geulim",
     "cbsCode": "379",
-    "type": "neighbourhood",
+    "type": "village",
     "parent": "central-district",
     "name": {
       "he": "גאולים",
@@ -5480,7 +5480,7 @@
   {
     "slug": "gedera",
     "cbsCode": "2550",
-    "type": "town",
+    "type": "city",
     "parent": "central-district",
     "name": {
       "he": "גדרה",
@@ -6029,7 +6029,7 @@
     "name": {
       "he": "גבעת כ\"ח",
       "ar": "چڤعات كاح",
-      "en": "Giv'At Koah"
+      "en": "Giv'at Koah"
     },
     "aliases": [
       "GIV'AT KOAH"
@@ -6109,7 +6109,7 @@
   {
     "slug": "givat-shmuel",
     "cbsCode": "681",
-    "type": "town",
+    "type": "city",
     "parent": "central-district",
     "name": {
       "he": "גבעת שמואל",
@@ -6177,7 +6177,7 @@
   {
     "slug": "givatayim",
     "cbsCode": "6300",
-    "type": "town",
+    "type": "city",
     "parent": "tel-aviv-district",
     "name": {
       "he": "גבעתיים",
@@ -6233,7 +6233,7 @@
     "name": {
       "he": "גבעות עדן",
       "ar": "چڤعوت عدن",
-      "en": "Giv'Ot Eden"
+      "en": "Giv'ot Eden"
     },
     "aliases": [
       "GIV'OT EDEN"
@@ -7061,7 +7061,7 @@
   {
     "slug": "herzliya",
     "cbsCode": "6400",
-    "type": "town",
+    "type": "city",
     "parent": "tel-aviv-district",
     "name": {
       "he": "הרצליה",
@@ -7129,7 +7129,7 @@
   {
     "slug": "hod-hasharon",
     "cbsCode": "9700",
-    "type": "town",
+    "type": "city",
     "parent": "central-district",
     "name": {
       "he": "הוד השרון",
@@ -7231,7 +7231,7 @@
   {
     "slug": "holon",
     "cbsCode": "6600",
-    "type": "town",
+    "type": "city",
     "parent": "tel-aviv-district",
     "name": {
       "he": "חולון",
@@ -7384,7 +7384,7 @@
   {
     "slug": "hurfeish",
     "cbsCode": "496",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "חורפיש",
@@ -7435,7 +7435,7 @@
   {
     "slug": "ibilin",
     "cbsCode": "529",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "אעבלין",
@@ -7469,7 +7469,7 @@
   {
     "slug": "ibtin",
     "cbsCode": "652",
-    "type": "village",
+    "type": "town",
     "parent": "haifa-district",
     "name": {
       "he": "אבטין",
@@ -7537,7 +7537,7 @@
   {
     "slug": "ilut",
     "cbsCode": "511",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "עילוט",
@@ -7588,7 +7588,7 @@
   {
     "slug": "isfiya",
     "cbsCode": "534",
-    "type": "village",
+    "type": "town",
     "parent": "haifa-district",
     "name": {
       "he": "עספיא",
@@ -7605,7 +7605,7 @@
   {
     "slug": "jatt",
     "cbsCode": "628",
-    "type": "village",
+    "type": "town",
     "parent": "haifa-district",
     "name": {
       "he": "ג'ת",
@@ -7656,12 +7656,12 @@
   {
     "slug": "jish-gush-halav",
     "cbsCode": "487",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "ג'ש (גוש חלב)",
       "ar": "الجِش",
-      "en": "Jish(Gush Halav)"
+      "en": "Jish (Gush Halav)"
     },
     "aliases": [
       "JISH(GUSH HALAV)"
@@ -7673,7 +7673,7 @@
   {
     "slug": "jisr-az-zarqa",
     "cbsCode": "541",
-    "type": "village",
+    "type": "town",
     "parent": "haifa-district",
     "name": {
       "he": "ג'סר א-זרקא",
@@ -7690,7 +7690,7 @@
   {
     "slug": "judeida-makr",
     "cbsCode": "1292",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "ג'דיידה-מכר",
@@ -7707,7 +7707,7 @@
   {
     "slug": "julis",
     "cbsCode": "485",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "ג'ולס",
@@ -7775,7 +7775,7 @@
   {
     "slug": "kabul",
     "cbsCode": "504",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "כאבול",
@@ -7826,7 +7826,7 @@
   {
     "slug": "kafr-bara",
     "cbsCode": "633",
-    "type": "village",
+    "type": "town",
     "parent": "central-district",
     "name": {
       "he": "כפר ברא",
@@ -7843,7 +7843,7 @@
   {
     "slug": "kfar-kama",
     "cbsCode": "508",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "כפר כמא",
@@ -7877,7 +7877,7 @@
   {
     "slug": "kafr-manda",
     "cbsCode": "510",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "כפר מנדא",
@@ -7898,7 +7898,7 @@
     "parent": "northern-district",
     "name": {
       "he": "כפר מצר",
-      "ar": "كفر مصر، بيسان",
+      "ar": "كفر مصر",
       "en": "Kafar Misr"
     },
     "aliases": [
@@ -7928,7 +7928,7 @@
   {
     "slug": "kafr-kasim",
     "cbsCode": "634",
-    "type": "village",
+    "type": "town",
     "parent": "central-district",
     "name": {
       "he": "כפר קאסם",
@@ -7945,7 +7945,7 @@
   {
     "slug": "kafr-yasif",
     "cbsCode": "507",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "כפר יאסיף",
@@ -8047,7 +8047,7 @@
   {
     "slug": "kaukab-abu-al-hija",
     "cbsCode": "505",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "כאוכב אבו אל-היג'א",
@@ -8115,7 +8115,7 @@
   {
     "slug": "karmiel",
     "cbsCode": "1139",
-    "type": "town",
+    "type": "city",
     "parent": "northern-district",
     "name": {
       "he": "כרמיאל",
@@ -8494,7 +8494,7 @@
     "name": {
       "he": "כפר הנוער הדתי",
       "ar": "كفار هنوعر هدتي",
-      "en": "Kefar Hano'Ar Hadati"
+      "en": "Kefar Hano'ar Hadati"
     },
     "aliases": [
       "KEFAR HANO'AR HADATI"
@@ -8827,14 +8827,14 @@
     "status": "live"
   },
   {
-    "slug": "kefar-rozenwald-zar",
+    "slug": "zarit",
     "cbsCode": "1130",
     "type": "village",
     "parent": "northern-district",
     "name": {
       "he": "כפר רוזנואלד (זרעית)",
       "ar": "كفار روزنفالد (زرعيت)",
-      "en": "Kefar Rozenwald(Zar."
+      "en": "Kfar Rosenwald (Zar'it)"
     },
     "aliases": [
       "KEFAR ROZENWALD(ZAR."
@@ -8880,7 +8880,7 @@
   {
     "slug": "kfar-saba",
     "cbsCode": "6900",
-    "type": "town",
+    "type": "city",
     "parent": "central-district",
     "name": {
       "he": "כפר סבא",
@@ -8999,7 +8999,7 @@
   {
     "slug": "kfar-tavor",
     "cbsCode": "47",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "כפר תבור",
@@ -9084,7 +9084,7 @@
   {
     "slug": "kfar-vradim",
     "cbsCode": "1263",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "כפר ורדים",
@@ -9373,7 +9373,7 @@
   {
     "slug": "khawaled-1321",
     "cbsCode": "1321",
-    "type": "village",
+    "type": "town",
     "parent": "haifa-district",
     "name": {
       "he": "ח'ואלד",
@@ -9412,7 +9412,7 @@
     "name": {
       "he": "כנרת (קבוצה)",
       "ar": "كنيرت (كڤوتسا)",
-      "en": "Kinneret(Qevuza)"
+      "en": "Kinneret (Qevuza)"
     },
     "aliases": [
       "KINNERET(QEVUZA)"
@@ -9441,7 +9441,7 @@
   {
     "slug": "kisra-sumei",
     "cbsCode": "1296",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "כסרא-סמיע",
@@ -9662,7 +9662,7 @@
   {
     "slug": "lakiya",
     "cbsCode": "1060",
-    "type": "village",
+    "type": "town",
     "parent": "southern-district",
     "name": {
       "he": "לקיה",
@@ -9713,7 +9713,7 @@
   {
     "slug": "lehavim",
     "cbsCode": "1271",
-    "type": "village",
+    "type": "town",
     "parent": "southern-district",
     "name": {
       "he": "להבים",
@@ -9764,7 +9764,7 @@
   {
     "slug": "livnim",
     "cbsCode": "1230",
-    "type": "neighbourhood",
+    "type": "village",
     "parent": "northern-district",
     "name": {
       "he": "לבנים",
@@ -9774,14 +9774,14 @@
     "aliases": [
       "LIVNIM"
     ],
-    "lat": 32.93,
-    "lng": 35.3,
+    "lat": 32.81,
+    "lng": 35.48,
     "status": "live"
   },
   {
     "slug": "lod",
     "cbsCode": "7000",
-    "type": "town",
+    "type": "city",
     "parent": "central-district",
     "name": {
       "he": "לוד",
@@ -9803,7 +9803,7 @@
     "name": {
       "he": "לוחמי הגיטאות",
       "ar": "لوحمي هچيتاوت",
-      "en": "Lohame Hageta'Ot"
+      "en": "Lohame Hageta'ot"
     },
     "aliases": [
       "LOHAME HAGETA'OT"
@@ -9951,7 +9951,7 @@
   {
     "slug": "maale-iron",
     "cbsCode": "1327",
-    "type": "city",
+    "type": "town",
     "parent": "haifa-district",
     "name": {
       "he": "מעלה עירון",
@@ -9968,7 +9968,7 @@
   {
     "slug": "maalot-tarshiha",
     "cbsCode": "1063",
-    "type": "town",
+    "type": "city",
     "parent": "northern-district",
     "name": {
       "he": "מעלות-תרשיחא",
@@ -10007,7 +10007,7 @@
     "name": {
       "he": "מעש",
       "ar": "ماعس",
-      "en": "Ma'As"
+      "en": "Ma'as"
     },
     "aliases": [
       "MA'AS"
@@ -10092,7 +10092,7 @@
     "name": {
       "he": "מעין ברוך",
       "ar": "معيان باروخ",
-      "en": "Ma'Yan Barukh"
+      "en": "Ma'yan Barukh"
     },
     "aliases": [
       "MA'YAN BARUKH"
@@ -10238,142 +10238,6 @@
     "status": "soon"
   },
   {
-    "slug": "mahane-hilla",
-    "cbsCode": "1411",
-    "type": "village",
-    "parent": "central-district",
-    "name": {
-      "he": "מחנה הילה",
-      "ar": "محانيه هيلا",
-      "en": "Mahane Hilla"
-    },
-    "aliases": [
-      "MAHANE HILLA"
-    ],
-    "lat": 31.85,
-    "lng": 34.78,
-    "status": "soon"
-  },
-  {
-    "slug": "mahane-miryam",
-    "cbsCode": "1414",
-    "type": "village",
-    "parent": "southern-district",
-    "name": {
-      "he": "מחנה מרים",
-      "ar": "محانيه مريام",
-      "en": "Mahane Miryam"
-    },
-    "aliases": [
-      "MAHANE MIRYAM"
-    ],
-    "lat": 31.2,
-    "lng": 34.9,
-    "status": "soon"
-  },
-  {
-    "slug": "mahane-tali",
-    "cbsCode": "1418",
-    "type": "village",
-    "parent": "southern-district",
-    "name": {
-      "he": "מחנה טלי",
-      "ar": "محانيه تالي",
-      "en": "Mahane Tali"
-    },
-    "aliases": [
-      "MAHANE TALI"
-    ],
-    "lat": 31.2,
-    "lng": 34.9,
-    "status": "soon"
-  },
-  {
-    "slug": "mahane-tel-nof",
-    "cbsCode": "1412",
-    "type": "village",
-    "parent": "central-district",
-    "name": {
-      "he": "מחנה תל נוף",
-      "ar": "محانيه تل نوف",
-      "en": "Mahane Tel Nof"
-    },
-    "aliases": [
-      "MAHANE TEL NOF"
-    ],
-    "lat": 31.8394,
-    "lng": 34.8219,
-    "status": "soon"
-  },
-  {
-    "slug": "mahane-yafa",
-    "cbsCode": "1415",
-    "type": "village",
-    "parent": "southern-district",
-    "name": {
-      "he": "מחנה יפה",
-      "ar": "محانيه يافا",
-      "en": "Mahane Yafa"
-    },
-    "aliases": [
-      "MAHANE YAFA"
-    ],
-    "lat": 31.2,
-    "lng": 34.9,
-    "status": "soon"
-  },
-  {
-    "slug": "mahane-yattir",
-    "cbsCode": "1196",
-    "type": "village",
-    "parent": "southern-district",
-    "name": {
-      "he": "מחנה יתיר",
-      "ar": "محانيه ياتير",
-      "en": "Mahane Yattir"
-    },
-    "aliases": [
-      "MAHANE YATTIR"
-    ],
-    "lat": 31.3,
-    "lng": 35.1,
-    "status": "soon"
-  },
-  {
-    "slug": "mahane-yehudit",
-    "cbsCode": "1413",
-    "type": "village",
-    "parent": "northern-district",
-    "name": {
-      "he": "מחנה יהודית",
-      "ar": "محانيه يهوديت",
-      "en": "Mahane Yehudit"
-    },
-    "aliases": [
-      "MAHANE YEHUDIT"
-    ],
-    "lat": 32.75,
-    "lng": 35.2,
-    "status": "live"
-  },
-  {
-    "slug": "mahane-yokhved",
-    "cbsCode": "1416",
-    "type": "village",
-    "parent": "southern-district",
-    "name": {
-      "he": "מחנה יוכבד",
-      "ar": "محانيه يوخبد",
-      "en": "Mahane Yokhved"
-    },
-    "aliases": [
-      "MAHANE YOKHVED"
-    ],
-    "lat": 31.2,
-    "lng": 34.9,
-    "status": "soon"
-  },
-  {
     "slug": "machseya",
     "cbsCode": "776",
     "type": "village",
@@ -10393,7 +10257,7 @@
   {
     "slug": "majd-el-kurum",
     "cbsCode": "516",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "מג'ד אל-כרום",
@@ -10410,7 +10274,7 @@
   {
     "slug": "majdal-shams",
     "cbsCode": "4201",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "מג'דל שמס",
@@ -10529,7 +10393,7 @@
   {
     "slug": "masade",
     "cbsCode": "4203",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "מסעדה",
@@ -10551,7 +10415,7 @@
     "name": {
       "he": "מסעודין אל-עזאזמה",
       "ar": "العزازمة (قبيلة)",
-      "en": "Mas'Udin Al-'Azazme"
+      "en": "Mas'udin Al-'azazme"
     },
     "aliases": [
       "MAS'UDIN AL-'AZAZME"
@@ -10784,7 +10648,7 @@
   {
     "slug": "mazraah",
     "cbsCode": "517",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "מזרעה",
@@ -11078,7 +10942,7 @@
     "name": {
       "he": "מרחביה (קיבוץ)",
       "ar": "مرحاڤيا (كيبوتس)",
-      "en": "Merhavya(Qibbuz)"
+      "en": "Merhavya (Qibbuz)"
     },
     "aliases": [
       "MERHAVYA(QIBBUZ)"
@@ -11333,7 +11197,7 @@
     "name": {
       "he": "מבוא מודיעים",
       "ar": "مڤو موديعيم",
-      "en": "Mevo Modi'Im"
+      "en": "Mevo Modi'im"
     },
     "aliases": [
       "MEVO MODI'IM"
@@ -11350,7 +11214,7 @@
     "name": {
       "he": "מבואות ים",
       "ar": "مڤوعوت يام",
-      "en": "Mevo'Ot Yam"
+      "en": "Mevo'ot Yam"
     },
     "aliases": [
       "MEVO'OT YAM"
@@ -11362,7 +11226,7 @@
   {
     "slug": "meitsar",
     "cbsCode": "4019",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "מיצר",
@@ -11396,7 +11260,7 @@
   {
     "slug": "miilya",
     "cbsCode": "518",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "מעיליא",
@@ -11464,7 +11328,7 @@
   {
     "slug": "migdal",
     "cbsCode": "65",
-    "type": "city",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "מגדל",
@@ -11481,7 +11345,7 @@
   {
     "slug": "migdal-haemek",
     "cbsCode": "874",
-    "type": "town",
+    "type": "city",
     "parent": "northern-district",
     "name": {
       "he": "מגדל העמק",
@@ -11537,7 +11401,7 @@
     "name": {
       "he": "מקווה ישראל",
       "ar": "مكفيه يسرائيل",
-      "en": "Miqwe Yisra'El"
+      "en": "Miqwe Yisra'el"
     },
     "aliases": [
       "MIQWE YISRA'EL"
@@ -11855,7 +11719,7 @@
   {
     "slug": "modiin-maccabim-reut",
     "cbsCode": "1200",
-    "type": "town",
+    "type": "city",
     "parent": "central-district",
     "name": {
       "he": "מודיעין-מכבים-רעות",
@@ -11961,7 +11825,7 @@
     "parent": "northern-district",
     "name": {
       "he": "מוקייבלה",
-      "ar": "دبادب",
+      "ar": "مقيبلة",
       "en": "Muqeible"
     },
     "aliases": [
@@ -12108,14 +11972,14 @@
     "status": "soon"
   },
   {
-    "slug": "nahariah",
+    "slug": "nahariya",
     "cbsCode": "9100",
-    "type": "town",
+    "type": "city",
     "parent": "northern-district",
     "name": {
       "he": "נהריה",
       "ar": "نهاريا",
-      "en": "Nahariah"
+      "en": "Nahariya"
     },
     "aliases": [
       "NAHARIYYA"
@@ -12165,7 +12029,7 @@
     "parent": "jerusalem-district",
     "name": {
       "he": "נחשון",
-      "ar": "نحشون،_إسرائيل",
+      "ar": "نحشون",
       "en": "Nahshon"
     },
     "aliases": [
@@ -12263,7 +12127,7 @@
   {
     "slug": "nazareth",
     "cbsCode": "7300",
-    "type": "town",
+    "type": "city",
     "parent": "northern-district",
     "name": {
       "he": "נצרת",
@@ -12331,7 +12195,7 @@
   {
     "slug": "neurim",
     "cbsCode": "186",
-    "type": "neighbourhood",
+    "type": "village",
     "parent": "central-district",
     "name": {
       "he": "נעורים",
@@ -12467,7 +12331,7 @@
   {
     "slug": "nes-ziona",
     "cbsCode": "7200",
-    "type": "town",
+    "type": "city",
     "parent": "central-district",
     "name": {
       "he": "נס ציונה",
@@ -12484,7 +12348,7 @@
   {
     "slug": "nesher",
     "cbsCode": "2500",
-    "type": "town",
+    "type": "city",
     "parent": "haifa-district",
     "name": {
       "he": "נשר",
@@ -12535,7 +12399,7 @@
   {
     "slug": "netanya",
     "cbsCode": "7400",
-    "type": "town",
+    "type": "city",
     "parent": "central-district",
     "name": {
       "he": "נתניה",
@@ -12603,7 +12467,7 @@
   {
     "slug": "netivot",
     "cbsCode": "246",
-    "type": "town",
+    "type": "city",
     "parent": "southern-district",
     "name": {
       "he": "נתיבות",
@@ -12727,7 +12591,7 @@
     "name": {
       "he": "נווה אילן",
       "ar": "نڤيه إيلان",
-      "en": "Neve 'Ilan"
+      "en": "Neve 'ilan"
     },
     "aliases": [
       "NEWE ILAN"
@@ -13247,14 +13111,14 @@
     "status": "soon"
   },
   {
-    "slug": "nizzana-qehilat-hin",
+    "slug": "nizzana-education",
     "cbsCode": "1195",
     "type": "village",
     "parent": "southern-district",
     "name": {
       "he": "ניצנה (קהילת חינוך)",
       "ar": "نيتسانا (جماعة تربوية)",
-      "en": "Nizzana (Qehilat Hin"
+      "en": "Nizzana (Education Community)"
     },
     "aliases": [
       "NIZZANA (QEHILAT HIN"
@@ -13351,7 +13215,7 @@
   {
     "slug": "nof-hagalil",
     "cbsCode": "1061",
-    "type": "town",
+    "type": "city",
     "parent": "northern-district",
     "name": {
       "he": "נוף הגליל",
@@ -13487,7 +13351,7 @@
   {
     "slug": "ofakim",
     "cbsCode": "31",
-    "type": "town",
+    "type": "city",
     "parent": "southern-district",
     "name": {
       "he": "אופקים",
@@ -13572,7 +13436,7 @@
   {
     "slug": "omer",
     "cbsCode": "666",
-    "type": "town",
+    "type": "village",
     "parent": "southern-district",
     "name": {
       "he": "עומר",
@@ -13606,7 +13470,7 @@
   {
     "slug": "or-akiva",
     "cbsCode": "1020",
-    "type": "town",
+    "type": "city",
     "parent": "haifa-district",
     "name": {
       "he": "אור עקיבא",
@@ -13657,7 +13521,7 @@
   {
     "slug": "or-yehuda",
     "cbsCode": "2400",
-    "type": "town",
+    "type": "city",
     "parent": "tel-aviv-district",
     "name": {
       "he": "אור יהודה",
@@ -13827,7 +13691,7 @@
   {
     "slug": "pardesiya",
     "cbsCode": "171",
-    "type": "village",
+    "type": "town",
     "parent": "central-district",
     "name": {
       "he": "פרדסיה",
@@ -13927,14 +13791,14 @@
     "status": "live"
   },
   {
-    "slug": "al-buqeia",
+    "slug": "peqiin",
     "cbsCode": "536",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "פקיעין (בוקייעה)",
       "ar": "البقيعة",
-      "en": "Al Buqei`a"
+      "en": "Peki'in"
     },
     "aliases": [
       "PEQI'IN (BUQEI'A)"
@@ -13951,7 +13815,7 @@
     "name": {
       "he": "פקיעין חדשה",
       "ar": "بقيعين الجديدة",
-      "en": "Peqi'In Hadasha"
+      "en": "Peqi'in Hadasha"
     },
     "aliases": [
       "PEQI'IN HADASHA"
@@ -13997,7 +13861,7 @@
   {
     "slug": "petah-tikva",
     "cbsCode": "7900",
-    "type": "town",
+    "type": "city",
     "parent": "central-district",
     "name": {
       "he": "פתח תקווה",
@@ -14097,14 +13961,14 @@
     "status": "live"
   },
   {
-    "slug": "president-trump-hei",
+    "slug": "trump-heights",
     "cbsCode": "4029",
     "type": "village",
     "parent": "northern-district",
     "name": {
       "he": "רמת הנשיא טראמפ",
       "ar": "رمات هناسي ترامپ",
-      "en": "President Trump Hei"
+      "en": "Trump Heights"
     },
     "aliases": [
       "PRESIDENT TRUMP HEI"
@@ -14121,7 +13985,7 @@
     "name": {
       "he": "קבועה (שבט)",
       "ar": "القبعة",
-      "en": "Qabbo'A"
+      "en": "Qabbo'a"
     },
     "aliases": [
       "QABBO'A"
@@ -14150,7 +14014,7 @@
   {
     "slug": "kadima-zoran",
     "cbsCode": "195",
-    "type": "village",
+    "type": "town",
     "parent": "central-district",
     "name": {
       "he": "קדימה-צורן",
@@ -14189,7 +14053,7 @@
     "name": {
       "he": "קוואעין (שבט)",
       "ar": "القواعين",
-      "en": "Qawa'In"
+      "en": "Qawa'in"
     },
     "aliases": [
       "QAWA'IN"
@@ -14201,7 +14065,7 @@
   {
     "slug": "katzir",
     "cbsCode": "1243",
-    "type": "town",
+    "type": "village",
     "parent": "haifa-district",
     "name": {
       "he": "קציר",
@@ -14286,7 +14150,7 @@
   {
     "slug": "caesarea",
     "cbsCode": "1167",
-    "type": "town",
+    "type": "village",
     "parent": "haifa-district",
     "name": {
       "he": "קיסריה",
@@ -14405,7 +14269,7 @@
   {
     "slug": "kiryat-ata",
     "cbsCode": "6800",
-    "type": "town",
+    "type": "city",
     "parent": "haifa-district",
     "name": {
       "he": "קרית אתא",
@@ -14422,7 +14286,7 @@
   {
     "slug": "kiryat-bialik",
     "cbsCode": "9500",
-    "type": "town",
+    "type": "city",
     "parent": "haifa-district",
     "name": {
       "he": "קרית ביאליק",
@@ -14439,7 +14303,7 @@
   {
     "slug": "kiryat-ekron",
     "cbsCode": "469",
-    "type": "village",
+    "type": "town",
     "parent": "central-district",
     "name": {
       "he": "קרית עקרון",
@@ -14456,7 +14320,7 @@
   {
     "slug": "kiryat-gat",
     "cbsCode": "2630",
-    "type": "town",
+    "type": "city",
     "parent": "southern-district",
     "name": {
       "he": "קרית גת",
@@ -14473,7 +14337,7 @@
   {
     "slug": "kiryat-malachi",
     "cbsCode": "1034",
-    "type": "town",
+    "type": "city",
     "parent": "southern-district",
     "name": {
       "he": "קרית מלאכי",
@@ -14490,7 +14354,7 @@
   {
     "slug": "kiryat-motzkin",
     "cbsCode": "8200",
-    "type": "town",
+    "type": "city",
     "parent": "haifa-district",
     "name": {
       "he": "קרית מוצקין",
@@ -14507,7 +14371,7 @@
   {
     "slug": "kiryat-ono",
     "cbsCode": "2620",
-    "type": "town",
+    "type": "city",
     "parent": "tel-aviv-district",
     "name": {
       "he": "קרית אונו",
@@ -14541,7 +14405,7 @@
   {
     "slug": "kiryat-shmona",
     "cbsCode": "2800",
-    "type": "town",
+    "type": "city",
     "parent": "northern-district",
     "name": {
       "he": "קרית שמונה",
@@ -14558,7 +14422,7 @@
   {
     "slug": "kiryat-tivon",
     "cbsCode": "2300",
-    "type": "village",
+    "type": "town",
     "parent": "haifa-district",
     "name": {
       "he": "קרית טבעון",
@@ -14575,7 +14439,7 @@
   {
     "slug": "kiryat-yam",
     "cbsCode": "9600",
-    "type": "town",
+    "type": "city",
     "parent": "haifa-district",
     "name": {
       "he": "קרית ים",
@@ -14607,14 +14471,14 @@
     "status": "soon"
   },
   {
-    "slug": "qiryat-yearim-insti",
+    "slug": "qiryat-yearim",
     "cbsCode": "2039",
     "type": "village",
     "parent": "jerusalem-district",
     "name": {
       "he": "קרית יערים(מוסד)",
       "ar": "كريات يعاريم (مؤسسة)",
-      "en": "Qiryat Ye'Arim(Insti"
+      "en": "Qiryat Ye'arim (Institution)"
     },
     "aliases": [
       "QIRYAT YE'ARIM(INSTI"
@@ -14677,7 +14541,7 @@
   {
     "slug": "raanana",
     "cbsCode": "8700",
-    "type": "town",
+    "type": "city",
     "parent": "central-district",
     "name": {
       "he": "רעננה",
@@ -14694,7 +14558,7 @@
   {
     "slug": "rahat",
     "cbsCode": "1161",
-    "type": "town",
+    "type": "city",
     "parent": "southern-district",
     "name": {
       "he": "רהט",
@@ -14745,7 +14609,7 @@
   {
     "slug": "ramat-gan",
     "cbsCode": "8600",
-    "type": "town",
+    "type": "city",
     "parent": "tel-aviv-district",
     "name": {
       "he": "רמת גן",
@@ -14779,7 +14643,7 @@
   {
     "slug": "ramat-hasharon",
     "cbsCode": "2650",
-    "type": "town",
+    "type": "city",
     "parent": "tel-aviv-district",
     "name": {
       "he": "רמת השרון",
@@ -14915,7 +14779,7 @@
   {
     "slug": "rameh",
     "cbsCode": "543",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "ראמה",
@@ -14932,7 +14796,7 @@
   {
     "slug": "ramla",
     "cbsCode": "8500",
-    "type": "town",
+    "type": "city",
     "parent": "central-district",
     "name": {
       "he": "רמלה",
@@ -14949,7 +14813,7 @@
   {
     "slug": "ramot",
     "cbsCode": "4702",
-    "type": "neighbourhood",
+    "type": "village",
     "parent": "northern-district",
     "name": {
       "he": "רמות",
@@ -14959,8 +14823,8 @@
     "aliases": [
       "RAMOT"
     ],
-    "lat": 32.8,
-    "lng": 35.68,
+    "lat": 32.85,
+    "lng": 35.66,
     "status": "live"
   },
   {
@@ -15187,7 +15051,7 @@
   {
     "slug": "rehovot",
     "cbsCode": "8400",
-    "type": "town",
+    "type": "city",
     "parent": "central-district",
     "name": {
       "he": "רחובות",
@@ -15374,7 +15238,7 @@
   {
     "slug": "rishon-lezion",
     "cbsCode": "8300",
-    "type": "town",
+    "type": "city",
     "parent": "central-district",
     "name": {
       "he": "ראשון לציון",
@@ -15408,7 +15272,7 @@
   {
     "slug": "rosh-haayin",
     "cbsCode": "2640",
-    "type": "town",
+    "type": "city",
     "parent": "central-district",
     "name": {
       "he": "ראש העין",
@@ -15429,7 +15293,7 @@
     "parent": "northern-district",
     "name": {
       "he": "ראש פינה",
-      "ar": "El Jaune",
+      "ar": "روش بينا",
       "en": "Rosh Pina"
     },
     "aliases": [
@@ -15493,7 +15357,7 @@
   {
     "slug": "rummana",
     "cbsCode": "539",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "רומאנה",
@@ -15549,7 +15413,7 @@
     "name": {
       "he": "סעוה",
       "ar": "سعوة",
-      "en": "Sa'Wa"
+      "en": "Sa'wa"
     },
     "aliases": [
       "SA'WA"
@@ -15561,7 +15425,7 @@
   {
     "slug": "sajur",
     "cbsCode": "525",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "סאג'ור",
@@ -15578,7 +15442,7 @@
   {
     "slug": "sakhnin",
     "cbsCode": "7500",
-    "type": "town",
+    "type": "city",
     "parent": "northern-district",
     "name": {
       "he": "סח'נין",
@@ -15595,7 +15459,7 @@
   {
     "slug": "sallama",
     "cbsCode": "1245",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "סלמה",
@@ -15719,7 +15583,7 @@
     "name": {
       "he": "סואעד (חמירה)",
       "ar": "السواعد (حميرة)",
-      "en": "Sawa'Id (Humayra)"
+      "en": "Sawa'id (Humayra)"
     },
     "aliases": [
       "SAWA'ID (HUMAYRA)"
@@ -15736,7 +15600,7 @@
     "name": {
       "he": "סואעד (כמאנה) (שבט)",
       "ar": "السواعد (كمانة)",
-      "en": "Sawa'Id (Kamane)"
+      "en": "Sawa'id (Kamane)"
     },
     "aliases": [
       "SAWA'ID (KAMANE)"
@@ -16071,7 +15935,7 @@
   {
     "slug": "sderot",
     "cbsCode": "1031",
-    "type": "town",
+    "type": "city",
     "parent": "southern-district",
     "name": {
       "he": "שדרות",
@@ -16122,7 +15986,7 @@
   {
     "slug": "shaqib-al-salam",
     "cbsCode": "1286",
-    "type": "village",
+    "type": "town",
     "parent": "southern-district",
     "name": {
       "he": "שגב-שלום",
@@ -16173,7 +16037,7 @@
   {
     "slug": "shaab",
     "cbsCode": "538",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "שעב",
@@ -16280,7 +16144,7 @@
     "name": {
       "he": "שער מנשה",
       "ar": "شعار منشيه",
-      "en": "Sha'Ar Menashe"
+      "en": "Sha'ar Menashe"
     },
     "aliases": [
       "SHA'AR MENASHE"
@@ -16547,7 +16411,7 @@
   {
     "slug": "shefaram",
     "cbsCode": "8800",
-    "type": "town",
+    "type": "city",
     "parent": "northern-district",
     "name": {
       "he": "שפרעם",
@@ -16766,14 +16630,14 @@
     "status": "soon"
   },
   {
-    "slug": "umm-al-ghanam",
+    "slug": "shibli-umm-al-ghanam",
     "cbsCode": "913",
     "type": "village",
     "parent": "northern-district",
     "name": {
       "he": "שבלי - אום אל-גנם",
-      "ar": "أم الغنم",
-      "en": "Umm al-Ghanam"
+      "ar": "الشبلي - أم الغنم",
+      "en": "Shibli–Umm al-Ghanam"
     },
     "aliases": [
       "SHIBLI"
@@ -17244,7 +17108,7 @@
   {
     "slug": "tamra",
     "cbsCode": "8900",
-    "type": "village",
+    "type": "city",
     "parent": "northern-district",
     "name": {
       "he": "טמרה",
@@ -17265,8 +17129,8 @@
     "parent": "northern-district",
     "name": {
       "he": "טמרה (יזרעאל)",
-      "ar": "طمرة",
-      "en": "Tamra"
+      "ar": "طمرة الزعبية",
+      "en": "Tamra (Yizre'el)"
     },
     "aliases": [
       "TAMRA (YIZRE'EL)"
@@ -17329,7 +17193,7 @@
   {
     "slug": "taibe",
     "cbsCode": "2730",
-    "type": "town",
+    "type": "city",
     "parent": "central-district",
     "name": {
       "he": "טייבה",
@@ -17431,7 +17295,7 @@
   {
     "slug": "tel-mond",
     "cbsCode": "154",
-    "type": "village",
+    "type": "town",
     "parent": "central-district",
     "name": {
       "he": "תל מונד",
@@ -17601,7 +17465,7 @@
   {
     "slug": "tiberias",
     "cbsCode": "6700",
-    "type": "town",
+    "type": "city",
     "parent": "northern-district",
     "name": {
       "he": "טבריה",
@@ -17686,7 +17550,7 @@
   {
     "slug": "tirat-karmel",
     "cbsCode": "2100",
-    "type": "town",
+    "type": "city",
     "parent": "haifa-district",
     "name": {
       "he": "טירת כרמל",
@@ -17737,7 +17601,7 @@
   {
     "slug": "tira",
     "cbsCode": "2720",
-    "type": "town",
+    "type": "city",
     "parent": "central-district",
     "name": {
       "he": "טירה",
@@ -17771,7 +17635,7 @@
   {
     "slug": "tuba-zangariya",
     "cbsCode": "962",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "טובא-זנגריה",
@@ -17788,7 +17652,7 @@
   {
     "slug": "turan",
     "cbsCode": "498",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "טורעאן",
@@ -17856,7 +17720,7 @@
   {
     "slug": "umm-al-fahm",
     "cbsCode": "2710",
-    "type": "town",
+    "type": "city",
     "parent": "haifa-district",
     "name": {
       "he": "אום אל-פחם",
@@ -17873,7 +17737,7 @@
   {
     "slug": "umm-al-qutuf",
     "cbsCode": "2024",
-    "type": "village",
+    "type": "town",
     "parent": "haifa-district",
     "name": {
       "he": "אום אל-קוטוף",
@@ -18247,7 +18111,7 @@
   {
     "slug": "yanoah-jatt",
     "cbsCode": "1295",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "יאנוח-ג'ת",
@@ -18400,7 +18264,7 @@
   {
     "slug": "yavne",
     "cbsCode": "2660",
-    "type": "town",
+    "type": "city",
     "parent": "central-district",
     "name": {
       "he": "יבנה",
@@ -18519,7 +18383,7 @@
   {
     "slug": "yehud-monosson",
     "cbsCode": "9400",
-    "type": "town",
+    "type": "city",
     "parent": "central-district",
     "name": {
       "he": "יהוד-מונוסון",
@@ -18587,7 +18451,7 @@
   {
     "slug": "yesud-hamaala",
     "cbsCode": "29",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "יסוד המעלה",
@@ -18689,7 +18553,7 @@
   {
     "slug": "yirka",
     "cbsCode": "502",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "ירכא",
@@ -18774,7 +18638,7 @@
   {
     "slug": "yokneam-ilit",
     "cbsCode": "240",
-    "type": "town",
+    "type": "city",
     "parent": "northern-district",
     "name": {
       "he": "יקנעם עילית",
@@ -18791,12 +18655,12 @@
   {
     "slug": "yoqneam-moshava",
     "cbsCode": "241",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "יקנעם (מושבה)",
       "ar": "يوكنعام (مستوطنة)",
-      "en": "Yoqne'Am(Moshava)"
+      "en": "Yoqne'am (Moshava)"
     },
     "aliases": [
       "YOQNE'AM(MOSHAVA)"
@@ -18944,7 +18808,7 @@
   {
     "slug": "zarzir",
     "cbsCode": "975",
-    "type": "village",
+    "type": "town",
     "parent": "northern-district",
     "name": {
       "he": "זרזיר",
@@ -18995,7 +18859,7 @@
   {
     "slug": "safed",
     "cbsCode": "8000",
-    "type": "town",
+    "type": "city",
     "parent": "northern-district",
     "name": {
       "he": "צפת",
@@ -19046,7 +18910,7 @@
   {
     "slug": "zemer",
     "cbsCode": "1290",
-    "type": "city",
+    "type": "town",
     "parent": "central-district",
     "name": {
       "he": "זמר",
@@ -19131,7 +18995,7 @@
   {
     "slug": "zikhron-yaakov",
     "cbsCode": "9300",
-    "type": "town",
+    "type": "village",
     "parent": "haifa-district",
     "name": {
       "he": "זכרון יעקב",
@@ -19148,7 +19012,7 @@
   {
     "slug": "zimrat",
     "cbsCode": "1065",
-    "type": "neighbourhood",
+    "type": "village",
     "parent": "southern-district",
     "name": {
       "he": "זמרת",

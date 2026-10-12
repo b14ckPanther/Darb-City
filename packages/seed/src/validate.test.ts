@@ -160,4 +160,14 @@ describe("places", () => {
       expect(p.status, p.slug).toBe(live ? "live" : "soon");
     }
   });
+  it("have clean Arabic names, no neighbourhood CBS rows and correct flagship types", () => {
+    for (const p of places) {
+      expect(p.name.ar, `${p.slug} ar`).not.toMatch(/[A-Za-z\u060C]/);
+      if (p.cbsCode) expect(p.type, p.slug).not.toBe("neighbourhood");
+    }
+    for (const code of ["4000", "7600", "7500", "8900", "6800", "9500", "8200", "9600", "1063", "7300"])
+      expect(byCbs.get(code)?.type, code).toBe("city");
+    for (const code of ["1292", "522"]) expect(byCbs.get(code)?.type, code).toBe("town");
+    expect(places.some((p) => (p.name.he ?? "").startsWith("מחנה"))).toBe(false);
+  });
 });

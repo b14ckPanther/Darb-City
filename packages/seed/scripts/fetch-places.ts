@@ -44,11 +44,18 @@ async function loadCbs(): Promise<CbsRow[]> {
       en: String(r["שם_ישוב_לועזי"] ?? "").trim(),
       sub: Number(r["סמל_נפה"]),
     }))
-    .filter((r) => r.code !== "0" && r.he !== "" && REGION_OF[r.sub]);
+    .filter((r) => r.code !== "0" && r.he !== "" && REGION_OF[r.sub])
+    .filter((r) => !r.he.startsWith("מחנה")); // military camps are not localities
 }
 
 const overrides = JSON.parse(readFileSync(DATA("places-overrides.json"), "utf8")) as Overrides;
-const titleCase = (s: string) => s.toLowerCase().replace(/(^|[\s\-'(])(\p{L})/gu, (_m, p: string, c: string) => p + c.toUpperCase());
+const titleCase = (s: string) => s.toLowerCase().replace(/(^|[\s\-(])(\p{L})/gu, (_m, p: string, c: string) => p + c.toUpperCase());
+/** Normalise English names: space before "(", no capital right after an apostrophe. */
+const tidyEn = (s: string) =>
+  s.replace(/(\S)\(/g, "$1 (").replace(/(['`\u2019])(\p{Lu})/gu, (_m, a: string, c: string) => a + c.toLowerCase());
+/** Municipal status (controller ruling): city = municipality, town = local council, everything else village. */
+const CITY_CBS_CODES = new Set(["3000", "5000", "4000", "8300", "7900", "70", "7400", "9000", "6100", "6600", "8600", "7100", "8400", "6200", "2610", "6900", "6400", "6500", "1200", "7000", "8700", "8500", "2650", "7300", "7600", "9100", "2600", "6800", "2630", "8200", "9500", "9600", "2800", "1034", "2620", "2400", "1020", "31", "1309", "2710", "6000", "2730", "2720", "8900", "7500", "8800", "1139", "1063", "8000", "6700", "7700", "9200", "2660", "2550", "6300", "9700", "2640", "7200", "2500", "2100", "240", "2200", "2560", "246", "1031", "9400", "681", "874", "1061", "166", "1161"]);
+const TOWN_CBS_CODES = new Set(["472", "473", "182", "565", "529", "2024", "652", "2530", "482", "4001", "480", "466", "9800", "1326", "483", "1292", "627", "541", "628", "229", "489", "494", "492", "490", "1290", "2034", "496", "1303", "1247", "962", "498", "1295", "499", "29", "502", "504", "505", "1296", "633", "1263", "507", "509", "510", "634", "654", "47", "1224", "1271", "1060", "516", "4201", "1015", "28", "517", "43", "4019", "518", "1327", "99", "1268", "520", "4203", "522", "531", "525", "1245", "511", "532", "534", "530", "53", "537", "535", "7800", "171", "195", "638", "4100", "2300", "469", "543", "922", "26", "539", "1286", "812", "538", "154", "1054", "637", "1192", "487", "508", "1304", "587", "485", "831", "65", "241", "536", "1066", "1274", "975", "521", "998", "944", "475", "1349", "1321", "978"]);
 const TYPE: Record<string, PlaceType> = { city: "city", town: "town", village: "village", hamlet: "village", isolated_dwelling: "village", suburb: "neighbourhood" };
 
 async function geocode(he: string): Promise<OsmHit | null> {
@@ -86,7 +93,7 @@ for (const [i, row] of cbs.entries()) {
   }
   const region = REGION_OF[row.sub]!;
   const nd = hit?.namedetails ?? {};
-  const en = o.name?.en ?? cached?.name.en ?? (nd["name:en"] || (row.en ? titleCase(row.en) : ""));
+  const en = tidyEn(o.name?.en ?? cached?.name.en ?? (nd["name:en"] || (row.en ? titleCase(row.en) : "")));
   const ar = (o.name?.ar ?? cached?.name.ar ?? nd["name:ar"] ?? "").replace(/[\u200e\u200f]/g, "").trim();
   let slug = o.slug ?? toSlug(en || `cbs-${row.code}`);
   if (!slug) slug = `cbs-${row.code}`;
@@ -100,7 +107,7 @@ for (const [i, row] of cbs.entries()) {
   places.push({
     slug,
     cbsCode: row.code,
-    type: o.type ?? cached?.type ?? TYPE[hit?.addresstype ?? ""] ?? "village",
+    type: CITY_CBS_CODES.has(row.code) ? "city" : TOWN_CBS_CODES.has(row.code) ? "town" : "village",
     parent: region,
     name: { he: row.he, ar, en },
     aliases: [...new Set([row.en, ...(o.aliases ?? [])].filter((a) => a && a !== en))],
