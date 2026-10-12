@@ -10253,75 +10253,90 @@
   "factories": {
     "brand": {
       "he": "מפעל אל כרמל",
-      "en": "Al Karmel Plastics"
+      "en": "Al Karmel Plastics",
+      "ar": "مصنع الكرمل للبلاستيك"
     },
     "title": {
       "he": "ההזמנה שלך בייצור",
-      "en": "Your order is in production"
+      "en": "Your order is in production",
+      "ar": "طلبيتك بالإنتاج"
     },
     "subtitle": {
       "he": "הזמנה 2318 · 12,000 מכסים",
-      "en": "Order 2318 · 12,000 caps"
+      "en": "Order 2318 · 12,000 caps",
+      "ar": "طلبية 2318 · 12,000 غطا"
     },
     "tags": [
       {
         "he": "הזמנות",
-        "en": "Orders"
+        "en": "Orders",
+        "ar": "طلبيات"
       },
       {
         "he": "משלוחים",
-        "en": "Shipments"
+        "en": "Shipments",
+        "ar": "شحنات"
       },
       {
         "he": "חשבוניות",
-        "en": "Invoices"
+        "en": "Invoices",
+        "ar": "فواتير"
       }
     ],
     "items": [
       {
         "label": {
           "he": "חומר גלם",
-          "en": "Raw material"
+          "en": "Raw material",
+          "ar": "المواد الخام"
         },
         "meta": {
           "he": "התקבל · 100%",
-          "en": "received · 100%"
+          "en": "received · 100%",
+          "ar": "وصلت · 100%"
         }
       },
       {
         "label": {
           "he": "הזרקה",
-          "en": "Moulding"
+          "en": "Moulding",
+          "ar": "الصبّ"
         },
         "meta": {
           "he": "קו 3 · 70%",
-          "en": "line 3 · 70%"
+          "en": "line 3 · 70%",
+          "ar": "خط 3 · 70%"
         }
       },
       {
         "label": {
           "he": "בקרת איכות",
-          "en": "Quality check"
+          "en": "Quality check",
+          "ar": "فحص الجودة"
         },
         "meta": {
           "he": "בהמתנה · 0%",
-          "en": "waiting · 0%"
+          "en": "waiting · 0%",
+          "ar": "بالانتظار · 0%"
         }
       },
       {
         "label": {
           "he": "צפי משלוח",
-          "en": "Ship date"
+          "en": "Ship date",
+          "ar": "موعد الشحن"
         },
         "meta": {
           "he": "יום ה' · 24 משטחים",
-          "en": "Thursday · 24 pallets"
+          "en": "Thursday · 24 pallets",
+          "ar": "الخميس · 24 مشطاح"
         }
       }
     ],
     "cta": {
       "he": "עדכון כמות להזמנה",
-      "en": "Change order quantity"
+      "en": "Change order quantity",
+      "ar": "غيّر كمية الطلبية"
     },
     "palette": {
       "bg": "#1b1f22",
@@ -10334,79 +10349,95 @@
   "wholesalers": {
     "brand": {
       "he": "סיטונאות אבו נאסר",
-      "en": "Abu Nasser Wholesale"
+      "en": "Abu Nasser Wholesale",
+      "ar": "جملة أبو ناصر"
     },
     "title": {
       "he": "מלאי למכולת שלך",
-      "en": "Stock for your grocery"
+      "en": "Stock for your grocery",
+      "ar": "بضاعة لدكانتك"
     },
     "subtitle": {
       "he": "מינימום ₪800 · משלוח למחרת",
-      "en": "₪800 minimum · next-day delivery"
+      "en": "₪800 minimum · next-day delivery",
+      "ar": "حد أدنى ₪800 · توصيل تاني يوم"
     },
     "tags": [
       {
         "he": "יבשים",
-        "en": "Dry goods"
+        "en": "Dry goods",
+        "ar": "مواد جافة"
       },
       {
         "he": "שימורים",
-        "en": "Tins"
+        "en": "Tins",
+        "ar": "معلبات"
       },
       {
         "he": "שתייה",
-        "en": "Drinks"
+        "en": "Drinks",
+        "ar": "مشروبات"
       },
       {
         "he": "ניקיון",
-        "en": "Cleaning"
+        "en": "Cleaning",
+        "ar": "تنظيف"
       }
     ],
     "items": [
       {
         "label": {
           "he": "אורז בסמטי",
-          "en": "Basmati rice"
+          "en": "Basmati rice",
+          "ar": "رز بسمتي"
         },
         "meta": {
           "he": "₪189 · 10 שקים של 2 ק\"ג",
-          "en": "₪189 · 10 × 2 kg bags"
+          "en": "₪189 · 10 × 2 kg bags",
+          "ar": "₪189 · 10 أكياس × 2 كغم"
         }
       },
       {
         "label": {
           "he": "שמן זית",
-          "en": "Olive oil"
+          "en": "Olive oil",
+          "ar": "زيت زيتون"
         },
         "meta": {
           "he": "₪264 · 12 בקבוקים",
-          "en": "₪264 · 12 bottles"
+          "en": "₪264 · 12 bottles",
+          "ar": "₪264 · 12 قنينة"
         }
       },
       {
         "label": {
           "he": "עגבניות מרוסקות",
-          "en": "Crushed tomatoes"
+          "en": "Crushed tomatoes",
+          "ar": "بندورة مطحونة"
         },
         "meta": {
           "he": "₪96 · 24 קופסאות",
-          "en": "₪96 · 24 tins"
+          "en": "₪96 · 24 tins",
+          "ar": "₪96 · 24 علبة"
         }
       },
       {
         "label": {
           "he": "מים מינרליים",
-          "en": "Mineral water"
+          "en": "Mineral water",
+          "ar": "مي معدنية"
         },
         "meta": {
           "he": "₪42 · 6 שישיות",
-          "en": "₪42 · 6 six-packs"
+          "en": "₪42 · 6 six-packs",
+          "ar": "₪42 · 6 شدّات"
         }
       }
     ],
     "cta": {
       "he": "להזמין שוב את ההזמנה הקודמת",
-      "en": "Repeat last order"
+      "en": "Repeat last order",
+      "ar": "كرّر الطلبية الأخيرة"
     },
     "palette": {
       "bg": "#f1ece2",
@@ -10419,79 +10450,95 @@
   "packaging": {
     "brand": {
       "he": "אריזות אל וטן",
-      "en": "Al Watan Packaging"
+      "en": "Al Watan Packaging",
+      "ar": "تغليف الوطن"
     },
     "title": {
       "he": "מעצבים קופסה משלך",
-      "en": "Design your own box"
+      "en": "Design your own box",
+      "ar": "صمّم الكرتونة تبعتك"
     },
     "subtitle": {
       "he": "מ-500 יחידות · הדמיה תוך יום",
-      "en": "From 500 units · mock-up in a day"
+      "en": "From 500 units · mock-up in a day",
+      "ar": "من 500 قطعة · نموذج خلال يوم"
     },
     "tags": [
       {
         "he": "קרטון גלי",
-        "en": "Corrugated"
+        "en": "Corrugated",
+        "ar": "كرتون مضلّع"
       },
       {
         "he": "קרפט",
-        "en": "Kraft"
+        "en": "Kraft",
+        "ar": "كرافت"
       },
       {
         "he": "לבן",
-        "en": "White"
+        "en": "White",
+        "ar": "أبيض"
       },
       {
         "he": "שחור מט",
-        "en": "Matte black"
+        "en": "Matte black",
+        "ar": "أسود مطفي"
       }
     ],
     "items": [
       {
         "label": {
           "he": "מידה",
-          "en": "Size"
+          "en": "Size",
+          "ar": "المقاس"
         },
         "meta": {
           "he": "30 × 20 × 10 ס\"מ",
-          "en": "30 × 20 × 10 cm"
+          "en": "30 × 20 × 10 cm",
+          "ar": "30 × 20 × 10 سم"
         }
       },
       {
         "label": {
           "he": "חומר",
-          "en": "Material"
+          "en": "Material",
+          "ar": "المادة"
         },
         "meta": {
           "he": "קרטון קרפט ממוחזר",
-          "en": "Recycled kraft"
+          "en": "Recycled kraft",
+          "ar": "كرافت معاد تدويره"
         }
       },
       {
         "label": {
           "he": "הדפסה",
-          "en": "Print"
+          "en": "Print",
+          "ar": "الطباعة"
         },
         "meta": {
           "he": "לוגו בצבע אחד",
-          "en": "One-colour logo"
+          "en": "One-colour logo",
+          "ar": "لوجو بلون واحد"
         }
       },
       {
         "label": {
           "he": "הערכה",
-          "en": "Estimate"
+          "en": "Estimate",
+          "ar": "التقدير"
         },
         "meta": {
           "he": "₪2,150 · 1,000 קופסאות",
-          "en": "₪2,150 · 1,000 boxes"
+          "en": "₪2,150 · 1,000 boxes",
+          "ar": "₪2,150 · 1,000 كرتونة"
         }
       }
     ],
     "cta": {
       "he": "לקבל הדמיה",
-      "en": "Get a mock-up"
+      "en": "Get a mock-up",
+      "ar": "احصل على نموذج"
     },
     "palette": {
       "bg": "#efe2cc",
@@ -10504,75 +10551,90 @@
   "couriers": {
     "brand": {
       "he": "סריע שליחויות",
-      "en": "Saree' Couriers"
+      "en": "Saree' Couriers",
+      "ar": "سريع للتوصيل"
     },
     "title": {
       "he": "החבילה בדרך ללקוח",
-      "en": "The parcel is on its way"
+      "en": "The parcel is on its way",
+      "ar": "الطرد بالطريق"
     },
     "subtitle": {
       "he": "משלוח 88417 · חיפה לנצרת",
-      "en": "Shipment 88417 · Haifa to Nazareth"
+      "en": "Shipment 88417 · Haifa to Nazareth",
+      "ar": "شحنة 88417 · من حيفا للناصرة"
     },
     "tags": [
       {
         "he": "היום",
-        "en": "Same day"
+        "en": "Same day",
+        "ar": "نفس اليوم"
       },
       {
         "he": "אקספרס",
-        "en": "Express"
+        "en": "Express",
+        "ar": "إكسبرس"
       },
       {
         "he": "משטחים",
-        "en": "Pallets"
+        "en": "Pallets",
+        "ar": "مشاطيح"
       }
     ],
     "items": [
       {
         "label": {
           "he": "נאסף מהעסק",
-          "en": "Picked up"
+          "en": "Picked up",
+          "ar": "انستلم"
         },
         "meta": {
           "he": "10:20 · 100%",
-          "en": "10:20 · 100%"
+          "en": "10:20 · 100%",
+          "ar": "10:20 · 100%"
         }
       },
       {
         "label": {
           "he": "במרכז המיון",
-          "en": "At the hub"
+          "en": "At the hub",
+          "ar": "بمركز التوزيع"
         },
         "meta": {
           "he": "11:05 · 100%",
-          "en": "11:05 · 100%"
+          "en": "11:05 · 100%",
+          "ar": "11:05 · 100%"
         }
       },
       {
         "label": {
           "he": "בדרך ללקוח",
-          "en": "Out for delivery"
+          "en": "Out for delivery",
+          "ar": "طالع للتوصيل"
         },
         "meta": {
           "he": "השליח מוחמד · 60%",
-          "en": "Driver Mohammad · 60%"
+          "en": "Driver Mohammad · 60%",
+          "ar": "السائق محمد · 60%"
         }
       },
       {
         "label": {
           "he": "צפי מסירה",
-          "en": "Expected"
+          "en": "Expected",
+          "ar": "الوصول المتوقع"
         },
         "meta": {
           "he": "היום עד 14:00",
-          "en": "today by 14:00"
+          "en": "today by 14:00",
+          "ar": "اليوم لحد 14:00"
         }
       }
     ],
     "cta": {
       "he": "להזמין איסוף נוסף",
-      "en": "Book another pickup"
+      "en": "Book another pickup",
+      "ar": "احجز استلام كمان مرة"
     },
     "palette": {
       "bg": "#ffd84a",
@@ -10585,79 +10647,95 @@
   "warehouses": {
     "brand": {
       "he": "מחסני אל מרג'",
-      "en": "Al Marj Storage"
+      "en": "Al Marj Storage",
+      "ar": "مخازن المرج"
     },
     "title": {
       "he": "כמה מקום אתם צריכים?",
-      "en": "How much space do you need?"
+      "en": "How much space do you need?",
+      "ar": "قديش مساحة بدك؟"
     },
     "subtitle": {
       "he": "מחסן מקורה ליד צומת גולני",
-      "en": "Covered warehouse by Golani Junction"
+      "en": "Covered warehouse by Golani Junction",
+      "ar": "مخزن مسقوف جنب مفرق جولاني"
     },
     "tags": [
       {
         "he": "משטחים",
-        "en": "Pallets"
+        "en": "Pallets",
+        "ar": "مشاطيح"
       },
       {
         "he": "מדפים",
-        "en": "Shelving"
+        "en": "Shelving",
+        "ar": "رفوف"
       },
       {
         "he": "קירור",
-        "en": "Chilled"
+        "en": "Chilled",
+        "ar": "مبرّد"
       },
       {
         "he": "ליקוט",
-        "en": "Picking"
+        "en": "Picking",
+        "ar": "تجهيز طلبيات"
       }
     ],
     "items": [
       {
         "label": {
           "he": "סחורה",
-          "en": "Goods"
+          "en": "Goods",
+          "ar": "البضاعة"
         },
         "meta": {
           "he": "ריהוט גן ארוז",
-          "en": "Boxed garden furniture"
+          "en": "Boxed garden furniture",
+          "ar": "أثاث حدائق بكراتين"
         }
       },
       {
         "label": {
           "he": "כמות",
-          "en": "Volume"
+          "en": "Volume",
+          "ar": "الحجم"
         },
         "meta": {
           "he": "40 משטחים",
-          "en": "40 pallets"
+          "en": "40 pallets",
+          "ar": "40 مشطاح"
         }
       },
       {
         "label": {
           "he": "תקופה",
-          "en": "Period"
+          "en": "Period",
+          "ar": "المدة"
         },
         "meta": {
           "he": "6 חודשים, מספטמבר",
-          "en": "6 months from September"
+          "en": "6 months from September",
+          "ar": "6 شهور من أيلول"
         }
       },
       {
         "label": {
           "he": "הערכה חודשית",
-          "en": "Monthly estimate"
+          "en": "Monthly estimate",
+          "ar": "تقدير شهري"
         },
         "meta": {
           "he": "₪3,600 · כולל ביטוח",
-          "en": "₪3,600 · insured"
+          "en": "₪3,600 · insured",
+          "ar": "₪3,600 · مع تأمين"
         }
       }
     ],
     "cta": {
       "he": "לשריין שטח",
-      "en": "Reserve the space"
+      "en": "Reserve the space",
+      "ar": "احجز المساحة"
     },
     "palette": {
       "bg": "#e4e6e1",
@@ -10670,79 +10748,95 @@
   "sign-makers": {
     "brand": {
       "he": "שלטי אל פנאר",
-      "en": "Al Fanar Signs"
+      "en": "Al Fanar Signs",
+      "ar": "يافطات الفنار"
     },
     "title": {
       "he": "שלט שרואים מהכביש",
-      "en": "A sign seen from the road"
+      "en": "A sign seen from the road",
+      "ar": "يافطة بتنشاف من الشارع"
     },
     "subtitle": {
       "he": "תכנון, ייצור והתקנה",
-      "en": "Design, build and install"
+      "en": "Design, build and install",
+      "ar": "تصميم، تصنيع وتركيب"
     },
     "tags": [
       {
         "he": "שלטי אור",
-        "en": "Lightboxes"
+        "en": "Lightboxes",
+        "ar": "علب مضيئة"
       },
       {
         "he": "אותיות תלת מימד",
-        "en": "3D letters"
+        "en": "3D letters",
+        "ar": "أحرف بارزة"
       },
       {
         "he": "מדבקות",
-        "en": "Vinyl"
+        "en": "Vinyl",
+        "ar": "فينيل"
       },
       {
         "he": "רכבים",
-        "en": "Vehicles"
+        "en": "Vehicles",
+        "ar": "سيارات"
       }
     ],
     "items": [
       {
         "label": {
           "he": "אותיות מוארות למאפייה",
-          "en": "Lit letters for a bakery"
+          "en": "Lit letters for a bakery",
+          "ar": "أحرف مضيئة لمخبز"
         },
         "meta": {
           "he": "₪7,400 · נצרת",
-          "en": "₪7,400 · Nazareth"
+          "en": "₪7,400 · Nazareth",
+          "ar": "₪7,400 · الناصرة"
         }
       },
       {
         "label": {
           "he": "שלט אור למרפאה",
-          "en": "Clinic lightbox"
+          "en": "Clinic lightbox",
+          "ar": "علبة مضيئة لعيادة"
         },
         "meta": {
           "he": "₪3,900 · שפרעם",
-          "en": "₪3,900 · Shefa-Amr"
+          "en": "₪3,900 · Shefa-Amr",
+          "ar": "₪3,900 · شفاعمرو"
         }
       },
       {
         "label": {
           "he": "מיתוג 3 טנדרים",
-          "en": "Branding 3 vans"
+          "en": "Branding 3 vans",
+          "ar": "تغليف 3 فانات"
         },
         "meta": {
           "he": "₪5,200 · עכו",
-          "en": "₪5,200 · Akko"
+          "en": "₪5,200 · Akko",
+          "ar": "₪5,200 · عكا"
         }
       },
       {
         "label": {
           "he": "הדמיה על החזית",
-          "en": "Storefront mock-up"
+          "en": "Storefront mock-up",
+          "ar": "نموذج للواجهة"
         },
         "meta": {
           "he": "ללא עלות",
-          "en": "free"
+          "en": "free",
+          "ar": "مجانًا"
         }
       }
     ],
     "cta": {
       "he": "לקבל הדמיה לחזית",
-      "en": "Get a storefront mock-up"
+      "en": "Get a storefront mock-up",
+      "ar": "احصل على نموذج لواجهة المحل"
     },
     "palette": {
       "bg": "#151515",
@@ -10755,79 +10849,95 @@
   "metalworks": {
     "brand": {
       "he": "מסגריית אל חדיד",
-      "en": "Al Hadid Metalworks"
+      "en": "Al Hadid Metalworks",
+      "ar": "حدادة الحديد"
     },
     "title": {
       "he": "שער חדש לבית",
-      "en": "A new gate for the house"
+      "en": "A new gate for the house",
+      "ar": "بوابة جديدة للبيت"
     },
     "subtitle": {
       "he": "שולחים מידות, מקבלים מחיר",
-      "en": "Send sizes, get a price"
+      "en": "Send sizes, get a price",
+      "ar": "ابعت القياسات وخذ سعر"
     },
     "tags": [
       {
         "he": "שערים",
-        "en": "Gates"
+        "en": "Gates",
+        "ar": "بوابات"
       },
       {
         "he": "מעקות",
-        "en": "Railings"
+        "en": "Railings",
+        "ar": "درابزين"
       },
       {
         "he": "פרגולות",
-        "en": "Pergolas"
+        "en": "Pergolas",
+        "ar": "برجولات"
       },
       {
         "he": "סורגים",
-        "en": "Window bars"
+        "en": "Window bars",
+        "ar": "حماية شبابيك"
       }
     ],
     "items": [
       {
         "label": {
           "he": "סוג",
-          "en": "Type"
+          "en": "Type",
+          "ar": "النوع"
         },
         "meta": {
           "he": "שער חשמלי נגרר",
-          "en": "Electric sliding gate"
+          "en": "Electric sliding gate",
+          "ar": "بوابة جرّارة كهربائية"
         }
       },
       {
         "label": {
           "he": "רוחב",
-          "en": "Width"
+          "en": "Width",
+          "ar": "العرض"
         },
         "meta": {
           "he": "4.5 מטר",
-          "en": "4.5 m"
+          "en": "4.5 m",
+          "ar": "4.5 م"
         }
       },
       {
         "label": {
           "he": "גימור",
-          "en": "Finish"
+          "en": "Finish",
+          "ar": "التشطيب"
         },
         "meta": {
           "he": "צבע בתנור, שחור",
-          "en": "Black powder coat"
+          "en": "Black powder coat",
+          "ar": "دهان بودرة أسود"
         }
       },
       {
         "label": {
           "he": "הערכה",
-          "en": "Estimate"
+          "en": "Estimate",
+          "ar": "التقدير"
         },
         "meta": {
           "he": "₪11,800-13,200 · כולל מנוע",
-          "en": "₪11,800-13,200 · motor included"
+          "en": "₪11,800-13,200 · motor included",
+          "ar": "₪11,800-13,200 · شامل الموتور"
         }
       }
     ],
     "cta": {
       "he": "לשלוח תמונה של הפתח",
-      "en": "Send a photo of the opening"
+      "en": "Send a photo of the opening",
+      "ar": "ابعت صورة للفتحة"
     },
     "palette": {
       "bg": "#23272b",
@@ -10840,79 +10950,95 @@
   "carpentry": {
     "brand": {
       "he": "נגריית אל ארז",
-      "en": "Al Arz Carpentry"
+      "en": "Al Arz Carpentry",
+      "ar": "نجارة الأرز"
     },
     "title": {
       "he": "ארון בהתאמה אישית",
-      "en": "A wardrobe made to fit"
+      "en": "A wardrobe made to fit",
+      "ar": "خزانة على القياس"
     },
     "subtitle": {
       "he": "חדר שינה · קיר של 3.2 מטר",
-      "en": "Bedroom · 3.2 m wall"
+      "en": "Bedroom · 3.2 m wall",
+      "ar": "غرفة نوم · حيط 3.2 م"
     },
     "tags": [
       {
         "he": "אלון",
-        "en": "Oak"
+        "en": "Oak",
+        "ar": "بلوط"
       },
       {
         "he": "אגוז",
-        "en": "Walnut"
+        "en": "Walnut",
+        "ar": "جوز"
       },
       {
         "he": "לבן",
-        "en": "White"
+        "en": "White",
+        "ar": "أبيض"
       },
       {
         "he": "זית",
-        "en": "Olive"
+        "en": "Olive",
+        "ar": "زيتي"
       }
     ],
     "items": [
       {
         "label": {
           "he": "דלתות",
-          "en": "Doors"
+          "en": "Doors",
+          "ar": "الأبواب"
         },
         "meta": {
           "he": "4 דלתות הזזה",
-          "en": "4 sliding doors"
+          "en": "4 sliding doors",
+          "ar": "4 أبواب جرّارة"
         }
       },
       {
         "label": {
           "he": "עץ",
-          "en": "Wood"
+          "en": "Wood",
+          "ar": "الخشب"
         },
         "meta": {
           "he": "אלון טבעי",
-          "en": "Natural oak"
+          "en": "Natural oak",
+          "ar": "بلوط طبيعي"
         }
       },
       {
         "label": {
           "he": "פנים",
-          "en": "Inside"
+          "en": "Inside",
+          "ar": "من جوّا"
         },
         "meta": {
           "he": "מגירות ומוט תלייה",
-          "en": "Drawers and hanging rail"
+          "en": "Drawers and hanging rail",
+          "ar": "جوارير وعلّاقة"
         }
       },
       {
         "label": {
           "he": "הערכה",
-          "en": "Estimate"
+          "en": "Estimate",
+          "ar": "التقدير"
         },
         "meta": {
           "he": "₪14,200 · כולל התקנה",
-          "en": "₪14,200 · fitted"
+          "en": "₪14,200 · fitted",
+          "ar": "₪14,200 · مع التركيب"
         }
       }
     ],
     "cta": {
       "he": "לתאם מדידה",
-      "en": "Book a measure"
+      "en": "Book a measure",
+      "ar": "احجز قياس"
     },
     "palette": {
       "bg": "#f2e8da",
@@ -10925,79 +11051,95 @@
   "recruiting": {
     "brand": {
       "he": "פורסה השמה",
-      "en": "Fursa Recruiting"
+      "en": "Fursa Recruiting",
+      "ar": "فرصة للتوظيف"
     },
     "title": {
       "he": "משרות חדשות השבוע",
-      "en": "New jobs this week"
+      "en": "New jobs this week",
+      "ar": "وظائف جديدة هالأسبوع"
     },
     "subtitle": {
       "he": "38 משרות · הצפון והקריות",
-      "en": "38 jobs · the North and Krayot"
+      "en": "38 jobs · the North and Krayot",
+      "ar": "38 وظيفة · الشمال والكريوت"
     },
     "tags": [
       {
         "he": "הכול",
-        "en": "All"
+        "en": "All",
+        "ar": "الكل"
       },
       {
         "he": "לוגיסטיקה",
-        "en": "Logistics"
+        "en": "Logistics",
+        "ar": "لوجستيكا"
       },
       {
         "he": "משרד",
-        "en": "Office"
+        "en": "Office",
+        "ar": "مكتب"
       },
       {
         "he": "הנדסה",
-        "en": "Engineering"
+        "en": "Engineering",
+        "ar": "هندسة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "מנהלת חשבונות",
-          "en": "Bookkeeper"
+          "en": "Bookkeeper",
+          "ar": "مسك دفاتر"
         },
         "meta": {
           "he": "₪11,000 · מלאה · טמרה",
-          "en": "₪11,000 · full time · Tamra"
+          "en": "₪11,000 · full time · Tamra",
+          "ar": "₪11,000 · دوام كامل · طمرة"
         }
       },
       {
         "label": {
           "he": "מלגזן משמרת בוקר",
-          "en": "Morning forklift driver"
+          "en": "Morning forklift driver",
+          "ar": "سائق رافعة صباحي"
         },
         "meta": {
           "he": "₪48 לשעה · קיסריה",
-          "en": "₪48 an hour · Caesarea"
+          "en": "₪48 an hour · Caesarea",
+          "ar": "₪48 للساعة · قيسارية"
         }
       },
       {
         "label": {
           "he": "מהנדס תכנון",
-          "en": "Design engineer"
+          "en": "Design engineer",
+          "ar": "مهندس تصميم"
         },
         "meta": {
           "he": "₪19,500 · יוקנעם",
-          "en": "₪19,500 · Yokneam"
+          "en": "₪19,500 · Yokneam",
+          "ar": "₪19,500 · يوكنعام"
         }
       },
       {
         "label": {
           "he": "נציג שירות דובר ערבית",
-          "en": "Arabic-speaking support"
+          "en": "Arabic-speaking support",
+          "ar": "دعم بالعربي"
         },
         "meta": {
           "he": "₪9,800 · חלקית · נצרת",
-          "en": "₪9,800 · part time · Nazareth"
+          "en": "₪9,800 · part time · Nazareth",
+          "ar": "₪9,800 · دوام جزئي · الناصرة"
         }
       }
     ],
     "cta": {
       "he": "להגיש מועמדות",
-      "en": "Apply now"
+      "en": "Apply now",
+      "ar": "قدّم هلّق"
     },
     "palette": {
       "bg": "#eef0fa",
@@ -11010,87 +11152,105 @@
   "security": {
     "brand": {
       "he": "אמאן אבטחה",
-      "en": "Aman Security"
+      "en": "Aman Security",
+      "ar": "أمان للحراسة"
     },
     "title": {
       "he": "המשמרות של השבוע",
-      "en": "This week's shifts"
+      "en": "This week's shifts",
+      "ar": "ورديات هالأسبوع"
     },
     "subtitle": {
       "he": "אתר: מרכז לוגיסטי, אזור התעשייה",
-      "en": "Site: logistics centre, industrial zone"
+      "en": "Site: logistics centre, industrial zone",
+      "ar": "الموقع: مركز لوجستي، المنطقة الصناعية"
     },
     "tags": [
       {
         "he": "א'",
-        "en": "Sun"
+        "en": "Sun",
+        "ar": "أحد"
       },
       {
         "he": "ב'",
-        "en": "Mon"
+        "en": "Mon",
+        "ar": "اثنين"
       },
       {
         "he": "ג'",
-        "en": "Tue"
+        "en": "Tue",
+        "ar": "ثلاثاء"
       },
       {
         "he": "ד'",
-        "en": "Wed"
+        "en": "Wed",
+        "ar": "أربعاء"
       },
       {
         "he": "ה'",
-        "en": "Thu"
+        "en": "Thu",
+        "ar": "خميس"
       },
       {
         "he": "ו'",
-        "en": "Fri"
+        "en": "Fri",
+        "ar": "جمعة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "משמרת בוקר",
-          "en": "Morning shift"
+          "en": "Morning shift",
+          "ar": "وردية صبح"
         },
         "meta": {
           "he": "07:00 · באסל · שער ראשי",
-          "en": "07:00 · Basel · main gate"
+          "en": "07:00 · Basel · main gate",
+          "ar": "07:00 · باسل · البوابة الرئيسية"
         }
       },
       {
         "label": {
           "he": "משמרת צהריים",
-          "en": "Day shift"
+          "en": "Day shift",
+          "ar": "وردية نهار"
         },
         "meta": {
           "he": "12:00 · ניזאר · סיור",
-          "en": "12:00 · Nizar · patrol"
+          "en": "12:00 · Nizar · patrol",
+          "ar": "12:00 · نزار · دورية"
         }
       },
       {
         "label": {
           "he": "משמרת ערב",
-          "en": "Evening shift"
+          "en": "Evening shift",
+          "ar": "وردية مسا"
         },
         "meta": {
           "he": "17:00 · עמאר · מצלמות",
-          "en": "17:00 · Ammar · CCTV"
+          "en": "17:00 · Ammar · CCTV",
+          "ar": "17:00 · عمار · كاميرات"
         }
       },
       {
         "label": {
           "he": "סיור רכוב",
-          "en": "Mobile patrol"
+          "en": "Mobile patrol",
+          "ar": "دورية متنقلة"
         },
         "meta": {
           "he": "10:00 · 3 אתרים",
-          "en": "10:00 · 3 sites"
+          "en": "10:00 · 3 sites",
+          "ar": "10:00 · 3 مواقع"
         }
       }
     ],
     "cta": {
       "he": "להזמין מאבטח נוסף",
-      "en": "Book an extra guard"
+      "en": "Book an extra guard",
+      "ar": "احجز حارس إضافي"
     },
     "palette": {
       "bg": "#0f1a24",
