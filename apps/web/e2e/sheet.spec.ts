@@ -96,3 +96,19 @@ test.describe("reduced motion", () => {
     expect(duration).toBe("0.001s");
   });
 });
+
+test("desktop: the side panel is non-modal and the city behind it stays usable", async ({
+  page,
+}, info) => {
+  test.skip(isPhone(info), "desktop only");
+  await page.goto(LEVELS.business);
+  const dialog = page.getByRole("dialog");
+  await expect(dialog).toBeVisible();
+  await expect(dialog).not.toHaveAttribute("aria-modal", "true");
+  await expect(page.locator("#site-header")).not.toHaveAttribute("inert", "");
+  await expect(page.locator("#city-list")).not.toHaveAttribute("inert", "");
+  // The path bar's up arrow, behind the panel, still works and closes the sheet.
+  await page.locator("[data-path-bar] [data-up]").click();
+  await expect(page).toHaveURL(LEVELS.kind);
+  await expect(dialog).toHaveCount(0);
+});

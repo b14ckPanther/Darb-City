@@ -154,3 +154,51 @@ describe("snap rules", () => {
     expect(snapFromDrag("half", 30)).toBe("half");
   });
 });
+
+function stubDesktop() {
+  vi.stubGlobal("matchMedia", (media: string) => ({
+    matches: media === "(min-width: 900px)",
+    media,
+    addEventListener: () => {},
+    removeEventListener: () => {},
+  }));
+}
+
+describe("Sheet on desktop", () => {
+  beforeEach(stubDesktop);
+  afterEach(() => vi.unstubAllGlobals());
+
+  it("is a non-modal side panel: no scrim, nothing inert", () => {
+    renderSheet();
+    const dialog = screen.getByRole("dialog");
+    expect(dialog.hasAttribute("aria-modal")).toBe(false);
+    expect(document.querySelector("[data-sheet] > [aria-hidden='true']")).toBeNull();
+    for (const id of ["site-header", "city-bar", "city-list"])
+      expect(document.getElementById(id)?.hasAttribute("inert")).toBe(false);
+    expect(document.activeElement?.getAttribute("data-sheet-close")).toBe("");
+  });
+
+  it("still loops Tab inside the panel", () => {
+    renderSheet();
+    const dialog = screen.getByRole("dialog");
+    screen.getByRole("button", { name: "Share" }).focus();
+    fireEvent.keyDown(dialog, { key: "Tab" });
+    expect(document.activeElement?.getAttribute("data-sheet-handle")).toBe("");
+  });
+
+  it("gives focus back to its row on close", () => {
+    const { unmount } = renderSheet();
+    unmount();
+    expect(document.activeElement?.getAttribute("data-business-link")).toBe(
+      "sakhnin/samers-barbershop",
+    );
+  });
+});
+
+it("ignores an Escape that something else already handled", () => {
+  renderSheet();
+  const event = new KeyboardEvent("keydown", { key: "Escape", bubbles: true, cancelable: true });
+  event.preventDefault();
+  document.body.dispatchEvent(event);
+  expect(push).not.toHaveBeenCalled();
+});
