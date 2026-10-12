@@ -146,6 +146,9 @@ importers:
       '@ts-rest/nest':
         specifier: 'catalog:'
         version: 3.52.1(@nestjs/common@11.2.7(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.2.7)(@ts-rest/core@3.52.1(@types/node@22.20.5)(zod@3.25.76))(rxjs@7.8.2)(zod@3.25.76)
+      ajv:
+        specifier: 'catalog:'
+        version: 8.20.0
       dotenv:
         specifier: 'catalog:'
         version: 18.0.7
@@ -159,6 +162,9 @@ importers:
         specifier: 'catalog:'
         version: 3.25.76
     devDependencies:
+      '@darb/seed':
+        specifier: workspace:*
+        version: link:../../packages/seed
       '@nestjs/testing':
         specifier: 'catalog:'
         version: 11.2.7(@nestjs/common@11.2.7(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.2.7)(@nestjs/platform-express@11.2.7)

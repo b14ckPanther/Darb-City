@@ -13,5 +13,7 @@ Requires Node ≥ 22.12, pnpm 11 and Docker Desktop.
     cp apps/api/.env.example apps/api/.env
     pnpm dev          # Postgres + Redis, migrations, seed, API on http://localhost:4000
 
+    pnpm --filter @darb/api db:seed   # re-run the idempotent seed loader (~17s for the full dataset)
+
     pnpm test         # needs `pnpm infra:up`
     pnpm typecheck && pnpm lint && pnpm format:check

@@ -23,12 +23,14 @@
     "@prisma/client": "catalog:",
     "@ts-rest/core": "catalog:",
     "@ts-rest/nest": "catalog:",
+    "ajv": "catalog:",
     "dotenv": "catalog:",
     "reflect-metadata": "catalog:",
     "rxjs": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
+    "@darb/seed": "workspace:*",
     "@nestjs/testing": "catalog:",
     "@swc/core": "catalog:",
     "@types/node": "catalog:",
