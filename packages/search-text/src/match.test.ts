@@ -76,6 +76,28 @@ describe("matchInstant", () => {
     expect(top("קריית ים").place).toBe("kiryat-yam");
     expect(top("kunafa").kind).toBe("sweets");
   });
+  it("matches a maqaf-joined name to its spaced spelling", () => {
+    const withMaqaf = prepare(
+      buildInstantIndex({
+        places: [
+          {
+            slug: "beit-shemesh",
+            type: "city",
+            status: "live",
+            parent: null,
+            name: { he: "בית־שמש", en: "Beit Shemesh" },
+            aliases: ["Bet Shemesh"],
+          },
+        ],
+        kinds: [],
+      }),
+    );
+    const r = matchInstant(withMaqaf, "בית שמש");
+    expect(r.places[0]?.entry.s).toBe("beit-shemesh");
+    expect(r.places[0]?.score).toBeGreaterThanOrEqual(1);
+    expect(matchInstant(withMaqaf, "bet shemesh").blocked).toBe(false);
+    expect(matchInstant(withMaqaf, "beer in bet shemesh").blocked).toBe(true);
+  });
   it("reads Arabizi", () => {
     expect(top("7allaq").kind).toBe("barbershops");
   });

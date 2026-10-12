@@ -9,8 +9,12 @@ const MARKS = /[֑-ׇً-ٰٟـ]/g;
 /** Geresh and gershayim (Hebrew and the ASCII quotes typed for them) join a word, never split it. */
 const JOINERS = /['"׳״’]/g;
 
+/** Maqaf, paseq and sof pasuq separate Hebrew words: they become spaces, never marks to drop. */
+const HEBREW_SEPARATORS = /[\u05BE\u05C0\u05C3]/g;
+
 export function normalize(text: string): string {
   return text
+    .replace(HEBREW_SEPARATORS, " ")
     .replace(MARKS, "")
     .normalize("NFD")
     .replace(/\p{M}/gu, "") // Latin diacritics; also the hamza and madda of أ إ آ ؤ ئ

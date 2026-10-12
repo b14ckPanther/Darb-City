@@ -1,4 +1,4 @@
-import { isBlocked } from "./blocked.js";
+import { blockedNames, isBlocked } from "./blocked.js";
 import { detectCues, type Cues } from "./cues.js";
 import { levenshtein } from "./distance.js";
 import type { InstantEntry, InstantIndex } from "./instant-index.js";
@@ -13,6 +13,8 @@ export interface PreparedEntry {
 export interface Prepared {
   places: PreparedEntry[];
   kinds: PreparedEntry[];
+  /** Place and kind names that contain a blocked word ("beer sheva"): never blocked. */
+  names: string[][];
 }
 export interface InstantMatch {
   entry: InstantEntry;
@@ -38,7 +40,11 @@ const split = (e: InstantEntry): PreparedEntry => ({
 });
 
 export function prepare(index: InstantIndex): Prepared {
-  return { places: index.places.map(split), kinds: index.kinds.map(split) };
+  return {
+    places: index.places.map(split),
+    kinds: index.kinds.map(split),
+    names: blockedNames([...index.places, ...index.kinds].flatMap((e) => e.t)),
+  };
 }
 
 /** One query word against one term word: 1 exact, up to 0.9 prefix, 0.8 plural, 0.7 typo. */
@@ -117,7 +123,7 @@ export function matchInstant(
     if (m && m.score >= STRONG) m.tokens.forEach((t) => used.add(t));
   return {
     normalized,
-    blocked: isBlocked(normalized),
+    blocked: isBlocked(normalized, prepared.names),
     cues,
     sentence: tokenize(normalized).length >= 4 || /[?؟]/.test(query),
     places,

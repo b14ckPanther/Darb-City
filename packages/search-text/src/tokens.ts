@@ -58,7 +58,6 @@ export const STOPWORDS: ReadonlySet<string> = new Set(
     "اريد",
     "وين",
     "فيه",
-    "في",
     "احسن",
     "افضل",
     "منطقة",

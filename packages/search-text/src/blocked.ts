@@ -105,6 +105,7 @@ export const ALLOWED_PHRASES: readonly string[] = [
   "בר קפה",
   "כבר",
   "שבר",
+  "عرق سوس",
 ];
 
 const words = (s: string) => normalize(s).split(" ");
@@ -115,12 +116,26 @@ const ALLOWED = ALLOWED_PHRASES.map(words).sort((a, b) => b.length - a.length);
 const at = (tokens: string[], i: number, phrase: string[]) =>
   phrase.every((w, j) => tokens[i + j] === w);
 
-/** True when the query asks for a kind of business Darb does not list. */
-export function isBlocked(text: string): boolean {
+const startsAt = (tokens: string[], i: number, name: string[]) =>
+  name.every((w, j) => {
+    const token = tokens[i + j];
+    if (token === undefined) return false;
+    if (j === 0) return variants(token).includes(w);
+    // The last word may still be being typed ("beer sh").
+    return token === w || (i + j === tokens.length - 1 && w.startsWith(token));
+  });
+
+/**
+ * True when the query asks for a kind of business Darb does not list. `names` are known place and
+ * kind names of two or more normalized words that contain a blocked word ("beer sheva", "bet
+ * shemesh", "בר גיורא"): a query word inside one of them names that place, not a business.
+ */
+export function isBlocked(text: string, names: readonly string[][] = []): boolean {
   const tokens = normalize(text).split(" ").filter(Boolean);
   const kept: string[] = [];
   for (let i = 0; i < tokens.length;) {
-    const allowed = ALLOWED.find((p) => at(tokens, i, p));
+    const allowed =
+      ALLOWED.find((p) => at(tokens, i, p)) ?? names.find((n) => startsAt(tokens, i, n));
     if (allowed) {
       kept.push("·"); // a gap, so phrases never join across an allowed phrase
       i += allowed.length;
@@ -131,4 +146,15 @@ export function isBlocked(text: string): boolean {
     if (variants(kept[i] as string).some((v) => SINGLE.has(v))) return true;
   }
   return false;
+}
+
+/**
+ * The normalized terms of two or more words that `isBlocked` would catch: place and kind names to
+ * pass back to `isBlocked`, longest first.
+ */
+export function blockedNames(terms: readonly string[]): string[][] {
+  return [...new Set(terms)]
+    .filter((t) => t.includes(" ") && isBlocked(t))
+    .map((t) => t.split(" "))
+    .sort((a, b) => b.length - a.length);
 }

@@ -10,6 +10,10 @@ describe("normalize: Hebrew", () => {
     expect(normalize("ךםןףץ")).toBe("כמנפצ");
     expect(normalize("סכנין")).toBe("סכנינ");
   });
+  it("treats maqaf, paseq and sof pasuq as word separators", () => {
+    expect(normalize("בית־שמש")).toBe(normalize("בית שמש"));
+    expect(normalize("א׀ב׃ג")).toBe("א ב ג");
+  });
   it("strips geresh and gershayim, Hebrew and ASCII", () => {
     expect(normalize("סח'נין")).toBe("סחנינ");
     expect(normalize("סח׳נין")).toBe("סחנינ");
