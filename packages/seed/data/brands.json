@@ -11,77 +11,88 @@
     "slug": "nechama-coffee",
     "name": {
       "he": "בית קפה נחמה",
-      "en": "Nechama Coffee"
+      "en": "Nechama Coffee",
+      "ar": "مقهى نِحاما"
     }
   },
   {
     "slug": "abu-hassan-grill",
     "name": {
       "he": "גריל אבו חסן",
-      "en": "Abu Hassan Grill"
+      "en": "Abu Hassan Grill",
+      "ar": "مشاوي أبو حسن"
     }
   },
   {
     "slug": "shibolet-bakery",
     "name": {
       "he": "מאפיית שיבולת",
-      "en": "Shibolet Bakery"
+      "en": "Shibolet Bakery",
+      "ar": "مخبز شيبوليت"
     }
   },
   {
     "slug": "hummus-al-balad",
     "name": {
       "he": "חומוס אל בלד",
-      "en": "Hummus Al Balad"
+      "en": "Hummus Al Balad",
+      "ar": "حمص البلد"
     }
   },
   {
     "slug": "adis-table",
     "name": {
       "he": "השולחן של עדי",
-      "en": "Adi's Table"
+      "en": "Adi's Table",
+      "ar": "سفرة عدي"
     }
   },
   {
     "slug": "al-sultan-sweets",
     "name": {
       "he": "ממתקי אל סולטאן",
-      "en": "Al Sultan Sweets"
+      "en": "Al Sultan Sweets",
+      "ar": "حلويات السلطان"
     }
   },
   {
     "slug": "shaulis-truck",
     "name": {
       "he": "המשאית של שאולי",
-      "en": "Shauli's Truck"
+      "en": "Shauli's Truck",
+      "ar": "عربة شاؤولي"
     }
   },
   {
     "slug": "al-amir-roastery",
     "name": {
       "he": "בית הקלייה אל אמיר",
-      "en": "Al Amir Roastery"
+      "en": "Al Amir Roastery",
+      "ar": "محمصة الأمير"
     }
   },
   {
     "slug": "bouza-dimashq",
     "name": {
       "he": "בוזה דמשק",
-      "en": "Bouza Dimashq"
+      "en": "Bouza Dimashq",
+      "ar": "بوظة دمشق"
     }
   },
   {
     "slug": "petel-juicery",
     "name": {
       "he": "מיץ פטל",
-      "en": "Petel Juicery"
+      "en": "Petel Juicery",
+      "ar": "عصائر بيتل"
     }
   },
   {
     "slug": "salmas-kitchen",
     "name": {
       "he": "המטבח של סלמה",
-      "en": "Salma's Kitchen"
+      "en": "Salma's Kitchen",
+      "ar": "مطبخ سلمى"
     }
   },
   {
@@ -104,168 +115,192 @@
     "slug": "perla-nails",
     "name": {
       "he": "סטודיו פרלה",
-      "en": "Perla Nails"
+      "en": "Perla Nails",
+      "ar": "بيرلا نيلز"
     }
   },
   {
     "slug": "noy-cohen-makeup",
     "name": {
       "he": "נוי כהן מייקאפ",
-      "en": "Noy Cohen Makeup"
+      "en": "Noy Cohen Makeup",
+      "ar": "نوي كوهين ميك أب"
     }
   },
   {
     "slug": "maayan-spa",
     "name": {
       "he": "ספא מעיין",
-      "en": "Ma'ayan Spa"
+      "en": "Ma'ayan Spa",
+      "ar": "سبا معيان"
     }
   },
   {
     "slug": "leen-studio",
     "name": {
       "he": "סטודיו לין",
-      "en": "Leen Studio"
+      "en": "Leen Studio",
+      "ar": "ستوديو لين"
     }
   },
   {
     "slug": "al-ward-hammam",
     "name": {
       "he": "חמאם אל ורד",
-      "en": "Al Ward Hammam"
+      "en": "Al Ward Hammam",
+      "ar": "حمّام الورد"
     }
   },
   {
     "slug": "or-clinic",
     "name": {
       "he": "קליניקת אור",
-      "en": "Or Clinic"
+      "en": "Or Clinic",
+      "ar": "عيادة أور"
     }
   },
   {
     "slug": "halawa-studio",
     "name": {
       "he": "סטודיו חלאווה",
-      "en": "Halawa Studio"
+      "en": "Halawa Studio",
+      "ar": "ستوديو حلاوة"
     }
   },
   {
     "slug": "jumana-skin-clinic",
     "name": {
       "he": "קליניקת ג'ומאנה",
-      "en": "Jumana Skin Clinic"
+      "en": "Jumana Skin Clinic",
+      "ar": "عيادة جمانة للبشرة"
     }
   },
   {
     "slug": "loulia-beauty",
     "name": {
       "he": "לוליא ביוטי",
-      "en": "Loulia Beauty"
+      "en": "Loulia Beauty",
+      "ar": "لوليا بيوتي"
     }
   },
   {
     "slug": "reem-hair-clinic",
     "name": {
       "he": "מרפאת השיער ריים",
-      "en": "Reem Hair Clinic"
+      "en": "Reem Hair Clinic",
+      "ar": "عيادة ريم للشعر"
     }
   },
   {
     "slug": "neshima-studio",
     "name": {
       "he": "סטודיו נשימה",
-      "en": "Neshima Studio"
+      "en": "Neshima Studio",
+      "ar": "ستوديو نِشيما"
     }
   },
   {
     "slug": "dr-rosen-dental",
     "name": {
       "he": "מרפאת השיניים ד\"ר רוזן",
-      "en": "Dr. Rosen Dental"
+      "en": "Dr. Rosen Dental",
+      "ar": "عيادة أسنان د. روزن"
     }
   },
   {
     "slug": "in-motion-physio",
     "name": {
       "he": "פיזיותרפיה בתנועה",
-      "en": "In Motion Physio"
+      "en": "In Motion Physio",
+      "ar": "علاج طبيعي بالحركة"
     }
   },
   {
     "slug": "shira-nutrition",
     "name": {
       "he": "תזונה עם שירה",
-      "en": "Shira Nutrition"
+      "en": "Shira Nutrition",
+      "ar": "تغذية مع شيرا"
     }
   },
   {
     "slug": "quiet-room",
     "name": {
       "he": "מרחב שקט",
-      "en": "Quiet Room"
+      "en": "Quiet Room",
+      "ar": "مساحة هادئة"
     }
   },
   {
     "slug": "al-basar-optics",
     "name": {
       "he": "אופטיקה אל בסר",
-      "en": "Al Basar Optics"
+      "en": "Al Basar Optics",
+      "ar": "بصريات البصر"
     }
   },
   {
     "slug": "four-paws-clinic",
     "name": {
       "he": "מרפאת ארבע כפות",
-      "en": "Four Paws Clinic"
+      "en": "Four Paws Clinic",
+      "ar": "عيادة الأربع كفوف"
     }
   },
   {
     "slug": "hagefen-pharmacy",
     "name": {
       "he": "בית מרקחת הגפן",
-      "en": "HaGefen Pharmacy"
+      "en": "HaGefen Pharmacy",
+      "ar": "صيدلية هجيفن"
     }
   },
   {
     "slug": "hadeel-speech-therapy",
     "name": {
       "he": "הדיל, קלינאית תקשורת",
-      "en": "Hadeel Speech Therapy"
+      "en": "Hadeel Speech Therapy",
+      "ar": "هديل، أخصائية نطق"
     }
   },
   {
     "slug": "dr-rana-khoury-skin",
     "name": {
       "he": "ד\"ר רנא חורי, רפואת עור",
-      "en": "Dr. Rana Khoury Skin"
+      "en": "Dr. Rana Khoury Skin",
+      "ar": "د. رنا خوري، أمراض جلدية"
     }
   },
   {
     "slug": "little-hands-ot",
     "name": {
       "he": "ידיים קטנות",
-      "en": "Little Hands OT"
+      "en": "Little Hands OT",
+      "ar": "إيدين صغار"
     }
   },
   {
     "slug": "basma-orthodontics",
     "name": {
       "he": "בסמה, יישור שיניים",
-      "en": "Basma Orthodontics"
+      "en": "Basma Orthodontics",
+      "ar": "بسمة لتقويم الأسنان"
     }
   },
   {
     "slug": "barzel-gym",
     "name": {
       "he": "ברזל",
-      "en": "Barzel Gym"
+      "en": "Barzel Gym",
+      "ar": "نادي برزل"
     }
   },
   {
     "slug": "alon-training",
     "name": {
       "he": "אלון אימונים",
-      "en": "Alon Training"
+      "en": "Alon Training",
+      "ar": "تدريبات ألون"
     }
   },
   {
@@ -280,224 +315,256 @@
     "slug": "carmel-basketball-club",
     "name": {
       "he": "מועדון הכדורסל הכרמל",
-      "en": "Carmel Basketball Club"
+      "en": "Carmel Basketball Club",
+      "ar": "نادي الكرمل لكرة السلة"
     }
   },
   {
     "slug": "al-fares-dojo",
     "name": {
       "he": "דוג'ו אל פארס",
-      "en": "Al Fares Dojo"
+      "en": "Al Fares Dojo",
+      "ar": "دوجو الفارس"
     }
   },
   {
     "slug": "carmel-padel-club",
     "name": {
       "he": "מועדון פאדל הכרמל",
-      "en": "Carmel Padel Club"
+      "en": "Carmel Padel Club",
+      "ar": "نادي الكرمل للبادل"
     }
   },
   {
     "slug": "al-nabe-pool",
     "name": {
       "he": "בריכת אל נבע",
-      "en": "Al Nabe' Pool"
+      "en": "Al Nabe' Pool",
+      "ar": "بركة النبع"
     }
   },
   {
     "slug": "galilee-runners",
     "name": {
       "he": "רצי הגליל",
-      "en": "Galilee Runners"
+      "en": "Galilee Runners",
+      "ar": "عدّائين الجليل"
     }
   },
   {
     "slug": "amira-active",
     "name": {
       "he": "אמירה אקטיב",
-      "en": "Amira Active"
+      "en": "Amira Active",
+      "ar": "أميرة أكتيف"
     }
   },
   {
     "slug": "wadi-trails",
     "name": {
       "he": "שבילי ואדי",
-      "en": "Wadi Trails"
+      "en": "Wadi Trails",
+      "ar": "مسارات وادي"
     }
   },
   {
     "slug": "al-wadi-bikes",
     "name": {
       "he": "אופני אל ואדי",
-      "en": "Al Wadi Bikes"
+      "en": "Al Wadi Bikes",
+      "ar": "بسكليتات الوادي"
     }
   },
   {
     "slug": "abu-samir-tackle",
     "name": {
       "he": "ציוד דיג אבו סמיר",
-      "en": "Abu Samir Tackle"
+      "en": "Abu Samir Tackle",
+      "ar": "عدّة صيد أبو سمير"
     }
   },
   {
     "slug": "baraem-nursery",
     "name": {
       "he": "פעוטון בראעם",
-      "en": "Bara'em Nursery"
+      "en": "Bara'em Nursery",
+      "ar": "حضانة براعم"
     }
   },
   {
     "slug": "hashikma-kindergarten",
     "name": {
       "he": "גן השקמה",
-      "en": "HaShikma Kindergarten"
+      "en": "HaShikma Kindergarten",
+      "ar": "روضة هشيكما"
     }
   },
   {
     "slug": "baby-noor",
     "name": {
       "he": "בייבי נור",
-      "en": "Baby Noor"
+      "en": "Baby Noor",
+      "ar": "بيبي نور"
     }
   },
   {
     "slug": "dr-salim-kids-clinic",
     "name": {
       "he": "מרפאת ד\"ר סלים לילדים",
-      "en": "Dr. Salim Kids Clinic"
+      "en": "Dr. Salim Kids Clinic",
+      "ar": "عيادة د. سليم للأطفال"
     }
   },
   {
     "slug": "joury-kids",
     "name": {
       "he": "ג'ורי קידס",
-      "en": "Joury Kids"
+      "en": "Joury Kids",
+      "ar": "جوري كيدز"
     }
   },
   {
     "slug": "amana-nannies",
     "name": {
       "he": "אמאנה מטפלות",
-      "en": "Amana Nannies"
+      "en": "Amana Nannies",
+      "ar": "أمانة لمربيات الأطفال"
     }
   },
   {
     "slug": "al-mawj-swim-school",
     "name": {
       "he": "בית ספר לשחייה אל מוג'",
-      "en": "Al Mawj Swim School"
+      "en": "Al Mawj Swim School",
+      "ar": "مدرسة الموج للسباحة"
     }
   },
   {
     "slug": "dr-reem-kids-dental",
     "name": {
       "he": "ד\"ר ריים, שיניים לילדים",
-      "en": "Dr. Reem Kids Dental"
+      "en": "Dr. Reem Kids Dental",
+      "ar": "د. ريم، أسنان أطفال"
     }
   },
   {
     "slug": "al-atfal-toys",
     "name": {
       "he": "עולם אל אטפאל",
-      "en": "Al Atfal Toys"
+      "en": "Al Atfal Toys",
+      "ar": "عالم الأطفال"
     }
   },
   {
     "slug": "rami-the-magician",
     "name": {
       "he": "הקוסם ראמי",
-      "en": "Rami the Magician"
+      "en": "Rami the Magician",
+      "ar": "الساحر رامي"
     }
   },
   {
     "slug": "balloon-land",
     "name": {
       "he": "ארץ הבלונים",
-      "en": "Balloon Land"
+      "en": "Balloon Land",
+      "ar": "أرض البالونات"
     }
   },
   {
     "slug": "michal-maths-tutor",
     "name": {
       "he": "מיכל, מורה למתמטיקה",
-      "en": "Michal, maths tutor"
+      "en": "Michal, maths tutor",
+      "ar": "ميخال، معلمة رياضيات"
     }
   },
   {
     "slug": "kinneret-arts-school",
     "name": {
       "he": "בית הספר לאמנויות כנרת",
-      "en": "Kinneret Arts School"
+      "en": "Kinneret Arts School",
+      "ar": "مدرسة كنيرت للفنون"
     }
   },
   {
     "slug": "al-fajr-code",
     "name": {
       "he": "קוד אל פג'ר",
-      "en": "Al Fajr Code"
+      "en": "Al Fajr Code",
+      "ar": "كود الفجر"
     }
   },
   {
     "slug": "lomdim-online",
     "name": {
       "he": "לומדים אונליין",
-      "en": "Lomdim Online"
+      "en": "Lomdim Online",
+      "ar": "نتعلّم أونلاين"
     }
   },
   {
     "slug": "milim-language-school",
     "name": {
       "he": "אולפן מילים",
-      "en": "Milim Language School"
+      "en": "Milim Language School",
+      "ar": "أولبان كلمات"
     }
   },
   {
     "slug": "al-najah-institute",
     "name": {
       "he": "מכון אל נג'אח",
-      "en": "Al Najah Institute"
+      "en": "Al Najah Institute",
+      "ar": "معهد النجاح"
     }
   },
   {
     "slug": "ramzor-driving-school",
     "name": {
       "he": "בית ספר לנהיגה רמזור",
-      "en": "Ramzor Driving School"
+      "en": "Ramzor Driving School",
+      "ar": "مدرسة الإشارة لتعليم السياقة"
     }
   },
   {
     "slug": "al-israa-school",
     "name": {
       "he": "מדרסת אל איסראא",
-      "en": "Al Israa School"
+      "en": "Al Israa School",
+      "ar": "مدرسة الإسراء"
     }
   },
   {
     "slug": "al-mustaqbal-college",
     "name": {
       "he": "מכללת אל מוסתקבל",
-      "en": "Al Mustaqbal College"
+      "en": "Al Mustaqbal College",
+      "ar": "كلية المستقبل"
     }
   },
   {
     "slug": "umm-alis-kitchen",
     "name": {
       "he": "המטבח של אום עלי",
-      "en": "Umm Ali's Kitchen"
+      "en": "Umm Ali's Kitchen",
+      "ar": "مطبخ أم علي"
     }
   },
   {
     "slug": "beit-al-tatreez",
     "name": {
       "he": "בית התטריז",
-      "en": "Beit Al Tatreez"
+      "en": "Beit Al Tatreez",
+      "ar": "بيت التطريز"
     }
   },
   {
     "slug": "karma-studio",
     "name": {
       "he": "סטודיו כרמה",
-      "en": "Karma Studio"
+      "en": "Karma Studio",
+      "ar": "ستوديو كرما"
     }
   },
   {
@@ -512,63 +579,72 @@
     "slug": "hamifal-cowork",
     "name": {
       "he": "המפעל, חלל עבודה",
-      "en": "HaMifal Cowork"
+      "en": "HaMifal Cowork",
+      "ar": "المصنع، مساحة عمل"
     }
   },
   {
     "slug": "humat-cyber",
     "name": {
       "he": "חומאת סייבר",
-      "en": "Humat Cyber"
+      "en": "Humat Cyber",
+      "ar": "حماة سايبر"
     }
   },
   {
     "slug": "turly",
     "name": {
       "he": "תורלי",
-      "en": "Turly"
+      "en": "Turly",
+      "ar": "تورلي"
     }
   },
   {
     "slug": "madar-media",
     "name": {
       "he": "מדאר מדיה",
-      "en": "Madar Media"
+      "en": "Madar Media",
+      "ar": "مدار ميديا"
     }
   },
   {
     "slug": "sama-social",
     "name": {
       "he": "סמא סושיאל",
-      "en": "Sama Social"
+      "en": "Sama Social",
+      "ar": "سما سوشيال"
     }
   },
   {
     "slug": "al-jalil-cloud",
     "name": {
       "he": "ענן אל ג'ליל",
-      "en": "Al Jalil Cloud"
+      "en": "Al Jalil Cloud",
+      "ar": "سحابة الجليل"
     }
   },
   {
     "slug": "sullam-apps",
     "name": {
       "he": "סולם אפליקציות",
-      "en": "Sullam Apps"
+      "en": "Sullam Apps",
+      "ar": "سُلّم للتطبيقات"
     }
   },
   {
     "slug": "najma-games",
     "name": {
       "he": "סטודיו נג'מה",
-      "en": "Najma Games"
+      "en": "Najma Games",
+      "ar": "ألعاب نجمة"
     }
   },
   {
     "slug": "masar-data",
     "name": {
       "he": "מסאר דאטה",
-      "en": "Masar Data"
+      "en": "Masar Data",
+      "ar": "مسار داتا"
     }
   },
   {
@@ -583,161 +659,184 @@
     "slug": "golan-co-law",
     "name": {
       "he": "גולן ושות', עורכי דין",
-      "en": "Golan & Co. Law"
+      "en": "Golan & Co. Law",
+      "ar": "غولان وشركاه، محامون"
     }
   },
   {
     "slug": "maazan-tax",
     "name": {
       "he": "מאזן ייעוץ מס",
-      "en": "Maazan Tax"
+      "en": "Maazan Tax",
+      "ar": "ميزان للاستشارات الضريبية"
     }
   },
   {
     "slug": "khaled-insurance",
     "name": {
       "he": "ח'אלד ביטוחים",
-      "en": "Khaled Insurance"
+      "en": "Khaled Insurance",
+      "ar": "خالد للتأمينات"
     }
   },
   {
     "slug": "beit-bair-realty",
     "name": {
       "he": "בית בעיר נדל\"ן",
-      "en": "Beit Ba'ir Realty"
+      "en": "Beit Ba'ir Realty",
+      "ar": "بيت بالمدينة للعقارات"
     }
   },
   {
     "slug": "ben-haim-renovations",
     "name": {
       "he": "שיפוצי בן חיים",
-      "en": "Ben Haim Renovations"
+      "en": "Ben Haim Renovations",
+      "ar": "ترميمات بن حاييم"
     }
   },
   {
     "slug": "zohar-cleaning",
     "name": {
       "he": "ניקיון זוהר",
-      "en": "Zohar Cleaning"
+      "en": "Zohar Cleaning",
+      "ar": "تنظيف زوهر"
     }
   },
   {
     "slug": "zerem-technicians",
     "name": {
       "he": "זרם שירותים טכניים",
-      "en": "Zerem Technicians"
+      "en": "Zerem Technicians",
+      "ar": "زيرم للخدمات الفنية"
     }
   },
   {
     "slug": "wadi-fix",
     "name": {
       "he": "ואדי פיקס",
-      "en": "Wadi Fix"
+      "en": "Wadi Fix",
+      "ar": "وادي فيكس"
     }
   },
   {
     "slug": "al-galgalim-movers",
     "name": {
       "he": "הובלות על גלגלים",
-      "en": "Al Galgalim Movers"
+      "en": "Al Galgalim Movers",
+      "ar": "نقليات على العجلات"
     }
   },
   {
     "slug": "al-amal-cleaners",
     "name": {
       "he": "מכבסת אל אמל",
-      "en": "Al Amal Cleaners"
+      "en": "Al Amal Cleaners",
+      "ar": "مصبغة الأمل"
     }
   },
   {
     "slug": "al-noor-aluminium",
     "name": {
       "he": "אלומיניום אל נור",
-      "en": "Al Noor Aluminium"
+      "en": "Al Noor Aluminium",
+      "ar": "ألمنيوم النور"
     }
   },
   {
     "slug": "shahar-architecture",
     "name": {
       "he": "שחר אדריכלות",
-      "en": "Shahar Architecture"
+      "en": "Shahar Architecture",
+      "ar": "شاحر للهندسة المعمارية"
     }
   },
   {
     "slug": "al-dar-furniture",
     "name": {
       "he": "רהיטי אל דאר",
-      "en": "Al Dar Furniture"
+      "en": "Al Dar Furniture",
+      "ar": "مفروشات الدار"
     }
   },
   {
     "slug": "al-jalil-kitchens",
     "name": {
       "he": "מטבחי אל ג'ליל",
-      "en": "Al Jalil Kitchens"
+      "en": "Al Jalil Kitchens",
+      "ar": "مطابخ الجليل"
     }
   },
   {
     "slug": "al-harir-fabrics",
     "name": {
       "he": "בדי אל חריר",
-      "en": "Al Harir Fabrics"
+      "en": "Al Harir Fabrics",
+      "ar": "أقمشة الحرير"
     }
   },
   {
     "slug": "shams-energy",
     "name": {
       "he": "שמס אנרגיה",
-      "en": "Shams Energy"
+      "en": "Shams Energy",
+      "ar": "شمس للطاقة"
     }
   },
   {
     "slug": "beit-noor",
     "name": {
       "he": "בית נור",
-      "en": "Beit Noor"
+      "en": "Beit Noor",
+      "ar": "بيت نور"
     }
   },
   {
     "slug": "al-bahr-pools",
     "name": {
       "he": "בריכות אל בחר",
-      "en": "Al Bahr Pools"
+      "en": "Al Bahr Pools",
+      "ar": "برك البحر"
     }
   },
   {
     "slug": "al-zaytoun-gardens",
     "name": {
       "he": "גינות אל זיתון",
-      "en": "Al Zaytoun Gardens"
+      "en": "Al Zaytoun Gardens",
+      "ar": "حدائق الزيتون"
     }
   },
   {
     "slug": "al-amin-locks",
     "name": {
       "he": "מפתח אל אמין",
-      "en": "Al Amin Locks"
+      "en": "Al Amin Locks",
+      "ar": "مفاتيح الأمين"
     }
   },
   {
     "slug": "naqi-green-pest-control",
     "name": {
       "he": "נקי הדברה ירוקה",
-      "en": "Naqi Green Pest Control"
+      "en": "Naqi Green Pest Control",
+      "ar": "نقي للمكافحة الخضراء"
     }
   },
   {
     "slug": "abu-yousef-painting",
     "name": {
       "he": "צבע אבו יוסף",
-      "en": "Abu Yousef Painting"
+      "en": "Abu Yousef Painting",
+      "ar": "دهان أبو يوسف"
     }
   },
   {
     "slug": "al-harir-upholstery",
     "name": {
       "he": "ריפוד אל חריר",
-      "en": "Al Harir Upholstery"
+      "en": "Al Harir Upholstery",
+      "ar": "تنجيد الحرير"
     }
   },
   {

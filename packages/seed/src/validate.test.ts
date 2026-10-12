@@ -10,6 +10,7 @@ import {
   loadSectors,
   loadWeekend,
   SCREEN_SCHEMA,
+  type SeedScreen,
 } from "./index.js";
 import { COMMON_KINDS } from "./showroom.js";
 
@@ -435,4 +436,38 @@ describe("weekend pattern", () => {
     expect(fassuta.hours.weekly[6]?.length).toBeGreaterThan(0);
     expect(at("fassuta", "mosques").hours).toEqual(at("haifa", "mosques").hours);
   });
+});
+
+/** Sectors whose showroom screens are fully Arabic. Task 26 makes this every sector. */
+const ARABIC_SECTORS = new Set([
+  "food",
+  "beauty",
+  "health",
+  "sports",
+  "kids",
+  "education",
+  "tech",
+  "services",
+  "home",
+]);
+
+describe("showroom screens in Arabic", () => {
+  const screens = loadScreens();
+  const texts = (s: SeedScreen): Localized[] => [
+    s.brand,
+    s.title,
+    ...(s.subtitle ? [s.subtitle] : []),
+    ...(s.tags ?? []),
+    ...s.items.flatMap((i) => [i.label, ...(i.meta ? [i.meta] : [])]),
+    s.cta,
+  ];
+  it.each(kinds.filter((k) => ARABIC_SECTORS.has(k.sector)).map((k) => k.slug))(
+    "%s has Arabic everywhere",
+    (slug) => {
+      for (const text of texts(screens[slug]!)) {
+        expect(text.ar?.trim(), JSON.stringify(text)).toBeTruthy();
+        expect(blockedIn(text.ar ?? ""), text.ar).toEqual([]);
+      }
+    },
+  );
 });
