@@ -31,8 +31,8 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - name: Postgres with PostGIS and pgvector (infra/postgres/Dockerfile)
-        run: docker compose -f infra/docker-compose.yml up -d --wait postgres
+      - name: Postgres with PostGIS and pgvector (infra/postgres/Dockerfile), and Redis
+        run: docker compose -f infra/docker-compose.yml up -d --wait postgres redis
       - run: cp apps/api/.env.example apps/api/.env
       - run: pnpm build
       - run: pnpm typecheck

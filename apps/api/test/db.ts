@@ -1,4 +1,5 @@
 import { config } from "dotenv";
+import { loadConfig } from "../src/config.js";
 import { PrismaService } from "../src/prisma/prisma.service.js";
 
 config({ path: new URL("../.env", import.meta.url) });
@@ -11,11 +12,7 @@ export const testDatabaseUrl = (): string => {
 };
 
 export function testPrisma(): PrismaService {
-  return new PrismaService({
-    databaseUrl: testDatabaseUrl(),
-    port: 0,
-    webOrigin: "http://localhost",
-  });
+  return new PrismaService(loadConfig({ DATABASE_URL: testDatabaseUrl() }));
 }
 
 export async function resetDatabase(prisma: PrismaService): Promise<void> {

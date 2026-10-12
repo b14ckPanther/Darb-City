@@ -3,10 +3,11 @@ import { BusinessesModule } from "./businesses/businesses.module.js";
 import { HealthController } from "./health/health.controller.js";
 import { PlacesModule } from "./places/places.module.js";
 import { PrismaModule } from "./prisma/prisma.module.js";
+import { RedisModule } from "./redis/redis.module.js";
 import { TaxonomyModule } from "./taxonomy/taxonomy.module.js";
 
 @Module({
-  imports: [PrismaModule, PlacesModule, TaxonomyModule, BusinessesModule],
+  imports: [PrismaModule, RedisModule, PlacesModule, TaxonomyModule, BusinessesModule],
   controllers: [HealthController],
 })
 export class AppModule {}
