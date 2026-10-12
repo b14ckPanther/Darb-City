@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isSlug, toSlug } from "./slug.js";
+import { isReservedSlug, isSlug, RESERVED_SLUGS, toSlug } from "./slug.js";
 
 describe("toSlug", () => {
   it.each([
@@ -26,4 +26,33 @@ describe("isSlug", () => {
   it.each(["Kiryat-ata", "kiryat--ata", "-haifa", "haifa-", "", "חיפה"])("rejects %s", (value) => {
     expect(isSlug(value)).toBe(false);
   });
+});
+
+describe("reserved slugs", () => {
+  it("cover locales, the kind prefix and app routes", () => {
+    expect([...RESERVED_SLUGS].sort()).toEqual(
+      [
+        "ar",
+        "en",
+        "he",
+        "k",
+        "admin",
+        "api",
+        "for-business",
+        "search",
+        "login",
+        "register",
+        "_next",
+      ].sort(),
+    );
+  });
+  it.each(["ar", "he", "k", "admin", "for-business", "_next"])("%s is reserved", (value) => {
+    expect(isReservedSlug(value)).toBe(true);
+  });
+  it.each(["haifa", "barbershops", "beauty", "arraba", "kiryat-haim", "AR"])(
+    "%s is not reserved",
+    (value) => {
+      expect(isReservedSlug(value)).toBe(false);
+    },
+  );
 });

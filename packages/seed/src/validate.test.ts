@@ -1,4 +1,4 @@
-import { hasText, isSlug, LOCALES, TEMPLATES, type Localized } from "@darb/core";
+import { hasText, isReservedSlug, isSlug, LOCALES, TEMPLATES, type Localized } from "@darb/core";
 import { Ajv } from "ajv";
 import { describe, expect, it } from "vitest";
 import {
@@ -67,6 +67,17 @@ describe("halal gate", () => {
   it("leaves look-alike words alone", () => {
     for (const t of ["barbershops", "bars", "Stripe", "ברכה", "בריכה", "ברבר"])
       expect(blockedIn(t), t).toEqual([]);
+  });
+});
+
+describe("slugs", () => {
+  it("never take a route the web app reserves", () => {
+    const slugs = [
+      ...loadPlaces().map((p) => `place ${p.slug}`),
+      ...sectors.map((s) => `sector ${s.slug}`),
+      ...kinds.map((k) => `kind ${k.slug}`),
+    ];
+    expect(slugs.filter((s) => isReservedSlug(s.split(" ")[1]!))).toEqual([]);
   });
 });
 

@@ -16,3 +16,26 @@ export function toSlug(input: string): string {
   if (slug === "") throw new Error(`Cannot make a slug from "${input}"`);
   return slug;
 }
+
+/**
+ * First path segments the web app owns. No place, sector or kind may take one of these as its
+ * slug, or its page would be shadowed by (or shadow) a route.
+ */
+export const RESERVED_SLUGS: readonly string[] = [
+  "ar",
+  "en",
+  "he",
+  "k",
+  "admin",
+  "api",
+  "for-business",
+  "search",
+  "login",
+  "register",
+  "_next",
+];
+const RESERVED = new Set(RESERVED_SLUGS);
+
+export function isReservedSlug(value: string): boolean {
+  return RESERVED.has(value);
+}
