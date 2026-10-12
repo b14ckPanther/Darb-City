@@ -1,0 +1,4164 @@
+[
+  {
+    "slug": "restaurants",
+    "sector": "food",
+    "parent": null,
+    "name": {
+      "he": "מסעדות",
+      "ar": "",
+      "en": "Restaurants"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "menu",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "slug": "cafes",
+    "sector": "food",
+    "parent": null,
+    "name": {
+      "he": "בתי קפה",
+      "ar": "",
+      "en": "Cafés and coffee shops"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "menu",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "slug": "grill",
+    "sector": "food",
+    "parent": null,
+    "name": {
+      "he": "שווארמה וגריל",
+      "ar": "",
+      "en": "Shawarma and grill houses"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "slug": "bakeries",
+    "sector": "food",
+    "parent": null,
+    "name": {
+      "he": "מאפיות וקונדיטוריות",
+      "ar": "",
+      "en": "Bakeries and patisseries"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "menu",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "slug": "hummus",
+    "sector": "food",
+    "parent": null,
+    "name": {
+      "he": "חומוסיות ופלאפל",
+      "ar": "",
+      "en": "Hummus and falafel"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "pass",
+    "attributes": [],
+    "icon": null,
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "slug": "catering",
+    "sector": "food",
+    "parent": null,
+    "name": {
+      "he": "קייטרינג ושפים פרטיים",
+      "ar": "",
+      "en": "Catering and private chefs"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "builder",
+    "attributes": [],
+    "icon": null,
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "slug": "sweets",
+    "sector": "food",
+    "parent": null,
+    "name": {
+      "he": "כנאפה וממתקים ערביים",
+      "ar": "",
+      "en": "Knafeh and Arabic sweets"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "shop",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 7,
+    "status": "active"
+  },
+  {
+    "slug": "food-trucks",
+    "sector": "food",
+    "parent": null,
+    "name": {
+      "he": "פודטראקים",
+      "ar": "",
+      "en": "Food trucks"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 8,
+    "status": "active"
+  },
+  {
+    "slug": "roastery",
+    "sector": "food",
+    "parent": null,
+    "name": {
+      "he": "בתי קלייה: קפה, אגוזים ותבלינים",
+      "ar": "",
+      "en": "Roasteries: coffee, nuts and spices"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "builder",
+    "attributes": [],
+    "icon": null,
+    "order": 9,
+    "status": "active"
+  },
+  {
+    "slug": "ice-cream",
+    "sector": "food",
+    "parent": null,
+    "name": {
+      "he": "גלידריות",
+      "ar": "",
+      "en": "Ice cream parlours"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "menu",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 10,
+    "status": "active"
+  },
+  {
+    "slug": "juice-shops",
+    "sector": "food",
+    "parent": null,
+    "name": {
+      "he": "מיצים ושייקים טריים",
+      "ar": "",
+      "en": "Fresh juice and smoothie shops"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "builder",
+    "attributes": [],
+    "icon": null,
+    "order": 11,
+    "status": "active"
+  },
+  {
+    "slug": "meal-prep",
+    "sector": "food",
+    "parent": null,
+    "name": {
+      "he": "מנות מוכנות לשבוע",
+      "ar": "",
+      "en": "Meal prep and weekly boxes"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "schedule",
+    "attributes": [],
+    "icon": null,
+    "order": 12,
+    "status": "active"
+  },
+  {
+    "slug": "barbershops",
+    "sector": "beauty",
+    "parent": null,
+    "name": {
+      "he": "מספרות",
+      "ar": "",
+      "en": "Barbershops"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "booking",
+    "attributes": [],
+    "icon": null,
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "slug": "salons",
+    "sector": "beauty",
+    "parent": null,
+    "name": {
+      "he": "סלונים לשיער",
+      "ar": "",
+      "en": "Hair salons"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "booking",
+    "attributes": [],
+    "icon": null,
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "slug": "nails",
+    "sector": "beauty",
+    "parent": null,
+    "name": {
+      "he": "סטודיו לציפורניים",
+      "ar": "",
+      "en": "Nail studios"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "booking",
+    "attributes": [],
+    "icon": null,
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "slug": "makeup",
+    "sector": "beauty",
+    "parent": null,
+    "name": {
+      "he": "מאפרות",
+      "ar": "",
+      "en": "Makeup artists"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "portfolio",
+    "attributes": [],
+    "icon": null,
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "slug": "spas",
+    "sector": "beauty",
+    "parent": null,
+    "name": {
+      "he": "ספא ועיסויים",
+      "ar": "",
+      "en": "Spas and massage"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "booking",
+    "attributes": [],
+    "icon": null,
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "slug": "brows",
+    "sector": "beauty",
+    "parent": null,
+    "name": {
+      "he": "סטודיו לגבות וריסים",
+      "ar": "",
+      "en": "Brow and lash studios"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "portfolio",
+    "attributes": [],
+    "icon": null,
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "slug": "ladies-spa",
+    "sector": "beauty",
+    "parent": null,
+    "name": {
+      "he": "ספא וסלון לנשים בלבד",
+      "ar": "",
+      "en": "Women-only spas and salons"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "schedule",
+    "attributes": [],
+    "icon": null,
+    "order": 7,
+    "status": "active"
+  },
+  {
+    "slug": "aesthetic",
+    "sector": "beauty",
+    "parent": null,
+    "name": {
+      "he": "קליניקות אסתטיקה ולייזר",
+      "ar": "",
+      "en": "Aesthetic and laser clinics"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "booking",
+    "attributes": [],
+    "icon": null,
+    "order": 8,
+    "status": "active"
+  },
+  {
+    "slug": "sugaring",
+    "sector": "beauty",
+    "parent": null,
+    "name": {
+      "he": "הסרת שיער בסוכר ושעווה",
+      "ar": "",
+      "en": "Sugaring and waxing studios"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "builder",
+    "attributes": [],
+    "icon": null,
+    "order": 9,
+    "status": "active"
+  },
+  {
+    "slug": "facials",
+    "sector": "beauty",
+    "parent": null,
+    "name": {
+      "he": "טיפולי פנים וקוסמטיקה",
+      "ar": "",
+      "en": "Facials and skin care"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 10,
+    "status": "active"
+  },
+  {
+    "slug": "cosmetics",
+    "sector": "beauty",
+    "parent": null,
+    "name": {
+      "he": "חנויות קוסמטיקה וטיפוח",
+      "ar": "",
+      "en": "Cosmetics and skincare shops"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "shop",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 11,
+    "status": "active"
+  },
+  {
+    "slug": "hair-clinics",
+    "sector": "beauty",
+    "parent": null,
+    "name": {
+      "he": "מרפאות שיער וקרקפת",
+      "ar": "",
+      "en": "Scalp and hair-loss clinics"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "booking",
+    "attributes": [],
+    "icon": null,
+    "order": 12,
+    "status": "active"
+  },
+  {
+    "slug": "yoga",
+    "sector": "health",
+    "parent": null,
+    "name": {
+      "he": "סטודיו ליוגה ופילאטיס",
+      "ar": "",
+      "en": "Yoga and Pilates studios"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "schedule",
+    "attributes": [],
+    "icon": null,
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "slug": "dental",
+    "sector": "health",
+    "parent": null,
+    "name": {
+      "he": "מרפאות שיניים",
+      "ar": "",
+      "en": "Dental clinics"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "booking",
+    "attributes": [],
+    "icon": null,
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "slug": "physio",
+    "sector": "health",
+    "parent": null,
+    "name": {
+      "he": "פיזיותרפיה ומרפאות",
+      "ar": "",
+      "en": "Physiotherapy and medical clinics"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "schedule",
+    "attributes": [],
+    "icon": null,
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "slug": "nutrition",
+    "sector": "health",
+    "parent": null,
+    "name": {
+      "he": "תזונאים ודיאטנים",
+      "ar": "",
+      "en": "Nutritionists and dietitians"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "slug": "therapy",
+    "sector": "health",
+    "parent": null,
+    "name": {
+      "he": "פסיכולוגים ומטפלים",
+      "ar": "",
+      "en": "Psychologists and therapists"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "booking",
+    "attributes": [],
+    "icon": null,
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "slug": "optics",
+    "sector": "health",
+    "parent": null,
+    "name": {
+      "he": "אופטיקה ומכוני שמיעה",
+      "ar": "",
+      "en": "Optometrists and hearing clinics"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "builder",
+    "attributes": [],
+    "icon": null,
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "slug": "vets",
+    "sector": "health",
+    "parent": null,
+    "name": {
+      "he": "וטרינרים וטיפוח לחיות",
+      "ar": "",
+      "en": "Veterinary clinics and pet grooming"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 7,
+    "status": "active"
+  },
+  {
+    "slug": "pharmacies",
+    "sector": "health",
+    "parent": null,
+    "name": {
+      "he": "בתי מרקחת",
+      "ar": "",
+      "en": "Pharmacies"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "shop",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 8,
+    "status": "active"
+  },
+  {
+    "slug": "speech-therapy",
+    "sector": "health",
+    "parent": null,
+    "name": {
+      "he": "קלינאיות תקשורת",
+      "ar": "",
+      "en": "Speech therapists"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 9,
+    "status": "active"
+  },
+  {
+    "slug": "dermatology",
+    "sector": "health",
+    "parent": null,
+    "name": {
+      "he": "רופאי עור",
+      "ar": "",
+      "en": "Dermatologists"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "booking",
+    "attributes": [],
+    "icon": null,
+    "order": 10,
+    "status": "active"
+  },
+  {
+    "slug": "occupational-therapy",
+    "sector": "health",
+    "parent": null,
+    "name": {
+      "he": "ריפוי בעיסוק",
+      "ar": "",
+      "en": "Occupational therapy"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "schedule",
+    "attributes": [],
+    "icon": null,
+    "order": 11,
+    "status": "active"
+  },
+  {
+    "slug": "orthodontics",
+    "sector": "health",
+    "parent": null,
+    "name": {
+      "he": "אורתודונטים ויישור שיניים",
+      "ar": "",
+      "en": "Orthodontists"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 12,
+    "status": "active"
+  },
+  {
+    "slug": "gyms",
+    "sector": "sports",
+    "parent": null,
+    "name": {
+      "he": "חדרי כושר וסטודיו",
+      "ar": "",
+      "en": "Gyms and fitness studios"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "pass",
+    "attributes": [],
+    "icon": null,
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "slug": "trainers",
+    "sector": "sports",
+    "parent": null,
+    "name": {
+      "he": "מאמנים אישיים",
+      "ar": "",
+      "en": "Personal trainers"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "slug": "football-academies",
+    "sector": "sports",
+    "parent": null,
+    "name": {
+      "he": "אקדמיות כדורגל",
+      "ar": "",
+      "en": "Football academies"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "pass",
+    "attributes": [],
+    "icon": null,
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "slug": "sports-clubs",
+    "sector": "sports",
+    "parent": null,
+    "name": {
+      "he": "מועדוני ספורט וקבוצות",
+      "ar": "",
+      "en": "Sports clubs and teams"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "schedule",
+    "attributes": [],
+    "icon": null,
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "slug": "martial-arts",
+    "sector": "sports",
+    "parent": null,
+    "name": {
+      "he": "אומנויות לחימה",
+      "ar": "",
+      "en": "Martial arts"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "slug": "padel",
+    "sector": "sports",
+    "parent": null,
+    "name": {
+      "he": "מגרשי פאדל וטניס",
+      "ar": "",
+      "en": "Padel and tennis courts"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "booking",
+    "attributes": [],
+    "icon": null,
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "slug": "aquatic-centres",
+    "sector": "sports",
+    "parent": null,
+    "name": {
+      "he": "בריכות שחייה",
+      "ar": "",
+      "en": "Swimming pools"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "schedule",
+    "attributes": [],
+    "icon": null,
+    "order": 7,
+    "status": "active"
+  },
+  {
+    "slug": "running-clubs",
+    "sector": "sports",
+    "parent": null,
+    "name": {
+      "he": "קבוצות ריצה",
+      "ar": "",
+      "en": "Running clubs"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 8,
+    "status": "active"
+  },
+  {
+    "slug": "sportswear",
+    "sector": "sports",
+    "parent": null,
+    "name": {
+      "he": "ביגוד והנעלה לספורט",
+      "ar": "",
+      "en": "Sportswear and shoes"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "shop",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 9,
+    "status": "active"
+  },
+  {
+    "slug": "hiking",
+    "sector": "sports",
+    "parent": null,
+    "name": {
+      "he": "מדריכי טיולים ומסלולים",
+      "ar": "",
+      "en": "Hiking guides and trails"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "listing",
+    "attributes": [],
+    "icon": null,
+    "order": 10,
+    "status": "active"
+  },
+  {
+    "slug": "bikes",
+    "sector": "sports",
+    "parent": null,
+    "name": {
+      "he": "חנויות אופניים",
+      "ar": "",
+      "en": "Bike shops"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "shop",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 11,
+    "status": "active"
+  },
+  {
+    "slug": "fishing",
+    "sector": "sports",
+    "parent": null,
+    "name": {
+      "he": "ציוד דיג",
+      "ar": "",
+      "en": "Fishing supplies"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "builder",
+    "attributes": [],
+    "icon": null,
+    "order": 12,
+    "status": "active"
+  },
+  {
+    "slug": "daycare",
+    "sector": "kids",
+    "parent": null,
+    "name": {
+      "he": "מעונות יום ופעוטונים",
+      "ar": "",
+      "en": "Daycare and nurseries"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "slug": "kindergartens",
+    "sector": "kids",
+    "parent": null,
+    "name": {
+      "he": "גנים וצהרונים",
+      "ar": "",
+      "en": "Kindergartens and after-school programmes"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "schedule",
+    "attributes": [],
+    "icon": null,
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "slug": "baby-shops",
+    "sector": "kids",
+    "parent": null,
+    "name": {
+      "he": "חנויות לתינוקות",
+      "ar": "",
+      "en": "Baby shops"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "shop",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "slug": "pediatric",
+    "sector": "kids",
+    "parent": null,
+    "name": {
+      "he": "מרפאות ילדים",
+      "ar": "",
+      "en": "Pediatric clinics"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "booking",
+    "attributes": [],
+    "icon": null,
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "slug": "kids-clothing",
+    "sector": "kids",
+    "parent": null,
+    "name": {
+      "he": "בגדי ילדים",
+      "ar": "",
+      "en": "Kids' clothing"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "shop",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "slug": "nannies",
+    "sector": "kids",
+    "parent": null,
+    "name": {
+      "he": "מטפלות ובייביסיטר",
+      "ar": "",
+      "en": "Nannies and babysitters"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "listing",
+    "attributes": [],
+    "icon": null,
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "slug": "swimming",
+    "sector": "kids",
+    "parent": null,
+    "name": {
+      "he": "שיעורי שחייה",
+      "ar": "",
+      "en": "Swimming lessons"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "booking",
+    "attributes": [],
+    "icon": null,
+    "order": 7,
+    "status": "active"
+  },
+  {
+    "slug": "kids-dentists",
+    "sector": "kids",
+    "parent": null,
+    "name": {
+      "he": "רופאי שיניים לילדים",
+      "ar": "",
+      "en": "Kids' dentists"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "pass",
+    "attributes": [],
+    "icon": null,
+    "order": 8,
+    "status": "active"
+  },
+  {
+    "slug": "toys",
+    "sector": "kids",
+    "parent": null,
+    "name": {
+      "he": "חנויות צעצועים",
+      "ar": "",
+      "en": "Toy shops"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "shop",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 9,
+    "status": "active"
+  },
+  {
+    "slug": "entertainers",
+    "sector": "kids",
+    "parent": null,
+    "name": {
+      "he": "מפעילים לימי הולדת",
+      "ar": "",
+      "en": "Birthday entertainers"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "portfolio",
+    "attributes": [],
+    "icon": null,
+    "order": 10,
+    "status": "active"
+  },
+  {
+    "slug": "kids-venues",
+    "sector": "kids",
+    "parent": null,
+    "name": {
+      "he": "מתחמי ימי הולדת לילדים",
+      "ar": "",
+      "en": "Kids' party venues"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "pass",
+    "attributes": [],
+    "icon": null,
+    "order": 11,
+    "status": "active"
+  },
+  {
+    "slug": "tutors",
+    "sector": "education",
+    "parent": null,
+    "name": {
+      "he": "מורים פרטיים",
+      "ar": "",
+      "en": "Private tutors"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "booking",
+    "attributes": [],
+    "icon": null,
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "slug": "art-schools",
+    "sector": "education",
+    "parent": null,
+    "name": {
+      "he": "בתי ספר למוזיקה ואמנות",
+      "ar": "",
+      "en": "Music and art schools"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "schedule",
+    "attributes": [],
+    "icon": null,
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "slug": "coding",
+    "sector": "education",
+    "parent": null,
+    "name": {
+      "he": "בתי ספר לתכנות לילדים",
+      "ar": "",
+      "en": "Coding schools for kids"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "portfolio",
+    "attributes": [],
+    "icon": null,
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "slug": "courses",
+    "sector": "education",
+    "parent": null,
+    "name": {
+      "he": "קורסים אונליין ומאמנים",
+      "ar": "",
+      "en": "Online courses and coaches"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "slug": "language-schools",
+    "sector": "education",
+    "parent": null,
+    "name": {
+      "he": "מרכזים לערבית ועברית ובתי ספר לשפות",
+      "ar": "",
+      "en": "Arabic, Hebrew and language schools"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "pass",
+    "attributes": [],
+    "icon": null,
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "slug": "psychometric",
+    "sector": "education",
+    "parent": null,
+    "name": {
+      "he": "הכנה לפסיכומטרי ולאוניברסיטה",
+      "ar": "",
+      "en": "University and psychometric prep"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "slug": "driving",
+    "sector": "education",
+    "parent": null,
+    "name": {
+      "he": "מורים לנהיגה",
+      "ar": "",
+      "en": "Driving instructors"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "schedule",
+    "attributes": [],
+    "icon": null,
+    "order": 7,
+    "status": "active"
+  },
+  {
+    "slug": "islamic-schools",
+    "sector": "education",
+    "parent": null,
+    "name": {
+      "he": "בתי ספר אסלאמיים",
+      "ar": "",
+      "en": "Islamic private schools"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "listing",
+    "attributes": [],
+    "icon": null,
+    "order": 8,
+    "status": "active"
+  },
+  {
+    "slug": "vocational",
+    "sector": "education",
+    "parent": null,
+    "name": {
+      "he": "הכשרות מקצועיות",
+      "ar": "",
+      "en": "Vocational training"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "builder",
+    "attributes": [],
+    "icon": null,
+    "order": 9,
+    "status": "active"
+  },
+  {
+    "slug": "cooking-schools",
+    "sector": "education",
+    "parent": null,
+    "name": {
+      "he": "סדנאות ובתי ספר לבישול",
+      "ar": "",
+      "en": "Cooking schools and workshops"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "booking",
+    "attributes": [],
+    "icon": null,
+    "order": 10,
+    "status": "active"
+  },
+  {
+    "slug": "sewing",
+    "sector": "education",
+    "parent": null,
+    "name": {
+      "he": "סדנאות תפירה ורקמה",
+      "ar": "",
+      "en": "Sewing and embroidery workshops"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "schedule",
+    "attributes": [],
+    "icon": null,
+    "order": 11,
+    "status": "active"
+  },
+  {
+    "slug": "software-studios",
+    "sector": "tech",
+    "parent": null,
+    "name": {
+      "he": "סטודיו לפיתוח תוכנה",
+      "ar": "",
+      "en": "Software studios"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "portfolio",
+    "attributes": [],
+    "icon": null,
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "slug": "it-support",
+    "sector": "tech",
+    "parent": null,
+    "name": {
+      "he": "תמיכת IT לעסקים",
+      "ar": "",
+      "en": "IT support for business"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "slug": "coworking",
+    "sector": "tech",
+    "parent": null,
+    "name": {
+      "he": "חללי עבודה משותפים",
+      "ar": "",
+      "en": "Coworking spaces"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "pass",
+    "attributes": [],
+    "icon": null,
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "slug": "cybersecurity",
+    "sector": "tech",
+    "parent": null,
+    "name": {
+      "he": "אבטחת מידע וסייבר",
+      "ar": "",
+      "en": "Cybersecurity"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "slug": "saas",
+    "sector": "tech",
+    "parent": null,
+    "name": {
+      "he": "סטארטאפים ומוצרי SaaS",
+      "ar": "",
+      "en": "SaaS startups"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "builder",
+    "attributes": [],
+    "icon": null,
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "slug": "marketing-agencies",
+    "sector": "tech",
+    "parent": null,
+    "name": {
+      "he": "סוכנויות שיווק דיגיטלי",
+      "ar": "",
+      "en": "Digital marketing agencies"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "portfolio",
+    "attributes": [],
+    "icon": null,
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "slug": "social-media",
+    "sector": "tech",
+    "parent": null,
+    "name": {
+      "he": "ניהול רשתות חברתיות",
+      "ar": "",
+      "en": "Social media managers"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "schedule",
+    "attributes": [],
+    "icon": null,
+    "order": 7,
+    "status": "active"
+  },
+  {
+    "slug": "hosting",
+    "sector": "tech",
+    "parent": null,
+    "name": {
+      "he": "אחסון אתרים ודומיינים",
+      "ar": "",
+      "en": "Web hosting and domains"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "quote",
+    "attributes": [],
+    "icon": null,
+    "order": 8,
+    "status": "active"
+  },
+  {
+    "slug": "app-developers",
+    "sector": "tech",
+    "parent": null,
+    "name": {
+      "he": "מפתחי אפליקציות",
+      "ar": "",
+      "en": "App developers"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "builder",
+    "attributes": [],
+    "icon": null,
+    "order": 9,
+    "status": "active"
+  },
+  {
+    "slug": "game-studios",
+    "sector": "tech",
+    "parent": null,
+    "name": {
+      "he": "סטודיו למשחקים",
+      "ar": "",
+      "en": "Game studios"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "listing",
+    "attributes": [],
+    "icon": null,
+    "order": 10,
+    "status": "active"
+  },
+  {
+    "slug": "ai-consulting",
+    "sector": "tech",
+    "parent": null,
+    "name": {
+      "he": "ייעוץ דאטה ובינה מלאכותית",
+      "ar": "",
+      "en": "Data and AI consultancies"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "booking",
+    "attributes": [],
+    "icon": null,
+    "order": 11,
+    "status": "active"
+  },
+  {
+    "slug": "stations",
+    "sector": "services",
+    "parent": null,
+    "name": {
+      "he": "תחנות דלק ושירות",
+      "ar": "",
+      "en": "Fuel and service stations"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "schedule",
+    "attributes": [],
+    "icon": null,
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "slug": "lawyers",
+    "sector": "services",
+    "parent": null,
+    "name": {
+      "he": "עורכי דין ונוטריונים",
+      "ar": "",
+      "en": "Lawyers and notaries"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "booking",
+    "attributes": [],
+    "icon": null,
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "slug": "accountants",
+    "sector": "services",
+    "parent": null,
+    "name": {
+      "he": "רואי חשבון ויועצי מס",
+      "ar": "",
+      "en": "Accountants and tax advisors"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "slug": "insurance",
+    "sector": "services",
+    "parent": null,
+    "name": {
+      "he": "סוכני ביטוח",
+      "ar": "",
+      "en": "Insurance agents"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "quote",
+    "attributes": [],
+    "icon": null,
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "slug": "real-estate",
+    "sector": "services",
+    "parent": null,
+    "name": {
+      "he": "סוכני נדל\"ן",
+      "ar": "",
+      "en": "Real estate agents"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "listing",
+    "attributes": [],
+    "icon": null,
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "slug": "contractors",
+    "sector": "services",
+    "parent": null,
+    "name": {
+      "he": "קבלנים ושיפוצים",
+      "ar": "",
+      "en": "Contractors and renovators"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "quote",
+    "attributes": [],
+    "icon": null,
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "slug": "cleaning",
+    "sector": "services",
+    "parent": null,
+    "name": {
+      "he": "שירותי ניקיון",
+      "ar": "",
+      "en": "Cleaning services"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "builder",
+    "attributes": [],
+    "icon": null,
+    "order": 7,
+    "status": "active"
+  },
+  {
+    "slug": "technicians",
+    "sector": "services",
+    "parent": null,
+    "name": {
+      "he": "חשמלאים, אינסטלטורים וטכנאים",
+      "ar": "",
+      "en": "Electricians, plumbers and technicians"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "quote",
+    "attributes": [],
+    "icon": null,
+    "order": 8,
+    "status": "active"
+  },
+  {
+    "slug": "device-repair",
+    "sector": "services",
+    "parent": null,
+    "name": {
+      "he": "מעבדות לתיקון טלפונים ומחשבים",
+      "ar": "",
+      "en": "Phone and computer repair"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 9,
+    "status": "active"
+  },
+  {
+    "slug": "movers",
+    "sector": "services",
+    "parent": null,
+    "name": {
+      "he": "הובלות",
+      "ar": "",
+      "en": "Movers"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "quote",
+    "attributes": [],
+    "icon": null,
+    "order": 10,
+    "status": "active"
+  },
+  {
+    "slug": "tailoring",
+    "sector": "services",
+    "parent": null,
+    "name": {
+      "he": "תפירה, תיקונים וניקוי יבש",
+      "ar": "",
+      "en": "Tailoring and dry cleaning"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "pass",
+    "attributes": [],
+    "icon": null,
+    "order": 11,
+    "status": "active"
+  },
+  {
+    "slug": "glass-aluminium",
+    "sector": "services",
+    "parent": null,
+    "name": {
+      "he": "זגגות ואלומיניום",
+      "ar": "",
+      "en": "Glass and aluminium"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "builder",
+    "attributes": [],
+    "icon": null,
+    "order": 12,
+    "status": "active"
+  },
+  {
+    "slug": "architects",
+    "sector": "home",
+    "parent": null,
+    "name": {
+      "he": "אדריכלים ומעצבי פנים",
+      "ar": "",
+      "en": "Architects and interior designers"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "portfolio",
+    "attributes": [],
+    "icon": null,
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "slug": "furniture",
+    "sector": "home",
+    "parent": null,
+    "name": {
+      "he": "חנויות רהיטים",
+      "ar": "",
+      "en": "Furniture stores"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "shop",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "slug": "kitchens",
+    "sector": "home",
+    "parent": null,
+    "name": {
+      "he": "מטבחים",
+      "ar": "",
+      "en": "Kitchen makers"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "builder",
+    "attributes": [],
+    "icon": null,
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "slug": "curtains",
+    "sector": "home",
+    "parent": null,
+    "name": {
+      "he": "וילונות ובדים",
+      "ar": "",
+      "en": "Curtains and fabric shops"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "quote",
+    "attributes": [],
+    "icon": null,
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "slug": "solar",
+    "sector": "home",
+    "parent": null,
+    "name": {
+      "he": "מתקיני מערכות סולאריות",
+      "ar": "",
+      "en": "Solar installers"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "slug": "decor",
+    "sector": "home",
+    "parent": null,
+    "name": {
+      "he": "עיצוב ואביזרים לבית",
+      "ar": "",
+      "en": "Home decor"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "shop",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "slug": "pools",
+    "sector": "home",
+    "parent": null,
+    "name": {
+      "he": "תחזוקת בריכות",
+      "ar": "",
+      "en": "Pool maintenance"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "schedule",
+    "attributes": [],
+    "icon": null,
+    "order": 7,
+    "status": "active"
+  },
+  {
+    "slug": "gardeners",
+    "sector": "home",
+    "parent": null,
+    "name": {
+      "he": "גננים ומעצבי נוף",
+      "ar": "",
+      "en": "Gardeners and landscapers"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "portfolio",
+    "attributes": [],
+    "icon": null,
+    "order": 8,
+    "status": "active"
+  },
+  {
+    "slug": "locksmiths",
+    "sector": "home",
+    "parent": null,
+    "name": {
+      "he": "מנעולנים",
+      "ar": "",
+      "en": "Locksmiths"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 9,
+    "status": "active"
+  },
+  {
+    "slug": "pest-control",
+    "sector": "home",
+    "parent": null,
+    "name": {
+      "he": "הדברה",
+      "ar": "",
+      "en": "Pest control"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "booking",
+    "attributes": [],
+    "icon": null,
+    "order": 10,
+    "status": "active"
+  },
+  {
+    "slug": "painters",
+    "sector": "home",
+    "parent": null,
+    "name": {
+      "he": "צבעים ושיפוץ קירות",
+      "ar": "",
+      "en": "Interior painters"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "quote",
+    "attributes": [],
+    "icon": null,
+    "order": 11,
+    "status": "active"
+  },
+  {
+    "slug": "upholstery",
+    "sector": "home",
+    "parent": null,
+    "name": {
+      "he": "רפדים",
+      "ar": "",
+      "en": "Upholsterers"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "portfolio",
+    "attributes": [],
+    "icon": null,
+    "order": 12,
+    "status": "active"
+  },
+  {
+    "slug": "factories",
+    "sector": "industry",
+    "parent": null,
+    "name": {
+      "he": "מפעלים ויצרנים",
+      "ar": "",
+      "en": "Factories and manufacturers"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "slug": "wholesalers",
+    "sector": "industry",
+    "parent": null,
+    "name": {
+      "he": "סיטונאים",
+      "ar": "",
+      "en": "Wholesalers"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "shop",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "slug": "packaging",
+    "sector": "industry",
+    "parent": null,
+    "name": {
+      "he": "אריזות ממותגות",
+      "ar": "",
+      "en": "Packaging makers"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "builder",
+    "attributes": [],
+    "icon": null,
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "slug": "couriers",
+    "sector": "industry",
+    "parent": null,
+    "name": {
+      "he": "שליחויות ולוגיסטיקה",
+      "ar": "",
+      "en": "Logistics and couriers"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "slug": "warehouses",
+    "sector": "industry",
+    "parent": null,
+    "name": {
+      "he": "מחסנים ואחסון",
+      "ar": "",
+      "en": "Warehouses and storage"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "quote",
+    "attributes": [],
+    "icon": null,
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "slug": "sign-makers",
+    "sector": "industry",
+    "parent": null,
+    "name": {
+      "he": "שלטים ומיתוג חזיתות",
+      "ar": "",
+      "en": "Sign makers"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "portfolio",
+    "attributes": [],
+    "icon": null,
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "slug": "metalworks",
+    "sector": "industry",
+    "parent": null,
+    "name": {
+      "he": "מסגריות",
+      "ar": "",
+      "en": "Metal workshops"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "quote",
+    "attributes": [],
+    "icon": null,
+    "order": 7,
+    "status": "active"
+  },
+  {
+    "slug": "carpentry",
+    "sector": "industry",
+    "parent": null,
+    "name": {
+      "he": "נגריות",
+      "ar": "",
+      "en": "Carpentry workshops"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "builder",
+    "attributes": [],
+    "icon": null,
+    "order": 8,
+    "status": "active"
+  },
+  {
+    "slug": "recruiting",
+    "sector": "industry",
+    "parent": null,
+    "name": {
+      "he": "חברות השמה",
+      "ar": "",
+      "en": "Recruiting agencies"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "listing",
+    "attributes": [],
+    "icon": null,
+    "order": 9,
+    "status": "active"
+  },
+  {
+    "slug": "security",
+    "sector": "industry",
+    "parent": null,
+    "name": {
+      "he": "חברות אבטחה",
+      "ar": "",
+      "en": "Security companies"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "schedule",
+    "attributes": [],
+    "icon": null,
+    "order": 10,
+    "status": "active"
+  },
+  {
+    "slug": "dealers",
+    "sector": "auto",
+    "parent": null,
+    "name": {
+      "he": "סוכנויות ומגרשי רכב",
+      "ar": "",
+      "en": "Car dealers"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "listing",
+    "attributes": [],
+    "icon": null,
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "slug": "garages",
+    "sector": "auto",
+    "parent": null,
+    "name": {
+      "he": "מוסכים",
+      "ar": "",
+      "en": "Car garages"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "slug": "car-rental",
+    "sector": "auto",
+    "parent": null,
+    "name": {
+      "he": "השכרת רכב",
+      "ar": "",
+      "en": "Car rental"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "builder",
+    "attributes": [],
+    "icon": null,
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "slug": "tyres",
+    "sector": "auto",
+    "parent": null,
+    "name": {
+      "he": "פנצ'ריות וצמיגים",
+      "ar": "",
+      "en": "Tyre shops"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "booking",
+    "attributes": [],
+    "icon": null,
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "slug": "car-wash",
+    "sector": "auto",
+    "parent": null,
+    "name": {
+      "he": "שטיפת רכב ודיטיילינג",
+      "ar": "",
+      "en": "Car wash and detailing"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "pass",
+    "attributes": [],
+    "icon": null,
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "slug": "motorcycles",
+    "sector": "auto",
+    "parent": null,
+    "name": {
+      "he": "אופנועים וקטנועים",
+      "ar": "",
+      "en": "Motorcycles and scooters"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "listing",
+    "attributes": [],
+    "icon": null,
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "slug": "ev-charging",
+    "sector": "auto",
+    "parent": null,
+    "name": {
+      "he": "עמדות טעינה לרכב חשמלי",
+      "ar": "",
+      "en": "EV charging"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 7,
+    "status": "active"
+  },
+  {
+    "slug": "taxis",
+    "sector": "auto",
+    "parent": null,
+    "name": {
+      "he": "מוניות והסעות",
+      "ar": "",
+      "en": "Taxis and transfers"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "quote",
+    "attributes": [],
+    "icon": null,
+    "order": 8,
+    "status": "active"
+  },
+  {
+    "slug": "auto-parts",
+    "sector": "auto",
+    "parent": null,
+    "name": {
+      "he": "חלקי חילוף לרכב",
+      "ar": "",
+      "en": "Auto parts"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "shop",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 9,
+    "status": "active"
+  },
+  {
+    "slug": "towing",
+    "sector": "auto",
+    "parent": null,
+    "name": {
+      "he": "גרר ושירותי דרך",
+      "ar": "",
+      "en": "Towing and roadside help"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 10,
+    "status": "active"
+  },
+  {
+    "slug": "body-shops",
+    "sector": "auto",
+    "parent": null,
+    "name": {
+      "he": "פחחות וצבע",
+      "ar": "",
+      "en": "Panel beating and paint"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "quote",
+    "attributes": [],
+    "icon": null,
+    "order": 11,
+    "status": "active"
+  },
+  {
+    "slug": "farm-shops",
+    "sector": "agriculture",
+    "parent": null,
+    "name": {
+      "he": "חוות עם מכירה ישירה",
+      "ar": "",
+      "en": "Farms with direct sales"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "pass",
+    "attributes": [],
+    "icon": null,
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "slug": "farmers-markets",
+    "sector": "agriculture",
+    "parent": null,
+    "name": {
+      "he": "שווקי איכרים",
+      "ar": "",
+      "en": "Farmers' markets"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "shop",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "slug": "seedlings",
+    "sector": "agriculture",
+    "parent": null,
+    "name": {
+      "he": "משתלות שתילים",
+      "ar": "",
+      "en": "Seedling nurseries"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "builder",
+    "attributes": [],
+    "icon": null,
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "slug": "beekeepers",
+    "sector": "agriculture",
+    "parent": null,
+    "name": {
+      "he": "כוורנים ודבש",
+      "ar": "",
+      "en": "Beekeepers and honey"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "shop",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "slug": "dairy",
+    "sector": "agriculture",
+    "parent": null,
+    "name": {
+      "he": "רפתות ומחלבות",
+      "ar": "",
+      "en": "Dairy farms"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "schedule",
+    "attributes": [],
+    "icon": null,
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "slug": "olive-press",
+    "sector": "agriculture",
+    "parent": null,
+    "name": {
+      "he": "בתי בד",
+      "ar": "",
+      "en": "Olive oil presses"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "slug": "egg-farms",
+    "sector": "agriculture",
+    "parent": null,
+    "name": {
+      "he": "לולים וביצי חופש",
+      "ar": "",
+      "en": "Egg farms"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "pass",
+    "attributes": [],
+    "icon": null,
+    "order": 7,
+    "status": "active"
+  },
+  {
+    "slug": "stables",
+    "sector": "agriculture",
+    "parent": null,
+    "name": {
+      "he": "חוות סוסים ורכיבה",
+      "ar": "",
+      "en": "Stables and horse riding"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "booking",
+    "attributes": [],
+    "icon": null,
+    "order": 8,
+    "status": "active"
+  },
+  {
+    "slug": "farm-stays",
+    "sector": "agriculture",
+    "parent": null,
+    "name": {
+      "he": "לינה בחווה",
+      "ar": "",
+      "en": "Farm stays"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "listing",
+    "attributes": [],
+    "icon": null,
+    "order": 9,
+    "status": "active"
+  },
+  {
+    "slug": "tractors",
+    "sector": "agriculture",
+    "parent": null,
+    "name": {
+      "he": "טרקטורים וציוד חקלאי",
+      "ar": "",
+      "en": "Tractors and farm equipment"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "quote",
+    "attributes": [],
+    "icon": null,
+    "order": 10,
+    "status": "active"
+  },
+  {
+    "slug": "irrigation",
+    "sector": "agriculture",
+    "parent": null,
+    "name": {
+      "he": "מערכות השקיה",
+      "ar": "",
+      "en": "Irrigation systems"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 11,
+    "status": "active"
+  },
+  {
+    "slug": "livestock-vets",
+    "sector": "agriculture",
+    "parent": null,
+    "name": {
+      "he": "וטרינרים לבעלי חיים במשק",
+      "ar": "",
+      "en": "Livestock vets"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "booking",
+    "attributes": [],
+    "icon": null,
+    "order": 12,
+    "status": "active"
+  },
+  {
+    "slug": "venues",
+    "sector": "events",
+    "parent": null,
+    "name": {
+      "he": "אולמות וגני אירועים",
+      "ar": "",
+      "en": "Event venues and wedding halls"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "listing",
+    "attributes": [],
+    "icon": null,
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "slug": "planners",
+    "sector": "events",
+    "parent": null,
+    "name": {
+      "he": "מפיקי אירועים",
+      "ar": "",
+      "en": "Event planners"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "builder",
+    "attributes": [],
+    "icon": null,
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "slug": "henna",
+    "sector": "events",
+    "parent": null,
+    "name": {
+      "he": "אמניות חינה",
+      "ar": "",
+      "en": "Henna artists"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "portfolio",
+    "attributes": [],
+    "icon": null,
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "slug": "florists",
+    "sector": "events",
+    "parent": null,
+    "name": {
+      "he": "חנויות פרחים",
+      "ar": "",
+      "en": "Florists"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "builder",
+    "attributes": [],
+    "icon": null,
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "slug": "bridal-rental",
+    "sector": "events",
+    "parent": null,
+    "name": {
+      "he": "השכרת שמלות כלה וערב",
+      "ar": "",
+      "en": "Wedding dress rental"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "booking",
+    "attributes": [],
+    "icon": null,
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "slug": "photographers",
+    "sector": "events",
+    "parent": null,
+    "name": {
+      "he": "צלמים ווידאו",
+      "ar": "",
+      "en": "Photographers and videographers"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "portfolio",
+    "attributes": [],
+    "icon": null,
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "slug": "printing",
+    "sector": "events",
+    "parent": null,
+    "name": {
+      "he": "בתי דפוס והזמנות",
+      "ar": "",
+      "en": "Printing and invitations"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "quote",
+    "attributes": [],
+    "icon": null,
+    "order": 7,
+    "status": "active"
+  },
+  {
+    "slug": "escape-rooms",
+    "sector": "events",
+    "parent": null,
+    "name": {
+      "he": "חדרי בריחה",
+      "ar": "",
+      "en": "Escape rooms"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "booking",
+    "attributes": [],
+    "icon": null,
+    "order": 8,
+    "status": "active"
+  },
+  {
+    "slug": "tents",
+    "sector": "events",
+    "parent": null,
+    "name": {
+      "he": "אוהלי אירועים והושבה",
+      "ar": "",
+      "en": "Event tents and seating"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "quote",
+    "attributes": [],
+    "icon": null,
+    "order": 9,
+    "status": "active"
+  },
+  {
+    "slug": "wedding-cakes",
+    "sector": "events",
+    "parent": null,
+    "name": {
+      "he": "עוגות חתונה",
+      "ar": "",
+      "en": "Wedding cakes"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "builder",
+    "attributes": [],
+    "icon": null,
+    "order": 10,
+    "status": "active"
+  },
+  {
+    "slug": "event-decor",
+    "sector": "events",
+    "parent": null,
+    "name": {
+      "he": "עיצוב אירועים",
+      "ar": "",
+      "en": "Event decor"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "portfolio",
+    "attributes": [],
+    "icon": null,
+    "order": 11,
+    "status": "active"
+  },
+  {
+    "slug": "favours",
+    "sector": "events",
+    "parent": null,
+    "name": {
+      "he": "מזכרות ומתנות לאורחים",
+      "ar": "",
+      "en": "Wedding and Eid favours"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "shop",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 12,
+    "status": "active"
+  },
+  {
+    "slug": "umrah",
+    "sector": "travel",
+    "parent": null,
+    "name": {
+      "he": "מארגני עומרה וחג'",
+      "ar": "",
+      "en": "Umrah and Hajj organisers"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "schedule",
+    "attributes": [],
+    "icon": null,
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "slug": "hotels",
+    "sector": "travel",
+    "parent": null,
+    "name": {
+      "he": "מלונות בוטיק, צימרים ובתי הארחה",
+      "ar": "",
+      "en": "Boutique hotels and guesthouses"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "listing",
+    "attributes": [],
+    "icon": null,
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "slug": "tours",
+    "sector": "travel",
+    "parent": null,
+    "name": {
+      "he": "מדריכי טיולים וחוויות",
+      "ar": "",
+      "en": "Tour guides and experiences"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "pass",
+    "attributes": [],
+    "icon": null,
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "slug": "travel-agencies",
+    "sector": "travel",
+    "parent": null,
+    "name": {
+      "he": "סוכנויות נסיעות",
+      "ar": "",
+      "en": "Travel agencies"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "listing",
+    "attributes": [],
+    "icon": null,
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "slug": "camping",
+    "sector": "travel",
+    "parent": null,
+    "name": {
+      "he": "קמפינג וגלמפינג",
+      "ar": "",
+      "en": "Campsites and glamping"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "booking",
+    "attributes": [],
+    "icon": null,
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "slug": "tour-buses",
+    "sector": "travel",
+    "parent": null,
+    "name": {
+      "he": "חברות אוטובוסים וטיולים מאורגנים",
+      "ar": "",
+      "en": "Coaches and group trips"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "quote",
+    "attributes": [],
+    "icon": null,
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "slug": "visas",
+    "sector": "travel",
+    "parent": null,
+    "name": {
+      "he": "תרגום ושירותי ויזה",
+      "ar": "",
+      "en": "Translation and visa services"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 7,
+    "status": "active"
+  },
+  {
+    "slug": "currency-exchange",
+    "sector": "travel",
+    "parent": null,
+    "name": {
+      "he": "חלפני כספים",
+      "ar": "",
+      "en": "Currency exchange"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "quote",
+    "attributes": [],
+    "icon": null,
+    "order": 8,
+    "status": "active"
+  },
+  {
+    "slug": "study-abroad",
+    "sector": "travel",
+    "parent": null,
+    "name": {
+      "he": "לימודים בחו\"ל",
+      "ar": "",
+      "en": "Study abroad advisers"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "builder",
+    "attributes": [],
+    "icon": null,
+    "order": 9,
+    "status": "active"
+  },
+  {
+    "slug": "luggage",
+    "sector": "travel",
+    "parent": null,
+    "name": {
+      "he": "מזוודות וציוד לטיול",
+      "ar": "",
+      "en": "Luggage and travel gear"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "shop",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 10,
+    "status": "active"
+  },
+  {
+    "slug": "hajj-training",
+    "sector": "travel",
+    "parent": null,
+    "name": {
+      "he": "הכנה לחאג'",
+      "ar": "",
+      "en": "Hajj preparation courses"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "schedule",
+    "attributes": [],
+    "icon": null,
+    "order": 11,
+    "status": "active"
+  },
+  {
+    "slug": "shops",
+    "sector": "retail",
+    "parent": null,
+    "name": {
+      "he": "חנויות אונליין ומרקטפלייס",
+      "ar": "",
+      "en": "Online stores and marketplaces"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "shop",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "slug": "fashion",
+    "sector": "retail",
+    "parent": null,
+    "name": {
+      "he": "בוטיקים לאופנה",
+      "ar": "",
+      "en": "Fashion boutiques"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "shop",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "slug": "artists",
+    "sector": "retail",
+    "parent": null,
+    "name": {
+      "he": "אמנים, יוצרים ופרילנסרים",
+      "ar": "",
+      "en": "Artists, creators and freelancers"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "portfolio",
+    "attributes": [],
+    "icon": null,
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "slug": "bookshops",
+    "sector": "retail",
+    "parent": null,
+    "name": {
+      "he": "חנויות ספרים, מתנות וחנויות שכונתיות",
+      "ar": "",
+      "en": "Bookshops, gift shops and local stores"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "shop",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "slug": "plant-shops",
+    "sector": "retail",
+    "parent": null,
+    "name": {
+      "he": "משתלות וצמחי בית",
+      "ar": "",
+      "en": "Plant shops and nurseries"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "builder",
+    "attributes": [],
+    "icon": null,
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "slug": "pet-shops",
+    "sector": "retail",
+    "parent": null,
+    "name": {
+      "he": "חנויות לחיות מחמד",
+      "ar": "",
+      "en": "Pet shops"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "shop",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "slug": "gold",
+    "sector": "retail",
+    "parent": null,
+    "name": {
+      "he": "זהב ותכשיטים",
+      "ar": "",
+      "en": "Gold and jewellery"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "quote",
+    "attributes": [],
+    "icon": null,
+    "order": 7,
+    "status": "active"
+  },
+  {
+    "slug": "perfume",
+    "sector": "retail",
+    "parent": null,
+    "name": {
+      "he": "בשמים, עוד ובח'ור",
+      "ar": "",
+      "en": "Perfume, oud and bakhoor"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "shop",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 8,
+    "status": "active"
+  },
+  {
+    "slug": "chocolates",
+    "sector": "retail",
+    "parent": null,
+    "name": {
+      "he": "שוקולטיירים וחנויות תמרים",
+      "ar": "",
+      "en": "Chocolatiers and date shops"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "builder",
+    "attributes": [],
+    "icon": null,
+    "order": 9,
+    "status": "active"
+  },
+  {
+    "slug": "electronics",
+    "sector": "retail",
+    "parent": null,
+    "name": {
+      "he": "טלפונים ומוצרי חשמל",
+      "ar": "",
+      "en": "Phones and electronics"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "listing",
+    "attributes": [],
+    "icon": null,
+    "order": 10,
+    "status": "active"
+  },
+  {
+    "slug": "watches",
+    "sector": "retail",
+    "parent": null,
+    "name": {
+      "he": "שעונים",
+      "ar": "",
+      "en": "Watches"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "shop",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 11,
+    "status": "active"
+  },
+  {
+    "slug": "kitchenware",
+    "sector": "retail",
+    "parent": null,
+    "name": {
+      "he": "כלי בית ומטבח",
+      "ar": "",
+      "en": "Kitchenware and home goods"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "builder",
+    "attributes": [],
+    "icon": null,
+    "order": 12,
+    "status": "active"
+  },
+  {
+    "slug": "mosques",
+    "sector": "faith",
+    "parent": null,
+    "name": {
+      "he": "מסגדים ומרכזים אסלאמיים",
+      "ar": "",
+      "en": "Mosques and Islamic centres"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "schedule",
+    "attributes": [],
+    "icon": null,
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "slug": "quran-schools",
+    "sector": "faith",
+    "parent": null,
+    "name": {
+      "he": "בתי ספר לקוראן",
+      "ar": "",
+      "en": "Quran schools"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "slug": "butchers",
+    "sector": "faith",
+    "parent": null,
+    "name": {
+      "he": "אטליזים חלאל",
+      "ar": "",
+      "en": "Halal butchers"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "builder",
+    "attributes": [],
+    "icon": null,
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "slug": "modest-fashion",
+    "sector": "faith",
+    "parent": null,
+    "name": {
+      "he": "בוטיקים לעבאיות וחיג'אבים",
+      "ar": "",
+      "en": "Abaya and hijab boutiques"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "shop",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "slug": "zakat",
+    "sector": "faith",
+    "parent": null,
+    "name": {
+      "he": "קרנות זכאת וצדקה",
+      "ar": "",
+      "en": "Zakat and sadaqah funds"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "quote",
+    "attributes": [],
+    "icon": null,
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "slug": "islamic-books",
+    "sector": "faith",
+    "parent": null,
+    "name": {
+      "he": "ספרים ומתנות אסלאמיים",
+      "ar": "",
+      "en": "Islamic books and gifts"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "shop",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "slug": "hijama",
+    "sector": "faith",
+    "parent": null,
+    "name": {
+      "he": "מטפלי חיג'אמה",
+      "ar": "",
+      "en": "Hijama therapists"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "booking",
+    "attributes": [],
+    "icon": null,
+    "order": 7,
+    "status": "active"
+  },
+  {
+    "slug": "home-nursing",
+    "sector": "faith",
+    "parent": null,
+    "name": {
+      "he": "סיעוד ובדיקות מעבדה בבית",
+      "ar": "",
+      "en": "Home nursing and lab tests"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "pass",
+    "attributes": [],
+    "icon": null,
+    "order": 8,
+    "status": "active"
+  },
+  {
+    "slug": "waqf",
+    "sector": "faith",
+    "parent": null,
+    "name": {
+      "he": "תרומות למסגד ווקף",
+      "ar": "",
+      "en": "Mosque donations and waqf"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "donate",
+    "attributes": [],
+    "icon": null,
+    "order": 9,
+    "status": "active"
+  },
+  {
+    "slug": "mazoun",
+    "sector": "faith",
+    "parent": null,
+    "name": {
+      "he": "מאזון ועריכת כתב אל כתאב",
+      "ar": "",
+      "en": "Ma'zoun and marriage contracts"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "booking",
+    "attributes": [],
+    "icon": null,
+    "order": 10,
+    "status": "active"
+  },
+  {
+    "slug": "thobes",
+    "sector": "faith",
+    "parent": null,
+    "name": {
+      "he": "ג'לביות ולבוש אסלאמי לגברים",
+      "ar": "",
+      "en": "Thobes and Islamic menswear"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "shop",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 11,
+    "status": "active"
+  },
+  {
+    "slug": "janazah",
+    "sector": "faith",
+    "parent": null,
+    "name": {
+      "he": "שירותי ג'נאזה וקבורה",
+      "ar": "",
+      "en": "Janazah and funeral services"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 12,
+    "status": "active"
+  },
+  {
+    "slug": "municipal",
+    "sector": "civic",
+    "parent": null,
+    "name": {
+      "he": "שירותים עירוניים",
+      "ar": "",
+      "en": "Municipal services"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "slug": "school-registration",
+    "sector": "civic",
+    "parent": null,
+    "name": {
+      "he": "רישום לבתי ספר וגנים",
+      "ar": "",
+      "en": "School and nursery registration"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "builder",
+    "attributes": [],
+    "icon": null,
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "slug": "public-clinics",
+    "sector": "civic",
+    "parent": null,
+    "name": {
+      "he": "טיפות חלב ומרפאות ציבוריות",
+      "ar": "",
+      "en": "Mother-and-baby and public clinics"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "booking",
+    "attributes": [],
+    "icon": null,
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "slug": "libraries",
+    "sector": "civic",
+    "parent": null,
+    "name": {
+      "he": "ספריות ציבוריות",
+      "ar": "",
+      "en": "Public libraries"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "listing",
+    "attributes": [],
+    "icon": null,
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "slug": "post-offices",
+    "sector": "civic",
+    "parent": null,
+    "name": {
+      "he": "סניפי דואר ומשלוחים",
+      "ar": "",
+      "en": "Post offices and parcels"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "slug": "buses",
+    "sector": "civic",
+    "parent": null,
+    "name": {
+      "he": "תחבורה ציבורית",
+      "ar": "",
+      "en": "Public transport"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "schedule",
+    "attributes": [],
+    "icon": null,
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "slug": "parking",
+    "sector": "civic",
+    "parent": null,
+    "name": {
+      "he": "חניה ותווי תושב",
+      "ar": "",
+      "en": "Parking and resident permits"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "pass",
+    "attributes": [],
+    "icon": null,
+    "order": 7,
+    "status": "active"
+  },
+  {
+    "slug": "permits",
+    "sector": "civic",
+    "parent": null,
+    "name": {
+      "he": "רישוי בנייה והיתרים",
+      "ar": "",
+      "en": "Building permits and licensing"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "builder",
+    "attributes": [],
+    "icon": null,
+    "order": 8,
+    "status": "active"
+  },
+  {
+    "slug": "water",
+    "sector": "civic",
+    "parent": null,
+    "name": {
+      "he": "תאגידי מים וחשמל",
+      "ar": "",
+      "en": "Water and utilities"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 9,
+    "status": "active"
+  },
+  {
+    "slug": "emergency",
+    "sector": "civic",
+    "parent": null,
+    "name": {
+      "he": "מידע לשעת חירום",
+      "ar": "",
+      "en": "Emergency services information"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "listing",
+    "attributes": [],
+    "icon": null,
+    "order": 10,
+    "status": "active"
+  },
+  {
+    "slug": "nonprofits",
+    "sector": "community",
+    "parent": null,
+    "name": {
+      "he": "עמותות וארגוני צדקה",
+      "ar": "",
+      "en": "Non-profits and charities"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "donate",
+    "attributes": [],
+    "icon": null,
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "slug": "qard-hasan",
+    "sector": "community",
+    "parent": null,
+    "name": {
+      "he": "קרנות הלוואה ללא ריבית",
+      "ar": "",
+      "en": "Interest-free loan funds"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "tracker",
+    "attributes": [],
+    "icon": null,
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "slug": "community-centres",
+    "sector": "community",
+    "parent": null,
+    "name": {
+      "he": "מרכזים קהילתיים",
+      "ar": "",
+      "en": "Community centres"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "listing",
+    "attributes": [],
+    "icon": null,
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "slug": "senior-centres",
+    "sector": "community",
+    "parent": null,
+    "name": {
+      "he": "מרכזי יום לגיל הזהב",
+      "ar": "",
+      "en": "Senior day centres"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "schedule",
+    "attributes": [],
+    "icon": null,
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "slug": "youth-clubs",
+    "sector": "community",
+    "parent": null,
+    "name": {
+      "he": "מועדוני נוער",
+      "ar": "",
+      "en": "Youth clubs"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "booking",
+    "attributes": [],
+    "icon": null,
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "slug": "scouts",
+    "sector": "community",
+    "parent": null,
+    "name": {
+      "he": "תנועות צופים",
+      "ar": "",
+      "en": "Scout groups"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "pass",
+    "attributes": [],
+    "icon": null,
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "slug": "volunteers",
+    "sector": "community",
+    "parent": null,
+    "name": {
+      "he": "קבוצות מתנדבים",
+      "ar": "",
+      "en": "Volunteer groups"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "listing",
+    "attributes": [],
+    "icon": null,
+    "order": 7,
+    "status": "active"
+  },
+  {
+    "slug": "women-coop",
+    "sector": "community",
+    "parent": null,
+    "name": {
+      "he": "קואופרטיבים של נשים",
+      "ar": "",
+      "en": "Women's cooperatives"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "shop",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 8,
+    "status": "active"
+  },
+  {
+    "slug": "community-gardens",
+    "sector": "community",
+    "parent": null,
+    "name": {
+      "he": "גינות קהילתיות",
+      "ar": "",
+      "en": "Community gardens"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "booking",
+    "attributes": [],
+    "icon": null,
+    "order": 9,
+    "status": "active"
+  },
+  {
+    "slug": "charity-shops",
+    "sector": "community",
+    "parent": null,
+    "name": {
+      "he": "חנויות יד שנייה לצדקה",
+      "ar": "",
+      "en": "Charity second-hand shops"
+    },
+    "synonyms": {
+      "he": [],
+      "ar": [],
+      "en": []
+    },
+    "template": "shop",
+    "attributes": [
+      "delivers"
+    ],
+    "icon": null,
+    "order": 10,
+    "status": "active"
+  }
+]

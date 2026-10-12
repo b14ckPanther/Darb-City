@@ -1,0 +1,58 @@
+{
+  "restaurants": {
+    "brand": { "he": "בית אל-זיתון", "ar": "بيت الزيتون", "en": "Beit al-Zaytoun" },
+    "title": { "he": "התפריט של הערב", "ar": "قائمة الليلة", "en": "Tonight's menu" },
+    "subtitle": { "he": "הזמנה לשולחן או משלוח", "ar": "اطلب إلى الطاولة أو توصيل", "en": "Order to the table or for delivery" },
+    "tags": [{ "he": "ראשונות", "ar": "مقبلات", "en": "Starters" }, { "he": "עיקריות", "ar": "أطباق رئيسية", "en": "Mains" }, { "he": "קינוחים", "ar": "حلويات", "en": "Desserts" }],
+    "items": [
+      { "label": { "he": "מסחן", "ar": "مسخن", "en": "Musakhan" }, "meta": { "he": "₪68 · עוף, סומק, בצל", "ar": "₪68 · دجاج، سماق، بصل", "en": "₪68 · chicken, sumac, onion" } },
+      { "label": { "he": "מקלובה", "ar": "مقلوبة", "en": "Maqluba" }, "meta": { "he": "₪74 · לשניים", "ar": "₪74 · لشخصين", "en": "₪74 · for two" } },
+      { "label": { "he": "סלט פטוש", "ar": "سلطة فتوش", "en": "Fattoush" }, "meta": { "he": "₪32", "ar": "₪32", "en": "₪32" } }
+    ],
+    "cta": { "he": "הזמנה · 25 דק'", "ar": "اطلب · 25 دقيقة", "en": "Order · 25 min" },
+    "palette": { "bg": "#1f2a1c", "surface": "#2c3a28", "ink": "#f4ecd8", "accent": "#c9a24b" },
+    "font": "Amiri"
+  },
+  "barbershops": {
+    "brand": { "he": "המספרה של סאמר", "ar": "صالون سامر", "en": "Samer's Barbershop" },
+    "title": { "he": "תור בשתי לחיצות", "ar": "دور بنقرتين", "en": "A chair in two taps" },
+    "subtitle": { "he": "היום · 3 ספרים פנויים", "ar": "اليوم · 3 حلاقين متاحين", "en": "Today · 3 barbers free" },
+    "tags": [{ "he": "16:00", "ar": "16:00", "en": "16:00" }, { "he": "16:30", "ar": "16:30", "en": "16:30" }, { "he": "17:15", "ar": "17:15", "en": "17:15" }],
+    "items": [
+      { "label": { "he": "תספורת", "ar": "قص شعر", "en": "Haircut" }, "meta": { "he": "₪60 · 30 דק'", "ar": "₪60 · 30 دقيقة", "en": "₪60 · 30 min" } },
+      { "label": { "he": "תספורת וזקן", "ar": "شعر ولحية", "en": "Cut and beard" }, "meta": { "he": "₪85 · 45 דק'", "ar": "₪85 · 45 دقيقة", "en": "₪85 · 45 min" } },
+      { "label": { "he": "תספורת ילדים", "ar": "قص شعر أطفال", "en": "Kids' cut" }, "meta": { "he": "₪45 · 20 דק'", "ar": "₪45 · 20 دقيقة", "en": "₪45 · 20 min" } }
+    ],
+    "cta": { "he": "קביעת תור", "ar": "احجز دورك", "en": "Book a chair" },
+    "palette": { "bg": "#111315", "surface": "#1c1f22", "ink": "#f1ede6", "accent": "#c8a15a" },
+    "font": "Heebo"
+  },
+  "salons": {
+    "brand": { "he": "סלון ליאן", "ar": "صالون ليان", "en": "Salon Layan" },
+    "title": { "he": "הרגע שלך", "ar": "لحظتك", "en": "Your moment" },
+    "subtitle": { "he": "צבע, פן וטיפולים · נשים בלבד", "ar": "صبغة، سشوار وعلاجات · للنساء فقط", "en": "Colour, blow-dry and treatments · women only" },
+    "tags": [{ "he": "ראשון", "ar": "الأحد", "en": "Sun" }, { "he": "שני", "ar": "الاثنين", "en": "Mon" }, { "he": "שלישי", "ar": "الثلاثاء", "en": "Tue" }],
+    "items": [
+      { "label": { "he": "צבע שורשים", "ar": "صبغة جذور", "en": "Root colour" }, "meta": { "he": "₪180 · 90 דק'", "ar": "₪180 · 90 دقيقة", "en": "₪180 · 90 min" } },
+      { "label": { "he": "פן", "ar": "سشوار", "en": "Blow-dry" }, "meta": { "he": "₪90 · 40 דק'", "ar": "₪90 · 40 دقيقة", "en": "₪90 · 40 min" } },
+      { "label": { "he": "טיפול קרטין", "ar": "علاج كيراتين", "en": "Keratin treatment" }, "meta": { "he": "₪450 · 3 שע'", "ar": "₪450 · 3 ساعات", "en": "₪450 · 3 h" } }
+    ],
+    "cta": { "he": "קביעת תור עם מקדמה", "ar": "احجزي مع عربون", "en": "Book with a deposit" },
+    "palette": { "bg": "#f6ece8", "surface": "#fffaf7", "ink": "#3a2522", "accent": "#b4655a" },
+    "font": "Heebo"
+  },
+  "shops": {
+    "brand": { "he": "בית הבד של נור", "ar": "بيت نور", "en": "Bayt Nour" },
+    "title": { "he": "חנות הבית", "ar": "متجر البيت", "en": "The home shop" },
+    "subtitle": { "he": "משלוח לכל הצפון", "ar": "توصيل لكل الشمال", "en": "Delivery across the north" },
+    "tags": [{ "he": "שמן זית", "ar": "زيت زيتون", "en": "Olive oil" }, { "he": "זעתר", "ar": "زعتر", "en": "Za'atar" }, { "he": "סבון", "ar": "صابون", "en": "Soap" }],
+    "items": [
+      { "label": { "he": "שמן זית כתית 1 ל'", "ar": "زيت زيتون بكر 1 ل", "en": "Extra virgin olive oil 1L" }, "meta": { "he": "₪55", "ar": "₪55", "en": "₪55" } },
+      { "label": { "he": "זעתר ביתי 250 ג'", "ar": "زعتر بلدي 250 غ", "en": "Home za'atar 250g" }, "meta": { "he": "₪28", "ar": "₪28", "en": "₪28" } },
+      { "label": { "he": "סבון שמן זית", "ar": "صابون زيت زيتون", "en": "Olive oil soap" }, "meta": { "he": "₪18", "ar": "₪18", "en": "₪18" } }
+    ],
+    "cta": { "he": "לסל · משלוח מחר", "ar": "أضف للسلة · توصيل غداً", "en": "Add to cart · delivery tomorrow" },
+    "palette": { "bg": "#eef0e4", "surface": "#fbfcf6", "ink": "#25301d", "accent": "#6c7d3a" },
+    "font": "Heebo"
+  }
+}
