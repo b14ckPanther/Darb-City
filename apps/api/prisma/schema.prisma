@@ -77,6 +77,18 @@ enum OrgRole {
   staff
 }
 
+enum SearchEntity {
+  place
+  kind
+  business
+}
+
+enum SearchLane {
+  smart
+  instant
+  blocked
+}
+
 model Place {
   id         String                                       @id @default(uuid(7)) @db.Uuid
   slug       String                                       @unique
@@ -182,6 +194,7 @@ model Business {
   @@index([point], type: Gist)
   @@index([primaryKindId])
   @@index([status])
+  @@index([attributes(ops: JsonbPathOps)], type: Gin)
 }
 
 model BusinessKind {
@@ -234,4 +247,55 @@ model Claim {
   reviewedBy   User?       @relation("ClaimReviewer", fields: [reviewedById], references: [id])
   createdAt    DateTime    @default(now())
   reviewedAt   DateTime?
+}
+
+/// Spec §4.6: one per place, kind and published business. Rebuilt by the search-index jobs.
+model SearchDocument {
+  id           String                                @id @default(uuid(7)) @db.Uuid
+  entityType   SearchEntity
+  entityId     String                                @db.Uuid
+  slug         String
+  /// A place's own path, a business's place path, "" for kinds. Paths end with "/".
+  placePath    String
+  kindIds      String[]                              @db.Uuid
+  attributes   Json                                  @default("{}")
+  tier         Tier?
+  lat          Float?
+  lng          Float?
+  /// Generated from lat/lng in the migration; never written by Prisma.
+  point        Unsupported("geography(Point,4326)")? @default(dbgenerated("(st_setsrid(st_makepoint(lng, lat), 4326))::geography"))
+  /// Normalized names in every language (packages/search-text normalize), for suggestions.
+  nameText     String
+  /// Every normalized field, for trigram and full-text matching.
+  text         String
+  /// Generated from text in the migration.
+  tsv          Unsupported("tsvector")?              @default(dbgenerated("to_tsvector('simple'::regconfig, text)"))
+  embedding    Unsupported("vector(512)")?
+  completeness Float                                 @default(0)
+  updatedAt    DateTime                              @updatedAt
+
+  @@unique([entityType, entityId])
+  @@index([placePath])
+  // Declared so the drift check matches the migration's hand-written GIN/GiST indexes.
+  @@index([text(ops: raw("gin_trgm_ops"))], map: "SearchDocument_text_trgm_idx", type: Gin)
+  @@index([nameText(ops: raw("gin_trgm_ops"))], map: "SearchDocument_nameText_trgm_idx", type: Gin)
+  @@index([tsv], type: Gin)
+  @@index([kindIds], type: Gin)
+  @@index([point], type: Gist)
+}
+
+/// Spec §4.7: anonymous. No IP, user, user agent or coordinates, ever.
+model SearchQuery {
+  id          String     @id @default(uuid(7)) @db.Uuid
+  normalized  String
+  locale      String
+  intent      Json
+  /// Lane-1 words no strong kind or place match used (feeds the Missing places report).
+  unmatched   String[]
+  lane        SearchLane
+  resultCount Int
+  clickedKey  String?
+  createdAt   DateTime   @default(now())
+
+  @@index([createdAt])
 }

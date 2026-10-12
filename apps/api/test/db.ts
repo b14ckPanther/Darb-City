@@ -17,6 +17,6 @@ export function testPrisma(): PrismaService {
 
 export async function resetDatabase(prisma: PrismaService): Promise<void> {
   await prisma.$executeRawUnsafe(
-    `TRUNCATE "Claim", "Membership", "User", "Organization", "BusinessKind", "Business", "Brand", "Kind", "Sector", "Place" CASCADE`,
+    `TRUNCATE "SearchQuery", "SearchDocument", "Claim", "Membership", "User", "Organization", "BusinessKind", "Business", "Brand", "Kind", "Sector", "Place" CASCADE`,
   );
 }
