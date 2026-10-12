@@ -1,8 +1,9 @@
 import { initContract } from "@ts-rest/core";
 import { z } from "zod";
 import {
+  BadRequestSchema,
   BusinessDetailSchema,
-  BusinessSummarySchema,
+  BusinessPageSchema,
   NotFoundSchema,
   PlaceDetailSchema,
   PlaceSchema,
@@ -50,8 +51,10 @@ export const contract = c.router({
           .enum(["true", "false"])
           .transform((v) => v === "true")
           .optional(),
+        limit: z.coerce.number().int().min(1).max(100).default(30),
+        cursor: z.string().min(1).max(512).optional(),
       }),
-      responses: { 200: z.array(BusinessSummarySchema), 404: NotFoundSchema },
+      responses: { 200: BusinessPageSchema, 400: BadRequestSchema, 404: NotFoundSchema },
     },
     get: {
       method: "GET",

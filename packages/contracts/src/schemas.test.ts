@@ -1,5 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { BusinessDetailSchema, HoursSchema, LocalizedSchema, PlaceSchema } from "./schemas.js";
+import { contract } from "./contract.js";
+import {
+  BusinessDetailSchema,
+  BusinessPageSchema,
+  HoursSchema,
+  LocalizedSchema,
+  PlaceSchema,
+} from "./schemas.js";
 
 describe("LocalizedSchema", () => {
   it("accepts any one language", () => {
@@ -64,5 +71,28 @@ describe("BusinessDetailSchema", () => {
       brandId: null,
     };
     expect(BusinessDetailSchema.parse(business).slug).toBe("abu-salim");
+  });
+});
+
+describe("businesses.list query", () => {
+  const query = contract.businesses.list.query;
+  it("defaults limit to 30 and accepts 1 to 100", () => {
+    expect(query.parse({}).limit).toBe(30);
+    expect(query.parse({ limit: "1" }).limit).toBe(1);
+    expect(query.parse({ limit: "100" }).limit).toBe(100);
+  });
+  it("rejects limits outside 1 to 100 and empty cursors", () => {
+    expect(query.safeParse({ limit: "0" }).success).toBe(false);
+    expect(query.safeParse({ limit: "101" }).success).toBe(false);
+    expect(query.safeParse({ cursor: "" }).success).toBe(false);
+  });
+});
+
+describe("BusinessPageSchema", () => {
+  it("carries items and a nullable cursor", () => {
+    expect(BusinessPageSchema.parse({ items: [], nextCursor: null })).toEqual({
+      items: [],
+      nextCursor: null,
+    });
   });
 });

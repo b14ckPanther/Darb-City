@@ -103,3 +103,12 @@ export const BusinessDetailSchema = BusinessSummarySchema.extend({
 export type BusinessDetailDto = z.infer<typeof BusinessDetailSchema>;
 
 export const NotFoundSchema = z.object({ message: z.string() });
+
+export const BusinessPageSchema = z.object({
+  items: z.array(BusinessSummarySchema),
+  /** Opaque; send it back as `cursor` for the next page. Null on the last page. */
+  nextCursor: z.string().nullable(),
+});
+export type BusinessPageDto = z.infer<typeof BusinessPageSchema>;
+
+export const BadRequestSchema = z.object({ message: z.string() });
