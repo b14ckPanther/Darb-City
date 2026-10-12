@@ -24,13 +24,18 @@ test("the city bar switch keeps the path on list levels", async ({ page }) => {
 
 test("Arabic falls back to Hebrew and is never blank", async ({ page }) => {
   await page.goto(`/ar${LEVELS.nationalKind}`);
-  for (const name of await page.locator("[data-business-name]").allTextContents())
-    expect(name.trim()).not.toBe("");
+  const names = await page.locator("[data-business-name]").allTextContents();
+  expect(names.length).toBeGreaterThan(0);
+  for (const name of names) expect(name.trim()).not.toBe("");
   await page.goto(`/ar${LEVELS.sector}`);
-  for (const label of await page.locator("[data-door]").allTextContents())
-    expect(label.trim()).not.toBe("");
+  const doors = await page.locator("[data-door]").allTextContents();
+  expect(doors.length).toBeGreaterThan(0);
+  for (const label of doors) expect(label.trim()).not.toBe("");
   await page.goto(`/ar${LEVELS.business}`);
   expect((await page.locator("[data-sheet-title]").textContent())?.trim()).not.toBe("");
+  // HaGalgal Garage has no Arabic name in the seed, so its Arabic page shows the Hebrew one.
+  await page.goto("/ar/sakhnin/auto/garages/hagalgal-garage");
+  await expect(page.locator("[data-sheet-title]")).toHaveText("מוסך הגלגל");
 });
 
 test("an explicit Hebrew prefix redirects to the unprefixed URL", async ({ page }) => {
