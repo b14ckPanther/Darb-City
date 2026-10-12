@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { act, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const push = vi.fn();
@@ -15,23 +15,24 @@ beforeEach(() => {
 });
 afterEach(() => push.mockReset());
 
+const sheet = () => (
+  <Sheet
+    closeHref="/sakhnin/beauty/barbershops"
+    labelledBy="sheet-title"
+    returnFocusTo="sakhnin/samers-barbershop"
+    labels={{
+      close: "Close",
+      resize: { peek: "Resize, small", half: "Resize, half", full: "Resize, full" },
+    }}
+  >
+    <h2 id="sheet-title">Samer's</h2>
+    <a href="https://wa.me/1">WhatsApp</a>
+    <button type="button">Share</button>
+  </Sheet>
+);
+
 const renderSheet = () =>
-  render(
-    <Sheet
-      closeHref="/sakhnin/beauty/barbershops"
-      labelledBy="sheet-title"
-      returnFocusTo="sakhnin/samers-barbershop"
-      labels={{
-        close: "Close",
-        resize: { peek: "Resize, small", half: "Resize, half", full: "Resize, full" },
-      }}
-    >
-      <h2 id="sheet-title">Samer's</h2>
-      <a href="https://wa.me/1">WhatsApp</a>
-      <button type="button">Share</button>
-    </Sheet>,
-    { container: document.body.appendChild(document.createElement("div")) },
-  );
+  render(sheet(), { container: document.body.appendChild(document.createElement("div")) });
 
 describe("Sheet", () => {
   it("opens as a labelled modal dialog with focus on close and the city inert", () => {
@@ -44,6 +45,38 @@ describe("Sheet", () => {
       expect(document.getElementById(id)?.hasAttribute("inert")).toBe(true);
     expect(document.querySelector(".skip-link")?.hasAttribute("inert")).toBe(true);
     expect(dialog.getAttribute("tabindex")).toBe("-1");
+  });
+
+  it("lives at the end of <body>, outside the city, so it stacks above the site header", () => {
+    renderSheet();
+    expect(document.querySelector("[data-sheet]")?.parentElement).toBe(document.body);
+    expect(document.body.lastElementChild?.hasAttribute("data-sheet")).toBe(true);
+  });
+
+  it("hydrates where the server rendered it, then moves to <body> with focus and the city inert", async () => {
+    const { renderToString } = await import("react-dom/server");
+    const { hydrateRoot } = await import("react-dom/client");
+    const city = document.body.appendChild(document.createElement("div"));
+    city.id = "city";
+    city.innerHTML = renderToString(sheet());
+    expect(city.querySelector("[data-sheet]")).not.toBeNull();
+    const errors: unknown[] = [];
+    const consoleError = vi.spyOn(console, "error").mockImplementation((e) => errors.push(e));
+    let root: ReturnType<typeof hydrateRoot> | undefined;
+    await act(async () => {
+      root = hydrateRoot(city, sheet(), { onRecoverableError: (e) => errors.push(e) });
+    });
+    consoleError.mockRestore();
+    expect(errors).toEqual([]);
+    expect(city.querySelector("[data-sheet]")).toBeNull();
+    expect(document.querySelectorAll("[data-sheet]")).toHaveLength(1);
+    expect(document.querySelector("[data-sheet]")?.parentElement).toBe(document.body);
+    expect(document.activeElement?.getAttribute("data-sheet-close")).toBe("");
+    for (const id of ["site-header", "city-list", "city"])
+      expect(document.getElementById(id)?.hasAttribute("inert")).toBe(true);
+    act(() => root?.unmount());
+    expect(document.querySelector("[data-sheet]")).toBeNull();
+    expect(document.getElementById("city")?.hasAttribute("inert")).toBe(false);
   });
 
   it("makes every sibling of the sheet and its ancestors inert, and restores them", () => {

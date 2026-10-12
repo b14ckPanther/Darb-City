@@ -115,15 +115,16 @@ export function Stage({ locale, labels, onFail }: StageProps) {
     return () => observer.disconnect();
   }, []);
 
-  // Phone: the open stage covers the city, which stops taking focus until "List". Declared before
-  // the map effect so the stage is displayed (has a size) when the map is created.
+  // Phone: the open stage covers the city and the header's top bar, which stop taking focus until
+  // "List". The docked search bar stays above the stage and usable. Declared before the map effect
+  // so the stage is displayed (has a size) when the map is created.
   useEffect(() => {
     if (desktop || !visible) return;
     const root = document.documentElement;
     const behind = [
       document.querySelector("[data-city]"),
-      document.getElementById("site-header"),
-    ].filter((el): el is HTMLElement => el !== null);
+      ...document.querySelectorAll("[data-site-header] > * > :not([data-search-bar])"),
+    ].filter((el): el is Element => el !== null && !el.hasAttribute("inert"));
     root.setAttribute("data-stage-open", "");
     for (const el of behind) el.setAttribute("inert", "");
     return () => {

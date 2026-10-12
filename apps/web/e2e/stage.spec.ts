@@ -374,6 +374,23 @@ test.describe("phone", () => {
     await expect(host(page)).toHaveAttribute("data-stage-level", "1");
   });
 
+  test("the docked search bar stays above the open stage and usable", async ({ page }) => {
+    await openStage(page, LEVELS.place);
+    const search = page.locator("#q");
+    expect(
+      await search.evaluate((el) => {
+        const box = el.getBoundingClientRect();
+        return document.elementFromPoint(box.x + box.width / 2, box.y + box.height / 2) === el;
+      }),
+    ).toBe(true);
+    // The stage ends above the pill: nothing of the plaza or the map sits under it or the bar.
+    const pill = (await page.locator("[data-stage-toggle]").boundingBox())!;
+    const stage = (await host(page).boundingBox())!;
+    expect(stage.y + stage.height).toBeLessThanOrEqual(pill.y);
+    await search.fill("barber");
+    await expect(search).toHaveValue("barber");
+  });
+
   test("level 3 hands the phone back to the list", async ({ page }) => {
     await openStage(page, LEVELS.sector);
     await page.locator('[data-plaza-door="barbershops"]').click();

@@ -31,3 +31,27 @@ it("the phone's Map/List pill says what it opens and whether it is open", () => 
   expect(pill.getAttribute("aria-expanded")).toBe("true");
   expect(pill.textContent).toBe("List");
 });
+
+it("the open phone stage puts the city and the header's top bar behind it, not the search bar", () => {
+  document.body.innerHTML = `
+    <header id="site-header" data-site-header=""><div class="frame">
+      <a href="/" data-brand="">Darb</a>
+      <div data-search-bar=""><input id="q" /></div>
+      <a href="/for-business" data-for-business="">For business</a>
+    </div></header>
+    <div data-city=""><a href="/sakhnin">Sakhnin</a></div>`;
+  const { unmount } = render(<Stage locale="en" labels={labels} onFail={vi.fn()} />, {
+    container: document.body.appendChild(document.createElement("div")),
+  });
+  fireEvent.click(screen.getByRole("button", { name: "Map" }));
+  const inert = (selector: string) => document.querySelector(selector)!.hasAttribute("inert");
+  expect(document.documentElement.hasAttribute("data-stage-open")).toBe(true);
+  expect(inert("[data-city]")).toBe(true);
+  expect(inert("[data-brand]")).toBe(true);
+  expect(inert("[data-for-business]")).toBe(true);
+  expect(inert("[data-search-bar]")).toBe(false);
+  expect(inert("#site-header")).toBe(false);
+  unmount();
+  for (const selector of ["[data-city]", "[data-brand]", "[data-for-business]"])
+    expect(inert(selector)).toBe(false);
+});

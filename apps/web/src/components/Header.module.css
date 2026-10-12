@@ -1,9 +1,22 @@
 .header {
-  /* Over the desktop stage (z 0); level with .city (z 1), which follows it, so the sheet wins. */
+  /*
+   * Over the desktop stage (z 0) and the list column (.city, z 1), so what opens from the header
+   * (the Near me message) is never under the list. The sheet lives in <body> at z 40, above it.
+   */
   position: relative;
-  z-index: 1;
+  z-index: 2;
   border-block-end: 1px solid var(--line-soft);
   background: rgb(3 17 12 / 0.88);
+}
+
+/*
+ * Phone: no stacking context, so the docked search bar (SearchBar.module.css, z 36) stacks with the
+ * Map pill (z 35) and the open stage (z 30) instead of under them.
+ */
+@media (max-width: 899px) {
+  .header {
+    z-index: auto;
+  }
 }
 
 .inner {

@@ -1,6 +1,8 @@
 .host {
   position: absolute;
   inset: 0;
+  /* Phone: clear of the pill and the docked search bar (StageMount.module.css). */
+  inset-block-end: var(--stage-bottom, 0px);
   overflow: hidden;
 }
 
@@ -44,7 +46,7 @@
   color: var(--text-soft);
 }
 
-/* Phone only: Map ⇄ List, centred above the docked search bar. */
+/* Phone only: Map ⇄ List, centred above the docked search bar (StageMount.module.css --stage-bottom). */
 .toggle {
   position: fixed;
   inset-block-end: calc(88px + env(safe-area-inset-bottom));
