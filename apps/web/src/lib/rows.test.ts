@@ -61,7 +61,20 @@ describe("business rows", () => {
       example: true,
       openNow: true,
       placeName: null,
+      lat: 32.8,
+      lng: 35.3,
+      distance: null,
     });
+  });
+  it("shows the distance on a distance-sorted list, formatted by the caller", () => {
+    const row = toBusinessRow(
+      { ...business("samers", "haifa"), distanceKm: 1.25 },
+      { ...ctx, kmLabel: (km) => `${km.toFixed(1)} km` },
+    );
+    expect(row?.distance).toBe("1.3 km");
+    expect(
+      toBusinessRow({ ...business("samers", "haifa"), distanceKm: 1.25 }, ctx)?.distance,
+    ).toBeNull();
   });
   it("names the neighbourhood when a row comes from below the current place", () => {
     expect(toBusinessRow(business("samers", "kiryat-haim"), ctx)?.placeName).toBe("كريات حاييم");

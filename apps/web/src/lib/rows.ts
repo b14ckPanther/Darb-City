@@ -13,6 +13,10 @@ export interface BusinessRowData {
   openNow: boolean | null;
   /** Shown when the business is in another place than the one being listed. */
   placeName: string | null;
+  lat: number;
+  lng: number;
+  /** Shown on distance-sorted lists ("1.3 km"). */
+  distance: string | null;
 }
 
 export interface RowContext {
@@ -24,6 +28,8 @@ export interface RowContext {
    * beneath it name their place. Null lists everywhere, and rows open in their own place.
    */
   here: string | null;
+  /** Formats distanceKm; server callers pass formatKm, so this file never imports @darb/i18n. */
+  kmLabel?: (km: number) => string;
 }
 
 export function placeNames(place: PlaceDetailDto | null, places: readonly PlaceDto[] = []) {
@@ -53,6 +59,9 @@ export function toBusinessRow(b: BusinessSummaryDto, ctx: RowContext): BusinessR
     example: b.tier === "example",
     openNow: b.openNow,
     placeName: b.placeSlug === ctx.here || !name ? null : pickText(name, ctx.locale),
+    lat: b.lat,
+    lng: b.lng,
+    distance: b.distanceKm !== undefined && ctx.kmLabel ? ctx.kmLabel(b.distanceKm) : null,
   };
 }
 

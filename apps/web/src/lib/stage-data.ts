@@ -1,8 +1,8 @@
 import { pickText, type Locale } from "@darb/core";
 import type { BusinessSummaryDto, PlaceDetailDto, SectorDto } from "@darb/contracts";
-import type { StageLevel, StagePlace } from "@darb/stage";
+import type { StageLevel, StagePin, StagePlace } from "@darb/stage";
 import { href, paths } from "./routes";
-import { toBusinessRow, type RowContext } from "./rows";
+import { toRows, type BusinessRowData, type RowContext } from "./rows";
 import type { TaxonomyIndex } from "./taxonomy";
 
 /** Every door and pin href below equals the href of the list door or row it mirrors. */
@@ -64,11 +64,31 @@ export function kindStage(
   return {
     depth: 3,
     place: stagePlace(locale, place),
-    pins: items.flatMap((b) => {
-      const row = toBusinessRow(b, ctx);
-      return row ? [{ key: row.key, href: row.href, name: row.name, lat: b.lat, lng: b.lng }] : [];
-    }),
+    pins: pinsFromRows(toRows(items, ctx)),
   };
+}
+
+/** A pin per row, with the row's own href: the map and the list always open the same sheet. */
+export const pinsFromRows = (rows: readonly BusinessRowData[]): StagePin[] =>
+  rows.map((r) => ({ key: r.key, href: r.href, name: r.name, lat: r.lat, lng: r.lng }));
+
+/** Search results on the map (decision 6): at the searched place, else around the first result. */
+export function searchStage(
+  place: StagePlace | null,
+  rows: readonly BusinessRowData[],
+): StageLevel {
+  const first = rows[0];
+  const at =
+    place ??
+    (first
+      ? {
+          slug: first.key.split("/")[0] ?? "",
+          name: first.placeName ?? first.name,
+          lat: first.lat,
+          lng: first.lng,
+        }
+      : null);
+  return at ? { depth: 3, place: at, pins: pinsFromRows(rows) } : COUNTRY_STAGE;
 }
 
 export function soonStage(locale: Locale, place: PlaceDetailDto): StageLevel {

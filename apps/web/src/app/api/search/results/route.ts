@@ -1,6 +1,8 @@
 import { ResultsRequestSchema } from "@darb/contracts";
 import { ApiUnavailableError, postResults } from "@/lib/api";
 import { clientIpFrom, roundPoint } from "@/lib/client-ip";
+import { viewContext } from "@/lib/search-context";
+import { toSearchView } from "@/lib/search-view";
 
 const NO_STORE = { "cache-control": "no-store" };
 
@@ -22,7 +24,9 @@ export async function POST(request: Request): Promise<Response> {
       );
     if (res.status === 400)
       return Response.json({ message: "Bad query" }, { status: 400, headers: NO_STORE });
-    return Response.json(res.body, { headers: NO_STORE });
+    const ctx = await viewContext(parsed.data.locale, res.body.intent);
+    const view = toSearchView(res.body, parsed.data.q, ctx);
+    return Response.json(view, { headers: NO_STORE });
   } catch (error) {
     if (error instanceof ApiUnavailableError)
       return Response.json({ message: "Unavailable" }, { status: 503, headers: NO_STORE });

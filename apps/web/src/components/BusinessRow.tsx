@@ -20,6 +20,11 @@ export function BusinessRow({ row, labels }: { row: BusinessRowData; labels: Row
         {row.tagline ? <span className={styles.rowTagline}>{row.tagline}</span> : null}
         <span className={styles.rowMeta}>
           {row.placeName ? <span className={styles.rowPlace}>{row.placeName}</span> : null}
+          {row.distance ? (
+            <span className={styles.rowPlace} data-distance="">
+              {row.distance}
+            </span>
+          ) : null}
           {row.example ? <ExampleBadge label={labels.example} /> : null}
           <OpenState
             openNow={row.openNow}

@@ -1,15 +1,79 @@
 // @vitest-environment node
+import { EMPTY_INTENT, type SearchResponseDto } from "@darb/contracts";
 import { afterEach, describe, expect, it, vi } from "vitest";
+import { indexTaxonomy } from "@/lib/taxonomy";
+import type { ViewContext } from "@/lib/search-view";
 
 const postSearch = vi.fn();
 const getSuggestions = vi.fn();
 const postClick = vi.fn();
+const postResults = vi.fn();
 vi.mock("@/lib/api", async (orig) => ({
   ...(await orig<typeof import("@/lib/api")>()),
   postSearch,
+  postResults,
   getSuggestions,
   postClick,
 }));
+const ctx: ViewContext = {
+  locale: "en",
+  index: indexTaxonomy({
+    sectors: [
+      {
+        id: "s1",
+        slug: "food",
+        name: { en: "Food" },
+        tagline: {},
+        accent: "#d6a473",
+        order: 1,
+        kinds: [
+          {
+            id: "k1",
+            slug: "sweets",
+            sectorId: "s1",
+            parentKindId: null,
+            name: { en: "Sweets" },
+            template: "menu",
+            attributes: ["delivers"],
+            icon: null,
+            order: 1,
+          },
+        ],
+      },
+    ],
+  }),
+  names: new Map([["akko", { en: "Akko" }]]),
+  place: { slug: "akko", name: "Akko", lat: 32.92, lng: 35.07 },
+  labels: { openNow: "Open now", delivers: "Delivers", nearMe: "Near me" },
+  kmLabel: (km) => `${km.toFixed(1)} km`,
+};
+const viewContext = vi.fn(async () => ctx);
+vi.mock("@/lib/search-context", () => ({ viewContext }));
+const intent = { ...EMPTY_INTENT, kinds: ["sweets"], place: "akko", openNow: true };
+const ok: SearchResponseDto = {
+  status: "ok",
+  lane: "smart",
+  queryId: "8f2d0c4e-1b7a-4c2e-9f61-3d5a7b9c0e12",
+  intent,
+  needsLocation: false,
+  items: [
+    {
+      id: "b1",
+      slug: "abu-salem",
+      name: { en: "Abu Salem" },
+      tagline: {},
+      tier: "example",
+      primaryKindId: "k1",
+      placeId: "p1",
+      placeSlug: "akko",
+      lat: 32.921,
+      lng: 35.071,
+      photo: null,
+      openNow: true,
+    },
+  ],
+  nearest: [],
+};
 const search = await import("./route");
 const suggest = await import("./suggest/route");
 const click = await import("./click/route");
@@ -38,6 +102,21 @@ describe("POST /api/search", () => {
     );
     expect(res.status).toBe(429);
     expect(res.headers.get("retry-after")).toBe("12");
+    expect(res.headers.get("cache-control")).toBe("no-store");
+  });
+  it("answers with the view: chips, rows and pins, ready to draw", async () => {
+    postSearch.mockResolvedValue({ status: 200, body: ok });
+    const res = await search.POST(req({ q: "sweets akko", locale: "en" }));
+    expect(viewContext).toHaveBeenCalledWith("en", intent);
+    const view = await res.json();
+    expect(view.chips.map((c: { id: string }) => c.id)).toEqual([
+      "place:akko",
+      "kind:sweets",
+      "openNow",
+    ]);
+    expect(view.rows[0].href).toBe("/en/akko/food/sweets/abu-salem");
+    expect(view.stage.pins).toHaveLength(1);
+    expect(view.queryId).toBe(ok.queryId);
     expect(res.headers.get("cache-control")).toBe("no-store");
   });
   it("rejects a malformed body", async () => {
@@ -72,5 +151,29 @@ describe("POST /api/search/click", () => {
     expect(res.status).toBe(204);
     expect((await click.POST(req({ queryId: "nope", key: "x" }))).status).toBe(204);
     expect(postClick).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe("POST /api/search/results", () => {
+  it("re-runs an edited intent with a rounded point and answers with the view", async () => {
+    const results = await import("./results/route");
+    postResults.mockResolvedValue({
+      status: 200,
+      body: { ...ok, queryId: null, intent: { ...intent, openNow: false } },
+    });
+    const edited = {
+      q: "sweets akko",
+      locale: "en",
+      intent: { ...intent, openNow: false },
+      near: { lat: 32.92049, lng: 35.07151 },
+    };
+    const res = await results.POST(req(edited, { "x-real-ip": "9.9.9.9" }));
+    expect(postResults).toHaveBeenCalledWith(
+      { ...edited, near: { lat: 32.92, lng: 35.072 } },
+      "9.9.9.9",
+    );
+    const view = await res.json();
+    expect(view.chips.map((c: { id: string }) => c.id)).toEqual(["place:akko", "kind:sweets"]);
+    expect(view.queryId).toBeNull();
   });
 });
