@@ -134,3 +134,76 @@ it("refuses experience content that breaks the screen schema", async () => {
   };
   await expect(loadSeed(prisma, bad)).rejects.toThrow(/samer/);
 });
+
+it("follows a place's slug rename instead of tripping over its CBS code", async () => {
+  await loadSeed(prisma, data);
+  const before = await prisma.place.findUniqueOrThrow({ where: { cbsCode: "7500" } });
+  const renamed: SeedData = {
+    ...data,
+    places: data.places.map((p) => (p.slug === "sakhnin" ? { ...p, slug: "sakhnin-city" } : p)),
+    businesses: data.businesses.map((b) => ({ ...b, place: "sakhnin-city" })),
+  };
+  await loadSeed(prisma, renamed);
+  const after = await prisma.place.findUniqueOrThrow({ where: { cbsCode: "7500" } });
+  expect(after.id).toBe(before.id);
+  expect([after.slug, after.path]).toEqual([
+    "sakhnin-city",
+    "/israel/northern-district/sakhnin-city/",
+  ]);
+  expect(await prisma.place.count()).toBe(3);
+  expect(await prisma.business.count()).toBe(1);
+});
+
+it("hides kinds that are no longer in the data", async () => {
+  await loadSeed(prisma, data);
+  await loadSeed(prisma, { ...data, kinds: data.kinds.filter((k) => k.slug !== "kids-haircuts") });
+  const kinds = await prisma.kind.findMany({ orderBy: { slug: "asc" } });
+  expect(kinds.map((k) => [k.slug, k.status])).toEqual([
+    ["barbershops", "active"],
+    ["kids-haircuts", "hidden"],
+  ]);
+});
+
+it("suspends seeded businesses that are no longer in the data, and only those", async () => {
+  const second = {
+    ...data.businesses[0]!,
+    slug: "samer-2",
+    brand: null,
+    lat: 32.862,
+  };
+  await loadSeed(prisma, { ...data, businesses: [...data.businesses, second] });
+  const kind = await prisma.kind.findUniqueOrThrow({ where: { slug: "barbershops" } });
+  const place = await prisma.place.findUniqueOrThrow({ where: { slug: "sakhnin" } });
+  await prisma.business.create({
+    data: {
+      slug: "owner-made",
+      placeId: place.id,
+      primaryKindId: kind.id,
+      name: { en: "Owner" },
+      tagline: { en: "x" },
+      address: { en: "Sakhnin" },
+      hours: { weekly: {}, exceptions: [] },
+      experience: screen,
+      lat: 32.86,
+      lng: 35.3,
+      source: "self",
+      status: "published",
+      tier: "basic",
+    },
+  });
+  await loadSeed(prisma, data);
+  const rows = await prisma.business.findMany({ orderBy: { slug: "asc" } });
+  expect(rows.map((b) => [b.slug, b.status])).toEqual([
+    ["owner-made", "published"],
+    ["samer", "published"],
+    ["samer-2", "suspended"],
+  ]);
+});
+
+it("republishes a suspended seeded business that comes back", async () => {
+  await loadSeed(prisma, data);
+  await loadSeed(prisma, { ...data, businesses: [] });
+  expect((await prisma.business.findFirstOrThrow()).status).toBe("suspended");
+  await loadSeed(prisma, data);
+  expect((await prisma.business.findFirstOrThrow()).status).toBe("published");
+});
