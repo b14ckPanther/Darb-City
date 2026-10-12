@@ -1,0 +1,272 @@
+[
+  {
+    "slug": "food",
+    "name": {
+      "he": "רובע הטעמים",
+      "ar": "حي النكهات",
+      "en": "The Tasting Quarter"
+    },
+    "tagline": {
+      "he": "מנות, קפה ומתוקים, ישר מהטלפון",
+      "ar": "أطباق وقهوة وحلويات، مباشرة من الهاتف",
+      "en": "Plates, coffee and sweets, straight from the phone"
+    },
+    "accent": "#d6a473",
+    "order": 1
+  },
+  {
+    "slug": "beauty",
+    "name": {
+      "he": "שדרת היופי",
+      "ar": "شارع الجمال",
+      "en": "Beauty Row"
+    },
+    "tagline": {
+      "he": "תורים, טיפולים ורגעים קטנים של פינוק",
+      "ar": "مواعيد وعلاجات ولحظات دلال صغيرة",
+      "en": "Appointments, treatments and small luxuries"
+    },
+    "accent": "#d9aaa2",
+    "order": 2
+  },
+  {
+    "slug": "health",
+    "name": {
+      "he": "גבעת הבריאות",
+      "ar": "تلّة العافية",
+      "en": "Wellness Hill"
+    },
+    "tagline": {
+      "he": "גוף ונפש, בקביעת תור אחת",
+      "ar": "الجسم والنفس، بحجز موعد واحد",
+      "en": "Body and mind, one booking away"
+    },
+    "accent": "#a7c2b1",
+    "order": 3
+  },
+  {
+    "slug": "sports",
+    "name": {
+      "he": "זירת הספורט",
+      "ar": "ساحة الرياضة",
+      "en": "The Sports Ground"
+    },
+    "tagline": {
+      "he": "אימונים, מגרשים ושבילים בטבע",
+      "ar": "تمارين وملاعب ومسارات بالطبيعة",
+      "en": "Training, courts and trails outdoors"
+    },
+    "accent": "#d39c87",
+    "order": 4
+  },
+  {
+    "slug": "kids",
+    "name": {
+      "he": "חצר המשפחה",
+      "ar": "حوش العيلة",
+      "en": "The Family Yard"
+    },
+    "tagline": {
+      "he": "גן, משחק ויום הולדת, הכול להורים",
+      "ar": "حضانة ولعب وأعياد ميلاد، كل شي للأهل",
+      "en": "Nursery, play and birthdays, all for parents"
+    },
+    "accent": "#e6c58f",
+    "order": 5
+  },
+  {
+    "slug": "education",
+    "name": {
+      "he": "כיכר הלמידה",
+      "ar": "ساحة العلم",
+      "en": "Learning Square"
+    },
+    "tagline": {
+      "he": "שיעורים, חוגים והצעד הבא",
+      "ar": "دروس ودورات والخطوة الجاية",
+      "en": "Lessons, classes and the next step"
+    },
+    "accent": "#adbccf",
+    "order": 6
+  },
+  {
+    "slug": "tech",
+    "name": {
+      "he": "עמק הדיגיטל",
+      "ar": "وادي الديجيتال",
+      "en": "Digital Valley"
+    },
+    "tagline": {
+      "he": "תוכנה, אבטחה ושיווק שמביאים לקוחות",
+      "ar": "برمجة وحماية وتسويق بتجيب زباين",
+      "en": "Software, security and marketing that bring customers"
+    },
+    "accent": "#93c1b3",
+    "order": 7
+  },
+  {
+    "slug": "services",
+    "name": {
+      "he": "רחוב בעלי המקצוע",
+      "ar": "شارع أصحاب المهن",
+      "en": "The Trades Street"
+    },
+    "tagline": {
+      "he": "הצעת מחיר, פגישה ושקט נפשי",
+      "ar": "عرض سعر، موعد وراحة بال",
+      "en": "A quote, a meeting and peace of mind"
+    },
+    "accent": "#c2b796",
+    "order": 8
+  },
+  {
+    "slug": "home",
+    "name": {
+      "he": "סמטת הבית",
+      "ar": "زقاق البيت",
+      "en": "Home and Living Lane"
+    },
+    "tagline": {
+      "he": "רהיטים, גינות וכל מה שהבית צריך",
+      "ar": "أثاث وجنينة وكل شي بيحتاجه البيت",
+      "en": "Furniture, gardens and everything a home needs"
+    },
+    "accent": "#b9a9c8",
+    "order": 9
+  },
+  {
+    "slug": "industry",
+    "name": {
+      "he": "אזור התעשייה",
+      "ar": "المنطقة الصناعية",
+      "en": "The Industrial Zone"
+    },
+    "tagline": {
+      "he": "מפעלים, סיטונאים ומשלוחים לעסקים",
+      "ar": "مصانع وتجار جملة وتوصيل للمصالح",
+      "en": "Factories, wholesalers and deliveries for business"
+    },
+    "accent": "#bfa48a",
+    "order": 10
+  },
+  {
+    "slug": "auto",
+    "name": {
+      "he": "דרך הגלגלים",
+      "ar": "درب العجلات",
+      "en": "Wheels Way"
+    },
+    "tagline": {
+      "he": "רכבים, טיפולים ודרך פתוחה",
+      "ar": "سيارات وصيانة وطريق مفتوح",
+      "en": "Cars, care and the open road"
+    },
+    "accent": "#94b8bd",
+    "order": 11
+  },
+  {
+    "slug": "agriculture",
+    "name": {
+      "he": "שבילי החווה",
+      "ar": "دروب المزرعة",
+      "en": "Farm Lanes"
+    },
+    "tagline": {
+      "he": "ישר מהשדה, מהכוורת ומהרפת",
+      "ar": "من الحقل والقفير والزريبة، على طول",
+      "en": "Straight from the field, the hive and the barn"
+    },
+    "accent": "#b8bf86",
+    "order": 12
+  },
+  {
+    "slug": "events",
+    "name": {
+      "he": "רחבת החגיגות",
+      "ar": "ساحة الأفراح",
+      "en": "Celebration Plaza"
+    },
+    "tagline": {
+      "he": "ימים שזוכרים, מההזמנה ועד האורח האחרון",
+      "ar": "أيام ما بتنتسى، من العزومة لآخر ضيف",
+      "en": "Days to remember, from the invite to the last guest"
+    },
+    "accent": "#e3be8c",
+    "order": 13
+  },
+  {
+    "slug": "travel",
+    "name": {
+      "he": "שער המסעות",
+      "ar": "بوابة السفر",
+      "en": "Journeys Gate"
+    },
+    "tagline": {
+      "he": "מעומרה ועד חופשה משפחתית",
+      "ar": "من العمرة لعطلة العيلة",
+      "en": "From Umrah to the family holiday"
+    },
+    "accent": "#c8a5c0",
+    "order": 14
+  },
+  {
+    "slug": "retail",
+    "name": {
+      "he": "שוק המותגים",
+      "ar": "سوق الماركات",
+      "en": "The Brand Market"
+    },
+    "tagline": {
+      "he": "חנויות ויוצרים עם עולם משלהם",
+      "ar": "محلات ومبدعين إلهم عالمهم الخاص",
+      "en": "Shops and makers with a world of their own"
+    },
+    "accent": "#cc9f84",
+    "order": 15
+  },
+  {
+    "slug": "faith",
+    "name": {
+      "he": "רובע האמונה והמשפחה",
+      "ar": "حي الإيمان والعيلة",
+      "en": "Faith and Family Quarter"
+    },
+    "tagline": {
+      "he": "מסגד, משפחה ומעשים טובים",
+      "ar": "جامع وعيلة وأعمال خير",
+      "en": "Mosque, family and good deeds"
+    },
+    "accent": "#a0b98e",
+    "order": 16
+  },
+  {
+    "slug": "civic",
+    "name": {
+      "he": "כיכר העירייה",
+      "ar": "ساحة البلدية",
+      "en": "Civic Square"
+    },
+    "tagline": {
+      "he": "טפסים, תורים ותשלומים בלי לעמוד בתור",
+      "ar": "معاملات ومواعيد ودفعات بدون ما توقف بالدور",
+      "en": "Forms, appointments and payments without the queue"
+    },
+    "accent": "#a8b4cc",
+    "order": 17
+  },
+  {
+    "slug": "community",
+    "name": {
+      "he": "לב השכונה",
+      "ar": "قلب الحارة",
+      "en": "The Neighbourhood Heart"
+    },
+    "tagline": {
+      "he": "מועדונים, קהילות ומי שעושים טוב",
+      "ar": "نوادي وجمعيات وناس بتعمل الخير",
+      "en": "Clubs, communities and people doing good"
+    },
+    "accent": "#c6b886",
+    "order": 18
+  }
+]

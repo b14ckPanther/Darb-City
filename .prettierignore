@@ -1,0 +1,8 @@
+pnpm-lock.yaml
+**/dist
+**/generated
+**/prisma/migrations
+.superpowers
+docs
+packages/seed/data/*.md
+packages/seed/data/*.json
