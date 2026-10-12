@@ -1,9 +1,10 @@
 import { expect, test } from "@playwright/test";
 import { BUSINESS_KEY, HAIFA, isPhone, LEVELS, localePath } from "./fixtures";
 
-test("keyboard: open from the list, stay trapped, Escape returns focus to the row", async ({
+test("phone keyboard: open from the list, stay trapped, Escape returns focus to the row", async ({
   page,
-}) => {
+}, info) => {
+  test.skip(!isPhone(info), "phone only: the desktop panel is non-modal (next test)");
   await page.goto(LEVELS.kind);
   const row = page.locator(`[data-business-link="${BUSINESS_KEY}"]`);
   await row.focus();
@@ -16,6 +17,37 @@ test("keyboard: open from the list, stay trapped, Escape returns focus to the ro
     await page.keyboard.press("Tab");
     expect(await dialog.evaluate((d) => d.contains(document.activeElement))).toBe(true);
   }
+  await page.keyboard.press("Escape");
+  await expect(page).toHaveURL(LEVELS.kind);
+  await expect(dialog).toHaveCount(0);
+  await expect(row).toBeFocused();
+});
+
+test("desktop keyboard: Tab leaves the panel after its last control, Escape still closes", async ({
+  page,
+}, info) => {
+  test.skip(isPhone(info), "desktop only");
+  await page.goto(LEVELS.kind);
+  const row = page.locator(`[data-business-link="${BUSINESS_KEY}"]`);
+  await row.focus();
+  await page.keyboard.press("Enter");
+  const dialog = page.getByRole("dialog");
+  await expect(dialog.locator("[data-sheet-close]")).toBeFocused();
+  const inside = () => dialog.evaluate((d) => d.contains(document.activeElement));
+  // Shift+Tab from the first control moves back into the page, not round to the panel's end.
+  await page.keyboard.press("Shift+Tab");
+  expect(await inside()).toBe(false);
+  expect(await page.evaluate(() => document.activeElement !== document.body)).toBe(true);
+  // From the panel's last control, Tab moves on out of the panel.
+  await dialog.evaluate((d) => {
+    const visible = [...d.querySelectorAll<HTMLElement>("a[href], button, input, summary")].filter(
+      (el) => el.getClientRects().length > 0,
+    );
+    visible.at(-1)!.focus();
+  });
+  expect(await inside()).toBe(true);
+  await page.keyboard.press("Tab");
+  expect(await inside()).toBe(false);
   await page.keyboard.press("Escape");
   await expect(page).toHaveURL(LEVELS.kind);
   await expect(dialog).toHaveCount(0);

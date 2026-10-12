@@ -144,8 +144,10 @@ export function Sheet({ closeHref, labelledBy, returnFocusTo, labels, children }
     };
   }, [returnFocusTo]);
 
+  // Phone only: the modal sheet keeps Tab inside. The desktop panel is non-modal, so Tab moves on
+  // to the city and the map like anywhere else on the page.
   function onKeyDown(event: KeyboardEvent<HTMLDivElement>) {
-    if (event.key !== "Tab" || !panel.current) return;
+    if (desktop || event.key !== "Tab" || !panel.current) return;
     const items = focusables(panel.current);
     const first = items[0];
     const last = items[items.length - 1];

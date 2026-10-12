@@ -211,12 +211,17 @@ describe("Sheet on desktop", () => {
     expect(document.activeElement?.getAttribute("data-sheet-close")).toBe("");
   });
 
-  it("still loops Tab inside the panel", () => {
+  it("lets Tab and Shift+Tab leave the panel: nothing traps focus but the phone sheet", () => {
     renderSheet();
     const dialog = screen.getByRole("dialog");
-    screen.getByRole("button", { name: "Share" }).focus();
-    fireEvent.keyDown(dialog, { key: "Tab" });
-    expect(document.activeElement?.getAttribute("data-sheet-handle")).toBe("");
+    const share = screen.getByRole("button", { name: "Share" });
+    share.focus();
+    expect(fireEvent.keyDown(dialog, { key: "Tab" })).toBe(true);
+    expect(document.activeElement).toBe(share);
+    const handle = document.querySelector<HTMLElement>("[data-sheet-handle]")!;
+    handle.focus();
+    expect(fireEvent.keyDown(dialog, { key: "Tab", shiftKey: true })).toBe(true);
+    expect(document.activeElement).toBe(handle);
   });
 
   it("gives focus back to its row on close", () => {
