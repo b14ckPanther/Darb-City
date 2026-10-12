@@ -35,7 +35,8 @@
   border-start-end-radius: var(--radius-l);
   box-shadow: var(--shadow-panel);
   pointer-events: auto;
-  transform: translateY(calc(var(--snap-y) + var(--drag, 0px)));
+  /* Whole pixels: a fractional offset makes 44 px targets measure 43.99 px. */
+  transform: translateY(round(calc(var(--snap-y) + var(--drag, 0px)), 1px));
   transition: transform var(--dur) var(--ease-out);
 }
 
@@ -89,6 +90,8 @@
 }
 
 .close {
+  /* Last column even when the handle is hidden on desktop: the corner at the inline end. */
+  grid-column: 3;
   display: grid;
   place-items: center;
   inline-size: var(--tap);
@@ -146,7 +149,7 @@
   @starting-style {
     .panel {
       opacity: 0;
-      transform: translateY(var(--snap-y));
+      transform: translateY(round(var(--snap-y), 1px));
     }
   }
 }
