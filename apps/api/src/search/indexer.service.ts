@@ -12,10 +12,18 @@ import {
 } from "./documents.js";
 
 export const EMBED_BATCH = 128;
+export const CASCADE_CHUNK = 500;
+
+/** pgvector's cosine distance to an all-zero vector is NaN, so such a text gets no vector. */
+const storedVector = (vector: readonly number[] | undefined): string | null =>
+  vector && vector.some((x) => x !== 0) ? vectorLiteral(vector) : null;
 type Synonyms = { he: string[]; ar: string[]; en: string[] };
 
 @Injectable()
 export class SearchIndexer {
+  /** Businesses reindexed per step when a place or kind changes. */
+  cascadeChunk = CASCADE_CHUNK;
+
   constructor(
     private readonly prisma: PrismaService,
     @Inject(EMBEDDING_PROVIDER) private readonly embeddings: EmbeddingProvider,
@@ -56,10 +64,12 @@ export class SearchIndexer {
               SELECT b.id FROM "Business" b JOIN "Place" p ON p.id = b."placeId"
               JOIN "Place" changed ON p.path LIKE changed.path || '%'
               WHERE changed.id = ANY(${ids}::uuid[])`;
-      await this.index(
-        "business",
-        owners.map((o) => o.id),
-      );
+      // A country's cascade covers every business in it, so it goes in bounded chunks.
+      for (let i = 0; i < owners.length; i += this.cascadeChunk)
+        await this.index(
+          "business",
+          owners.slice(i, i + this.cascadeChunk).map((o) => o.id),
+        );
     }
     return { upserted: rows.length, deleted };
   }
@@ -116,7 +126,7 @@ export class SearchIndexer {
         (r, i) => Prisma.sql`(
         gen_random_uuid(), ${r.entityType}::"SearchEntity", ${r.entityId}::uuid, ${r.slug}, ${r.placePath},
         ${r.kindIds}::uuid[], ${JSON.stringify(r.attributes)}::jsonb, ${r.tier}::"Tier", ${r.lat}, ${r.lng},
-        ${r.nameText}, ${r.text}, ${vectorLiteral(vectors[i] ?? [])}::vector, ${r.completeness}, now())`,
+        ${r.nameText}, ${r.text}, ${storedVector(vectors[i])}::vector, ${r.completeness}, now())`,
       );
       await this.prisma.$executeRaw`
         INSERT INTO "SearchDocument" ("id", "entityType", "entityId", "slug", "placePath", "kindIds",
