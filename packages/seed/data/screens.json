@@ -11263,79 +11263,95 @@
   "dealers": {
     "brand": {
       "he": "אוטו אל נג'מה",
-      "en": "Al Najma Motors"
+      "en": "Al Najma Motors",
+      "ar": "أوتو النجمة"
     },
     "title": {
       "he": "הרכב הבא שלכם",
-      "en": "Your next car"
+      "en": "Your next car",
+      "ar": "سيارتك الجاية"
     },
     "subtitle": {
       "he": "38 רכבים · יד ראשונה ושנייה",
-      "en": "38 cars · first and second owner"
+      "en": "38 cars · first and second owner",
+      "ar": "38 سيارة · يد أولى وثانية"
     },
     "tags": [
       {
         "he": "משפחתי",
-        "en": "Family"
+        "en": "Family",
+        "ar": "عائلية"
       },
       {
         "he": "שטח",
-        "en": "SUV"
+        "en": "SUV",
+        "ar": "جيب"
       },
       {
         "he": "חשמלי",
-        "en": "Electric"
+        "en": "Electric",
+        "ar": "كهربائية"
       },
       {
         "he": "עד ₪100 אלף",
-        "en": "Under ₪100k"
+        "en": "Under ₪100k",
+        "ar": "تحت ₪100k"
       }
     ],
     "items": [
       {
         "label": {
           "he": "קיה ספורטאז' 2023",
-          "en": "Kia Sportage 2023"
+          "en": "Kia Sportage 2023",
+          "ar": "كيا سبورتاج 2023"
         },
         "meta": {
           "he": "₪139,000 · 24,000 ק\"מ",
-          "en": "₪139,000 · 24,000 km"
+          "en": "₪139,000 · 24,000 km",
+          "ar": "₪139,000 · 24,000 كم"
         }
       },
       {
         "label": {
           "he": "טויוטה קורולה היברידית",
-          "en": "Toyota Corolla Hybrid"
+          "en": "Toyota Corolla Hybrid",
+          "ar": "تويوتا كورولا هايبريد"
         },
         "meta": {
           "he": "₪112,000 · 2022",
-          "en": "₪112,000 · 2022"
+          "en": "₪112,000 · 2022",
+          "ar": "₪112,000 · 2022"
         }
       },
       {
         "label": {
           "he": "יונדאי איוניק 5",
-          "en": "Hyundai Ioniq 5"
+          "en": "Hyundai Ioniq 5",
+          "ar": "هيونداي أيونيك 5"
         },
         "meta": {
           "he": "₪189,000 · חשמלי",
-          "en": "₪189,000 · electric"
+          "en": "₪189,000 · electric",
+          "ar": "₪189,000 · كهربائية"
         }
       },
       {
         "label": {
           "he": "נסיעת מבחן",
-          "en": "Test drive"
+          "en": "Test drive",
+          "ar": "تجربة سواقة"
         },
         "meta": {
           "he": "היום עד 19:00",
-          "en": "today until 7pm"
+          "en": "today until 7pm",
+          "ar": "اليوم لحد 19:00"
         }
       }
     ],
     "cta": {
       "he": "לתאם נסיעת מבחן",
-      "en": "Book a test drive"
+      "en": "Book a test drive",
+      "ar": "احجز تجربة سواقة"
     },
     "palette": {
       "bg": "#e9ebee",
@@ -11348,75 +11364,90 @@
   "garages": {
     "brand": {
       "he": "מוסך הגלגל",
-      "en": "HaGalgal Garage"
+      "en": "HaGalgal Garage",
+      "ar": "كراج العجلة"
     },
     "title": {
       "he": "הרכב שלך בטיפול",
-      "en": "Your car is in the shop"
+      "en": "Your car is in the shop",
+      "ar": "سيارتك بالكراج"
     },
     "subtitle": {
       "he": "מאזדה 3 · 12-345-67",
-      "en": "Mazda 3 · 12-345-67"
+      "en": "Mazda 3 · 12-345-67",
+      "ar": "مازدا 3 · 12-345-67"
     },
     "tags": [
       {
         "he": "טיפול",
-        "en": "Service"
+        "en": "Service",
+        "ar": "صيانة"
       },
       {
         "he": "פחחות",
-        "en": "Bodywork"
+        "en": "Bodywork",
+        "ar": "سمكرة"
       },
       {
         "he": "חשמל רכב",
-        "en": "Auto electrics"
+        "en": "Auto electrics",
+        "ar": "كهرباء سيارات"
       }
     ],
     "items": [
       {
         "label": {
           "he": "קבלה ואבחון",
-          "en": "Check-in and diagnosis"
+          "en": "Check-in and diagnosis",
+          "ar": "استقبال وتشخيص"
         },
         "meta": {
           "he": "הושלם · 08:15 · 100%",
-          "en": "done · 08:15 · 100%"
+          "en": "done · 08:15 · 100%",
+          "ar": "خلص · 08:15 · 100%"
         }
       },
       {
         "label": {
           "he": "טיפול 30,000",
-          "en": "30,000 km service"
+          "en": "30,000 km service",
+          "ar": "صيانة 30,000 كم"
         },
         "meta": {
           "he": "בעבודה · 65%",
-          "en": "in progress · 65%"
+          "en": "in progress · 65%",
+          "ar": "قيد التنفيذ · 65%"
         }
       },
       {
         "label": {
           "he": "בדיקת בלמים",
-          "en": "Brake check"
+          "en": "Brake check",
+          "ar": "فحص فرامل"
         },
         "meta": {
           "he": "בהמתנה · 0%",
-          "en": "waiting · 0%"
+          "en": "waiting · 0%",
+          "ar": "بالانتظار · 0%"
         }
       },
       {
         "label": {
           "he": "מוכן לאיסוף",
-          "en": "Ready for pickup"
+          "en": "Ready for pickup",
+          "ar": "جاهزة للاستلام"
         },
         "meta": {
           "he": "צפי 14:30 · ₪1,180",
-          "en": "est. 14:30 · ₪1,180"
+          "en": "est. 14:30 · ₪1,180",
+          "ar": "تقريبًا 14:30 · ₪1,180"
         }
       }
     ],
     "cta": {
       "he": "אישור הצעת המחיר",
-      "en": "Approve the quote"
+      "en": "Approve the quote",
+      "ar": "وافق على عرض السعر"
     },
     "palette": {
       "bg": "#16181b",
@@ -11429,79 +11460,95 @@
   "car-rental": {
     "brand": {
       "he": "ריח' השכרות",
-      "en": "Rih Rentals"
+      "en": "Rih Rentals",
+      "ar": "ريح لتأجير السيارات"
     },
     "title": {
       "he": "רכב לחופשה המשפחתית",
-      "en": "A car for the family trip"
+      "en": "A car for the family trip",
+      "ar": "سيارة لرحلة العيلة"
     },
     "subtitle": {
       "he": "נצרת · א'-ה' · איסוף בשדה התעופה",
-      "en": "Nazareth · Sun-Thu · airport pickup"
+      "en": "Nazareth · Sun-Thu · airport pickup",
+      "ar": "الناصرة · الأحد-الخميس · استلام من المطار"
     },
     "tags": [
       {
         "he": "קטן",
-        "en": "Small"
+        "en": "Small",
+        "ar": "صغيرة"
       },
       {
         "he": "משפחתי",
-        "en": "Family"
+        "en": "Family",
+        "ar": "عائلية"
       },
       {
         "he": "7 מקומות",
-        "en": "7 seats"
+        "en": "7 seats",
+        "ar": "7 مقاعد"
       },
       {
         "he": "חשמלי",
-        "en": "Electric"
+        "en": "Electric",
+        "ar": "كهربائية"
       }
     ],
     "items": [
       {
         "label": {
           "he": "רכב",
-          "en": "Car"
+          "en": "Car",
+          "ar": "السيارة"
         },
         "meta": {
           "he": "7 מקומות · אוטומט",
-          "en": "7 seats · automatic"
+          "en": "7 seats · automatic",
+          "ar": "7 مقاعد · أوتوماتيك"
         }
       },
       {
         "label": {
           "he": "תוספות",
-          "en": "Extras"
+          "en": "Extras",
+          "ar": "إضافات"
         },
         "meta": {
           "he": "2 מושבי בטיחות, ניווט",
-          "en": "2 child seats, GPS"
+          "en": "2 child seats, GPS",
+          "ar": "2 كراسي أطفال، GPS"
         }
       },
       {
         "label": {
           "he": "ביטוח",
-          "en": "Cover"
+          "en": "Cover",
+          "ar": "التأمين"
         },
         "meta": {
           "he": "מלא, בלי השתתפות עצמית",
-          "en": "Full, no excess"
+          "en": "Full, no excess",
+          "ar": "شامل، بدون مشاركة ذاتية"
         }
       },
       {
         "label": {
           "he": "סה\"כ",
-          "en": "Total"
+          "en": "Total",
+          "ar": "المجموع"
         },
         "meta": {
           "he": "₪1,560 · 5 ימים",
-          "en": "₪1,560 · 5 days"
+          "en": "₪1,560 · 5 days",
+          "ar": "₪1,560 · 5 أيام"
         }
       }
     ],
     "cta": {
       "he": "לשריין את הרכב",
-      "en": "Reserve the car"
+      "en": "Reserve the car",
+      "ar": "احجز السيارة"
     },
     "palette": {
       "bg": "#e5eef8",
@@ -11514,83 +11561,100 @@
   "tyres": {
     "brand": {
       "he": "צמיגי אבו עלי",
-      "en": "Abu Ali Tyres"
+      "en": "Abu Ali Tyres",
+      "ar": "كوشوك أبو علي"
     },
     "title": {
       "he": "4 צמיגים, 40 דקות",
-      "en": "4 tyres, 40 minutes"
+      "en": "4 tyres, 40 minutes",
+      "ar": "4 كوشوك، 40 دقيقة"
     },
     "subtitle": {
       "he": "כולל איזון, כיוון ובדיקת לחץ",
-      "en": "Balancing, alignment and pressure check"
+      "en": "Balancing, alignment and pressure check",
+      "ar": "ترصيص، ضبط زوايا وفحص هوا"
     },
     "tags": [
       {
         "he": "08:30",
-        "en": "08:30"
+        "en": "08:30",
+        "ar": "08:30"
       },
       {
         "he": "09:30",
-        "en": "09:30"
+        "en": "09:30",
+        "ar": "09:30"
       },
       {
         "he": "11:00",
-        "en": "11:00"
+        "en": "11:00",
+        "ar": "11:00"
       },
       {
         "he": "13:30",
-        "en": "13:30"
+        "en": "13:30",
+        "ar": "13:30"
       },
       {
         "he": "16:00",
-        "en": "16:00"
+        "en": "16:00",
+        "ar": "16:00"
       }
     ],
     "items": [
       {
         "label": {
           "he": "מישלן 205/55R16",
-          "en": "Michelin 16 inch"
+          "en": "Michelin 16 inch",
+          "ar": "ميشلان 16 إنش"
         },
         "meta": {
           "he": "₪520 ליחידה · כולל התקנה",
-          "en": "₪520 each · fitted"
+          "en": "₪520 each · fitted",
+          "ar": "₪520 للواحد · مع التركيب"
         }
       },
       {
         "label": {
           "he": "תיקון תקר",
-          "en": "Puncture repair"
+          "en": "Puncture repair",
+          "ar": "تصليح بنشر"
         },
         "meta": {
           "he": "₪60 · 15 דק'",
-          "en": "₪60 · 15 min"
+          "en": "₪60 · 15 min",
+          "ar": "₪60 · 15 دقيقة"
         }
       },
       {
         "label": {
           "he": "כיוון פרונט",
-          "en": "Wheel alignment"
+          "en": "Wheel alignment",
+          "ar": "ضبط زوايا"
         },
         "meta": {
           "he": "₪180 · 30 דק'",
-          "en": "₪180 · 30 min"
+          "en": "₪180 · 30 min",
+          "ar": "₪180 · 30 دقيقة"
         }
       },
       {
         "label": {
           "he": "איזון גלגלים",
-          "en": "Wheel balancing"
+          "en": "Wheel balancing",
+          "ar": "ترصيص عجلات"
         },
         "meta": {
           "he": "₪100 · 20 דק'",
-          "en": "₪100 · 20 min"
+          "en": "₪100 · 20 min",
+          "ar": "₪100 · 20 دقيقة"
         }
       }
     ],
     "cta": {
       "he": "קביעת תור ל-11:00",
-      "en": "Book 11:00"
+      "en": "Book 11:00",
+      "ar": "احجز الساعة 11:00"
     },
     "palette": {
       "bg": "#1a1a1a",
@@ -11603,75 +11667,90 @@
   "car-wash": {
     "brand": {
       "he": "ספלאש אל קודס",
-      "en": "Splash Al Quds"
+      "en": "Splash Al Quds",
+      "ar": "سبلاش القدس"
     },
     "title": {
       "he": "מועדון השטיפות",
-      "en": "Wash club"
+      "en": "Wash club",
+      "ar": "نادي الغسيل"
     },
     "subtitle": {
       "he": "נשארו 3 שטיפות החודש",
-      "en": "3 washes left this month"
+      "en": "3 washes left this month",
+      "ar": "باقي 3 غسلات هالشهر"
     },
     "tags": [
       {
         "he": "בלי הגבלה",
-        "en": "Unlimited"
+        "en": "Unlimited",
+        "ar": "بدون حدود"
       },
       {
         "he": "שאיבה",
-        "en": "Vacuum"
+        "en": "Vacuum",
+        "ar": "شفط"
       },
       {
         "he": "ווקס",
-        "en": "Wax"
+        "en": "Wax",
+        "ar": "واكس"
       }
     ],
     "items": [
       {
         "label": {
           "he": "מנוי",
-          "en": "Plan"
+          "en": "Plan",
+          "ar": "الاشتراك"
         },
         "meta": {
           "he": "פרימיום · ₪149 לחודש",
-          "en": "Premium · ₪149 a month"
+          "en": "Premium · ₪149 a month",
+          "ar": "بريميوم · ₪149 بالشهر"
         }
       },
       {
         "label": {
           "he": "רכב",
-          "en": "Car"
+          "en": "Car",
+          "ar": "السيارة"
         },
         "meta": {
           "he": "סקודה אוקטביה · 45-678-90",
-          "en": "Skoda Octavia · 45-678-90"
+          "en": "Skoda Octavia · 45-678-90",
+          "ar": "سكودا أوكتافيا · 45-678-90"
         }
       },
       {
         "label": {
           "he": "השטיפה הבאה",
-          "en": "Next wash"
+          "en": "Next wash",
+          "ar": "الغسلة الجاية"
         },
         "meta": {
           "he": "היום · ללא תור",
-          "en": "today · no queue"
+          "en": "today · no queue",
+          "ar": "اليوم · بدون دور"
         }
       },
       {
         "label": {
           "he": "כניסה",
-          "en": "Entry"
+          "en": "Entry",
+          "ar": "الدخول"
         },
         "meta": {
           "he": "סריקה במחסום",
-          "en": "Scan at the gate"
+          "en": "Scan at the gate",
+          "ar": "امسح عند البوابة"
         }
       }
     ],
     "cta": {
       "he": "שטיפה עכשיו",
-      "en": "Wash now"
+      "en": "Wash now",
+      "ar": "اغسل هلّق"
     },
     "palette": {
       "bg": "#e6f6fb",
@@ -11684,79 +11763,95 @@
   "motorcycles": {
     "brand": {
       "he": "מוטו אל סהם",
-      "en": "Moto Al Sahm"
+      "en": "Moto Al Sahm",
+      "ar": "موتو السهم"
     },
     "title": {
       "he": "קטנוע לעבודה ולעיר",
-      "en": "A scooter for work and town"
+      "en": "A scooter for work and town",
+      "ar": "سكوتر للشغل والبلد"
     },
     "subtitle": {
       "he": "כולל רישוי, ביטוח וקסדה",
-      "en": "Licensing, insurance and helmet included"
+      "en": "Licensing, insurance and helmet included",
+      "ar": "شامل ترخيص، تأمين وخوذة"
     },
     "tags": [
       {
         "he": "125 סמ\"ק",
-        "en": "125 cc"
+        "en": "125 cc",
+        "ar": "125 سي سي"
       },
       {
         "he": "חשמלי",
-        "en": "Electric"
+        "en": "Electric",
+        "ar": "كهربائي"
       },
       {
         "he": "משלוחים",
-        "en": "Delivery"
+        "en": "Delivery",
+        "ar": "توصيل"
       },
       {
         "he": "יד שנייה",
-        "en": "Used"
+        "en": "Used",
+        "ar": "مستعمل"
       }
     ],
     "items": [
       {
         "label": {
           "he": "הונדה PCX 125",
-          "en": "Honda PCX 125"
+          "en": "Honda PCX 125",
+          "ar": "هوندا PCX 125"
         },
         "meta": {
           "he": "₪17,900 · חדש",
-          "en": "₪17,900 · new"
+          "en": "₪17,900 · new",
+          "ar": "₪17,900 · جديد"
         }
       },
       {
         "label": {
           "he": "ימאהה NMAX",
-          "en": "Yamaha NMAX"
+          "en": "Yamaha NMAX",
+          "ar": "ياماها NMAX"
         },
         "meta": {
           "he": "₪15,500 · 2023",
-          "en": "₪15,500 · 2023"
+          "en": "₪15,500 · 2023",
+          "ar": "₪15,500 · 2023"
         }
       },
       {
         "label": {
           "he": "קטנוע חשמלי",
-          "en": "Electric scooter"
+          "en": "Electric scooter",
+          "ar": "سكوتر كهربائي"
         },
         "meta": {
           "he": "₪13,200 · 90 ק\"מ טווח",
-          "en": "₪13,200 · 90 km range"
+          "en": "₪13,200 · 90 km range",
+          "ar": "₪13,200 · مدى 90 كم"
         }
       },
       {
         "label": {
           "he": "טיפול 1,000",
-          "en": "1,000 km service"
+          "en": "1,000 km service",
+          "ar": "صيانة 1,000 كم"
         },
         "meta": {
           "he": "₪290 · שעה",
-          "en": "₪290 · one hour"
+          "en": "₪290 · one hour",
+          "ar": "₪290 · ساعة"
         }
       }
     ],
     "cta": {
       "he": "לתאם נסיעת מבחן",
-      "en": "Book a test ride"
+      "en": "Book a test ride",
+      "ar": "احجز تجربة"
     },
     "palette": {
       "bg": "#f5eee4",
@@ -11769,75 +11864,90 @@
   "ev-charging": {
     "brand": {
       "he": "טעינה ברק",
-      "en": "Barq Charge"
+      "en": "Barq Charge",
+      "ar": "شحن برق"
     },
     "title": {
       "he": "הרכב נטען",
-      "en": "Your car is charging"
+      "en": "Your car is charging",
+      "ar": "سيارتك عم تنشحن"
     },
     "subtitle": {
       "he": "עמדה 4 · קניון הצפון · 60 קילוואט",
-      "en": "Bay 4 · North Mall · 60 kW"
+      "en": "Bay 4 · North Mall · 60 kW",
+      "ar": "موقف 4 · مول الشمال · 60 كيلوواط"
     },
     "tags": [
       {
         "he": "מהיר",
-        "en": "Fast"
+        "en": "Fast",
+        "ar": "سريع"
       },
       {
         "he": "ביתי",
-        "en": "Home"
+        "en": "Home",
+        "ar": "بيت"
       },
       {
         "he": "בעבודה",
-        "en": "Work"
+        "en": "Work",
+        "ar": "شغل"
       }
     ],
     "items": [
       {
         "label": {
           "he": "סוללה",
-          "en": "Battery"
+          "en": "Battery",
+          "ar": "البطارية"
         },
         "meta": {
           "he": "טעון · 78%",
-          "en": "charged · 78%"
+          "en": "charged · 78%",
+          "ar": "مشحونة · 78%"
         }
       },
       {
         "label": {
           "he": "עוד",
-          "en": "Time left"
+          "en": "Time left",
+          "ar": "الوقت الباقي"
         },
         "meta": {
           "he": "14 דק' ל-90%",
-          "en": "14 min to 90%"
+          "en": "14 min to 90%",
+          "ar": "14 دقيقة لـ90%"
         }
       },
       {
         "label": {
           "he": "טווח",
-          "en": "Range"
+          "en": "Range",
+          "ar": "المدى"
         },
         "meta": {
           "he": "382 ק\"מ",
-          "en": "382 km"
+          "en": "382 km",
+          "ar": "382 كم"
         }
       },
       {
         "label": {
           "he": "עלות עד עכשיו",
-          "en": "Cost so far"
+          "en": "Cost so far",
+          "ar": "التكلفة لهلّق"
         },
         "meta": {
           "he": "₪46 · ₪1.6 לקוט\"ש",
-          "en": "₪46 · ₪1.6 per kWh"
+          "en": "₪46 · ₪1.6 per kWh",
+          "ar": "₪46 · ₪1.6 للكيلوواط ساعة"
         }
       }
     ],
     "cta": {
       "he": "להפסיק טעינה ב-90%",
-      "en": "Stop at 90%"
+      "en": "Stop at 90%",
+      "ar": "وقّف على 90%"
     },
     "palette": {
       "bg": "#0d1c1a",
@@ -11850,75 +11960,90 @@
   "taxis": {
     "brand": {
       "he": "מוניות אל סלאם",
-      "en": "Al Salam Taxis"
+      "en": "Al Salam Taxis",
+      "ar": "تكسيات السلام"
     },
     "title": {
       "he": "נסיעה לנתב\"ג, מחיר סגור",
-      "en": "Fixed price to the airport"
+      "en": "Fixed price to the airport",
+      "ar": "سعر ثابت للمطار"
     },
     "subtitle": {
       "he": "איסוף מהבית · מקום ל-6 מזוודות",
-      "en": "Home pickup · room for 6 suitcases"
+      "en": "Home pickup · room for 6 suitcases",
+      "ar": "استلام من البيت · مكان لـ6 شناتي"
     },
     "tags": [
       {
         "he": "מונית",
-        "en": "Taxi"
+        "en": "Taxi",
+        "ar": "تكسي"
       },
       {
         "he": "ואן 7 מקומות",
-        "en": "7-seat van"
+        "en": "7-seat van",
+        "ar": "فان 7 مقاعد"
       },
       {
         "he": "מיניבוס",
-        "en": "Minibus"
+        "en": "Minibus",
+        "ar": "ميني باص"
       }
     ],
     "items": [
       {
         "label": {
           "he": "מאיפה",
-          "en": "From"
+          "en": "From",
+          "ar": "من"
         },
         "meta": {
           "he": "שפרעם",
-          "en": "Shefa-Amr"
+          "en": "Shefa-Amr",
+          "ar": "شفاعمرو"
         }
       },
       {
         "label": {
           "he": "לאן",
-          "en": "To"
+          "en": "To",
+          "ar": "لـ"
         },
         "meta": {
           "he": "נתב\"ג, טרמינל 3",
-          "en": "Ben Gurion, Terminal 3"
+          "en": "Ben Gurion, Terminal 3",
+          "ar": "مطار بن غوريون، مبنى 3"
         }
       },
       {
         "label": {
           "he": "מתי",
-          "en": "When"
+          "en": "When",
+          "ar": "إمتى"
         },
         "meta": {
           "he": "ה' 04:30",
-          "en": "Thu 04:30"
+          "en": "Thu 04:30",
+          "ar": "الخميس 04:30"
         }
       },
       {
         "label": {
           "he": "מחיר סגור",
-          "en": "Fixed fare"
+          "en": "Fixed fare",
+          "ar": "سعر ثابت"
         },
         "meta": {
           "he": "₪420 · ואן",
-          "en": "₪420 · van"
+          "en": "₪420 · van",
+          "ar": "₪420 · فان"
         }
       }
     ],
     "cta": {
       "he": "להזמין את הנסיעה",
-      "en": "Book the ride"
+      "en": "Book the ride",
+      "ar": "احجز المشوار"
     },
     "palette": {
       "bg": "#fff4cc",
@@ -11931,79 +12056,95 @@
   "auto-parts": {
     "brand": {
       "he": "חלפים אבו שאדי",
-      "en": "Abu Shadi Parts"
+      "en": "Abu Shadi Parts",
+      "ar": "قطع غيار أبو شادي"
     },
     "title": {
       "he": "החלקים לרכב שלך",
-      "en": "Parts for your car"
+      "en": "Parts for your car",
+      "ar": "قطع لسيارتك"
     },
     "subtitle": {
       "he": "קיה ספורטאז' 2019 · 15 חלקים במלאי",
-      "en": "Kia Sportage 2019 · 15 parts in stock"
+      "en": "Kia Sportage 2019 · 15 parts in stock",
+      "ar": "كيا سبورتاج 2019 · 15 قطعة متوفرة"
     },
     "tags": [
       {
         "he": "בלמים",
-        "en": "Brakes"
+        "en": "Brakes",
+        "ar": "فرامل"
       },
       {
         "he": "מסננים",
-        "en": "Filters"
+        "en": "Filters",
+        "ar": "فلاتر"
       },
       {
         "he": "תאורה",
-        "en": "Lights"
+        "en": "Lights",
+        "ar": "أضواء"
       },
       {
         "he": "מצברים",
-        "en": "Batteries"
+        "en": "Batteries",
+        "ar": "بطاريات"
       }
     ],
     "items": [
       {
         "label": {
           "he": "רפידות בלם קדמיות",
-          "en": "Front brake pads"
+          "en": "Front brake pads",
+          "ar": "فحمات فرامل قدّام"
         },
         "meta": {
           "he": "₪240 · מקורי",
-          "en": "₪240 · genuine"
+          "en": "₪240 · genuine",
+          "ar": "₪240 · أصلية"
         }
       },
       {
         "label": {
           "he": "מסנן שמן",
-          "en": "Oil filter"
+          "en": "Oil filter",
+          "ar": "فلتر زيت"
         },
         "meta": {
           "he": "₪45 · במלאי",
-          "en": "₪45 · in stock"
+          "en": "₪45 · in stock",
+          "ar": "₪45 · متوفر"
         }
       },
       {
         "label": {
           "he": "מצבר 70 אמפר",
-          "en": "70 Ah battery"
+          "en": "70 Ah battery",
+          "ar": "بطارية 70 أمبير"
         },
         "meta": {
           "he": "₪520 · אחריות שנתיים",
-          "en": "₪520 · 2-year warranty"
+          "en": "₪520 · 2-year warranty",
+          "ar": "₪520 · كفالة سنتين"
         }
       },
       {
         "label": {
           "he": "פנס ראשי ימני",
-          "en": "Right headlight"
+          "en": "Right headlight",
+          "ar": "ضو أمامي يمين"
         },
         "meta": {
           "he": "₪890 · תחליפי",
-          "en": "₪890 · aftermarket"
+          "en": "₪890 · aftermarket",
+          "ar": "₪890 · تجاري"
         }
       }
     ],
     "cta": {
       "he": "לשריין לאיסוף היום",
-      "en": "Reserve for pickup today"
+      "en": "Reserve for pickup today",
+      "ar": "احجز للاستلام اليوم"
     },
     "palette": {
       "bg": "#ecebe6",
@@ -12016,75 +12157,90 @@
   "towing": {
     "brand": {
       "he": "גרר אל אמין",
-      "en": "Al Amin Towing"
+      "en": "Al Amin Towing",
+      "ar": "جرّ الأمين"
     },
     "title": {
       "he": "הגרר בדרך אליך",
-      "en": "The tow truck is coming"
+      "en": "The tow truck is coming",
+      "ar": "الونش جاي"
     },
     "subtitle": {
       "he": "כביש 65 · ליד צומת עירון",
-      "en": "Route 65 · near Iron Junction"
+      "en": "Route 65 · near Iron Junction",
+      "ar": "شارع 65 · قريب من مفرق عيرون"
     },
     "tags": [
       {
         "he": "גרירה",
-        "en": "Tow"
+        "en": "Tow",
+        "ar": "جرّ"
       },
       {
         "he": "התנעה",
-        "en": "Jump start"
+        "en": "Jump start",
+        "ar": "تشغيل بطارية"
       },
       {
         "he": "פנצ'ר",
-        "en": "Flat tyre"
+        "en": "Flat tyre",
+        "ar": "بنشر"
       }
     ],
     "items": [
       {
         "label": {
           "he": "הקריאה התקבלה",
-          "en": "Call received"
+          "en": "Call received",
+          "ar": "استلمنا الاتصال"
         },
         "meta": {
           "he": "21:40 · 100%",
-          "en": "21:40 · 100%"
+          "en": "21:40 · 100%",
+          "ar": "21:40 · 100%"
         }
       },
       {
         "label": {
           "he": "גרר שובץ",
-          "en": "Truck assigned"
+          "en": "Truck assigned",
+          "ar": "انعيّن ونش"
         },
         "meta": {
           "he": "הנהג ראמי · 100%",
-          "en": "Driver Rami · 100%"
+          "en": "Driver Rami · 100%",
+          "ar": "السائق رامي · 100%"
         }
       },
       {
         "label": {
           "he": "בדרך אליך",
-          "en": "On the way"
+          "en": "On the way",
+          "ar": "بالطريق"
         },
         "meta": {
           "he": "עוד 12 דק' · 45%",
-          "en": "12 min away · 45%"
+          "en": "12 min away · 45%",
+          "ar": "على بعد 12 دقيقة · 45%"
         }
       },
       {
         "label": {
           "he": "מחיר מוסכם",
-          "en": "Agreed price"
+          "en": "Agreed price",
+          "ar": "السعر المتفق عليه"
         },
         "meta": {
           "he": "₪380 · עד המוסך שלך",
-          "en": "₪380 · to your garage"
+          "en": "₪380 · to your garage",
+          "ar": "₪380 · لكراجك"
         }
       }
     ],
     "cta": {
       "he": "להתקשר לנהג",
-      "en": "Call the driver"
+      "en": "Call the driver",
+      "ar": "اتصل بالسائق"
     },
     "palette": {
       "bg": "#1a1712",
@@ -12097,79 +12253,95 @@
   "body-shops": {
     "brand": {
       "he": "פחחות אל פארס",
-      "en": "Al Fares Body Shop"
+      "en": "Al Fares Body Shop",
+      "ar": "سمكرة الفارس"
     },
     "title": {
       "he": "שלחו תמונה, קבלו מחיר",
-      "en": "Send a photo, get a price"
+      "en": "Send a photo, get a price",
+      "ar": "ابعت صورة وخذ سعر"
     },
     "subtitle": {
       "he": "עובדים עם כל חברות הביטוח",
-      "en": "We work with every insurer"
+      "en": "We work with every insurer",
+      "ar": "بنشتغل مع كل شركات التأمين"
     },
     "tags": [
       {
         "he": "שריטה",
-        "en": "Scratch"
+        "en": "Scratch",
+        "ar": "خدش"
       },
       {
         "he": "מכה",
-        "en": "Dent"
+        "en": "Dent",
+        "ar": "طعجة"
       },
       {
         "he": "צבע מלא",
-        "en": "Full respray"
+        "en": "Full respray",
+        "ar": "دهان كامل"
       },
       {
         "he": "פגוש",
-        "en": "Bumper"
+        "en": "Bumper",
+        "ar": "صدّام"
       }
     ],
     "items": [
       {
         "label": {
           "he": "הרכב",
-          "en": "Car"
+          "en": "Car",
+          "ar": "السيارة"
         },
         "meta": {
           "he": "טויוטה קורולה · 2021",
-          "en": "Toyota Corolla · 2021"
+          "en": "Toyota Corolla · 2021",
+          "ar": "تويوتا كورولا · 2021"
         }
       },
       {
         "label": {
           "he": "נזק",
-          "en": "Damage"
+          "en": "Damage",
+          "ar": "الضرر"
         },
         "meta": {
           "he": "מכה בדלת אחורית ימין",
-          "en": "Dent, rear right door"
+          "en": "Dent, rear right door",
+          "ar": "طعجة، الباب الخلفي اليمين"
         }
       },
       {
         "label": {
           "he": "תשלום",
-          "en": "Paying"
+          "en": "Paying",
+          "ar": "الدفع"
         },
         "meta": {
           "he": "דרך הביטוח",
-          "en": "Through insurance"
+          "en": "Through insurance",
+          "ar": "عن طريق التأمين"
         }
       },
       {
         "label": {
           "he": "הערכה",
-          "en": "Estimate"
+          "en": "Estimate",
+          "ar": "التقدير"
         },
         "meta": {
           "he": "₪2,400-2,900 · יומיים",
-          "en": "₪2,400-2,900 · two days"
+          "en": "₪2,400-2,900 · two days",
+          "ar": "₪2,400-2,900 · يومين"
         }
       }
     ],
     "cta": {
       "he": "לקבוע הערכת שמאי",
-      "en": "Book an assessor"
+      "en": "Book an assessor",
+      "ar": "احجز مخمّن"
     },
     "palette": {
       "bg": "#e9eef0",
