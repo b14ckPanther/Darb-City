@@ -51,6 +51,23 @@ describe("Voyage", () => {
       output_dimension: 512,
     });
   });
+  it("times out on its own after 10 s, and still honours the caller's signal", async () => {
+    const seen: (AbortSignal | null | undefined)[] = [];
+    const fetchImpl = (async (_url: string, init: RequestInit) => {
+      seen.push(init.signal);
+      return Response.json({ data: [{ index: 0, embedding: Array(512).fill(0.1) }] });
+    }) as unknown as typeof fetch;
+    const timeout = vi.spyOn(AbortSignal, "timeout");
+    const voyage = new VoyageEmbeddingProvider("k", "m", fetchImpl);
+    await voyage.embed(["a"], "query");
+    expect(timeout).toHaveBeenCalledWith(10_000);
+    expect(seen[0]).toBeInstanceOf(AbortSignal);
+    const caller = new AbortController();
+    await voyage.embed(["a"], "query", caller.signal);
+    caller.abort();
+    expect(seen[1]?.aborted).toBe(true);
+    timeout.mockRestore();
+  });
   it("throws on an error status or a wrong size, so callers fall back", async () => {
     const bad = new VoyageEmbeddingProvider(
       "k",

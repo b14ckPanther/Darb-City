@@ -1,6 +1,8 @@
 import { EMBEDDING_DIMENSIONS, type EmbeddingProvider, type EmbedPurpose } from "./embeddings.js";
 
 const URL_EMBEDDINGS = "https://api.voyageai.com/v1/embeddings";
+/** A bulk reindex has no caller deadline; this keeps a hung request from stalling it. */
+const TIMEOUT_MS = 10_000;
 
 /** Voyage AI over plain fetch: no SDK to pin, and tests fake fetch. */
 export class VoyageEmbeddingProvider implements EmbeddingProvider {
@@ -21,7 +23,7 @@ export class VoyageEmbeddingProvider implements EmbeddingProvider {
         input_type: purpose,
         output_dimension: EMBEDDING_DIMENSIONS,
       }),
-      signal,
+      signal: AbortSignal.any([AbortSignal.timeout(TIMEOUT_MS), ...(signal ? [signal] : [])]),
     });
     if (!res.ok) throw new Error(`Voyage embeddings failed: ${res.status}`);
     const body = (await res.json()) as { data: { index: number; embedding: number[] }[] };
