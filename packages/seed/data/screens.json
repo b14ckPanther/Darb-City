@@ -6834,79 +6834,95 @@
   "software-studios": {
     "brand": {
       "he": "סטודיו כרמה",
-      "en": "Karma Studio"
+      "en": "Karma Studio",
+      "ar": "ستوديو كرما"
     },
     "title": {
       "he": "תוכנה שעובדת לעסק",
-      "en": "Software that works for the business"
+      "en": "Software that works for the business",
+      "ar": "برمجيات بتشتغل لمصلحتك"
     },
     "subtitle": {
       "he": "42 פרויקטים · חיפה ונצרת",
-      "en": "42 projects · Haifa and Nazareth"
+      "en": "42 projects · Haifa and Nazareth",
+      "ar": "42 مشروع · حيفا والناصرة"
     },
     "tags": [
       {
         "he": "מערכות",
-        "en": "Systems"
+        "en": "Systems",
+        "ar": "أنظمة"
       },
       {
         "he": "אתרים",
-        "en": "Web"
+        "en": "Web",
+        "ar": "مواقع"
       },
       {
         "he": "אפליקציות",
-        "en": "Apps"
+        "en": "Apps",
+        "ar": "تطبيقات"
       },
       {
         "he": "אינטגרציות",
-        "en": "Integrations"
+        "en": "Integrations",
+        "ar": "ربط أنظمة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "הזמנות למאפייה",
-          "en": "Bakery orders"
+          "en": "Bakery orders",
+          "ar": "طلبيات مخبز"
         },
         "meta": {
           "he": "8 שבועות",
-          "en": "8 weeks"
+          "en": "8 weeks",
+          "ar": "8 أسابيع"
         }
       },
       {
         "label": {
           "he": "פורטל לקוחות",
-          "en": "Client portal"
+          "en": "Client portal",
+          "ar": "بوابة زبائن"
         },
         "meta": {
           "he": "9,000 משתמשים",
-          "en": "9,000 users"
+          "en": "9,000 users",
+          "ar": "9,000 مستخدم"
         }
       },
       {
         "label": {
           "he": "מלאי למחסן",
-          "en": "Warehouse stock"
+          "en": "Warehouse stock",
+          "ar": "مخزون مستودع"
         },
         "meta": {
           "he": "10 שבועות",
-          "en": "10 weeks"
+          "en": "10 weeks",
+          "ar": "10 أسابيع"
         }
       },
       {
         "label": {
           "he": "ספרינט אפיון",
-          "en": "Discovery sprint"
+          "en": "Discovery sprint",
+          "ar": "سبرنت استكشاف"
         },
         "meta": {
           "he": "₪9,500 · שבועיים",
-          "en": "₪9,500 · two weeks"
+          "en": "₪9,500 · two weeks",
+          "ar": "₪9,500 · أسبوعين"
         }
       }
     ],
     "cta": {
       "he": "לקבוע שיחת היכרות",
-      "en": "Book an intro call"
+      "en": "Book an intro call",
+      "ar": "احجز مكالمة تعارف"
     },
     "palette": {
       "bg": "#11161d",
@@ -6924,71 +6940,85 @@
     },
     "title": {
       "he": "המדפסת חוזרת לעבוד",
-      "en": "Your printer is coming back"
+      "en": "Your printer is coming back",
+      "ar": "الطابعة تبعتك راجعة تشتغل"
     },
     "subtitle": {
       "he": "קריאה 2318 · משרד רו\"ח סלאמה",
-      "en": "Ticket 2318 · Salameh accountants"
+      "en": "Ticket 2318 · Salameh accountants",
+      "ar": "تذكرة 2318 · مكتب سلامة للمحاسبة"
     },
     "tags": [
       {
         "he": "פתוחות",
-        "en": "Open"
+        "en": "Open",
+        "ar": "مفتوحة"
       },
       {
         "he": "בטיפול",
-        "en": "In progress"
+        "en": "In progress",
+        "ar": "قيد المعالجة"
       },
       {
         "he": "נסגרו",
-        "en": "Closed"
+        "en": "Closed",
+        "ar": "مسكّرة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "הקריאה נפתחה",
-          "en": "Ticket opened"
+          "en": "Ticket opened",
+          "ar": "انفتحت التذكرة"
         },
         "meta": {
           "he": "09:04 · 100%",
-          "en": "09:04 · 100%"
+          "en": "09:04 · 100%",
+          "ar": "09:04 · 100%"
         }
       },
       {
         "label": {
           "he": "טכנאי מחובר מרחוק",
-          "en": "Technician remote in"
+          "en": "Technician remote in",
+          "ar": "الفني دخل عن بُعد"
         },
         "meta": {
           "he": "וסים · 100%",
-          "en": "Wasim · 100%"
+          "en": "Wasim · 100%",
+          "ar": "وسيم · 100%"
         }
       },
       {
         "label": {
           "he": "עדכון דרייבר ורשת",
-          "en": "Driver and network fix"
+          "en": "Driver and network fix",
+          "ar": "تصليح التعريف والشبكة"
         },
         "meta": {
           "he": "בתהליך · 70%",
-          "en": "in progress · 70%"
+          "en": "in progress · 70%",
+          "ar": "قيد المعالجة · 70%"
         }
       },
       {
         "label": {
           "he": "זמן תגובה בחוזה",
-          "en": "Plan response time"
+          "en": "Plan response time",
+          "ar": "وقت الاستجابة بالخطة"
         },
         "meta": {
           "he": "עד שעה · ₪690 לחודש",
-          "en": "within 1 hr · ₪690 a month"
+          "en": "within 1 hr · ₪690 a month",
+          "ar": "خلال ساعة · ₪690 بالشهر"
         }
       }
     ],
     "cta": {
       "he": "לפתוח קריאה חדשה",
-      "en": "Open a new ticket"
+      "en": "Open a new ticket",
+      "ar": "افتح تذكرة جديدة"
     },
     "palette": {
       "bg": "#e8eef6",
@@ -7001,75 +7031,90 @@
   "coworking": {
     "brand": {
       "he": "המפעל, חלל עבודה",
-      "en": "HaMifal Cowork"
+      "en": "HaMifal Cowork",
+      "ar": "المصنع، مساحة عمل"
     },
     "title": {
       "he": "הכרטיס שלך לחלל",
-      "en": "Your pass to the space"
+      "en": "Your pass to the space",
+      "ar": "بطاقة دخولك للمساحة"
     },
     "subtitle": {
       "he": "עמדה קבועה · קומה 2 · ליד החלון",
-      "en": "Fixed desk · 2nd floor · by the window"
+      "en": "Fixed desk · 2nd floor · by the window",
+      "ar": "مكتب ثابت · الطابق 2 · جنب الشباك"
     },
     "tags": [
       {
         "he": "קפה חופשי",
-        "en": "Free coffee"
+        "en": "Free coffee",
+        "ar": "قهوة مجانية"
       },
       {
         "he": "4 שעות חדר ישיבות",
-        "en": "4 meeting-room hours"
+        "en": "4 meeting-room hours",
+        "ar": "4 ساعات غرفة اجتماعات"
       },
       {
         "he": "לוקר",
-        "en": "Locker"
+        "en": "Locker",
+        "ar": "خزانة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "חבר",
-          "en": "Member"
+          "en": "Member",
+          "ar": "المشترك"
         },
         "meta": {
           "he": "עומר שגיא",
-          "en": "Omer Sagi"
+          "en": "Omer Sagi",
+          "ar": "عومر ساغي"
         }
       },
       {
         "label": {
           "he": "מנוי",
-          "en": "Plan"
+          "en": "Plan",
+          "ar": "الاشتراك"
         },
         "meta": {
           "he": "חודשי · ₪1,250",
-          "en": "Monthly · ₪1,250"
+          "en": "Monthly · ₪1,250",
+          "ar": "شهري · ₪1,250"
         }
       },
       {
         "label": {
           "he": "חדר ישיבות",
-          "en": "Meeting room"
+          "en": "Meeting room",
+          "ar": "غرفة الاجتماعات"
         },
         "meta": {
           "he": "היום 14:00 · חדר הזית",
-          "en": "today 14:00 · Olive room"
+          "en": "today 14:00 · Olive room",
+          "ar": "اليوم 14:00 · غرفة الزيتون"
         }
       },
       {
         "label": {
           "he": "כניסה",
-          "en": "Entry"
+          "en": "Entry",
+          "ar": "الدخول"
         },
         "meta": {
           "he": "קוד QR בדלת",
-          "en": "QR code at the door"
+          "en": "QR code at the door",
+          "ar": "كود QR على الباب"
         }
       }
     ],
     "cta": {
       "he": "הזמנת חדר ישיבות",
-      "en": "Book a meeting room"
+      "en": "Book a meeting room",
+      "ar": "احجز غرفة اجتماعات"
     },
     "palette": {
       "bg": "#f5efdc",
@@ -7082,75 +7127,90 @@
   "cybersecurity": {
     "brand": {
       "he": "חומאת סייבר",
-      "en": "Humat Cyber"
+      "en": "Humat Cyber",
+      "ar": "حماة سايبر"
     },
     "title": {
       "he": "הסריקה השבועית שלך",
-      "en": "Your weekly scan"
+      "en": "Your weekly scan",
+      "ar": "الفحص الأسبوعي تبعك"
     },
     "subtitle": {
       "he": "38 מחשבים · 2 שרתים · אתר אחד",
-      "en": "38 laptops · 2 servers · 1 website"
+      "en": "38 laptops · 2 servers · 1 website",
+      "ar": "38 لابتوب · 2 سيرفر · موقع واحد"
     },
     "tags": [
       {
         "he": "סקירה",
-        "en": "Overview"
+        "en": "Overview",
+        "ar": "نظرة عامة"
       },
       {
         "he": "ממצאים",
-        "en": "Findings"
+        "en": "Findings",
+        "ar": "ثغرات"
       },
       {
         "he": "דוחות",
-        "en": "Reports"
+        "en": "Reports",
+        "ar": "تقارير"
       }
     ],
     "items": [
       {
         "label": {
           "he": "גיבויים מוצפנים",
-          "en": "Encrypted backups"
+          "en": "Encrypted backups",
+          "ar": "نسخ احتياطي مشفّر"
         },
         "meta": {
           "he": "תקין · 100%",
-          "en": "healthy · 100%"
+          "en": "healthy · 100%",
+          "ar": "سليم · 100%"
         }
       },
       {
         "label": {
           "he": "עדכוני אבטחה",
-          "en": "Security patches"
+          "en": "Security patches",
+          "ar": "تحديثات أمان"
         },
         "meta": {
           "he": "34 מתוך 38 · 89%",
-          "en": "34 of 38 · 89%"
+          "en": "34 of 38 · 89%",
+          "ar": "34 من 38 · 89%"
         }
       },
       {
         "label": {
           "he": "אימות דו שלבי",
-          "en": "Two-factor sign-in"
+          "en": "Two-factor sign-in",
+          "ar": "دخول بخطوتين"
         },
         "meta": {
           "he": "21 עובדים · 66%",
-          "en": "21 staff · 66%"
+          "en": "21 staff · 66%",
+          "ar": "21 موظف · 66%"
         }
       },
       {
         "label": {
           "he": "ממצא פתוח",
-          "en": "Open finding"
+          "en": "Open finding",
+          "ar": "ثغرة مفتوحة"
         },
         "meta": {
           "he": "סיסמת נתב ברירת מחדל",
-          "en": "default router password"
+          "en": "default router password",
+          "ar": "كلمة سر الراوتر الافتراضية"
         }
       }
     ],
     "cta": {
       "he": "לתקן את הממצאים",
-      "en": "Fix the findings"
+      "en": "Fix the findings",
+      "ar": "صلّح الثغرات"
     },
     "palette": {
       "bg": "#0d1714",
@@ -7163,79 +7223,95 @@
   "saas": {
     "brand": {
       "he": "תורלי",
-      "en": "Turly"
+      "en": "Turly",
+      "ar": "تورلي"
     },
     "title": {
       "he": "מערכת תורים לעסק שלך",
-      "en": "Booking software for your business"
+      "en": "Booking software for your business",
+      "ar": "برنامج حجوزات لمصلحتك"
     },
     "subtitle": {
       "he": "14 ימי ניסיון · בלי כרטיס אשראי",
-      "en": "14-day trial · no card needed"
+      "en": "14-day trial · no card needed",
+      "ar": "تجربة 14 يوم · بدون بطاقة"
     },
     "tags": [
       {
         "he": "מספרות",
-        "en": "Barbers"
+        "en": "Barbers",
+        "ar": "حلاقين"
       },
       {
         "he": "מרפאות",
-        "en": "Clinics"
+        "en": "Clinics",
+        "ar": "عيادات"
       },
       {
         "he": "סטודיו",
-        "en": "Studios"
+        "en": "Studios",
+        "ar": "ستوديوهات"
       },
       {
         "he": "מוסכים",
-        "en": "Garages"
+        "en": "Garages",
+        "ar": "كراجات"
       }
     ],
     "items": [
       {
         "label": {
           "he": "סוג העסק",
-          "en": "Business type"
+          "en": "Business type",
+          "ar": "نوع المصلحة"
         },
         "meta": {
           "he": "מרפאה · 3 מטפלים",
-          "en": "Clinic · 3 practitioners"
+          "en": "Clinic · 3 practitioners",
+          "ar": "عيادة · 3 معالجين"
         }
       },
       {
         "label": {
           "he": "תוספים",
-          "en": "Add-ons"
+          "en": "Add-ons",
+          "ar": "إضافات"
         },
         "meta": {
           "he": "תזכורות SMS ותשלום מקדמה",
-          "en": "SMS reminders, deposits"
+          "en": "SMS reminders, deposits",
+          "ar": "تذكير SMS، عربون"
         }
       },
       {
         "label": {
           "he": "חיוב",
-          "en": "Billing"
+          "en": "Billing",
+          "ar": "الدفع"
         },
         "meta": {
           "he": "שנתי · חודשיים חינם",
-          "en": "Yearly · 2 months free"
+          "en": "Yearly · 2 months free",
+          "ar": "سنوي · شهرين مجانًا"
         }
       },
       {
         "label": {
           "he": "סה\"כ",
-          "en": "Total"
+          "en": "Total",
+          "ar": "المجموع"
         },
         "meta": {
           "he": "₪189 לחודש · ₪2,268 לשנה",
-          "en": "₪189 a month · ₪2,268 a year"
+          "en": "₪189 a month · ₪2,268 a year",
+          "ar": "₪189 بالشهر · ₪2,268 بالسنة"
         }
       }
     ],
     "cta": {
       "he": "להתחיל ניסיון חינם",
-      "en": "Start the free trial"
+      "en": "Start the free trial",
+      "ar": "ابدأ التجربة المجانية"
     },
     "palette": {
       "bg": "#f3f0ff",
@@ -7248,79 +7324,95 @@
   "marketing-agencies": {
     "brand": {
       "he": "מדאר מדיה",
-      "en": "Madar Media"
+      "en": "Madar Media",
+      "ar": "مدار ميديا"
     },
     "title": {
       "he": "לקוחות שגדלו איתנו",
-      "en": "Clients who grew with us"
+      "en": "Clients who grew with us",
+      "ar": "زبائن كبروا معنا"
     },
     "subtitle": {
       "he": "קמפיינים בעברית ובערבית",
-      "en": "Campaigns in Hebrew and Arabic"
+      "en": "Campaigns in Hebrew and Arabic",
+      "ar": "حملات بالعبري والعربي"
     },
     "tags": [
       {
         "he": "קמפיינים",
-        "en": "Ads"
+        "en": "Ads",
+        "ar": "إعلانات"
       },
       {
         "he": "קידום אתרים",
-        "en": "SEO"
+        "en": "SEO",
+        "ar": "SEO"
       },
       {
         "he": "מיתוג",
-        "en": "Branding"
+        "en": "Branding",
+        "ar": "هوية تجارية"
       },
       {
         "he": "תוכן",
-        "en": "Content"
+        "en": "Content",
+        "ar": "محتوى"
       }
     ],
     "items": [
       {
         "label": {
           "he": "רשת מאפיות",
-          "en": "Bakery chain"
+          "en": "Bakery chain",
+          "ar": "سلسلة مخابز"
         },
         "meta": {
           "he": "פי 3 הזמנות אונליין",
-          "en": "3x online orders"
+          "en": "3x online orders",
+          "ar": "طلبات أونلاين ×3"
         }
       },
       {
         "label": {
           "he": "מרפאת שיניים",
-          "en": "Dental clinic"
+          "en": "Dental clinic",
+          "ar": "عيادة أسنان"
         },
         "meta": {
           "he": "פי 2 פניות בחודש",
-          "en": "2x leads a month"
+          "en": "2x leads a month",
+          "ar": "توجّهات ×2 بالشهر"
         }
       },
       {
         "label": {
           "he": "חנות רהיטים",
-          "en": "Furniture store"
+          "en": "Furniture store",
+          "ar": "محل أثاث"
         },
         "meta": {
           "he": "עמוד ראשון בגוגל",
-          "en": "page one on Google"
+          "en": "page one on Google",
+          "ar": "أول صفحة بجوجل"
         }
       },
       {
         "label": {
           "he": "ריטיינר חודשי",
-          "en": "Monthly retainer"
+          "en": "Monthly retainer",
+          "ar": "اشتراك شهري"
         },
         "meta": {
           "he": "מ-₪3,900",
-          "en": "from ₪3,900"
+          "en": "from ₪3,900",
+          "ar": "من ₪3,900"
         }
       }
     ],
     "cta": {
       "he": "לקבוע שיחת אסטרטגיה",
-      "en": "Book a strategy call"
+      "en": "Book a strategy call",
+      "ar": "احجز مكالمة استراتيجية"
     },
     "palette": {
       "bg": "#fbe9de",
@@ -7333,87 +7425,105 @@
   "social-media": {
     "brand": {
       "he": "סמא סושיאל",
-      "en": "Sama Social"
+      "en": "Sama Social",
+      "ar": "سما سوشيال"
     },
     "title": {
       "he": "לוח התוכן של השבוע",
-      "en": "This week's content"
+      "en": "This week's content",
+      "ar": "محتوى هالأسبوع"
     },
     "subtitle": {
       "he": "ממתקי אל סולטאן · 5 פוסטים לאישור",
-      "en": "Al Sultan Sweets · 5 posts to approve"
+      "en": "Al Sultan Sweets · 5 posts to approve",
+      "ar": "حلويات السلطان · 5 منشورات للموافقة"
     },
     "tags": [
       {
         "he": "א'",
-        "en": "Sun"
+        "en": "Sun",
+        "ar": "أحد"
       },
       {
         "he": "ב'",
-        "en": "Mon"
+        "en": "Mon",
+        "ar": "اثنين"
       },
       {
         "he": "ג'",
-        "en": "Tue"
+        "en": "Tue",
+        "ar": "ثلاثاء"
       },
       {
         "he": "ד'",
-        "en": "Wed"
+        "en": "Wed",
+        "ar": "أربعاء"
       },
       {
         "he": "ה'",
-        "en": "Thu"
+        "en": "Thu",
+        "ar": "خميس"
       },
       {
         "he": "ו'",
-        "en": "Fri"
+        "en": "Fri",
+        "ar": "جمعة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "רילס כנאפה",
-          "en": "Knafeh reel"
+          "en": "Knafeh reel",
+          "ar": "ريل كنافة"
         },
         "meta": {
           "he": "א' 18:00 · אושר",
-          "en": "Sun 18:00 · approved"
+          "en": "Sun 18:00 · approved",
+          "ar": "الأحد 18:00 · تمت الموافقة"
         }
       },
       {
         "label": {
           "he": "מגשי עיד",
-          "en": "Eid trays"
+          "en": "Eid trays",
+          "ar": "صواني العيد"
         },
         "meta": {
           "he": "ג' 12:00 · לאישור",
-          "en": "Tue 12:00 · to approve"
+          "en": "Tue 12:00 · to approve",
+          "ar": "الثلاثاء 12:00 · بانتظار الموافقة"
         }
       },
       {
         "label": {
           "he": "סטורי מבצע",
-          "en": "Offer story"
+          "en": "Offer story",
+          "ar": "ستوري عرض"
         },
         "meta": {
           "he": "ה' 16:00 · טיוטה",
-          "en": "Thu 16:00 · draft"
+          "en": "Thu 16:00 · draft",
+          "ar": "الخميس 16:00 · مسودة"
         }
       },
       {
         "label": {
           "he": "ביקורות",
-          "en": "Reviews post"
+          "en": "Reviews post",
+          "ar": "منشور تقييمات"
         },
         "meta": {
           "he": "ו' 10:00 · לאישור",
-          "en": "Fri 10:00 · to approve"
+          "en": "Fri 10:00 · to approve",
+          "ar": "الجمعة 10:00 · بانتظار الموافقة"
         }
       }
     ],
     "cta": {
       "he": "לאשר את כל הפוסטים",
-      "en": "Approve all posts"
+      "en": "Approve all posts",
+      "ar": "وافق على كل المنشورات"
     },
     "palette": {
       "bg": "#fff0f0",
@@ -7426,79 +7536,95 @@
   "hosting": {
     "brand": {
       "he": "ענן אל ג'ליל",
-      "en": "Al Jalil Cloud"
+      "en": "Al Jalil Cloud",
+      "ar": "سحابة الجليل"
     },
     "title": {
       "he": "אחסון לאתר העסק",
-      "en": "Hosting for your business site"
+      "en": "Hosting for your business site",
+      "ar": "استضافة لموقع مصلحتك"
     },
     "subtitle": {
       "he": "שרתים בישראל · תמיכה בעברית ובערבית",
-      "en": "Servers in Israel · support in Hebrew and Arabic"
+      "en": "Servers in Israel · support in Hebrew and Arabic",
+      "ar": "سيرفرات بالبلاد · دعم بالعبري والعربي"
     },
     "tags": [
       {
         "he": "אתר תדמית",
-        "en": "Brochure site"
+        "en": "Brochure site",
+        "ar": "موقع تعريفي"
       },
       {
         "he": "חנות",
-        "en": "Store"
+        "en": "Store",
+        "ar": "متجر"
       },
       {
         "he": "וורדפרס",
-        "en": "WordPress"
+        "en": "WordPress",
+        "ar": "ووردبريس"
       },
       {
         "he": "שרת ייעודי",
-        "en": "Dedicated"
+        "en": "Dedicated",
+        "ar": "سيرفر خاص"
       }
     ],
     "items": [
       {
         "label": {
           "he": "אתרים",
-          "en": "Sites"
+          "en": "Sites",
+          "ar": "المواقع"
         },
         "meta": {
           "he": "3 אתרים · 50GB",
-          "en": "3 sites · 50 GB"
+          "en": "3 sites · 50 GB",
+          "ar": "3 مواقع · 50 GB"
         }
       },
       {
         "label": {
           "he": "דומיין",
-          "en": "Domain"
+          "en": "Domain",
+          "ar": "الدومين"
         },
         "meta": {
           "he": "co.il · שנה ראשונה חינם",
-          "en": "co.il · first year free"
+          "en": "co.il · first year free",
+          "ar": "co.il · أول سنة مجانًا"
         }
       },
       {
         "label": {
           "he": "תיבות דואר",
-          "en": "Mailboxes"
+          "en": "Mailboxes",
+          "ar": "البريد"
         },
         "meta": {
           "he": "10 תיבות עסקיות",
-          "en": "10 business mailboxes"
+          "en": "10 business mailboxes",
+          "ar": "10 صناديق بريد للمصلحة"
         }
       },
       {
         "label": {
           "he": "לחודש",
-          "en": "Per month"
+          "en": "Per month",
+          "ar": "بالشهر"
         },
         "meta": {
           "he": "₪59-79",
-          "en": "₪59-79"
+          "en": "₪59-79",
+          "ar": "₪59-79"
         }
       }
     ],
     "cta": {
       "he": "להעביר את האתר אלינו",
-      "en": "Move my site here"
+      "en": "Move my site here",
+      "ar": "انقل موقعي لهون"
     },
     "palette": {
       "bg": "#e7f1f3",
@@ -7511,79 +7637,95 @@
   "app-developers": {
     "brand": {
       "he": "סולם אפליקציות",
-      "en": "Sullam Apps"
+      "en": "Sullam Apps",
+      "ar": "سُلّم للتطبيقات"
     },
     "title": {
       "he": "בונים את האפליקציה שלך",
-      "en": "Scope your app"
+      "en": "Scope your app",
+      "ar": "خطّط تطبيقك"
     },
     "subtitle": {
       "he": "iOS ואנדרואיד · השקה תוך 12 שבועות",
-      "en": "iOS and Android · live in 12 weeks"
+      "en": "iOS and Android · live in 12 weeks",
+      "ar": "iOS وأندرويد · جاهز خلال 12 أسبوع"
     },
     "tags": [
       {
         "he": "הזמנות",
-        "en": "Bookings"
+        "en": "Bookings",
+        "ar": "حجوزات"
       },
       {
         "he": "תשלומים",
-        "en": "Payments"
+        "en": "Payments",
+        "ar": "دفع"
       },
       {
         "he": "התראות",
-        "en": "Push alerts"
+        "en": "Push alerts",
+        "ar": "إشعارات"
       },
       {
         "he": "מפות",
-        "en": "Maps"
+        "en": "Maps",
+        "ar": "خرائط"
       }
     ],
     "items": [
       {
         "label": {
           "he": "סוג אפליקציה",
-          "en": "App type"
+          "en": "App type",
+          "ar": "نوع التطبيق"
         },
         "meta": {
           "he": "הזמנות לעסק מקומי",
-          "en": "Bookings for a local business"
+          "en": "Bookings for a local business",
+          "ar": "حجوزات لمصلحة محلية"
         }
       },
       {
         "label": {
           "he": "פלטפורמות",
-          "en": "Platforms"
+          "en": "Platforms",
+          "ar": "المنصّات"
         },
         "meta": {
           "he": "iOS, אנדרואיד וממשק ניהול",
-          "en": "iOS, Android and admin panel"
+          "en": "iOS, Android and admin panel",
+          "ar": "iOS، أندرويد ولوحة إدارة"
         }
       },
       {
         "label": {
           "he": "שפות",
-          "en": "Languages"
+          "en": "Languages",
+          "ar": "اللغات"
         },
         "meta": {
           "he": "ערבית, עברית ואנגלית",
-          "en": "Arabic, Hebrew and English"
+          "en": "Arabic, Hebrew and English",
+          "ar": "عربي، عبري وإنجليزي"
         }
       },
       {
         "label": {
           "he": "הערכה",
-          "en": "Estimate"
+          "en": "Estimate",
+          "ar": "التقدير"
         },
         "meta": {
           "he": "₪68,000 · כולל עיצוב",
-          "en": "₪68,000 · design included"
+          "en": "₪68,000 · design included",
+          "ar": "₪68,000 · شامل التصميم"
         }
       }
     ],
     "cta": {
       "he": "לקבוע שיחת אפיון",
-      "en": "Book a discovery call"
+      "en": "Book a discovery call",
+      "ar": "احجز مكالمة استكشاف"
     },
     "palette": {
       "bg": "#11172a",
@@ -7596,79 +7738,95 @@
   "game-studios": {
     "brand": {
       "he": "סטודיו נג'מה",
-      "en": "Najma Games"
+      "en": "Najma Games",
+      "ar": "ألعاب نجمة"
     },
     "title": {
       "he": "משחקים לכל המשפחה",
-      "en": "Games for the whole family"
+      "en": "Games for the whole family",
+      "ar": "ألعاب لكل العيلة"
     },
     "subtitle": {
       "he": "בלי פרסומות, בלי רכישות בתוך המשחק",
-      "en": "No ads, no in-game purchases"
+      "en": "No ads, no in-game purchases",
+      "ar": "بدون إعلانات وبدون مشتريات جوّا اللعبة"
     },
     "tags": [
       {
         "he": "פאזלים",
-        "en": "Puzzles"
+        "en": "Puzzles",
+        "ar": "ألغاز"
       },
       {
         "he": "לימוד ערבית",
-        "en": "Learn Arabic"
+        "en": "Learn Arabic",
+        "ar": "تعلّم عربي"
       },
       {
         "he": "ספורט",
-        "en": "Sport"
+        "en": "Sport",
+        "ar": "رياضة"
       },
       {
         "he": "לגיל הרך",
-        "en": "Little ones"
+        "en": "Little ones",
+        "ar": "للصغار"
       }
     ],
     "items": [
       {
         "label": {
           "he": "אותיות הכוכבים",
-          "en": "Star Letters"
+          "en": "Star Letters",
+          "ar": "حروف النجوم"
         },
         "meta": {
           "he": "₪19 · לימוד אלף-בית ערבי · גיל 4+",
-          "en": "₪19 · Arabic alphabet · age 4+"
+          "en": "₪19 · Arabic alphabet · age 4+",
+          "ar": "₪19 · الحروف العربية · من عمر 4"
         }
       },
       {
         "label": {
           "he": "מבוך הגנים",
-          "en": "Garden Maze"
+          "en": "Garden Maze",
+          "ar": "متاهة الجنينة"
         },
         "meta": {
           "he": "₪15 · פאזל · 120 שלבים",
-          "en": "₪15 · puzzle · 120 levels"
+          "en": "₪15 · puzzle · 120 levels",
+          "ar": "₪15 · ألغاز · 120 مرحلة"
         }
       },
       {
         "label": {
           "he": "ליגת השכונה",
-          "en": "Street League"
+          "en": "Street League",
+          "ar": "دوري الحارة"
         },
         "meta": {
           "he": "₪25 · כדורגל לשניים",
-          "en": "₪25 · two-player football"
+          "en": "₪25 · two-player football",
+          "ar": "₪25 · كرة قدم للاعبين اثنين"
         }
       },
       {
         "label": {
           "he": "גרסה לכיתה",
-          "en": "Classroom edition"
+          "en": "Classroom edition",
+          "ar": "نسخة الصف"
         },
         "meta": {
           "he": "₪390 לשנה · עד 35 תלמידים",
-          "en": "₪390 a year · up to 35 pupils"
+          "en": "₪390 a year · up to 35 pupils",
+          "ar": "₪390 بالسنة · لحد 35 طالب"
         }
       }
     ],
     "cta": {
       "he": "להוריד את המשחק",
-      "en": "Download the game"
+      "en": "Download the game",
+      "ar": "نزّل اللعبة"
     },
     "palette": {
       "bg": "#fff1d6",
@@ -7681,83 +7839,100 @@
   "ai-consulting": {
     "brand": {
       "he": "מסאר דאטה",
-      "en": "Masar Data"
+      "en": "Masar Data",
+      "ar": "مسار داتا"
     },
     "title": {
       "he": "הנתונים שלך יכולים לעבוד קשה יותר",
-      "en": "Make your data work harder"
+      "en": "Make your data work harder",
+      "ar": "خلّي معطياتك تشتغل أكثر"
     },
     "subtitle": {
       "he": "פגישת אבחון ראשונה ללא עלות",
-      "en": "First discovery session free"
+      "en": "First discovery session free",
+      "ar": "أول جلسة استكشاف مجانية"
     },
     "tags": [
       {
         "he": "09:00",
-        "en": "09:00"
+        "en": "09:00",
+        "ar": "09:00"
       },
       {
         "he": "10:30",
-        "en": "10:30"
+        "en": "10:30",
+        "ar": "10:30"
       },
       {
         "he": "13:00",
-        "en": "13:00"
+        "en": "13:00",
+        "ar": "13:00"
       },
       {
         "he": "15:30",
-        "en": "15:30"
+        "en": "15:30",
+        "ar": "15:30"
       },
       {
         "he": "17:00",
-        "en": "17:00"
+        "en": "17:00",
+        "ar": "17:00"
       }
     ],
     "items": [
       {
         "label": {
           "he": "פגישת אבחון",
-          "en": "Discovery session"
+          "en": "Discovery session",
+          "ar": "جلسة استكشاف"
         },
         "meta": {
           "he": "ללא עלות · 45 דק'",
-          "en": "free · 45 min"
+          "en": "free · 45 min",
+          "ar": "مجانًا · 45 دقيقة"
         }
       },
       {
         "label": {
           "he": "דשבורד מכירות",
-          "en": "Sales dashboard"
+          "en": "Sales dashboard",
+          "ar": "لوحة مبيعات"
         },
         "meta": {
           "he": "₪9,800 · 3 שבועות",
-          "en": "₪9,800 · 3 weeks"
+          "en": "₪9,800 · 3 weeks",
+          "ar": "₪9,800 · 3 أسابيع"
         }
       },
       {
         "label": {
           "he": "צ'אטבוט לשירות לקוחות",
-          "en": "Customer service chatbot"
+          "en": "Customer service chatbot",
+          "ar": "شات بوت لخدمة الزبائن"
         },
         "meta": {
           "he": "₪14,500 · 5 שבועות",
-          "en": "₪14,500 · 5 weeks"
+          "en": "₪14,500 · 5 weeks",
+          "ar": "₪14,500 · 5 أسابيع"
         }
       },
       {
         "label": {
           "he": "סדנה לצוות",
-          "en": "Team workshop"
+          "en": "Team workshop",
+          "ar": "ورشة للطاقم"
         },
         "meta": {
           "he": "₪3,200 · יום מלא",
-          "en": "₪3,200 · full day"
+          "en": "₪3,200 · full day",
+          "ar": "₪3,200 · يوم كامل"
         }
       }
     ],
     "cta": {
       "he": "לקבוע אבחון ב-10:30",
-      "en": "Book 10:30 session"
+      "en": "Book 10:30 session",
+      "ar": "احجز جلسة 10:30"
     },
     "palette": {
       "bg": "#eef3f1",
