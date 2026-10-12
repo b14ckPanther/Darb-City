@@ -4,12 +4,13 @@ import { pickText } from "@darb/core";
 import { t } from "@darb/i18n";
 import { BusinessList } from "@/components/BusinessList";
 import { CityBar } from "@/components/CityBar";
+import { NearMe } from "@/components/NearMe";
 import { NoneYet } from "@/components/NoneYet";
 import { getBusinesses, getPlaces, getTaxonomy } from "@/lib/api";
 import { crumbsFor } from "@/lib/crumbs";
 import { COUNTRY_SLUG, localeOrNotFound } from "@/lib/levels";
 import { pageMetadata } from "@/lib/metadata";
-import { paths } from "@/lib/routes";
+import { href, paths } from "@/lib/routes";
 import { placeNames, toRows } from "@/lib/rows";
 import { indexTaxonomy } from "@/lib/taxonomy";
 
@@ -59,6 +60,16 @@ export default async function NationalKindPage({ params }: Props) {
           <h1 id="main-heading" tabIndex={-1} className="page-title">
             {t(locale, "kindNationwide", { kind: pickText(kind.name, locale) })}
           </h1>
+          <NearMe
+            locale={locale}
+            kind={kind.slug}
+            homeHref={href(locale)}
+            labels={{
+              nearMe: t(locale, "nearMe"),
+              locating: t(locale, "locating"),
+              denied: t(locale, "locationDenied"),
+            }}
+          />
           {rows.length > 0 ? (
             <BusinessList
               locale={locale}

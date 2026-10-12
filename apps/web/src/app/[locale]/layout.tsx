@@ -9,6 +9,8 @@ import { siteUrl } from "@/lib/site";
 import { tokensCss } from "@/lib/tokens-css";
 import { DoorDefs } from "@/components/Door";
 import { Header } from "@/components/Header";
+import { NearMe } from "@/components/NearMe";
+import { href } from "@/lib/routes";
 import "../globals.css";
 
 // Each family carries only its own script, so a page downloads what it renders.
@@ -83,7 +85,20 @@ export default async function RootLayout({ children, params }: LayoutProps) {
         <a className="skip-link" href="#main">
           {t(locale, "skipToContent")}
         </a>
-        <Header locale={locale} />
+        <Header
+          locale={locale}
+          nearMe={
+            <NearMe
+              locale={locale}
+              homeHref={href(locale)}
+              labels={{
+                nearMe: t(locale, "nearMe"),
+                locating: t(locale, "locating"),
+                denied: t(locale, "locationDenied"),
+              }}
+            />
+          }
+        />
         {children}
       </body>
     </html>
