@@ -72,3 +72,23 @@ describe("stage copy", () => {
     ]);
   });
 });
+
+describe("search copy", () => {
+  it("never brands Darb or a blocked search with religion", () => {
+    for (const locale of LOCALES)
+      for (const text of Object.values(messages[locale]))
+        // Whole words only: "دين" alone, never inside مدينة (city).
+        expect(text, text).not.toMatch(
+          /halal|חלאל|حلال|kosher|כשר|religio|(^|\s)(דת|دين|الدين)(\s|$)/i,
+        );
+  });
+  it("says only that the kind is not listed", () => {
+    expect(t("en", "blocked")).toBe("We don't list this kind of business.");
+    expect(t("he", "blocked")).toBe("אנחנו לא מציגים סוג עסק כזה.");
+    expect(t("ar", "blocked")).toBe("لا نعرض هذا النوع من المصالح.");
+  });
+  it("fills the chip and query placeholders", () => {
+    expect(t("en", "removeChip", { chip: "Open now" })).toBe("Remove Open now");
+    expect(t("ar", "searchFor", { q: "حلاق" })).toContain("حلاق");
+  });
+});

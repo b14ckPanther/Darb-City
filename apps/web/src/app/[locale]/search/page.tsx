@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       locale,
       segments: paths.search(),
       title: t(locale, "search"),
-      description: t(locale, "searchSoon"),
+      description: t(locale, "searchHint"),
     }),
     robots: { index: false },
   };
@@ -43,7 +43,7 @@ export default async function SearchPage({ params }: Props) {
         <h1 id="main-heading" tabIndex={-1} className="page-title">
           {t(locale, "search")}
         </h1>
-        <p className="lede">{t(locale, "searchSoon")}</p>
+        <p className="lede">{t(locale, "searchHint")}</p>
         <p>
           <Link className="button-link" href={`${href(locale)}#places`}>
             {t(locale, "places")}
