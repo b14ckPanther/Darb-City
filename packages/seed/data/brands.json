@@ -269,10 +269,11 @@
     }
   },
   {
-    "slug": "sakhnin-stars-academy",
+    "slug": "galilee-stars-academy",
     "name": {
-      "he": "אקדמיית כוכבי סח'נין",
-      "en": "Sakhnin Stars Academy"
+      "he": "אקדמיית כוכבי הגליל",
+      "ar": "أكاديمية نجوم الجليل",
+      "en": "Galilee Stars Academy"
     }
   },
   {
@@ -500,10 +501,11 @@
     }
   },
   {
-    "slug": "abu-ghosh-netsupport",
+    "slug": "abu-ghanem-netsupport",
     "name": {
-      "he": "נט סאפורט אבו גוש",
-      "en": "Abu Ghosh NetSupport"
+      "he": "נט סאפורט אבו גאנם",
+      "ar": "نت سبورت أبو غانم",
+      "en": "Abu Ghanem NetSupport"
     }
   },
   {
@@ -1061,10 +1063,11 @@
     }
   },
   {
-    "slug": "ein-vered-cabins",
+    "slug": "rose-valley-cabins",
     "name": {
-      "he": "בקתות עין ורד",
-      "en": "Ein Vered Cabins"
+      "he": "בקתות עמק הוורדים",
+      "ar": "أكواخ وادي الورد",
+      "en": "Rose Valley Cabins"
     }
   },
   {
@@ -1300,17 +1303,19 @@
     }
   },
   {
-    "slug": "umm-al-fahm-municipality",
+    "slug": "city-services",
     "name": {
-      "he": "עיריית אום אל פחם",
-      "en": "Umm al Fahm Municipality"
+      "he": "שירותי העירייה",
+      "ar": "خدمات البلدية",
+      "en": "City Services"
     }
   },
   {
-    "slug": "ein-al-ward-council",
+    "slug": "school-registration-desk",
     "name": {
-      "he": "מועצת עין אל ורד",
-      "en": "Ein Al Ward Council"
+      "he": "מדור רישום לבתי ספר",
+      "ar": "قسم تسجيل المدارس",
+      "en": "School Registration Desk"
     }
   },
   {
@@ -1342,17 +1347,19 @@
     }
   },
   {
-    "slug": "ramat-hazayit-council",
+    "slug": "parking-services",
     "name": {
-      "he": "עיריית רמת הזית",
-      "en": "Ramat HaZayit Council"
+      "he": "שירותי חניה",
+      "ar": "خدمات المواقف",
+      "en": "Parking Services"
     }
   },
   {
-    "slug": "marj-al-zuhur-planning",
+    "slug": "local-planning-committee",
     "name": {
-      "he": "ועדת התכנון מרג' אל זהור",
-      "en": "Marj Al Zuhur Planning"
+      "he": "הוועדה המקומית לתכנון",
+      "ar": "اللجنة المحلية للتخطيط",
+      "en": "Local Planning Committee"
     }
   },
   {

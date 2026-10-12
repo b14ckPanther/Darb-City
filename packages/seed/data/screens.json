@@ -3016,8 +3016,9 @@
   },
   "football-academies": {
     "brand": {
-      "he": "אקדמיית כוכבי סח'נין",
-      "en": "Sakhnin Stars Academy"
+      "he": "אקדמיית כוכבי הגליל",
+      "ar": "أكاديمية نجوم الجليل",
+      "en": "Galilee Stars Academy"
     },
     "title": {
       "he": "כרטיס השחקן",
@@ -5833,8 +5834,9 @@
   },
   "it-support": {
     "brand": {
-      "he": "נט סאפורט אבו גוש",
-      "en": "Abu Ghosh NetSupport"
+      "he": "נט סאפורט אבו גאנם",
+      "ar": "نت سبورت أبو غانم",
+      "en": "Abu Ghanem NetSupport"
     },
     "title": {
       "he": "המדפסת חוזרת לעבוד",
@@ -12528,8 +12530,9 @@
   },
   "hotels": {
     "brand": {
-      "he": "בקתות עין ורד",
-      "en": "Ein Vered Cabins"
+      "he": "בקתות עמק הוורדים",
+      "ar": "أكواخ وادي الورد",
+      "en": "Rose Valley Cabins"
     },
     "title": {
       "he": "סופ\"ש בגליל",
@@ -15321,8 +15324,9 @@
   },
   "municipal": {
     "brand": {
-      "he": "עיריית אום אל פחם",
-      "en": "Umm al Fahm Municipality"
+      "he": "שירותי העירייה",
+      "ar": "خدمات البلدية",
+      "en": "City Services"
     },
     "title": {
       "he": "הפנייה שלך בטיפול",
@@ -15402,8 +15406,9 @@
   },
   "school-registration": {
     "brand": {
-      "he": "מועצת עין אל ורד",
-      "en": "Ein Al Ward Council"
+      "he": "מדור רישום לבתי ספר",
+      "ar": "قسم تسجيل المدارس",
+      "en": "School Registration Desk"
     },
     "title": {
       "he": "רישום לכיתה א'",
@@ -15827,8 +15832,9 @@
   },
   "parking": {
     "brand": {
-      "he": "עיריית רמת הזית",
-      "en": "Ramat HaZayit Council"
+      "he": "שירותי חניה",
+      "ar": "خدمات المواقف",
+      "en": "Parking Services"
     },
     "title": {
       "he": "תו החניה שלך",
@@ -15908,8 +15914,9 @@
   },
   "permits": {
     "brand": {
-      "he": "ועדת התכנון מרג' אל זהור",
-      "en": "Marj Al Zuhur Planning"
+      "he": "הוועדה המקומית לתכנון",
+      "ar": "اللجنة المحلية للتخطيط",
+      "en": "Local Planning Committee"
     },
     "title": {
       "he": "בקשה להיתר תוספת בנייה",

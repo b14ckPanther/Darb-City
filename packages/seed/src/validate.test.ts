@@ -298,3 +298,60 @@ describe("screen palettes", () => {
     }
   });
 });
+
+/** Brands copied into every town must not belong to one. */
+const GENERIC_BRANDS: Record<string, string> = {
+  municipal: "City Services",
+  "school-registration": "School Registration Desk",
+  parking: "Parking Services",
+  permits: "Local Planning Committee",
+  "football-academies": "Galilee Stars Academy",
+  "it-support": "Abu Ghanem NetSupport",
+  hotels: "Rose Valley Cabins",
+};
+/** Brand words that are also tiny localities' names, but here are common words or personal names. */
+const ALLOWED_PLACE_WORDS = new Set([
+  "app-developers:sulam",
+  "architects:shahar",
+  "beekeepers:nahala",
+  "carpentry:erez",
+  "catering:adi",
+  "cleaning:zohar",
+  "community-centres:navve",
+  "ev-charging:barak",
+  "ladies-spa:hamaam",
+  "libraries:manara",
+  "meal-prep:sallama",
+  "metalworks:hadid",
+  "orthodontics:basma",
+]);
+
+describe("showroom brands", () => {
+  const screens = loadScreens();
+  it("give civic services generic names", () => {
+    for (const [kind, en] of Object.entries(GENERIC_BRANDS))
+      expect(screens[kind]?.brand.en, kind).toBe(en);
+  });
+  it("never name a real locality", () => {
+    const matchers = loadPlaces()
+      .filter((p) => ["city", "town", "village"].includes(p.type))
+      .map((p) => {
+        const en = p.name.en ?? "";
+        const he = p.name.he ?? "";
+        return {
+          slug: p.slug,
+          en:
+            en.length >= 5 ? new RegExp(`(?<![A-Za-z])${escapeRegExp(en)}(?![A-Za-z])`, "i") : null,
+          he: he.length >= 3 ? new RegExp(`(^|\\s)${escapeRegExp(he)}($|\\s)`) : null,
+        };
+      });
+    const hits: string[] = [];
+    for (const [kind, screen] of Object.entries(screens)) {
+      for (const m of matchers) {
+        if (m.en?.test(screen.brand.en ?? "") || m.he?.test(screen.brand.he ?? ""))
+          hits.push(`${kind}:${m.slug}`);
+      }
+    }
+    expect(hits.filter((hit) => !ALLOWED_PLACE_WORDS.has(hit))).toEqual([]);
+  });
+});
