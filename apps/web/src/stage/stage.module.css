@@ -29,7 +29,8 @@
 .attribution {
   position: absolute;
   inset-block-end: var(--space-2);
-  inset-inline-end: var(--space-3);
+  /* The stage's inline start, beside the list: the desktop sheet covers its inline end. */
+  inset-inline-start: var(--space-3);
   margin: 0;
   padding: 2px var(--space-2);
   border-radius: var(--radius-s);
