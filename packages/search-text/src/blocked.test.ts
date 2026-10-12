@@ -127,6 +127,15 @@ describe("blocked words inside place names", () => {
   });
 });
 
+describe("kibar", () => {
+  it("allows كبار (elders, big) on its own and keeps بار blocked", () => {
+    expect(isBlocked("كبار")).toBe(false);
+    expect(isBlocked("كبار السن")).toBe(false);
+    expect(isBlocked("بار")).toBe(true);
+    expect(isBlocked("بار عرق")).toBe(true);
+  });
+});
+
 describe("arak", () => {
   it("blocks the drink, not licorice juice", () => {
     expect(isBlocked("عرق")).toBe(true);

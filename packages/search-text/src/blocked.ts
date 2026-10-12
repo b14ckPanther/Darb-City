@@ -106,6 +106,7 @@ export const ALLOWED_PHRASES: readonly string[] = [
   "כבר",
   "שבר",
   "عرق سوس",
+  "كبار",
 ];
 
 const words = (s: string) => normalize(s).split(" ");
