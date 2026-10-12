@@ -8,6 +8,7 @@ import {
   type PlaceDto,
   type TaxonomyDto,
 } from "@darb/contracts";
+import { isSlug } from "@darb/core";
 import { initClient, type ApiFetcher } from "@ts-rest/core";
 
 /** The API could not be reached or answered with an error it should never give. */
@@ -72,6 +73,12 @@ async function call<T>(run: () => Promise<T>): Promise<T> {
   }
 }
 
+/**
+ * Route params arrive decoded and ts-rest puts path params into the URL as they are, so `a/../b`
+ * or `a?b` would reach another endpoint. Anything that is not a slug is simply not found.
+ */
+const slugs = (...values: string[]) => values.every(isSlug);
+
 export async function getTaxonomy(): Promise<TaxonomyDto> {
   const res = await call(() =>
     client().taxonomy.get({
@@ -83,6 +90,7 @@ export async function getTaxonomy(): Promise<TaxonomyDto> {
 }
 
 export async function getPlace(slug: string): Promise<PlaceDetailDto | null> {
+  if (!slugs(slug)) return null;
   const res = await call(() =>
     client().places.get({
       params: { slug },
@@ -104,6 +112,7 @@ export async function getPlaces(status?: "live" | "soon"): Promise<PlaceDto[]> {
 }
 
 export async function getKindCounts(placeSlug: string): Promise<KindCountsDto | null> {
+  if (!slugs(placeSlug)) return null;
   const res = await call(() =>
     client().businesses.kindCounts({
       params: { placeSlug },
@@ -117,6 +126,7 @@ export async function getBusinesses(
   placeSlug: string,
   options: { kind?: string; cursor?: string; limit?: number } = {},
 ): Promise<BusinessPageDto | null> {
+  if (!slugs(placeSlug) || (options.kind !== undefined && !slugs(options.kind))) return null;
   const query = {
     ...(options.kind ? { kind: options.kind } : {}),
     ...(options.cursor ? { cursor: options.cursor } : {}),
@@ -137,6 +147,7 @@ export async function getBusiness(
   placeSlug: string,
   slug: string,
 ): Promise<BusinessDetailDto | null> {
+  if (!slugs(placeSlug, slug)) return null;
   const res = await call(() =>
     client().businesses.get({
       params: { placeSlug, slug },
@@ -155,6 +166,7 @@ export async function getNearestPlacesWithKind(
   limit: number,
   cache: "cached" | "no-store" = "cached",
 ): Promise<NearestPlaceDto[] | null> {
+  if (!slugs(kindSlug)) return null;
   const res = await call(() =>
     client().businesses.nearestPlaces({
       params: { kindSlug },

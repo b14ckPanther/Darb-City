@@ -3,8 +3,11 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   ApiBadRequestError,
   ApiUnavailableError,
+  getBusiness,
   getBusinesses,
+  getKindCounts,
   getNearestPlace,
+  getNearestPlacesWithKind,
   getPlace,
 } from "./api";
 
@@ -77,5 +80,22 @@ describe("api client", () => {
     ).rejects.toBeInstanceOf(ApiBadRequestError);
     fetchMock.mockResolvedValue(Response.json({ message: "nope" }, { status: 404 }));
     expect(await getBusinesses("nowhere")).toBeNull();
+  });
+});
+
+describe("slug path params", () => {
+  // Next decodes route params and ts-rest inserts them raw into the path, so `a/../b` would
+  // reach `API/b` and `a?b` would inject a query. None of them is a slug: not found, no call.
+  const bad = ["a/../b", "a?b", "A", "%2F", "", "x/../../taxonomy"];
+  it.each(bad)("never sends %j to the API", async (slug) => {
+    fetchMock.mockResolvedValue(Response.json({}));
+    expect(await getPlace(slug)).toBeNull();
+    expect(await getKindCounts(slug)).toBeNull();
+    expect(await getBusinesses(slug)).toBeNull();
+    expect(await getBusinesses("sakhnin", { kind: slug || "A" })).toBeNull();
+    expect(await getBusiness(slug, "abu-salim")).toBeNull();
+    expect(await getBusiness("sakhnin", slug)).toBeNull();
+    expect(await getNearestPlacesWithKind(slug, 32.8, 35.3, 5)).toBeNull();
+    expect(fetchMock).not.toHaveBeenCalled();
   });
 });
