@@ -33,6 +33,11 @@
   list-style: none;
 }
 
+/* Rows that Show more appends keep the list's rhythm. */
+.list + .list {
+  margin-block-start: var(--space-2);
+}
+
 @media (min-width: 900px) {
   .list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -74,7 +79,7 @@
 }
 
 .rowPlace {
-  color: var(--text-soft);
+  color: var(--text-muted);
   font-size: var(--step--1);
 }
 

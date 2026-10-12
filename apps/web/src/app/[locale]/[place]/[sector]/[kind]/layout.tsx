@@ -44,7 +44,15 @@ export default async function KindLayout({ children, params }: Props) {
             <SubPlaceChips label={t(locale, "neighbourhoods")} chips={chips} />
           ) : null}
           {rows.length > 0 ? (
-            <BusinessList locale={locale} rows={rows} />
+            <BusinessList
+              locale={locale}
+              rows={rows}
+              more={
+                page.nextCursor
+                  ? { place: place.slug, kind: kind.slug, cursor: page.nextCursor }
+                  : null
+              }
+            />
           ) : (
             <NoneYet
               title={t(locale, "noneHereYet", { place: placeName })}

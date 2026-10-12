@@ -3,6 +3,7 @@ import { t } from "@darb/i18n";
 import type { BusinessRowData } from "@/lib/rows";
 import { BusinessRow, type RowLabels } from "./BusinessRow";
 import styles from "./List.module.css";
+import { ShowMore } from "./ShowMore";
 
 export function rowLabels(locale: Locale): RowLabels {
   return {
@@ -12,7 +13,21 @@ export function rowLabels(locale: Locale): RowLabels {
   };
 }
 
-export function BusinessList({ locale, rows }: { locale: Locale; rows: BusinessRowData[] }) {
+export interface MoreQuery {
+  place: string;
+  kind: string;
+  cursor: string;
+}
+
+export function BusinessList({
+  locale,
+  rows,
+  more,
+}: {
+  locale: Locale;
+  rows: BusinessRowData[];
+  more: MoreQuery | null;
+}) {
   const labels = rowLabels(locale);
   return (
     <section aria-labelledby="businesses-title">
@@ -24,6 +39,14 @@ export function BusinessList({ locale, rows }: { locale: Locale; rows: BusinessR
           <BusinessRow key={row.key} row={row} labels={labels} />
         ))}
       </ul>
+      {more ? (
+        <ShowMore
+          locale={locale}
+          {...more}
+          labels={{ showMore: t(locale, "showMore"), unreachable: t(locale, "unreachable") }}
+          rowLabels={labels}
+        />
+      ) : null}
     </section>
   );
 }
