@@ -20,10 +20,12 @@ catalog:
   "@ts-rest/core": 3.52.1
   "@ts-rest/nest": 3.52.1
   "@types/node": 22.20.5
+  "@types/pg": 8.23.1
   "@types/supertest": 7.2.1
   ajv: 8.20.0
   dotenv: 18.0.7
   eslint: 10.12.0
+  pg: 8.23.1
   prettier: 3.9.10
   prisma: 7.10.0
   reflect-metadata: 0.2.2

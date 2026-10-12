@@ -1,0 +1,237 @@
+generator client {
+  provider            = "prisma-client"
+  output              = "../src/generated/prisma"
+  moduleFormat        = "esm"
+  importFileExtension = "js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum PlaceType {
+  country
+  region
+  city
+  town
+  village
+  neighbourhood
+}
+
+enum PlaceStatus {
+  live
+  soon
+}
+
+enum KindStatus {
+  active
+  hidden
+}
+
+enum Template {
+  menu
+  booking
+  shop
+  portfolio
+  listing
+  schedule
+  quote
+  donate
+  tracker
+  pass
+  builder
+}
+
+enum Tier {
+  example
+  basic
+  verified
+  darb
+}
+
+enum BusinessSource {
+  seed
+  self
+  claimed
+}
+
+enum BusinessStatus {
+  draft
+  published
+  suspended
+}
+
+enum ClaimMethod {
+  phone
+  documents
+}
+
+enum ClaimStatus {
+  pending
+  approved
+  rejected
+}
+
+enum OrgRole {
+  owner
+  staff
+}
+
+model Place {
+  id         String                                       @id @default(uuid(7)) @db.Uuid
+  slug       String                                       @unique
+  type       PlaceType
+  parentId   String?                                      @db.Uuid
+  parent     Place?                                       @relation("PlaceTree", fields: [parentId], references: [id])
+  children   Place[]                                      @relation("PlaceTree")
+  /// Ancestry as "/israel/north/haifa/" for subtree queries.
+  path       String
+  name       Json
+  aliases    String[]
+  lat        Float
+  lng        Float
+  /// Generated from lat/lng in the migration; never written by Prisma.
+  /// The default mirrors the generated column's expression so Prisma sees no drift.
+  point      Unsupported("geography(Point,4326)")?        @default(dbgenerated("(st_setsrid(st_makepoint(lng, lat), 4326))::geography"))
+  boundary   Unsupported("geography(MultiPolygon,4326)")?
+  population Int?
+  cbsCode    String?                                      @unique
+  status     PlaceStatus                                  @default(soon)
+  businesses Business[]
+
+  @@index([point], type: Gist)
+  @@index([path])
+  @@index([status])
+}
+
+model Sector {
+  id      String @id @default(uuid(7)) @db.Uuid
+  slug    String @unique
+  name    Json
+  tagline Json
+  accent  String
+  order   Int
+  kinds   Kind[]
+}
+
+model Kind {
+  id            String         @id @default(uuid(7)) @db.Uuid
+  slug          String         @unique
+  sectorId      String         @db.Uuid
+  sector        Sector         @relation(fields: [sectorId], references: [id])
+  parentKindId  String?        @db.Uuid
+  parent        Kind?          @relation("KindTree", fields: [parentKindId], references: [id])
+  children      Kind[]         @relation("KindTree")
+  name          Json
+  synonyms      Json
+  template      Template
+  contentSchema Json
+  attributes    String[]
+  icon          String?
+  order         Int
+  status        KindStatus     @default(active)
+  primaryFor    Business[]     @relation("PrimaryKind")
+  businesses    BusinessKind[]
+
+  @@index([sectorId])
+}
+
+model Brand {
+  id         String     @id @default(uuid(7)) @db.Uuid
+  slug       String     @unique
+  name       Json
+  businesses Business[]
+}
+
+model Business {
+  id             String                                @id @default(uuid(7)) @db.Uuid
+  slug           String
+  name           Json
+  tagline        Json
+  primaryKindId  String                                @db.Uuid
+  primaryKind    Kind                                  @relation("PrimaryKind", fields: [primaryKindId], references: [id])
+  kinds          BusinessKind[]
+  placeId        String                                @db.Uuid
+  place          Place                                 @relation(fields: [placeId], references: [id])
+  lat            Float
+  lng            Float
+  /// Generated from lat/lng in the migration; never written by Prisma.
+  /// The default mirrors the generated column's expression so Prisma sees no drift.
+  point          Unsupported("geography(Point,4326)")? @default(dbgenerated("(st_setsrid(st_makepoint(lng, lat), 4326))::geography"))
+  address        Json
+  phone          String?
+  whatsapp       String?
+  website        String?
+  photos         Json                                  @default("[]")
+  hours          Json
+  attributes     Json                                  @default("{}")
+  experience     Json
+  tier           Tier
+  apps           Json                                  @default("{}")
+  source         BusinessSource
+  status         BusinessStatus                        @default(draft)
+  brandId        String?                               @db.Uuid
+  brand          Brand?                                @relation(fields: [brandId], references: [id])
+  organizationId String?                               @db.Uuid
+  organization   Organization?                         @relation(fields: [organizationId], references: [id])
+  claims         Claim[]
+  createdAt      DateTime                              @default(now())
+  updatedAt      DateTime                              @updatedAt
+
+  @@unique([placeId, slug])
+  @@index([point], type: Gist)
+  @@index([primaryKindId])
+  @@index([status])
+}
+
+model BusinessKind {
+  businessId String   @db.Uuid
+  business   Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  kindId     String   @db.Uuid
+  kind       Kind     @relation(fields: [kindId], references: [id])
+
+  @@id([businessId, kindId])
+  @@index([kindId])
+}
+
+model Organization {
+  id         String       @id @default(uuid(7)) @db.Uuid
+  clerkOrgId String       @unique
+  name       String
+  members    Membership[]
+  businesses Business[]
+}
+
+model User {
+  id          String       @id @default(uuid(7)) @db.Uuid
+  clerkUserId String       @unique
+  locale      String       @default("he")
+  isAdmin     Boolean      @default(false)
+  memberships Membership[]
+  claims      Claim[]      @relation("ClaimUser")
+  reviewed    Claim[]      @relation("ClaimReviewer")
+}
+
+model Membership {
+  organizationId String       @db.Uuid
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  userId         String       @db.Uuid
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role           OrgRole
+
+  @@id([organizationId, userId])
+}
+
+model Claim {
+  id           String      @id @default(uuid(7)) @db.Uuid
+  businessId   String      @db.Uuid
+  business     Business    @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  userId       String      @db.Uuid
+  user         User        @relation("ClaimUser", fields: [userId], references: [id])
+  method       ClaimMethod
+  status       ClaimStatus @default(pending)
+  reviewedById String?     @db.Uuid
+  reviewedBy   User?       @relation("ClaimReviewer", fields: [reviewedById], references: [id])
+  createdAt    DateTime    @default(now())
+  reviewedAt   DateTime?
+}
