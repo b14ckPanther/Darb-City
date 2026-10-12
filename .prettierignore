@@ -12,3 +12,7 @@ apps/web/public/brand
 apps/web/.screens
 apps/web/playwright-report
 apps/web/test-results
+apps/web/public/map
+apps/web/.tiles
+apps/web/map-assets
+apps/web/e2e/tiles

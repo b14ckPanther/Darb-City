@@ -18,3 +18,16 @@ it("leaves Vercel's platform cache alone on Vercel", async () => {
   const { default: config } = await import("../../next.config");
   expect(config).not.toHaveProperty("cacheHandler");
 });
+
+it("caches the vendored MapLibre forever and the glyphs for a day", async () => {
+  const { default: config } = await import("../../next.config");
+  const headers = await config.headers!();
+  expect(headers).toContainEqual({
+    source: "/map/vendor/:path*",
+    headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+  });
+  expect(headers).toContainEqual({
+    source: "/map/glyphs/:path*",
+    headers: [{ key: "Cache-Control", value: "public, max-age=86400" }],
+  });
+});
