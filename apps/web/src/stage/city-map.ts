@@ -12,14 +12,14 @@ import {
 } from "@darb/stage";
 import { moveCamera } from "./camera-move";
 import { loadMapLibre } from "./load-maplibre";
-import { CITY_DOT, CITY_GLOW, CITY_SOURCE, darbLayers, PIN_LAYER, PIN_SOURCE } from "./map-layers";
+import { CITY_SOURCE, darbLayers, PIN_SOURCE } from "./map-layers";
 import { prepareStyle, PROTOMAPS_SOURCE } from "./map-style";
+import { pickAt } from "./pick";
 import type { StageMap } from "./types";
 import { styleUrl, TILES_URL } from "./vendor";
 
 const READY_TIMEOUT = 15_000;
 const PADDING = 48;
-const PICKABLE = [PIN_LAYER, CITY_DOT, CITY_GLOW];
 
 let protocol: Protocol | null = null;
 
@@ -115,15 +115,13 @@ export class CityMap implements StageMap {
     canvas.setAttribute("role", "img");
     canvas.setAttribute("aria-label", options.label);
     canvas.setAttribute("tabindex", "-1");
+    // A forgiving 44 px target around each tap: the dots are 5–12 px (pick.ts).
     this.map.on("click", (event) => {
-      const [top] = this.map.queryRenderedFeatures(event.point, { layers: PICKABLE });
-      const href = top?.properties?.href;
-      if (top && typeof href === "string")
-        options.onPick(href, top.layer.id === PIN_LAYER ? "business" : "place");
+      const picked = pickAt(this.map, event.point);
+      if (picked) options.onPick(picked.href, picked.kind);
     });
     this.map.on("mousemove", (event) => {
-      const over = this.map.queryRenderedFeatures(event.point, { layers: PICKABLE }).length > 0;
-      canvas.style.cursor = over ? "pointer" : "";
+      canvas.style.cursor = pickAt(this.map, event.point) ? "pointer" : "";
     });
     this.map.on("zoomend", (event) => {
       if (event.originalEvent && zoomedOut(this.target, this.map.getZoom())) options.onZoomOut();

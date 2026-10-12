@@ -114,6 +114,20 @@ test.describe("desktop", () => {
     await expect(page.getByRole("dialog")).toBeVisible();
   });
 
+  test("a click 15 px off a 5–12 px dot or pin still counts (44 px targets)", async ({ page }) => {
+    await stageAt(page, LEVELS.kind);
+    const [px, py] = await pointOf(page, BUSINESS_KEY);
+    const [dx, dy] = await pointOf(page, "sakhnin");
+    // 15 px from each, on the side away from the other.
+    const d = Math.hypot(px - dx, py - dy);
+    const [ux, uy] = [(px - dx) / d, (py - dy) / d];
+    await page.mouse.click(px + 15 * ux, py + 15 * uy);
+    await expect(page).toHaveURL(LEVELS.business);
+    await stageAt(page, LEVELS.kind);
+    await page.mouse.click(dx - 15 * ux, dy - 15 * uy);
+    await expect(page).toHaveURL(LEVELS.place);
+  });
+
   test("Back goes up a level, and the camera with it", async ({ page }) => {
     await stageAt(page, LEVELS.place);
     await page.locator('[data-plaza-door="beauty"]').click();
