@@ -7,6 +7,7 @@ import type { Redis } from "ioredis";
 import request from "supertest";
 import { afterAll, beforeAll, expect, it } from "vitest";
 import { INTENT_PROVIDER } from "../src/ai/intent.js";
+import { FAILED_SOURCE } from "../src/ai/record-cases.js";
 import { OffIntentProvider, type RecordedCase } from "../src/ai/recorded-intent.provider.js";
 import { AppModule } from "../src/app.module.js";
 import { CLOCK } from "../src/businesses/businesses.controller.js";
@@ -106,6 +107,10 @@ it("expects only kinds and places the seed has (an unknown place would match any
     ].map((what) => `${c.locale} "${c.query}": ${what}`),
   );
   expect(unknown).toEqual([]);
+});
+
+it("has no case whose recording failed (search:record marks them)", () => {
+  expect(CASES.filter((c) => c.source === FAILED_SOURCE).map((c) => c.query)).toEqual([]);
 });
 
 /** Null when the case passes, else why it failed. */
