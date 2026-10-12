@@ -6,6 +6,11 @@
     "build": { "dependsOn": ["^build"], "outputs": ["dist/**"] },
     "typecheck": { "dependsOn": ["^build"] },
     "test": { "dependsOn": ["^build"], "env": ["DATABASE_URL", "TEST_DATABASE_URL"] },
+    "@darb/api#test": {
+      "dependsOn": ["^build"],
+      "env": ["DATABASE_URL", "TEST_DATABASE_URL"],
+      "cache": false
+    },
     "dev": { "dependsOn": ["^build"], "cache": false, "persistent": true }
   }
 }
