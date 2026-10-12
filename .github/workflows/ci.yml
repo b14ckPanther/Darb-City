@@ -5,6 +5,9 @@ on:
   push:
     branches: [main]
 
+permissions:
+  contents: read
+
 concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
@@ -44,7 +47,7 @@ jobs:
       - run: pnpm --filter @darb/web exec playwright install --with-deps chromium
       - name: End-to-end, accessibility and LCP
         run: pnpm --filter @darb/web e2e
-      - if: always()
+      - if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v7
         with:
           name: playwright
