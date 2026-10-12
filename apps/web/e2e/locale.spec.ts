@@ -22,7 +22,7 @@ test("the city bar switch keeps the path on list levels", async ({ page }) => {
   await expect(page).toHaveURL(`/ar${LEVELS.sector}`);
 });
 
-test("Arabic falls back to Hebrew and is never blank", async ({ page }) => {
+test("Arabic pages are never blank and show Arabic names", async ({ page }) => {
   await page.goto(`/ar${LEVELS.nationalKind}`);
   const names = await page.locator("[data-business-name]").allTextContents();
   expect(names.length).toBeGreaterThan(0);
