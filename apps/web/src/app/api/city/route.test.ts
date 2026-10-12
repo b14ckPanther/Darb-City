@@ -49,3 +49,17 @@ it("answers 503 when the API is down", async () => {
   getDensity.mockResolvedValue({});
   expect((await get("locale=he")).status).toBe(503);
 });
+
+it("puts only settlements on the map: no country, region or neighbourhood dots", async () => {
+  getPlaces.mockResolvedValue([
+    { ...sakhnin, slug: "israel", type: "country", parentId: null },
+    { ...sakhnin, slug: "north", type: "region" },
+    sakhnin,
+    { ...sakhnin, slug: "kfar-manda", type: "town" },
+    { ...sakhnin, slug: "zarzir", type: "village" },
+    { ...sakhnin, slug: "old-city", type: "neighbourhood" },
+  ]);
+  getDensity.mockResolvedValue({});
+  const { dots } = (await (await get("locale=en")).json()) as { dots: { slug: string }[] };
+  expect(dots.map((d) => d.slug)).toEqual(["sakhnin", "kfar-manda", "zarzir"]);
+});
