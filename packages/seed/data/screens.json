@@ -3395,75 +3395,90 @@
   "gyms": {
     "brand": {
       "he": "ברזל",
-      "en": "Barzel Gym"
+      "en": "Barzel Gym",
+      "ar": "نادي برزل"
     },
     "title": {
       "he": "המנוי שלך פעיל",
-      "en": "Your membership is live"
+      "en": "Your membership is live",
+      "ar": "اشتراكك فعّال"
     },
     "subtitle": {
       "he": "נשארו 214 ימים · 3 אימונים השבוע",
-      "en": "214 days left · 3 sessions this week"
+      "en": "214 days left · 3 sessions this week",
+      "ar": "باقي 214 يوم · 3 تمارين هالأسبوع"
     },
     "tags": [
       {
         "he": "כניסה 24/7",
-        "en": "24/7 entry"
+        "en": "24/7 entry",
+        "ar": "دخول 24/7"
       },
       {
         "he": "מגבת",
-        "en": "Towel"
+        "en": "Towel",
+        "ar": "منشفة"
       },
       {
         "he": "2 אימונים אישיים",
-        "en": "2 PT sessions"
+        "en": "2 PT sessions",
+        "ar": "2 جلسات مدرب شخصي"
       }
     ],
     "items": [
       {
         "label": {
           "he": "מנוי",
-          "en": "Plan"
+          "en": "Plan",
+          "ar": "الاشتراك"
         },
         "meta": {
           "he": "שנתי · פרימיום",
-          "en": "Annual · Premium"
+          "en": "Annual · Premium",
+          "ar": "سنوي · بريميوم"
         }
       },
       {
         "label": {
           "he": "מתאמנת",
-          "en": "Member"
+          "en": "Member",
+          "ar": "المشترك"
         },
         "meta": {
           "he": "דנה לוי",
-          "en": "Dana Levi"
+          "en": "Dana Levi",
+          "ar": "دانا ليفي"
         }
       },
       {
         "label": {
           "he": "האימון הבא",
-          "en": "Next class"
+          "en": "Next class",
+          "ar": "الحصة الجاية"
         },
         "meta": {
           "he": "קרוספיט · 18:30",
-          "en": "CrossFit · 18:30"
+          "en": "CrossFit · 18:30",
+          "ar": "كروسفيت · 18:30"
         }
       },
       {
         "label": {
           "he": "כניסה",
-          "en": "Entry"
+          "en": "Entry",
+          "ar": "الدخول"
         },
         "meta": {
           "he": "סריקה בשער",
-          "en": "Scan at the gate"
+          "en": "Scan at the gate",
+          "ar": "امسح عند البوابة"
         }
       }
     ],
     "cta": {
       "he": "שריון מקום ל-18:30",
-      "en": "Save my spot at 18:30"
+      "en": "Save my spot at 18:30",
+      "ar": "احجزلي مكان الساعة 18:30"
     },
     "palette": {
       "bg": "#101010",
@@ -3476,75 +3491,90 @@
   "trainers": {
     "brand": {
       "he": "אלון אימונים",
-      "en": "Alon Training"
+      "en": "Alon Training",
+      "ar": "تدريبات ألون"
     },
     "title": {
       "he": "שבוע 6 מתוך 12",
-      "en": "Week 6 of 12"
+      "en": "Week 6 of 12",
+      "ar": "الأسبوع 6 من 12"
     },
     "subtitle": {
       "he": "התוכנית מתעדכנת אחרי כל אימון",
-      "en": "Your plan updates after every session"
+      "en": "Your plan updates after every session",
+      "ar": "خطتك بتتحدّث بعد كل تمرين"
     },
     "tags": [
       {
         "he": "כוח",
-        "en": "Strength"
+        "en": "Strength",
+        "ar": "قوة"
       },
       {
         "he": "סיבולת",
-        "en": "Endurance"
+        "en": "Endurance",
+        "ar": "تحمّل"
       },
       {
         "he": "תזונה",
-        "en": "Nutrition"
+        "en": "Nutrition",
+        "ar": "تغذية"
       }
     ],
     "items": [
       {
         "label": {
           "he": "סקוואט",
-          "en": "Squat"
+          "en": "Squat",
+          "ar": "سكوات"
         },
         "meta": {
           "he": "85 ק\"ג · 72%",
-          "en": "85 kg · 72%"
+          "en": "85 kg · 72%",
+          "ar": "85 كغم · 72%"
         }
       },
       {
         "label": {
           "he": "אימונים החודש",
-          "en": "Sessions this month"
+          "en": "Sessions this month",
+          "ar": "تمارين هالشهر"
         },
         "meta": {
           "he": "11 מתוך 14 · 78%",
-          "en": "11 of 14 · 78%"
+          "en": "11 of 14 · 78%",
+          "ar": "11 من 14 · 78%"
         }
       },
       {
         "label": {
           "he": "צעדים היום",
-          "en": "Steps today"
+          "en": "Steps today",
+          "ar": "خطوات اليوم"
         },
         "meta": {
           "he": "8,420 · 84%",
-          "en": "8,420 · 84%"
+          "en": "8,420 · 84%",
+          "ar": "8,420 · 84%"
         }
       },
       {
         "label": {
           "he": "האימון הבא",
-          "en": "Next session"
+          "en": "Next session",
+          "ar": "التمرين الجاي"
         },
         "meta": {
           "he": "ד' 07:00 · פארק הירקון",
-          "en": "Wed 07:00 · Yarkon Park"
+          "en": "Wed 07:00 · Yarkon Park",
+          "ar": "الأربعاء 07:00 · حديقة اليركون"
         }
       }
     ],
     "cta": {
       "he": "הודעה לאלון",
-      "en": "Message Alon"
+      "en": "Message Alon",
+      "ar": "ابعت رسالة لألون"
     },
     "palette": {
       "bg": "#edf1ff",
@@ -3562,71 +3592,85 @@
     },
     "title": {
       "he": "כרטיס השחקן",
-      "en": "Player card"
+      "en": "Player card",
+      "ar": "بطاقة اللاعب"
     },
     "subtitle": {
       "he": "עונת 2026/27 · שנתון 2015",
-      "en": "Season 2026/27 · born 2015"
+      "en": "Season 2026/27 · born 2015",
+      "ar": "موسم 2026/27 · مواليد 2015"
     },
     "tags": [
       {
         "he": "2 אימונים בשבוע",
-        "en": "2 sessions a week"
+        "en": "2 sessions a week",
+        "ar": "تمرينين بالأسبوع"
       },
       {
         "he": "ערכת מדים",
-        "en": "Full kit"
+        "en": "Full kit",
+        "ar": "طقم كامل"
       },
       {
         "he": "ביטוח שחקן",
-        "en": "Player insurance"
+        "en": "Player insurance",
+        "ar": "تأمين لاعب"
       }
     ],
     "items": [
       {
         "label": {
           "he": "שחקן",
-          "en": "Player"
+          "en": "Player",
+          "ar": "اللاعب"
         },
         "meta": {
           "he": "אדם ח'לאילה",
-          "en": "Adam Khalaila"
+          "en": "Adam Khalaila",
+          "ar": "آدم خلايلة"
         }
       },
       {
         "label": {
           "he": "עמדה",
-          "en": "Position"
+          "en": "Position",
+          "ar": "المركز"
         },
         "meta": {
           "he": "קשר · מספר 8",
-          "en": "Midfield · no. 8"
+          "en": "Midfield · no. 8",
+          "ar": "وسط · رقم 8"
         }
       },
       {
         "label": {
           "he": "האימון הבא",
-          "en": "Next training"
+          "en": "Next training",
+          "ar": "التمرين الجاي"
         },
         "meta": {
           "he": "ג' 17:00 · מגרש 2",
-          "en": "Tue 17:00 · pitch 2"
+          "en": "Tue 17:00 · pitch 2",
+          "ar": "الثلاثاء 17:00 · ملعب 2"
         }
       },
       {
         "label": {
           "he": "דמי מנוי",
-          "en": "Fees"
+          "en": "Fees",
+          "ar": "الرسوم"
         },
         "meta": {
           "he": "₪250 לחודש",
-          "en": "₪250 a month"
+          "en": "₪250 a month",
+          "ar": "₪250 بالشهر"
         }
       }
     ],
     "cta": {
       "he": "אישור הגעה למשחק",
-      "en": "Confirm for the match"
+      "en": "Confirm for the match",
+      "ar": "أكّد حضورك للمباراة"
     },
     "palette": {
       "bg": "#0f3a24",
@@ -3639,79 +3683,95 @@
   "sports-clubs": {
     "brand": {
       "he": "מועדון הכדורסל הכרמל",
-      "en": "Carmel Basketball Club"
+      "en": "Carmel Basketball Club",
+      "ar": "نادي الكرمل لكرة السلة"
     },
     "title": {
       "he": "משחק בית ביום שישי",
-      "en": "Home game on Friday"
+      "en": "Home game on Friday",
+      "ar": "مباراة بيتية يوم الجمعة"
     },
     "subtitle": {
       "he": "הכרמל נגד העמק · 20:00 · היכל הספורט",
-      "en": "Carmel vs Emek · 20:00 · sports hall"
+      "en": "Carmel vs Emek · 20:00 · sports hall",
+      "ar": "الكرمل ضد عيمك · 20:00 · القاعة الرياضية"
     },
     "tags": [
       {
         "he": "בוגרים",
-        "en": "Seniors"
+        "en": "Seniors",
+        "ar": "كبار"
       },
       {
         "he": "נוער",
-        "en": "Youth"
+        "en": "Youth",
+        "ar": "شباب"
       },
       {
         "he": "ילדים",
-        "en": "Kids"
+        "en": "Kids",
+        "ar": "أولاد"
       },
       {
         "he": "נשים",
-        "en": "Women"
+        "en": "Women",
+        "ar": "نساء"
       }
     ],
     "items": [
       {
         "label": {
           "he": "אימון ילדים",
-          "en": "Kids training"
+          "en": "Kids training",
+          "ar": "تمرين الأولاد"
         },
         "meta": {
           "he": "א' 16:30 · גילאי 8-10",
-          "en": "Sun 16:30 · ages 8-10"
+          "en": "Sun 16:30 · ages 8-10",
+          "ar": "الأحد 16:30 · أعمار 8-10"
         }
       },
       {
         "label": {
           "he": "אימון נוער",
-          "en": "Youth training"
+          "en": "Youth training",
+          "ar": "تمرين الشباب"
         },
         "meta": {
           "he": "ב' 18:00 · אולם ב'",
-          "en": "Mon 18:00 · hall B"
+          "en": "Mon 18:00 · hall B",
+          "ar": "الاثنين 18:00 · قاعة ب"
         }
       },
       {
         "label": {
           "he": "משחק חוץ",
-          "en": "Away game"
+          "en": "Away game",
+          "ar": "مباراة خارج الأرض"
         },
         "meta": {
           "he": "ד' 19:30 · צפת",
-          "en": "Wed 19:30 · Safed"
+          "en": "Wed 19:30 · Safed",
+          "ar": "الأربعاء 19:30 · صفد"
         }
       },
       {
         "label": {
           "he": "משחק בית",
-          "en": "Home game"
+          "en": "Home game",
+          "ar": "مباراة على أرضنا"
         },
         "meta": {
           "he": "ו' 20:00 · כרטיס ₪30",
-          "en": "Fri 20:00 · ticket ₪30"
+          "en": "Fri 20:00 · ticket ₪30",
+          "ar": "الجمعة 20:00 · تذكرة ₪30"
         }
       }
     ],
     "cta": {
       "he": "הרשמה לעונה",
-      "en": "Register for the season"
+      "en": "Register for the season",
+      "ar": "سجّل للموسم"
     },
     "palette": {
       "bg": "#d4263c",
@@ -3724,75 +3784,90 @@
   "martial-arts": {
     "brand": {
       "he": "דוג'ו אל פארס",
-      "en": "Al Fares Dojo"
+      "en": "Al Fares Dojo",
+      "ar": "دوجو الفارس"
     },
     "title": {
       "he": "בדרך לחגורה כתומה",
-      "en": "On the way to orange belt"
+      "en": "On the way to orange belt",
+      "ar": "بالطريق للحزام البرتقالي"
     },
     "subtitle": {
       "he": "קראטה · גילאי 9-12 · מבחן ב-28.6",
-      "en": "Karate · ages 9-12 · grading 28 Jun"
+      "en": "Karate · ages 9-12 · grading 28 Jun",
+      "ar": "كاراتيه · أعمار 9-12 · امتحان 28 حزيران"
     },
     "tags": [
       {
         "he": "קראטה",
-        "en": "Karate"
+        "en": "Karate",
+        "ar": "كاراتيه"
       },
       {
         "he": "ג'ודו",
-        "en": "Judo"
+        "en": "Judo",
+        "ar": "جودو"
       },
       {
         "he": "הגנה עצמית",
-        "en": "Self-defence"
+        "en": "Self-defence",
+        "ar": "دفاع عن النفس"
       }
     ],
     "items": [
       {
         "label": {
           "he": "קאטה",
-          "en": "Kata"
+          "en": "Kata",
+          "ar": "كاتا"
         },
         "meta": {
           "he": "3 מתוך 4 · 75%",
-          "en": "3 of 4 · 75%"
+          "en": "3 of 4 · 75%",
+          "ar": "3 من 4 · 75%"
         }
       },
       {
         "label": {
           "he": "נוכחות",
-          "en": "Attendance"
+          "en": "Attendance",
+          "ar": "الحضور"
         },
         "meta": {
           "he": "18 מתוך 20 · 90%",
-          "en": "18 of 20 · 90%"
+          "en": "18 of 20 · 90%",
+          "ar": "18 من 20 · 90%"
         }
       },
       {
         "label": {
           "he": "גמישות",
-          "en": "Flexibility"
+          "en": "Flexibility",
+          "ar": "المرونة"
         },
         "meta": {
           "he": "משתפרת · 60%",
-          "en": "improving · 60%"
+          "en": "improving · 60%",
+          "ar": "بتتحسّن · 60%"
         }
       },
       {
         "label": {
           "he": "מבחן חגורה",
-          "en": "Belt grading"
+          "en": "Belt grading",
+          "ar": "امتحان الحزام"
         },
         "meta": {
           "he": "א' 28.6 · 10:00",
-          "en": "Sun 28 Jun · 10:00"
+          "en": "Sun 28 Jun · 10:00",
+          "ar": "الأحد 28 حزيران · 10:00"
         }
       }
     ],
     "cta": {
       "he": "הרשמה למבחן",
-      "en": "Sign up for grading"
+      "en": "Sign up for grading",
+      "ar": "سجّل للامتحان"
     },
     "palette": {
       "bg": "#f3ece0",
@@ -3805,87 +3880,105 @@
   "padel": {
     "brand": {
       "he": "מועדון פאדל הכרמל",
-      "en": "Carmel Padel Club"
+      "en": "Carmel Padel Club",
+      "ar": "نادي الكرمل للبادل"
     },
     "title": {
       "he": "מגרש פנוי הערב",
-      "en": "A court free tonight"
+      "en": "A court free tonight",
+      "ar": "في ملعب فاضي الليلة"
     },
     "subtitle": {
       "he": "יום ה' 26.6 · מגרש 3 · מקורה",
-      "en": "Thu 26 Jun · court 3 · covered"
+      "en": "Thu 26 Jun · court 3 · covered",
+      "ar": "الخميس 26 حزيران · ملعب 3 · مسقوف"
     },
     "tags": [
       {
         "he": "17:00",
-        "en": "17:00"
+        "en": "17:00",
+        "ar": "17:00"
       },
       {
         "he": "18:30",
-        "en": "18:30"
+        "en": "18:30",
+        "ar": "18:30"
       },
       {
         "he": "19:30",
-        "en": "19:30"
+        "en": "19:30",
+        "ar": "19:30"
       },
       {
         "he": "20:30",
-        "en": "20:30"
+        "en": "20:30",
+        "ar": "20:30"
       },
       {
         "he": "21:30",
-        "en": "21:30"
+        "en": "21:30",
+        "ar": "21:30"
       },
       {
         "he": "22:30",
-        "en": "22:30"
+        "en": "22:30",
+        "ar": "22:30"
       }
     ],
     "items": [
       {
         "label": {
           "he": "פאדל זוגות",
-          "en": "Padel doubles"
+          "en": "Padel doubles",
+          "ar": "بادل زوجي"
         },
         "meta": {
           "he": "₪200 · 90 דק'",
-          "en": "₪200 · 90 min"
+          "en": "₪200 · 90 min",
+          "ar": "₪200 · 90 دقيقة"
         }
       },
       {
         "label": {
           "he": "מגרש טניס",
-          "en": "Tennis court"
+          "en": "Tennis court",
+          "ar": "ملعب تنس"
         },
         "meta": {
           "he": "₪120 · 60 דק'",
-          "en": "₪120 · 60 min"
+          "en": "₪120 · 60 min",
+          "ar": "₪120 · 60 دقيقة"
         }
       },
       {
         "label": {
           "he": "שיעור למתחילים",
-          "en": "Beginner lesson"
+          "en": "Beginner lesson",
+          "ar": "درس للمبتدئين"
         },
         "meta": {
           "he": "₪180 · 60 דק'",
-          "en": "₪180 · 60 min"
+          "en": "₪180 · 60 min",
+          "ar": "₪180 · 60 دقيقة"
         }
       },
       {
         "label": {
           "he": "השכרת מחבט",
-          "en": "Racket hire"
+          "en": "Racket hire",
+          "ar": "استئجار مضرب"
         },
         "meta": {
           "he": "₪20 · למחבט",
-          "en": "₪20 · per racket"
+          "en": "₪20 · per racket",
+          "ar": "₪20 · للمضرب"
         }
       }
     ],
     "cta": {
       "he": "הזמנת מגרש ל-19:30",
-      "en": "Book 19:30"
+      "en": "Book 19:30",
+      "ar": "احجز الساعة 19:30"
     },
     "palette": {
       "bg": "#e3f1f4",
@@ -3898,87 +3991,105 @@
   "aquatic-centres": {
     "brand": {
       "he": "בריכת אל נבע",
-      "en": "Al Nabe' Pool"
+      "en": "Al Nabe' Pool",
+      "ar": "بركة النبع"
     },
     "title": {
       "he": "השבוע בבריכה",
-      "en": "This week at the pool"
+      "en": "This week at the pool",
+      "ar": "هذا الأسبوع بالبركة"
     },
     "subtitle": {
       "he": "מחוממת · 25 מטר · 6 מסלולים",
-      "en": "Heated · 25 m · 6 lanes"
+      "en": "Heated · 25 m · 6 lanes",
+      "ar": "مدفّأة · 25 متر · 6 مسارات"
     },
     "tags": [
       {
         "he": "א'",
-        "en": "Sun"
+        "en": "Sun",
+        "ar": "أحد"
       },
       {
         "he": "ב'",
-        "en": "Mon"
+        "en": "Mon",
+        "ar": "اثنين"
       },
       {
         "he": "ג'",
-        "en": "Tue"
+        "en": "Tue",
+        "ar": "ثلاثاء"
       },
       {
         "he": "ד'",
-        "en": "Wed"
+        "en": "Wed",
+        "ar": "أربعاء"
       },
       {
         "he": "ה'",
-        "en": "Thu"
+        "en": "Thu",
+        "ar": "خميس"
       },
       {
         "he": "ו'",
-        "en": "Fri"
+        "en": "Fri",
+        "ar": "جمعة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "שחייה חופשית",
-          "en": "Lap swim"
+          "en": "Lap swim",
+          "ar": "سباحة مسارات"
         },
         "meta": {
           "he": "06:00 · מסלולים 1-4 · 120 דק'",
-          "en": "06:00 · lanes 1-4 · 120 min"
+          "en": "06:00 · lanes 1-4 · 120 min",
+          "ar": "06:00 · مسارات 1-4 · 120 دقيقة"
         }
       },
       {
         "label": {
           "he": "שעות לנשים בלבד",
-          "en": "Women-only hours"
+          "en": "Women-only hours",
+          "ar": "ساعات للنساء فقط"
         },
         "meta": {
           "he": "09:00 · מצילה · 120 דק'",
-          "en": "09:00 · female lifeguard · 120 min"
+          "en": "09:00 · female lifeguard · 120 min",
+          "ar": "09:00 · منقذة · 120 دقيقة"
         }
       },
       {
         "label": {
           "he": "אקווה אירובי",
-          "en": "Aqua aerobics"
+          "en": "Aqua aerobics",
+          "ar": "أكوا أيروبيك"
         },
         "meta": {
           "he": "18:00 · סמר · 45 דק'",
-          "en": "18:00 · Samar · 45 min"
+          "en": "18:00 · Samar · 45 min",
+          "ar": "18:00 · سمر · 45 دقيقة"
         }
       },
       {
         "label": {
           "he": "שעות לגברים בלבד",
-          "en": "Men-only hours"
+          "en": "Men-only hours",
+          "ar": "ساعات للرجال فقط"
         },
         "meta": {
           "he": "20:00 · מציל · 90 דק'",
-          "en": "20:00 · lifeguard · 90 min"
+          "en": "20:00 · lifeguard · 90 min",
+          "ar": "20:00 · منقذ · 90 دقيقة"
         }
       }
     ],
     "cta": {
       "he": "רכישת כרטיסייה",
-      "en": "Buy a 10-swim card"
+      "en": "Buy a 10-swim card",
+      "ar": "اشترِ بطاقة 10 سباحات"
     },
     "palette": {
       "bg": "#e6f2fb",
@@ -3991,75 +4102,90 @@
   "running-clubs": {
     "brand": {
       "he": "רצי הגליל",
-      "en": "Galilee Runners"
+      "en": "Galilee Runners",
+      "ar": "عدّائين الجليل"
     },
     "title": {
       "he": "לקראת 10 ק\"מ",
-      "en": "Building to 10 km"
+      "en": "Building to 10 km",
+      "ar": "بنتحضّر لـ10 كم"
     },
     "subtitle": {
       "he": "שבוע 5 מתוך 8 · ריצה קבוצתית בשישי",
-      "en": "Week 5 of 8 · group run on Friday"
+      "en": "Week 5 of 8 · group run on Friday",
+      "ar": "الأسبوع 5 من 8 · ركض جماعي يوم الجمعة"
     },
     "tags": [
       {
         "he": "5 ק\"מ",
-        "en": "5 km"
+        "en": "5 km",
+        "ar": "5 كم"
       },
       {
         "he": "10 ק\"מ",
-        "en": "10 km"
+        "en": "10 km",
+        "ar": "10 كم"
       },
       {
         "he": "חצי מרתון",
-        "en": "Half marathon"
+        "en": "Half marathon",
+        "ar": "نص ماراثون"
       }
     ],
     "items": [
       {
         "label": {
           "he": "קילומטרים החודש",
-          "en": "Km this month"
+          "en": "Km this month",
+          "ar": "كيلومترات هالشهر"
         },
         "meta": {
           "he": "62 ק\"מ · 78%",
-          "en": "62 km · 78%"
+          "en": "62 km · 78%",
+          "ar": "62 كم · 78%"
         }
       },
       {
         "label": {
           "he": "ריצות השבוע",
-          "en": "Runs this week"
+          "en": "Runs this week",
+          "ar": "ركضات هالأسبوع"
         },
         "meta": {
           "he": "3 מתוך 4 · 75%",
-          "en": "3 of 4 · 75%"
+          "en": "3 of 4 · 75%",
+          "ar": "3 من 4 · 75%"
         }
       },
       {
         "label": {
           "he": "קצב ממוצע",
-          "en": "Average pace"
+          "en": "Average pace",
+          "ar": "معدل السرعة"
         },
         "meta": {
           "he": "5:48 לק\"מ · 64%",
-          "en": "5:48 per km · 64%"
+          "en": "5:48 per km · 64%",
+          "ar": "5:48 للكيلو · 64%"
         }
       },
       {
         "label": {
           "he": "הריצה הבאה",
-          "en": "Next run"
+          "en": "Next run",
+          "ar": "الركضة الجاية"
         },
         "meta": {
           "he": "ו' 06:00 · טיילת טבריה",
-          "en": "Fri 06:00 · Tiberias promenade"
+          "en": "Fri 06:00 · Tiberias promenade",
+          "ar": "الجمعة 06:00 · كورنيش طبريا"
         }
       }
     ],
     "cta": {
       "he": "הצטרפות לריצת שישי",
-      "en": "Join Friday's run"
+      "en": "Join Friday's run",
+      "ar": "انضم لركضة الجمعة"
     },
     "palette": {
       "bg": "#ff6a3d",
@@ -4072,79 +4198,95 @@
   "sportswear": {
     "brand": {
       "he": "אמירה אקטיב",
-      "en": "Amira Active"
+      "en": "Amira Active",
+      "ar": "أميرة أكتيف"
     },
     "title": {
       "he": "ספורט בגזרה צנועה",
-      "en": "Modest activewear"
+      "en": "Modest activewear",
+      "ar": "ملابس رياضية محتشمة"
     },
     "subtitle": {
       "he": "בד נושם, שרוול ארוך ומכנס רחב",
-      "en": "Breathable, long sleeves, wide legs"
+      "en": "Breathable, long sleeves, wide legs",
+      "ar": "بتتنفّس، أكمام طويلة وبناطيل واسعة"
     },
     "tags": [
       {
         "he": "נשים",
-        "en": "Women"
+        "en": "Women",
+        "ar": "نساء"
       },
       {
         "he": "גברים",
-        "en": "Men"
+        "en": "Men",
+        "ar": "رجال"
       },
       {
         "he": "שחייה",
-        "en": "Swim"
+        "en": "Swim",
+        "ar": "سباحة"
       },
       {
         "he": "נעליים",
-        "en": "Shoes"
+        "en": "Shoes",
+        "ar": "أحذية"
       }
     ],
     "items": [
       {
         "label": {
           "he": "חולצת ריצה ארוכה",
-          "en": "Long-sleeve running top"
+          "en": "Long-sleeve running top",
+          "ar": "بلوزة ركض بكم طويل"
         },
         "meta": {
           "he": "₪149 · נושמת",
-          "en": "₪149 · breathable"
+          "en": "₪149 · breathable",
+          "ar": "₪149 · بتتنفّس"
         }
       },
       {
         "label": {
           "he": "חיג'אב ספורט",
-          "en": "Sports hijab"
+          "en": "Sports hijab",
+          "ar": "حجاب رياضي"
         },
         "meta": {
           "he": "₪69 · בד קריר",
-          "en": "₪69 · cooling fabric"
+          "en": "₪69 · cooling fabric",
+          "ar": "₪69 · قماش مبرّد"
         }
       },
       {
         "label": {
           "he": "מכנס אימון רחב",
-          "en": "Wide training pants"
+          "en": "Wide training pants",
+          "ar": "بنطلون تمرين واسع"
         },
         "meta": {
           "he": "₪179 · 4 צבעים",
-          "en": "₪179 · 4 colours"
+          "en": "₪179 · 4 colours",
+          "ar": "₪179 · 4 ألوان"
         }
       },
       {
         "label": {
           "he": "נעלי ריצה",
-          "en": "Running shoes"
+          "en": "Running shoes",
+          "ar": "حذاء ركض"
         },
         "meta": {
           "he": "₪399 · מידות 36-46",
-          "en": "₪399 · sizes 36-46"
+          "en": "₪399 · sizes 36-46",
+          "ar": "₪399 · مقاسات 36-46"
         }
       }
     ],
     "cta": {
       "he": "הוספה לסל",
-      "en": "Add to cart"
+      "en": "Add to cart",
+      "ar": "أضف للسلة"
     },
     "palette": {
       "bg": "#eceff3",
@@ -4157,79 +4299,95 @@
   "hiking": {
     "brand": {
       "he": "שבילי ואדי",
-      "en": "Wadi Trails"
+      "en": "Wadi Trails",
+      "ar": "مسارات وادي"
     },
     "title": {
       "he": "טיולים מודרכים בגליל",
-      "en": "Guided Galilee hikes"
+      "en": "Guided Galilee hikes",
+      "ar": "مشاوير مع مرشد بالجليل"
     },
     "subtitle": {
       "he": "יום ו' · יציאה 07:00 · עד 20 משתתפים",
-      "en": "Fri · leaving 07:00 · up to 20 hikers"
+      "en": "Fri · leaving 07:00 · up to 20 hikers",
+      "ar": "الجمعة · الانطلاق 07:00 · لحد 20 مشارك"
     },
     "tags": [
       {
         "he": "משפחות",
-        "en": "Families"
+        "en": "Families",
+        "ar": "عائلات"
       },
       {
         "he": "מאתגר",
-        "en": "Challenging"
+        "en": "Challenging",
+        "ar": "تحدّي"
       },
       {
         "he": "מים",
-        "en": "Water"
+        "en": "Water",
+        "ar": "مي"
       },
       {
         "he": "זריחה",
-        "en": "Sunrise"
+        "en": "Sunrise",
+        "ar": "شروق الشمس"
       }
     ],
     "items": [
       {
         "label": {
           "he": "נחל עמוד",
-          "en": "Amud stream"
+          "en": "Amud stream",
+          "ar": "وادي العامود"
         },
         "meta": {
           "he": "₪120 · 9 ק\"מ · בינוני",
-          "en": "₪120 · 9 km · moderate"
+          "en": "₪120 · 9 km · moderate",
+          "ar": "₪120 · 9 كم · متوسط"
         }
       },
       {
         "label": {
           "he": "הר מירון",
-          "en": "Mount Meron"
+          "en": "Mount Meron",
+          "ar": "جبل الجرمق"
         },
         "meta": {
           "he": "₪140 · 12 ק\"מ · מאתגר",
-          "en": "₪140 · 12 km · hard"
+          "en": "₪140 · 12 km · hard",
+          "ar": "₪140 · 12 كم · صعب"
         }
       },
       {
         "label": {
           "he": "נחל כזיב",
-          "en": "Keziv stream"
+          "en": "Keziv stream",
+          "ar": "وادي القرن"
         },
         "meta": {
           "he": "₪110 · 7 ק\"מ · במים",
-          "en": "₪110 · 7 km · wading"
+          "en": "₪110 · 7 km · wading",
+          "ar": "₪110 · 7 كم · مشي بالمي"
         }
       },
       {
         "label": {
           "he": "מסלול משפחות",
-          "en": "Family loop"
+          "en": "Family loop",
+          "ar": "مسار عائلي دائري"
         },
         "meta": {
           "he": "₪80 · 4 ק\"מ · קל",
-          "en": "₪80 · 4 km · easy"
+          "en": "₪80 · 4 km · easy",
+          "ar": "₪80 · 4 كم · سهل"
         }
       }
     ],
     "cta": {
       "he": "הרשמה לטיול",
-      "en": "Join a hike"
+      "en": "Join a hike",
+      "ar": "انضم للمشوار"
     },
     "palette": {
       "bg": "#efe6d4",
@@ -4242,79 +4400,95 @@
   "bikes": {
     "brand": {
       "he": "אופני אל ואדי",
-      "en": "Al Wadi Bikes"
+      "en": "Al Wadi Bikes",
+      "ar": "بسكليتات الوادي"
     },
     "title": {
       "he": "מוכנים לרכיבת שישי",
-      "en": "Ready for the Friday ride"
+      "en": "Ready for the Friday ride",
+      "ar": "جاهز لطلعة الجمعة"
     },
     "subtitle": {
       "he": "טיפול חינם בחודש הראשון",
-      "en": "Free service in the first month"
+      "en": "Free service in the first month",
+      "ar": "صيانة مجانية بأول شهر"
     },
     "tags": [
       {
         "he": "עירוני",
-        "en": "City"
+        "en": "City",
+        "ar": "مدينة"
       },
       {
         "he": "שטח",
-        "en": "Mountain"
+        "en": "Mountain",
+        "ar": "جبلي"
       },
       {
         "he": "ילדים",
-        "en": "Kids"
+        "en": "Kids",
+        "ar": "أولاد"
       },
       {
         "he": "אביזרים",
-        "en": "Gear"
+        "en": "Gear",
+        "ar": "معدات"
       }
     ],
     "items": [
       {
         "label": {
           "he": "אופני שטח 29",
-          "en": "29er mountain bike"
+          "en": "29er mountain bike",
+          "ar": "بسكليت جبلي 29 إنش"
         },
         "meta": {
           "he": "₪3,900 · אלומיניום",
-          "en": "₪3,900 · aluminium"
+          "en": "₪3,900 · aluminium",
+          "ar": "₪3,900 · ألمنيوم"
         }
       },
       {
         "label": {
           "he": "קסדה",
-          "en": "Helmet"
+          "en": "Helmet",
+          "ar": "خوذة"
         },
         "meta": {
           "he": "₪260 · מידה M",
-          "en": "₪260 · size M"
+          "en": "₪260 · size M",
+          "ar": "₪260 · مقاس M"
         }
       },
       {
         "label": {
           "he": "בקבוק מים",
-          "en": "Water bottle"
+          "en": "Water bottle",
+          "ar": "قنينة مي"
         },
         "meta": {
           "he": "₪45 · 750 מ\"ל",
-          "en": "₪45 · 750 ml"
+          "en": "₪45 · 750 ml",
+          "ar": "₪45 · 750 مل"
         }
       },
       {
         "label": {
           "he": "פנס קדמי",
-          "en": "Front light"
+          "en": "Front light",
+          "ar": "ضوء أمامي"
         },
         "meta": {
           "he": "₪120 · נטען",
-          "en": "₪120 · rechargeable"
+          "en": "₪120 · rechargeable",
+          "ar": "₪120 · بينشحن"
         }
       }
     ],
     "cta": {
       "he": "הוספה לסל",
-      "en": "Add to cart"
+      "en": "Add to cart",
+      "ar": "أضف للسلة"
     },
     "palette": {
       "bg": "#eef2e8",
@@ -4327,79 +4501,95 @@
   "fishing": {
     "brand": {
       "he": "ציוד דיג אבו סמיר",
-      "en": "Abu Samir Tackle"
+      "en": "Abu Samir Tackle",
+      "ar": "عدّة صيد أبو سمير"
     },
     "title": {
       "he": "בונים ערכת דיג",
-      "en": "Build a fishing kit"
+      "en": "Build a fishing kit",
+      "ar": "ركّب عدّة الصيد تبعك"
     },
     "subtitle": {
       "he": "דיג מהחוף · עכו · למתחילים",
-      "en": "Shore fishing · Akko · beginner"
+      "en": "Shore fishing · Akko · beginner",
+      "ar": "صيد عن الشط · عكا · للمبتدئين"
     },
     "tags": [
       {
         "he": "חכות",
-        "en": "Rods"
+        "en": "Rods",
+        "ar": "قصب صيد"
       },
       {
         "he": "סלילים",
-        "en": "Reels"
+        "en": "Reels",
+        "ar": "بكرات"
       },
       {
         "he": "פיתיונות",
-        "en": "Bait"
+        "en": "Bait",
+        "ar": "طُعم"
       },
       {
         "he": "צידנית",
-        "en": "Cooler"
+        "en": "Cooler",
+        "ar": "صندوق تبريد"
       }
     ],
     "items": [
       {
         "label": {
           "he": "חכה",
-          "en": "Rod"
+          "en": "Rod",
+          "ar": "قصبة الصيد"
         },
         "meta": {
           "he": "טלסקופית 3.6 מ'",
-          "en": "Telescopic 3.6 m"
+          "en": "Telescopic 3.6 m",
+          "ar": "تلسكوبية 3.6 متر"
         }
       },
       {
         "label": {
           "he": "סליל וחוט",
-          "en": "Reel and line"
+          "en": "Reel and line",
+          "ar": "البكرة والخيط"
         },
         "meta": {
           "he": "סליל 4000 · חוט 0.30",
-          "en": "4000 reel · 0.30 line"
+          "en": "4000 reel · 0.30 line",
+          "ar": "بكرة 4000 · خيط 0.30"
         }
       },
       {
         "label": {
           "he": "פיתיונות",
-          "en": "Bait and hooks"
+          "en": "Bait and hooks",
+          "ar": "الطُعم والسنانير"
         },
         "meta": {
           "he": "סרדינים וסט קרסים",
-          "en": "Sardines and a hook set"
+          "en": "Sardines and a hook set",
+          "ar": "سردين وطقم سنانير"
         }
       },
       {
         "label": {
           "he": "סה\"כ לערכה",
-          "en": "Kit total"
+          "en": "Kit total",
+          "ar": "مجموع العدّة"
         },
         "meta": {
           "he": "₪460 · כולל תיק",
-          "en": "₪460 · bag included"
+          "en": "₪460 · bag included",
+          "ar": "₪460 · مع الشنطة"
         }
       }
     ],
     "cta": {
       "he": "איסוף מהחנות היום",
-      "en": "Pick up in store today"
+      "en": "Pick up in store today",
+      "ar": "استلم من المحل اليوم"
     },
     "palette": {
       "bg": "#0f2630",
