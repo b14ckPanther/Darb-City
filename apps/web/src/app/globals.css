@@ -196,6 +196,30 @@ h3 {
   }
 }
 
+/*
+ * The Zoomable City (Plan 2B). The boot script in <head> sets html[data-stage] before the first
+ * paint. Desktop with the stage: the list column at the inline start, the stage beside it. Without
+ * it (no WebGL2, a failed map, /for-business), this block never applies and the layout is 2A's.
+ */
+@media (min-width: 900px) {
+  html[data-stage="on"] {
+    --city-column: min(600px, 44vw);
+  }
+
+  html[data-stage="on"] .city {
+    position: relative;
+    z-index: 1;
+    inline-size: var(--city-column);
+    min-block-size: 100dvh;
+    background: var(--night);
+    border-inline-end: 1px solid var(--line-soft);
+  }
+
+  html[data-stage="on"] [data-site-header] > .frame {
+    inline-size: 100%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

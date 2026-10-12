@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Cairo, Heebo, Ubuntu } from "next/font/google";
 import { notFound } from "next/navigation";
 import type { CSSProperties, ReactNode } from "react";
+import type { Locale } from "@darb/core";
 import { dir, t } from "@darb/i18n";
 import { colors } from "@darb/tokens";
 import { isLocale } from "@/lib/locale";
@@ -11,6 +12,9 @@ import { DoorDefs } from "@/components/Door";
 import { Header } from "@/components/Header";
 import { NearMe } from "@/components/NearMe";
 import { href } from "@/lib/routes";
+import { StageMount } from "@/components/StageMount";
+import { stageBootScript } from "@/lib/stage-boot";
+import type { StageLabels } from "@/stage/types";
 import "../globals.css";
 
 // Each family carries only its own script, so a page downloads what it renders.
@@ -67,6 +71,15 @@ export async function generateMetadata({
   };
 }
 
+const stageLabels = (locale: Locale): StageLabels => ({
+  map: t(locale, "mapLabel"),
+  plaza: t(locale, "plazaLabel"),
+  showMap: t(locale, "showMap"),
+  showList: t(locale, "showList"),
+  mapData: t(locale, "mapData"),
+  businessCount: t(locale, "businessCount"),
+});
+
 export default async function RootLayout({ children, params }: LayoutProps) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
@@ -76,9 +89,11 @@ export default async function RootLayout({ children, params }: LayoutProps) {
       dir={dir(locale)}
       className={[ubuntu.variable, heebo.variable, cairo.variable].join(" ")}
       style={{ "--font-body": fontStack } as CSSProperties}
+      suppressHydrationWarning
     >
       <head>
         <style id="darb-tokens" dangerouslySetInnerHTML={{ __html: tokensCss() }} />
+        <script id="darb-stage-boot" dangerouslySetInnerHTML={{ __html: stageBootScript() }} />
       </head>
       <body>
         <DoorDefs />
@@ -99,7 +114,10 @@ export default async function RootLayout({ children, params }: LayoutProps) {
             />
           }
         />
-        {children}
+        <div className="city" data-city="">
+          {children}
+        </div>
+        <StageMount locale={locale} labels={stageLabels(locale)} />
       </body>
     </html>
   );
