@@ -13,6 +13,7 @@ import { loadPlaceLevel } from "@/lib/levels";
 import { pageMetadata } from "@/lib/metadata";
 import { href, paths } from "@/lib/routes";
 import { sectorTotals } from "@/lib/taxonomy";
+import { metadataOrUnavailable, orUnavailable } from "@/lib/unavailable";
 
 export const revalidate = 300;
 export function generateStaticParams() {
@@ -21,7 +22,9 @@ export function generateStaticParams() {
 
 type Props = { params: Promise<{ locale: string; place: string }> };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export const generateMetadata = metadataOrUnavailable(async function metadata({
+  params,
+}: Props): Promise<Metadata> {
   const { locale, place } = await loadPlaceLevel(await params);
   const name = pickText(place.name, locale);
   return pageMetadata({
@@ -30,9 +33,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: name,
     description: `${name} — ${t(locale, "tagline")}`,
   });
-}
+});
 
-export default async function PlacePage({ params }: Props) {
+export default orUnavailable(async function PlacePage({ params }: Props) {
   const { locale, place, index } = await loadPlaceLevel(await params);
   const name = pickText(place.name, locale);
   const bar = (
@@ -106,4 +109,4 @@ export default async function PlacePage({ params }: Props) {
       </main>
     </>
   );
-}
+});

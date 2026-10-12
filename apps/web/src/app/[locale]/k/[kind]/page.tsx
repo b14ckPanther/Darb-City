@@ -13,6 +13,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { href, paths } from "@/lib/routes";
 import { placeNames, toRows } from "@/lib/rows";
 import { indexTaxonomy } from "@/lib/taxonomy";
+import { metadataOrUnavailable, orUnavailable } from "@/lib/unavailable";
 
 export const revalidate = 300;
 export function generateStaticParams() {
@@ -30,7 +31,9 @@ async function load(params: Props["params"]) {
   return { locale, index, kind };
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export const generateMetadata = metadataOrUnavailable(async function metadata({
+  params,
+}: Props): Promise<Metadata> {
   const { locale, kind } = await load(params);
   return pageMetadata({
     locale,
@@ -38,9 +41,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: t(locale, "kindNationwide", { kind: pickText(kind.name, locale) }),
     description: t(locale, "tagline"),
   });
-}
+});
 
-export default async function NationalKindPage({ params }: Props) {
+export default orUnavailable(async function NationalKindPage({ params }: Props) {
   const { locale, index, kind } = await load(params);
   const [page, places] = await Promise.all([
     getBusinesses(COUNTRY_SLUG, { kind: kind.slug }),
@@ -91,4 +94,4 @@ export default async function NationalKindPage({ params }: Props) {
       </main>
     </>
   );
-}
+});

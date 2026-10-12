@@ -11,6 +11,7 @@ import { formatKm } from "@/lib/format";
 import { loadKindLevelInSector } from "@/lib/levels";
 import { href, paths } from "@/lib/routes";
 import { placeNames, toRows } from "@/lib/rows";
+import { orUnavailable } from "@/lib/unavailable";
 
 type Props = {
   children: ReactNode;
@@ -21,7 +22,7 @@ type Props = {
  * The list is a layout so it stays mounted under the level 4 sheet. Pages render the city bar
  * (`children`, before the list) so the locale switch can keep the full path.
  */
-export default async function KindLayout({ children, params }: Props) {
+export default orUnavailable(async function KindLayout({ children, params }: Props) {
   const level = await loadKindLevelInSector(await params);
   // A wrong sector: the page (which knows the business segment) redirects.
   if (!level) return children;
@@ -72,4 +73,4 @@ export default async function KindLayout({ children, params }: Props) {
       </main>
     </>
   );
-}
+});

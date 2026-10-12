@@ -12,6 +12,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { href, paths } from "@/lib/routes";
 import { siteUrl } from "@/lib/site";
 import { kindCovers } from "@/lib/taxonomy";
+import { metadataOrUnavailable, orUnavailable } from "@/lib/unavailable";
 
 export const revalidate = 300;
 export function generateStaticParams() {
@@ -35,7 +36,9 @@ async function load(params: Props["params"]) {
   return { ...level, business, primaryKind };
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export const generateMetadata = metadataOrUnavailable(async function metadata({
+  params,
+}: Props): Promise<Metadata> {
   const { locale, place, sector, kind, business } = await load(params);
   return pageMetadata({
     locale,
@@ -48,9 +51,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         place: pickText(place.name, locale),
       }),
   });
-}
+});
 
-export default async function BusinessPage({ params }: Props) {
+export default orUnavailable(async function BusinessPage({ params }: Props) {
   const { locale, place, sector, kind, business, primaryKind } = await load(params);
   const segments = paths.business(place.slug, sector.slug, kind.slug, business.slug);
   return (
@@ -84,4 +87,4 @@ export default async function BusinessPage({ params }: Props) {
       </Sheet>
     </>
   );
-}
+});

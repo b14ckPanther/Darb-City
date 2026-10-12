@@ -10,6 +10,7 @@ import { formatNumber } from "@/lib/format";
 import { loadSectorLevel } from "@/lib/levels";
 import { pageMetadata } from "@/lib/metadata";
 import { href, paths } from "@/lib/routes";
+import { metadataOrUnavailable, orUnavailable } from "@/lib/unavailable";
 
 export const revalidate = 300;
 export function generateStaticParams() {
@@ -18,7 +19,9 @@ export function generateStaticParams() {
 
 type Props = { params: Promise<{ locale: string; place: string; sector: string }> };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export const generateMetadata = metadataOrUnavailable(async function metadata({
+  params,
+}: Props): Promise<Metadata> {
   const { locale, place, sector } = await loadSectorLevel(await params);
   return pageMetadata({
     locale,
@@ -26,9 +29,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${pickText(sector.name, locale)} · ${pickText(place.name, locale)}`,
     description: pickText(sector.tagline, locale),
   });
-}
+});
 
-export default async function SectorPage({ params }: Props) {
+export default orUnavailable(async function SectorPage({ params }: Props) {
   const { locale, place, sector, index } = await loadSectorLevel(await params);
   const counts = (await getKindCounts(place.slug)) ?? {};
   const chips = subPlaceChips(locale, place, [sector.slug]);
@@ -68,4 +71,4 @@ export default async function SectorPage({ params }: Props) {
       </main>
     </>
   );
-}
+});

@@ -8,6 +8,7 @@ import { crumbsFor } from "@/lib/crumbs";
 import { COUNTRY_SLUG, localeOrNotFound } from "@/lib/levels";
 import { pageMetadata } from "@/lib/metadata";
 import { indexTaxonomy } from "@/lib/taxonomy";
+import { metadataOrUnavailable, orUnavailable } from "@/lib/unavailable";
 
 export const revalidate = 300;
 export function generateStaticParams() {
@@ -16,7 +17,9 @@ export function generateStaticParams() {
 
 type Props = { params: Promise<{ locale: string }> };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export const generateMetadata = metadataOrUnavailable(async function metadata({
+  params,
+}: Props): Promise<Metadata> {
   const locale = localeOrNotFound((await params).locale);
   return pageMetadata({
     locale,
@@ -24,9 +27,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: t(locale, "appName"),
     description: t(locale, "tagline"),
   });
-}
+});
 
-export default async function CountryPage({ params }: Props) {
+export default orUnavailable(async function CountryPage({ params }: Props) {
   const locale = localeOrNotFound((await params).locale);
   const [country, places, taxonomy] = await Promise.all([
     getPlace(COUNTRY_SLUG),
@@ -53,4 +56,4 @@ export default async function CountryPage({ params }: Props) {
       </main>
     </>
   );
-}
+});
