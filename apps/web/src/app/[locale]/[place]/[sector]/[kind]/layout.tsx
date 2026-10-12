@@ -8,7 +8,7 @@ import { SubPlaceChips } from "@/components/SubPlaceChips";
 import { getBusinesses, getNearestPlacesWithKind } from "@/lib/api";
 import { subPlaceChips } from "@/lib/crumbs";
 import { formatKm } from "@/lib/format";
-import { loadKindLevel } from "@/lib/levels";
+import { loadKindLevelInSector } from "@/lib/levels";
 import { href, paths } from "@/lib/routes";
 import { placeNames, toRows } from "@/lib/rows";
 
@@ -22,7 +22,10 @@ type Props = {
  * (`children`, before the list) so the locale switch can keep the full path.
  */
 export default async function KindLayout({ children, params }: Props) {
-  const { locale, place, sector, kind, index } = await loadKindLevel(await params);
+  const level = await loadKindLevelInSector(await params);
+  // A wrong sector: the page (which knows the business segment) redirects.
+  if (!level) return children;
+  const { locale, place, sector, kind, index } = level;
   const page = await getBusinesses(place.slug, { kind: kind.slug });
   if (!page) notFound();
   const rows = toRows(page.items, { locale, index, names: placeNames(place), here: place.slug });
