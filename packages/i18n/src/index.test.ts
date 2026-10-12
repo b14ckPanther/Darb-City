@@ -35,3 +35,21 @@ describe("t", () => {
     expect(t("en", "noneHereYet", { place: 7 })).toBe("None in 7 yet");
   });
 });
+
+const placeholders = (text: string) => [...text.matchAll(/\{(\w+)\}/g)].map((m) => m[1]).sort();
+
+it("uses the same placeholders in every locale", () => {
+  for (const key of Object.keys(messages.en) as (keyof typeof messages.en)[]) {
+    const expected = placeholders(messages.en[key]);
+    for (const locale of LOCALES)
+      expect(placeholders(messages[locale][key]), `${locale}.${key}`).toEqual(expected);
+  }
+});
+
+it("fills the web city messages", () => {
+  expect(t("en", "kindInPlace", { kind: "Barbershops", place: "Sakhnin" })).toBe(
+    "Barbershops in Sakhnin",
+  );
+  expect(t("ar", "businessCount", { count: 3 })).toBe("عدد المصالح: 3");
+  expect(t("he", "allOf", { place: "חיפה" })).toBe("כל חיפה");
+});
