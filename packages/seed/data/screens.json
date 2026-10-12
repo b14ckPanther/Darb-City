@@ -14778,87 +14778,105 @@
   "umrah": {
     "brand": {
       "he": "נסיעות אל רחמה",
-      "en": "Al Rahma Travel"
+      "en": "Al Rahma Travel",
+      "ar": "الرحمة للسفريات"
     },
     "title": {
       "he": "העומרה שלך, יום אחרי יום",
-      "en": "Your Umrah, day by day"
+      "en": "Your Umrah, day by day",
+      "ar": "عمرتك يوم بيوم"
     },
     "subtitle": {
       "he": "12 ימים · מכה ומדינה · מלווה דתי",
-      "en": "12 days · Makkah and Madinah · with a guide"
+      "en": "12 days · Makkah and Madinah · with a guide",
+      "ar": "12 يوم · مكة والمدينة · مع مرشد"
     },
     "tags": [
       {
         "he": "א'",
-        "en": "Sun"
+        "en": "Sun",
+        "ar": "أحد"
       },
       {
         "he": "ב'",
-        "en": "Mon"
+        "en": "Mon",
+        "ar": "اثنين"
       },
       {
         "he": "ג'",
-        "en": "Tue"
+        "en": "Tue",
+        "ar": "ثلاثاء"
       },
       {
         "he": "ד'",
-        "en": "Wed"
+        "en": "Wed",
+        "ar": "أربعاء"
       },
       {
         "he": "ה'",
-        "en": "Thu"
+        "en": "Thu",
+        "ar": "خميس"
       },
       {
         "he": "ו'",
-        "en": "Fri"
+        "en": "Fri",
+        "ar": "جمعة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "טיסה לג'דה",
-          "en": "Flight to Jeddah"
+          "en": "Flight to Jeddah",
+          "ar": "طيران لجدة"
         },
         "meta": {
           "he": "א' 06:10 · מעמאן",
-          "en": "Sun 06:10 · via Amman"
+          "en": "Sun 06:10 · via Amman",
+          "ar": "الأحد 06:10 · عن طريق عمّان"
         }
       },
       {
         "label": {
           "he": "עומרה עם המלווה",
-          "en": "Umrah with the guide"
+          "en": "Umrah with the guide",
+          "ar": "العمرة مع المرشد"
         },
         "meta": {
           "he": "א' 21:00 · הקבוצה יחד",
-          "en": "Sun 21:00 · as a group"
+          "en": "Sun 21:00 · as a group",
+          "ar": "الأحد 21:00 · جماعة"
         }
       },
       {
         "label": {
           "he": "סיור זיארה במכה",
-          "en": "Ziyarah tour of Makkah"
+          "en": "Ziyarah tour of Makkah",
+          "ar": "جولة زيارات بمكة"
         },
         "meta": {
           "he": "ג' 08:30 · עם המלווה",
-          "en": "Tue 08:30 · with the guide"
+          "en": "Tue 08:30 · with the guide",
+          "ar": "الثلاثاء 08:30 · مع المرشد"
         }
       },
       {
         "label": {
           "he": "רכבת למדינה",
-          "en": "Train to Madinah"
+          "en": "Train to Madinah",
+          "ar": "قطار للمدينة"
         },
         "meta": {
           "he": "ה' 08:00 · רכבת מהירה",
-          "en": "Thu 08:00 · high-speed train"
+          "en": "Thu 08:00 · high-speed train",
+          "ar": "الخميس 08:00 · القطار السريع"
         }
       }
     ],
     "cta": {
       "he": "שריון מקום בקבוצת רמדאן",
-      "en": "Join the Ramadan group"
+      "en": "Join the Ramadan group",
+      "ar": "انضم لفوج رمضان"
     },
     "palette": {
       "bg": "#10231c",
@@ -14876,75 +14894,90 @@
     },
     "title": {
       "he": "סופ\"ש בגליל",
-      "en": "A weekend in the Galilee"
+      "en": "A weekend in the Galilee",
+      "ar": "ويكند بالجليل"
     },
     "subtitle": {
       "he": "ד'-ו' · 2 מבוגרים ו-2 ילדים · בריכה פרטית",
-      "en": "Wed-Fri · 2 adults, 2 kids · private pool"
+      "en": "Wed-Fri · 2 adults, 2 kids · private pool",
+      "ar": "الأربعاء-الجمعة · 2 كبار، 2 أولاد · بركة خاصة"
     },
     "tags": [
       {
         "he": "בריכה פרטית",
-        "en": "Private pool"
+        "en": "Private pool",
+        "ar": "بركة خاصة"
       },
       {
         "he": "נוף",
-        "en": "View"
+        "en": "View",
+        "ar": "إطلالة"
       },
       {
         "he": "ארוחת בוקר",
-        "en": "Breakfast"
+        "en": "Breakfast",
+        "ar": "فطور"
       },
       {
         "he": "כלבים",
-        "en": "Dogs welcome"
+        "en": "Dogs welcome",
+        "ar": "الكلاب أهلًا فيها"
       }
     ],
     "items": [
       {
         "label": {
           "he": "בקתת האלון",
-          "en": "Oak cabin"
+          "en": "Oak cabin",
+          "ar": "كوخ البلوط"
         },
         "meta": {
           "he": "₪1,450 ללילה · 2 אורחים",
-          "en": "₪1,450 a night · 2 guests"
+          "en": "₪1,450 a night · 2 guests",
+          "ar": "₪1,450 لليلة · شخصين"
         }
       },
       {
         "label": {
           "he": "סוויטת הגפן",
-          "en": "Vine suite"
+          "en": "Vine suite",
+          "ar": "جناح الدالية"
         },
         "meta": {
           "he": "₪1,890 ללילה · נוף לכנרת",
-          "en": "₪1,890 a night · lake view"
+          "en": "₪1,890 a night · lake view",
+          "ar": "₪1,890 لليلة · إطلالة على البحيرة"
         }
       },
       {
         "label": {
           "he": "בית העץ",
-          "en": "The treehouse"
+          "en": "The treehouse",
+          "ar": "بيت الشجرة"
         },
         "meta": {
           "he": "₪2,300 ללילה · עד 5",
-          "en": "₪2,300 a night · up to 5"
+          "en": "₪2,300 a night · up to 5",
+          "ar": "₪2,300 لليلة · لحد 5"
         }
       },
       {
         "label": {
           "he": "ארוחת בוקר גלילית",
-          "en": "Galilee breakfast"
+          "en": "Galilee breakfast",
+          "ar": "فطور جليلي"
         },
         "meta": {
           "he": "₪160 למשפחה",
-          "en": "₪160 per family"
+          "en": "₪160 per family",
+          "ar": "₪160 للعيلة"
         }
       }
     ],
     "cta": {
       "he": "הזמנה ישירה, בלי עמלה",
-      "en": "Book direct, no fees"
+      "en": "Book direct, no fees",
+      "ar": "احجز مباشرة، بدون رسوم"
     },
     "palette": {
       "bg": "#1c2333",
@@ -14957,75 +14990,90 @@
   "tours": {
     "brand": {
       "he": "סיורים בסמטאות",
-      "en": "Alleys Tours"
+      "en": "Alleys Tours",
+      "ar": "جولات بالأزقّة"
     },
     "title": {
       "he": "סיור אוכל ביפו",
-      "en": "Jaffa food tour"
+      "en": "Jaffa food tour",
+      "ar": "جولة أكل بيافا"
     },
     "subtitle": {
       "he": "שישי 10:00 · מגדל השעון · 3 שעות",
-      "en": "Fri 10:00 · Clock Tower · 3 hours"
+      "en": "Fri 10:00 · Clock Tower · 3 hours",
+      "ar": "الجمعة 10:00 · برج الساعة · 3 ساعات"
     },
     "tags": [
       {
         "he": "7 טעימות",
-        "en": "7 tastings"
+        "en": "7 tastings",
+        "ar": "7 تذوّقات"
       },
       {
         "he": "מדריך מקומי",
-        "en": "Local guide"
+        "en": "Local guide",
+        "ar": "مرشد محلي"
       },
       {
         "he": "עד 12 משתתפים",
-        "en": "Up to 12 people"
+        "en": "Up to 12 people",
+        "ar": "لحد 12 شخص"
       }
     ],
     "items": [
       {
         "label": {
           "he": "משתתפים",
-          "en": "Guests"
+          "en": "Guests",
+          "ar": "المشاركين"
         },
         "meta": {
           "he": "2 מבוגרים וילד",
-          "en": "2 adults, 1 child"
+          "en": "2 adults, 1 child",
+          "ar": "2 كبار، ولد واحد"
         }
       },
       {
         "label": {
           "he": "נקודת מפגש",
-          "en": "Meeting point"
+          "en": "Meeting point",
+          "ar": "نقطة اللقاء"
         },
         "meta": {
           "he": "מגדל השעון",
-          "en": "Clock Tower"
+          "en": "Clock Tower",
+          "ar": "برج الساعة"
         }
       },
       {
         "label": {
           "he": "שעה",
-          "en": "Time"
+          "en": "Time",
+          "ar": "الوقت"
         },
         "meta": {
           "he": "10:00",
-          "en": "10:00"
+          "en": "10:00",
+          "ar": "10:00"
         }
       },
       {
         "label": {
           "he": "מחיר",
-          "en": "Price"
+          "en": "Price",
+          "ar": "السعر"
         },
         "meta": {
           "he": "₪590 סה\"כ",
-          "en": "₪590 total"
+          "en": "₪590 total",
+          "ar": "₪590 للكل"
         }
       }
     ],
     "cta": {
       "he": "לשתף עם החברים",
-      "en": "Share with friends"
+      "en": "Share with friends",
+      "ar": "شارك مع أصحابك"
     },
     "palette": {
       "bg": "#0f5a6b",
@@ -15038,79 +15086,95 @@
   "travel-agencies": {
     "brand": {
       "he": "סיאחה טורס",
-      "en": "Siyaha Tours"
+      "en": "Siyaha Tours",
+      "ar": "سياحة تورز"
     },
     "title": {
       "he": "חופשה משפחתית בקיץ",
-      "en": "A family summer holiday"
+      "en": "A family summer holiday",
+      "ar": "عطلة صيفية للعيلة"
     },
     "subtitle": {
       "he": "אוכל חלאל ובריכות נפרדות",
-      "en": "Halal food, separate pools"
+      "en": "Halal food, separate pools",
+      "ar": "أكل حلال، برك منفصلة"
     },
     "tags": [
       {
         "he": "משפחות",
-        "en": "Families"
+        "en": "Families",
+        "ar": "عائلات"
       },
       {
         "he": "טורקיה",
-        "en": "Turkey"
+        "en": "Turkey",
+        "ar": "تركيا"
       },
       {
         "he": "ירדן",
-        "en": "Jordan"
+        "en": "Jordan",
+        "ar": "الأردن"
       },
       {
         "he": "מרוקו",
-        "en": "Morocco"
+        "en": "Morocco",
+        "ar": "المغرب"
       }
     ],
     "items": [
       {
         "label": {
           "he": "איסטנבול ובורסה",
-          "en": "Istanbul and Bursa"
+          "en": "Istanbul and Bursa",
+          "ar": "إسطنبول وبورصة"
         },
         "meta": {
           "he": "₪3,290 לאדם · 6 לילות",
-          "en": "₪3,290 per person · 6 nights"
+          "en": "₪3,290 per person · 6 nights",
+          "ar": "₪3,290 للشخص · 6 ليالي"
         }
       },
       {
         "label": {
           "he": "עקבה וואדי רם",
-          "en": "Aqaba and Wadi Rum"
+          "en": "Aqaba and Wadi Rum",
+          "ar": "العقبة ووادي رم"
         },
         "meta": {
           "he": "₪1,980 לאדם · 4 לילות",
-          "en": "₪1,980 per person · 4 nights"
+          "en": "₪1,980 per person · 4 nights",
+          "ar": "₪1,980 للشخص · 4 ليالي"
         }
       },
       {
         "label": {
           "he": "מרקש ופאס",
-          "en": "Marrakesh and Fez"
+          "en": "Marrakesh and Fez",
+          "ar": "مراكش وفاس"
         },
         "meta": {
           "he": "₪4,450 לאדם · 8 לילות",
-          "en": "₪4,450 per person · 8 nights"
+          "en": "₪4,450 per person · 8 nights",
+          "ar": "₪4,450 للشخص · 8 ليالي"
         }
       },
       {
         "label": {
           "he": "ייעוץ אישי",
-          "en": "Personal advice"
+          "en": "Personal advice",
+          "ar": "استشارة شخصية"
         },
         "meta": {
           "he": "ללא עלות · וואטסאפ",
-          "en": "free · WhatsApp"
+          "en": "free · WhatsApp",
+          "ar": "مجانًا · واتساب"
         }
       }
     ],
     "cta": {
       "he": "לבנות לי חופשה",
-      "en": "Plan my holiday"
+      "en": "Plan my holiday",
+      "ar": "خطّط عطلتي"
     },
     "palette": {
       "bg": "#f6efe4",
@@ -15123,83 +15187,100 @@
   "camping": {
     "brand": {
       "he": "מחנה אל נג'ום",
-      "en": "Al Nujoom Camp"
+      "en": "Al Nujoom Camp",
+      "ar": "مخيّم النجوم"
     },
     "title": {
       "he": "לישון מתחת לכוכבים",
-      "en": "Sleep under the stars"
+      "en": "Sleep under the stars",
+      "ar": "نام تحت النجوم"
     },
     "subtitle": {
       "he": "מדבר יהודה · אוהלים משפחתיים",
-      "en": "Judean Desert · family tents"
+      "en": "Judean Desert · family tents",
+      "ar": "صحراء يهودا · خيم عائلية"
     },
     "tags": [
       {
         "he": "13:00",
-        "en": "13:00"
+        "en": "13:00",
+        "ar": "13:00"
       },
       {
         "he": "14:00",
-        "en": "14:00"
+        "en": "14:00",
+        "ar": "14:00"
       },
       {
         "he": "15:00",
-        "en": "15:00"
+        "en": "15:00",
+        "ar": "15:00"
       },
       {
         "he": "16:00",
-        "en": "16:00"
+        "en": "16:00",
+        "ar": "16:00"
       },
       {
         "he": "17:00",
-        "en": "17:00"
+        "en": "17:00",
+        "ar": "17:00"
       }
     ],
     "items": [
       {
         "label": {
           "he": "אוהל משפחתי",
-          "en": "Family tent"
+          "en": "Family tent",
+          "ar": "خيمة عائلية"
         },
         "meta": {
           "he": "₪520 ללילה · עד 6",
-          "en": "₪520 a night · up to 6"
+          "en": "₪520 a night · up to 6",
+          "ar": "₪520 لليلة · لحد 6"
         }
       },
       {
         "label": {
           "he": "מקום לאוהל שלכם",
-          "en": "Bring your own tent"
+          "en": "Bring your own tent",
+          "ar": "جيب خيمتك معك"
         },
         "meta": {
           "he": "₪90 לאדם",
-          "en": "₪90 per person"
+          "en": "₪90 per person",
+          "ar": "₪90 للشخص"
         }
       },
       {
         "label": {
           "he": "ארוחת ערב על האש",
-          "en": "Barbecue dinner"
+          "en": "Barbecue dinner",
+          "ar": "عشا مشاوي"
         },
         "meta": {
           "he": "₪75 לאדם · חלאל",
-          "en": "₪75 per person · halal"
+          "en": "₪75 per person · halal",
+          "ar": "₪75 للشخص · حلال"
         }
       },
       {
         "label": {
           "he": "טיול זריחה בג'יפ",
-          "en": "Sunrise jeep trip"
+          "en": "Sunrise jeep trip",
+          "ar": "جولة جيب وقت الشروق"
         },
         "meta": {
           "he": "₪120 לאדם",
-          "en": "₪120 per person"
+          "en": "₪120 per person",
+          "ar": "₪120 للشخص"
         }
       }
     ],
     "cta": {
       "he": "שריון אוהל משפחתי",
-      "en": "Reserve a family tent"
+      "en": "Reserve a family tent",
+      "ar": "احجز خيمة عائلية"
     },
     "palette": {
       "bg": "#1c1a2e",
@@ -15212,75 +15293,90 @@
   "tour-buses": {
     "brand": {
       "he": "אוטובוסי אל ג'ליל",
-      "en": "Al Jalil Coaches"
+      "en": "Al Jalil Coaches",
+      "ar": "باصات الجليل"
     },
     "title": {
       "he": "הסעה לטיול השנתי",
-      "en": "A coach for the school trip"
+      "en": "A coach for the school trip",
+      "ar": "باص لرحلة المدرسة"
     },
     "subtitle": {
       "he": "בית ספר אל ניל · 3 אוטובוסים",
-      "en": "Al Nil School · 3 coaches"
+      "en": "Al Nil School · 3 coaches",
+      "ar": "مدرسة النيل · 3 باصات"
     },
     "tags": [
       {
         "he": "50 מקומות",
-        "en": "50 seats"
+        "en": "50 seats",
+        "ar": "50 مقعد"
       },
       {
         "he": "מיניבוס",
-        "en": "Minibus"
+        "en": "Minibus",
+        "ar": "ميني باص"
       },
       {
         "he": "נגיש",
-        "en": "Accessible"
+        "en": "Accessible",
+        "ar": "ملائم لذوي الإعاقة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "נוסעים",
-          "en": "Passengers"
+          "en": "Passengers",
+          "ar": "الركاب"
         },
         "meta": {
           "he": "142 תלמידים ומורים",
-          "en": "142 pupils and teachers"
+          "en": "142 pupils and teachers",
+          "ar": "142 طالب ومعلم"
         }
       },
       {
         "label": {
           "he": "מסלול",
-          "en": "Route"
+          "en": "Route",
+          "ar": "المسار"
         },
         "meta": {
           "he": "סח'נין ← ירושלים",
-          "en": "Sakhnin → Jerusalem"
+          "en": "Sakhnin → Jerusalem",
+          "ar": "سخنين ← القدس"
         }
       },
       {
         "label": {
           "he": "תאריך",
-          "en": "Date"
+          "en": "Date",
+          "ar": "التاريخ"
         },
         "meta": {
           "he": "ד' 22.10 · יום שלם",
-          "en": "Wed 22 Oct · full day"
+          "en": "Wed 22 Oct · full day",
+          "ar": "الأربعاء 22 تشرين الأول · يوم كامل"
         }
       },
       {
         "label": {
           "he": "הערכה",
-          "en": "Estimate"
+          "en": "Estimate",
+          "ar": "التقدير"
         },
         "meta": {
           "he": "₪7,800-8,600",
-          "en": "₪7,800-8,600"
+          "en": "₪7,800-8,600",
+          "ar": "₪7,800-8,600"
         }
       }
     ],
     "cta": {
       "he": "לקבל הצעה סופית",
-      "en": "Get the final quote"
+      "en": "Get the final quote",
+      "ar": "احصل على عرض السعر النهائي"
     },
     "palette": {
       "bg": "#eef1ec",
@@ -15293,75 +15389,90 @@
   "visas": {
     "brand": {
       "he": "מכתב אל תרג'מה",
-      "en": "Al Tarjama Office"
+      "en": "Al Tarjama Office",
+      "ar": "مكتب الترجمة"
     },
     "title": {
       "he": "הוויזה בדרך",
-      "en": "Your visa is on its way"
+      "en": "Your visa is on its way",
+      "ar": "الفيزا تبعتك بالطريق"
     },
     "subtitle": {
       "he": "ויזת סטודנט · 3 מסמכים מתורגמים",
-      "en": "Student visa · 3 documents translated"
+      "en": "Student visa · 3 documents translated",
+      "ar": "فيزا طالب · 3 مستندات مترجمة"
     },
     "tags": [
       {
         "he": "ויזות",
-        "en": "Visas"
+        "en": "Visas",
+        "ar": "فيزا"
       },
       {
         "he": "תרגום",
-        "en": "Translation"
+        "en": "Translation",
+        "ar": "ترجمة"
       },
       {
         "he": "אפוסטיל",
-        "en": "Apostille"
+        "en": "Apostille",
+        "ar": "أبوستيل"
       }
     ],
     "items": [
       {
         "label": {
           "he": "תרגום תעודות",
-          "en": "Certificate translation"
+          "en": "Certificate translation",
+          "ar": "ترجمة الشهادة"
         },
         "meta": {
           "he": "הושלם · 100%",
-          "en": "done · 100%"
+          "en": "done · 100%",
+          "ar": "خلص · 100%"
         }
       },
       {
         "label": {
           "he": "אישור נוטריוני",
-          "en": "Notary approval"
+          "en": "Notary approval",
+          "ar": "مصادقة كاتب عدل"
         },
         "meta": {
           "he": "הושלם · 100%",
-          "en": "done · 100%"
+          "en": "done · 100%",
+          "ar": "خلص · 100%"
         }
       },
       {
         "label": {
           "he": "הגשה לקונסוליה",
-          "en": "Consulate filing"
+          "en": "Consulate filing",
+          "ar": "تقديم للقنصلية"
         },
         "meta": {
           "he": "בטיפול · 50%",
-          "en": "in progress · 50%"
+          "en": "in progress · 50%",
+          "ar": "قيد المعالجة · 50%"
         }
       },
       {
         "label": {
           "he": "צפי תשובה",
-          "en": "Expected answer"
+          "en": "Expected answer",
+          "ar": "الرد المتوقع"
         },
         "meta": {
           "he": "עד 12.11",
-          "en": "by 12 Nov"
+          "en": "by 12 Nov",
+          "ar": "لحد 12 تشرين الثاني"
         }
       }
     ],
     "cta": {
       "he": "העלאת מסמך",
-      "en": "Upload a document"
+      "en": "Upload a document",
+      "ar": "ارفع مستند"
     },
     "palette": {
       "bg": "#f1ece4",
@@ -15374,79 +15485,95 @@
   "currency-exchange": {
     "brand": {
       "he": "צראפת אל אמאנה",
-      "en": "Al Amana Exchange"
+      "en": "Al Amana Exchange",
+      "ar": "صرافة الأمانة"
     },
     "title": {
       "he": "מטבע לעומרה, בשער של היום",
-      "en": "Cash for Umrah at today's rate"
+      "en": "Cash for Umrah at today's rate",
+      "ar": "مصاري للعمرة بسعر اليوم"
     },
     "subtitle": {
       "he": "עמלה קבועה, בלי הפתעות",
-      "en": "One flat fee, no surprises"
+      "en": "One flat fee, no surprises",
+      "ar": "عمولة ثابتة وحدة، بدون مفاجآت"
     },
     "tags": [
       {
         "he": "ריאל סעודי",
-        "en": "Saudi riyal"
+        "en": "Saudi riyal",
+        "ar": "ريال سعودي"
       },
       {
         "he": "דולר",
-        "en": "Dollar"
+        "en": "Dollar",
+        "ar": "دولار"
       },
       {
         "he": "אירו",
-        "en": "Euro"
+        "en": "Euro",
+        "ar": "يورو"
       },
       {
         "he": "לירה טורקית",
-        "en": "Turkish lira"
+        "en": "Turkish lira",
+        "ar": "ليرة تركية"
       }
     ],
     "items": [
       {
         "label": {
           "he": "מוכרים",
-          "en": "You give"
+          "en": "You give",
+          "ar": "بتدفع"
         },
         "meta": {
           "he": "₪5,000",
-          "en": "₪5,000"
+          "en": "₪5,000",
+          "ar": "₪5,000"
         }
       },
       {
         "label": {
           "he": "מקבלים",
-          "en": "You get"
+          "en": "You get",
+          "ar": "بتاخد"
         },
         "meta": {
           "he": "ריאל סעודי · שער 1.02",
-          "en": "Saudi riyal · rate 1.02"
+          "en": "Saudi riyal · rate 1.02",
+          "ar": "ريال سعودي · سعر 1.02"
         }
       },
       {
         "label": {
           "he": "איסוף",
-          "en": "Pickup"
+          "en": "Pickup",
+          "ar": "الاستلام"
         },
         "meta": {
           "he": "סניף נצרת · מחר 10:00",
-          "en": "Nazareth branch · tomorrow 10:00"
+          "en": "Nazareth branch · tomorrow 10:00",
+          "ar": "فرع الناصرة · بكرا 10:00"
         }
       },
       {
         "label": {
           "he": "סכום משוער",
-          "en": "Estimated amount"
+          "en": "Estimated amount",
+          "ar": "المبلغ التقريبي"
         },
         "meta": {
           "he": "5,050-5,120 ריאל",
-          "en": "SAR 5,050-5,120"
+          "en": "SAR 5,050-5,120",
+          "ar": "5,050-5,120 ريال"
         }
       }
     ],
     "cta": {
       "he": "לשריין את השער",
-      "en": "Lock this rate"
+      "en": "Lock this rate",
+      "ar": "ثبّت هالسعر"
     },
     "palette": {
       "bg": "#13281f",
@@ -15459,79 +15586,95 @@
   "study-abroad": {
     "brand": {
       "he": "ג'סור ייעוץ אקדמי",
-      "en": "Jusoor Study Advisers"
+      "en": "Jusoor Study Advisers",
+      "ar": "جسور للاستشارات الأكاديمية"
     },
     "title": {
       "he": "בונים את שנת הלימודים",
-      "en": "Build your study year"
+      "en": "Build your study year",
+      "ar": "ركّب سنة تعليمك"
     },
     "subtitle": {
       "he": "רפואה · פתיחה בספטמבר",
-      "en": "Medicine · September intake"
+      "en": "Medicine · September intake",
+      "ar": "طب · قبول أيلول"
     },
     "tags": [
       {
         "he": "ירדן",
-        "en": "Jordan"
+        "en": "Jordan",
+        "ar": "الأردن"
       },
       {
         "he": "רומניה",
-        "en": "Romania"
+        "en": "Romania",
+        "ar": "رومانيا"
       },
       {
         "he": "גרמניה",
-        "en": "Germany"
+        "en": "Germany",
+        "ar": "ألمانيا"
       },
       {
         "he": "איטליה",
-        "en": "Italy"
+        "en": "Italy",
+        "ar": "إيطاليا"
       }
     ],
     "items": [
       {
         "label": {
           "he": "מדינה",
-          "en": "Country"
+          "en": "Country",
+          "ar": "البلد"
         },
         "meta": {
           "he": "ירדן · אוניברסיטת עמאן",
-          "en": "Jordan · Amman university"
+          "en": "Jordan · Amman university",
+          "ar": "الأردن · جامعة بعمّان"
         }
       },
       {
         "label": {
           "he": "מסלול",
-          "en": "Programme"
+          "en": "Programme",
+          "ar": "التخصص"
         },
         "meta": {
           "he": "רפואה · 6 שנים",
-          "en": "Medicine · 6 years"
+          "en": "Medicine · 6 years",
+          "ar": "طب · 6 سنين"
         }
       },
       {
         "label": {
           "he": "מגורים",
-          "en": "Housing"
+          "en": "Housing",
+          "ar": "السكن"
         },
         "meta": {
           "he": "מעונות נשים ליד הקמפוס",
-          "en": "Women's halls by campus"
+          "en": "Women's halls by campus",
+          "ar": "سكن طالبات جنب الحرم"
         }
       },
       {
         "label": {
           "he": "לשנה",
-          "en": "Per year"
+          "en": "Per year",
+          "ar": "بالسنة"
         },
         "meta": {
           "he": "₪38,000 · כולל ליווי",
-          "en": "₪38,000 · support included"
+          "en": "₪38,000 · support included",
+          "ar": "₪38,000 · شامل المرافقة"
         }
       }
     ],
     "cta": {
       "he": "לקבוע שיחת ייעוץ",
-      "en": "Book an advice call"
+      "en": "Book an advice call",
+      "ar": "احجز مكالمة استشارة"
     },
     "palette": {
       "bg": "#eaf0f8",
@@ -15544,79 +15687,95 @@
   "luggage": {
     "brand": {
       "he": "סאפר מזוודות",
-      "en": "Safar Luggage"
+      "en": "Safar Luggage",
+      "ar": "سفر للشناتي"
     },
     "title": {
       "he": "לארוז בלי לחץ",
-      "en": "Pack without the stress"
+      "en": "Pack without the stress",
+      "ar": "حضّر شنطتك بدون توتر"
     },
     "subtitle": {
       "he": "משלוח עד הבית תוך 48 שעות",
-      "en": "Home delivery within 48 hours"
+      "en": "Home delivery within 48 hours",
+      "ar": "توصيل للبيت خلال 48 ساعة"
     },
     "tags": [
       {
         "he": "מזוודות",
-        "en": "Suitcases"
+        "en": "Suitcases",
+        "ar": "شناتي سفر"
       },
       {
         "he": "תיקים",
-        "en": "Bags"
+        "en": "Bags",
+        "ar": "حقائب"
       },
       {
         "he": "אביזרים",
-        "en": "Accessories"
+        "en": "Accessories",
+        "ar": "إكسسوارات"
       },
       {
         "he": "ילדים",
-        "en": "Kids"
+        "en": "Kids",
+        "ar": "أطفال"
       }
     ],
     "items": [
       {
         "label": {
           "he": "מזוודה קשיחה גדולה",
-          "en": "Large hard case"
+          "en": "Large hard case",
+          "ar": "شنطة كبيرة قاسية"
         },
         "meta": {
           "he": "₪590 · 75 ס\"מ",
-          "en": "₪590 · 75 cm"
+          "en": "₪590 · 75 cm",
+          "ar": "₪590 · 75 سم"
         }
       },
       {
         "label": {
           "he": "טרולי עלייה למטוס",
-          "en": "Cabin trolley"
+          "en": "Cabin trolley",
+          "ar": "ترولي للطيارة"
         },
         "meta": {
           "he": "₪390 · 55 ס\"מ",
-          "en": "₪390 · 55 cm"
+          "en": "₪390 · 55 cm",
+          "ar": "₪390 · 55 سم"
         }
       },
       {
         "label": {
           "he": "תרמיל גב",
-          "en": "Travel backpack"
+          "en": "Travel backpack",
+          "ar": "شنطة ظهر للسفر"
         },
         "meta": {
           "he": "₪260 · 30 ליטר",
-          "en": "₪260 · 30 litres"
+          "en": "₪260 · 30 litres",
+          "ar": "₪260 · 30 لتر"
         }
       },
       {
         "label": {
           "he": "כרית צוואר",
-          "en": "Neck pillow"
+          "en": "Neck pillow",
+          "ar": "مخدّة رقبة"
         },
         "meta": {
           "he": "₪65 · ספוג זיכרון",
-          "en": "₪65 · memory foam"
+          "en": "₪65 · memory foam",
+          "ar": "₪65 · ميموري فوم"
         }
       }
     ],
     "cta": {
       "he": "לסל ולקופה",
-      "en": "Checkout"
+      "en": "Checkout",
+      "ar": "للدفع"
     },
     "palette": {
       "bg": "#e8eef0",
@@ -15629,87 +15788,105 @@
   "hajj-training": {
     "brand": {
       "he": "מכון אל מנאסכ",
-      "en": "Al Manasik Institute"
+      "en": "Al Manasik Institute",
+      "ar": "معهد المناسك"
     },
     "title": {
       "he": "מתכוננים לחאג' יחד",
-      "en": "Preparing for Hajj together"
+      "en": "Preparing for Hajj together",
+      "ar": "بنتحضّر للحج سوا"
     },
     "subtitle": {
       "he": "6 מפגשים לפני הטיסה · גברים ונשים",
-      "en": "6 sessions before the flight · men and women"
+      "en": "6 sessions before the flight · men and women",
+      "ar": "6 لقاءات قبل الطيران · رجال ونساء"
     },
     "tags": [
       {
         "he": "א'",
-        "en": "Sun"
+        "en": "Sun",
+        "ar": "أحد"
       },
       {
         "he": "ב'",
-        "en": "Mon"
+        "en": "Mon",
+        "ar": "اثنين"
       },
       {
         "he": "ג'",
-        "en": "Tue"
+        "en": "Tue",
+        "ar": "ثلاثاء"
       },
       {
         "he": "ד'",
-        "en": "Wed"
+        "en": "Wed",
+        "ar": "أربعاء"
       },
       {
         "he": "ה'",
-        "en": "Thu"
+        "en": "Thu",
+        "ar": "خميس"
       },
       {
         "he": "ו'",
-        "en": "Fri"
+        "en": "Fri",
+        "ar": "جمعة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "ההכנה לאחראם",
-          "en": "Ihram and intention"
+          "en": "Ihram and intention",
+          "ar": "الإحرام والنية"
         },
         "meta": {
           "he": "א' 19:00 · מפגש 1",
-          "en": "Sun 19:00 · session 1"
+          "en": "Sun 19:00 · session 1",
+          "ar": "الأحد 19:00 · لقاء 1"
         }
       },
       {
         "label": {
           "he": "טוואף וסעי",
-          "en": "Tawaf and sa'i"
+          "en": "Tawaf and sa'i",
+          "ar": "الطواف والسعي"
         },
         "meta": {
           "he": "ג' 19:00 · מפגש 2",
-          "en": "Tue 19:00 · session 2"
+          "en": "Tue 19:00 · session 2",
+          "ar": "الثلاثاء 19:00 · لقاء 2"
         }
       },
       {
         "label": {
           "he": "יום ערפה ומינא",
-          "en": "Arafah and Mina"
+          "en": "Arafah and Mina",
+          "ar": "عرفة ومنى"
         },
         "meta": {
           "he": "ה' 19:00 · מפגש 3",
-          "en": "Thu 19:00 · session 3"
+          "en": "Thu 19:00 · session 3",
+          "ar": "الخميس 19:00 · لقاء 3"
         }
       },
       {
         "label": {
           "he": "תרגול מעשי",
-          "en": "Walk-through practice"
+          "en": "Walk-through practice",
+          "ar": "تطبيق عملي"
         },
         "meta": {
           "he": "ו' 10:00 · באולם המסגד",
-          "en": "Fri 10:00 · mosque hall"
+          "en": "Fri 10:00 · mosque hall",
+          "ar": "الجمعة 10:00 · قاعة المسجد"
         }
       }
     ],
     "cta": {
       "he": "הרשמה לקורס",
-      "en": "Join the course"
+      "en": "Join the course",
+      "ar": "انضم للدورة"
     },
     "palette": {
       "bg": "#f3ede0",
