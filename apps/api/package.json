@@ -12,7 +12,9 @@
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
     "db:seed": "prisma generate && tsx src/seed/run.ts",
-    "search:reindex": "prisma generate && tsx src/search/reindex.ts"
+    "search:reindex": "prisma generate && tsx src/search/reindex.ts",
+    "search:quality": "prisma generate && vitest run --config vitest.quality.config.ts",
+    "search:record": "prisma generate && tsx scripts/record-intents.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "catalog:",

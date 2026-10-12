@@ -46,6 +46,8 @@ jobs:
         run: pnpm --filter @darb/web exec node scripts/tiles/make-test-tiles.mjs --check
       - name: Migrate and seed the e2e database
         run: pnpm --filter @darb/api db:deploy && pnpm --filter @darb/api db:seed
+      - name: Search quality set (recorded intents, offline embeddings)
+        run: pnpm --filter @darb/api search:quality
       - name: First-load JS and lazy stage budgets
         run: pnpm --filter @darb/web budget
       - run: pnpm --filter @darb/web exec playwright install --with-deps chromium
