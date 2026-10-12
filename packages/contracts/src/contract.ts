@@ -139,7 +139,12 @@ export const contract = c.router({
       method: "POST",
       path: "/search/click",
       body: ClickRequestSchema,
-      responses: { 204: c.noBody(), 404: NotFoundSchema },
+      responses: {
+        204: c.noBody(),
+        400: BadRequestSchema,
+        404: NotFoundSchema,
+        429: TooManySchema,
+      },
     },
     /** The Missing kinds and places report (Plan 4's admin screen reads it). */
     report: {

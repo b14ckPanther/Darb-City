@@ -55,10 +55,13 @@ export class SearchController {
           ? { status: 200, body: out }
           : { status: 400, body: { message: "Unknown kind or place" } };
       },
-      click: async ({ body }) =>
-        (await this.log.click(body.queryId, body.key))
-          ? { status: 204, body: undefined }
-          : { status: 404, body: { message: "No such search" } },
+      click: async ({ body }) => {
+        const gate = await this.limiter.hit("click", ip(), this.config.search.clickRateLimit);
+        if (!gate.ok) return tooMany(gate.retryAfter);
+        return (await this.log.click(body.queryId, body.key))
+          ? { status: 204 as const, body: undefined }
+          : { status: 404 as const, body: { message: "No such search" } };
+      },
       report: async ({ headers, query }) => {
         const want = this.config.search.reportKey;
         const got = headers["x-darb-report-key"] ?? "";

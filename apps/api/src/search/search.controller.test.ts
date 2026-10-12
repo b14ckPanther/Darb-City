@@ -31,6 +31,7 @@ beforeAll(async () => {
   process.env["SEARCH_RATE_LIMIT"] = "5";
   process.env["SEARCH_PROXY_KEY"] = "proxy-key";
   process.env["SEARCH_RESULTS_RATE_LIMIT"] = "3";
+  process.env["SEARCH_CLICK_RATE_LIMIT"] = "3";
   process.env["SEARCH_REPORT_KEY"] = "report-key";
   const moduleRef = await Test.createTestingModule({ imports: [AppModule] })
     .overrideProvider(CLOCK)
@@ -55,6 +56,7 @@ afterAll(async () => {
   delete process.env["SEARCH_RATE_LIMIT"];
   delete process.env["SEARCH_PROXY_KEY"];
   delete process.env["SEARCH_RESULTS_RATE_LIMIT"];
+  delete process.env["SEARCH_CLICK_RATE_LIMIT"];
   delete process.env["SEARCH_REPORT_KEY"];
   await app.close();
 });
@@ -177,7 +179,9 @@ describe("suggest and click", () => {
     expect(
       (await post("/search/click", { queryId: body.queryId, key: "sakhnin/abu-salim" })).status,
     ).toBe(204);
-    expect((await post("/search/click", { queryId: body.queryId, key: "x" })).status).toBe(404);
+    expect(
+      (await post("/search/click", { queryId: body.queryId, key: "sakhnin/little-cuts" })).status,
+    ).toBe(404);
   });
 });
 
@@ -257,5 +261,38 @@ describe("GET /search/report", () => {
       .get("/search/report")
       .set("x-darb-report-key", "report-k\u00e9y");
     expect(res.status).toBe(404);
+  });
+});
+
+describe("click guards", () => {
+  const some = "019a0000-0000-7000-8000-00000000000a";
+  it("refuses a key that is not place/slug", async () => {
+    expect((await post("/search/click", { queryId: some, key: "x" })).status).toBe(400);
+  });
+  it("records clicks only on searches from the last 24 hours", async () => {
+    const { body } = await post("/search", {
+      q: "someone for a fade in sakhnin please",
+      locale: "en",
+    });
+    await prisma.searchQuery.update({
+      where: { id: body.queryId },
+      data: { createdAt: new Date(Date.now() - 25 * 3_600_000) },
+    });
+    expect(
+      (await post("/search/click", { queryId: body.queryId, key: "sakhnin/abu-salim" })).status,
+    ).toBe(404);
+    expect(
+      (await prisma.searchQuery.findUnique({ where: { id: body.queryId } }))?.clickedKey,
+    ).toBeNull();
+  });
+  it("rate-limits clicks on their own budget", async () => {
+    for (let i = 0; i < 3; i++)
+      expect(
+        (await post("/search/click", { queryId: some, key: "sakhnin/abu-salim" })).status,
+      ).toBe(404);
+    const refused = await post("/search/click", { queryId: some, key: "sakhnin/abu-salim" });
+    expect(refused.status).toBe(429);
+    expect(refused.body.retryAfter).toBeGreaterThan(0);
+    expect((await post("/search", { q: "barbershops", locale: "en" })).status).toBe(200);
   });
 });

@@ -15,6 +15,7 @@ it("reads and defaults the environment", () => {
       proxyKey: null,
       rateLimit: 30,
       resultsRateLimit: 120,
+      clickRateLimit: 120,
       intentProvider: "off",
       intentModel: "claude-haiku-5-5",
       intentTimeoutMs: 1500,

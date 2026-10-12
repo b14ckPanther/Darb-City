@@ -15,7 +15,7 @@ export class RateLimiter {
   ) {}
 
   async hit(
-    bucket: "search" | "results",
+    bucket: "search" | "results" | "click",
     ip: string,
     limit: number,
   ): Promise<{ ok: boolean; retryAfter: number }> {

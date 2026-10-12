@@ -81,9 +81,18 @@ export const SuggestionSchema = z.object({
 });
 export type SuggestionDto = z.infer<typeof SuggestionSchema>;
 
+/** A result's key: its place slug and its business slug, "sakhnin/abu-salim". */
+export const ClickKeySchema = z
+  .string()
+  .max(200)
+  .refine((key) => {
+    const parts = key.split("/");
+    return parts.length === 2 && parts.every((p) => SlugSchema.safeParse(p).success);
+  }, "A click key is place/slug");
+
 export const ClickRequestSchema = z.object({
   queryId: z.string().uuid(),
-  key: z.string().min(1).max(200),
+  key: ClickKeySchema,
 });
 
 export const ReportQuerySchema = z.object({

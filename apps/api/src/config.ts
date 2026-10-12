@@ -7,6 +7,7 @@ export interface SearchConfig {
   ipSalt: string;
   rateLimit: number;
   resultsRateLimit: number;
+  clickRateLimit: number;
   intentProvider: "anthropic" | "recorded" | "off";
   intentModel: string;
   intentTimeoutMs: number;
@@ -47,6 +48,7 @@ const schema = z.object({
   IP_HASH_SALT: optional,
   SEARCH_RATE_LIMIT: z.coerce.number().int().positive().default(30),
   SEARCH_RESULTS_RATE_LIMIT: z.coerce.number().int().positive().default(120),
+  SEARCH_CLICK_RATE_LIMIT: z.coerce.number().int().positive().default(120),
   INTENT_PROVIDER: z.enum(["anthropic", "recorded", "off"]).optional(),
   INTENT_MODEL: z.string().min(1).default("claude-haiku-5-5"),
   INTENT_TIMEOUT_MS: z.coerce.number().int().min(100).max(10_000).default(1500),
@@ -97,6 +99,7 @@ export function loadConfig(env: NodeJS.ProcessEnv): AppConfig {
       ipSalt: e.IP_HASH_SALT ?? randomSalt(),
       rateLimit: e.SEARCH_RATE_LIMIT,
       resultsRateLimit: e.SEARCH_RESULTS_RATE_LIMIT,
+      clickRateLimit: e.SEARCH_CLICK_RATE_LIMIT,
       intentProvider,
       intentModel: e.INTENT_MODEL,
       intentTimeoutMs: e.INTENT_TIMEOUT_MS,

@@ -4,6 +4,8 @@ import type { IntentDto } from "@darb/contracts";
 import type { Prisma } from "../generated/prisma/client.js";
 import { PrismaService } from "../prisma/prisma.service.js";
 
+export const CLICK_WINDOW_MS = 24 * 3_600_000;
+
 /** Spec §4.7: anonymous. Never add an IP, user, user agent or coordinate here. */
 @Injectable()
 export class SearchLogRepository {
@@ -32,9 +34,14 @@ export class SearchLogRepository {
     }
   }
 
-  async click(queryId: string, key: string): Promise<boolean> {
+  /** The first click on a search from the last 24 hours; older or unknown searches are left alone. */
+  async click(queryId: string, key: string, now = new Date()): Promise<boolean> {
     const { count } = await this.prisma.searchQuery.updateMany({
-      where: { id: queryId, clickedKey: null },
+      where: {
+        id: queryId,
+        clickedKey: null,
+        createdAt: { gte: new Date(now.getTime() - CLICK_WINDOW_MS) },
+      },
       data: { clickedKey: key },
     });
     return count > 0;

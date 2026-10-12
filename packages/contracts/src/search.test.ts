@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { contract } from "./contract.js";
 import {
+  ClickRequestSchema,
   EMPTY_INTENT,
   IntentSchema,
   SearchRequestSchema,
@@ -39,6 +40,17 @@ describe("search schemas", () => {
     expect(SearchResponseSchema.parse(response).queryId).toBe(response.queryId);
     expect(SearchResponseSchema.parse({ ...response, queryId: null }).queryId).toBeNull();
     expect(() => SearchResponseSchema.parse({ ...response, queryId: "q1" })).toThrow();
+  });
+  it("only accept a click key of the form place/slug", () => {
+    const queryId = "019a0000-0000-7000-8000-000000000001";
+    expect(ClickRequestSchema.parse({ queryId, key: "sakhnin/abu-salim" }).key).toBe(
+      "sakhnin/abu-salim",
+    );
+    for (const key of ["abu-salim", "sakhnin/abu-salim/x", "../admin", "Sakhnin/Abu", "sakhnin/"])
+      expect(() => ClickRequestSchema.parse({ queryId, key })).toThrow();
+  });
+  it("rate-limit clicks like searches", () => {
+    expect(Object.keys(contract.search.click.responses)).toContain("429");
   });
   it("default the suggestion limit", () => {
     expect(SuggestQuerySchema.parse({ q: "hu" })).toEqual({ q: "hu", limit: 6 });
