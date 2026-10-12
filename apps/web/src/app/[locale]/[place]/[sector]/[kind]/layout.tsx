@@ -4,6 +4,7 @@ import { pickText } from "@darb/core";
 import { t } from "@darb/i18n";
 import { BusinessList } from "@/components/BusinessList";
 import { NoneYet } from "@/components/NoneYet";
+import { StageData } from "@/components/StageData";
 import { SubPlaceChips } from "@/components/SubPlaceChips";
 import { getBusinesses, getNearestPlacesWithKind } from "@/lib/api";
 import { subPlaceChips } from "@/lib/crumbs";
@@ -11,6 +12,7 @@ import { formatKm } from "@/lib/format";
 import { loadKindLevelInSector } from "@/lib/levels";
 import { href, paths } from "@/lib/routes";
 import { placeNames, toRows } from "@/lib/rows";
+import { kindStage } from "@/lib/stage-data";
 import { orUnavailable } from "@/lib/unavailable";
 
 type Props = {
@@ -29,7 +31,8 @@ export default orUnavailable(async function KindLayout({ children, params }: Pro
   const { locale, place, sector, kind, index } = level;
   const page = await getBusinesses(place.slug, { kind: kind.slug });
   if (!page) notFound();
-  const rows = toRows(page.items, { locale, index, names: placeNames(place), here: place.slug });
+  const ctx = { locale, index, names: placeNames(place), here: place.slug };
+  const rows = toRows(page.items, ctx);
   const placeName = pickText(place.name, locale);
   const nearest =
     rows.length === 0
@@ -39,6 +42,7 @@ export default orUnavailable(async function KindLayout({ children, params }: Pro
   return (
     <>
       {children}
+      <StageData level={kindStage(locale, place, page.items, ctx)} />
       <main id="main" className="frame">
         <div id="city-list" className="reveal">
           <h1 id="main-heading" tabIndex={-1} className="page-title">

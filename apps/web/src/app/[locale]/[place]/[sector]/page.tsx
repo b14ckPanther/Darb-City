@@ -3,6 +3,7 @@ import { pickText } from "@darb/core";
 import { t } from "@darb/i18n";
 import { CityBar } from "@/components/CityBar";
 import { Door, DoorGrid } from "@/components/Door";
+import { StageData } from "@/components/StageData";
 import { SubPlaceChips } from "@/components/SubPlaceChips";
 import { getKindCounts } from "@/lib/api";
 import { crumbsFor, subPlaceChips } from "@/lib/crumbs";
@@ -10,6 +11,7 @@ import { formatNumber } from "@/lib/format";
 import { loadSectorLevel } from "@/lib/levels";
 import { pageMetadata } from "@/lib/metadata";
 import { href, paths } from "@/lib/routes";
+import { sectorStage } from "@/lib/stage-data";
 import { metadataOrUnavailable, orUnavailable } from "@/lib/unavailable";
 
 export const revalidate = 300;
@@ -42,6 +44,7 @@ export default orUnavailable(async function SectorPage({ params }: Props) {
         crumbs={crumbsFor(locale, { place, sector })}
         segments={paths.sector(place.slug, sector.slug)}
       />
+      <StageData level={sectorStage(locale, place, sector, index, counts)} />
       <main id="main" className="frame reveal">
         <h1 id="main-heading" tabIndex={-1} className="page-title">
           {pickText(sector.name, locale)}

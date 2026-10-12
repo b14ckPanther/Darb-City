@@ -6,12 +6,14 @@ import { BusinessList } from "@/components/BusinessList";
 import { CityBar } from "@/components/CityBar";
 import { NearMe } from "@/components/NearMe";
 import { NoneYet } from "@/components/NoneYet";
+import { StageData } from "@/components/StageData";
 import { getBusinesses, getPlaces, getTaxonomy } from "@/lib/api";
 import { crumbsFor } from "@/lib/crumbs";
 import { COUNTRY_SLUG, localeOrNotFound } from "@/lib/levels";
 import { pageMetadata } from "@/lib/metadata";
 import { href, paths } from "@/lib/routes";
 import { placeNames, toRows } from "@/lib/rows";
+import { COUNTRY_STAGE } from "@/lib/stage-data";
 import { indexTaxonomy } from "@/lib/taxonomy";
 import { metadataOrUnavailable, orUnavailable } from "@/lib/unavailable";
 
@@ -53,6 +55,7 @@ export default orUnavailable(async function NationalKindPage({ params }: Props) 
   const rows = toRows(page.items, { locale, index, names: placeNames(null, places), here: null });
   return (
     <>
+      <StageData level={COUNTRY_STAGE} />
       <CityBar
         locale={locale}
         crumbs={crumbsFor(locale, { nationalKind: kind })}
