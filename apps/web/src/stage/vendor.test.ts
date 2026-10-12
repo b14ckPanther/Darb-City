@@ -27,3 +27,11 @@ it("copies the MapLibre modules where the stage imports them", () => {
     'from"./maplibre-gl-shared.mjs"',
   );
 });
+
+it("ships MapLibre's licence beside the vendored modules", () => {
+  const target = mkdtempSync(join(tmpdir(), "darb-map-"));
+  const { vendor } = buildMapAssets(target);
+  const licence = readFileSync(join(vendor, "LICENSE.txt"), "utf8");
+  expect(licence).toContain("Copyright (c) 2023, MapLibre contributors");
+  expect(licence).toContain("BSD");
+});

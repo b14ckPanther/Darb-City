@@ -29,6 +29,8 @@ export function buildMapAssets(target) {
   const vendor = join(target, "vendor", `maplibre-gl@${maplibreVersion()}`);
   mkdirSync(vendor, { recursive: true });
   for (const file of VENDOR_FILES) cpSync(join(dist, file), join(vendor, file));
+  // BSD-3-Clause: redistributed binaries carry the licence.
+  cpSync(join(dist, "..", "LICENSE.txt"), join(vendor, "LICENSE.txt"));
   const glyphs = join(target, "glyphs");
   cpSync(GLYPHS_DIR, glyphs, { recursive: true });
   mkdirSync(join(target, "style"), { recursive: true });
