@@ -13566,79 +13566,95 @@
   "venues": {
     "brand": {
       "he": "אחוזת התאנה",
-      "en": "Te'ena Estate"
+      "en": "Te'ena Estate",
+      "ar": "حديقة التينة"
     },
     "title": {
       "he": "בוחרים את המקום",
-      "en": "Choose your space"
+      "en": "Choose your space",
+      "ar": "اختار مكانك"
     },
     "subtitle": {
       "he": "תאריכים פנויים בספטמבר: 5",
-      "en": "Open dates in September: 5"
+      "en": "Open dates in September: 5",
+      "ar": "مواعيد فاضية بأيلول: 5"
     },
     "tags": [
       {
         "he": "חתונה",
-        "en": "Wedding"
+        "en": "Wedding",
+        "ar": "عرس"
       },
       {
         "he": "אירוסין",
-        "en": "Engagement"
+        "en": "Engagement",
+        "ar": "خطوبة"
       },
       {
         "he": "חברות",
-        "en": "Corporate"
+        "en": "Corporate",
+        "ar": "شركات"
       },
       {
         "he": "עד 300 איש",
-        "en": "Up to 300"
+        "en": "Up to 300",
+        "ar": "لحد 300"
       }
     ],
     "items": [
       {
         "label": {
           "he": "הגן הגדול",
-          "en": "The great garden"
+          "en": "The great garden",
+          "ar": "الحديقة الكبيرة"
         },
         "meta": {
           "he": "₪420 למנה · עד 300 אורחים",
-          "en": "₪420 per plate · up to 300"
+          "en": "₪420 per plate · up to 300",
+          "ar": "₪420 للصحن · لحد 300"
         }
       },
       {
         "label": {
           "he": "אולם האבן",
-          "en": "The stone hall"
+          "en": "The stone hall",
+          "ar": "قاعة الحجر"
         },
         "meta": {
           "he": "₪360 למנה · עד 180",
-          "en": "₪360 per plate · up to 180"
+          "en": "₪360 per plate · up to 180",
+          "ar": "₪360 للصحن · لحد 180"
         }
       },
       {
         "label": {
           "he": "המרפסת",
-          "en": "The terrace"
+          "en": "The terrace",
+          "ar": "التراس"
         },
         "meta": {
           "he": "קבלת פנים · עד 80",
-          "en": "reception · up to 80"
+          "en": "reception · up to 80",
+          "ar": "استقبال · لحد 80"
         }
       },
       {
         "label": {
           "he": "סיור באחוזה",
-          "en": "Estate tour"
+          "en": "Estate tour",
+          "ar": "جولة بالمكان"
         },
         "meta": {
           "he": "ב' וד' · 18:00",
-          "en": "Mon and Wed · 18:00"
+          "en": "Mon and Wed · 18:00",
+          "ar": "الاثنين والأربعاء · 18:00"
         }
       }
     ],
     "cta": {
       "he": "בדיקת תאריך",
-      "en": "Check a date"
+      "en": "Check a date",
+      "ar": "افحص موعد"
     },
     "palette": {
       "bg": "#0f2019",
@@ -13651,79 +13667,95 @@
   "planners": {
     "brand": {
       "he": "הפקות שמחה",
-      "en": "Simcha Productions"
+      "en": "Simcha Productions",
+      "ar": "إنتاجات سِمحا"
     },
     "title": {
       "he": "בונים את השמחה",
-      "en": "Build your celebration"
+      "en": "Build your celebration",
+      "ar": "ركّب فرحتك"
     },
     "subtitle": {
       "he": "חינה · 220 אורחים · אוגוסט",
-      "en": "Henna celebration · 220 guests · August"
+      "en": "Henna celebration · 220 guests · August",
+      "ar": "سهرة حنّة · 220 ضيف · آب"
     },
     "tags": [
       {
         "he": "עיצוב",
-        "en": "Decor"
+        "en": "Decor",
+        "ar": "ديكور"
       },
       {
         "he": "קייטרינג",
-        "en": "Catering"
+        "en": "Catering",
+        "ar": "ضيافة"
       },
       {
         "he": "תאורה",
-        "en": "Lighting"
+        "en": "Lighting",
+        "ar": "إضاءة"
       },
       {
         "he": "צילום",
-        "en": "Photo"
+        "en": "Photo",
+        "ar": "تصوير"
       }
     ],
     "items": [
       {
         "label": {
           "he": "קונספט",
-          "en": "Concept"
+          "en": "Concept",
+          "ar": "الفكرة"
         },
         "meta": {
           "he": "חינה מודרנית",
-          "en": "Modern henna"
+          "en": "Modern henna",
+          "ar": "حنّة عصرية"
         }
       },
       {
         "label": {
           "he": "אירוח",
-          "en": "Hospitality"
+          "en": "Hospitality",
+          "ar": "الضيافة"
         },
         "meta": {
           "he": "פינת מיצים וממתקים ערביים",
-          "en": "Fresh juice and Arabic sweets corner"
+          "en": "Fresh juice and Arabic sweets corner",
+          "ar": "ركن عصير طازة وحلو عربي"
         }
       },
       {
         "label": {
           "he": "עיצוב",
-          "en": "Design"
+          "en": "Design",
+          "ar": "التصميم"
         },
         "meta": {
           "he": "פרחים, נרות ותאורה חמה",
-          "en": "Flowers, candles, warm light"
+          "en": "Flowers, candles, warm light",
+          "ar": "ورد، شموع وضو دافي"
         }
       },
       {
         "label": {
           "he": "תקציב",
-          "en": "Budget"
+          "en": "Budget",
+          "ar": "الميزانية"
         },
         "meta": {
           "he": "₪62,000 · 70%",
-          "en": "₪62,000 · 70%"
+          "en": "₪62,000 · 70%",
+          "ar": "₪62,000 · 70%"
         }
       }
     ],
     "cta": {
       "he": "שיחת תכנון",
-      "en": "Plan it with us"
+      "en": "Plan it with us",
+      "ar": "خطّطها معنا"
     },
     "palette": {
       "bg": "#290f2e",
@@ -13736,79 +13768,95 @@
   "henna": {
     "brand": {
       "he": "חינה ריהאם",
-      "en": "Reham Henna"
+      "en": "Reham Henna",
+      "ar": "حنّة رهام"
     },
     "title": {
       "he": "חינה לכלה",
-      "en": "Bridal henna"
+      "en": "Bridal henna",
+      "ar": "حنّة العروس"
     },
     "subtitle": {
       "he": "חינה טבעית בלבד · מגיעה עד הבית",
-      "en": "Natural henna only · home visits"
+      "en": "Natural henna only · home visits",
+      "ar": "حنّة طبيعية بس · زيارات للبيت"
     },
     "tags": [
       {
         "he": "כלות",
-        "en": "Bridal"
+        "en": "Bridal",
+        "ar": "عرايس"
       },
       {
         "he": "ערבי",
-        "en": "Arabic"
+        "en": "Arabic",
+        "ar": "عربي"
       },
       {
         "he": "הודי",
-        "en": "Indian"
+        "en": "Indian",
+        "ar": "هندي"
       },
       {
         "he": "מינימלי",
-        "en": "Minimal"
+        "en": "Minimal",
+        "ar": "بسيط"
       }
     ],
     "items": [
       {
         "label": {
           "he": "חבילת כלה",
-          "en": "Bridal package"
+          "en": "Bridal package",
+          "ar": "باقة العروس"
         },
         "meta": {
           "he": "₪1,200 · ידיים ורגליים",
-          "en": "₪1,200 · hands and feet"
+          "en": "₪1,200 · hands and feet",
+          "ar": "₪1,200 · إيدين وإجرين"
         }
       },
       {
         "label": {
           "he": "עיצוב ערבי",
-          "en": "Arabic floral"
+          "en": "Arabic floral",
+          "ar": "نقش ورد عربي"
         },
         "meta": {
           "he": "₪180 · יד אחת",
-          "en": "₪180 · one hand"
+          "en": "₪180 · one hand",
+          "ar": "₪180 · إيد وحدة"
         }
       },
       {
         "label": {
           "he": "אורחות",
-          "en": "Guests"
+          "en": "Guests",
+          "ar": "الضيفات"
         },
         "meta": {
           "he": "₪60 לאורחת · עיצוב קטן",
-          "en": "₪60 per guest · small design"
+          "en": "₪60 per guest · small design",
+          "ar": "₪60 للضيفة · رسمة صغيرة"
         }
       },
       {
         "label": {
           "he": "עיד לילדות",
-          "en": "Eid for girls"
+          "en": "Eid for girls",
+          "ar": "عيدية للبنات"
         },
         "meta": {
           "he": "₪40 · עיצוב עדין",
-          "en": "₪40 · gentle design"
+          "en": "₪40 · gentle design",
+          "ar": "₪40 · رسمة ناعمة"
         }
       }
     ],
     "cta": {
       "he": "בדיקת תאריך",
-      "en": "Check my date"
+      "en": "Check my date",
+      "ar": "افحصي موعدي"
     },
     "palette": {
       "bg": "#f5e7d3",
@@ -13821,79 +13869,95 @@
   "florists": {
     "brand": {
       "he": "פרחי הדר",
-      "en": "Hadar Flowers"
+      "en": "Hadar Flowers",
+      "ar": "ورود هدار"
     },
     "title": {
       "he": "מרכיבים זר",
-      "en": "Make your bouquet"
+      "en": "Make your bouquet",
+      "ar": "ركّب باقتك"
     },
     "subtitle": {
       "he": "משלוח היום עד 18:00 בכל העיר",
-      "en": "Same-day delivery citywide until 6pm"
+      "en": "Same-day delivery citywide until 6pm",
+      "ar": "توصيل بنفس اليوم بكل المدينة لحد 18:00"
     },
     "tags": [
       {
         "he": "אדמוניות",
-        "en": "Peonies"
+        "en": "Peonies",
+        "ar": "فاوانيا"
       },
       {
         "he": "ורדים",
-        "en": "Roses"
+        "en": "Roses",
+        "ar": "ورد"
       },
       {
         "he": "אקליפטוס",
-        "en": "Eucalyptus"
+        "en": "Eucalyptus",
+        "ar": "كينا"
       },
       {
         "he": "כלניות",
-        "en": "Anemones"
+        "en": "Anemones",
+        "ar": "شقائق النعمان"
       }
     ],
     "items": [
       {
         "label": {
           "he": "גודל",
-          "en": "Size"
+          "en": "Size",
+          "ar": "الحجم"
         },
         "meta": {
           "he": "בינוני · 15 גבעולים",
-          "en": "Medium · 15 stems"
+          "en": "Medium · 15 stems",
+          "ar": "وسط · 15 وردة"
         }
       },
       {
         "label": {
           "he": "פרחים",
-          "en": "Flowers"
+          "en": "Flowers",
+          "ar": "الورد"
         },
         "meta": {
           "he": "אדמוניות, כלניות",
-          "en": "Peonies, anemones"
+          "en": "Peonies, anemones",
+          "ar": "فاوانيا، شقائق النعمان"
         }
       },
       {
         "label": {
           "he": "עטיפה",
-          "en": "Wrap"
+          "en": "Wrap",
+          "ar": "التغليف"
         },
         "meta": {
           "he": "נייר קראפט וסרט פשתן",
-          "en": "Kraft paper, linen ribbon"
+          "en": "Kraft paper, linen ribbon",
+          "ar": "ورق كرافت، شريطة كتان"
         }
       },
       {
         "label": {
           "he": "סה\"כ",
-          "en": "Total"
+          "en": "Total",
+          "ar": "المجموع"
         },
         "meta": {
           "he": "₪189 · כולל משלוח וברכה",
-          "en": "₪189 · delivery and card"
+          "en": "₪189 · delivery and card",
+          "ar": "₪189 · مع التوصيل والكرت"
         }
       }
     ],
     "cta": {
       "he": "לשלוח היום",
-      "en": "Send it today"
+      "en": "Send it today",
+      "ar": "ابعتها اليوم"
     },
     "palette": {
       "bg": "#fbf3da",
@@ -13906,83 +13970,100 @@
   "bridal-rental": {
     "brand": {
       "he": "אטלייה אל ערוס",
-      "en": "Al Arous Atelier"
+      "en": "Al Arous Atelier",
+      "ar": "أتيليه العروس"
     },
     "title": {
       "he": "השמלה שלך, במידה שלך",
-      "en": "Your gown, fitted to you"
+      "en": "Your gown, fitted to you",
+      "ar": "فستانك، مفصّل عليكِ"
     },
     "subtitle": {
       "he": "שמלות צנועות עם שרוולים · מדידה פרטית",
-      "en": "Modest gowns · private fittings"
+      "en": "Modest gowns · private fittings",
+      "ar": "فساتين محتشمة · قياسات بخصوصية"
     },
     "tags": [
       {
         "he": "10:00",
-        "en": "10:00"
+        "en": "10:00",
+        "ar": "10:00"
       },
       {
         "he": "11:30",
-        "en": "11:30"
+        "en": "11:30",
+        "ar": "11:30"
       },
       {
         "he": "13:00",
-        "en": "13:00"
+        "en": "13:00",
+        "ar": "13:00"
       },
       {
         "he": "16:00",
-        "en": "16:00"
+        "en": "16:00",
+        "ar": "16:00"
       },
       {
         "he": "18:00",
-        "en": "18:00"
+        "en": "18:00",
+        "ar": "18:00"
       }
     ],
     "items": [
       {
         "label": {
           "he": "מדידה ראשונה",
-          "en": "First fitting"
+          "en": "First fitting",
+          "ar": "أول قياس"
         },
         "meta": {
           "he": "ללא עלות · 60 דק'",
-          "en": "free · 60 min"
+          "en": "free · 60 min",
+          "ar": "مجانًا · 60 دقيقة"
         }
       },
       {
         "label": {
           "he": "שמלת כלה להשכרה",
-          "en": "Bridal gown rental"
+          "en": "Bridal gown rental",
+          "ar": "استئجار فستان عرس"
         },
         "meta": {
           "he": "₪3,800 · כולל התאמות",
-          "en": "₪3,800 · fitting included"
+          "en": "₪3,800 · fitting included",
+          "ar": "₪3,800 · شامل التعديل"
         }
       },
       {
         "label": {
           "he": "שמלה לחינה",
-          "en": "Henna dress"
+          "en": "Henna dress",
+          "ar": "فستان حنّة"
         },
         "meta": {
           "he": "₪1,400 · רקמה מסורתית",
-          "en": "₪1,400 · traditional embroidery"
+          "en": "₪1,400 · traditional embroidery",
+          "ar": "₪1,400 · تطريز تراثي"
         }
       },
       {
         "label": {
           "he": "שמלות לאחיות",
-          "en": "Dresses for sisters"
+          "en": "Dresses for sisters",
+          "ar": "فساتين للخوات"
         },
         "meta": {
           "he": "₪450 לשמלה",
-          "en": "₪450 a dress"
+          "en": "₪450 a dress",
+          "ar": "₪450 للفستان"
         }
       }
     ],
     "cta": {
       "he": "קביעת מדידה ל-11:30",
-      "en": "Book 11:30"
+      "en": "Book 11:30",
+      "ar": "احجزي الساعة 11:30"
     },
     "palette": {
       "bg": "#f8f2ef",
@@ -13995,79 +14076,95 @@
   "photographers": {
     "brand": {
       "he": "סטודיו אור ראשון",
-      "en": "First Light Studio"
+      "en": "First Light Studio",
+      "ar": "ستوديو أول ضو"
     },
     "title": {
       "he": "רגעים שלא חוזרים",
-      "en": "Moments that don't repeat"
+      "en": "Moments that don't repeat",
+      "ar": "لحظات ما بتتكرر"
     },
     "subtitle": {
       "he": "חתונות, משפחות ומותגים",
-      "en": "Weddings, families and brands"
+      "en": "Weddings, families and brands",
+      "ar": "أعراس، عائلات وماركات"
     },
     "tags": [
       {
         "he": "חתונות",
-        "en": "Weddings"
+        "en": "Weddings",
+        "ar": "أعراس"
       },
       {
         "he": "משפחה",
-        "en": "Family"
+        "en": "Family",
+        "ar": "عائلة"
       },
       {
         "he": "מוצרים",
-        "en": "Product"
+        "en": "Product",
+        "ar": "منتجات"
       },
       {
         "he": "וידאו",
-        "en": "Video"
+        "en": "Video",
+        "ar": "فيديو"
       }
     ],
     "items": [
       {
         "label": {
           "he": "חתונה מלאה",
-          "en": "Full wedding"
+          "en": "Full wedding",
+          "ar": "عرس كامل"
         },
         "meta": {
           "he": "₪8,900 · צילום ווידאו",
-          "en": "₪8,900 · photo and video"
+          "en": "₪8,900 · photo and video",
+          "ar": "₪8,900 · صور وفيديو"
         }
       },
       {
         "label": {
           "he": "משפחה בשקיעה",
-          "en": "Sunset family shoot"
+          "en": "Sunset family shoot",
+          "ar": "جلسة عائلية وقت الغروب"
         },
         "meta": {
           "he": "₪1,200 · 40 תמונות",
-          "en": "₪1,200 · 40 photos"
+          "en": "₪1,200 · 40 photos",
+          "ar": "₪1,200 · 40 صورة"
         }
       },
       {
         "label": {
           "he": "צילום מוצרים",
-          "en": "Product photography"
+          "en": "Product photography",
+          "ar": "تصوير منتجات"
         },
         "meta": {
           "he": "₪150 לתמונה",
-          "en": "₪150 per image"
+          "en": "₪150 per image",
+          "ar": "₪150 للصورة"
         }
       },
       {
         "label": {
           "he": "סרט קצר למותג",
-          "en": "Short brand film"
+          "en": "Short brand film",
+          "ar": "فيلم قصير للماركة"
         },
         "meta": {
           "he": "₪4,500 · 90 שניות",
-          "en": "₪4,500 · 90 seconds"
+          "en": "₪4,500 · 90 seconds",
+          "ar": "₪4,500 · 90 ثانية"
         }
       }
     ],
     "cta": {
       "he": "בדיקת זמינות",
-      "en": "Check availability"
+      "en": "Check availability",
+      "ar": "افحص المواعيد الفاضية"
     },
     "palette": {
       "bg": "#f1efeb",
@@ -14080,79 +14177,95 @@
   "printing": {
     "brand": {
       "he": "דפוס אל קלם",
-      "en": "Al Qalam Print"
+      "en": "Al Qalam Print",
+      "ar": "مطبعة القلم"
     },
     "title": {
       "he": "הזמנות לחתונה",
-      "en": "Wedding invitations"
+      "en": "Wedding invitations",
+      "ar": "بطاقات دعوة للعرس"
     },
     "subtitle": {
       "he": "עיצוב בערבית ובעברית, מוכן תוך 5 ימים",
-      "en": "Arabic and Hebrew design, ready in 5 days"
+      "en": "Arabic and Hebrew design, ready in 5 days",
+      "ar": "تصميم بالعربي والعبري، جاهز خلال 5 أيام"
     },
     "tags": [
       {
         "he": "הזמנות",
-        "en": "Invitations"
+        "en": "Invitations",
+        "ar": "دعوات"
       },
       {
         "he": "כרטיסי ביקור",
-        "en": "Cards"
+        "en": "Cards",
+        "ar": "بطاقات"
       },
       {
         "he": "שלטים",
-        "en": "Signs"
+        "en": "Signs",
+        "ar": "يافطات"
       },
       {
         "he": "מדבקות",
-        "en": "Stickers"
+        "en": "Stickers",
+        "ar": "ملصقات"
       }
     ],
     "items": [
       {
         "label": {
           "he": "כמות",
-          "en": "Quantity"
+          "en": "Quantity",
+          "ar": "الكمية"
         },
         "meta": {
           "he": "400 הזמנות",
-          "en": "400 invitations"
+          "en": "400 invitations",
+          "ar": "400 بطاقة دعوة"
         }
       },
       {
         "label": {
           "he": "נייר",
-          "en": "Paper"
+          "en": "Paper",
+          "ar": "الورق"
         },
         "meta": {
           "he": "כותנה 350 גרם, הטבעת זהב",
-          "en": "350 g cotton, gold foil"
+          "en": "350 g cotton, gold foil",
+          "ar": "قطن 350 غرام، طباعة ذهبي"
         }
       },
       {
         "label": {
           "he": "מעטפות",
-          "en": "Envelopes"
+          "en": "Envelopes",
+          "ar": "المغلفات"
         },
         "meta": {
           "he": "שמנת עם חותם",
-          "en": "Cream with a seal"
+          "en": "Cream with a seal",
+          "ar": "كريمي مع ختم"
         }
       },
       {
         "label": {
           "he": "הערכה",
-          "en": "Estimate"
+          "en": "Estimate",
+          "ar": "التقدير"
         },
         "meta": {
           "he": "₪2,100-2,450",
-          "en": "₪2,100-2,450"
+          "en": "₪2,100-2,450",
+          "ar": "₪2,100-2,450"
         }
       }
     ],
     "cta": {
       "he": "לקבל הדמיה",
-      "en": "See a proof"
+      "en": "See a proof",
+      "ar": "شوف نموذج"
     },
     "palette": {
       "bg": "#efe9df",
@@ -14165,75 +14278,90 @@
   "escape-rooms": {
     "brand": {
       "he": "חדר 13",
-      "en": "Room 13"
+      "en": "Room 13",
+      "ar": "غرفة 13"
     },
     "title": {
       "he": "יש לכם 60 דקות",
-      "en": "You have 60 minutes"
+      "en": "You have 60 minutes",
+      "ar": "معك 60 دقيقة"
     },
     "subtitle": {
       "he": "המעבדה הנעלמת · 2-6 שחקנים",
-      "en": "The vanished lab · 2-6 players"
+      "en": "The vanished lab · 2-6 players",
+      "ar": "المختبر المختفي · 2-6 لاعبين"
     },
     "tags": [
       {
         "he": "17:00",
-        "en": "17:00"
+        "en": "17:00",
+        "ar": "17:00"
       },
       {
         "he": "18:30",
-        "en": "18:30"
+        "en": "18:30",
+        "ar": "18:30"
       },
       {
         "he": "20:00",
-        "en": "20:00"
+        "en": "20:00",
+        "ar": "20:00"
       }
     ],
     "items": [
       {
         "label": {
           "he": "המעבדה הנעלמת",
-          "en": "The vanished lab"
+          "en": "The vanished lab",
+          "ar": "المختبر المختفي"
         },
         "meta": {
           "he": "₪140 לשחקן · 60 דק'",
-          "en": "₪140 a player · 60 min"
+          "en": "₪140 a player · 60 min",
+          "ar": "₪140 للاعب · 60 دقيقة"
         }
       },
       {
         "label": {
           "he": "הספרייה האחרונה",
-          "en": "The last library"
+          "en": "The last library",
+          "ar": "المكتبة الأخيرة"
         },
         "meta": {
           "he": "₪150 לשחקן · 75 דק'",
-          "en": "₪150 a player · 75 min"
+          "en": "₪150 a player · 75 min",
+          "ar": "₪150 للاعب · 75 دقيقة"
         }
       },
       {
         "label": {
           "he": "בריחה מהצוללת",
-          "en": "Submarine escape"
+          "en": "Submarine escape",
+          "ar": "الهروب من الغواصة"
         },
         "meta": {
           "he": "₪130 לשחקן · 60 דק'",
-          "en": "₪130 a player · 60 min"
+          "en": "₪130 a player · 60 min",
+          "ar": "₪130 للاعب · 60 دقيقة"
         }
       },
       {
         "label": {
           "he": "יום הולדת בחדר",
-          "en": "Birthday in the room"
+          "en": "Birthday in the room",
+          "ar": "عيد ميلاد بالغرفة"
         },
         "meta": {
           "he": "₪1,500 · עד 12",
-          "en": "₪1,500 · up to 12"
+          "en": "₪1,500 · up to 12",
+          "ar": "₪1,500 · لحد 12"
         }
       }
     ],
     "cta": {
       "he": "לשריין את 18:30",
-      "en": "Book 18:30"
+      "en": "Book 18:30",
+      "ar": "احجز الساعة 18:30"
     },
     "palette": {
       "bg": "#0b0f14",
@@ -14246,79 +14374,95 @@
   "tents": {
     "brand": {
       "he": "אוהלי אל פרח",
-      "en": "Al Farah Tents"
+      "en": "Al Farah Tents",
+      "ar": "خيم الفرح"
     },
     "title": {
       "he": "אוהל לחתונה בחצר",
-      "en": "A wedding tent in the yard"
+      "en": "A wedding tent in the yard",
+      "ar": "خيمة عرس بالساحة"
     },
     "subtitle": {
       "he": "300 אורחים · הקמה ביום חמישי",
-      "en": "300 guests · setup on Thursday"
+      "en": "300 guests · setup on Thursday",
+      "ar": "300 ضيف · التركيب يوم الخميس"
     },
     "tags": [
       {
         "he": "אוהל",
-        "en": "Tent"
+        "en": "Tent",
+        "ar": "خيمة"
       },
       {
         "he": "כיסאות",
-        "en": "Chairs"
+        "en": "Chairs",
+        "ar": "كراسي"
       },
       {
         "he": "שולחנות",
-        "en": "Tables"
+        "en": "Tables",
+        "ar": "طاولات"
       },
       {
         "he": "תאורה",
-        "en": "Lighting"
+        "en": "Lighting",
+        "ar": "إضاءة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "אוהל",
-          "en": "Tent"
+          "en": "Tent",
+          "ar": "الخيمة"
         },
         "meta": {
           "he": "20 x 30 מ' · דפנות שקופות",
-          "en": "20 x 30 m · clear walls"
+          "en": "20 x 30 m · clear walls",
+          "ar": "20 × 30 م · حيطان شفافة"
         }
       },
       {
         "label": {
           "he": "הושבה",
-          "en": "Seating"
+          "en": "Seating",
+          "ar": "الجلوس"
         },
         "meta": {
           "he": "300 כיסאות ו-30 שולחנות",
-          "en": "300 chairs, 30 tables"
+          "en": "300 chairs, 30 tables",
+          "ar": "300 كرسي، 30 طاولة"
         }
       },
       {
         "label": {
           "he": "תוספות",
-          "en": "Extras"
+          "en": "Extras",
+          "ar": "إضافات"
         },
         "meta": {
           "he": "מזגנים ותאורת שרשראות",
-          "en": "AC and string lights"
+          "en": "AC and string lights",
+          "ar": "مكيّفات وأضواء زينة"
         }
       },
       {
         "label": {
           "he": "הערכה",
-          "en": "Estimate"
+          "en": "Estimate",
+          "ar": "التقدير"
         },
         "meta": {
           "he": "₪14,500-16,800",
-          "en": "₪14,500-16,800"
+          "en": "₪14,500-16,800",
+          "ar": "₪14,500-16,800"
         }
       }
     ],
     "cta": {
       "he": "לתאם סיור בחצר",
-      "en": "Book a site visit"
+      "en": "Book a site visit",
+      "ar": "احجز زيارة للموقع"
     },
     "palette": {
       "bg": "#efe7da",
@@ -14331,79 +14475,95 @@
   "wedding-cakes": {
     "brand": {
       "he": "עוגות לילאס",
-      "en": "Lilas Cakes"
+      "en": "Lilas Cakes",
+      "ar": "كيك ليلاس"
     },
     "title": {
       "he": "בונים את עוגת החתונה",
-      "en": "Build your wedding cake"
+      "en": "Build your wedding cake",
+      "ar": "ركّب كعكة عرسك"
     },
     "subtitle": {
       "he": "220 אורחים · חמישי 18.9",
-      "en": "220 guests · Thu 18 Sep"
+      "en": "220 guests · Thu 18 Sep",
+      "ar": "220 ضيف · الخميس 18 أيلول"
     },
     "tags": [
       {
         "he": "וניל",
-        "en": "Vanilla"
+        "en": "Vanilla",
+        "ar": "فانيلا"
       },
       {
         "he": "פיסטוק",
-        "en": "Pistachio"
+        "en": "Pistachio",
+        "ar": "فستق"
       },
       {
         "he": "מי ורדים",
-        "en": "Rosewater"
+        "en": "Rosewater",
+        "ar": "ماء ورد"
       },
       {
         "he": "שוקולד",
-        "en": "Chocolate"
+        "en": "Chocolate",
+        "ar": "شوكولاتة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "קומות",
-          "en": "Tiers"
+          "en": "Tiers",
+          "ar": "الطبقات"
         },
         "meta": {
           "he": "4 קומות · 30 ס\"מ בבסיס",
-          "en": "4 tiers · 30 cm base"
+          "en": "4 tiers · 30 cm base",
+          "ar": "4 طبقات · قاعدة 30 سم"
         }
       },
       {
         "label": {
           "he": "טעם",
-          "en": "Flavour"
+          "en": "Flavour",
+          "ar": "النكهة"
         },
         "meta": {
           "he": "פיסטוק ומי ורדים",
-          "en": "Pistachio and rosewater"
+          "en": "Pistachio and rosewater",
+          "ar": "فستق وماء ورد"
         }
       },
       {
         "label": {
           "he": "עיטור",
-          "en": "Finish"
+          "en": "Finish",
+          "ar": "التزيين"
         },
         "meta": {
           "he": "פרחי סוכר ועלי זהב",
-          "en": "Sugar flowers, gold leaf"
+          "en": "Sugar flowers, gold leaf",
+          "ar": "ورد سكر، ورق ذهب"
         }
       },
       {
         "label": {
           "he": "סה\"כ",
-          "en": "Total"
+          "en": "Total",
+          "ar": "المجموع"
         },
         "meta": {
           "he": "₪3,300 · ₪15 לסועד",
-          "en": "₪3,300 · ₪15 per guest"
+          "en": "₪3,300 · ₪15 per guest",
+          "ar": "₪3,300 · ₪15 للضيف"
         }
       }
     ],
     "cta": {
       "he": "לתאם טעימה",
-      "en": "Book a tasting"
+      "en": "Book a tasting",
+      "ar": "احجز تذوّق"
     },
     "palette": {
       "bg": "#fbeef0",
@@ -14416,79 +14576,95 @@
   "event-decor": {
     "brand": {
       "he": "נור עיצוב אירועים",
-      "en": "Noor Event Design"
+      "en": "Noor Event Design",
+      "ar": "نور لتصميم المناسبات"
     },
     "title": {
       "he": "במה לכלה, שולחנות לאורחים",
-      "en": "A stage for the bride, tables for the guests"
+      "en": "A stage for the bride, tables for the guests",
+      "ar": "كوشة للعروس، وطاولات للضيوف"
     },
     "subtitle": {
       "he": "פנויים 3 תאריכים בספטמבר",
-      "en": "3 dates open in September"
+      "en": "3 dates open in September",
+      "ar": "3 مواعيد فاضية بأيلول"
     },
     "tags": [
       {
         "he": "חתונות",
-        "en": "Weddings"
+        "en": "Weddings",
+        "ar": "أعراس"
       },
       {
         "he": "חינה",
-        "en": "Henna nights"
+        "en": "Henna nights",
+        "ar": "سهرات حنّة"
       },
       {
         "he": "אירוסין",
-        "en": "Engagements"
+        "en": "Engagements",
+        "ar": "خطوبات"
       },
       {
         "he": "עיד",
-        "en": "Eid"
+        "en": "Eid",
+        "ar": "عيد"
       }
     ],
     "items": [
       {
         "label": {
           "he": "במת כלה",
-          "en": "Bridal stage"
+          "en": "Bridal stage",
+          "ar": "كوشة العروس"
         },
         "meta": {
           "he": "₪4,800 · פרחים ותאורה",
-          "en": "₪4,800 · flowers and light"
+          "en": "₪4,800 · flowers and light",
+          "ar": "₪4,800 · ورد وإضاءة"
         }
       },
       {
         "label": {
           "he": "מרכזי שולחן",
-          "en": "Centrepieces"
+          "en": "Centrepieces",
+          "ar": "زينة الطاولات"
         },
         "meta": {
           "he": "₪120 לשולחן",
-          "en": "₪120 per table"
+          "en": "₪120 per table",
+          "ar": "₪120 للطاولة"
         }
       },
       {
         "label": {
           "he": "ערב חינה",
-          "en": "Henna night set"
+          "en": "Henna night set",
+          "ar": "طقم سهرة الحنّة"
         },
         "meta": {
           "he": "₪2,900 · כולל כורסה",
-          "en": "₪2,900 · chair included"
+          "en": "₪2,900 · chair included",
+          "ar": "₪2,900 · شامل الكرسي"
         }
       },
       {
         "label": {
           "he": "קבלת פנים",
-          "en": "Welcome area"
+          "en": "Welcome area",
+          "ar": "ركن الاستقبال"
         },
         "meta": {
           "he": "₪1,600 · שלט ופרחים",
-          "en": "₪1,600 · sign and flowers"
+          "en": "₪1,600 · sign and flowers",
+          "ar": "₪1,600 · يافطة وورد"
         }
       }
     ],
     "cta": {
       "he": "בדיקת תאריך",
-      "en": "Check my date"
+      "en": "Check my date",
+      "ar": "افحص موعدي"
     },
     "palette": {
       "bg": "#232033",
@@ -14501,79 +14677,95 @@
   "favours": {
     "brand": {
       "he": "הדאיא מזכרות",
-      "en": "Hadaya Favours"
+      "en": "Hadaya Favours",
+      "ar": "هدايا للتوزيعات"
     },
     "title": {
       "he": "מתנה קטנה לכל אורח",
-      "en": "A small gift for every guest"
+      "en": "A small gift for every guest",
+      "ar": "هدية صغيرة لكل ضيف"
     },
     "subtitle": {
       "he": "עם שמות בני הזוג · מינימום 50",
-      "en": "With the couple's names · from 50"
+      "en": "With the couple's names · from 50",
+      "ar": "مع أسامي العرسان · من 50 قطعة"
     },
     "tags": [
       {
         "he": "חתונה",
-        "en": "Wedding"
+        "en": "Wedding",
+        "ar": "عرس"
       },
       {
         "he": "עיד",
-        "en": "Eid"
+        "en": "Eid",
+        "ar": "عيد"
       },
       {
         "he": "לידה",
-        "en": "New baby"
+        "en": "New baby",
+        "ar": "مولود جديد"
       },
       {
         "he": "חינה",
-        "en": "Henna"
+        "en": "Henna",
+        "ar": "حنّة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "קופסת סוכריות שקדים",
-          "en": "Sugared almond box"
+          "en": "Sugared almond box",
+          "ar": "علبة ملبّس"
         },
         "meta": {
           "he": "₪6 · עם שם",
-          "en": "₪6 · named"
+          "en": "₪6 · named",
+          "ar": "₪6 · مع الاسم"
         }
       },
       {
         "label": {
           "he": "נר בכוס זכוכית",
-          "en": "Glass candle"
+          "en": "Glass candle",
+          "ar": "شمعة بكاسة"
         },
         "meta": {
           "he": "₪9 · ריח ורד",
-          "en": "₪9 · rose scent"
+          "en": "₪9 · rose scent",
+          "ar": "₪9 · ريحة ورد"
         }
       },
       {
         "label": {
           "he": "שקית תמרים",
-          "en": "Date pouch"
+          "en": "Date pouch",
+          "ar": "صرّة تمر"
         },
         "meta": {
           "he": "₪7 · 3 תמרי מג'הול",
-          "en": "₪7 · 3 medjool dates"
+          "en": "₪7 · 3 medjool dates",
+          "ar": "₪7 · 3 حبات مجهول"
         }
       },
       {
         "label": {
           "he": "מחזיק מפתחות",
-          "en": "Keyring"
+          "en": "Keyring",
+          "ar": "علّاقة مفاتيح"
         },
         "meta": {
           "he": "₪8 · חריטה",
-          "en": "₪8 · engraved"
+          "en": "₪8 · engraved",
+          "ar": "₪8 · محفورة"
         }
       }
     ],
     "cta": {
       "he": "להזמין 200 יחידות",
-      "en": "Order 200 pieces"
+      "en": "Order 200 pieces",
+      "ar": "اطلب 200 قطعة"
     },
     "palette": {
       "bg": "#f4ecf4",
