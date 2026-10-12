@@ -15,6 +15,7 @@ const ROUTES = [
   "/[locale]/[place]/[sector]/page",
   "/[locale]/[place]/[sector]/[kind]/page",
   "/[locale]/[place]/[sector]/[kind]/[business]/page",
+  "/[locale]/[place]/[sector]/[kind]/[business]/[...rest]/page",
   "/[locale]/k/[kind]/page",
 ];
 

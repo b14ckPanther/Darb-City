@@ -20,6 +20,16 @@ export const LEVELS = {
 } as const;
 export const BUSINESS_KEY = "sakhnin/samers-barbershop";
 
+/**
+ * Haifa's lists include its neighbourhood Kiryat Haim, whose showroom businesses share Haifa's
+ * slugs, so a Kiryat Haim row opens under Haifa with its own place named in the path.
+ */
+export const HAIFA = {
+  kind: "/en/haifa/beauty/barbershops",
+  subPlaceBusiness: "/en/haifa/beauty/barbershops/kiryat-haim/samers-barbershop",
+  subPlaceKey: "kiryat-haim/samers-barbershop",
+} as const;
+
 /** Arraba has only the 16 common kinds, so it has no nails salon. */
 export const EMPTY_KIND = "/arraba/beauty/nails";
 /** Perla Nails exists in Sakhnin, never in Arraba. */

@@ -99,8 +99,17 @@ describe("GET /places/:placeSlug/businesses/:slug", () => {
     expect(res.body.placeSlug).toBe("sakhnin");
     expect(res.body.experience).toEqual({ title: { en: "Book" } });
   });
-  it("404s for a business that lives in another place", async () => {
+  it("resolves a business in a child place through its parent, with its real place", async () => {
+    const res = await get("/places/northern-district/businesses/abu-salim");
+    expect(res.status).toBe(200);
+    expect(res.body.slug).toBe("abu-salim");
+    expect(res.body.placeSlug).toBe("sakhnin");
+  });
+  it("404s for a business that lives in a sibling place", async () => {
     expect((await get("/places/sakhnin/businesses/tamra-barber")).status).toBe(404);
+  });
+  it("404s for an unknown place", async () => {
+    expect((await get("/places/nowhere/businesses/abu-salim")).status).toBe(404);
   });
   it("404s for a draft", async () => {
     expect((await get("/places/sakhnin/businesses/draft-barber")).status).toBe(404);

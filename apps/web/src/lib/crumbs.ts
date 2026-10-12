@@ -12,7 +12,8 @@ export interface CrumbTarget {
   place?: PlaceDetailDto;
   sector?: SectorDto;
   kind?: KindDto;
-  business?: { slug: string; name: Localized };
+  /** `placeSlug`: the business's own place, when it lives beneath the listed `place`. */
+  business?: { slug: string; name: Localized; placeSlug?: string };
   nationalKind?: KindDto;
   page?: Crumb;
 }
@@ -51,7 +52,16 @@ export function crumbsFor(locale: Locale, at: CrumbTarget): Crumb[] {
   if (business) {
     crumbs.push({
       label: pickText(business.name, locale),
-      href: href(locale, [...kindPath, business.slug]),
+      href: href(
+        locale,
+        paths.listedBusiness(
+          place.slug,
+          sector.slug,
+          kind.slug,
+          business.placeSlug ?? place.slug,
+          business.slug,
+        ),
+      ),
     });
   }
   return crumbs;

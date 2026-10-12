@@ -59,6 +59,11 @@ export const contract = c.router({
       }),
       responses: { 200: BusinessPageSchema, 400: BadRequestSchema, 404: NotFoundSchema },
     },
+    /**
+     * A business anywhere in the place's subtree, so a city's list can open one from its
+     * neighbourhoods. `placeSlug` in the body is the business's own place. When places in the
+     * subtree share the slug, the place itself wins, then the shallowest, then the first path.
+     */
     get: {
       method: "GET",
       path: "/places/:placeSlug/businesses/:slug",

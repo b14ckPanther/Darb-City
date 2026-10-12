@@ -1,9 +1,10 @@
 // @vitest-environment node
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterAll, afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const getPlace = vi.fn();
 const getTaxonomy = vi.fn();
-vi.mock("./api", () => ({ getPlace, getTaxonomy }));
+const getBusiness = vi.fn();
+vi.mock("./api", () => ({ getPlace, getTaxonomy, getBusiness }));
 const redirect = vi.fn((url: string) => {
   throw new Error(`REDIRECT ${url}`);
 });
@@ -16,7 +17,8 @@ vi.mock("next/navigation", () => ({
   },
   redirect,
 }));
-const { loadKindLevel, loadKindLevelInSector, placeKindShortcut } = await import("./levels");
+const { loadBusinessLevel, loadKindLevel, loadKindLevelInSector, placeKindShortcut } =
+  await import("./levels");
 
 const kind = (id: string, slug: string, sectorId: string) => ({
   id,
@@ -87,5 +89,80 @@ describe("place kind shortcut", () => {
     await expect(
       placeKindShortcut({ locale: "he", place: "sakhnin", kind: "nope" }),
     ).rejects.toThrow("NOT_FOUND");
+  });
+});
+
+describe("business level loader", () => {
+  const at = (slug: string, ancestors: string[]) => ({
+    id: slug,
+    slug,
+    name: { en: slug },
+    ancestors: ancestors.map((a) => ({ id: a, slug: a, name: { en: a } })),
+    children: [],
+  });
+  const places: Record<string, unknown> = {
+    haifa: at("haifa", ["israel"]),
+    "kiryat-haim": at("kiryat-haim", ["israel", "haifa"]),
+    sakhnin: at("sakhnin", ["israel"]),
+  };
+  const biz = (placeSlug: string) => ({
+    slug: "samers",
+    placeSlug,
+    name: { en: "Samer's" },
+    primaryKindId: "k1",
+    kindIds: ["k1"],
+  });
+  const kindRaw = { locale: "en", place: "haifa", sector: "beauty", kind: "barbershops" };
+  beforeEach(() => {
+    getPlace.mockImplementation(async (slug: string) => places[slug] ?? null);
+    getBusiness.mockReset();
+  });
+  afterAll(() => getPlace.mockResolvedValue({ slug: "sakhnin", name: { he: "סח'נין" } }));
+
+  it("shows a business of the listed place at its own URL", async () => {
+    getBusiness.mockResolvedValue(biz("haifa"));
+    const level = await loadBusinessLevel(kindRaw, { business: "samers" });
+    expect(getBusiness).toHaveBeenCalledWith("haifa", "samers");
+    expect(level.home.slug).toBe("haifa");
+    expect(level.segments).toEqual(["haifa", "beauty", "barbershops", "samers"]);
+    expect(level.canonical).toEqual(level.segments);
+  });
+  it("accepts a business from beneath the listed place, canonical at its own place", async () => {
+    getBusiness.mockResolvedValue(biz("kiryat-haim"));
+    const level = await loadBusinessLevel(kindRaw, { business: "samers" });
+    expect(level.place.slug).toBe("haifa");
+    expect(level.home.slug).toBe("kiryat-haim");
+    // Links from the sheet (locale switch, crumb) use the exact address, which names its place.
+    expect(level.segments).toEqual(["haifa", "beauty", "barbershops", "kiryat-haim", "samers"]);
+    expect(level.canonical).toEqual(["kiryat-haim", "beauty", "barbershops", "samers"]);
+  });
+  it("opens a neighbourhood's business named by its place, even when the city has a twin", async () => {
+    getBusiness.mockResolvedValue(biz("kiryat-haim"));
+    const level = await loadBusinessLevel(kindRaw, { place: "kiryat-haim", business: "samers" });
+    expect(getBusiness).toHaveBeenCalledWith("kiryat-haim", "samers");
+    expect(level.segments).toEqual(["haifa", "beauty", "barbershops", "kiryat-haim", "samers"]);
+    expect(level.canonical).toEqual(["kiryat-haim", "beauty", "barbershops", "samers"]);
+  });
+  it("is not found for a place outside the listed one, or the listed place itself", async () => {
+    getBusiness.mockResolvedValue(biz("sakhnin"));
+    await expect(
+      loadBusinessLevel(kindRaw, { place: "sakhnin", business: "samers" }),
+    ).rejects.toThrow("NOT_FOUND");
+    getBusiness.mockResolvedValue(biz("haifa"));
+    await expect(
+      loadBusinessLevel(kindRaw, { place: "haifa", business: "samers" }),
+    ).rejects.toThrow("NOT_FOUND");
+  });
+  it("is not found when the named place does not hold the business itself", async () => {
+    getBusiness.mockResolvedValue(biz("deeper"));
+    await expect(
+      loadBusinessLevel(kindRaw, { place: "kiryat-haim", business: "samers" }),
+    ).rejects.toThrow("NOT_FOUND");
+  });
+  it("is not found for an unknown business or another kind", async () => {
+    getBusiness.mockResolvedValue(null);
+    await expect(loadBusinessLevel(kindRaw, { business: "nope" })).rejects.toThrow("NOT_FOUND");
+    getBusiness.mockResolvedValue({ ...biz("haifa"), primaryKindId: "k2", kindIds: ["k2"] });
+    await expect(loadBusinessLevel(kindRaw, { business: "samers" })).rejects.toThrow("NOT_FOUND");
   });
 });

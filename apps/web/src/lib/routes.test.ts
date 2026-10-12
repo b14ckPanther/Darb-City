@@ -13,6 +13,19 @@ describe("href", () => {
   });
 });
 
+describe("listed business", () => {
+  it("is the plain business path in the listed place itself", () => {
+    expect(paths.listedBusiness("haifa", "beauty", "barbershops", "haifa", "samers")).toEqual(
+      paths.business("haifa", "beauty", "barbershops", "samers"),
+    );
+  });
+  it("names the business's own place when it lives beneath the listed one", () => {
+    expect(
+      href("en", paths.listedBusiness("haifa", "beauty", "barbershops", "kiryat-haim", "samers")),
+    ).toBe("/en/haifa/beauty/barbershops/kiryat-haim/samers");
+  });
+});
+
 describe("languageAlternates", () => {
   it("points every locale and x-default at the same path", () => {
     expect(languageAlternates(paths.place("haifa"))).toEqual({

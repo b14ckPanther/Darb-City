@@ -21,6 +21,25 @@ const ORDER: Prisma.BusinessOrderByWithRelationInput[] = [
   { id: "asc" },
 ];
 
+const depth = (path: string) => path.split("/").length;
+
+/**
+ * The business in the listed place itself, else the one nearest it by path depth; a tie at the
+ * same depth goes to the first place path in code-point order, so the answer never depends on
+ * row order.
+ */
+export function closestInSubtree<T extends { place: { path: string } }>(
+  rows: readonly T[],
+  placePath: string,
+): T | null {
+  const rank = (r: T) => (r.place.path === placePath ? 0 : depth(r.place.path));
+  const sorted = [...rows].sort(
+    (a, b) =>
+      rank(a) - rank(b) || (a.place.path < b.place.path ? -1 : a.place.path > b.place.path ? 1 : 0),
+  );
+  return sorted[0] ?? null;
+}
+
 @Injectable()
 export class BusinessesRepository {
   constructor(private readonly prisma: PrismaService) {}
@@ -65,19 +84,25 @@ export class BusinessesRepository {
     };
   }
 
-  /** A published business in exactly this place, with only its active kinds. */
-  detail(placeSlug: string, slug: string) {
-    return this.prisma.business.findFirst({
+  /**
+   * A published business anywhere in the place's subtree, with only its active kinds. Slugs are
+   * unique per place, so when several places in the subtree share one, the closest wins.
+   */
+  async detail(placePath: string, slug: string) {
+    const rows = await this.prisma.business.findMany({
       where: {
         slug,
         status: "published",
-        place: { slug: placeSlug },
+        // paths end with '/', so a prefix never matches a sibling
+        place: { path: { startsWith: placePath } },
         primaryKind: { is: { status: "active" } },
       },
       include: {
         kinds: { where: { kind: { is: { status: "active" } } }, select: { kindId: true } },
+        place: { select: { slug: true, path: true } },
       },
     });
+    return closestInSubtree(rows, placePath);
   }
 
   async countsByKind(placePath: string): Promise<Record<string, number>> {

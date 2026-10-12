@@ -18,6 +18,12 @@ export const paths = {
     kind,
     business,
   ],
+  /**
+   * A business opened from the listed place's kind list, so the list stays behind the sheet. Slugs
+   * are unique per place only, so a business from beneath the listed place keeps its own place.
+   */
+  listedBusiness: (listed: string, sector: string, kind: string, own: string, business: string) =>
+    own === listed ? [listed, sector, kind, business] : [listed, sector, kind, own, business],
   nationalKind: (kind: string) => ["k", kind],
   placeKind: (place: string, kind: string) => [place, "k", kind],
   forBusiness: () => ["for-business"],

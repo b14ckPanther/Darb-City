@@ -52,7 +52,7 @@ const haifa = {
 
 describe("business rows", () => {
   const ctx = { locale: "ar" as const, index, names: placeNames(haifa), here: "haifa" };
-  it("links into the business's own place and falls back from Arabic to Hebrew", () => {
+  it("links under the listed place and falls back from Arabic to Hebrew", () => {
     expect(toBusinessRow(business("samers", "haifa"), ctx)).toEqual({
       key: "haifa/samers",
       name: "המספרה של סאמר",
@@ -65,7 +65,16 @@ describe("business rows", () => {
   });
   it("names the neighbourhood when a row comes from below the current place", () => {
     expect(toBusinessRow(business("samers", "kiryat-haim"), ctx)?.placeName).toBe("كريات حاييم");
+  });
+  it("keeps a row from a neighbourhood under the listed place, naming its own place", () => {
+    // Slugs are unique per place only, so the business's place stays in the URL.
     expect(toBusinessRow(business("samers", "kiryat-haim"), ctx)?.href).toBe(
+      "/ar/haifa/beauty/barbershops/kiryat-haim/samers",
+    );
+    expect(toBusinessRow(business("samers", "kiryat-haim"), ctx)?.key).toBe("kiryat-haim/samers");
+  });
+  it("links into the business's own place when the list spans the country", () => {
+    expect(toBusinessRow(business("samers", "kiryat-haim"), { ...ctx, here: null })?.href).toBe(
       "/ar/kiryat-haim/beauty/barbershops/samers",
     );
   });

@@ -1,10 +1,10 @@
 import { notFound, permanentRedirect, redirect } from "next/navigation";
 import type { Locale } from "@darb/core";
-import type { KindDto, PlaceDetailDto, SectorDto } from "@darb/contracts";
-import { getPlace, getTaxonomy } from "./api";
+import type { BusinessDetailDto, KindDto, PlaceDetailDto, SectorDto } from "@darb/contracts";
+import { getBusiness, getPlace, getTaxonomy } from "./api";
 import { isLocale } from "./locale";
 import { href, paths } from "./routes";
-import { indexTaxonomy, type TaxonomyIndex } from "./taxonomy";
+import { indexTaxonomy, kindCovers, type TaxonomyIndex } from "./taxonomy";
 
 /** The root of the place tree. `/israel` redirects to `/`. */
 export const COUNTRY_SLUG = "israel";
@@ -79,6 +79,59 @@ export async function loadKindLevel(
 export async function loadKindLevelInSector(raw: KindParams): Promise<KindLevel | null> {
   const resolved = await resolveKindLevel(raw);
   return "wrongSector" in resolved ? null : resolved;
+}
+
+export interface BusinessLevel extends KindLevel {
+  business: BusinessDetailDto;
+  primaryKind: KindDto;
+  /** The business's own place: the listed `place` or one beneath it. */
+  home: PlaceDetailDto;
+  /** This sheet's path, under the listed place, so its list stays behind it. */
+  segments: string[];
+  /** The business's own URL, in its own place (the canonical link). */
+  canonical: string[];
+}
+
+/**
+ * Level 4, opened from the listed place's kind list. `/{place}/…/{business}` finds the business
+ * anywhere beneath the place (its own business first, then the nearest); `/{place}/…/{own}/{business}`
+ * names the business's own place, which must lie beneath the listed one, since slugs are unique
+ * per place only. The business must be of the kind. Anything else is not found.
+ */
+export async function loadBusinessLevel(
+  raw: KindParams,
+  at: { place?: string; business: string },
+): Promise<BusinessLevel> {
+  const level = await loadKindLevel(raw, at.place ? [at.place, at.business] : [at.business]);
+  let home: PlaceDetailDto | null = level.place;
+  if (at.place) {
+    home = await getPlace(at.place);
+    const beneath = home?.ancestors.some((a) => a.slug === level.place.slug) ?? false;
+    if (!home || !beneath) notFound();
+  }
+  const business = await getBusiness(home.slug, at.business);
+  if (!business || (at.place && business.placeSlug !== home.slug)) notFound();
+  if (business.placeSlug !== home.slug) home = await getPlace(business.placeSlug);
+  if (!home) notFound();
+  const { index, sector, kind } = level;
+  const ofKind = [business.primaryKindId, ...business.kindIds].some((id) =>
+    kindCovers(index, kind.id, id),
+  );
+  if (!ofKind) notFound();
+  return {
+    ...level,
+    business,
+    home,
+    primaryKind: index.kindById.get(business.primaryKindId) ?? kind,
+    segments: paths.listedBusiness(
+      level.place.slug,
+      sector.slug,
+      kind.slug,
+      business.placeSlug,
+      business.slug,
+    ),
+    canonical: paths.business(business.placeSlug, sector.slug, kind.slug, business.slug),
+  };
 }
 
 /**

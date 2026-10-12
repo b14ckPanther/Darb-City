@@ -51,13 +51,14 @@ export class BusinessesController {
         };
       },
       get: async ({ params }) => {
-        const row = await this.businesses.detail(params.placeSlug, params.slug);
+        const place = await this.places.bySlug(params.placeSlug);
+        const row = place ? await this.businesses.detail(place.path, params.slug) : null;
         if (!row)
           return {
             status: 404,
             body: { message: `No business "${params.slug}" in "${params.placeSlug}"` },
           };
-        return { status: 200, body: toBusinessDetail(row, params.placeSlug, this.clock()) };
+        return { status: 200, body: toBusinessDetail(row, row.place.slug, this.clock()) };
       },
       kindCounts: async ({ params }) => {
         const place = await this.places.bySlug(params.placeSlug);

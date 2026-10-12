@@ -46,6 +46,21 @@ describe("crumbsFor", () => {
       href: "/kiryat-haim/beauty/barbershops/samers-barbershop",
     });
   });
+  it("keeps a neighbourhood's business under the listed place", () => {
+    const haifa: PlaceDetailDto = {
+      ...placeDto("haifa", "city", "Haifa"),
+      ancestors: kiryatHaim.ancestors.slice(0, 2),
+      children: [placeDto("kiryat-haim", "neighbourhood", "Kiryat Haim")],
+    };
+    const crumbs = crumbsFor("en", {
+      place: haifa,
+      sector: beauty,
+      kind: barbers,
+      business: { slug: "samers-barbershop", name: { en: "Samer's" }, placeSlug: "kiryat-haim" },
+    });
+    expect(crumbs.at(-2)?.href).toBe("/en/haifa/beauty/barbershops");
+    expect(crumbs.at(-1)?.href).toBe("/en/haifa/beauty/barbershops/kiryat-haim/samers-barbershop");
+  });
   it("goes straight from Israel to a national kind or a static page", () => {
     expect(crumbsFor("ar", { nationalKind: barbers })).toEqual([
       { label: "إسرائيل", href: "/ar" },

@@ -19,7 +19,10 @@ export interface RowContext {
   locale: Locale;
   index: TaxonomyIndex;
   names: Map<string, Localized>;
-  /** The place being listed; rows from elsewhere name their place. Null lists everywhere. */
+  /**
+   * The place being listed: rows open under it (so its list stays behind the sheet) and rows from
+   * beneath it name their place. Null lists everywhere, and rows open in their own place.
+   */
   here: string | null;
 }
 
@@ -41,7 +44,12 @@ export function toBusinessRow(b: BusinessSummaryDto, ctx: RowContext): BusinessR
     key: `${b.placeSlug}/${b.slug}`,
     name: pickText(b.name, ctx.locale),
     tagline: pickText(b.tagline, ctx.locale),
-    href: href(ctx.locale, paths.business(b.placeSlug, sector.slug, kind.slug, b.slug)),
+    href: href(
+      ctx.locale,
+      ctx.here
+        ? paths.listedBusiness(ctx.here, sector.slug, kind.slug, b.placeSlug, b.slug)
+        : paths.business(b.placeSlug, sector.slug, kind.slug, b.slug),
+    ),
     example: b.tier === "example",
     openNow: b.openNow,
     placeName: b.placeSlug === ctx.here || !name ? null : pickText(name, ctx.locale),
