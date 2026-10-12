@@ -61,9 +61,20 @@ export function cameraFor(level: StageLevel, dots: readonly CityDot[] = []): Cam
   return { center, zoom: PLACE_ZOOM };
 }
 
+/** The same level: same depth, place and sector, and at street level the same pins. */
+export function sameLevel(a: StageLevel, b: StageLevel): boolean {
+  if (a.depth === 0 || b.depth === 0) return a.depth === b.depth;
+  if (a.depth !== b.depth || a.place.slug !== b.place.slug) return false;
+  if (a.depth === 2 && b.depth === 2) return a.sector.slug === b.sector.slug;
+  if (a.depth === 3 && b.depth === 3)
+    return a.pins.length === b.pins.length && a.pins.every((pin, i) => pin.key === b.pins[i]?.key);
+  return true;
+}
+
 /**
  * How the stage moves from one level to the next (spec §3.5): the camera flies for 550 ms on the
- * Darb ease-out while the layers crossfade, or, with reduced motion, jumps under a 400 ms fade.
+ * Darb ease-out while the layers crossfade, or, with reduced motion, jumps under a 400 ms fade on
+ * every level change.
  */
 export function planTransition(
   from: StageLevel | null,
@@ -93,5 +104,8 @@ export function planTransition(
   if (fromView !== view) fade = { kind: "cross", duration: fadeMs, outScale: out, inScale: into };
   else if (view === "plaza" && sceneKey(from) !== sceneKey(to))
     fade = { kind: "through", duration: fadeMs, outScale: out, inScale: into };
+  // Reduced motion: the camera jumps, so every level change (map to map too) fades through.
+  else if (reduced && !sameLevel(from, to))
+    fade = { kind: "through", duration: fadeMs, outScale: 1, inScale: 1 };
   return { view, camera, motion, duration: motion === "fly" ? MOTION.move : 0, fade, direction };
 }

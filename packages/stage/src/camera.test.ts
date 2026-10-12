@@ -112,6 +112,44 @@ describe("planTransition", () => {
     expect(plan).toMatchObject({ motion: "jump", duration: 0 });
     expect(plan.fade).toEqual({ kind: "cross", duration: MOTION.fade, outScale: 1, inScale: 1 });
   });
+  it("fades for 400 ms on every level change with reduced motion, map to map included", () => {
+    const reduced = { reducedMotion: true };
+    const through = { kind: "through", duration: MOTION.fade, outScale: 1, inScale: 1 };
+    const haifa = { slug: "haifa", name: "Haifa", lat: 32.79, lng: 34.99 };
+    const otherKind: StageLevel = {
+      ...kind,
+      pins: [
+        { key: "sakhnin/b", href: "/sakhnin/food/bakeries/b", name: "B", lat: 32.87, lng: 35.31 },
+      ],
+    };
+    const changes: [StageLevel, StageLevel][] = [
+      [kind, country],
+      [country, kind],
+      [kind, { ...kind, place: haifa }],
+      [kind, otherKind],
+      [place, sector],
+      [sector, { ...sector, sector: { slug: "food", name: "Food", accent: "#9fc0a8" } }],
+    ];
+    for (const [from, to] of changes) {
+      const plan = planTransition(from, to, dots, reduced);
+      expect(plan, `${sceneKey(from)} -> ${sceneKey(to)}`).toMatchObject({
+        motion: "jump",
+        duration: 0,
+        fade: through,
+      });
+    }
+    for (const [from, to] of [
+      [country, place],
+      [sector, kind],
+    ] as const)
+      expect(planTransition(from, to, dots, reduced).fade).toEqual({ ...through, kind: "cross" });
+  });
+  it("does nothing visible with reduced motion when the level is the same", () => {
+    const reduced = { reducedMotion: true };
+    expect(planTransition(place, { ...place }, dots, reduced).fade).toBeNull();
+    expect(planTransition(kind, { ...kind, pins: [...kind.pins] }, dots, reduced).fade).toBeNull();
+    expect(planTransition(country, { depth: 0 }, dots, reduced).fade).toBeNull();
+  });
   it("keeps every move and fade within 400–700 ms", () => {
     for (const d of Object.values(MOTION)) {
       expect(d).toBeGreaterThanOrEqual(400);

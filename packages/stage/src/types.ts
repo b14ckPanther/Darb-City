@@ -66,7 +66,10 @@ export type Camera =
   { center: LngLat; zoom: number } | { bounds: [LngLat, LngLat]; maxZoom: number };
 
 export interface Fade {
-  /** cross: two layers swap; through: one plaza layer zooms out, changes scene, zooms back in. */
+  /**
+   * cross: two layers swap; through: one layer (the plaza, or the map under reduced motion) fades
+   * or zooms out, changes scene, and comes back in.
+   */
   kind: "cross" | "through";
   duration: number;
   outScale: number;
