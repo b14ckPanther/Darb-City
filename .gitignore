@@ -7,3 +7,10 @@ dist/
 .turbo/
 coverage/
 **/generated/
+.next/
+next-env.d.ts
+apps/web/public/brand/
+apps/web/.screens/
+playwright-report/
+test-results/
+*.tsbuildinfo

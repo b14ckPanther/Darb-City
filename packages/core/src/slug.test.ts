@@ -43,12 +43,16 @@ describe("reserved slugs", () => {
         "login",
         "register",
         "_next",
+        "brand",
       ].sort(),
     );
   });
-  it.each(["ar", "he", "k", "admin", "for-business", "_next"])("%s is reserved", (value) => {
-    expect(isReservedSlug(value)).toBe(true);
-  });
+  it.each(["ar", "he", "k", "admin", "for-business", "_next", "brand"])(
+    "%s is reserved",
+    (value) => {
+      expect(isReservedSlug(value)).toBe(true);
+    },
+  );
   it.each(["haifa", "barbershops", "beauty", "arraba", "kiryat-haim", "AR"])(
     "%s is not reserved",
     (value) => {

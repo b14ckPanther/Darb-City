@@ -6,3 +6,9 @@ pnpm-lock.yaml
 docs
 packages/seed/data/*.md
 packages/seed/data/*.json
+**/.next
+apps/web/next-env.d.ts
+apps/web/public/brand
+apps/web/.screens
+apps/web/playwright-report
+apps/web/test-results

@@ -33,6 +33,7 @@ export const RESERVED_SLUGS: readonly string[] = [
   "login",
   "register",
   "_next",
+  "brand",
 ];
 const RESERVED = new Set(RESERVED_SLUGS);
 
