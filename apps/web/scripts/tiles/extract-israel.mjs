@@ -107,6 +107,10 @@ async function ensureCli(dir) {
  * Extracts into israel.partial.pmtiles and renames it to israel.pmtiles only once it verifies, so a
  * failed or interrupted run never leaves a broken archive behind. `run` is execFileSync (injectable
  * for tests).
+ * @param {string} dir
+ * @param {string} build
+ * @param {string} cli
+ * @param {(cli: string, args: string[], options: { stdio: "inherit" }) => unknown} [run]
  */
 export function extractInto(dir, build, cli, run = execFileSync) {
   const partial = join(dir, "israel.partial.pmtiles");
