@@ -15,6 +15,8 @@ export interface SearchConfig {
   embeddingModel: string;
   voyageApiKey: string | null;
   indexWorker: boolean;
+  /** SEARCH_REPORT_KEY: the shared secret for GET /search/report; unset, the endpoint is a 404. */
+  reportKey: string | null;
 }
 
 export interface AppConfig {
@@ -53,6 +55,7 @@ const schema = z.object({
   EMBEDDING_MODEL: z.string().min(1).default("voyage-4-lite"),
   VOYAGE_API_KEY: optional,
   SEARCH_INDEX_WORKER: flag,
+  SEARCH_REPORT_KEY: optional,
   NODE_ENV: z.string().optional(),
 });
 
@@ -102,6 +105,7 @@ export function loadConfig(env: NodeJS.ProcessEnv): AppConfig {
       embeddingModel: e.EMBEDDING_MODEL,
       voyageApiKey: e.VOYAGE_API_KEY,
       indexWorker: e.SEARCH_INDEX_WORKER,
+      reportKey: e.SEARCH_REPORT_KEY,
     },
   };
 }

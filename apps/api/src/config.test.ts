@@ -23,6 +23,7 @@ it("reads and defaults the environment", () => {
       embeddingModel: "voyage-4-lite",
       voyageApiKey: null,
       indexWorker: true,
+      reportKey: null,
     },
   });
   expect(config.search.ipSalt).toMatch(/^[0-9a-f]{32}$/);
@@ -37,6 +38,11 @@ it("turns providers on when their keys are present", () => {
 it("refuses a real provider without its key", () => {
   expect(() => loadConfig({ ...base, INTENT_PROVIDER: "anthropic" })).toThrow(/ANTHROPIC_API_KEY/);
   expect(() => loadConfig({ ...base, EMBEDDING_PROVIDER: "voyage" })).toThrow(/VOYAGE_API_KEY/);
+});
+
+it("reads the report key; blank is unset", () => {
+  expect(loadConfig({ ...base, SEARCH_REPORT_KEY: "r-key" }).search.reportKey).toBe("r-key");
+  expect(loadConfig({ ...base, SEARCH_REPORT_KEY: "  " }).search.reportKey).toBeNull();
 });
 
 it("refuses to start without a database", () => {

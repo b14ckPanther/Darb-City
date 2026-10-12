@@ -31,6 +31,7 @@ beforeAll(async () => {
   process.env["SEARCH_RATE_LIMIT"] = "5";
   process.env["SEARCH_PROXY_KEY"] = "proxy-key";
   process.env["SEARCH_RESULTS_RATE_LIMIT"] = "3";
+  process.env["SEARCH_REPORT_KEY"] = "report-key";
   const moduleRef = await Test.createTestingModule({ imports: [AppModule] })
     .overrideProvider(CLOCK)
     .useValue(() => new Date("2026-10-12T06:30:00Z"))
@@ -54,6 +55,7 @@ afterAll(async () => {
   delete process.env["SEARCH_RATE_LIMIT"];
   delete process.env["SEARCH_PROXY_KEY"];
   delete process.env["SEARCH_RESULTS_RATE_LIMIT"];
+  delete process.env["SEARCH_REPORT_KEY"];
   await app.close();
 });
 
@@ -228,5 +230,32 @@ describe("hardening", () => {
     const res = await post("/search/results", { q: "", locale: "en", intent });
     expect(res.status).toBe(200);
     expect(res.body.items).toEqual([]);
+  });
+});
+
+describe("GET /search/report", () => {
+  it("is hidden without the key and answers with it", async () => {
+    const server = app.getHttpServer();
+    expect((await request(server).get("/search/report")).status).toBe(404);
+    expect(
+      (await request(server).get("/search/report").set("x-darb-report-key", "wrong-key!")).status,
+    ).toBe(404);
+    const res = await request(server)
+      .get("/search/report?days=7")
+      .set("x-darb-report-key", "report-key");
+    expect(res.status).toBe(200);
+    expect(Object.keys(res.body).sort()).toEqual([
+      "missingKinds",
+      "missingPlaces",
+      "noResults",
+      "since",
+    ]);
+  });
+  it("answers 404, never 500, to a key of the same length in other bytes", async () => {
+    // "é" is one character but two UTF-8 bytes: timingSafeEqual must not see unequal lengths.
+    const res = await request(app.getHttpServer())
+      .get("/search/report")
+      .set("x-darb-report-key", "report-k\u00e9y");
+    expect(res.status).toBe(404);
   });
 });
