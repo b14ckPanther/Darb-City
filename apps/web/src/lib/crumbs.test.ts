@@ -1,6 +1,6 @@
 import type { KindDto, PlaceDetailDto, SectorDto } from "@darb/contracts";
 import { describe, expect, it } from "vitest";
-import { crumbsFor } from "./crumbs";
+import { crumbsFor, subPlaceChips } from "./crumbs";
 
 const placeDto = (slug: string, type: PlaceDetailDto["type"], name: string) => ({
   id: slug,
@@ -54,5 +54,36 @@ describe("crumbsFor", () => {
     expect(
       crumbsFor("en", { page: { label: "For businesses", href: "/en/for-business" } }),
     ).toHaveLength(2);
+  });
+});
+
+describe("subPlaceChips", () => {
+  const haifa: PlaceDetailDto = {
+    ...placeDto("haifa", "city", "Haifa"),
+    ancestors: [
+      placeDto("israel", "country", "Israel"),
+      placeDto("haifa-district", "region", "Haifa District"),
+    ],
+    children: [placeDto("kiryat-haim", "neighbourhood", "Kiryat Haim")],
+  };
+  it("offers a city's neighbourhoods with the city itself current", () => {
+    expect(subPlaceChips("en", haifa, ["beauty", "barbershops"])).toEqual([
+      { key: "haifa", label: "All of Haifa", href: "/en/haifa/beauty/barbershops", current: true },
+      {
+        key: "kiryat-haim",
+        label: "Kiryat Haim",
+        href: "/en/kiryat-haim/beauty/barbershops",
+        current: false,
+      },
+    ]);
+  });
+  it("lets a neighbourhood go back to the whole city", () => {
+    expect(subPlaceChips("he", kiryatHaim, [])).toEqual([
+      { key: "haifa", label: "כל Haifa", href: "/haifa", current: false },
+      { key: "kiryat-haim", label: "Kiryat Haim", href: "/kiryat-haim", current: true },
+    ]);
+  });
+  it("offers nothing for a place without neighbourhoods", () => {
+    expect(subPlaceChips("en", { ...haifa, children: [] }, [])).toEqual([]);
   });
 });

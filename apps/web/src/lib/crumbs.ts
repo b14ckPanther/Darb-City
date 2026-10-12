@@ -56,3 +56,58 @@ export function crumbsFor(locale: Locale, at: CrumbTarget): Crumb[] {
   }
   return crumbs;
 }
+
+export interface Chip {
+  key: string;
+  label: string;
+  href: string;
+  current: boolean;
+}
+
+/**
+ * Neighbourhoods narrow a level as a filter, never as extra URL depth: each chip is the same level
+ * (`tail` = the sector and kind segments, if any) in the neighbourhood or in the whole city.
+ */
+export function subPlaceChips(
+  locale: Locale,
+  place: PlaceDetailDto,
+  tail: readonly string[],
+): Chip[] {
+  const name = (p: { name: Localized }) => pickText(p.name, locale);
+  if (place.type === "neighbourhood") {
+    const parent = place.ancestors.at(-1);
+    if (!parent) return [];
+    return [
+      {
+        key: parent.slug,
+        label: t(locale, "allOf", { place: name(parent) }),
+        href: href(locale, [parent.slug, ...tail]),
+        current: false,
+      },
+      {
+        key: place.slug,
+        label: name(place),
+        href: href(locale, [place.slug, ...tail]),
+        current: true,
+      },
+    ];
+  }
+  const neighbourhoods = place.children.filter(
+    (c) => c.type === "neighbourhood" && c.status === "live",
+  );
+  if (neighbourhoods.length === 0) return [];
+  return [
+    {
+      key: place.slug,
+      label: t(locale, "allOf", { place: name(place) }),
+      href: href(locale, [place.slug, ...tail]),
+      current: true,
+    },
+    ...neighbourhoods.map((n) => ({
+      key: n.slug,
+      label: name(n),
+      href: href(locale, [n.slug, ...tail]),
+      current: false,
+    })),
+  ];
+}
