@@ -1,6 +1,13 @@
 import { SlugSchema } from "@darb/contracts";
 import { z } from "zod";
-import { ApiUnavailableError, getBusinesses, getPlace, getPlaces, getTaxonomy } from "@/lib/api";
+import {
+  ApiBadRequestError,
+  ApiUnavailableError,
+  getBusinesses,
+  getPlace,
+  getPlaces,
+  getTaxonomy,
+} from "@/lib/api";
 import { COUNTRY_SLUG } from "@/lib/levels";
 import { placeNames, toRows } from "@/lib/rows";
 import { indexTaxonomy } from "@/lib/taxonomy";
@@ -32,6 +39,8 @@ export async function GET(request: Request): Promise<Response> {
     });
     return Response.json({ rows, nextCursor: page.nextCursor });
   } catch (error) {
+    if (error instanceof ApiBadRequestError)
+      return Response.json({ message: "Bad cursor" }, { status: 400 });
     if (error instanceof ApiUnavailableError)
       return Response.json({ message: "Unavailable" }, { status: 503 });
     throw error;

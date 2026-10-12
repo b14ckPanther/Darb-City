@@ -1,6 +1,12 @@
 // @vitest-environment node
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { ApiUnavailableError, getBusinesses, getNearestPlace, getPlace } from "./api";
+import {
+  ApiBadRequestError,
+  ApiUnavailableError,
+  getBusinesses,
+  getNearestPlace,
+  getPlace,
+} from "./api";
 
 const fetchMock = vi.fn<typeof fetch>();
 
@@ -63,5 +69,13 @@ describe("api client", () => {
     await expect(getPlace("haifa")).rejects.toBeInstanceOf(ApiUnavailableError);
     fetchMock.mockResolvedValue(Response.json({ message: "boom" }, { status: 500 }));
     await expect(getPlace("haifa")).rejects.toBeInstanceOf(ApiUnavailableError);
+  });
+  it("reports a rejected business-list query (a bad cursor) as ApiBadRequestError", async () => {
+    fetchMock.mockResolvedValue(Response.json({ message: "Bad cursor" }, { status: 400 }));
+    await expect(
+      getBusinesses("sakhnin", { kind: "nails", cursor: "junk" }),
+    ).rejects.toBeInstanceOf(ApiBadRequestError);
+    fetchMock.mockResolvedValue(Response.json({ message: "nope" }, { status: 404 }));
+    expect(await getBusinesses("nowhere")).toBeNull();
   });
 });

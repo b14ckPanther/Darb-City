@@ -18,6 +18,14 @@ export class ApiUnavailableError extends Error {
   }
 }
 
+/** The API rejected the query itself (e.g. a malformed or stale cursor). */
+export class ApiBadRequestError extends Error {
+  constructor(cause: unknown) {
+    super("The Darb API rejected the request", { cause });
+    this.name = "ApiBadRequestError";
+  }
+}
+
 export const REVALIDATE = { lists: 300, taxonomy: 3600 } as const;
 
 export const tags = {
@@ -121,6 +129,7 @@ export async function getBusinesses(
       fetchOptions: fetchOptions(cached(REVALIDATE.lists, tags.businesses)),
     }),
   );
+  if (res.status === 400) throw new ApiBadRequestError(res.body);
   return res.status === 200 ? res.body : null;
 }
 
