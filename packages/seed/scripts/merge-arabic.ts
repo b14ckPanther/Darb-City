@@ -1,5 +1,6 @@
 // Merges data/screens-ar.json (Arabic for some showroom screens) into data/screens.json, next to
-// the Hebrew and English, then deletes screens-ar.json. Shapes must match exactly.
+// the Hebrew and English, then deletes screens-ar.json. Shapes must match exactly. Existing Arabic is
+// never overwritten unless --force is passed. Usage: tsx scripts/merge-arabic.ts [--force]
 import { readFileSync, rmSync, writeFileSync } from "node:fs";
 import type { Localized } from "@darb/core";
 import type { SeedScreen } from "../src/types.js";
@@ -23,9 +24,14 @@ const arabic = JSON.parse(readFileSync(DATA("screens-ar.json"), "utf8")) as Reco
   ArabicScreen
 >;
 
+const force = process.argv.includes("--force");
+
 function put(target: Localized, ar: string | undefined, where: string) {
   if (ar === undefined || ar.trim() === "" || ar.includes(" | "))
     throw new Error(`No Arabic for ${where}`);
+  const existing = target.ar?.trim();
+  if (existing && existing !== ar.trim() && !force)
+    throw new Error(`${where} already has Arabic ("${existing}"); pass --force to overwrite`);
   target.ar = ar.trim();
 }
 
