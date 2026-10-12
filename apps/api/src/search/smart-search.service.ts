@@ -36,7 +36,9 @@ export class SmartSearchService {
   ) {}
 
   async search(req: SearchRequestDto): Promise<SearchResponseDto> {
-    const embedding = this.embed(req.q); // in parallel with the intent
+    // Lane 1 first (in process, no network): blocked text never reaches the embeddings provider.
+    const lane1 = await this.instant.match(req.q);
+    const embedding = lane1.blocked ? Promise.resolve(null) : this.embed(req.q); // parallel with the intent
     const resolved = await this.intents.resolve(req.q, req.locale);
     if (resolved.blocked) {
       await this.log.record({
@@ -111,7 +113,11 @@ export class SmartSearchService {
           ...new Set(
             (
               await Promise.all(
-                intent.kinds.map((k) => this.taxonomy.descendantKindIds(world.kinds.get(k)!.id)),
+                // A kind can vanish between the intent and this world (a rebuild): drop it.
+                intent.kinds
+                  .map((k) => world.kinds.get(k))
+                  .filter((k) => k !== undefined)
+                  .map((k) => this.taxonomy.descendantKindIds(k.id)),
               )
             ).flat(),
           ),

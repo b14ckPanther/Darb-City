@@ -53,7 +53,7 @@ describe("IntentService", () => {
       blocked: false,
       intent: { kinds: ["barbershops"], place: "sakhnin", openNow: true, freeText: "fade" },
     });
-    const key = intentCacheKey("en", r.instant.normalized);
+    const key = intentCacheKey("en", r.instant.normalized, (await instant.world()).version);
     expect(await redis.ttl(key)).toBeGreaterThan(604_000);
     await svc.resolve(Q, "en");
     expect(provider.extract).toHaveBeenCalledTimes(1);
@@ -166,5 +166,47 @@ describe("IntentService with the Anthropic SDK's typed errors", () => {
   it("names non-SDK failures without reading their message", () => {
     expect(describeModelError(new Error("429 rate limited"))).toBe("unexpected");
     expect(describeModelError(new Anthropic.APIUserAbortError())).toBe("aborted");
+  });
+});
+
+describe("IntentService keeps lane 1's facts and its cache in step with the taxonomy", () => {
+  it("keeps lane 1's strong place when the model leaves it out, in the answer and in the cache", async () => {
+    const { svc } = service(async () => ({ ...answer, place: null }));
+    const r = await svc.resolve(Q, "en");
+    expect(r).toMatchObject({
+      lane: "smart",
+      intent: { kinds: ["barbershops"], place: "sakhnin" },
+    });
+    const world = await instant.world();
+    const cached = await redis.get(intentCacheKey("en", r.instant.normalized, world.version));
+    expect(JSON.parse(cached!).place).toBe("sakhnin");
+  });
+  it("misses the cache once the active kinds change", async () => {
+    const { svc, provider } = service(async () => answer);
+    await svc.resolve(Q, "en");
+    const before = (await instant.world()).version;
+    const sector = await prisma.sector.findFirstOrThrow();
+    const added = await prisma.kind.create({
+      data: {
+        slug: "bike-repair",
+        sectorId: sector.id,
+        name: { en: "Bike repair" },
+        status: "active",
+        template: "booking",
+        synonyms: { he: [], ar: [], en: [] },
+        contentSchema: {},
+        attributes: [],
+        order: 99,
+      },
+    });
+    instant.invalidate();
+    try {
+      expect((await instant.world()).version).not.toBe(before);
+      await svc.resolve(Q, "en");
+      expect(provider.extract).toHaveBeenCalledTimes(2);
+    } finally {
+      await prisma.kind.delete({ where: { id: added.id } });
+      instant.invalidate();
+    }
   });
 });

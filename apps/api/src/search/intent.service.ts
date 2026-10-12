@@ -17,8 +17,9 @@ import {
 import { InstantService } from "./instant.service.js";
 
 export const INTENT_CACHE_SECONDS = 604_800;
-export const intentCacheKey = (locale: Locale, normalized: string) =>
-  `darb:intent:v1:${locale}:${createHash("sha256").update(normalized).digest("hex")}`;
+/** The taxonomy version keeps a cached answer from outliving the kinds and places it chose from. */
+export const intentCacheKey = (locale: Locale, normalized: string, taxonomyVersion: string) =>
+  `darb:intent:v1:${taxonomyVersion}:${locale}:${createHash("sha256").update(normalized).digest("hex")}`;
 
 export interface Resolved {
   intent: IntentDto;
@@ -79,7 +80,12 @@ export class IntentService {
       kinds: new Set([...instant.kinds.map((k) => k.entry.s), ...world.kinds.keys()]),
       places: new Set(instant.places.map((p) => p.entry.s)),
     };
-    const key = intentCacheKey(locale, instant.normalized);
+    const key = intentCacheKey(locale, instant.normalized, world.version);
+    // A place lane 1 matched strongly is a fact about the words; a model that drops it loses it.
+    const keepPlace = (intent: IntentDto): IntentDto =>
+      intent.place === null && fallback.intent.place !== null
+        ? { ...intent, place: fallback.intent.place }
+        : intent;
     const hit = await this.redis.get(key).catch(() => null);
     if (hit) {
       const parsed = IntentSchema.safeParse(parseJson(hit));
@@ -89,13 +95,15 @@ export class IntentService {
           { kinds: new Set(world.kinds.keys()), places: new Set(world.places.keys()) },
           instant.cues,
         );
-        if (useful(intent)) return { intent, lane: "smart", blocked: false, instant };
+        if (useful(intent))
+          return { intent: keepPlace(intent), lane: "smart", blocked: false, instant };
       }
     }
 
     const raw = await this.callModel(q, locale, instant);
-    const intent = raw ? validateIntent(raw, allowed, instant.cues) : null;
-    if (!intent || !useful(intent)) return fallback;
+    const validated = raw ? validateIntent(raw, allowed, instant.cues) : null;
+    if (!validated || !useful(validated)) return fallback;
+    const intent = keepPlace(validated);
     await this.redis
       .set(key, JSON.stringify(intent), "EX", INTENT_CACHE_SECONDS)
       .catch(() => undefined);

@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { Injectable } from "@nestjs/common";
 import type { Localized } from "@darb/core";
 import {
@@ -25,6 +26,8 @@ export interface WorldKind {
   name: Localized;
 }
 export interface World {
+  /** Changes whenever the active kinds or the places change; part of the intent cache key. */
+  version: string;
   prepared: Prepared;
   places: Map<string, WorldPlace>;
   kinds: Map<string, WorldKind>;
@@ -84,7 +87,12 @@ export class InstantService {
         synonyms: k.synonyms as Synonyms,
       })),
     });
+    const version = createHash("sha256")
+      .update(JSON.stringify([index.kinds, index.places]))
+      .digest("hex")
+      .slice(0, 12);
     return {
+      version,
       prepared: prepare(index),
       places: new Map(
         places.map((p) => [
