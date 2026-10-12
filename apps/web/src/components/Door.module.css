@@ -1,0 +1,150 @@
+.defs {
+  position: absolute;
+  inline-size: 0;
+  block-size: 0;
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2) var(--space-3);
+  margin: 0 0 var(--space-7);
+  padding: 0;
+  list-style: none;
+}
+
+/* Phone: a compact row per door — small doorway, name, count. */
+.door {
+  --door-accent: var(--gold);
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-3);
+  min-block-size: 64px;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-m);
+  background: var(--surface-1);
+  border: 1px solid var(--line-soft);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.frame {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 2 / 3;
+  inline-size: 100%;
+  clip-path: url(#darb-door-clip);
+  background: linear-gradient(
+    180deg,
+    var(--forest-800) 0%,
+    var(--forest-950) 70%,
+    var(--night) 100%
+  );
+}
+
+.glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(60% 45% at 50% 100%, var(--door-accent) 0%, transparent 72%);
+  opacity: 0.5;
+  transform: translateY(6%);
+  transition:
+    opacity var(--dur) var(--ease-out),
+    transform var(--dur) var(--ease-out);
+}
+
+.rim {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.text {
+  display: grid;
+  gap: 2px;
+  min-inline-size: 0;
+}
+
+.label {
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.sublabel {
+  color: var(--text-muted);
+  font-size: var(--step--1);
+  line-height: 1.35;
+}
+
+.countInFrame {
+  display: none;
+}
+
+.countInline {
+  color: var(--gold-300);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.door:hover .glow,
+.door:focus-visible .glow {
+  opacity: 1;
+  transform: none;
+}
+
+.door[data-empty] .frame {
+  background: linear-gradient(180deg, var(--forest-900) 0%, var(--night) 100%);
+}
+
+.door[data-empty] .glow {
+  opacity: 0.15;
+}
+
+.door[data-empty] .countInline,
+.door[data-empty] .countInFrame {
+  color: var(--text-muted);
+}
+
+@media (max-width: 479px) {
+  .sublabel {
+    display: none;
+  }
+}
+
+/* Tablet and desktop: tall doorways with the count inside and the name beneath. */
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(164px, 1fr));
+    gap: var(--space-6) var(--space-5);
+  }
+
+  .door {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: var(--space-3);
+    padding: 0;
+    background: transparent;
+    border: 0;
+  }
+
+  .countInFrame {
+    display: block;
+    position: relative;
+    font-size: var(--step-3);
+    font-weight: 700;
+    color: var(--gold-300);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .countInline {
+    display: none;
+  }
+
+  .text {
+    padding-inline: var(--space-1);
+  }
+}

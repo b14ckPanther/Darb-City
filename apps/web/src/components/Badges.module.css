@@ -1,0 +1,34 @@
+.example {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px var(--space-2);
+  border: 1px solid var(--gold);
+  border-radius: var(--radius-pill);
+  color: var(--gold-300);
+  font-size: var(--step--1);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.open {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--step--1);
+  color: var(--text-muted);
+}
+
+.open[data-open="true"] {
+  color: var(--text);
+}
+
+.dot {
+  inline-size: 8px;
+  block-size: 8px;
+  border-radius: 50%;
+  background: var(--text-muted);
+}
+
+.open[data-open="true"] .dot {
+  background: #6fcf97;
+}

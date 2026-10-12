@@ -7,6 +7,8 @@ import { colors } from "@darb/tokens";
 import { isLocale } from "@/lib/locale";
 import { siteUrl } from "@/lib/site";
 import { tokensCss } from "@/lib/tokens-css";
+import { DoorDefs } from "@/components/Door";
+import { Header } from "@/components/Header";
 import "../globals.css";
 
 // Each family carries only its own script, so a page downloads what it renders.
@@ -66,7 +68,14 @@ export default async function RootLayout({ children, params }: LayoutProps) {
       <head>
         <style id="darb-tokens" dangerouslySetInnerHTML={{ __html: tokensCss() }} />
       </head>
-      <body>{children}</body>
+      <body>
+        <DoorDefs />
+        <a className="skip-link" href="#main">
+          {t(locale, "skipToContent")}
+        </a>
+        <Header locale={locale} />
+        {children}
+      </body>
     </html>
   );
 }

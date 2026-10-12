@@ -1,5 +1,7 @@
 import { notFound } from "next/navigation";
 import { t } from "@darb/i18n";
+import { CityBar } from "@/components/CityBar";
+import { crumbsFor } from "@/lib/crumbs";
 import { isLocale } from "@/lib/locale";
 
 export const revalidate = 300;
@@ -11,8 +13,11 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   return (
-    <main id="main" className="frame">
-      <h1 className="page-title">{t(locale, "appName")}</h1>
-    </main>
+    <>
+      <CityBar locale={locale} crumbs={crumbsFor(locale, {})} segments={[]} />
+      <main id="main" className="frame">
+        <h1 className="page-title">{t(locale, "appName")}</h1>
+      </main>
+    </>
   );
 }
