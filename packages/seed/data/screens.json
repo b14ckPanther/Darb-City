@@ -9036,79 +9036,95 @@
   "architects": {
     "brand": {
       "he": "שחר אדריכלות",
-      "en": "Shahar Architecture"
+      "en": "Shahar Architecture",
+      "ar": "شاحر للهندسة المعمارية"
     },
     "title": {
       "he": "בתים שנבנים סביבכם",
-      "en": "Homes built around you"
+      "en": "Homes built around you",
+      "ar": "بيوت مصمّمة حواليك"
     },
     "subtitle": {
       "he": "תכנון, עיצוב פנים וליווי עד המפתח",
-      "en": "Planning, interiors and handover"
+      "en": "Planning, interiors and handover",
+      "ar": "تخطيط، تصميم داخلي وتسليم"
     },
     "tags": [
       {
         "he": "בתים פרטיים",
-        "en": "Houses"
+        "en": "Houses",
+        "ar": "بيوت"
       },
       {
         "he": "דירות",
-        "en": "Apartments"
+        "en": "Apartments",
+        "ar": "شقق"
       },
       {
         "he": "מסחרי",
-        "en": "Commercial"
+        "en": "Commercial",
+        "ar": "تجاري"
       },
       {
         "he": "פנים",
-        "en": "Interiors"
+        "en": "Interiors",
+        "ar": "تصميم داخلي"
       }
     ],
     "items": [
       {
         "label": {
           "he": "וילה בזכרון יעקב",
-          "en": "Villa in Zichron Yaakov"
+          "en": "Villa in Zichron Yaakov",
+          "ar": "فيلا بزخرون يعقوب"
         },
         "meta": {
           "he": "320 מ\"ר · 2024",
-          "en": "320 m² · 2024"
+          "en": "320 m² · 2024",
+          "ar": "320 م² · 2024"
         }
       },
       {
         "label": {
           "he": "דירת גג ביפו",
-          "en": "Rooftop flat in Jaffa"
+          "en": "Rooftop flat in Jaffa",
+          "ar": "شقة سطح بيافا"
         },
         "meta": {
           "he": "140 מ\"ר · 2023",
-          "en": "140 m² · 2023"
+          "en": "140 m² · 2023",
+          "ar": "140 م² · 2023"
         }
       },
       {
         "label": {
           "he": "בית קפה בשוק",
-          "en": "Market café"
+          "en": "Market café",
+          "ar": "مقهى السوق"
         },
         "meta": {
           "he": "60 מ\"ר · 2025",
-          "en": "60 m² · 2025"
+          "en": "60 m² · 2025",
+          "ar": "60 م² · 2025"
         }
       },
       {
         "label": {
           "he": "פגישת היכרות",
-          "en": "Intro meeting"
+          "en": "Intro meeting",
+          "ar": "اجتماع تعارف"
         },
         "meta": {
           "he": "ללא עלות",
-          "en": "free"
+          "en": "free",
+          "ar": "مجانًا"
         }
       }
     ],
     "cta": {
       "he": "פגישת היכרות",
-      "en": "Book an intro meeting"
+      "en": "Book an intro meeting",
+      "ar": "احجز اجتماع تعارف"
     },
     "palette": {
       "bg": "#e7e3d8",
@@ -9121,79 +9137,95 @@
   "furniture": {
     "brand": {
       "he": "רהיטי אל דאר",
-      "en": "Al Dar Furniture"
+      "en": "Al Dar Furniture",
+      "ar": "مفروشات الدار"
     },
     "title": {
       "he": "סלון שמתאים למשפחה",
-      "en": "A living room for the whole family"
+      "en": "A living room for the whole family",
+      "ar": "صالون لكل العيلة"
     },
     "subtitle": {
       "he": "הובלה והרכבה חינם בצפון",
-      "en": "Free delivery and assembly in the north"
+      "en": "Free delivery and assembly in the north",
+      "ar": "توصيل وتركيب مجاني بالشمال"
     },
     "tags": [
       {
         "he": "סלון",
-        "en": "Living"
+        "en": "Living",
+        "ar": "صالونات"
       },
       {
         "he": "פינת אוכל",
-        "en": "Dining"
+        "en": "Dining",
+        "ar": "سفرة"
       },
       {
         "he": "חדרי שינה",
-        "en": "Bedrooms"
+        "en": "Bedrooms",
+        "ar": "غرف نوم"
       },
       {
         "he": "שטיחים",
-        "en": "Rugs"
+        "en": "Rugs",
+        "ar": "سجاد"
       }
     ],
     "items": [
       {
         "label": {
           "he": "כורסת קטיפה",
-          "en": "Velvet armchair"
+          "en": "Velvet armchair",
+          "ar": "كنباية مخمل"
         },
         "meta": {
           "he": "₪1,890 · זית",
-          "en": "₪1,890 · olive"
+          "en": "₪1,890 · olive",
+          "ar": "₪1,890 · زيتي"
         }
       },
       {
         "label": {
           "he": "שולחן סלון מאגוז",
-          "en": "Walnut coffee table"
+          "en": "Walnut coffee table",
+          "ar": "طاولة قهوة جوز"
         },
         "meta": {
           "he": "₪1,350 · עץ מלא",
-          "en": "₪1,350 · solid wood"
+          "en": "₪1,350 · solid wood",
+          "ar": "₪1,350 · خشب صلب"
         }
       },
       {
         "label": {
           "he": "מנורת עמידה",
-          "en": "Floor lamp"
+          "en": "Floor lamp",
+          "ar": "لمبة أرضية"
         },
         "meta": {
           "he": "₪520 · פליז",
-          "en": "₪520 · brass"
+          "en": "₪520 · brass",
+          "ar": "₪520 · نحاس"
         }
       },
       {
         "label": {
           "he": "שטיח קלוע",
-          "en": "Woven rug"
+          "en": "Woven rug",
+          "ar": "سجادة منسوجة"
         },
         "meta": {
           "he": "₪980 · 2x3 מ'",
-          "en": "₪980 · 2 x 3 m"
+          "en": "₪980 · 2 x 3 m",
+          "ar": "₪980 · 2 × 3 م"
         }
       }
     ],
     "cta": {
       "he": "הוספה לסל",
-      "en": "Add to cart"
+      "en": "Add to cart",
+      "ar": "أضف للسلة"
     },
     "palette": {
       "bg": "#ece4d6",
@@ -9206,79 +9238,95 @@
   "kitchens": {
     "brand": {
       "he": "מטבחי אל ג'ליל",
-      "en": "Al Jalil Kitchens"
+      "en": "Al Jalil Kitchens",
+      "ar": "مطابخ الجليل"
     },
     "title": {
       "he": "מתכננים את המטבח",
-      "en": "Plan your kitchen"
+      "en": "Plan your kitchen",
+      "ar": "خطّط مطبخك"
     },
     "subtitle": {
       "he": "מטבח פינתי · 4.2 מטר · אי במרכז",
-      "en": "Corner kitchen · 4.2 m · centre island"
+      "en": "Corner kitchen · 4.2 m · centre island",
+      "ar": "مطبخ زاوية · 4.2 م · جزيرة بالنص"
     },
     "tags": [
       {
         "he": "עץ אלון",
-        "en": "Oak"
+        "en": "Oak",
+        "ar": "بلوط"
       },
       {
         "he": "לבן מט",
-        "en": "Matte white"
+        "en": "Matte white",
+        "ar": "أبيض مطفي"
       },
       {
         "he": "ירוק זית",
-        "en": "Olive green"
+        "en": "Olive green",
+        "ar": "أخضر زيتي"
       },
       {
         "he": "אפור",
-        "en": "Grey"
+        "en": "Grey",
+        "ar": "رمادي"
       }
     ],
     "items": [
       {
         "label": {
           "he": "חזיתות",
-          "en": "Fronts"
+          "en": "Fronts",
+          "ar": "الواجهات"
         },
         "meta": {
           "he": "ירוק זית מט",
-          "en": "Matte olive green"
+          "en": "Matte olive green",
+          "ar": "أخضر زيتي مطفي"
         }
       },
       {
         "label": {
           "he": "משטח",
-          "en": "Worktop"
+          "en": "Worktop",
+          "ar": "الرخامة"
         },
         "meta": {
           "he": "קוורץ בהיר",
-          "en": "Light quartz"
+          "en": "Light quartz",
+          "ar": "كوارتز فاتح"
         }
       },
       {
         "label": {
           "he": "ידיות",
-          "en": "Handles"
+          "en": "Handles",
+          "ar": "المقابض"
         },
         "meta": {
           "he": "פליז מוברש",
-          "en": "Brushed brass"
+          "en": "Brushed brass",
+          "ar": "نحاس مصقول"
         }
       },
       {
         "label": {
           "he": "הערכה",
-          "en": "Estimate"
+          "en": "Estimate",
+          "ar": "التقدير"
         },
         "meta": {
           "he": "₪46,500 · כולל התקנה",
-          "en": "₪46,500 · fitted"
+          "en": "₪46,500 · fitted",
+          "ar": "₪46,500 · مع التركيب"
         }
       }
     ],
     "cta": {
       "he": "לתאם מדידה בבית",
-      "en": "Book a home measure"
+      "en": "Book a home measure",
+      "ar": "احجز قياس بالبيت"
     },
     "palette": {
       "bg": "#e9ece4",
@@ -9291,79 +9339,95 @@
   "curtains": {
     "brand": {
       "he": "בדי אל חריר",
-      "en": "Al Harir Fabrics"
+      "en": "Al Harir Fabrics",
+      "ar": "أقمشة الحرير"
     },
     "title": {
       "he": "וילון לפי מידה",
-      "en": "Curtains made to measure"
+      "en": "Curtains made to measure",
+      "ar": "برادي حسب القياس"
     },
     "subtitle": {
       "he": "3 חלונות בסלון · פשתן ודים-אאוט",
-      "en": "3 living room windows · linen and dim-out"
+      "en": "3 living room windows · linen and dim-out",
+      "ar": "3 شبابيك بالصالون · كتان وتعتيم"
     },
     "tags": [
       {
         "he": "פשתן",
-        "en": "Linen"
+        "en": "Linen",
+        "ar": "كتان"
       },
       {
         "he": "קטיפה",
-        "en": "Velvet"
+        "en": "Velvet",
+        "ar": "مخمل"
       },
       {
         "he": "דים-אאוט",
-        "en": "Dim-out"
+        "en": "Dim-out",
+        "ar": "تعتيم"
       },
       {
         "he": "שקוף",
-        "en": "Sheer"
+        "en": "Sheer",
+        "ar": "شيفون"
       }
     ],
     "items": [
       {
         "label": {
           "he": "חלונות",
-          "en": "Windows"
+          "en": "Windows",
+          "ar": "الشبابيك"
         },
         "meta": {
           "he": "3 חלונות · 1.8 מ' רוחב",
-          "en": "3 windows · 1.8 m wide"
+          "en": "3 windows · 1.8 m wide",
+          "ar": "3 شبابيك · عرض 1.8 م"
         }
       },
       {
         "label": {
           "he": "בד",
-          "en": "Fabric"
+          "en": "Fabric",
+          "ar": "القماش"
         },
         "meta": {
           "he": "פשתן חול וכפול",
-          "en": "Double sand linen"
+          "en": "Double sand linen",
+          "ar": "كتان رملي دبل"
         }
       },
       {
         "label": {
           "he": "מסילה",
-          "en": "Track"
+          "en": "Track",
+          "ar": "السكة"
         },
         "meta": {
           "he": "חשמלית עם שלט",
-          "en": "Motorised with remote"
+          "en": "Motorised with remote",
+          "ar": "كهربائية مع ريموت"
         }
       },
       {
         "label": {
           "he": "הערכה",
-          "en": "Estimate"
+          "en": "Estimate",
+          "ar": "التقدير"
         },
         "meta": {
           "he": "₪4,200-4,900",
-          "en": "₪4,200-4,900"
+          "en": "₪4,200-4,900",
+          "ar": "₪4,200-4,900"
         }
       }
     ],
     "cta": {
       "he": "לשלוח לי דוגמיות",
-      "en": "Send me swatches"
+      "en": "Send me swatches",
+      "ar": "ابعتولي عيّنات"
     },
     "palette": {
       "bg": "#f3e8e2",
@@ -9376,75 +9440,90 @@
   "solar": {
     "brand": {
       "he": "שמס אנרגיה",
-      "en": "Shams Energy"
+      "en": "Shams Energy",
+      "ar": "شمس للطاقة"
     },
     "title": {
       "he": "הגג שלך מייצר היום",
-      "en": "Your roof is producing today"
+      "en": "Your roof is producing today",
+      "ar": "سطحك بينتج اليوم"
     },
     "subtitle": {
       "he": "מערכת 15 קילוואט · כפר קרע",
-      "en": "15 kW system · Kafr Qara"
+      "en": "15 kW system · Kafr Qara",
+      "ar": "منظومة 15 كيلوواط · كفر قرع"
     },
     "tags": [
       {
         "he": "היום",
-        "en": "Today"
+        "en": "Today",
+        "ar": "اليوم"
       },
       {
         "he": "החודש",
-        "en": "Month"
+        "en": "Month",
+        "ar": "الشهر"
       },
       {
         "he": "השנה",
-        "en": "Year"
+        "en": "Year",
+        "ar": "السنة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "ייצור היום",
-          "en": "Output today"
+          "en": "Output today",
+          "ar": "إنتاج اليوم"
         },
         "meta": {
           "he": "68 קוט\"ש · 85%",
-          "en": "68 kWh · 85%"
+          "en": "68 kWh · 85%",
+          "ar": "68 كيلوواط ساعة · 85%"
         }
       },
       {
         "label": {
           "he": "יעד חודשי",
-          "en": "Monthly goal"
+          "en": "Monthly goal",
+          "ar": "هدف الشهر"
         },
         "meta": {
           "he": "1,420 מתוך 1,900 · 75%",
-          "en": "1,420 of 1,900 · 75%"
+          "en": "1,420 of 1,900 · 75%",
+          "ar": "1,420 من 1,900 · 75%"
         }
       },
       {
         "label": {
           "he": "ניקוי פאנלים",
-          "en": "Panel cleaning"
+          "en": "Panel cleaning",
+          "ar": "تنظيف الألواح"
         },
         "meta": {
           "he": "בעוד שבועיים · 40%",
-          "en": "in two weeks · 40%"
+          "en": "in two weeks · 40%",
+          "ar": "بعد أسبوعين · 40%"
         }
       },
       {
         "label": {
           "he": "חיסכון השנה",
-          "en": "Saved this year"
+          "en": "Saved this year",
+          "ar": "وفّرت هالسنة"
         },
         "meta": {
           "he": "₪9,860",
-          "en": "₪9,860"
+          "en": "₪9,860",
+          "ar": "₪9,860"
         }
       }
     ],
     "cta": {
       "he": "לתאם ניקוי פאנלים",
-      "en": "Book a panel clean"
+      "en": "Book a panel clean",
+      "ar": "احجز تنظيف ألواح"
     },
     "palette": {
       "bg": "#fff6dc",
@@ -9457,79 +9536,95 @@
   "decor": {
     "brand": {
       "he": "בית נור",
-      "en": "Beit Noor"
+      "en": "Beit Noor",
+      "ar": "بيت نور"
     },
     "title": {
       "he": "אור חם לבית",
-      "en": "Warm light for the home"
+      "en": "Warm light for the home",
+      "ar": "ضو دافي للبيت"
     },
     "subtitle": {
       "he": "פנסים, כריות ומראות בעבודת יד",
-      "en": "Handmade lanterns, cushions and mirrors"
+      "en": "Handmade lanterns, cushions and mirrors",
+      "ar": "فوانيس، مخدّات ومرايات شغل إيد"
     },
     "tags": [
       {
         "he": "חדש",
-        "en": "New"
+        "en": "New",
+        "ar": "جديد"
       },
       {
         "he": "תאורה",
-        "en": "Lighting"
+        "en": "Lighting",
+        "ar": "إضاءة"
       },
       {
         "he": "טקסטיל",
-        "en": "Textiles"
+        "en": "Textiles",
+        "ar": "أقمشة"
       },
       {
         "he": "לרמדאן",
-        "en": "For Ramadan"
+        "en": "For Ramadan",
+        "ar": "لرمضان"
       }
     ],
     "items": [
       {
         "label": {
           "he": "פנס נחושת",
-          "en": "Copper lantern"
+          "en": "Copper lantern",
+          "ar": "فانوس نحاس"
         },
         "meta": {
           "he": "₪240 · חרוט ביד",
-          "en": "₪240 · hand-pierced"
+          "en": "₪240 · hand-pierced",
+          "ar": "₪240 · مخرّم باليد"
         }
       },
       {
         "label": {
           "he": "אגרטל קרמיקה",
-          "en": "Ceramic vase"
+          "en": "Ceramic vase",
+          "ar": "مزهرية فخّار"
         },
         "meta": {
           "he": "₪180 · חברון",
-          "en": "₪180 · Hebron"
+          "en": "₪180 · Hebron",
+          "ar": "₪180 · الخليل"
         }
       },
       {
         "label": {
           "he": "כרית רקומה",
-          "en": "Embroidered cushion"
+          "en": "Embroidered cushion",
+          "ar": "مخدّة مطرّزة"
         },
         "meta": {
           "he": "₪150 · רקמה פלאחית",
-          "en": "₪150 · fellahi stitch"
+          "en": "₪150 · fellahi stitch",
+          "ar": "₪150 · غرزة فلاحي"
         }
       },
       {
         "label": {
           "he": "מראה מקושתת",
-          "en": "Arched mirror"
+          "en": "Arched mirror",
+          "ar": "مراية مقوّسة"
         },
         "meta": {
           "he": "₪690 · 90 ס\"מ",
-          "en": "₪690 · 90 cm"
+          "en": "₪690 · 90 cm",
+          "ar": "₪690 · 90 سم"
         }
       }
     ],
     "cta": {
       "he": "הוספה לסל",
-      "en": "Add to bag"
+      "en": "Add to bag",
+      "ar": "أضف للسلة"
     },
     "palette": {
       "bg": "#1f2a2e",
@@ -9542,87 +9637,105 @@
   "pools": {
     "brand": {
       "he": "בריכות אל בחר",
-      "en": "Al Bahr Pools"
+      "en": "Al Bahr Pools",
+      "ar": "برك البحر"
     },
     "title": {
       "he": "הבריכה מוכנה לקיץ",
-      "en": "Your pool is ready for summer"
+      "en": "Your pool is ready for summer",
+      "ar": "بركتك جاهزة للصيف"
     },
     "subtitle": {
       "he": "ביקור כל שבוע · כלור ו-pH מאוזנים",
-      "en": "Weekly visits · chlorine and pH balanced"
+      "en": "Weekly visits · chlorine and pH balanced",
+      "ar": "زيارات أسبوعية · كلور وpH مضبوطين"
     },
     "tags": [
       {
         "he": "א'",
-        "en": "Sun"
+        "en": "Sun",
+        "ar": "أحد"
       },
       {
         "he": "ב'",
-        "en": "Mon"
+        "en": "Mon",
+        "ar": "اثنين"
       },
       {
         "he": "ג'",
-        "en": "Tue"
+        "en": "Tue",
+        "ar": "ثلاثاء"
       },
       {
         "he": "ד'",
-        "en": "Wed"
+        "en": "Wed",
+        "ar": "أربعاء"
       },
       {
         "he": "ה'",
-        "en": "Thu"
+        "en": "Thu",
+        "ar": "خميس"
       },
       {
         "he": "ו'",
-        "en": "Fri"
+        "en": "Fri",
+        "ar": "جمعة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "ניקוי ושאיבה",
-          "en": "Clean and vacuum"
+          "en": "Clean and vacuum",
+          "ar": "تنظيف وشفط"
         },
         "meta": {
           "he": "א' 08:00 · עם ראמי",
-          "en": "Sun 08:00 · with Rami"
+          "en": "Sun 08:00 · with Rami",
+          "ar": "الأحد 08:00 · مع رامي"
         }
       },
       {
         "label": {
           "he": "בדיקת מים",
-          "en": "Water test"
+          "en": "Water test",
+          "ar": "فحص المي"
         },
         "meta": {
           "he": "א' 08:40 · דוח לטלפון",
-          "en": "Sun 08:40 · report to your phone"
+          "en": "Sun 08:40 · report to your phone",
+          "ar": "الأحد 08:40 · تقرير على تلفونك"
         }
       },
       {
         "label": {
           "he": "שטיפת פילטר",
-          "en": "Filter backwash"
+          "en": "Filter backwash",
+          "ar": "غسيل الفلتر"
         },
         "meta": {
           "he": "ג' 09:00 · 30 דק'",
-          "en": "Tue 09:00 · 30 min"
+          "en": "Tue 09:00 · 30 min",
+          "ar": "الثلاثاء 09:00 · 30 دقيقة"
         }
       },
       {
         "label": {
           "he": "בדיקת משאבה",
-          "en": "Pump check"
+          "en": "Pump check",
+          "ar": "فحص المضخة"
         },
         "meta": {
           "he": "ה' 10:00 · אחת לחודש",
-          "en": "Thu 10:00 · monthly"
+          "en": "Thu 10:00 · monthly",
+          "ar": "الخميس 10:00 · شهري"
         }
       }
     ],
     "cta": {
       "he": "להוסיף ביקור",
-      "en": "Add a visit"
+      "en": "Add a visit",
+      "ar": "أضف زيارة"
     },
     "palette": {
       "bg": "#dff1f3",
@@ -9635,79 +9748,95 @@
   "gardeners": {
     "brand": {
       "he": "גינות אל זיתון",
-      "en": "Al Zaytoun Gardens"
+      "en": "Al Zaytoun Gardens",
+      "ar": "حدائق الزيتون"
     },
     "title": {
       "he": "גינה שגדלה איתכם",
-      "en": "A garden that grows with you"
+      "en": "A garden that grows with you",
+      "ar": "جنينة بتكبر معك"
     },
     "subtitle": {
       "he": "תכנון, השקיה ותחזוקה",
-      "en": "Design, irrigation and upkeep"
+      "en": "Design, irrigation and upkeep",
+      "ar": "تصميم، ري وصيانة"
     },
     "tags": [
       {
         "he": "חצרות",
-        "en": "Yards"
+        "en": "Yards",
+        "ar": "ساحات"
       },
       {
         "he": "גגות",
-        "en": "Roofs"
+        "en": "Roofs",
+        "ar": "أسطح"
       },
       {
         "he": "עצי פרי",
-        "en": "Fruit trees"
+        "en": "Fruit trees",
+        "ar": "أشجار مثمرة"
       },
       {
         "he": "השקיה",
-        "en": "Irrigation"
+        "en": "Irrigation",
+        "ar": "ري"
       }
     ],
     "items": [
       {
         "label": {
           "he": "חצר עם עץ זית",
-          "en": "Yard with an olive tree"
+          "en": "Yard with an olive tree",
+          "ar": "ساحة مع شجرة زيتون"
         },
         "meta": {
           "he": "₪18,000 · 80 מ\"ר",
-          "en": "₪18,000 · 80 m²"
+          "en": "₪18,000 · 80 m²",
+          "ar": "₪18,000 · 80 م²"
         }
       },
       {
         "label": {
           "he": "גינת גג",
-          "en": "Roof garden"
+          "en": "Roof garden",
+          "ar": "جنينة سطح"
         },
         "meta": {
           "he": "₪12,500 · 40 מ\"ר",
-          "en": "₪12,500 · 40 m²"
+          "en": "₪12,500 · 40 m²",
+          "ar": "₪12,500 · 40 م²"
         }
       },
       {
         "label": {
           "he": "השקיה חכמה",
-          "en": "Smart irrigation"
+          "en": "Smart irrigation",
+          "ar": "ري ذكي"
         },
         "meta": {
           "he": "₪2,900 · עם אפליקציה",
-          "en": "₪2,900 · app control"
+          "en": "₪2,900 · app control",
+          "ar": "₪2,900 · تحكّم من التطبيق"
         }
       },
       {
         "label": {
           "he": "תחזוקה חודשית",
-          "en": "Monthly care"
+          "en": "Monthly care",
+          "ar": "صيانة شهرية"
         },
         "meta": {
           "he": "₪450 · 2 ביקורים",
-          "en": "₪450 · 2 visits"
+          "en": "₪450 · 2 visits",
+          "ar": "₪450 · زيارتين"
         }
       }
     ],
     "cta": {
       "he": "לקבל הצעה לגינה",
-      "en": "Get a garden quote"
+      "en": "Get a garden quote",
+      "ar": "احصل على عرض سعر للجنينة"
     },
     "palette": {
       "bg": "#e6ecdc",
@@ -9720,75 +9849,90 @@
   "locksmiths": {
     "brand": {
       "he": "מפתח אל אמין",
-      "en": "Al Amin Locks"
+      "en": "Al Amin Locks",
+      "ar": "مفاتيح الأمين"
     },
     "title": {
       "he": "המנעולן בדרך",
-      "en": "Locksmith on the way"
+      "en": "Locksmith on the way",
+      "ar": "فني الأقفال بالطريق"
     },
     "subtitle": {
       "he": "פתיחת דלת · הגעה תוך 20 דק'",
-      "en": "Door opening · arrives in 20 min"
+      "en": "Door opening · arrives in 20 min",
+      "ar": "فتح باب · بيوصل خلال 20 دقيقة"
     },
     "tags": [
       {
         "he": "דלתות",
-        "en": "Doors"
+        "en": "Doors",
+        "ar": "أبواب"
       },
       {
         "he": "רכבים",
-        "en": "Cars"
+        "en": "Cars",
+        "ar": "سيارات"
       },
       {
         "he": "כספות",
-        "en": "Safes"
+        "en": "Safes",
+        "ar": "خزنات"
       }
     ],
     "items": [
       {
         "label": {
           "he": "הקריאה התקבלה",
-          "en": "Call received"
+          "en": "Call received",
+          "ar": "استلمنا الاتصال"
         },
         "meta": {
           "he": "21:12 · 100%",
-          "en": "21:12 · 100%"
+          "en": "21:12 · 100%",
+          "ar": "21:12 · 100%"
         }
       },
       {
         "label": {
           "he": "בדרך אליך",
-          "en": "On the way"
+          "en": "On the way",
+          "ar": "بالطريق"
         },
         "meta": {
           "he": "מוחמד · עוד 12 דק' · 60%",
-          "en": "Mohammad · 12 min · 60%"
+          "en": "Mohammad · 12 min · 60%",
+          "ar": "محمد · 12 دقيقة · 60%"
         }
       },
       {
         "label": {
           "he": "פתיחה והחלפת צילינדר",
-          "en": "Open and new cylinder"
+          "en": "Open and new cylinder",
+          "ar": "فتح وكالون جديد"
         },
         "meta": {
           "he": "בהמתנה · 0%",
-          "en": "waiting · 0%"
+          "en": "waiting · 0%",
+          "ar": "بالانتظار · 0%"
         }
       },
       {
         "label": {
           "he": "מחיר סגור",
-          "en": "Fixed price"
+          "en": "Fixed price",
+          "ar": "سعر ثابت"
         },
         "meta": {
           "he": "₪380 · כולל צילינדר",
-          "en": "₪380 · cylinder included"
+          "en": "₪380 · cylinder included",
+          "ar": "₪380 · شامل الكالون"
         }
       }
     ],
     "cta": {
       "he": "להתקשר למוחמד",
-      "en": "Call Mohammad"
+      "en": "Call Mohammad",
+      "ar": "اتصل بمحمد"
     },
     "palette": {
       "bg": "#17191f",
@@ -9801,83 +9945,100 @@
   "pest-control": {
     "brand": {
       "he": "נקי הדברה ירוקה",
-      "en": "Naqi Green Pest Control"
+      "en": "Naqi Green Pest Control",
+      "ar": "نقي للمكافحة الخضراء"
     },
     "title": {
       "he": "בית נקי, בלי ריחות",
-      "en": "A clean home, no fumes"
+      "en": "A clean home, no fumes",
+      "ar": "بيت نظيف، بدون روائح"
     },
     "subtitle": {
       "he": "חומרים ידידותיים לילדים ולחיות",
-      "en": "Safe for children and pets"
+      "en": "Safe for children and pets",
+      "ar": "آمن للأولاد والحيوانات الأليفة"
     },
     "tags": [
       {
         "he": "08:00",
-        "en": "08:00"
+        "en": "08:00",
+        "ar": "08:00"
       },
       {
         "he": "10:00",
-        "en": "10:00"
+        "en": "10:00",
+        "ar": "10:00"
       },
       {
         "he": "12:00",
-        "en": "12:00"
+        "en": "12:00",
+        "ar": "12:00"
       },
       {
         "he": "15:00",
-        "en": "15:00"
+        "en": "15:00",
+        "ar": "15:00"
       },
       {
         "he": "17:00",
-        "en": "17:00"
+        "en": "17:00",
+        "ar": "17:00"
       }
     ],
     "items": [
       {
         "label": {
           "he": "ריסוס נגד ג'וקים",
-          "en": "Cockroaches"
+          "en": "Cockroaches",
+          "ar": "صراصير"
         },
         "meta": {
           "he": "₪350 · אחריות 6 חודשים",
-          "en": "₪350 · 6-month warranty"
+          "en": "₪350 · 6-month warranty",
+          "ar": "₪350 · كفالة 6 شهور"
         }
       },
       {
         "label": {
           "he": "נמלים במטבח",
-          "en": "Kitchen ants"
+          "en": "Kitchen ants",
+          "ar": "نمل بالمطبخ"
         },
         "meta": {
           "he": "₪280 · 40 דק'",
-          "en": "₪280 · 40 min"
+          "en": "₪280 · 40 min",
+          "ar": "₪280 · 40 دقيقة"
         }
       },
       {
         "label": {
           "he": "טרמיטים",
-          "en": "Termites"
+          "en": "Termites",
+          "ar": "نمل أبيض"
         },
         "meta": {
           "he": "לפי בדיקה",
-          "en": "on inspection"
+          "en": "on inspection",
+          "ar": "حسب الفحص"
         }
       },
       {
         "label": {
           "he": "חבילה שנתית",
-          "en": "Yearly plan"
+          "en": "Yearly plan",
+          "ar": "خطة سنوية"
         },
         "meta": {
           "he": "₪890 · 3 ביקורים",
-          "en": "₪890 · 3 visits"
+          "en": "₪890 · 3 visits",
+          "ar": "₪890 · 3 زيارات"
         }
       }
     ],
     "cta": {
       "he": "קביעת ביקור ל-10:00",
-      "en": "Book 10:00"
+      "en": "Book 10:00",
+      "ar": "احجز الساعة 10:00"
     },
     "palette": {
       "bg": "#eef3e6",
@@ -9890,79 +10051,95 @@
   "painters": {
     "brand": {
       "he": "צבע אבו יוסף",
-      "en": "Abu Yousef Painting"
+      "en": "Abu Yousef Painting",
+      "ar": "دهان أبو يوسف"
     },
     "title": {
       "he": "כמה עולה לצבוע את הבית?",
-      "en": "What does painting the house cost?"
+      "en": "What does painting the house cost?",
+      "ar": "قديش بكلّف دهان البيت؟"
     },
     "subtitle": {
       "he": "הצעה תוך דקה, בלי ביקור",
-      "en": "A quote in a minute, no visit"
+      "en": "A quote in a minute, no visit",
+      "ar": "عرض سعر بدقيقة، بدون زيارة"
     },
     "tags": [
       {
         "he": "דירה",
-        "en": "Flat"
+        "en": "Flat",
+        "ar": "شقة"
       },
       {
         "he": "בית פרטי",
-        "en": "House"
+        "en": "House",
+        "ar": "بيت"
       },
       {
         "he": "חדר אחד",
-        "en": "One room"
+        "en": "One room",
+        "ar": "غرفة وحدة"
       },
       {
         "he": "משרד",
-        "en": "Office"
+        "en": "Office",
+        "ar": "مكتب"
       }
     ],
     "items": [
       {
         "label": {
           "he": "גודל",
-          "en": "Size"
+          "en": "Size",
+          "ar": "المساحة"
         },
         "meta": {
           "he": "4 חדרים · 110 מ\"ר",
-          "en": "4 rooms · 110 m²"
+          "en": "4 rooms · 110 m²",
+          "ar": "4 غرف · 110 م²"
         }
       },
       {
         "label": {
           "he": "גוון",
-          "en": "Colour"
+          "en": "Colour",
+          "ar": "اللون"
         },
         "meta": {
           "he": "שמנת חמה, תקרה לבנה",
-          "en": "Warm cream, white ceilings"
+          "en": "Warm cream, white ceilings",
+          "ar": "كريمي دافي، سقوف بيضا"
         }
       },
       {
         "label": {
           "he": "תיקונים",
-          "en": "Repairs"
+          "en": "Repairs",
+          "ar": "تصليحات"
         },
         "meta": {
           "he": "שפכטל וסדקים קלים",
-          "en": "Filler and small cracks"
+          "en": "Filler and small cracks",
+          "ar": "معجونة وشقوق صغيرة"
         }
       },
       {
         "label": {
           "he": "הערכה",
-          "en": "Estimate"
+          "en": "Estimate",
+          "ar": "التقدير"
         },
         "meta": {
           "he": "₪6,800-7,400 · 3 ימי עבודה",
-          "en": "₪6,800-7,400 · 3 working days"
+          "en": "₪6,800-7,400 · 3 working days",
+          "ar": "₪6,800-7,400 · 3 أيام شغل"
         }
       }
     ],
     "cta": {
       "he": "לשריין תאריך",
-      "en": "Reserve a date"
+      "en": "Reserve a date",
+      "ar": "احجز موعد"
     },
     "palette": {
       "bg": "#f6efe4",
@@ -9975,79 +10152,95 @@
   "upholstery": {
     "brand": {
       "he": "ריפוד אל חריר",
-      "en": "Al Harir Upholstery"
+      "en": "Al Harir Upholstery",
+      "ar": "تنجيد الحرير"
     },
     "title": {
       "he": "כמו חדשה",
-      "en": "Like new"
+      "en": "Like new",
+      "ar": "متل الجديد"
     },
     "subtitle": {
       "he": "איסוף והחזרה תוך 10 ימים",
-      "en": "Pickup and return in 10 days"
+      "en": "Pickup and return in 10 days",
+      "ar": "استلام وإرجاع خلال 10 أيام"
     },
     "tags": [
       {
         "he": "ספות",
-        "en": "Sofas"
+        "en": "Sofas",
+        "ar": "كنب"
       },
       {
         "he": "כורסאות",
-        "en": "Armchairs"
+        "en": "Armchairs",
+        "ar": "كنبايات"
       },
       {
         "he": "כיסאות אוכל",
-        "en": "Dining chairs"
+        "en": "Dining chairs",
+        "ar": "كراسي سفرة"
       },
       {
         "he": "ביקור בבית",
-        "en": "Home visit"
+        "en": "Home visit",
+        "ar": "زيارة للبيت"
       }
     ],
     "items": [
       {
         "label": {
           "he": "ספה תלת מושבית",
-          "en": "Three-seat sofa"
+          "en": "Three-seat sofa",
+          "ar": "كنباية 3 مقاعد"
         },
         "meta": {
           "he": "₪2,900 · קטיפה ירוקה",
-          "en": "₪2,900 · green velvet"
+          "en": "₪2,900 · green velvet",
+          "ar": "₪2,900 · مخمل أخضر"
         }
       },
       {
         "label": {
           "he": "זוג כורסאות",
-          "en": "Pair of armchairs"
+          "en": "Pair of armchairs",
+          "ar": "زوج كنبايات"
         },
         "meta": {
           "he": "₪1,800 · פשתן",
-          "en": "₪1,800 · linen"
+          "en": "₪1,800 · linen",
+          "ar": "₪1,800 · كتان"
         }
       },
       {
         "label": {
           "he": "6 כיסאות אוכל",
-          "en": "6 dining chairs"
+          "en": "6 dining chairs",
+          "ar": "6 كراسي سفرة"
         },
         "meta": {
           "he": "₪1,250 · בד דוחה כתמים",
-          "en": "₪1,250 · stain-proof fabric"
+          "en": "₪1,250 · stain-proof fabric",
+          "ar": "₪1,250 · قماش ضد البقع"
         }
       },
       {
         "label": {
           "he": "ייעוץ בבית",
-          "en": "Home visit"
+          "en": "Home visit",
+          "ar": "زيارة للبيت"
         },
         "meta": {
           "he": "ללא עלות",
-          "en": "free"
+          "en": "free",
+          "ar": "مجانًا"
         }
       }
     ],
     "cta": {
       "he": "לשלוח תמונה של הרהיט",
-      "en": "Send a photo of your piece"
+      "en": "Send a photo of your piece",
+      "ar": "ابعت صورة للقطعة"
     },
     "palette": {
       "bg": "#2a2420",
