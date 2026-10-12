@@ -17000,87 +17000,105 @@
   "mosques": {
     "brand": {
       "he": "מסגד אל נור",
-      "en": "Al Noor Mosque"
+      "en": "Al Noor Mosque",
+      "ar": "مسجد النور"
     },
     "title": {
       "he": "זמני התפילה היום",
-      "en": "Prayer times today"
+      "en": "Prayer times today",
+      "ar": "أوقات الصلاة اليوم"
     },
     "subtitle": {
       "he": "שיעור תפסיר אחרי מגרב · פתוח לכולם",
-      "en": "Tafsir class after Maghrib · all welcome"
+      "en": "Tafsir class after Maghrib · all welcome",
+      "ar": "درس تفسير بعد المغرب · الكل مدعو"
     },
     "tags": [
       {
         "he": "א'",
-        "en": "Sun"
+        "en": "Sun",
+        "ar": "أحد"
       },
       {
         "he": "ב'",
-        "en": "Mon"
+        "en": "Mon",
+        "ar": "اثنين"
       },
       {
         "he": "ג'",
-        "en": "Tue"
+        "en": "Tue",
+        "ar": "ثلاثاء"
       },
       {
         "he": "ד'",
-        "en": "Wed"
+        "en": "Wed",
+        "ar": "أربعاء"
       },
       {
         "he": "ה'",
-        "en": "Thu"
+        "en": "Thu",
+        "ar": "خميس"
       },
       {
         "he": "ו'",
-        "en": "Fri"
+        "en": "Fri",
+        "ar": "جمعة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "פג'ר",
-          "en": "Fajr"
+          "en": "Fajr",
+          "ar": "الفجر"
         },
         "meta": {
           "he": "04:52 · אקאמה 05:10",
-          "en": "04:52 · iqama 05:10"
+          "en": "04:52 · iqama 05:10",
+          "ar": "04:52 · الإقامة 05:10"
         }
       },
       {
         "label": {
           "he": "ד'והר",
-          "en": "Dhuhr"
+          "en": "Dhuhr",
+          "ar": "الظهر"
         },
         "meta": {
           "he": "12:41 · אקאמה 12:55",
-          "en": "12:41 · iqama 12:55"
+          "en": "12:41 · iqama 12:55",
+          "ar": "12:41 · الإقامة 12:55"
         }
       },
       {
         "label": {
           "he": "עסר",
-          "en": "Asr"
+          "en": "Asr",
+          "ar": "العصر"
         },
         "meta": {
           "he": "16:15 · אקאמה 16:30",
-          "en": "16:15 · iqama 16:30"
+          "en": "16:15 · iqama 16:30",
+          "ar": "16:15 · الإقامة 16:30"
         }
       },
       {
         "label": {
           "he": "מגרב",
-          "en": "Maghrib"
+          "en": "Maghrib",
+          "ar": "المغرب"
         },
         "meta": {
           "he": "19:23 · ואחריו שיעור",
-          "en": "19:23 · class after"
+          "en": "19:23 · class after",
+          "ar": "19:23 · بعدها درس"
         }
       }
     ],
     "cta": {
       "he": "תרומה לבניית האגף",
-      "en": "Give to the new wing"
+      "en": "Give to the new wing",
+      "ar": "تبرّع للجناح الجديد"
     },
     "palette": {
       "bg": "#0e2a26",
@@ -17093,75 +17111,90 @@
   "quran-schools": {
     "brand": {
       "he": "דאר אל קוראן",
-      "en": "Dar Al Quran"
+      "en": "Dar Al Quran",
+      "ar": "دار القرآن"
     },
     "title": {
       "he": "המסע של עומר לחיפוז",
-      "en": "Omar's hifz journey"
+      "en": "Omar's hifz journey",
+      "ar": "مشوار عمر بالحفظ"
     },
     "subtitle": {
       "he": "ג'וז 12 מתוך 30 · עם השיח' יוסף",
-      "en": "Juz 12 of 30 · with Sheikh Yousef"
+      "en": "Juz 12 of 30 · with Sheikh Yousef",
+      "ar": "الجزء 12 من 30 · مع الشيخ يوسف"
     },
     "tags": [
       {
         "he": "חיפוז",
-        "en": "Hifz"
+        "en": "Hifz",
+        "ar": "حفظ"
       },
       {
         "he": "תג'וויד",
-        "en": "Tajweed"
+        "en": "Tajweed",
+        "ar": "تجويد"
       },
       {
         "he": "תפסיר",
-        "en": "Tafsir"
+        "en": "Tafsir",
+        "ar": "تفسير"
       }
     ],
     "items": [
       {
         "label": {
           "he": "שינון השבוע",
-          "en": "Memorised this week"
+          "en": "Memorised this week",
+          "ar": "حفظ هالأسبوع"
         },
         "meta": {
           "he": "2 עמודים מתוך 3 · 67%",
-          "en": "2 of 3 pages · 67%"
+          "en": "2 of 3 pages · 67%",
+          "ar": "2 من 3 صفحات · 67%"
         }
       },
       {
         "label": {
           "he": "חזרה",
-          "en": "Revision"
+          "en": "Revision",
+          "ar": "مراجعة"
         },
         "meta": {
           "he": "ג'וז 1-11 · 90%",
-          "en": "Juz 1-11 · 90%"
+          "en": "Juz 1-11 · 90%",
+          "ar": "الأجزاء 1-11 · 90%"
         }
       },
       {
         "label": {
           "he": "תג'וויד",
-          "en": "Tajweed"
+          "en": "Tajweed",
+          "ar": "تجويد"
         },
         "meta": {
           "he": "רמה 3 · 75%",
-          "en": "level 3 · 75%"
+          "en": "level 3 · 75%",
+          "ar": "مستوى 3 · 75%"
         }
       },
       {
         "label": {
           "he": "המפגש הבא",
-          "en": "Next class"
+          "en": "Next class",
+          "ar": "الدرس الجاي"
         },
         "meta": {
           "he": "ד' 17:00 · כיתה 2",
-          "en": "Wed 17:00 · room 2"
+          "en": "Wed 17:00 · room 2",
+          "ar": "الأربعاء 17:00 · غرفة 2"
         }
       }
     ],
     "cta": {
       "he": "הודעה לשיח'",
-      "en": "Message the sheikh"
+      "en": "Message the sheikh",
+      "ar": "ابعت رسالة للشيخ"
     },
     "palette": {
       "bg": "#f4efe3",
@@ -17174,79 +17207,95 @@
   "butchers": {
     "brand": {
       "he": "אטליז אבו ראמי",
-      "en": "Abu Rami Butchery"
+      "en": "Abu Rami Butchery",
+      "ar": "ملحمة أبو رامي"
     },
     "title": {
       "he": "הזמנת אדחיה לעיד",
-      "en": "Order your Eid udhiyah"
+      "en": "Order your Eid udhiyah",
+      "ar": "اطلب أضحية العيد"
     },
     "subtitle": {
       "he": "שחיטה חלאל · חלוקה לפי בקשתך",
-      "en": "Halal slaughter · shared out as you ask"
+      "en": "Halal slaughter · shared out as you ask",
+      "ar": "ذبح حلال · بنوزّع حسب طلبك"
     },
     "tags": [
       {
         "he": "כבש",
-        "en": "Lamb"
+        "en": "Lamb",
+        "ar": "خاروف"
       },
       {
         "he": "עגל",
-        "en": "Calf"
+        "en": "Calf",
+        "ar": "عجل"
       },
       {
         "he": "שביעית",
-        "en": "One seventh"
+        "en": "One seventh",
+        "ar": "سُبع"
       },
       {
         "he": "עקיקה",
-        "en": "Aqiqah"
+        "en": "Aqiqah",
+        "ar": "عقيقة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "בהמה",
-          "en": "Animal"
+          "en": "Animal",
+          "ar": "الذبيحة"
         },
         "meta": {
           "he": "כבש בלדי · 40 ק\"ג",
-          "en": "Baladi lamb · 40 kg"
+          "en": "Baladi lamb · 40 kg",
+          "ar": "خاروف بلدي · 40 كغم"
         }
       },
       {
         "label": {
           "he": "חיתוך",
-          "en": "Cut"
+          "en": "Cut",
+          "ar": "التقطيع"
         },
         "meta": {
           "he": "מנות למקפיא, טחון",
-          "en": "Freezer portions, mince"
+          "en": "Freezer portions, mince",
+          "ar": "حصص للفريزر، لحمة مفرومة"
         }
       },
       {
         "label": {
           "he": "חלוקה",
-          "en": "Share-out"
+          "en": "Share-out",
+          "ar": "التوزيع"
         },
         "meta": {
           "he": "שליש למשפחות נזקקות",
-          "en": "A third for families in need"
+          "en": "A third for families in need",
+          "ar": "الثلث للعائلات المحتاجة"
         }
       },
       {
         "label": {
           "he": "סה\"כ",
-          "en": "Total"
+          "en": "Total",
+          "ar": "المجموع"
         },
         "meta": {
           "he": "₪2,350 · כולל שחיטה וחיתוך",
-          "en": "₪2,350 · slaughter and cutting"
+          "en": "₪2,350 · slaughter and cutting",
+          "ar": "₪2,350 · ذبح وتقطيع"
         }
       }
     ],
     "cta": {
       "he": "הזמנה ותשלום מקדמה",
-      "en": "Order and pay a deposit"
+      "en": "Order and pay a deposit",
+      "ar": "اطلب وادفع عربون"
     },
     "palette": {
       "bg": "#f6ede4",
@@ -17259,79 +17308,95 @@
   "modest-fashion": {
     "brand": {
       "he": "בוטיק סנדס",
-      "en": "Sundus Boutique"
+      "en": "Sundus Boutique",
+      "ar": "بوتيك سندس"
     },
     "title": {
       "he": "קולקציית רמדאן",
-      "en": "The Ramadan collection"
+      "en": "The Ramadan collection",
+      "ar": "تشكيلة رمضان"
     },
     "subtitle": {
       "he": "קרפ, משי ופשתן בגזרה רחבה",
-      "en": "Crepe, silk and linen, loose cuts"
+      "en": "Crepe, silk and linen, loose cuts",
+      "ar": "كريب، حرير وكتان، قصّات واسعة"
     },
     "tags": [
       {
         "he": "עבאיות",
-        "en": "Abayas"
+        "en": "Abayas",
+        "ar": "عبايات"
       },
       {
         "he": "חיג'אבים",
-        "en": "Hijabs"
+        "en": "Hijabs",
+        "ar": "حجابات"
       },
       {
         "he": "ג'ילבאב",
-        "en": "Jilbab"
+        "en": "Jilbab",
+        "ar": "جلباب"
       },
       {
         "he": "אביזרים",
-        "en": "Accessories"
+        "en": "Accessories",
+        "ar": "إكسسوارات"
       }
     ],
     "items": [
       {
         "label": {
           "he": "עבאיה קרפ רקומה",
-          "en": "Embroidered crepe abaya"
+          "en": "Embroidered crepe abaya",
+          "ar": "عباية كريب مطرّزة"
         },
         "meta": {
           "he": "₪390 · שחור וזהב",
-          "en": "₪390 · black and gold"
+          "en": "₪390 · black and gold",
+          "ar": "₪390 · أسود وذهبي"
         }
       },
       {
         "label": {
           "he": "חיג'אב משי",
-          "en": "Silk hijab"
+          "en": "Silk hijab",
+          "ar": "حجاب حرير"
         },
         "meta": {
           "he": "₪95 · 12 צבעים",
-          "en": "₪95 · 12 colours"
+          "en": "₪95 · 12 colours",
+          "ar": "₪95 · 12 لون"
         }
       },
       {
         "label": {
           "he": "סיכות לחיג'אב",
-          "en": "Hijab pins"
+          "en": "Hijab pins",
+          "ar": "دبابيس حجاب"
         },
         "meta": {
           "he": "₪35 · 12 יחידות",
-          "en": "₪35 · set of 12"
+          "en": "₪35 · set of 12",
+          "ar": "₪35 · طقم 12"
         }
       },
       {
         "label": {
           "he": "ג'ילבאב פשתן",
-          "en": "Linen jilbab"
+          "en": "Linen jilbab",
+          "ar": "جلباب كتان"
         },
         "meta": {
           "he": "₪320 · אורך מלא",
-          "en": "₪320 · full length"
+          "en": "₪320 · full length",
+          "ar": "₪320 · طول كامل"
         }
       }
     ],
     "cta": {
       "he": "הוספה לסל",
-      "en": "Add to bag"
+      "en": "Add to bag",
+      "ar": "أضيفي للسلة"
     },
     "palette": {
       "bg": "#ece4dc",
@@ -17344,79 +17409,95 @@
   "zakat": {
     "brand": {
       "he": "קרן אל ח'יר",
-      "en": "Al Khair Fund"
+      "en": "Al Khair Fund",
+      "ar": "صندوق الخير"
     },
     "title": {
       "he": "מחשבון הזכאת שלך",
-      "en": "Your zakat calculator"
+      "en": "Your zakat calculator",
+      "ar": "حاسبة الزكاة تبعتك"
     },
     "subtitle": {
       "he": "לפי נסאב של 85 גרם זהב",
-      "en": "Using a nisab of 85 g of gold"
+      "en": "Using a nisab of 85 g of gold",
+      "ar": "على نصاب 85 غرام دهب"
     },
     "tags": [
       {
         "he": "זהב",
-        "en": "Gold"
+        "en": "Gold",
+        "ar": "دهب"
       },
       {
         "he": "כסף",
-        "en": "Silver"
+        "en": "Silver",
+        "ar": "فضة"
       },
       {
         "he": "חסכונות",
-        "en": "Savings"
+        "en": "Savings",
+        "ar": "توفير"
       },
       {
         "he": "עסק",
-        "en": "Business"
+        "en": "Business",
+        "ar": "تجارة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "חסכונות ומזומן",
-          "en": "Savings and cash"
+          "en": "Savings and cash",
+          "ar": "توفير ونقد"
         },
         "meta": {
           "he": "₪64,000",
-          "en": "₪64,000"
+          "en": "₪64,000",
+          "ar": "₪64,000"
         }
       },
       {
         "label": {
           "he": "זהב",
-          "en": "Gold"
+          "en": "Gold",
+          "ar": "دهب"
         },
         "meta": {
           "he": "110 גרם · 21K",
-          "en": "110 g · 21K"
+          "en": "110 g · 21K",
+          "ar": "110 غرام · عيار 21"
         }
       },
       {
         "label": {
           "he": "חובות לניכוי",
-          "en": "Debts to deduct"
+          "en": "Debts to deduct",
+          "ar": "ديون بتنخصم"
         },
         "meta": {
           "he": "₪8,500",
-          "en": "₪8,500"
+          "en": "₪8,500",
+          "ar": "₪8,500"
         }
       },
       {
         "label": {
           "he": "הזכאת שלך",
-          "en": "Your zakat"
+          "en": "Your zakat",
+          "ar": "زكاتك"
         },
         "meta": {
           "he": "₪2,350 · 2.5%",
-          "en": "₪2,350 · 2.5%"
+          "en": "₪2,350 · 2.5%",
+          "ar": "₪2,350 · 2.5%"
         }
       }
     ],
     "cta": {
       "he": "להעביר את הזכאת",
-      "en": "Pay my zakat"
+      "en": "Pay my zakat",
+      "ar": "ادفع زكاتي"
     },
     "palette": {
       "bg": "#eef2ea",
@@ -17429,79 +17510,95 @@
   "islamic-books": {
     "brand": {
       "he": "מכתבת אל רשיד",
-      "en": "Al Rashid Books"
+      "en": "Al Rashid Books",
+      "ar": "مكتبة الرشيد"
     },
     "title": {
       "he": "מתנות שנשארות",
-      "en": "Gifts that last"
+      "en": "Gifts that last",
+      "ar": "هدايا بتدوم"
     },
     "subtitle": {
       "he": "קוראנים, ספרי ילדים ושטיחי תפילה",
-      "en": "Qurans, children's books and prayer mats"
+      "en": "Qurans, children's books and prayer mats",
+      "ar": "مصاحف، كتب أطفال وسجادات صلاة"
     },
     "tags": [
       {
         "he": "קוראן",
-        "en": "Quran"
+        "en": "Quran",
+        "ar": "مصاحف"
       },
       {
         "he": "ילדים",
-        "en": "Kids"
+        "en": "Kids",
+        "ar": "أطفال"
       },
       {
         "he": "תפילה",
-        "en": "Prayer"
+        "en": "Prayer",
+        "ar": "صلاة"
       },
       {
         "he": "מתנות",
-        "en": "Gifts"
+        "en": "Gifts",
+        "ar": "هدايا"
       }
     ],
     "items": [
       {
         "label": {
           "he": "קוראן בכריכת עור",
-          "en": "Leather-bound Quran"
+          "en": "Leather-bound Quran",
+          "ar": "مصحف بتجليد جلد"
         },
         "meta": {
           "he": "₪140 · עם תרגום",
-          "en": "₪140 · with translation"
+          "en": "₪140 · with translation",
+          "ar": "₪140 · مع ترجمة"
         }
       },
       {
         "label": {
           "he": "תסביח עץ זית",
-          "en": "Olive wood tasbih"
+          "en": "Olive wood tasbih",
+          "ar": "مسبحة خشب زيتون"
         },
         "meta": {
           "he": "₪45 · 99 חרוזים",
-          "en": "₪45 · 99 beads"
+          "en": "₪45 · 99 beads",
+          "ar": "₪45 · 99 حبة"
         }
       },
       {
         "label": {
           "he": "שטיח תפילה",
-          "en": "Prayer mat"
+          "en": "Prayer mat",
+          "ar": "سجادة صلاة"
         },
         "meta": {
           "he": "₪120 · קטיפה",
-          "en": "₪120 · velvet"
+          "en": "₪120 · velvet",
+          "ar": "₪120 · مخمل"
         }
       },
       {
         "label": {
           "he": "סיפורי הנביאים לילדים",
-          "en": "Prophets' stories for kids"
+          "en": "Prophets' stories for kids",
+          "ar": "قصص الأنبياء للأطفال"
         },
         "meta": {
           "he": "₪65 · מאויר",
-          "en": "₪65 · illustrated"
+          "en": "₪65 · illustrated",
+          "ar": "₪65 · مصوّرة"
         }
       }
     ],
     "cta": {
       "he": "הזמנה עטופה למתנה",
-      "en": "Order gift-wrapped"
+      "en": "Order gift-wrapped",
+      "ar": "اطلب مغلّف كهدية"
     },
     "palette": {
       "bg": "#f2ebdc",
@@ -17514,83 +17611,100 @@
   "hijama": {
     "brand": {
       "he": "מרכז אל שיפאא",
-      "en": "Al Shifa Centre"
+      "en": "Al Shifa Centre",
+      "ar": "مركز الشفاء"
     },
     "title": {
       "he": "חיג'אמה בימי הסונה",
-      "en": "Hijama on sunnah days"
+      "en": "Hijama on sunnah days",
+      "ar": "حجامة بأيام السنّة"
     },
     "subtitle": {
       "he": "נשים מטפלות בנשים",
-      "en": "Women treat women"
+      "en": "Women treat women",
+      "ar": "معالجات نساء للنساء"
     },
     "tags": [
       {
         "he": "08:00",
-        "en": "08:00"
+        "en": "08:00",
+        "ar": "08:00"
       },
       {
         "he": "09:30",
-        "en": "09:30"
+        "en": "09:30",
+        "ar": "09:30"
       },
       {
         "he": "11:00",
-        "en": "11:00"
+        "en": "11:00",
+        "ar": "11:00"
       },
       {
         "he": "13:00",
-        "en": "13:00"
+        "en": "13:00",
+        "ar": "13:00"
       },
       {
         "he": "15:30",
-        "en": "15:30"
+        "en": "15:30",
+        "ar": "15:30"
       }
     ],
     "items": [
       {
         "label": {
           "he": "חיג'אמה יבשה",
-          "en": "Dry cupping"
+          "en": "Dry cupping",
+          "ar": "حجامة جافة"
         },
         "meta": {
           "he": "₪150 · 30 דק'",
-          "en": "₪150 · 30 min"
+          "en": "₪150 · 30 min",
+          "ar": "₪150 · 30 دقيقة"
         }
       },
       {
         "label": {
           "he": "חיג'אמה רטובה",
-          "en": "Wet hijama"
+          "en": "Wet hijama",
+          "ar": "حجامة رطبة"
         },
         "meta": {
           "he": "₪220 · 45 דק'",
-          "en": "₪220 · 45 min"
+          "en": "₪220 · 45 min",
+          "ar": "₪220 · 45 دقيقة"
         }
       },
       {
         "label": {
           "he": "גב וכתפיים",
-          "en": "Back and shoulders"
+          "en": "Back and shoulders",
+          "ar": "ظهر وكتاف"
         },
         "meta": {
           "he": "₪250 · 50 דק'",
-          "en": "₪250 · 50 min"
+          "en": "₪250 · 50 min",
+          "ar": "₪250 · 50 دقيقة"
         }
       },
       {
         "label": {
           "he": "דבש וקצח",
-          "en": "Honey and black seed"
+          "en": "Honey and black seed",
+          "ar": "عسل وحبة البركة"
         },
         "meta": {
           "he": "₪60 · לבית",
-          "en": "₪60 · to take home"
+          "en": "₪60 · to take home",
+          "ar": "₪60 · للبيت"
         }
       }
     ],
     "cta": {
       "he": "קביעת תור ל-09:30",
-      "en": "Book 09:30"
+      "en": "Book 09:30",
+      "ar": "احجز الساعة 09:30"
     },
     "palette": {
       "bg": "#f5ece0",
@@ -17603,75 +17717,90 @@
   "home-nursing": {
     "brand": {
       "he": "רחמה סיעוד בבית",
-      "en": "Rahma Home Care"
+      "en": "Rahma Home Care",
+      "ar": "رحمة للتمريض بالبيت"
     },
     "title": {
       "he": "כרטיס הטיפול של סבתא",
-      "en": "Grandma's care card"
+      "en": "Grandma's care card",
+      "ar": "بطاقة رعاية ستّي"
     },
     "subtitle": {
       "he": "אחות מגיעה כל יום ב' וה'",
-      "en": "A nurse visits every Mon and Thu"
+      "en": "A nurse visits every Mon and Thu",
+      "ar": "ممرضة بتزور كل اثنين وخميس"
     },
     "tags": [
       {
         "he": "בדיקות דם בבית",
-        "en": "Home tests"
+        "en": "Home tests",
+        "ar": "فحوصات بالبيت"
       },
       {
         "he": "מדידת לחץ דם",
-        "en": "Blood pressure"
+        "en": "Blood pressure",
+        "ar": "ضغط الدم"
       },
       {
         "he": "עדכון לילדים",
-        "en": "Family updates"
+        "en": "Family updates",
+        "ar": "تحديثات للعيلة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "מטופלת",
-          "en": "Patient"
+          "en": "Patient",
+          "ar": "المريضة"
         },
         "meta": {
           "he": "פאטמה עבד אל קאדר",
-          "en": "Fatma Abd Al Qader"
+          "en": "Fatma Abd Al Qader",
+          "ar": "فاطمة عبد القادر"
         }
       },
       {
         "label": {
           "he": "אחות",
-          "en": "Nurse"
+          "en": "Nurse",
+          "ar": "الممرضة"
         },
         "meta": {
           "he": "סמאח · 08:30",
-          "en": "Samah · 08:30"
+          "en": "Samah · 08:30",
+          "ar": "سماح · 08:30"
         }
       },
       {
         "label": {
           "he": "בדיקת דם",
-          "en": "Blood test"
+          "en": "Blood test",
+          "ar": "فحص دم"
         },
         "meta": {
           "he": "ה' · תוצאות באותו יום",
-          "en": "Thu · same-day results"
+          "en": "Thu · same-day results",
+          "ar": "الخميس · النتائج بنفس اليوم"
         }
       },
       {
         "label": {
           "he": "לחץ דם אחרון",
-          "en": "Last BP"
+          "en": "Last BP",
+          "ar": "آخر ضغط"
         },
         "meta": {
           "he": "128/82",
-          "en": "128/82"
+          "en": "128/82",
+          "ar": "128/82"
         }
       }
     ],
     "cta": {
       "he": "להזמין ביקור נוסף",
-      "en": "Book an extra visit"
+      "en": "Book an extra visit",
+      "ar": "احجز زيارة إضافية"
     },
     "palette": {
       "bg": "#eaf2f1",
@@ -17684,79 +17813,95 @@
   "waqf": {
     "brand": {
       "he": "וקף מסגד אל תקווא",
-      "en": "Al Taqwa Mosque Waqf"
+      "en": "Al Taqwa Mosque Waqf",
+      "ar": "وقف مسجد التقوى"
     },
     "title": {
       "he": "שותפים בבניית בית הוודו",
-      "en": "Help build the wudu hall"
+      "en": "Help build the wudu hall",
+      "ar": "ساهم ببناء قاعة الوضوء"
     },
     "subtitle": {
       "he": "צדקה ג'ארייה שממשיכה לזרום",
-      "en": "A sadaqah jariyah that keeps flowing"
+      "en": "A sadaqah jariyah that keeps flowing",
+      "ar": "صدقة جارية أجرها ما بينقطع"
     },
     "tags": [
       {
         "he": "₪50",
-        "en": "₪50"
+        "en": "₪50",
+        "ar": "₪50"
       },
       {
         "he": "₪100",
-        "en": "₪100"
+        "en": "₪100",
+        "ar": "₪100"
       },
       {
         "he": "₪250",
-        "en": "₪250"
+        "en": "₪250",
+        "ar": "₪250"
       },
       {
         "he": "₪500",
-        "en": "₪500"
+        "en": "₪500",
+        "ar": "₪500"
       }
     ],
     "items": [
       {
         "label": {
           "he": "נאספו עד היום",
-          "en": "Raised so far"
+          "en": "Raised so far",
+          "ar": "جمعنا لهلّق"
         },
         "meta": {
           "he": "₪312,000 · מתוך ₪480,000 · 65%",
-          "en": "₪312,000 · of ₪480,000 · 65%"
+          "en": "₪312,000 · of ₪480,000 · 65%",
+          "ar": "₪312,000 · من ₪480,000 · 65%"
         }
       },
       {
         "label": {
           "he": "₪250",
-          "en": "₪250"
+          "en": "₪250",
+          "ar": "₪250"
         },
         "meta": {
           "he": "ברז וודו אחד על שמך",
-          "en": "one wudu tap in your name"
+          "en": "one wudu tap in your name",
+          "ar": "حنفية وضوء وحدة باسمك"
         }
       },
       {
         "label": {
           "he": "₪500",
-          "en": "₪500"
+          "en": "₪500",
+          "ar": "₪500"
         },
         "meta": {
           "he": "מטר שטיח לאולם התפילה",
-          "en": "a metre of prayer-hall carpet"
+          "en": "a metre of prayer-hall carpet",
+          "ar": "متر سجاد لقاعة الصلاة"
         }
       },
       {
         "label": {
           "he": "תרומה חודשית",
-          "en": "Monthly giving"
+          "en": "Monthly giving",
+          "ar": "تبرّع شهري"
         },
         "meta": {
           "he": "₪100 בכל ראש חודש",
-          "en": "₪100 at the start of each month"
+          "en": "₪100 at the start of each month",
+          "ar": "₪100 بأول كل شهر"
         }
       }
     ],
     "cta": {
       "he": "לתרום ₪250",
-      "en": "Give ₪250"
+      "en": "Give ₪250",
+      "ar": "تبرّع بـ₪250"
     },
     "palette": {
       "bg": "#e8efe6",
@@ -17769,75 +17914,90 @@
   "mazoun": {
     "brand": {
       "he": "השיח' יוסף אל חאג'",
-      "en": "Sheikh Yousef Al Hajj"
+      "en": "Sheikh Yousef Al Hajj",
+      "ar": "الشيخ يوسف الحاج"
     },
     "title": {
       "he": "כתב אל כתאב בברכה",
-      "en": "Katb al-kitab, with blessing"
+      "en": "Katb al-kitab, with blessing",
+      "ar": "كتب الكتاب، على البركة"
     },
     "subtitle": {
       "he": "עקד, עדים ורישום בבית הדין",
-      "en": "Contract, witnesses, court filing"
+      "en": "Contract, witnesses, court filing",
+      "ar": "عقد، شهود وتسجيل بالمحكمة"
     },
     "tags": [
       {
         "he": "17:00",
-        "en": "17:00"
+        "en": "17:00",
+        "ar": "17:00"
       },
       {
         "he": "18:30",
-        "en": "18:30"
+        "en": "18:30",
+        "ar": "18:30"
       },
       {
         "he": "20:00",
-        "en": "20:00"
+        "en": "20:00",
+        "ar": "20:00"
       }
     ],
     "items": [
       {
         "label": {
           "he": "עקד בבית",
-          "en": "At the family home"
+          "en": "At the family home",
+          "ar": "ببيت العيلة"
         },
         "meta": {
           "he": "₪900 · כולל דרשה קצרה",
-          "en": "₪900 · short khutbah included"
+          "en": "₪900 · short khutbah included",
+          "ar": "₪900 · شامل خطبة قصيرة"
         }
       },
       {
         "label": {
           "he": "עקד במסגד",
-          "en": "At the mosque"
+          "en": "At the mosque",
+          "ar": "بالمسجد"
         },
         "meta": {
           "he": "₪700 · אולם קטן",
-          "en": "₪700 · small hall"
+          "en": "₪700 · small hall",
+          "ar": "₪700 · قاعة صغيرة"
         }
       },
       {
         "label": {
           "he": "פגישת הכנה",
-          "en": "Couple prep"
+          "en": "Couple prep",
+          "ar": "تحضير للعرسان"
         },
         "meta": {
           "he": "₪250 · שעה",
-          "en": "₪250 · one hour"
+          "en": "₪250 · one hour",
+          "ar": "₪250 · ساعة"
         }
       },
       {
         "label": {
           "he": "רישום ואישורים",
-          "en": "Filing and certificates"
+          "en": "Filing and certificates",
+          "ar": "تسجيل وشهادات"
         },
         "meta": {
           "he": "₪350 · עד 10 ימים",
-          "en": "₪350 · within 10 days"
+          "en": "₪350 · within 10 days",
+          "ar": "₪350 · خلال 10 أيام"
         }
       }
     ],
     "cta": {
       "he": "לתאם עקד ל-18:30",
-      "en": "Book the contract for 18:30"
+      "en": "Book the contract for 18:30",
+      "ar": "احجز كتب الكتاب الساعة 18:30"
     },
     "palette": {
       "bg": "#f5ece0",
@@ -17850,79 +18010,95 @@
   "thobes": {
     "brand": {
       "he": "בית הג'לביה אל פארוק",
-      "en": "Al Farouq Thobe House"
+      "en": "Al Farouq Thobe House",
+      "ar": "بيت الجلابية الفاروق"
     },
     "title": {
       "he": "לבוש לג'ומעה ולעיד",
-      "en": "Dressed for Jumu'ah and Eid"
+      "en": "Dressed for Jumu'ah and Eid",
+      "ar": "لبس الجمعة والعيد"
     },
     "subtitle": {
       "he": "כותנה מצרית, גזרה סעודית וכוויתית",
-      "en": "Egyptian cotton, Saudi and Kuwaiti cuts"
+      "en": "Egyptian cotton, Saudi and Kuwaiti cuts",
+      "ar": "قطن مصري، قصّات سعودية وكويتية"
     },
     "tags": [
       {
         "he": "ג'לביות",
-        "en": "Thobes"
+        "en": "Thobes",
+        "ar": "جلابيات"
       },
       {
         "he": "כיפות",
-        "en": "Kufis"
+        "en": "Kufis",
+        "ar": "طواقي"
       },
       {
         "he": "בשת",
-        "en": "Bisht"
+        "en": "Bisht",
+        "ar": "بشت"
       },
       {
         "he": "בשמים",
-        "en": "Attar"
+        "en": "Attar",
+        "ar": "عطر زيتي"
       }
     ],
     "items": [
       {
         "label": {
           "he": "ג'לביה כותנה לבנה",
-          "en": "White cotton thobe"
+          "en": "White cotton thobe",
+          "ar": "جلابية قطن بيضا"
         },
         "meta": {
           "he": "₪220 · גזרה סעודית",
-          "en": "₪220 · Saudi cut"
+          "en": "₪220 · Saudi cut",
+          "ar": "₪220 · قصّة سعودية"
         }
       },
       {
         "label": {
           "he": "כיפה סרוגה",
-          "en": "Knitted kufi"
+          "en": "Knitted kufi",
+          "ar": "طاقية محبوكة"
         },
         "meta": {
           "he": "₪35 · 6 צבעים",
-          "en": "₪35 · 6 colours"
+          "en": "₪35 · 6 colours",
+          "ar": "₪35 · 6 ألوان"
         }
       },
       {
         "label": {
           "he": "בשת לחתן",
-          "en": "Groom's bisht"
+          "en": "Groom's bisht",
+          "ar": "بشت العريس"
         },
         "meta": {
           "he": "₪890 · רקמת זהב",
-          "en": "₪890 · gold trim"
+          "en": "₪890 · gold trim",
+          "ar": "₪890 · تطريز ذهبي"
         }
       },
       {
         "label": {
           "he": "ג'לביה לילדים",
-          "en": "Boys' thobe"
+          "en": "Boys' thobe",
+          "ar": "جلابية أولادي"
         },
         "meta": {
           "he": "₪120 · גילאי 3-12",
-          "en": "₪120 · ages 3-12"
+          "en": "₪120 · ages 3-12",
+          "ar": "₪120 · أعمار 3-12"
         }
       }
     ],
     "cta": {
       "he": "הוספה לסל",
-      "en": "Add to bag"
+      "en": "Add to bag",
+      "ar": "أضف للسلة"
     },
     "palette": {
       "bg": "#1f2a2e",
@@ -17935,75 +18111,90 @@
   "janazah": {
     "brand": {
       "he": "אל רחמה, שירותי ג'נאזה",
-      "en": "Al Rahma Janazah Services"
+      "en": "Al Rahma Janazah Services",
+      "ar": "الرحمة لخدمات الجنازة"
     },
     "title": {
       "he": "הסדר של היום",
-      "en": "The order of the day"
+      "en": "The order of the day",
+      "ar": "ترتيب النهار"
     },
     "subtitle": {
       "he": "אנא ללה ואנא אליה ראג'עון",
-      "en": "Inna lillahi wa inna ilayhi raji'un"
+      "en": "Inna lillahi wa inna ilayhi raji'un",
+      "ar": "إنّا لله وإنّا إليه راجعون"
     },
     "tags": [
       {
         "he": "ג'נאזה",
-        "en": "Janazah"
+        "en": "Janazah",
+        "ar": "جنازة"
       },
       {
         "he": "קבורה",
-        "en": "Burial"
+        "en": "Burial",
+        "ar": "دفن"
       },
       {
         "he": "בית אבלים",
-        "en": "Condolences"
+        "en": "Condolences",
+        "ar": "تعازي"
       }
     ],
     "items": [
       {
         "label": {
           "he": "רחיצה ותכריכים",
-          "en": "Ghusl and shrouding"
+          "en": "Ghusl and shrouding",
+          "ar": "الغسل والتكفين"
         },
         "meta": {
           "he": "10:30 · צוות מוסמך · 100%",
-          "en": "10:30 · trained team · 100%"
+          "en": "10:30 · trained team · 100%",
+          "ar": "10:30 · طاقم مدرّب · 100%"
         }
       },
       {
         "label": {
           "he": "תפילת ג'נאזה",
-          "en": "Janazah prayer"
+          "en": "Janazah prayer",
+          "ar": "صلاة الجنازة"
         },
         "meta": {
           "he": "12:55 · אחרי ד'והר · 0%",
-          "en": "12:55 · after Dhuhr · 0%"
+          "en": "12:55 · after Dhuhr · 0%",
+          "ar": "12:55 · بعد الظهر · 0%"
         }
       },
       {
         "label": {
           "he": "קבורה",
-          "en": "Burial"
+          "en": "Burial",
+          "ar": "الدفن"
         },
         "meta": {
           "he": "13:30 · בית הקברות המזרחי · 0%",
-          "en": "13:30 · eastern cemetery · 0%"
+          "en": "13:30 · eastern cemetery · 0%",
+          "ar": "13:30 · المقبرة الشرقية · 0%"
         }
       },
       {
         "label": {
           "he": "בית אבלים",
-          "en": "Mourning"
+          "en": "Mourning",
+          "ar": "بيت العزا"
         },
         "meta": {
           "he": "17:00 · ניחומים במשך 3 ימים",
-          "en": "17:00 · condolences for 3 days"
+          "en": "17:00 · condolences for 3 days",
+          "ar": "17:00 · تعازي 3 أيام"
         }
       }
     ],
     "cta": {
       "he": "שליחת ההודעה לקהילה",
-      "en": "Send the notice to the community"
+      "en": "Send the notice to the community",
+      "ar": "ابعت النعي للبلد"
     },
     "palette": {
       "bg": "#eceeec",
