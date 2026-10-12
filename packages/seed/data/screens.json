@@ -2153,87 +2153,105 @@
   "yoga": {
     "brand": {
       "he": "סטודיו נשימה",
-      "en": "Neshima Studio"
+      "en": "Neshima Studio",
+      "ar": "ستوديو نِشيما"
     },
     "title": {
       "he": "השבוע בסטודיו",
-      "en": "This week at the studio"
+      "en": "This week at the studio",
+      "ar": "هذا الأسبوع بالستوديو"
     },
     "subtitle": {
       "he": "בכרטיסייה נשארו 7 שיעורים",
-      "en": "7 classes left on your card"
+      "en": "7 classes left on your card",
+      "ar": "باقي 7 حصص بالبطاقة تبعك"
     },
     "tags": [
       {
         "he": "א'",
-        "en": "Sun"
+        "en": "Sun",
+        "ar": "أحد"
       },
       {
         "he": "ב'",
-        "en": "Mon"
+        "en": "Mon",
+        "ar": "اثنين"
       },
       {
         "he": "ג'",
-        "en": "Tue"
+        "en": "Tue",
+        "ar": "ثلاثاء"
       },
       {
         "he": "ד'",
-        "en": "Wed"
+        "en": "Wed",
+        "ar": "أربعاء"
       },
       {
         "he": "ה'",
-        "en": "Thu"
+        "en": "Thu",
+        "ar": "خميس"
       },
       {
         "he": "ו'",
-        "en": "Fri"
+        "en": "Fri",
+        "ar": "جمعة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "ויניאסה בזרימה",
-          "en": "Vinyasa flow"
+          "en": "Vinyasa flow",
+          "ar": "فينياسا فلو"
         },
         "meta": {
           "he": "07:00 · נועה · 60 דק'",
-          "en": "07:00 · Noa · 60 min"
+          "en": "07:00 · Noa · 60 min",
+          "ar": "07:00 · نوعا · 60 دقيقة"
         }
       },
       {
         "label": {
           "he": "פילאטיס מכשירים",
-          "en": "Reformer pilates"
+          "en": "Reformer pilates",
+          "ar": "بيلاتس ريفورمر"
         },
         "meta": {
           "he": "09:30 · ליה · 50 דק'",
-          "en": "09:30 · Lia · 50 min"
+          "en": "09:30 · Lia · 50 min",
+          "ar": "09:30 · ليا · 50 دقيقة"
         }
       },
       {
         "label": {
           "he": "מתיחות וגמישות",
-          "en": "Stretch and mobility"
+          "en": "Stretch and mobility",
+          "ar": "تمدد ومرونة"
         },
         "meta": {
           "he": "18:00 · גל · 60 דק'",
-          "en": "18:00 · Gal · 60 min"
+          "en": "18:00 · Gal · 60 min",
+          "ar": "18:00 · غال · 60 دقيقة"
         }
       },
       {
         "label": {
           "he": "שיעור לנשים בלבד",
-          "en": "Women-only class"
+          "en": "Women-only class",
+          "ar": "حصة للنساء فقط"
         },
         "meta": {
           "he": "19:30 · נועה · 50 דק'",
-          "en": "19:30 · Noa · 50 min"
+          "en": "19:30 · Noa · 50 min",
+          "ar": "19:30 · نوعا · 50 دقيقة"
         }
       }
     ],
     "cta": {
       "he": "הרשמה לשיעור",
-      "en": "Join a class"
+      "en": "Join a class",
+      "ar": "انضم لحصة"
     },
     "palette": {
       "bg": "#f2e7da",
@@ -2246,83 +2264,100 @@
   "dental": {
     "brand": {
       "he": "מרפאת השיניים ד\"ר רוזן",
-      "en": "Dr. Rosen Dental"
+      "en": "Dr. Rosen Dental",
+      "ar": "عيادة أسنان د. روزن"
     },
     "title": {
       "he": "חיוך בריא, בלי לחכות",
-      "en": "A healthy smile, no waiting"
+      "en": "A healthy smile, no waiting",
+      "ar": "ابتسامة صحية، بدون انتظار"
     },
     "subtitle": {
       "he": "התור הפנוי הראשון: מחר 08:40",
-      "en": "First opening: tomorrow 08:40"
+      "en": "First opening: tomorrow 08:40",
+      "ar": "أول موعد فاضي: بكرا 08:40"
     },
     "tags": [
       {
         "he": "08:40",
-        "en": "08:40"
+        "en": "08:40",
+        "ar": "08:40"
       },
       {
         "he": "10:20",
-        "en": "10:20"
+        "en": "10:20",
+        "ar": "10:20"
       },
       {
         "he": "12:00",
-        "en": "12:00"
+        "en": "12:00",
+        "ar": "12:00"
       },
       {
         "he": "16:10",
-        "en": "16:10"
+        "en": "16:10",
+        "ar": "16:10"
       },
       {
         "he": "17:50",
-        "en": "17:50"
+        "en": "17:50",
+        "ar": "17:50"
       }
     ],
     "items": [
       {
         "label": {
           "he": "בדיקה וניקוי אבנית",
-          "en": "Check-up"
+          "en": "Check-up",
+          "ar": "فحص دوري"
         },
         "meta": {
           "he": "₪290 · 40 דק'",
-          "en": "₪290 · 40 min"
+          "en": "₪290 · 40 min",
+          "ar": "₪290 · 40 دقيقة"
         }
       },
       {
         "label": {
           "he": "הלבנה במרפאה",
-          "en": "In-clinic whitening"
+          "en": "In-clinic whitening",
+          "ar": "تبييض بالعيادة"
         },
         "meta": {
           "he": "₪1,450 · 90 דק'",
-          "en": "₪1,450 · 90 min"
+          "en": "₪1,450 · 90 min",
+          "ar": "₪1,450 · 90 دقيقة"
         }
       },
       {
         "label": {
           "he": "יישור שקוף",
-          "en": "Clear aligners"
+          "en": "Clear aligners",
+          "ar": "تقويم شفاف"
         },
         "meta": {
           "he": "ייעוץ חינם",
-          "en": "free consult"
+          "en": "free consult",
+          "ar": "استشارة مجانية"
         }
       },
       {
         "label": {
           "he": "טיפול שורש",
-          "en": "Root canal"
+          "en": "Root canal",
+          "ar": "علاج عصب"
         },
         "meta": {
           "he": "לפי הערכה · 60 דק'",
-          "en": "on assessment · 60 min"
+          "en": "on assessment · 60 min",
+          "ar": "حسب الفحص · 60 دقيقة"
         }
       }
     ],
     "cta": {
       "he": "קביעת תור למחר 08:40",
-      "en": "Book tomorrow 08:40"
+      "en": "Book tomorrow 08:40",
+      "ar": "احجز بكرا 08:40"
     },
     "palette": {
       "bg": "#e9f3f5",
@@ -2335,83 +2370,100 @@
   "physio": {
     "brand": {
       "he": "פיזיותרפיה בתנועה",
-      "en": "In Motion Physio"
+      "en": "In Motion Physio",
+      "ar": "علاج طبيعي بالحركة"
     },
     "title": {
       "he": "תוכנית השיקום שלך",
-      "en": "Your recovery plan"
+      "en": "Your recovery plan",
+      "ar": "خطة التعافي تبعك"
     },
     "subtitle": {
       "he": "ברך שמאל · מפגש 5 מתוך 10",
-      "en": "Left knee · session 5 of 10"
+      "en": "Left knee · session 5 of 10",
+      "ar": "الركبة الشمال · جلسة 5 من 10"
     },
     "tags": [
       {
         "he": "א'",
-        "en": "Sun"
+        "en": "Sun",
+        "ar": "أحد"
       },
       {
         "he": "ב'",
-        "en": "Mon"
+        "en": "Mon",
+        "ar": "اثنين"
       },
       {
         "he": "ג'",
-        "en": "Tue"
+        "en": "Tue",
+        "ar": "ثلاثاء"
       },
       {
         "he": "ד'",
-        "en": "Wed"
+        "en": "Wed",
+        "ar": "أربعاء"
       },
       {
         "he": "ה'",
-        "en": "Thu"
+        "en": "Thu",
+        "ar": "خميس"
       }
     ],
     "items": [
       {
         "label": {
           "he": "טיפול ידני",
-          "en": "Manual therapy"
+          "en": "Manual therapy",
+          "ar": "علاج يدوي"
         },
         "meta": {
           "he": "ב' 08:00 · עם יעל",
-          "en": "Mon 08:00 · with Yael"
+          "en": "Mon 08:00 · with Yael",
+          "ar": "الاثنين 08:00 · مع ياعيل"
         }
       },
       {
         "label": {
           "he": "תרגילי חיזוק",
-          "en": "Strength exercises"
+          "en": "Strength exercises",
+          "ar": "تمارين تقوية"
         },
         "meta": {
           "he": "בבית · 15 דק' ביום",
-          "en": "at home · 15 min a day"
+          "en": "at home · 15 min a day",
+          "ar": "بالبيت · 15 دقيقة باليوم"
         }
       },
       {
         "label": {
           "he": "הידרותרפיה",
-          "en": "Hydrotherapy"
+          "en": "Hydrotherapy",
+          "ar": "علاج مائي"
         },
         "meta": {
           "he": "ד' 17:30 · בריכה",
-          "en": "Wed 17:30 · pool"
+          "en": "Wed 17:30 · pool",
+          "ar": "الأربعاء 17:30 · بالبركة"
         }
       },
       {
         "label": {
           "he": "מעקב רופא",
-          "en": "Doctor follow-up"
+          "en": "Doctor follow-up",
+          "ar": "متابعة عند الطبيب"
         },
         "meta": {
           "he": "ה' 12:00 · ד\"ר אבני",
-          "en": "Thu 12:00 · Dr. Avni"
+          "en": "Thu 12:00 · Dr. Avni",
+          "ar": "الخميس 12:00 · د. أفني"
         }
       }
     ],
     "cta": {
       "he": "אישור המפגש הבא",
-      "en": "Confirm next session"
+      "en": "Confirm next session",
+      "ar": "أكّد الجلسة الجاية"
     },
     "palette": {
       "bg": "#e6f2eb",
@@ -2424,79 +2476,95 @@
   "nutrition": {
     "brand": {
       "he": "תזונה עם שירה",
-      "en": "Shira Nutrition"
+      "en": "Shira Nutrition",
+      "ar": "تغذية مع شيرا"
     },
     "title": {
       "he": "היום על הצלחת",
-      "en": "Today on your plate"
+      "en": "Today on your plate",
+      "ar": "شو بصحنك اليوم"
     },
     "subtitle": {
       "he": "1,480 מתוך 1,800 קלוריות",
-      "en": "1,480 of 1,800 kcal"
+      "en": "1,480 of 1,800 kcal",
+      "ar": "1,480 من 1,800 سعرة"
     },
     "tags": [
       {
         "he": "בוקר",
-        "en": "Breakfast"
+        "en": "Breakfast",
+        "ar": "فطور"
       },
       {
         "he": "צהריים",
-        "en": "Lunch"
+        "en": "Lunch",
+        "ar": "غدا"
       },
       {
         "he": "ערב",
-        "en": "Dinner"
+        "en": "Dinner",
+        "ar": "عشا"
       },
       {
         "he": "נשנוש",
-        "en": "Snack"
+        "en": "Snack",
+        "ar": "سناك"
       }
     ],
     "items": [
       {
         "label": {
           "he": "חלבון",
-          "en": "Protein"
+          "en": "Protein",
+          "ar": "بروتين"
         },
         "meta": {
           "he": "92 גר' · 82%",
-          "en": "92 g · 82%"
+          "en": "92 g · 82%",
+          "ar": "92 غرام · 82%"
         }
       },
       {
         "label": {
           "he": "מים",
-          "en": "Water"
+          "en": "Water",
+          "ar": "مي"
         },
         "meta": {
           "he": "6 כוסות · 75%",
-          "en": "6 glasses · 75%"
+          "en": "6 glasses · 75%",
+          "ar": "6 كاسات · 75%"
         }
       },
       {
         "label": {
           "he": "ירקות",
-          "en": "Vegetables"
+          "en": "Vegetables",
+          "ar": "خضار"
         },
         "meta": {
           "he": "4 מנות · 80%",
-          "en": "4 servings · 80%"
+          "en": "4 servings · 80%",
+          "ar": "4 حصص · 80%"
         }
       },
       {
         "label": {
           "he": "הפגישה הבאה",
-          "en": "Next check-in"
+          "en": "Next check-in",
+          "ar": "المتابعة الجاية"
         },
         "meta": {
           "he": "ב' 18:00 · וידאו",
-          "en": "Mon 18:00 · video"
+          "en": "Mon 18:00 · video",
+          "ar": "الاثنين 18:00 · فيديو"
         }
       }
     ],
     "cta": {
       "he": "לשלוח צילום של הארוחה",
-      "en": "Send a meal photo"
+      "en": "Send a meal photo",
+      "ar": "ابعت صورة الوجبة"
     },
     "palette": {
       "bg": "#fff3ea",
@@ -2509,83 +2577,100 @@
   "therapy": {
     "brand": {
       "he": "מרחב שקט",
-      "en": "Quiet Room"
+      "en": "Quiet Room",
+      "ar": "مساحة هادئة"
     },
     "title": {
       "he": "מקום לדבר",
-      "en": "A place to talk"
+      "en": "A place to talk",
+      "ar": "مكان للحكي"
     },
     "subtitle": {
       "he": "שיחת היכרות של 20 דק', בלי עלות",
-      "en": "A free 20-minute intro call"
+      "en": "A free 20-minute intro call",
+      "ar": "مكالمة تعارف مجانية 20 دقيقة"
     },
     "tags": [
       {
         "he": "08:00",
-        "en": "08:00"
+        "en": "08:00",
+        "ar": "08:00"
       },
       {
         "he": "12:00",
-        "en": "12:00"
+        "en": "12:00",
+        "ar": "12:00"
       },
       {
         "he": "16:00",
-        "en": "16:00"
+        "en": "16:00",
+        "ar": "16:00"
       },
       {
         "he": "19:00",
-        "en": "19:00"
+        "en": "19:00",
+        "ar": "19:00"
       },
       {
         "he": "20:30",
-        "en": "20:30"
+        "en": "20:30",
+        "ar": "20:30"
       }
     ],
     "items": [
       {
         "label": {
           "he": "טיפול פרטני",
-          "en": "Individual therapy"
+          "en": "Individual therapy",
+          "ar": "علاج فردي"
         },
         "meta": {
           "he": "₪420 · 50 דק'",
-          "en": "₪420 · 50 min"
+          "en": "₪420 · 50 min",
+          "ar": "₪420 · 50 دقيقة"
         }
       },
       {
         "label": {
           "he": "ייעוץ נישואין",
-          "en": "Marriage counselling"
+          "en": "Marriage counselling",
+          "ar": "استشارة زوجية"
         },
         "meta": {
           "he": "₪560 · 75 דק'",
-          "en": "₪560 · 75 min"
+          "en": "₪560 · 75 min",
+          "ar": "₪560 · 75 دقيقة"
         }
       },
       {
         "label": {
           "he": "פגישה בווידאו",
-          "en": "Video session"
+          "en": "Video session",
+          "ar": "جلسة فيديو"
         },
         "meta": {
           "he": "₪380 · 50 דק'",
-          "en": "₪380 · 50 min"
+          "en": "₪380 · 50 min",
+          "ar": "₪380 · 50 دقيقة"
         }
       },
       {
         "label": {
           "he": "הדרכת הורים",
-          "en": "Parent guidance"
+          "en": "Parent guidance",
+          "ar": "إرشاد أهل"
         },
         "meta": {
           "he": "₪450 · 60 דק'",
-          "en": "₪450 · 60 min"
+          "en": "₪450 · 60 min",
+          "ar": "₪450 · 60 دقيقة"
         }
       }
     ],
     "cta": {
       "he": "לקבוע שיחת היכרות",
-      "en": "Book an intro call"
+      "en": "Book an intro call",
+      "ar": "احجز مكالمة تعارف"
     },
     "palette": {
       "bg": "#eee8de",
@@ -2598,79 +2683,95 @@
   "optics": {
     "brand": {
       "he": "אופטיקה אל בסר",
-      "en": "Al Basar Optics"
+      "en": "Al Basar Optics",
+      "ar": "بصريات البصر"
     },
     "title": {
       "he": "בונים משקפיים",
-      "en": "Build your glasses"
+      "en": "Build your glasses",
+      "ar": "ركّب نظارتك"
     },
     "subtitle": {
       "he": "בדיקת ראייה חינם עם כל זוג",
-      "en": "A free eye test with every pair"
+      "en": "A free eye test with every pair",
+      "ar": "فحص نظر مجاني مع كل نظارة"
     },
     "tags": [
       {
         "he": "עגולה",
-        "en": "Round"
+        "en": "Round",
+        "ar": "مدوّر"
       },
       {
         "he": "מרובעת",
-        "en": "Square"
+        "en": "Square",
+        "ar": "مربع"
       },
       {
         "he": "אובלית",
-        "en": "Oval"
+        "en": "Oval",
+        "ar": "بيضاوي"
       },
       {
         "he": "בלי מסגרת",
-        "en": "Rimless"
+        "en": "Rimless",
+        "ar": "بدون إطار"
       }
     ],
     "items": [
       {
         "label": {
           "he": "מסגרת",
-          "en": "Frame"
+          "en": "Frame",
+          "ar": "الإطار"
         },
         "meta": {
           "he": "עגולה · צב",
-          "en": "Round · tortoiseshell"
+          "en": "Round · tortoiseshell",
+          "ar": "مدوّر · لون صدف السلحفاة"
         }
       },
       {
         "label": {
           "he": "עדשות",
-          "en": "Lenses"
+          "en": "Lenses",
+          "ar": "العدسات"
         },
         "meta": {
           "he": "מולטיפוקל דקות",
-          "en": "Thin multifocal"
+          "en": "Thin multifocal",
+          "ar": "متعددة البؤر رفيعة"
         }
       },
       {
         "label": {
           "he": "ציפוי",
-          "en": "Coating"
+          "en": "Coating",
+          "ar": "الطلاء"
         },
         "meta": {
           "he": "נגד השתקפות ואור כחול",
-          "en": "Anti-glare and blue light"
+          "en": "Anti-glare and blue light",
+          "ar": "ضد الانعكاس والضوء الأزرق"
         }
       },
       {
         "label": {
           "he": "סה\"כ",
-          "en": "Total"
+          "en": "Total",
+          "ar": "المجموع"
         },
         "meta": {
           "he": "₪1,240 · מוכן תוך 5 ימים",
-          "en": "₪1,240 · ready in 5 days"
+          "en": "₪1,240 · ready in 5 days",
+          "ar": "₪1,240 · جاهزة خلال 5 أيام"
         }
       }
     ],
     "cta": {
       "he": "לקבוע בדיקת ראייה",
-      "en": "Book an eye test"
+      "en": "Book an eye test",
+      "ar": "احجز فحص نظر"
     },
     "palette": {
       "bg": "#eef0f2",
@@ -2683,75 +2784,90 @@
   "vets": {
     "brand": {
       "he": "מרפאת ארבע כפות",
-      "en": "Four Paws Clinic"
+      "en": "Four Paws Clinic",
+      "ar": "عيادة الأربع كفوف"
     },
     "title": {
       "he": "הכרטיס של לואי",
-      "en": "Louie's health card"
+      "en": "Louie's health card",
+      "ar": "البطاقة الصحية للويس"
     },
     "subtitle": {
       "he": "גולדן · בן 4 · 31 ק\"ג",
-      "en": "Golden retriever · 4 years · 31 kg"
+      "en": "Golden retriever · 4 years · 31 kg",
+      "ar": "غولدن ريتريفر · 4 سنين · 31 كغم"
     },
     "tags": [
       {
         "he": "חיסונים",
-        "en": "Vaccines"
+        "en": "Vaccines",
+        "ar": "تطعيمات"
       },
       {
         "he": "טיפוח",
-        "en": "Grooming"
+        "en": "Grooming",
+        "ar": "تجميل"
       },
       {
         "he": "תרופות",
-        "en": "Meds"
+        "en": "Meds",
+        "ar": "أدوية"
       }
     ],
     "items": [
       {
         "label": {
           "he": "חיסון משושה",
-          "en": "Combo vaccine"
+          "en": "Combo vaccine",
+          "ar": "تطعيم مركّب"
         },
         "meta": {
           "he": "בוצע במרץ · 100%",
-          "en": "done in March · 100%"
+          "en": "done in March · 100%",
+          "ar": "انعمل بآذار · 100%"
         }
       },
       {
         "label": {
           "he": "טיפול נגד קרציות",
-          "en": "Tick treatment"
+          "en": "Tick treatment",
+          "ar": "علاج قراد"
         },
         "meta": {
           "he": "בעוד 12 ימים · 60%",
-          "en": "in 12 days · 60%"
+          "en": "in 12 days · 60%",
+          "ar": "بعد 12 يوم · 60%"
         }
       },
       {
         "label": {
           "he": "רחצה ותספורת",
-          "en": "Bath and trim"
+          "en": "Bath and trim",
+          "ar": "حمّام وقص"
         },
         "meta": {
           "he": "ה' 10:00 · מאושר",
-          "en": "Thu 10:00 · confirmed"
+          "en": "Thu 10:00 · confirmed",
+          "ar": "الخميس 10:00 · مؤكَّد"
         }
       },
       {
         "label": {
           "he": "בדיקה שנתית",
-          "en": "Yearly check-up"
+          "en": "Yearly check-up",
+          "ar": "فحص سنوي"
         },
         "meta": {
           "he": "בספטמבר",
-          "en": "in September"
+          "en": "in September",
+          "ar": "بأيلول"
         }
       }
     ],
     "cta": {
       "he": "תור לטיפוח",
-      "en": "Book grooming"
+      "en": "Book grooming",
+      "ar": "احجز تحميم وتجميل"
     },
     "palette": {
       "bg": "#fdf0d6",
@@ -2764,79 +2880,95 @@
   "pharmacies": {
     "brand": {
       "he": "בית מרקחת הגפן",
-      "en": "HaGefen Pharmacy"
+      "en": "HaGefen Pharmacy",
+      "ar": "صيدلية هجيفن"
     },
     "title": {
       "he": "המרשם מוכן לאיסוף",
-      "en": "Your prescription is ready"
+      "en": "Your prescription is ready",
+      "ar": "الوصفة تبعتك جاهزة"
     },
     "subtitle": {
       "he": "או משלוח עד הבית תוך שעתיים",
-      "en": "Or delivered home within two hours"
+      "en": "Or delivered home within two hours",
+      "ar": "أو بنوصلها للبيت خلال ساعتين"
     },
     "tags": [
       {
         "he": "מרשמים",
-        "en": "Prescriptions"
+        "en": "Prescriptions",
+        "ar": "وصفات طبية"
       },
       {
         "he": "תינוקות",
-        "en": "Baby"
+        "en": "Baby",
+        "ar": "أطفال"
       },
       {
         "he": "טיפוח",
-        "en": "Care"
+        "en": "Care",
+        "ar": "عناية"
       },
       {
         "he": "ויטמינים",
-        "en": "Vitamins"
+        "en": "Vitamins",
+        "ar": "فيتامينات"
       }
     ],
     "items": [
       {
         "label": {
           "he": "ויטמין D3 1000",
-          "en": "Vitamin D3 1000"
+          "en": "Vitamin D3 1000",
+          "ar": "فيتامين D3 1000"
         },
         "meta": {
           "he": "₪39 · 90 כמוסות",
-          "en": "₪39 · 90 capsules"
+          "en": "₪39 · 90 capsules",
+          "ar": "₪39 · 90 كبسولة"
         }
       },
       {
         "label": {
           "he": "קרם הגנה SPF50",
-          "en": "Sunscreen SPF50"
+          "en": "Sunscreen SPF50",
+          "ar": "واقي شمس SPF50"
         },
         "meta": {
           "he": "₪79 · עמיד במים",
-          "en": "₪79 · water resistant"
+          "en": "₪79 · water resistant",
+          "ar": "₪79 · ضد المي"
         }
       },
       {
         "label": {
           "he": "ערכת עזרה ראשונה",
-          "en": "First aid kit"
+          "en": "First aid kit",
+          "ar": "شنطة إسعاف أولي"
         },
         "meta": {
           "he": "₪65 · לבית ולרכב",
-          "en": "₪65 · home and car"
+          "en": "₪65 · home and car",
+          "ar": "₪65 · للبيت والسيارة"
         }
       },
       {
         "label": {
           "he": "מגבונים לתינוק",
-          "en": "Baby wipes"
+          "en": "Baby wipes",
+          "ar": "مناديل مبللة للأطفال"
         },
         "meta": {
           "he": "₪24 · 3 מארזים",
-          "en": "₪24 · 3 packs"
+          "en": "₪24 · 3 packs",
+          "ar": "₪24 · 3 علب"
         }
       }
     ],
     "cta": {
       "he": "משלוח תוך שעתיים",
-      "en": "Deliver in 2 hours"
+      "en": "Deliver in 2 hours",
+      "ar": "توصيل خلال ساعتين"
     },
     "palette": {
       "bg": "#f4f6f4",
@@ -2849,75 +2981,90 @@
   "speech-therapy": {
     "brand": {
       "he": "הדיל, קלינאית תקשורת",
-      "en": "Hadeel Speech Therapy"
+      "en": "Hadeel Speech Therapy",
+      "ar": "هديل، أخصائية نطق"
     },
     "title": {
       "he": "ההתקדמות של יוסף",
-      "en": "Yousef's progress"
+      "en": "Yousef's progress",
+      "ar": "تقدّم يوسف"
     },
     "subtitle": {
       "he": "גיל 5 · 12 מפגשים · עברית וערבית",
-      "en": "Age 5 · 12 sessions · Hebrew and Arabic"
+      "en": "Age 5 · 12 sessions · Hebrew and Arabic",
+      "ar": "عمر 5 · 12 جلسة · عبري وعربي"
     },
     "tags": [
       {
         "he": "היגוי",
-        "en": "Speech sounds"
+        "en": "Speech sounds",
+        "ar": "مخارج الحروف"
       },
       {
         "he": "שפה",
-        "en": "Language"
+        "en": "Language",
+        "ar": "لغة"
       },
       {
         "he": "שטף",
-        "en": "Fluency"
+        "en": "Fluency",
+        "ar": "طلاقة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "הגיית ר'",
-          "en": "The R sound"
+          "en": "The R sound",
+          "ar": "حرف الراء"
         },
         "meta": {
           "he": "8 מתוך 10 · 80%",
-          "en": "8 of 10 · 80%"
+          "en": "8 of 10 · 80%",
+          "ar": "8 من 10 · 80%"
         }
       },
       {
         "label": {
           "he": "מילים חדשות",
-          "en": "New words"
+          "en": "New words",
+          "ar": "كلمات جديدة"
         },
         "meta": {
           "he": "46 החודש · 70%",
-          "en": "46 this month · 70%"
+          "en": "46 this month · 70%",
+          "ar": "46 هالشهر · 70%"
         }
       },
       {
         "label": {
           "he": "תרגול בבית",
-          "en": "Home practice"
+          "en": "Home practice",
+          "ar": "تمرين بالبيت"
         },
         "meta": {
           "he": "5 מתוך 7 ימים · 71%",
-          "en": "5 of 7 days · 71%"
+          "en": "5 of 7 days · 71%",
+          "ar": "5 من 7 أيام · 71%"
         }
       },
       {
         "label": {
           "he": "המפגש הבא",
-          "en": "Next session"
+          "en": "Next session",
+          "ar": "الجلسة الجاية"
         },
         "meta": {
           "he": "ג' 16:30 · בקליניקה",
-          "en": "Tue 16:30 · at the clinic"
+          "en": "Tue 16:30 · at the clinic",
+          "ar": "الثلاثاء 16:30 · بالعيادة"
         }
       }
     ],
     "cta": {
       "he": "שליחת סרטון תרגול",
-      "en": "Send a practice video"
+      "en": "Send a practice video",
+      "ar": "ابعت فيديو تمرين"
     },
     "palette": {
       "bg": "#fff3df",
@@ -2930,87 +3077,105 @@
   "dermatology": {
     "brand": {
       "he": "ד\"ר רנא חורי, רפואת עור",
-      "en": "Dr. Rana Khoury Skin"
+      "en": "Dr. Rana Khoury Skin",
+      "ar": "د. رنا خوري، أمراض جلدية"
     },
     "title": {
       "he": "בדיקת שומות",
-      "en": "Mole check"
+      "en": "Mole check",
+      "ar": "فحص الشامات"
     },
     "subtitle": {
       "he": "יום ד' 25.6 · נצרת",
-      "en": "Wed 25 Jun · Nazareth"
+      "en": "Wed 25 Jun · Nazareth",
+      "ar": "الأربعاء 25 حزيران · الناصرة"
     },
     "tags": [
       {
         "he": "08:30",
-        "en": "08:30"
+        "en": "08:30",
+        "ar": "08:30"
       },
       {
         "he": "09:15",
-        "en": "09:15"
+        "en": "09:15",
+        "ar": "09:15"
       },
       {
         "he": "10:00",
-        "en": "10:00"
+        "en": "10:00",
+        "ar": "10:00"
       },
       {
         "he": "12:30",
-        "en": "12:30"
+        "en": "12:30",
+        "ar": "12:30"
       },
       {
         "he": "14:00",
-        "en": "14:00"
+        "en": "14:00",
+        "ar": "14:00"
       },
       {
         "he": "16:45",
-        "en": "16:45"
+        "en": "16:45",
+        "ar": "16:45"
       }
     ],
     "items": [
       {
         "label": {
           "he": "מיפוי שומות",
-          "en": "Mole mapping"
+          "en": "Mole mapping",
+          "ar": "خريطة الشامات"
         },
         "meta": {
           "he": "₪450 · 30 דק'",
-          "en": "₪450 · 30 min"
+          "en": "₪450 · 30 min",
+          "ar": "₪450 · 30 دقيقة"
         }
       },
       {
         "label": {
           "he": "טיפול באקנה",
-          "en": "Acne treatment"
+          "en": "Acne treatment",
+          "ar": "علاج حب الشباب"
         },
         "meta": {
           "he": "₪380 · 20 דק'",
-          "en": "₪380 · 20 min"
+          "en": "₪380 · 20 min",
+          "ar": "₪380 · 20 دقيقة"
         }
       },
       {
         "label": {
           "he": "בדיקת עור כללית",
-          "en": "Full skin check"
+          "en": "Full skin check",
+          "ar": "فحص جلد كامل"
         },
         "meta": {
           "he": "₪320 · 20 דק'",
-          "en": "₪320 · 20 min"
+          "en": "₪320 · 20 min",
+          "ar": "₪320 · 20 دقيقة"
         }
       },
       {
         "label": {
           "he": "ייעוץ בווידאו",
-          "en": "Video consult"
+          "en": "Video consult",
+          "ar": "استشارة بالفيديو"
         },
         "meta": {
           "he": "₪220 · 15 דק'",
-          "en": "₪220 · 15 min"
+          "en": "₪220 · 15 min",
+          "ar": "₪220 · 15 دقيقة"
         }
       }
     ],
     "cta": {
       "he": "קביעת תור ל-10:00",
-      "en": "Book 10:00"
+      "en": "Book 10:00",
+      "ar": "احجز الساعة 10:00"
     },
     "palette": {
       "bg": "#f4ede8",
@@ -3023,87 +3188,105 @@
   "occupational-therapy": {
     "brand": {
       "he": "ידיים קטנות",
-      "en": "Little Hands OT"
+      "en": "Little Hands OT",
+      "ar": "إيدين صغار"
     },
     "title": {
       "he": "השבוע בריפוי בעיסוק",
-      "en": "This week in OT"
+      "en": "This week in OT",
+      "ar": "هذا الأسبوع بالعلاج الوظيفي"
     },
     "subtitle": {
       "he": "מוטוריקה עדינה, כתיבה וויסות",
-      "en": "Fine motor, handwriting, regulation"
+      "en": "Fine motor, handwriting, regulation",
+      "ar": "مهارات دقيقة، كتابة وتنظيم ذاتي"
     },
     "tags": [
       {
         "he": "א'",
-        "en": "Sun"
+        "en": "Sun",
+        "ar": "أحد"
       },
       {
         "he": "ב'",
-        "en": "Mon"
+        "en": "Mon",
+        "ar": "اثنين"
       },
       {
         "he": "ג'",
-        "en": "Tue"
+        "en": "Tue",
+        "ar": "ثلاثاء"
       },
       {
         "he": "ד'",
-        "en": "Wed"
+        "en": "Wed",
+        "ar": "أربعاء"
       },
       {
         "he": "ה'",
-        "en": "Thu"
+        "en": "Thu",
+        "ar": "خميس"
       },
       {
         "he": "ו'",
-        "en": "Fri"
+        "en": "Fri",
+        "ar": "جمعة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "מוטוריקה",
-          "en": "Fine motor"
+          "en": "Fine motor",
+          "ar": "مهارات حركية دقيقة"
         },
         "meta": {
           "he": "16:00 · לינא · 45 דק'",
-          "en": "16:00 · Lina · 45 min"
+          "en": "16:00 · Lina · 45 min",
+          "ar": "16:00 · لينا · 45 دقيقة"
         }
       },
       {
         "label": {
           "he": "כתיבה",
-          "en": "Writing"
+          "en": "Writing",
+          "ar": "كتابة"
         },
         "meta": {
           "he": "17:00 · לינא · 45 דק'",
-          "en": "17:00 · Lina · 45 min"
+          "en": "17:00 · Lina · 45 min",
+          "ar": "17:00 · لينا · 45 دقيقة"
         }
       },
       {
         "label": {
           "he": "ויסות חושי",
-          "en": "Sensory"
+          "en": "Sensory",
+          "ar": "تكامل حسّي"
         },
         "meta": {
           "he": "10:00 · עמר · 60 דק'",
-          "en": "10:00 · Amer · 60 min"
+          "en": "10:00 · Amer · 60 min",
+          "ar": "10:00 · عامر · 60 دقيقة"
         }
       },
       {
         "label": {
           "he": "הורים",
-          "en": "Parents"
+          "en": "Parents",
+          "ar": "إرشاد الأهل"
         },
         "meta": {
           "he": "19:00 · בזום · 30 דק'",
-          "en": "19:00 · on Zoom · 30 min"
+          "en": "19:00 · on Zoom · 30 min",
+          "ar": "19:00 · بالزوم · 30 دقيقة"
         }
       }
     ],
     "cta": {
       "he": "הרשמה למפגש",
-      "en": "Book a session"
+      "en": "Book a session",
+      "ar": "احجز جلسة"
     },
     "palette": {
       "bg": "#e8f0f6",
@@ -3116,75 +3299,90 @@
   "orthodontics": {
     "brand": {
       "he": "בסמה, יישור שיניים",
-      "en": "Basma Orthodontics"
+      "en": "Basma Orthodontics",
+      "ar": "بسمة لتقويم الأسنان"
     },
     "title": {
       "he": "הקשתיות של נור",
-      "en": "Nour's aligners"
+      "en": "Nour's aligners",
+      "ar": "تقويم نور الشفاف"
     },
     "subtitle": {
       "he": "קשתית 14 מתוך 24 · מחליפים כל שבועיים",
-      "en": "Aligner 14 of 24 · swap every two weeks"
+      "en": "Aligner 14 of 24 · swap every two weeks",
+      "ar": "قالب 14 من 24 · تبديل كل أسبوعين"
     },
     "tags": [
       {
         "he": "קשתיות שקופות",
-        "en": "Clear aligners"
+        "en": "Clear aligners",
+        "ar": "تقويم شفاف"
       },
       {
         "he": "גשר",
-        "en": "Braces"
+        "en": "Braces",
+        "ar": "تقويم ثابت"
       },
       {
         "he": "מייצב",
-        "en": "Retainer"
+        "en": "Retainer",
+        "ar": "مثبّت"
       }
     ],
     "items": [
       {
         "label": {
           "he": "קשתיות",
-          "en": "Aligners"
+          "en": "Aligners",
+          "ar": "القوالب"
         },
         "meta": {
           "he": "14 מתוך 24 · 58%",
-          "en": "14 of 24 · 58%"
+          "en": "14 of 24 · 58%",
+          "ar": "14 من 24 · 58%"
         }
       },
       {
         "label": {
           "he": "שעות ביום",
-          "en": "Hours a day"
+          "en": "Hours a day",
+          "ar": "ساعات باليوم"
         },
         "meta": {
           "he": "21 מתוך 22 · 95%",
-          "en": "21 of 22 · 95%"
+          "en": "21 of 22 · 95%",
+          "ar": "21 من 22 · 95%"
         }
       },
       {
         "label": {
           "he": "תשלומים",
-          "en": "Payments"
+          "en": "Payments",
+          "ar": "الدفعات"
         },
         "meta": {
           "he": "₪7,200 מתוך ₪12,000 · 60%",
-          "en": "₪7,200 of ₪12,000 · 60%"
+          "en": "₪7,200 of ₪12,000 · 60%",
+          "ar": "₪7,200 من ₪12,000 · 60%"
         }
       },
       {
         "label": {
           "he": "ביקורת הבאה",
-          "en": "Next check-up"
+          "en": "Next check-up",
+          "ar": "الفحص الجاي"
         },
         "meta": {
           "he": "א' 15:20 · ד\"ר זיאד",
-          "en": "Sun 15:20 · Dr. Ziad"
+          "en": "Sun 15:20 · Dr. Ziad",
+          "ar": "الأحد 15:20 · د. زياد"
         }
       }
     ],
     "cta": {
       "he": "תזכורת להחלפה",
-      "en": "Set a swap reminder"
+      "en": "Set a swap reminder",
+      "ar": "اضبط تذكير للتبديل"
     },
     "palette": {
       "bg": "#1a1d2e",
