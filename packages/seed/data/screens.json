@@ -18212,71 +18212,85 @@
     },
     "title": {
       "he": "הפנייה שלך בטיפול",
-      "en": "Your report is being handled"
+      "en": "Your report is being handled",
+      "ar": "بلاغك قيد المعالجة"
     },
     "subtitle": {
       "he": "פנייה 4471 · פנס רחוב כבוי",
-      "en": "Request 4471 · street light out"
+      "en": "Request 4471 · street light out",
+      "ar": "طلب 4471 · ضو شارع مطفي"
     },
     "tags": [
       {
         "he": "תאורה",
-        "en": "Lighting"
+        "en": "Lighting",
+        "ar": "إنارة"
       },
       {
         "he": "כבישים",
-        "en": "Roads"
+        "en": "Roads",
+        "ar": "شوارع"
       },
       {
         "he": "פסולת",
-        "en": "Waste"
+        "en": "Waste",
+        "ar": "نفايات"
       }
     ],
     "items": [
       {
         "label": {
           "he": "הדיווח התקבל",
-          "en": "Report received"
+          "en": "Report received",
+          "ar": "استلمنا البلاغ"
         },
         "meta": {
           "he": "א' 09:12 · 100%",
-          "en": "Sun 09:12 · 100%"
+          "en": "Sun 09:12 · 100%",
+          "ar": "الأحد 09:12 · 100%"
         }
       },
       {
         "label": {
           "he": "צוות שובץ",
-          "en": "Crew assigned"
+          "en": "Crew assigned",
+          "ar": "انعيّن طاقم"
         },
         "meta": {
           "he": "חשמלאי העירייה · 100%",
-          "en": "council electrician · 100%"
+          "en": "council electrician · 100%",
+          "ar": "كهربائي المجلس · 100%"
         }
       },
       {
         "label": {
           "he": "בתיקון",
-          "en": "Being fixed"
+          "en": "Being fixed",
+          "ar": "عم يتصلّح"
         },
         "meta": {
           "he": "רחוב אל מדארס 12 · 40%",
-          "en": "12 Al Madares St · 40%"
+          "en": "12 Al Madares St · 40%",
+          "ar": "شارع المدارس 12 · 40%"
         }
       },
       {
         "label": {
           "he": "צפי סיום",
-          "en": "Expected fix"
+          "en": "Expected fix",
+          "ar": "التصليح المتوقع"
         },
         "meta": {
           "he": "עד יום ד'",
-          "en": "by Wednesday"
+          "en": "by Wednesday",
+          "ar": "لحد الأربعاء"
         }
       }
     ],
     "cta": {
       "he": "דיווח על מפגע נוסף",
-      "en": "Report another issue"
+      "en": "Report another issue",
+      "ar": "بلّغ عن مشكلة تانية"
     },
     "palette": {
       "bg": "#eef0f4",
@@ -18294,75 +18308,90 @@
     },
     "title": {
       "he": "רישום לכיתה א'",
-      "en": "Register for first grade"
+      "en": "Register for first grade",
+      "ar": "تسجيل للصف الأول"
     },
     "subtitle": {
       "he": "שנת הלימודים 2027 · הרישום עד 31.1",
-      "en": "2027 school year · register by 31 Jan"
+      "en": "2027 school year · register by 31 Jan",
+      "ar": "السنة الدراسية 2027 · التسجيل لحد 31 كانون الثاني"
     },
     "tags": [
       {
         "he": "קרוב לבית",
-        "en": "Nearest school"
+        "en": "Nearest school",
+        "ar": "أقرب مدرسة"
       },
       {
         "he": "דו לשוני",
-        "en": "Bilingual"
+        "en": "Bilingual",
+        "ar": "ثنائية اللغة"
       },
       {
         "he": "ממלכתי",
-        "en": "State school"
+        "en": "State school",
+        "ar": "رسمية"
       },
       {
         "he": "מסלול מדעים",
-        "en": "Science track"
+        "en": "Science track",
+        "ar": "مسار علمي"
       }
     ],
     "items": [
       {
         "label": {
           "he": "הילד/ה",
-          "en": "Child"
+          "en": "Child",
+          "ar": "الطفلة"
         },
         "meta": {
           "he": "לין חטיב · נולדה 2021",
-          "en": "Leen Khatib · born 2021"
+          "en": "Leen Khatib · born 2021",
+          "ar": "لين خطيب · مواليد 2021"
         }
       },
       {
         "label": {
           "he": "בית הספר",
-          "en": "School"
+          "en": "School",
+          "ar": "المدرسة"
         },
         "meta": {
           "he": "בי\"ס אל זיתון · 600 מ' מהבית",
-          "en": "Al Zaytoun School · 600 m away"
+          "en": "Al Zaytoun School · 600 m away",
+          "ar": "مدرسة الزيتون · على بعد 600 م"
         }
       },
       {
         "label": {
           "he": "מסמכים",
-          "en": "Documents"
+          "en": "Documents",
+          "ar": "المستندات"
         },
         "meta": {
           "he": "ספח ת\"ז וחוזה שכירות",
-          "en": "ID annex and rental contract"
+          "en": "ID annex and rental contract",
+          "ar": "ملحق الهوية وعقد الإيجار"
         }
       },
       {
         "label": {
           "he": "אגרת רישום",
-          "en": "Fee"
+          "en": "Fee",
+          "ar": "الرسوم"
         },
         "meta": {
           "he": "חינם · ללא עלות",
-          "en": "free · no cost"
+          "en": "free · no cost",
+          "ar": "مجانًا · بدون تكلفة"
         }
       }
     ],
     "cta": {
       "he": "שליחת טופס הרישום",
-      "en": "Submit the registration"
+      "en": "Submit the registration",
+      "ar": "قدّم التسجيل"
     },
     "palette": {
       "bg": "#eef3f8",
@@ -18375,83 +18404,100 @@
   "public-clinics": {
     "brand": {
       "he": "טיפת חלב אל ג'בל",
-      "en": "Al Jabal Baby Clinic"
+      "en": "Al Jabal Baby Clinic",
+      "ar": "محطة الجبل للأم والطفل"
     },
     "title": {
       "he": "בדיקת גיל שנה ליוסף",
-      "en": "Yousef's one-year check"
+      "en": "Yousef's one-year check",
+      "ar": "فحص يوسف لعمر سنة"
     },
     "subtitle": {
       "he": "אחות וחיסון בביקור אחד",
-      "en": "Nurse and vaccine, one visit"
+      "en": "Nurse and vaccine, one visit",
+      "ar": "ممرضة وتطعيم، بزيارة وحدة"
     },
     "tags": [
       {
         "he": "08:30",
-        "en": "08:30"
+        "en": "08:30",
+        "ar": "08:30"
       },
       {
         "he": "09:15",
-        "en": "09:15"
+        "en": "09:15",
+        "ar": "09:15"
       },
       {
         "he": "10:00",
-        "en": "10:00"
+        "en": "10:00",
+        "ar": "10:00"
       },
       {
         "he": "11:30",
-        "en": "11:30"
+        "en": "11:30",
+        "ar": "11:30"
       },
       {
         "he": "13:00",
-        "en": "13:00"
+        "en": "13:00",
+        "ar": "13:00"
       }
     ],
     "items": [
       {
         "label": {
           "he": "בדיקת גדילה",
-          "en": "Growth check"
+          "en": "Growth check",
+          "ar": "فحص نمو"
         },
         "meta": {
           "he": "חינם · 30 דק'",
-          "en": "free · 30 min"
+          "en": "free · 30 min",
+          "ar": "مجانًا · 30 دقيقة"
         }
       },
       {
         "label": {
           "he": "חיסון גיל שנה",
-          "en": "One-year vaccine"
+          "en": "One-year vaccine",
+          "ar": "تطعيم السنة"
         },
         "meta": {
           "he": "חינם · עם האחות",
-          "en": "free · with the nurse"
+          "en": "free · with the nurse",
+          "ar": "مجانًا · مع الممرضة"
         }
       },
       {
         "label": {
           "he": "ייעוץ הנקה ותזונה",
-          "en": "Feeding advice"
+          "en": "Feeding advice",
+          "ar": "استشارة رضاعة وتغذية"
         },
         "meta": {
           "he": "חינם · 20 דק'",
-          "en": "free · 20 min"
+          "en": "free · 20 min",
+          "ar": "مجانًا · 20 دقيقة"
         }
       },
       {
         "label": {
           "he": "בדיקת שמיעה",
-          "en": "Hearing check"
+          "en": "Hearing check",
+          "ar": "فحص سمع"
         },
         "meta": {
           "he": "חינם · בתיאום",
-          "en": "free · by arrangement"
+          "en": "free · by arrangement",
+          "ar": "مجانًا · بالتنسيق"
         }
       }
     ],
     "cta": {
       "he": "קביעת תור ל-09:15",
-      "en": "Book 09:15"
+      "en": "Book 09:15",
+      "ar": "احجز الساعة 09:15"
     },
     "palette": {
       "bg": "#fdf0ee",
@@ -18464,79 +18510,95 @@
   "libraries": {
     "brand": {
       "he": "הספרייה העירונית אל מנארה",
-      "en": "Al Manara Public Library"
+      "en": "Al Manara Public Library",
+      "ar": "المكتبة العامة المنارة"
     },
     "title": {
       "he": "מה חדש על המדף",
-      "en": "New on the shelf"
+      "en": "New on the shelf",
+      "ar": "جديد عالرف"
     },
     "subtitle": {
       "he": "3 ספרים שמורים לך · איסוף עד ה'",
-      "en": "3 books on hold for you · collect by Thu"
+      "en": "3 books on hold for you · collect by Thu",
+      "ar": "3 كتب محجوزة إلك · استلمها لحد الخميس"
     },
     "tags": [
       {
         "he": "הכול",
-        "en": "All"
+        "en": "All",
+        "ar": "الكل"
       },
       {
         "he": "ילדים",
-        "en": "Kids"
+        "en": "Kids",
+        "ar": "أطفال"
       },
       {
         "he": "ערבית",
-        "en": "Arabic"
+        "en": "Arabic",
+        "ar": "عربي"
       },
       {
         "he": "עברית",
-        "en": "Hebrew"
+        "en": "Hebrew",
+        "ar": "عبري"
       }
     ],
     "items": [
       {
         "label": {
           "he": "שעת סיפור לקטנטנים",
-          "en": "Story time for little ones"
+          "en": "Story time for little ones",
+          "ar": "ساعة قصة للصغار"
         },
         "meta": {
           "he": "ב' 16:30 · חדר הילדים",
-          "en": "Mon 16:30 · children's room"
+          "en": "Mon 16:30 · children's room",
+          "ar": "الاثنين 16:30 · غرفة الأطفال"
         }
       },
       {
         "label": {
           "he": "מועדון קריאה בערבית",
-          "en": "Arabic reading circle"
+          "en": "Arabic reading circle",
+          "ar": "حلقة قراءة بالعربي"
         },
         "meta": {
           "he": "ג' 18:00 · קומה 2",
-          "en": "Tue 18:00 · 2nd floor"
+          "en": "Tue 18:00 · 2nd floor",
+          "ar": "الثلاثاء 18:00 · الطابق 2"
         }
       },
       {
         "label": {
           "he": "עזרה בשיעורי בית",
-          "en": "Homework help"
+          "en": "Homework help",
+          "ar": "مساعدة بالوظائف"
         },
         "meta": {
           "he": "ד' 15:00 · חינם",
-          "en": "Wed 15:00 · free"
+          "en": "Wed 15:00 · free",
+          "ar": "الأربعاء 15:00 · مجانًا"
         }
       },
       {
         "label": {
           "he": "סדנת כתיבה לנוער",
-          "en": "Teen writing workshop"
+          "en": "Teen writing workshop",
+          "ar": "ورشة كتابة للشباب"
         },
         "meta": {
           "he": "ה' 17:00 · 8 מקומות",
-          "en": "Thu 17:00 · 8 places"
+          "en": "Thu 17:00 · 8 places",
+          "ar": "الخميس 17:00 · 8 أماكن"
         }
       }
     ],
     "cta": {
       "he": "להזמין ספר",
-      "en": "Place a hold"
+      "en": "Place a hold",
+      "ar": "احجز كتاب"
     },
     "palette": {
       "bg": "#f3ead8",
@@ -18549,75 +18611,90 @@
   "post-offices": {
     "brand": {
       "he": "דואר אל בלד",
-      "en": "Al Balad Post"
+      "en": "Al Balad Post",
+      "ar": "بريد البلد"
     },
     "title": {
       "he": "החבילה שלך בדרך",
-      "en": "Your parcel is on its way"
+      "en": "Your parcel is on its way",
+      "ar": "الطرد تبعك بالطريق"
     },
     "subtitle": {
       "he": "משלוח RR 4821 · מאיסטנבול",
-      "en": "Parcel RR 4821 · from Istanbul"
+      "en": "Parcel RR 4821 · from Istanbul",
+      "ar": "طرد RR 4821 · من إسطنبول"
     },
     "tags": [
       {
         "he": "חבילות",
-        "en": "Parcels"
+        "en": "Parcels",
+        "ar": "طرود"
       },
       {
         "he": "מכתבים",
-        "en": "Letters"
+        "en": "Letters",
+        "ar": "رسائل"
       },
       {
         "he": "לוקרים",
-        "en": "Lockers"
+        "en": "Lockers",
+        "ar": "خزائن"
       }
     ],
     "items": [
       {
         "label": {
           "he": "נשלח",
-          "en": "Sent"
+          "en": "Sent",
+          "ar": "انبعت"
         },
         "meta": {
           "he": "א' · 100%",
-          "en": "Sun · 100%"
+          "en": "Sun · 100%",
+          "ar": "الأحد · 100%"
         }
       },
       {
         "label": {
           "he": "עבר מכס",
-          "en": "Cleared customs"
+          "en": "Cleared customs",
+          "ar": "خلص الجمارك"
         },
         "meta": {
           "he": "ג' · 100%",
-          "en": "Tue · 100%"
+          "en": "Tue · 100%",
+          "ar": "الثلاثاء · 100%"
         }
       },
       {
         "label": {
           "he": "במרכז המיון",
-          "en": "At the sorting centre"
+          "en": "At the sorting centre",
+          "ar": "بمركز الفرز"
         },
         "meta": {
           "he": "היום 07:40 · 70%",
-          "en": "today 07:40 · 70%"
+          "en": "today 07:40 · 70%",
+          "ar": "اليوم 07:40 · 70%"
         }
       },
       {
         "label": {
           "he": "איסוף",
-          "en": "Pickup"
+          "en": "Pickup",
+          "ar": "الاستلام"
         },
         "meta": {
           "he": "לוקר 14 · קוד בהודעה",
-          "en": "locker 14 · code by message"
+          "en": "locker 14 · code by message",
+          "ar": "خزانة 14 · الكود برسالة"
         }
       }
     ],
     "cta": {
       "he": "להעביר ללוקר ליד הבית",
-      "en": "Send it to a locker near home"
+      "en": "Send it to a locker near home",
+      "ar": "ابعته لخزانة قريبة من البيت"
     },
     "palette": {
       "bg": "#fff4d6",
@@ -18630,79 +18707,95 @@
   "buses": {
     "brand": {
       "he": "קווי הגליל",
-      "en": "Galilee Lines"
+      "en": "Galilee Lines",
+      "ar": "خطوط الجليل"
     },
     "title": {
       "he": "קו 12 למרכז העיר",
-      "en": "Line 12 to the town centre"
+      "en": "Line 12 to the town centre",
+      "ar": "خط 12 لمركز البلد"
     },
     "subtitle": {
       "he": "תחנת אל מדרסה · כל 15 דקות",
-      "en": "Al Madrasa stop · every 15 min"
+      "en": "Al Madrasa stop · every 15 min",
+      "ar": "محطة المدرسة · كل 15 دقيقة"
     },
     "tags": [
       {
         "he": "עכשיו",
-        "en": "Now"
+        "en": "Now",
+        "ar": "هلّق"
       },
       {
         "he": "בוקר",
-        "en": "Morning"
+        "en": "Morning",
+        "ar": "الصبح"
       },
       {
         "he": "צהריים",
-        "en": "Midday"
+        "en": "Midday",
+        "ar": "الظهر"
       },
       {
         "he": "ערב",
-        "en": "Evening"
+        "en": "Evening",
+        "ar": "المسا"
       }
     ],
     "items": [
       {
         "label": {
           "he": "קו 12",
-          "en": "Line 12"
+          "en": "Line 12",
+          "ar": "خط 12"
         },
         "meta": {
           "he": "07:05 · מגיע בעוד 3 דק'",
-          "en": "07:05 · arrives in 3 min"
+          "en": "07:05 · arrives in 3 min",
+          "ar": "07:05 · بيوصل بعد 3 دقائق"
         }
       },
       {
         "label": {
           "he": "קו 12",
-          "en": "Line 12"
+          "en": "Line 12",
+          "ar": "خط 12"
         },
         "meta": {
           "he": "07:20 · מקומות ישיבה פנויים",
-          "en": "07:20 · seats free"
+          "en": "07:20 · seats free",
+          "ar": "07:20 · في مقاعد فاضية"
         }
       },
       {
         "label": {
           "he": "קו 40 לחיפה",
-          "en": "Line 40 to Haifa"
+          "en": "Line 40 to Haifa",
+          "ar": "خط 40 لحيفا"
         },
         "meta": {
           "he": "07:35 · רציף 2",
-          "en": "07:35 · platform 2"
+          "en": "07:35 · platform 2",
+          "ar": "07:35 · رصيف 2"
         }
       },
       {
         "label": {
           "he": "קו 12",
-          "en": "Line 12"
+          "en": "Line 12",
+          "ar": "خط 12"
         },
         "meta": {
           "he": "07:50 · נגיש לכיסא גלגלים",
-          "en": "07:50 · wheelchair accessible"
+          "en": "07:50 · wheelchair accessible",
+          "ar": "07:50 · ملائم للكراسي المتحركة"
         }
       }
     ],
     "cta": {
       "he": "טעינת כרטיס ₪50",
-      "en": "Top up ₪50"
+      "en": "Top up ₪50",
+      "ar": "اشحن ₪50"
     },
     "palette": {
       "bg": "#123c3a",
@@ -18720,71 +18813,85 @@
     },
     "title": {
       "he": "תו החניה שלך",
-      "en": "Your parking permit"
+      "en": "Your parking permit",
+      "ar": "تصريح الموقف تبعك"
     },
     "subtitle": {
       "he": "אזור 3 · בתוקף עד דצמבר 2026",
-      "en": "Zone 3 · valid to December 2026"
+      "en": "Zone 3 · valid to December 2026",
+      "ar": "منطقة 3 · ساري لحد كانون الأول 2026"
     },
     "tags": [
       {
         "he": "חניה באזור",
-        "en": "Zone parking"
+        "en": "Zone parking",
+        "ar": "موقف المنطقة"
       },
       {
         "he": "תו אורח",
-        "en": "Guest pass"
+        "en": "Guest pass",
+        "ar": "تصريح ضيف"
       },
       {
         "he": "תזכורת",
-        "en": "Reminders"
+        "en": "Reminders",
+        "ar": "تذكيرات"
       }
     ],
     "items": [
       {
         "label": {
           "he": "תושב",
-          "en": "Resident"
+          "en": "Resident",
+          "ar": "الساكن"
         },
         "meta": {
           "he": "מוחמד עאסי",
-          "en": "Mohammad Assi"
+          "en": "Mohammad Assi",
+          "ar": "محمد عاصي"
         }
       },
       {
         "label": {
           "he": "רכב",
-          "en": "Car"
+          "en": "Car",
+          "ar": "السيارة"
         },
         "meta": {
           "he": "54-812-33 · סקודה",
-          "en": "54-812-33 · Skoda"
+          "en": "54-812-33 · Skoda",
+          "ar": "54-812-33 · سكودا"
         }
       },
       {
         "label": {
           "he": "אזור",
-          "en": "Zone"
+          "en": "Zone",
+          "ar": "المنطقة"
         },
         "meta": {
           "he": "3 · שכונת הזיתים",
-          "en": "3 · Olive quarter"
+          "en": "3 · Olive quarter",
+          "ar": "3 · حي الزيتون"
         }
       },
       {
         "label": {
           "he": "בתוקף עד",
-          "en": "Valid to"
+          "en": "Valid to",
+          "ar": "ساري لحد"
         },
         "meta": {
           "he": "31.12.2026",
-          "en": "31.12.2026"
+          "en": "31.12.2026",
+          "ar": "31.12.2026"
         }
       }
     ],
     "cta": {
       "he": "הנפקת תו אורח",
-      "en": "Issue a guest pass"
+      "en": "Issue a guest pass",
+      "ar": "أصدر تصريح ضيف"
     },
     "palette": {
       "bg": "#e9edf3",
@@ -18802,75 +18909,90 @@
     },
     "title": {
       "he": "בקשה להיתר תוספת בנייה",
-      "en": "Permit for a home extension"
+      "en": "Permit for a home extension",
+      "ar": "رخصة لتوسيع البيت"
     },
     "subtitle": {
       "he": "קומה שנייה · 64 מ\"ר · גוש 18",
-      "en": "Second floor · 64 m² · block 18"
+      "en": "Second floor · 64 m² · block 18",
+      "ar": "طابق تاني · 64 م² · قسيمة 18"
     },
     "tags": [
       {
         "he": "תוספת קומה",
-        "en": "Extra floor"
+        "en": "Extra floor",
+        "ar": "طابق إضافي"
       },
       {
         "he": "מרפסת",
-        "en": "Balcony"
+        "en": "Balcony",
+        "ar": "برندة"
       },
       {
         "he": "פרגולה",
-        "en": "Pergola"
+        "en": "Pergola",
+        "ar": "برجولا"
       },
       {
         "he": "חניה",
-        "en": "Parking"
+        "en": "Parking",
+        "ar": "موقف"
       }
     ],
     "items": [
       {
         "label": {
           "he": "סוג הבקשה",
-          "en": "Request"
+          "en": "Request",
+          "ar": "الطلب"
         },
         "meta": {
           "he": "תוספת קומה למגורים",
-          "en": "residential extra floor"
+          "en": "residential extra floor",
+          "ar": "طابق إضافي سكني"
         }
       },
       {
         "label": {
           "he": "תוכניות",
-          "en": "Plans"
+          "en": "Plans",
+          "ar": "الخرائط"
         },
         "meta": {
           "he": "הועלו ע\"י אדריכלית רנא",
-          "en": "uploaded by architect Rana"
+          "en": "uploaded by architect Rana",
+          "ar": "رفعتها المهندسة رنا"
         }
       },
       {
         "label": {
           "he": "שכנים",
-          "en": "Neighbours"
+          "en": "Neighbours",
+          "ar": "تواقيع الجيران"
         },
         "meta": {
           "he": "2 מתוך 3",
-          "en": "2 of 3"
+          "en": "2 of 3",
+          "ar": "2 من 3"
         }
       },
       {
         "label": {
           "he": "אגרה משוערת",
-          "en": "Estimated fee"
+          "en": "Estimated fee",
+          "ar": "الرسوم التقريبية"
         },
         "meta": {
           "he": "₪4,860 · לפי 64 מ\"ר",
-          "en": "₪4,860 · for 64 m²"
+          "en": "₪4,860 · for 64 m²",
+          "ar": "₪4,860 · لـ64 م²"
         }
       }
     ],
     "cta": {
       "he": "הגשת הבקשה לוועדה",
-      "en": "Submit to the committee"
+      "en": "Submit to the committee",
+      "ar": "قدّم للجنة"
     },
     "palette": {
       "bg": "#f1ece2",
@@ -18883,75 +19005,90 @@
   "water": {
     "brand": {
       "he": "תאגיד המים מעיינות הגליל",
-      "en": "Galilee Springs Water"
+      "en": "Galilee Springs Water",
+      "ar": "مياه ينابيع الجليل"
     },
     "title": {
       "he": "הצריכה שלך החודש",
-      "en": "Your use this month"
+      "en": "Your use this month",
+      "ar": "استهلاكك هالشهر"
     },
     "subtitle": {
       "he": "מונה 77012 · משפחה של 5",
-      "en": "Meter 77012 · family of 5"
+      "en": "Meter 77012 · family of 5",
+      "ar": "عداد 77012 · عيلة من 5"
     },
     "tags": [
       {
         "he": "החודש",
-        "en": "This month"
+        "en": "This month",
+        "ar": "هالشهر"
       },
       {
         "he": "שנה",
-        "en": "Year"
+        "en": "Year",
+        "ar": "السنة"
       },
       {
         "he": "חשבונות",
-        "en": "Bills"
+        "en": "Bills",
+        "ar": "فواتير"
       }
     ],
     "items": [
       {
         "label": {
           "he": "צריכה עד היום",
-          "en": "Used so far"
+          "en": "Used so far",
+          "ar": "الاستهلاك لهلّق"
         },
         "meta": {
           "he": "11.2 קוב · 62%",
-          "en": "11.2 m³ · 62%"
+          "en": "11.2 m³ · 62%",
+          "ar": "11.2 م³ · 62%"
         }
       },
       {
         "label": {
           "he": "בתעריף המוזל",
-          "en": "At the reduced rate"
+          "en": "At the reduced rate",
+          "ar": "بالتعرفة المخفّضة"
         },
         "meta": {
           "he": "עד 14 קוב · 80%",
-          "en": "up to 14 m³ · 80%"
+          "en": "up to 14 m³ · 80%",
+          "ar": "لحد 14 م³ · 80%"
         }
       },
       {
         "label": {
           "he": "נזילה",
-          "en": "Leak check"
+          "en": "Leak check",
+          "ar": "فحص تسريب"
         },
         "meta": {
           "he": "לא זוהתה נזילה",
-          "en": "no leak found"
+          "en": "no leak found",
+          "ar": "ما في تسريب"
         }
       },
       {
         "label": {
           "he": "חשבון צפוי",
-          "en": "Expected bill"
+          "en": "Expected bill",
+          "ar": "الفاتورة المتوقعة"
         },
         "meta": {
           "he": "₪138 · ב-1 לחודש",
-          "en": "₪138 · on the 1st"
+          "en": "₪138 · on the 1st",
+          "ar": "₪138 · بأول الشهر"
         }
       }
     ],
     "cta": {
       "he": "תשלום בהוראת קבע",
-      "en": "Pay by direct debit"
+      "en": "Pay by direct debit",
+      "ar": "ادفع بأمر دفع ثابت"
     },
     "palette": {
       "bg": "#e6f2f6",
@@ -18964,79 +19101,95 @@
   "emergency": {
     "brand": {
       "he": "מוקד 106 אל נור",
-      "en": "Al Noor Hotline 106"
+      "en": "Al Noor Hotline 106",
+      "ar": "مركز 106 النور"
     },
     "title": {
       "he": "עזרה קרובה אליך",
-      "en": "Help near you"
+      "en": "Help near you",
+      "ar": "مساعدة قريبة منك"
     },
     "subtitle": {
       "he": "פתוח עכשיו · לפי המיקום שלך",
-      "en": "Open now · by your location"
+      "en": "Open now · by your location",
+      "ar": "مفتوح هلّق · حسب موقعك"
     },
     "tags": [
       {
         "he": "הכול",
-        "en": "All"
+        "en": "All",
+        "ar": "الكل"
       },
       {
         "he": "רפואה",
-        "en": "Medical"
+        "en": "Medical",
+        "ar": "طبي"
       },
       {
         "he": "מקלטים",
-        "en": "Shelters"
+        "en": "Shelters",
+        "ar": "ملاجئ"
       },
       {
         "he": "מוקדים",
-        "en": "Hotlines"
+        "en": "Hotlines",
+        "ar": "خطوط ساخنة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "בית מרקחת תורן",
-          "en": "On-call pharmacy"
+          "en": "On-call pharmacy",
+          "ar": "صيدلية مناوبة"
         },
         "meta": {
           "he": "פתוח עד 24:00 · 900 מ'",
-          "en": "open to midnight · 900 m"
+          "en": "open to midnight · 900 m",
+          "ar": "مفتوحة لنص الليل · 900 م"
         }
       },
       {
         "label": {
           "he": "מוקד רפואה דחופה",
-          "en": "Urgent care centre"
+          "en": "Urgent care centre",
+          "ar": "مركز طوارئ"
         },
         "meta": {
           "he": "24/7 · 2.1 ק\"מ",
-          "en": "24/7 · 2.1 km"
+          "en": "24/7 · 2.1 km",
+          "ar": "24/7 · 2.1 كم"
         }
       },
       {
         "label": {
           "he": "מקלט ציבורי 7",
-          "en": "Public shelter 7"
+          "en": "Public shelter 7",
+          "ar": "ملجأ عام 7"
         },
         "meta": {
           "he": "פתוח · 150 מ'",
-          "en": "open · 150 m"
+          "en": "open · 150 m",
+          "ar": "مفتوح · 150 م"
         }
       },
       {
         "label": {
           "he": "מוקד העירייה",
-          "en": "Council hotline"
+          "en": "Council hotline",
+          "ar": "مركز المجلس"
         },
         "meta": {
           "he": "106 · ערבית ועברית",
-          "en": "106 · Arabic and Hebrew"
+          "en": "106 · Arabic and Hebrew",
+          "ar": "106 · عربي وعبري"
         }
       }
     ],
     "cta": {
       "he": "ניווט למקום הקרוב",
-      "en": "Navigate to the nearest"
+      "en": "Navigate to the nearest",
+      "ar": "خذني لأقرب واحد"
     },
     "palette": {
       "bg": "#1d1f24",
