@@ -79,4 +79,30 @@ export class BusinessesRepository {
       },
     });
   }
+
+  async countsByKind(placePath: string): Promise<Record<string, number>> {
+    const rows = await this.prisma.$queryRaw<{ slug: string; n: number }[]>`
+      WITH RECURSIVE tree AS (
+        SELECT id AS root, id FROM "Kind" WHERE status = 'active'
+        UNION
+        SELECT t.root, k.id FROM "Kind" k JOIN tree t ON k."parentKindId" = t.id
+        WHERE k.status = 'active'
+      )
+      SELECT r.slug, COUNT(DISTINCT b.id)::int AS n
+      FROM tree t
+      JOIN "Kind" r ON r.id = t.root
+      JOIN "BusinessKind" bk ON bk."kindId" = t.id
+      JOIN "Business" b ON b.id = bk."businessId"
+      JOIN "Kind" pk ON pk.id = b."primaryKindId"
+      JOIN "Place" p ON p.id = b."placeId"
+      WHERE b.status = 'published' AND pk.status = 'active' AND p.path LIKE ${`${placePath}%`}
+      GROUP BY r.slug`;
+    const active = await this.prisma.kind.findMany({
+      where: { status: "active" },
+      select: { slug: true },
+    });
+    const counts: Record<string, number> = Object.fromEntries(active.map((k) => [k.slug, 0]));
+    for (const row of rows) counts[row.slug] = row.n;
+    return counts;
+  }
 }

@@ -104,3 +104,22 @@ describe("GET /places/:placeSlug/businesses/:slug", () => {
     expect((await get("/places/sakhnin/businesses/draft-barber")).status).toBe(404);
   });
 });
+
+describe("GET /places/:placeSlug/kind-counts", () => {
+  it("counts published businesses per active kind, sub-kinds included", async () => {
+    const res = await get("/places/sakhnin/kind-counts");
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({ barbershops: 2, "kids-haircuts": 1 });
+  });
+  it("counts the whole subtree of a region", async () => {
+    const res = await get("/places/northern-district/kind-counts");
+    expect(res.body).toEqual({ barbershops: 3, "kids-haircuts": 1 });
+  });
+  it("lists every active kind with zero where there is nothing", async () => {
+    const res = await get("/places/eilat/kind-counts");
+    expect(res.body).toEqual({ barbershops: 0, "kids-haircuts": 0 });
+  });
+  it("404s for an unknown place", async () => {
+    expect((await get("/places/nowhere/kind-counts")).status).toBe(404);
+  });
+});

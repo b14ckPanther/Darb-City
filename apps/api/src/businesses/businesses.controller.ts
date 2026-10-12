@@ -58,6 +58,11 @@ export class BusinessesController {
           };
         return { status: 200, body: toBusinessDetail(row, params.placeSlug, this.clock()) };
       },
+      kindCounts: async ({ params }) => {
+        const place = await this.places.bySlug(params.placeSlug);
+        if (!place) return { status: 404, body: { message: `No place "${params.placeSlug}"` } };
+        return { status: 200, body: await this.businesses.countsByKind(place.path) };
+      },
     });
   }
 }

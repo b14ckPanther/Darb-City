@@ -4,6 +4,7 @@ import {
   BadRequestSchema,
   BusinessDetailSchema,
   BusinessPageSchema,
+  KindCountsSchema,
   NotFoundSchema,
   PlaceDetailSchema,
   PlaceSchema,
@@ -62,6 +63,12 @@ export const contract = c.router({
       path: "/places/:placeSlug/businesses/:slug",
       pathParams: z.object({ placeSlug: SlugSchema, slug: SlugSchema }),
       responses: { 200: BusinessDetailSchema, 404: NotFoundSchema },
+    },
+    kindCounts: {
+      method: "GET",
+      path: "/places/:placeSlug/kind-counts",
+      pathParams: z.object({ placeSlug: SlugSchema }),
+      responses: { 200: KindCountsSchema, 404: NotFoundSchema },
     },
   },
 });

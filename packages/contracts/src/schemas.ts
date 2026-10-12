@@ -112,3 +112,7 @@ export const BusinessPageSchema = z.object({
 export type BusinessPageDto = z.infer<typeof BusinessPageSchema>;
 
 export const BadRequestSchema = z.object({ message: z.string() });
+
+/** Published businesses per active kind slug in a place's subtree. Every active kind is present. */
+export const KindCountsSchema = z.record(z.string(), z.number().int().nonnegative());
+export type KindCountsDto = z.infer<typeof KindCountsSchema>;
