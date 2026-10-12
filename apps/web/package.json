@@ -10,7 +10,7 @@
     "start": "next start --port 3000",
     "typecheck": "next typegen && tsc --noEmit",
     "test": "vitest run",
-    "e2e": "playwright test",
+    "e2e": "rm -rf .next/cache/fetch-cache && playwright test",
     "budget": "node scripts/check-budget.mjs"
   },
   "dependencies": {
