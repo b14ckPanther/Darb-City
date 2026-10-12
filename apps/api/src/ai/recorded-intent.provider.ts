@@ -9,8 +9,11 @@ export interface RecordedCase {
   recorded: RawIntent;
   /** "authored" or the model id that produced `recorded`. */
   source: string;
-  /** Spec §9.3: the kind and place that must be in the top 3. */
-  expect: { kind: string | null; place: string | null; blocked?: boolean };
+  /**
+   * Spec §9.3: the kind and place that must be in the top 3. `modelOnly` cases are ones lane 1
+   * cannot answer: the quality run checks they fail with the model off and pass with it on.
+   */
+  expect: { kind: string | null; place: string | null; blocked?: boolean; modelOnly?: boolean };
   /** A mocked "Near me" point, for near-me cases. */
   near?: { lat: number; lng: number };
 }
