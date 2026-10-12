@@ -288,6 +288,9 @@ importers:
       '@darb/i18n':
         specifier: workspace:*
         version: link:../../packages/i18n
+      '@darb/search-text':
+        specifier: workspace:*
+        version: link:../../packages/search-text
       '@darb/stage':
         specifier: workspace:*
         version: link:../../packages/stage
@@ -319,6 +322,9 @@ importers:
       '@axe-core/playwright':
         specifier: 'catalog:'
         version: 4.13.0(playwright-core@1.63.0)
+      '@darb/seed':
+        specifier: workspace:*
+        version: link:../../packages/seed
       '@playwright/test':
         specifier: 'catalog:'
         version: 1.63.0

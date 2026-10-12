@@ -20,6 +20,7 @@
     "@darb/contracts": "workspace:*",
     "@darb/core": "workspace:*",
     "@darb/i18n": "workspace:*",
+    "@darb/search-text": "workspace:*",
     "@darb/stage": "workspace:*",
     "@darb/tokens": "workspace:*",
     "@ts-rest/core": "catalog:",
@@ -32,6 +33,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "catalog:",
+    "@darb/seed": "workspace:*",
     "@playwright/test": "catalog:",
     "@protomaps/basemaps": "catalog:",
     "@testing-library/dom": "catalog:",

@@ -7,6 +7,10 @@ import {
   type NearestPlaceDto,
   type PlaceDetailDto,
   type PlaceDto,
+  type ResultsRequestDto,
+  type SearchRequestDto,
+  type SearchResponseDto,
+  type SuggestionDto,
   type TaxonomyDto,
 } from "@darb/contracts";
 import { isSlug } from "@darb/core";
@@ -219,4 +223,60 @@ export async function getDensity(): Promise<DensityDto> {
   );
   if (res.status === 200) return res.body;
   throw new ApiUnavailableError(res);
+}
+
+/** Decision 5: the API rate-limits the visitor's IP only when this server vouches for it. */
+const proxyHeaders = (ip: string) => ({
+  "x-darb-proxy-key": process.env.SEARCH_PROXY_KEY ?? "",
+  "x-darb-client-ip": ip,
+});
+
+export type SearchCall =
+  { status: 200; body: SearchResponseDto } | { status: 429; retryAfter: number } | { status: 400 };
+
+export async function postSearch(body: SearchRequestDto, ip: string): Promise<SearchCall> {
+  const res = await call(() =>
+    client().search.search({
+      body,
+      extraHeaders: proxyHeaders(ip),
+      fetchOptions: { cache: "no-store" },
+    }),
+  );
+  if (res.status === 200) return { status: 200, body: res.body };
+  if (res.status === 429) return { status: 429, retryAfter: res.body.retryAfter };
+  return { status: 400 };
+}
+
+export async function postResults(body: ResultsRequestDto, ip: string): Promise<SearchCall> {
+  const res = await call(() =>
+    client().search.results({
+      body,
+      extraHeaders: proxyHeaders(ip),
+      fetchOptions: { cache: "no-store" },
+    }),
+  );
+  if (res.status === 200) return { status: 200, body: res.body };
+  if (res.status === 429) return { status: 429, retryAfter: res.body.retryAfter };
+  return { status: 400 };
+}
+
+export async function getSuggestions(q: string, place?: string): Promise<SuggestionDto[]> {
+  const res = await call(() =>
+    client().search.suggest({
+      query: { q, limit: 5, ...(place && isSlug(place) ? { place } : {}) },
+      fetchOptions: { next: { revalidate: 300, tags: [tags.businesses] } },
+    }),
+  );
+  return res.status === 200 ? res.body : [];
+}
+
+/** The API rate-limits clicks per visitor too, so this server vouches for the visitor's IP. */
+export async function postClick(queryId: string, key: string, ip: string): Promise<void> {
+  await call(() =>
+    client().search.click({
+      body: { queryId, key },
+      extraHeaders: proxyHeaders(ip),
+      fetchOptions: { cache: "no-store" },
+    }),
+  );
 }

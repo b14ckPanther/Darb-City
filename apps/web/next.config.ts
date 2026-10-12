@@ -1,14 +1,19 @@
 import path from "node:path";
 import type { NextConfig } from "next";
+import { writeSearchIndex } from "./scripts/build-search-index.mjs";
 
 const workspaceRoot = path.resolve(process.cwd(), "../..");
+/** Built from @darb/seed on every config load (dev, build, start): same seed, same hashed file. */
+const searchIndex = writeSearchIndex(path.resolve(process.cwd(), "public"));
 
 const config: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   turbopack: { root: workspaceRoot },
   outputFileTracingRoot: workspaceRoot,
-  // /map/vendor paths carry the MapLibre version, so they never change; glyphs change rarely.
+  env: { NEXT_PUBLIC_SEARCH_INDEX_URL: searchIndex.url },
+  // /map/vendor paths carry the MapLibre version and /search-index files their content hash, so
+  // they never change; glyphs change rarely.
   headers: async () => [
     {
       source: "/map/vendor/:path*",
@@ -17,6 +22,10 @@ const config: NextConfig = {
     {
       source: "/map/glyphs/:path*",
       headers: [{ key: "Cache-Control", value: "public, max-age=86400" }],
+    },
+    {
+      source: "/search-index/:path*",
+      headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
     },
   ],
 };
