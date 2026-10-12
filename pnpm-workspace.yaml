@@ -2,6 +2,12 @@ packages:
   - apps/*
   - packages/*
 
+allowBuilds:
+  "@prisma/engines": true
+  "@swc/core": true
+  esbuild: true
+  prisma: true
+
 catalog:
   "@eslint/js": 10.0.1
   "@nestjs/common": 11.2.7
@@ -31,8 +37,17 @@ catalog:
   vitest: 5.0.3
   zod: 3.25.76
 
-onlyBuiltDependencies:
-  - "@prisma/engines"
-  - "@swc/core"
-  - esbuild
-  - prisma
+minimumReleaseAgeExclude:
+  - "@swc/core-darwin-arm64@1.16.18"
+  - "@swc/core-darwin-x64@1.16.18"
+  - "@swc/core-linux-arm-gnueabihf@1.16.18"
+  - "@swc/core-linux-arm64-gnu@1.16.18"
+  - "@swc/core-linux-arm64-musl@1.16.18"
+  - "@swc/core-linux-ppc64-gnu@1.16.18"
+  - "@swc/core-linux-s390x-gnu@1.16.18"
+  - "@swc/core-linux-x64-gnu@1.16.18"
+  - "@swc/core-linux-x64-musl@1.16.18"
+  - "@swc/core-win32-arm64-msvc@1.16.18"
+  - "@swc/core-win32-ia32-msvc@1.16.18"
+  - "@swc/core-win32-x64-msvc@1.16.18"
+  - "@swc/core@1.16.18"
