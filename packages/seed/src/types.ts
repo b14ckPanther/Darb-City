@@ -60,3 +60,6 @@ export interface SeedBusiness {
   experience: SeedScreen;
   tier: Tier;
 }
+
+/** Stored shape in businesses.json: the screen is attached by loadBusinesses(). */
+export type SeedBusinessRecord = Omit<SeedBusiness, "experience">;

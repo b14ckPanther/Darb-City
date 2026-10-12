@@ -1,7 +1,15 @@
 import { hasText, isSlug, LOCALES, TEMPLATES, type Localized } from "@darb/core";
 import { Ajv } from "ajv";
 import { describe, expect, it } from "vitest";
-import { loadKinds, loadPlaces, loadScreens, loadSectors, SCREEN_SCHEMA } from "./index.js";
+import {
+  loadBrands,
+  loadBusinesses,
+  loadKinds,
+  loadPlaces,
+  loadScreens,
+  loadSectors,
+  SCREEN_SCHEMA,
+} from "./index.js";
 
 /** Halal gate: none of these may appear in any kind name or synonym. */
 const BLOCKED = [
@@ -128,7 +136,19 @@ describe("places", () => {
   const places = loadPlaces();
   const bySlug = new Map(places.map((p) => [p.slug, p]));
   const byCbs = new Map(places.filter((p) => p.cbsCode).map((p) => [p.cbsCode, p]));
-  const FLAGSHIPS = ["4000", "7600", "1292", "7500", "6800", "9500", "8200", "9600", "1063", "522", "8900"];
+  const FLAGSHIPS = [
+    "4000",
+    "7600",
+    "1292",
+    "7500",
+    "6800",
+    "9500",
+    "8200",
+    "9600",
+    "1063",
+    "522",
+    "8900",
+  ];
 
   it("have unique slugs and parents come first", () => {
     expect(bySlug.size).toBe(places.length);
@@ -165,9 +185,46 @@ describe("places", () => {
       expect(p.name.ar, `${p.slug} ar`).not.toMatch(/[A-Za-z\u060C]/);
       if (p.cbsCode) expect(p.type, p.slug).not.toBe("neighbourhood");
     }
-    for (const code of ["4000", "7600", "7500", "8900", "6800", "9500", "8200", "9600", "1063", "7300"])
+    for (const code of [
+      "4000",
+      "7600",
+      "7500",
+      "8900",
+      "6800",
+      "9500",
+      "8200",
+      "9600",
+      "1063",
+      "7300",
+    ])
       expect(byCbs.get(code)?.type, code).toBe("city");
     for (const code of ["1292", "522"]) expect(byCbs.get(code)?.type, code).toBe("town");
     expect(places.some((p) => (p.name.he ?? "").startsWith("מחנה"))).toBe(false);
+  });
+});
+
+describe("showroom businesses", () => {
+  const businesses = loadBusinesses();
+  const places = new Map(loadPlaces().map((p) => [p.slug, p]));
+  const kindSlugs = new Set(loadKinds().map((k) => k.slug));
+  const brandSlugs = new Set(loadBrands().map((b) => b.slug));
+  const validate = new Ajv({ allErrors: true }).compile(SCREEN_SCHEMA);
+
+  it("are examples in live places, with known kinds and brands", () => {
+    for (const b of businesses) {
+      expect(b.tier).toBe("example");
+      expect(places.get(b.place)?.status, `${b.place}/${b.slug}`).toBe("live");
+      for (const k of b.kinds) expect(kindSlugs.has(k), k).toBe(true);
+      if (b.brand) expect(brandSlugs.has(b.brand), b.brand).toBe(true);
+      expect(validate(b.experience), `${b.place}/${b.slug}`).toBe(true);
+    }
+  });
+  it("have slugs unique within their place", () => {
+    const keys = businesses.map((b) => `${b.place}/${b.slug}`);
+    expect(new Set(keys).size).toBe(keys.length);
+  });
+  it("give every flagship one business per kind", () => {
+    const sakhnin = businesses.filter((b) => b.place === "sakhnin");
+    expect(new Set(sakhnin.map((b) => b.primaryKind)).size).toBe(kindSlugs.size);
   });
 });

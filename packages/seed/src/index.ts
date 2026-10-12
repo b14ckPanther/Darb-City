@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs";
 import type {
   SeedBrand,
   SeedBusiness,
+  SeedBusinessRecord,
   SeedKind,
   SeedPlace,
   SeedScreen,
@@ -22,4 +23,11 @@ export const loadScreens = (): Record<string, SeedScreen> => ({
 });
 export const loadPlaces = () => read<SeedPlace[]>("places.json");
 export const loadBrands = () => read<SeedBrand[]>("brands.json");
-export const loadBusinesses = () => read<SeedBusiness[]>("businesses.json");
+export const loadBusinesses = (): SeedBusiness[] => {
+  const screens = loadScreens();
+  return read<SeedBusinessRecord[]>("businesses.json").map((b) => {
+    const experience = screens[b.primaryKind];
+    if (!experience) throw new Error(`No screen for kind ${b.primaryKind} (${b.place}/${b.slug})`);
+    return { ...b, experience };
+  });
+};

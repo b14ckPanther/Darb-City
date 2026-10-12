@@ -1,0 +1,1442 @@
+[
+  {
+    "slug": "beit-al-zaytoun",
+    "name": {
+      "he": "בית אל-זיתון",
+      "ar": "بيت الزيتون",
+      "en": "Beit al-Zaytoun"
+    }
+  },
+  {
+    "slug": "nechama-coffee",
+    "name": {
+      "he": "בית קפה נחמה",
+      "en": "Nechama Coffee"
+    }
+  },
+  {
+    "slug": "abu-hassan-grill",
+    "name": {
+      "he": "גריל אבו חסן",
+      "en": "Abu Hassan Grill"
+    }
+  },
+  {
+    "slug": "shibolet-bakery",
+    "name": {
+      "he": "מאפיית שיבולת",
+      "en": "Shibolet Bakery"
+    }
+  },
+  {
+    "slug": "hummus-al-balad",
+    "name": {
+      "he": "חומוס אל בלד",
+      "en": "Hummus Al Balad"
+    }
+  },
+  {
+    "slug": "adis-table",
+    "name": {
+      "he": "השולחן של עדי",
+      "en": "Adi's Table"
+    }
+  },
+  {
+    "slug": "al-sultan-sweets",
+    "name": {
+      "he": "ממתקי אל סולטאן",
+      "en": "Al Sultan Sweets"
+    }
+  },
+  {
+    "slug": "shaulis-truck",
+    "name": {
+      "he": "המשאית של שאולי",
+      "en": "Shauli's Truck"
+    }
+  },
+  {
+    "slug": "al-amir-roastery",
+    "name": {
+      "he": "בית הקלייה אל אמיר",
+      "en": "Al Amir Roastery"
+    }
+  },
+  {
+    "slug": "bouza-dimashq",
+    "name": {
+      "he": "בוזה דמשק",
+      "en": "Bouza Dimashq"
+    }
+  },
+  {
+    "slug": "petel-juicery",
+    "name": {
+      "he": "מיץ פטל",
+      "en": "Petel Juicery"
+    }
+  },
+  {
+    "slug": "salmas-kitchen",
+    "name": {
+      "he": "המטבח של סלמה",
+      "en": "Salma's Kitchen"
+    }
+  },
+  {
+    "slug": "samers-barbershop",
+    "name": {
+      "he": "המספרה של סאמר",
+      "ar": "صالون سامر",
+      "en": "Samer's Barbershop"
+    }
+  },
+  {
+    "slug": "salon-layan",
+    "name": {
+      "he": "סלון ליאן",
+      "ar": "صالون ليان",
+      "en": "Salon Layan"
+    }
+  },
+  {
+    "slug": "perla-nails",
+    "name": {
+      "he": "סטודיו פרלה",
+      "en": "Perla Nails"
+    }
+  },
+  {
+    "slug": "noy-cohen-makeup",
+    "name": {
+      "he": "נוי כהן מייקאפ",
+      "en": "Noy Cohen Makeup"
+    }
+  },
+  {
+    "slug": "maayan-spa",
+    "name": {
+      "he": "ספא מעיין",
+      "en": "Ma'ayan Spa"
+    }
+  },
+  {
+    "slug": "leen-studio",
+    "name": {
+      "he": "סטודיו לין",
+      "en": "Leen Studio"
+    }
+  },
+  {
+    "slug": "al-ward-hammam",
+    "name": {
+      "he": "חמאם אל ורד",
+      "en": "Al Ward Hammam"
+    }
+  },
+  {
+    "slug": "or-clinic",
+    "name": {
+      "he": "קליניקת אור",
+      "en": "Or Clinic"
+    }
+  },
+  {
+    "slug": "halawa-studio",
+    "name": {
+      "he": "סטודיו חלאווה",
+      "en": "Halawa Studio"
+    }
+  },
+  {
+    "slug": "jumana-skin-clinic",
+    "name": {
+      "he": "קליניקת ג'ומאנה",
+      "en": "Jumana Skin Clinic"
+    }
+  },
+  {
+    "slug": "loulia-beauty",
+    "name": {
+      "he": "לוליא ביוטי",
+      "en": "Loulia Beauty"
+    }
+  },
+  {
+    "slug": "reem-hair-clinic",
+    "name": {
+      "he": "מרפאת השיער ריים",
+      "en": "Reem Hair Clinic"
+    }
+  },
+  {
+    "slug": "neshima-studio",
+    "name": {
+      "he": "סטודיו נשימה",
+      "en": "Neshima Studio"
+    }
+  },
+  {
+    "slug": "dr-rosen-dental",
+    "name": {
+      "he": "מרפאת השיניים ד\"ר רוזן",
+      "en": "Dr. Rosen Dental"
+    }
+  },
+  {
+    "slug": "in-motion-physio",
+    "name": {
+      "he": "פיזיותרפיה בתנועה",
+      "en": "In Motion Physio"
+    }
+  },
+  {
+    "slug": "shira-nutrition",
+    "name": {
+      "he": "תזונה עם שירה",
+      "en": "Shira Nutrition"
+    }
+  },
+  {
+    "slug": "quiet-room",
+    "name": {
+      "he": "מרחב שקט",
+      "en": "Quiet Room"
+    }
+  },
+  {
+    "slug": "al-basar-optics",
+    "name": {
+      "he": "אופטיקה אל בסר",
+      "en": "Al Basar Optics"
+    }
+  },
+  {
+    "slug": "four-paws-clinic",
+    "name": {
+      "he": "מרפאת ארבע כפות",
+      "en": "Four Paws Clinic"
+    }
+  },
+  {
+    "slug": "hagefen-pharmacy",
+    "name": {
+      "he": "בית מרקחת הגפן",
+      "en": "HaGefen Pharmacy"
+    }
+  },
+  {
+    "slug": "hadeel-speech-therapy",
+    "name": {
+      "he": "הדיל, קלינאית תקשורת",
+      "en": "Hadeel Speech Therapy"
+    }
+  },
+  {
+    "slug": "dr-rana-khoury-skin",
+    "name": {
+      "he": "ד\"ר רנא חורי, רפואת עור",
+      "en": "Dr. Rana Khoury Skin"
+    }
+  },
+  {
+    "slug": "little-hands-ot",
+    "name": {
+      "he": "ידיים קטנות",
+      "en": "Little Hands OT"
+    }
+  },
+  {
+    "slug": "basma-orthodontics",
+    "name": {
+      "he": "בסמה, יישור שיניים",
+      "en": "Basma Orthodontics"
+    }
+  },
+  {
+    "slug": "barzel-gym",
+    "name": {
+      "he": "ברזל",
+      "en": "Barzel Gym"
+    }
+  },
+  {
+    "slug": "alon-training",
+    "name": {
+      "he": "אלון אימונים",
+      "en": "Alon Training"
+    }
+  },
+  {
+    "slug": "sakhnin-stars-academy",
+    "name": {
+      "he": "אקדמיית כוכבי סח'נין",
+      "en": "Sakhnin Stars Academy"
+    }
+  },
+  {
+    "slug": "carmel-basketball-club",
+    "name": {
+      "he": "מועדון הכדורסל הכרמל",
+      "en": "Carmel Basketball Club"
+    }
+  },
+  {
+    "slug": "al-fares-dojo",
+    "name": {
+      "he": "דוג'ו אל פארס",
+      "en": "Al Fares Dojo"
+    }
+  },
+  {
+    "slug": "carmel-padel-club",
+    "name": {
+      "he": "מועדון פאדל הכרמל",
+      "en": "Carmel Padel Club"
+    }
+  },
+  {
+    "slug": "al-nabe-pool",
+    "name": {
+      "he": "בריכת אל נבע",
+      "en": "Al Nabe' Pool"
+    }
+  },
+  {
+    "slug": "galilee-runners",
+    "name": {
+      "he": "רצי הגליל",
+      "en": "Galilee Runners"
+    }
+  },
+  {
+    "slug": "amira-active",
+    "name": {
+      "he": "אמירה אקטיב",
+      "en": "Amira Active"
+    }
+  },
+  {
+    "slug": "wadi-trails",
+    "name": {
+      "he": "שבילי ואדי",
+      "en": "Wadi Trails"
+    }
+  },
+  {
+    "slug": "al-wadi-bikes",
+    "name": {
+      "he": "אופני אל ואדי",
+      "en": "Al Wadi Bikes"
+    }
+  },
+  {
+    "slug": "abu-samir-tackle",
+    "name": {
+      "he": "ציוד דיג אבו סמיר",
+      "en": "Abu Samir Tackle"
+    }
+  },
+  {
+    "slug": "baraem-nursery",
+    "name": {
+      "he": "פעוטון בראעם",
+      "en": "Bara'em Nursery"
+    }
+  },
+  {
+    "slug": "hashikma-kindergarten",
+    "name": {
+      "he": "גן השקמה",
+      "en": "HaShikma Kindergarten"
+    }
+  },
+  {
+    "slug": "baby-noor",
+    "name": {
+      "he": "בייבי נור",
+      "en": "Baby Noor"
+    }
+  },
+  {
+    "slug": "dr-salim-kids-clinic",
+    "name": {
+      "he": "מרפאת ד\"ר סלים לילדים",
+      "en": "Dr. Salim Kids Clinic"
+    }
+  },
+  {
+    "slug": "joury-kids",
+    "name": {
+      "he": "ג'ורי קידס",
+      "en": "Joury Kids"
+    }
+  },
+  {
+    "slug": "amana-nannies",
+    "name": {
+      "he": "אמאנה מטפלות",
+      "en": "Amana Nannies"
+    }
+  },
+  {
+    "slug": "al-mawj-swim-school",
+    "name": {
+      "he": "בית ספר לשחייה אל מוג'",
+      "en": "Al Mawj Swim School"
+    }
+  },
+  {
+    "slug": "dr-reem-kids-dental",
+    "name": {
+      "he": "ד\"ר ריים, שיניים לילדים",
+      "en": "Dr. Reem Kids Dental"
+    }
+  },
+  {
+    "slug": "al-atfal-toys",
+    "name": {
+      "he": "עולם אל אטפאל",
+      "en": "Al Atfal Toys"
+    }
+  },
+  {
+    "slug": "rami-the-magician",
+    "name": {
+      "he": "הקוסם ראמי",
+      "en": "Rami the Magician"
+    }
+  },
+  {
+    "slug": "balloon-land",
+    "name": {
+      "he": "ארץ הבלונים",
+      "en": "Balloon Land"
+    }
+  },
+  {
+    "slug": "michal-maths-tutor",
+    "name": {
+      "he": "מיכל, מורה למתמטיקה",
+      "en": "Michal, maths tutor"
+    }
+  },
+  {
+    "slug": "kinneret-arts-school",
+    "name": {
+      "he": "בית הספר לאמנויות כנרת",
+      "en": "Kinneret Arts School"
+    }
+  },
+  {
+    "slug": "al-fajr-code",
+    "name": {
+      "he": "קוד אל פג'ר",
+      "en": "Al Fajr Code"
+    }
+  },
+  {
+    "slug": "lomdim-online",
+    "name": {
+      "he": "לומדים אונליין",
+      "en": "Lomdim Online"
+    }
+  },
+  {
+    "slug": "milim-language-school",
+    "name": {
+      "he": "אולפן מילים",
+      "en": "Milim Language School"
+    }
+  },
+  {
+    "slug": "al-najah-institute",
+    "name": {
+      "he": "מכון אל נג'אח",
+      "en": "Al Najah Institute"
+    }
+  },
+  {
+    "slug": "ramzor-driving-school",
+    "name": {
+      "he": "בית ספר לנהיגה רמזור",
+      "en": "Ramzor Driving School"
+    }
+  },
+  {
+    "slug": "al-israa-school",
+    "name": {
+      "he": "מדרסת אל איסראא",
+      "en": "Al Israa School"
+    }
+  },
+  {
+    "slug": "al-mustaqbal-college",
+    "name": {
+      "he": "מכללת אל מוסתקבל",
+      "en": "Al Mustaqbal College"
+    }
+  },
+  {
+    "slug": "umm-alis-kitchen",
+    "name": {
+      "he": "המטבח של אום עלי",
+      "en": "Umm Ali's Kitchen"
+    }
+  },
+  {
+    "slug": "beit-al-tatreez",
+    "name": {
+      "he": "בית התטריז",
+      "en": "Beit Al Tatreez"
+    }
+  },
+  {
+    "slug": "karma-studio",
+    "name": {
+      "he": "סטודיו כרמה",
+      "en": "Karma Studio"
+    }
+  },
+  {
+    "slug": "abu-ghosh-netsupport",
+    "name": {
+      "he": "נט סאפורט אבו גוש",
+      "en": "Abu Ghosh NetSupport"
+    }
+  },
+  {
+    "slug": "hamifal-cowork",
+    "name": {
+      "he": "המפעל, חלל עבודה",
+      "en": "HaMifal Cowork"
+    }
+  },
+  {
+    "slug": "humat-cyber",
+    "name": {
+      "he": "חומאת סייבר",
+      "en": "Humat Cyber"
+    }
+  },
+  {
+    "slug": "turly",
+    "name": {
+      "he": "תורלי",
+      "en": "Turly"
+    }
+  },
+  {
+    "slug": "madar-media",
+    "name": {
+      "he": "מדאר מדיה",
+      "en": "Madar Media"
+    }
+  },
+  {
+    "slug": "sama-social",
+    "name": {
+      "he": "סמא סושיאל",
+      "en": "Sama Social"
+    }
+  },
+  {
+    "slug": "al-jalil-cloud",
+    "name": {
+      "he": "ענן אל ג'ליל",
+      "en": "Al Jalil Cloud"
+    }
+  },
+  {
+    "slug": "sullam-apps",
+    "name": {
+      "he": "סולם אפליקציות",
+      "en": "Sullam Apps"
+    }
+  },
+  {
+    "slug": "najma-games",
+    "name": {
+      "he": "סטודיו נג'מה",
+      "en": "Najma Games"
+    }
+  },
+  {
+    "slug": "masar-data",
+    "name": {
+      "he": "מסאר דאטה",
+      "en": "Masar Data"
+    }
+  },
+  {
+    "slug": "al-wadi-station",
+    "name": {
+      "he": "תחנת אל-ואדי",
+      "ar": "محطة الوادي",
+      "en": "Al-Wadi Station"
+    }
+  },
+  {
+    "slug": "golan-co-law",
+    "name": {
+      "he": "גולן ושות', עורכי דין",
+      "en": "Golan & Co. Law"
+    }
+  },
+  {
+    "slug": "maazan-tax",
+    "name": {
+      "he": "מאזן ייעוץ מס",
+      "en": "Maazan Tax"
+    }
+  },
+  {
+    "slug": "khaled-insurance",
+    "name": {
+      "he": "ח'אלד ביטוחים",
+      "en": "Khaled Insurance"
+    }
+  },
+  {
+    "slug": "beit-bair-realty",
+    "name": {
+      "he": "בית בעיר נדל\"ן",
+      "en": "Beit Ba'ir Realty"
+    }
+  },
+  {
+    "slug": "ben-haim-renovations",
+    "name": {
+      "he": "שיפוצי בן חיים",
+      "en": "Ben Haim Renovations"
+    }
+  },
+  {
+    "slug": "zohar-cleaning",
+    "name": {
+      "he": "ניקיון זוהר",
+      "en": "Zohar Cleaning"
+    }
+  },
+  {
+    "slug": "zerem-technicians",
+    "name": {
+      "he": "זרם שירותים טכניים",
+      "en": "Zerem Technicians"
+    }
+  },
+  {
+    "slug": "wadi-fix",
+    "name": {
+      "he": "ואדי פיקס",
+      "en": "Wadi Fix"
+    }
+  },
+  {
+    "slug": "al-galgalim-movers",
+    "name": {
+      "he": "הובלות על גלגלים",
+      "en": "Al Galgalim Movers"
+    }
+  },
+  {
+    "slug": "al-amal-cleaners",
+    "name": {
+      "he": "מכבסת אל אמל",
+      "en": "Al Amal Cleaners"
+    }
+  },
+  {
+    "slug": "al-noor-aluminium",
+    "name": {
+      "he": "אלומיניום אל נור",
+      "en": "Al Noor Aluminium"
+    }
+  },
+  {
+    "slug": "shahar-architecture",
+    "name": {
+      "he": "שחר אדריכלות",
+      "en": "Shahar Architecture"
+    }
+  },
+  {
+    "slug": "al-dar-furniture",
+    "name": {
+      "he": "רהיטי אל דאר",
+      "en": "Al Dar Furniture"
+    }
+  },
+  {
+    "slug": "al-jalil-kitchens",
+    "name": {
+      "he": "מטבחי אל ג'ליל",
+      "en": "Al Jalil Kitchens"
+    }
+  },
+  {
+    "slug": "al-harir-fabrics",
+    "name": {
+      "he": "בדי אל חריר",
+      "en": "Al Harir Fabrics"
+    }
+  },
+  {
+    "slug": "shams-energy",
+    "name": {
+      "he": "שמס אנרגיה",
+      "en": "Shams Energy"
+    }
+  },
+  {
+    "slug": "beit-noor",
+    "name": {
+      "he": "בית נור",
+      "en": "Beit Noor"
+    }
+  },
+  {
+    "slug": "al-bahr-pools",
+    "name": {
+      "he": "בריכות אל בחר",
+      "en": "Al Bahr Pools"
+    }
+  },
+  {
+    "slug": "al-zaytoun-gardens",
+    "name": {
+      "he": "גינות אל זיתון",
+      "en": "Al Zaytoun Gardens"
+    }
+  },
+  {
+    "slug": "al-amin-locks",
+    "name": {
+      "he": "מפתח אל אמין",
+      "en": "Al Amin Locks"
+    }
+  },
+  {
+    "slug": "naqi-green-pest-control",
+    "name": {
+      "he": "נקי הדברה ירוקה",
+      "en": "Naqi Green Pest Control"
+    }
+  },
+  {
+    "slug": "abu-yousef-painting",
+    "name": {
+      "he": "צבע אבו יוסף",
+      "en": "Abu Yousef Painting"
+    }
+  },
+  {
+    "slug": "al-harir-upholstery",
+    "name": {
+      "he": "ריפוד אל חריר",
+      "en": "Al Harir Upholstery"
+    }
+  },
+  {
+    "slug": "al-karmel-plastics",
+    "name": {
+      "he": "מפעל אל כרמל",
+      "en": "Al Karmel Plastics"
+    }
+  },
+  {
+    "slug": "abu-nasser-wholesale",
+    "name": {
+      "he": "סיטונאות אבו נאסר",
+      "en": "Abu Nasser Wholesale"
+    }
+  },
+  {
+    "slug": "al-watan-packaging",
+    "name": {
+      "he": "אריזות אל וטן",
+      "en": "Al Watan Packaging"
+    }
+  },
+  {
+    "slug": "saree-couriers",
+    "name": {
+      "he": "סריע שליחויות",
+      "en": "Saree' Couriers"
+    }
+  },
+  {
+    "slug": "al-marj-storage",
+    "name": {
+      "he": "מחסני אל מרג'",
+      "en": "Al Marj Storage"
+    }
+  },
+  {
+    "slug": "al-fanar-signs",
+    "name": {
+      "he": "שלטי אל פנאר",
+      "en": "Al Fanar Signs"
+    }
+  },
+  {
+    "slug": "al-hadid-metalworks",
+    "name": {
+      "he": "מסגריית אל חדיד",
+      "en": "Al Hadid Metalworks"
+    }
+  },
+  {
+    "slug": "al-arz-carpentry",
+    "name": {
+      "he": "נגריית אל ארז",
+      "en": "Al Arz Carpentry"
+    }
+  },
+  {
+    "slug": "fursa-recruiting",
+    "name": {
+      "he": "פורסה השמה",
+      "en": "Fursa Recruiting"
+    }
+  },
+  {
+    "slug": "aman-security",
+    "name": {
+      "he": "אמאן אבטחה",
+      "en": "Aman Security"
+    }
+  },
+  {
+    "slug": "al-najma-motors",
+    "name": {
+      "he": "אוטו אל נג'מה",
+      "en": "Al Najma Motors"
+    }
+  },
+  {
+    "slug": "hagalgal-garage",
+    "name": {
+      "he": "מוסך הגלגל",
+      "en": "HaGalgal Garage"
+    }
+  },
+  {
+    "slug": "rih-rentals",
+    "name": {
+      "he": "ריח' השכרות",
+      "en": "Rih Rentals"
+    }
+  },
+  {
+    "slug": "abu-ali-tyres",
+    "name": {
+      "he": "צמיגי אבו עלי",
+      "en": "Abu Ali Tyres"
+    }
+  },
+  {
+    "slug": "splash-al-quds",
+    "name": {
+      "he": "ספלאש אל קודס",
+      "en": "Splash Al Quds"
+    }
+  },
+  {
+    "slug": "moto-al-sahm",
+    "name": {
+      "he": "מוטו אל סהם",
+      "en": "Moto Al Sahm"
+    }
+  },
+  {
+    "slug": "barq-charge",
+    "name": {
+      "he": "טעינה ברק",
+      "en": "Barq Charge"
+    }
+  },
+  {
+    "slug": "al-salam-taxis",
+    "name": {
+      "he": "מוניות אל סלאם",
+      "en": "Al Salam Taxis"
+    }
+  },
+  {
+    "slug": "abu-shadi-parts",
+    "name": {
+      "he": "חלפים אבו שאדי",
+      "en": "Abu Shadi Parts"
+    }
+  },
+  {
+    "slug": "al-amin-towing",
+    "name": {
+      "he": "גרר אל אמין",
+      "en": "Al Amin Towing"
+    }
+  },
+  {
+    "slug": "al-fares-body-shop",
+    "name": {
+      "he": "פחחות אל פארס",
+      "en": "Al Fares Body Shop"
+    }
+  },
+  {
+    "slug": "abu-saleh-farm",
+    "name": {
+      "he": "חוות אבו סאלח",
+      "en": "Abu Saleh Farm"
+    }
+  },
+  {
+    "slug": "valley-farmers-market",
+    "name": {
+      "he": "שוק האיכרים בעמק",
+      "en": "Valley Farmers' Market"
+    }
+  },
+  {
+    "slug": "al-bustan-nursery",
+    "name": {
+      "he": "משתלת אל בוסתאן",
+      "en": "Al Bustan Nursery"
+    }
+  },
+  {
+    "slug": "al-nahla-apiary",
+    "name": {
+      "he": "מכוורת אל נחלה",
+      "en": "Al Nahla Apiary"
+    }
+  },
+  {
+    "slug": "ein-al-halib-dairy",
+    "name": {
+      "he": "מחלבת עין אל חליב",
+      "en": "Ein Al Halib Dairy"
+    }
+  },
+  {
+    "slug": "al-zaytouna-press",
+    "name": {
+      "he": "בית הבד אל זיתונה",
+      "en": "Al Zaytouna Press"
+    }
+  },
+  {
+    "slug": "umm-yousef-farm",
+    "name": {
+      "he": "לול אום יוסף",
+      "en": "Umm Yousef Farm"
+    }
+  },
+  {
+    "slug": "al-aseel-stables",
+    "name": {
+      "he": "חוות אל אסיל",
+      "en": "Al Aseel Stables"
+    }
+  },
+  {
+    "slug": "kawkab-farmhouse",
+    "name": {
+      "he": "בית החווה בכאוכב",
+      "en": "Kawkab Farmhouse"
+    }
+  },
+  {
+    "slug": "al-fallah-equipment",
+    "name": {
+      "he": "אל פלאח ציוד חקלאי",
+      "en": "Al Fallah Equipment"
+    }
+  },
+  {
+    "slug": "maa-smart-irrigation",
+    "name": {
+      "he": "מאא השקיה חכמה",
+      "en": "Maa Smart Irrigation"
+    }
+  },
+  {
+    "slug": "dr-nasser-farm-vets",
+    "name": {
+      "he": "ד\"ר נאסר וטרינריה",
+      "en": "Dr. Nasser Farm Vets"
+    }
+  },
+  {
+    "slug": "teena-estate",
+    "name": {
+      "he": "אחוזת התאנה",
+      "en": "Te'ena Estate"
+    }
+  },
+  {
+    "slug": "simcha-productions",
+    "name": {
+      "he": "הפקות שמחה",
+      "en": "Simcha Productions"
+    }
+  },
+  {
+    "slug": "reham-henna",
+    "name": {
+      "he": "חינה ריהאם",
+      "en": "Reham Henna"
+    }
+  },
+  {
+    "slug": "hadar-flowers",
+    "name": {
+      "he": "פרחי הדר",
+      "en": "Hadar Flowers"
+    }
+  },
+  {
+    "slug": "al-arous-atelier",
+    "name": {
+      "he": "אטלייה אל ערוס",
+      "en": "Al Arous Atelier"
+    }
+  },
+  {
+    "slug": "first-light-studio",
+    "name": {
+      "he": "סטודיו אור ראשון",
+      "en": "First Light Studio"
+    }
+  },
+  {
+    "slug": "al-qalam-print",
+    "name": {
+      "he": "דפוס אל קלם",
+      "en": "Al Qalam Print"
+    }
+  },
+  {
+    "slug": "room-13",
+    "name": {
+      "he": "חדר 13",
+      "en": "Room 13"
+    }
+  },
+  {
+    "slug": "al-farah-tents",
+    "name": {
+      "he": "אוהלי אל פרח",
+      "en": "Al Farah Tents"
+    }
+  },
+  {
+    "slug": "lilas-cakes",
+    "name": {
+      "he": "עוגות לילאס",
+      "en": "Lilas Cakes"
+    }
+  },
+  {
+    "slug": "noor-event-design",
+    "name": {
+      "he": "נור עיצוב אירועים",
+      "en": "Noor Event Design"
+    }
+  },
+  {
+    "slug": "hadaya-favours",
+    "name": {
+      "he": "הדאיא מזכרות",
+      "en": "Hadaya Favours"
+    }
+  },
+  {
+    "slug": "al-rahma-travel",
+    "name": {
+      "he": "נסיעות אל רחמה",
+      "en": "Al Rahma Travel"
+    }
+  },
+  {
+    "slug": "ein-vered-cabins",
+    "name": {
+      "he": "בקתות עין ורד",
+      "en": "Ein Vered Cabins"
+    }
+  },
+  {
+    "slug": "alleys-tours",
+    "name": {
+      "he": "סיורים בסמטאות",
+      "en": "Alleys Tours"
+    }
+  },
+  {
+    "slug": "siyaha-tours",
+    "name": {
+      "he": "סיאחה טורס",
+      "en": "Siyaha Tours"
+    }
+  },
+  {
+    "slug": "al-nujoom-camp",
+    "name": {
+      "he": "מחנה אל נג'ום",
+      "en": "Al Nujoom Camp"
+    }
+  },
+  {
+    "slug": "al-jalil-coaches",
+    "name": {
+      "he": "אוטובוסי אל ג'ליל",
+      "en": "Al Jalil Coaches"
+    }
+  },
+  {
+    "slug": "al-tarjama-office",
+    "name": {
+      "he": "מכתב אל תרג'מה",
+      "en": "Al Tarjama Office"
+    }
+  },
+  {
+    "slug": "al-amana-exchange",
+    "name": {
+      "he": "צראפת אל אמאנה",
+      "en": "Al Amana Exchange"
+    }
+  },
+  {
+    "slug": "jusoor-study-advisers",
+    "name": {
+      "he": "ג'סור ייעוץ אקדמי",
+      "en": "Jusoor Study Advisers"
+    }
+  },
+  {
+    "slug": "safar-luggage",
+    "name": {
+      "he": "סאפר מזוודות",
+      "en": "Safar Luggage"
+    }
+  },
+  {
+    "slug": "al-manasik-institute",
+    "name": {
+      "he": "מכון אל מנאסכ",
+      "en": "Al Manasik Institute"
+    }
+  },
+  {
+    "slug": "bayt-nour",
+    "name": {
+      "he": "בית הבד של נור",
+      "ar": "بيت نور",
+      "en": "Bayt Nour"
+    }
+  },
+  {
+    "slug": "levana-boutique",
+    "name": {
+      "he": "בוטיק לבנה",
+      "en": "Levana Boutique"
+    }
+  },
+  {
+    "slug": "tamar-alon-illustration",
+    "name": {
+      "he": "תמר אלון, איורים",
+      "en": "Tamar Alon Illustration"
+    }
+  },
+  {
+    "slug": "attic-books",
+    "name": {
+      "he": "ספרים בעליית הגג",
+      "en": "Attic Books"
+    }
+  },
+  {
+    "slug": "living-room-garden",
+    "name": {
+      "he": "הגינה בסלון",
+      "en": "Living Room Garden"
+    }
+  },
+  {
+    "slug": "kapayim-pet-shop",
+    "name": {
+      "he": "כפיים",
+      "en": "Kapayim Pet Shop"
+    }
+  },
+  {
+    "slug": "al-khalil-jewellers",
+    "name": {
+      "he": "מג'והראת אל ח'ליל",
+      "en": "Al Khalil Jewellers"
+    }
+  },
+  {
+    "slug": "al-anbar-oud-house",
+    "name": {
+      "he": "בית העוד אל ענבר",
+      "en": "Al Anbar Oud House"
+    }
+  },
+  {
+    "slug": "nakhla-dates-and-chocolate",
+    "name": {
+      "he": "תמור ושוקולד נח'לה",
+      "en": "Nakhla Dates and Chocolate"
+    }
+  },
+  {
+    "slug": "al-madina-mobile",
+    "name": {
+      "he": "סלולר אל מדינה",
+      "en": "Al Madina Mobile"
+    }
+  },
+  {
+    "slug": "al-waqt-watches",
+    "name": {
+      "he": "שעוני אל וקת",
+      "en": "Al Waqt Watches"
+    }
+  },
+  {
+    "slug": "beit-al-asha",
+    "name": {
+      "he": "בית אל עשא",
+      "en": "Beit Al Asha"
+    }
+  },
+  {
+    "slug": "al-noor-mosque",
+    "name": {
+      "he": "מסגד אל נור",
+      "en": "Al Noor Mosque"
+    }
+  },
+  {
+    "slug": "dar-al-quran",
+    "name": {
+      "he": "דאר אל קוראן",
+      "en": "Dar Al Quran"
+    }
+  },
+  {
+    "slug": "abu-rami-butchery",
+    "name": {
+      "he": "אטליז אבו ראמי",
+      "en": "Abu Rami Butchery"
+    }
+  },
+  {
+    "slug": "sundus-boutique",
+    "name": {
+      "he": "בוטיק סנדס",
+      "en": "Sundus Boutique"
+    }
+  },
+  {
+    "slug": "al-khair-fund",
+    "name": {
+      "he": "קרן אל ח'יר",
+      "en": "Al Khair Fund"
+    }
+  },
+  {
+    "slug": "al-rashid-books",
+    "name": {
+      "he": "מכתבת אל רשיד",
+      "en": "Al Rashid Books"
+    }
+  },
+  {
+    "slug": "al-shifa-centre",
+    "name": {
+      "he": "מרכז אל שיפאא",
+      "en": "Al Shifa Centre"
+    }
+  },
+  {
+    "slug": "rahma-home-care",
+    "name": {
+      "he": "רחמה סיעוד בבית",
+      "en": "Rahma Home Care"
+    }
+  },
+  {
+    "slug": "al-taqwa-mosque-waqf",
+    "name": {
+      "he": "וקף מסגד אל תקווא",
+      "en": "Al Taqwa Mosque Waqf"
+    }
+  },
+  {
+    "slug": "sheikh-yousef-al-hajj",
+    "name": {
+      "he": "השיח' יוסף אל חאג'",
+      "en": "Sheikh Yousef Al Hajj"
+    }
+  },
+  {
+    "slug": "al-farouq-thobe-house",
+    "name": {
+      "he": "בית הג'לביה אל פארוק",
+      "en": "Al Farouq Thobe House"
+    }
+  },
+  {
+    "slug": "al-rahma-janazah-services",
+    "name": {
+      "he": "אל רחמה, שירותי ג'נאזה",
+      "en": "Al Rahma Janazah Services"
+    }
+  },
+  {
+    "slug": "umm-al-fahm-municipality",
+    "name": {
+      "he": "עיריית אום אל פחם",
+      "en": "Umm al Fahm Municipality"
+    }
+  },
+  {
+    "slug": "ein-al-ward-council",
+    "name": {
+      "he": "מועצת עין אל ורד",
+      "en": "Ein Al Ward Council"
+    }
+  },
+  {
+    "slug": "al-jabal-baby-clinic",
+    "name": {
+      "he": "טיפת חלב אל ג'בל",
+      "en": "Al Jabal Baby Clinic"
+    }
+  },
+  {
+    "slug": "al-manara-public-library",
+    "name": {
+      "he": "הספרייה העירונית אל מנארה",
+      "en": "Al Manara Public Library"
+    }
+  },
+  {
+    "slug": "al-balad-post",
+    "name": {
+      "he": "דואר אל בלד",
+      "en": "Al Balad Post"
+    }
+  },
+  {
+    "slug": "galilee-lines",
+    "name": {
+      "he": "קווי הגליל",
+      "en": "Galilee Lines"
+    }
+  },
+  {
+    "slug": "ramat-hazayit-council",
+    "name": {
+      "he": "עיריית רמת הזית",
+      "en": "Ramat HaZayit Council"
+    }
+  },
+  {
+    "slug": "marj-al-zuhur-planning",
+    "name": {
+      "he": "ועדת התכנון מרג' אל זהור",
+      "en": "Marj Al Zuhur Planning"
+    }
+  },
+  {
+    "slug": "galilee-springs-water",
+    "name": {
+      "he": "תאגיד המים מעיינות הגליל",
+      "en": "Galilee Springs Water"
+    }
+  },
+  {
+    "slug": "al-noor-hotline-106",
+    "name": {
+      "he": "מוקד 106 אל נור",
+      "en": "Al Noor Hotline 106"
+    }
+  },
+  {
+    "slug": "open-hand",
+    "name": {
+      "he": "עמותת יד פתוחה",
+      "en": "Open Hand"
+    }
+  },
+  {
+    "slug": "al-qard-al-hasan-fund",
+    "name": {
+      "he": "קרן אל קרד אל חסן",
+      "en": "Al Qard Al Hasan Fund"
+    }
+  },
+  {
+    "slug": "neve-oz-community-centre",
+    "name": {
+      "he": "המרכז הקהילתי נווה עוז",
+      "en": "Neve Oz Community Centre"
+    }
+  },
+  {
+    "slug": "beit-al-jood-day-centre",
+    "name": {
+      "he": "מרכז היום בית אל ג'וד",
+      "en": "Beit Al Jood Day Centre"
+    }
+  },
+  {
+    "slug": "al-shabab-youth-club",
+    "name": {
+      "he": "מועדון הנוער אל שבאב",
+      "en": "Al Shabab Youth Club"
+    }
+  },
+  {
+    "slug": "al-karmel-scout-troop",
+    "name": {
+      "he": "שבט הצופים אל כרמל",
+      "en": "Al Karmel Scout Troop"
+    }
+  },
+  {
+    "slug": "yad-byad-volunteers",
+    "name": {
+      "he": "יד ביד מתנדבים",
+      "en": "Yad b'Yad Volunteers"
+    }
+  },
+  {
+    "slug": "women-of-al-jalil",
+    "name": {
+      "he": "נשות אל ג'ליל",
+      "en": "Women of Al Jalil"
+    }
+  },
+  {
+    "slug": "al-bustan-garden",
+    "name": {
+      "he": "גינת אל בוסתאן",
+      "en": "Al Bustan Garden"
+    }
+  },
+  {
+    "slug": "al-birr-shop",
+    "name": {
+      "he": "חנות אל בר",
+      "en": "Al Birr Shop"
+    }
+  }
+]
