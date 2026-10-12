@@ -17,7 +17,7 @@ export const he: Messages = {
   whatsapp: "וואטסאפ",
   directions: "ניווט",
   share: "שיתוף",
-  tagline: "כל עסק חלאל, בכל עיר, עיירה וכפר.",
+  tagline: "כל עסק, בכל עיר, עיירה וכפר.",
   skipToContent: "דילוג לתוכן",
   pathBar: "אתם כאן",
   upOneLevel: "רמה אחת למעלה",

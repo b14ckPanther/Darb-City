@@ -17,7 +17,7 @@ export const ar: Messages = {
   whatsapp: "واتساب",
   directions: "الاتجاهات",
   share: "مشاركة",
-  tagline: "كل مصلحة حلال، في كل مدينة وبلدة وقرية.",
+  tagline: "كل مصلحة، في كل مدينة وبلدة وقرية.",
   skipToContent: "انتقل إلى المحتوى",
   pathBar: "أنت هنا",
   upOneLevel: "مستوى واحد للأعلى",

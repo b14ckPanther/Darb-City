@@ -15,7 +15,7 @@ export const en = {
   whatsapp: "WhatsApp",
   directions: "Directions",
   share: "Share",
-  tagline: "Every halal business, in every city, town and village.",
+  tagline: "Every business, in every city, town and village.",
   skipToContent: "Skip to content",
   pathBar: "You are here",
   upOneLevel: "Up one level",

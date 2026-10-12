@@ -1,6 +1,6 @@
 # Darb-City
 
-Every halal business, in every city, town and village, one search away.
+Every business, in every city, town and village, one search away.
 Web (Next.js), API (NestJS + Prisma + PostgreSQL), mobile (Expo, later).
 
 Design: `docs/superpowers/specs/2026-10-12-darb-city-v1-design.md`
