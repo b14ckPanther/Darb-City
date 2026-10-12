@@ -7,17 +7,13 @@ const API = process.env.API_URL ?? "http://localhost:4000";
 const port = (url: string) => new URL(url).port;
 
 /**
- * WebGL2 for the map. CI has no GPU, so headless Chromium draws it in software (SwiftShader).
- * Locally the real GPU draws it: forcing SwiftShader there also moves page compositing to the CPU,
- * which breaks the phone LCP budget, and the long-task gate is meant for real GPUs (ruling 8).
+ * WebGL2 for the map. Locally the real GPU draws it. Without a GPU (CI), Chromium falls back to
+ * SwiftShader for WebGL alone (--enable-unsafe-swiftshader) and keeps compositing pages in software
+ * as before. Never --use-angle=swiftshader: it moves page compositing onto software GL too, which
+ * roughly doubles phone LCP (620–790 ms → 1100–1800 ms in the Playwright Linux image) and failed
+ * the 1.5 s budget on CI. The long-task gate is meant for real GPUs (ruling 8).
  */
-const WEBGL = {
-  args: [
-    ...(process.env.CI ? ["--use-angle=swiftshader"] : []),
-    "--enable-unsafe-swiftshader",
-    "--ignore-gpu-blocklist",
-  ],
-};
+const WEBGL = { args: ["--enable-unsafe-swiftshader", "--ignore-gpu-blocklist"] };
 /** The 1 KB fixture archive (scripts/tiles/make-test-tiles.mjs): CI never downloads tiles. */
 const TILES = { MAP_TILES_DIR: "e2e/tiles" };
 
