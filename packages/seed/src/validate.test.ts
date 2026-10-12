@@ -10,6 +10,7 @@ import {
   loadSectors,
   SCREEN_SCHEMA,
 } from "./index.js";
+import { COMMON_KINDS } from "./showroom.js";
 
 /** Halal gate: none of these may appear in any kind name or synonym. */
 const BLOCKED = [
@@ -55,6 +56,22 @@ const BLOCKED_RES = BLOCKED.map((w) => {
 });
 const blockedIn = (text: string) => BLOCKED_RES.filter(({ re }) => re.test(text)).map(({ w }) => w);
 const complete = (value: Localized) => LOCALES.every((l) => (value[l] ?? "").trim() !== "");
+
+/** Spec §11 flagships: 11 CBS localities plus Kiryat Haim, a Haifa neighbourhood with no CBS code. */
+const FLAGSHIP_CBS = [
+  "4000",
+  "7600",
+  "1292",
+  "7500",
+  "6800",
+  "9500",
+  "8200",
+  "9600",
+  "1063",
+  "522",
+  "8900",
+];
+const FLAGSHIP_SLUGS = ["kiryat-haim"];
 
 const sectors = loadSectors();
 const kinds = loadKinds();
@@ -147,19 +164,6 @@ describe("places", () => {
   const places = loadPlaces();
   const bySlug = new Map(places.map((p) => [p.slug, p]));
   const byCbs = new Map(places.filter((p) => p.cbsCode).map((p) => [p.cbsCode, p]));
-  const FLAGSHIPS = [
-    "4000",
-    "7600",
-    "1292",
-    "7500",
-    "6800",
-    "9500",
-    "8200",
-    "9600",
-    "1063",
-    "522",
-    "8900",
-  ];
 
   it("have unique slugs and parents come first", () => {
     expect(bySlug.size).toBe(places.length);
@@ -180,7 +184,7 @@ describe("places", () => {
     }
   });
   it("keep flagship northern localities live and slugs disambiguated", () => {
-    for (const code of FLAGSHIPS) expect(byCbs.get(code)?.status, code).toBe("live");
+    for (const code of FLAGSHIP_CBS) expect(byCbs.get(code)?.status, code).toBe("live");
     expect(byCbs.get("8900")?.slug).toBe("tamra");
     expect(byCbs.get("547")?.slug).not.toBe("tamra");
     expect(bySlug.get("kiryat-haim")?.parent).toBe("haifa");
@@ -234,8 +238,39 @@ describe("showroom businesses", () => {
     const keys = businesses.map((b) => `${b.place}/${b.slug}`);
     expect(new Set(keys).size).toBe(keys.length);
   });
-  it("give every flagship one business per kind", () => {
-    const sakhnin = businesses.filter((b) => b.place === "sakhnin");
-    expect(new Set(sakhnin.map((b) => b.primaryKind)).size).toBe(kindSlugs.size);
+  const allPlaces = loadPlaces();
+  const flagships = new Set([
+    ...allPlaces.filter((p) => p.cbsCode && FLAGSHIP_CBS.includes(p.cbsCode)).map((p) => p.slug),
+    ...FLAGSHIP_SLUGS,
+  ]);
+  const kindsIn = (place: string) =>
+    new Set(businesses.filter((b) => b.place === place).map((b) => b.primaryKind));
+
+  it("give each of the 12 flagships one business per active kind", () => {
+    expect(flagships.size).toBe(12);
+    const active = loadKinds().filter((k) => k.status === "active");
+    expect(active).toHaveLength(205);
+    for (const slug of flagships) {
+      const here = businesses.filter((b) => b.place === slug);
+      expect(here, slug).toHaveLength(205);
+      expect(kindsIn(slug).size, slug).toBe(205);
+    }
+  });
+  it("give every other live settlement exactly the common kinds", () => {
+    const common = [...COMMON_KINDS].sort();
+    const others = allPlaces.filter(
+      (p) =>
+        p.status === "live" &&
+        ["city", "town", "village"].includes(p.type) &&
+        !flagships.has(p.slug),
+    );
+    expect(others.length).toBeGreaterThan(0);
+    for (const p of others) {
+      expect(
+        businesses.filter((b) => b.place === p.slug),
+        p.slug,
+      ).toHaveLength(common.length);
+      expect([...kindsIn(p.slug)].sort(), p.slug).toEqual(common);
+    }
   });
 });

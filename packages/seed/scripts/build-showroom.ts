@@ -7,38 +7,7 @@ import {
   type SeedBrand,
   type SeedBusinessRecord,
 } from "../src/index.js";
-
-const FLAGSHIP_CBS = new Set([
-  "4000",
-  "7600",
-  "1292",
-  "7500",
-  "6800",
-  "9500",
-  "8200",
-  "9600",
-  "1063",
-  "522",
-  "8900",
-]);
-export const COMMON_KINDS = [
-  "restaurants",
-  "cafes",
-  "grill",
-  "bakeries",
-  "hummus",
-  "sweets",
-  "barbershops",
-  "salons",
-  "pharmacies",
-  "dental",
-  "gyms",
-  "garages",
-  "technicians",
-  "device-repair",
-  "butchers",
-  "mosques",
-];
+import { COMMON_KINDS, FLAGSHIP_CBS, FLAGSHIP_SLUGS } from "../src/showroom.js";
 
 const h = (open: string, close: string) => [{ open, close }];
 const week = (days: number[], open: string, close: string) =>
@@ -74,8 +43,10 @@ function jitter(seed: string): [number, number] {
 
 const kinds = loadKinds().filter((k) => k.status === "active");
 const screens = loadScreens();
+const isFlagship = (p: { slug: string; cbsCode: string | null }) =>
+  FLAGSHIP_CBS.has(p.cbsCode ?? "") || FLAGSHIP_SLUGS.has(p.slug);
 const places = loadPlaces().filter(
-  (p) => p.status === "live" && ["city", "town", "village"].includes(p.type),
+  (p) => p.status === "live" && (["city", "town", "village"].includes(p.type) || isFlagship(p)),
 );
 
 const usedBrandSlugs = new Set<string>();
@@ -89,7 +60,7 @@ const brandOf = new Map(kinds.map((k, i) => [k.slug, brands[i]!.slug]));
 
 const businesses: SeedBusinessRecord[] = [];
 for (const place of places) {
-  const kindSlugs = FLAGSHIP_CBS.has(place.cbsCode ?? "") ? kinds.map((k) => k.slug) : COMMON_KINDS;
+  const kindSlugs = isFlagship(place) ? kinds.map((k) => k.slug) : COMMON_KINDS;
   for (const slug of kindSlugs) {
     const kind = kinds.find((k) => k.slug === slug);
     if (!kind) throw new Error(`COMMON_KINDS has unknown kind ${slug}`);
