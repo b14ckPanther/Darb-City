@@ -68,6 +68,14 @@ describe("SearchIndexer limits", () => {
       [f.abuSalim.id, f.littleCuts.id, f.draft.id, f.tamraBarber.id].sort(),
     );
   });
+  it("indexes businesses only in live places", async () => {
+    await prisma.place.update({ where: { id: f.tamra.id }, data: { status: "soon" } });
+    await indexer.index("place", [f.tamra.id]);
+    expect((await docs("business")).map((d) => d.slug)).not.toContain("tamra-barber");
+    await prisma.place.update({ where: { id: f.tamra.id }, data: { status: "live" } });
+    await indexer.index("place", [f.tamra.id]);
+    expect((await docs("business")).map((d) => d.slug)).toContain("tamra-barber");
+  });
   it("stores no vector for a text that embeds to all zeros", async () => {
     const zeros: EmbeddingProvider = {
       name: "zeros",

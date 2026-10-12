@@ -14,6 +14,10 @@ export class SuggestRepository {
   constructor(private readonly prisma: PrismaService) {}
 
   async suggest(q: string, options: { place?: string; limit: number }): Promise<SuggestionDto[]> {
+    // Callers may pass anything; LIMIT must stay 1–10 (a negative LIMIT is an SQL error).
+    const limit = Number.isFinite(options.limit)
+      ? Math.min(10, Math.max(1, Math.trunc(options.limit)))
+      : 6;
     const n = normalize(q);
     if (n.length < 2) return [];
     // Postgres rejects a constant ORDER BY term ("false DESC"), so the term is left out without a place.
@@ -34,7 +38,7 @@ export class SuggestRepository {
              b.name, p.name AS "placeName"
       FROM "SearchDocument" d
       JOIN "Business" b ON b.id = d."entityId" AND b.status = 'published'
-      JOIN "Place" p ON p.id = b."placeId"
+      JOIN "Place" p ON p.id = b."placeId" AND p.status = 'live'
       JOIN "Kind" k ON k.id = b."primaryKindId" AND k.status = 'active'
       JOIN "Sector" s ON s.id = k."sectorId"
       WHERE d."entityType" = 'business'
@@ -43,7 +47,7 @@ export class SuggestRepository {
                ${here}
                word_similarity(${n}, d."nameText") DESC,
                d.tier DESC NULLS LAST, d.slug ASC, p.slug ASC
-      LIMIT ${options.limit}`;
+      LIMIT ${limit}`;
     return rows;
   }
 }

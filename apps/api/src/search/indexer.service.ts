@@ -87,7 +87,13 @@ export class SearchIndexer {
       );
     }
     const businesses = await this.prisma.business.findMany({
-      where: { ...only, status: "published", primaryKind: { is: { status: "active" } } },
+      // Only businesses in live places are searchable (controller ruling, fix round 1).
+      where: {
+        ...only,
+        status: "published",
+        primaryKind: { is: { status: "active" } },
+        place: { is: { status: "live" } },
+      },
       include: {
         place: { select: { path: true, name: true } },
         kinds: { where: { kind: { is: { status: "active" } } }, include: { kind: true } },
