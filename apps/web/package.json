@@ -18,6 +18,7 @@
     "@darb/contracts": "workspace:*",
     "@darb/core": "workspace:*",
     "@darb/i18n": "workspace:*",
+    "@darb/stage": "workspace:*",
     "@darb/tokens": "workspace:*",
     "@ts-rest/core": "catalog:",
     "maplibre-gl": "catalog:",
