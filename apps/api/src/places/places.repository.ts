@@ -16,7 +16,9 @@ export class PlacesRepository {
   async ancestors(place: Place): Promise<Place[]> {
     const slugs = place.path.split("/").filter(Boolean).slice(0, -1);
     const rows = await this.prisma.place.findMany({ where: { slug: { in: slugs } } });
-    return slugs.map((s) => rows.find((r) => r.slug === s)).filter((r): r is Place => r !== undefined);
+    return slugs
+      .map((s) => rows.find((r) => r.slug === s))
+      .filter((r): r is Place => r !== undefined);
   }
 
   children(placeId: string): Promise<Place[]> {
@@ -42,7 +44,10 @@ export class PlacesRepository {
 
   /** The place and every place beneath it. */
   async subtreeIds(place: Place): Promise<string[]> {
-    const rows = await this.prisma.place.findMany({ where: { path: { startsWith: place.path } }, select: { id: true } });
+    const rows = await this.prisma.place.findMany({
+      where: { path: { startsWith: place.path } },
+      select: { id: true },
+    });
     return rows.map((r) => r.id);
   }
 }

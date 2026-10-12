@@ -22,7 +22,10 @@ it("returns sectors in order with their active kinds in order", async () => {
   expect(res.status).toBe(200);
   expect(res.body.sectors.map((s: { slug: string }) => s.slug)).toEqual(["food", "beauty"]);
   const beauty = res.body.sectors[1];
-  expect(beauty.kinds.map((k: { slug: string }) => k.slug)).toEqual(["barbershops", "kids-haircuts"]);
+  expect(beauty.kinds.map((k: { slug: string }) => k.slug)).toEqual([
+    "barbershops",
+    "kids-haircuts",
+  ]);
   expect(res.body.sectors[0].kinds).toEqual([]); // hidden kinds never leave the API
 });
 

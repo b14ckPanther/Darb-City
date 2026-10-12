@@ -28,12 +28,18 @@ describe("GET /places/:slug", () => {
     const res = await request(app.getHttpServer()).get("/places/northern-district");
     expect(res.status).toBe(200);
     expect(res.body.ancestors.map((p: { slug: string }) => p.slug)).toEqual(["israel"]);
-    expect(res.body.children.map((p: { slug: string }) => p.slug).sort()).toEqual(["sakhnin", "tamra"]);
+    expect(res.body.children.map((p: { slug: string }) => p.slug).sort()).toEqual([
+      "sakhnin",
+      "tamra",
+    ]);
   });
   it("returns raw localized names for the client to pick", async () => {
     const res = await request(app.getHttpServer()).get("/places/sakhnin");
     expect(res.body.name).toEqual({ he: "סח'נין", ar: "سخنين", en: "Sakhnin" });
-    expect(res.body.ancestors.map((p: { slug: string }) => p.slug)).toEqual(["israel", "northern-district"]);
+    expect(res.body.ancestors.map((p: { slug: string }) => p.slug)).toEqual([
+      "israel",
+      "northern-district",
+    ]);
   });
   it("404s for an unknown place", async () => {
     const res = await request(app.getHttpServer()).get("/places/nowhere");

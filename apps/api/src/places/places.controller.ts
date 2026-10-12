@@ -18,10 +18,17 @@ export class PlacesController {
       get: async ({ params }) => {
         const place = await this.places.bySlug(params.slug);
         if (!place) return { status: 404, body: { message: `No place "${params.slug}"` } };
-        const [ancestors, children] = await Promise.all([this.places.ancestors(place), this.places.children(place.id)]);
+        const [ancestors, children] = await Promise.all([
+          this.places.ancestors(place),
+          this.places.children(place.id),
+        ]);
         return {
           status: 200,
-          body: { ...toPlaceDto(place), ancestors: ancestors.map(toPlaceDto), children: children.map(toPlaceDto) },
+          body: {
+            ...toPlaceDto(place),
+            ancestors: ancestors.map(toPlaceDto),
+            children: children.map(toPlaceDto),
+          },
         };
       },
       nearest: async ({ query }) => {
