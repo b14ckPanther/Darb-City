@@ -2,79 +2,95 @@
   "cafes": {
     "brand": {
       "he": "בית קפה נחמה",
-      "en": "Nechama Coffee"
+      "en": "Nechama Coffee",
+      "ar": "مقهى نِحاما"
     },
     "title": {
       "he": "הבוקר מתחיל כאן",
-      "en": "Mornings start here"
+      "en": "Mornings start here",
+      "ar": "الصبحية بتبلش من هون"
     },
     "subtitle": {
       "he": "מזמינים מהדרך, אוספים בלי תור",
-      "en": "Order on the way, skip the line"
+      "en": "Order on the way, skip the line",
+      "ar": "اطلب وانت بالطريق، بدون دور"
     },
     "tags": [
       {
         "he": "אספרסו",
-        "en": "Espresso"
+        "en": "Espresso",
+        "ar": "إسبريسو"
       },
       {
         "he": "חלב",
-        "en": "Milk"
+        "en": "Milk",
+        "ar": "حليب"
       },
       {
         "he": "מאפים",
-        "en": "Pastry"
+        "en": "Pastry",
+        "ar": "معجنات"
       },
       {
         "he": "קר",
-        "en": "Iced"
+        "en": "Iced",
+        "ar": "بارد"
       }
     ],
     "items": [
       {
         "label": {
           "he": "פלאט וייט",
-          "en": "Flat white"
+          "en": "Flat white",
+          "ar": "فلات وايت"
         },
         "meta": {
           "he": "₪16 · ריסטרטו כפול",
-          "en": "₪16 · double ristretto"
+          "en": "₪16 · double ristretto",
+          "ar": "₪16 · ريستريتو مزدوج"
         }
       },
       {
         "label": {
           "he": "קורטדו",
-          "en": "Cortado"
+          "en": "Cortado",
+          "ar": "كورتادو"
         },
         "meta": {
           "he": "₪14 · חלב מוקצף",
-          "en": "₪14 · silky milk"
+          "en": "₪14 · silky milk",
+          "ar": "₪14 · حليب مخفوق ناعم"
         }
       },
       {
         "label": {
           "he": "לאטה שיבולת קר",
-          "en": "Iced oat latte"
+          "en": "Iced oat latte",
+          "ar": "لاتيه شوفان بارد"
         },
         "meta": {
           "he": "₪19 · על קרח",
-          "en": "₪19 · over ice"
+          "en": "₪19 · over ice",
+          "ar": "₪19 · على الثلج"
         }
       },
       {
         "label": {
           "he": "שבלול הל",
-          "en": "Cardamom bun"
+          "en": "Cardamom bun",
+          "ar": "كعكة الهيل"
         },
         "meta": {
           "he": "₪17 · יוצא מהתנור ב-8:00",
-          "en": "₪17 · out of the oven at 8:00"
+          "en": "₪17 · out of the oven at 8:00",
+          "ar": "₪17 · بتطلع من الفرن الساعة 8:00"
         }
       }
     ],
     "cta": {
       "he": "הזמנה לאיסוף · 6 דק'",
-      "en": "Pre-order for pickup · 6 min"
+      "en": "Pre-order for pickup · 6 min",
+      "ar": "اطلب مسبقًا للاستلام · 6 دقائق"
     },
     "palette": {
       "bg": "#efe3cf",
@@ -87,75 +103,90 @@
   "grill": {
     "brand": {
       "he": "גריל אבו חסן",
-      "en": "Abu Hassan Grill"
+      "en": "Abu Hassan Grill",
+      "ar": "مشاوي أبو حسن"
     },
     "title": {
       "he": "השווארמה בדרך",
-      "en": "Shawarma on its way"
+      "en": "Shawarma on its way",
+      "ar": "الشاورما بالطريق"
     },
     "subtitle": {
       "he": "משלוח לטייבה · 2 מגשים משפחתיים",
-      "en": "Delivery to Tayibe · 2 family trays"
+      "en": "Delivery to Tayibe · 2 family trays",
+      "ar": "توصيل للطيبة · 2 صواني عائلية"
     },
     "tags": [
       {
         "he": "שווארמה",
-        "en": "Shawarma"
+        "en": "Shawarma",
+        "ar": "شاورما"
       },
       {
         "he": "שיפודים",
-        "en": "Skewers"
+        "en": "Skewers",
+        "ar": "أسياخ"
       },
       {
         "he": "מגשים",
-        "en": "Trays"
+        "en": "Trays",
+        "ar": "صواني"
       }
     ],
     "items": [
       {
         "label": {
           "he": "ההזמנה התקבלה",
-          "en": "Order received"
+          "en": "Order received",
+          "ar": "استلمنا الطلب"
         },
         "meta": {
           "he": "20:05 · 100%",
-          "en": "20:05 · 100%"
+          "en": "20:05 · 100%",
+          "ar": "20:05 · 100%"
         }
       },
       {
         "label": {
           "he": "על השיפוד",
-          "en": "On the spit"
+          "en": "On the spit",
+          "ar": "على السيخ"
         },
         "meta": {
           "he": "שווארמה עגל · 100%",
-          "en": "Veal shawarma · 100%"
+          "en": "Veal shawarma · 100%",
+          "ar": "شاورما عجل · 100%"
         }
       },
       {
         "label": {
           "he": "בדרך אליך",
-          "en": "Out for delivery"
+          "en": "Out for delivery",
+          "ar": "بالطريق إليك"
         },
         "meta": {
           "he": "השליח סאמר · 55%",
-          "en": "Driver Samer · 55%"
+          "en": "Driver Samer · 55%",
+          "ar": "السائق سامر · 55%"
         }
       },
       {
         "label": {
           "he": "בהזמנה",
-          "en": "In the order"
+          "en": "In the order",
+          "ar": "في الطلب"
         },
         "meta": {
           "he": "₪186 · 2 מגשים, חומוס וסלטים",
-          "en": "₪186 · 2 trays, hummus, salads"
+          "en": "₪186 · 2 trays, hummus, salads",
+          "ar": "₪186 · 2 صواني، حمص وسلطات"
         }
       }
     ],
     "cta": {
       "he": "לעקוב אחרי השליח",
-      "en": "Track the driver"
+      "en": "Track the driver",
+      "ar": "تابع السائق"
     },
     "palette": {
       "bg": "#1d1410",
@@ -168,79 +199,95 @@
   "bakeries": {
     "brand": {
       "he": "מאפיית שיבולת",
-      "en": "Shibolet Bakery"
+      "en": "Shibolet Bakery",
+      "ar": "مخبز شيبوليت"
     },
     "title": {
       "he": "חם מהתנור",
-      "en": "Warm from the oven"
+      "en": "Warm from the oven",
+      "ar": "سخن من الفرن"
     },
     "subtitle": {
       "he": "עוגות לשישי מזמינים עד חמישי ב-12:00",
-      "en": "Order Friday cakes by Thursday noon"
+      "en": "Order Friday cakes by Thursday noon",
+      "ar": "اطلب كعكات الجمعة حتى الخميس الساعة 12:00"
     },
     "tags": [
       {
         "he": "לחמים",
-        "en": "Bread"
+        "en": "Bread",
+        "ar": "خبز"
       },
       {
         "he": "עוגות",
-        "en": "Cakes"
+        "en": "Cakes",
+        "ar": "كعكات"
       },
       {
         "he": "מאפים",
-        "en": "Pastries"
+        "en": "Pastries",
+        "ar": "معجنات"
       },
       {
         "he": "עוגיות",
-        "en": "Cookies"
+        "en": "Cookies",
+        "ar": "بسكويت"
       }
     ],
     "items": [
       {
         "label": {
           "he": "כעך בשומשום",
-          "en": "Sesame ka'ak ring"
+          "en": "Sesame ka'ak ring",
+          "ar": "كعك بالسمسم"
         },
         "meta": {
           "he": "₪12 · טרי מהתנור",
-          "en": "₪12 · fresh from the oven"
+          "en": "₪12 · fresh from the oven",
+          "ar": "₪12 · طازة من الفرن"
         }
       },
       {
         "label": {
           "he": "קרואסון חמאה",
-          "en": "Butter croissant"
+          "en": "Butter croissant",
+          "ar": "كرواسون بالزبدة"
         },
         "meta": {
           "he": "₪12 · 72 שעות התפחה",
-          "en": "₪12 · 72-hour proof"
+          "en": "₪12 · 72-hour proof",
+          "ar": "₪12 · تخمير 72 ساعة"
         }
       },
       {
         "label": {
           "he": "עוגת שמרים שוקולד",
-          "en": "Chocolate babka"
+          "en": "Chocolate babka",
+          "ar": "بابكا شوكولاتة"
         },
         "meta": {
           "he": "₪58 · לכל המשפחה",
-          "en": "₪58 · serves the family"
+          "en": "₪58 · serves the family",
+          "ar": "₪58 · بتكفي العيلة"
         }
       },
       {
         "label": {
           "he": "טארט לימון ומרנג",
-          "en": "Lemon meringue tart"
+          "en": "Lemon meringue tart",
+          "ar": "تارت ليمون ومرينغ"
         },
         "meta": {
           "he": "₪22 · אישי",
-          "en": "₪22 · individual"
+          "en": "₪22 · individual",
+          "ar": "₪22 · فردي"
         }
       }
     ],
     "cta": {
       "he": "להזמין לשישי",
-      "en": "Order for Friday"
+      "en": "Order for Friday",
+      "ar": "اطلب للجمعة"
     },
     "palette": {
       "bg": "#fcf4e7",
@@ -253,75 +300,90 @@
   "hummus": {
     "brand": {
       "he": "חומוס אל בלד",
-      "en": "Hummus Al Balad"
+      "en": "Hummus Al Balad",
+      "ar": "حمص البلد"
     },
     "title": {
       "he": "כרטיס החומוס שלך",
-      "en": "Your hummus card"
+      "en": "Your hummus card",
+      "ar": "بطاقة الحمص تبعك"
     },
     "subtitle": {
       "he": "עוד 2 צלחות והבאה עלינו",
-      "en": "2 more plates and the next is on us"
+      "en": "2 more plates and the next is on us",
+      "ar": "كمان صحنين والصحن الجاي علينا"
     },
     "tags": [
       {
         "he": "פיתה חופשית",
-        "en": "Free pita"
+        "en": "Free pita",
+        "ar": "خبز مجاني"
       },
       {
         "he": "פלאפל ליום הולדת",
-        "en": "Birthday falafel"
+        "en": "Birthday falafel",
+        "ar": "فلافل بعيد الميلاد"
       },
       {
         "he": "בלי תור",
-        "en": "No queue"
+        "en": "No queue",
+        "ar": "بدون دور"
       }
     ],
     "items": [
       {
         "label": {
           "he": "חבר",
-          "en": "Member"
+          "en": "Member",
+          "ar": "العضو"
         },
         "meta": {
           "he": "אחמד מסארווה",
-          "en": "Ahmad Masarwa"
+          "en": "Ahmad Masarwa",
+          "ar": "أحمد مصاروة"
         }
       },
       {
         "label": {
           "he": "צלחות",
-          "en": "Plates"
+          "en": "Plates",
+          "ar": "الصحون"
         },
         "meta": {
           "he": "8 מתוך 10",
-          "en": "8 of 10"
+          "en": "8 of 10",
+          "ar": "8 من 10"
         }
       },
       {
         "label": {
           "he": "המנה הקבועה",
-          "en": "Usual order"
+          "en": "Usual order",
+          "ar": "الطلب المعتاد"
         },
         "meta": {
           "he": "חומוס פול",
-          "en": "Hummus with ful"
+          "en": "Hummus with ful",
+          "ar": "حمص بالفول"
         }
       },
       {
         "label": {
           "he": "סניף",
-          "en": "Branch"
+          "en": "Branch",
+          "ar": "الفرع"
         },
         "meta": {
           "he": "העיר העתיקה, עכו",
-          "en": "Old City, Akko"
+          "en": "Old City, Akko",
+          "ar": "البلدة القديمة، عكا"
         }
       }
     ],
     "cta": {
       "he": "הזמנה לאיסוף",
-      "en": "Order for pickup"
+      "en": "Order for pickup",
+      "ar": "اطلب للاستلام"
     },
     "palette": {
       "bg": "#f4ead2",
@@ -334,79 +396,95 @@
   "catering": {
     "brand": {
       "he": "השולחן של עדי",
-      "en": "Adi's Table"
+      "en": "Adi's Table",
+      "ar": "سفرة عدي"
     },
     "title": {
       "he": "בונים תפריט לאירוע",
-      "en": "Build your event menu"
+      "en": "Build your event menu",
+      "ar": "ركّب قائمة الطعام لمناسبتك"
     },
     "subtitle": {
       "he": "40 אורחים · שישי 13.6 · בגינה",
-      "en": "40 guests · Fri 13 Jun · garden"
+      "en": "40 guests · Fri 13 Jun · garden",
+      "ar": "40 ضيف · الجمعة 13.6 · في الحديقة"
     },
     "tags": [
       {
         "he": "מזרח תיכוני",
-        "en": "Middle Eastern"
+        "en": "Middle Eastern",
+        "ar": "شرقي"
       },
       {
         "he": "ים תיכוני",
-        "en": "Mediterranean"
+        "en": "Mediterranean",
+        "ar": "متوسطي"
       },
       {
         "he": "צמחוני",
-        "en": "Vegetarian"
+        "en": "Vegetarian",
+        "ar": "نباتي"
       },
       {
         "he": "על האש",
-        "en": "Barbecue"
+        "en": "Barbecue",
+        "ar": "مشاوي"
       }
     ],
     "items": [
       {
         "label": {
           "he": "פתיחים",
-          "en": "Starters"
+          "en": "Starters",
+          "ar": "المقبلات"
         },
         "meta": {
           "he": "5 מנות · פוקאצ'ה, לבנה, סלק צלוי",
-          "en": "5 dishes · focaccia, labneh, roast beet"
+          "en": "5 dishes · focaccia, labneh, roast beet",
+          "ar": "5 أطباق · فوكاتشا، لبنة، شمندر مشوي"
         }
       },
       {
         "label": {
           "he": "עיקריות",
-          "en": "Mains"
+          "en": "Mains",
+          "ar": "الأطباق الرئيسية"
         },
         "meta": {
           "he": "3 מנות · כבש בסילאן, דג לבן",
-          "en": "3 dishes · lamb in date syrup, white fish"
+          "en": "3 dishes · lamb in date syrup, white fish",
+          "ar": "3 أطباق · خاروف بدبس التمر، سمك أبيض"
         }
       },
       {
         "label": {
           "he": "קינוחים",
-          "en": "Desserts"
+          "en": "Desserts",
+          "ar": "الحلويات"
         },
         "meta": {
           "he": "2 מנות · מלבי ורדים",
-          "en": "2 dishes · rose malabi"
+          "en": "2 dishes · rose malabi",
+          "ar": "طبقان · مهلبية بماء الورد"
         }
       },
       {
         "label": {
           "he": "סה\"כ משוער",
-          "en": "Estimated total"
+          "en": "Estimated total",
+          "ar": "المجموع التقريبي"
         },
         "meta": {
           "he": "₪8,400 · ₪210 לסועד",
-          "en": "₪8,400 · ₪210 per guest"
+          "en": "₪8,400 · ₪210 per guest",
+          "ar": "₪8,400 · ₪210 للضيف"
         }
       }
     ],
     "cta": {
       "he": "שליחת התפריט לשף",
-      "en": "Send the menu to the chef"
+      "en": "Send the menu to the chef",
+      "ar": "أرسل القائمة للشيف"
     },
     "palette": {
       "bg": "#232c1d",
@@ -419,79 +497,95 @@
   "sweets": {
     "brand": {
       "he": "ממתקי אל סולטאן",
-      "en": "Al Sultan Sweets"
+      "en": "Al Sultan Sweets",
+      "ar": "حلويات السلطان"
     },
     "title": {
       "he": "מגשים לעיד",
-      "en": "Trays for Eid"
+      "en": "Trays for Eid",
+      "ar": "صواني العيد"
     },
     "subtitle": {
       "he": "הזמנות לעיד עד יום רביעי",
-      "en": "Eid orders close on Wednesday"
+      "en": "Eid orders close on Wednesday",
+      "ar": "طلبيات العيد بتسكّر يوم الأربعاء"
     },
     "tags": [
       {
         "he": "כנאפה",
-        "en": "Knafeh"
+        "en": "Knafeh",
+        "ar": "كنافة"
       },
       {
         "he": "בקלאווה",
-        "en": "Baklava"
+        "en": "Baklava",
+        "ar": "بقلاوة"
       },
       {
         "he": "מעמול",
-        "en": "Maamoul"
+        "en": "Maamoul",
+        "ar": "معمول"
       },
       {
         "he": "קטאיף",
-        "en": "Qatayef"
+        "en": "Qatayef",
+        "ar": "قطايف"
       }
     ],
     "items": [
       {
         "label": {
           "he": "כנאפה נבולסית",
-          "en": "Nabulsi knafeh"
+          "en": "Nabulsi knafeh",
+          "ar": "كنافة نابلسية"
         },
         "meta": {
           "he": "₪95 · מגש בינוני",
-          "en": "₪95 · medium tray"
+          "en": "₪95 · medium tray",
+          "ar": "₪95 · صينية وسط"
         }
       },
       {
         "label": {
           "he": "בקלאווה פיסטוק",
-          "en": "Pistachio baklava"
+          "en": "Pistachio baklava",
+          "ar": "بقلاوة بالفستق"
         },
         "meta": {
           "he": "₪120 · לק\"ג",
-          "en": "₪120 · per kg"
+          "en": "₪120 · per kg",
+          "ar": "₪120 · للكيلو"
         }
       },
       {
         "label": {
           "he": "מעמול תמרים",
-          "en": "Date maamoul"
+          "en": "Date maamoul",
+          "ar": "معمول بالتمر"
         },
         "meta": {
           "he": "₪65 · 24 יחידות",
-          "en": "₪65 · 24 pieces"
+          "en": "₪65 · 24 pieces",
+          "ar": "₪65 · 24 حبة"
         }
       },
       {
         "label": {
           "he": "קטאיף באשטה",
-          "en": "Ashta qatayef"
+          "en": "Ashta qatayef",
+          "ar": "قطايف بالقشطة"
         },
         "meta": {
           "he": "₪48 · 12 יחידות",
-          "en": "₪48 · 12 pieces"
+          "en": "₪48 · 12 pieces",
+          "ar": "₪48 · 12 حبة"
         }
       }
     ],
     "cta": {
       "he": "הזמנת מגש לעיד",
-      "en": "Order an Eid tray"
+      "en": "Order an Eid tray",
+      "ar": "اطلب صينية العيد"
     },
     "palette": {
       "bg": "#fbefe0",
@@ -504,75 +598,90 @@
   "food-trucks": {
     "brand": {
       "he": "המשאית של שאולי",
-      "en": "Shauli's Truck"
+      "en": "Shauli's Truck",
+      "ar": "عربة شاؤولي"
     },
     "title": {
       "he": "איפה אנחנו היום",
-      "en": "Where we park today"
+      "en": "Where we park today",
+      "ar": "وين واقفين اليوم"
     },
     "subtitle": {
       "he": "נמל תל אביב · עד 23:00",
-      "en": "Tel Aviv Port · until 11pm"
+      "en": "Tel Aviv Port · until 11pm",
+      "ar": "ميناء تل أبيب · حتى 23:00"
     },
     "tags": [
       {
         "he": "היום",
-        "en": "Today"
+        "en": "Today",
+        "ar": "اليوم"
       },
       {
         "he": "מחר",
-        "en": "Tomorrow"
+        "en": "Tomorrow",
+        "ar": "بكرا"
       },
       {
         "he": "שישי",
-        "en": "Friday"
+        "en": "Friday",
+        "ar": "الجمعة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "ההזמנה התקבלה",
-          "en": "Order received"
+          "en": "Order received",
+          "ar": "استلمنا الطلب"
         },
         "meta": {
           "he": "19:42 · סמאש כפול · 100%",
-          "en": "19:42 · double smash · 100%"
+          "en": "19:42 · double smash · 100%",
+          "ar": "19:42 · سماش دبل · 100%"
         }
       },
       {
         "label": {
           "he": "על הפלאנצ'ה",
-          "en": "On the griddle"
+          "en": "On the griddle",
+          "ar": "على الصاج"
         },
         "meta": {
           "he": "עוד 4 דק' · 60%",
-          "en": "4 min left · 60%"
+          "en": "4 min left · 60%",
+          "ar": "باقي 4 دقائق · 60%"
         }
       },
       {
         "label": {
           "he": "מוכן לאיסוף",
-          "en": "Ready for pickup"
+          "en": "Ready for pickup",
+          "ar": "جاهز للاستلام"
         },
         "meta": {
           "he": "חלון 2 · 0%",
-          "en": "window 2 · 0%"
+          "en": "window 2 · 0%",
+          "ar": "شباك 2 · 0%"
         }
       },
       {
         "label": {
           "he": "בתפריט היום",
-          "en": "On today"
+          "en": "On today",
+          "ar": "بقائمة اليوم"
         },
         "meta": {
           "he": "סמאש ₪48 · צ'יפס כמהין ₪22",
-          "en": "Smash ₪48 · truffle fries ₪22"
+          "en": "Smash ₪48 · truffle fries ₪22",
+          "ar": "سماش ₪48 · بطاطا بالكمأة ₪22"
         }
       }
     ],
     "cta": {
       "he": "הזמנה מראש, בלי תור",
-      "en": "Order ahead, skip the queue"
+      "en": "Order ahead, skip the queue",
+      "ar": "اطلب مسبقًا وبدون دور"
     },
     "palette": {
       "bg": "#ffcd3c",
@@ -585,75 +694,90 @@
   "roastery": {
     "brand": {
       "he": "בית הקלייה אל אמיר",
-      "en": "Al Amir Roastery"
+      "en": "Al Amir Roastery",
+      "ar": "محمصة الأمير"
     },
     "title": {
       "he": "מרכיבים קפה ערבי",
-      "en": "Build your Arabic coffee"
+      "en": "Build your Arabic coffee",
+      "ar": "ركّب قهوتك العربية"
     },
     "subtitle": {
       "he": "נטחן טרי מול העיניים",
-      "en": "Freshly ground while you watch"
+      "en": "Freshly ground while you watch",
+      "ar": "مطحونة طازة قدام عيونك"
     },
     "tags": [
       {
         "he": "קלייה בהירה",
-        "en": "Light roast"
+        "en": "Light roast",
+        "ar": "تحميص فاتح"
       },
       {
         "he": "בינונית",
-        "en": "Medium"
+        "en": "Medium",
+        "ar": "وسط"
       },
       {
         "he": "כהה",
-        "en": "Dark"
+        "en": "Dark",
+        "ar": "غامق"
       }
     ],
     "items": [
       {
         "label": {
           "he": "פולים",
-          "en": "Beans"
+          "en": "Beans",
+          "ar": "البن"
         },
         "meta": {
           "he": "ברזיל ואתיופיה",
-          "en": "Brazil and Ethiopia"
+          "en": "Brazil and Ethiopia",
+          "ar": "برازيلي وإثيوبي"
         }
       },
       {
         "label": {
           "he": "הל",
-          "en": "Cardamom"
+          "en": "Cardamom",
+          "ar": "الهيل"
         },
         "meta": {
           "he": "הרבה הל",
-          "en": "Extra cardamom"
+          "en": "Extra cardamom",
+          "ar": "هيل زيادة"
         }
       },
       {
         "label": {
           "he": "טחינה",
-          "en": "Grind"
+          "en": "Grind",
+          "ar": "الطحنة"
         },
         "meta": {
           "he": "דק, לפינג'אן",
-          "en": "Fine, for the finjan"
+          "en": "Fine, for the finjan",
+          "ar": "ناعمة، للفنجان"
         }
       },
       {
         "label": {
           "he": "סה\"כ",
-          "en": "Total"
+          "en": "Total",
+          "ar": "المجموع"
         },
         "meta": {
           "he": "₪42 · חצי קילו",
-          "en": "₪42 · 500 g"
+          "en": "₪42 · 500 g",
+          "ar": "₪42 · نص كيلو"
         }
       }
     ],
     "cta": {
       "he": "להוסיף לסל · ₪42",
-      "en": "Add to bag · ₪42"
+      "en": "Add to bag · ₪42",
+      "ar": "أضف للسلة · ₪42"
     },
     "palette": {
       "bg": "#2b1a12",
@@ -666,79 +790,95 @@
   "ice-cream": {
     "brand": {
       "he": "בוזה דמשק",
-      "en": "Bouza Dimashq"
+      "en": "Bouza Dimashq",
+      "ar": "بوظة دمشق"
     },
     "title": {
       "he": "טעמים של קיץ",
-      "en": "Flavours of summer"
+      "en": "Flavours of summer",
+      "ar": "نكهات الصيف"
     },
     "subtitle": {
       "he": "בוזה במסטיק ופיסטוק, נמתחת ביד",
-      "en": "Mastic and pistachio bouza, pounded by hand"
+      "en": "Mastic and pistachio bouza, pounded by hand",
+      "ar": "بوظة بالمستكة والفستق، مدقوقة باليد"
     },
     "tags": [
       {
         "he": "בוזה",
-        "en": "Bouza"
+        "en": "Bouza",
+        "ar": "بوظة"
       },
       {
         "he": "סורבה",
-        "en": "Sorbet"
+        "en": "Sorbet",
+        "ar": "سوربيه"
       },
       {
         "he": "גביעים",
-        "en": "Cones"
+        "en": "Cones",
+        "ar": "أكواز"
       },
       {
         "he": "קופסאות",
-        "en": "Tubs"
+        "en": "Tubs",
+        "ar": "علب"
       }
     ],
     "items": [
       {
         "label": {
           "he": "בוזה פיסטוק",
-          "en": "Pistachio bouza"
+          "en": "Pistachio bouza",
+          "ar": "بوظة فستق"
         },
         "meta": {
           "he": "₪18 · כדור כפול",
-          "en": "₪18 · double scoop"
+          "en": "₪18 · double scoop",
+          "ar": "₪18 · طابتين"
         }
       },
       {
         "label": {
           "he": "שמנת ומי ורדים",
-          "en": "Cream and rose water"
+          "en": "Cream and rose water",
+          "ar": "قشطة وماء ورد"
         },
         "meta": {
           "he": "₪16 · עם פיסטוק",
-          "en": "₪16 · pistachio on top"
+          "en": "₪16 · pistachio on top",
+          "ar": "₪16 · مع فستق من فوق"
         }
       },
       {
         "label": {
           "he": "סורבה מנגו",
-          "en": "Mango sorbet"
+          "en": "Mango sorbet",
+          "ar": "سوربيه مانجا"
         },
         "meta": {
           "he": "₪15 · טבעוני",
-          "en": "₪15 · vegan"
+          "en": "₪15 · vegan",
+          "ar": "₪15 · نباتي"
         }
       },
       {
         "label": {
           "he": "קופסה משפחתית",
-          "en": "Family tub"
+          "en": "Family tub",
+          "ar": "علبة عائلية"
         },
         "meta": {
           "he": "₪68 · ליטר",
-          "en": "₪68 · one litre"
+          "en": "₪68 · one litre",
+          "ar": "₪68 · لتر"
         }
       }
     ],
     "cta": {
       "he": "להזמין לאיסוף",
-      "en": "Order for pickup"
+      "en": "Order for pickup",
+      "ar": "اطلب للاستلام"
     },
     "palette": {
       "bg": "#fde9ec",
@@ -751,83 +891,100 @@
   "juice-shops": {
     "brand": {
       "he": "מיץ פטל",
-      "en": "Petel Juicery"
+      "en": "Petel Juicery",
+      "ar": "عصائر بيتل"
     },
     "title": {
       "he": "מרכיבים שייק טרי משלך",
-      "en": "Make your own fresh blend"
+      "en": "Make your own fresh blend",
+      "ar": "ركّب كوكتيلك الطازة"
     },
     "subtitle": {
       "he": "בסיס, פירות ותוספת. מוכן תוך 3 דק'",
-      "en": "Base, fruit and a boost. Ready in 3 min"
+      "en": "Base, fruit and a boost. Ready in 3 min",
+      "ar": "القاعدة، الفواكه والإضافة. جاهز خلال 3 دقائق"
     },
     "tags": [
       {
         "he": "מנגו",
-        "en": "Mango"
+        "en": "Mango",
+        "ar": "مانجا"
       },
       {
         "he": "תות",
-        "en": "Strawberry"
+        "en": "Strawberry",
+        "ar": "فراولة"
       },
       {
         "he": "בננה",
-        "en": "Banana"
+        "en": "Banana",
+        "ar": "موز"
       },
       {
         "he": "תמר",
-        "en": "Date"
+        "en": "Date",
+        "ar": "تمر"
       },
       {
         "he": "קייל",
-        "en": "Kale"
+        "en": "Kale",
+        "ar": "كيل"
       }
     ],
     "items": [
       {
         "label": {
           "he": "בסיס",
-          "en": "Base"
+          "en": "Base",
+          "ar": "القاعدة"
         },
         "meta": {
           "he": "חלב שקדים",
-          "en": "Almond milk"
+          "en": "Almond milk",
+          "ar": "حليب لوز"
         }
       },
       {
         "label": {
           "he": "פירות",
-          "en": "Fruit"
+          "en": "Fruit",
+          "ar": "الفواكه"
         },
         "meta": {
           "he": "מנגו, תות, בננה",
-          "en": "Mango, strawberry, banana"
+          "en": "Mango, strawberry, banana",
+          "ar": "مانجا، فراولة، موز"
         }
       },
       {
         "label": {
           "he": "תוספת",
-          "en": "Boost"
+          "en": "Boost",
+          "ar": "الإضافة"
         },
         "meta": {
           "he": "חמאת בוטנים · +₪4",
-          "en": "Peanut butter · +₪4"
+          "en": "Peanut butter · +₪4",
+          "ar": "زبدة فستق · +₪4"
         }
       },
       {
         "label": {
           "he": "הכוס שלך",
-          "en": "Your cup"
+          "en": "Your cup",
+          "ar": "كاستك"
         },
         "meta": {
           "he": "₪26 · 500 מ\"ל · 310 קלוריות",
-          "en": "₪26 · 500 ml · 310 kcal"
+          "en": "₪26 · 500 ml · 310 kcal",
+          "ar": "₪26 · 500 مل · 310 سعرة"
         }
       }
     ],
     "cta": {
       "he": "להוסיף להזמנה · ₪26",
-      "en": "Add to order · ₪26"
+      "en": "Add to order · ₪26",
+      "ar": "أضف للطلب · ₪26"
     },
     "palette": {
       "bg": "#f0f6e2",
@@ -840,87 +997,105 @@
   "meal-prep": {
     "brand": {
       "he": "המטבח של סלמה",
-      "en": "Salma's Kitchen"
+      "en": "Salma's Kitchen",
+      "ar": "مطبخ سلمى"
     },
     "title": {
       "he": "התפריט השבועי שלך",
-      "en": "Your week of meals"
+      "en": "Your week of meals",
+      "ar": "وجبات أسبوعك"
     },
     "subtitle": {
       "he": "5 ארוחות · משלוח בימי א' וד'",
-      "en": "5 meals · delivered Sun and Wed"
+      "en": "5 meals · delivered Sun and Wed",
+      "ar": "5 وجبات · توصيل يومي الأحد والأربعاء"
     },
     "tags": [
       {
         "he": "א'",
-        "en": "Sun"
+        "en": "Sun",
+        "ar": "أحد"
       },
       {
         "he": "ב'",
-        "en": "Mon"
+        "en": "Mon",
+        "ar": "اثنين"
       },
       {
         "he": "ג'",
-        "en": "Tue"
+        "en": "Tue",
+        "ar": "ثلاثاء"
       },
       {
         "he": "ד'",
-        "en": "Wed"
+        "en": "Wed",
+        "ar": "أربعاء"
       },
       {
         "he": "ה'",
-        "en": "Thu"
+        "en": "Thu",
+        "ar": "خميس"
       },
       {
         "he": "ו'",
-        "en": "Fri"
+        "en": "Fri",
+        "ar": "جمعة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "עוף בזעתר ובורגול",
-          "en": "Za'atar chicken, bulgur"
+          "en": "Za'atar chicken, bulgur",
+          "ar": "دجاج بالزعتر وبرغل"
         },
         "meta": {
           "he": "₪42 · 540 קל'",
-          "en": "₪42 · 540 kcal"
+          "en": "₪42 · 540 kcal",
+          "ar": "₪42 · 540 سعرة"
         }
       },
       {
         "label": {
           "he": "קציצות דג ואורז",
-          "en": "Fish kofta with rice"
+          "en": "Fish kofta with rice",
+          "ar": "كفتة سمك مع رز"
         },
         "meta": {
           "he": "₪46 · 480 קל'",
-          "en": "₪46 · 480 kcal"
+          "en": "₪46 · 480 kcal",
+          "ar": "₪46 · 480 سعرة"
         }
       },
       {
         "label": {
           "he": "מג'דרה וסלט",
-          "en": "Mujaddara and salad"
+          "en": "Mujaddara and salad",
+          "ar": "مجدرة وسلطة"
         },
         "meta": {
           "he": "₪34 · 450 קל'",
-          "en": "₪34 · 450 kcal"
+          "en": "₪34 · 450 kcal",
+          "ar": "₪34 · 450 سعرة"
         }
       },
       {
         "label": {
           "he": "מקלובה ירקות",
-          "en": "Vegetable maqluba"
+          "en": "Vegetable maqluba",
+          "ar": "مقلوبة خضار"
         },
         "meta": {
           "he": "₪38 · 520 קל'",
-          "en": "₪38 · 520 kcal"
+          "en": "₪38 · 520 kcal",
+          "ar": "₪38 · 520 سعرة"
         }
       }
     ],
     "cta": {
       "he": "להזמין את השבוע",
-      "en": "Order the week"
+      "en": "Order the week",
+      "ar": "اطلب وجبات الأسبوع"
     },
     "palette": {
       "bg": "#eef0e0",
