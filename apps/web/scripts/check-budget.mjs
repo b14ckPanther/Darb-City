@@ -86,10 +86,10 @@ const loadable = loadableEntries(NEXT);
 const maplibre = gz(join(VENDOR, "maplibre-gl.mjs")) + gz(join(VENDOR, "maplibre-gl-shared.mjs"));
 const worker = gz(join(VENDOR, "maplibre-gl-worker.mjs"));
 
-/** Task 22 sets search.required once the popup exists. */
+/** Each group must be found: a missing marker means its chunk went unmeasured. */
 const LAZY = [
   { name: "stage", marker: "darb:stage-chunk", limit: 340 * 1024, extra: maplibre, required: true },
-  { name: "search", marker: "darb:search-chunk", limit: 30 * 1024, extra: 0, required: false },
+  { name: "search", marker: "darb:search-chunk", limit: 30 * 1024, extra: 0, required: true },
 ];
 
 for (const group of LAZY) {

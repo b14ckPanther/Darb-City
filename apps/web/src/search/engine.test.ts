@@ -1,0 +1,83 @@
+import { buildInstantIndex, prepare } from "@darb/search-text";
+import { expect, it } from "vitest";
+import { inGroups, instantOptions, searchOption } from "./engine";
+
+const prepared = prepare(
+  buildInstantIndex({
+    places: [
+      {
+        slug: "haifa",
+        type: "city",
+        status: "live",
+        parent: null,
+        name: { he: "חיפה", ar: "حيفا", en: "Haifa" },
+        aliases: [],
+      },
+    ],
+    kinds: [
+      {
+        slug: "barbershops",
+        sector: "beauty",
+        parent: null,
+        status: "active",
+        name: { he: "מספרות", ar: "صالونات حلاقة", en: "Barbershops" },
+        synonyms: { he: ["מספרה"], ar: ["حلاق"], en: ["barber"] },
+      },
+    ],
+  }),
+);
+const labels = {
+  search: "Search",
+  placeholder: "",
+  places: "Places",
+  kinds: "Kinds",
+  businesses: "Businesses",
+  searchFor: "Search for “{q}”",
+  suggestionCount: "Suggestions: {count}",
+  noSuggestions: "None",
+};
+
+it("offers kind in place first, at its level-3 URL, then each on its own, then a full search", () => {
+  const options = instantOptions(prepared, "barber haifa", "en", labels);
+  expect(options.map((o) => [o.group, o.href])).toEqual([
+    ["kinds", "/en/haifa/beauty/barbershops"],
+    ["places", "/en/haifa"],
+    ["kinds", "/en/k/barbershops"],
+    ["search", "/en/search?q=barber+haifa"],
+  ]);
+  expect(options[0]!.label).toBe("Barbershops");
+  expect(options[0]!.sublabel).toBe("Haifa");
+  expect(options.at(-1)!.label).toBe("Search for “barber haifa”");
+});
+
+it("works in Hebrew with an attached prefix, and offers only the search for nothing found", () => {
+  expect(instantOptions(prepared, "מספרה בחיפה", "he", labels)[0]!.href).toBe(
+    "/haifa/beauty/barbershops",
+  );
+  expect(instantOptions(prepared, "zzzz", "en", labels).map((o) => o.group)).toEqual(["search"]);
+  expect(instantOptions(prepared, "  ", "en", labels)).toEqual([]);
+});
+
+it("offers the full search on its own while the index loads", () => {
+  expect(searchOption(" pizza ", "he", labels)).toMatchObject({
+    group: "search",
+    href: "/search?q=pizza",
+  });
+  expect(searchOption(" ", "he", labels)).toBeNull();
+});
+
+it("draws options in groups, each where its best option ranked, so the arrows follow the screen", () => {
+  const o = (id: string, group: "places" | "kinds" | "businesses" | "search") => ({
+    id,
+    group,
+    label: id,
+    href: "/",
+  });
+  const ids = (list: ReturnType<typeof o>[]) => inGroups(list).map((x) => x.id);
+  expect(
+    ids([o("pair", "kinds"), o("haifa", "places"), o("barber", "kinds"), o("q", "search")]),
+  ).toEqual(["pair", "barber", "haifa", "q"]);
+  expect(
+    ids([o("haifa", "places"), o("barber", "kinds"), o("samer", "businesses"), o("q", "search")]),
+  ).toEqual(["haifa", "barber", "samer", "q"]);
+});

@@ -30,7 +30,9 @@
     position: fixed;
     inset: 0;
     z-index: 30;
-    --stage-bottom: calc(88px + var(--tap) + var(--space-3) + env(safe-area-inset-bottom));
+    --stage-bottom: calc(
+      var(--dock-size) + var(--space-3) + var(--tap) + var(--space-3) + env(safe-area-inset-bottom)
+    );
     overflow: hidden;
     background: var(--night);
   }

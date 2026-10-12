@@ -2,9 +2,28 @@ import type { ReactNode } from "react";
 import type { Locale } from "@darb/core";
 import { t } from "@darb/i18n";
 import { href, paths } from "@/lib/routes";
+import type { SearchLabels } from "@/search/types";
+import { SearchBox } from "./SearchBox";
 import styles from "./SearchBar.module.css";
 
-/** Plan 3 wires search. Top bar on desktop, docked at the bottom (thumb reach) on phones. */
+/** The combobox's strings: client components get copy as props, never @darb/i18n. */
+export function searchLabels(locale: Locale): SearchLabels {
+  return {
+    search: t(locale, "search"),
+    placeholder: t(locale, "searchPlaceholder"),
+    places: t(locale, "suggestPlaces"),
+    kinds: t(locale, "suggestKinds"),
+    businesses: t(locale, "suggestBusinesses"),
+    searchFor: t(locale, "searchFor"),
+    suggestionCount: t(locale, "suggestionCount"),
+    noSuggestions: t(locale, "noSuggestions"),
+  };
+}
+
+/**
+ * Top bar on desktop, docked at the bottom (thumb reach) on phones. Without JavaScript the form
+ * still submits to /search?q=.
+ */
 export function SearchBar({ locale, nearMe }: { locale: Locale; nearMe?: ReactNode }) {
   return (
     <div className={styles.dock} data-search-bar="">
@@ -17,15 +36,7 @@ export function SearchBar({ locale, nearMe }: { locale: Locale; nearMe?: ReactNo
         <label htmlFor="q" className="visually-hidden">
           {t(locale, "search")}
         </label>
-        <input
-          id="q"
-          name="q"
-          type="search"
-          placeholder={t(locale, "searchPlaceholder")}
-          autoComplete="off"
-          enterKeyHint="search"
-          className={styles.input}
-        />
+        <SearchBox locale={locale} labels={searchLabels(locale)} />
         <button type="submit" className={styles.submit} aria-label={t(locale, "search")}>
           <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
             <circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" strokeWidth="2" />

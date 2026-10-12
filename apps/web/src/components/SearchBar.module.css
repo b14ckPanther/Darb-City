@@ -21,24 +21,6 @@
   box-shadow: var(--focus-ring);
 }
 
-.input {
-  flex: 1;
-  min-inline-size: 0;
-  min-block-size: 46px;
-  border: 0;
-  background: transparent;
-  color: var(--text);
-  font: inherit;
-}
-
-.input::placeholder {
-  color: var(--text-muted);
-}
-
-.input:focus-visible {
-  box-shadow: none;
-}
-
 .submit {
   display: grid;
   place-items: center;
@@ -60,6 +42,7 @@
     z-index: 36;
     max-inline-size: none;
     padding: var(--space-3) var(--gutter) max(var(--space-3), env(safe-area-inset-bottom));
+    min-block-size: var(--dock-size);
     background: linear-gradient(180deg, transparent 0%, var(--night) 35%);
   }
 }

@@ -33,6 +33,7 @@
   --radius-l: 24px;
   --radius-pill: 999px;
   --tap: 44px;
+  --dock-size: 76px; /* the docked search bar on a phone: a 48 px field, 12 px above and below, and air */
   --dur-fast: 400ms;
   --dur: 550ms;
   --dur-slow: 700ms;
@@ -71,12 +72,15 @@ body {
 
 @media (max-width: 899px) {
   body {
-    padding-block-end: 96px; /* room for the docked search bar */
+    /* The docked search bar, and the home indicator under it. */
+    padding-block-end: calc(var(--dock-size) + var(--space-5) + env(safe-area-inset-bottom));
   }
 
-  /* And for the Map/List pill above it (stage.module.css .toggle), so it never covers a row. */
+  /* And the Map/List pill above it (stage.module.css .toggle), so it never covers a row. */
   html[data-stage="on"] body {
-    padding-block-end: calc(96px + var(--tap) + var(--space-4));
+    padding-block-end: calc(
+      var(--dock-size) + var(--space-5) + var(--tap) + var(--space-4) + env(safe-area-inset-bottom)
+    );
   }
 }
 

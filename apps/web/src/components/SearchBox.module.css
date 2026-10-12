@@ -1,0 +1,103 @@
+.box {
+  position: relative;
+  flex: 1;
+  display: flex;
+  min-inline-size: 0;
+}
+
+.input {
+  flex: 1;
+  min-inline-size: 0;
+  min-block-size: 46px;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+}
+
+.input::placeholder {
+  color: var(--text-muted);
+}
+
+.input:focus-visible {
+  box-shadow: none;
+}
+
+/* VC1: under the header input, its width, at most 60vh. */
+.popup {
+  position: absolute;
+  inset-inline: calc(-1 * var(--space-4)) calc(-1 * var(--tap));
+  inset-block-start: calc(100% + var(--space-2));
+  z-index: 3;
+}
+
+.listbox {
+  margin: 0;
+  padding: var(--space-2) 0;
+  max-block-size: 60vh;
+  overflow-y: auto;
+  list-style: none;
+  background: var(--surface-1);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  box-shadow: var(--shadow-panel);
+}
+
+.group {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.heading {
+  padding: var(--space-2) var(--space-4) var(--space-1);
+  color: var(--text-muted);
+  font-size: var(--step--1);
+}
+
+.option {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  min-block-size: var(--tap);
+  padding-block: var(--space-2);
+  padding-inline: var(--space-4);
+  border-inline-start: 3px solid transparent;
+  cursor: pointer;
+}
+
+.option[aria-selected="true"],
+.option:hover {
+  border-inline-start-color: var(--gold-300);
+  background: var(--surface-2);
+}
+
+.label {
+  color: var(--text);
+}
+
+.sublabel {
+  color: var(--text-muted);
+  font-size: var(--step--1);
+}
+
+/* The full search, set apart from the suggestions above it. */
+.group[data-group="search"] {
+  margin-block-start: var(--space-1);
+  padding-block-start: var(--space-1);
+  border-block-start: 1px solid var(--line-soft);
+}
+
+/*
+ * VC2 and M3: on a phone the dock is at the bottom, so the listbox opens upward from the dock's
+ * edge (the same --dock-size the body padding and the Map pill use), gutter to gutter, and never
+ * covers the input.
+ */
+@media (max-width: 899px) {
+  .popup {
+    position: fixed;
+    inset-inline: var(--gutter);
+    inset-block-start: auto;
+    inset-block-end: calc(var(--dock-size) + env(safe-area-inset-bottom));
+  }
+}
