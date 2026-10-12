@@ -1,9 +1,9 @@
-import { notFound, permanentRedirect } from "next/navigation";
+import { notFound, permanentRedirect, redirect } from "next/navigation";
 import type { Locale } from "@darb/core";
-import type { PlaceDetailDto, SectorDto } from "@darb/contracts";
+import type { KindDto, PlaceDetailDto, SectorDto } from "@darb/contracts";
 import { getPlace, getTaxonomy } from "./api";
 import { isLocale } from "./locale";
-import { href } from "./routes";
+import { href, paths } from "./routes";
 import { indexTaxonomy, type TaxonomyIndex } from "./taxonomy";
 
 /** The root of the place tree. `/israel` redirects to `/`. */
@@ -40,4 +40,26 @@ export async function loadSectorLevel(raw: {
   const sector = level.index.sectorBySlug.get(raw.sector);
   if (!sector) notFound();
   return { ...level, sector };
+}
+
+export interface KindLevel extends SectorLevel {
+  kind: KindDto;
+}
+
+/** `rest` keeps deeper segments (the business) when a kind is redirected to its own sector. */
+export async function loadKindLevel(
+  raw: { locale: string; place: string; sector: string; kind: string },
+  rest: readonly string[] = [],
+): Promise<KindLevel> {
+  const level = await loadPlaceLevel(raw);
+  const kind = level.index.kindBySlug.get(raw.kind);
+  if (!kind) notFound();
+  const sector = level.index.sectorById.get(kind.sectorId);
+  if (!sector) notFound();
+  if (sector.slug !== raw.sector) {
+    redirect(
+      href(level.locale, [...paths.kind(level.place.slug, sector.slug, kind.slug), ...rest]),
+    );
+  }
+  return { ...level, sector, kind };
 }
