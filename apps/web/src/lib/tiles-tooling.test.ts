@@ -1,14 +1,19 @@
 // @vitest-environment node
-import { readFileSync } from "node:fs";
+import { existsSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { PMTiles, zxyToTileId as referenceTileId, type Source } from "pmtiles";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import {
   assetFor,
+  checkBuild,
   CLI_ASSETS,
   extractArgs,
+  extractInto,
   ISRAEL_BBOX,
   latestBuild,
   MAX_ZOOM,
+  newestBuild,
 } from "../../scripts/tiles/extract-israel.mjs";
 import { FIXTURE, FIXTURE_OPTIONS } from "../../scripts/tiles/make-test-tiles.mjs";
 import { buildArchive, testTile, zxyToTileId } from "../../scripts/tiles/pmtiles-writer.mjs";
@@ -78,5 +83,42 @@ describe("Israel extract", () => {
       "--bbox=34.2,29.45,35.95,33.35",
       "--maxzoom=14",
     ]);
+  });
+  it("accepts only a daily build name for --build", () => {
+    expect(checkBuild("20261012")).toBe("20261012.pmtiles");
+    expect(checkBuild("20261012.pmtiles")).toBe("20261012.pmtiles");
+    for (const bad of [
+      "",
+      "latest",
+      "2026101",
+      "202610120",
+      "../20261012.pmtiles",
+      "20261012.mbtiles",
+    ])
+      expect(() => checkBuild(bad), bad).toThrow(/--build must look like 20261012/);
+  });
+  it("refuses a failed builds.json response", async () => {
+    const ok = vi.fn(async () => Response.json([{ key: "20261012.pmtiles" }]));
+    expect(await newestBuild(ok)).toBe("20261012.pmtiles");
+    const down = vi.fn(async () => new Response("nope", { status: 503 }));
+    await expect(newestBuild(down)).rejects.toThrow(/builds\.json.*503/);
+  });
+  it("keeps the extract only when it verifies, and removes a failed partial", () => {
+    const dir = mkdtempSync(join(tmpdir(), "darb-extract-"));
+    const partial = join(dir, "israel.partial.pmtiles");
+    const output = join(dir, "israel.pmtiles");
+    const fails = vi.fn((_cli: string, args: string[]) => {
+      if (args[0] === "extract") writeFileSync(partial, "half");
+      if (args[0] === "verify") throw new Error("verify failed");
+    });
+    expect(() => extractInto(dir, "20261012.pmtiles", "pmtiles", fails)).toThrow(/verify failed/);
+    expect(existsSync(partial)).toBe(false);
+    expect(existsSync(output)).toBe(false);
+    const works = vi.fn((_cli: string, args: string[]) => {
+      if (args[0] === "extract") writeFileSync(partial, "whole");
+    });
+    expect(extractInto(dir, "20261012.pmtiles", "pmtiles", works)).toBe(output);
+    expect(readFileSync(output, "utf8")).toBe("whole");
+    expect(existsSync(partial)).toBe(false);
   });
 });

@@ -61,6 +61,21 @@ export function latestBuild(builds) {
   return keys[keys.length - 1];
 }
 
+/** `--build` takes a daily build name, `20261012` or `20261012.pmtiles`; anything else is refused. */
+export function checkBuild(value) {
+  const match = /^(\d{8})(?:\.pmtiles)?$/.exec(value);
+  if (!match)
+    throw new Error(`--build must look like 20261012 or 20261012.pmtiles, not "${value}"`);
+  return `${match[1]}.pmtiles`;
+}
+
+/** The newest daily build listed in builds.json. */
+export async function newestBuild(fetchImpl = fetch) {
+  const res = await fetchImpl(BUILDS);
+  if (!res.ok) throw new Error(`Could not list Protomaps builds (${BUILDS}): ${res.status}`);
+  return latestBuild(await res.json());
+}
+
 export function extractArgs(build, output) {
   return [
     "extract",
@@ -88,18 +103,36 @@ async function ensureCli(dir) {
   return bin;
 }
 
+/**
+ * Extracts into israel.partial.pmtiles and renames it to israel.pmtiles only once it verifies, so a
+ * failed or interrupted run never leaves a broken archive behind. `run` is execFileSync (injectable
+ * for tests).
+ */
+export function extractInto(dir, build, cli, run = execFileSync) {
+  const partial = join(dir, "israel.partial.pmtiles");
+  const output = join(dir, "israel.pmtiles");
+  try {
+    run(cli, extractArgs(build, partial), { stdio: "inherit" });
+    run(cli, ["verify", partial], { stdio: "inherit" });
+    renameSync(partial, output);
+  } finally {
+    rmSync(partial, { force: true });
+  }
+  return output;
+}
+
 async function main() {
-  const { values } = parseArgs({ options: { build: { type: "string" } } });
+  // pnpm 11 forwards the `--` of `pnpm tiles:israel -- --build=…` to the script: drop it.
+  const args = process.argv.slice(2).filter((arg) => arg !== "--");
+  const { values } = parseArgs({ args, options: { build: { type: "string" } } });
+  const chosen = values.build === undefined ? undefined : checkBuild(values.build);
   const dir = fileURLToPath(new URL("../../.tiles/", import.meta.url));
   mkdirSync(join(dir, "bin"), { recursive: true });
   const cli = await ensureCli(join(dir, "bin"));
-  const build = values.build ?? latestBuild(await (await fetch(BUILDS)).json());
-  const partial = join(dir, "israel.partial.pmtiles");
-  const output = join(dir, "israel.pmtiles");
+  const build = chosen ?? (await newestBuild());
+  console.log(`tiles: build ${build} (${chosen ? "chosen with --build" : "newest daily build"})`);
   console.log(`tiles: extracting Israel from ${build} (maxzoom ${MAX_ZOOM})…`);
-  execFileSync(cli, extractArgs(build, partial), { stdio: "inherit" });
-  execFileSync(cli, ["verify", partial], { stdio: "inherit" });
-  renameSync(partial, output);
+  const output = extractInto(dir, build, cli);
   const bytes = statSync(output).size;
   writeFileSync(
     join(dir, "israel.json"),
@@ -113,4 +146,11 @@ async function main() {
   console.log(JSON.parse(readFileSync(join(dir, "israel.json"), "utf8")));
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) await main();
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  try {
+    await main();
+  } catch (error) {
+    console.error(`tiles: ${error instanceof Error ? error.message : error}`);
+    process.exit(1);
+  }
+}
