@@ -13,6 +13,17 @@ import {
   SlugSchema,
   TaxonomySchema,
 } from "./schemas.js";
+import {
+  ClickRequestSchema,
+  MissingReportSchema,
+  ReportQuerySchema,
+  ResultsRequestSchema,
+  SearchRequestSchema,
+  SearchResponseSchema,
+  SuggestQuerySchema,
+  SuggestionSchema,
+  TooManySchema,
+} from "./search.js";
 
 const c = initContract();
 
@@ -103,6 +114,40 @@ export const contract = c.router({
       method: "GET",
       path: "/density",
       responses: { 200: DensitySchema },
+    },
+  },
+  search: {
+    suggest: {
+      method: "GET",
+      path: "/search/suggest",
+      query: SuggestQuerySchema,
+      responses: { 200: z.array(SuggestionSchema) },
+    },
+    search: {
+      method: "POST",
+      path: "/search",
+      body: SearchRequestSchema,
+      responses: { 200: SearchResponseSchema, 400: BadRequestSchema, 429: TooManySchema },
+    },
+    results: {
+      method: "POST",
+      path: "/search/results",
+      body: ResultsRequestSchema,
+      responses: { 200: SearchResponseSchema, 400: BadRequestSchema, 429: TooManySchema },
+    },
+    click: {
+      method: "POST",
+      path: "/search/click",
+      body: ClickRequestSchema,
+      responses: { 204: c.noBody(), 404: NotFoundSchema },
+    },
+    /** The Missing kinds and places report (Plan 4's admin screen reads it). */
+    report: {
+      method: "GET",
+      path: "/search/report",
+      headers: z.object({ "x-darb-report-key": z.string().optional() }),
+      query: ReportQuerySchema,
+      responses: { 200: MissingReportSchema, 404: NotFoundSchema },
     },
   },
 });
