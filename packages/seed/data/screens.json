@@ -12354,75 +12354,90 @@
   "farm-shops": {
     "brand": {
       "he": "חוות אבו סאלח",
-      "en": "Abu Saleh Farm"
+      "en": "Abu Saleh Farm",
+      "ar": "مزرعة أبو صالح"
     },
     "title": {
       "he": "המנוי שלך לסל מהשדה",
-      "en": "Your farm box membership"
+      "en": "Your farm box membership",
+      "ar": "اشتراك صندوق المزرعة تبعك"
     },
     "subtitle": {
       "he": "נקטף ביום ג', אצלך ביום ד'",
-      "en": "Picked on Tuesday, with you on Wednesday"
+      "en": "Picked on Tuesday, with you on Wednesday",
+      "ar": "بنقطفها الثلاثاء، وبتوصلك الأربعاء"
     },
     "tags": [
       {
         "he": "קטיף של הבוקר",
-        "en": "Picked this morning"
+        "en": "Picked this morning",
+        "ar": "مقطوف الصبح"
       },
       {
         "he": "החלפת פריטים",
-        "en": "Swap any item"
+        "en": "Swap any item",
+        "ar": "بدّل أي صنف"
       },
       {
         "he": "ביקור בחווה",
-        "en": "Farm visits"
+        "en": "Farm visits",
+        "ar": "زيارات للمزرعة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "מנוי",
-          "en": "Member"
+          "en": "Member",
+          "ar": "المشتركة"
         },
         "meta": {
           "he": "רנא חטיב",
-          "en": "Rana Khatib"
+          "en": "Rana Khatib",
+          "ar": "رنا خطيب"
         }
       },
       {
         "label": {
           "he": "הסל",
-          "en": "Box"
+          "en": "Box",
+          "ar": "الصندوق"
         },
         "meta": {
           "he": "משפחתי · 7 ק\"ג",
-          "en": "Family · 7 kg"
+          "en": "Family · 7 kg",
+          "ar": "عائلي · 7 كغم"
         }
       },
       {
         "label": {
           "he": "איסוף",
-          "en": "Pickup"
+          "en": "Pickup",
+          "ar": "الاستلام"
         },
         "meta": {
           "he": "ד' 16:00 · שער החווה",
-          "en": "Wed 16:00 · farm gate"
+          "en": "Wed 16:00 · farm gate",
+          "ar": "الأربعاء 16:00 · بوابة المزرعة"
         }
       },
       {
         "label": {
           "he": "מחיר",
-          "en": "Price"
+          "en": "Price",
+          "ar": "السعر"
         },
         "meta": {
           "he": "₪135 לשבוע",
-          "en": "₪135 a week"
+          "en": "₪135 a week",
+          "ar": "₪135 بالأسبوع"
         }
       }
     ],
     "cta": {
       "he": "לשנות את הסל של השבוע",
-      "en": "Change this week's box"
+      "en": "Change this week's box",
+      "ar": "غيّر صندوق هالأسبوع"
     },
     "palette": {
       "bg": "#e9efd9",
@@ -12435,79 +12450,95 @@
   "farmers-markets": {
     "brand": {
       "he": "שוק האיכרים בעמק",
-      "en": "Valley Farmers' Market"
+      "en": "Valley Farmers' Market",
+      "ar": "سوق الفلاحين بالمرج"
     },
     "title": {
       "he": "סל ירקות לשישי",
-      "en": "A Friday veg box"
+      "en": "A Friday veg box",
+      "ar": "صندوق خضرة للجمعة"
     },
     "subtitle": {
       "he": "מ-14 חקלאים בעמק · איסוף או משלוח",
-      "en": "From 14 valley farmers · pickup or delivery"
+      "en": "From 14 valley farmers · pickup or delivery",
+      "ar": "من 14 فلاح من المرج · استلام أو توصيل"
     },
     "tags": [
       {
         "he": "ירקות",
-        "en": "Veg"
+        "en": "Veg",
+        "ar": "خضرة"
       },
       {
         "he": "פירות",
-        "en": "Fruit"
+        "en": "Fruit",
+        "ar": "فواكه"
       },
       {
         "he": "גבינות",
-        "en": "Cheese"
+        "en": "Cheese",
+        "ar": "جبنة"
       },
       {
         "he": "דבש",
-        "en": "Honey"
+        "en": "Honey",
+        "ar": "عسل"
       }
     ],
     "items": [
       {
         "label": {
           "he": "סל עונתי גדול",
-          "en": "Large seasonal box"
+          "en": "Large seasonal box",
+          "ar": "صندوق موسمي كبير"
         },
         "meta": {
           "he": "₪149 · 8 ק\"ג",
-          "en": "₪149 · 8 kg"
+          "en": "₪149 · 8 kg",
+          "ar": "₪149 · 8 كغم"
         }
       },
       {
         "label": {
           "he": "עגבניות שרי",
-          "en": "Cherry tomatoes"
+          "en": "Cherry tomatoes",
+          "ar": "بندورة شيري"
         },
         "meta": {
           "he": "₪18 · חצי קילו",
-          "en": "₪18 · 500 g"
+          "en": "₪18 · 500 g",
+          "ar": "₪18 · 500 غرام"
         }
       },
       {
         "label": {
           "he": "גבינת עיזים",
-          "en": "Goat cheese"
+          "en": "Goat cheese",
+          "ar": "جبنة ماعز"
         },
         "meta": {
           "he": "₪42 · משק ברקן",
-          "en": "₪42 · Barkan farm"
+          "en": "₪42 · Barkan farm",
+          "ar": "₪42 · مزرعة بركان"
         }
       },
       {
         "label": {
           "he": "דבש פרחי בר",
-          "en": "Wildflower honey"
+          "en": "Wildflower honey",
+          "ar": "عسل زهور برية"
         },
         "meta": {
           "he": "₪55 · חצי קילו",
-          "en": "₪55 · 500 g"
+          "en": "₪55 · 500 g",
+          "ar": "₪55 · 500 غرام"
         }
       }
     ],
     "cta": {
       "he": "הזמנה לשישי",
-      "en": "Order for Friday"
+      "en": "Order for Friday",
+      "ar": "اطلب للجمعة"
     },
     "palette": {
       "bg": "#f4eedd",
@@ -12520,79 +12551,95 @@
   "seedlings": {
     "brand": {
       "he": "משתלת אל בוסתאן",
-      "en": "Al Bustan Nursery"
+      "en": "Al Bustan Nursery",
+      "ar": "مشتل البستان"
     },
     "title": {
       "he": "מתכננים ערוגת ירקות",
-      "en": "Plan a vegetable bed"
+      "en": "Plan a vegetable bed",
+      "ar": "خطّط حاكورة خضرة"
     },
     "subtitle": {
       "he": "ערוגה 1.2 x 3 מ' · שמש מלאה · סתיו",
-      "en": "1.2 x 3 m bed · full sun · autumn"
+      "en": "1.2 x 3 m bed · full sun · autumn",
+      "ar": "حوض 1.2 × 3 م · شمس كاملة · خريف"
     },
     "tags": [
       {
         "he": "עלים",
-        "en": "Leafy greens"
+        "en": "Leafy greens",
+        "ar": "ورقيات"
       },
       {
         "he": "שורשים",
-        "en": "Roots"
+        "en": "Roots",
+        "ar": "جذريات"
       },
       {
         "he": "תבלינים",
-        "en": "Herbs"
+        "en": "Herbs",
+        "ar": "أعشاب"
       },
       {
         "he": "קטניות",
-        "en": "Pulses"
+        "en": "Pulses",
+        "ar": "بقوليات"
       }
     ],
     "items": [
       {
         "label": {
           "he": "שורה ראשונה",
-          "en": "Row one"
+          "en": "Row one",
+          "ar": "الخط الأول"
         },
         "meta": {
           "he": "12 חסה ו-6 תרד",
-          "en": "12 lettuce, 6 spinach"
+          "en": "12 lettuce, 6 spinach",
+          "ar": "12 خس، 6 سبانخ"
         }
       },
       {
         "label": {
           "he": "שורה שנייה",
-          "en": "Row two"
+          "en": "Row two",
+          "ar": "الخط الثاني"
         },
         "meta": {
           "he": "גזר, סלק וצנונית",
-          "en": "Carrot, beet and radish"
+          "en": "Carrot, beet and radish",
+          "ar": "جزر، شمندر وفجل"
         }
       },
       {
         "label": {
           "he": "פינת תבלינים",
-          "en": "Herb corner"
+          "en": "Herb corner",
+          "ar": "زاوية الأعشاب"
         },
         "meta": {
           "he": "נענע, פטרוזיליה וזעתר",
-          "en": "Mint, parsley and za'atar"
+          "en": "Mint, parsley and za'atar",
+          "ar": "نعنع، بقدونس وزعتر"
         }
       },
       {
         "label": {
           "he": "סה\"כ",
-          "en": "Total"
+          "en": "Total",
+          "ar": "المجموع"
         },
         "meta": {
           "he": "₪96 · 42 שתילים וקומפוסט",
-          "en": "₪96 · 42 seedlings and compost"
+          "en": "₪96 · 42 seedlings and compost",
+          "ar": "₪96 · 42 شتلة وكومبوست"
         }
       }
     ],
     "cta": {
       "he": "להכין לי את המגש",
-      "en": "Prepare my tray"
+      "en": "Prepare my tray",
+      "ar": "جهّزلي الصينية"
     },
     "palette": {
       "bg": "#1f2b1c",
@@ -12605,79 +12652,95 @@
   "beekeepers": {
     "brand": {
       "he": "מכוורת אל נחלה",
-      "en": "Al Nahla Apiary"
+      "en": "Al Nahla Apiary",
+      "ar": "منحل النحلة"
     },
     "title": {
       "he": "דבש מהכוורות בגליל",
-      "en": "Honey from Galilee hives"
+      "en": "Honey from Galilee hives",
+      "ar": "عسل من خلايا الجليل"
     },
     "subtitle": {
       "he": "רדייה אחרונה לעונה: השבוע",
-      "en": "Last harvest of the season: this week"
+      "en": "Last harvest of the season: this week",
+      "ar": "آخر قطفة بالموسم: هالأسبوع"
     },
     "tags": [
       {
         "he": "דבש",
-        "en": "Honey"
+        "en": "Honey",
+        "ar": "عسل"
       },
       {
         "he": "חלות",
-        "en": "Comb"
+        "en": "Comb",
+        "ar": "شهد"
       },
       {
         "he": "מארזים",
-        "en": "Gift sets"
+        "en": "Gift sets",
+        "ar": "طقم هدايا"
       },
       {
         "he": "פרופוליס",
-        "en": "Propolis"
+        "en": "Propolis",
+        "ar": "عكبر"
       }
     ],
     "items": [
       {
         "label": {
           "he": "דבש פרחי הר",
-          "en": "Mountain flower honey"
+          "en": "Mountain flower honey",
+          "ar": "عسل زهور جبلية"
         },
         "meta": {
           "he": "₪65 · 1 ק\"ג",
-          "en": "₪65 · 1 kg"
+          "en": "₪65 · 1 kg",
+          "ar": "₪65 · 1 كغم"
         }
       },
       {
         "label": {
           "he": "חלת דבש טבעית",
-          "en": "Natural honeycomb"
+          "en": "Natural honeycomb",
+          "ar": "شهد طبيعي"
         },
         "meta": {
           "he": "₪58 · 400 גרם",
-          "en": "₪58 · 400 g"
+          "en": "₪58 · 400 g",
+          "ar": "₪58 · 400 غرام"
         }
       },
       {
         "label": {
           "he": "מארז טעימות",
-          "en": "Tasting trio"
+          "en": "Tasting trio",
+          "ar": "ثلاثية تذوّق"
         },
         "meta": {
           "he": "₪89 · 3 צנצנות",
-          "en": "₪89 · 3 jars"
+          "en": "₪89 · 3 jars",
+          "ar": "₪89 · 3 مرطبانات"
         }
       },
       {
         "label": {
           "he": "טיפות פרופוליס",
-          "en": "Propolis drops"
+          "en": "Propolis drops",
+          "ar": "نقط عكبر"
         },
         "meta": {
           "he": "₪42 · 30 מ\"ל",
-          "en": "₪42 · 30 ml"
+          "en": "₪42 · 30 ml",
+          "ar": "₪42 · 30 مل"
         }
       }
     ],
     "cta": {
       "he": "להזמין מארז לחג",
-      "en": "Order a holiday set"
+      "en": "Order a holiday set",
+      "ar": "اطلب طقم للعيد"
     },
     "palette": {
       "bg": "#fbefd4",
@@ -12690,87 +12753,105 @@
   "dairy": {
     "brand": {
       "he": "מחלבת עין אל חליב",
-      "en": "Ein Al Halib Dairy"
+      "en": "Ein Al Halib Dairy",
+      "ar": "ألبان عين الحليب"
     },
     "title": {
       "he": "חלב טרי עד הדלת",
-      "en": "Fresh milk to your door"
+      "en": "Fresh milk to your door",
+      "ar": "حليب طازة لباب البيت"
     },
     "subtitle": {
       "he": "חלוקה לכפרים בוואדי ערה",
-      "en": "Delivering across Wadi Ara villages"
+      "en": "Delivering across Wadi Ara villages",
+      "ar": "بنوصّل لكل قرى وادي عارة"
     },
     "tags": [
       {
         "he": "א'",
-        "en": "Sun"
+        "en": "Sun",
+        "ar": "أحد"
       },
       {
         "he": "ב'",
-        "en": "Mon"
+        "en": "Mon",
+        "ar": "اثنين"
       },
       {
         "he": "ג'",
-        "en": "Tue"
+        "en": "Tue",
+        "ar": "ثلاثاء"
       },
       {
         "he": "ד'",
-        "en": "Wed"
+        "en": "Wed",
+        "ar": "أربعاء"
       },
       {
         "he": "ה'",
-        "en": "Thu"
+        "en": "Thu",
+        "ar": "خميس"
       },
       {
         "he": "ו'",
-        "en": "Fri"
+        "en": "Fri",
+        "ar": "جمعة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "חלב מלא בבקבוק זכוכית",
-          "en": "Whole milk in glass"
+          "en": "Whole milk in glass",
+          "ar": "حليب كامل بقنينة زجاج"
         },
         "meta": {
           "he": "₪9 · 1 ליטר · א', ג', ה'",
-          "en": "₪9 · 1 litre · Sun, Tue, Thu"
+          "en": "₪9 · 1 litre · Sun, Tue, Thu",
+          "ar": "₪9 · 1 لتر · أحد، ثلاثاء، خميس"
         }
       },
       {
         "label": {
           "he": "לבנה ביתית",
-          "en": "Homemade labneh"
+          "en": "Homemade labneh",
+          "ar": "لبنة بيتية"
         },
         "meta": {
           "he": "₪24 · 500 גרם · ב'",
-          "en": "₪24 · 500 g · Mon"
+          "en": "₪24 · 500 g · Mon",
+          "ar": "₪24 · 500 غرام · اثنين"
         }
       },
       {
         "label": {
           "he": "גבינה בלדית",
-          "en": "Baladi white cheese"
+          "en": "Baladi white cheese",
+          "ar": "جبنة بيضا بلدية"
         },
         "meta": {
           "he": "₪38 · ק\"ג · ד'",
-          "en": "₪38 · per kg · Wed"
+          "en": "₪38 · per kg · Wed",
+          "ar": "₪38 · للكيلو · أربعاء"
         }
       },
       {
         "label": {
           "he": "לבן לשתייה",
-          "en": "Laban to drink"
+          "en": "Laban to drink",
+          "ar": "لبن للشرب"
         },
         "meta": {
           "he": "₪12 · 1 ליטר · ו'",
-          "en": "₪12 · 1 litre · Fri"
+          "en": "₪12 · 1 litre · Fri",
+          "ar": "₪12 · 1 لتر · جمعة"
         }
       }
     ],
     "cta": {
       "he": "להצטרף לקו החלוקה",
-      "en": "Join the milk round"
+      "en": "Join the milk round",
+      "ar": "اشترك بجولة الحليب"
     },
     "palette": {
       "bg": "#eef3f6",
@@ -12783,75 +12864,90 @@
   "olive-press": {
     "brand": {
       "he": "בית הבד אל זיתונה",
-      "en": "Al Zaytouna Press"
+      "en": "Al Zaytouna Press",
+      "ar": "معصرة الزيتونة"
     },
     "title": {
       "he": "בכבישה עכשיו",
-      "en": "Pressing now"
+      "en": "Pressing now",
+      "ar": "عم نعصر هلّق"
     },
     "subtitle": {
       "he": "640 ק\"ג · משפחת ח'טיב · כבישה קרה",
-      "en": "640 kg · Khatib family · cold pressed"
+      "en": "640 kg · Khatib family · cold pressed",
+      "ar": "640 كغم · عيلة خطيب · عصر بارد"
     },
     "tags": [
       {
         "he": "סורי",
-        "en": "Souri"
+        "en": "Souri",
+        "ar": "صوري"
       },
       {
         "he": "נבאלי",
-        "en": "Nabali"
+        "en": "Nabali",
+        "ar": "نبالي"
       },
       {
         "he": "ברנע",
-        "en": "Barnea"
+        "en": "Barnea",
+        "ar": "برنيع"
       }
     ],
     "items": [
       {
         "label": {
           "he": "שקילה",
-          "en": "Weighing"
+          "en": "Weighing",
+          "ar": "الوزن"
         },
         "meta": {
           "he": "640 ק\"ג · 100%",
-          "en": "640 kg · 100%"
+          "en": "640 kg · 100%",
+          "ar": "640 كغم · 100%"
         }
       },
       {
         "label": {
           "he": "ריסוק והפרדה",
-          "en": "Crushing and separating"
+          "en": "Crushing and separating",
+          "ar": "الطحن والفصل"
         },
         "meta": {
           "he": "בעבודה · 60%",
-          "en": "in progress · 60%"
+          "en": "in progress · 60%",
+          "ar": "قيد التنفيذ · 60%"
         }
       },
       {
         "label": {
           "he": "מילוי פחים",
-          "en": "Filling tins"
+          "en": "Filling tins",
+          "ar": "تعبئة التنكات"
         },
         "meta": {
           "he": "בהמתנה · 0%",
-          "en": "waiting · 0%"
+          "en": "waiting · 0%",
+          "ar": "بالانتظار · 0%"
         }
       },
       {
         "label": {
           "he": "צפי שמן",
-          "en": "Expected oil"
+          "en": "Expected oil",
+          "ar": "الزيت المتوقع"
         },
         "meta": {
           "he": "כ-120 ליטר",
-          "en": "about 120 litres"
+          "en": "about 120 litres",
+          "ar": "تقريبًا 120 لتر"
         }
       }
     ],
     "cta": {
       "he": "הודעה כשמוכן",
-      "en": "Tell me when it is ready"
+      "en": "Tell me when it is ready",
+      "ar": "خبّرني لما يجهز"
     },
     "palette": {
       "bg": "#232615",
@@ -12864,75 +12960,90 @@
   "egg-farms": {
     "brand": {
       "he": "לול אום יוסף",
-      "en": "Umm Yousef Farm"
+      "en": "Umm Yousef Farm",
+      "ar": "خمّ أم يوسف"
     },
     "title": {
       "he": "כרטיס הביצים שלך",
-      "en": "Your egg card"
+      "en": "Your egg card",
+      "ar": "بطاقة البيض تبعك"
     },
     "subtitle": {
       "he": "תרנגולות בחופש, בכרם הזיתים",
-      "en": "Free-range hens in the olive grove"
+      "en": "Free-range hens in the olive grove",
+      "ar": "جاجات بلدي سارحة بكرم الزيتون"
     },
     "tags": [
       {
         "he": "מהלול לדלת",
-        "en": "Coop to door"
+        "en": "Coop to door",
+        "ar": "من الخمّ للباب"
       },
       {
         "he": "נאסף הבוקר",
-        "en": "Collected today"
+        "en": "Collected today",
+        "ar": "انجمع الصبح"
       },
       {
         "he": "תבנית 12 חינם ב-10",
-        "en": "12th tray free"
+        "en": "12th tray free",
+        "ar": "الكرتونة الـ12 مجانًا"
       }
     ],
     "items": [
       {
         "label": {
           "he": "מנוי",
-          "en": "Member"
+          "en": "Member",
+          "ar": "المشترك"
         },
         "meta": {
           "he": "מוחמד ג'בארין",
-          "en": "Mohammad Jabarin"
+          "en": "Mohammad Jabarin",
+          "ar": "محمد جبارين"
         }
       },
       {
         "label": {
           "he": "כל שבוע",
-          "en": "Every week"
+          "en": "Every week",
+          "ar": "كل أسبوع"
         },
         "meta": {
           "he": "2 תבניות · 30 ביצים",
-          "en": "2 trays · 30 eggs"
+          "en": "2 trays · 30 eggs",
+          "ar": "2 كراتين · 30 بيضة"
         }
       },
       {
         "label": {
           "he": "משלוח",
-          "en": "Delivery"
+          "en": "Delivery",
+          "ar": "التوصيل"
         },
         "meta": {
           "he": "ה' עד 10:00",
-          "en": "Thu by 10:00"
+          "en": "Thu by 10:00",
+          "ar": "الخميس لحد 10:00"
         }
       },
       {
         "label": {
           "he": "ניקוב",
-          "en": "Punches"
+          "en": "Punches",
+          "ar": "الختمات"
         },
         "meta": {
           "he": "7 מתוך 10",
-          "en": "7 of 10"
+          "en": "7 of 10",
+          "ar": "7 من 10"
         }
       }
     ],
     "cta": {
       "he": "להוסיף תבנית השבוע",
-      "en": "Add a tray this week"
+      "en": "Add a tray this week",
+      "ar": "زيد كرتونة هالأسبوع"
     },
     "palette": {
       "bg": "#f6e9d6",
@@ -12945,83 +13056,100 @@
   "stables": {
     "brand": {
       "he": "חוות אל אסיל",
-      "en": "Al Aseel Stables"
+      "en": "Al Aseel Stables",
+      "ar": "إسطبل الأصيل"
     },
     "title": {
       "he": "שיעור רכיבה ראשון",
-      "en": "Your first riding lesson"
+      "en": "Your first riding lesson",
+      "ar": "أول درس ركوب خيل إلك"
     },
     "subtitle": {
       "he": "מדריכה מוסמכת · גיל 6 ומעלה",
-      "en": "Certified instructor · ages 6 and up"
+      "en": "Certified instructor · ages 6 and up",
+      "ar": "مدرّب مرخّص · من عمر 6 وفوق"
     },
     "tags": [
       {
         "he": "08:00",
-        "en": "08:00"
+        "en": "08:00",
+        "ar": "08:00"
       },
       {
         "he": "09:30",
-        "en": "09:30"
+        "en": "09:30",
+        "ar": "09:30"
       },
       {
         "he": "11:00",
-        "en": "11:00"
+        "en": "11:00",
+        "ar": "11:00"
       },
       {
         "he": "16:00",
-        "en": "16:00"
+        "en": "16:00",
+        "ar": "16:00"
       },
       {
         "he": "17:30",
-        "en": "17:30"
+        "en": "17:30",
+        "ar": "17:30"
       }
     ],
     "items": [
       {
         "label": {
           "he": "שיעור היכרות",
-          "en": "Intro lesson"
+          "en": "Intro lesson",
+          "ar": "درس تعارف"
         },
         "meta": {
           "he": "₪180 · 45 דק'",
-          "en": "₪180 · 45 min"
+          "en": "₪180 · 45 min",
+          "ar": "₪180 · 45 دقيقة"
         }
       },
       {
         "label": {
           "he": "שיעור פרטי",
-          "en": "Private lesson"
+          "en": "Private lesson",
+          "ar": "درس خصوصي"
         },
         "meta": {
           "he": "₪220 · 45 דק'",
-          "en": "₪220 · 45 min"
+          "en": "₪220 · 45 min",
+          "ar": "₪220 · 45 دقيقة"
         }
       },
       {
         "label": {
           "he": "רכיבה טיפולית",
-          "en": "Therapeutic riding"
+          "en": "Therapeutic riding",
+          "ar": "ركوب علاجي"
         },
         "meta": {
           "he": "₪200 · 30 דק'",
-          "en": "₪200 · 30 min"
+          "en": "₪200 · 30 min",
+          "ar": "₪200 · 30 دقيقة"
         }
       },
       {
         "label": {
           "he": "כרטיסייה",
-          "en": "Lesson pack"
+          "en": "Lesson pack",
+          "ar": "رزمة دروس"
         },
         "meta": {
           "he": "₪1,800 · 10 שיעורים",
-          "en": "₪1,800 · 10 lessons"
+          "en": "₪1,800 · 10 lessons",
+          "ar": "₪1,800 · 10 دروس"
         }
       }
     ],
     "cta": {
       "he": "קביעת שיעור ל-09:30",
-      "en": "Book 09:30"
+      "en": "Book 09:30",
+      "ar": "احجز الساعة 09:30"
     },
     "palette": {
       "bg": "#2a1d16",
@@ -13034,79 +13162,95 @@
   "farm-stays": {
     "brand": {
       "he": "בית החווה בכאוכב",
-      "en": "Kawkab Farmhouse"
+      "en": "Kawkab Farmhouse",
+      "ar": "بيت المزرعة بكوكب"
     },
     "title": {
       "he": "סוף שבוע בין העצים",
-      "en": "A weekend in the orchard"
+      "en": "A weekend in the orchard",
+      "ar": "ويكند بالبستان"
     },
     "subtitle": {
       "he": "ה'-ש' · משפחה עם 3 ילדים",
-      "en": "Thu-Sat · family with 3 kids"
+      "en": "Thu-Sat · family with 3 kids",
+      "ar": "الخميس-السبت · عيلة مع 3 أولاد"
     },
     "tags": [
       {
         "he": "משפחות",
-        "en": "Families"
+        "en": "Families",
+        "ar": "عائلات"
       },
       {
         "he": "ארוחת בוקר",
-        "en": "Breakfast"
+        "en": "Breakfast",
+        "ar": "فطور"
       },
       {
         "he": "האכלת חיות",
-        "en": "Feed the animals"
+        "en": "Feed the animals",
+        "ar": "إطعام الحيوانات"
       },
       {
         "he": "נוף",
-        "en": "View"
+        "en": "View",
+        "ar": "إطلالة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "בית האבן",
-          "en": "The stone house"
+          "en": "The stone house",
+          "ar": "البيت الحجر"
         },
         "meta": {
           "he": "₪1,200 ללילה · עד 6",
-          "en": "₪1,200 a night · up to 6"
+          "en": "₪1,200 a night · up to 6",
+          "ar": "₪1,200 لليلة · لحد 6"
         }
       },
       {
         "label": {
           "he": "בקתת הזית",
-          "en": "Olive cabin"
+          "en": "Olive cabin",
+          "ar": "كوخ الزيتون"
         },
         "meta": {
           "he": "₪890 ללילה · זוג וילד",
-          "en": "₪890 a night · couple and child"
+          "en": "₪890 a night · couple and child",
+          "ar": "₪890 لليلة · زوجين وولد"
         }
       },
       {
         "label": {
           "he": "עליית הגג",
-          "en": "The loft"
+          "en": "The loft",
+          "ar": "العلّية"
         },
         "meta": {
           "he": "₪760 ללילה · נוף לעמק",
-          "en": "₪760 a night · valley view"
+          "en": "₪760 a night · valley view",
+          "ar": "₪760 لليلة · إطلالة على الوادي"
         }
       },
       {
         "label": {
           "he": "בוקר בחווה",
-          "en": "Morning on the farm"
+          "en": "Morning on the farm",
+          "ar": "صبحية بالمزرعة"
         },
         "meta": {
           "he": "₪60 לילד · חליבה וקטיף",
-          "en": "₪60 per child · milking, picking"
+          "en": "₪60 per child · milking, picking",
+          "ar": "₪60 للولد · حلب وقطف"
         }
       }
     ],
     "cta": {
       "he": "לבדוק תאריכים",
-      "en": "Check dates"
+      "en": "Check dates",
+      "ar": "افحص المواعيد"
     },
     "palette": {
       "bg": "#f2eadb",
@@ -13119,79 +13263,95 @@
   "tractors": {
     "brand": {
       "he": "אל פלאח ציוד חקלאי",
-      "en": "Al Fallah Equipment"
+      "en": "Al Fallah Equipment",
+      "ar": "الفلاح للمعدات الزراعية"
     },
     "title": {
       "he": "טרקטור לעונה הבאה",
-      "en": "A tractor for next season"
+      "en": "A tractor for next season",
+      "ar": "تراكتور للموسم الجاي"
     },
     "subtitle": {
       "he": "ליסינג תפעולי, שכירות חודשית קבועה",
-      "en": "Operating lease, one fixed monthly rent"
+      "en": "Operating lease, one fixed monthly rent",
+      "ar": "ليسنغ تشغيلي، أجرة شهرية ثابتة"
     },
     "tags": [
       {
         "he": "טרקטורים",
-        "en": "Tractors"
+        "en": "Tractors",
+        "ar": "تراكتورات"
       },
       {
         "he": "מרססים",
-        "en": "Sprayers"
+        "en": "Sprayers",
+        "ar": "رشّاشات"
       },
       {
         "he": "מחרשות",
-        "en": "Ploughs"
+        "en": "Ploughs",
+        "ar": "محاريث"
       },
       {
         "he": "עגלות",
-        "en": "Trailers"
+        "en": "Trailers",
+        "ar": "عربات"
       }
     ],
     "items": [
       {
         "label": {
           "he": "דגם",
-          "en": "Model"
+          "en": "Model",
+          "ar": "الموديل"
         },
         "meta": {
           "he": "טרקטור 75 כ\"ס · 4x4",
-          "en": "75 hp tractor · 4x4"
+          "en": "75 hp tractor · 4x4",
+          "ar": "تراكتور 75 حصان · 4x4"
         }
       },
       {
         "label": {
           "he": "תוספות",
-          "en": "Add-ons"
+          "en": "Add-ons",
+          "ar": "إضافات"
         },
         "meta": {
           "he": "מעמיס קדמי ומחרשה",
-          "en": "Front loader and plough"
+          "en": "Front loader and plough",
+          "ar": "كريك أمامي ومحراث"
         }
       },
       {
         "label": {
           "he": "תקופה",
-          "en": "Term"
+          "en": "Term",
+          "ar": "المدة"
         },
         "meta": {
           "he": "36 חודשים · שירות כלול",
-          "en": "36 months · service included"
+          "en": "36 months · service included",
+          "ar": "36 شهر · شامل الصيانة"
         }
       },
       {
         "label": {
           "he": "לחודש",
-          "en": "Per month"
+          "en": "Per month",
+          "ar": "بالشهر"
         },
         "meta": {
           "he": "₪4,200-4,650",
-          "en": "₪4,200-4,650"
+          "en": "₪4,200-4,650",
+          "ar": "₪4,200-4,650"
         }
       }
     ],
     "cta": {
       "he": "לקבל הצעה מסודרת",
-      "en": "Get the full offer"
+      "en": "Get the full offer",
+      "ar": "احصل على العرض الكامل"
     },
     "palette": {
       "bg": "#c94a2a",
@@ -13204,75 +13364,90 @@
   "irrigation": {
     "brand": {
       "he": "מאא השקיה חכמה",
-      "en": "Maa Smart Irrigation"
+      "en": "Maa Smart Irrigation",
+      "ar": "ماء للري الذكي"
     },
     "title": {
       "he": "המטע משקה את עצמו",
-      "en": "The orchard waters itself"
+      "en": "The orchard waters itself",
+      "ar": "البستان بيسقي حاله"
     },
     "subtitle": {
       "he": "מטע הרימונים · 4 קווים · 12 דונם",
-      "en": "Pomegranate orchard · 4 lines · 12 dunam"
+      "en": "Pomegranate orchard · 4 lines · 12 dunam",
+      "ar": "بستان رمان · 4 خطوط · 12 دونم"
     },
     "tags": [
       {
         "he": "היום",
-        "en": "Today"
+        "en": "Today",
+        "ar": "اليوم"
       },
       {
         "he": "השבוע",
-        "en": "This week"
+        "en": "This week",
+        "ar": "هالأسبوع"
       },
       {
         "he": "חיישנים",
-        "en": "Sensors"
+        "en": "Sensors",
+        "ar": "حسّاسات"
       }
     ],
     "items": [
       {
         "label": {
           "he": "קו 1 · צפון",
-          "en": "Line 1 · north"
+          "en": "Line 1 · north",
+          "ar": "خط 1 · شمال"
         },
         "meta": {
           "he": "הושלם 05:40 · 100%",
-          "en": "done 05:40 · 100%"
+          "en": "done 05:40 · 100%",
+          "ar": "خلص 05:40 · 100%"
         }
       },
       {
         "label": {
           "he": "קו 2 · מרכז",
-          "en": "Line 2 · centre"
+          "en": "Line 2 · centre",
+          "ar": "خط 2 · نص"
         },
         "meta": {
           "he": "משקה עכשיו · 65%",
-          "en": "watering now · 65%"
+          "en": "watering now · 65%",
+          "ar": "عم يسقي هلّق · 65%"
         }
       },
       {
         "label": {
           "he": "קו 3 · דרום",
-          "en": "Line 3 · south"
+          "en": "Line 3 · south",
+          "ar": "خط 3 · جنوب"
         },
         "meta": {
           "he": "מתחיל 07:10 · 0%",
-          "en": "starts 07:10 · 0%"
+          "en": "starts 07:10 · 0%",
+          "ar": "بيبلش 07:10 · 0%"
         }
       },
       {
         "label": {
           "he": "חיסכון במים",
-          "en": "Water saved"
+          "en": "Water saved",
+          "ar": "توفير مي"
         },
         "meta": {
           "he": "18% מהחודש שעבר",
-          "en": "18% vs last month"
+          "en": "18% vs last month",
+          "ar": "18% مقارنة بالشهر الماضي"
         }
       }
     ],
     "cta": {
       "he": "לדחות השקיה בגלל גשם",
-      "en": "Skip for rain"
+      "en": "Skip for rain",
+      "ar": "تخطّى بسبب الشتا"
     },
     "palette": {
       "bg": "#e4f0ee",
@@ -13285,83 +13460,100 @@
   "livestock-vets": {
     "brand": {
       "he": "ד\"ר נאסר וטרינריה",
-      "en": "Dr. Nasser Farm Vets"
+      "en": "Dr. Nasser Farm Vets",
+      "ar": "د. ناصر بيطري للمواشي"
     },
     "title": {
       "he": "הוטרינר מגיע למשק",
-      "en": "The vet comes to the farm"
+      "en": "The vet comes to the farm",
+      "ar": "البيطري بيجي للمزرعة"
     },
     "subtitle": {
       "he": "עדר של 40 כבשים · כפר כנא",
-      "en": "Flock of 40 sheep · Kafr Kanna"
+      "en": "Flock of 40 sheep · Kafr Kanna",
+      "ar": "قطيع 40 راس غنم · كفر كنا"
     },
     "tags": [
       {
         "he": "07:00",
-        "en": "07:00"
+        "en": "07:00",
+        "ar": "07:00"
       },
       {
         "he": "08:30",
-        "en": "08:30"
+        "en": "08:30",
+        "ar": "08:30"
       },
       {
         "he": "10:00",
-        "en": "10:00"
+        "en": "10:00",
+        "ar": "10:00"
       },
       {
         "he": "13:00",
-        "en": "13:00"
+        "en": "13:00",
+        "ar": "13:00"
       },
       {
         "he": "15:30",
-        "en": "15:30"
+        "en": "15:30",
+        "ar": "15:30"
       }
     ],
     "items": [
       {
         "label": {
           "he": "ביקור ובדיקה",
-          "en": "Visit and check-up"
+          "en": "Visit and check-up",
+          "ar": "زيارة وفحص"
         },
         "meta": {
           "he": "₪350 · עד 10 ראשים",
-          "en": "₪350 · up to 10 head"
+          "en": "₪350 · up to 10 head",
+          "ar": "₪350 · لحد 10 روس"
         }
       },
       {
         "label": {
           "he": "חיסון עדר",
-          "en": "Flock vaccination"
+          "en": "Flock vaccination",
+          "ar": "تطعيم القطيع"
         },
         "meta": {
           "he": "₪18 לראש",
-          "en": "₪18 per head"
+          "en": "₪18 per head",
+          "ar": "₪18 للراس"
         }
       },
       {
         "label": {
           "he": "בדיקת הריון",
-          "en": "Pregnancy scan"
+          "en": "Pregnancy scan",
+          "ar": "فحص حمل"
         },
         "meta": {
           "he": "₪25 לראש · אולטרסאונד",
-          "en": "₪25 per head · ultrasound"
+          "en": "₪25 per head · ultrasound",
+          "ar": "₪25 للراس · ألتراساوند"
         }
       },
       {
         "label": {
           "he": "חירום לילה",
-          "en": "Night emergency"
+          "en": "Night emergency",
+          "ar": "طوارئ بالليل"
         },
         "meta": {
           "he": "₪600 · 24/7",
-          "en": "₪600 · 24/7"
+          "en": "₪600 · 24/7",
+          "ar": "₪600 · 24/7"
         }
       }
     ],
     "cta": {
       "he": "להזמין ביקור ל-08:30",
-      "en": "Book a visit 08:30"
+      "en": "Book a visit 08:30",
+      "ar": "احجز زيارة الساعة 08:30"
     },
     "palette": {
       "bg": "#eef1e4",
