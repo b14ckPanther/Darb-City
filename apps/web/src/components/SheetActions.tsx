@@ -25,6 +25,7 @@ export interface SheetActionsProps {
     website: string;
     exampleNotice: string;
     linkCopied: string;
+    linkCopyFailed: string;
   };
 }
 
@@ -42,8 +43,13 @@ export function SheetActions({ primary, ctaLabel, secondary, share, labels }: Sh
       }
       return;
     }
-    await navigator.clipboard?.writeText(share.url);
-    setStatus(labels.linkCopied);
+    try {
+      if (!navigator.clipboard) throw new Error("No clipboard");
+      await navigator.clipboard.writeText(share.url);
+      setStatus(labels.linkCopied);
+    } catch {
+      setStatus(labels.linkCopyFailed);
+    }
   }
 
   return (

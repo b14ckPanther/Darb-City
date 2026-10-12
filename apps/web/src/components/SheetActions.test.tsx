@@ -23,6 +23,7 @@ const base: SheetActionsProps = {
     website: "Website",
     exampleNotice: "This is an example — this is what your customers would see",
     linkCopied: "Link copied",
+    linkCopyFailed: "Couldn't copy the link",
   },
 };
 
@@ -59,4 +60,23 @@ it("copies the link when the device cannot share", async () => {
   fireEvent.click(screen.getByRole("button", { name: "Share" }));
   await waitFor(() => expect(screen.getByRole("status").textContent).toBe("Link copied"));
   expect(writeText).toHaveBeenCalledWith("https://darb.co.il/sakhnin");
+});
+
+it("says the copy failed when the clipboard rejects", async () => {
+  const writeText = vi.fn().mockRejectedValue(new DOMException("denied", "NotAllowedError"));
+  vi.stubGlobal("navigator", { clipboard: { writeText } });
+  render(<SheetActions {...base} />);
+  fireEvent.click(screen.getByRole("button", { name: "Share" }));
+  await waitFor(() =>
+    expect(screen.getByRole("status").textContent).toBe("Couldn't copy the link"),
+  );
+});
+
+it("never claims a copy when there is no clipboard", async () => {
+  vi.stubGlobal("navigator", {});
+  render(<SheetActions {...base} />);
+  fireEvent.click(screen.getByRole("button", { name: "Share" }));
+  await waitFor(() =>
+    expect(screen.getByRole("status").textContent).toBe("Couldn't copy the link"),
+  );
 });

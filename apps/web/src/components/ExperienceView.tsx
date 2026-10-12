@@ -83,6 +83,7 @@ export function ExperienceView({
           website: t(locale, "website"),
           exampleNotice: t(locale, "exampleNotice"),
           linkCopied: t(locale, "linkCopied"),
+          linkCopyFailed: t(locale, "linkCopyFailed"),
         }}
       />
       <HoursTable locale={locale} hours={business.hours} />
