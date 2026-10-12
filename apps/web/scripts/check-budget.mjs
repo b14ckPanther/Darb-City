@@ -2,22 +2,21 @@
 // - level routes, spec §9.1 as amended by the controller ruling of 2026-10-12 (the Next 16 +
 //   React 19 runtime alone is ~130 KB gzip): first-load JS <= 180 KB in total and <= 40 KB
 //   route-specific (beyond the shared root chunks);
-// - the lazy city stage (Plan 2B decision 1), loaded after the list is interactive: main-thread
-//   JS <= 340 KB, i.e. every async chunk plus MapLibre's two main-thread modules (~297 KB for
-//   6.11.2). Its code must never reach a first load: the stage marker string is in some async chunk
-//   and in no first-load chunk. The worker module is reported, not budgeted (it runs off the main
-//   thread and reuses the shared module from the HTTP cache).
+// - lazy groups (next/dynamic), each measured from its own react-loadable-manifest entries, found by
+//   the marker string its code carries (scripts/lazy-budget.mjs). The stage (Plan 2B decision 1):
+//   main-thread JS <= 340 KB with MapLibre's two main-thread modules (~297 KB for 6.11.2); the
+//   worker module is reported, not budgeted. The search popup (Plan 3): <= 30 KB. A marker must
+//   never appear in a first-load chunk.
 import { readdirSync, readFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import vm from "node:vm";
 import { gzipSync } from "node:zlib";
+import { groupFiles, loadableEntries } from "./lazy-budget.mjs";
 
 const LIMIT = 180 * 1024;
 const ROUTE_LIMIT = 40 * 1024;
-const STAGE_LIMIT = 340 * 1024;
-const STAGE_MARKER = "darb:stage-chunk";
 const NEXT = fileURLToPath(new URL("../.next/", import.meta.url));
 const require = createRequire(import.meta.url);
 const MAPLIBRE = JSON.parse(
@@ -80,36 +79,45 @@ for (const route of ROUTES) {
   console.log(`${ok ? "ok  " : "FAIL"} ${kb(total)} total ${kb(sum(own))} route  ${route}`);
 }
 
-// The stage: everything no route loads first is lazy (async chunks), apart from legacy polyfills.
 const initial = new Set(shared);
 for (const files of entries.values()) for (const f of files) initial.add(f);
-const polyfills = new Set((build.polyfillFiles ?? []).map(strip));
-const asyncChunks = readdirSync(join(NEXT, "static/chunks"))
-  .filter((f) => f.endsWith(".js"))
-  .map((f) => `static/chunks/${f}`)
-  .filter((f) => !initial.has(f) && !polyfills.has(f));
-const marked = (files) =>
-  [...files].filter((f) => readFileSync(join(NEXT, f), "utf8").includes(STAGE_MARKER));
-const leaked = marked(initial);
-const carriers = marked(asyncChunks);
-const own = sum(asyncChunks);
+const code = (file) => readFileSync(join(NEXT, file), "utf8");
+const loadable = loadableEntries(NEXT);
 const maplibre = gz(join(VENDOR, "maplibre-gl.mjs")) + gz(join(VENDOR, "maplibre-gl-shared.mjs"));
 const worker = gz(join(VENDOR, "maplibre-gl-worker.mjs"));
-const mainThread = own + maplibre;
-const stageOk = mainThread <= STAGE_LIMIT && leaked.length === 0 && carriers.length > 0;
-failed ||= !stageOk;
-console.log(
-  `${stageOk ? "ok  " : "FAIL"} ${kb(mainThread)} stage main thread ` +
-    `(async chunks ${kb(own).trim()} + MapLibre ${MAPLIBRE} ${kb(maplibre).trim()}), worker ${kb(worker).trim()}`,
-);
-if (leaked.length > 0) console.error(`Stage code in first-load chunks: ${leaked.join(", ")}`);
-if (carriers.length === 0)
-  console.error("No async chunk carries the stage: is Stage still loaded through next/dynamic?");
+
+/** Task 22 sets search.required once the popup exists. */
+const LAZY = [
+  { name: "stage", marker: "darb:stage-chunk", limit: 340 * 1024, extra: maplibre, required: true },
+  { name: "search", marker: "darb:search-chunk", limit: 30 * 1024, extra: 0, required: false },
+];
+
+for (const group of LAZY) {
+  const files = groupFiles(loadable, group.marker, code);
+  const leaked = [...initial].filter((f) => code(f).includes(group.marker));
+  const own = sum(files);
+  const total = own + group.extra;
+  const missing = files.size === 0;
+  const ok = total <= group.limit && leaked.length === 0 && !(missing && group.required);
+  failed ||= !ok;
+  const extra = group.extra ? ` + MapLibre ${MAPLIBRE} ${kb(group.extra).trim()}` : "";
+  const note = group.name === "stage" ? `, worker ${kb(worker).trim()}` : "";
+  console.log(
+    `${ok ? "ok  " : "FAIL"} ${kb(total)} ${group.name} (lazy chunks ${kb(own).trim()}${extra})${note}` +
+      (missing ? " [not built]" : ""),
+  );
+  if (leaked.length > 0)
+    console.error(`${group.name} code in first-load chunks: ${leaked.join(", ")}`);
+  if (missing && group.required)
+    console.error(
+      `No lazy chunk carries ${group.marker}: is it still loaded through next/dynamic?`,
+    );
+}
 
 if (failed) {
   console.error(
     `Budgets: first-load JS <= ${LIMIT / 1024} KB total and ${ROUTE_LIMIT / 1024} KB per route ` +
-      `(spec §9.1, ruling 2026-10-12); stage main thread <= ${STAGE_LIMIT / 1024} KB (Plan 2B).`,
+      `(spec §9.1, ruling 2026-10-12); ${LAZY.map((g) => `${g.name} <= ${g.limit / 1024} KB`).join(", ")}.`,
   );
   process.exit(1);
 }
