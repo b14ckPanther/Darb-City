@@ -42,3 +42,13 @@ it("refuses a real provider without its key", () => {
 it("refuses to start without a database", () => {
   expect(() => loadConfig({})).toThrow(/DATABASE_URL/);
 });
+
+it("refuses the example proxy key in production", () => {
+  const dev = { ...base, SEARCH_PROXY_KEY: "dev-proxy-key" };
+  expect(() => loadConfig({ ...dev, NODE_ENV: "production" })).toThrow(/SEARCH_PROXY_KEY/);
+  expect(loadConfig(dev).search.proxyKey).toBe("dev-proxy-key");
+  expect(
+    loadConfig({ ...base, NODE_ENV: "production", SEARCH_PROXY_KEY: "a-real-secret" }).search
+      .proxyKey,
+  ).toBe("a-real-secret");
+});

@@ -53,7 +53,11 @@ const schema = z.object({
   EMBEDDING_MODEL: z.string().min(1).default("voyage-4-lite"),
   VOYAGE_API_KEY: optional,
   SEARCH_INDEX_WORKER: flag,
+  NODE_ENV: z.string().optional(),
 });
+
+/** The value apps/api/.env.example ships with; anyone could forward a fake client IP with it. */
+export const EXAMPLE_PROXY_KEY = "dev-proxy-key";
 
 /** 16 random bytes as hex, from Web Crypto (Node 22 has it globally). */
 const randomSalt = () =>
@@ -75,6 +79,10 @@ export function loadConfig(env: NodeJS.ProcessEnv): AppConfig {
     throw new Error("Invalid environment: INTENT_PROVIDER=anthropic needs ANTHROPIC_API_KEY");
   if (embeddingProvider === "voyage" && !e.VOYAGE_API_KEY)
     throw new Error("Invalid environment: EMBEDDING_PROVIDER=voyage needs VOYAGE_API_KEY");
+  if (e.NODE_ENV === "production" && e.SEARCH_PROXY_KEY === EXAMPLE_PROXY_KEY)
+    throw new Error(
+      "Invalid environment: SEARCH_PROXY_KEY is the .env.example value; set a long random secret in production",
+    );
   return {
     databaseUrl: e.DATABASE_URL,
     port: e.PORT,
