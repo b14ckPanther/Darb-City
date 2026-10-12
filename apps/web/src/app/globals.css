@@ -73,6 +73,11 @@ body {
   body {
     padding-block-end: 96px; /* room for the docked search bar */
   }
+
+  /* And for the Map/List pill above it (stage.module.css .toggle), so it never covers a row. */
+  html[data-stage="on"] body {
+    padding-block-end: calc(96px + var(--tap) + var(--space-4));
+  }
 }
 
 a {

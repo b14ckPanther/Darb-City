@@ -41,12 +41,14 @@ describe("the boot script", () => {
     expect(html.getAttribute("data-stage")).toBe("on");
     expect(loseContext).toHaveBeenCalledTimes(1);
   });
-  it("keeps it off on the marketing page", () => {
+  it("keeps it off on the marketing page, without asking the GPU for a context", () => {
     vi.stubGlobal("WebGL2RenderingContext", function WebGL2RenderingContext() {});
     vi.stubGlobal("Worker", function Worker() {});
+    const probe = gpu(null);
     window.history.pushState({}, "", "/en/for-business");
     boot();
     expect(html.getAttribute("data-stage")).toBe("off");
+    expect(probe).not.toHaveBeenCalled();
   });
   it("leaves a device without WebGL2 as the plain list", () => {
     vi.stubGlobal("WebGL2RenderingContext", undefined);

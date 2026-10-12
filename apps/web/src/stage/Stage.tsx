@@ -240,6 +240,8 @@ export function Stage({ locale, labels, onFail }: StageProps) {
               type="button"
               className={styles.toggle}
               data-stage-toggle=""
+              aria-controls="stage"
+              aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
             >
               {open ? labels.showList : labels.showMap}

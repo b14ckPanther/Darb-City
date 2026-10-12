@@ -132,7 +132,10 @@ export class CityMap implements StageMap {
 
   move(camera: Camera, duration: number, insetEnd: number): Promise<void> {
     const side = this.dir === "rtl" ? { left: insetEnd, right: 0 } : { left: 0, right: insetEnd };
-    const { target, arrived } = moveCamera(this.map, camera, duration, { top: 0, ...side });
+    // The translucent site header over the desktop stage (StageMount.module.css --stage-top).
+    const style = getComputedStyle(this.map.getContainer());
+    const top = Number.parseFloat(style.getPropertyValue("--stage-top")) || 0;
+    const { target, arrived } = moveCamera(this.map, camera, duration, { top, ...side });
     this.target = target;
     return arrived;
   }
