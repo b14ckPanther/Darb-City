@@ -1,6 +1,6 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
-import { EMPTY_KIND, LEVELS, LOCALES, localePath } from "./fixtures";
+import { EMPTY_KIND, LEVELS, LOCALES, localePath, settleStage } from "./fixtures";
 
 const PAGES = [...Object.values(LEVELS), EMPTY_KIND, "/for-business"];
 
@@ -9,6 +9,7 @@ for (const locale of LOCALES) {
     test(`${locale} ${path} has no WCAG A/AA violations`, async ({ page }) => {
       await page.goto(localePath(locale, path));
       await page.waitForLoadState("networkidle");
+      await settleStage(page);
       const { violations } = await new AxeBuilder({ page })
         .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"])
         .analyze();

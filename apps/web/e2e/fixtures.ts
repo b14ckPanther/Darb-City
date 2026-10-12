@@ -1,4 +1,4 @@
-import type { TestInfo } from "@playwright/test";
+import type { Page, TestInfo } from "@playwright/test";
 
 export const LOCALES = ["he", "ar", "en"] as const;
 export type Locale = (typeof LOCALES)[number];
@@ -39,4 +39,25 @@ export const ARRABA = { latitude: 32.8486259, longitude: 35.3358268 };
 export const isPhone = (info: TestInfo) => info.project.name === "phone";
 
 /** A second `next start` on the same build whose API is unreachable (see playwright.config.ts). */
-export const WEB_API_DOWN = "http://localhost:3001";
+export const WEB_API_DOWN = process.env.WEB_API_DOWN_URL ?? "http://localhost:3001";
+
+/**
+ * Waits for the lazy stage: settled on desktop (or an open phone stage), mounted behind its pill on
+ * a closed phone, or off (no WebGL2, failed, or a page outside the city).
+ */
+export async function settleStage(page: Page): Promise<void> {
+  await page.waitForFunction(
+    () => {
+      const d = document.documentElement;
+      if (d.getAttribute("data-stage") !== "on") return true;
+      const host = document.querySelector("[data-stage-host]");
+      if (innerWidth < 900 && !d.hasAttribute("data-stage-open")) return host !== null;
+      return (
+        host?.getAttribute("data-stage-state") === "ready" &&
+        !host.hasAttribute("data-stage-moving")
+      );
+    },
+    null,
+    { timeout: 30_000 },
+  );
+}
