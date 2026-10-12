@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { isOpenAt, type Hours } from "@darb/core";
-import type { Business, Prisma } from "../generated/prisma/client.js";
+import type { Business, Place, Prisma } from "../generated/prisma/client.js";
 import { PrismaService } from "../prisma/prisma.service.js";
 
 export type BusinessWithPlace = Business & { place: { slug: string } };
@@ -104,5 +104,34 @@ export class BusinessesRepository {
     const counts: Record<string, number> = Object.fromEntries(active.map((k) => [k.slug, 0]));
     for (const row of rows) counts[row.slug] = row.n;
     return counts;
+  }
+
+  async nearestPlacesWithKind(
+    kindIds: string[],
+    lat: number,
+    lng: number,
+    limit: number,
+  ): Promise<{ place: Place; count: number; distanceKm: number }[]> {
+    if (kindIds.length === 0) return [];
+    const rows = await this.prisma.$queryRaw<{ id: string; n: number; km: number }[]>`
+      SELECT p.id, COUNT(DISTINCT b.id)::int AS n,
+        ST_Distance(p.point, ST_SetSRID(ST_MakePoint(${lng}, ${lat}), 4326)::geography) / 1000 AS km
+      FROM "Business" b
+      JOIN "BusinessKind" bk ON bk."businessId" = b.id
+      JOIN "Kind" pk ON pk.id = b."primaryKindId"
+      JOIN "Place" p ON p.id = b."placeId"
+      WHERE b.status = 'published' AND pk.status = 'active' AND p.status = 'live'
+        AND bk."kindId" = ANY(${kindIds}::uuid[])
+      GROUP BY p.id
+      ORDER BY km ASC, p.slug ASC
+      LIMIT ${limit}`;
+    const places = await this.prisma.place.findMany({
+      where: { id: { in: rows.map((r) => r.id) } },
+    });
+    const byId = new Map(places.map((p) => [p.id, p]));
+    return rows.flatMap((r) => {
+      const place = byId.get(r.id);
+      return place ? [{ place, count: r.n, distanceKm: Number(r.km) }] : [];
+    });
   }
 }

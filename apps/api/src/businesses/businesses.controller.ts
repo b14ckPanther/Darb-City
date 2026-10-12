@@ -1,6 +1,7 @@
 import { Controller, Inject } from "@nestjs/common";
 import { contract } from "@darb/contracts";
 import { TsRestHandler, tsRestHandler } from "@ts-rest/nest";
+import { toPlaceDto } from "../places/place.mapper.js";
 import { PlacesRepository } from "../places/places.repository.js";
 import { TaxonomyRepository } from "../taxonomy/taxonomy.repository.js";
 import { toBusinessDetail, toBusinessSummary } from "./business.mapper.js";
@@ -62,6 +63,25 @@ export class BusinessesController {
         const place = await this.places.bySlug(params.placeSlug);
         if (!place) return { status: 404, body: { message: `No place "${params.placeSlug}"` } };
         return { status: 200, body: await this.businesses.countsByKind(place.path) };
+      },
+      nearestPlaces: async ({ params, query }) => {
+        const kind = await this.taxonomy.activeKindBySlug(params.kindSlug);
+        if (!kind) return { status: 404, body: { message: `No kind "${params.kindSlug}"` } };
+        const kindIds = await this.taxonomy.descendantKindIds(kind.id);
+        const rows = await this.businesses.nearestPlacesWithKind(
+          kindIds,
+          query.lat,
+          query.lng,
+          query.limit,
+        );
+        return {
+          status: 200,
+          body: rows.map((r) => ({
+            ...toPlaceDto(r.place),
+            count: r.count,
+            distanceKm: r.distanceKm,
+          })),
+        };
       },
     });
   }

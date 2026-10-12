@@ -5,6 +5,7 @@ import {
   BusinessDetailSchema,
   BusinessPageSchema,
   KindCountsSchema,
+  NearestPlaceSchema,
   NotFoundSchema,
   PlaceDetailSchema,
   PlaceSchema,
@@ -69,6 +70,17 @@ export const contract = c.router({
       path: "/places/:placeSlug/kind-counts",
       pathParams: z.object({ placeSlug: SlugSchema }),
       responses: { 200: KindCountsSchema, 404: NotFoundSchema },
+    },
+    nearestPlaces: {
+      method: "GET",
+      path: "/kinds/:kindSlug/nearest-places",
+      pathParams: z.object({ kindSlug: SlugSchema }),
+      query: z.object({
+        lat: coordinate(-90, 90),
+        lng: coordinate(-180, 180),
+        limit: z.coerce.number().int().min(1).max(20).default(5),
+      }),
+      responses: { 200: z.array(NearestPlaceSchema), 404: NotFoundSchema },
     },
   },
 });

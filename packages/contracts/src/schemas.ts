@@ -116,3 +116,10 @@ export const BadRequestSchema = z.object({ message: z.string() });
 /** Published businesses per active kind slug in a place's subtree. Every active kind is present. */
 export const KindCountsSchema = z.record(z.string(), z.number().int().nonnegative());
 export type KindCountsDto = z.infer<typeof KindCountsSchema>;
+
+export const NearestPlaceSchema = PlaceSchema.extend({
+  distanceKm: z.number().nonnegative(),
+  /** Published businesses of the kind there. */
+  count: z.number().int().positive(),
+});
+export type NearestPlaceDto = z.infer<typeof NearestPlaceSchema>;

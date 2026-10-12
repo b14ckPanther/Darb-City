@@ -123,3 +123,26 @@ describe("GET /places/:placeSlug/kind-counts", () => {
     expect((await get("/places/nowhere/kind-counts")).status).toBe(404);
   });
 });
+
+describe("GET /kinds/:kindSlug/nearest-places", () => {
+  it("orders live places that have the kind by distance", async () => {
+    const res = await get("/kinds/barbershops/nearest-places?lat=32.853&lng=35.198");
+    expect(res.status).toBe(200);
+    expect(res.body.map((p: { slug: string }) => p.slug)).toEqual(["tamra", "sakhnin"]);
+    expect(res.body.map((p: { count: number }) => p.count)).toEqual([1, 2]);
+    expect(res.body[0].distanceKm).toBeLessThan(0.5);
+    expect(res.body[1].distanceKm).toBeGreaterThan(9);
+    expect(res.body[1].distanceKm).toBeLessThan(11);
+  });
+  it("respects the limit and includes sub-kinds only where they exist", async () => {
+    const one = await get("/kinds/barbershops/nearest-places?lat=32.86&lng=35.3&limit=1");
+    expect(one.body.map((p: { slug: string }) => p.slug)).toEqual(["sakhnin"]);
+    const kids = await get("/kinds/kids-haircuts/nearest-places?lat=32.853&lng=35.198");
+    expect(kids.body.map((p: { slug: string }) => p.slug)).toEqual(["sakhnin"]);
+  });
+  it("404s for unknown and hidden kinds, 400s for blank coordinates", async () => {
+    expect((await get("/kinds/nope/nearest-places?lat=32&lng=35")).status).toBe(404);
+    expect((await get("/kinds/hidden-kind/nearest-places?lat=32&lng=35")).status).toBe(404);
+    expect((await get("/kinds/barbershops/nearest-places?lat=&lng=35")).status).toBe(400);
+  });
+});
