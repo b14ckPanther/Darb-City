@@ -64,7 +64,14 @@ export default async function BusinessPage({ params }: Props) {
         closeHref={href(locale, paths.kind(place.slug, sector.slug, kind.slug))}
         labelledBy="sheet-title"
         returnFocusTo={`${place.slug}/${business.slug}`}
-        labels={{ close: t(locale, "close"), resize: t(locale, "resizeSheet") }}
+        labels={{
+          close: t(locale, "close"),
+          resize: {
+            peek: t(locale, "resizeSheetState", { snap: t(locale, "sheetPeek") }),
+            half: t(locale, "resizeSheetState", { snap: t(locale, "sheetHalf") }),
+            full: t(locale, "resizeSheetState", { snap: t(locale, "sheetFull") }),
+          },
+        }}
       >
         <ExperienceView
           locale={locale}

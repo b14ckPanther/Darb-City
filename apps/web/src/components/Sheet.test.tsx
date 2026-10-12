@@ -3,10 +3,11 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const push = vi.fn();
 vi.mock("next/navigation", () => ({ useRouter: () => ({ push }) }));
-const { nextSnap, Sheet, snapFromDrag } = await import("./Sheet");
+const { cycleSnap, nextSnap, Sheet, snapFromDrag } = await import("./Sheet");
 
 beforeEach(() => {
   document.body.innerHTML = `
+    <a class="skip-link" href="#main">Skip</a>
     <header id="site-header"><a href="/">home</a></header>
     <div id="city-bar"></div>
     <div id="city-list"><h1 id="main-heading" tabindex="-1">List</h1>
@@ -20,7 +21,10 @@ const renderSheet = () =>
       closeHref="/sakhnin/beauty/barbershops"
       labelledBy="sheet-title"
       returnFocusTo="sakhnin/samers-barbershop"
-      labels={{ close: "Close", resize: "Resize" }}
+      labels={{
+        close: "Close",
+        resize: { peek: "Resize, small", half: "Resize, half", full: "Resize, full" },
+      }}
     >
       <h2 id="sheet-title">Samer's</h2>
       <a href="https://wa.me/1">WhatsApp</a>
@@ -38,6 +42,33 @@ describe("Sheet", () => {
     expect(document.activeElement?.getAttribute("data-sheet-close")).toBe("");
     for (const id of ["site-header", "city-bar", "city-list"])
       expect(document.getElementById(id)?.hasAttribute("inert")).toBe(true);
+    expect(document.querySelector(".skip-link")?.hasAttribute("inert")).toBe(true);
+    expect(dialog.getAttribute("tabindex")).toBe("-1");
+  });
+
+  it("makes every sibling of the sheet and its ancestors inert, and restores them", () => {
+    const already = document.createElement("div");
+    already.setAttribute("inert", "");
+    document.body.appendChild(already);
+    const { unmount } = renderSheet();
+    const sheet = document.querySelector("[data-sheet]")!;
+    for (
+      let node: Element | null = sheet;
+      node && node !== document.body;
+      node = node.parentElement
+    )
+      for (const sibling of node.parentElement?.children ?? [])
+        if (sibling !== node) expect(sibling.hasAttribute("inert")).toBe(true);
+    expect(sheet.hasAttribute("inert")).toBe(false);
+    unmount();
+    expect(document.querySelector(".skip-link")?.hasAttribute("inert")).toBe(false);
+    expect(already.hasAttribute("inert")).toBe(true);
+  });
+
+  it("closes on Escape pressed anywhere in the document", () => {
+    renderSheet();
+    fireEvent.keyDown(document.body, { key: "Escape" });
+    expect(push).toHaveBeenCalledWith("/sakhnin/beauty/barbershops", { scroll: false });
   });
 
   it("closes on Escape by going to the kind level without scrolling", () => {
@@ -82,17 +113,36 @@ describe("Sheet", () => {
   it("moves between snap points from the keyboard", () => {
     renderSheet();
     const dialog = screen.getByRole("dialog");
-    const handle = screen.getByRole("button", { name: "Resize" });
+    const handle = screen.getByRole("button", { name: "Resize, half" });
     expect(dialog.getAttribute("data-snap")).toBe("half");
     fireEvent.keyDown(handle, { key: "ArrowUp" });
     expect(dialog.getAttribute("data-snap")).toBe("full");
     fireEvent.keyDown(handle, { key: "ArrowDown" });
     fireEvent.keyDown(handle, { key: "ArrowDown" });
     expect(dialog.getAttribute("data-snap")).toBe("peek");
+    expect(handle.getAttribute("aria-label")).toBe("Resize, small");
+  });
+
+  it("cycles the snap points with Enter and Space and names the current one", () => {
+    renderSheet();
+    const dialog = screen.getByRole("dialog");
+    const handle = screen.getByRole("button", { name: "Resize, half" });
+    fireEvent.keyDown(handle, { key: "Enter" });
+    expect(dialog.getAttribute("data-snap")).toBe("full");
+    expect(handle.getAttribute("aria-label")).toBe("Resize, full");
+    fireEvent.keyDown(handle, { key: " " });
+    expect(dialog.getAttribute("data-snap")).toBe("peek");
+    fireEvent.keyDown(handle, { key: "Enter" });
+    expect(dialog.getAttribute("data-snap")).toBe("half");
   });
 });
 
 describe("snap rules", () => {
+  it("cycles peek, half, full and round again", () => {
+    expect(cycleSnap("peek")).toBe("half");
+    expect(cycleSnap("half")).toBe("full");
+    expect(cycleSnap("full")).toBe("peek");
+  });
   it("steps and clamps", () => {
     expect(nextSnap("half", 1)).toBe("full");
     expect(nextSnap("full", 1)).toBe("full");

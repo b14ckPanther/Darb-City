@@ -16,8 +16,31 @@ const ORDER: readonly Snap[] = ["peek", "half", "full"];
 const DRAG_THRESHOLD = 60;
 const DISMISS_DRAG = 120;
 
-/** Everything behind the sheet; made inert while it is open. */
-export const SHEET_BACKGROUND_IDS = ["site-header", "city-bar", "city-list"] as const;
+/**
+ * Makes everything behind `root` inert: every sibling of it and of each ancestor up to <body>
+ * (skip link, header, city bar, list, …). Returns the undo, which leaves alone anything that was
+ * already inert.
+ */
+export function inertBackground(root: HTMLElement): () => void {
+  const changed: Element[] = [];
+  for (let node: HTMLElement | null = root; node && node !== document.body;) {
+    const parent: HTMLElement | null = node.parentElement;
+    for (const sibling of parent?.children ?? []) {
+      if (sibling === node || sibling.hasAttribute("inert")) continue;
+      sibling.setAttribute("inert", "");
+      changed.push(sibling);
+    }
+    node = parent;
+  }
+  return () => {
+    for (const el of changed) el.removeAttribute("inert");
+  };
+}
+
+/** Enter and Space on the handle: peek → half → full → peek. */
+export function cycleSnap(current: Snap): Snap {
+  return ORDER[(ORDER.indexOf(current) + 1) % ORDER.length]!;
+}
 
 export function nextSnap(current: Snap, direction: 1 | -1): Snap {
   const i = Math.min(ORDER.length - 1, Math.max(0, ORDER.indexOf(current) + direction));
@@ -47,36 +70,44 @@ export interface SheetProps {
   labelledBy: string;
   /** `data-business-link` key of the row that opens this sheet. */
   returnFocusTo: string;
-  labels: { close: string; resize: string };
+  /** `resize` names the handle with the current snap, e.g. "Resize, half". */
+  labels: { close: string; resize: Record<Snap, string> };
   children: ReactNode;
 }
 
 export function Sheet({ closeHref, labelledBy, returnFocusTo, labels, children }: SheetProps) {
   const router = useRouter();
+  const root = useRef<HTMLDivElement>(null);
   const panel = useRef<HTMLDivElement>(null);
   const closeButton = useRef<HTMLButtonElement>(null);
   const drag = useRef<{ startY: number } | null>(null);
   const [snap, setSnap] = useState<Snap>("half");
 
+  const close = () => router.push(closeHref, { scroll: false });
+  const closeRef = useRef(close);
   useEffect(() => {
-    const background = SHEET_BACKGROUND_IDS.map((id) => document.getElementById(id));
-    for (const el of background) el?.setAttribute("inert", "");
+    closeRef.current = close;
+  });
+
+  useEffect(() => {
+    const restore = root.current ? inertBackground(root.current) : () => {};
     closeButton.current?.focus();
+    // On the document, so Escape works wherever focus is (even if it left the panel).
+    const onEscape = (event: globalThis.KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      event.preventDefault();
+      closeRef.current();
+    };
+    document.addEventListener("keydown", onEscape);
     return () => {
-      for (const el of background) el?.removeAttribute("inert");
+      document.removeEventListener("keydown", onEscape);
+      restore();
       const row = document.querySelector<HTMLElement>(`[data-business-link="${returnFocusTo}"]`);
       (row ?? document.getElementById("main-heading"))?.focus();
     };
   }, [returnFocusTo]);
 
-  const close = () => router.push(closeHref, { scroll: false });
-
   function onKeyDown(event: KeyboardEvent<HTMLDivElement>) {
-    if (event.key === "Escape") {
-      event.preventDefault();
-      close();
-      return;
-    }
     if (event.key !== "Tab" || !panel.current) return;
     const items = focusables(panel.current);
     const first = items[0];
@@ -92,7 +123,11 @@ export function Sheet({ closeHref, labelledBy, returnFocusTo, labels, children }
   }
 
   function onHandleKey(event: KeyboardEvent<HTMLButtonElement>) {
-    if (event.key === "ArrowUp") {
+    if (event.key === "Enter" || event.key === " ") {
+      // Handled here (not as a click) so a drag that ends on the handle never cycles.
+      event.preventDefault();
+      setSnap(cycleSnap);
+    } else if (event.key === "ArrowUp") {
       event.preventDefault();
       setSnap((s) => nextSnap(s, 1));
     } else if (event.key === "ArrowDown") {
@@ -123,13 +158,14 @@ export function Sheet({ closeHref, labelledBy, returnFocusTo, labels, children }
   }
 
   return (
-    <div className={styles.root} data-sheet="">
+    <div ref={root} className={styles.root} data-sheet="">
       <div className={styles.scrim} aria-hidden="true" onClick={close} />
       <div
         ref={panel}
         role="dialog"
         aria-modal="true"
         aria-labelledby={labelledBy}
+        tabIndex={-1}
         className={styles.panel}
         data-snap={snap}
         onKeyDown={onKeyDown}
@@ -139,7 +175,7 @@ export function Sheet({ closeHref, labelledBy, returnFocusTo, labels, children }
           <button
             type="button"
             className={styles.handle}
-            aria-label={labels.resize}
+            aria-label={labels.resize[snap]}
             data-sheet-handle=""
             onKeyDown={onHandleKey}
             onPointerDown={onPointerDown}
