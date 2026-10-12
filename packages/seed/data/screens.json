@@ -15899,79 +15899,95 @@
   "fashion": {
     "brand": {
       "he": "בוטיק לבנה",
-      "en": "Levana Boutique"
+      "en": "Levana Boutique",
+      "ar": "بوتيك ليفانا"
     },
     "title": {
       "he": "קולקציית הקיץ",
-      "en": "The summer edit"
+      "en": "The summer edit",
+      "ar": "تشكيلة الصيف"
     },
     "subtitle": {
       "he": "פשתן ומשי בגזרות רחבות וארוכות",
-      "en": "Linen and silk in long, loose cuts"
+      "en": "Linen and silk in long, loose cuts",
+      "ar": "كتان وحرير بقصّات طويلة وواسعة"
     },
     "tags": [
       {
         "he": "חדש",
-        "en": "New"
+        "en": "New",
+        "ar": "جديد"
       },
       {
         "he": "שמלות",
-        "en": "Dresses"
+        "en": "Dresses",
+        "ar": "فساتين"
       },
       {
         "he": "צעיפים",
-        "en": "Scarves"
+        "en": "Scarves",
+        "ar": "شالات"
       },
       {
         "he": "תיקים",
-        "en": "Bags"
+        "en": "Bags",
+        "ar": "شنط"
       }
     ],
     "items": [
       {
         "label": {
           "he": "שמלת פשתן ארוכה",
-          "en": "Long linen dress"
+          "en": "Long linen dress",
+          "ar": "فستان كتان طويل"
         },
         "meta": {
           "he": "₪590 · חול",
-          "en": "₪590 · sand"
+          "en": "₪590 · sand",
+          "ar": "₪590 · رملي"
         }
       },
       {
         "label": {
           "he": "חולצת משי ארוכה",
-          "en": "Long silk shirt"
+          "en": "Long silk shirt",
+          "ar": "قميص حرير طويل"
         },
         "meta": {
           "he": "₪420 · שמנת",
-          "en": "₪420 · cream"
+          "en": "₪420 · cream",
+          "ar": "₪420 · كريمي"
         }
       },
       {
         "label": {
           "he": "צעיף משי",
-          "en": "Silk scarf"
+          "en": "Silk scarf",
+          "ar": "شال حرير"
         },
         "meta": {
           "he": "₪190 · זית",
-          "en": "₪190 · olive"
+          "en": "₪190 · olive",
+          "ar": "₪190 · زيتي"
         }
       },
       {
         "label": {
           "he": "תיק קש קלוע",
-          "en": "Woven straw bag"
+          "en": "Woven straw bag",
+          "ar": "شنطة قش مجدولة"
         },
         "meta": {
           "he": "₪260 · עבודת יד",
-          "en": "₪260 · handmade"
+          "en": "₪260 · handmade",
+          "ar": "₪260 · شغل إيد"
         }
       }
     ],
     "cta": {
       "he": "הוספה לסל",
-      "en": "Add to bag"
+      "en": "Add to bag",
+      "ar": "أضيفي للسلة"
     },
     "palette": {
       "bg": "#e8e1d7",
@@ -15984,79 +16000,95 @@
   "artists": {
     "brand": {
       "he": "תמר אלון, איורים",
-      "en": "Tamar Alon Illustration"
+      "en": "Tamar Alon Illustration",
+      "ar": "تمار ألون، رسومات"
     },
     "title": {
       "he": "עבודות, הדפסים והזמנות",
-      "en": "Work, prints and commissions"
+      "en": "Work, prints and commissions",
+      "ar": "أعمال، مطبوعات وطلبات خاصة"
     },
     "subtitle": {
       "he": "פנויה להזמנות מאוגוסט",
-      "en": "Open for commissions from August"
+      "en": "Open for commissions from August",
+      "ar": "بستقبل طلبات خاصة من آب"
     },
     "tags": [
       {
         "he": "איור",
-        "en": "Illustration"
+        "en": "Illustration",
+        "ar": "رسم توضيحي"
       },
       {
         "he": "הדפסים",
-        "en": "Prints"
+        "en": "Prints",
+        "ar": "مطبوعات"
       },
       {
         "he": "מיתוג",
-        "en": "Branding"
+        "en": "Branding",
+        "ar": "هوية تجارية"
       },
       {
         "he": "קירות",
-        "en": "Murals"
+        "en": "Murals",
+        "ar": "جداريات"
       }
     ],
     "items": [
       {
         "label": {
           "he": "הדפס ריסוגרף A3",
-          "en": "A3 risograph print"
+          "en": "A3 risograph print",
+          "ar": "مطبوعة ريسوغراف A3"
         },
         "meta": {
           "he": "₪180 · מהדורה של 50",
-          "en": "₪180 · edition of 50"
+          "en": "₪180 · edition of 50",
+          "ar": "₪180 · إصدار من 50"
         }
       },
       {
         "label": {
           "he": "איור אישי",
-          "en": "Custom illustration"
+          "en": "Custom illustration",
+          "ar": "رسمة حسب الطلب"
         },
         "meta": {
           "he": "החל מ-₪900",
-          "en": "from ₪900"
+          "en": "from ₪900",
+          "ar": "من ₪900"
         }
       },
       {
         "label": {
           "he": "ציור קיר",
-          "en": "Mural"
+          "en": "Mural",
+          "ar": "جدارية"
         },
         "meta": {
           "he": "החל מ-₪4,500",
-          "en": "from ₪4,500"
+          "en": "from ₪4,500",
+          "ar": "من ₪4,500"
         }
       },
       {
         "label": {
           "he": "חבילת מיתוג",
-          "en": "Branding package"
+          "en": "Branding package",
+          "ar": "باقة هوية تجارية"
         },
         "meta": {
           "he": "₪6,800 · לוגו ואיורים",
-          "en": "₪6,800 · logo and art"
+          "en": "₪6,800 · logo and art",
+          "ar": "₪6,800 · لوجو ورسومات"
         }
       }
     ],
     "cta": {
       "he": "בקשה להזמנה",
-      "en": "Request a commission"
+      "en": "Request a commission",
+      "ar": "اطلب عمل خاص"
     },
     "palette": {
       "bg": "#fbe2e7",
@@ -16069,79 +16101,95 @@
   "bookshops": {
     "brand": {
       "he": "ספרים בעליית הגג",
-      "en": "Attic Books"
+      "en": "Attic Books",
+      "ar": "كتب العلّية"
     },
     "title": {
       "he": "ההמלצות של השבוע",
-      "en": "This week's picks"
+      "en": "This week's picks",
+      "ar": "اختيارات هالأسبوع"
     },
     "subtitle": {
       "he": "עטיפת מתנה וברכה בכתב יד, בחינם",
-      "en": "Free gift wrap and a handwritten card"
+      "en": "Free gift wrap and a handwritten card",
+      "ar": "تغليف هدية مجاني وكرت بخط الإيد"
     },
     "tags": [
       {
         "he": "פרוזה",
-        "en": "Fiction"
+        "en": "Fiction",
+        "ar": "روايات"
       },
       {
         "he": "ילדים",
-        "en": "Kids"
+        "en": "Kids",
+        "ar": "أطفال"
       },
       {
         "he": "מתנות",
-        "en": "Gifts"
+        "en": "Gifts",
+        "ar": "هدايا"
       },
       {
         "he": "מקומי",
-        "en": "Local"
+        "en": "Local",
+        "ar": "محلي"
       }
     ],
     "items": [
       {
         "label": {
           "he": "הבית שבסוף הרחוב",
-          "en": "The house at the end of the street"
+          "en": "The house at the end of the street",
+          "ar": "البيت بآخر الشارع"
         },
         "meta": {
           "he": "₪88 · רומן",
-          "en": "₪88 · novel"
+          "en": "₪88 · novel",
+          "ar": "₪88 · رواية"
         }
       },
       {
         "label": {
           "he": "מפה של ים המלח",
-          "en": "Dead Sea map"
+          "en": "Dead Sea map",
+          "ar": "خريطة البحر الميت"
         },
         "meta": {
           "he": "₪54 · הדפס",
-          "en": "₪54 · print"
+          "en": "₪54 · print",
+          "ar": "₪54 · مطبوعة"
         }
       },
       {
         "label": {
           "he": "מחברת בכריכת פשתן",
-          "en": "Linen-bound journal"
+          "en": "Linen-bound journal",
+          "ar": "دفتر بغلاف كتان"
         },
         "meta": {
           "he": "₪72 · 192 עמודים",
-          "en": "₪72 · 192 pages"
+          "en": "₪72 · 192 pages",
+          "ar": "₪72 · 192 صفحة"
         }
       },
       {
         "label": {
           "he": "קופסת מתנה לקוראים",
-          "en": "Reader's gift box"
+          "en": "Reader's gift box",
+          "ar": "علبة هدية للقارئ"
         },
         "meta": {
           "he": "₪149 · ספר, תה ונר",
-          "en": "₪149 · book, tea, candle"
+          "en": "₪149 · book, tea, candle",
+          "ar": "₪149 · كتاب، شاي وشمعة"
         }
       }
     ],
     "cta": {
       "he": "להזמין עטוף למתנה",
-      "en": "Order gift-wrapped"
+      "en": "Order gift-wrapped",
+      "ar": "اطلب مغلّف كهدية"
     },
     "palette": {
       "bg": "#efe5d0",
@@ -16154,75 +16202,90 @@
   "plant-shops": {
     "brand": {
       "he": "הגינה בסלון",
-      "en": "Living Room Garden"
+      "en": "Living Room Garden",
+      "ar": "جنينة بالصالون"
     },
     "title": {
       "he": "צמח, עציץ ומקום",
-      "en": "Plant, pot and place"
+      "en": "Plant, pot and place",
+      "ar": "نبتة، أصيص ومكان"
     },
     "subtitle": {
       "he": "ספרו לנו כמה אור יש, ונמצא לכם צמח",
-      "en": "Tell us your light, we find the plant"
+      "en": "Tell us your light, we find the plant",
+      "ar": "احكيلنا عن الضو عندك، ومنلاقيلك النبتة"
     },
     "tags": [
       {
         "he": "אור ישיר",
-        "en": "Direct sun"
+        "en": "Direct sun",
+        "ar": "شمس مباشرة"
       },
       {
         "he": "אור חלקי",
-        "en": "Partial light"
+        "en": "Partial light",
+        "ar": "ضو جزئي"
       },
       {
         "he": "צל",
-        "en": "Shade"
+        "en": "Shade",
+        "ar": "ظل"
       }
     ],
     "items": [
       {
         "label": {
           "he": "חדר",
-          "en": "Room"
+          "en": "Room",
+          "ar": "الغرفة"
         },
         "meta": {
           "he": "סלון · חלון מזרחי",
-          "en": "Living room · east window"
+          "en": "Living room · east window",
+          "ar": "الصالون · شباك شرقي"
         }
       },
       {
         "label": {
           "he": "צמח",
-          "en": "Plant"
+          "en": "Plant",
+          "ar": "النبتة"
         },
         "meta": {
           "he": "מונסטרה · 80 ס\"מ",
-          "en": "Monstera · 80 cm"
+          "en": "Monstera · 80 cm",
+          "ar": "مونستيرا · 80 سم"
         }
       },
       {
         "label": {
           "he": "עציץ",
-          "en": "Pot"
+          "en": "Pot",
+          "ar": "الأصيص"
         },
         "meta": {
           "he": "טרקוטה מזוגגת · 24 ס\"מ",
-          "en": "Glazed terracotta · 24 cm"
+          "en": "Glazed terracotta · 24 cm",
+          "ar": "فخّار مزجّج · 24 سم"
         }
       },
       {
         "label": {
           "he": "סה\"כ",
-          "en": "Total"
+          "en": "Total",
+          "ar": "المجموع"
         },
         "meta": {
           "he": "₪285 · כולל שתילה",
-          "en": "₪285 · potted for you"
+          "en": "₪285 · potted for you",
+          "ar": "₪285 · مزروعة جاهزة"
         }
       }
     ],
     "cta": {
       "he": "משלוח עד הבית",
-      "en": "Deliver to my home"
+      "en": "Deliver to my home",
+      "ar": "وصّل لبيتي"
     },
     "palette": {
       "bg": "#e3eadc",
@@ -16235,79 +16298,95 @@
   "pet-shops": {
     "brand": {
       "he": "כפיים",
-      "en": "Kapayim Pet Shop"
+      "en": "Kapayim Pet Shop",
+      "ar": "كفوف لمستلزمات الحيوانات"
     },
     "title": {
       "he": "האוכל של מקס בדרך",
-      "en": "Max's food is on its way"
+      "en": "Max's food is on its way",
+      "ar": "أكل ماكس بالطريق"
     },
     "subtitle": {
       "he": "מנוי חודשי · משלוח כל 28 יום",
-      "en": "Monthly plan · delivered every 28 days"
+      "en": "Monthly plan · delivered every 28 days",
+      "ar": "اشتراك شهري · توصيل كل 28 يوم"
     },
     "tags": [
       {
         "he": "כלבים",
-        "en": "Dogs"
+        "en": "Dogs",
+        "ar": "كلاب"
       },
       {
         "he": "חתולים",
-        "en": "Cats"
+        "en": "Cats",
+        "ar": "قطط"
       },
       {
         "he": "חטיפים",
-        "en": "Treats"
+        "en": "Treats",
+        "ar": "مكافآت"
       },
       {
         "he": "צעצועים",
-        "en": "Toys"
+        "en": "Toys",
+        "ar": "ألعاب"
       }
     ],
     "items": [
       {
         "label": {
           "he": "מזון יבש סלמון",
-          "en": "Salmon dry food"
+          "en": "Salmon dry food",
+          "ar": "أكل ناشف بالسلمون"
         },
         "meta": {
           "he": "₪219 · 12 ק\"ג",
-          "en": "₪219 · 12 kg"
+          "en": "₪219 · 12 kg",
+          "ar": "₪219 · 12 كغم"
         }
       },
       {
         "label": {
           "he": "חטיפי אילוף",
-          "en": "Training treats"
+          "en": "Training treats",
+          "ar": "مكافآت تدريب"
         },
         "meta": {
           "he": "₪32 · טבעי",
-          "en": "₪32 · natural"
+          "en": "₪32 · natural",
+          "ar": "₪32 · طبيعية"
         }
       },
       {
         "label": {
           "he": "חבל משיכה",
-          "en": "Tough rope toy"
+          "en": "Tough rope toy",
+          "ar": "لعبة حبل قوية"
         },
         "meta": {
           "he": "₪45 · לכלבים גדולים",
-          "en": "₪45 · large dogs"
+          "en": "₪45 · large dogs",
+          "ar": "₪45 · للكلاب الكبيرة"
         }
       },
       {
         "label": {
           "he": "מיטה אורתופדית",
-          "en": "Orthopaedic bed"
+          "en": "Orthopaedic bed",
+          "ar": "فرشة طبية"
         },
         "meta": {
           "he": "₪340 · מידה M",
-          "en": "₪340 · size M"
+          "en": "₪340 · size M",
+          "ar": "₪340 · مقاس M"
         }
       }
     ],
     "cta": {
       "he": "הוספה למנוי",
-      "en": "Add to plan"
+      "en": "Add to plan",
+      "ar": "أضف للاشتراك"
     },
     "palette": {
       "bg": "#ffe3c9",
@@ -16320,75 +16399,90 @@
   "gold": {
     "brand": {
       "he": "מג'והראת אל ח'ליל",
-      "en": "Al Khalil Jewellers"
+      "en": "Al Khalil Jewellers",
+      "ar": "مجوهرات الخليل"
     },
     "title": {
       "he": "כמה שווה הזהב שלך?",
-      "en": "What is your gold worth?"
+      "en": "What is your gold worth?",
+      "ar": "قديش بسوى دهبك؟"
     },
     "subtitle": {
       "he": "מחיר הזהב היום מתעדכן כל שעה",
-      "en": "Today's gold price, updated hourly"
+      "en": "Today's gold price, updated hourly",
+      "ar": "سعر الدهب اليوم، بيتحدّث كل ساعة"
     },
     "tags": [
       {
         "he": "18K",
-        "en": "18K"
+        "en": "18K",
+        "ar": "عيار 18"
       },
       {
         "he": "21K",
-        "en": "21K"
+        "en": "21K",
+        "ar": "عيار 21"
       },
       {
         "he": "24K",
-        "en": "24K"
+        "en": "24K",
+        "ar": "عيار 24"
       }
     ],
     "items": [
       {
         "label": {
           "he": "סוג",
-          "en": "Type"
+          "en": "Type",
+          "ar": "النوع"
         },
         "meta": {
           "he": "צמידים ושרשרת",
-          "en": "Bangles and a chain"
+          "en": "Bangles and a chain",
+          "ar": "أساور وسلسال"
         }
       },
       {
         "label": {
           "he": "משקל",
-          "en": "Weight"
+          "en": "Weight",
+          "ar": "الوزن"
         },
         "meta": {
           "he": "38 גרם",
-          "en": "38 g"
+          "en": "38 g",
+          "ar": "38 غرام"
         }
       },
       {
         "label": {
           "he": "טוהר",
-          "en": "Purity"
+          "en": "Purity",
+          "ar": "العيار"
         },
         "meta": {
           "he": "21K",
-          "en": "21K"
+          "en": "21K",
+          "ar": "21"
         }
       },
       {
         "label": {
           "he": "שווי היום",
-          "en": "Value today"
+          "en": "Value today",
+          "ar": "القيمة اليوم"
         },
         "meta": {
           "he": "₪12,600-13,100",
-          "en": "₪12,600-13,100"
+          "en": "₪12,600-13,100",
+          "ar": "₪12,600-13,100"
         }
       }
     ],
     "cta": {
       "he": "להחליף לתכשיט חדש",
-      "en": "Trade for a new piece"
+      "en": "Trade for a new piece",
+      "ar": "بدّل بقطعة جديدة"
     },
     "palette": {
       "bg": "#17130d",
@@ -16401,79 +16495,95 @@
   "perfume": {
     "brand": {
       "he": "בית העוד אל ענבר",
-      "en": "Al Anbar Oud House"
+      "en": "Al Anbar Oud House",
+      "ar": "بيت العود العنبر"
     },
     "title": {
       "he": "ריח של בית",
-      "en": "The scent of home"
+      "en": "The scent of home",
+      "ar": "ريحة البيت"
     },
     "subtitle": {
       "he": "עוד קמבודי ובח'ור בעבודת יד",
-      "en": "Cambodian oud and handmade bakhoor"
+      "en": "Cambodian oud and handmade bakhoor",
+      "ar": "عود كمبودي وبخور شغل إيد"
     },
     "tags": [
       {
         "he": "עוד",
-        "en": "Oud"
+        "en": "Oud",
+        "ar": "عود"
       },
       {
         "he": "בח'ור",
-        "en": "Bakhoor"
+        "en": "Bakhoor",
+        "ar": "بخور"
       },
       {
         "he": "עטר",
-        "en": "Attar"
+        "en": "Attar",
+        "ar": "عطر زيتي"
       },
       {
         "he": "מתנות",
-        "en": "Gifts"
+        "en": "Gifts",
+        "ar": "هدايا"
       }
     ],
     "items": [
       {
         "label": {
           "he": "עטר ורדים",
-          "en": "Rose attar"
+          "en": "Rose attar",
+          "ar": "عطر ورد زيتي"
         },
         "meta": {
           "he": "₪160 · 12 מ\"ל",
-          "en": "₪160 · 12 ml"
+          "en": "₪160 · 12 ml",
+          "ar": "₪160 · 12 مل"
         }
       },
       {
         "label": {
           "he": "מבחרה מנחושת",
-          "en": "Copper mabkhara"
+          "en": "Copper mabkhara",
+          "ar": "مبخرة نحاس"
         },
         "meta": {
           "he": "₪220 · עבודת יד",
-          "en": "₪220 · handmade"
+          "en": "₪220 · handmade",
+          "ar": "₪220 · شغل إيد"
         }
       },
       {
         "label": {
           "he": "בח'ור ענבר",
-          "en": "Amber bakhoor"
+          "en": "Amber bakhoor",
+          "ar": "بخور عنبر"
         },
         "meta": {
           "he": "₪85 · 50 גרם",
-          "en": "₪85 · 50 g"
+          "en": "₪85 · 50 g",
+          "ar": "₪85 · 50 غرام"
         }
       },
       {
         "label": {
           "he": "שבבי עוד",
-          "en": "Oud chips"
+          "en": "Oud chips",
+          "ar": "قطع عود"
         },
         "meta": {
           "he": "₪340 · 10 גרם",
-          "en": "₪340 · 10 g"
+          "en": "₪340 · 10 g",
+          "ar": "₪340 · 10 غرام"
         }
       }
     ],
     "cta": {
       "he": "הוספה לסל",
-      "en": "Add to bag"
+      "en": "Add to bag",
+      "ar": "أضف للسلة"
     },
     "palette": {
       "bg": "#2a1a1f",
@@ -16486,79 +16596,95 @@
   "chocolates": {
     "brand": {
       "he": "תמור ושוקולד נח'לה",
-      "en": "Nakhla Dates and Chocolate"
+      "en": "Nakhla Dates and Chocolate",
+      "ar": "تمور وشوكولاتة نخلة"
     },
     "title": {
       "he": "מארז לרמדאן",
-      "en": "A Ramadan gift box"
+      "en": "A Ramadan gift box",
+      "ar": "علبة هدية لرمضان"
     },
     "subtitle": {
       "he": "מג'הול מבקעת הירדן ושוקולד בעבודת יד",
-      "en": "Jordan Valley medjool and handmade chocolate"
+      "en": "Jordan Valley medjool and handmade chocolate",
+      "ar": "مجهول من غور الأردن وشوكولاتة شغل إيد"
     },
     "tags": [
       {
         "he": "מג'הול",
-        "en": "Medjool"
+        "en": "Medjool",
+        "ar": "مجهول"
       },
       {
         "he": "ממולאים",
-        "en": "Stuffed"
+        "en": "Stuffed",
+        "ar": "محشي"
       },
       {
         "he": "שוקולד מריר",
-        "en": "Dark"
+        "en": "Dark",
+        "ar": "غامق"
       },
       {
         "he": "פרלינים",
-        "en": "Pralines"
+        "en": "Pralines",
+        "ar": "برالين"
       }
     ],
     "items": [
       {
         "label": {
           "he": "מארז",
-          "en": "Box"
+          "en": "Box",
+          "ar": "العلبة"
         },
         "meta": {
           "he": "עץ זית · 24 תאים",
-          "en": "Olive wood · 24 pieces"
+          "en": "Olive wood · 24 pieces",
+          "ar": "خشب زيتون · 24 قطعة"
         }
       },
       {
         "label": {
           "he": "תמרים",
-          "en": "Dates"
+          "en": "Dates",
+          "ar": "التمر"
         },
         "meta": {
           "he": "מג'הול ממולא שקדים",
-          "en": "Almond-stuffed medjool"
+          "en": "Almond-stuffed medjool",
+          "ar": "مجهول محشي لوز"
         }
       },
       {
         "label": {
           "he": "שוקולד",
-          "en": "Chocolate"
+          "en": "Chocolate",
+          "ar": "الشوكولاتة"
         },
         "meta": {
           "he": "פרלין פיסטוק וחלבה",
-          "en": "Pistachio and halva pralines"
+          "en": "Pistachio and halva pralines",
+          "ar": "برالين فستق وحلاوة"
         }
       },
       {
         "label": {
           "he": "סה\"כ",
-          "en": "Total"
+          "en": "Total",
+          "ar": "المجموع"
         },
         "meta": {
           "he": "₪189 · עם כרטיס ברכה",
-          "en": "₪189 · with a card"
+          "en": "₪189 · with a card",
+          "ar": "₪189 · مع كرت"
         }
       }
     ],
     "cta": {
       "he": "להזמין מארז · ₪189",
-      "en": "Order the box · ₪189"
+      "en": "Order the box · ₪189",
+      "ar": "اطلب العلبة · ₪189"
     },
     "palette": {
       "bg": "#f3e6d6",
@@ -16571,79 +16697,95 @@
   "electronics": {
     "brand": {
       "he": "סלולר אל מדינה",
-      "en": "Al Madina Mobile"
+      "en": "Al Madina Mobile",
+      "ar": "خلوي المدينة"
     },
     "title": {
       "he": "הטלפון החדש שלך",
-      "en": "Your new phone"
+      "en": "Your new phone",
+      "ar": "تلفونك الجديد"
     },
     "subtitle": {
       "he": "עד 12 תשלומים בלי ריבית",
-      "en": "Up to 12 interest-free payments"
+      "en": "Up to 12 interest-free payments",
+      "ar": "لحد 12 دفعة بدون فوائد"
     },
     "tags": [
       {
         "he": "טלפונים",
-        "en": "Phones"
+        "en": "Phones",
+        "ar": "تلفونات"
       },
       {
         "he": "אוזניות",
-        "en": "Earbuds"
+        "en": "Earbuds",
+        "ar": "سماعات"
       },
       {
         "he": "שעונים",
-        "en": "Watches"
+        "en": "Watches",
+        "ar": "ساعات"
       },
       {
         "he": "מחשבים",
-        "en": "Laptops"
+        "en": "Laptops",
+        "ar": "لابتوبات"
       }
     ],
     "items": [
       {
         "label": {
           "he": "אייפון 16",
-          "en": "iPhone 16"
+          "en": "iPhone 16",
+          "ar": "آيفون 16"
         },
         "meta": {
           "he": "₪3,690 · 128GB",
-          "en": "₪3,690 · 128GB"
+          "en": "₪3,690 · 128GB",
+          "ar": "₪3,690 · 128GB"
         }
       },
       {
         "label": {
           "he": "גלקסי S25",
-          "en": "Galaxy S25"
+          "en": "Galaxy S25",
+          "ar": "جالاكسي S25"
         },
         "meta": {
           "he": "₪3,290 · 256GB",
-          "en": "₪3,290 · 256GB"
+          "en": "₪3,290 · 256GB",
+          "ar": "₪3,290 · 256GB"
         }
       },
       {
         "label": {
           "he": "אוזניות אלחוטיות",
-          "en": "Wireless earbuds"
+          "en": "Wireless earbuds",
+          "ar": "سماعات لاسلكية"
         },
         "meta": {
           "he": "₪590 · ביטול רעשים",
-          "en": "₪590 · noise cancelling"
+          "en": "₪590 · noise cancelling",
+          "ar": "₪590 · عزل ضجة"
         }
       },
       {
         "label": {
           "he": "טרייד-אין",
-          "en": "Trade-in"
+          "en": "Trade-in",
+          "ar": "استبدال"
         },
         "meta": {
           "he": "עד ₪1,200 על הישן",
-          "en": "up to ₪1,200 for your old one"
+          "en": "up to ₪1,200 for your old one",
+          "ar": "لحد ₪1,200 عن القديم"
         }
       }
     ],
     "cta": {
       "he": "להזמין לאיסוף היום",
-      "en": "Reserve for pickup today"
+      "en": "Reserve for pickup today",
+      "ar": "احجز للاستلام اليوم"
     },
     "palette": {
       "bg": "#0f1420",
@@ -16656,79 +16798,95 @@
   "watches": {
     "brand": {
       "he": "שעוני אל וקת",
-      "en": "Al Waqt Watches"
+      "en": "Al Waqt Watches",
+      "ar": "ساعات الوقت"
     },
     "title": {
       "he": "זמן למתנה",
-      "en": "Time for a gift"
+      "en": "Time for a gift",
+      "ar": "وقت الهدية"
     },
     "subtitle": {
       "he": "חריטה חינם לחתן ולכלה",
-      "en": "Free engraving for the couple"
+      "en": "Free engraving for the couple",
+      "ar": "حفر مجاني للعرسان"
     },
     "tags": [
       {
         "he": "גברים",
-        "en": "Men"
+        "en": "Men",
+        "ar": "رجالي"
       },
       {
         "he": "נשים",
-        "en": "Women"
+        "en": "Women",
+        "ar": "نسائي"
       },
       {
         "he": "זוגות",
-        "en": "Pairs"
+        "en": "Pairs",
+        "ar": "أزواج"
       },
       {
         "he": "תיקונים",
-        "en": "Repairs"
+        "en": "Repairs",
+        "ar": "تصليح"
       }
     ],
     "items": [
       {
         "label": {
           "he": "שעון יד קלאסי",
-          "en": "Classic watch"
+          "en": "Classic watch",
+          "ar": "ساعة كلاسيك"
         },
         "meta": {
           "he": "₪890 · רצועת עור",
-          "en": "₪890 · leather strap"
+          "en": "₪890 · leather strap",
+          "ar": "₪890 · قشاط جلد"
         }
       },
       {
         "label": {
           "he": "שעון פלדה",
-          "en": "Steel watch"
+          "en": "Steel watch",
+          "ar": "ساعة ستيل"
         },
         "meta": {
           "he": "₪1,350 · עמיד במים",
-          "en": "₪1,350 · water resistant"
+          "en": "₪1,350 · water resistant",
+          "ar": "₪1,350 · ضد المي"
         }
       },
       {
         "label": {
           "he": "שעון זוגי",
-          "en": "Matching pair"
+          "en": "Matching pair",
+          "ar": "زوج متطابق"
         },
         "meta": {
           "he": "₪1,990 · עם חריטה",
-          "en": "₪1,990 · engraved"
+          "en": "₪1,990 · engraved",
+          "ar": "₪1,990 · محفورة"
         }
       },
       {
         "label": {
           "he": "שעון קיר",
-          "en": "Wall clock"
+          "en": "Wall clock",
+          "ar": "ساعة حيط"
         },
         "meta": {
           "he": "₪420 · עץ אגוז",
-          "en": "₪420 · walnut"
+          "en": "₪420 · walnut",
+          "ar": "₪420 · خشب جوز"
         }
       }
     ],
     "cta": {
       "he": "להזמין עם חריטה",
-      "en": "Order with engraving"
+      "en": "Order with engraving",
+      "ar": "اطلب مع حفر"
     },
     "palette": {
       "bg": "#17191d",
@@ -16741,79 +16899,95 @@
   "kitchenware": {
     "brand": {
       "he": "בית אל עשא",
-      "en": "Beit Al Asha"
+      "en": "Beit Al Asha",
+      "ar": "بيت العشا"
     },
     "title": {
       "he": "בונים את ג'האז הכלה",
-      "en": "Build the bride's kitchen set"
+      "en": "Build the bride's kitchen set",
+      "ar": "ركّب طقم مطبخ العروس"
     },
     "subtitle": {
       "he": "רשימה אחת שכל המשפחה רואה",
-      "en": "One list the whole family can see"
+      "en": "One list the whole family can see",
+      "ar": "قائمة وحدة بتشوفها كل العيلة"
     },
     "tags": [
       {
         "he": "סירים",
-        "en": "Pots"
+        "en": "Pots",
+        "ar": "طناجر"
       },
       {
         "he": "סכו\"ם",
-        "en": "Cutlery"
+        "en": "Cutlery",
+        "ar": "أدوات مائدة"
       },
       {
         "he": "כלי הגשה",
-        "en": "Serving"
+        "en": "Serving",
+        "ar": "تقديم"
       },
       {
         "he": "חשמל",
-        "en": "Appliances"
+        "en": "Appliances",
+        "ar": "أجهزة كهربائية"
       }
     ],
     "items": [
       {
         "label": {
           "he": "סירים",
-          "en": "Pots"
+          "en": "Pots",
+          "ar": "الطناجر"
         },
         "meta": {
           "he": "סט נירוסטה · 10 חלקים",
-          "en": "Steel set · 10 pieces"
+          "en": "Steel set · 10 pieces",
+          "ar": "طقم ستانلس · 10 قطع"
         }
       },
       {
         "label": {
           "he": "כלי אוכל",
-          "en": "Dinnerware"
+          "en": "Dinnerware",
+          "ar": "الصحون"
         },
         "meta": {
           "he": "פורצלן ל-12 סועדים",
-          "en": "Porcelain for 12"
+          "en": "Porcelain for 12",
+          "ar": "بورسلان لـ12 شخص"
         }
       },
       {
         "label": {
           "he": "הגשה",
-          "en": "Serving"
+          "en": "Serving",
+          "ar": "التقديم"
         },
         "meta": {
           "he": "מגשי נחושת ופינג'אנים",
-          "en": "Copper trays, coffee cups"
+          "en": "Copper trays, coffee cups",
+          "ar": "صواني نحاس، فناجين قهوة"
         }
       },
       {
         "label": {
           "he": "סה\"כ",
-          "en": "Total"
+          "en": "Total",
+          "ar": "المجموع"
         },
         "meta": {
           "he": "₪4,860 · 3 תשלומים",
-          "en": "₪4,860 · 3 payments"
+          "en": "₪4,860 · 3 payments",
+          "ar": "₪4,860 · 3 دفعات"
         }
       }
     ],
     "cta": {
       "he": "לשתף את הרשימה",
-      "en": "Share the list"
+      "en": "Share the list",
+      "ar": "شارك القائمة"
     },
     "palette": {
       "bg": "#f7ebe0",
