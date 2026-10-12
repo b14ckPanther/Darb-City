@@ -13,5 +13,9 @@ describe("cursors", () => {
     expect(decodeCursor(Buffer.from('{"o":-1}').toString("base64url"))).toBeNull();
     expect(decodeCursor(Buffer.from('{"o":1.5}').toString("base64url"))).toBeNull();
     expect(decodeCursor(Buffer.from("[]").toString("base64url"))).toBeNull();
+    expect(decodeCursor(Buffer.from('{"o":3000000000}').toString("base64url"))).toBeNull();
+    expect(decodeCursor(Buffer.from('{"o":1e21}').toString("base64url"))).toBeNull();
+    expect(decodeCursor(Buffer.from('{"o":100001}').toString("base64url"))).toBeNull();
+    expect(decodeCursor(encodeCursor(100_000))).toBe(100_000);
   });
 });

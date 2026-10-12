@@ -86,6 +86,8 @@ describe("pagination", () => {
     expect((await get("/places/sakhnin/businesses?limit=0")).status).toBe(400);
     expect((await get("/places/sakhnin/businesses?limit=101")).status).toBe(400);
     expect((await get("/places/sakhnin/businesses?cursor=nonsense")).status).toBe(400);
+    const huge = Buffer.from('{"o":3000000000}').toString("base64url");
+    expect((await get(`/places/sakhnin/businesses?cursor=${huge}`)).status).toBe(400);
   });
 });
 
