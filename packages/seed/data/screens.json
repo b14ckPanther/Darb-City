@@ -4602,75 +4602,90 @@
   "daycare": {
     "brand": {
       "he": "פעוטון בראעם",
-      "en": "Bara'em Nursery"
+      "en": "Bara'em Nursery",
+      "ar": "حضانة براعم"
     },
     "title": {
       "he": "היום של לין",
-      "en": "Leen's day"
+      "en": "Leen's day",
+      "ar": "نهار لين"
     },
     "subtitle": {
       "he": "כיתת הפרפרים · יום ג'",
-      "en": "Butterfly room · Tuesday"
+      "en": "Butterfly room · Tuesday",
+      "ar": "غرفة الفراشات · الثلاثاء"
     },
     "tags": [
       {
         "he": "היום",
-        "en": "Today"
+        "en": "Today",
+        "ar": "اليوم"
       },
       {
         "he": "אתמול",
-        "en": "Yesterday"
+        "en": "Yesterday",
+        "ar": "مبارح"
       },
       {
         "he": "השבוע",
-        "en": "This week"
+        "en": "This week",
+        "ar": "هالأسبوع"
       }
     ],
     "items": [
       {
         "label": {
           "he": "הגיעה בבוקר",
-          "en": "Arrived"
+          "en": "Arrived",
+          "ar": "وصلت"
         },
         "meta": {
           "he": "07:45 · מצב רוח טוב · 100%",
-          "en": "07:45 · happy start · 100%"
+          "en": "07:45 · happy start · 100%",
+          "ar": "07:45 · بداية مبسوطة · 100%"
         }
       },
       {
         "label": {
           "he": "ארוחת צהריים",
-          "en": "Lunch"
+          "en": "Lunch",
+          "ar": "الغدا"
         },
         "meta": {
           "he": "אורז, עוף וירקות · 100%",
-          "en": "rice, chicken, veg · 100%"
+          "en": "rice, chicken, veg · 100%",
+          "ar": "رز، دجاج وخضار · 100%"
         }
       },
       {
         "label": {
           "he": "שנת צהריים",
-          "en": "Nap"
+          "en": "Nap",
+          "ar": "القيلولة"
         },
         "meta": {
           "he": "12:30-14:00 · 100%",
-          "en": "12:30-14:00 · 100%"
+          "en": "12:30-14:00 · 100%",
+          "ar": "12:30-14:00 · 100%"
         }
       },
       {
         "label": {
           "he": "פעילות אחר הצהריים",
-          "en": "Afternoon play"
+          "en": "Afternoon play",
+          "ar": "لعب بعد الظهر"
         },
         "meta": {
           "he": "צביעה בגינה · 50%",
-          "en": "garden painting · 50%"
+          "en": "garden painting · 50%",
+          "ar": "رسم بالحديقة · 50%"
         }
       }
     ],
     "cta": {
       "he": "לראות את התמונות מהיום",
-      "en": "See today's photos"
+      "en": "See today's photos",
+      "ar": "شوف صور اليوم"
     },
     "palette": {
       "bg": "#fdf3e4",
@@ -4683,83 +4698,100 @@
   "kindergartens": {
     "brand": {
       "he": "גן השקמה",
-      "en": "HaShikma Kindergarten"
+      "en": "HaShikma Kindergarten",
+      "ar": "روضة هشيكما"
     },
     "title": {
       "he": "היום בגן של יואב",
-      "en": "Yoav's day at kindergarten"
+      "en": "Yoav's day at kindergarten",
+      "ar": "نهار يوآف بالروضة"
     },
     "subtitle": {
       "he": "יום שלישי · 14 ילדים בקבוצה",
-      "en": "Tuesday · 14 kids in the group"
+      "en": "Tuesday · 14 kids in the group",
+      "ar": "الثلاثاء · 14 ولد بالمجموعة"
     },
     "tags": [
       {
         "he": "א'",
-        "en": "Sun"
+        "en": "Sun",
+        "ar": "أحد"
       },
       {
         "he": "ב'",
-        "en": "Mon"
+        "en": "Mon",
+        "ar": "اثنين"
       },
       {
         "he": "ג'",
-        "en": "Tue"
+        "en": "Tue",
+        "ar": "ثلاثاء"
       },
       {
         "he": "ד'",
-        "en": "Wed"
+        "en": "Wed",
+        "ar": "أربعاء"
       },
       {
         "he": "ה'",
-        "en": "Thu"
+        "en": "Thu",
+        "ar": "خميس"
       }
     ],
     "items": [
       {
         "label": {
           "he": "מפגש בוקר",
-          "en": "Morning circle"
+          "en": "Morning circle",
+          "ar": "حلقة الصبح"
         },
         "meta": {
           "he": "08:00 · שירים ולוח שנה",
-          "en": "08:00 · songs and calendar"
+          "en": "08:00 · songs and calendar",
+          "ar": "08:00 · أغاني ورزنامة"
         }
       },
       {
         "label": {
           "he": "ארוחת עשר",
-          "en": "Snack time"
+          "en": "Snack time",
+          "ar": "وقت السندويشة"
         },
         "meta": {
           "he": "10:00 · חביתה וירקות",
-          "en": "10:00 · omelette and veg"
+          "en": "10:00 · omelette and veg",
+          "ar": "10:00 · عجة وخضار"
         }
       },
       {
         "label": {
           "he": "חצר וארגז חול",
-          "en": "Yard and sandbox"
+          "en": "Yard and sandbox",
+          "ar": "الساحة والرمل"
         },
         "meta": {
           "he": "11:00 · משחק חופשי",
-          "en": "11:00 · free play"
+          "en": "11:00 · free play",
+          "ar": "11:00 · لعب حر"
         }
       },
       {
         "label": {
           "he": "צהרון",
-          "en": "After-school"
+          "en": "After-school",
+          "ar": "برنامج بعد الدوام"
         },
         "meta": {
           "he": "13:30 · יצירה ושינה",
-          "en": "13:30 · crafts and a nap"
+          "en": "13:30 · crafts and a nap",
+          "ar": "13:30 · أشغال يدوية وقيلولة"
         }
       }
     ],
     "cta": {
       "he": "הודעה לגננת",
-      "en": "Message the teacher"
+      "en": "Message the teacher",
+      "ar": "ابعت رسالة للمربية"
     },
     "palette": {
       "bg": "#fef5d7",
@@ -4772,79 +4804,95 @@
   "baby-shops": {
     "brand": {
       "he": "בייבי נור",
-      "en": "Baby Noor"
+      "en": "Baby Noor",
+      "ar": "بيبي نور"
     },
     "title": {
       "he": "הכול לחודשים הראשונים",
-      "en": "All for the first months"
+      "en": "All for the first months",
+      "ar": "كل شي لأول الشهور"
     },
     "subtitle": {
       "he": "רשימת לידה שהמשפחה יכולה לקנות ממנה",
-      "en": "A registry the family can shop from"
+      "en": "A registry the family can shop from",
+      "ar": "قائمة هدايا بتشتري منها العيلة"
     },
     "tags": [
       {
         "he": "עגלות",
-        "en": "Strollers"
+        "en": "Strollers",
+        "ar": "عربايات"
       },
       {
         "he": "שינה",
-        "en": "Sleep"
+        "en": "Sleep",
+        "ar": "نوم"
       },
       {
         "he": "האכלה",
-        "en": "Feeding"
+        "en": "Feeding",
+        "ar": "رضاعة"
       },
       {
         "he": "בגדים",
-        "en": "Clothes"
+        "en": "Clothes",
+        "ar": "ملابس"
       }
     ],
     "items": [
       {
         "label": {
           "he": "עגלה מתקפלת",
-          "en": "Folding stroller"
+          "en": "Folding stroller",
+          "ar": "عرباية بتنطوي"
         },
         "meta": {
           "he": "₪1,290 · עד 22 ק\"ג",
-          "en": "₪1,290 · up to 22 kg"
+          "en": "₪1,290 · up to 22 kg",
+          "ar": "₪1,290 · لحد 22 كغم"
         }
       },
       {
         "label": {
           "he": "שמיכת מוסלין",
-          "en": "Muslin blanket"
+          "en": "Muslin blanket",
+          "ar": "حرام موسلين"
         },
         "meta": {
           "he": "₪79 · כותנה אורגנית",
-          "en": "₪79 · organic cotton"
+          "en": "₪79 · organic cotton",
+          "ar": "₪79 · قطن عضوي"
         }
       },
       {
         "label": {
           "he": "בקבוק נגד גזים",
-          "en": "Anti-colic bottle"
+          "en": "Anti-colic bottle",
+          "ar": "رضّاعة ضد المغص"
         },
         "meta": {
           "he": "₪45 · 260 מ\"ל",
-          "en": "₪45 · 260 ml"
+          "en": "₪45 · 260 ml",
+          "ar": "₪45 · 260 مل"
         }
       },
       {
         "label": {
           "he": "בגד גוף לתינוק",
-          "en": "Baby bodysuit"
+          "en": "Baby bodysuit",
+          "ar": "بدي للبيبي"
         },
         "meta": {
           "he": "₪39 · 0-3 חודשים",
-          "en": "₪39 · 0-3 months"
+          "en": "₪39 · 0-3 months",
+          "ar": "₪39 · 0-3 شهور"
         }
       }
     ],
     "cta": {
       "he": "לפתוח רשימת לידה",
-      "en": "Start a baby registry"
+      "en": "Start a baby registry",
+      "ar": "افتح قائمة هدايا للمولود"
     },
     "palette": {
       "bg": "#eef3f1",
@@ -4857,83 +4905,100 @@
   "pediatric": {
     "brand": {
       "he": "מרפאת ד\"ר סלים לילדים",
-      "en": "Dr. Salim Kids Clinic"
+      "en": "Dr. Salim Kids Clinic",
+      "ar": "عيادة د. سليم للأطفال"
     },
     "title": {
       "he": "תור לילד שלך היום",
-      "en": "A slot for your child today"
+      "en": "A slot for your child today",
+      "ar": "في دور لابنك اليوم"
     },
     "subtitle": {
       "he": "רופאה כוננית עד 20:00",
-      "en": "A doctor on call until 8pm"
+      "en": "A doctor on call until 8pm",
+      "ar": "طبيبة مناوبة لحد 20:00"
     },
     "tags": [
       {
         "he": "09:20",
-        "en": "09:20"
+        "en": "09:20",
+        "ar": "09:20"
       },
       {
         "he": "11:00",
-        "en": "11:00"
+        "en": "11:00",
+        "ar": "11:00"
       },
       {
         "he": "14:40",
-        "en": "14:40"
+        "en": "14:40",
+        "ar": "14:40"
       },
       {
         "he": "17:15",
-        "en": "17:15"
+        "en": "17:15",
+        "ar": "17:15"
       },
       {
         "he": "19:30",
-        "en": "19:30"
+        "en": "19:30",
+        "ar": "19:30"
       }
     ],
     "items": [
       {
         "label": {
           "he": "חום ושיעול",
-          "en": "Fever and cough"
+          "en": "Fever and cough",
+          "ar": "حرارة وسعلة"
         },
         "meta": {
           "he": "בקופה · 15 דק'",
-          "en": "covered · 15 min"
+          "en": "covered · 15 min",
+          "ar": "مغطّى · 15 دقيقة"
         }
       },
       {
         "label": {
           "he": "חיסון תקופתי",
-          "en": "Routine vaccine"
+          "en": "Routine vaccine",
+          "ar": "تطعيم روتيني"
         },
         "meta": {
           "he": "עם האחות · 20 דק'",
-          "en": "with the nurse · 20 min"
+          "en": "with the nurse · 20 min",
+          "ar": "عند الممرضة · 20 دقيقة"
         }
       },
       {
         "label": {
           "he": "מעקב גדילה",
-          "en": "Growth check"
+          "en": "Growth check",
+          "ar": "فحص نمو"
         },
         "meta": {
           "he": "בקופה · 20 דק'",
-          "en": "covered · 20 min"
+          "en": "covered · 20 min",
+          "ar": "مغطّى · 20 دقيقة"
         }
       },
       {
         "label": {
           "he": "שיחת וידאו עם רופאה",
-          "en": "Video call with a doctor"
+          "en": "Video call with a doctor",
+          "ar": "مكالمة فيديو مع طبيب"
         },
         "meta": {
           "he": "₪90 · 10 דק'",
-          "en": "₪90 · 10 min"
+          "en": "₪90 · 10 min",
+          "ar": "₪90 · 10 دقائق"
         }
       }
     ],
     "cta": {
       "he": "קביעת תור ל-14:40",
-      "en": "Book 14:40"
+      "en": "Book 14:40",
+      "ar": "احجز الساعة 14:40"
     },
     "palette": {
       "bg": "#e8f3fb",
@@ -4946,79 +5011,95 @@
   "kids-clothing": {
     "brand": {
       "he": "ג'ורי קידס",
-      "en": "Joury Kids"
+      "en": "Joury Kids",
+      "ar": "جوري كيدز"
     },
     "title": {
       "he": "לבוש לעיד, לכל המשפחה",
-      "en": "Eid outfits for the little ones"
+      "en": "Eid outfits for the little ones",
+      "ar": "أواعي العيد للصغار"
     },
     "subtitle": {
       "he": "גילאי 2-12 · כותנה ופשתן",
-      "en": "Ages 2-12 · cotton and linen"
+      "en": "Ages 2-12 · cotton and linen",
+      "ar": "أعمار 2-12 · قطن وكتان"
     },
     "tags": [
       {
         "he": "בנות",
-        "en": "Girls"
+        "en": "Girls",
+        "ar": "بنات"
       },
       {
         "he": "בנים",
-        "en": "Boys"
+        "en": "Boys",
+        "ar": "أولاد"
       },
       {
         "he": "לעיד",
-        "en": "For Eid"
+        "en": "For Eid",
+        "ar": "للعيد"
       },
       {
         "he": "לבית הספר",
-        "en": "School"
+        "en": "School",
+        "ar": "مدرسة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "שמלה ארוכה עם רקמה",
-          "en": "Long embroidered dress"
+          "en": "Long embroidered dress",
+          "ar": "فستان طويل مطرّز"
         },
         "meta": {
           "he": "₪149 · גילאי 4-10",
-          "en": "₪149 · ages 4-10"
+          "en": "₪149 · ages 4-10",
+          "ar": "₪149 · أعمار 4-10"
         }
       },
       {
         "label": {
           "he": "גלביה לבנים",
-          "en": "Boys' jalabiya"
+          "en": "Boys' jalabiya",
+          "ar": "جلابية أولادي"
         },
         "meta": {
           "he": "₪119 · פשתן",
-          "en": "₪119 · linen"
+          "en": "₪119 · linen",
+          "ar": "₪119 · كتان"
         }
       },
       {
         "label": {
           "he": "מעיל קל לחורף",
-          "en": "Light winter coat"
+          "en": "Light winter coat",
+          "ar": "جاكيت شتوي خفيف"
         },
         "meta": {
           "he": "₪179 · עמיד במים",
-          "en": "₪179 · water resistant"
+          "en": "₪179 · water resistant",
+          "ar": "₪179 · ضد المي"
         }
       },
       {
         "label": {
           "he": "סניקרס סקוטש",
-          "en": "Velcro sneakers"
+          "en": "Velcro sneakers",
+          "ar": "بوط رياضي بلاصق"
         },
         "meta": {
           "he": "₪129 · מידות 24-35",
-          "en": "₪129 · sizes 24-35"
+          "en": "₪129 · sizes 24-35",
+          "ar": "₪129 · مقاسات 24-35"
         }
       }
     ],
     "cta": {
       "he": "לבחור מידה",
-      "en": "Pick a size"
+      "en": "Pick a size",
+      "ar": "اختار المقاس"
     },
     "palette": {
       "bg": "#f7ebe6",
@@ -5031,79 +5112,95 @@
   "nannies": {
     "brand": {
       "he": "אמאנה מטפלות",
-      "en": "Amana Nannies"
+      "en": "Amana Nannies",
+      "ar": "أمانة لمربيات الأطفال"
     },
     "title": {
       "he": "מטפלות מאומתות באזור",
-      "en": "Vetted nannies near you"
+      "en": "Vetted nannies near you",
+      "ar": "مربيات موثوقات قريبات منك"
     },
     "subtitle": {
       "he": "38 מטפלות · כולן עם תעודת עזרה ראשונה",
-      "en": "38 nannies · all first-aid certified"
+      "en": "38 nannies · all first-aid certified",
+      "ar": "38 مربية · كلهن معهن شهادة إسعاف أولي"
     },
     "tags": [
       {
         "he": "הכול",
-        "en": "All"
+        "en": "All",
+        "ar": "الكل"
       },
       {
         "he": "תינוקות",
-        "en": "Babies"
+        "en": "Babies",
+        "ar": "رُضّع"
       },
       {
         "he": "אחרי הגן",
-        "en": "After nursery"
+        "en": "After nursery",
+        "ar": "بعد الحضانة"
       },
       {
         "he": "ערבית ועברית",
-        "en": "Arabic and Hebrew"
+        "en": "Arabic and Hebrew",
+        "ar": "عربي وعبري"
       }
     ],
     "items": [
       {
         "label": {
           "he": "סמאח, 34",
-          "en": "Samah, 34"
+          "en": "Samah, 34",
+          "ar": "سماح، 34"
         },
         "meta": {
           "he": "₪55 לשעה · 9 שנות ניסיון",
-          "en": "₪55/hr · 9 years' experience"
+          "en": "₪55/hr · 9 years' experience",
+          "ar": "₪55 للساعة · خبرة 9 سنين"
         }
       },
       {
         "label": {
           "he": "רנין, 27",
-          "en": "Raneen, 27"
+          "en": "Raneen, 27",
+          "ar": "رنين، 27"
         },
         "meta": {
           "he": "₪50 לשעה · גננת לשעבר",
-          "en": "₪50/hr · former nursery teacher"
+          "en": "₪50/hr · former nursery teacher",
+          "ar": "₪50 للساعة · كانت مربية بحضانة"
         }
       },
       {
         "label": {
           "he": "מיכל, 41",
-          "en": "Michal, 41"
+          "en": "Michal, 41",
+          "ar": "ميخال، 41"
         },
         "meta": {
           "he": "₪60 לשעה · תאומים",
-          "en": "₪60/hr · twins welcome"
+          "en": "₪60/hr · twins welcome",
+          "ar": "₪60 للساعة · بتستقبل توائم"
         }
       },
       {
         "label": {
           "he": "ויאם, 23",
-          "en": "Weam, 23"
+          "en": "Weam, 23",
+          "ar": "وئام، 23"
         },
         "meta": {
           "he": "₪45 לשעה · אחר הצהריים",
-          "en": "₪45/hr · afternoons"
+          "en": "₪45/hr · afternoons",
+          "ar": "₪45 للساعة · بعد الظهر"
         }
       }
     ],
     "cta": {
       "he": "לתאם היכרות",
-      "en": "Arrange a meeting"
+      "en": "Arrange a meeting",
+      "ar": "رتّب لقاء"
     },
     "palette": {
       "bg": "#f1ecf6",
@@ -5116,83 +5213,100 @@
   "swimming": {
     "brand": {
       "he": "בית ספר לשחייה אל מוג'",
-      "en": "Al Mawj Swim School"
+      "en": "Al Mawj Swim School",
+      "ar": "مدرسة الموج للسباحة"
     },
     "title": {
       "he": "שוחים בביטחון",
-      "en": "Swim with confidence"
+      "en": "Swim with confidence",
+      "ar": "اسبح بثقة"
     },
     "subtitle": {
       "he": "בריכה מקורה · קבוצות נפרדות",
-      "en": "Indoor pool · separate groups"
+      "en": "Indoor pool · separate groups",
+      "ar": "بركة مسقوفة · مجموعات منفصلة"
     },
     "tags": [
       {
         "he": "15:00",
-        "en": "15:00"
+        "en": "15:00",
+        "ar": "15:00"
       },
       {
         "he": "16:00",
-        "en": "16:00"
+        "en": "16:00",
+        "ar": "16:00"
       },
       {
         "he": "17:00",
-        "en": "17:00"
+        "en": "17:00",
+        "ar": "17:00"
       },
       {
         "he": "18:00",
-        "en": "18:00"
+        "en": "18:00",
+        "ar": "18:00"
       },
       {
         "he": "19:00",
-        "en": "19:00"
+        "en": "19:00",
+        "ar": "19:00"
       }
     ],
     "items": [
       {
         "label": {
           "he": "קבוצת בנות 6-9",
-          "en": "Girls 6-9"
+          "en": "Girls 6-9",
+          "ar": "بنات 6-9"
         },
         "meta": {
           "he": "₪380 · 8 שיעורים",
-          "en": "₪380 · 8 lessons"
+          "en": "₪380 · 8 lessons",
+          "ar": "₪380 · 8 دروس"
         }
       },
       {
         "label": {
           "he": "קבוצת בנים 6-9",
-          "en": "Boys 6-9"
+          "en": "Boys 6-9",
+          "ar": "أولاد 6-9"
         },
         "meta": {
           "he": "₪380 · 8 שיעורים",
-          "en": "₪380 · 8 lessons"
+          "en": "₪380 · 8 lessons",
+          "ar": "₪380 · 8 دروس"
         }
       },
       {
         "label": {
           "he": "שעות לנשים בלבד",
-          "en": "Women-only hours"
+          "en": "Women-only hours",
+          "ar": "ساعات للنساء فقط"
         },
         "meta": {
           "he": "₪420 · 8 שיעורים",
-          "en": "₪420 · 8 lessons"
+          "en": "₪420 · 8 lessons",
+          "ar": "₪420 · 8 دروس"
         }
       },
       {
         "label": {
           "he": "שיעור פרטי",
-          "en": "Private lesson"
+          "en": "Private lesson",
+          "ar": "درس خصوصي"
         },
         "meta": {
           "he": "₪160 · 30 דק'",
-          "en": "₪160 · 30 min"
+          "en": "₪160 · 30 min",
+          "ar": "₪160 · 30 دقيقة"
         }
       }
     ],
     "cta": {
       "he": "הרשמה ל-17:00",
-      "en": "Join at 17:00"
+      "en": "Join at 17:00",
+      "ar": "انضم الساعة 17:00"
     },
     "palette": {
       "bg": "#e2f2f7",
@@ -5205,75 +5319,90 @@
   "kids-dentists": {
     "brand": {
       "he": "ד\"ר ריים, שיניים לילדים",
-      "en": "Dr. Reem Kids Dental"
+      "en": "Dr. Reem Kids Dental",
+      "ar": "د. ريم، أسنان أطفال"
     },
     "title": {
       "he": "כרטיס החיוך של יוסף",
-      "en": "Yousef's smile card"
+      "en": "Yousef's smile card",
+      "ar": "بطاقة ابتسامة يوسف"
     },
     "subtitle": {
       "he": "עוד מדבקה אחת ומקבלים מתנה",
-      "en": "One more sticker and a prize is yours"
+      "en": "One more sticker and a prize is yours",
+      "ar": "كمان ملصق واحد والهدية إلك"
     },
     "tags": [
       {
         "he": "מדבקה לכל ביקור",
-        "en": "A sticker each visit"
+        "en": "A sticker each visit",
+        "ar": "ملصق بكل زيارة"
       },
       {
         "he": "פינת משחק",
-        "en": "Play corner"
+        "en": "Play corner",
+        "ar": "زاوية ألعاب"
       },
       {
         "he": "בלי המתנה",
-        "en": "No waiting"
+        "en": "No waiting",
+        "ar": "بدون انتظار"
       }
     ],
     "items": [
       {
         "label": {
           "he": "מטופל",
-          "en": "Patient"
+          "en": "Patient",
+          "ar": "المريض"
         },
         "meta": {
           "he": "יוסף חוסיין, 6",
-          "en": "Yousef Hussein, 6"
+          "en": "Yousef Hussein, 6",
+          "ar": "يوسف حسين، 6"
         }
       },
       {
         "label": {
           "he": "ביקורים",
-          "en": "Visits"
+          "en": "Visits",
+          "ar": "الزيارات"
         },
         "meta": {
           "he": "4 מתוך 5",
-          "en": "4 of 5"
+          "en": "4 of 5",
+          "ar": "4 من 5"
         }
       },
       {
         "label": {
           "he": "בדיקה הבאה",
-          "en": "Next check-up"
+          "en": "Next check-up",
+          "ar": "الفحص الجاي"
         },
         "meta": {
           "he": "15.9 · 16:30",
-          "en": "15 Sep · 16:30"
+          "en": "15 Sep · 16:30",
+          "ar": "15 أيلول · 16:30"
         }
       },
       {
         "label": {
           "he": "מסלול",
-          "en": "Plan"
+          "en": "Plan",
+          "ar": "التأمين"
         },
         "meta": {
           "he": "קופת חולים כללית",
-          "en": "Clalit health fund"
+          "en": "Clalit health fund",
+          "ar": "صندوق المرضى كلاليت"
         }
       }
     ],
     "cta": {
       "he": "קביעת בדיקה",
-      "en": "Book a check-up"
+      "en": "Book a check-up",
+      "ar": "احجز فحص"
     },
     "palette": {
       "bg": "#e3f1f6",
@@ -5286,79 +5415,95 @@
   "toys": {
     "brand": {
       "he": "עולם אל אטפאל",
-      "en": "Al Atfal Toys"
+      "en": "Al Atfal Toys",
+      "ar": "عالم الأطفال"
     },
     "title": {
       "he": "מתנות לעיד",
-      "en": "Gifts for Eid"
+      "en": "Gifts for Eid",
+      "ar": "هدايا العيد"
     },
     "subtitle": {
       "he": "עטיפה חגיגית חינם עד סוף השבוע",
-      "en": "Free festive wrapping this week"
+      "en": "Free festive wrapping this week",
+      "ar": "تغليف عيد مجاني هالأسبوع"
     },
     "tags": [
       {
         "he": "עד גיל 3",
-        "en": "Under 3"
+        "en": "Under 3",
+        "ar": "تحت 3"
       },
       {
         "he": "4-7",
-        "en": "4-7"
+        "en": "4-7",
+        "ar": "4-7"
       },
       {
         "he": "8+",
-        "en": "8+"
+        "en": "8+",
+        "ar": "+8"
       },
       {
         "he": "משחקי קופסה",
-        "en": "Board games"
+        "en": "Board games",
+        "ar": "ألعاب طاولة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "קוביות עץ",
-          "en": "Wooden blocks"
+          "en": "Wooden blocks",
+          "ar": "مكعبات خشب"
         },
         "meta": {
           "he": "₪89 · 40 חלקים",
-          "en": "₪89 · 40 pieces"
+          "en": "₪89 · 40 pieces",
+          "ar": "₪89 · 40 قطعة"
         }
       },
       {
         "label": {
           "he": "מכונית עם שלט",
-          "en": "Remote control car"
+          "en": "Remote control car",
+          "ar": "سيارة بالريموت"
         },
         "meta": {
           "he": "₪149 · נטענת",
-          "en": "₪149 · rechargeable"
+          "en": "₪149 · rechargeable",
+          "ar": "₪149 · بتنشحن"
         }
       },
       {
         "label": {
           "he": "דובי רך",
-          "en": "Soft teddy"
+          "en": "Soft teddy",
+          "ar": "دبدوب ناعم"
         },
         "meta": {
           "he": "₪69 · 35 ס\"מ",
-          "en": "₪69 · 35 cm"
+          "en": "₪69 · 35 cm",
+          "ar": "₪69 · 35 سم"
         }
       },
       {
         "label": {
           "he": "כדור קפיצי",
-          "en": "Bouncy ball"
+          "en": "Bouncy ball",
+          "ar": "طابة نطّاطة"
         },
         "meta": {
           "he": "₪29",
-          "en": "₪29"
+          "en": "₪29",
+          "ar": "₪29"
         }
       }
     ],
     "cta": {
       "he": "הוספה לסל",
-      "en": "Add to cart"
+      "en": "Add to cart",
+      "ar": "أضف للسلة"
     },
     "palette": {
       "bg": "#e9f1fb",
@@ -5371,79 +5516,95 @@
   "entertainers": {
     "brand": {
       "he": "הקוסם ראמי",
-      "en": "Rami the Magician"
+      "en": "Rami the Magician",
+      "ar": "الساحر رامي"
     },
     "title": {
       "he": "יום הולדת שזוכרים",
-      "en": "A birthday they remember"
+      "en": "A birthday they remember",
+      "ar": "عيد ميلاد ما بينتسى"
     },
     "subtitle": {
       "he": "קוסם, בלונים וציורי פנים · גילאי 3-10",
-      "en": "Magic, balloons, face painting · ages 3-10"
+      "en": "Magic, balloons, face painting · ages 3-10",
+      "ar": "سحر، بالونات ورسم على الوجه · أعمار 3-10"
     },
     "tags": [
       {
         "he": "קסמים",
-        "en": "Magic"
+        "en": "Magic",
+        "ar": "سحر"
       },
       {
         "he": "בלונים",
-        "en": "Balloons"
+        "en": "Balloons",
+        "ar": "بالونات"
       },
       {
         "he": "ציורי פנים",
-        "en": "Face paint"
+        "en": "Face paint",
+        "ar": "رسم على الوجه"
       },
       {
         "he": "בועות",
-        "en": "Bubbles"
+        "en": "Bubbles",
+        "ar": "فقاعات"
       }
     ],
     "items": [
       {
         "label": {
           "he": "מופע קסמים",
-          "en": "Magic show"
+          "en": "Magic show",
+          "ar": "عرض سحر"
         },
         "meta": {
           "he": "₪850 · 45 דק'",
-          "en": "₪850 · 45 min"
+          "en": "₪850 · 45 min",
+          "ar": "₪850 · 45 دقيقة"
         }
       },
       {
         "label": {
           "he": "פסלי בלונים",
-          "en": "Balloon modelling"
+          "en": "Balloon modelling",
+          "ar": "تشكيل بالونات"
         },
         "meta": {
           "he": "₪450 · לכל ילד בלון",
-          "en": "₪450 · one per child"
+          "en": "₪450 · one per child",
+          "ar": "₪450 · وحدة لكل ولد"
         }
       },
       {
         "label": {
           "he": "ציורי פנים",
-          "en": "Face painting"
+          "en": "Face painting",
+          "ar": "رسم على الوجه"
         },
         "meta": {
           "he": "₪400 · שעה",
-          "en": "₪400 · one hour"
+          "en": "₪400 · one hour",
+          "ar": "₪400 · ساعة"
         }
       },
       {
         "label": {
           "he": "החבילה המלאה",
-          "en": "The full party"
+          "en": "The full party",
+          "ar": "الحفلة الكاملة"
         },
         "meta": {
           "he": "₪1,500 · שעתיים",
-          "en": "₪1,500 · two hours"
+          "en": "₪1,500 · two hours",
+          "ar": "₪1,500 · ساعتين"
         }
       }
     ],
     "cta": {
       "he": "בדיקת תאריך פנוי",
-      "en": "Check my date"
+      "en": "Check my date",
+      "ar": "افحص موعدي"
     },
     "palette": {
       "bg": "#2b1f4a",
@@ -5456,75 +5617,90 @@
   "kids-venues": {
     "brand": {
       "he": "ארץ הבלונים",
-      "en": "Balloon Land"
+      "en": "Balloon Land",
+      "ar": "أرض البالونات"
     },
     "title": {
       "he": "יום ההולדת של יוסף",
-      "en": "Yousef's birthday"
+      "en": "Yousef's birthday",
+      "ar": "عيد ميلاد يوسف"
     },
     "subtitle": {
       "he": "שישי 15:00 · מתחם הקפיצות · גיל 6",
-      "en": "Fri 15:00 · bounce hall · turns 6"
+      "en": "Fri 15:00 · bounce hall · turns 6",
+      "ar": "الجمعة 15:00 · قاعة النطّ · صار عمره 6"
     },
     "tags": [
       {
         "he": "מתנפחים",
-        "en": "Bouncy castle"
+        "en": "Bouncy castle",
+        "ar": "قلعة نطّاطة"
       },
       {
         "he": "ארוחה חלאל",
-        "en": "Halal meal"
+        "en": "Halal meal",
+        "ar": "وجبة حلال"
       },
       {
         "he": "עוגה ובלונים",
-        "en": "Cake and balloons"
+        "en": "Cake and balloons",
+        "ar": "كعكة وبالونات"
       }
     ],
     "items": [
       {
         "label": {
           "he": "ילדים",
-          "en": "Kids"
+          "en": "Kids",
+          "ar": "الأولاد"
         },
         "meta": {
           "he": "22 אישרו הגעה",
-          "en": "22 coming"
+          "en": "22 coming",
+          "ar": "جايين 22"
         }
       },
       {
         "label": {
           "he": "תאריך",
-          "en": "Date"
+          "en": "Date",
+          "ar": "التاريخ"
         },
         "meta": {
           "he": "שישי 20.6",
-          "en": "Fri 20 Jun"
+          "en": "Fri 20 Jun",
+          "ar": "الجمعة 20 حزيران"
         }
       },
       {
         "label": {
           "he": "שעה",
-          "en": "Time"
+          "en": "Time",
+          "ar": "الوقت"
         },
         "meta": {
           "he": "15:00-17:30",
-          "en": "15:00-17:30"
+          "en": "15:00-17:30",
+          "ar": "15:00-17:30"
         }
       },
       {
         "label": {
           "he": "חבילה",
-          "en": "Package"
+          "en": "Package",
+          "ar": "الباقة"
         },
         "meta": {
           "he": "₪1,850 · הכול כלול",
-          "en": "₪1,850 · all included"
+          "en": "₪1,850 · all included",
+          "ar": "₪1,850 · شامل كل شي"
         }
       }
     ],
     "cta": {
       "he": "לשלוח הזמנה בוואטסאפ",
-      "en": "Send invite on WhatsApp"
+      "en": "Send invite on WhatsApp",
+      "ar": "ابعت دعوة بالواتساب"
     },
     "palette": {
       "bg": "#fff0f4",
