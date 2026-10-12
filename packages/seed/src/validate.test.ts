@@ -38,12 +38,29 @@ const BLOCKED = [
   "ملهى ليلي",
   "وشم",
 ];
-const blockedIn = (text: string) =>
-  BLOCKED.filter((w) => new RegExp(`(^|[^\\p{L}])${w}([^\\p{L}]|$)`, "iu").test(text));
+const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+/** Hebrew attaches one-letter prefixes (ה ב ל ו ש כ מ) to words, so allow one before Hebrew terms. */
+const HEBREW_PREFIX = "[הבלושכמ]?";
+const BLOCKED_RES = BLOCKED.map((w) => {
+  const prefix = /\p{Script=Hebrew}/u.test(w) ? HEBREW_PREFIX : "";
+  return { w, re: new RegExp(`(^|[^\\p{L}])${prefix}${escapeRegExp(w)}([^\\p{L}]|$)`, "iu") };
+});
+const blockedIn = (text: string) => BLOCKED_RES.filter(({ re }) => re.test(text)).map(({ w }) => w);
 const complete = (value: Localized) => LOCALES.every((l) => (value[l] ?? "").trim() !== "");
 
 const sectors = loadSectors();
 const kinds = loadKinds();
+
+describe("halal gate", () => {
+  it("catches blocked terms, including Hebrew with one prefix letter", () => {
+    for (const t of ["wine bar", "בר", "הבר", "ובירה", "לקזינו", "بيرة"])
+      expect(blockedIn(t), t).not.toEqual([]);
+  });
+  it("leaves look-alike words alone", () => {
+    for (const t of ["barbershops", "bars", "Stripe", "ברכה", "בריכה", "ברבר"])
+      expect(blockedIn(t), t).toEqual([]);
+  });
+});
 
 describe("sectors", () => {
   it("are the 18 sectors with unique slugs, accents and order", () => {
@@ -54,6 +71,7 @@ describe("sectors", () => {
       expect(s.accent).toMatch(/^#[0-9a-f]{6}$/);
     }
   });
+  // Gate for Task 15's content: every sector needs an Arabic name and tagline.
   it("have names and taglines in Hebrew, Arabic and English", () => {
     for (const s of sectors) {
       expect(complete(s.name), `${s.slug} name`).toBe(true);
@@ -75,6 +93,7 @@ describe("kinds", () => {
       expect(TEMPLATES).toContain(k.template);
     }
   });
+  // Gate for Task 15's content: every kind needs an Arabic name and he/ar/en search synonyms.
   it("have names in all three languages and at least one synonym per language", () => {
     for (const k of kinds) {
       expect(complete(k.name), `${k.slug} name`).toBe(true);

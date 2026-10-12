@@ -32,8 +32,8 @@ const CATEGORY_TEMPLATE: Record<string, SeedKind["template"]> = {
   salons: "booking",
   shops: "shop",
 };
-/** Trades with neither a generated screen nor a category (staff shift scheduling is their need). */
-const TRADE_TEMPLATE: Record<string, SeedKind["template"]> = { stations: "schedule" };
+/** Trades with neither a generated screen nor a category (stations has a hand-written screen in extra-screens.json). */
+const TRADE_TEMPLATE: Record<string, SeedKind["template"]> = { stations: "listing" };
 const DELIVERY_TEMPLATES = new Set(["menu", "shop"]);
 const out = (file: string, data: unknown) =>
   writeFileSync(new URL(`../data/${file}`, import.meta.url), `${JSON.stringify(data, null, 2)}\n`);

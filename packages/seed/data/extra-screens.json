@@ -54,5 +54,20 @@
     "cta": { "he": "לסל · משלוח מחר", "ar": "أضف للسلة · توصيل غداً", "en": "Add to cart · delivery tomorrow" },
     "palette": { "bg": "#eef0e4", "surface": "#fbfcf6", "ink": "#25301d", "accent": "#6c7d3a" },
     "font": "Heebo"
+  },
+  "stations": {
+    "brand": { "he": "תחנת אל-ואדי", "ar": "محطة الوادي", "en": "Al-Wadi Station" },
+    "title": { "he": "התחנה פתוחה", "ar": "المحطة فاتحة", "en": "The station is open" },
+    "subtitle": { "he": "דלק, שטיפה וחנות נוחות · 24/7", "ar": "وقود، غسيل ودكانة · 24/7", "en": "Fuel, wash and convenience store · 24/7" },
+    "tags": [{ "he": "דלק", "ar": "وقود", "en": "Fuel" }, { "he": "שטיפה", "ar": "غسيل", "en": "Wash" }, { "he": "חנות", "ar": "دكانة", "en": "Store" }],
+    "items": [
+      { "label": { "he": "בנזין 95", "ar": "بنزين 95", "en": "95 petrol" }, "meta": { "he": "₪7.32 לליטר · שירות עצמי", "ar": "₪7.32 لليتر · خدمة ذاتية", "en": "₪7.32 per litre · self-service" } },
+      { "label": { "he": "שטיפת רכב", "ar": "غسيل سيارة", "en": "Car wash" }, "meta": { "he": "₪45 · פנים וחוץ", "ar": "₪45 · من جوّا ومن برّا", "en": "₪45 · inside and out" } },
+      { "label": { "he": "חנות נוחות", "ar": "دكانة المحطة", "en": "Convenience store" }, "meta": { "he": "פתוח 24/7", "ar": "فاتح 24/7", "en": "Open 24/7" } },
+      { "label": { "he": "ניפוח צמיגים", "ar": "نفخ كاوتشوك", "en": "Tyre air" }, "meta": { "he": "חינם", "ar": "مجاناً", "en": "Free" } }
+    ],
+    "cta": { "he": "ניווט לתחנה", "ar": "خذني للمحطة", "en": "Navigate to the station" },
+    "palette": { "bg": "#10202b", "surface": "#1a3040", "ink": "#eef3f6", "accent": "#f2b134" },
+    "font": "Heebo"
   }
 }
