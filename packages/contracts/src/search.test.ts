@@ -1,6 +1,12 @@
 import { describe, expect, it } from "vitest";
 import { contract } from "./contract.js";
-import { EMPTY_INTENT, IntentSchema, SearchRequestSchema, SuggestQuerySchema } from "./search.js";
+import {
+  EMPTY_INTENT,
+  IntentSchema,
+  SearchRequestSchema,
+  SearchResponseSchema,
+  SuggestQuerySchema,
+} from "./search.js";
 
 describe("search schemas", () => {
   it("accept a query with an optional point", () => {
@@ -19,6 +25,20 @@ describe("search schemas", () => {
     expect(IntentSchema.parse(EMPTY_INTENT)).toEqual(EMPTY_INTENT);
     expect(() => IntentSchema.parse({ ...EMPTY_INTENT, kinds: ["../admin"] })).toThrow();
     expect(() => IntentSchema.parse({ ...EMPTY_INTENT, place: "Haifa City" })).toThrow();
+  });
+  it("give a query id that POST /search/click accepts, or null", () => {
+    const response = {
+      status: "ok",
+      lane: "smart",
+      queryId: "019a0000-0000-7000-8000-000000000001",
+      intent: EMPTY_INTENT,
+      needsLocation: false,
+      items: [],
+      nearest: [],
+    };
+    expect(SearchResponseSchema.parse(response).queryId).toBe(response.queryId);
+    expect(SearchResponseSchema.parse({ ...response, queryId: null }).queryId).toBeNull();
+    expect(() => SearchResponseSchema.parse({ ...response, queryId: "q1" })).toThrow();
   });
   it("default the suggestion limit", () => {
     expect(SuggestQuerySchema.parse({ q: "hu" })).toEqual({ q: "hu", limit: 6 });

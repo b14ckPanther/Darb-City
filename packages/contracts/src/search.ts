@@ -54,7 +54,7 @@ export const SearchResponseSchema = z.object({
   status: z.enum(["ok", "blocked"]),
   lane: z.enum(["smart", "instant"]),
   /** For POST /search/click; null for chip edits and blocked queries. */
-  queryId: z.string().nullable(),
+  queryId: z.string().uuid().nullable(),
   intent: IntentSchema,
   /** The intent asks for "near me" and no point was sent: the page offers the Near me button. */
   needsLocation: z.boolean(),
