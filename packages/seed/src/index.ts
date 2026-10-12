@@ -31,3 +31,5 @@ export const loadBusinesses = (): SeedBusiness[] => {
     return { ...b, experience };
   });
 };
+export const loadWeekend = () => read<{ arabDruze: string[]; christian: string[] }>("weekend.json");
+export { toArabDruzeWeek, toChristianWeek } from "./showroom.js";

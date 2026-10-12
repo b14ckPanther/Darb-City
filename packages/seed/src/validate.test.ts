@@ -8,6 +8,7 @@ import {
   loadPlaces,
   loadScreens,
   loadSectors,
+  loadWeekend,
   SCREEN_SCHEMA,
 } from "./index.js";
 import { COMMON_KINDS } from "./showroom.js";
@@ -353,5 +354,83 @@ describe("showroom brands", () => {
       }
     }
     expect(hits.filter((hit) => !ALLOWED_PLACE_WORDS.has(hit))).toEqual([]);
+  });
+});
+
+describe("weekend pattern", () => {
+  const { arabDruze, christian } = loadWeekend();
+  const byCbs = new Map(
+    loadPlaces()
+      .filter((p) => p.cbsCode)
+      .map((p) => [p.cbsCode!, p]),
+  );
+  it("lists unique live localities in the north, in no more than one pattern", () => {
+    for (const list of [arabDruze, christian]) {
+      expect(new Set(list).size).toBe(list.length);
+      for (const code of list) {
+        const place = byCbs.get(code);
+        expect(place?.status, code).toBe("live");
+        expect(["northern-district", "haifa-district"], code).toContain(place?.parent);
+      }
+    }
+    expect(arabDruze.filter((code) => christian.includes(code))).toEqual([]);
+  });
+  it("includes the known localities and leaves out Jewish and mixed ones", () => {
+    for (const code of [
+      "473",
+      "482",
+      "490",
+      "494",
+      "502",
+      "509",
+      "522",
+      "531",
+      "534",
+      "1292",
+      "2710",
+      "4201",
+      "7300",
+      "7500",
+      "8800",
+      "8900",
+    ])
+      expect(arabDruze, code).toContain(code);
+    for (const code of ["487", "518", "530", "535"]) expect(christian, code).toContain(code);
+    for (const code of [
+      "4000",
+      "7600",
+      "1063",
+      "1139",
+      "1061",
+      "7700",
+      "2300",
+      "8000",
+      "9100",
+      "4100",
+      "6800",
+      "9500",
+      "8200",
+      "9600",
+      "535",
+      "530",
+    ])
+      expect(arabDruze, code).not.toContain(code);
+    for (const code of ["4000", "7600", "1063", "1061", "7500", "7300"])
+      expect(christian, code).not.toContain(code);
+  });
+  it("gives showroom businesses there the local week, but not restaurants or mosques", () => {
+    const businesses = loadBusinesses();
+    const at = (place: string, kind: string) =>
+      businesses.find((b) => b.place === place && b.primaryKind === kind)!;
+    expect(at("sakhnin", "barbershops").hours.weekly[6]?.length).toBeGreaterThan(0);
+    expect(at("sakhnin", "barbershops").hours.weekly[5]).toEqual([
+      { open: "09:00", close: "12:00" },
+    ]);
+    expect(at("haifa", "barbershops").hours.weekly[6] ?? []).toEqual([]);
+    expect(at("sakhnin", "mosques").hours).toEqual(at("haifa", "mosques").hours);
+    const fassuta = at("fassuta", "barbershops");
+    expect(fassuta.hours.weekly[0] ?? []).toEqual([]);
+    expect(fassuta.hours.weekly[6]?.length).toBeGreaterThan(0);
+    expect(at("fassuta", "mosques").hours).toEqual(at("haifa", "mosques").hours);
   });
 });
