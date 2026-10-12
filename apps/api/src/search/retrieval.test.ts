@@ -116,3 +116,34 @@ describe("retrieval guards", () => {
     }
   });
 });
+
+describe("the candidate pre-cut", () => {
+  it("keeps the nearest business when there are more matches than the limit", async () => {
+    const small = new RetrievalRepository(prisma);
+    small.candidateLimit = 1;
+    // Tamra: tamra-barber is at the door, the Sakhnin barbers are ~10 km away (and have lower ids).
+    const rows = await small.retrieve({
+      ...NONE,
+      kindIds: [f.barbershops.id, f.kidsCuts.id],
+      near: { lat: 32.853, lng: 35.198 },
+    });
+    expect(rows.map((r) => r.row.slug)).toEqual(["tamra-barber"]);
+    const sakhnin = await small.retrieve({
+      ...NONE,
+      kindIds: [f.barbershops.id, f.kidsCuts.id],
+      near: { lat: 32.864, lng: 35.303 },
+    });
+    expect(sakhnin.map((r) => r.row.slug)).toEqual(["abu-salim"]);
+  });
+  it("prefers the more complete business when nothing else tells them apart", async () => {
+    await prisma.$executeRaw`UPDATE "SearchDocument" SET completeness = 0.9 WHERE slug = 'tamra-barber'`;
+    try {
+      const small = new RetrievalRepository(prisma);
+      small.candidateLimit = 1;
+      const rows = await small.retrieve({ ...NONE, kindIds: [f.barbershops.id, f.kidsCuts.id] });
+      expect(rows.map((r) => r.row.slug)).toEqual(["tamra-barber"]);
+    } finally {
+      await new SearchIndexer(prisma, hash).index("business", [f.tamraBarber.id]);
+    }
+  });
+});

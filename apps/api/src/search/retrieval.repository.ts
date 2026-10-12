@@ -3,6 +3,7 @@ import type { Localized, Tier } from "@darb/core";
 import { vectorLiteral } from "../ai/embeddings.js";
 import { Prisma } from "../generated/prisma/client.js";
 import { PrismaService } from "../prisma/prisma.service.js";
+import { RANKING } from "./ranking.config.js";
 
 export interface RetrievalFilters {
   kindIds: string[] | null;
@@ -41,6 +42,9 @@ export const CANDIDATE_LIMIT = 300;
 /** Spec §5.3 step 2: one Postgres query that filters and scores; ranking happens in rank(). */
 @Injectable()
 export class RetrievalRepository {
+  /** Rows kept for rank(); tests lower it to prove the pre-cut keeps the right ones. */
+  candidateLimit = CANDIDATE_LIMIT;
+
   constructor(private readonly prisma: PrismaService) {}
 
   async retrieve(f: RetrievalFilters): Promise<Candidate[]> {
@@ -64,6 +68,17 @@ export class RetrievalRepository {
       ? Prisma.sql`COALESCE(NULLIF(1 - (d.embedding <=> ${vec}), 'NaN'::float8), 0)`
       : Prisma.sql`0`;
     const km = here ? Prisma.sql`ST_Distance(d.point, ${here}) / 1000` : Prisma.sql`NULL::float8`;
+    // The pre-cut approximates rank()'s full blend (same weights, same normalization, same tier
+    // boost), so a near-me search with many matches keeps the nearest and most complete rows.
+    const w = RANKING.weights;
+    const total =
+      (f.text ? w.text : 0) + (vec ? w.vector : 0) + (here ? w.distance : 0) + w.completeness;
+    const distanceScore = here
+      ? Prisma.sql`1 / (1 + (${km}) / ${RANKING.distanceScaleKm}::float8)`
+      : Prisma.sql`0`;
+    const boost = (tier: string) => Math.min(RANKING.tierBoost[tier as Tier] ?? 0, RANKING.tierCap);
+    const tierBoost = Prisma.sql`CASE b.tier WHEN 'darb' THEN ${boost("darb")}::float8 WHEN 'verified' THEN ${boost("verified")}::float8 WHEN 'basic' THEN ${boost("basic")}::float8 ELSE ${boost("example")}::float8 END`;
+    const preScore = Prisma.sql`((${w.text}::float8 * ${textScore} + ${w.vector}::float8 * ${vectorScore} + ${w.distance}::float8 * ${distanceScore} + ${w.completeness}::float8 * d.completeness) / ${total}::float8 + ${tierBoost})`;
     const where = [
       Prisma.sql`d."entityType" = 'business'`,
       Prisma.sql`b.status = 'published'`,
@@ -96,8 +111,8 @@ export class RetrievalRepository {
       JOIN "Kind" pk ON pk.id = b."primaryKindId" AND pk.status = 'active'
       JOIN "Place" p ON p.id = b."placeId" AND p.status = 'live'
       WHERE ${Prisma.join(where, " AND ")}
-      ORDER BY (${textScore}) + (${vectorScore}) DESC, b.id ASC
-      LIMIT ${CANDIDATE_LIMIT}`;
+      ORDER BY ${preScore} DESC, b.slug ASC, b.id ASC
+      LIMIT ${this.candidateLimit}`;
     return rows.map(({ text_score, vector_score, km: d, completeness, ...row }) => ({
       row,
       text: Number(text_score),
