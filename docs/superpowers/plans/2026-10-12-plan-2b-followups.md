@@ -14,6 +14,8 @@ Carried from the Plan 2B execution ledger (2026-10-12). Rulings made on the owne
 - Ruling: first CI run on the PR is the real verification of the SwiftShader path; if phone LCP fails there, drop --use-angle=swiftshader in CI — cost: one CI iteration
 - Ruling: fix wave = I1 (header stacking: header z-index 2, Sheet via portal, e2e NearMe topmost), I2 (desktop sheet must not trap Tab), I3 (44px map hit box + pickable labels, nearest feature). I4 (tiles env guard, R2 CORS, CSP) → Plan 4; I5 (stage budget counts all lazy chunks) → Plan 3 first task; M5 (search combobox must preventDefault Escape) → Plan 3
 - Ruling: accept phone stage ending above the pill with search usable over it (VC14 amended) — search reachable on every view is worth 144px — cost: smaller phone map
+- Ruling (CI fix, PR #3): --use-angle=swiftshader dropped from CI as ruled. Measured in mcr.microsoft.com/playwright:v1.63.0-noble at 4 CPUs: with it, phone LCP 1100–1800 ms (business worst); without it, 616–792 ms on every level, the same as PR #2's CI (636–752 ms). The boot probe costs ~5 ms and the portal does not move LCP; the GPU flag alone did. WebGL2 still comes from SwiftShader (--enable-unsafe-swiftshader) and the whole suite passes — cost: none
+- Ruling (CI fix, PR #3): I1 amended — no Sheet portal. The portal replaced the server-rendered dialog with a new node after hydration, which raced e2e (detached node: empty computed style, null box, cancelled transitions). Instead the desktop list column (.city) no longer sets z-index, so it makes no stacking context and the sheet's z 40 beats the header's z 2 in place. This also clears the deferred "pre-hydration sheet under header on slow JS" — cost: none
 
 ## Deferred findings
 
@@ -24,4 +26,4 @@ Carried from the Plan 2B execution ledger (2026-10-12). Rulings made on the owne
 - Task 15: minor (deferred): post-ready WebGL/source failures not handed to onFail; window.darbStage not removed; spurious show() on client nav; refreshed() heuristic loose; plaza street web / label overlap / empty space at level 2; level 0 density visual
 - Task 15: minor (deferred): no-op move settles via 800ms fallback; phone padding ignores safe-area inset; duplicated PADDING constants
 - Task 17: minor (deferred): navigate-during-move test has a non-atomic read race; weak long-task sanity guard; sub-place test checks attribute not camera centre; budget counts every lazy chunk as stage
-- final: minor (deferred): desktop sheet DOM order (Tab goes to chrome); pre-hydration sheet under header on slow JS; label beats pin at exact tap; hit test anchored on dot
+- final: minor (deferred): desktop sheet DOM order (Tab goes to chrome); ~~pre-hydration sheet under header on slow JS~~ (fixed with the PR #3 CI fix); label beats pin at exact tap; hit test anchored on dot
