@@ -15,11 +15,17 @@ type Context = { params: Promise<{ name: string }> };
  */
 async function serve(request: Request, name: string, withBody: boolean): Promise<Response> {
   if (!NAME.test(name)) return new Response(null, { status: 404 });
-  const file = path.join(path.resolve(process.cwd(), process.env.MAP_TILES_DIR ?? ".tiles"), name);
+  // The archives are read at runtime from an operator-chosen folder, never bundled: the
+  // turbopackIgnore hints stop Next from tracing the whole project into the server output.
+  const dir = path.resolve(
+    /*turbopackIgnore: true*/ process.cwd(),
+    process.env.MAP_TILES_DIR ?? ".tiles",
+  );
+  const file = path.join(/*turbopackIgnore: true*/ dir, name);
   let size: number;
   let modified: number;
   try {
-    const info = await stat(file);
+    const info = await stat(/*turbopackIgnore: true*/ file);
     if (!info.isFile()) return new Response(null, { status: 404 });
     size = info.size;
     modified = Math.floor(info.mtimeMs);
@@ -43,7 +49,7 @@ async function serve(request: Request, name: string, withBody: boolean): Promise
   const body =
     withBody && size > 0
       ? (Readable.toWeb(
-          createReadStream(file, { start, end }),
+          createReadStream(/*turbopackIgnore: true*/ file, { start, end }),
         ) as unknown as ReadableStream<Uint8Array>)
       : null;
   return new Response(body, { status: range ? 206 : 200, headers });
