@@ -19,14 +19,18 @@
   }
 }
 
-/* Phone: a bottom sheet. --snap-y is how far it sits below fully open. */
+/*
+ * Phone: a bottom sheet. --snap-y is how far it sits below fully open, i.e. how much of the panel
+ * is off-screen. It is a length (not a % of the panel) so the body can pad by the same amount.
+ */
 .panel {
+  --panel-size: 92dvh;
   --peek: 220px;
-  --snap-y: 45%;
+  --snap-y: calc(var(--panel-size) * 0.45);
   position: absolute;
   inset-inline: 0;
   inset-block-end: 0;
-  block-size: 92dvh;
+  block-size: var(--panel-size);
   display: grid;
   grid-template-rows: auto 1fr;
   background: var(--surface-1);
@@ -41,11 +45,11 @@
 }
 
 .panel[data-snap="peek"] {
-  --snap-y: calc(100% - var(--peek));
+  --snap-y: calc(var(--panel-size) - var(--peek));
 }
 
 .panel[data-snap="half"] {
-  --snap-y: 45%;
+  --snap-y: calc(var(--panel-size) * 0.45);
 }
 
 .panel[data-snap="full"] {
@@ -103,16 +107,27 @@
   cursor: pointer;
 }
 
+/*
+ * The body's lower --snap-y px sit below the screen at peek and half. Padding by that much lets
+ * the end of the content scroll into view at every snap, and the matching scroll padding keeps a
+ * focused element (focus scrolls it into view) above the screen edge rather than in the hidden part.
+ */
 .body {
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding: 0 var(--gutter) calc(var(--space-7) + env(safe-area-inset-bottom));
+  padding: 0 var(--gutter) calc(var(--snap-y) + var(--space-7) + env(safe-area-inset-bottom));
+  scroll-padding-block-end: calc(var(--snap-y) + var(--space-5));
 }
 
 /* Desktop: a side panel on the inline end (right in English, left in Hebrew and Arabic). */
 @media (min-width: 900px) {
   .scrim {
     background: rgb(3 17 12 / 0.35);
+  }
+
+  .panel,
+  .panel[data-snap] {
+    --snap-y: 0px;
   }
 
   .panel {
