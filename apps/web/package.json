@@ -12,7 +12,9 @@
     "typecheck": "next typegen && tsc --noEmit",
     "test": "vitest run",
     "e2e": "rm -rf .next/cache/fetch-cache && playwright test",
-    "budget": "node scripts/check-budget.mjs"
+    "budget": "node scripts/check-budget.mjs",
+    "tiles:israel": "node scripts/tiles/extract-israel.mjs",
+    "tiles:test": "node scripts/tiles/make-test-tiles.mjs"
   },
   "dependencies": {
     "@darb/contracts": "workspace:*",
