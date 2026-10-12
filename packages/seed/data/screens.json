@@ -19202,79 +19202,95 @@
   "nonprofits": {
     "brand": {
       "he": "עמותת יד פתוחה",
-      "en": "Open Hand"
+      "en": "Open Hand",
+      "ar": "جمعية اليد المفتوحة"
     },
     "title": {
       "he": "ארוחה חמה לכל משפחה",
-      "en": "A hot meal for every family"
+      "en": "A hot meal for every family",
+      "ar": "وجبة سخنة لكل عيلة"
     },
     "subtitle": {
       "he": "1,240 משפחות בחורף הזה",
-      "en": "1,240 families this winter"
+      "en": "1,240 families this winter",
+      "ar": "1,240 عيلة هالشتوية"
     },
     "tags": [
       {
         "he": "₪50",
-        "en": "₪50"
+        "en": "₪50",
+        "ar": "₪50"
       },
       {
         "he": "₪100",
-        "en": "₪100"
+        "en": "₪100",
+        "ar": "₪100"
       },
       {
         "he": "₪180",
-        "en": "₪180"
+        "en": "₪180",
+        "ar": "₪180"
       },
       {
         "he": "₪360",
-        "en": "₪360"
+        "en": "₪360",
+        "ar": "₪360"
       }
     ],
     "items": [
       {
         "label": {
           "he": "נאספו עד היום",
-          "en": "Raised so far"
+          "en": "Raised so far",
+          "ar": "جمعنا لهلّق"
         },
         "meta": {
           "he": "₪184,300 · מתוך ₪250,000 · 74%",
-          "en": "₪184,300 · of ₪250,000 · 74%"
+          "en": "₪184,300 · of ₪250,000 · 74%",
+          "ar": "₪184,300 · من ₪250,000 · 74%"
         }
       },
       {
         "label": {
           "he": "₪180",
-          "en": "₪180"
+          "en": "₪180",
+          "ar": "₪180"
         },
         "meta": {
           "he": "שבוע של ארוחות למשפחה",
-          "en": "a week of meals for a family"
+          "en": "a week of meals for a family",
+          "ar": "أسبوع وجبات لعيلة"
         }
       },
       {
         "label": {
           "he": "₪360",
-          "en": "₪360"
+          "en": "₪360",
+          "ar": "₪360"
         },
         "meta": {
           "he": "סל חג מלא",
-          "en": "a full holiday basket"
+          "en": "a full holiday basket",
+          "ar": "سلة عيد كاملة"
         }
       },
       {
         "label": {
           "he": "תרומה חודשית",
-          "en": "Monthly giving"
+          "en": "Monthly giving",
+          "ar": "تبرّع شهري"
         },
         "meta": {
           "he": "זיכוי מס לפי סעיף 46",
-          "en": "Section 46 tax credit"
+          "en": "Section 46 tax credit",
+          "ar": "اعتراف ضريبي بند 46"
         }
       }
     ],
     "cta": {
       "he": "לתרום ₪180",
-      "en": "Give ₪180"
+      "en": "Give ₪180",
+      "ar": "تبرّع بـ₪180"
     },
     "palette": {
       "bg": "#fbe7dd",
@@ -19287,75 +19303,90 @@
   "qard-hasan": {
     "brand": {
       "he": "קרן אל קרד אל חסן",
-      "en": "Al Qard Al Hasan Fund"
+      "en": "Al Qard Al Hasan Fund",
+      "ar": "صندوق القرض الحسن"
     },
     "title": {
       "he": "ההלוואה שלך, בלי ריבית",
-      "en": "Your loan, with zero interest"
+      "en": "Your loan, with zero interest",
+      "ar": "قرضك، بدون ولا فايدة"
     },
     "subtitle": {
       "he": "₪12,000 לשכר לימוד · 20 תשלומים",
-      "en": "₪12,000 for tuition · 20 payments"
+      "en": "₪12,000 for tuition · 20 payments",
+      "ar": "₪12,000 للقسط الجامعي · 20 دفعة"
     },
     "tags": [
       {
         "he": "ההלוואה",
-        "en": "My loan"
+        "en": "My loan",
+        "ar": "قرضي"
       },
       {
         "he": "תשלומים",
-        "en": "Payments"
+        "en": "Payments",
+        "ar": "الدفعات"
       },
       {
         "he": "ערבים",
-        "en": "Guarantors"
+        "en": "Guarantors",
+        "ar": "الكفلاء"
       }
     ],
     "items": [
       {
         "label": {
           "he": "הוחזר עד היום",
-          "en": "Repaid so far"
+          "en": "Repaid so far",
+          "ar": "سدّدت لهلّق"
         },
         "meta": {
           "he": "₪6,600 · 55%",
-          "en": "₪6,600 · 55%"
+          "en": "₪6,600 · 55%",
+          "ar": "₪6,600 · 55%"
         }
       },
       {
         "label": {
           "he": "תשלומים",
-          "en": "Payments"
+          "en": "Payments",
+          "ar": "الدفعات"
         },
         "meta": {
           "he": "11 מתוך 20 · 55%",
-          "en": "11 of 20 · 55%"
+          "en": "11 of 20 · 55%",
+          "ar": "11 من 20 · 55%"
         }
       },
       {
         "label": {
           "he": "ריבית",
-          "en": "Interest"
+          "en": "Interest",
+          "ar": "الفايدة"
         },
         "meta": {
           "he": "₪0 · תמיד",
-          "en": "₪0 · always"
+          "en": "₪0 · always",
+          "ar": "₪0 · دايمًا"
         }
       },
       {
         "label": {
           "he": "התשלום הבא",
-          "en": "Next payment"
+          "en": "Next payment",
+          "ar": "الدفعة الجاية"
         },
         "meta": {
           "he": "₪600 · 10 בחודש",
-          "en": "₪600 · on the 10th"
+          "en": "₪600 · on the 10th",
+          "ar": "₪600 · يوم 10 بالشهر"
         }
       }
     ],
     "cta": {
       "he": "תשלום מוקדם",
-      "en": "Pay early"
+      "en": "Pay early",
+      "ar": "سدّد بدري"
     },
     "palette": {
       "bg": "#f3efe3",
@@ -19368,79 +19399,95 @@
   "community-centres": {
     "brand": {
       "he": "המרכז הקהילתי נווה עוז",
-      "en": "Neve Oz Community Centre"
+      "en": "Neve Oz Community Centre",
+      "ar": "المركز الجماهيري نفيه عوز"
     },
     "title": {
       "he": "מה קורה השבוע",
-      "en": "What's on this week"
+      "en": "What's on this week",
+      "ar": "شو في هالأسبوع"
     },
     "subtitle": {
       "he": "חוגים, הרצאות ואירועים, פתוח לכולם",
-      "en": "Classes, talks and events, open to all"
+      "en": "Classes, talks and events, open to all",
+      "ar": "دورات، محاضرات وفعاليات، مفتوحة للكل"
     },
     "tags": [
       {
         "he": "הכול",
-        "en": "All"
+        "en": "All",
+        "ar": "الكل"
       },
       {
         "he": "תרבות",
-        "en": "Culture"
+        "en": "Culture",
+        "ar": "ثقافة"
       },
       {
         "he": "גיל הזהב",
-        "en": "Seniors"
+        "en": "Seniors",
+        "ar": "كبار السن"
       },
       {
         "he": "נוער",
-        "en": "Youth"
+        "en": "Youth",
+        "ar": "شباب"
       }
     ],
     "items": [
       {
         "label": {
           "he": "הרצאה: ילדים ומסכים",
-          "en": "Talk: kids and screens"
+          "en": "Talk: kids and screens",
+          "ar": "محاضرة: الأولاد والشاشات"
         },
         "meta": {
           "he": "ב' 19:00 · האולם הגדול",
-          "en": "Mon 19:00 · main hall"
+          "en": "Mon 19:00 · main hall",
+          "ar": "الاثنين 19:00 · القاعة الكبيرة"
         }
       },
       {
         "label": {
           "he": "מקהלת גיל הזהב",
-          "en": "Golden age choir"
+          "en": "Golden age choir",
+          "ar": "جوقة العمر الذهبي"
         },
         "meta": {
           "he": "ג' 10:00 · אולם 2",
-          "en": "Tue 10:00 · hall 2"
+          "en": "Tue 10:00 · hall 2",
+          "ar": "الثلاثاء 10:00 · قاعة 2"
         }
       },
       {
         "label": {
           "he": "סרט משפחתי בחצר",
-          "en": "Family film in the yard"
+          "en": "Family film in the yard",
+          "ar": "فيلم عائلي بالساحة"
         },
         "meta": {
           "he": "ה' 18:30 · חינם",
-          "en": "Thu 18:30 · free"
+          "en": "Thu 18:30 · free",
+          "ar": "الخميس 18:30 · مجانًا"
         }
       },
       {
         "label": {
           "he": "שוק חג קהילתי",
-          "en": "Holiday market"
+          "en": "Holiday market",
+          "ar": "سوق العيد"
         },
         "meta": {
           "he": "ו' 09:00 · עד 13:00",
-          "en": "Fri 09:00 · until 13:00"
+          "en": "Fri 09:00 · until 13:00",
+          "ar": "الجمعة 09:00 · لحد 13:00"
         }
       }
     ],
     "cta": {
       "he": "לשמור לי מקום",
-      "en": "Save my seat"
+      "en": "Save my seat",
+      "ar": "احجزلي مقعد"
     },
     "palette": {
       "bg": "#e7e8f3",
@@ -19453,87 +19500,105 @@
   "senior-centres": {
     "brand": {
       "he": "מרכז היום בית אל ג'וד",
-      "en": "Beit Al Jood Day Centre"
+      "en": "Beit Al Jood Day Centre",
+      "ar": "مركز يوم بيت الجود"
     },
     "title": {
       "he": "יום טוב בבית אל ג'וד",
-      "en": "A good day at Beit Al Jood"
+      "en": "A good day at Beit Al Jood",
+      "ar": "نهار حلو ببيت الجود"
     },
     "subtitle": {
       "he": "הסעה מהבית ב-08:00 · ארוחה חמה",
-      "en": "Pickup from home 08:00 · hot lunch"
+      "en": "Pickup from home 08:00 · hot lunch",
+      "ar": "توصيل من البيت 08:00 · غدا سخن"
     },
     "tags": [
       {
         "he": "א'",
-        "en": "Sun"
+        "en": "Sun",
+        "ar": "أحد"
       },
       {
         "he": "ב'",
-        "en": "Mon"
+        "en": "Mon",
+        "ar": "اثنين"
       },
       {
         "he": "ג'",
-        "en": "Tue"
+        "en": "Tue",
+        "ar": "ثلاثاء"
       },
       {
         "he": "ד'",
-        "en": "Wed"
+        "en": "Wed",
+        "ar": "أربعاء"
       },
       {
         "he": "ה'",
-        "en": "Thu"
+        "en": "Thu",
+        "ar": "خميس"
       },
       {
         "he": "ו'",
-        "en": "Fri"
+        "en": "Fri",
+        "ar": "جمعة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "התעמלות בכיסא",
-          "en": "Chair exercise"
+          "en": "Chair exercise",
+          "ar": "رياضة على الكرسي"
         },
         "meta": {
           "he": "09:00 · עם הפיזיותרפיסטית",
-          "en": "09:00 · with the physio"
+          "en": "09:00 · with the physio",
+          "ar": "09:00 · مع المعالج الطبيعي"
         }
       },
       {
         "label": {
           "he": "שיעור קוראן ותפסיר",
-          "en": "Quran and tafsir class"
+          "en": "Quran and tafsir class",
+          "ar": "درس قرآن وتفسير"
         },
         "meta": {
           "he": "10:30 · אולם התפילה",
-          "en": "10:30 · prayer hall"
+          "en": "10:30 · prayer hall",
+          "ar": "10:30 · قاعة الصلاة"
         }
       },
       {
         "label": {
           "he": "ארוחת צהריים",
-          "en": "Lunch"
+          "en": "Lunch",
+          "ar": "الغدا"
         },
         "meta": {
           "he": "12:30 · מותאם לסוכרתיים",
-          "en": "12:30 · diabetic friendly"
+          "en": "12:30 · diabetic friendly",
+          "ar": "12:30 · مناسب لمرضى السكري"
         }
       },
       {
         "label": {
           "he": "גינה ותה מרווה",
-          "en": "Garden and sage tea"
+          "en": "Garden and sage tea",
+          "ar": "الجنينة وشاي بالميرمية"
         },
         "meta": {
           "he": "14:00 · בחצר",
-          "en": "14:00 · in the yard"
+          "en": "14:00 · in the yard",
+          "ar": "14:00 · بالساحة"
         }
       }
     ],
     "cta": {
       "he": "להזמין הסעה למחר",
-      "en": "Book tomorrow's pickup"
+      "en": "Book tomorrow's pickup",
+      "ar": "احجز توصيل بكرا"
     },
     "palette": {
       "bg": "#f6eee4",
@@ -19546,75 +19611,90 @@
   "youth-clubs": {
     "brand": {
       "he": "מועדון הנוער אל שבאב",
-      "en": "Al Shabab Youth Club"
+      "en": "Al Shabab Youth Club",
+      "ar": "نادي الشبيبة الشباب"
     },
     "title": {
       "he": "טיול שנתי לגליל",
-      "en": "Annual trip to the Galilee"
+      "en": "Annual trip to the Galilee",
+      "ar": "الرحلة السنوية للجليل"
     },
     "subtitle": {
       "he": "כיתות ז'-ט' · אישור הורים בטלפון",
-      "en": "Grades 7-9 · parent consent by phone"
+      "en": "Grades 7-9 · parent consent by phone",
+      "ar": "صفوف 7-9 · موافقة الأهل بالتلفون"
     },
     "tags": [
       {
         "he": "16:00",
-        "en": "16:00"
+        "en": "16:00",
+        "ar": "16:00"
       },
       {
         "he": "17:30",
-        "en": "17:30"
+        "en": "17:30",
+        "ar": "17:30"
       },
       {
         "he": "19:00",
-        "en": "19:00"
+        "en": "19:00",
+        "ar": "19:00"
       }
     ],
     "items": [
       {
         "label": {
           "he": "טיול לנחל עמוד",
-          "en": "Nahal Amud hike"
+          "en": "Nahal Amud hike",
+          "ar": "مسار وادي العامود"
         },
         "meta": {
           "he": "₪120 · יום שלם",
-          "en": "₪120 · full day"
+          "en": "₪120 · full day",
+          "ar": "₪120 · يوم كامل"
         }
       },
       {
         "label": {
           "he": "ליגת כדורגל",
-          "en": "Football league"
+          "en": "Football league",
+          "ar": "دوري كرة قدم"
         },
         "meta": {
           "he": "חינם · ימי ג'",
-          "en": "free · Tuesdays"
+          "en": "free · Tuesdays",
+          "ar": "مجانًا · أيام الثلاثاء"
         }
       },
       {
         "label": {
           "he": "סדנת צילום",
-          "en": "Photo workshop"
+          "en": "Photo workshop",
+          "ar": "ورشة تصوير"
         },
         "meta": {
           "he": "₪60 · 4 מפגשים",
-          "en": "₪60 · 4 sessions"
+          "en": "₪60 · 4 sessions",
+          "ar": "₪60 · 4 لقاءات"
         }
       },
       {
         "label": {
           "he": "התנדבות בשכונה",
-          "en": "Neighbourhood volunteering"
+          "en": "Neighbourhood volunteering",
+          "ar": "تطوّع بالحارة"
         },
         "meta": {
           "he": "חינם · ימי ה'",
-          "en": "free · Thursdays"
+          "en": "free · Thursdays",
+          "ar": "مجانًا · أيام الخميس"
         }
       }
     ],
     "cta": {
       "he": "הרשמה לטיול",
-      "en": "Sign up for the trip"
+      "en": "Sign up for the trip",
+      "ar": "سجّل للرحلة"
     },
     "palette": {
       "bg": "#fff3e0",
@@ -19627,75 +19707,90 @@
   "scouts": {
     "brand": {
       "he": "שבט הצופים אל כרמל",
-      "en": "Al Karmel Scout Troop"
+      "en": "Al Karmel Scout Troop",
+      "ar": "فرقة كشافة الكرمل"
     },
     "title": {
       "he": "כרטיס החניך",
-      "en": "Scout card"
+      "en": "Scout card",
+      "ar": "بطاقة الكشاف"
     },
     "subtitle": {
       "he": "מחנה קיץ ביער מירון · 3 לילות",
-      "en": "Summer camp at Meron forest · 3 nights"
+      "en": "Summer camp at Meron forest · 3 nights",
+      "ar": "مخيّم صيفي بحرش ميرون · 3 ليالي"
     },
     "tags": [
       {
         "he": "מחנה קיץ",
-        "en": "Summer camp"
+        "en": "Summer camp",
+        "ar": "مخيّم صيفي"
       },
       {
         "he": "תג עזרה ראשונה",
-        "en": "First-aid badge"
+        "en": "First-aid badge",
+        "ar": "شارة إسعاف أولي"
       },
       {
         "he": "חולצת שבט",
-        "en": "Troop shirt"
+        "en": "Troop shirt",
+        "ar": "قميص الفرقة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "חניך",
-          "en": "Scout"
+          "en": "Scout",
+          "ar": "الكشاف"
         },
         "meta": {
           "he": "עלי מנסור",
-          "en": "Ali Mansour"
+          "en": "Ali Mansour",
+          "ar": "علي منصور"
         }
       },
       {
         "label": {
           "he": "קבוצה",
-          "en": "Patrol"
+          "en": "Patrol",
+          "ar": "الطليعة"
         },
         "meta": {
           "he": "הנשרים · כיתה ו'",
-          "en": "Eagles · 6th grade"
+          "en": "Eagles · 6th grade",
+          "ar": "النسور · صف سادس"
         }
       },
       {
         "label": {
           "he": "תגים",
-          "en": "Badges"
+          "en": "Badges",
+          "ar": "الشارات"
         },
         "meta": {
           "he": "5 מתוך 8",
-          "en": "5 of 8"
+          "en": "5 of 8",
+          "ar": "5 من 8"
         }
       },
       {
         "label": {
           "he": "מדריך",
-          "en": "Leader"
+          "en": "Leader",
+          "ar": "القائد"
         },
         "meta": {
           "he": "עבד · 052-1234567",
-          "en": "Abed · 052-1234567"
+          "en": "Abed · 052-1234567",
+          "ar": "عبد · 052-1234567"
         }
       }
     ],
     "cta": {
       "he": "אישור הורים למחנה",
-      "en": "Sign the camp consent"
+      "en": "Sign the camp consent",
+      "ar": "وقّع موافقة المخيّم"
     },
     "palette": {
       "bg": "#e8eedc",
@@ -19708,79 +19803,95 @@
   "volunteers": {
     "brand": {
       "he": "יד ביד מתנדבים",
-      "en": "Yad b'Yad Volunteers"
+      "en": "Yad b'Yad Volunteers",
+      "ar": "إيد بإيد للمتطوعين"
     },
     "title": {
       "he": "איפה צריך ידיים השבוע",
-      "en": "Hands needed this week"
+      "en": "Hands needed this week",
+      "ar": "محتاجين إيدين هالأسبوع"
     },
     "subtitle": {
       "he": "140 מתנדבים · 6 פרויקטים פעילים",
-      "en": "140 volunteers · 6 live projects"
+      "en": "140 volunteers · 6 live projects",
+      "ar": "140 متطوع · 6 مشاريع شغّالة"
     },
     "tags": [
       {
         "he": "הכול",
-        "en": "All"
+        "en": "All",
+        "ar": "الكل"
       },
       {
         "he": "סלי מזון",
-        "en": "Food boxes"
+        "en": "Food boxes",
+        "ar": "طرود أكل"
       },
       {
         "he": "קשישים",
-        "en": "Elders"
+        "en": "Elders",
+        "ar": "كبار السن"
       },
       {
         "he": "ניקיון",
-        "en": "Clean-ups"
+        "en": "Clean-ups",
+        "ar": "تنظيف"
       }
     ],
     "items": [
       {
         "label": {
           "he": "אריזת סלי רמדאן",
-          "en": "Packing Ramadan boxes"
+          "en": "Packing Ramadan boxes",
+          "ar": "تعبئة طرود رمضان"
         },
         "meta": {
           "he": "ה' 17:00 · חסרים 12",
-          "en": "Thu 17:00 · 12 needed"
+          "en": "Thu 17:00 · 12 needed",
+          "ar": "الخميس 17:00 · محتاجين 12"
         }
       },
       {
         "label": {
           "he": "ביקור אצל קשישים",
-          "en": "Visiting elders"
+          "en": "Visiting elders",
+          "ar": "زيارة كبار السن"
         },
         "meta": {
           "he": "ו' 10:00 · חסרים 5",
-          "en": "Fri 10:00 · 5 needed"
+          "en": "Fri 10:00 · 5 needed",
+          "ar": "الجمعة 10:00 · محتاجين 5"
         }
       },
       {
         "label": {
           "he": "ניקוי חוף עכו",
-          "en": "Akko beach clean-up"
+          "en": "Akko beach clean-up",
+          "ar": "تنظيف شط عكا"
         },
         "meta": {
           "he": "שישי 08:00 · חסרים 20",
-          "en": "Fri 08:00 · 20 needed"
+          "en": "Fri 08:00 · 20 needed",
+          "ar": "الجمعة 08:00 · محتاجين 20"
         }
       },
       {
         "label": {
           "he": "שיעורי עזר",
-          "en": "Homework help"
+          "en": "Homework help",
+          "ar": "مساعدة بالوظائف"
         },
         "meta": {
           "he": "א' 16:00 · חסרים 4",
-          "en": "Sun 16:00 · 4 needed"
+          "en": "Sun 16:00 · 4 needed",
+          "ar": "الأحد 16:00 · محتاجين 4"
         }
       }
     ],
     "cta": {
       "he": "להירשם למשמרת",
-      "en": "Join a shift"
+      "en": "Join a shift",
+      "ar": "انضم لوردية"
     },
     "palette": {
       "bg": "#fdf0e6",
@@ -19793,79 +19904,95 @@
   "women-coop": {
     "brand": {
       "he": "נשות אל ג'ליל",
-      "en": "Women of Al Jalil"
+      "en": "Women of Al Jalil",
+      "ar": "نساء الجليل"
     },
     "title": {
       "he": "עבודת יד מהכפר",
-      "en": "Handmade in the village"
+      "en": "Handmade in the village",
+      "ar": "شغل إيد من القرية"
     },
     "subtitle": {
       "he": "32 נשים, רקמה, סבון ומזווה",
-      "en": "32 women, embroidery, soap and pantry"
+      "en": "32 women, embroidery, soap and pantry",
+      "ar": "32 امرأة، تطريز، صابون ومونة"
     },
     "tags": [
       {
         "he": "רקמה",
-        "en": "Tatreez"
+        "en": "Tatreez",
+        "ar": "تطريز"
       },
       {
         "he": "סבון",
-        "en": "Soap"
+        "en": "Soap",
+        "ar": "صابون"
       },
       {
         "he": "מזווה",
-        "en": "Pantry"
+        "en": "Pantry",
+        "ar": "مونة"
       },
       {
         "he": "מתנות",
-        "en": "Gifts"
+        "en": "Gifts",
+        "ar": "هدايا"
       }
     ],
     "items": [
       {
         "label": {
           "he": "כרית רקומה תטריז",
-          "en": "Tatreez cushion"
+          "en": "Tatreez cushion",
+          "ar": "مخدّة مطرّزة"
         },
         "meta": {
           "he": "₪180 · רקמת יד",
-          "en": "₪180 · hand-stitched"
+          "en": "₪180 · hand-stitched",
+          "ar": "₪180 · مطرّزة باليد"
         }
       },
       {
         "label": {
           "he": "סבון שמן זית",
-          "en": "Olive oil soap"
+          "en": "Olive oil soap",
+          "ar": "صابون زيت زيتون"
         },
         "meta": {
           "he": "₪22 · 3 יחידות",
-          "en": "₪22 · set of 3"
+          "en": "₪22 · set of 3",
+          "ar": "₪22 · طقم 3"
         }
       },
       {
         "label": {
           "he": "מפתול ביתי",
-          "en": "Home-rolled maftoul"
+          "en": "Home-rolled maftoul",
+          "ar": "مفتول مبروم بالبيت"
         },
         "meta": {
           "he": "₪38 · קילו",
-          "en": "₪38 · 1 kg"
+          "en": "₪38 · 1 kg",
+          "ar": "₪38 · 1 كغم"
         }
       },
       {
         "label": {
           "he": "זעתר מהגבעה",
-          "en": "Hillside za'atar"
+          "en": "Hillside za'atar",
+          "ar": "زعتر من الجبل"
         },
         "meta": {
           "he": "₪30 · 250 גרם",
-          "en": "₪30 · 250 g"
+          "en": "₪30 · 250 g",
+          "ar": "₪30 · 250 غرام"
         }
       }
     ],
     "cta": {
       "he": "הוספה לסל",
-      "en": "Add to bag"
+      "en": "Add to bag",
+      "ar": "أضيفي للسلة"
     },
     "palette": {
       "bg": "#f7ebe3",
@@ -19878,79 +20005,95 @@
   "community-gardens": {
     "brand": {
       "he": "גינת אל בוסתאן",
-      "en": "Al Bustan Garden"
+      "en": "Al Bustan Garden",
+      "ar": "حاكورة البستان"
     },
     "title": {
       "he": "ערוגה משלך",
-      "en": "Your own plot"
+      "en": "Your own plot",
+      "ar": "قطعتك الخاصة"
     },
     "subtitle": {
       "he": "זריעת החורף מתחילה",
-      "en": "Winter sowing begins"
+      "en": "Winter sowing begins",
+      "ar": "بلّش موسم الزراعة الشتوية"
     },
     "tags": [
       {
         "he": "07:00",
-        "en": "07:00"
+        "en": "07:00",
+        "ar": "07:00"
       },
       {
         "he": "08:30",
-        "en": "08:30"
+        "en": "08:30",
+        "ar": "08:30"
       },
       {
         "he": "16:00",
-        "en": "16:00"
+        "en": "16:00",
+        "ar": "16:00"
       },
       {
         "he": "17:30",
-        "en": "17:30"
+        "en": "17:30",
+        "ar": "17:30"
       }
     ],
     "items": [
       {
         "label": {
           "he": "ערוגה משפחתית",
-          "en": "Family plot"
+          "en": "Family plot",
+          "ar": "قطعة عائلية"
         },
         "meta": {
           "he": "₪150 · לעונה",
-          "en": "₪150 · per season"
+          "en": "₪150 · per season",
+          "ar": "₪150 · للموسم"
         }
       },
       {
         "label": {
           "he": "ערוגה מוגבהת",
-          "en": "Raised bed"
+          "en": "Raised bed",
+          "ar": "حوض مرفوع"
         },
         "meta": {
           "he": "₪120 · נגישה",
-          "en": "₪120 · accessible"
+          "en": "₪120 · accessible",
+          "ar": "₪120 · ملائم للجميع"
         }
       },
       {
         "label": {
           "he": "סדנת קומפוסט",
-          "en": "Compost workshop"
+          "en": "Compost workshop",
+          "ar": "ورشة كومبوست"
         },
         "meta": {
           "he": "₪40 · שעתיים",
-          "en": "₪40 · two hours"
+          "en": "₪40 · two hours",
+          "ar": "₪40 · ساعتين"
         }
       },
       {
         "label": {
           "he": "יום שתילה לילדים",
-          "en": "Kids' planting day"
+          "en": "Kids' planting day",
+          "ar": "يوم زراعة للأولاد"
         },
         "meta": {
           "he": "חינם · שבת בבוקר",
-          "en": "free · Saturday morning"
+          "en": "free · Saturday morning",
+          "ar": "مجانًا · السبت الصبح"
         }
       }
     ],
     "cta": {
       "he": "לשריין ערוגה ל-08:30",
-      "en": "Reserve a plot, 08:30"
+      "en": "Reserve a plot, 08:30",
+      "ar": "احجز قطعة، 08:30"
     },
     "palette": {
       "bg": "#eef1e2",
@@ -19963,79 +20106,95 @@
   "charity-shops": {
     "brand": {
       "he": "חנות אל בר",
-      "en": "Al Birr Shop"
+      "en": "Al Birr Shop",
+      "ar": "محل البِر"
     },
     "title": {
       "he": "יד שנייה, לב ראשון",
-      "en": "Second hand, first heart"
+      "en": "Second hand, first heart",
+      "ar": "مستعمل، بس من القلب"
     },
     "subtitle": {
       "he": "הכנסות החנות לסלי מזון למשפחות",
-      "en": "Proceeds fund family food baskets"
+      "en": "Proceeds fund family food baskets",
+      "ar": "الأرباح بتموّل سلال أكل للعائلات"
     },
     "tags": [
       {
         "he": "בגדים",
-        "en": "Clothes"
+        "en": "Clothes",
+        "ar": "ملابس"
       },
       {
         "he": "ספרים",
-        "en": "Books"
+        "en": "Books",
+        "ar": "كتب"
       },
       {
         "he": "כלי בית",
-        "en": "Homeware"
+        "en": "Homeware",
+        "ar": "أدوات بيت"
       },
       {
         "he": "ילדים",
-        "en": "Kids"
+        "en": "Kids",
+        "ar": "أطفال"
       }
     ],
     "items": [
       {
         "label": {
           "he": "מעיל צמר",
-          "en": "Wool coat"
+          "en": "Wool coat",
+          "ar": "جاكيت صوف"
         },
         "meta": {
           "he": "₪45 · כמו חדש",
-          "en": "₪45 · like new"
+          "en": "₪45 · like new",
+          "ar": "₪45 · متل الجديد"
         }
       },
       {
         "label": {
           "he": "ספרי ילדים",
-          "en": "Children's books"
+          "en": "Children's books",
+          "ar": "كتب أطفال"
         },
         "meta": {
           "he": "₪15 · 5 ספרים",
-          "en": "₪15 · 5 books"
+          "en": "₪15 · 5 books",
+          "ar": "₪15 · 5 كتب"
         }
       },
       {
         "label": {
           "he": "סט כוסות תה",
-          "en": "Tea glass set"
+          "en": "Tea glass set",
+          "ar": "طقم كاسات شاي"
         },
         "meta": {
           "he": "₪25 · 6 כוסות",
-          "en": "₪25 · 6 glasses"
+          "en": "₪25 · 6 glasses",
+          "ar": "₪25 · 6 كاسات"
         }
       },
       {
         "label": {
           "he": "קומקום נחושת",
-          "en": "Copper kettle"
+          "en": "Copper kettle",
+          "ar": "إبريق نحاس"
         },
         "meta": {
           "he": "₪60 · עבודת יד",
-          "en": "₪60 · handmade"
+          "en": "₪60 · handmade",
+          "ar": "₪60 · شغل إيد"
         }
       }
     ],
     "cta": {
       "he": "תיאום איסוף תרומה",
-      "en": "Book a donation pickup"
+      "en": "Book a donation pickup",
+      "ar": "احجز استلام تبرّع"
     },
     "palette": {
       "bg": "#fbf3e2",
