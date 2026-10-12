@@ -7945,79 +7945,95 @@
   "lawyers": {
     "brand": {
       "he": "גולן ושות', עורכי דין",
-      "en": "Golan & Co. Law"
+      "en": "Golan & Co. Law",
+      "ar": "غولان وشركاه، محامون"
     },
     "title": {
       "he": "פגישת ייעוץ ראשונה",
-      "en": "Your first consultation"
+      "en": "Your first consultation",
+      "ar": "استشارتك الأولى"
     },
     "subtitle": {
       "he": "נדל\"ן, צוואות ונוטריון",
-      "en": "Real estate, wills and notary"
+      "en": "Real estate, wills and notary",
+      "ar": "عقارات، وصايا وكاتب عدل"
     },
     "tags": [
       {
         "he": "09:00",
-        "en": "09:00"
+        "en": "09:00",
+        "ar": "09:00"
       },
       {
         "he": "11:00",
-        "en": "11:00"
+        "en": "11:00",
+        "ar": "11:00"
       },
       {
         "he": "14:00",
-        "en": "14:00"
+        "en": "14:00",
+        "ar": "14:00"
       },
       {
         "he": "16:30",
-        "en": "16:30"
+        "en": "16:30",
+        "ar": "16:30"
       }
     ],
     "items": [
       {
         "label": {
           "he": "ייעוץ ראשוני",
-          "en": "Initial consultation"
+          "en": "Initial consultation",
+          "ar": "استشارة أولية"
         },
         "meta": {
           "he": "ללא עלות · 30 דק'",
-          "en": "free · 30 min"
+          "en": "free · 30 min",
+          "ar": "مجانًا · 30 دقيقة"
         }
       },
       {
         "label": {
           "he": "אימות נוטריוני",
-          "en": "Notary certification"
+          "en": "Notary certification",
+          "ar": "مصادقة كاتب عدل"
         },
         "meta": {
           "he": "₪220 · לפי התעריף",
-          "en": "₪220 · official rate"
+          "en": "₪220 · official rate",
+          "ar": "₪220 · التعرفة الرسمية"
         }
       },
       {
         "label": {
           "he": "חוזה שכירות",
-          "en": "Lease agreement"
+          "en": "Lease agreement",
+          "ar": "عقد إيجار"
         },
         "meta": {
           "he": "₪1,200 · עד 3 ימים",
-          "en": "₪1,200 · within 3 days"
+          "en": "₪1,200 · within 3 days",
+          "ar": "₪1,200 · خلال 3 أيام"
         }
       },
       {
         "label": {
           "he": "צוואה הדדית",
-          "en": "Joint will"
+          "en": "Joint will",
+          "ar": "وصية مشتركة"
         },
         "meta": {
           "he": "₪2,900 · כולל פגישה",
-          "en": "₪2,900 · meeting included"
+          "en": "₪2,900 · meeting included",
+          "ar": "₪2,900 · شامل الاجتماع"
         }
       }
     ],
     "cta": {
       "he": "קביעת פגישה",
-      "en": "Book a meeting"
+      "en": "Book a meeting",
+      "ar": "احجز اجتماع"
     },
     "palette": {
       "bg": "#0f1a2b",
@@ -8030,75 +8046,90 @@
   "accountants": {
     "brand": {
       "he": "מאזן ייעוץ מס",
-      "en": "Maazan Tax"
+      "en": "Maazan Tax",
+      "ar": "ميزان للاستشارات الضريبية"
     },
     "title": {
       "he": "הדוח השנתי שלך",
-      "en": "Your annual return"
+      "en": "Your annual return",
+      "ar": "التقرير السنوي تبعك"
     },
     "subtitle": {
       "he": "שנת מס 2025 · צפי החזר ₪3,240",
-      "en": "Tax year 2025 · expected refund ₪3,240"
+      "en": "Tax year 2025 · expected refund ₪3,240",
+      "ar": "سنة الضريبة 2025 · استرجاع متوقع ₪3,240"
     },
     "tags": [
       {
         "he": "מסמכים",
-        "en": "Documents"
+        "en": "Documents",
+        "ar": "مستندات"
       },
       {
         "he": "דוחות",
-        "en": "Returns"
+        "en": "Returns",
+        "ar": "تقارير"
       },
       {
         "he": "החזרים",
-        "en": "Refunds"
+        "en": "Refunds",
+        "ar": "استرجاعات"
       }
     ],
     "items": [
       {
         "label": {
           "he": "מסמכים שהועלו",
-          "en": "Documents uploaded"
+          "en": "Documents uploaded",
+          "ar": "مستندات مرفوعة"
         },
         "meta": {
           "he": "9 מתוך 11 · 82%",
-          "en": "9 of 11 · 82%"
+          "en": "9 of 11 · 82%",
+          "ar": "9 من 11 · 82%"
         }
       },
       {
         "label": {
           "he": "טופס 106",
-          "en": "Form 106"
+          "en": "Form 106",
+          "ar": "نموذج 106"
         },
         "meta": {
           "he": "התקבל · 100%",
-          "en": "received · 100%"
+          "en": "received · 100%",
+          "ar": "وصل · 100%"
         }
       },
       {
         "label": {
           "he": "קבלות על תרומות",
-          "en": "Donation receipts"
+          "en": "Donation receipts",
+          "ar": "وصولات تبرعات"
         },
         "meta": {
           "he": "חסרים 2 קבצים · 0%",
-          "en": "2 files missing · 0%"
+          "en": "2 files missing · 0%",
+          "ar": "ناقص ملفين · 0%"
         }
       },
       {
         "label": {
           "he": "הגשה לרשות המסים",
-          "en": "Filing with the tax office"
+          "en": "Filing with the tax office",
+          "ar": "التقديم لمكتب الضريبة"
         },
         "meta": {
           "he": "עד 30.6",
-          "en": "due 30 Jun"
+          "en": "due 30 Jun",
+          "ar": "حتى 30 حزيران"
         }
       }
     ],
     "cta": {
       "he": "העלאת מסמך",
-      "en": "Upload a document"
+      "en": "Upload a document",
+      "ar": "ارفع مستند"
     },
     "palette": {
       "bg": "#f5f3ee",
@@ -8111,79 +8142,95 @@
   "insurance": {
     "brand": {
       "he": "ח'אלד ביטוחים",
-      "en": "Khaled Insurance"
+      "en": "Khaled Insurance",
+      "ar": "خالد للتأمينات"
     },
     "title": {
       "he": "ביטוח רכב בשתי דקות",
-      "en": "Car insurance in two minutes"
+      "en": "Car insurance in two minutes",
+      "ar": "تأمين سيارة بدقيقتين"
     },
     "subtitle": {
       "he": "משווים 6 חברות, כולל תכאפול",
-      "en": "We compare 6 insurers, takaful included"
+      "en": "We compare 6 insurers, takaful included",
+      "ar": "بنقارن 6 شركات تأمين، مع التكافل"
     },
     "tags": [
       {
         "he": "חובה",
-        "en": "Mandatory"
+        "en": "Mandatory",
+        "ar": "إلزامي"
       },
       {
         "he": "מקיף",
-        "en": "Comprehensive"
+        "en": "Comprehensive",
+        "ar": "شامل"
       },
       {
         "he": "צד ג'",
-        "en": "Third party"
+        "en": "Third party",
+        "ar": "طرف ثالث"
       },
       {
         "he": "תכאפול",
-        "en": "Takaful"
+        "en": "Takaful",
+        "ar": "تكافل"
       }
     ],
     "items": [
       {
         "label": {
           "he": "הרכב",
-          "en": "Car"
+          "en": "Car",
+          "ar": "السيارة"
         },
         "meta": {
           "he": "יונדאי i20 · 2022",
-          "en": "Hyundai i20 · 2022"
+          "en": "Hyundai i20 · 2022",
+          "ar": "هيونداي i20 · 2022"
         }
       },
       {
         "label": {
           "he": "נהגים",
-          "en": "Drivers"
+          "en": "Drivers",
+          "ar": "السواقين"
         },
         "meta": {
           "he": "2 נהגים מעל גיל 30",
-          "en": "2 drivers over 30"
+          "en": "2 drivers over 30",
+          "ar": "2 سواقين فوق 30"
         }
       },
       {
         "label": {
           "he": "כיסוי",
-          "en": "Cover"
+          "en": "Cover",
+          "ar": "التغطية"
         },
         "meta": {
           "he": "מקיף וגרירה",
-          "en": "Comprehensive and towing"
+          "en": "Comprehensive and towing",
+          "ar": "شامل وجرّ"
         }
       },
       {
         "label": {
           "he": "הערכה שנתית",
-          "en": "Yearly estimate"
+          "en": "Yearly estimate",
+          "ar": "تقدير سنوي"
         },
         "meta": {
           "he": "₪3,480-3,920",
-          "en": "₪3,480-3,920"
+          "en": "₪3,480-3,920",
+          "ar": "₪3,480-3,920"
         }
       }
     ],
     "cta": {
       "he": "לקבל הצעה מסודרת",
-      "en": "Get the full offer"
+      "en": "Get the full offer",
+      "ar": "احصل على العرض الكامل"
     },
     "palette": {
       "bg": "#0f2a2b",
@@ -8196,79 +8243,95 @@
   "real-estate": {
     "brand": {
       "he": "בית בעיר נדל\"ן",
-      "en": "Beit Ba'ir Realty"
+      "en": "Beit Ba'ir Realty",
+      "ar": "بيت بالمدينة للعقارات"
     },
     "title": {
       "he": "חדש בשכונה",
-      "en": "New in the neighbourhood"
+      "en": "New in the neighbourhood",
+      "ar": "جديد بالحارة"
     },
     "subtitle": {
       "he": "12 דירות · פלורנטין ונווה צדק",
-      "en": "12 homes · Florentin and Neve Tzedek"
+      "en": "12 homes · Florentin and Neve Tzedek",
+      "ar": "12 بيت · فلورنتين ونفيه تسيدك"
     },
     "tags": [
       {
         "he": "מכירה",
-        "en": "Buy"
+        "en": "Buy",
+        "ar": "شراء"
       },
       {
         "he": "השכרה",
-        "en": "Rent"
+        "en": "Rent",
+        "ar": "إيجار"
       },
       {
         "he": "4 חד' ומעלה",
-        "en": "4+ rooms"
+        "en": "4+ rooms",
+        "ar": "4+ غرف"
       },
       {
         "he": "מרפסת",
-        "en": "Balcony"
+        "en": "Balcony",
+        "ar": "برندة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "4 חד' עם מרפסת שמש",
-          "en": "4 rooms, sun balcony"
+          "en": "4 rooms, sun balcony",
+          "ar": "4 غرف، برندة مشمسة"
         },
         "meta": {
           "he": "₪3.85 מיליון · 104 מ\"ר · קומה 4",
-          "en": "₪3.85M · 104 m² · 4th floor"
+          "en": "₪3.85M · 104 m² · 4th floor",
+          "ar": "₪3.85 مليون · 104 م² · الطابق 4"
         }
       },
       {
         "label": {
           "he": "לופט בבניין לשימור",
-          "en": "Loft in a heritage building"
+          "en": "Loft in a heritage building",
+          "ar": "لوفت بمبنى تراثي"
         },
         "meta": {
           "he": "₪2.9 מיליון · 78 מ\"ר",
-          "en": "₪2.9M · 78 m²"
+          "en": "₪2.9M · 78 m²",
+          "ar": "₪2.9 مليون · 78 م²"
         }
       },
       {
         "label": {
           "he": "פנטהאוז עם גג",
-          "en": "Penthouse with roof"
+          "en": "Penthouse with roof",
+          "ar": "بنتهاوس مع سطح"
         },
         "meta": {
           "he": "₪6.2 מיליון · 140 מ\"ר",
-          "en": "₪6.2M · 140 m²"
+          "en": "₪6.2M · 140 m²",
+          "ar": "₪6.2 مليون · 140 م²"
         }
       },
       {
         "label": {
           "he": "2 חד' משופצת",
-          "en": "Renovated 2 rooms"
+          "en": "Renovated 2 rooms",
+          "ar": "غرفتين مرمّمات"
         },
         "meta": {
           "he": "₪7,800 לחודש",
-          "en": "₪7,800 a month"
+          "en": "₪7,800 a month",
+          "ar": "₪7,800 بالشهر"
         }
       }
     ],
     "cta": {
       "he": "תיאום סיור בנכס",
-      "en": "Book a viewing"
+      "en": "Book a viewing",
+      "ar": "احجز معاينة"
     },
     "palette": {
       "bg": "#ebe4da",
@@ -8281,75 +8344,90 @@
   "contractors": {
     "brand": {
       "he": "שיפוצי בן חיים",
-      "en": "Ben Haim Renovations"
+      "en": "Ben Haim Renovations",
+      "ar": "ترميمات بن حاييم"
     },
     "title": {
       "he": "הצעת מחיר ב-60 שניות",
-      "en": "A quote in 60 seconds"
+      "en": "A quote in 60 seconds",
+      "ar": "عرض سعر خلال 60 ثانية"
     },
     "subtitle": {
       "he": "שלב 3 מתוך 4 · שיפוץ מטבח",
-      "en": "Step 3 of 4 · kitchen renovation"
+      "en": "Step 3 of 4 · kitchen renovation",
+      "ar": "خطوة 3 من 4 · ترميم مطبخ"
     },
     "tags": [
       {
         "he": "בסיסי",
-        "en": "Basic"
+        "en": "Basic",
+        "ar": "أساسي"
       },
       {
         "he": "סטנדרט",
-        "en": "Standard"
+        "en": "Standard",
+        "ar": "عادي"
       },
       {
         "he": "פרימיום",
-        "en": "Premium"
+        "en": "Premium",
+        "ar": "بريميوم"
       }
     ],
     "items": [
       {
         "label": {
           "he": "מה משפצים",
-          "en": "What are we renovating"
+          "en": "What are we renovating",
+          "ar": "شو بدنا نرمّم"
         },
         "meta": {
           "he": "מטבח",
-          "en": "Kitchen"
+          "en": "Kitchen",
+          "ar": "المطبخ"
         }
       },
       {
         "label": {
           "he": "גודל",
-          "en": "Size"
+          "en": "Size",
+          "ar": "المساحة"
         },
         "meta": {
           "he": "12 מ\"ר",
-          "en": "12 m²"
+          "en": "12 m²",
+          "ar": "12 م²"
         }
       },
       {
         "label": {
           "he": "רמת גימור",
-          "en": "Finish level"
+          "en": "Finish level",
+          "ar": "مستوى التشطيب"
         },
         "meta": {
           "he": "סטנדרט",
-          "en": "Standard"
+          "en": "Standard",
+          "ar": "عادي"
         }
       },
       {
         "label": {
           "he": "הערכה ראשונית",
-          "en": "Initial estimate"
+          "en": "Initial estimate",
+          "ar": "تقدير أولي"
         },
         "meta": {
           "he": "₪38,000-46,000",
-          "en": "₪38,000-46,000"
+          "en": "₪38,000-46,000",
+          "ar": "₪38,000-46,000"
         }
       }
     ],
     "cta": {
       "he": "לקבל הצעה מפורטת",
-      "en": "Get a detailed quote"
+      "en": "Get a detailed quote",
+      "ar": "احصل على عرض سعر مفصّل"
     },
     "palette": {
       "bg": "#e3e1dc",
@@ -8362,79 +8440,95 @@
   "cleaning": {
     "brand": {
       "he": "ניקיון זוהר",
-      "en": "Zohar Cleaning"
+      "en": "Zohar Cleaning",
+      "ar": "تنظيف زوهر"
     },
     "title": {
       "he": "בונים ניקיון לבית",
-      "en": "Build your clean"
+      "en": "Build your clean",
+      "ar": "ركّب التنظيف تبعك"
     },
     "subtitle": {
       "he": "3 חד' · כל שבועיים · שני בבוקר",
-      "en": "3 rooms · every two weeks · Monday morning"
+      "en": "3 rooms · every two weeks · Monday morning",
+      "ar": "3 غرف · كل أسبوعين · الاثنين الصبح"
     },
     "tags": [
       {
         "he": "חלונות",
-        "en": "Windows"
+        "en": "Windows",
+        "ar": "شبابيك"
       },
       {
         "he": "תנור",
-        "en": "Oven"
+        "en": "Oven",
+        "ar": "فرن"
       },
       {
         "he": "מקרר",
-        "en": "Fridge"
+        "en": "Fridge",
+        "ar": "ثلاجة"
       },
       {
         "he": "מרפסת",
-        "en": "Balcony"
+        "en": "Balcony",
+        "ar": "برندة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "סוג ניקיון",
-          "en": "Clean type"
+          "en": "Clean type",
+          "ar": "نوع التنظيف"
         },
         "meta": {
           "he": "ניקיון שוטף",
-          "en": "Regular clean"
+          "en": "Regular clean",
+          "ar": "تنظيف عادي"
         }
       },
       {
         "label": {
           "he": "חדרים",
-          "en": "Rooms"
+          "en": "Rooms",
+          "ar": "الغرف"
         },
         "meta": {
           "he": "3 חד' ו-2 חדרי רחצה",
-          "en": "3 rooms and 2 baths"
+          "en": "3 rooms and 2 baths",
+          "ar": "3 غرف و2 حمّامات"
         }
       },
       {
         "label": {
           "he": "תוספות",
-          "en": "Extras"
+          "en": "Extras",
+          "ar": "إضافات"
         },
         "meta": {
           "he": "חלונות, תנור",
-          "en": "Windows, oven"
+          "en": "Windows, oven",
+          "ar": "شبابيك، فرن"
         }
       },
       {
         "label": {
           "he": "לביקור",
-          "en": "Per visit"
+          "en": "Per visit",
+          "ar": "للزيارة"
         },
         "meta": {
           "he": "₪340 · 4 שעות",
-          "en": "₪340 · 4 hours"
+          "en": "₪340 · 4 hours",
+          "ar": "₪340 · 4 ساعات"
         }
       }
     ],
     "cta": {
       "he": "קבוע בימי שני",
-      "en": "Book Mondays"
+      "en": "Book Mondays",
+      "ar": "احجز أيام الاثنين"
     },
     "palette": {
       "bg": "#eceefe",
@@ -8447,79 +8541,95 @@
   "technicians": {
     "brand": {
       "he": "זרם שירותים טכניים",
-      "en": "Zerem Technicians"
+      "en": "Zerem Technicians",
+      "ar": "زيرم للخدمات الفنية"
     },
     "title": {
       "he": "מה התקלקל בבית?",
-      "en": "What broke at home?"
+      "en": "What broke at home?",
+      "ar": "شو خرب بالبيت؟"
     },
     "subtitle": {
       "he": "טכנאי באזור שלך תוך 45 דק'",
-      "en": "A technician near you in 45 min"
+      "en": "A technician near you in 45 min",
+      "ar": "فني قريب منك خلال 45 دقيقة"
     },
     "tags": [
       {
         "he": "חשמל",
-        "en": "Electric"
+        "en": "Electric",
+        "ar": "كهرباء"
       },
       {
         "he": "אינסטלציה",
-        "en": "Plumbing"
+        "en": "Plumbing",
+        "ar": "سباكة"
       },
       {
         "he": "מזגנים",
-        "en": "AC"
+        "en": "AC",
+        "ar": "مكيّفات"
       },
       {
         "he": "דוד שמש",
-        "en": "Water heater"
+        "en": "Water heater",
+        "ar": "سخّان مي"
       }
     ],
     "items": [
       {
         "label": {
           "he": "מה הבעיה",
-          "en": "The problem"
+          "en": "The problem",
+          "ar": "المشكلة"
         },
         "meta": {
           "he": "הפחת קופץ כל הזמן",
-          "en": "The breaker keeps tripping"
+          "en": "The breaker keeps tripping",
+          "ar": "الفيوز بضل يفصل"
         }
       },
       {
         "label": {
           "he": "דחיפות",
-          "en": "Urgency"
+          "en": "Urgency",
+          "ar": "الاستعجال"
         },
         "meta": {
           "he": "היום",
-          "en": "Today"
+          "en": "Today",
+          "ar": "اليوم"
         }
       },
       {
         "label": {
           "he": "כתובת",
-          "en": "Address"
+          "en": "Address",
+          "ar": "العنوان"
         },
         "meta": {
           "he": "הרצל 14, חיפה",
-          "en": "14 Herzl St, Haifa"
+          "en": "14 Herzl St, Haifa",
+          "ar": "شارع هرتسل 14، حيفا"
         }
       },
       {
         "label": {
           "he": "ביקור ואבחון",
-          "en": "Visit and diagnosis"
+          "en": "Visit and diagnosis",
+          "ar": "زيارة وتشخيص"
         },
         "meta": {
           "he": "₪250 · מקוזז מהתיקון",
-          "en": "₪250 · credited to the repair"
+          "en": "₪250 · credited to the repair",
+          "ar": "₪250 · بتنخصم من التصليح"
         }
       }
     ],
     "cta": {
       "he": "להזמין טכנאי",
-      "en": "Send a technician"
+      "en": "Send a technician",
+      "ar": "ابعتولي فني"
     },
     "palette": {
       "bg": "#13223f",
@@ -8532,75 +8642,90 @@
   "device-repair": {
     "brand": {
       "he": "ואדי פיקס",
-      "en": "Wadi Fix"
+      "en": "Wadi Fix",
+      "ar": "وادي فيكس"
     },
     "title": {
       "he": "האייפון שלך בתיקון",
-      "en": "Your iPhone is in repair"
+      "en": "Your iPhone is in repair",
+      "ar": "الآيفون تبعك بالتصليح"
     },
     "subtitle": {
       "he": "החלפת מסך · אחריות לחצי שנה",
-      "en": "Screen replacement · 6-month warranty"
+      "en": "Screen replacement · 6-month warranty",
+      "ar": "تبديل شاشة · كفالة 6 شهور"
     },
     "tags": [
       {
         "he": "טלפונים",
-        "en": "Phones"
+        "en": "Phones",
+        "ar": "تلفونات"
       },
       {
         "he": "מחשבים",
-        "en": "Laptops"
+        "en": "Laptops",
+        "ar": "لابتوبات"
       },
       {
         "he": "טאבלטים",
-        "en": "Tablets"
+        "en": "Tablets",
+        "ar": "تابلت"
       }
     ],
     "items": [
       {
         "label": {
           "he": "אבחון",
-          "en": "Diagnosis"
+          "en": "Diagnosis",
+          "ar": "التشخيص"
         },
         "meta": {
           "he": "הושלם · 100%",
-          "en": "done · 100%"
+          "en": "done · 100%",
+          "ar": "خلص · 100%"
         }
       },
       {
         "label": {
           "he": "החלפת מסך",
-          "en": "New screen"
+          "en": "New screen",
+          "ar": "شاشة جديدة"
         },
         "meta": {
           "he": "בעבודה · 70%",
-          "en": "in progress · 70%"
+          "en": "in progress · 70%",
+          "ar": "قيد التنفيذ · 70%"
         }
       },
       {
         "label": {
           "he": "בדיקת איכות",
-          "en": "Quality check"
+          "en": "Quality check",
+          "ar": "فحص الجودة"
         },
         "meta": {
           "he": "בהמתנה · 0%",
-          "en": "waiting · 0%"
+          "en": "waiting · 0%",
+          "ar": "بالانتظار · 0%"
         }
       },
       {
         "label": {
           "he": "מוכן לאיסוף",
-          "en": "Ready for pickup"
+          "en": "Ready for pickup",
+          "ar": "جاهز للاستلام"
         },
         "meta": {
           "he": "היום 17:00 · ₪690",
-          "en": "today 17:00 · ₪690"
+          "en": "today 17:00 · ₪690",
+          "ar": "اليوم 17:00 · ₪690"
         }
       }
     ],
     "cta": {
       "he": "אישור ותשלום",
-      "en": "Approve and pay"
+      "en": "Approve and pay",
+      "ar": "وافق وادفع"
     },
     "palette": {
       "bg": "#f1f3f6",
@@ -8613,79 +8738,95 @@
   "movers": {
     "brand": {
       "he": "הובלות על גלגלים",
-      "en": "Al Galgalim Movers"
+      "en": "Al Galgalim Movers",
+      "ar": "نقليات على العجلات"
     },
     "title": {
       "he": "עוברים דירה בראש שקט",
-      "en": "Moving, minus the stress"
+      "en": "Moving, minus the stress",
+      "ar": "نقلة بدون توتر"
     },
     "subtitle": {
       "he": "רמת גן ← חולון · 14 ק\"מ",
-      "en": "Ramat Gan to Holon · 14 km"
+      "en": "Ramat Gan to Holon · 14 km",
+      "ar": "رمات غان ← حولون · 14 كم"
     },
     "tags": [
       {
         "he": "ארגזים",
-        "en": "Boxes"
+        "en": "Boxes",
+        "ar": "كراتين"
       },
       {
         "he": "פירוק והרכבה",
-        "en": "Assembly"
+        "en": "Assembly",
+        "ar": "فك وتركيب"
       },
       {
         "he": "מנוף",
-        "en": "Crane"
+        "en": "Crane",
+        "ar": "ونش"
       },
       {
         "he": "אחסון",
-        "en": "Storage"
+        "en": "Storage",
+        "ar": "تخزين"
       }
     ],
     "items": [
       {
         "label": {
           "he": "מאיפה ולאן",
-          "en": "From and to"
+          "en": "From and to",
+          "ar": "من ولوين"
         },
         "meta": {
           "he": "רמת גן ← חולון",
-          "en": "Ramat Gan → Holon"
+          "en": "Ramat Gan → Holon",
+          "ar": "رمات غان ← حولون"
         }
       },
       {
         "label": {
           "he": "הדירה",
-          "en": "Home size"
+          "en": "Home size",
+          "ar": "حجم البيت"
         },
         "meta": {
           "he": "4 חד' · קומה 3 בלי מעלית",
-          "en": "4 rooms · 3rd floor, no lift"
+          "en": "4 rooms · 3rd floor, no lift",
+          "ar": "4 غرف · طابق 3، بدون مصعد"
         }
       },
       {
         "label": {
           "he": "תאריך",
-          "en": "Date"
+          "en": "Date",
+          "ar": "التاريخ"
         },
         "meta": {
           "he": "ה' 26.6 · בבוקר",
-          "en": "Thu 26 Jun · morning"
+          "en": "Thu 26 Jun · morning",
+          "ar": "الخميس 26 حزيران · الصبح"
         }
       },
       {
         "label": {
           "he": "הערכת מחיר",
-          "en": "Price estimate"
+          "en": "Price estimate",
+          "ar": "تقدير السعر"
         },
         "meta": {
           "he": "₪3,900-4,600",
-          "en": "₪3,900-4,600"
+          "en": "₪3,900-4,600",
+          "ar": "₪3,900-4,600"
         }
       }
     ],
     "cta": {
       "he": "לשריין את התאריך",
-      "en": "Lock in the date"
+      "en": "Lock in the date",
+      "ar": "ثبّت الموعد"
     },
     "palette": {
       "bg": "#e8d7bb",
@@ -8698,75 +8839,90 @@
   "tailoring": {
     "brand": {
       "he": "מכבסת אל אמל",
-      "en": "Al Amal Cleaners"
+      "en": "Al Amal Cleaners",
+      "ar": "مصبغة الأمل"
     },
     "title": {
       "he": "הפריטים שלך מוכנים",
-      "en": "Your items are ready"
+      "en": "Your items are ready",
+      "ar": "أغراضك جاهزة"
     },
     "subtitle": {
       "he": "כרטיס 2481 · איסוף עד 19:00",
-      "en": "Ticket 2481 · pickup until 7pm"
+      "en": "Ticket 2481 · pickup until 7pm",
+      "ar": "وصل 2481 · استلام لحد 19:00"
     },
     "tags": [
       {
         "he": "איסוף מהבית",
-        "en": "Home pickup"
+        "en": "Home pickup",
+        "ar": "استلام من البيت"
       },
       {
         "he": "קיצור תוך יום",
-        "en": "Next-day hemming"
+        "en": "Next-day hemming",
+        "ar": "تقصير لتاني يوم"
       },
       {
         "he": "גיהוץ באדים",
-        "en": "Steam pressing"
+        "en": "Steam pressing",
+        "ar": "كوي بالبخار"
       }
     ],
     "items": [
       {
         "label": {
           "he": "פריטים",
-          "en": "Items"
+          "en": "Items",
+          "ar": "الأغراض"
         },
         "meta": {
           "he": "חליפה, 2 חולצות, עבאיה",
-          "en": "Suit, 2 shirts, abaya"
+          "en": "Suit, 2 shirts, abaya",
+          "ar": "بدلة، 2 قمصان، عباية"
         }
       },
       {
         "label": {
           "he": "תיקון",
-          "en": "Alteration"
+          "en": "Alteration",
+          "ar": "التعديل"
         },
         "meta": {
           "he": "קיצור מכנסיים",
-          "en": "Trouser hemming"
+          "en": "Trouser hemming",
+          "ar": "تقصير بنطلون"
         }
       },
       {
         "label": {
           "he": "מוכן",
-          "en": "Ready"
+          "en": "Ready",
+          "ar": "جاهز"
         },
         "meta": {
           "he": "היום 16:00",
-          "en": "today 16:00"
+          "en": "today 16:00",
+          "ar": "اليوم 16:00"
         }
       },
       {
         "label": {
           "he": "לתשלום",
-          "en": "To pay"
+          "en": "To pay",
+          "ar": "للدفع"
         },
         "meta": {
           "he": "₪118",
-          "en": "₪118"
+          "en": "₪118",
+          "ar": "₪118"
         }
       }
     ],
     "cta": {
       "he": "לתאם איסוף מהבית",
-      "en": "Book a home pickup"
+      "en": "Book a home pickup",
+      "ar": "احجز استلام من البيت"
     },
     "palette": {
       "bg": "#e6eef0",
@@ -8779,79 +8935,95 @@
   "glass-aluminium": {
     "brand": {
       "he": "אלומיניום אל נור",
-      "en": "Al Noor Aluminium"
+      "en": "Al Noor Aluminium",
+      "ar": "ألمنيوم النور"
     },
     "title": {
       "he": "מתכננים חלון חדש",
-      "en": "Design a new window"
+      "en": "Design a new window",
+      "ar": "صمّم شباك جديد"
     },
     "subtitle": {
       "he": "חלון סלון · 2.4 × 1.6 מטר",
-      "en": "Living room window · 2.4 × 1.6 m"
+      "en": "Living room window · 2.4 × 1.6 m",
+      "ar": "شباك الصالون · 2.4 × 1.6 م"
     },
     "tags": [
       {
         "he": "הזזה",
-        "en": "Sliding"
+        "en": "Sliding",
+        "ar": "جرّار"
       },
       {
         "he": "ציר",
-        "en": "Hinged"
+        "en": "Hinged",
+        "ar": "مفصلي"
       },
       {
         "he": "דריי קיפ",
-        "en": "Tilt and turn"
+        "en": "Tilt and turn",
+        "ar": "قلّاب"
       },
       {
         "he": "קבוע",
-        "en": "Fixed"
+        "en": "Fixed",
+        "ar": "ثابت"
       }
     ],
     "items": [
       {
         "label": {
           "he": "פתיחה",
-          "en": "Opening"
+          "en": "Opening",
+          "ar": "الفتحة"
         },
         "meta": {
           "he": "הזזה, שתי כנפיים",
-          "en": "Sliding, two panes"
+          "en": "Sliding, two panes",
+          "ar": "جرّار، ضفتين"
         }
       },
       {
         "label": {
           "he": "זכוכית",
-          "en": "Glass"
+          "en": "Glass",
+          "ar": "الزجاج"
         },
         "meta": {
           "he": "בידודית כפולה",
-          "en": "Double glazed"
+          "en": "Double glazed",
+          "ar": "زجاج دبل"
         }
       },
       {
         "label": {
           "he": "גוון פרופיל",
-          "en": "Frame colour"
+          "en": "Frame colour",
+          "ar": "لون الإطار"
         },
         "meta": {
           "he": "אנתרציט מט",
-          "en": "Matte anthracite"
+          "en": "Matte anthracite",
+          "ar": "أنثراسايت مطفي"
         }
       },
       {
         "label": {
           "he": "הערכה",
-          "en": "Estimate"
+          "en": "Estimate",
+          "ar": "التقدير"
         },
         "meta": {
           "he": "₪4,350 · כולל רשת והתקנה",
-          "en": "₪4,350 · screen and fitting"
+          "en": "₪4,350 · screen and fitting",
+          "ar": "₪4,350 · مع شبك وتركيب"
         }
       }
     ],
     "cta": {
       "he": "לתאם מדידה",
-      "en": "Book a measure"
+      "en": "Book a measure",
+      "ar": "احجز قياس"
     },
     "palette": {
       "bg": "#e8eef2",
