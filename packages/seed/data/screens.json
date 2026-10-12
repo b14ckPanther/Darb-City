@@ -1108,87 +1108,105 @@
   "nails": {
     "brand": {
       "he": "סטודיו פרלה",
-      "en": "Perla Nails"
+      "en": "Perla Nails",
+      "ar": "بيرلا نيلز"
     },
     "title": {
       "he": "הסט הבא שלך",
-      "en": "Your next set"
+      "en": "Your next set",
+      "ar": "الطقم الجاي تبعك"
     },
     "subtitle": {
       "he": "יום ג' 17.6 · עם מאיה",
-      "en": "Tue 17 Jun · with Maya"
+      "en": "Tue 17 Jun · with Maya",
+      "ar": "الثلاثاء 17 حزيران · مع مايا"
     },
     "tags": [
       {
         "he": "10:00",
-        "en": "10:00"
+        "en": "10:00",
+        "ar": "10:00"
       },
       {
         "he": "11:30",
-        "en": "11:30"
+        "en": "11:30",
+        "ar": "11:30"
       },
       {
         "he": "13:00",
-        "en": "13:00"
+        "en": "13:00",
+        "ar": "13:00"
       },
       {
         "he": "15:30",
-        "en": "15:30"
+        "en": "15:30",
+        "ar": "15:30"
       },
       {
         "he": "17:00",
-        "en": "17:00"
+        "en": "17:00",
+        "ar": "17:00"
       },
       {
         "he": "18:30",
-        "en": "18:30"
+        "en": "18:30",
+        "ar": "18:30"
       }
     ],
     "items": [
       {
         "label": {
           "he": "לק ג'ל",
-          "en": "Gel polish"
+          "en": "Gel polish",
+          "ar": "لاك جل"
         },
         "meta": {
           "he": "₪120 · 45 דק'",
-          "en": "₪120 · 45 min"
+          "en": "₪120 · 45 min",
+          "ar": "₪120 · 45 دقيقة"
         }
       },
       {
         "label": {
           "he": "בנייה באקריל",
-          "en": "Acrylic extensions"
+          "en": "Acrylic extensions",
+          "ar": "تركيب أظافر أكريليك"
         },
         "meta": {
           "he": "₪220 · 90 דק'",
-          "en": "₪220 · 90 min"
+          "en": "₪220 · 90 min",
+          "ar": "₪220 · 90 دقيقة"
         }
       },
       {
         "label": {
           "he": "פרנץ' מודרני",
-          "en": "Modern French"
+          "en": "Modern French",
+          "ar": "فرنش عصري"
         },
         "meta": {
           "he": "₪160 · 60 דק'",
-          "en": "₪160 · 60 min"
+          "en": "₪160 · 60 min",
+          "ar": "₪160 · 60 دقيقة"
         }
       },
       {
         "label": {
           "he": "פדיקור ספא",
-          "en": "Spa pedicure"
+          "en": "Spa pedicure",
+          "ar": "بديكير سبا"
         },
         "meta": {
           "he": "₪140 · 50 דק'",
-          "en": "₪140 · 50 min"
+          "en": "₪140 · 50 min",
+          "ar": "₪140 · 50 دقيقة"
         }
       }
     ],
     "cta": {
       "he": "קביעת תור ל-13:00",
-      "en": "Book 13:00"
+      "en": "Book 13:00",
+      "ar": "احجزي الساعة 13:00"
     },
     "palette": {
       "bg": "#fbe8e9",
@@ -1201,79 +1219,95 @@
   "makeup": {
     "brand": {
       "he": "נוי כהן מייקאפ",
-      "en": "Noy Cohen Makeup"
+      "en": "Noy Cohen Makeup",
+      "ar": "نوي كوهين ميك أب"
     },
     "title": {
       "he": "איפור כלות ואירועים",
-      "en": "Bridal and event makeup"
+      "en": "Bridal and event makeup",
+      "ar": "مكياج عرايس ومناسبات"
     },
     "subtitle": {
       "he": "תאריכים פנויים ביוני: 4",
-      "en": "Open dates in June: 4"
+      "en": "Open dates in June: 4",
+      "ar": "مواعيد فاضية بحزيران: 4"
     },
     "tags": [
       {
         "he": "כלות",
-        "en": "Bridal"
+        "en": "Bridal",
+        "ar": "عرايس"
       },
       {
         "he": "ערב",
-        "en": "Evening"
+        "en": "Evening",
+        "ar": "سهرة"
       },
       {
         "he": "הפקות",
-        "en": "Editorial"
+        "en": "Editorial",
+        "ar": "تصوير"
       },
       {
         "he": "קורסים",
-        "en": "Courses"
+        "en": "Courses",
+        "ar": "دورات"
       }
     ],
     "items": [
       {
         "label": {
           "he": "חבילת כלה",
-          "en": "Bridal package"
+          "en": "Bridal package",
+          "ar": "باقة العروس"
         },
         "meta": {
           "he": "₪2,400 · ניסיון ויום החתונה",
-          "en": "₪2,400 · trial and wedding day"
+          "en": "₪2,400 · trial and wedding day",
+          "ar": "₪2,400 · تجربة ويوم العرس"
         }
       },
       {
         "label": {
           "he": "איפור ערב",
-          "en": "Evening look"
+          "en": "Evening look",
+          "ar": "لوك سهرة"
         },
         "meta": {
           "he": "₪650 · כולל ריסים",
-          "en": "₪650 · lashes included"
+          "en": "₪650 · lashes included",
+          "ar": "₪650 · مع الرموش"
         }
       },
       {
         "label": {
           "he": "אם הכלה",
-          "en": "Mother of the bride"
+          "en": "Mother of the bride",
+          "ar": "أم العروس"
         },
         "meta": {
           "he": "₪550",
-          "en": "₪550"
+          "en": "₪550",
+          "ar": "₪550"
         }
       },
       {
         "label": {
           "he": "סדנת איפור עצמי",
-          "en": "Self-makeup class"
+          "en": "Self-makeup class",
+          "ar": "دورة مكياج شخصي"
         },
         "meta": {
           "he": "₪480 · שעתיים",
-          "en": "₪480 · two hours"
+          "en": "₪480 · two hours",
+          "ar": "₪480 · ساعتين"
         }
       }
     ],
     "cta": {
       "he": "בדיקת תאריך",
-      "en": "Check my date"
+      "en": "Check my date",
+      "ar": "افحصي موعدي"
     },
     "palette": {
       "bg": "#f3e5da",
@@ -1286,83 +1320,100 @@
   "spas": {
     "brand": {
       "he": "ספא מעיין",
-      "en": "Ma'ayan Spa"
+      "en": "Ma'ayan Spa",
+      "ar": "سبا معيان"
     },
     "title": {
       "he": "שעה רק בשבילך",
-      "en": "An hour just for you"
+      "en": "An hour just for you",
+      "ar": "ساعة إلك وبس"
     },
     "subtitle": {
       "he": "מטפלות לנשים, מטפלים לגברים",
-      "en": "Women therapists for women, men for men"
+      "en": "Women therapists for women, men for men",
+      "ar": "معالجات للنساء ومعالجين للرجال"
     },
     "tags": [
       {
         "he": "09:00",
-        "en": "09:00"
+        "en": "09:00",
+        "ar": "09:00"
       },
       {
         "he": "10:30",
-        "en": "10:30"
+        "en": "10:30",
+        "ar": "10:30"
       },
       {
         "he": "12:00",
-        "en": "12:00"
+        "en": "12:00",
+        "ar": "12:00"
       },
       {
         "he": "14:00",
-        "en": "14:00"
+        "en": "14:00",
+        "ar": "14:00"
       },
       {
         "he": "16:30",
-        "en": "16:30"
+        "en": "16:30",
+        "ar": "16:30"
       }
     ],
     "items": [
       {
         "label": {
           "he": "עיסוי רקמות עמוק",
-          "en": "Deep tissue massage"
+          "en": "Deep tissue massage",
+          "ar": "مساج عميق"
         },
         "meta": {
           "he": "₪380 · 60 דק'",
-          "en": "₪380 · 60 min"
+          "en": "₪380 · 60 min",
+          "ar": "₪380 · 60 دقيقة"
         }
       },
       {
         "label": {
           "he": "אבנים חמות",
-          "en": "Hot stones"
+          "en": "Hot stones",
+          "ar": "الحجارة الساخنة"
         },
         "meta": {
           "he": "₪420 · 75 דק'",
-          "en": "₪420 · 75 min"
+          "en": "₪420 · 75 min",
+          "ar": "₪420 · 75 دقيقة"
         }
       },
       {
         "label": {
           "he": "יום ספא לאמא ובת",
-          "en": "Mother and daughter day"
+          "en": "Mother and daughter day",
+          "ar": "يوم سبا للأم وبنتها"
         },
         "meta": {
           "he": "₪1,290 · 3 שעות",
-          "en": "₪1,290 · 3 hours"
+          "en": "₪1,290 · 3 hours",
+          "ar": "₪1,290 · 3 ساعات"
         }
       },
       {
         "label": {
           "he": "טיפול פנים מרגיע",
-          "en": "Calming facial"
+          "en": "Calming facial",
+          "ar": "تنظيف بشرة مهدّئ"
         },
         "meta": {
           "he": "₪340 · 50 דק'",
-          "en": "₪340 · 50 min"
+          "en": "₪340 · 50 min",
+          "ar": "₪340 · 50 دقيقة"
         }
       }
     ],
     "cta": {
       "he": "להזמין טיפול",
-      "en": "Book a treatment"
+      "en": "Book a treatment",
+      "ar": "احجز علاج"
     },
     "palette": {
       "bg": "#e2ebe7",
@@ -1375,79 +1426,95 @@
   "brows": {
     "brand": {
       "he": "סטודיו לין",
-      "en": "Leen Studio"
+      "en": "Leen Studio",
+      "ar": "ستوديو لين"
     },
     "title": {
       "he": "מבט רך וטבעי",
-      "en": "A soft, natural look"
+      "en": "A soft, natural look",
+      "ar": "لوك ناعم وطبيعي"
     },
     "subtitle": {
       "he": "צביעה והרמה, בלי תוספות",
-      "en": "Tint and lift, nothing added"
+      "en": "Tint and lift, nothing added",
+      "ar": "صبغة ورفع، بدون إضافات"
     },
     "tags": [
       {
         "he": "צביעת גבות",
-        "en": "Brow tint"
+        "en": "Brow tint",
+        "ar": "صبغة حواجب"
       },
       {
         "he": "הרמת ריסים",
-        "en": "Lash lift"
+        "en": "Lash lift",
+        "ar": "رفع رموش"
       },
       {
         "he": "גבות בחינה",
-        "en": "Henna brows"
+        "en": "Henna brows",
+        "ar": "حواجب بالحنة"
       },
       {
         "he": "לנשים",
-        "en": "Women only"
+        "en": "Women only",
+        "ar": "للنساء فقط"
       }
     ],
     "items": [
       {
         "label": {
           "he": "צביעת גבות",
-          "en": "Brow tint"
+          "en": "Brow tint",
+          "ar": "صبغة حواجب"
         },
         "meta": {
           "he": "₪90 · 20 דק'",
-          "en": "₪90 · 20 min"
+          "en": "₪90 · 20 min",
+          "ar": "₪90 · 20 دقيقة"
         }
       },
       {
         "label": {
           "he": "הרמת ריסים",
-          "en": "Lash lift"
+          "en": "Lash lift",
+          "ar": "رفع رموش"
         },
         "meta": {
           "he": "₪220 · 45 דק'",
-          "en": "₪220 · 45 min"
+          "en": "₪220 · 45 min",
+          "ar": "₪220 · 45 دقيقة"
         }
       },
       {
         "label": {
           "he": "גבות בחינה",
-          "en": "Henna brows"
+          "en": "Henna brows",
+          "ar": "حواجب بالحنة"
         },
         "meta": {
           "he": "₪140 · עד 3 שבועות",
-          "en": "₪140 · lasts 3 weeks"
+          "en": "₪140 · lasts 3 weeks",
+          "ar": "₪140 · بتدوم 3 أسابيع"
         }
       },
       {
         "label": {
           "he": "חבילת מבט",
-          "en": "Brow and lash pack"
+          "en": "Brow and lash pack",
+          "ar": "باقة حواجب ورموش"
         },
         "meta": {
           "he": "₪280 · צביעה והרמה",
-          "en": "₪280 · tint and lift"
+          "en": "₪280 · tint and lift",
+          "ar": "₪280 · صبغة ورفع"
         }
       }
     ],
     "cta": {
       "he": "קביעת תור",
-      "en": "Book a visit"
+      "en": "Book a visit",
+      "ar": "احجزي زيارة"
     },
     "palette": {
       "bg": "#efe6dc",
@@ -1460,87 +1527,105 @@
   "ladies-spa": {
     "brand": {
       "he": "חמאם אל ורד",
-      "en": "Al Ward Hammam"
+      "en": "Al Ward Hammam",
+      "ar": "حمّام الورد"
     },
     "title": {
       "he": "שבוע של פינוק, רק לנשים",
-      "en": "A week of care, women only"
+      "en": "A week of care, women only",
+      "ar": "أسبوع دلع، للنساء فقط"
     },
     "subtitle": {
       "he": "צוות נשי · כניסה פרטית · בלי מצלמות",
-      "en": "All-women team · private entrance · no cameras"
+      "en": "All-women team · private entrance · no cameras",
+      "ar": "طاقم نسائي بالكامل · مدخل خاص · بدون كاميرات"
     },
     "tags": [
       {
         "he": "א'",
-        "en": "Sun"
+        "en": "Sun",
+        "ar": "أحد"
       },
       {
         "he": "ב'",
-        "en": "Mon"
+        "en": "Mon",
+        "ar": "اثنين"
       },
       {
         "he": "ג'",
-        "en": "Tue"
+        "en": "Tue",
+        "ar": "ثلاثاء"
       },
       {
         "he": "ד'",
-        "en": "Wed"
+        "en": "Wed",
+        "ar": "أربعاء"
       },
       {
         "he": "ה'",
-        "en": "Thu"
+        "en": "Thu",
+        "ar": "خميس"
       },
       {
         "he": "ו'",
-        "en": "Fri"
+        "en": "Fri",
+        "ar": "جمعة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "חמאם מרוקאי",
-          "en": "Moroccan hammam"
+          "en": "Moroccan hammam",
+          "ar": "حمّام مغربي"
         },
         "meta": {
           "he": "א' 10:00 · 90 דק'",
-          "en": "Sun 10:00 · 90 min"
+          "en": "Sun 10:00 · 90 min",
+          "ar": "الأحد 10:00 · 90 دقيقة"
         }
       },
       {
         "label": {
           "he": "יום כלה",
-          "en": "Bridal day"
+          "en": "Bridal day",
+          "ar": "يوم العروس"
         },
         "meta": {
           "he": "ג' 09:00 · עם אמא והאחיות",
-          "en": "Tue 09:00 · with mum and sisters"
+          "en": "Tue 09:00 · with mum and sisters",
+          "ar": "الثلاثاء 09:00 · مع الإم والخوات"
         }
       },
       {
         "label": {
           "he": "פן ותסרוקת",
-          "en": "Blow-dry and styling"
+          "en": "Blow-dry and styling",
+          "ar": "سشوار وتسريحة"
         },
         "meta": {
           "he": "ד' 13:00 · 45 דק'",
-          "en": "Wed 13:00 · 45 min"
+          "en": "Wed 13:00 · 45 min",
+          "ar": "الأربعاء 13:00 · 45 دقيقة"
         }
       },
       {
         "label": {
           "he": "מסכת פנים בדבש",
-          "en": "Honey face mask"
+          "en": "Honey face mask",
+          "ar": "ماسك عسل للوجه"
         },
         "meta": {
           "he": "ה' 16:30 · 40 דק'",
-          "en": "Thu 16:30 · 40 min"
+          "en": "Thu 16:30 · 40 min",
+          "ar": "الخميس 16:30 · 40 دقيقة"
         }
       }
     ],
     "cta": {
       "he": "שריון מקום",
-      "en": "Book my place"
+      "en": "Book my place",
+      "ar": "احجزي مكانك"
     },
     "palette": {
       "bg": "#f6ebe3",
@@ -1553,83 +1638,100 @@
   "aesthetic": {
     "brand": {
       "he": "קליניקת אור",
-      "en": "Or Clinic"
+      "en": "Or Clinic",
+      "ar": "عيادة أور"
     },
     "title": {
       "he": "עור חלק, בלי ניחושים",
-      "en": "Smooth skin, no guesswork"
+      "en": "Smooth skin, no guesswork",
+      "ar": "بشرة ناعمة، بدون تخمين"
     },
     "subtitle": {
       "he": "אבחון עור חינם בביקור הראשון",
-      "en": "Free skin consult on your first visit"
+      "en": "Free skin consult on your first visit",
+      "ar": "استشارة بشرة مجانية بأول زيارة"
     },
     "tags": [
       {
         "he": "08:30",
-        "en": "08:30"
+        "en": "08:30",
+        "ar": "08:30"
       },
       {
         "he": "10:00",
-        "en": "10:00"
+        "en": "10:00",
+        "ar": "10:00"
       },
       {
         "he": "12:30",
-        "en": "12:30"
+        "en": "12:30",
+        "ar": "12:30"
       },
       {
         "he": "15:00",
-        "en": "15:00"
+        "en": "15:00",
+        "ar": "15:00"
       },
       {
         "he": "18:00",
-        "en": "18:00"
+        "en": "18:00",
+        "ar": "18:00"
       }
     ],
     "items": [
       {
         "label": {
           "he": "הסרת שיער בלייזר",
-          "en": "Laser hair removal"
+          "en": "Laser hair removal",
+          "ar": "إزالة شعر بالليزر"
         },
         "meta": {
           "he": "₪1,800 · סדרה של 6",
-          "en": "₪1,800 · 6 sessions"
+          "en": "₪1,800 · 6 sessions",
+          "ar": "₪1,800 · 6 جلسات"
         }
       },
       {
         "label": {
           "he": "בוטוקס מצח",
-          "en": "Forehead botox"
+          "en": "Forehead botox",
+          "ar": "بوتوكس للجبين"
         },
         "meta": {
           "he": "₪1,200 · 20 דק'",
-          "en": "₪1,200 · 20 min"
+          "en": "₪1,200 · 20 min",
+          "ar": "₪1,200 · 20 دقيقة"
         }
       },
       {
         "label": {
           "he": "פילינג כימי",
-          "en": "Chemical peel"
+          "en": "Chemical peel",
+          "ar": "تقشير كيميائي"
         },
         "meta": {
           "he": "₪450 · 45 דק'",
-          "en": "₪450 · 45 min"
+          "en": "₪450 · 45 min",
+          "ar": "₪450 · 45 دقيقة"
         }
       },
       {
         "label": {
           "he": "מיצוק בתדר רדיו",
-          "en": "RF skin tightening"
+          "en": "RF skin tightening",
+          "ar": "شد البشرة بالـRF"
         },
         "meta": {
           "he": "₪690 · 60 דק'",
-          "en": "₪690 · 60 min"
+          "en": "₪690 · 60 min",
+          "ar": "₪690 · 60 دقيقة"
         }
       }
     ],
     "cta": {
       "he": "ייעוץ חינם",
-      "en": "Book a free consult"
+      "en": "Book a free consult",
+      "ar": "احجز استشارة مجانية"
     },
     "palette": {
       "bg": "#f0edf6",
@@ -1642,79 +1744,95 @@
   "sugaring": {
     "brand": {
       "he": "סטודיו חלאווה",
-      "en": "Halawa Studio"
+      "en": "Halawa Studio",
+      "ar": "ستوديو حلاوة"
     },
     "title": {
       "he": "בונות טיפול סוכר",
-      "en": "Build your sugaring session"
+      "en": "Build your sugaring session",
+      "ar": "ركّبي جلسة الحلاوة تبعك"
     },
     "subtitle": {
       "he": "מטפלות בלבד · סוכר, לימון ומים",
-      "en": "Women therapists only · sugar, lemon, water"
+      "en": "Women therapists only · sugar, lemon, water",
+      "ar": "معالجات نساء فقط · سكر، ليمون ومي"
     },
     "tags": [
       {
         "he": "ידיים",
-        "en": "Arms"
+        "en": "Arms",
+        "ar": "إيدين"
       },
       {
         "he": "רגליים",
-        "en": "Legs"
+        "en": "Legs",
+        "ar": "إجرين"
       },
       {
         "he": "פנים",
-        "en": "Face"
+        "en": "Face",
+        "ar": "وجه"
       },
       {
         "he": "גב",
-        "en": "Back"
+        "en": "Back",
+        "ar": "ظهر"
       }
     ],
     "items": [
       {
         "label": {
           "he": "אזורים",
-          "en": "Areas"
+          "en": "Areas",
+          "ar": "المناطق"
         },
         "meta": {
           "he": "רגליים מלאות, ידיים",
-          "en": "Full legs, arms"
+          "en": "Full legs, arms",
+          "ar": "إجرين كاملة، إيدين"
         }
       },
       {
         "label": {
           "he": "משחה",
-          "en": "Paste"
+          "en": "Paste",
+          "ar": "العجينة"
         },
         "meta": {
           "he": "סוכר טבעי ולימון",
-          "en": "Natural sugar and lemon"
+          "en": "Natural sugar and lemon",
+          "ar": "سكر طبيعي وليمون"
         }
       },
       {
         "label": {
           "he": "אחרי הטיפול",
-          "en": "Aftercare"
+          "en": "Aftercare",
+          "ar": "بعد العلاج"
         },
         "meta": {
           "he": "שמן ורדים מרגיע",
-          "en": "Soothing rose oil"
+          "en": "Soothing rose oil",
+          "ar": "زيت ورد مهدّئ"
         }
       },
       {
         "label": {
           "he": "סה\"כ",
-          "en": "Total"
+          "en": "Total",
+          "ar": "المجموع"
         },
         "meta": {
           "he": "₪260 · 70 דק'",
-          "en": "₪260 · 70 min"
+          "en": "₪260 · 70 min",
+          "ar": "₪260 · 70 دقيقة"
         }
       }
     ],
     "cta": {
       "he": "לשריין טיפול · ₪260",
-      "en": "Book it · ₪260"
+      "en": "Book it · ₪260",
+      "ar": "احجزي · ₪260"
     },
     "palette": {
       "bg": "#fbf0d9",
@@ -1727,75 +1845,90 @@
   "facials": {
     "brand": {
       "he": "קליניקת ג'ומאנה",
-      "en": "Jumana Skin Clinic"
+      "en": "Jumana Skin Clinic",
+      "ar": "عيادة جمانة للبشرة"
     },
     "title": {
       "he": "תוכנית העור שלך",
-      "en": "Your skin plan"
+      "en": "Your skin plan",
+      "ar": "خطة بشرتك"
     },
     "subtitle": {
       "he": "טיפול 4 מתוך 6 · עור יבש ורגיש",
-      "en": "Session 4 of 6 · dry, sensitive skin"
+      "en": "Session 4 of 6 · dry, sensitive skin",
+      "ar": "جلسة 4 من 6 · بشرة جافة وحساسة"
     },
     "tags": [
       {
         "he": "ניקוי עמוק",
-        "en": "Deep cleanse"
+        "en": "Deep cleanse",
+        "ar": "تنظيف عميق"
       },
       {
         "he": "לחות",
-        "en": "Hydration"
+        "en": "Hydration",
+        "ar": "ترطيب"
       },
       {
         "he": "פיגמנטציה",
-        "en": "Pigmentation"
+        "en": "Pigmentation",
+        "ar": "تصبّغات"
       }
     ],
     "items": [
       {
         "label": {
           "he": "טיפולי לחות",
-          "en": "Hydrating facials"
+          "en": "Hydrating facials",
+          "ar": "جلسات ترطيب"
         },
         "meta": {
           "he": "4 מתוך 6 · 67%",
-          "en": "4 of 6 · 67%"
+          "en": "4 of 6 · 67%",
+          "ar": "4 من 6 · 67%"
         }
       },
       {
         "label": {
           "he": "לחות העור",
-          "en": "Skin moisture"
+          "en": "Skin moisture",
+          "ar": "رطوبة البشرة"
         },
         "meta": {
           "he": "עלייה של 18% · 62%",
-          "en": "up 18% · 62%"
+          "en": "up 18% · 62%",
+          "ar": "ارتفعت 18% · 62%"
         }
       },
       {
         "label": {
           "he": "שגרת בוקר",
-          "en": "Morning routine"
+          "en": "Morning routine",
+          "ar": "روتين الصبح"
         },
         "meta": {
           "he": "12 מתוך 14 ימים · 86%",
-          "en": "12 of 14 days · 86%"
+          "en": "12 of 14 days · 86%",
+          "ar": "12 من 14 يوم · 86%"
         }
       },
       {
         "label": {
           "he": "הטיפול הבא",
-          "en": "Next session"
+          "en": "Next session",
+          "ar": "الجلسة الجاية"
         },
         "meta": {
           "he": "ה' 16:00 · פילינג עדין",
-          "en": "Thu 16:00 · gentle peel"
+          "en": "Thu 16:00 · gentle peel",
+          "ar": "الخميس 16:00 · تقشير لطيف"
         }
       }
     ],
     "cta": {
       "he": "קביעת הטיפול הבא",
-      "en": "Book the next session"
+      "en": "Book the next session",
+      "ar": "احجزي الجلسة الجاية"
     },
     "palette": {
       "bg": "#e9eee6",
@@ -1808,79 +1941,95 @@
   "cosmetics": {
     "brand": {
       "he": "לוליא ביוטי",
-      "en": "Loulia Beauty"
+      "en": "Loulia Beauty",
+      "ar": "لوليا بيوتي"
     },
     "title": {
       "he": "שגרה עדינה לעור",
-      "en": "A gentle skin routine"
+      "en": "A gentle skin routine",
+      "ar": "روتين لطيف لبشرتك"
     },
     "subtitle": {
       "he": "משלוח חינם מעל ₪199",
-      "en": "Free delivery over ₪199"
+      "en": "Free delivery over ₪199",
+      "ar": "توصيل مجاني فوق ₪199"
     },
     "tags": [
       {
         "he": "טיפוח",
-        "en": "Skincare"
+        "en": "Skincare",
+        "ar": "عناية بالبشرة"
       },
       {
         "he": "איפור",
-        "en": "Makeup"
+        "en": "Makeup",
+        "ar": "مكياج"
       },
       {
         "he": "שיער",
-        "en": "Hair"
+        "en": "Hair",
+        "ar": "شعر"
       },
       {
         "he": "מארזים",
-        "en": "Gift sets"
+        "en": "Gift sets",
+        "ar": "طقم هدايا"
       }
     ],
     "items": [
       {
         "label": {
           "he": "סרום ויטמין C",
-          "en": "Vitamin C serum"
+          "en": "Vitamin C serum",
+          "ar": "سيروم فيتامين C"
         },
         "meta": {
           "he": "₪139 · 30 מ\"ל",
-          "en": "₪139 · 30 ml"
+          "en": "₪139 · 30 ml",
+          "ar": "₪139 · 30 مل"
         }
       },
       {
         "label": {
           "he": "קרם לחות",
-          "en": "Moisturiser"
+          "en": "Moisturiser",
+          "ar": "كريم ترطيب"
         },
         "meta": {
           "he": "₪89 · 50 מ\"ל",
-          "en": "₪89 · 50 ml"
+          "en": "₪89 · 50 ml",
+          "ar": "₪89 · 50 مل"
         }
       },
       {
         "label": {
           "he": "שפתון מט",
-          "en": "Matte lipstick"
+          "en": "Matte lipstick",
+          "ar": "أحمر شفايف مطفي"
         },
         "meta": {
           "he": "₪69 · 6 גוונים",
-          "en": "₪69 · 6 shades"
+          "en": "₪69 · 6 shades",
+          "ar": "₪69 · 6 درجات"
         }
       },
       {
         "label": {
           "he": "קרם הגנה SPF 50",
-          "en": "SPF 50 sunscreen"
+          "en": "SPF 50 sunscreen",
+          "ar": "واقي شمس SPF 50"
         },
         "meta": {
           "he": "₪79 · 50 מ\"ל",
-          "en": "₪79 · 50 ml"
+          "en": "₪79 · 50 ml",
+          "ar": "₪79 · 50 مل"
         }
       }
     ],
     "cta": {
       "he": "הוספה לסל",
-      "en": "Add to cart"
+      "en": "Add to cart",
+      "ar": "أضيفي للسلة"
     },
     "palette": {
       "bg": "#f8e9e6",
@@ -1893,87 +2042,105 @@
   "hair-clinics": {
     "brand": {
       "he": "מרפאת השיער ריים",
-      "en": "Reem Hair Clinic"
+      "en": "Reem Hair Clinic",
+      "ar": "عيادة ريم للشعر"
     },
     "title": {
       "he": "אבחון קרקפת",
-      "en": "Scalp diagnosis"
+      "en": "Scalp diagnosis",
+      "ar": "تشخيص فروة الراس"
     },
     "subtitle": {
       "he": "יום ב' 23.6 · עם ד\"ר נאדר",
-      "en": "Mon 23 Jun · with Dr. Nader"
+      "en": "Mon 23 Jun · with Dr. Nader",
+      "ar": "الاثنين 23 حزيران · مع د. نادر"
     },
     "tags": [
       {
         "he": "09:00",
-        "en": "09:00"
+        "en": "09:00",
+        "ar": "09:00"
       },
       {
         "he": "10:15",
-        "en": "10:15"
+        "en": "10:15",
+        "ar": "10:15"
       },
       {
         "he": "11:30",
-        "en": "11:30"
+        "en": "11:30",
+        "ar": "11:30"
       },
       {
         "he": "13:00",
-        "en": "13:00"
+        "en": "13:00",
+        "ar": "13:00"
       },
       {
         "he": "16:00",
-        "en": "16:00"
+        "en": "16:00",
+        "ar": "16:00"
       },
       {
         "he": "17:30",
-        "en": "17:30"
+        "en": "17:30",
+        "ar": "17:30"
       }
     ],
     "items": [
       {
         "label": {
           "he": "אבחון ממוחשב",
-          "en": "Scalp scan"
+          "en": "Scalp scan",
+          "ar": "فحص محوسب لفروة الراس"
         },
         "meta": {
           "he": "₪250 · 30 דק'",
-          "en": "₪250 · 30 min"
+          "en": "₪250 · 30 min",
+          "ar": "₪250 · 30 دقيقة"
         }
       },
       {
         "label": {
           "he": "טיפול PRP",
-          "en": "PRP treatment"
+          "en": "PRP treatment",
+          "ar": "علاج PRP"
         },
         "meta": {
           "he": "₪900 · 60 דק'",
-          "en": "₪900 · 60 min"
+          "en": "₪900 · 60 min",
+          "ar": "₪900 · 60 دقيقة"
         }
       },
       {
         "label": {
           "he": "מזותרפיה לשיער",
-          "en": "Hair mesotherapy"
+          "en": "Hair mesotherapy",
+          "ar": "ميزوثيرابي للشعر"
         },
         "meta": {
           "he": "₪650 · 45 דק'",
-          "en": "₪650 · 45 min"
+          "en": "₪650 · 45 min",
+          "ar": "₪650 · 45 دقيقة"
         }
       },
       {
         "label": {
           "he": "ביקורת חודשית",
-          "en": "Monthly check"
+          "en": "Monthly check",
+          "ar": "متابعة شهرية"
         },
         "meta": {
           "he": "₪150 · 20 דק'",
-          "en": "₪150 · 20 min"
+          "en": "₪150 · 20 min",
+          "ar": "₪150 · 20 دقيقة"
         }
       }
     ],
     "cta": {
       "he": "קביעת תור ל-11:30",
-      "en": "Book 11:30"
+      "en": "Book 11:30",
+      "ar": "احجز الساعة 11:30"
     },
     "palette": {
       "bg": "#13272a",
