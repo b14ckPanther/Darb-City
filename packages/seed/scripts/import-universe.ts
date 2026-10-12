@@ -1,3 +1,6 @@
+// ONE-SHOT IMPORT. This script was run once to bootstrap sectors.json, kinds.json and screens.json
+// from Darb-2.0's universe-data.ts. Do not re-run it: it rewrites those files from the source, which
+// overwrites the Arabic names and synonyms written by hand in Task 15. Edit the JSON files directly.
 import { writeFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 import type { SeedKind, SeedScreen, SeedSector } from "../src/types.js";
