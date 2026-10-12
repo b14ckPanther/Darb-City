@@ -17,6 +17,9 @@ import { SuggestRepository } from "./suggest.repository.js";
  */
 const digest = (s: string) => createHash("sha256").update(s).digest();
 
+/** Wrong report keys an IP may send in a minute. */
+export const REPORT_GUESSES = 10;
+
 const tooMany = (retryAfter: number) => ({
   status: 429 as const,
   body: { message: "Too many searches, try again in a minute", retryAfter },
@@ -63,10 +66,17 @@ export class SearchController {
           : { status: 404 as const, body: { message: "No such search" } };
       },
       report: async ({ headers, query }) => {
+        const notFound = { status: 404 as const, body: { message: "Not found" } };
         const want = this.config.search.reportKey;
+        if (want === null) return notFound;
+        // A 429 would say the endpoint exists: an IP past REPORT_GUESSES misses a minute gets
+        // 404s, even for the right key, until the minute ends.
+        if (!(await this.limiter.within("report", ip(), REPORT_GUESSES))) return notFound;
         const got = headers["x-darb-report-key"] ?? "";
-        const ok = want !== null && timingSafeEqual(digest(got), digest(want));
-        if (!ok) return { status: 404, body: { message: "Not found" } };
+        if (!timingSafeEqual(digest(got), digest(want))) {
+          await this.limiter.hit("report", ip(), REPORT_GUESSES);
+          return notFound;
+        }
         return {
           status: 200,
           body: await this.reports.report(query.days, query.limit, this.clock()),

@@ -255,6 +255,28 @@ describe("GET /search/report", () => {
       "since",
     ]);
   });
+  it("hides itself from a bad query without the key, and reads defaults with it", async () => {
+    const server = app.getHttpServer();
+    expect((await request(server).get("/search/report?days=abc&limit=-1")).status).toBe(404);
+    const res = await request(server)
+      .get("/search/report?days=9999&limit=abc")
+      .set("x-darb-report-key", "report-key");
+    expect(res.status).toBe(200);
+  });
+  it("stops answering an IP after 10 wrong keys in a minute, even to the right key", async () => {
+    const server = app.getHttpServer();
+    const from = (ip: string, key: string) =>
+      request(server)
+        .get("/search/report")
+        .set("x-darb-proxy-key", "proxy-key")
+        .set("x-darb-client-ip", ip)
+        .set("x-darb-report-key", key);
+    for (let i = 0; i < 10; i++) expect((await from("10.9.9.9", `guess-${i}`)).status).toBe(404);
+    expect((await from("10.9.9.9", "report-key")).status).toBe(200); // 10 misses: still allowed
+    expect((await from("10.9.9.9", "guess-10")).status).toBe(404);
+    expect((await from("10.9.9.9", "report-key")).status).toBe(404); // 11 misses: locked out
+    expect((await from("10.9.9.8", "report-key")).status).toBe(200);
+  });
   it("answers 404, never 500, to a key of the same length in other bytes", async () => {
     // "é" is one character but two UTF-8 bytes: timingSafeEqual must not see unequal lengths.
     const res = await request(app.getHttpServer())

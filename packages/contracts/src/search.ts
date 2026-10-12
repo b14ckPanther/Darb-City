@@ -95,9 +95,13 @@ export const ClickRequestSchema = z.object({
   key: ClickKeySchema,
 });
 
+/**
+ * Never a 400: a bad value reads as the default, so the endpoint answers nothing but 404 to a
+ * caller without the key, whatever the query.
+ */
 export const ReportQuerySchema = z.object({
-  days: z.coerce.number().int().min(1).max(90).default(30),
-  limit: z.coerce.number().int().min(1).max(200).default(50),
+  days: z.coerce.number().int().min(1).max(90).catch(30),
+  limit: z.coerce.number().int().min(1).max(200).catch(50),
 });
 export const ReportRowSchema = z.object({
   term: z.string(),

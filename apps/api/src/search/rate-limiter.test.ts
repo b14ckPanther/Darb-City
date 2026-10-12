@@ -24,6 +24,14 @@ describe("rate limiter", () => {
     expect((await limiter.hit("search", "10.0.0.2", 3)).ok).toBe(true);
     expect((await limiter.hit("results", "10.0.0.1", 3)).ok).toBe(true);
   });
+  it("peeks at a count without adding to it", async () => {
+    const limiter = new RateLimiter(redis, config);
+    expect(await limiter.within("report", "10.0.0.3", 1)).toBe(true);
+    await limiter.hit("report", "10.0.0.3", 1);
+    expect(await limiter.within("report", "10.0.0.3", 1)).toBe(true);
+    await limiter.hit("report", "10.0.0.3", 1);
+    expect(await limiter.within("report", "10.0.0.3", 1)).toBe(false);
+  });
   it("stores only a salted hash of the IP, for 60 seconds", async () => {
     const keys = await redis.keys("darb:rl:*");
     expect(keys.join(" ")).not.toContain("10.0.0.1");
