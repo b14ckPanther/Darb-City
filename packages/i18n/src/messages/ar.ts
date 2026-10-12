@@ -59,4 +59,9 @@ export const ar: Messages = {
   backToCity: "العودة إلى المدينة",
   unreachable: "لا يمكن الوصول إلى درب الآن.",
   retry: "حاول مرة أخرى",
+  mapLabel: "خريطة الأماكن الفعّالة في درب",
+  plazaLabel: "{place}: الشوارع والأبواب",
+  showMap: "خريطة",
+  showList: "قائمة",
+  mapData: "بيانات الخريطة",
 };

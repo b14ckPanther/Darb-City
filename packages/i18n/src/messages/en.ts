@@ -57,6 +57,11 @@ export const en = {
   backToCity: "Back to the city",
   unreachable: "Darb can't be reached right now.",
   retry: "Try again",
+  mapLabel: "Map of Darb's live places",
+  plazaLabel: "{place}: streets and doors",
+  showMap: "Map",
+  showList: "List",
+  mapData: "Map data",
 };
 
 export type Messages = typeof en;
