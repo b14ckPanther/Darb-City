@@ -1,0 +1,66 @@
+.nearMe {
+  position: relative;
+}
+
+/* Below a page title: keep clear of the list that follows. */
+.inPage {
+  margin-block-end: var(--space-4);
+}
+
+/* In the page flow the message sits under its button instead of floating over the title. */
+.inPage .message {
+  position: static;
+  inline-size: fit-content;
+  max-inline-size: 40rem;
+  margin-block-start: var(--space-2);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-block-size: 48px;
+  min-inline-size: 48px;
+  padding-inline: var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--surface-2);
+  color: var(--gold-300);
+  font: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.message {
+  position: absolute;
+  inset-inline-end: 0;
+  inset-block-end: calc(100% + var(--space-2));
+  z-index: 30;
+  inline-size: max-content;
+  max-inline-size: min(80vw, 320px);
+  margin: 0;
+  padding: var(--space-3);
+  border-radius: var(--radius-m);
+  background: var(--surface-3);
+  color: var(--text);
+  font-size: var(--step--1);
+}
+
+@media (min-width: 900px) {
+  .message {
+    inset-block-end: auto;
+    inset-block-start: calc(100% + var(--space-2));
+  }
+}
+
+@media (max-width: 479px) {
+  .label {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}

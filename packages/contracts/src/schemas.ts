@@ -103,3 +103,38 @@ export const BusinessDetailSchema = BusinessSummarySchema.extend({
 export type BusinessDetailDto = z.infer<typeof BusinessDetailSchema>;
 
 export const NotFoundSchema = z.object({ message: z.string() });
+
+export const BusinessPageSchema = z.object({
+  items: z.array(BusinessSummarySchema),
+  /** Opaque; send it back as `cursor` for the next page. Null on the last page. */
+  nextCursor: z.string().nullable(),
+});
+export type BusinessPageDto = z.infer<typeof BusinessPageSchema>;
+
+export const BadRequestSchema = z.object({ message: z.string() });
+
+/** Published businesses per active kind slug in a place's subtree. Every active kind is present. */
+export const KindCountsSchema = z.record(z.string(), z.number().int().nonnegative());
+export type KindCountsDto = z.infer<typeof KindCountsSchema>;
+
+export const NearestPlaceSchema = PlaceSchema.extend({
+  distanceKm: z.number().nonnegative(),
+  /** Published businesses of the kind there. */
+  count: z.number().int().positive(),
+});
+export type NearestPlaceDto = z.infer<typeof NearestPlaceSchema>;
+
+const hex = z.string().regex(/^#[0-9a-fA-F]{6}$/);
+
+/** A business's experience screen (the v1 shape every template shares; see seed SCREEN_SCHEMA). */
+export const ScreenSchema = z.object({
+  brand: LocalizedSchema,
+  title: LocalizedSchema,
+  subtitle: LocalizedSchema.optional(),
+  tags: z.array(LocalizedSchema).optional(),
+  items: z.array(z.object({ label: LocalizedSchema, meta: LocalizedSchema.optional() })).min(1),
+  cta: LocalizedSchema,
+  palette: z.object({ bg: hex, surface: hex, ink: hex, accent: hex }),
+  font: z.string().min(1),
+});
+export type ScreenDto = z.infer<typeof ScreenSchema>;

@@ -1,5 +1,13 @@
 import { describe, expect, it } from "vitest";
-import { BusinessDetailSchema, HoursSchema, LocalizedSchema, PlaceSchema } from "./schemas.js";
+import { contract } from "./contract.js";
+import {
+  BusinessDetailSchema,
+  BusinessPageSchema,
+  HoursSchema,
+  LocalizedSchema,
+  PlaceSchema,
+  ScreenSchema,
+} from "./schemas.js";
 
 describe("LocalizedSchema", () => {
   it("accepts any one language", () => {
@@ -64,5 +72,61 @@ describe("BusinessDetailSchema", () => {
       brandId: null,
     };
     expect(BusinessDetailSchema.parse(business).slug).toBe("abu-salim");
+  });
+});
+
+describe("businesses.list query", () => {
+  const query = contract.businesses.list.query;
+  it("defaults limit to 30 and accepts 1 to 100", () => {
+    expect(query.parse({}).limit).toBe(30);
+    expect(query.parse({ limit: "1" }).limit).toBe(1);
+    expect(query.parse({ limit: "100" }).limit).toBe(100);
+  });
+  it("rejects limits outside 1 to 100 and empty cursors", () => {
+    expect(query.safeParse({ limit: "0" }).success).toBe(false);
+    expect(query.safeParse({ limit: "101" }).success).toBe(false);
+    expect(query.safeParse({ cursor: "" }).success).toBe(false);
+  });
+});
+
+describe("BusinessPageSchema", () => {
+  it("carries items and a nullable cursor", () => {
+    expect(BusinessPageSchema.parse({ items: [], nextCursor: null })).toEqual({
+      items: [],
+      nextCursor: null,
+    });
+  });
+});
+
+describe("coordinates", () => {
+  const query = contract.places.nearest.query;
+  it("accept numbers and numeric strings", () => {
+    expect(query.parse({ lat: "32.85", lng: 35.2 })).toEqual({ lat: 32.85, lng: 35.2 });
+  });
+  it("reject blank, non-numeric and out-of-range values", () => {
+    expect(query.safeParse({ lat: "", lng: "35" }).success).toBe(false);
+    expect(query.safeParse({ lat: "  ", lng: "35" }).success).toBe(false);
+    expect(query.safeParse({ lat: "abc", lng: "35" }).success).toBe(false);
+    expect(query.safeParse({ lat: "91", lng: "35" }).success).toBe(false);
+  });
+});
+
+describe("ScreenSchema", () => {
+  const screen = {
+    brand: { he: "המספרה של סאמר", en: "Samer's" },
+    title: { en: "A chair in two taps" },
+    items: [{ label: { en: "Haircut" }, meta: { en: "₪60" } }],
+    cta: { en: "Book" },
+    palette: { bg: "#efe3cf", surface: "#fbf5ea", ink: "#2b1d14", accent: "#b4542a" },
+    font: "Suez One",
+  };
+  it("accepts a showroom screen", () => {
+    expect(ScreenSchema.parse(screen).font).toBe("Suez One");
+  });
+  it("rejects a screen without items or with a bad colour", () => {
+    expect(ScreenSchema.safeParse({ ...screen, items: [] }).success).toBe(false);
+    expect(
+      ScreenSchema.safeParse({ ...screen, palette: { ...screen.palette, bg: "red" } }).success,
+    ).toBe(false);
   });
 });

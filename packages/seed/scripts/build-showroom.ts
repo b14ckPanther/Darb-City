@@ -4,8 +4,11 @@ import {
   loadKinds,
   loadPlaces,
   loadScreens,
+  loadWeekend,
   type SeedBrand,
   type SeedBusinessRecord,
+  toArabDruzeWeek,
+  toChristianWeek,
 } from "../src/index.js";
 import { COMMON_KINDS, FLAGSHIP_CBS, FLAGSHIP_SLUGS } from "../src/showroom.js";
 
@@ -43,6 +46,19 @@ function jitter(seed: string): [number, number] {
 
 const kinds = loadKinds().filter((k) => k.status === "active");
 const screens = loadScreens();
+const weekend = loadWeekend();
+const arabDruze = new Set(weekend.arabDruze);
+const christian = new Set(weekend.christian);
+
+/** Mosques and restaurants keep their own week; other kinds follow the locality's weekend. */
+function hoursFor(place: { cbsCode: string | null }, kindSlug: string, template: Template): Hours {
+  if (kindSlug === "mosques") return MOSQUE_HOURS;
+  const base = HOURS[template] ?? DEFAULT_HOURS;
+  if (template === "menu" || place.cbsCode === null) return base;
+  if (arabDruze.has(place.cbsCode)) return toArabDruzeWeek(base);
+  if (christian.has(place.cbsCode)) return toChristianWeek(base);
+  return base;
+}
 const isFlagship = (p: { slug: string; cbsCode: string | null }) =>
   FLAGSHIP_CBS.has(p.cbsCode ?? "") || FLAGSHIP_SLUGS.has(p.slug);
 const places = loadPlaces().filter(
@@ -77,7 +93,7 @@ for (const place of places) {
       address: place.name,
       lat: Number((place.lat + dLat).toFixed(6)),
       lng: Number((place.lng + dLng).toFixed(6)),
-      hours: slug === "mosques" ? MOSQUE_HOURS : (HOURS[kind.template] ?? DEFAULT_HOURS),
+      hours: hoursFor(place, slug, kind.template),
       attributes: kind.attributes.includes("delivers") ? { delivers: true } : {},
       tier: "example",
     });

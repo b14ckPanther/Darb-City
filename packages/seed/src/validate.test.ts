@@ -8,7 +8,9 @@ import {
   loadPlaces,
   loadScreens,
   loadSectors,
+  loadWeekend,
   SCREEN_SCHEMA,
+  type SeedScreen,
 } from "./index.js";
 import { COMMON_KINDS } from "./showroom.js";
 
@@ -272,5 +274,207 @@ describe("showroom businesses", () => {
       ).toHaveLength(common.length);
       expect([...kindsIn(p.slug)].sort(), p.slug).toEqual(common);
     }
+  });
+});
+
+function luminance(hex: string): number {
+  const [r, g, b] = [1, 3, 5].map((i) => {
+    const c = parseInt(hex.slice(i, i + 2), 16) / 255;
+    return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  }) as [number, number, number];
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}
+const contrast = (a: string, b: string) => {
+  const [hi, lo] = [luminance(a), luminance(b)].sort((x, y) => y - x) as [number, number];
+  return (hi + 0.05) / (lo + 0.05);
+};
+
+describe("screen palettes", () => {
+  it("keep ink readable (WCAG AA) on the background and the surface", () => {
+    for (const [slug, s] of Object.entries(loadScreens())) {
+      expect(contrast(s.palette.ink, s.palette.bg), `${slug} ink/bg`).toBeGreaterThanOrEqual(4.5);
+      expect(
+        contrast(s.palette.ink, s.palette.surface),
+        `${slug} ink/surface`,
+      ).toBeGreaterThanOrEqual(4.5);
+    }
+  });
+});
+
+/** Brands copied into every town must not belong to one. */
+const GENERIC_BRANDS: Record<string, string> = {
+  municipal: "City Services",
+  "school-registration": "School Registration Desk",
+  parking: "Parking Services",
+  permits: "Local Planning Committee",
+  "football-academies": "Galilee Stars Academy",
+  "it-support": "Abu Ghanem NetSupport",
+  hotels: "Rose Valley Cabins",
+};
+/** Brand words that are also tiny localities' names, but here are common words or personal names. */
+const ALLOWED_PLACE_WORDS = new Set([
+  "app-developers:sulam",
+  "architects:shahar",
+  "beekeepers:nahala",
+  "carpentry:erez",
+  "catering:adi",
+  "cleaning:zohar",
+  "community-centres:navve",
+  "ev-charging:barak",
+  "ladies-spa:hamaam",
+  "libraries:manara",
+  "meal-prep:sallama",
+  "metalworks:hadid",
+  "orthodontics:basma",
+]);
+
+describe("showroom brands", () => {
+  const screens = loadScreens();
+  it("give civic services generic names", () => {
+    for (const [kind, en] of Object.entries(GENERIC_BRANDS))
+      expect(screens[kind]?.brand.en, kind).toBe(en);
+  });
+  it("never name a real locality", () => {
+    const matchers = loadPlaces()
+      .filter((p) => ["city", "town", "village"].includes(p.type))
+      .map((p) => {
+        const en = p.name.en ?? "";
+        const he = p.name.he ?? "";
+        return {
+          slug: p.slug,
+          en:
+            en.length >= 5 ? new RegExp(`(?<![A-Za-z])${escapeRegExp(en)}(?![A-Za-z])`, "i") : null,
+          he: he.length >= 3 ? new RegExp(`(^|\\s)${escapeRegExp(he)}($|\\s)`) : null,
+        };
+      });
+    const hits: string[] = [];
+    for (const [kind, screen] of Object.entries(screens)) {
+      for (const m of matchers) {
+        if (m.en?.test(screen.brand.en ?? "") || m.he?.test(screen.brand.he ?? ""))
+          hits.push(`${kind}:${m.slug}`);
+      }
+    }
+    expect(hits.filter((hit) => !ALLOWED_PLACE_WORDS.has(hit))).toEqual([]);
+  });
+});
+
+describe("weekend pattern", () => {
+  const { arabDruze, christian } = loadWeekend();
+  const byCbs = new Map(
+    loadPlaces()
+      .filter((p) => p.cbsCode)
+      .map((p) => [p.cbsCode!, p]),
+  );
+  it("lists unique live localities in the north, in no more than one pattern", () => {
+    for (const list of [arabDruze, christian]) {
+      expect(new Set(list).size).toBe(list.length);
+      for (const code of list) {
+        const place = byCbs.get(code);
+        expect(place?.status, code).toBe("live");
+        expect(["northern-district", "haifa-district"], code).toContain(place?.parent);
+      }
+    }
+    expect(arabDruze.filter((code) => christian.includes(code))).toEqual([]);
+  });
+  it("includes the known localities and leaves out Jewish and mixed ones", () => {
+    for (const code of [
+      "473",
+      "482",
+      "490",
+      "494",
+      "502",
+      "509",
+      "522",
+      "531",
+      "534",
+      "649",
+      "1292",
+      "2710",
+      "4501",
+      "4201",
+      "7300",
+      "7500",
+      "8800",
+      "8900",
+    ])
+      expect(arabDruze, code).toContain(code);
+    for (const code of ["487", "518", "530", "535"]) expect(christian, code).toContain(code);
+    for (const code of [
+      "4000",
+      "7600",
+      "1063",
+      "1139",
+      "1061",
+      "7700",
+      "2300",
+      "8000",
+      "9100",
+      "4100",
+      "6800",
+      "9500",
+      "8200",
+      "9600",
+      "535",
+      "530",
+    ])
+      expect(arabDruze, code).not.toContain(code);
+    for (const code of ["4000", "7600", "1063", "1061", "7500", "7300"])
+      expect(christian, code).not.toContain(code);
+  });
+  it("gives showroom businesses there the local week, but not restaurants or mosques", () => {
+    const businesses = loadBusinesses();
+    const at = (place: string, kind: string) =>
+      businesses.find((b) => b.place === place && b.primaryKind === kind)!;
+    expect(at("sakhnin", "barbershops").hours.weekly[6]?.length).toBeGreaterThan(0);
+    expect(at("sakhnin", "barbershops").hours.weekly[5]).toEqual([
+      { open: "09:00", close: "12:00" },
+    ]);
+    expect(at("haifa", "barbershops").hours.weekly[6] ?? []).toEqual([]);
+    expect(at("sakhnin", "mosques").hours).toEqual(at("haifa", "mosques").hours);
+    const fassuta = at("fassuta", "barbershops");
+    expect(fassuta.hours.weekly[0] ?? []).toEqual([]);
+    expect(fassuta.hours.weekly[6]?.length).toBeGreaterThan(0);
+    expect(at("fassuta", "mosques").hours).toEqual(at("haifa", "mosques").hours);
+  });
+});
+
+/** Every showroom screen is fully Arabic. */
+const ARABIC_SECTORS = new Set(sectors.map((s) => s.slug));
+
+describe("showroom screens in Arabic", () => {
+  const screens = loadScreens();
+  const texts = (s: SeedScreen): Localized[] => [
+    s.brand,
+    s.title,
+    ...(s.subtitle ? [s.subtitle] : []),
+    ...(s.tags ?? []),
+    ...s.items.flatMap((i) => [i.label, ...(i.meta ? [i.meta] : [])]),
+    s.cta,
+  ];
+  it.each(kinds.filter((k) => ARABIC_SECTORS.has(k.sector)).map((k) => k.slug))(
+    "%s has Arabic everywhere",
+    (slug) => {
+      for (const text of texts(screens[slug]!)) {
+        expect(text.ar?.trim(), JSON.stringify(text)).toBeTruthy();
+        expect(blockedIn(text.ar ?? ""), text.ar).toEqual([]);
+      }
+    },
+  );
+});
+
+describe("every showroom screen", () => {
+  it("names its brand, title, call to action and every item in Arabic", () => {
+    const missing: string[] = [];
+    for (const [slug, s] of Object.entries(loadScreens())) {
+      const required: [string, Localized][] = [
+        ["brand", s.brand],
+        ["title", s.title],
+        ["cta", s.cta],
+        ...s.items.map((item, i): [string, Localized] => [`items[${i}].label`, item.label]),
+      ];
+      for (const [where, text] of required)
+        if (!(text.ar ?? "").trim()) missing.push(`${slug}.${where}`);
+    }
+    expect(missing).toEqual([]);
   });
 });

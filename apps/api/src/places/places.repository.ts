@@ -45,6 +45,7 @@ export class PlacesRepository {
   /** The place and every place beneath it. */
   async subtreeIds(place: Place): Promise<string[]> {
     const rows = await this.prisma.place.findMany({
+      // paths end with '/', so a prefix never matches a sibling
       where: { path: { startsWith: place.path } },
       select: { id: true },
     });

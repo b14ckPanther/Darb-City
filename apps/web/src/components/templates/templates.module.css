@@ -1,0 +1,264 @@
+.screen {
+  margin-block: var(--space-5);
+  border-radius: var(--radius-l);
+  overflow: hidden;
+  background: var(--t-bg);
+  color: var(--t-ink);
+  font-family: var(--t-font), var(--font-body);
+  box-shadow: var(--shadow-panel);
+}
+
+.appBar {
+  display: flex;
+  align-items: center;
+  min-block-size: 48px;
+  padding-inline: var(--space-4);
+  background: var(--t-surface);
+  border-block-end: 3px solid var(--t-accent);
+}
+
+.brand {
+  font-weight: 700;
+}
+
+.hero {
+  padding: var(--space-5) var(--space-4) var(--space-2);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--step-2);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.subtitle {
+  margin: var(--space-1) 0 0;
+  font-size: var(--step--1);
+}
+
+.body {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4) var(--space-5);
+}
+
+.strong {
+  font-weight: 700;
+}
+
+.meta {
+  font-size: var(--step--1);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tags li {
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  background: var(--t-surface);
+  font-size: var(--step--1);
+}
+
+.slot li {
+  border: 1px solid var(--t-accent);
+  border-radius: var(--radius-s);
+  font-variant-numeric: tabular-nums;
+}
+
+.amount li {
+  background: var(--t-accent);
+  color: var(--t-on-accent);
+  font-weight: 700;
+}
+
+.pill li {
+  border: 1px solid transparent;
+}
+
+.menu,
+.cards,
+.grid,
+.gallery,
+.timeline,
+.steps,
+.stepper,
+.options {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu li {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  padding-block: var(--space-2);
+}
+
+.leader {
+  flex: 1;
+  border-block-end: 1px dotted var(--t-ink);
+}
+
+.card,
+.tile,
+.gallery li,
+.steps li,
+.options li,
+.timeline li,
+.stepper li {
+  display: grid;
+  gap: 2px;
+  padding: var(--space-3);
+  border-radius: var(--radius-m);
+  background: var(--t-surface);
+}
+
+.grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.swatch {
+  block-size: 56px;
+  border-radius: var(--radius-s);
+  background: var(--t-accent);
+  margin-block-end: var(--space-2);
+}
+
+.gallery {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.frame {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-s);
+  background: linear-gradient(135deg, var(--t-accent), var(--t-bg));
+  margin-block-end: var(--space-2);
+}
+
+.specs,
+.fields {
+  display: grid;
+  margin: 0;
+}
+
+.specs div,
+.fields div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-block: var(--space-2);
+  border-block-end: 1px solid var(--t-surface);
+}
+
+.specs dd,
+.fields dd {
+  margin: 0;
+  font-weight: 700;
+}
+
+.when {
+  font-size: var(--step--1);
+  font-variant-numeric: tabular-nums;
+  border-inline-start: 3px solid var(--t-accent);
+  padding-inline-start: var(--space-2);
+}
+
+.steps li {
+  grid-template-columns: auto 1fr;
+  column-gap: var(--space-3);
+}
+
+.steps .meta {
+  grid-column: 2;
+}
+
+.number {
+  grid-row: span 2;
+  display: grid;
+  place-items: center;
+  inline-size: 28px;
+  block-size: 28px;
+  border-radius: 50%;
+  background: var(--t-accent);
+  color: var(--t-on-accent);
+  font-weight: 700;
+}
+
+.stepper li {
+  grid-template-columns: auto 1fr;
+  column-gap: var(--space-3);
+}
+
+.stepper .meta {
+  grid-column: 2;
+}
+
+.marker {
+  grid-row: span 2;
+  inline-size: 14px;
+  block-size: 14px;
+  margin-block-start: 4px;
+  border-radius: 50%;
+  border: 2px solid var(--t-accent);
+}
+
+.stepper li[data-reached] .marker {
+  background: var(--t-accent);
+}
+
+.pass {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border-radius: var(--radius-m);
+  background: var(--t-surface);
+  border-inline-start: 6px solid var(--t-accent);
+}
+
+.code {
+  display: grid;
+  grid-template-columns: repeat(7, 12px);
+  gap: 2px;
+  justify-content: center;
+}
+
+.code span {
+  block-size: 12px;
+  background: var(--t-bg);
+}
+
+.code span[data-on] {
+  background: var(--t-ink);
+}
+
+.options li {
+  grid-template-columns: auto 1fr;
+  column-gap: var(--space-3);
+}
+
+.options .meta {
+  grid-column: 2;
+}
+
+.check {
+  grid-row: span 2;
+  inline-size: 20px;
+  block-size: 20px;
+  border-radius: 6px;
+  border: 2px solid var(--t-accent);
+}
+
+.check[data-checked] {
+  background: var(--t-accent);
+}

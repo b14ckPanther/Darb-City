@@ -1,0 +1,170 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: rgb(3 17 12 / 0.55);
+  pointer-events: auto;
+  transition: opacity var(--dur) var(--ease-out);
+}
+
+@starting-style {
+  .scrim {
+    opacity: 0;
+  }
+}
+
+/*
+ * Phone: a bottom sheet. --snap-y is how far it sits below fully open, i.e. how much of the panel
+ * is off-screen. It is a length (not a % of the panel) so the body can pad by the same amount.
+ */
+.panel {
+  --panel-size: 92dvh;
+  --peek: 220px;
+  --snap-y: calc(var(--panel-size) * 0.45);
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  block-size: var(--panel-size);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  background: var(--surface-1);
+  border-block-start: 1px solid var(--line);
+  border-start-start-radius: var(--radius-l);
+  border-start-end-radius: var(--radius-l);
+  box-shadow: var(--shadow-panel);
+  pointer-events: auto;
+  /* Whole pixels: a fractional offset makes 44 px targets measure 43.99 px. */
+  transform: translateY(round(calc(var(--snap-y) + var(--drag, 0px)), 1px));
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.panel[data-snap="peek"] {
+  --snap-y: calc(var(--panel-size) - var(--peek));
+}
+
+.panel[data-snap="half"] {
+  --snap-y: calc(var(--panel-size) * 0.45);
+}
+
+.panel[data-snap="full"] {
+  --snap-y: 0px;
+}
+
+.panel[data-dragging] {
+  transition: none;
+}
+
+@starting-style {
+  .panel {
+    transform: translateY(100%);
+  }
+}
+
+.top {
+  display: grid;
+  grid-template-columns: var(--tap) 1fr var(--tap);
+  align-items: center;
+  padding: var(--space-2) var(--space-3) 0;
+}
+
+.handle {
+  justify-self: center;
+  display: grid;
+  place-items: center;
+  inline-size: 72px;
+  block-size: var(--tap);
+  border: 0;
+  background: transparent;
+  cursor: grab;
+  touch-action: none;
+}
+
+.handle::after {
+  content: "";
+  inline-size: 40px;
+  block-size: 4px;
+  border-radius: 2px;
+  background: var(--ivory-200);
+}
+
+.close {
+  /* Last column even when the handle is hidden on desktop: the corner at the inline end. */
+  grid-column: 3;
+  display: grid;
+  place-items: center;
+  inline-size: var(--tap);
+  block-size: var(--tap);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  color: var(--text);
+  cursor: pointer;
+}
+
+/*
+ * The body's lower --snap-y px sit below the screen at peek and half. Padding by that much lets
+ * the end of the content scroll into view at every snap, and the matching scroll padding keeps a
+ * focused element (focus scrolls it into view) above the screen edge rather than in the hidden part.
+ */
+.body {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0 var(--gutter) calc(var(--snap-y) + var(--space-7) + env(safe-area-inset-bottom));
+  scroll-padding-block-end: calc(var(--snap-y) + var(--space-5));
+}
+
+/* Desktop: a side panel on the inline end (right in English, left in Hebrew and Arabic). */
+@media (min-width: 900px) {
+  .scrim {
+    background: rgb(3 17 12 / 0.35);
+  }
+
+  .panel,
+  .panel[data-snap] {
+    --snap-y: 0px;
+  }
+
+  .panel {
+    inset-block: 0;
+    inset-inline-start: auto;
+    inset-inline-end: 0;
+    inline-size: min(480px, 100%);
+    block-size: auto;
+    border-block-start: 0;
+    border-inline-start: 1px solid var(--line);
+    border-start-start-radius: 0;
+    border-start-end-radius: 0;
+    transform: none;
+    transition: opacity var(--dur) var(--ease-out);
+  }
+
+  @starting-style {
+    .panel {
+      opacity: 0;
+      transform: none;
+    }
+  }
+
+  .handle {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel {
+    transition: opacity var(--dur-fast) var(--ease-out);
+  }
+
+  @starting-style {
+    .panel {
+      opacity: 0;
+      transform: translateY(round(var(--snap-y), 1px));
+    }
+  }
+}

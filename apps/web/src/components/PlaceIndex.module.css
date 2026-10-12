@@ -1,0 +1,116 @@
+.section {
+  margin-block: var(--space-6) var(--space-8);
+}
+
+.heading {
+  font-size: var(--step-3);
+  margin-block-end: var(--space-4);
+}
+
+.region + .region {
+  margin-block-start: var(--space-6);
+}
+
+.regionName {
+  font-size: var(--step-2);
+  color: var(--gold-300);
+  margin-block-end: var(--space-2);
+}
+
+.groupLabel {
+  margin: var(--space-3) 0 var(--space-2);
+  color: var(--text-muted);
+  font-size: var(--step--1);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-3);
+  padding: 0;
+  list-style: none;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: var(--tap);
+  padding-inline: var(--space-4);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--line-soft);
+  background: var(--surface-1);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.link:hover {
+  border-color: var(--line);
+}
+
+.details {
+  border-block-start: 1px solid var(--line-soft);
+}
+
+.summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-3);
+  min-block-size: var(--tap);
+  padding-block: var(--space-3);
+  cursor: pointer;
+  font-weight: 700;
+  list-style: none;
+}
+
+.summary::-webkit-details-marker {
+  display: none;
+}
+
+/*
+ * A sage chevron at the inline end shows that the group opens. Its two borders meet at the
+ * block-end/inline-end corner, which is bottom-right in LTR and bottom-left in RTL, so RTL turns
+ * the other way to point down (closed) and up (open) in every locale.
+ */
+.summary::after {
+  content: "";
+  align-self: center;
+  margin-inline-start: auto;
+  inline-size: 0.5em;
+  block-size: 0.5em;
+  border-block-end: 2px solid var(--text-muted);
+  border-inline-end: 2px solid var(--text-muted);
+  transform: rotate(45deg);
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.details[open] > .summary::after {
+  transform: rotate(-135deg);
+}
+
+[dir="rtl"] .summary::after {
+  transform: rotate(-45deg);
+}
+
+[dir="rtl"] .details[open] > .summary::after {
+  transform: rotate(135deg);
+}
+
+.tagline,
+.count {
+  color: var(--text-muted);
+  font-weight: 400;
+  font-size: var(--step--1);
+}
+
+.sectors {
+  display: grid;
+  gap: 0 var(--space-6);
+}
+
+@media (min-width: 900px) {
+  .sectors {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

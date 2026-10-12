@@ -1,0 +1,64 @@
+.dock {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  max-inline-size: 560px;
+}
+
+.form {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  min-block-size: 48px;
+  padding-inline-start: var(--space-4);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+}
+
+.form:focus-within {
+  box-shadow: var(--focus-ring);
+}
+
+.input {
+  flex: 1;
+  min-inline-size: 0;
+  min-block-size: 46px;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+}
+
+.input::placeholder {
+  color: var(--text-muted);
+}
+
+.input:focus-visible {
+  box-shadow: none;
+}
+
+.submit {
+  display: grid;
+  place-items: center;
+  inline-size: var(--tap);
+  block-size: var(--tap);
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--gold-300);
+  cursor: pointer;
+}
+
+@media (max-width: 899px) {
+  .dock {
+    position: fixed;
+    inset-inline: 0;
+    inset-block-end: 0;
+    z-index: 20;
+    max-inline-size: none;
+    padding: var(--space-3) var(--gutter) max(var(--space-3), env(safe-area-inset-bottom));
+    background: linear-gradient(180deg, transparent 0%, var(--night) 35%);
+  }
+}
