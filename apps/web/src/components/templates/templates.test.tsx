@@ -50,3 +50,19 @@ it("parses only valid screens", () => {
   expect(parseScreen(screen)).toEqual(screen);
   expect(parseScreen({ title: { en: "x" } })).toBeNull();
 });
+
+describe("palette guard", () => {
+  const ink = (palette: ScreenDto["palette"]) => {
+    const { container } = render(
+      <ScreenView screen={{ ...screen, palette }} template="booking" locale="en" />,
+    );
+    return (container.firstElementChild as HTMLElement).style.getPropertyValue("--t-ink");
+  };
+  it("keeps a readable ink", () => {
+    expect(ink(screen.palette)).toBe("#2b1d14");
+  });
+  it("swaps an unreadable ink for black or white", () => {
+    expect(ink({ ...screen.palette, ink: "#d8cbb6" })).toBe("#000000");
+    expect(ink({ ...screen.palette, bg: "#1a1a2e", ink: "#2b2b40" })).toBe("#ffffff");
+  });
+});

@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 import type { Locale, Template } from "@darb/core";
 import type { ScreenDto } from "@darb/contracts";
-import { readableOn } from "@/lib/contrast";
+import { contrastRatio, readableOn } from "@/lib/contrast";
 import { TEMPLATE_BODIES } from "./index";
 import { text } from "./shared";
 import styles from "./templates.module.css";
@@ -17,11 +17,14 @@ export function ScreenView({
   locale: Locale;
 }) {
   const Body = TEMPLATE_BODIES[template];
+  const { bg, ink } = screen.palette;
+  // Seeded palettes pass AA; a bad one from the API still renders readable text.
+  const safeInk = contrastRatio(ink, bg) < 4.5 ? readableOn(bg) : ink;
   const font = screen.font.replace(/[^\p{L}\p{N} -]/gu, "");
   const style = {
     "--t-bg": screen.palette.bg,
     "--t-surface": screen.palette.surface,
-    "--t-ink": screen.palette.ink,
+    "--t-ink": safeInk,
     "--t-accent": screen.palette.accent,
     "--t-on-accent": readableOn(screen.palette.accent),
     "--t-font": `"${font}"`,
