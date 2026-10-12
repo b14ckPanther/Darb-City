@@ -5713,83 +5713,100 @@
   "tutors": {
     "brand": {
       "he": "מיכל, מורה למתמטיקה",
-      "en": "Michal, maths tutor"
+      "en": "Michal, maths tutor",
+      "ar": "ميخال، معلمة رياضيات"
     },
     "title": {
       "he": "שיעור מחר?",
-      "en": "Maths lesson tomorrow?"
+      "en": "Maths lesson tomorrow?",
+      "ar": "درس رياضيات بكرا؟"
     },
     "subtitle": {
       "he": "בגרות 5 יח\"ל · בבית או בזום",
-      "en": "Matric maths · home or online"
+      "en": "Matric maths · home or online",
+      "ar": "رياضيات بجروت · بالبيت أو أونلاين"
     },
     "tags": [
       {
         "he": "15:00",
-        "en": "15:00"
+        "en": "15:00",
+        "ar": "15:00"
       },
       {
         "he": "16:00",
-        "en": "16:00"
+        "en": "16:00",
+        "ar": "16:00"
       },
       {
         "he": "17:30",
-        "en": "17:30"
+        "en": "17:30",
+        "ar": "17:30"
       },
       {
         "he": "19:00",
-        "en": "19:00"
+        "en": "19:00",
+        "ar": "19:00"
       },
       {
         "he": "20:00",
-        "en": "20:00"
+        "en": "20:00",
+        "ar": "20:00"
       }
     ],
     "items": [
       {
         "label": {
           "he": "שיעור פרטני",
-          "en": "One-to-one lesson"
+          "en": "One-to-one lesson",
+          "ar": "درس فردي"
         },
         "meta": {
           "he": "₪180 · 60 דק'",
-          "en": "₪180 · 60 min"
+          "en": "₪180 · 60 min",
+          "ar": "₪180 · 60 دقيقة"
         }
       },
       {
         "label": {
           "he": "חבילת 10 שיעורים",
-          "en": "10-lesson pack"
+          "en": "10-lesson pack",
+          "ar": "رزمة 10 دروس"
         },
         "meta": {
           "he": "₪1,600 · חוסכים ₪200",
-          "en": "₪1,600 · save ₪200"
+          "en": "₪1,600 · save ₪200",
+          "ar": "₪1,600 · بتوفّر ₪200"
         }
       },
       {
         "label": {
           "he": "הכנה לבגרות",
-          "en": "Exam prep"
+          "en": "Exam prep",
+          "ar": "تحضير للامتحان"
         },
         "meta": {
           "he": "₪250 · 90 דק'",
-          "en": "₪250 · 90 min"
+          "en": "₪250 · 90 min",
+          "ar": "₪250 · 90 دقيقة"
         }
       },
       {
         "label": {
           "he": "שיעור בזוג",
-          "en": "Pair lesson"
+          "en": "Pair lesson",
+          "ar": "درس لاثنين"
         },
         "meta": {
           "he": "₪120 לתלמיד · 60 דק'",
-          "en": "₪120 each · 60 min"
+          "en": "₪120 each · 60 min",
+          "ar": "₪120 للواحد · 60 دقيقة"
         }
       }
     ],
     "cta": {
       "he": "קביעת שיעור",
-      "en": "Book a lesson"
+      "en": "Book a lesson",
+      "ar": "احجز درس"
     },
     "palette": {
       "bg": "#f6f3ea",
@@ -5802,79 +5819,95 @@
   "art-schools": {
     "brand": {
       "he": "בית הספר לאמנויות כנרת",
-      "en": "Kinneret Arts School"
+      "en": "Kinneret Arts School",
+      "ar": "مدرسة كنيرت للفنون"
     },
     "title": {
       "he": "חוגים לשנה החדשה",
-      "en": "Classes for the new year"
+      "en": "Classes for the new year",
+      "ar": "دورات السنة الجديدة"
     },
     "subtitle": {
       "he": "מוזיקה, ציור וקליגרפיה · מגיל 5",
-      "en": "Music, art and calligraphy · ages 5 and up"
+      "en": "Music, art and calligraphy · ages 5 and up",
+      "ar": "موسيقى، رسم وخط عربي · من عمر 5 وفوق"
     },
     "tags": [
       {
         "he": "מוזיקה",
-        "en": "Music"
+        "en": "Music",
+        "ar": "موسيقى"
       },
       {
         "he": "ציור",
-        "en": "Art"
+        "en": "Art",
+        "ar": "رسم"
       },
       {
         "he": "קליגרפיה",
-        "en": "Calligraphy"
+        "en": "Calligraphy",
+        "ar": "خط"
       },
       {
         "he": "קרמיקה",
-        "en": "Ceramics"
+        "en": "Ceramics",
+        "ar": "خزف"
       }
     ],
     "items": [
       {
         "label": {
           "he": "פסנתר",
-          "en": "Piano"
+          "en": "Piano",
+          "ar": "بيانو"
         },
         "meta": {
           "he": "ב' 16:00 · גילאי 7-10",
-          "en": "Mon 16:00 · ages 7-10"
+          "en": "Mon 16:00 · ages 7-10",
+          "ar": "الاثنين 16:00 · أعمار 7-10"
         }
       },
       {
         "label": {
           "he": "ציור",
-          "en": "Painting"
+          "en": "Painting",
+          "ar": "رسم"
         },
         "meta": {
           "he": "ג' 17:30 · נוער",
-          "en": "Tue 17:30 · teens"
+          "en": "Tue 17:30 · teens",
+          "ar": "الثلاثاء 17:30 · شباب وصبايا"
         }
       },
       {
         "label": {
           "he": "עוד",
-          "en": "Oud"
+          "en": "Oud",
+          "ar": "عود"
         },
         "meta": {
           "he": "ד' 17:00 · גילאי 8-12",
-          "en": "Wed 17:00 · ages 8-12"
+          "en": "Wed 17:00 · ages 8-12",
+          "ar": "الأربعاء 17:00 · أعمار 8-12"
         }
       },
       {
         "label": {
           "he": "קרמיקה",
-          "en": "Clay"
+          "en": "Clay",
+          "ar": "فخّار"
         },
         "meta": {
           "he": "ה' 18:30 · נוער ומבוגרים",
-          "en": "Thu 18:30 · teens and adults"
+          "en": "Thu 18:30 · teens and adults",
+          "ar": "الخميس 18:30 · شباب وكبار"
         }
       }
     ],
     "cta": {
       "he": "שיעור ניסיון חינם",
-      "en": "Free trial class"
+      "en": "Free trial class",
+      "ar": "حصة تجربة مجانية"
     },
     "palette": {
       "bg": "#2335c6",
@@ -5887,79 +5920,95 @@
   "coding": {
     "brand": {
       "he": "קוד אל פג'ר",
-      "en": "Al Fajr Code"
+      "en": "Al Fajr Code",
+      "ar": "كود الفجر"
     },
     "title": {
       "he": "ילדים שבונים משחקים",
-      "en": "Kids who build games"
+      "en": "Kids who build games",
+      "ar": "أولاد ببنوا ألعاب"
     },
     "subtitle": {
       "he": "גילאי 8-14 · בערבית ובעברית",
-      "en": "Ages 8-14 · in Arabic and Hebrew"
+      "en": "Ages 8-14 · in Arabic and Hebrew",
+      "ar": "أعمار 8-14 · بالعربي والعبري"
     },
     "tags": [
       {
         "he": "סקראץ'",
-        "en": "Scratch"
+        "en": "Scratch",
+        "ar": "سكراتش"
       },
       {
         "he": "פייתון",
-        "en": "Python"
+        "en": "Python",
+        "ar": "بايثون"
       },
       {
         "he": "רובוטיקה",
-        "en": "Robotics"
+        "en": "Robotics",
+        "ar": "روبوتات"
       },
       {
         "he": "אפליקציות",
-        "en": "Apps"
+        "en": "Apps",
+        "ar": "تطبيقات"
       }
     ],
     "items": [
       {
         "label": {
           "he": "משחק החלל של ליאן",
-          "en": "Layan's space game"
+          "en": "Layan's space game",
+          "ar": "لعبة الفضاء تبعت ليان"
         },
         "meta": {
           "he": "גיל 10 · סקראץ'",
-          "en": "age 10 · Scratch"
+          "en": "age 10 · Scratch",
+          "ar": "عمر 10 · سكراتش"
         }
       },
       {
         "label": {
           "he": "רובוט שמשקה עציצים",
-          "en": "Plant-watering robot"
+          "en": "Plant-watering robot",
+          "ar": "روبوت بيسقي النباتات"
         },
         "meta": {
           "he": "גיל 12 · ארדואינו",
-          "en": "age 12 · Arduino"
+          "en": "age 12 · Arduino",
+          "ar": "عمر 12 · أردوينو"
         }
       },
       {
         "label": {
           "he": "אפליקציית זמני תפילה",
-          "en": "Prayer times app"
+          "en": "Prayer times app",
+          "ar": "تطبيق أوقات الصلاة"
         },
         "meta": {
           "he": "גיל 14 · פייתון",
-          "en": "age 14 · Python"
+          "en": "age 14 · Python",
+          "ar": "عمر 14 · بايثون"
         }
       },
       {
         "label": {
           "he": "קורס שנתי",
-          "en": "Year course"
+          "en": "Year course",
+          "ar": "دورة سنوية"
         },
         "meta": {
           "he": "₪290 לחודש · שיעור בשבוע",
-          "en": "₪290 a month · weekly class"
+          "en": "₪290 a month · weekly class",
+          "ar": "₪290 بالشهر · حصة أسبوعية"
         }
       }
     ],
     "cta": {
       "he": "שיעור ניסיון חינם",
-      "en": "Free trial class"
+      "en": "Free trial class",
+      "ar": "حصة تجربة مجانية"
     },
     "palette": {
       "bg": "#131a33",
@@ -5972,75 +6021,90 @@
   "courses": {
     "brand": {
       "he": "לומדים אונליין",
-      "en": "Lomdim Online"
+      "en": "Lomdim Online",
+      "ar": "نتعلّم أونلاين"
     },
     "title": {
       "he": "קורס עיצוב חוויית משתמש",
-      "en": "UX design course"
+      "en": "UX design course",
+      "ar": "دورة تصميم UX"
     },
     "subtitle": {
       "he": "פרק 4 מתוך 9 · נשארו 3 שעות",
-      "en": "Module 4 of 9 · 3 hours left"
+      "en": "Module 4 of 9 · 3 hours left",
+      "ar": "وحدة 4 من 9 · باقي 3 ساعات"
     },
     "tags": [
       {
         "he": "שיעורים",
-        "en": "Lessons"
+        "en": "Lessons",
+        "ar": "دروس"
       },
       {
         "he": "תרגילים",
-        "en": "Exercises"
+        "en": "Exercises",
+        "ar": "تمارين"
       },
       {
         "he": "קהילה",
-        "en": "Community"
+        "en": "Community",
+        "ar": "مجتمع"
       }
     ],
     "items": [
       {
         "label": {
           "he": "מחקר משתמשים",
-          "en": "User research"
+          "en": "User research",
+          "ar": "بحث المستخدمين"
         },
         "meta": {
           "he": "הושלם · 100%",
-          "en": "complete · 100%"
+          "en": "complete · 100%",
+          "ar": "خلص · 100%"
         }
       },
       {
         "label": {
           "he": "ארכיטקטורת מידע",
-          "en": "Information architecture"
+          "en": "Information architecture",
+          "ar": "هندسة المعلومات"
         },
         "meta": {
           "he": "בתהליך · 60%",
-          "en": "in progress · 60%"
+          "en": "in progress · 60%",
+          "ar": "قيد التقدّم · 60%"
         }
       },
       {
         "label": {
           "he": "אב טיפוס לחיץ",
-          "en": "Clickable prototype"
+          "en": "Clickable prototype",
+          "ar": "نموذج تفاعلي"
         },
         "meta": {
           "he": "נעול · 0%",
-          "en": "locked · 0%"
+          "en": "locked · 0%",
+          "ar": "مقفول · 0%"
         }
       },
       {
         "label": {
           "he": "פגישה עם מנטור",
-          "en": "Mentor call"
+          "en": "Mentor call",
+          "ar": "مكالمة مع المرشد"
         },
         "meta": {
           "he": "ה' 19:00 · וידאו",
-          "en": "Thu 19:00 · video"
+          "en": "Thu 19:00 · video",
+          "ar": "الخميس 19:00 · فيديو"
         }
       }
     ],
     "cta": {
       "he": "להמשיך מאיפה שעצרתי",
-      "en": "Resume where I left off"
+      "en": "Resume where I left off",
+      "ar": "كمّل من وين وقفت"
     },
     "palette": {
       "bg": "#1b1033",
@@ -6053,75 +6117,90 @@
   "language-schools": {
     "brand": {
       "he": "אולפן מילים",
-      "en": "Milim Language School"
+      "en": "Milim Language School",
+      "ar": "أولبان كلمات"
     },
     "title": {
       "he": "כרטיס תלמיד",
-      "en": "Student card"
+      "en": "Student card",
+      "ar": "بطاقة الطالب"
     },
     "subtitle": {
       "he": "עברית מדוברת · רמה B1",
-      "en": "Spoken Hebrew · level B1"
+      "en": "Spoken Hebrew · level B1",
+      "ar": "عبري محكي · مستوى B1"
     },
     "tags": [
       {
         "he": "ספרייה דיגיטלית",
-        "en": "Digital library"
+        "en": "Digital library",
+        "ar": "مكتبة رقمية"
       },
       {
         "he": "שיחות עם דוברי שפה",
-        "en": "Native speaker chats"
+        "en": "Native speaker chats",
+        "ar": "محادثة مع ناطقين أصليين"
       },
       {
         "he": "תעודה",
-        "en": "Certificate"
+        "en": "Certificate",
+        "ar": "شهادة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "תלמידה",
-          "en": "Student"
+          "en": "Student",
+          "ar": "الطالبة"
         },
         "meta": {
           "he": "לינא חדאד",
-          "en": "Lina Haddad"
+          "en": "Lina Haddad",
+          "ar": "لينا حداد"
         }
       },
       {
         "label": {
           "he": "קבוצה",
-          "en": "Group"
+          "en": "Group",
+          "ar": "المجموعة"
         },
         "meta": {
           "he": "B1 · ערב",
-          "en": "B1 · evening"
+          "en": "B1 · evening",
+          "ar": "B1 · مسائي"
         }
       },
       {
         "label": {
           "he": "השיעור הבא",
-          "en": "Next lesson"
+          "en": "Next lesson",
+          "ar": "الدرس الجاي"
         },
         "meta": {
           "he": "ב' 19:00 · כיתה 3",
-          "en": "Mon 19:00 · room 3"
+          "en": "Mon 19:00 · room 3",
+          "ar": "الاثنين 19:00 · غرفة 3"
         }
       },
       {
         "label": {
           "he": "נוכחות",
-          "en": "Attendance"
+          "en": "Attendance",
+          "ar": "الحضور"
         },
         "meta": {
           "he": "14 מתוך 16 · 88%",
-          "en": "14 of 16 · 88%"
+          "en": "14 of 16 · 88%",
+          "ar": "14 من 16 · 88%"
         }
       }
     ],
     "cta": {
       "he": "מבחן רמה חינם",
-      "en": "Free level test"
+      "en": "Free level test",
+      "ar": "امتحان مستوى مجاني"
     },
     "palette": {
       "bg": "#f2e5c2",
@@ -6134,75 +6213,90 @@
   "psychometric": {
     "brand": {
       "he": "מכון אל נג'אח",
-      "en": "Al Najah Institute"
+      "en": "Al Najah Institute",
+      "ar": "معهد النجاح"
     },
     "title": {
       "he": "בדרך ל-680",
-      "en": "On the way to 680"
+      "en": "On the way to 680",
+      "ar": "بالطريق لـ680"
     },
     "subtitle": {
       "he": "מבחן בעוד 41 ימים · מועד דצמבר",
-      "en": "Exam in 41 days · December sitting"
+      "en": "Exam in 41 days · December sitting",
+      "ar": "الامتحان بعد 41 يوم · موعد كانون الأول"
     },
     "tags": [
       {
         "he": "כמותי",
-        "en": "Quantitative"
+        "en": "Quantitative",
+        "ar": "كمّي"
       },
       {
         "he": "מילולי",
-        "en": "Verbal"
+        "en": "Verbal",
+        "ar": "كلامي"
       },
       {
         "he": "אנגלית",
-        "en": "English"
+        "en": "English",
+        "ar": "إنجليزي"
       }
     ],
     "items": [
       {
         "label": {
           "he": "כמותי",
-          "en": "Quantitative"
+          "en": "Quantitative",
+          "ar": "كمّي"
         },
         "meta": {
           "he": "132 מתוך 150 · 88%",
-          "en": "132 of 150 · 88%"
+          "en": "132 of 150 · 88%",
+          "ar": "132 من 150 · 88%"
         }
       },
       {
         "label": {
           "he": "מילולי",
-          "en": "Verbal"
+          "en": "Verbal",
+          "ar": "كلامي"
         },
         "meta": {
           "he": "118 מתוך 150 · 79%",
-          "en": "118 of 150 · 79%"
+          "en": "118 of 150 · 79%",
+          "ar": "118 من 150 · 79%"
         }
       },
       {
         "label": {
           "he": "אנגלית",
-          "en": "English"
+          "en": "English",
+          "ar": "إنجليزي"
         },
         "meta": {
           "he": "104 מתוך 150 · 69%",
-          "en": "104 of 150 · 69%"
+          "en": "104 of 150 · 69%",
+          "ar": "104 من 150 · 69%"
         }
       },
       {
         "label": {
           "he": "סימולציה הבאה",
-          "en": "Next mock exam"
+          "en": "Next mock exam",
+          "ar": "الامتحان التجريبي الجاي"
         },
         "meta": {
           "he": "ו' 09:00 · בכיתה",
-          "en": "Fri 09:00 · in class"
+          "en": "Fri 09:00 · in class",
+          "ar": "الجمعة 09:00 · بالصف"
         }
       }
     ],
     "cta": {
       "he": "לתרגל עכשיו",
-      "en": "Practise now"
+      "en": "Practise now",
+      "ar": "تمرّن هلّق"
     },
     "palette": {
       "bg": "#f7f1e6",
@@ -6215,87 +6309,105 @@
   "driving": {
     "brand": {
       "he": "בית ספר לנהיגה רמזור",
-      "en": "Ramzor Driving School"
+      "en": "Ramzor Driving School",
+      "ar": "مدرسة الإشارة لتعليم السياقة"
     },
     "title": {
       "he": "השיעורים שלי",
-      "en": "My lessons"
+      "en": "My lessons",
+      "ar": "دروسي"
     },
     "subtitle": {
       "he": "שיעור 18 · טסט בעוד 3 שבועות",
-      "en": "Lesson 18 · test in 3 weeks"
+      "en": "Lesson 18 · test in 3 weeks",
+      "ar": "درس 18 · التِست بعد 3 أسابيع"
     },
     "tags": [
       {
         "he": "א'",
-        "en": "Sun"
+        "en": "Sun",
+        "ar": "أحد"
       },
       {
         "he": "ב'",
-        "en": "Mon"
+        "en": "Mon",
+        "ar": "اثنين"
       },
       {
         "he": "ג'",
-        "en": "Tue"
+        "en": "Tue",
+        "ar": "ثلاثاء"
       },
       {
         "he": "ד'",
-        "en": "Wed"
+        "en": "Wed",
+        "ar": "أربعاء"
       },
       {
         "he": "ה'",
-        "en": "Thu"
+        "en": "Thu",
+        "ar": "خميس"
       },
       {
         "he": "ו'",
-        "en": "Fri"
+        "en": "Fri",
+        "ar": "جمعة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "נהיגה בעיר",
-          "en": "City driving"
+          "en": "City driving",
+          "ar": "سياقة بالمدينة"
         },
         "meta": {
           "he": "א' 07:30 · עם רוני",
-          "en": "Sun 07:30 · with Roni"
+          "en": "Sun 07:30 · with Roni",
+          "ar": "الأحد 07:30 · مع روني"
         }
       },
       {
         "label": {
           "he": "חניה במקביל",
-          "en": "Parallel parking"
+          "en": "Parallel parking",
+          "ar": "صفّ موازي"
         },
         "meta": {
           "he": "ג' 16:00 · 40 דק'",
-          "en": "Tue 16:00 · 40 min"
+          "en": "Tue 16:00 · 40 min",
+          "ar": "الثلاثاء 16:00 · 40 دقيقة"
         }
       },
       {
         "label": {
           "he": "נהיגה בכביש מהיר",
-          "en": "Highway driving"
+          "en": "Highway driving",
+          "ar": "سياقة على الشارع السريع"
         },
         "meta": {
           "he": "ד' 17:00 · 40 דק'",
-          "en": "Wed 17:00 · 40 min"
+          "en": "Wed 17:00 · 40 min",
+          "ar": "الأربعاء 17:00 · 40 دقيقة"
         }
       },
       {
         "label": {
           "he": "טסט פנימי",
-          "en": "Mock test"
+          "en": "Mock test",
+          "ar": "تِست تجريبي"
         },
         "meta": {
           "he": "ו' 09:00 · 60 דק'",
-          "en": "Fri 09:00 · 60 min"
+          "en": "Fri 09:00 · 60 min",
+          "ar": "الجمعة 09:00 · 60 دقيقة"
         }
       }
     ],
     "cta": {
       "he": "קביעת שיעור",
-      "en": "Book a lesson"
+      "en": "Book a lesson",
+      "ar": "احجز درس"
     },
     "palette": {
       "bg": "#f3f4ec",
@@ -6308,79 +6420,95 @@
   "islamic-schools": {
     "brand": {
       "he": "מדרסת אל איסראא",
-      "en": "Al Israa School"
+      "en": "Al Israa School",
+      "ar": "مدرسة الإسراء"
     },
     "title": {
       "he": "ההרשמה פתוחה",
-      "en": "Enrolment is open"
+      "en": "Enrolment is open",
+      "ar": "التسجيل مفتوح"
     },
     "subtitle": {
       "he": "יום פתוח · שבת 10:00 · קמפוס כפר קאסם",
-      "en": "Open day · Sat 10:00 · Kafr Qasim campus"
+      "en": "Open day · Sat 10:00 · Kafr Qasim campus",
+      "ar": "يوم مفتوح · السبت 10:00 · حرم كفر قاسم"
     },
     "tags": [
       {
         "he": "הכול",
-        "en": "All"
+        "en": "All",
+        "ar": "الكل"
       },
       {
         "he": "יסודי",
-        "en": "Primary"
+        "en": "Primary",
+        "ar": "ابتدائي"
       },
       {
         "he": "חטיבה",
-        "en": "Middle"
+        "en": "Middle",
+        "ar": "إعدادي"
       },
       {
         "he": "תיכון",
-        "en": "High school"
+        "en": "High school",
+        "ar": "ثانوي"
       }
     ],
     "items": [
       {
         "label": {
           "he": "יסודי, א'-ו'",
-          "en": "Primary, grades 1-6"
+          "en": "Primary, grades 1-6",
+          "ar": "ابتدائي، صفوف 1-6"
         },
         "meta": {
           "he": "קוראן, ערבית ואנגלית · 24 בכיתה",
-          "en": "Quran, Arabic, English · 24 a class"
+          "en": "Quran, Arabic, English · 24 a class",
+          "ar": "قرآن، عربي، إنجليزي · 24 بالصف"
         }
       },
       {
         "label": {
           "he": "חטיבת ביניים",
-          "en": "Middle school"
+          "en": "Middle school",
+          "ar": "إعدادي"
         },
         "meta": {
           "he": "מדעים ורובוטיקה",
-          "en": "Science and robotics"
+          "en": "Science and robotics",
+          "ar": "علوم وروبوتات"
         }
       },
       {
         "label": {
           "he": "תיכון, מגמת מדעים",
-          "en": "High school, science"
+          "en": "High school, science",
+          "ar": "ثانوي، تخصص علمي"
         },
         "meta": {
           "he": "בגרות 5 יח' מתמטיקה",
-          "en": "5-unit maths matriculation"
+          "en": "5-unit maths matriculation",
+          "ar": "بجروت رياضيات 5 وحدات"
         }
       },
       {
         "label": {
           "he": "תוכנית חיפז",
-          "en": "Hifz programme"
+          "en": "Hifz programme",
+          "ar": "برنامج تحفيظ القرآن"
         },
         "meta": {
           "he": "אחר הצהריים · 4 ימים",
-          "en": "afternoons · 4 days"
+          "en": "afternoons · 4 days",
+          "ar": "بعد الظهر · 4 أيام"
         }
       }
     ],
     "cta": {
       "he": "הרשמה ליום הפתוח",
-      "en": "Join the open day"
+      "en": "Join the open day",
+      "ar": "انضم لليوم المفتوح"
     },
     "palette": {
       "bg": "#eef1e7",
@@ -6393,79 +6521,95 @@
   "vocational": {
     "brand": {
       "he": "מכללת אל מוסתקבל",
-      "en": "Al Mustaqbal College"
+      "en": "Al Mustaqbal College",
+      "ar": "كلية المستقبل"
     },
     "title": {
       "he": "בונים מקצוע בשנה",
-      "en": "A trade in one year"
+      "en": "A trade in one year",
+      "ar": "مهنة بسنة وحدة"
     },
     "subtitle": {
       "he": "מחזור חדש · נובמבר · ערב או בוקר",
-      "en": "New cohort · November · day or evening"
+      "en": "New cohort · November · day or evening",
+      "ar": "فوج جديد · تشرين الثاني · صباحي أو مسائي"
     },
     "tags": [
       {
         "he": "חשמל",
-        "en": "Electrical"
+        "en": "Electrical",
+        "ar": "كهرباء"
       },
       {
         "he": "הנהלת חשבונות",
-        "en": "Bookkeeping"
+        "en": "Bookkeeping",
+        "ar": "مسك دفاتر"
       },
       {
         "he": "עיצוב גרפי",
-        "en": "Graphic design"
+        "en": "Graphic design",
+        "ar": "تصميم جرافيك"
       },
       {
         "he": "סייעות רפואיות",
-        "en": "Medical assistant"
+        "en": "Medical assistant",
+        "ar": "مساعد طبي"
       }
     ],
     "items": [
       {
         "label": {
           "he": "מסלול",
-          "en": "Track"
+          "en": "Track",
+          "ar": "المسار"
         },
         "meta": {
           "he": "חשמלאי מוסמך · 10 חודשים",
-          "en": "Licensed electrician · 10 months"
+          "en": "Licensed electrician · 10 months",
+          "ar": "كهربائي مرخّص · 10 شهور"
         }
       },
       {
         "label": {
           "he": "שעות",
-          "en": "Schedule"
+          "en": "Schedule",
+          "ar": "الجدول"
         },
         "meta": {
           "he": "ערב · א', ג', ה'",
-          "en": "Evenings · Sun, Tue, Thu"
+          "en": "Evenings · Sun, Tue, Thu",
+          "ar": "مسائي · أحد، ثلاثاء، خميس"
         }
       },
       {
         "label": {
           "he": "מימון",
-          "en": "Funding"
+          "en": "Funding",
+          "ar": "التمويل"
         },
         "meta": {
           "he": "מלגת משרד העבודה",
-          "en": "Labour ministry grant"
+          "en": "Labour ministry grant",
+          "ar": "منحة وزارة العمل"
         }
       },
       {
         "label": {
           "he": "סה\"כ",
-          "en": "Total"
+          "en": "Total",
+          "ar": "المجموع"
         },
         "meta": {
           "he": "₪4,200 · אחרי מלגה",
-          "en": "₪4,200 · after the grant"
+          "en": "₪4,200 · after the grant",
+          "ar": "₪4,200 · بعد المنحة"
         }
       }
     ],
     "cta": {
       "he": "להגיש מועמדות",
-      "en": "Apply now"
+      "en": "Apply now",
+      "ar": "قدّم هلّق"
     },
     "palette": {
       "bg": "#1f2733",
@@ -6478,79 +6622,95 @@
   "cooking-schools": {
     "brand": {
       "he": "המטבח של אום עלי",
-      "en": "Umm Ali's Kitchen"
+      "en": "Umm Ali's Kitchen",
+      "ar": "مطبخ أم علي"
     },
     "title": {
       "he": "מקלובה מההתחלה",
-      "en": "Maqluba from scratch"
+      "en": "Maqluba from scratch",
+      "ar": "مقلوبة من الصفر"
     },
     "subtitle": {
       "he": "סדנה ביום ה' · 8 משתתפים · אוכלים יחד",
-      "en": "Thursday workshop · 8 places · we eat together"
+      "en": "Thursday workshop · 8 places · we eat together",
+      "ar": "ورشة الخميس · 8 أماكن · وبناكل سوا"
     },
     "tags": [
       {
         "he": "10:00",
-        "en": "10:00"
+        "en": "10:00",
+        "ar": "10:00"
       },
       {
         "he": "13:00",
-        "en": "13:00"
+        "en": "13:00",
+        "ar": "13:00"
       },
       {
         "he": "17:00",
-        "en": "17:00"
+        "en": "17:00",
+        "ar": "17:00"
       },
       {
         "he": "19:30",
-        "en": "19:30"
+        "en": "19:30",
+        "ar": "19:30"
       }
     ],
     "items": [
       {
         "label": {
           "he": "מקלובה ופתוש",
-          "en": "Maqluba, fattoush"
+          "en": "Maqluba, fattoush",
+          "ar": "مقلوبة وفتوش"
         },
         "meta": {
           "he": "₪280 · 3 שעות",
-          "en": "₪280 · 3 hours"
+          "en": "₪280 · 3 hours",
+          "ar": "₪280 · 3 ساعات"
         }
       },
       {
         "label": {
           "he": "מאפים מלוחים",
-          "en": "Savoury pastries"
+          "en": "Savoury pastries",
+          "ar": "معجنات مالحة"
         },
         "meta": {
           "he": "₪240 · סמבוסק ופטאייר",
-          "en": "₪240 · sambousek, fatayer"
+          "en": "₪240 · sambousek, fatayer",
+          "ar": "₪240 · سمبوسك وفطاير"
         }
       },
       {
         "label": {
           "he": "הורה וילד",
-          "en": "Parent and child"
+          "en": "Parent and child",
+          "ar": "أهل وولاد"
         },
         "meta": {
           "he": "₪320 לזוג · שעתיים",
-          "en": "₪320 a pair · 2 hours"
+          "en": "₪320 a pair · 2 hours",
+          "ar": "₪320 للزوج · ساعتين"
         }
       },
       {
         "label": {
           "he": "שובר מתנה",
-          "en": "Gift voucher"
+          "en": "Gift voucher",
+          "ar": "قسيمة هدية"
         },
         "meta": {
           "he": "מ-₪240",
-          "en": "from ₪240"
+          "en": "from ₪240",
+          "ar": "من ₪240"
         }
       }
     ],
     "cta": {
       "he": "שריון מקום ל-17:00",
-      "en": "Save my place at 17:00"
+      "en": "Save my place at 17:00",
+      "ar": "احجزلي مكان الساعة 17:00"
     },
     "palette": {
       "bg": "#f6ead8",
@@ -6563,87 +6723,105 @@
   "sewing": {
     "brand": {
       "he": "בית התטריז",
-      "en": "Beit Al Tatreez"
+      "en": "Beit Al Tatreez",
+      "ar": "بيت التطريز"
     },
     "title": {
       "he": "רוקמות ביחד",
-      "en": "Stitching together"
+      "en": "Stitching together",
+      "ar": "منطرّز سوا"
     },
     "subtitle": {
       "he": "רקמה פלסטינית ותפירה בסיסית, לנשים",
-      "en": "Tatreez and sewing basics, for women"
+      "en": "Tatreez and sewing basics, for women",
+      "ar": "تطريز وأساسيات الخياطة، للنساء"
     },
     "tags": [
       {
         "he": "א'",
-        "en": "Sun"
+        "en": "Sun",
+        "ar": "أحد"
       },
       {
         "he": "ב'",
-        "en": "Mon"
+        "en": "Mon",
+        "ar": "اثنين"
       },
       {
         "he": "ג'",
-        "en": "Tue"
+        "en": "Tue",
+        "ar": "ثلاثاء"
       },
       {
         "he": "ד'",
-        "en": "Wed"
+        "en": "Wed",
+        "ar": "أربعاء"
       },
       {
         "he": "ה'",
-        "en": "Thu"
+        "en": "Thu",
+        "ar": "خميس"
       },
       {
         "he": "ו'",
-        "en": "Fri"
+        "en": "Fri",
+        "ar": "جمعة"
       }
     ],
     "items": [
       {
         "label": {
           "he": "תפירה למתחילות",
-          "en": "Sewing basics"
+          "en": "Sewing basics",
+          "ar": "أساسيات الخياطة"
         },
         "meta": {
           "he": "א' 18:00 · ₪90",
-          "en": "Sun 18:00 · ₪90"
+          "en": "Sun 18:00 · ₪90",
+          "ar": "الأحد 18:00 · ₪90"
         }
       },
       {
         "label": {
           "he": "תטריז ברוש",
-          "en": "Cypress tatreez"
+          "en": "Cypress tatreez",
+          "ar": "تطريز السرو"
         },
         "meta": {
           "he": "ג' 10:00 · ₪110",
-          "en": "Tue 10:00 · ₪110"
+          "en": "Tue 10:00 · ₪110",
+          "ar": "الثلاثاء 10:00 · ₪110"
         }
       },
       {
         "label": {
           "he": "תיקונים",
-          "en": "Mending"
+          "en": "Mending",
+          "ar": "تصليح ورقع"
         },
         "meta": {
           "he": "ד' 18:30 · ₪80",
-          "en": "Wed 18:30 · ₪80"
+          "en": "Wed 18:30 · ₪80",
+          "ar": "الأربعاء 18:30 · ₪80"
         }
       },
       {
         "label": {
           "he": "תיק רקום",
-          "en": "Tote bag"
+          "en": "Tote bag",
+          "ar": "شنطة قماش"
         },
         "meta": {
           "he": "ו' 09:00 · ₪220",
-          "en": "Fri 09:00 · ₪220"
+          "en": "Fri 09:00 · ₪220",
+          "ar": "الجمعة 09:00 · ₪220"
         }
       }
     ],
     "cta": {
       "he": "הרשמה לסדנה",
-      "en": "Join a workshop"
+      "en": "Join a workshop",
+      "ar": "انضمي لورشة"
     },
     "palette": {
       "bg": "#f5ece2",
