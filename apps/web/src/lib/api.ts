@@ -2,6 +2,7 @@ import {
   contract,
   type BusinessDetailDto,
   type BusinessPageDto,
+  type DensityDto,
   type KindCountsDto,
   type NearestPlaceDto,
   type PlaceDetailDto,
@@ -194,4 +195,15 @@ export async function getNearestPlace(
     }),
   );
   return res.status === 200 ? res.body : null;
+}
+
+/** Business counts per live settlement (the map's glow). Throws when the API is down. */
+export async function getDensity(): Promise<DensityDto> {
+  const res = await call(() =>
+    client().businesses.density({
+      fetchOptions: fetchOptions(cached(REVALIDATE.lists, tags.businesses, tags.places)),
+    }),
+  );
+  if (res.status === 200) return res.body;
+  throw new ApiUnavailableError(res);
 }
