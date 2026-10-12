@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { Fragment } from "react";
 import { LOCALES, pickText } from "@darb/core";
 import { t } from "@darb/i18n";
 import { CityBar } from "@/components/CityBar";
 import { DoorRim } from "@/components/Door";
-import { CONTACT, forBusiness, LIVE_CLIENTS } from "@/content/for-business";
+import { CONTACT, forBusiness, LIVE_CLIENTS, type RichText } from "@/content/for-business";
 import { crumbsFor } from "@/lib/crumbs";
 import { localeOrNotFound } from "@/lib/levels";
 import { pageMetadata } from "@/lib/metadata";
@@ -15,6 +16,16 @@ export function generateStaticParams() {
 }
 
 type Props = { params: Promise<{ locale: string }> };
+
+/** Latin runs (store names) are isolated so they keep their order inside Hebrew and Arabic. */
+function Rich({ text }: { text: RichText }) {
+  if (typeof text === "string") return text;
+  return text.map((part, i) => (
+    <Fragment key={i}>
+      {typeof part === "string" ? part : <bdi dir="ltr">{part.latin}</bdi>}
+    </Fragment>
+  ));
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const locale = localeOrNotFound((await params).locale);
@@ -49,7 +60,9 @@ export default async function ForBusinessPage({ params }: Props) {
             <li key={point.title} className={styles.point}>
               <DoorRim className={styles.rim} />
               <h2 className={styles.pointTitle}>{point.title}</h2>
-              <p>{point.body}</p>
+              <p>
+                <Rich text={point.body} />
+              </p>
             </li>
           ))}
         </ul>

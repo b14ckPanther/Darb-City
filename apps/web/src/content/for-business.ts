@@ -1,9 +1,22 @@
 import type { Locale, Localized } from "@darb/core";
 
+/** A run of Latin text (a store or brand name) kept in its own order inside RTL copy. */
+export interface LatinRun {
+  latin: string;
+}
+/** Plain copy, or copy split so that Latin names render isolated (`<bdi dir="ltr">`). */
+export type RichText = string | readonly (string | LatinRun)[];
+
+export function plainText(text: RichText): string {
+  return typeof text === "string"
+    ? text
+    : text.map((part) => (typeof part === "string" ? part : part.latin)).join("");
+}
+
 export interface ForBusinessCopy {
   title: string;
   lead: string;
-  points: { title: string; body: string }[];
+  points: { title: string; body: RichText }[];
   clientsTitle: string;
   contactTitle: string;
   contactBody: string;
@@ -26,7 +39,7 @@ export const forBusiness: Record<Locale, ForBusinessCopy> = {
       },
       {
         title: "A native app",
-        body: "On the App Store and Google Play, with your name, your colours and your language.",
+        body: "We build your native app and publish it for you on the App Store and Google Play, with your name, your colours and your language.",
       },
     ],
     clientsTitle: "Live client work",
@@ -47,7 +60,16 @@ export const forBusiness: Record<Locale, ForBusinessCopy> = {
         title: "אפליקציית ווב",
         body: "מהירה, ניתנת להתקנה וקלה למציאה. הזמנות, תורים ושאלות מגיעים ישר אליכם.",
       },
-      { title: "אפליקציה נייטיב", body: "ב-App Store וב-Google Play, עם השם, הצבעים והשפה שלכם." },
+      {
+        title: "אפליקציה נייטיב",
+        body: [
+          "אנחנו בונים לכם אפליקציה נייטיב ומפרסמים אותה בשבילכם ב-",
+          { latin: "App Store" },
+          " וב-",
+          { latin: "Google Play" },
+          ", עם השם, הצבעים והשפה שלכם.",
+        ],
+      },
     ],
     clientsTitle: "עבודות חיות של לקוחות",
     contactTitle: "דברו איתנו",
@@ -67,7 +89,16 @@ export const forBusiness: Record<Locale, ForBusinessCopy> = {
         title: "تطبيق ويب",
         body: "سريع، قابل للتثبيت وسهل الإيجاد. الطلبات والحجوزات والأسئلة تصلك مباشرة.",
       },
-      { title: "تطبيق أصلي", body: "على App Store وGoogle Play، باسمك وألوانك ولغتك." },
+      {
+        title: "تطبيق أصلي",
+        body: [
+          "نبني لك تطبيقًا أصليًا وننشره نيابةً عنك على ",
+          { latin: "App Store" },
+          " و",
+          { latin: "Google Play" },
+          "، باسمك وألوانك ولغتك.",
+        ],
+      },
     ],
     clientsTitle: "أعمال منشورة لزبائننا",
     contactTitle: "تحدّث معنا",
