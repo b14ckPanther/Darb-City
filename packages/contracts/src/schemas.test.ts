@@ -3,6 +3,7 @@ import { contract } from "./contract.js";
 import {
   BusinessDetailSchema,
   BusinessPageSchema,
+  DensitySchema,
   HoursSchema,
   LocalizedSchema,
   PlaceSchema,
@@ -128,5 +129,17 @@ describe("ScreenSchema", () => {
     expect(
       ScreenSchema.safeParse({ ...screen, palette: { ...screen.palette, bg: "red" } }).success,
     ).toBe(false);
+  });
+});
+
+describe("DensitySchema", () => {
+  it("maps place slugs to non-negative whole counts", () => {
+    expect(DensitySchema.parse({ sakhnin: 2, tamra: 0 })).toEqual({ sakhnin: 2, tamra: 0 });
+    expect(() => DensitySchema.parse({ sakhnin: -1 })).toThrow();
+    expect(() => DensitySchema.parse({ sakhnin: 1.5 })).toThrow();
+  });
+  it("is served at GET /density", () => {
+    expect(contract.businesses.density.path).toBe("/density");
+    expect(contract.businesses.density.method).toBe("GET");
   });
 });

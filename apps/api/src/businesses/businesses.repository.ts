@@ -131,6 +131,20 @@ export class BusinessesRepository {
     return counts;
   }
 
+  /** See DensitySchema. One query; places' materialized paths end with '/'. */
+  async density(): Promise<Record<string, number>> {
+    const rows = await this.prisma.$queryRaw<{ slug: string; n: number }[]>`
+      SELECT s.slug, (COUNT(DISTINCT b.id) FILTER (WHERE pk.id IS NOT NULL))::int AS n
+      FROM "Place" s
+      LEFT JOIN "Place" p ON p.path LIKE s.path || '%'
+      LEFT JOIN "Business" b ON b."placeId" = p.id AND b.status = 'published'
+      LEFT JOIN "Kind" pk ON pk.id = b."primaryKindId" AND pk.status = 'active'
+      WHERE s.status = 'live' AND s.type IN ('city', 'town', 'village')
+      GROUP BY s.slug
+      ORDER BY s.slug`;
+    return Object.fromEntries(rows.map((r) => [r.slug, r.n]));
+  }
+
   async nearestPlacesWithKind(
     kindIds: string[],
     lat: number,

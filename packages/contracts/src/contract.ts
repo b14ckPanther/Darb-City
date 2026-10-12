@@ -4,6 +4,7 @@ import {
   BadRequestSchema,
   BusinessDetailSchema,
   BusinessPageSchema,
+  DensitySchema,
   KindCountsSchema,
   NearestPlaceSchema,
   NotFoundSchema,
@@ -86,6 +87,11 @@ export const contract = c.router({
         limit: z.coerce.number().int().min(1).max(20).default(5),
       }),
       responses: { 200: z.array(NearestPlaceSchema), 404: NotFoundSchema },
+    },
+    density: {
+      method: "GET",
+      path: "/density",
+      responses: { 200: DensitySchema },
     },
   },
 });
