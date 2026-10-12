@@ -61,4 +61,15 @@ describe("GET /nearest-place", () => {
     const res = await request(app.getHttpServer()).get("/nearest-place?lat=200&lng=35");
     expect(res.status).toBe(400);
   });
+  it("rejects blank coordinates instead of reading them as zero", async () => {
+    expect((await request(app.getHttpServer()).get("/nearest-place?lat=&lng=35")).status).toBe(400);
+    expect((await request(app.getHttpServer()).get("/nearest-place?lat=32.8&lng=")).status).toBe(
+      400,
+    );
+  });
+  it("answers 200 with a live place for valid coordinates", async () => {
+    const res = await request(app.getHttpServer()).get("/nearest-place?lat=32.85&lng=35.21");
+    expect(res.status).toBe(200);
+    expect(res.body.status).toBe("live");
+  });
 });

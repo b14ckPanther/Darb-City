@@ -29,6 +29,7 @@ export class BusinessesRepository {
     const where: Prisma.BusinessWhereInput = {
       status: "published",
       placeId: { in: args.placeIds },
+      primaryKind: { is: { status: "active" } },
       ...(args.kindIds ? { kinds: { some: { kindId: { in: args.kindIds } } } } : {}),
     };
     const include = { place: { select: { slug: true } } } as const;
@@ -62,5 +63,20 @@ export class BusinessesRepository {
         .filter((r): r is BusinessWithPlace => r !== undefined),
       hasMore: window.length > args.limit,
     };
+  }
+
+  /** A published business in exactly this place, with only its active kinds. */
+  detail(placeSlug: string, slug: string) {
+    return this.prisma.business.findFirst({
+      where: {
+        slug,
+        status: "published",
+        place: { slug: placeSlug },
+        primaryKind: { is: { status: "active" } },
+      },
+      include: {
+        kinds: { where: { kind: { is: { status: "active" } } }, select: { kindId: true } },
+      },
+    });
   }
 }

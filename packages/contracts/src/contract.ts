@@ -13,6 +13,10 @@ import {
 
 const c = initContract();
 
+/** A coordinate from a query string. Blank strings are rejected instead of coerced to 0. */
+const coordinate = (min: number, max: number) =>
+  z.union([z.number(), z.string().trim().min(1)]).pipe(z.coerce.number().min(min).max(max));
+
 export const contract = c.router({
   places: {
     list: {
@@ -30,10 +34,7 @@ export const contract = c.router({
     nearest: {
       method: "GET",
       path: "/nearest-place",
-      query: z.object({
-        lat: z.coerce.number().min(-90).max(90),
-        lng: z.coerce.number().min(-180).max(180),
-      }),
+      query: z.object({ lat: coordinate(-90, 90), lng: coordinate(-180, 180) }),
       responses: { 200: PlaceSchema, 404: NotFoundSchema },
     },
   },

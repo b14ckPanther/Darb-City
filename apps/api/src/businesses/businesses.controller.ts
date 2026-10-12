@@ -2,7 +2,6 @@ import { Controller, Inject } from "@nestjs/common";
 import { contract } from "@darb/contracts";
 import { TsRestHandler, tsRestHandler } from "@ts-rest/nest";
 import { PlacesRepository } from "../places/places.repository.js";
-import { PrismaService } from "../prisma/prisma.service.js";
 import { TaxonomyRepository } from "../taxonomy/taxonomy.repository.js";
 import { toBusinessDetail, toBusinessSummary } from "./business.mapper.js";
 import { BusinessesRepository } from "./businesses.repository.js";
@@ -14,7 +13,6 @@ export type Clock = () => Date;
 @Controller()
 export class BusinessesController {
   constructor(
-    private readonly prisma: PrismaService,
     private readonly places: PlacesRepository,
     private readonly taxonomy: TaxonomyRepository,
     private readonly businesses: BusinessesRepository,
@@ -52,10 +50,7 @@ export class BusinessesController {
         };
       },
       get: async ({ params }) => {
-        const row = await this.prisma.business.findFirst({
-          where: { slug: params.slug, status: "published", place: { slug: params.placeSlug } },
-          include: { kinds: { select: { kindId: true } } },
-        });
+        const row = await this.businesses.detail(params.placeSlug, params.slug);
         if (!row)
           return {
             status: 404,

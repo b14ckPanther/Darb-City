@@ -96,3 +96,16 @@ describe("BusinessPageSchema", () => {
     });
   });
 });
+
+describe("coordinates", () => {
+  const query = contract.places.nearest.query;
+  it("accept numbers and numeric strings", () => {
+    expect(query.parse({ lat: "32.85", lng: 35.2 })).toEqual({ lat: 32.85, lng: 35.2 });
+  });
+  it("reject blank, non-numeric and out-of-range values", () => {
+    expect(query.safeParse({ lat: "", lng: "35" }).success).toBe(false);
+    expect(query.safeParse({ lat: "  ", lng: "35" }).success).toBe(false);
+    expect(query.safeParse({ lat: "abc", lng: "35" }).success).toBe(false);
+    expect(query.safeParse({ lat: "91", lng: "35" }).success).toBe(false);
+  });
+});
