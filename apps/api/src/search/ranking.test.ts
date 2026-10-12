@@ -66,3 +66,17 @@ describe("ranking", () => {
     expect(out[0]!.row.slug).toBe("b00");
   });
 });
+
+describe("ranking ties", () => {
+  it("breaks a tie on slug, then on id (a chain repeats its slug in every town)", () => {
+    const twin = (id: string, slug: string): Candidate => ({
+      ...c(slug, { text: 0.5 }),
+      row: { ...row(slug), id },
+    });
+    expect(
+      rank([twin("id-2", "halawa"), twin("id-1", "halawa"), twin("id-0", "zeta")]).map(
+        (r) => r.row.id,
+      ),
+    ).toEqual(["id-1", "id-2", "id-0"]);
+  });
+});

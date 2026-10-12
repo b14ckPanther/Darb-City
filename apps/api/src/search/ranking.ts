@@ -6,6 +6,8 @@ export interface Ranked extends Candidate {
   score: number;
 }
 
+const cmp = (a: string, b: string) => (a < b ? -1 : a > b ? 1 : 0);
+
 /** Features that are unknown for every candidate (no text, no vector, no point) carry no weight. */
 export function rank(candidates: Candidate[], config = RANKING): Ranked[] {
   const w = config.weights;
@@ -17,21 +19,21 @@ export function rank(candidates: Candidate[], config = RANKING): Ranked[] {
     (hasVector ? w.vector : 0) +
     (hasDistance ? w.distance : 0) +
     w.completeness;
-  return candidates
-    .map((c) => {
-      const distance = c.km === null ? 0 : 1 / (1 + c.km / config.distanceScaleKm);
-      const sum =
-        (hasText ? w.text * c.text : 0) +
-        (hasVector ? w.vector * c.vector : 0) +
-        (hasDistance ? w.distance * distance : 0) +
-        w.completeness * c.completeness;
-      const relevance = sum / total;
-      const boost = Math.min(config.tierBoost[c.row.tier] ?? 0, config.tierCap);
-      return { ...c, relevance, score: relevance + boost };
-    })
-    .sort(
-      (a, b) =>
-        b.score - a.score || (a.row.slug < b.row.slug ? -1 : a.row.slug > b.row.slug ? 1 : 0),
-    )
-    .slice(0, config.limit);
+  return (
+    candidates
+      .map((c) => {
+        const distance = c.km === null ? 0 : 1 / (1 + c.km / config.distanceScaleKm);
+        const sum =
+          (hasText ? w.text * c.text : 0) +
+          (hasVector ? w.vector * c.vector : 0) +
+          (hasDistance ? w.distance * distance : 0) +
+          w.completeness * c.completeness;
+        const relevance = sum / total;
+        const boost = Math.min(config.tierBoost[c.row.tier] ?? 0, config.tierCap);
+        return { ...c, relevance, score: relevance + boost };
+      })
+      // Slugs repeat across places (one chain, many towns), so the id breaks the last tie.
+      .sort((a, b) => b.score - a.score || cmp(a.row.slug, b.row.slug) || cmp(a.row.id, b.row.id))
+      .slice(0, config.limit)
+  );
 }
