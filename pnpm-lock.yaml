@@ -116,6 +116,9 @@ importers:
 
   apps/api:
     dependencies:
+      '@darb/contracts':
+        specifier: workspace:*
+        version: link:../../packages/contracts
       '@darb/core':
         specifier: workspace:*
         version: link:../../packages/core
