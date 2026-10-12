@@ -1,0 +1,89 @@
+.plaza {
+  position: absolute;
+  inset: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  background:
+    radial-gradient(90% 55% at 50% 12%, rgb(217 165 76 / 0.12) 0%, transparent 60%),
+    linear-gradient(180deg, var(--night) 0%, var(--forest-950) 100%);
+}
+
+.caption {
+  position: absolute;
+  /* Below the translucent site header on desktop (StageMount.module.css --stage-top). */
+  inset-block-start: calc(var(--stage-top, 0px) + var(--space-4));
+  inset-inline: var(--gutter);
+  z-index: 1;
+  margin: 0;
+  color: var(--text-soft);
+  font-weight: 700;
+  text-align: center;
+}
+
+.canvas {
+  position: relative;
+  inline-size: 100%;
+}
+
+.scenery {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  display: block;
+  overflow: visible;
+}
+
+/* Parallax: --px (-1…1) follows the pointer; nearer rows (--parallax 1) move most. */
+.row,
+.item {
+  transform: translateX(calc(var(--px, 0) * var(--parallax, 0) * 12px));
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.links {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  position: absolute;
+}
+
+.door {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  inline-size: 100%;
+  block-size: 100%;
+  padding-block-end: 2px;
+  border-radius: var(--radius-s);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.label {
+  display: -webkit-box;
+  max-inline-size: 100%;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.door:hover .label,
+.door:focus-visible .label {
+  color: var(--gold-300);
+}
+
+.door[data-empty] .label {
+  color: var(--text-muted);
+}

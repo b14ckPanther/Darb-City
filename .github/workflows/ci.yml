@@ -40,9 +40,13 @@ jobs:
       - run: pnpm format:check
       - name: Unit and API integration tests
         run: pnpm test
+      # CI never downloads map tiles: e2e serves the committed 1 KB fixture (MAP_TILES_DIR in
+      # apps/web/playwright.config.ts). This keeps the fixture equal to what its generator writes.
+      - name: Map test tiles are reproducible
+        run: pnpm --filter @darb/web exec node scripts/tiles/make-test-tiles.mjs --check
       - name: Migrate and seed the e2e database
         run: pnpm --filter @darb/api db:deploy && pnpm --filter @darb/api db:seed
-      - name: First-load JS budget
+      - name: First-load JS and lazy stage budgets
         run: pnpm --filter @darb/web budget
       - run: pnpm --filter @darb/web exec playwright install --with-deps chromium
       - name: End-to-end, accessibility and LCP

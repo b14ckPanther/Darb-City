@@ -15,7 +15,7 @@ export const en = {
   whatsapp: "WhatsApp",
   directions: "Directions",
   share: "Share",
-  tagline: "Every halal business, in every city, town and village.",
+  tagline: "Every business, in every city, town and village.",
   skipToContent: "Skip to content",
   pathBar: "You are here",
   upOneLevel: "Up one level",
@@ -57,6 +57,11 @@ export const en = {
   backToCity: "Back to the city",
   unreachable: "Darb can't be reached right now.",
   retry: "Try again",
+  mapLabel: "Map of Darb's live places",
+  plazaLabel: "{place}: streets and doors",
+  showMap: "Map",
+  showList: "List",
+  mapData: "Map data",
 };
 
 export type Messages = typeof en;

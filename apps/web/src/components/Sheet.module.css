@@ -121,8 +121,9 @@
 
 /* Desktop: a side panel on the inline end (right in English, left in Hebrew and Arabic). */
 @media (min-width: 900px) {
+  /* Server HTML still has the scrim until the client knows it is on desktop: never show it here. */
   .scrim {
-    background: rgb(3 17 12 / 0.35);
+    display: none;
   }
 
   .panel,

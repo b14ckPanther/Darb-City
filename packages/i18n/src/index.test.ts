@@ -53,3 +53,22 @@ it("fills the web city messages", () => {
   expect(t("ar", "businessCount", { count: 3 })).toBe("عدد المصالح: 3");
   expect(t("he", "allOf", { place: "חיפה" })).toBe("כל חיפה");
 });
+
+describe("stage copy", () => {
+  it("names the map, the plaza and the Map/List switch in every language", () => {
+    expect(t("en", "mapLabel")).toBe("Map of Darb's live places");
+    expect(t("en", "plazaLabel", { place: "Sakhnin" })).toBe("Sakhnin: streets and doors");
+    expect(t("he", "plazaLabel", { place: "סח'נין" })).toBe("סח'נין: רחובות ודלתות");
+    expect(t("ar", "plazaLabel", { place: "سخنين" })).toBe("سخنين: الشوارع والأبواب");
+    expect([t("he", "showMap"), t("ar", "showMap"), t("en", "showMap")]).toEqual([
+      "מפה",
+      "خريطة",
+      "Map",
+    ]);
+    expect([t("he", "showList"), t("ar", "showList"), t("en", "showList")]).toEqual([
+      "רשימה",
+      "قائمة",
+      "List",
+    ]);
+  });
+});

@@ -17,7 +17,7 @@ export const he: Messages = {
   whatsapp: "וואטסאפ",
   directions: "ניווט",
   share: "שיתוף",
-  tagline: "כל עסק חלאל, בכל עיר, עיירה וכפר.",
+  tagline: "כל עסק, בכל עיר, עיירה וכפר.",
   skipToContent: "דילוג לתוכן",
   pathBar: "אתם כאן",
   upOneLevel: "רמה אחת למעלה",
@@ -59,4 +59,9 @@ export const he: Messages = {
   backToCity: "חזרה לעיר",
   unreachable: "אין חיבור לדרב כרגע.",
   retry: "לנסות שוב",
+  mapLabel: "מפת המקומות הפעילים בדרב",
+  plazaLabel: "{place}: רחובות ודלתות",
+  showMap: "מפה",
+  showList: "רשימה",
+  mapData: "נתוני מפה",
 };

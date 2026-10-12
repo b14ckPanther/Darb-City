@@ -17,7 +17,7 @@ export const ar: Messages = {
   whatsapp: "واتساب",
   directions: "الاتجاهات",
   share: "مشاركة",
-  tagline: "كل مصلحة حلال، في كل مدينة وبلدة وقرية.",
+  tagline: "كل مصلحة، في كل مدينة وبلدة وقرية.",
   skipToContent: "انتقل إلى المحتوى",
   pathBar: "أنت هنا",
   upOneLevel: "مستوى واحد للأعلى",
@@ -59,4 +59,9 @@ export const ar: Messages = {
   backToCity: "العودة إلى المدينة",
   unreachable: "لا يمكن الوصول إلى درب الآن.",
   retry: "حاول مرة أخرى",
+  mapLabel: "خريطة الأماكن الفعّالة في درب",
+  plazaLabel: "{place}: الشوارع والأبواب",
+  showMap: "خريطة",
+  showList: "قائمة",
+  mapData: "بيانات الخريطة",
 };

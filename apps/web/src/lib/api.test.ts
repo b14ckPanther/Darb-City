@@ -5,6 +5,7 @@ import {
   ApiUnavailableError,
   getBusiness,
   getBusinesses,
+  getDensity,
   getKindCounts,
   getNearestPlace,
   getNearestPlacesWithKind,
@@ -80,6 +81,17 @@ describe("api client", () => {
     ).rejects.toBeInstanceOf(ApiBadRequestError);
     fetchMock.mockResolvedValue(Response.json({ message: "nope" }, { status: 404 }));
     expect(await getBusinesses("nowhere")).toBeNull();
+  });
+
+  it("fetches density with the businesses and places tags", async () => {
+    fetchMock.mockResolvedValue(Response.json({ sakhnin: 4 }));
+    expect(await getDensity()).toEqual({ sakhnin: 4 });
+    const [url, init] = fetchMock.mock.calls[0]!;
+    expect(String(url)).toBe("http://api.test/density");
+    expect((init as RequestInit & { next?: unknown }).next).toEqual({
+      revalidate: 300,
+      tags: ["businesses", "places"],
+    });
   });
 });
 

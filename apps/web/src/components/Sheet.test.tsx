@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { act, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const push = vi.fn();
@@ -15,23 +15,24 @@ beforeEach(() => {
 });
 afterEach(() => push.mockReset());
 
+const sheet = () => (
+  <Sheet
+    closeHref="/sakhnin/beauty/barbershops"
+    labelledBy="sheet-title"
+    returnFocusTo="sakhnin/samers-barbershop"
+    labels={{
+      close: "Close",
+      resize: { peek: "Resize, small", half: "Resize, half", full: "Resize, full" },
+    }}
+  >
+    <h2 id="sheet-title">Samer's</h2>
+    <a href="https://wa.me/1">WhatsApp</a>
+    <button type="button">Share</button>
+  </Sheet>
+);
+
 const renderSheet = () =>
-  render(
-    <Sheet
-      closeHref="/sakhnin/beauty/barbershops"
-      labelledBy="sheet-title"
-      returnFocusTo="sakhnin/samers-barbershop"
-      labels={{
-        close: "Close",
-        resize: { peek: "Resize, small", half: "Resize, half", full: "Resize, full" },
-      }}
-    >
-      <h2 id="sheet-title">Samer's</h2>
-      <a href="https://wa.me/1">WhatsApp</a>
-      <button type="button">Share</button>
-    </Sheet>,
-    { container: document.body.appendChild(document.createElement("div")) },
-  );
+  render(sheet(), { container: document.body.appendChild(document.createElement("div")) });
 
 describe("Sheet", () => {
   it("opens as a labelled modal dialog with focus on close and the city inert", () => {
@@ -44,6 +45,36 @@ describe("Sheet", () => {
       expect(document.getElementById(id)?.hasAttribute("inert")).toBe(true);
     expect(document.querySelector(".skip-link")?.hasAttribute("inert")).toBe(true);
     expect(dialog.getAttribute("tabindex")).toBe("-1");
+  });
+
+  it("hydrates in place and keeps the server's node: focus on close, the rest of the page inert", async () => {
+    const { renderToString } = await import("react-dom/server");
+    const { hydrateRoot } = await import("react-dom/client");
+    const city = document.body.appendChild(document.createElement("div"));
+    city.id = "city";
+    city.innerHTML = renderToString(sheet());
+    const served = city.querySelector("[role=dialog]");
+    expect(served).not.toBeNull();
+    const errors: unknown[] = [];
+    const consoleError = vi.spyOn(console, "error").mockImplementation((e) => errors.push(e));
+    let root: ReturnType<typeof hydrateRoot> | undefined;
+    await act(async () => {
+      root = hydrateRoot(city, sheet(), { onRecoverableError: (e) => errors.push(e) });
+    });
+    consoleError.mockRestore();
+    expect(errors).toEqual([]);
+    // The very node the server sent: replacing it would replay the entrance, cancel its
+    // transitions and repaint it (a later Largest Contentful Paint).
+    expect(served?.isConnected).toBe(true);
+    expect(document.querySelectorAll("[role=dialog]")).toHaveLength(1);
+    expect(document.querySelector("[role=dialog]")).toBe(served);
+    expect(served?.closest("#city")).toBe(city);
+    expect(document.activeElement?.getAttribute("data-sheet-close")).toBe("");
+    for (const id of ["site-header", "city-bar", "city-list"])
+      expect(document.getElementById(id)?.hasAttribute("inert")).toBe(true);
+    act(() => root?.unmount());
+    expect(document.querySelector("[data-sheet]")).toBeNull();
+    expect(document.getElementById("site-header")?.hasAttribute("inert")).toBe(false);
   });
 
   it("makes every sibling of the sheet and its ancestors inert, and restores them", () => {
@@ -153,4 +184,57 @@ describe("snap rules", () => {
     expect(snapFromDrag("half", 80)).toBe("peek");
     expect(snapFromDrag("half", 30)).toBe("half");
   });
+});
+
+function stubDesktop() {
+  vi.stubGlobal("matchMedia", (media: string) => ({
+    matches: media === "(min-width: 900px)",
+    media,
+    addEventListener: () => {},
+    removeEventListener: () => {},
+  }));
+}
+
+describe("Sheet on desktop", () => {
+  beforeEach(stubDesktop);
+  afterEach(() => vi.unstubAllGlobals());
+
+  it("is a non-modal side panel: no scrim, nothing inert", () => {
+    renderSheet();
+    const dialog = screen.getByRole("dialog");
+    expect(dialog.hasAttribute("aria-modal")).toBe(false);
+    expect(document.querySelector("[data-sheet] > [aria-hidden='true']")).toBeNull();
+    for (const id of ["site-header", "city-bar", "city-list"])
+      expect(document.getElementById(id)?.hasAttribute("inert")).toBe(false);
+    expect(document.activeElement?.getAttribute("data-sheet-close")).toBe("");
+  });
+
+  it("lets Tab and Shift+Tab leave the panel: nothing traps focus but the phone sheet", () => {
+    renderSheet();
+    const dialog = screen.getByRole("dialog");
+    const share = screen.getByRole("button", { name: "Share" });
+    share.focus();
+    expect(fireEvent.keyDown(dialog, { key: "Tab" })).toBe(true);
+    expect(document.activeElement).toBe(share);
+    const handle = document.querySelector<HTMLElement>("[data-sheet-handle]")!;
+    handle.focus();
+    expect(fireEvent.keyDown(dialog, { key: "Tab", shiftKey: true })).toBe(true);
+    expect(document.activeElement).toBe(handle);
+  });
+
+  it("gives focus back to its row on close", () => {
+    const { unmount } = renderSheet();
+    unmount();
+    expect(document.activeElement?.getAttribute("data-business-link")).toBe(
+      "sakhnin/samers-barbershop",
+    );
+  });
+});
+
+it("ignores an Escape that something else already handled", () => {
+  renderSheet();
+  const event = new KeyboardEvent("keydown", { key: "Escape", bubbles: true, cancelable: true });
+  event.preventDefault();
+  document.body.dispatchEvent(event);
+  expect(push).not.toHaveBeenCalled();
 });

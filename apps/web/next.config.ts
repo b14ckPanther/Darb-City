@@ -8,6 +8,17 @@ const config: NextConfig = {
   poweredByHeader: false,
   turbopack: { root: workspaceRoot },
   outputFileTracingRoot: workspaceRoot,
+  // /map/vendor paths carry the MapLibre version, so they never change; glyphs change rarely.
+  headers: async () => [
+    {
+      source: "/map/vendor/:path*",
+      headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+    },
+    {
+      source: "/map/glyphs/:path*",
+      headers: [{ key: "Cache-Control", value: "public, max-age=86400" }],
+    },
+  ],
 };
 
 // Self-hosting only: the default ISR cache, minus pages rendered while the API was down. The handler

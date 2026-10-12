@@ -117,6 +117,13 @@ export const BadRequestSchema = z.object({ message: z.string() });
 export const KindCountsSchema = z.record(z.string(), z.number().int().nonnegative());
 export type KindCountsDto = z.infer<typeof KindCountsSchema>;
 
+/**
+ * Published businesses (primary kind active) in each live settlement's subtree, by place slug.
+ * Every live city, town and village is present, with 0 when it has none. Feeds the map's glow.
+ */
+export const DensitySchema = z.record(z.string(), z.number().int().nonnegative());
+export type DensityDto = z.infer<typeof DensitySchema>;
+
 export const NearestPlaceSchema = PlaceSchema.extend({
   distanceKm: z.number().nonnegative(),
   /** Published businesses of the kind there. */

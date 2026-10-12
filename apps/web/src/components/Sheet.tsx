@@ -9,6 +9,7 @@ import {
   type PointerEvent,
   type ReactNode,
 } from "react";
+import { DESKTOP, useMedia } from "@/lib/use-media";
 import styles from "./Sheet.module.css";
 
 export type Snap = "peek" | "half" | "full";
@@ -82,6 +83,7 @@ export function Sheet({ closeHref, labelledBy, returnFocusTo, labels, children }
   const closeButton = useRef<HTMLButtonElement>(null);
   const drag = useRef<{ startY: number } | null>(null);
   const [snap, setSnap] = useState<Snap>("half");
+  const desktop = useMedia(DESKTOP);
 
   const close = () => router.push(closeHref, { scroll: false });
   const closeRef = useRef(close);
@@ -89,26 +91,34 @@ export function Sheet({ closeHref, labelledBy, returnFocusTo, labels, children }
     closeRef.current = close;
   });
 
+  // Phone: a modal bottom sheet over the city. Desktop: a non-modal side panel beside the list
+  // and the map, which stay usable (Plan 2A ruling I5).
   useEffect(() => {
-    const restore = root.current ? inertBackground(root.current) : () => {};
+    if (desktop || !root.current) return;
+    return inertBackground(root.current);
+  }, [desktop]);
+
+  useEffect(() => {
     closeButton.current?.focus();
-    // On the document, so Escape works wherever focus is (even if it left the panel).
+    // On the document, so Escape works wherever focus is (even if it left the panel), unless
+    // something else (a menu, the map) already handled this Escape.
     const onEscape = (event: globalThis.KeyboardEvent) => {
-      if (event.key !== "Escape") return;
+      if (event.key !== "Escape" || event.defaultPrevented) return;
       event.preventDefault();
       closeRef.current();
     };
     document.addEventListener("keydown", onEscape);
     return () => {
       document.removeEventListener("keydown", onEscape);
-      restore();
       const row = document.querySelector<HTMLElement>(`[data-business-link="${returnFocusTo}"]`);
       (row ?? document.getElementById("main-heading"))?.focus();
     };
   }, [returnFocusTo]);
 
+  // Phone only: the modal sheet keeps Tab inside. The desktop panel is non-modal, so Tab moves on
+  // to the city and the map like anywhere else on the page.
   function onKeyDown(event: KeyboardEvent<HTMLDivElement>) {
-    if (event.key !== "Tab" || !panel.current) return;
+    if (desktop || event.key !== "Tab" || !panel.current) return;
     const items = focusables(panel.current);
     const first = items[0];
     const last = items[items.length - 1];
@@ -157,13 +167,16 @@ export function Sheet({ closeHref, labelledBy, returnFocusTo, labels, children }
     else setSnap((s) => snapFromDrag(s, deltaY));
   }
 
+  // Rendered where it is declared, inside `.city`, which makes no stacking context, so z-index 40
+  // stacks with the site header's. Never a portal: a server-rendered sheet must keep its node
+  // through hydration (no second entrance, no lost focus, no repaint of the largest text).
   return (
     <div ref={root} className={styles.root} data-sheet="">
-      <div className={styles.scrim} aria-hidden="true" onClick={close} />
+      {desktop ? null : <div className={styles.scrim} aria-hidden="true" onClick={close} />}
       <div
         ref={panel}
         role="dialog"
-        aria-modal="true"
+        aria-modal={desktop ? undefined : "true"}
         aria-labelledby={labelledBy}
         tabIndex={-1}
         className={styles.panel}

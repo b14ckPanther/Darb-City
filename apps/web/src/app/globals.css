@@ -73,6 +73,11 @@ body {
   body {
     padding-block-end: 96px; /* room for the docked search bar */
   }
+
+  /* And for the Map/List pill above it (stage.module.css .toggle), so it never covers a row. */
+  html[data-stage="on"] body {
+    padding-block-end: calc(96px + var(--tap) + var(--space-4));
+  }
 }
 
 a {
@@ -193,6 +198,33 @@ h3 {
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+/*
+ * The Zoomable City (Plan 2B). The boot script in <head> sets html[data-stage] before the first
+ * paint. Desktop with the stage: the list column at the inline start, the stage beside it. Without
+ * it (no WebGL2, a failed map, /for-business), this block never applies and the layout is 2A's.
+ */
+@media (min-width: 900px) {
+  html[data-stage="on"] {
+    --city-column: min(600px, 44vw);
+  }
+
+  /*
+   * No z-index: the column must not make a stacking context, or it would cap the sheet inside it
+   * (z 40) under the site header (z 2). It sits beside the stage, never over it.
+   */
+  html[data-stage="on"] .city {
+    position: relative;
+    inline-size: var(--city-column);
+    min-block-size: 100dvh;
+    background: var(--night);
+    border-inline-end: 1px solid var(--line-soft);
+  }
+
+  html[data-stage="on"] [data-site-header] > .frame {
+    inline-size: 100%;
   }
 }
 

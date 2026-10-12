@@ -5,21 +5,27 @@
   "type": "module",
   "scripts": {
     "brand": "node scripts/copy-brand.mjs",
-    "dev": "node scripts/copy-brand.mjs && next dev --port 3000",
-    "build": "node scripts/copy-brand.mjs && next build",
+    "map": "node scripts/copy-map.mjs",
+    "dev": "node scripts/copy-brand.mjs && node scripts/copy-map.mjs && next dev --port 3000",
+    "build": "node scripts/copy-brand.mjs && node scripts/copy-map.mjs && next build",
     "start": "next start --port 3000",
     "typecheck": "next typegen && tsc --noEmit",
     "test": "vitest run",
     "e2e": "rm -rf .next/cache/fetch-cache && playwright test",
-    "budget": "node scripts/check-budget.mjs"
+    "budget": "node scripts/check-budget.mjs",
+    "tiles:israel": "node scripts/tiles/extract-israel.mjs",
+    "tiles:test": "node scripts/tiles/make-test-tiles.mjs"
   },
   "dependencies": {
     "@darb/contracts": "workspace:*",
     "@darb/core": "workspace:*",
     "@darb/i18n": "workspace:*",
+    "@darb/stage": "workspace:*",
     "@darb/tokens": "workspace:*",
     "@ts-rest/core": "catalog:",
+    "maplibre-gl": "catalog:",
     "next": "catalog:",
+    "pmtiles": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
     "zod": "catalog:"
@@ -27,6 +33,7 @@
   "devDependencies": {
     "@axe-core/playwright": "catalog:",
     "@playwright/test": "catalog:",
+    "@protomaps/basemaps": "catalog:",
     "@testing-library/dom": "catalog:",
     "@testing-library/react": "catalog:",
     "@types/node": "catalog:",

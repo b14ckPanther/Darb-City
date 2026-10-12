@@ -20,6 +20,29 @@ for (const [name, viewport] of viewports) {
   const page = await context.newPage();
   for (const path of paths) {
     await page.goto(base + path, { waitUntil: "networkidle" });
+    if (name === "phone" && process.env.STAGE_OPEN === "1")
+      await page
+        .locator("[data-stage-toggle]")
+        .click({ timeout: 10_000 })
+        .catch(() => {});
+    // The stage loads after idle: wait until it settled, fell back, or is closed on a phone.
+    await page
+      .waitForFunction(
+        () => {
+          const d = document.documentElement;
+          if (d.getAttribute("data-stage") !== "on") return true;
+          const host = document.querySelector("[data-stage-host]");
+          const open = innerWidth >= 900 || d.hasAttribute("data-stage-open");
+          if (!open) return host !== null;
+          return (
+            host?.getAttribute("data-stage-state") === "ready" &&
+            !host.hasAttribute("data-stage-moving")
+          );
+        },
+        null,
+        { timeout: 20_000 },
+      )
+      .catch(() => console.log(JSON.stringify({ path, stage: "did not settle" })));
     const file = `${out}${name}${path === "/" ? "_home" : path.replaceAll("/", "_")}.png`;
     await page.screenshot({ path: file });
     const report = await page.evaluate(() => {

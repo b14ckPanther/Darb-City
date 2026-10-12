@@ -3,10 +3,12 @@ import { pickText } from "@darb/core";
 import { t } from "@darb/i18n";
 import { CityBar } from "@/components/CityBar";
 import { KindIndex, PlaceIndex } from "@/components/PlaceIndex";
+import { StageData } from "@/components/StageData";
 import { getPlace, getPlaces, getTaxonomy } from "@/lib/api";
 import { crumbsFor } from "@/lib/crumbs";
 import { COUNTRY_SLUG, localeOrNotFound } from "@/lib/levels";
 import { pageMetadata } from "@/lib/metadata";
+import { COUNTRY_STAGE } from "@/lib/stage-data";
 import { indexTaxonomy } from "@/lib/taxonomy";
 import { metadataOrUnavailable, orUnavailable } from "@/lib/unavailable";
 
@@ -46,6 +48,7 @@ export default orUnavailable(async function CountryPage({ params }: Props) {
     .filter((r) => r.places.length > 0);
   return (
     <>
+      <StageData level={COUNTRY_STAGE} />
       <CityBar locale={locale} crumbs={crumbsFor(locale, {})} segments={[]} />
       <main id="main" className="frame reveal">
         <h1 id="main-heading" tabIndex={-1} className="page-title">

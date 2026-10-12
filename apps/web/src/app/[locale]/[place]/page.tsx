@@ -5,6 +5,7 @@ import { t } from "@darb/i18n";
 import { CityBar } from "@/components/CityBar";
 import { Door, DoorGrid } from "@/components/Door";
 import { PlaceIndex } from "@/components/PlaceIndex";
+import { StageData } from "@/components/StageData";
 import { SubPlaceChips } from "@/components/SubPlaceChips";
 import { getKindCounts, getNearestPlace } from "@/lib/api";
 import { crumbsFor, subPlaceChips } from "@/lib/crumbs";
@@ -12,6 +13,7 @@ import { formatNumber } from "@/lib/format";
 import { loadPlaceLevel } from "@/lib/levels";
 import { pageMetadata } from "@/lib/metadata";
 import { href, paths } from "@/lib/routes";
+import { placeStage, soonStage } from "@/lib/stage-data";
 import { sectorTotals } from "@/lib/taxonomy";
 import { metadataOrUnavailable, orUnavailable } from "@/lib/unavailable";
 
@@ -51,6 +53,7 @@ export default orUnavailable(async function PlacePage({ params }: Props) {
     return (
       <>
         {bar}
+        <StageData level={soonStage(locale, place)} />
         <main id="main" className="frame reveal">
           <h1 id="main-heading" tabIndex={-1} className="page-title">
             {name}
@@ -77,6 +80,7 @@ export default orUnavailable(async function PlacePage({ params }: Props) {
   return (
     <>
       {bar}
+      <StageData level={placeStage(locale, place, index, totals)} />
       <main id="main" className="frame reveal">
         <h1 id="main-heading" tabIndex={-1} className="page-title">
           {name}

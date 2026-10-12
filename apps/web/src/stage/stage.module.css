@@ -1,0 +1,73 @@
+.host {
+  position: absolute;
+  inset: 0;
+  /* Phone: clear of the pill and the docked search bar (StageMount.module.css). */
+  inset-block-end: var(--stage-bottom, 0px);
+  overflow: hidden;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.layer[data-active] {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.map {
+  position: absolute;
+  inset: 0;
+}
+
+.canvas {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.attribution {
+  position: absolute;
+  inset-block-end: var(--space-2);
+  /* The stage's inline start, beside the list: the desktop sheet covers its inline end. */
+  inset-inline-start: var(--space-3);
+  margin: 0;
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-s);
+  background: rgb(3 17 12 / 0.75);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.attribution a {
+  color: var(--text-soft);
+}
+
+/* Phone only: Map ⇄ List, centred above the docked search bar (StageMount.module.css --stage-bottom). */
+.toggle {
+  position: fixed;
+  inset-block-end: calc(88px + env(safe-area-inset-bottom));
+  inset-inline: 0;
+  z-index: 35;
+  inline-size: max-content;
+  min-block-size: var(--tap);
+  margin-inline: auto;
+  padding-inline: var(--space-5);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--surface-2);
+  box-shadow: var(--shadow-panel);
+  color: var(--gold-300);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (min-width: 900px) {
+  .toggle {
+    display: none;
+  }
+}

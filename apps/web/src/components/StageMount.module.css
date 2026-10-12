@@ -1,0 +1,37 @@
+/* Off by default: without the stage the list is the whole city (spec §7). */
+.stage {
+  display: none;
+}
+
+/* Desktop: the stage fills the page beside the list column (globals.css --city-column). */
+@media (min-width: 900px) {
+  :global(html[data-stage="on"]) .stage {
+    display: block;
+    position: fixed;
+    inset-block: 0;
+    inset-inline-start: var(--city-column);
+    inset-inline-end: 0;
+    z-index: 0;
+    /* The site header lies over the stage's top edge. */
+    --stage-top: 68px;
+    overflow: hidden;
+    background:
+      radial-gradient(80% 60% at 50% 40%, var(--forest-900) 0%, transparent 70%), var(--night);
+  }
+}
+
+/*
+ * Phone: full screen while open (the Map pill). The docked search bar (z 36) and the pill (z 35)
+ * stay over its foot, so the map and plaza end above the pill and nothing of them hides under either.
+ */
+@media (max-width: 899px) {
+  :global(html[data-stage="on"][data-stage-open]) .stage {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    --stage-bottom: calc(88px + var(--tap) + var(--space-3) + env(safe-area-inset-bottom));
+    overflow: hidden;
+    background: var(--night);
+  }
+}

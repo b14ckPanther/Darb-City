@@ -56,7 +56,8 @@
     position: fixed;
     inset-inline: 0;
     inset-block-end: 0;
-    z-index: 20;
+    /* Above the open stage (z 30) and the Map pill (z 35), under the modal sheet (z 40). */
+    z-index: 36;
     max-inline-size: none;
     padding: var(--space-3) var(--gutter) max(var(--space-3), env(safe-area-inset-bottom));
     background: linear-gradient(180deg, transparent 0%, var(--night) 35%);
