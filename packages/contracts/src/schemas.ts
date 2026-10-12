@@ -123,3 +123,18 @@ export const NearestPlaceSchema = PlaceSchema.extend({
   count: z.number().int().positive(),
 });
 export type NearestPlaceDto = z.infer<typeof NearestPlaceSchema>;
+
+const hex = z.string().regex(/^#[0-9a-fA-F]{6}$/);
+
+/** A business's experience screen (the v1 shape every template shares; see seed SCREEN_SCHEMA). */
+export const ScreenSchema = z.object({
+  brand: LocalizedSchema,
+  title: LocalizedSchema,
+  subtitle: LocalizedSchema.optional(),
+  tags: z.array(LocalizedSchema).optional(),
+  items: z.array(z.object({ label: LocalizedSchema, meta: LocalizedSchema.optional() })).min(1),
+  cta: LocalizedSchema,
+  palette: z.object({ bg: hex, surface: hex, ink: hex, accent: hex }),
+  font: z.string().min(1),
+});
+export type ScreenDto = z.infer<typeof ScreenSchema>;

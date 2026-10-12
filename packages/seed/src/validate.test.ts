@@ -274,3 +274,27 @@ describe("showroom businesses", () => {
     }
   });
 });
+
+function luminance(hex: string): number {
+  const [r, g, b] = [1, 3, 5].map((i) => {
+    const c = parseInt(hex.slice(i, i + 2), 16) / 255;
+    return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  }) as [number, number, number];
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}
+const contrast = (a: string, b: string) => {
+  const [hi, lo] = [luminance(a), luminance(b)].sort((x, y) => y - x) as [number, number];
+  return (hi + 0.05) / (lo + 0.05);
+};
+
+describe("screen palettes", () => {
+  it("keep ink readable (WCAG AA) on the background and the surface", () => {
+    for (const [slug, s] of Object.entries(loadScreens())) {
+      expect(contrast(s.palette.ink, s.palette.bg), `${slug} ink/bg`).toBeGreaterThanOrEqual(4.5);
+      expect(
+        contrast(s.palette.ink, s.palette.surface),
+        `${slug} ink/surface`,
+      ).toBeGreaterThanOrEqual(4.5);
+    }
+  });
+});

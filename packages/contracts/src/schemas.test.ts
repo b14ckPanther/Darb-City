@@ -6,6 +6,7 @@ import {
   HoursSchema,
   LocalizedSchema,
   PlaceSchema,
+  ScreenSchema,
 } from "./schemas.js";
 
 describe("LocalizedSchema", () => {
@@ -107,5 +108,25 @@ describe("coordinates", () => {
     expect(query.safeParse({ lat: "  ", lng: "35" }).success).toBe(false);
     expect(query.safeParse({ lat: "abc", lng: "35" }).success).toBe(false);
     expect(query.safeParse({ lat: "91", lng: "35" }).success).toBe(false);
+  });
+});
+
+describe("ScreenSchema", () => {
+  const screen = {
+    brand: { he: "המספרה של סאמר", en: "Samer's" },
+    title: { en: "A chair in two taps" },
+    items: [{ label: { en: "Haircut" }, meta: { en: "₪60" } }],
+    cta: { en: "Book" },
+    palette: { bg: "#efe3cf", surface: "#fbf5ea", ink: "#2b1d14", accent: "#b4542a" },
+    font: "Suez One",
+  };
+  it("accepts a showroom screen", () => {
+    expect(ScreenSchema.parse(screen).font).toBe("Suez One");
+  });
+  it("rejects a screen without items or with a bad colour", () => {
+    expect(ScreenSchema.safeParse({ ...screen, items: [] }).success).toBe(false);
+    expect(
+      ScreenSchema.safeParse({ ...screen, palette: { ...screen.palette, bg: "red" } }).success,
+    ).toBe(false);
   });
 });
