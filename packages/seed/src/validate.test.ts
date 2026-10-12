@@ -1,7 +1,7 @@
 import { hasText, isSlug, LOCALES, TEMPLATES, type Localized } from "@darb/core";
 import { Ajv } from "ajv";
 import { describe, expect, it } from "vitest";
-import { loadKinds, loadScreens, loadSectors, SCREEN_SCHEMA } from "./index.js";
+import { loadKinds, loadPlaces, loadScreens, loadSectors, SCREEN_SCHEMA } from "./index.js";
 
 /** Halal gate: none of these may appear in any kind name or synonym. */
 const BLOCKED = [
@@ -120,6 +120,44 @@ describe("kinds", () => {
       expect(screen, `${k.slug} screen`).toBeDefined();
       expect(validate(screen), `${k.slug}: ${JSON.stringify(validate.errors)}`).toBe(true);
       expect(hasText(screen!.brand)).toBe(true);
+    }
+  });
+});
+
+describe("places", () => {
+  const places = loadPlaces();
+  const bySlug = new Map(places.map((p) => [p.slug, p]));
+  const byCbs = new Map(places.filter((p) => p.cbsCode).map((p) => [p.cbsCode, p]));
+  const FLAGSHIPS = ["4000", "7600", "1292", "7500", "6800", "9500", "8200", "9600", "1063", "522", "8900"];
+
+  it("have unique slugs and parents come first", () => {
+    expect(bySlug.size).toBe(places.length);
+    const seen = new Set<string>();
+    for (const p of places) {
+      expect(isSlug(p.slug), p.slug).toBe(true);
+      if (p.parent) expect(seen.has(p.parent), `${p.slug} parent ${p.parent}`).toBe(true);
+      seen.add(p.slug);
+    }
+  });
+  it("have names in three languages and coordinates inside Israel", () => {
+    for (const p of places) {
+      expect(complete(p.name), `${p.slug} name`).toBe(true);
+      expect(p.lat, p.slug).toBeGreaterThan(29.4);
+      expect(p.lat, p.slug).toBeLessThan(33.45);
+      expect(p.lng, p.slug).toBeGreaterThan(34.2);
+      expect(p.lng, p.slug).toBeLessThan(35.95);
+    }
+  });
+  it("keep flagship northern localities live and slugs disambiguated", () => {
+    for (const code of FLAGSHIPS) expect(byCbs.get(code)?.status, code).toBe("live");
+    expect(byCbs.get("8900")?.slug).toBe("tamra");
+    expect(byCbs.get("547")?.slug).not.toBe("tamra");
+    expect(bySlug.get("kiryat-haim")?.parent).toBe("haifa");
+  });
+  it("are live exactly under the northern and haifa districts", () => {
+    for (const p of places.filter((x) => x.cbsCode)) {
+      const live = p.parent === "northern-district" || p.parent === "haifa-district";
+      expect(p.status, p.slug).toBe(live ? "live" : "soon");
     }
   });
 });
