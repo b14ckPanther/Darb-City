@@ -1,22 +1,55 @@
-import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+import { pickText } from "@darb/core";
 import { t } from "@darb/i18n";
 import { CityBar } from "@/components/CityBar";
+import { KindIndex, PlaceIndex } from "@/components/PlaceIndex";
+import { getPlace, getPlaces, getTaxonomy } from "@/lib/api";
 import { crumbsFor } from "@/lib/crumbs";
-import { isLocale } from "@/lib/locale";
+import { COUNTRY_SLUG, localeOrNotFound } from "@/lib/levels";
+import { pageMetadata } from "@/lib/metadata";
+import { indexTaxonomy } from "@/lib/taxonomy";
 
 export const revalidate = 300;
 export function generateStaticParams() {
   return [];
 }
 
-export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
-  if (!isLocale(locale)) notFound();
+type Props = { params: Promise<{ locale: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const locale = localeOrNotFound((await params).locale);
+  return pageMetadata({
+    locale,
+    segments: [],
+    title: t(locale, "appName"),
+    description: t(locale, "tagline"),
+  });
+}
+
+export default async function CountryPage({ params }: Props) {
+  const locale = localeOrNotFound((await params).locale);
+  const [country, places, taxonomy] = await Promise.all([
+    getPlace(COUNTRY_SLUG),
+    getPlaces("live"),
+    getTaxonomy(),
+  ]);
+  const regions = (country?.children ?? [])
+    .filter((r) => r.type === "region" && r.status === "live")
+    .map((r) => ({
+      slug: r.slug,
+      name: pickText(r.name, locale),
+      places: places.filter((p) => p.parentId === r.id),
+    }))
+    .filter((r) => r.places.length > 0);
   return (
     <>
       <CityBar locale={locale} crumbs={crumbsFor(locale, {})} segments={[]} />
-      <main id="main" className="frame">
-        <h1 className="page-title">{t(locale, "appName")}</h1>
+      <main id="main" className="frame reveal">
+        <h1 id="main-heading" tabIndex={-1} className="page-title">
+          {t(locale, "tagline")}
+        </h1>
+        <PlaceIndex locale={locale} regions={regions} />
+        <KindIndex locale={locale} index={indexTaxonomy(taxonomy)} />
       </main>
     </>
   );
