@@ -32,11 +32,23 @@ export interface InstantResult {
 }
 
 export const STRONG = 0.75;
+const HEBREW = /\p{Script=Hebrew}/u;
+/** Arabizi writes خ غ ظ as 7' 3' 6'; normalize drops the apostrophe, so the dot is lost. */
+const DOTLESS: Record<string, string> = { خ: "ح", غ: "ع", ظ: "ط" };
+/**
+ * How an Arabizi skeleton meets an Arabic one: dots dropped, and ي و dropped too, because
+ * Arabizi writes those long vowels as i and u ("7aifa" for حيفا), which arabiziKey drops.
+ */
+const arabiziForm = (s: string) =>
+  s
+    .replace(/[خغظ]/g, (c) => DOTLESS[c] ?? c)
+    .replace(/[يو]/g, "")
+    .replace(/(.)\1+/gu, "$1");
 
 const split = (e: InstantEntry): PreparedEntry => ({
   entry: e,
   terms: e.t.map((t) => t.split(" ")),
-  skeletons: e.k.map((k) => k.split(" ")),
+  skeletons: e.k.map((k) => k.split(" ").map(arabiziForm)),
 });
 
 export function prepare(index: InstantIndex): Prepared {
@@ -52,6 +64,12 @@ export function tokenScore(query: string, term: string): number {
   if (query === term) return 1;
   if (query.length >= 2 && term.startsWith(query)) return 0.6 + 0.3 * (query.length / term.length);
   if (term.length >= 4 && query.startsWith(term) && query.length - term.length <= 2) return 0.8;
+  if (query.length >= 3 && term.length === query.length + 1 && HEBREW.test(term)) {
+    // Hebrew is often written without a yod or vav ("חפה" for "חיפה"): one missing, not two.
+    const at = [...term].findIndex((c, i) => c !== query[i]);
+    if (at > 0 && "יו".includes(term[at]!) && term.slice(0, at) + term.slice(at + 1) === query)
+      return 0.7;
+  }
   if (query.length >= 4) {
     const max = query.length >= 8 ? 2 : 1;
     if (levenshtein(query, term, max) <= max) return 0.7;
@@ -111,11 +129,17 @@ export function matchInstant(
   const normalized = normalize(query);
   const { cues, rest } = detectCues(normalized);
   const content = tokenize(rest).filter((t) => !STOPWORDS.has(t));
-  const words: Word[] = content.map((t) => ({ forms: variants(t), skeleton: arabiziKey(t) }));
+  const words: Word[] = content.map((t) => {
+    const key = arabiziKey(t);
+    const skeleton = key ? arabiziForm(key) : "";
+    return { forms: variants(t), skeleton: skeleton.length >= 2 ? skeleton : null };
+  });
   const places = words.length ? rank(prepared.places, words, limits.places ?? 8) : [];
   const kinds = words.length ? rank(prepared.kinds, words, limits.kinds ?? 12) : [];
   const used = new Set<number>();
-  const topPlace = places[0];
+  // Only a place strong enough to count claims its words; a weak look-alike ("يافه" for the
+  // "نافه" in "كنافه") must not keep a strong kind on the same word out of the intent.
+  const topPlace = places[0] && places[0].score >= STRONG ? places[0] : undefined;
   const topKind = kinds.find(
     (k) => !topPlace || k.tokens.every((t) => !topPlace.tokens.includes(t)),
   );

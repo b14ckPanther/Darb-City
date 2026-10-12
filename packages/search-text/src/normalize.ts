@@ -32,6 +32,7 @@ const ARABIZI: [RegExp, string][] = [
   [/2/g, "ء"],
   [/3/g, "ع"],
   [/5/g, "خ"],
+  [/6/g, "ط"],
   [/7/g, "ح"],
   [/9/g, "ق"],
   [/sh/g, "ش"],
@@ -62,7 +63,7 @@ const collapse = (s: string) => s.replace(/(.)\1+/gu, "$1");
 
 /** The Arabic skeleton of a Latin Arabizi token ("7allaq" → "حلق"); null without a digit. */
 export function arabiziKey(token: string): string | null {
-  if (!/^[a-z0-9]+$/.test(token) || !/[23579]/.test(token) || !/[a-z]/.test(token)) return null;
+  if (!/^[a-z0-9]+$/.test(token) || !/[235679]/.test(token) || !/[a-z]/.test(token)) return null;
   let out = token;
   for (const [from, to] of ARABIZI) out = out.replace(from, to);
   out = collapse(out.replace(/[a-z0-9]/g, ""));

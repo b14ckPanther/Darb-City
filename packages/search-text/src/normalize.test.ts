@@ -60,6 +60,7 @@ describe("Arabizi", () => {
     expect(arabiziKey("5obz")).toBe("خبز");
     expect(arabiziKey("3asir")).toBe("عسر");
     expect(arabiziKey("ma9ha")).toBe("مقه");
+    expect(arabiziKey("ma63am")).toBe("مطعم");
   });
   it("leaves tokens without an Arabizi digit alone", () => {
     expect(arabiziKey("hallaq")).toBeNull();
