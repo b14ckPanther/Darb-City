@@ -438,18 +438,8 @@ describe("weekend pattern", () => {
   });
 });
 
-/** Sectors whose showroom screens are fully Arabic. Task 26 makes this every sector. */
-const ARABIC_SECTORS = new Set([
-  "food",
-  "beauty",
-  "health",
-  "sports",
-  "kids",
-  "education",
-  "tech",
-  "services",
-  "home",
-]);
+/** Every showroom screen is fully Arabic. */
+const ARABIC_SECTORS = new Set(sectors.map((s) => s.slug));
 
 describe("showroom screens in Arabic", () => {
   const screens = loadScreens();
@@ -470,4 +460,21 @@ describe("showroom screens in Arabic", () => {
       }
     },
   );
+});
+
+describe("every showroom screen", () => {
+  it("names its brand, title, call to action and every item in Arabic", () => {
+    const missing: string[] = [];
+    for (const [slug, s] of Object.entries(loadScreens())) {
+      const required: [string, Localized][] = [
+        ["brand", s.brand],
+        ["title", s.title],
+        ["cta", s.cta],
+        ...s.items.map((item, i): [string, Localized] => [`items[${i}].label`, item.label]),
+      ];
+      for (const [where, text] of required)
+        if (!(text.ar ?? "").trim()) missing.push(`${slug}.${where}`);
+    }
+    expect(missing).toEqual([]);
+  });
 });

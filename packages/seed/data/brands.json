@@ -843,322 +843,368 @@
     "slug": "al-karmel-plastics",
     "name": {
       "he": "מפעל אל כרמל",
-      "en": "Al Karmel Plastics"
+      "en": "Al Karmel Plastics",
+      "ar": "مصنع الكرمل للبلاستيك"
     }
   },
   {
     "slug": "abu-nasser-wholesale",
     "name": {
       "he": "סיטונאות אבו נאסר",
-      "en": "Abu Nasser Wholesale"
+      "en": "Abu Nasser Wholesale",
+      "ar": "جملة أبو ناصر"
     }
   },
   {
     "slug": "al-watan-packaging",
     "name": {
       "he": "אריזות אל וטן",
-      "en": "Al Watan Packaging"
+      "en": "Al Watan Packaging",
+      "ar": "تغليف الوطن"
     }
   },
   {
     "slug": "saree-couriers",
     "name": {
       "he": "סריע שליחויות",
-      "en": "Saree' Couriers"
+      "en": "Saree' Couriers",
+      "ar": "سريع للتوصيل"
     }
   },
   {
     "slug": "al-marj-storage",
     "name": {
       "he": "מחסני אל מרג'",
-      "en": "Al Marj Storage"
+      "en": "Al Marj Storage",
+      "ar": "مخازن المرج"
     }
   },
   {
     "slug": "al-fanar-signs",
     "name": {
       "he": "שלטי אל פנאר",
-      "en": "Al Fanar Signs"
+      "en": "Al Fanar Signs",
+      "ar": "يافطات الفنار"
     }
   },
   {
     "slug": "al-hadid-metalworks",
     "name": {
       "he": "מסגריית אל חדיד",
-      "en": "Al Hadid Metalworks"
+      "en": "Al Hadid Metalworks",
+      "ar": "حدادة الحديد"
     }
   },
   {
     "slug": "al-arz-carpentry",
     "name": {
       "he": "נגריית אל ארז",
-      "en": "Al Arz Carpentry"
+      "en": "Al Arz Carpentry",
+      "ar": "نجارة الأرز"
     }
   },
   {
     "slug": "fursa-recruiting",
     "name": {
       "he": "פורסה השמה",
-      "en": "Fursa Recruiting"
+      "en": "Fursa Recruiting",
+      "ar": "فرصة للتوظيف"
     }
   },
   {
     "slug": "aman-security",
     "name": {
       "he": "אמאן אבטחה",
-      "en": "Aman Security"
+      "en": "Aman Security",
+      "ar": "أمان للحراسة"
     }
   },
   {
     "slug": "al-najma-motors",
     "name": {
       "he": "אוטו אל נג'מה",
-      "en": "Al Najma Motors"
+      "en": "Al Najma Motors",
+      "ar": "أوتو النجمة"
     }
   },
   {
     "slug": "hagalgal-garage",
     "name": {
       "he": "מוסך הגלגל",
-      "en": "HaGalgal Garage"
+      "en": "HaGalgal Garage",
+      "ar": "كراج العجلة"
     }
   },
   {
     "slug": "rih-rentals",
     "name": {
       "he": "ריח' השכרות",
-      "en": "Rih Rentals"
+      "en": "Rih Rentals",
+      "ar": "ريح لتأجير السيارات"
     }
   },
   {
     "slug": "abu-ali-tyres",
     "name": {
       "he": "צמיגי אבו עלי",
-      "en": "Abu Ali Tyres"
+      "en": "Abu Ali Tyres",
+      "ar": "كوشوك أبو علي"
     }
   },
   {
     "slug": "splash-al-quds",
     "name": {
       "he": "ספלאש אל קודס",
-      "en": "Splash Al Quds"
+      "en": "Splash Al Quds",
+      "ar": "سبلاش القدس"
     }
   },
   {
     "slug": "moto-al-sahm",
     "name": {
       "he": "מוטו אל סהם",
-      "en": "Moto Al Sahm"
+      "en": "Moto Al Sahm",
+      "ar": "موتو السهم"
     }
   },
   {
     "slug": "barq-charge",
     "name": {
       "he": "טעינה ברק",
-      "en": "Barq Charge"
+      "en": "Barq Charge",
+      "ar": "شحن برق"
     }
   },
   {
     "slug": "al-salam-taxis",
     "name": {
       "he": "מוניות אל סלאם",
-      "en": "Al Salam Taxis"
+      "en": "Al Salam Taxis",
+      "ar": "تكسيات السلام"
     }
   },
   {
     "slug": "abu-shadi-parts",
     "name": {
       "he": "חלפים אבו שאדי",
-      "en": "Abu Shadi Parts"
+      "en": "Abu Shadi Parts",
+      "ar": "قطع غيار أبو شادي"
     }
   },
   {
     "slug": "al-amin-towing",
     "name": {
       "he": "גרר אל אמין",
-      "en": "Al Amin Towing"
+      "en": "Al Amin Towing",
+      "ar": "جرّ الأمين"
     }
   },
   {
     "slug": "al-fares-body-shop",
     "name": {
       "he": "פחחות אל פארס",
-      "en": "Al Fares Body Shop"
+      "en": "Al Fares Body Shop",
+      "ar": "سمكرة الفارس"
     }
   },
   {
     "slug": "abu-saleh-farm",
     "name": {
       "he": "חוות אבו סאלח",
-      "en": "Abu Saleh Farm"
+      "en": "Abu Saleh Farm",
+      "ar": "مزرعة أبو صالح"
     }
   },
   {
     "slug": "valley-farmers-market",
     "name": {
       "he": "שוק האיכרים בעמק",
-      "en": "Valley Farmers' Market"
+      "en": "Valley Farmers' Market",
+      "ar": "سوق الفلاحين بالمرج"
     }
   },
   {
     "slug": "al-bustan-nursery",
     "name": {
       "he": "משתלת אל בוסתאן",
-      "en": "Al Bustan Nursery"
+      "en": "Al Bustan Nursery",
+      "ar": "مشتل البستان"
     }
   },
   {
     "slug": "al-nahla-apiary",
     "name": {
       "he": "מכוורת אל נחלה",
-      "en": "Al Nahla Apiary"
+      "en": "Al Nahla Apiary",
+      "ar": "منحل النحلة"
     }
   },
   {
     "slug": "ein-al-halib-dairy",
     "name": {
       "he": "מחלבת עין אל חליב",
-      "en": "Ein Al Halib Dairy"
+      "en": "Ein Al Halib Dairy",
+      "ar": "ألبان عين الحليب"
     }
   },
   {
     "slug": "al-zaytouna-press",
     "name": {
       "he": "בית הבד אל זיתונה",
-      "en": "Al Zaytouna Press"
+      "en": "Al Zaytouna Press",
+      "ar": "معصرة الزيتونة"
     }
   },
   {
     "slug": "umm-yousef-farm",
     "name": {
       "he": "לול אום יוסף",
-      "en": "Umm Yousef Farm"
+      "en": "Umm Yousef Farm",
+      "ar": "خمّ أم يوسف"
     }
   },
   {
     "slug": "al-aseel-stables",
     "name": {
       "he": "חוות אל אסיל",
-      "en": "Al Aseel Stables"
+      "en": "Al Aseel Stables",
+      "ar": "إسطبل الأصيل"
     }
   },
   {
     "slug": "kawkab-farmhouse",
     "name": {
       "he": "בית החווה בכאוכב",
-      "en": "Kawkab Farmhouse"
+      "en": "Kawkab Farmhouse",
+      "ar": "بيت المزرعة بكوكب"
     }
   },
   {
     "slug": "al-fallah-equipment",
     "name": {
       "he": "אל פלאח ציוד חקלאי",
-      "en": "Al Fallah Equipment"
+      "en": "Al Fallah Equipment",
+      "ar": "الفلاح للمعدات الزراعية"
     }
   },
   {
     "slug": "maa-smart-irrigation",
     "name": {
       "he": "מאא השקיה חכמה",
-      "en": "Maa Smart Irrigation"
+      "en": "Maa Smart Irrigation",
+      "ar": "ماء للري الذكي"
     }
   },
   {
     "slug": "dr-nasser-farm-vets",
     "name": {
       "he": "ד\"ר נאסר וטרינריה",
-      "en": "Dr. Nasser Farm Vets"
+      "en": "Dr. Nasser Farm Vets",
+      "ar": "د. ناصر بيطري للمواشي"
     }
   },
   {
     "slug": "teena-estate",
     "name": {
       "he": "אחוזת התאנה",
-      "en": "Te'ena Estate"
+      "en": "Te'ena Estate",
+      "ar": "حديقة التينة"
     }
   },
   {
     "slug": "simcha-productions",
     "name": {
       "he": "הפקות שמחה",
-      "en": "Simcha Productions"
+      "en": "Simcha Productions",
+      "ar": "إنتاجات سِمحا"
     }
   },
   {
     "slug": "reham-henna",
     "name": {
       "he": "חינה ריהאם",
-      "en": "Reham Henna"
+      "en": "Reham Henna",
+      "ar": "حنّة رهام"
     }
   },
   {
     "slug": "hadar-flowers",
     "name": {
       "he": "פרחי הדר",
-      "en": "Hadar Flowers"
+      "en": "Hadar Flowers",
+      "ar": "ورود هدار"
     }
   },
   {
     "slug": "al-arous-atelier",
     "name": {
       "he": "אטלייה אל ערוס",
-      "en": "Al Arous Atelier"
+      "en": "Al Arous Atelier",
+      "ar": "أتيليه العروس"
     }
   },
   {
     "slug": "first-light-studio",
     "name": {
       "he": "סטודיו אור ראשון",
-      "en": "First Light Studio"
+      "en": "First Light Studio",
+      "ar": "ستوديو أول ضو"
     }
   },
   {
     "slug": "al-qalam-print",
     "name": {
       "he": "דפוס אל קלם",
-      "en": "Al Qalam Print"
+      "en": "Al Qalam Print",
+      "ar": "مطبعة القلم"
     }
   },
   {
     "slug": "room-13",
     "name": {
       "he": "חדר 13",
-      "en": "Room 13"
+      "en": "Room 13",
+      "ar": "غرفة 13"
     }
   },
   {
     "slug": "al-farah-tents",
     "name": {
       "he": "אוהלי אל פרח",
-      "en": "Al Farah Tents"
+      "en": "Al Farah Tents",
+      "ar": "خيم الفرح"
     }
   },
   {
     "slug": "lilas-cakes",
     "name": {
       "he": "עוגות לילאס",
-      "en": "Lilas Cakes"
+      "en": "Lilas Cakes",
+      "ar": "كيك ليلاس"
     }
   },
   {
     "slug": "noor-event-design",
     "name": {
       "he": "נור עיצוב אירועים",
-      "en": "Noor Event Design"
+      "en": "Noor Event Design",
+      "ar": "نور لتصميم المناسبات"
     }
   },
   {
     "slug": "hadaya-favours",
     "name": {
       "he": "הדאיא מזכרות",
-      "en": "Hadaya Favours"
+      "en": "Hadaya Favours",
+      "ar": "هدايا للتوزيعات"
     }
   },
   {
     "slug": "al-rahma-travel",
     "name": {
       "he": "נסיעות אל רחמה",
-      "en": "Al Rahma Travel"
+      "en": "Al Rahma Travel",
+      "ar": "الرحمة للسفريات"
     }
   },
   {
@@ -1173,63 +1219,72 @@
     "slug": "alleys-tours",
     "name": {
       "he": "סיורים בסמטאות",
-      "en": "Alleys Tours"
+      "en": "Alleys Tours",
+      "ar": "جولات بالأزقّة"
     }
   },
   {
     "slug": "siyaha-tours",
     "name": {
       "he": "סיאחה טורס",
-      "en": "Siyaha Tours"
+      "en": "Siyaha Tours",
+      "ar": "سياحة تورز"
     }
   },
   {
     "slug": "al-nujoom-camp",
     "name": {
       "he": "מחנה אל נג'ום",
-      "en": "Al Nujoom Camp"
+      "en": "Al Nujoom Camp",
+      "ar": "مخيّم النجوم"
     }
   },
   {
     "slug": "al-jalil-coaches",
     "name": {
       "he": "אוטובוסי אל ג'ליל",
-      "en": "Al Jalil Coaches"
+      "en": "Al Jalil Coaches",
+      "ar": "باصات الجليل"
     }
   },
   {
     "slug": "al-tarjama-office",
     "name": {
       "he": "מכתב אל תרג'מה",
-      "en": "Al Tarjama Office"
+      "en": "Al Tarjama Office",
+      "ar": "مكتب الترجمة"
     }
   },
   {
     "slug": "al-amana-exchange",
     "name": {
       "he": "צראפת אל אמאנה",
-      "en": "Al Amana Exchange"
+      "en": "Al Amana Exchange",
+      "ar": "صرافة الأمانة"
     }
   },
   {
     "slug": "jusoor-study-advisers",
     "name": {
       "he": "ג'סור ייעוץ אקדמי",
-      "en": "Jusoor Study Advisers"
+      "en": "Jusoor Study Advisers",
+      "ar": "جسور للاستشارات الأكاديمية"
     }
   },
   {
     "slug": "safar-luggage",
     "name": {
       "he": "סאפר מזוודות",
-      "en": "Safar Luggage"
+      "en": "Safar Luggage",
+      "ar": "سفر للشناتي"
     }
   },
   {
     "slug": "al-manasik-institute",
     "name": {
       "he": "מכון אל מנאסכ",
-      "en": "Al Manasik Institute"
+      "en": "Al Manasik Institute",
+      "ar": "معهد المناسك"
     }
   },
   {
@@ -1244,161 +1299,184 @@
     "slug": "levana-boutique",
     "name": {
       "he": "בוטיק לבנה",
-      "en": "Levana Boutique"
+      "en": "Levana Boutique",
+      "ar": "بوتيك ليفانا"
     }
   },
   {
     "slug": "tamar-alon-illustration",
     "name": {
       "he": "תמר אלון, איורים",
-      "en": "Tamar Alon Illustration"
+      "en": "Tamar Alon Illustration",
+      "ar": "تمار ألون، رسومات"
     }
   },
   {
     "slug": "attic-books",
     "name": {
       "he": "ספרים בעליית הגג",
-      "en": "Attic Books"
+      "en": "Attic Books",
+      "ar": "كتب العلّية"
     }
   },
   {
     "slug": "living-room-garden",
     "name": {
       "he": "הגינה בסלון",
-      "en": "Living Room Garden"
+      "en": "Living Room Garden",
+      "ar": "جنينة بالصالون"
     }
   },
   {
     "slug": "kapayim-pet-shop",
     "name": {
       "he": "כפיים",
-      "en": "Kapayim Pet Shop"
+      "en": "Kapayim Pet Shop",
+      "ar": "كفوف لمستلزمات الحيوانات"
     }
   },
   {
     "slug": "al-khalil-jewellers",
     "name": {
       "he": "מג'והראת אל ח'ליל",
-      "en": "Al Khalil Jewellers"
+      "en": "Al Khalil Jewellers",
+      "ar": "مجوهرات الخليل"
     }
   },
   {
     "slug": "al-anbar-oud-house",
     "name": {
       "he": "בית העוד אל ענבר",
-      "en": "Al Anbar Oud House"
+      "en": "Al Anbar Oud House",
+      "ar": "بيت العود العنبر"
     }
   },
   {
     "slug": "nakhla-dates-and-chocolate",
     "name": {
       "he": "תמור ושוקולד נח'לה",
-      "en": "Nakhla Dates and Chocolate"
+      "en": "Nakhla Dates and Chocolate",
+      "ar": "تمور وشوكولاتة نخلة"
     }
   },
   {
     "slug": "al-madina-mobile",
     "name": {
       "he": "סלולר אל מדינה",
-      "en": "Al Madina Mobile"
+      "en": "Al Madina Mobile",
+      "ar": "خلوي المدينة"
     }
   },
   {
     "slug": "al-waqt-watches",
     "name": {
       "he": "שעוני אל וקת",
-      "en": "Al Waqt Watches"
+      "en": "Al Waqt Watches",
+      "ar": "ساعات الوقت"
     }
   },
   {
     "slug": "beit-al-asha",
     "name": {
       "he": "בית אל עשא",
-      "en": "Beit Al Asha"
+      "en": "Beit Al Asha",
+      "ar": "بيت العشا"
     }
   },
   {
     "slug": "al-noor-mosque",
     "name": {
       "he": "מסגד אל נור",
-      "en": "Al Noor Mosque"
+      "en": "Al Noor Mosque",
+      "ar": "مسجد النور"
     }
   },
   {
     "slug": "dar-al-quran",
     "name": {
       "he": "דאר אל קוראן",
-      "en": "Dar Al Quran"
+      "en": "Dar Al Quran",
+      "ar": "دار القرآن"
     }
   },
   {
     "slug": "abu-rami-butchery",
     "name": {
       "he": "אטליז אבו ראמי",
-      "en": "Abu Rami Butchery"
+      "en": "Abu Rami Butchery",
+      "ar": "ملحمة أبو رامي"
     }
   },
   {
     "slug": "sundus-boutique",
     "name": {
       "he": "בוטיק סנדס",
-      "en": "Sundus Boutique"
+      "en": "Sundus Boutique",
+      "ar": "بوتيك سندس"
     }
   },
   {
     "slug": "al-khair-fund",
     "name": {
       "he": "קרן אל ח'יר",
-      "en": "Al Khair Fund"
+      "en": "Al Khair Fund",
+      "ar": "صندوق الخير"
     }
   },
   {
     "slug": "al-rashid-books",
     "name": {
       "he": "מכתבת אל רשיד",
-      "en": "Al Rashid Books"
+      "en": "Al Rashid Books",
+      "ar": "مكتبة الرشيد"
     }
   },
   {
     "slug": "al-shifa-centre",
     "name": {
       "he": "מרכז אל שיפאא",
-      "en": "Al Shifa Centre"
+      "en": "Al Shifa Centre",
+      "ar": "مركز الشفاء"
     }
   },
   {
     "slug": "rahma-home-care",
     "name": {
       "he": "רחמה סיעוד בבית",
-      "en": "Rahma Home Care"
+      "en": "Rahma Home Care",
+      "ar": "رحمة للتمريض بالبيت"
     }
   },
   {
     "slug": "al-taqwa-mosque-waqf",
     "name": {
       "he": "וקף מסגד אל תקווא",
-      "en": "Al Taqwa Mosque Waqf"
+      "en": "Al Taqwa Mosque Waqf",
+      "ar": "وقف مسجد التقوى"
     }
   },
   {
     "slug": "sheikh-yousef-al-hajj",
     "name": {
       "he": "השיח' יוסף אל חאג'",
-      "en": "Sheikh Yousef Al Hajj"
+      "en": "Sheikh Yousef Al Hajj",
+      "ar": "الشيخ يوسف الحاج"
     }
   },
   {
     "slug": "al-farouq-thobe-house",
     "name": {
       "he": "בית הג'לביה אל פארוק",
-      "en": "Al Farouq Thobe House"
+      "en": "Al Farouq Thobe House",
+      "ar": "بيت الجلابية الفاروق"
     }
   },
   {
     "slug": "al-rahma-janazah-services",
     "name": {
       "he": "אל רחמה, שירותי ג'נאזה",
-      "en": "Al Rahma Janazah Services"
+      "en": "Al Rahma Janazah Services",
+      "ar": "الرحمة لخدمات الجنازة"
     }
   },
   {
@@ -1421,28 +1499,32 @@
     "slug": "al-jabal-baby-clinic",
     "name": {
       "he": "טיפת חלב אל ג'בל",
-      "en": "Al Jabal Baby Clinic"
+      "en": "Al Jabal Baby Clinic",
+      "ar": "محطة الجبل للأم والطفل"
     }
   },
   {
     "slug": "al-manara-public-library",
     "name": {
       "he": "הספרייה העירונית אל מנארה",
-      "en": "Al Manara Public Library"
+      "en": "Al Manara Public Library",
+      "ar": "المكتبة العامة المنارة"
     }
   },
   {
     "slug": "al-balad-post",
     "name": {
       "he": "דואר אל בלד",
-      "en": "Al Balad Post"
+      "en": "Al Balad Post",
+      "ar": "بريد البلد"
     }
   },
   {
     "slug": "galilee-lines",
     "name": {
       "he": "קווי הגליל",
-      "en": "Galilee Lines"
+      "en": "Galilee Lines",
+      "ar": "خطوط الجليل"
     }
   },
   {
@@ -1465,84 +1547,96 @@
     "slug": "galilee-springs-water",
     "name": {
       "he": "תאגיד המים מעיינות הגליל",
-      "en": "Galilee Springs Water"
+      "en": "Galilee Springs Water",
+      "ar": "مياه ينابيع الجليل"
     }
   },
   {
     "slug": "al-noor-hotline-106",
     "name": {
       "he": "מוקד 106 אל נור",
-      "en": "Al Noor Hotline 106"
+      "en": "Al Noor Hotline 106",
+      "ar": "مركز 106 النور"
     }
   },
   {
     "slug": "open-hand",
     "name": {
       "he": "עמותת יד פתוחה",
-      "en": "Open Hand"
+      "en": "Open Hand",
+      "ar": "جمعية اليد المفتوحة"
     }
   },
   {
     "slug": "al-qard-al-hasan-fund",
     "name": {
       "he": "קרן אל קרד אל חסן",
-      "en": "Al Qard Al Hasan Fund"
+      "en": "Al Qard Al Hasan Fund",
+      "ar": "صندوق القرض الحسن"
     }
   },
   {
     "slug": "neve-oz-community-centre",
     "name": {
       "he": "המרכז הקהילתי נווה עוז",
-      "en": "Neve Oz Community Centre"
+      "en": "Neve Oz Community Centre",
+      "ar": "المركز الجماهيري نفيه عوز"
     }
   },
   {
     "slug": "beit-al-jood-day-centre",
     "name": {
       "he": "מרכז היום בית אל ג'וד",
-      "en": "Beit Al Jood Day Centre"
+      "en": "Beit Al Jood Day Centre",
+      "ar": "مركز يوم بيت الجود"
     }
   },
   {
     "slug": "al-shabab-youth-club",
     "name": {
       "he": "מועדון הנוער אל שבאב",
-      "en": "Al Shabab Youth Club"
+      "en": "Al Shabab Youth Club",
+      "ar": "نادي الشبيبة الشباب"
     }
   },
   {
     "slug": "al-karmel-scout-troop",
     "name": {
       "he": "שבט הצופים אל כרמל",
-      "en": "Al Karmel Scout Troop"
+      "en": "Al Karmel Scout Troop",
+      "ar": "فرقة كشافة الكرمل"
     }
   },
   {
     "slug": "yad-byad-volunteers",
     "name": {
       "he": "יד ביד מתנדבים",
-      "en": "Yad b'Yad Volunteers"
+      "en": "Yad b'Yad Volunteers",
+      "ar": "إيد بإيد للمتطوعين"
     }
   },
   {
     "slug": "women-of-al-jalil",
     "name": {
       "he": "נשות אל ג'ליל",
-      "en": "Women of Al Jalil"
+      "en": "Women of Al Jalil",
+      "ar": "نساء الجليل"
     }
   },
   {
     "slug": "al-bustan-garden",
     "name": {
       "he": "גינת אל בוסתאן",
-      "en": "Al Bustan Garden"
+      "en": "Al Bustan Garden",
+      "ar": "حاكورة البستان"
     }
   },
   {
     "slug": "al-birr-shop",
     "name": {
       "he": "חנות אל בר",
-      "en": "Al Birr Shop"
+      "en": "Al Birr Shop",
+      "ar": "محل البِر"
     }
   }
 ]

@@ -33,9 +33,10 @@ test("Arabic falls back to Hebrew and is never blank", async ({ page }) => {
   for (const label of doors) expect(label.trim()).not.toBe("");
   await page.goto(`/ar${LEVELS.business}`);
   expect((await page.locator("[data-sheet-title]").textContent())?.trim()).not.toBe("");
-  // HaGalgal Garage has no Arabic name in the seed, so its Arabic page shows the Hebrew one.
+  // Every seeded name now has Arabic (pickText's Hebrew fallback is unit-tested in @darb/core),
+  // so the Arabic page shows the Arabic name, not the Hebrew one it used to fall back to.
   await page.goto("/ar/sakhnin/auto/garages/hagalgal-garage");
-  await expect(page.locator("[data-sheet-title]")).toHaveText("מוסך הגלגל");
+  await expect(page.locator("[data-sheet-title]")).toHaveText("كراج العجلة");
 });
 
 test("an explicit Hebrew prefix redirects to the unprefixed URL", async ({ page }) => {
