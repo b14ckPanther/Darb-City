@@ -18,6 +18,10 @@ export const DROPPED_LAYERS = [
   "address_label",
   "boundaries",
   "boundaries_country",
+  // Neutral map, focused on towns: no country, territory or region (state/province) labels.
+  "places_country",
+  "places_region",
+  "places_macroregion",
 ];
 /** Secondary text on dark surfaces (globals.css --text-muted). */
 const SAGE = "#a9b8ad";
@@ -120,6 +124,14 @@ export function darbStyle(locale) {
       const layout = Object.fromEntries(
         Object.entries(layer.layout).filter(([key]) => !key.startsWith("icon-")),
       );
+      // One line, the page language only: page language, then name:en, then the local name.
+      if (layout["text-field"] !== undefined)
+        layout["text-field"] = [
+          "coalesce",
+          ["get", `name:${locale}`],
+          ["get", "name:en"],
+          ["get", "name"],
+        ];
       return { ...layer, layout };
     });
   // Every font stack (Medium, Italic, Devanagari…) becomes the one we host.

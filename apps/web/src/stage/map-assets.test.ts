@@ -90,6 +90,31 @@ describe("the Darb style", () => {
   });
 });
 
+describe("neutral labels in the page language only", () => {
+  for (const locale of ["he", "ar", "en"] as const) {
+    const layers = darbStyle(locale).layers as (Layer & { filter?: unknown })[];
+    const labels = layers.filter((l) => l.layout?.["text-field"] !== undefined);
+    it(`${locale}: renders no country or region labels`, () => {
+      for (const l of labels) {
+        expect(l.id, l.id).not.toMatch(/country|region/);
+        expect(JSON.stringify(l.filter ?? null), l.id).not.toMatch(
+          /"(country|region|macroregion)"/,
+        );
+      }
+    });
+    it(`${locale}: text fields never add a second name or a second line`, () => {
+      expect(labels.length).toBeGreaterThan(0);
+      for (const l of labels) {
+        const field = JSON.stringify(l.layout?.["text-field"]);
+        expect(field, l.id).not.toMatch(/name2|name3|script2|\\n/);
+        const gets = [...field.matchAll(/\["get","([^"]+)"\]/g)].map((m) => m[1]);
+        for (const key of gets) expect(["name:" + locale, "name:en", "name"], l.id).toContain(key);
+        expect(gets[0], l.id).toBe("name:" + locale);
+      }
+    });
+  }
+});
+
 describe("buildMapAssets", () => {
   it("writes the vendor modules, the glyphs and one style per locale", () => {
     const target = mkdtempSync(join(tmpdir(), "darb-map-"));
