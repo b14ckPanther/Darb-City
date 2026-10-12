@@ -13,7 +13,7 @@
   --line: rgb(217 165 76 / 0.24);
   --line-soft: rgb(251 247 236 / 0.08);
   --focus-ring: 0 0 0 2px var(--night), 0 0 0 4px var(--gold-300);
-  --font-body: var(--font-latin), var(--font-hebrew), var(--font-arabic), system-ui, sans-serif;
+  /* --font-body is set on <html> by the [locale] layout (real families only, no Arial fallback). */
   --step--1: 0.875rem;
   --step-0: 1rem;
   --step-1: 1.125rem;
