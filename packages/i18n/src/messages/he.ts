@@ -37,7 +37,7 @@ export const he: Messages = {
   blocked: "אנחנו לא מציגים סוג עסק כזה.",
   noResults: "עוד אין התאמה לכל אלה. אפשר להסיר את „{chip}”.",
   filterNoResults: "עוד אין כאן עסק שמתאים לסינון הזה.",
-  searchUnavailable: "החיפוש החכם לא זמין כרגע. הנה מקומות וסוגי עסקים במקום.",
+  searchUnavailable: "החיפוש החכם לא זמין כרגע. הנה מקומות וסוגי עסקים במקום זאת.",
   places: "מקומות",
   allKinds: "כל סוגי העסקים",
   cities: "ערים",

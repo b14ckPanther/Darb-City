@@ -29,7 +29,7 @@ export const ar: Messages = {
   suggestBusinesses: "مصالح",
   searchFor: "ابحث عن «{q}»",
   suggestionCount: "الاقتراحات: {count}",
-  noSuggestions: "لا اقتراحات",
+  noSuggestions: "لا توجد اقتراحات",
   searchResultsTitle: "نتائج «{q}»",
   resultCount: "النتائج: {count}",
   removeChip: "إزالة {chip}",

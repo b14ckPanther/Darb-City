@@ -87,6 +87,10 @@ describe("search copy", () => {
     expect(t("he", "blocked")).toBe("אנחנו לא מציגים סוג עסק כזה.");
     expect(t("ar", "blocked")).toBe("لا نعرض هذا النوع من المصالح.");
   });
+  it("reads naturally where the review asked", () => {
+    expect(t("ar", "noSuggestions")).toBe("لا توجد اقتراحات");
+    expect(t("he", "searchUnavailable")).toMatch(/במקום זאת\.$/);
+  });
   it("fills the chip and query placeholders", () => {
     expect(t("en", "removeChip", { chip: "Open now" })).toBe("Remove Open now");
     expect(t("ar", "searchFor", { q: "حلاق" })).toContain("حلاق");
