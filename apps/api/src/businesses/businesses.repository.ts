@@ -1,6 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { isOpenAt, type Hours } from "@darb/core";
-import type { Business, Place, Prisma } from "../generated/prisma/client.js";
+import { Prisma, type Business, type Place } from "../generated/prisma/client.js";
 import { PrismaService } from "../prisma/prisma.service.js";
 
 export type BusinessWithPlace = Business & { place: { slug: string } };
@@ -13,13 +12,12 @@ export interface PageArgs {
   limit: number;
   /** When set, only businesses open at this moment are listed (and paged). */
   openAt: Date | null;
+  /** Only businesses whose attributes say they deliver. */
+  delivers: boolean;
+  /** Sort by distance from this point (used once, never stored). */
+  near: { lat: number; lng: number } | null;
 }
-
-const ORDER: Prisma.BusinessOrderByWithRelationInput[] = [
-  { tier: "desc" },
-  { slug: "asc" },
-  { id: "asc" },
-];
+export type PageRow = BusinessWithPlace & { distanceKm: number | null };
 
 const depth = (path: string) => path.split("/").length;
 
@@ -44,43 +42,50 @@ export function closestInSubtree<T extends { place: { path: string } }>(
 export class BusinessesRepository {
   constructor(private readonly prisma: PrismaService) {}
 
-  async page(args: PageArgs): Promise<{ rows: BusinessWithPlace[]; hasMore: boolean }> {
-    const where: Prisma.BusinessWhereInput = {
-      status: "published",
-      placeId: { in: args.placeIds },
-      primaryKind: { is: { status: "active" } },
-      ...(args.kindIds ? { kinds: { some: { kindId: { in: args.kindIds } } } } : {}),
-    };
-    const include = { place: { select: { slug: true } } } as const;
-    if (!args.openAt) {
-      const rows = await this.prisma.business.findMany({
-        where,
-        orderBy: ORDER,
-        skip: args.offset,
-        take: args.limit + 1,
-        include,
-      });
-      return { rows: rows.slice(0, args.limit), hasMore: rows.length > args.limit };
-    }
-    // Open-now depends on Israel time, so it is computed here, then paged.
-    const at = args.openAt;
-    const candidates = await this.prisma.business.findMany({
-      where,
-      orderBy: ORDER,
-      select: { id: true, hours: true },
+  /**
+   * One SQL query picks the page (filters, order, offset), then Prisma loads those rows. Open now
+   * is computed in SQL (darb_open_at), so pages never skip or repeat.
+   */
+  async page(args: PageArgs): Promise<{ rows: PageRow[]; hasMore: boolean }> {
+    if (args.placeIds.length === 0) return { rows: [], hasMore: false };
+    const here = args.near
+      ? Prisma.sql`ST_SetSRID(ST_MakePoint(${args.near.lng}, ${args.near.lat}), 4326)::geography`
+      : null;
+    const where = [
+      Prisma.sql`b.status = 'published'`,
+      Prisma.sql`pk.status = 'active'`,
+      Prisma.sql`b."placeId" = ANY(${args.placeIds}::uuid[])`,
+      ...(args.kindIds
+        ? [
+            Prisma.sql`EXISTS (SELECT 1 FROM "BusinessKind" bk WHERE bk."businessId" = b.id AND bk."kindId" = ANY(${args.kindIds}::uuid[]))`,
+          ]
+        : []),
+      ...(args.openAt ? [Prisma.sql`darb_open_at(b.hours, ${args.openAt})`] : []),
+      ...(args.delivers ? [Prisma.sql`b.attributes @> '{"delivers": true}'::jsonb`] : []),
+    ];
+    const km = here ? Prisma.sql`ST_Distance(b.point, ${here}) / 1000` : Prisma.sql`NULL::float8`;
+    const order = here
+      ? Prisma.sql`km ASC, b.slug ASC, b.id ASC`
+      : Prisma.sql`b.tier DESC, b.slug ASC, b.id ASC`;
+    const picked = await this.prisma.$queryRaw<{ id: string; km: number | null }[]>`
+      SELECT b.id, ${km} AS km
+      FROM "Business" b
+      JOIN "Kind" pk ON pk.id = b."primaryKindId"
+      WHERE ${Prisma.join(where, " AND ")}
+      ORDER BY ${order}
+      OFFSET ${args.offset} LIMIT ${args.limit + 1}`;
+    const pageIds = picked.slice(0, args.limit);
+    const loaded = await this.prisma.business.findMany({
+      where: { id: { in: pageIds.map((p) => p.id) } },
+      include: { place: { select: { slug: true } } },
     });
-    const openIds = candidates
-      .filter((b) => isOpenAt(b.hours as unknown as Hours, at))
-      .map((b) => b.id);
-    const window = openIds.slice(args.offset, args.offset + args.limit + 1);
-    const pageIds = window.slice(0, args.limit);
-    const rows = await this.prisma.business.findMany({ where: { id: { in: pageIds } }, include });
-    const byId = new Map(rows.map((r) => [r.id, r]));
+    const byId = new Map(loaded.map((r) => [r.id, r]));
     return {
-      rows: pageIds
-        .map((id) => byId.get(id))
-        .filter((r): r is BusinessWithPlace => r !== undefined),
-      hasMore: window.length > args.limit,
+      rows: pageIds.flatMap(({ id, km: d }) => {
+        const row = byId.get(id);
+        return row ? [{ ...row, distanceKm: d === null ? null : Number(d) }] : [];
+      }),
+      hasMore: picked.length > args.limit,
     };
   }
 

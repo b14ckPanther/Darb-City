@@ -3,6 +3,7 @@ import { contract } from "./contract.js";
 import {
   BusinessDetailSchema,
   BusinessPageSchema,
+  BusinessSummarySchema,
   DensitySchema,
   HoursSchema,
   LocalizedSchema,
@@ -142,4 +143,24 @@ describe("DensitySchema", () => {
     expect(contract.businesses.density.path).toBe("/density");
     expect(contract.businesses.density.method).toBe("GET");
   });
+});
+
+it("accepts a business summary with or without distance", () => {
+  const base = {
+    id: "1",
+    slug: "a",
+    name: { en: "A" },
+    tagline: { en: "A" },
+    tier: "example",
+    primaryKindId: "k",
+    placeId: "p",
+    placeSlug: "sakhnin",
+    lat: 1,
+    lng: 2,
+    photo: null,
+    openNow: null,
+  };
+  expect(BusinessSummarySchema.parse(base).distanceKm).toBeUndefined();
+  expect(BusinessSummarySchema.parse({ ...base, distanceKm: 1.5 }).distanceKm).toBe(1.5);
+  expect(() => BusinessSummarySchema.parse({ ...base, distanceKm: -1 })).toThrow();
 });

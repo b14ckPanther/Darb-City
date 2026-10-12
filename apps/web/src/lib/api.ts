@@ -125,19 +125,32 @@ export async function getKindCounts(placeSlug: string): Promise<KindCountsDto | 
 
 export async function getBusinesses(
   placeSlug: string,
-  options: { kind?: string; cursor?: string; limit?: number } = {},
+  options: {
+    kind?: string;
+    cursor?: string;
+    limit?: number;
+    open?: boolean;
+    delivers?: boolean;
+    /** A person's position: fetched no-store, never cached. */
+    near?: { lat: number; lng: number };
+  } = {},
 ): Promise<BusinessPageDto | null> {
   if (!slugs(placeSlug) || (options.kind !== undefined && !slugs(options.kind))) return null;
   const query = {
     ...(options.kind ? { kind: options.kind } : {}),
     ...(options.cursor ? { cursor: options.cursor } : {}),
     ...(options.limit ? { limit: options.limit } : {}),
+    ...(options.open ? { openNow: "true" as const } : {}),
+    ...(options.delivers ? { delivers: "true" as const } : {}),
+    ...(options.near ? { lat: options.near.lat, lng: options.near.lng } : {}),
   };
   const res = await call(() =>
     client().businesses.list({
       params: { placeSlug },
       query,
-      fetchOptions: fetchOptions(cached(REVALIDATE.lists, tags.businesses)),
+      fetchOptions: fetchOptions(
+        options.near ? "no-store" : cached(REVALIDATE.lists, tags.businesses),
+      ),
     }),
   );
   if (res.status === 400) throw new ApiBadRequestError(res.body);

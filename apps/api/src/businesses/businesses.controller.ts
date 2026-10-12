@@ -41,11 +41,19 @@ export class BusinessesController {
           offset,
           limit: query.limit,
           openAt: query.openNow ? now : null,
+          delivers: query.delivers ?? false,
+          near:
+            query.lat !== undefined && query.lng !== undefined
+              ? { lat: query.lat, lng: query.lng }
+              : null,
         });
         return {
           status: 200,
           body: {
-            items: rows.map((r) => toBusinessSummary(r, r.place.slug, now)),
+            items: rows.map((r) => ({
+              ...toBusinessSummary(r, r.place.slug, now),
+              ...(r.distanceKm === null ? {} : { distanceKm: r.distanceKm }),
+            })),
             nextCursor: hasMore ? encodeCursor(offset + query.limit) : null,
           },
         };

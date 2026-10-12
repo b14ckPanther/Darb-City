@@ -80,6 +80,8 @@ export const BusinessSummarySchema = z.object({
   photo: z.string().nullable(),
   /** Null when the business has no hours at all. */
   openNow: z.boolean().nullable(),
+  /** Kilometres from the point a list was sorted by; absent otherwise. */
+  distanceKm: z.number().nonnegative().optional(),
 });
 export type BusinessSummaryDto = z.infer<typeof BusinessSummarySchema>;
 

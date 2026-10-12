@@ -49,15 +49,26 @@ export const contract = c.router({
       method: "GET",
       path: "/places/:placeSlug/businesses",
       pathParams: z.object({ placeSlug: SlugSchema }),
-      query: z.object({
-        kind: SlugSchema.optional(),
-        openNow: z
-          .enum(["true", "false"])
-          .transform((v) => v === "true")
-          .optional(),
-        limit: z.coerce.number().int().min(1).max(100).default(30),
-        cursor: z.string().min(1).max(512).optional(),
-      }),
+      query: z
+        .object({
+          kind: SlugSchema.optional(),
+          openNow: z
+            .enum(["true", "false"])
+            .transform((v) => v === "true")
+            .optional(),
+          delivers: z
+            .enum(["true", "false"])
+            .transform((v) => v === "true")
+            .optional(),
+          /** With lng: sort by distance from this point. Used once, never stored or logged. */
+          lat: coordinate(-90, 90).optional(),
+          lng: coordinate(-180, 180).optional(),
+          limit: z.coerce.number().int().min(1).max(100).default(30),
+          cursor: z.string().min(1).max(512).optional(),
+        })
+        .refine((q) => (q.lat === undefined) === (q.lng === undefined), {
+          message: "lat and lng go together",
+        }),
       responses: { 200: BusinessPageSchema, 400: BadRequestSchema, 404: NotFoundSchema },
     },
     /**
