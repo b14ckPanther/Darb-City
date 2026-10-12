@@ -211,9 +211,12 @@ h3 {
     --city-column: min(600px, 44vw);
   }
 
+  /*
+   * No z-index: the column must not make a stacking context, or it would cap the sheet inside it
+   * (z 40) under the site header (z 2). It sits beside the stage, never over it.
+   */
   html[data-stage="on"] .city {
     position: relative;
-    z-index: 1;
     inline-size: var(--city-column);
     min-block-size: 100dvh;
     background: var(--night);

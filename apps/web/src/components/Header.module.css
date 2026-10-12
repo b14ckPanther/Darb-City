@@ -1,7 +1,8 @@
 .header {
   /*
-   * Over the desktop stage (z 0) and the list column (.city, z 1), so what opens from the header
-   * (the Near me message) is never under the list. The sheet lives in <body> at z 40, above it.
+   * Over the desktop stage (z 0) and the list column (.city), so what opens from the header (the
+   * Near me message) is never under the list. The sheet (z 40, in .city, which makes no stacking
+   * context) stands above it.
    */
   position: relative;
   z-index: 2;

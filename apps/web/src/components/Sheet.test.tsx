@@ -47,19 +47,14 @@ describe("Sheet", () => {
     expect(dialog.getAttribute("tabindex")).toBe("-1");
   });
 
-  it("lives at the end of <body>, outside the city, so it stacks above the site header", () => {
-    renderSheet();
-    expect(document.querySelector("[data-sheet]")?.parentElement).toBe(document.body);
-    expect(document.body.lastElementChild?.hasAttribute("data-sheet")).toBe(true);
-  });
-
-  it("hydrates where the server rendered it, then moves to <body> with focus and the city inert", async () => {
+  it("hydrates in place and keeps the server's node: focus on close, the rest of the page inert", async () => {
     const { renderToString } = await import("react-dom/server");
     const { hydrateRoot } = await import("react-dom/client");
     const city = document.body.appendChild(document.createElement("div"));
     city.id = "city";
     city.innerHTML = renderToString(sheet());
-    expect(city.querySelector("[data-sheet]")).not.toBeNull();
+    const served = city.querySelector("[role=dialog]");
+    expect(served).not.toBeNull();
     const errors: unknown[] = [];
     const consoleError = vi.spyOn(console, "error").mockImplementation((e) => errors.push(e));
     let root: ReturnType<typeof hydrateRoot> | undefined;
@@ -68,15 +63,18 @@ describe("Sheet", () => {
     });
     consoleError.mockRestore();
     expect(errors).toEqual([]);
-    expect(city.querySelector("[data-sheet]")).toBeNull();
-    expect(document.querySelectorAll("[data-sheet]")).toHaveLength(1);
-    expect(document.querySelector("[data-sheet]")?.parentElement).toBe(document.body);
+    // The very node the server sent: replacing it would replay the entrance, cancel its
+    // transitions and repaint it (a later Largest Contentful Paint).
+    expect(served?.isConnected).toBe(true);
+    expect(document.querySelectorAll("[role=dialog]")).toHaveLength(1);
+    expect(document.querySelector("[role=dialog]")).toBe(served);
+    expect(served?.closest("#city")).toBe(city);
     expect(document.activeElement?.getAttribute("data-sheet-close")).toBe("");
-    for (const id of ["site-header", "city-list", "city"])
+    for (const id of ["site-header", "city-bar", "city-list"])
       expect(document.getElementById(id)?.hasAttribute("inert")).toBe(true);
     act(() => root?.unmount());
     expect(document.querySelector("[data-sheet]")).toBeNull();
-    expect(document.getElementById("city")?.hasAttribute("inert")).toBe(false);
+    expect(document.getElementById("site-header")?.hasAttribute("inert")).toBe(false);
   });
 
   it("makes every sibling of the sheet and its ancestors inert, and restores them", () => {

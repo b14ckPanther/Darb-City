@@ -144,3 +144,24 @@ test("desktop: the side panel is non-modal and the city behind it stays usable",
   await expect(page).toHaveURL(LEVELS.kind);
   await expect(dialog).toHaveCount(0);
 });
+
+for (const locale of ["he", "en"] as const) {
+  test(`desktop: the side panel stands above the site header (${locale})`, async ({
+    page,
+  }, info) => {
+    test.skip(isPhone(info), "desktop only");
+    await page.goto(localePath(locale, LEVELS.business));
+    await expect(page.locator("html")).toHaveAttribute("data-stage", "on");
+    const close = page.locator("[data-sheet-close]");
+    const header = (await page.locator("[data-site-header]").boundingBox())!;
+    const box = (await close.boundingBox())!;
+    // The close button sits in the header's band, and nothing of the header covers it.
+    expect(box.y).toBeLessThan(header.y + header.height);
+    expect(
+      await close.evaluate((el) => {
+        const r = el.getBoundingClientRect();
+        return el.contains(document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2));
+      }),
+    ).toBe(true);
+  });
+}

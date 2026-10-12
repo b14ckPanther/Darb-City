@@ -5,12 +5,6 @@
   pointer-events: none;
 }
 
-/* A server-rendered sheet that just moved into <body> is already on screen: no second entrance. */
-.root[data-settled] .scrim,
-.root[data-settled] .panel {
-  transition: none;
-}
-
 .scrim {
   position: absolute;
   inset: 0;

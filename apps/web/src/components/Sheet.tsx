@@ -5,12 +5,10 @@ import {
   useEffect,
   useRef,
   useState,
-  useSyncExternalStore,
   type KeyboardEvent,
   type PointerEvent,
   type ReactNode,
 } from "react";
-import { createPortal } from "react-dom";
 import { DESKTOP, useMedia } from "@/lib/use-media";
 import styles from "./Sheet.module.css";
 
@@ -67,19 +65,6 @@ export function focusables(root: HTMLElement): HTMLElement[] {
   });
 }
 
-const noSubscription = () => () => {};
-
-/**
- * True once the sheet may live in <body>: on any client render except hydration. The server (and
- * so hydration) puts it in the page where it is declared, inside `.city`.
- */
-const useInBody = () =>
-  useSyncExternalStore(
-    noSubscription,
-    () => true,
-    () => false,
-  );
-
 export interface SheetProps {
   /** Level 3: where closing goes. */
   closeHref: string;
@@ -99,12 +84,6 @@ export function Sheet({ closeHref, labelledBy, returnFocusTo, labels, children }
   const drag = useRef<{ startY: number } | null>(null);
   const [snap, setSnap] = useState<Snap>("half");
   const desktop = useMedia(DESKTOP);
-  // A portal into <body>, so the sheet's z-index competes with the site header's rather than being
-  // capped by `.city`'s stacking context. A server-rendered sheet hydrates in place and then moves
-  // there; it skips its entrance (it is already on screen), and focus follows it.
-  const inBody = useInBody();
-  const [fromServer] = useState(() => !inBody);
-  const [settling, setSettling] = useState(fromServer);
 
   const close = () => router.push(closeHref, { scroll: false });
   const closeRef = useRef(close);
@@ -117,15 +96,7 @@ export function Sheet({ closeHref, labelledBy, returnFocusTo, labels, children }
   useEffect(() => {
     if (desktop || !root.current) return;
     return inertBackground(root.current);
-  }, [desktop, inBody]);
-
-  // A hydrated sheet just moved into <body>: its old node took focus with it.
-  useEffect(() => {
-    if (!fromServer || !inBody) return;
-    if (!root.current?.contains(document.activeElement)) closeButton.current?.focus();
-    const frame = requestAnimationFrame(() => setSettling(false));
-    return () => cancelAnimationFrame(frame);
-  }, [fromServer, inBody]);
+  }, [desktop]);
 
   useEffect(() => {
     closeButton.current?.focus();
@@ -196,13 +167,11 @@ export function Sheet({ closeHref, labelledBy, returnFocusTo, labels, children }
     else setSnap((s) => snapFromDrag(s, deltaY));
   }
 
-  const sheet = (
-    <div
-      ref={root}
-      className={styles.root}
-      data-sheet=""
-      data-settled={fromServer && inBody && settling ? "" : undefined}
-    >
+  // Rendered where it is declared, inside `.city`, which makes no stacking context, so z-index 40
+  // stacks with the site header's. Never a portal: a server-rendered sheet must keep its node
+  // through hydration (no second entrance, no lost focus, no repaint of the largest text).
+  return (
+    <div ref={root} className={styles.root} data-sheet="">
       {desktop ? null : <div className={styles.scrim} aria-hidden="true" onClick={close} />}
       <div
         ref={panel}
@@ -249,5 +218,4 @@ export function Sheet({ closeHref, labelledBy, returnFocusTo, labels, children }
       </div>
     </div>
   );
-  return inBody ? createPortal(sheet, document.body) : sheet;
 }
