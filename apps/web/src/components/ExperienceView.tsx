@@ -3,7 +3,8 @@ import type { BusinessDetailDto, KindDto } from "@darb/contracts";
 import { t } from "@darb/i18n";
 import { formatPhone } from "@/lib/format";
 import { directionsHref, primaryAction, safeHttpUrl, telHref, whatsappHref } from "@/lib/links";
-import { ExampleBadge, OpenState } from "./Badges";
+import { ExampleBadge } from "./Badges";
+import { LiveOpenState } from "./LiveOpenState";
 import { LocaleSwitch } from "./CityBar";
 import { HoursTable } from "./HoursTable";
 import { SheetActions } from "./SheetActions";
@@ -52,8 +53,9 @@ export function ExperienceView({
         </p>
         <p className={styles.badges}>
           {business.tier === "example" ? <ExampleBadge label={t(locale, "example")} /> : null}
-          <OpenState
+          <LiveOpenState
             openNow={business.openNow}
+            hours={business.openNow === null ? null : business.hours}
             labels={{ open: t(locale, "openNow"), closed: t(locale, "closed") }}
           />
         </p>

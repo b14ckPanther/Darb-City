@@ -56,6 +56,7 @@ const business = (slug: string, placeSlug: string): BusinessSummaryDto => ({
   lng: 35.01,
   photo: null,
   openNow: null,
+  hours: { weekly: {}, exceptions: [] },
 });
 
 describe("stage levels", () => {
@@ -126,6 +127,7 @@ describe("search on the map", () => {
     href: `/${key}`,
     example: false,
     openNow: null,
+    hours: null,
     placeName: key.split("/")[0]!,
     lat,
     lng,

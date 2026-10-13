@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { BusinessRowData } from "@/lib/rows";
-import { ExampleBadge, OpenState } from "./Badges";
+import { ExampleBadge } from "./Badges";
+import { LiveOpenState } from "./LiveOpenState";
 import styles from "./List.module.css";
 
 export interface RowLabels {
@@ -41,8 +42,9 @@ export function BusinessRow({
             </span>
           ) : null}
           {row.example ? <ExampleBadge label={labels.example} /> : null}
-          <OpenState
+          <LiveOpenState
             openNow={row.openNow}
+            hours={row.hours}
             labels={{ open: labels.openNow, closed: labels.closed }}
           />
         </span>

@@ -76,6 +76,7 @@ const ok: SearchResponseDto = {
       lng: 35.071,
       photo: null,
       openNow: true,
+      hours: { weekly: {}, exceptions: [] },
     },
   ],
   nearest: [],

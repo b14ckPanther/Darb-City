@@ -21,6 +21,7 @@ const row = (key: string) => ({
   href: `/en/${key}`,
   example: true,
   openNow: true,
+  hours: null,
   placeName: null,
   lat: 32.9,
   lng: 35.1,

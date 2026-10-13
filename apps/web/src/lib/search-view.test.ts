@@ -73,6 +73,7 @@ const item = {
   lng: 35.071,
   photo: null,
   openNow: true,
+  hours: { weekly: {}, exceptions: [] },
   distanceKm: 1.25,
 };
 const response: SearchResponseDto = {

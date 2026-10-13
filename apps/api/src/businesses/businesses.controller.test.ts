@@ -46,6 +46,12 @@ describe("GET /places/:placeSlug/businesses", () => {
     );
     expect(byslug).toEqual({ "abu-salim": true, "little-cuts": null });
   });
+  it("carries the weekly hours so browsers recompute open-now on cached pages", async () => {
+    const res = await get("/places/sakhnin/businesses?kind=barbershops");
+    const abu = res.body.items.find((b: { slug: string }) => b.slug === "abu-salim");
+    expect(abu.hours).toMatchObject({ weekly: expect.any(Object), exceptions: [] });
+    expect(Object.keys(abu.hours.weekly).length).toBeGreaterThan(0);
+  });
   it("filters to open businesses", async () => {
     const res = await get("/places/sakhnin/businesses?kind=barbershops&openNow=true");
     expect(slugs(res.body.items)).toEqual(["abu-salim"]);

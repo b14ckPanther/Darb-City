@@ -42,6 +42,7 @@ const business = (slug: string, placeSlug: string, primaryKindId = "k1"): Busine
   lng: 35.3,
   photo: null,
   openNow: true,
+  hours: { weekly: { "0": [{ open: "09:00", close: "17:00" }] }, exceptions: [] },
 });
 
 const haifa = {
@@ -60,11 +61,16 @@ describe("business rows", () => {
       href: "/ar/haifa/beauty/barbershops/samers",
       example: true,
       openNow: true,
+      hours: { weekly: { "0": [{ open: "09:00", close: "17:00" }] }, exceptions: [] },
       placeName: null,
       lat: 32.8,
       lng: 35.3,
       distance: null,
     });
+  });
+  it("carries no hours for a business without any, so the browser never recomputes it", () => {
+    const none = { ...business("samers", "haifa"), openNow: null };
+    expect(toBusinessRow(none, ctx)?.hours).toBeNull();
   });
   it("shows the distance on a distance-sorted list, formatted by the caller", () => {
     const row = toBusinessRow(

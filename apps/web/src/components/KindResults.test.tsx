@@ -15,6 +15,7 @@ const row = (key: string, extra: object = {}) => ({
   href: `/en/sakhnin/food/restaurants/${key}`,
   example: true,
   openNow: true,
+  hours: null,
   placeName: null,
   lat: 32.86,
   lng: 35.3,

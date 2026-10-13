@@ -1,4 +1,4 @@
-import { pickText, type Locale, type Localized } from "@darb/core";
+import { pickText, type Hours, type Locale, type Localized } from "@darb/core";
 import type { BusinessSummaryDto, PlaceDetailDto, PlaceDto } from "@darb/contracts";
 import { href, paths } from "./routes";
 import type { TaxonomyIndex } from "./taxonomy";
@@ -11,6 +11,8 @@ export interface BusinessRowData {
   href: string;
   example: boolean;
   openNow: boolean | null;
+  /** For the browser's own open-now (LiveOpenState); null when the business has no hours. */
+  hours: Hours | null;
   /** Shown when the business is in another place than the one being listed. */
   placeName: string | null;
   lat: number;
@@ -58,6 +60,7 @@ export function toBusinessRow(b: BusinessSummaryDto, ctx: RowContext): BusinessR
     ),
     example: b.tier === "example",
     openNow: b.openNow,
+    hours: b.openNow === null ? null : b.hours,
     placeName: b.placeSlug === ctx.here || !name ? null : pickText(name, ctx.locale),
     lat: b.lat,
     lng: b.lng,
