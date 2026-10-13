@@ -6,6 +6,7 @@ import { IntentService } from "./intent.service.js";
 import { ModelBudget } from "./model-budget.js";
 import { RateLimiter } from "./rate-limiter.js";
 import { ReportRepository } from "./report.repository.js";
+import { SearchLogRetention } from "./retention.js";
 import { RetrievalRepository } from "./retrieval.repository.js";
 import { SearchIndexModule } from "./search-index.module.js";
 import { SearchLogRepository } from "./search-log.repository.js";
@@ -24,6 +25,7 @@ import { SuggestRepository } from "./suggest.repository.js";
     ReportRepository,
     RetrievalRepository,
     SearchLogRepository,
+    SearchLogRetention,
     SmartSearchService,
     SuggestRepository,
   ],

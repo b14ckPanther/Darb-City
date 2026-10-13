@@ -44,6 +44,8 @@ overwrites the row again.
   re-records the model's answers (needs a key; review the diff).
 - The search log is anonymous (no IP, user or coordinates). `GET /search/report` (header
   `x-darb-report-key`) feeds Plan 4's Missing kinds and places screen.
+- Search log rows are deleted after `SEARCH_LOG_RETENTION_DAYS` (default 90). `db:seed -- --no-index`
+  loads data without embeddings; `search:reindex` then embeds only changed rows.
 
 When lane 1 alone fully explains a query (a known kind and place), the model is skipped. When the
 model is slow, down or refuses, the page shows the same results lane 1 would, with no error copy.
