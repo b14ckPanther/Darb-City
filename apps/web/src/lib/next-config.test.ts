@@ -19,7 +19,7 @@ it("leaves Vercel's platform cache alone on Vercel", async () => {
   expect(config).not.toHaveProperty("cacheHandler");
 });
 
-it("caches the vendored MapLibre forever and the glyphs for a day", async () => {
+it("caches the vendored MapLibre and the hashed search index forever, the glyphs for a day", async () => {
   const { default: config } = await import("../../next.config");
   const headers = await config.headers!();
   expect(headers).toContainEqual({
@@ -30,4 +30,15 @@ it("caches the vendored MapLibre forever and the glyphs for a day", async () => 
     source: "/map/glyphs/:path*",
     headers: [{ key: "Cache-Control", value: "public, max-age=86400" }],
   });
+  expect(headers).toContainEqual({
+    source: "/search-index/:path*",
+    headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+  });
+});
+
+it("points the browser at the hashed instant index", async () => {
+  const { default: config } = await import("../../next.config");
+  expect(config.env?.NEXT_PUBLIC_SEARCH_INDEX_URL).toMatch(
+    /^\/search-index\/instant\.[0-9a-f]{12}\.json$/,
+  );
 });

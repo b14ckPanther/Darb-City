@@ -4,7 +4,7 @@ import type { Business } from "../generated/prisma/client.js";
 
 type Photo = { key: string; alt: Localized };
 
-function openNow(hours: Hours, now: Date): boolean | null {
+export function openNow(hours: Hours, now: Date): boolean | null {
   const hasAny =
     Object.values(hours.weekly).some((i) => i && i.length > 0) || hours.exceptions.length > 0;
   return hasAny ? isOpenAt(hours, now) : null;

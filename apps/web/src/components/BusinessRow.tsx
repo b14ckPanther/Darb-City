@@ -10,16 +10,36 @@ export interface RowLabels {
 }
 
 /** Pure: rendered by the server list and by ShowMore on the client. */
-export function BusinessRow({ row, labels }: { row: BusinessRowData; labels: RowLabels }) {
+export function BusinessRow({
+  row,
+  labels,
+  onOpen,
+}: {
+  row: BusinessRowData;
+  labels: RowLabels;
+  /** Client lists only (search results report the click); server lists never pass a function. */
+  onOpen?: () => void;
+}) {
   return (
     <li className={styles.row} data-business={row.key}>
-      <Link href={row.href} scroll={false} className={styles.rowLink} data-business-link={row.key}>
+      <Link
+        href={row.href}
+        scroll={false}
+        className={styles.rowLink}
+        data-business-link={row.key}
+        onClick={onOpen}
+      >
         <span className={styles.rowName} data-business-name="">
           {row.name}
         </span>
         {row.tagline ? <span className={styles.rowTagline}>{row.tagline}</span> : null}
         <span className={styles.rowMeta}>
           {row.placeName ? <span className={styles.rowPlace}>{row.placeName}</span> : null}
+          {row.distance ? (
+            <span className={styles.rowPlace} data-distance="">
+              {row.distance}
+            </span>
+          ) : null}
           {row.example ? <ExampleBadge label={labels.example} /> : null}
           <OpenState
             openNow={row.openNow}

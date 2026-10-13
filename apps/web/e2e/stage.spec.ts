@@ -205,6 +205,20 @@ test.describe("desktop", () => {
     await expect(dialog).toBeVisible();
   });
 
+  test("Enter in the search box searches without reloading: the map stays up", async ({ page }) => {
+    await stageAt(page, LEVELS.place);
+    // Survives a client navigation, never a reload.
+    await page.evaluate(() => Object.assign(window, { __darbSamePage: true }));
+    const box = page.getByRole("combobox");
+    await box.fill("barber haifa");
+    await box.press("Enter");
+    await expect(page).toHaveURL(/\/search\?q=barber\+haifa$/);
+    await expect(host(page)).toHaveAttribute("data-stage-path", "/search");
+    await expect(host(page)).toHaveAttribute("data-stage-state", "ready");
+    expect(await page.evaluate(() => "__darbSamePage" in window)).toBe(true);
+    await expect(box).toHaveValue("barber haifa");
+  });
+
   test("a neighbourhood business keeps the listed place's camera", async ({ page }) => {
     await stageAt(page, HAIFA.subPlaceBusiness);
     await expect(page).toHaveURL(HAIFA.subPlaceBusiness);

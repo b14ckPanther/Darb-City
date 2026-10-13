@@ -49,7 +49,7 @@
 /* Phone only: Map ⇄ List, centred above the docked search bar (StageMount.module.css --stage-bottom). */
 .toggle {
   position: fixed;
-  inset-block-end: calc(88px + env(safe-area-inset-bottom));
+  inset-block-end: calc(var(--dock-size) + var(--space-3) + env(safe-area-inset-bottom));
   inset-inline: 0;
   z-index: 35;
   inline-size: max-content;
@@ -64,6 +64,11 @@
   font: inherit;
   font-weight: 700;
   cursor: pointer;
+}
+
+/* VC2: the listbox opens upward over the pill's spot; the pill steps aside while it is open. */
+:global(html[data-search-open]) .toggle {
+  visibility: hidden;
 }
 
 @media (min-width: 900px) {

@@ -23,6 +23,10 @@ jobs:
       SITE_URL: http://localhost:3000
       NEXT_TELEMETRY_DISABLED: "1"
       TURBO_TELEMETRY_DISABLED: "1"
+      SEARCH_PROXY_KEY: ci-proxy-key
+      # No network and no keys: the model is replayed from recordings, embeddings are an offline hash.
+      INTENT_PROVIDER: recorded
+      EMBEDDING_PROVIDER: hash
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6
@@ -31,13 +35,15 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - name: Postgres with PostGIS and pgvector (infra/postgres/Dockerfile)
-        run: docker compose -f infra/docker-compose.yml up -d --wait postgres
+      - name: Postgres with PostGIS and pgvector (infra/postgres/Dockerfile), and Redis
+        run: docker compose -f infra/docker-compose.yml up -d --wait postgres redis
       - run: cp apps/api/.env.example apps/api/.env
       - run: pnpm build
       - run: pnpm typecheck
       - run: pnpm lint
       - run: pnpm format:check
+      - name: No model keys in CI (tests replay recordings and use offline embeddings)
+        run: test -z "${ANTHROPIC_API_KEY}${VOYAGE_API_KEY}"
       - name: Unit and API integration tests
         run: pnpm test
       # CI never downloads map tiles: e2e serves the committed 1 KB fixture (MAP_TILES_DIR in
@@ -46,7 +52,9 @@ jobs:
         run: pnpm --filter @darb/web exec node scripts/tiles/make-test-tiles.mjs --check
       - name: Migrate and seed the e2e database
         run: pnpm --filter @darb/api db:deploy && pnpm --filter @darb/api db:seed
-      - name: First-load JS and lazy stage budgets
+      - name: Search quality set (recorded intents, offline embeddings)
+        run: pnpm --filter @darb/api search:quality
+      - name: First-load JS, lazy stage and lazy search budgets
         run: pnpm --filter @darb/web budget
       - run: pnpm --filter @darb/web exec playwright install --with-deps chromium
       - name: End-to-end, accessibility and LCP

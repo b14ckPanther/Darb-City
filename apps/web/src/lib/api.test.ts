@@ -10,6 +10,7 @@ import {
   getNearestPlace,
   getNearestPlacesWithKind,
   getPlace,
+  postSearch,
 } from "./api";
 
 const fetchMock = vi.fn<typeof fetch>();
@@ -109,5 +110,29 @@ describe("slug path params", () => {
     expect(await getBusiness("sakhnin", slug)).toBeNull();
     expect(await getNearestPlacesWithKind(slug, 32.8, 35.3, 5)).toBeNull();
     expect(fetchMock).not.toHaveBeenCalled();
+  });
+});
+
+describe("search calls", () => {
+  it("vouch for the visitor, never cache, and never log the point", async () => {
+    vi.stubEnv("SEARCH_PROXY_KEY", "k");
+    const log = vi.spyOn(console, "log");
+    const info = vi.spyOn(console, "info");
+    fetchMock.mockResolvedValue(
+      Response.json({ message: "slow down", retryAfter: 7 }, { status: 429 }),
+    );
+    const out = await postSearch(
+      { q: "barber", locale: "en", near: { lat: 32.864, lng: 35.304 } },
+      "5.6.7.8",
+    );
+    expect(out).toEqual({ status: 429, retryAfter: 7 });
+    const [url, init] = fetchMock.mock.calls[0]!;
+    expect(String(url)).toBe("http://api.test/search");
+    expect(init?.cache).toBe("no-store");
+    const headers = new Headers(init?.headers);
+    expect(headers.get("x-darb-proxy-key")).toBe("k");
+    expect(headers.get("x-darb-client-ip")).toBe("5.6.7.8");
+    expect(log).not.toHaveBeenCalled();
+    expect(info).not.toHaveBeenCalled();
   });
 });

@@ -2,7 +2,14 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 import { EMPTY_KIND, LEVELS, LOCALES, localePath, settleStage } from "./fixtures";
 
-const PAGES = [...Object.values(LEVELS), EMPTY_KIND, "/for-business"];
+const PAGES = [
+  ...Object.values(LEVELS),
+  EMPTY_KIND,
+  "/for-business",
+  "/search?q=barber%20haifa",
+  "/search?q=bars",
+  "/sakhnin/food/restaurants?open=1",
+];
 
 for (const locale of LOCALES) {
   for (const path of PAGES) {

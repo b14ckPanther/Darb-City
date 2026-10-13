@@ -2,7 +2,8 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { pickText } from "@darb/core";
 import { t } from "@darb/i18n";
-import { BusinessList } from "@/components/BusinessList";
+import { rowLabels } from "@/components/BusinessList";
+import { KindResults } from "@/components/KindResults";
 import { NoneYet } from "@/components/NoneYet";
 import { StageData } from "@/components/StageData";
 import { SubPlaceChips } from "@/components/SubPlaceChips";
@@ -31,7 +32,13 @@ export default orUnavailable(async function KindLayout({ children, params }: Pro
   const { locale, place, sector, kind, index } = level;
   const page = await getBusinesses(place.slug, { kind: kind.slug });
   if (!page) notFound();
-  const ctx = { locale, index, names: placeNames(place), here: place.slug };
+  const ctx = {
+    locale,
+    index,
+    names: placeNames(place),
+    here: place.slug,
+    kmLabel: (km: number) => formatKm(km, locale),
+  };
   const rows = toRows(page.items, ctx);
   const placeName = pickText(place.name, locale);
   const nearest =
@@ -42,7 +49,6 @@ export default orUnavailable(async function KindLayout({ children, params }: Pro
   return (
     <>
       {children}
-      <StageData level={kindStage(locale, place, page.items, ctx)} />
       <main id="main" className="frame">
         <div id="city-list" className="reveal">
           <h1 id="main-heading" tabIndex={-1} className="page-title">
@@ -52,26 +58,44 @@ export default orUnavailable(async function KindLayout({ children, params }: Pro
             <SubPlaceChips label={t(locale, "neighbourhoods")} chips={chips} />
           ) : null}
           {rows.length > 0 ? (
-            <BusinessList
+            <KindResults
               locale={locale}
-              rows={rows}
-              more={
-                page.nextCursor
-                  ? { place: place.slug, kind: kind.slug, cursor: page.nextCursor }
-                  : null
-              }
+              place={place.slug}
+              kind={kind.slug}
+              stagePlace={{ slug: place.slug, name: placeName, lat: place.lat, lng: place.lng }}
+              initialRows={rows}
+              initialCursor={page.nextCursor}
+              deliversAvailable={kind.attributes.includes("delivers")}
+              labels={{
+                businesses: t(locale, "businesses"),
+                filters: t(locale, "filters"),
+                openNow: t(locale, "openNow"),
+                delivers: t(locale, "delivers"),
+                nearMe: t(locale, "nearMe"),
+                locating: t(locale, "locating"),
+                locationDenied: t(locale, "locationDenied"),
+                showMore: t(locale, "showMore"),
+                unreachable: t(locale, "unreachable"),
+                filterNoResults: t(locale, "filterNoResults"),
+                nothingOpen: t(locale, "nothingOpen"),
+                includeClosed: t(locale, "includeClosed"),
+                rows: rowLabels(locale),
+              }}
             />
           ) : (
-            <NoneYet
-              title={t(locale, "noneHereYet", { place: placeName })}
-              subtitle={t(locale, "nearestPlaces")}
-              places={nearest.map((p) => ({
-                key: p.slug,
-                name: pickText(p.name, locale),
-                href: href(locale, paths.kind(p.slug, sector.slug, kind.slug)),
-                distance: formatKm(p.distanceKm, locale),
-              }))}
-            />
+            <>
+              <StageData level={kindStage(locale, place, page.items, ctx)} />
+              <NoneYet
+                title={t(locale, "noneHereYet", { place: placeName })}
+                subtitle={t(locale, "nearestPlaces")}
+                places={nearest.map((p) => ({
+                  key: p.slug,
+                  name: pickText(p.name, locale),
+                  href: href(locale, paths.kind(p.slug, sector.slug, kind.slug)),
+                  distance: formatKm(p.distanceKm, locale),
+                }))}
+              />
+            </>
           )}
         </div>
       </main>

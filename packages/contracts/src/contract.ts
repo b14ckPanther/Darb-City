@@ -13,6 +13,17 @@ import {
   SlugSchema,
   TaxonomySchema,
 } from "./schemas.js";
+import {
+  ClickRequestSchema,
+  MissingReportSchema,
+  ReportQuerySchema,
+  ResultsRequestSchema,
+  SearchRequestSchema,
+  SearchResponseSchema,
+  SuggestQuerySchema,
+  SuggestionSchema,
+  TooManySchema,
+} from "./search.js";
 
 const c = initContract();
 
@@ -49,15 +60,26 @@ export const contract = c.router({
       method: "GET",
       path: "/places/:placeSlug/businesses",
       pathParams: z.object({ placeSlug: SlugSchema }),
-      query: z.object({
-        kind: SlugSchema.optional(),
-        openNow: z
-          .enum(["true", "false"])
-          .transform((v) => v === "true")
-          .optional(),
-        limit: z.coerce.number().int().min(1).max(100).default(30),
-        cursor: z.string().min(1).max(512).optional(),
-      }),
+      query: z
+        .object({
+          kind: SlugSchema.optional(),
+          openNow: z
+            .enum(["true", "false"])
+            .transform((v) => v === "true")
+            .optional(),
+          delivers: z
+            .enum(["true", "false"])
+            .transform((v) => v === "true")
+            .optional(),
+          /** With lng: sort by distance from this point. Used once, never stored or logged. */
+          lat: coordinate(-90, 90).optional(),
+          lng: coordinate(-180, 180).optional(),
+          limit: z.coerce.number().int().min(1).max(100).default(30),
+          cursor: z.string().min(1).max(512).optional(),
+        })
+        .refine((q) => (q.lat === undefined) === (q.lng === undefined), {
+          message: "lat and lng go together",
+        }),
       responses: { 200: BusinessPageSchema, 400: BadRequestSchema, 404: NotFoundSchema },
     },
     /**
@@ -92,6 +114,45 @@ export const contract = c.router({
       method: "GET",
       path: "/density",
       responses: { 200: DensitySchema },
+    },
+  },
+  search: {
+    suggest: {
+      method: "GET",
+      path: "/search/suggest",
+      query: SuggestQuerySchema,
+      responses: { 200: z.array(SuggestionSchema) },
+    },
+    search: {
+      method: "POST",
+      path: "/search",
+      body: SearchRequestSchema,
+      responses: { 200: SearchResponseSchema, 400: BadRequestSchema, 429: TooManySchema },
+    },
+    results: {
+      method: "POST",
+      path: "/search/results",
+      body: ResultsRequestSchema,
+      responses: { 200: SearchResponseSchema, 400: BadRequestSchema, 429: TooManySchema },
+    },
+    click: {
+      method: "POST",
+      path: "/search/click",
+      body: ClickRequestSchema,
+      responses: {
+        204: c.noBody(),
+        400: BadRequestSchema,
+        404: NotFoundSchema,
+        429: TooManySchema,
+      },
+    },
+    /** The Missing kinds and places report (Plan 4's admin screen reads it). */
+    report: {
+      method: "GET",
+      path: "/search/report",
+      headers: z.object({ "x-darb-report-key": z.string().optional() }),
+      query: ReportQuerySchema,
+      responses: { 200: MissingReportSchema, 404: NotFoundSchema },
     },
   },
 });

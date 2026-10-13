@@ -1,10 +1,15 @@
 import { defineConfig } from "@playwright/test";
 import { WEB_API_DOWN } from "./e2e/fixtures";
 
-/** Override with WEB_URL, API_URL and WEB_API_DOWN_URL to run beside other servers on the defaults. */
-const WEB = process.env.WEB_URL ?? "http://localhost:3000";
-const API = process.env.API_URL ?? "http://localhost:4000";
+/**
+ * Dedicated ports, never the dev servers' :3000 and :4000: a dev API may hold real model keys, and
+ * e2e must never reuse it. Override with WEB_URL, API_URL and WEB_API_DOWN_URL.
+ */
+const WEB = process.env.WEB_URL ?? "http://localhost:3100";
+const API = process.env.API_URL ?? "http://localhost:4100";
 const port = (url: string) => new URL(url).port;
+/** Every API e2e starts: recorded intents and offline embeddings, whatever apps/api/.env holds. */
+const OFFLINE_PROVIDERS = { INTENT_PROVIDER: "recorded", EMBEDDING_PROVIDER: "hash" };
 
 /**
  * WebGL2 for the map. Locally the real GPU draws it. Without a GPU (CI), Chromium falls back to
@@ -51,16 +56,23 @@ export default defineConfig({
       command: "pnpm --filter @darb/api start",
       cwd: "../..",
       url: `${API}/health`,
-      reuseExistingServer: true,
+      reuseExistingServer: !process.env.CI,
       timeout: 60_000,
-      env: { PORT: port(API), WEB_ORIGIN: WEB },
+      env: {
+        PORT: port(API),
+        WEB_ORIGIN: WEB,
+        ...OFFLINE_PROVIDERS,
+        SEARCH_PROXY_KEY: "e2e-proxy-key",
+        SEARCH_RATE_LIMIT: "100000",
+        SEARCH_RESULTS_RATE_LIMIT: "100000",
+      },
     },
     {
       command: `pnpm exec next start --port ${port(WEB)}`,
       url: `${WEB}/for-business`,
       reuseExistingServer: !process.env.CI,
       timeout: 120_000,
-      env: { API_URL: API, SITE_URL: WEB, ...TILES },
+      env: { API_URL: API, SITE_URL: WEB, SEARCH_PROXY_KEY: "e2e-proxy-key", ...TILES },
     },
     {
       command: `pnpm exec next start --port ${port(WEB_API_DOWN)}`,
@@ -68,7 +80,12 @@ export default defineConfig({
       reuseExistingServer: !process.env.CI,
       timeout: 120_000,
       // Port 9 (discard) refuses connections: every API call fails as unreachable.
-      env: { API_URL: "http://127.0.0.1:9", SITE_URL: WEB_API_DOWN, ...TILES },
+      env: {
+        API_URL: "http://127.0.0.1:9",
+        SITE_URL: WEB_API_DOWN,
+        SEARCH_PROXY_KEY: "e2e-proxy-key",
+        ...TILES,
+      },
     },
   ],
 });

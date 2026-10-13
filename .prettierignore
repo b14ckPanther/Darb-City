@@ -16,3 +16,5 @@ apps/web/public/map
 apps/web/.tiles
 apps/web/map-assets
 apps/web/e2e/tiles
+# Written by search:record, one case per line.
+apps/api/test/search-quality/cases.json

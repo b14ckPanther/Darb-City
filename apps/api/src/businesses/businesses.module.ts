@@ -8,5 +8,6 @@ import { BusinessesRepository } from "./businesses.repository.js";
   imports: [PlacesModule, TaxonomyModule],
   controllers: [BusinessesController],
   providers: [BusinessesRepository, { provide: CLOCK, useValue: () => new Date() }],
+  exports: [BusinessesRepository, CLOCK],
 })
 export class BusinessesModule {}
