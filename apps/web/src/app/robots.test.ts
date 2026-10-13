@@ -1,6 +1,6 @@
 // @vitest-environment node
 import { afterEach, expect, it, vi } from "vitest";
-import robots from "./robots";
+import robots, { dynamic } from "./robots";
 
 afterEach(() => vi.unstubAllEnvs());
 
@@ -30,4 +30,8 @@ it("opens production except admin, api and search, and lists the sitemaps", () =
     },
   ]);
   expect(r.sitemap).toEqual([0, 1, 2].map((i) => `https://darb.co.il/sitemap/${i}.xml`));
+});
+
+it("reads the deployment at request time, not at build", () => {
+  expect(dynamic).toBe("force-dynamic");
 });

@@ -49,7 +49,8 @@ vi.mock("@/lib/api", () => ({
     { placeSlug: "sakhnin", slug: "orphan", primaryKindId: "gone", updatedAt: "2026-10-13" },
   ],
 }));
-const { default: sitemap, generateSitemaps } = await import("./sitemap");
+const mod = await import("./sitemap");
+const { default: sitemap, generateSitemaps } = mod;
 afterEach(() => vi.unstubAllEnvs());
 
 it("has one sitemap per locale with places, sectors, kinds and real businesses", async () => {
@@ -73,4 +74,8 @@ it("gives the Hebrew home the bare origin", async () => {
   const he = await sitemap({ id: Promise.resolve("0") });
   expect(he[0]?.url).toBe("https://darb.co.il/");
   expect(he[1]?.url).toBe("https://darb.co.il/sakhnin");
+});
+
+it("renders on request, so the build never needs the API (its fetches stay cached a day)", () => {
+  expect(mod.dynamic).toBe("force-dynamic");
 });

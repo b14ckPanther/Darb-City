@@ -4,7 +4,12 @@ import { getPlaces, getSitemapBusinesses, getTaxonomy } from "@/lib/api";
 import { href, languageAlternates, paths } from "@/lib/routes";
 import { siteUrl } from "@/lib/site";
 
-export const revalidate = 86400;
+/**
+ * Rendered per request: a build-time prerender would need the API (the build never calls it, and an
+ * unreachable API must not fail the build or cache an empty sitemap). The API reads inside are
+ * cached for a day and refreshed by tag, so a crawl costs no API round trip.
+ */
+export const dynamic = "force-dynamic";
 
 export async function generateSitemaps() {
   return LOCALES.map((_, id) => ({ id }));
