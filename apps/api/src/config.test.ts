@@ -122,3 +122,30 @@ it("refuses weak or missing production secrets", () => {
 it("allows the fake verifier outside production only", () => {
   expect(loadConfig({ ...base, AUTH_VERIFIER: "fake" }).auth.verifier).toBe("fake");
 });
+
+it("treats an empty env line as unset instead of refusing to start", () => {
+  const config = loadConfig({
+    ...base,
+    REVALIDATE_URL: "",
+    REVALIDATE_SECRET: "",
+    WEB_ORIGIN: "",
+    REDIS_URL: " ",
+    PORT: "",
+    INTENT_PROVIDER: "",
+    EMBEDDING_PROVIDER: "",
+    AUTH_VERIFIER: "",
+    SEARCH_INDEX_WORKER: "",
+    MODEL_CALLS_PER_DAY: "",
+  });
+  expect(config.admin).toEqual({ revalidateUrl: null, revalidateSecret: null });
+  expect(config.webOrigin).toBe("http://localhost:3000");
+  expect(config.search.redisUrl).toBe("redis://localhost:6380");
+  expect(config.port).toBe(4000);
+  expect(config.search.intentProvider).toBe("off");
+  expect(config.search.embeddingProvider).toBe("hash");
+  expect(config.auth.verifier).toBe("off");
+  expect(config.search.indexWorker).toBe(true);
+  expect(config.search.modelCallsPerDay).toBe(5000);
+  expect(() => loadConfig({ DATABASE_URL: "" })).toThrow(/DATABASE_URL/);
+  expect(() => loadConfig({ ...base, REVALIDATE_URL: "not a url" })).toThrow(/REVALIDATE_URL/);
+});

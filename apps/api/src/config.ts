@@ -106,8 +106,12 @@ const randomSalt = () =>
     b.toString(16).padStart(2, "0"),
   ).join("");
 
+/** A blank line such as `REVALIDATE_URL=` means unset (defaults apply), never a parse error. */
+const withoutBlanks = (env: NodeJS.ProcessEnv): NodeJS.ProcessEnv =>
+  Object.fromEntries(Object.entries(env).filter(([, v]) => v === undefined || v.trim() !== ""));
+
 export function loadConfig(env: NodeJS.ProcessEnv): AppConfig {
-  const parsed = schema.safeParse(env);
+  const parsed = schema.safeParse(withoutBlanks(env));
   if (!parsed.success) {
     throw new Error(
       `Invalid environment: ${parsed.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`).join("; ")}`,
