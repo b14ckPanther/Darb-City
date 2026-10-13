@@ -28,6 +28,7 @@ export const en = {
   searchFor: "Search for “{q}”",
   suggestionCount: "Suggestions: {count}",
   noSuggestions: "No suggestions",
+  nationwide: "Across Israel",
   searchResultsTitle: "Results for “{q}”",
   resultCount: "Results: {count}",
   removeChip: "Remove {chip}",

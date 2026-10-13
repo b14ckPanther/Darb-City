@@ -30,6 +30,7 @@ export const he: Messages = {
   searchFor: "חיפוש „{q}”",
   suggestionCount: "הצעות: {count}",
   noSuggestions: "אין הצעות",
+  nationwide: "בכל הארץ",
   searchResultsTitle: "תוצאות עבור „{q}”",
   resultCount: "תוצאות: {count}",
   removeChip: "הסרת {chip}",

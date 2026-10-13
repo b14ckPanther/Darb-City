@@ -77,18 +77,16 @@ export function searchStage(
   place: StagePlace | null,
   rows: readonly BusinessRowData[],
 ): StageLevel {
-  const first = rows[0];
-  const at =
-    place ??
-    (first
-      ? {
-          slug: first.key.split("/")[0] ?? "",
-          name: first.placeName ?? first.name,
-          lat: first.lat,
-          lng: first.lng,
-        }
-      : null);
-  return at ? { depth: 3, place: at, pins: pinsFromRows(rows) } : COUNTRY_STAGE;
+  if (place) return { depth: 3, place, pins: pinsFromRows(rows) };
+  if (rows.length === 0) return COUNTRY_STAGE;
+  // Nationwide: no one city; the camera frames every pin (cameraFor fits their bounds).
+  const mean = (pick: (r: BusinessRowData) => number) =>
+    rows.reduce((sum, r) => sum + pick(r), 0) / rows.length;
+  return {
+    depth: 3,
+    place: { slug: "", name: "", lat: mean((r) => r.lat), lng: mean((r) => r.lng) },
+    pins: pinsFromRows(rows),
+  };
 }
 
 export function soonStage(locale: Locale, place: PlaceDetailDto): StageLevel {

@@ -27,9 +27,10 @@ export interface ResultsLabels {
   rows: RowLabels;
 }
 
-const fill = (s: string, k: string, v: string | number) => s.replace(`{${k}}`, String(v));
+/** A function replacement, so "$&" or "$1" in a query or name stays as typed. */
+const fill = (s: string, k: string, v: string | number) => s.replace(`{${k}}`, () => String(v));
 /** The free-text chip is shown in quotes; the sentence that names it brings its own. */
-const unquoted = (label: string) => label.replace(/^“(.*)”$/u, "$1");
+const unquoted = (label: string) => label.replace(/^[“„«](.*)[”»]$/u, "$1");
 
 export function SearchResults({
   locale,

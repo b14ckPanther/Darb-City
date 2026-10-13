@@ -1,7 +1,15 @@
 import type { BusinessSummaryDto, PlaceDetailDto, TaxonomyDto } from "@darb/contracts";
 import { describe, expect, it } from "vitest";
 import { placeNames } from "./rows";
-import { COUNTRY_STAGE, kindStage, placeStage, sectorStage, soonStage } from "./stage-data";
+import { cameraFor } from "@darb/stage";
+import {
+  COUNTRY_STAGE,
+  kindStage,
+  placeStage,
+  searchStage,
+  sectorStage,
+  soonStage,
+} from "./stage-data";
 import { indexTaxonomy } from "./taxonomy";
 
 const kind = (id: string, slug: string, parentKindId: string | null = null, order = 1) => ({
@@ -107,5 +115,39 @@ describe("stage levels", () => {
       place: { slug: "haifa", name: "Haifa", lat: 32.79, lng: 34.99 },
       pins: [],
     });
+  });
+});
+
+describe("search on the map", () => {
+  const row = (key: string, lat: number, lng: number) => ({
+    key,
+    name: key,
+    tagline: "",
+    href: `/${key}`,
+    example: false,
+    openNow: null,
+    placeName: key.split("/")[0]!,
+    lat,
+    lng,
+    distance: null,
+  });
+  it("frames every result of a nationwide search, not the first result's city", () => {
+    const stage = searchStage(null, [row("haifa/a", 32.8, 35.0), row("eilat/b", 29.55, 34.95)]);
+    expect(stage.depth).toBe(3);
+    if (stage.depth !== 3) return;
+    expect(stage.place.slug).toBe("");
+    expect(stage.place.lat).toBeCloseTo((32.8 + 29.55) / 2);
+    expect(cameraFor(stage)).toEqual({
+      bounds: [
+        [34.93, 29.53],
+        [35.02, 32.82],
+      ],
+      maxZoom: 15,
+    });
+  });
+  it("keeps the searched place when there is one", () => {
+    const place = { slug: "akko", name: "Akko", lat: 32.92, lng: 35.07 };
+    const stage = searchStage(place, [row("akko/a", 32.92, 35.07)]);
+    expect(stage).toMatchObject({ depth: 3, place });
   });
 });

@@ -180,3 +180,13 @@ describe("search view", () => {
     });
   });
 });
+
+describe("free-text chip quotes", () => {
+  it("uses each language's own quotation marks", () => {
+    const text = (locale: "he" | "ar" | "en") =>
+      chipsFor({ ...EMPTY_INTENT, freeText: "פיסטוק" }, { ...ctx, locale }).at(-1)?.label;
+    expect(text("en")).toBe("“פיסטוק”");
+    expect(text("he")).toBe("„פיסטוק”");
+    expect(text("ar")).toBe("«פיסטוק»");
+  });
+});

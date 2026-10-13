@@ -23,6 +23,11 @@
   box-shadow: none;
 }
 
+/* The native clear × was a 9 px target: Escape clears, and so does selecting the text. */
+.input::-webkit-search-cancel-button {
+  appearance: none;
+}
+
 /* VC1: under the header input, its width, at most 60vh. */
 .popup {
   position: absolute;
@@ -66,10 +71,17 @@
   cursor: pointer;
 }
 
-.option[aria-selected="true"],
-.option:hover {
+/* One highlight: the active option (aria-activedescendant). */
+.option[aria-selected="true"] {
   border-inline-start-color: var(--gold-300);
   background: var(--surface-2);
+}
+
+/* A pointer only tints a row, never mimics the active one; touch never leaves a tint behind. */
+@media (hover: hover) {
+  .option:hover:not([aria-selected="true"]) {
+    background: rgb(251 247 236 / 0.04);
+  }
 }
 
 .label {

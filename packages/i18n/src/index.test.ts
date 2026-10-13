@@ -89,6 +89,7 @@ describe("search copy", () => {
   });
   it("reads naturally where the review asked", () => {
     expect(t("ar", "noSuggestions")).toBe("لا توجد اقتراحات");
+    expect(t("he", "nationwide")).toBe(t("he", "kindNationwide", { kind: "" }).trim());
     expect(t("he", "searchUnavailable")).toMatch(/במקום זאת\.$/);
   });
   it("fills the chip and query placeholders", () => {

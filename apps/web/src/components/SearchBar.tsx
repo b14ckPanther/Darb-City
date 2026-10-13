@@ -18,6 +18,7 @@ export function searchLabels(locale: Locale): SearchLabels {
     searchFor: t(locale, "searchFor"),
     suggestionCount: t(locale, "suggestionCount"),
     noSuggestions: t(locale, "noSuggestions"),
+    nationwide: t(locale, "nationwide"),
   };
 }
 

@@ -45,6 +45,13 @@ export interface ViewContext {
   kmLabel: (km: number) => string;
 }
 
+/** Each language's own quotation marks, as in its messages ("Search for „…”", «…»). */
+const QUOTE: Record<Locale, (text: string) => string> = {
+  he: (s) => `„${s}”`,
+  ar: (s) => `«${s}»`,
+  en: (s) => `“${s}”`,
+};
+
 export function chipsFor(intent: IntentDto, ctx: ViewContext): Chip[] {
   const chips: Chip[] = [];
   if (intent.place) {
@@ -64,7 +71,8 @@ export function chipsFor(intent: IntentDto, ctx: ViewContext): Chip[] {
   if (intent.attributes.delivers)
     chips.push({ id: "delivers", type: "delivers", label: ctx.labels.delivers });
   if (intent.nearMe) chips.push({ id: "nearMe", type: "nearMe", label: ctx.labels.nearMe });
-  if (intent.freeText) chips.push({ id: "text", type: "text", label: `“${intent.freeText}”` });
+  if (intent.freeText)
+    chips.push({ id: "text", type: "text", label: QUOTE[ctx.locale](intent.freeText) });
   return chips;
 }
 
@@ -100,6 +108,7 @@ export function toSearchView(res: SearchResponseDto, q: string, ctx: ViewContext
   const kind = res.intent.kinds[0] ? ctx.index.kindBySlug.get(res.intent.kinds[0]) : undefined;
   const sector = kind ? ctx.index.sectorById.get(kind.sectorId) : undefined;
   const kindName = kind ? pickText(kind.name, ctx.locale) : "";
+  const placeName = ctx.place?.name ?? "";
   const withoutOpenNow =
     res.status === "ok" && rows.length === 0 && res.intent.openNow && kind && sector
       ? res.intent.place && ctx.place
@@ -107,12 +116,12 @@ export function toSearchView(res: SearchResponseDto, q: string, ctx: ViewContext
           ? null
           : {
               label: ctx.labels.kindInPlace
-                .replace("{kind}", kindName)
-                .replace("{place}", ctx.place.name),
+                .replace("{kind}", () => kindName)
+                .replace("{place}", () => placeName),
               href: href(ctx.locale, paths.kind(res.intent.place, sector.slug, kind.slug)),
             }
         : {
-            label: ctx.labels.kindNationwide.replace("{kind}", kindName),
+            label: ctx.labels.kindNationwide.replace("{kind}", () => kindName),
             href: href(ctx.locale, paths.nationalKind(kind.slug)),
           }
       : null;

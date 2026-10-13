@@ -43,6 +43,7 @@ const labels = {
   searchFor: "Search for “{q}”",
   suggestionCount: "Suggestions: {count}",
   noSuggestions: "None",
+  nationwide: "Across Israel",
 };
 
 it("offers kind in place first, at its level-3 URL, then each on its own, then a full search", () => {
@@ -96,4 +97,15 @@ it("sends a kind in a soon place to the place page, never to an empty kind list"
   expect(options[0]!.href).toBe("/en/eilat");
   expect(options.map((o) => o.href)).not.toContain("/en/eilat/beauty/barbershops");
   expect(options.find((o) => o.id === "place:eilat")!.href).toBe("/en/eilat");
+});
+
+it("says a kind on its own is nationwide", () => {
+  const national = instantOptions(prepared, "barber", "en", labels).find(
+    (o) => o.id === "kind:barbershops",
+  );
+  expect(national?.sublabel).toBe("Across Israel");
+});
+
+it("puts the typed text into the label as it is, $& and all", () => {
+  expect(searchOption("$& $1", "en", labels)?.label).toBe("Search for “$& $1”");
 });

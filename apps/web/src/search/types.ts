@@ -19,4 +19,6 @@ export interface SearchLabels {
   searchFor: string; // with {q}
   suggestionCount: string; // with {count}
   noSuggestions: string;
+  /** The sublabel of a kind on its own: its page lists it across the country. */
+  nationwide: string;
 }

@@ -29,6 +29,11 @@ header that the API trusts only with the shared `SEARCH_PROXY_KEY` (set the same
 a salted hash for 60 seconds. `dev-proxy-key` is for development only: the API refuses to start in
 production with it, so production must set one long random key on both sides.
 
+The web server takes the visitor's IP from `x-vercel-forwarded-for` on Vercel, which Vercel sets
+itself. Elsewhere it reads the first `X-Forwarded-For` hop, then `X-Real-IP`, so a self-hosted web
+server must sit behind a reverse proxy that **overwrites** (never appends to) `X-Forwarded-For`
+and `X-Real-IP`. Without one, a visitor could send any IP and dodge the rate limit.
+
 ## Map
 
 The Zoomable City draws MapLibre GL over a Protomaps PMTiles extract of Israel, then a 2.5D plaza

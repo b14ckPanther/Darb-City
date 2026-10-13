@@ -74,6 +74,7 @@ export function instantOptions(
         id: `kind:${k.entry.s}`,
         group: "kinds",
         label: name(k.entry, locale),
+        sublabel: labels.nationwide,
         href: href(locale, paths.nationalKind(k.entry.s)),
       });
   }
@@ -92,7 +93,7 @@ export function searchOption(
   return {
     id: "search",
     group: "search",
-    label: labels.searchFor.replace("{q}", q),
+    label: labels.searchFor.replace("{q}", () => q),
     href: `${href(locale, paths.search())}?${new URLSearchParams({ q })}`,
   };
 }

@@ -3,6 +3,9 @@
  * X-Real-IP. Used only to rate-limit searches at the API, never stored there (only a salted hash).
  */
 export function clientIpFrom(headers: Headers): string {
+  // Vercel sets this one itself and drops any copy a visitor sends.
+  const vercel = headers.get("x-vercel-forwarded-for")?.split(",")[0]?.trim();
+  if (vercel) return vercel;
   const forwarded = headers.get("x-forwarded-for")?.split(",")[0]?.trim();
   return forwarded || headers.get("x-real-ip")?.trim() || "local";
 }

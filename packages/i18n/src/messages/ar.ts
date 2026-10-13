@@ -30,6 +30,7 @@ export const ar: Messages = {
   searchFor: "ابحث عن «{q}»",
   suggestionCount: "الاقتراحات: {count}",
   noSuggestions: "لا توجد اقتراحات",
+  nationwide: "في كل البلاد",
   searchResultsTitle: "نتائج «{q}»",
   resultCount: "النتائج: {count}",
   removeChip: "إزالة {chip}",
