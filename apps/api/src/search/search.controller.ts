@@ -4,7 +4,7 @@ import { contract } from "@darb/contracts";
 import { TsRestHandler, tsRestHandler } from "@ts-rest/nest";
 import { CLOCK, type Clock } from "../businesses/businesses.controller.js";
 import { APP_CONFIG, type AppConfig } from "../config.js";
-import { clientIp, type ClientRequest } from "./client-ip.js";
+import { clientIp, proxied, type ClientRequest } from "./client-ip.js";
 import { RateLimiter } from "./rate-limiter.js";
 import { ReportRepository } from "./report.repository.js";
 import { SearchLogRepository } from "./search-log.repository.js";
@@ -41,10 +41,17 @@ export class SearchController {
   handler(@Req() req: ClientRequest) {
     const ip = () => clientIp(req, this.config.search.proxyKey);
     return tsRestHandler(contract.search, {
-      suggest: async ({ query }) => ({
-        status: 200,
-        body: await this.suggestions.suggest(query.q, { place: query.place, limit: query.limit }),
-      }),
+      suggest: async ({ query }) => {
+        // The web server limits each visitor itself (it can cache); direct callers are limited here.
+        if (!proxied(req, this.config.search.proxyKey)) {
+          const gate = await this.limiter.hit("suggest", ip(), this.config.search.suggestRateLimit);
+          if (!gate.ok) return tooMany(gate.retryAfter);
+        }
+        return {
+          status: 200,
+          body: await this.suggestions.suggest(query.q, { place: query.place, limit: query.limit }),
+        };
+      },
       search: async ({ body }) => {
         const gate = await this.limiter.hit("search", ip(), this.config.search.rateLimit);
         if (!gate.ok) return tooMany(gate.retryAfter);

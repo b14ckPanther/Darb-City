@@ -26,3 +26,9 @@ export function clientIp(req: ClientRequest, proxyKey: string | null): string {
   if (proxyKey && forwarded && key && sameKey(key, proxyKey)) return forwarded.slice(0, 64);
   return req.ip ?? "unknown";
 }
+
+/** The request comes from the Darb web server (it holds the shared key). */
+export function proxied(req: ClientRequest, proxyKey: string | null): boolean {
+  const key = header(req.headers["x-darb-proxy-key"]);
+  return Boolean(proxyKey && key && sameKey(key, proxyKey));
+}

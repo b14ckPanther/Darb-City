@@ -121,7 +121,7 @@ export const contract = c.router({
       method: "GET",
       path: "/search/suggest",
       query: SuggestQuerySchema,
-      responses: { 200: z.array(SuggestionSchema) },
+      responses: { 200: z.array(SuggestionSchema), 429: TooManySchema },
     },
     search: {
       method: "POST",

@@ -264,6 +264,7 @@ export async function getSuggestions(q: string, place?: string): Promise<Suggest
   const res = await call(() =>
     client().search.suggest({
       query: { q, limit: 5, ...(place && isSlug(place) ? { place } : {}) },
+      extraHeaders: { "x-darb-proxy-key": process.env.SEARCH_PROXY_KEY ?? "" },
       fetchOptions: { next: { revalidate: 300, tags: [tags.businesses] } },
     }),
   );
