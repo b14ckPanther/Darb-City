@@ -24,9 +24,17 @@ afterEach(() => {
 
 describe("stageAllowed", () => {
   it("shows the stage on city pages only", () => {
-    for (const path of ["/", "/ar", "/sakhnin", "/en/k/barbershops", "/haifa/beauty/barbershops"])
+    for (const path of [
+      "/",
+      "/ar",
+      "/sakhnin",
+      "/en/k/barbershops",
+      "/haifa/beauty/barbershops",
+      "/search",
+      "/en/search",
+    ])
       expect(stageAllowed(path), path).toBe(true);
-    for (const path of ["/for-business", "/ar/for-business", "/search", "/en/search"])
+    for (const path of ["/for-business", "/ar/for-business"])
       expect(stageAllowed(path), path).toBe(false);
   });
 });

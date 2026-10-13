@@ -44,7 +44,13 @@ const ctx: ViewContext = {
   }),
   names: new Map([["akko", { en: "Akko" }]]),
   place: { slug: "akko", name: "Akko", lat: 32.92, lng: 35.07 },
-  labels: { openNow: "Open now", delivers: "Delivers", nearMe: "Near me" },
+  labels: {
+    openNow: "Open now",
+    delivers: "Delivers",
+    nearMe: "Near me",
+    kindInPlace: "{kind} in {place}",
+    kindNationwide: "{kind} across Israel",
+  },
   kmLabel: (km) => `${km.toFixed(1)} km`,
 };
 const viewContext = vi.fn(async () => ctx);

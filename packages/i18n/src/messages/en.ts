@@ -35,6 +35,8 @@ export const en = {
   blocked: "We don't list this kind of business.",
   noResults: "Nothing matches all of these yet. Try removing “{chip}”.",
   filterNoResults: "Nothing here matches these filters yet.",
+  nothingOpen: "Nothing is open right now.",
+  includeClosed: "Show them all, open or closed",
   searchUnavailable: "Smart search can't be reached right now. Here are places and kinds instead.",
   places: "Places",
   allKinds: "Every kind of business",

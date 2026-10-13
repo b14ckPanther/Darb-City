@@ -21,10 +21,13 @@ export async function viewContext(locale: Locale, intent: IntentDto): Promise<Vi
     place: place
       ? { slug: place.slug, name: pickText(place.name, locale), lat: place.lat, lng: place.lng }
       : null,
+    placeSoon: place?.status === "soon",
     labels: {
       openNow: t(locale, "openNow"),
       delivers: t(locale, "delivers"),
       nearMe: t(locale, "nearMe"),
+      kindInPlace: t(locale, "kindInPlace"),
+      kindNationwide: t(locale, "kindNationwide"),
     },
     kmLabel: (km) => formatKm(km, locale),
   };

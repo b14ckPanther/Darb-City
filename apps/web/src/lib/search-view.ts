@@ -25,13 +25,23 @@ export interface SearchView {
   stage: StageLevel;
   nearest: NearbyPlace[];
   narrowest: Chip | null;
+  /** Open now emptied the list: the same kind, open or closed (in the place, else nationwide). */
+  withoutOpenNow: { label: string; href: string } | null;
 }
 export interface ViewContext {
   locale: Locale;
   index: TaxonomyIndex;
   names: Map<string, Localized>;
   place: StagePlace | null;
-  labels: { openNow: string; delivers: string; nearMe: string };
+  /** The searched place is not live yet: it has no kind lists to link. */
+  placeSoon?: boolean;
+  labels: {
+    openNow: string;
+    delivers: string;
+    nearMe: string;
+    kindInPlace: string; // with {kind} and {place}
+    kindNationwide: string; // with {kind}
+  };
   kmLabel: (km: number) => string;
 }
 
@@ -89,6 +99,23 @@ export function toSearchView(res: SearchResponseDto, q: string, ctx: ViewContext
   const chips = res.status === "blocked" ? [] : chipsFor(res.intent, ctx);
   const kind = res.intent.kinds[0] ? ctx.index.kindBySlug.get(res.intent.kinds[0]) : undefined;
   const sector = kind ? ctx.index.sectorById.get(kind.sectorId) : undefined;
+  const kindName = kind ? pickText(kind.name, ctx.locale) : "";
+  const withoutOpenNow =
+    res.status === "ok" && rows.length === 0 && res.intent.openNow && kind && sector
+      ? res.intent.place && ctx.place
+        ? ctx.placeSoon
+          ? null
+          : {
+              label: ctx.labels.kindInPlace
+                .replace("{kind}", kindName)
+                .replace("{place}", ctx.place.name),
+              href: href(ctx.locale, paths.kind(res.intent.place, sector.slug, kind.slug)),
+            }
+        : {
+            label: ctx.labels.kindNationwide.replace("{kind}", kindName),
+            href: href(ctx.locale, paths.nationalKind(kind.slug)),
+          }
+      : null;
   return {
     status: res.status,
     q,
@@ -100,19 +127,23 @@ export function toSearchView(res: SearchResponseDto, q: string, ctx: ViewContext
     stage: searchStage(ctx.place, rows),
     nearest:
       kind && sector
-        ? res.nearest.map((p) => ({
-            key: p.slug,
-            name: pickText(p.name, ctx.locale),
-            // A soon place has no kind lists yet: its own page says it is coming.
-            href: href(
-              ctx.locale,
-              p.status === "soon"
-                ? paths.place(p.slug)
-                : paths.kind(p.slug, sector.slug, kind.slug),
-            ),
-            distance: ctx.kmLabel(p.distanceKm),
-          }))
+        ? // The searched place is the one that came up empty: never offer it as "nearest".
+          res.nearest
+            .filter((p) => p.slug !== res.intent.place)
+            .map((p) => ({
+              key: p.slug,
+              name: pickText(p.name, ctx.locale),
+              // A soon place has no kind lists yet: its own page says it is coming.
+              href: href(
+                ctx.locale,
+                p.status === "soon"
+                  ? paths.place(p.slug)
+                  : paths.kind(p.slug, sector.slug, kind.slug),
+              ),
+              distance: ctx.kmLabel(p.distanceKm),
+            }))
         : [],
     narrowest: rows.length === 0 ? narrowestChip(chips) : null,
+    withoutOpenNow,
   };
 }

@@ -1,0 +1,44 @@
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-5);
+  padding: 0;
+  list-style: none;
+}
+
+/* VC4: 44px pills; the × is its own 44px target. */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-block-size: var(--tap);
+  padding-inline-start: var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  color: var(--text-soft);
+}
+
+.remove {
+  display: grid;
+  place-items: center;
+  inline-size: var(--tap);
+  block-size: var(--tap);
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--gold-300);
+  cursor: pointer;
+}
+
+/* VC6: one calm sentence; no icon, no warning colour. */
+.blocked p:first-of-type {
+  font-size: var(--step-1);
+  color: var(--text);
+}
+
+.empty {
+  max-inline-size: 36ch;
+  font-size: var(--step-1);
+  color: var(--text);
+}

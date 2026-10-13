@@ -1,5 +1,5 @@
-/** Pages that are not part of the city show no stage. */
-export const STAGE_EXCLUDED = /^(?:\/(?:ar|en))?\/(?:for-business|search)(?:\/|$)/;
+/** Pages that are not part of the city show no stage. /search keeps it: results pin the map (M7). */
+export const STAGE_EXCLUDED = /^(?:\/(?:ar|en))?\/for-business(?:\/|$)/;
 
 export function stageAllowed(pathname: string): boolean {
   return !STAGE_EXCLUDED.test(pathname);
@@ -11,7 +11,7 @@ export function stageAllowed(pathname: string): boolean {
  * shows it. It asks the GPU for a real WebGL2 context (then releases it), so a device that has the
  * API but refuses a context stays the plain list from the first paint, with no layout to undo
  * (controller ruling 9). Only a later failure (tiles, style) hands the city back after the split.
- * A path without the stage (/for-business, /search) is marked capable without the probe: the
+ * A path without the stage (/for-business) is marked capable without the probe: the
  * stage may still try on a later city page, where a refused context ends in onFail.
  */
 export function stageBootScript(): string {

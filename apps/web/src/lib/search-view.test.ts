@@ -36,7 +36,13 @@ const ctx: ViewContext = {
     ["haifa", { en: "Haifa" }],
   ]),
   place: { slug: "akko", name: "Akko", lat: 32.92, lng: 35.07 },
-  labels: { openNow: "Open now", delivers: "Delivers", nearMe: "Near me" },
+  labels: {
+    openNow: "Open now",
+    delivers: "Delivers",
+    nearMe: "Near me",
+    kindInPlace: "{kind} in {place}",
+    kindNationwide: "{kind} across Israel",
+  },
   kmLabel: (km) => `${km.toFixed(1)} km`,
 };
 const intent = {
@@ -134,6 +140,39 @@ describe("search view", () => {
       ctx,
     );
     expect(view.nearest.map((p) => p.href)).toEqual(["/en/haifa/food/sweets", "/en/eilat"]);
+  });
+  it("when open now empties the list, offers the same kind without it, and never the searched place as nearest", () => {
+    const near = (slug: string) => ({
+      id: slug,
+      slug,
+      type: "city" as const,
+      name: { en: slug },
+      status: "live" as const,
+      lat: 32.8,
+      lng: 35,
+      parentId: null,
+      distanceKm: 3,
+      count: 1,
+    });
+    const closed = { ...response, items: [], nearest: [near("akko"), near("haifa")] };
+    const view = toSearchView(closed, "sweets akko open now", ctx);
+    expect(view.nearest.map((p) => p.key)).toEqual(["haifa"]);
+    expect(view.withoutOpenNow).toEqual({
+      label: "Knafeh and Arabic sweets in Akko",
+      href: "/en/akko/food/sweets",
+    });
+    const anywhere = { ...closed, intent: { ...intent, place: null } };
+    expect(
+      toSearchView(anywhere, "sweets open now", { ...ctx, place: null }).withoutOpenNow,
+    ).toEqual({
+      label: "Knafeh and Arabic sweets across Israel",
+      href: "/en/k/sweets",
+    });
+    // Not for a place Darb has not reached, nor when results came back, nor without open now.
+    expect(toSearchView(closed, "x", { ...ctx, placeSoon: true }).withoutOpenNow).toBeNull();
+    expect(toSearchView(response, "x", ctx).withoutOpenNow).toBeNull();
+    const notOpen = { ...closed, intent: { ...intent, openNow: false } };
+    expect(toSearchView(notOpen, "x", ctx).withoutOpenNow).toBeNull();
   });
   it("shows the country when a search has nothing to pin", () => {
     expect(toSearchView({ ...response, items: [] }, "x", { ...ctx, place: null }).stage).toEqual({
