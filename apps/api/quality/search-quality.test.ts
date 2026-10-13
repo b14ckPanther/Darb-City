@@ -6,9 +6,15 @@ import { Test } from "@nestjs/testing";
 import type { Redis } from "ioredis";
 import request from "supertest";
 import { afterAll, beforeAll, expect, it } from "vitest";
+import { EMBEDDING_PROVIDER } from "../src/ai/embeddings.js";
+import { HashEmbeddingProvider } from "../src/ai/hash-embedding.provider.js";
 import { INTENT_PROVIDER } from "../src/ai/intent.js";
 import { FAILED_SOURCE } from "../src/ai/record-cases.js";
-import { OffIntentProvider, type RecordedCase } from "../src/ai/recorded-intent.provider.js";
+import {
+  OffIntentProvider,
+  RecordedIntentProvider,
+  type RecordedCase,
+} from "../src/ai/recorded-intent.provider.js";
 import { AppModule } from "../src/app.module.js";
 import { CLOCK } from "../src/businesses/businesses.controller.js";
 import { PrismaService } from "../src/prisma/prisma.service.js";
@@ -43,7 +49,9 @@ const clearRedis = async () => {
 const NORMALIZED = [...new Set(CASES.map((c) => normalize(c.query)))];
 
 beforeAll(async () => {
+  // Set after dotenv/config has loaded apps/api/.env: never the model or Voyage, whatever it holds.
   process.env["INTENT_PROVIDER"] = "recorded";
+  process.env["EMBEDDING_PROVIDER"] = "hash";
   process.env["SEARCH_RATE_LIMIT"] = "100000";
   process.env["SEARCH_INDEX_WORKER"] = "false";
   const moduleRef = await Test.createTestingModule({ imports: [AppModule] })
@@ -87,6 +95,12 @@ afterAll(async () => {
   await clearRedis();
   await offApp.close();
   await app.close();
+});
+
+it("runs on the recorded intents and the offline hash embeddings, never the network", () => {
+  expect(app.get(INTENT_PROVIDER)).toBeInstanceOf(RecordedIntentProvider);
+  expect(app.get(EMBEDDING_PROVIDER)).toBeInstanceOf(HashEmbeddingProvider);
+  expect(offApp.get(EMBEDDING_PROVIDER)).toBeInstanceOf(HashEmbeddingProvider);
 });
 
 it("has at least 20 queries per language and 60 in all (spec §9.3)", () => {

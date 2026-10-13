@@ -39,7 +39,7 @@ export const ARRABA = { latitude: 32.8486259, longitude: 35.3358268 };
 export const isPhone = (info: TestInfo) => info.project.name === "phone";
 
 /** A second `next start` on the same build whose API is unreachable (see playwright.config.ts). */
-export const WEB_API_DOWN = process.env.WEB_API_DOWN_URL ?? "http://localhost:3001";
+export const WEB_API_DOWN = process.env.WEB_API_DOWN_URL ?? "http://localhost:3101";
 
 /**
  * Waits for the lazy stage: settled on desktop (or an open phone stage), mounted behind its pill on

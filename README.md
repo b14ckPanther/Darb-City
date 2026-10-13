@@ -17,8 +17,9 @@ Requires Node ≥ 22.12, pnpm 11 and Docker Desktop.
     pnpm --filter @darb/api db:seed   # re-run the idempotent seed loader (~17s for the full dataset)
 
     pnpm test         # needs `pnpm infra:up`
-    pnpm --filter @darb/web e2e   # Playwright; needs the seeded API
-    # beside running dev servers: WEB_URL=http://localhost:3100 API_URL=http://localhost:4100 WEB_API_DOWN_URL=http://localhost:3101
+    pnpm --filter @darb/web e2e   # Playwright; needs the seeded database
+    # e2e starts its own servers on :3100, :3101 and :4100 (recorded intents, offline embeddings),
+    # never the dev servers; override with WEB_URL, API_URL and WEB_API_DOWN_URL
     pnpm typecheck && pnpm lint && pnpm format:check
 
 ## Search

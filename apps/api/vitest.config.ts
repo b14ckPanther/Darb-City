@@ -7,7 +7,13 @@ export default defineConfig({
     include: ["src/**/*.test.ts"],
     globalSetup: ["test/global-setup.ts"],
     fileParallelism: false,
-    // Only the queue test runs a search-index worker (it turns this back on itself).
-    env: { SEARCH_INDEX_WORKER: "false" },
+    env: {
+      // Only the queue test runs a search-index worker (it turns this back on itself).
+      SEARCH_INDEX_WORKER: "false",
+      // Never the network, even with real keys in apps/api/.env: dotenv never overrides these
+      // (src/ai/offline-providers.test.ts checks it).
+      INTENT_PROVIDER: "recorded",
+      EMBEDDING_PROVIDER: "hash",
+    },
   },
 });
