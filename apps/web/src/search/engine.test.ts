@@ -1,5 +1,5 @@
 import { buildInstantIndex, prepare } from "@darb/search-text";
-import { expect, it } from "vitest";
+import { expect, it, vi } from "vitest";
 import { inGroups, instantOptions, searchOption } from "./engine";
 
 const prepared = prepare(
@@ -108,4 +108,18 @@ it("says a kind on its own is nationwide", () => {
 
 it("puts the typed text into the label as it is, $& and all", () => {
   expect(searchOption("$& $1", "en", labels)?.label).toBe("Search for “$& $1”");
+});
+
+it("falls back to the next index URL", async () => {
+  const { loadPrepared, resetPreparedForTests } = await import("./engine");
+  resetPreparedForTests();
+  const fetchMock = vi.fn(async (url: string) =>
+    url === "/a"
+      ? new Response("", { status: 503 })
+      : Response.json({ v: 1, places: [], kinds: [] }),
+  );
+  vi.stubGlobal("fetch", fetchMock);
+  await expect(loadPrepared(["/a", "/b"])).resolves.toBeDefined();
+  expect(fetchMock.mock.calls.map((c) => c[0])).toEqual(["/a", "/b"]);
+  vi.unstubAllGlobals();
 });

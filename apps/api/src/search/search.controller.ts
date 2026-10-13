@@ -5,6 +5,7 @@ import { TsRestHandler, tsRestHandler } from "@ts-rest/nest";
 import { CLOCK, type Clock } from "../businesses/businesses.controller.js";
 import { APP_CONFIG, type AppConfig } from "../config.js";
 import { clientIp, proxied, type ClientRequest } from "./client-ip.js";
+import { InstantService } from "./instant.service.js";
 import { RateLimiter } from "./rate-limiter.js";
 import { ReportRepository } from "./report.repository.js";
 import { SearchLogRepository } from "./search-log.repository.js";
@@ -35,10 +36,11 @@ export class SearchController {
     private readonly reports: ReportRepository,
     @Inject(APP_CONFIG) private readonly config: AppConfig,
     @Inject(CLOCK) private readonly clock: Clock,
+    private readonly instant: InstantService,
   ) {}
 
   @TsRestHandler(contract.search)
-  handler(@Req() req: ClientRequest) {
+  handler(@Req() req: ClientRequest & { res?: { setHeader(k: string, v: string): void } }) {
     const ip = () => clientIp(req, this.config.search.proxyKey);
     return tsRestHandler(contract.search, {
       suggest: async ({ query }) => {
@@ -88,6 +90,12 @@ export class SearchController {
           status: 200,
           body: await this.reports.report(query.days, query.limit, this.clock()),
         };
+      },
+      instantIndex: async () => {
+        // Express links the response to the request; @Res would hand the reply to this handler.
+        req.res?.setHeader("cache-control", "public, max-age=60");
+        const { v, places, kinds } = (await this.instant.world()).index;
+        return { status: 200, body: { v, places, kinds } };
       },
     });
   }

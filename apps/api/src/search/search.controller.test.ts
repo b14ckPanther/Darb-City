@@ -13,6 +13,7 @@ import { CLOCK } from "../businesses/businesses.controller.js";
 import { PrismaService } from "../prisma/prisma.service.js";
 import { REDIS } from "../redis/redis.module.js";
 import { SearchIndexer } from "./indexer.service.js";
+import { InstantService } from "./instant.service.js";
 
 let app: INestApplication;
 let prisma: PrismaService;
@@ -316,5 +317,38 @@ describe("click guards", () => {
     expect(refused.status).toBe(429);
     expect(refused.body.retryAfter).toBeGreaterThan(0);
     expect((await post("/search", { q: "barbershops", locale: "en" })).status).toBe(200);
+  });
+});
+
+describe("GET /search/instant-index", () => {
+  it("serves the live lane-1 index, including a place added after boot", async () => {
+    const res = await request(app.getHttpServer()).get("/search/instant-index");
+    expect(res.status).toBe(200);
+    expect(res.body.v).toBe(1);
+    expect(res.body.places.some((p: { s: string }) => p.s === "sakhnin")).toBe(true);
+    expect(res.headers["cache-control"]).toBe("public, max-age=60");
+
+    const sakhnin = await prisma.place.findFirstOrThrow({ where: { slug: "sakhnin" } });
+    const added = await prisma.place.create({
+      data: {
+        slug: "arraba",
+        type: "city",
+        parentId: sakhnin.parentId,
+        path: "/israel/northern-district/arraba/",
+        name: { en: "Arraba" },
+        aliases: [],
+        lat: 32.85,
+        lng: 35.33,
+        status: "live",
+      },
+    });
+    try {
+      app.get(InstantService).invalidate(); // what an admin write's SearchEvents does
+      const after = await request(app.getHttpServer()).get("/search/instant-index");
+      expect(after.body.places.some((p: { s: string }) => p.s === "arraba")).toBe(true);
+    } finally {
+      await prisma.place.delete({ where: { id: added.id } });
+      app.get(InstantService).invalidate();
+    }
   });
 });

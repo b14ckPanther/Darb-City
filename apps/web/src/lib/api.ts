@@ -3,6 +3,7 @@ import {
   type BusinessDetailDto,
   type BusinessPageDto,
   type DensityDto,
+  type InstantIndexDto,
   type KindCountsDto,
   type NearestPlaceDto,
   type PlaceDetailDto,
@@ -280,4 +281,15 @@ export async function postClick(queryId: string, key: string, ip: string): Promi
       fetchOptions: { cache: "no-store" },
     }),
   );
+}
+
+/** The live lane-1 index; refreshed when an admin write revalidates places or taxonomy. */
+export async function getInstantIndex(): Promise<InstantIndexDto> {
+  const res = await call(() =>
+    client().search.instantIndex({
+      fetchOptions: fetchOptions(cached(REVALIDATE.taxonomy, tags.taxonomy, tags.places)),
+    }),
+  );
+  if (res.status !== 200) throw new ApiUnavailableError(res);
+  return res.body;
 }

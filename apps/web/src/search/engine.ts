@@ -17,19 +17,40 @@ const LIMIT = 5;
 
 let loading: Promise<Prepared> | null = null;
 
-/** The instant index (spec §5.2), fetched once per page load; the URL carries its content hash. */
-export function loadPrepared(url: string): Promise<Prepared> {
-  loading ??= fetch(url)
-    .then((res) => {
-      if (!res.ok) throw new Error(String(res.status));
-      return res.json() as Promise<InstantIndex>;
-    })
+/** The live index first, then the one built with the app (works with the API down). */
+export const INDEX_URLS: readonly string[] = [
+  "/api/search/instant",
+  process.env.NEXT_PUBLIC_SEARCH_INDEX_URL ?? "",
+].filter((u) => u !== "");
+
+async function fetchFirst(urls: readonly string[]): Promise<InstantIndex> {
+  let last: unknown = new Error("No index URL");
+  for (const url of urls) {
+    try {
+      const res = await fetch(url);
+      if (res.ok) return (await res.json()) as InstantIndex;
+      last = new Error(String(res.status));
+    } catch (error) {
+      last = error;
+    }
+  }
+  throw last;
+}
+
+/** The instant index (spec §5.2), fetched once per page load. */
+export function loadPrepared(urls: readonly string[] = INDEX_URLS): Promise<Prepared> {
+  loading ??= fetchFirst(urls)
     .then(prepare)
     .catch((error: unknown) => {
       loading = null; // the next focus tries again
       throw error;
     });
   return loading;
+}
+
+/** Tests only: forget the memoized index. */
+export function resetPreparedForTests(): void {
+  loading = null;
 }
 
 export function instantOptions(

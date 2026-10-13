@@ -119,3 +119,9 @@ export const TooManySchema = z.object({
   message: z.string(),
   retryAfter: z.number().int().nonnegative(),
 });
+
+/** The lane-1 index (packages/search-text InstantIndex); entries are checked by the matcher. */
+export const InstantIndexSchema = z
+  .object({ v: z.literal(1), places: z.array(z.unknown()), kinds: z.array(z.unknown()) })
+  .passthrough();
+export type InstantIndexDto = z.infer<typeof InstantIndexSchema>;

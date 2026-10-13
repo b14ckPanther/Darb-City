@@ -15,6 +15,7 @@ import {
 } from "./schemas.js";
 import {
   ClickRequestSchema,
+  InstantIndexSchema,
   MissingReportSchema,
   ReportQuerySchema,
   ResultsRequestSchema,
@@ -153,6 +154,12 @@ export const contract = c.router({
       headers: z.object({ "x-darb-report-key": z.string().optional() }),
       query: ReportQuerySchema,
       responses: { 200: MissingReportSchema, 404: NotFoundSchema },
+    },
+    /** The live instant index (admin-added places and kinds appear without a web build). */
+    instantIndex: {
+      method: "GET",
+      path: "/search/instant-index",
+      responses: { 200: InstantIndexSchema },
     },
   },
 });
