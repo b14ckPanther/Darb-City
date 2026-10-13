@@ -14,7 +14,12 @@ test.describe("with location", () => {
 
   test("jumps to the nearest live place", async ({ page }) => {
     await page.goto("/");
+    const request = page.waitForRequest("**/api/near");
     await page.locator("[data-near-me]").click();
+    const sent = await request;
+    // The position travels in a POST body, never in a URL an access log would keep.
+    expect(sent.method()).toBe("POST");
+    expect(sent.url()).not.toContain("lat=");
     await expect(page).toHaveURL("/arraba");
   });
 

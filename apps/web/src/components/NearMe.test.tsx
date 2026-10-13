@@ -34,9 +34,11 @@ it("asks for location only when tapped, then goes to the nearest place", async (
   expect(fetch).not.toHaveBeenCalled();
   fireEvent.click(screen.getByRole("button", { name: "Near me" }));
   await waitFor(() => expect(push).toHaveBeenCalledWith("/arraba"));
-  expect(String(vi.mocked(fetch).mock.calls[0]![0])).toBe(
-    "/api/near?locale=he&lat=32.85&lng=35.34",
-  );
+  expect(fetch).toHaveBeenCalledWith("/api/near", expect.objectContaining({ method: "POST" }));
+  const [url, init] = vi.mocked(fetch).mock.calls[0]!;
+  // The position travels in the body: URLs land in access logs, bodies do not.
+  expect(String(url)).not.toContain("lat=");
+  expect(JSON.parse(String(init?.body))).toEqual({ locale: "he", lat: 32.85, lng: 35.34 });
 });
 
 it("explains in one line when location is denied", async () => {

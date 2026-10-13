@@ -27,14 +27,19 @@ export function NearMe({ locale, kind, homeHref, labels }: NearMeProps) {
     setState("locating");
     navigator.geolocation.getCurrentPosition(
       async ({ coords }) => {
-        const query = new URLSearchParams({
+        const payload = {
           locale,
-          lat: String(coords.latitude),
-          lng: String(coords.longitude),
+          lat: coords.latitude,
+          lng: coords.longitude,
           ...(kind ? { kind } : {}),
-        });
+        };
         try {
-          const res = await fetch(`/api/near?${query}`);
+          // POST: the position stays out of URLs, so out of every access log.
+          const res = await fetch("/api/near", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(payload),
+          });
           if (!res.ok) throw new Error(String(res.status));
           const { href } = (await res.json()) as { href: string };
           router.push(href);

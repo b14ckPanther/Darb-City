@@ -1,6 +1,8 @@
 import { SlugSchema } from "@darb/contracts";
 import { z } from "zod";
 import { ApiUnavailableError, getSuggestions } from "@/lib/api";
+import { clientIpFrom } from "@/lib/client-ip";
+import { createLimiter } from "@/lib/rate-limit";
 import { suggestionOptions } from "@/search/options";
 
 const Query = z.object({
@@ -9,9 +11,13 @@ const Query = z.object({
   place: SlugSchema.optional(),
 });
 const EDGE = { "cache-control": "public, s-maxage=300, stale-while-revalidate=600" };
+/** Per visitor IP, per server instance: the API trusts this server's key, so it limits here. */
+const allow = createLimiter(120);
 
 /** Spec §5.2: business names for the combobox, cached at the edge. */
 export async function GET(request: Request): Promise<Response> {
+  if (!allow(clientIpFrom(request.headers)))
+    return Response.json({ options: [] }, { status: 429, headers: { "retry-after": "60" } });
   const parsed = Query.safeParse(Object.fromEntries(new URL(request.url).searchParams));
   if (!parsed.success) return Response.json({ message: "Bad query" }, { status: 400 });
   const { q, locale, place } = parsed.data;
