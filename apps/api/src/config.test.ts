@@ -149,3 +149,33 @@ it("treats an empty env line as unset instead of refusing to start", () => {
   expect(() => loadConfig({ DATABASE_URL: "" })).toThrow(/DATABASE_URL/);
   expect(() => loadConfig({ ...base, REVALIDATE_URL: "not a url" })).toThrow(/REVALIDATE_URL/);
 });
+
+it("production Clerk needs authorized parties", () => {
+  const clerk = { ...prod, CLERK_SECRET_KEY: "sk_live_1" };
+  expect(() => loadConfig(clerk)).toThrow(/CLERK_AUTHORIZED_PARTIES/);
+  expect(() => loadConfig({ ...clerk, CLERK_AUTHORIZED_PARTIES: " , " })).toThrow(
+    /CLERK_AUTHORIZED_PARTIES/,
+  );
+  expect(
+    loadConfig({ ...clerk, CLERK_AUTHORIZED_PARTIES: "https://darb.co.il" }).auth.authorizedParties,
+  ).toEqual(["https://darb.co.il"]);
+  // Outside production an empty list stays allowed (local Clerk development).
+  expect(loadConfig({ ...base, CLERK_SECRET_KEY: "sk_test_1" }).auth.verifier).toBe("clerk");
+});
+
+it("REVALIDATE_URL is https in production and http(s) everywhere", () => {
+  const secret = { REVALIDATE_SECRET: long };
+  expect(() =>
+    loadConfig({ ...prod, ...secret, REVALIDATE_URL: "http://darb.co.il/api/revalidate" }),
+  ).toThrow(/REVALIDATE_URL/);
+  expect(
+    loadConfig({ ...prod, ...secret, REVALIDATE_URL: "https://darb.co.il/api/revalidate" }).admin
+      .revalidateUrl,
+  ).toBe("https://darb.co.il/api/revalidate");
+  for (const url of ["ftp://darb.co.il/x", "file:///etc/passwd", "javascript:alert(1)"]) {
+    expect(() => loadConfig({ ...base, REVALIDATE_URL: url })).toThrow(/REVALIDATE_URL/);
+  }
+  expect(
+    loadConfig({ ...base, REVALIDATE_URL: "http://localhost:3000/api/revalidate" }).admin,
+  ).toMatchObject({ revalidateUrl: "http://localhost:3000/api/revalidate" });
+});

@@ -92,7 +92,11 @@ const schema = z.object({
   CLERK_JWT_KEY: optional,
   CLERK_AUTHORIZED_PARTIES: optional,
   ADMIN_EMAILS: optional,
-  REVALIDATE_URL: z.string().url().optional(),
+  REVALIDATE_URL: z
+    .string()
+    .url()
+    .refine((v) => /^https?:\/\//i.test(v), "must be an http(s) URL")
+    .optional(),
   REVALIDATE_SECRET: optional,
   NODE_ENV: z.string().optional(),
 });
@@ -138,6 +142,8 @@ export function loadConfig(env: NodeJS.ProcessEnv): AppConfig {
   const fail = (msg: string) => {
     throw new Error(`Invalid environment: ${msg}`);
   };
+  if (verifier === "clerk" && !e.CLERK_SECRET_KEY && !e.CLERK_JWT_KEY)
+    fail("AUTH_VERIFIER=clerk needs CLERK_SECRET_KEY or CLERK_JWT_KEY");
   if (production) {
     if ((e.SEARCH_PROXY_KEY ?? "").length < 32)
       fail("SEARCH_PROXY_KEY must be a random secret of at least 32 characters in production");
@@ -146,9 +152,15 @@ export function loadConfig(env: NodeJS.ProcessEnv): AppConfig {
     if (verifier === "fake") fail("AUTH_VERIFIER=fake is for tests only");
     if (e.REVALIDATE_URL && (e.REVALIDATE_SECRET ?? "").length < 32)
       fail("REVALIDATE_SECRET must be at least 32 characters when REVALIDATE_URL is set");
+    // The shared secret travels in a header: never in clear text across the internet.
+    if (e.REVALIDATE_URL && !/^https:\/\//i.test(e.REVALIDATE_URL))
+      fail("REVALIDATE_URL must be https in production");
+    // Without azp checks, a session token minted for any other Clerk app origin would pass.
+    if (verifier === "clerk" && list(e.CLERK_AUTHORIZED_PARTIES).length === 0)
+      fail(
+        "CLERK_AUTHORIZED_PARTIES must list the web origins (e.g. https://darb.co.il) in production",
+      );
   }
-  if (verifier === "clerk" && !e.CLERK_SECRET_KEY && !e.CLERK_JWT_KEY)
-    fail("AUTH_VERIFIER=clerk needs CLERK_SECRET_KEY or CLERK_JWT_KEY");
   return {
     databaseUrl: e.DATABASE_URL,
     port: e.PORT,
