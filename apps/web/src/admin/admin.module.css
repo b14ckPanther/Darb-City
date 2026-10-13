@@ -101,9 +101,8 @@
   color: var(--ivory) !important;
   text-decoration: none;
   font-weight: 500;
-  transition:
-    transform 200ms var(--ease-out),
-    border-color 200ms var(--ease-out);
+  /* Brand motion: transform only, 400 ms; the border colour changes at once. */
+  transition: transform 400ms var(--ease-out);
 }
 .tile:hover {
   transform: translateY(-2px);
