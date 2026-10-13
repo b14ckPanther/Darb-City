@@ -36,8 +36,8 @@ export function Toolbar({
       </label>
       {selects.map((s) => (
         <label key={s.name} className={styles.field}>
-          <span>{s.label}</span>
-          <select name={s.name} defaultValue={s.value ?? ""}>
+          <span id={`filter-${s.name}`}>{s.label}</span>
+          <select name={s.name} defaultValue={s.value ?? ""} aria-labelledby={`filter-${s.name}`}>
             <option value="">{at(locale, "all")}</option>
             {s.options.map(([value, label]) => (
               <option key={value} value={value}>

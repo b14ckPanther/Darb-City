@@ -69,10 +69,12 @@ export function SelectField(p: {
   options: [string, string][];
   allowEmpty?: string;
 }) {
+  // Named by its label text alone: a wrapping label would also read out the selected option.
+  const labelId = `${p.name}-label`;
   return (
     <label className={styles.field}>
-      <span>{p.label}</span>
-      <select name={p.name} defaultValue={p.defaultValue ?? ""}>
+      <span id={labelId}>{p.label}</span>
+      <select name={p.name} defaultValue={p.defaultValue ?? ""} aria-labelledby={labelId}>
         {p.allowEmpty !== undefined ? <option value="">{p.allowEmpty}</option> : null}
         {p.options.map(([v, l]) => (
           <option key={v} value={v}>

@@ -55,10 +55,11 @@ test.describe("admin", () => {
   }) => {
     test.slow();
     await signInAs(context, baseURL!, ADMIN);
-    const slug = `e2e-${Date.now().toString(36)}`;
+    // Phone and desktop run at once: each project gets its own address.
+    const slug = `e2e-${test.info().project.name}-${Date.now().toString(36)}`;
     await page.goto("/en/admin/businesses/new");
     await page.getByLabel("Web address (slug)").fill(slug);
-    await page.getByLabel("Place").fill(PLACE);
+    await page.getByLabel("Place", { exact: true }).fill(PLACE);
     await page.getByLabel("Name · English").fill("E2E Upholstery");
     await page.getByLabel("Tagline · English").fill("Sofas made new");
     await page.getByLabel("Street address · English").fill("Main street");
@@ -79,7 +80,7 @@ test.describe("admin", () => {
 
     await page.getByLabel("Tagline · English").fill("Sofas and chairs made new");
     await page.getByRole("button", { name: "Save" }).click();
-    await expect(page.getByRole("alert")).toHaveText(/Saved/);
+    await expect(page.locator('form [role="alert"]')).toHaveText(/Saved/);
 
     await page.getByRole("button", { name: "Suspend now" }).click();
     await expect(page.getByText("Suspended").first()).toBeVisible();
@@ -99,8 +100,10 @@ test.describe("admin", () => {
   }) => {
     await signInAs(context, baseURL!, ADMIN);
     await page.goto("/en/admin/businesses/new");
-    await page.getByLabel("Web address (slug)").fill(`e2e-bad-${Date.now().toString(36)}`);
-    await page.getByLabel("Place").fill(PLACE);
+    await page
+      .getByLabel("Web address (slug)")
+      .fill(`e2e-bad-${test.info().project.name}-${Date.now().toString(36)}`);
+    await page.getByLabel("Place", { exact: true }).fill(PLACE);
     await page.getByLabel("Name · English").fill("Bad");
     await page.getByLabel("Tagline · English").fill("x");
     await page.getByLabel("Street address · English").fill("x");
@@ -108,7 +111,7 @@ test.describe("admin", () => {
     await page.getByLabel("Longitude").fill("35.181");
     await page.getByLabel("Experience content (JSON)").fill('{"items": []}');
     await page.getByRole("button", { name: "Create" }).click();
-    await expect(page.getByRole("alert")).toContainText("experience");
+    await expect(page.locator('form [role="alert"]')).toContainText("experience");
     await expect(page).toHaveURL(/\/businesses\/new$/);
   });
 

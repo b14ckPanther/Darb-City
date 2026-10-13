@@ -6,7 +6,8 @@
   font-family: var(--font-latin), var(--font-hebrew), var(--font-arabic), system-ui, sans-serif;
   line-height: 1.5;
 }
-.body a {
+/* Plain text links only: styled links (buttons, tiles, nav) keep their own colours. */
+.body a:not([class]) {
   color: var(--gold-300);
 }
 .body :focus-visible {
@@ -139,6 +140,8 @@
   display: grid;
   gap: 6px;
   margin-block-end: 14px;
+  /* A grid item never grows past its column, whatever a long option or line says. */
+  min-inline-size: 0;
 }
 .field > span {
   font-size: 0.875rem;
@@ -155,6 +158,8 @@
   padding: 10px 12px;
   min-block-size: 44px;
   box-sizing: border-box;
+  inline-size: 100%;
+  max-inline-size: 100%;
 }
 .field textarea {
   min-block-size: 120px;
