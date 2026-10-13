@@ -29,10 +29,11 @@ type Props = {
 };
 
 /**
- * Every search renders on request with the visitor's query (and IP, for the rate limit). The
- * [locale] layout's static params would otherwise prerender /search and fail on headers().
+ * Every search renders on request (the [locale] layout's empty static params would otherwise make
+ * /search an ISR page, where headers() fails). 0, not force-dynamic: the taxonomy and place reads
+ * keep their own revalidate instead of turning no-store on every search.
  */
-export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 const first = (raw: string | string[] | undefined) => (Array.isArray(raw) ? raw[0] : raw);
 const queryOf = (raw: string | string[] | undefined) =>
