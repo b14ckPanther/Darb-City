@@ -25,6 +25,7 @@ import {
   SuggestionSchema,
   TooManySchema,
 } from "./search.js";
+import { adminContract } from "./admin.js";
 
 const c = initContract();
 
@@ -162,4 +163,5 @@ export const contract = c.router({
       responses: { 200: InstantIndexSchema },
     },
   },
+  admin: adminContract,
 });
