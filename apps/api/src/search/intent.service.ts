@@ -18,9 +18,9 @@ import { InstantService } from "./instant.service.js";
 import { ModelBudget } from "./model-budget.js";
 
 export const INTENT_CACHE_SECONDS = 604_800;
-/** The taxonomy version keeps a cached answer from outliving the kinds and places it chose from. */
-export const intentCacheKey = (locale: Locale, normalized: string, taxonomyVersion: string) =>
-  `darb:intent:v1:${taxonomyVersion}:${locale}:${createHash("sha256").update(normalized).digest("hex")}`;
+/** Keyed by the active kind set only: a cached answer is re-validated against the world on read. */
+export const intentCacheKey = (locale: Locale, normalized: string, kindsVersion: string) =>
+  `darb:intent:v2:${kindsVersion}:${locale}:${createHash("sha256").update(normalized).digest("hex")}`;
 
 export interface Resolved {
   intent: IntentDto;
@@ -82,7 +82,7 @@ export class IntentService {
       kinds: new Set([...instant.kinds.map((k) => k.entry.s), ...world.kinds.keys()]),
       places: new Set(instant.places.map((p) => p.entry.s)),
     };
-    const key = intentCacheKey(locale, instant.normalized, world.version);
+    const key = intentCacheKey(locale, instant.normalized, world.kindsVersion);
     // A place lane 1 matched strongly is a fact about the words; a model that drops it loses it.
     const keepPlace = (intent: IntentDto): IntentDto =>
       intent.place === null && fallback.intent.place !== null
@@ -106,7 +106,7 @@ export class IntentService {
     if ((await this.redis.get(negative).catch(() => null)) !== null) return fallback;
     if (!(await this.budget.take())) return fallback;
 
-    const raw = await this.callModel(q, locale, instant);
+    const raw = await this.callModel(q, locale, instant, [...world.kinds.keys()].sort());
     if (raw === null) return fallback; // failure or timeout: transient, never remembered
     const validated = validateIntent(raw, allowed, instant.cues);
     if (!useful(validated)) {
@@ -126,6 +126,7 @@ export class IntentService {
     q: string,
     locale: Locale,
     instant: InstantResult,
+    activeKinds: readonly string[],
   ): Promise<RawIntent | null> {
     const controller = new AbortController();
     let timer: NodeJS.Timeout | undefined;
@@ -140,7 +141,7 @@ export class IntentService {
       const answer = Promise.resolve()
         .then(() =>
           this.provider.extract(
-            { query: q, locale, candidates: intentCandidates(instant, locale) },
+            { query: q, locale, candidates: intentCandidates(instant, locale), activeKinds },
             controller.signal,
           ),
         )

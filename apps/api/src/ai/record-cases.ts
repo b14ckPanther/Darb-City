@@ -15,6 +15,7 @@ export async function recordCases(
   provider: IntentProvider,
   match: (q: string) => Promise<InstantResult>,
   model: string,
+  activeKinds: readonly string[] = [],
 ): Promise<{ changed: number; failed: string[] }> {
   let changed = 0;
   const failed: string[] = [];
@@ -23,7 +24,12 @@ export async function recordCases(
     const lane1 = await match(c.query);
     const answer = await provider
       .extract(
-        { query: c.query, locale: c.locale, candidates: intentCandidates(lane1, c.locale) },
+        {
+          query: c.query,
+          locale: c.locale,
+          candidates: intentCandidates(lane1, c.locale),
+          activeKinds,
+        },
         AbortSignal.timeout(20_000),
       )
       .catch(() => null);

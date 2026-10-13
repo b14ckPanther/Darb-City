@@ -29,6 +29,8 @@ export interface IntentRequest {
   query: string;
   locale: Locale;
   candidates: { kinds: IntentCandidate[]; places: IntentCandidate[] };
+  /** Sorted active kind slugs; the system prompt lists them (refreshed without a restart). */
+  activeKinds: readonly string[];
 }
 export interface IntentProvider {
   readonly name: string;

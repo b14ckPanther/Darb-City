@@ -5,6 +5,7 @@ import {
   buildInstantIndex,
   matchInstant,
   prepare,
+  type InstantIndex,
   type InstantResult,
   type Prepared,
 } from "@darb/search-text";
@@ -26,8 +27,10 @@ export interface WorldKind {
   name: Localized;
 }
 export interface World {
-  /** Changes whenever the active kinds or the places change; part of the intent cache key. */
-  version: string;
+  /** Changes only when the set of active kinds changes; part of the intent cache key. */
+  kindsVersion: string;
+  /** The lane-1 index this world was built from (served to browsers by GET /search/instant-index). */
+  index: InstantIndex;
   prepared: Prepared;
   places: Map<string, WorldPlace>;
   kinds: Map<string, WorldKind>;
@@ -87,12 +90,17 @@ export class InstantService {
         synonyms: k.synonyms as Synonyms,
       })),
     });
-    const version = createHash("sha256")
-      .update(JSON.stringify([index.kinds, index.places]))
+    const activeSlugs = kinds
+      .filter((k) => k.status === "active")
+      .map((k) => k.slug)
+      .sort();
+    const kindsVersion = createHash("sha256")
+      .update(activeSlugs.join(","))
       .digest("hex")
       .slice(0, 12);
     return {
-      version,
+      kindsVersion,
+      index,
       prepared: prepare(index),
       places: new Map(
         places.map((p) => [

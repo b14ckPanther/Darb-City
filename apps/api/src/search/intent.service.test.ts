@@ -55,7 +55,7 @@ describe("IntentService", () => {
       blocked: false,
       intent: { kinds: ["barbershops"], place: "sakhnin", openNow: true, freeText: "fade" },
     });
-    const key = intentCacheKey("en", r.instant.normalized, (await instant.world()).version);
+    const key = intentCacheKey("en", r.instant.normalized, (await instant.world()).kindsVersion);
     expect(await redis.ttl(key)).toBeGreaterThan(604_000);
     await svc.resolve(Q, "en");
     expect(provider.extract).toHaveBeenCalledTimes(1);
@@ -143,7 +143,6 @@ describe("IntentService with the Anthropic SDK's typed errors", () => {
       const provider = new AnthropicIntentProvider(
         client as unknown as Pick<Anthropic, "messages">,
         "claude-haiku-5-5",
-        ["barbershops"],
       );
       const svc = new IntentService(instant, provider, redis, config, open);
       const r = await svc.resolve(Q, "en");
@@ -181,36 +180,19 @@ describe("IntentService keeps lane 1's facts and its cache in step with the taxo
       intent: { kinds: ["barbershops"], place: "sakhnin" },
     });
     const world = await instant.world();
-    const cached = await redis.get(intentCacheKey("en", r.instant.normalized, world.version));
+    const cached = await redis.get(intentCacheKey("en", r.instant.normalized, world.kindsVersion));
     expect(JSON.parse(cached!).place).toBe("sakhnin");
   });
-  it("misses the cache once the active kinds change", async () => {
-    const { svc, provider } = service(async () => answer);
-    await svc.resolve(Q, "en");
-    const before = (await instant.world()).version;
-    const sector = await prisma.sector.findFirstOrThrow();
-    const added = await prisma.kind.create({
-      data: {
-        slug: "bike-repair",
-        sectorId: sector.id,
-        name: { en: "Bike repair" },
-        status: "active",
-        template: "booking",
-        synonyms: { he: [], ar: [], en: [] },
-        contentSchema: {},
-        attributes: [],
-        order: 99,
-      },
-    });
+  it("keeps the cache key when places change and moves it when active kinds change", async () => {
+    const before = (await instant.world()).kindsVersion;
+    await prisma.place.updateMany({ where: { slug: "tamra" }, data: { aliases: ["Tamra2"] } });
     instant.invalidate();
-    try {
-      expect((await instant.world()).version).not.toBe(before);
-      await svc.resolve(Q, "en");
-      expect(provider.extract).toHaveBeenCalledTimes(2);
-    } finally {
-      await prisma.kind.delete({ where: { id: added.id } });
-      instant.invalidate();
-    }
+    expect((await instant.world()).kindsVersion).toBe(before);
+    await prisma.kind.updateMany({ where: { slug: "barbershops" }, data: { status: "hidden" } });
+    instant.invalidate();
+    expect((await instant.world()).kindsVersion).not.toBe(before);
+    await prisma.kind.updateMany({ where: { slug: "barbershops" }, data: { status: "active" } });
+    instant.invalidate();
   });
 });
 
