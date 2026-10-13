@@ -30,6 +30,9 @@ export function orUnavailable<P>(render: (props: P) => Promise<ReactNode>) {
       return await render(props);
     } catch (error) {
       if (!(error instanceof ApiUnavailableError)) throw error;
+      // Vercel keeps the last good page when a regeneration throws; caching the retry view would
+      // replace it. Self-hosting keeps the retry view, and cache-handler.mjs refuses to store it.
+      if (process.env.VERCEL) throw error;
       await markUnavailable();
       return <ErrorView />;
     }
@@ -45,6 +48,9 @@ export function metadataOrUnavailable<P extends { params: Promise<{ locale: stri
       return await generate(props);
     } catch (error) {
       if (!(error instanceof ApiUnavailableError)) throw error;
+      // Vercel keeps the last good page when a regeneration throws; caching the retry view would
+      // replace it. Self-hosting keeps the retry view, and cache-handler.mjs refuses to store it.
+      if (process.env.VERCEL) throw error;
       await markUnavailable();
       const { locale } = await props.params;
       return {

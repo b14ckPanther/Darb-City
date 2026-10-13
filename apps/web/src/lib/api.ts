@@ -1,3 +1,4 @@
+import "server-only";
 import {
   contract,
   type BusinessDetailDto,
@@ -33,7 +34,8 @@ export class ApiBadRequestError extends Error {
   }
 }
 
-export const REVALIDATE = { lists: 300, taxonomy: 3600 } as const;
+/** Admin writes revalidate by tag; open-now is computed in the browser (Task 19), so a day is safe. */
+export const REVALIDATE = { lists: 86400, taxonomy: 86400 } as const;
 
 export const tags = {
   taxonomy: "taxonomy",
@@ -261,14 +263,28 @@ export async function postResults(body: ResultsRequestDto, ip: string): Promise<
   return { status: 400 };
 }
 
+let warnedSuggestLimit = false;
+
+/**
+ * The key marks this server as the trusted proxy, so the API does not count every visitor against
+ * one bucket. Production refuses to start without it (lib/env.ts); development sends none and the
+ * API limits the dev server as one caller.
+ */
 export async function getSuggestions(q: string, place?: string): Promise<SuggestionDto[]> {
+  const key = process.env.SEARCH_PROXY_KEY?.trim();
   const res = await call(() =>
     client().search.suggest({
       query: { q, limit: 5, ...(place && isSlug(place) ? { place } : {}) },
-      extraHeaders: { "x-darb-proxy-key": process.env.SEARCH_PROXY_KEY ?? "" },
+      extraHeaders: key ? { "x-darb-proxy-key": key } : {},
       fetchOptions: { next: { revalidate: 300, tags: [tags.businesses] } },
     }),
   );
+  if (res.status === 429 && !warnedSuggestLimit) {
+    warnedSuggestLimit = true;
+    console.warn(
+      "The API rate-limited this server's suggest calls: SEARCH_PROXY_KEY must equal the API's",
+    );
+  }
   return res.status === 200 ? res.body : [];
 }
 

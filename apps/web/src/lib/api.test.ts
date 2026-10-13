@@ -10,6 +10,7 @@ import {
   getNearestPlace,
   getNearestPlacesWithKind,
   getPlace,
+  getSuggestions,
   postSearch,
 } from "./api";
 
@@ -45,7 +46,7 @@ describe("api client", () => {
     const [url, init] = fetchMock.mock.calls[0]!;
     expect(String(url)).toBe("http://api.test/places/haifa");
     expect((init as RequestInit & { next?: unknown }).next).toEqual({
-      revalidate: 300,
+      revalidate: 86400,
       tags: ["places", "place:haifa"],
     });
   });
@@ -90,7 +91,7 @@ describe("api client", () => {
     const [url, init] = fetchMock.mock.calls[0]!;
     expect(String(url)).toBe("http://api.test/density");
     expect((init as RequestInit & { next?: unknown }).next).toEqual({
-      revalidate: 300,
+      revalidate: 86400,
       tags: ["businesses", "places"],
     });
   });
@@ -134,5 +135,25 @@ describe("search calls", () => {
     expect(headers.get("x-darb-client-ip")).toBe("5.6.7.8");
     expect(log).not.toHaveBeenCalled();
     expect(info).not.toHaveBeenCalled();
+  });
+});
+
+describe("suggestions", () => {
+  it("vouch with the proxy key, and say so when the API limits this server", async () => {
+    vi.stubEnv("SEARCH_PROXY_KEY", "k");
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    fetchMock.mockResolvedValue(Response.json([], { status: 200 }));
+    await getSuggestions("ba");
+    expect(new Headers(fetchMock.mock.calls[0]![1]?.headers).get("x-darb-proxy-key")).toBe("k");
+    fetchMock.mockResolvedValue(Response.json({ message: "slow", retryAfter: 9 }, { status: 429 }));
+    expect(await getSuggestions("ba")).toEqual([]);
+    expect(warn).toHaveBeenCalledWith(expect.stringMatching(/SEARCH_PROXY_KEY/));
+    warn.mockRestore();
+  });
+  it("send no empty proxy header when the key is unset (development)", async () => {
+    vi.stubEnv("SEARCH_PROXY_KEY", "");
+    fetchMock.mockResolvedValue(Response.json([], { status: 200 }));
+    await getSuggestions("ba");
+    expect(new Headers(fetchMock.mock.calls[0]![1]?.headers).has("x-darb-proxy-key")).toBe(false);
   });
 });

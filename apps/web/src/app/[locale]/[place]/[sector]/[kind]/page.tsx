@@ -8,7 +8,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { paths } from "@/lib/routes";
 import { metadataOrUnavailable, orUnavailable } from "@/lib/unavailable";
 
-export const revalidate = 300;
+export const revalidate = 86400;
 export function generateStaticParams() {
   return [];
 }

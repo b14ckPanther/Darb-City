@@ -15,7 +15,7 @@ const props = (query: Record<string, string>) => ({
 
 it("renders on request, even with no query, and keeps the API reads cached", async () => {
   // revalidate 0: rendered on every request, while the taxonomy and place reads keep their own
-  // revalidate (300 s, 3600 s). force-dynamic would make every one of them no-store.
+  // revalidate (a day, refreshed by tag). force-dynamic would make every one of them no-store.
   expect(page.revalidate).toBe(0);
   expect("dynamic" in page).toBe(false);
   expect("generateStaticParams" in page).toBe(false);

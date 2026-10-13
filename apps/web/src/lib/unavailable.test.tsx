@@ -40,6 +40,20 @@ describe("orUnavailable", () => {
   });
 });
 
+it("rethrows on Vercel so the platform keeps the last good page", async () => {
+  vi.stubEnv("VERCEL", "1");
+  const Level = orUnavailable(async () => {
+    throw new ApiUnavailableError(new Error("down"));
+  });
+  await expect(Level({})).rejects.toBeInstanceOf(ApiUnavailableError);
+  const generate = metadataOrUnavailable(async (): Promise<never> => {
+    throw new ApiUnavailableError(null);
+  });
+  await expect(generate({ params })).rejects.toBeInstanceOf(ApiUnavailableError);
+  expect(unstable_cache).not.toHaveBeenCalled();
+  vi.unstubAllEnvs();
+});
+
 describe("metadataOrUnavailable", () => {
   it("gives the retry view a localized title", async () => {
     const generate = metadataOrUnavailable(async (): Promise<never> => {

@@ -4,6 +4,11 @@
   "agentGuidance": false,
   "tasks": {
     "build": { "dependsOn": ["^build"], "outputs": ["dist/**", ".next/**", "!.next/cache/**"] },
+    "@darb/web#build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**"],
+      "env": ["SITE_URL", "SITE_INDEXABLE", "VERCEL", "VERCEL_ENV", "VERCEL_URL", "NEXT_PUBLIC_*"]
+    },
     "typecheck": { "dependsOn": ["^build"] },
     "test": { "dependsOn": ["^build"], "env": ["DATABASE_URL", "TEST_DATABASE_URL"] },
     "@darb/api#test": {
