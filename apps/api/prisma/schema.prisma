@@ -53,6 +53,7 @@ enum BusinessSource {
   seed
   self
   claimed
+  admin
 }
 
 enum BusinessStatus {
@@ -109,6 +110,8 @@ model Place {
   population Int?
   cbsCode    String?                                      @unique
   status     PlaceStatus                                  @default(soon)
+  /// Set by every admin write; null means the seed loader owns the row (Plan 4).
+  editedAt   DateTime?
   businesses Business[]
 
   @@index([point], type: Gist)
@@ -117,13 +120,15 @@ model Place {
 }
 
 model Sector {
-  id      String @id @default(uuid(7)) @db.Uuid
-  slug    String @unique
-  name    Json
-  tagline Json
-  accent  String
-  order   Int
-  kinds   Kind[]
+  id       String    @id @default(uuid(7)) @db.Uuid
+  slug     String    @unique
+  name     Json
+  tagline  Json
+  accent   String
+  order    Int
+  /// Set by every admin write; null means the seed loader owns the row (Plan 4).
+  editedAt DateTime?
+  kinds    Kind[]
 }
 
 model Kind {
@@ -142,6 +147,8 @@ model Kind {
   icon          String?
   order         Int
   status        KindStatus     @default(active)
+  /// Set by every admin write; null means the seed loader owns the row (Plan 4).
+  editedAt      DateTime?
   primaryFor    Business[]     @relation("PrimaryKind")
   businesses    BusinessKind[]
 
@@ -182,6 +189,8 @@ model Business {
   apps           Json                                  @default("{}")
   source         BusinessSource
   status         BusinessStatus                        @default(draft)
+  /// Set by every admin write; null means the seed loader owns the row (Plan 4).
+  editedAt       DateTime?
   brandId        String?                               @db.Uuid
   brand          Brand?                                @relation(fields: [brandId], references: [id])
   organizationId String?                               @db.Uuid
@@ -223,6 +232,7 @@ model User {
   memberships Membership[]
   claims      Claim[]      @relation("ClaimUser")
   reviewed    Claim[]      @relation("ClaimReviewer")
+  audits      AuditLog[]
 }
 
 model Membership {
@@ -271,6 +281,8 @@ model SearchDocument {
   /// Generated from text in the migration.
   tsv          Unsupported("tsvector")?              @default(dbgenerated("to_tsvector('simple'::regconfig, text)"))
   embedding    Unsupported("vector(512)")?
+  /// sha256 of the embedded text and model; an unchanged hash keeps the stored vector (Plan 4).
+  embedHash    String?
   completeness Float                                 @default(0)
   updatedAt    DateTime                              @updatedAt
 
@@ -298,4 +310,34 @@ model SearchQuery {
   createdAt   DateTime   @default(now())
 
   @@index([createdAt])
+}
+
+enum AuditAction {
+  create
+  update
+  status
+  release
+  delete
+}
+
+enum AuditEntity {
+  place
+  sector
+  kind
+  business
+}
+
+/// Who changed what, and when. Field names only: values live in the rows themselves.
+model AuditLog {
+  id         String      @id @default(uuid(7)) @db.Uuid
+  at         DateTime    @default(now())
+  actorId    String      @db.Uuid
+  actor      User        @relation(fields: [actorId], references: [id])
+  action     AuditAction
+  entityType AuditEntity
+  entityId   String      @db.Uuid
+  fields     String[]
+
+  @@index([entityType, entityId, at])
+  @@index([at])
 }
