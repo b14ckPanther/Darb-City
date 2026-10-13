@@ -9,10 +9,12 @@ import { loadConfig } from "../config.js";
 import { createRedis } from "../redis/redis.module.js";
 import { InstantService } from "./instant.service.js";
 import { IntentService, describeModelError, intentCacheKey } from "./intent.service.js";
+import type { ModelBudget } from "./model-budget.js";
 
 const prisma = testPrisma();
 const config = loadConfig({ ...process.env, INTENT_TIMEOUT_MS: "100" });
 let redis: Redis;
+const open = { take: async () => true } as unknown as ModelBudget;
 const instant = new InstantService(prisma);
 const answer: RawIntent = {
   kinds: ["barbershops"],
@@ -25,7 +27,7 @@ const answer: RawIntent = {
 
 function service(extract: IntentProvider["extract"]) {
   const provider: IntentProvider = { name: "fake", extract: vi.fn(extract) };
-  return { svc: new IntentService(instant, provider, redis, config), provider };
+  return { svc: new IntentService(instant, provider, redis, config, open), provider };
 }
 
 beforeAll(async () => {
@@ -34,7 +36,7 @@ beforeAll(async () => {
   redis = await createRedis(config.search.redisUrl);
 });
 beforeEach(async () => {
-  const keys = await redis.keys("darb:intent:v1:*");
+  const keys = await redis.keys("darb:intent:*");
   if (keys.length) await redis.del(...keys);
 });
 afterAll(async () => {
@@ -102,6 +104,7 @@ describe("IntentService", () => {
       { name: "fake", extract: async () => answer },
       down,
       config,
+      open,
     );
     expect((await svc.resolve(Q, "en")).lane).toBe("smart");
     down.disconnect();
@@ -142,7 +145,7 @@ describe("IntentService with the Anthropic SDK's typed errors", () => {
         "claude-haiku-5-5",
         ["barbershops"],
       );
-      const svc = new IntentService(instant, provider, redis, config);
+      const svc = new IntentService(instant, provider, redis, config, open);
       const r = await svc.resolve(Q, "en");
       expect(client.messages.create).toHaveBeenCalledTimes(1);
       expect(r).toMatchObject({
@@ -160,7 +163,7 @@ describe("IntentService with the Anthropic SDK's typed errors", () => {
         throw new Anthropic.AuthenticationError(401, { type: "error" }, "bad key", headers);
       },
     };
-    const r = await new IntentService(instant, provider, redis, config).resolve(Q, "en");
+    const r = await new IntentService(instant, provider, redis, config, open).resolve(Q, "en");
     expect(r.lane).toBe("instant");
   });
   it("names non-SDK failures without reading their message", () => {
@@ -208,5 +211,35 @@ describe("IntentService keeps lane 1's facts and its cache in step with the taxo
       await prisma.kind.delete({ where: { id: added.id } });
       instant.invalidate();
     }
+  });
+});
+
+describe("budget and negative cache", () => {
+  it("answers from lane 1 without calling the model when the budget is spent", async () => {
+    const provider: IntentProvider = { name: "fake", extract: vi.fn(async () => answer) };
+    const closed = { take: async () => false } as unknown as ModelBudget;
+    const svc = new IntentService(instant, provider, redis, config, closed);
+    const r = await svc.resolve(Q, "en");
+    expect(r.lane).toBe("instant");
+    expect(provider.extract).not.toHaveBeenCalled();
+  });
+
+  it("remembers an unhelpful answer and does not ask again", async () => {
+    const empty: RawIntent = { ...answer, kinds: [], place: null, nearMe: false };
+    const { svc, provider } = service(async () => empty);
+    const q = "something lane one cannot explain at all";
+    await svc.resolve(q, "en");
+    await svc.resolve(q, "en");
+    expect(provider.extract).toHaveBeenCalledTimes(1);
+  });
+
+  it("never remembers a failure", async () => {
+    const { svc, provider } = service(async () => {
+      throw new Error("boom");
+    });
+    const q = "another sentence lane one cannot explain";
+    await svc.resolve(q, "en");
+    await svc.resolve(q, "en");
+    expect(provider.extract).toHaveBeenCalledTimes(2);
   });
 });

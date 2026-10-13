@@ -15,6 +15,7 @@ import {
   validateIntent,
 } from "./filters.js";
 import { InstantService } from "./instant.service.js";
+import { ModelBudget } from "./model-budget.js";
 
 export const INTENT_CACHE_SECONDS = 604_800;
 /** The taxonomy version keeps a cached answer from outliving the kinds and places it chose from. */
@@ -62,6 +63,7 @@ export class IntentService {
     @Inject(INTENT_PROVIDER) private readonly provider: IntentProvider,
     @Inject(REDIS) private readonly redis: Redis,
     @Inject(APP_CONFIG) private readonly config: AppConfig,
+    private readonly budget: ModelBudget,
   ) {}
 
   async resolve(q: string, locale: Locale): Promise<Resolved> {
@@ -100,9 +102,18 @@ export class IntentService {
       }
     }
 
+    const negative = `${key}:neg`;
+    if ((await this.redis.get(negative).catch(() => null)) !== null) return fallback;
+    if (!(await this.budget.take())) return fallback;
+
     const raw = await this.callModel(q, locale, instant);
-    const validated = raw ? validateIntent(raw, allowed, instant.cues) : null;
-    if (!validated || !useful(validated)) return fallback;
+    if (raw === null) return fallback; // failure or timeout: transient, never remembered
+    const validated = validateIntent(raw, allowed, instant.cues);
+    if (!useful(validated)) {
+      const ttl = this.config.search.negativeCacheSeconds;
+      if (ttl > 0) await this.redis.set(negative, "1", "EX", ttl).catch(() => undefined);
+      return fallback;
+    }
     const intent = keepPlace(validated);
     await this.redis
       .set(key, JSON.stringify(intent), "EX", INTENT_CACHE_SECONDS)
