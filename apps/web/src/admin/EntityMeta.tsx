@@ -1,0 +1,63 @@
+import type { AdminEntity, AuditRowDto } from "@darb/contracts";
+import type { Locale } from "@darb/core";
+import { adminApi, okOr } from "./api";
+import { releaseEntity } from "./actions";
+import { OwnerBadge } from "./Badges";
+import { at } from "./copy";
+import styles from "./admin.module.css";
+
+/** Who owns the row (seed or admin), "Return to seed data", and the audit trail. */
+export async function EntityMeta({
+  locale,
+  entity,
+  id,
+  editedAt,
+}: {
+  locale: Locale;
+  entity: AdminEntity;
+  id: string;
+  editedAt: string | null;
+}) {
+  const audit = okOr<AuditRowDto[]>(
+    await (await adminApi()).misc.audit({ query: { entityType: entity, entityId: id } }),
+    locale,
+  );
+  const when = new Intl.DateTimeFormat(locale === "ar" ? "ar-IL-u-nu-latn" : `${locale}-IL`, {
+    dateStyle: "medium",
+    timeStyle: "short",
+    timeZone: "Asia/Jerusalem",
+  });
+  return (
+    <section className={styles.card} aria-labelledby="history">
+      <p>
+        <OwnerBadge locale={locale} editedAt={editedAt} />
+      </p>
+      {editedAt ? (
+        <form action={releaseEntity} className={styles.actions}>
+          <input type="hidden" name="locale" value={locale} />
+          <input type="hidden" name="entity" value={entity} />
+          <input type="hidden" name="id" value={id} />
+          <button type="submit" className={styles.ghost}>
+            {at(locale, "release")}
+          </button>
+          <small className={styles.hint}>{at(locale, "releaseHint")}</small>
+        </form>
+      ) : null}
+      <h2 id="history" className={styles.h2}>
+        {at(locale, "history")}
+      </h2>
+      {audit.length === 0 ? (
+        <p>{at(locale, "historyEmpty")}</p>
+      ) : (
+        <ul className={styles.plain}>
+          {audit.map((a) => (
+            <li key={a.id}>
+              {when.format(new Date(a.at))} · <bdi dir="ltr">{a.actor}</bdi> · {a.action}
+              {a.fields.length ? ` · ${a.fields.join(", ")}` : ""}
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+  );
+}
