@@ -23,6 +23,7 @@
     "@darb/contracts": "workspace:*",
     "@darb/core": "workspace:*",
     "@darb/search-text": "workspace:*",
+    "@darb/seed": "workspace:*",
     "@nestjs/common": "catalog:",
     "@nestjs/core": "catalog:",
     "@nestjs/platform-express": "catalog:",
@@ -39,7 +40,6 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@darb/seed": "workspace:*",
     "@nestjs/testing": "catalog:",
     "@swc/core": "catalog:",
     "@types/node": "catalog:",

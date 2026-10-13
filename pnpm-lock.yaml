@@ -212,6 +212,9 @@ importers:
       '@darb/search-text':
         specifier: workspace:*
         version: link:../../packages/search-text
+      '@darb/seed':
+        specifier: workspace:*
+        version: link:../../packages/seed
       '@nestjs/common':
         specifier: 'catalog:'
         version: 11.2.7(reflect-metadata@0.2.2)(rxjs@7.8.2)
@@ -255,9 +258,6 @@ importers:
         specifier: 'catalog:'
         version: 3.25.76
     devDependencies:
-      '@darb/seed':
-        specifier: workspace:*
-        version: link:../../packages/seed
       '@nestjs/testing':
         specifier: 'catalog:'
         version: 11.2.7(@nestjs/common@11.2.7(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.2.7)(@nestjs/platform-express@11.2.7)
