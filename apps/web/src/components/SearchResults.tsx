@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { Locale } from "@darb/core";
 import { roundPoint } from "@/lib/client-ip";
-import { removeChip, type SearchView } from "@/lib/search-view";
+import { editedHref, removeChip, type SearchView } from "@/lib/search-view";
 import { BusinessRow, type RowLabels } from "./BusinessRow";
 import { NoneYet } from "./NoneYet";
 import { StageData } from "./StageData";
@@ -67,8 +67,18 @@ export function SearchResults({
         }),
       });
       if (!res.ok) throw new Error(String(res.status));
+      const next = (await res.json()) as SearchView;
+      // A chip edit goes into the URL, so a reload or a shared link shows these results without
+      // the model. It replaces this search's history entry: Back leaves the search, and Next keeps
+      // the page as it is (router.replace would render it again and run the search a second time).
+      if (!near)
+        window.history.replaceState(
+          window.history.state,
+          "",
+          editedHref(locale, next.q, next.intent),
+        );
       refocus.current = true;
-      setView((await res.json()) as SearchView);
+      setView(next);
       setState("idle");
     } catch {
       setState("error");

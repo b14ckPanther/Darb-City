@@ -76,6 +76,8 @@ describe("SearchResults", () => {
     const fetchMock = vi.fn(async () => Response.json(next));
     vi.stubGlobal("fetch", fetchMock);
     render(<SearchResults locale="en" initial={view} labels={labels} />);
+    window.history.replaceState(null, "", "/en/search?q=knafeh+akko+open+now");
+    const historyBefore = window.history.length;
     await act(async () => fireEvent.click(screen.getByRole("button", { name: "Remove Open now" })));
     const [url, init] = fetchMock.mock.calls[0] as unknown as [string, RequestInit];
     expect(url).toBe("/api/search/results");
@@ -85,6 +87,11 @@ describe("SearchResults", () => {
       intent: { ...view.intent, openNow: false },
     });
     await waitFor(() => expect(screen.getByText("akko/c")).toBeTruthy());
+    // The edit is in the URL, replacing this search's entry: Back leaves the search.
+    expect(window.location.pathname + window.location.search).toBe(
+      "/en/search?q=knafeh+akko+open+now&chips=place:akko,kind:sweets",
+    );
+    expect(window.history.length).toBe(historyBefore);
     // Focus moves to the results heading, so keyboard users are not left on a removed button.
     expect(document.activeElement?.id).toBe("search-results-title");
   });

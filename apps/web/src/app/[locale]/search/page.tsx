@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import type { Locale } from "@darb/core";
 import { t } from "@darb/i18n";
 import { rowLabels } from "@/components/BusinessList";
 import { CityBar } from "@/components/CityBar";
@@ -11,19 +10,22 @@ import { SearchQuery } from "@/components/SearchQuery";
 import { SearchResults } from "@/components/SearchResults";
 import { StageData } from "@/components/StageData";
 import { searchLabels } from "@/components/SearchBar";
-import { ApiUnavailableError, postSearch } from "@/lib/api";
 import { clientIpFrom } from "@/lib/client-ip";
 import { crumbsFor } from "@/lib/crumbs";
 import { localeOrNotFound } from "@/lib/levels";
 import { pageMetadata } from "@/lib/metadata";
 import { href, paths } from "@/lib/routes";
-import { viewContext } from "@/lib/search-context";
-import { toSearchView, type SearchView } from "@/lib/search-view";
+import { runSearch } from "@/lib/search-run";
+import { intentFromUrl } from "@/lib/search-view";
 import { COUNTRY_STAGE } from "@/lib/stage-data";
 
 type Props = {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ q?: string | string[] }>;
+  searchParams: Promise<{
+    q?: string | string[];
+    chips?: string | string[];
+    text?: string | string[];
+  }>;
 };
 
 /**
@@ -32,6 +34,7 @@ type Props = {
  */
 export const dynamic = "force-dynamic";
 
+const first = (raw: string | string[] | undefined) => (Array.isArray(raw) ? raw[0] : raw);
 const queryOf = (raw: string | string[] | undefined) =>
   (Array.isArray(raw) ? raw[0] : raw)?.trim().slice(0, 200) ?? "";
 
@@ -49,22 +52,12 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   };
 }
 
-/** The results for q, or null when smart search cannot answer (down, or rate-limited: spec §7). */
-async function searchView(locale: Locale, q: string): Promise<SearchView | null> {
-  try {
-    const res = await postSearch({ q, locale }, clientIpFrom(await headers()));
-    if (res.status !== 200) return null;
-    return toSearchView(res.body, q, await viewContext(locale, res.body.intent));
-  } catch (error) {
-    if (error instanceof ApiUnavailableError) return null;
-    throw error;
-  }
-}
-
 /** Decision 6: results on the server from ?q= (no JavaScript needed), stage kept (M7). */
 export default async function SearchPage({ params, searchParams }: Props) {
   const locale = localeOrNotFound((await params).locale);
-  const q = queryOf((await searchParams).q);
+  const query = await searchParams;
+  const q = queryOf(query.q);
+  const edited = intentFromUrl(first(query.chips), first(query.text));
   const crumbs = crumbsFor(locale, {
     page: { label: t(locale, "search"), href: href(locale, paths.search()) },
   });
@@ -82,9 +75,11 @@ export default async function SearchPage({ params, searchParams }: Props) {
       </>
     );
   } else {
-    const view = await searchView(locale, q);
+    const view = await runSearch({ locale, q, edited, ip: clientIpFrom(await headers()) });
     body = view ? (
       <SearchResults
+        // A new query (the header box navigates in place) starts a new results list.
+        key={`${q}\n${first(query.chips) ?? ""}`}
         locale={locale}
         initial={view}
         labels={{

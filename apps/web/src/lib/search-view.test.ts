@@ -1,7 +1,15 @@
 import { EMPTY_INTENT, type SearchResponseDto } from "@darb/contracts";
 import { describe, expect, it } from "vitest";
 import { indexTaxonomy } from "./taxonomy";
-import { chipsFor, narrowestChip, removeChip, toSearchView, type ViewContext } from "./search-view";
+import {
+  chipsFor,
+  editedHref,
+  intentFromUrl,
+  narrowestChip,
+  removeChip,
+  toSearchView,
+  type ViewContext,
+} from "./search-view";
 
 const index = indexTaxonomy({
   sectors: [
@@ -188,5 +196,38 @@ describe("free-text chip quotes", () => {
     expect(text("en")).toBe("“פיסטוק”");
     expect(text("he")).toBe("„פיסטוק”");
     expect(text("ar")).toBe("«פיסטוק»");
+  });
+});
+
+describe("chip edits in the URL", () => {
+  it("writes the edited intent as the chips it keeps, readable and stable", () => {
+    expect(editedHref("en", "knafeh akko open now", { ...intent, openNow: false })).toBe(
+      "/en/search?q=knafeh+akko+open+now&chips=place:akko,kind:sweets,text&text=pistachio",
+    );
+    expect(editedHref("he", "x", EMPTY_INTENT)).toBe("/search?q=x&chips=");
+    const all = { ...intent, attributes: { delivers: true }, nearMe: true, freeText: "" };
+    expect(editedHref("ar", "x", all)).toBe(
+      "/ar/search?q=x&chips=place:akko,kind:sweets,openNow,delivers,nearMe",
+    );
+  });
+  it("reads it back exactly, and nothing without chips", () => {
+    const edited = { ...intent, openNow: false };
+    const url = new URL(editedHref("en", "q", edited), "http://x");
+    expect(
+      intentFromUrl(
+        url.searchParams.get("chips") ?? undefined,
+        url.searchParams.get("text") ?? undefined,
+      ),
+    ).toEqual(edited);
+    expect(intentFromUrl("", undefined)).toEqual(EMPTY_INTENT);
+    expect(intentFromUrl(undefined, "pistachio")).toBeNull();
+  });
+  it("ignores what it does not know, and caps kinds like the API", () => {
+    expect(
+      intentFromUrl("kind:a,kind:a,kind:Bad_Slug,place:x,place:y,evil,openNow,text", undefined),
+    ).toEqual({ ...EMPTY_INTENT, kinds: ["a"], place: "x", openNow: true });
+    const many = Array.from({ length: 8 }, (_, i) => `kind:k${i}`).join(",");
+    expect(intentFromUrl(many, undefined)?.kinds).toHaveLength(5);
+    expect(intentFromUrl("text", "x".repeat(300))?.freeText).toHaveLength(120);
   });
 });

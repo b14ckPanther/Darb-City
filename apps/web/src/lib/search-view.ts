@@ -156,3 +156,53 @@ export function toSearchView(res: SearchResponseDto, q: string, ctx: ViewContext
     withoutOpenNow,
   };
 }
+
+/*
+ * Chip edits live in the URL (fix round 1), so a reload or a shared link shows the same results
+ * without asking the model again: `chips` lists the chips that are left, by the same ids as
+ * `data-chip` (place:<slug>, kind:<slug>, openNow, delivers, nearMe, text), and `text` carries the
+ * free text when its chip is kept. No `chips` means the query was never edited.
+ */
+const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const MAX_KINDS = 5; // IntentSchema
+const MAX_TEXT = 120; // IntentSchema
+
+export function editedHref(locale: Locale, q: string, intent: IntentDto): string {
+  const chips = [
+    ...(intent.place ? [`place:${intent.place}`] : []),
+    ...intent.kinds.map((k) => `kind:${k}`),
+    ...(intent.openNow ? ["openNow"] : []),
+    ...(intent.attributes.delivers ? ["delivers"] : []),
+    ...(intent.nearMe ? ["nearMe"] : []),
+    ...(intent.freeText ? ["text"] : []),
+  ];
+  const text = intent.freeText ? `&${new URLSearchParams({ text: intent.freeText })}` : "";
+  // Chip ids are slugs, colons and commas: left as they are, so the URL stays readable.
+  return `${href(locale, paths.search())}?${new URLSearchParams({ q })}&chips=${chips.join(",")}${text}`;
+}
+
+export function intentFromUrl(
+  chips: string | undefined,
+  text: string | undefined,
+): IntentDto | null {
+  if (chips === undefined) return null;
+  const intent: IntentDto = {
+    kinds: [],
+    place: null,
+    nearMe: false,
+    openNow: false,
+    attributes: { delivers: false },
+    freeText: "",
+  };
+  for (const id of chips.split(",")) {
+    const [type, slug = ""] = id.split(":");
+    if (type === "place" && SLUG.test(slug)) intent.place ??= slug;
+    else if (type === "kind" && SLUG.test(slug) && !intent.kinds.includes(slug)) {
+      if (intent.kinds.length < MAX_KINDS) intent.kinds.push(slug);
+    } else if (id === "openNow") intent.openNow = true;
+    else if (id === "delivers") intent.attributes.delivers = true;
+    else if (id === "nearMe") intent.nearMe = true;
+    else if (id === "text") intent.freeText = (text ?? "").trim().slice(0, MAX_TEXT);
+  }
+  return intent;
+}
