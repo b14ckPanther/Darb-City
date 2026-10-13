@@ -79,6 +79,13 @@ for (const route of ROUTES) {
   const ok = total <= LIMIT && sum(own) <= ROUTE_LIMIT;
   failed ||= !ok;
   console.log(`${ok ? "ok  " : "FAIL"} ${kb(total)} total ${kb(sum(own))} route  ${route}`);
+  // Clerk is for /admin only (spec §6.4): it must never ship to a public level route.
+  for (const file of new Set([...shared, ...own])) {
+    if (readFileSync(join(NEXT, file), "utf8").includes("@clerk/")) {
+      console.error(`FAIL ${route}: ${file} contains Clerk code`);
+      failed = true;
+    }
+  }
 }
 
 const initial = new Set(shared);

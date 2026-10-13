@@ -21,6 +21,10 @@ const OFFLINE_PROVIDERS = { INTENT_PROVIDER: "recorded", EMBEDDING_PROVIDER: "ha
 const WEBGL = { args: ["--enable-unsafe-swiftshader", "--ignore-gpu-blocklist"] };
 /** The 1 KB fixture archive (scripts/tiles/make-test-tiles.mjs): CI never downloads tiles. */
 const TILES = { MAP_TILES_DIR: "e2e/tiles" };
+/** The API revalidates the web after admin writes; both sides share this secret. */
+const REVALIDATE_SECRET = "e2e-revalidate-secret";
+/** Admin e2e signs in with fake tokens (refused in production and off localhost). */
+const ADMIN = { ADMIN_FAKE_AUTH: "1", REVALIDATE_SECRET };
 
 export default defineConfig({
   testDir: "./e2e",
@@ -65,6 +69,10 @@ export default defineConfig({
         SEARCH_PROXY_KEY: "e2e-proxy-key",
         SEARCH_RATE_LIMIT: "100000",
         SEARCH_RESULTS_RATE_LIMIT: "100000",
+        AUTH_VERIFIER: "fake",
+        ADMIN_EMAILS: "e2e-admin@darb.test",
+        REVALIDATE_URL: `${WEB}/api/revalidate`,
+        REVALIDATE_SECRET,
       },
     },
     {
@@ -72,7 +80,7 @@ export default defineConfig({
       url: `${WEB}/for-business`,
       reuseExistingServer: !process.env.CI,
       timeout: 120_000,
-      env: { API_URL: API, SITE_URL: WEB, SEARCH_PROXY_KEY: "e2e-proxy-key", ...TILES },
+      env: { API_URL: API, SITE_URL: WEB, SEARCH_PROXY_KEY: "e2e-proxy-key", ...TILES, ...ADMIN },
     },
     {
       command: `pnpm exec next start --port ${port(WEB_API_DOWN)}`,
@@ -85,6 +93,7 @@ export default defineConfig({
         SITE_URL: WEB_API_DOWN,
         SEARCH_PROXY_KEY: "e2e-proxy-key",
         ...TILES,
+        ...ADMIN,
       },
     },
   ],
