@@ -24,6 +24,8 @@ export interface InstantEntry {
   k: string[];
   w: number;
   p: string;
+  /** 1 for a place Darb reaches soon: findable, but a kind there opens the place page. */
+  z?: 1;
 }
 export interface InstantIndex {
   v: 1;
@@ -140,6 +142,7 @@ export function buildInstantIndex(input: {
       ]),
       w: placeWeight(p),
       p: p.parent ?? "",
+      ...(p.status === "soon" ? { z: 1 as const } : {}),
     })),
     kinds: input.kinds
       .filter((k) => k.status === "active")

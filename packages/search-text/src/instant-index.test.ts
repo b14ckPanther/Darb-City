@@ -54,6 +54,12 @@ it("weights live settlements above soon ones and the country", () => {
   const index = buildInstantIndex({ places, kinds });
   const w = Object.fromEntries(index.places.map((p) => [p.s, p.w]));
   expect(w).toEqual({ israel: 1, sakhnin: 3, eilat: 1 });
+  // A soon place stays findable (its page says "coming soon"), and is marked so no kind links to it.
+  expect(Object.fromEntries(index.places.map((p) => [p.s, p.z ?? 0]))).toEqual({
+    israel: 0,
+    sakhnin: 0,
+    eilat: 1,
+  });
   expect(index.places.find((p) => p.s === "sakhnin")?.t).toEqual([
     "סחנינ",
     "سخنين",

@@ -53,7 +53,13 @@ export function instantOptions(
       group: "kinds",
       label: name(kind.entry, locale),
       sublabel: name(place.entry, locale),
-      href: href(locale, paths.kind(place.entry.s, kind.entry.p, kind.entry.s)),
+      // A soon place has no businesses yet: its own page says so, an empty kind list would not.
+      href: href(
+        locale,
+        place.entry.z
+          ? paths.place(place.entry.s)
+          : paths.kind(place.entry.s, kind.entry.p, kind.entry.s),
+      ),
     });
   if (!r.blocked) {
     for (const p of r.places)

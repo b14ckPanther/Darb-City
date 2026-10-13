@@ -103,7 +103,13 @@ export function toSearchView(res: SearchResponseDto, q: string, ctx: ViewContext
         ? res.nearest.map((p) => ({
             key: p.slug,
             name: pickText(p.name, ctx.locale),
-            href: href(ctx.locale, paths.kind(p.slug, sector.slug, kind.slug)),
+            // A soon place has no kind lists yet: its own page says it is coming.
+            href: href(
+              ctx.locale,
+              p.status === "soon"
+                ? paths.place(p.slug)
+                : paths.kind(p.slug, sector.slug, kind.slug),
+            ),
             distance: ctx.kmLabel(p.distanceKm),
           }))
         : [],

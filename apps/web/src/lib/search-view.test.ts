@@ -115,6 +115,26 @@ describe("search view", () => {
       ],
     });
   });
+  it("links a nearest place to its kind list, or to its page while it is soon", () => {
+    const near = (slug: string, status: "live" | "soon") => ({
+      id: slug,
+      slug,
+      type: "city" as const,
+      name: { en: slug },
+      status,
+      lat: 32.8,
+      lng: 35,
+      parentId: null,
+      distanceKm: 3,
+      count: 1,
+    });
+    const view = toSearchView(
+      { ...response, items: [], nearest: [near("haifa", "live"), near("eilat", "soon")] },
+      "x",
+      ctx,
+    );
+    expect(view.nearest.map((p) => p.href)).toEqual(["/en/haifa/food/sweets", "/en/eilat"]);
+  });
   it("shows the country when a search has nothing to pin", () => {
     expect(toSearchView({ ...response, items: [] }, "x", { ...ctx, place: null }).stage).toEqual({
       depth: 0,

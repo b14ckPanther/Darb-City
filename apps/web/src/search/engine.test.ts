@@ -13,6 +13,14 @@ const prepared = prepare(
         name: { he: "חיפה", ar: "حيفا", en: "Haifa" },
         aliases: [],
       },
+      {
+        slug: "eilat",
+        type: "city",
+        status: "soon",
+        parent: null,
+        name: { he: "אילת", ar: "إيلات", en: "Eilat" },
+        aliases: [],
+      },
     ],
     kinds: [
       {
@@ -80,4 +88,12 @@ it("draws options in groups, each where its best option ranked, so the arrows fo
   expect(
     ids([o("haifa", "places"), o("barber", "kinds"), o("samer", "businesses"), o("q", "search")]),
   ).toEqual(["haifa", "barber", "samer", "q"]);
+});
+
+it("sends a kind in a soon place to the place page, never to an empty kind list", () => {
+  const options = instantOptions(prepared, "barber eilat", "en", labels);
+  expect(options[0]!.id).toBe("pair:eilat/barbershops");
+  expect(options[0]!.href).toBe("/en/eilat");
+  expect(options.map((o) => o.href)).not.toContain("/en/eilat/beauty/barbershops");
+  expect(options.find((o) => o.id === "place:eilat")!.href).toBe("/en/eilat");
 });
