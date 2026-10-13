@@ -29,23 +29,28 @@ export class InstantInvalidation implements OnModuleInit, OnModuleDestroy {
     this.channel = instantChannel(config.databaseUrl);
   }
 
-  async onModuleInit(): Promise<void> {
+  onModuleInit(): void {
     const sub = this.redis.duplicate({
       lazyConnect: true,
       enableOfflineQueue: true,
+      // The shared client gives up after one retry; a subscriber must wait out an outage.
+      maxRetriesPerRequest: null,
       commandTimeout: undefined,
     });
     sub.on("error", () => undefined);
     sub.on("message", (channel: string) => {
       if (channel === this.channel) this.instant.invalidate();
     });
+    // Subscribe on every "ready", so a Redis that is down at boot is picked up once it is back.
+    // A repeat SUBSCRIBE after ioredis's own auto-resubscribe is harmless.
+    sub.on("ready", () => void sub.subscribe(this.channel).catch(() => undefined));
     this.sub = sub;
-    // Without Redis this replica still invalidates itself; others refresh within the 10 min TTL.
-    await sub
+    // Not awaited: an unreachable Redis must never stall boot. Until it is reachable this
+    // replica still invalidates itself; others refresh within the 10 min TTL.
+    void sub
       .connect()
-      .then(() => sub.subscribe(this.channel))
       .catch(() =>
-        this.logger.warn("Instant index invalidation is local only (Redis unavailable)"),
+        this.logger.warn("Instant index invalidation is local only until Redis is reachable"),
       );
   }
 

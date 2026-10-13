@@ -6,6 +6,8 @@ export default defineConfig({
   test: {
     include: ["src/**/*.test.ts"],
     globalSetup: ["test/global-setup.ts"],
+    // Tests use their own Redis database (test/redis-db.ts), never the dev API's keys.
+    setupFiles: ["test/redis-env.ts"],
     fileParallelism: false,
     env: {
       // Only the queue test runs a search-index worker (it turns this back on itself).

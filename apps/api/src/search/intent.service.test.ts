@@ -65,7 +65,7 @@ describe("IntentService", () => {
     const r = await svc.resolve("bars in sakhnin", "en");
     expect(r.blocked).toBe(true);
     expect(provider.extract).not.toHaveBeenCalled();
-    expect(await redis.keys("darb:intent:v1:*")).toEqual([]);
+    expect(await redis.keys("darb:intent:*")).toEqual([]);
   });
   it("skips the model when lane 1 explains every word", async () => {
     const { svc, provider } = service(async () => answer);
@@ -152,7 +152,7 @@ describe("IntentService with the Anthropic SDK's typed errors", () => {
         blocked: false,
         intent: { place: "sakhnin", openNow: true },
       });
-      expect(await redis.keys("darb:intent:v1:*")).toEqual([]);
+      expect(await redis.keys("darb:intent:*")).toEqual([]);
     });
   }
   it("falls back when a provider throws before returning a promise", async () => {
