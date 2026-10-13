@@ -1,4 +1,5 @@
 // @vitest-environment node
+import { NextFetchEvent } from "next/dist/server/web/spec-extension/fetch-event";
 import { NextRequest } from "next/server";
 import { afterEach, expect, it, vi } from "vitest";
 import { proxy } from "./proxy";
@@ -24,4 +25,14 @@ it("keeps every non-production deployment out of search engines", async () => {
   vi.stubEnv("VERCEL_ENV", "production");
   const live = await proxy(new NextRequest("http://localhost:3000/sakhnin"));
   expect(live.headers.get("x-robots-tag")).toBeNull();
+});
+it("rewrites admin URLs with a nonce CSP, noindex and no-store", async () => {
+  const req = new NextRequest("http://localhost:3000/ar/admin/places");
+  const res = await proxy(req, new NextFetchEvent({ request: req, page: "/", context: undefined }));
+  expect(res.headers.get("x-middleware-rewrite")).toBe("http://localhost:3000/admin/ar/places");
+  expect(res.headers.get("content-security-policy")).toMatch(
+    /'nonce-[A-Za-z0-9+/=]+' 'strict-dynamic'/,
+  );
+  expect(res.headers.get("x-robots-tag")).toBe("noindex, nofollow");
+  expect(res.headers.get("cache-control")).toBe("no-store");
 });

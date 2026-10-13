@@ -1,5 +1,8 @@
-import { NextResponse, type NextRequest } from "next/server";
-import { publicCsp, securityHeaders } from "./lib/csp";
+import { clerkMiddleware } from "@clerk/nextjs/server";
+import { NextResponse, type NextFetchEvent, type NextRequest } from "next/server";
+import { adminAuthMode, clerkOrigin } from "./admin/mode";
+import { adminRoute } from "./admin/routes";
+import { adminCsp, publicCsp, securityHeaders } from "./lib/csp";
 import { routeLocale } from "./lib/locale-path";
 import { indexable } from "./lib/site";
 import { tilesOrigin } from "./stage/vendor";
@@ -15,7 +18,41 @@ function withHeaders(res: NextResponse): NextResponse {
   return res;
 }
 
-export async function proxy(request: NextRequest): Promise<NextResponse> {
+/** /admin renders per request: a fresh nonce, noindex, no-store, rewritten to app/admin/[locale]. */
+function adminResponse(request: NextRequest): NextResponse {
+  const route = adminRoute(request.nextUrl.pathname)!;
+  const nonce = btoa(crypto.randomUUID());
+  const csp = adminCsp({
+    nonce,
+    clerkOrigin: clerkOrigin(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY),
+    dev: DEV,
+  });
+  const headers = new Headers(request.headers);
+  headers.set("x-nonce", nonce);
+  headers.set("content-security-policy", csp);
+  // The shell needs the public path (/ar/admin/x) to mark the current section and switch language.
+  headers.set("x-darb-admin-path", request.nextUrl.pathname);
+  const url = request.nextUrl.clone();
+  url.pathname = `/admin/${route.locale}${route.rest}`;
+  const res = NextResponse.rewrite(url, { request: { headers } });
+  res.headers.set("content-security-policy", csp);
+  res.headers.set("x-robots-tag", "noindex, nofollow");
+  res.headers.set("cache-control", "no-store");
+  for (const [k, v] of Object.entries(securityHeaders())) res.headers.set(k, v);
+  return res;
+}
+const clerkAdmin = clerkMiddleware(async (_auth, request) => adminResponse(request));
+
+export async function proxy(
+  request: NextRequest,
+  event?: NextFetchEvent,
+): Promise<NextResponse | Response> {
+  if (adminRoute(request.nextUrl.pathname)) {
+    // Clerk runs only on admin requests: public pages never load or call Clerk.
+    if (adminAuthMode() === "clerk" && event)
+      return (await clerkAdmin(request, event)) ?? adminResponse(request);
+    return adminResponse(request);
+  }
   const route = routeLocale(request.nextUrl.pathname);
   if (route.action === "next") return withHeaders(NextResponse.next());
   const url = request.nextUrl.clone();
@@ -27,5 +64,6 @@ export async function proxy(request: NextRequest): Promise<NextResponse> {
 
 export const config = {
   // Route handlers, Next internals, brand files and anything with a file extension skip the proxy.
-  matcher: ["/((?!api/|_next/|brand/|.*\\..*).*)"],
+  // /__clerk/ is Clerk's frontend API proxy path, kept for later.
+  matcher: ["/((?!api/|_next/|brand/|.*\\..*).*)", "/__clerk/(.*)"],
 };
