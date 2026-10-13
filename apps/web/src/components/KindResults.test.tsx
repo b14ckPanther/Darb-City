@@ -2,7 +2,11 @@ import { act, fireEvent, render, screen, waitFor } from "@testing-library/react"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { StageLevel } from "@darb/stage";
 import { stageStore } from "@/lib/stage-store";
-import { KindResults } from "./KindResults";
+
+// The layout stays mounted under the business sheet: the path changes, the list does not.
+let pathname = "/en/sakhnin/food/restaurants";
+vi.mock("next/navigation", () => ({ usePathname: () => pathname }));
+const { KindResults } = await import("./KindResults");
 
 const row = (key: string, extra: object = {}) => ({
   key,
@@ -47,7 +51,10 @@ const pins = () =>
 const sent = (fetchMock: ReturnType<typeof vi.fn>, i: number) =>
   JSON.parse(String((fetchMock.mock.calls[i] as unknown as [string, RequestInit])[1].body));
 
-beforeEach(() => window.history.replaceState(null, "", "/en/sakhnin/food/restaurants"));
+beforeEach(() => {
+  pathname = "/en/sakhnin/food/restaurants";
+  window.history.replaceState(null, "", pathname);
+});
 afterEach(() => {
   vi.unstubAllGlobals();
   stageStore.set(null);
@@ -142,5 +149,46 @@ describe("KindResults", () => {
       expect(screen.getByText("Nothing here matches these filters yet.")).toBeTruthy(),
     );
     expect(screen.queryByText("Nothing is open right now.")).toBeNull();
+  });
+  it("puts its filters back in the URL after a business opens and closes", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () => Response.json({ rows: [row("b")], nextCursor: null })),
+    );
+    const { rerender } = render(<KindResults {...props} />);
+    await act(async () => fireEvent.click(screen.getByRole("button", { name: "Open now" })));
+    await act(async () => fireEvent.click(screen.getByRole("button", { name: "Delivers" })));
+    expect(window.location.search).toBe("?open=1&delivers=1");
+    // Opening a row (or a pin) navigates to a URL with no query; so does closing the sheet.
+    pathname = "/en/sakhnin/food/restaurants/b";
+    window.history.pushState(null, "", pathname);
+    rerender(<KindResults {...props} />);
+    expect(window.location.pathname).toBe("/en/sakhnin/food/restaurants/b");
+    expect(window.location.search).toBe("?open=1&delivers=1");
+    pathname = "/en/sakhnin/food/restaurants";
+    window.history.pushState(null, "", pathname);
+    rerender(<KindResults {...props} />);
+    expect(window.location.search).toBe("?open=1&delivers=1");
+    expect(screen.getByRole("button", { name: "Open now" }).getAttribute("aria-pressed")).toBe(
+      "true",
+    );
+  });
+  it("applies Near me with the filters as they are when the position arrives", async () => {
+    let answer: PositionCallback = () => {};
+    vi.stubGlobal("navigator", {
+      geolocation: { getCurrentPosition: (ok: PositionCallback) => void (answer = ok) },
+    });
+    const fetchMock = vi.fn(async () => Response.json({ rows: [row("b")], nextCursor: null }));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<KindResults {...props} />);
+    await act(async () => fireEvent.click(screen.getByRole("button", { name: "Near me" })));
+    // Open now is turned on while the browser is still finding the person.
+    await act(async () => fireEvent.click(screen.getByRole("button", { name: "Open now" })));
+    await act(async () =>
+      answer({ coords: { latitude: 32.86, longitude: 35.3 } } as GeolocationPosition),
+    );
+    const last = sent(fetchMock, fetchMock.mock.calls.length - 1);
+    expect(last.open).toBe(true);
+    expect(last.near).toEqual({ lat: 32.86, lng: 35.3 });
   });
 });

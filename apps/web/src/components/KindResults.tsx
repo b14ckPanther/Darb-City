@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Locale } from "@darb/core";
 import type { StageLevel, StagePlace } from "@darb/stage";
@@ -45,6 +46,16 @@ interface Filters {
 
 const active = (f: Filters) => f.open || f.delivers || f.near !== null;
 
+/** ?open=1 and ?delivers=1 mirror the toggles; Near me never enters the URL. */
+function writeUrl(f: Filters) {
+  const url = new URL(window.location.href);
+  url.searchParams.delete("open");
+  url.searchParams.delete("delivers");
+  if (f.open) url.searchParams.set("open", "1");
+  if (f.delivers) url.searchParams.set("delivers", "1");
+  if (url.href !== window.location.href) window.history.replaceState(window.history.state, "", url);
+}
+
 export function KindResults(props: KindResultsProps) {
   const { locale, place, kind, stagePlace, deliversAvailable, labels } = props;
   const [filters, setFilters] = useState<Filters>({ open: false, delivers: false, near: null });
@@ -54,6 +65,19 @@ export function KindResults(props: KindResultsProps) {
   const listRef = useRef<HTMLUListElement>(null);
   /** The latest request: an older answer that lands later never replaces a newer one. */
   const request = useRef(0);
+  /** The filters right now, for callbacks that outlive a render (geolocation, navigation). */
+  const current = useRef(filters);
+  const pathname = usePathname();
+  const shownAt = useRef(pathname);
+
+  // The list stays mounted under a business sheet, but opening a row or a pin and closing the
+  // sheet navigate to URLs without the query: the pressed filters go back into the URL, so a
+  // reload or a shared link shows the same list.
+  useEffect(() => {
+    if (shownAt.current === pathname) return;
+    shownAt.current = pathname;
+    writeUrl(current.current);
+  }, [pathname]);
 
   // M6: the map shows exactly the rows on the list.
   const level = useMemo<StageLevel>(
@@ -95,13 +119,9 @@ export function KindResults(props: KindResultsProps) {
   }
 
   function apply(next: Filters) {
+    current.current = next;
     setFilters(next);
-    const url = new URL(window.location.href);
-    url.searchParams.delete("open");
-    url.searchParams.delete("delivers");
-    if (next.open) url.searchParams.set("open", "1");
-    if (next.delivers) url.searchParams.set("delivers", "1");
-    window.history.replaceState(window.history.state, "", url);
+    writeUrl(next);
     if (active(next)) void load(next, null);
     else {
       request.current += 1; // drop any answer still on its way
@@ -131,7 +151,9 @@ export function KindResults(props: KindResultsProps) {
     if (!("geolocation" in navigator)) return setState("denied");
     setState("locating");
     navigator.geolocation.getCurrentPosition(
-      ({ coords }) => apply({ ...filters, near: { lat: coords.latitude, lng: coords.longitude } }),
+      // The filters as they are when the position arrives, not when the button was pressed.
+      ({ coords }) =>
+        apply({ ...current.current, near: { lat: coords.latitude, lng: coords.longitude } }),
       () => setState("denied"),
       { timeout: 10_000, maximumAge: 600_000 },
     );
