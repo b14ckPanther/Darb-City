@@ -21,6 +21,14 @@ Requires Node ≥ 22.12, pnpm 11 and Docker Desktop.
     # beside running dev servers: WEB_URL=http://localhost:3100 API_URL=http://localhost:4100 WEB_API_DOWN_URL=http://localhost:3101
     pnpm typecheck && pnpm lint && pnpm format:check
 
+## Search
+
+The web server calls the API's search routes for the visitor and forwards the visitor's IP in a
+header that the API trusts only with the shared `SEARCH_PROXY_KEY` (set the same value in
+`apps/api/.env` and `apps/web/.env.local`). The API rate-limits searches by that IP and keeps only
+a salted hash for 60 seconds. `dev-proxy-key` is for development only: the API refuses to start in
+production with it, so production must set one long random key on both sides.
+
 ## Map
 
 The Zoomable City draws MapLibre GL over a Protomaps PMTiles extract of Israel, then a 2.5D plaza
