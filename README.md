@@ -16,6 +16,11 @@ Requires Node ≥ 22.12, pnpm 11 and Docker Desktop.
 
     pnpm --filter @darb/api db:seed   # re-run the idempotent seed loader (~17s for the full dataset)
 
+Seed ownership: the seed owns a place, sector, kind or business while its `editedAt` is empty.
+The first admin edit stamps `editedAt`, and from then on `db:seed` never overwrites, hides or
+suspends that row. **Return to seed data** in `/admin` clears the stamp, so the next seed run
+overwrites the row again.
+
     pnpm test         # needs `pnpm infra:up`
     pnpm --filter @darb/web e2e   # Playwright; needs the seeded database
     # e2e starts its own servers on :3100, :3101 and :4100 (recorded intents, offline embeddings),
