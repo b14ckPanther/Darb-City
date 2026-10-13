@@ -53,14 +53,21 @@ export default defineConfig({
       url: `${API}/health`,
       reuseExistingServer: true,
       timeout: 60_000,
-      env: { PORT: port(API), WEB_ORIGIN: WEB },
+      env: {
+        PORT: port(API),
+        WEB_ORIGIN: WEB,
+        INTENT_PROVIDER: "recorded",
+        SEARCH_PROXY_KEY: "e2e-proxy-key",
+        SEARCH_RATE_LIMIT: "100000",
+        SEARCH_RESULTS_RATE_LIMIT: "100000",
+      },
     },
     {
       command: `pnpm exec next start --port ${port(WEB)}`,
       url: `${WEB}/for-business`,
       reuseExistingServer: !process.env.CI,
       timeout: 120_000,
-      env: { API_URL: API, SITE_URL: WEB, ...TILES },
+      env: { API_URL: API, SITE_URL: WEB, SEARCH_PROXY_KEY: "e2e-proxy-key", ...TILES },
     },
     {
       command: `pnpm exec next start --port ${port(WEB_API_DOWN)}`,
@@ -68,7 +75,12 @@ export default defineConfig({
       reuseExistingServer: !process.env.CI,
       timeout: 120_000,
       // Port 9 (discard) refuses connections: every API call fails as unreachable.
-      env: { API_URL: "http://127.0.0.1:9", SITE_URL: WEB_API_DOWN, ...TILES },
+      env: {
+        API_URL: "http://127.0.0.1:9",
+        SITE_URL: WEB_API_DOWN,
+        SEARCH_PROXY_KEY: "e2e-proxy-key",
+        ...TILES,
+      },
     },
   ],
 });
