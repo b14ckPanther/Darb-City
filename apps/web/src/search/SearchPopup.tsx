@@ -18,8 +18,17 @@ export interface PopupProps {
   labels: SearchLabels;
   listboxId: string;
   activeId: string | null;
-  onOptions(options: SearchOption[]): void;
+  /** Grows on every focus of the box: an index that failed to load is fetched again. */
+  attempt: number;
+  /** The options in drawn order; settled once the index has loaded or failed. */
+  onOptions(options: SearchOption[], settled: boolean): void;
   onPick(option: SearchOption): void;
+}
+
+/** Business names and the query they answer, so names for older text are never shown. */
+interface Names {
+  q: string;
+  options: SearchOption[];
 }
 
 export function SearchPopup({
@@ -29,26 +38,33 @@ export function SearchPopup({
   labels,
   listboxId,
   activeId,
+  attempt,
   onOptions,
   onPick,
 }: PopupProps) {
   const [prepared, setPrepared] = useState<Prepared | null>(null);
-  const [businesses, setBusinesses] = useState<SearchOption[]>([]);
+  const [failed, setFailed] = useState(false);
+  const [names, setNames] = useState<Names>({ q: "", options: [] });
+  const q = query.trim();
 
   useEffect(() => {
+    if (prepared) return;
     let live = true;
     loadPrepared(INDEX_URL).then(
-      (p) => live && setPrepared(p),
-      () => undefined,
+      (p) => {
+        if (!live) return;
+        setPrepared(p);
+        setFailed(false);
+      },
+      () => live && setFailed(true), // loadPrepared forgets the failure: the next focus retries
     );
     return () => {
       live = false;
     };
-  }, []);
+  }, [attempt, prepared]);
 
   // Business names from the API (debounced); lane 1 never waits for them.
   useEffect(() => {
-    const q = query.trim();
     if (q.length < 2) return; // shorter queries show no businesses (see options below)
     const controller = new AbortController();
     const timer = window.setTimeout(() => {
@@ -57,14 +73,17 @@ export function SearchPopup({
         .then((res) =>
           res.ok ? (res.json() as Promise<{ options: SearchOption[] }>) : { options: [] },
         )
-        .then((body) => setBusinesses(body.options.slice(0, 5)))
-        .catch(() => undefined);
+        .then((body) => setNames({ q, options: body.options.slice(0, 5) }))
+        .catch(() => {
+          // Aborted for newer text, or failed: either way nothing old stays on screen.
+          if (!controller.signal.aborted) setNames({ q, options: [] });
+        });
     }, 150);
     return () => {
       window.clearTimeout(timer);
       controller.abort();
     };
-  }, [query, locale, place]);
+  }, [q, locale, place]);
 
   const options = useMemo(() => {
     // Until the index arrives (or if it cannot), the full search is still offered.
@@ -72,12 +91,15 @@ export function SearchPopup({
       ? instantOptions(prepared, query, locale, labels)
       : [searchOption(query, locale, labels)].filter((o) => o !== null);
     const search = instant.filter((o) => o.group === "search");
-    const names = query.trim().length >= 2 ? businesses : [];
-    return inGroups([...instant.filter((o) => o.group !== "search"), ...names, ...search]);
-  }, [prepared, query, locale, labels, businesses]);
+    const current = q.length >= 2 && names.q === q ? names.options : [];
+    return inGroups([...instant.filter((o) => o.group !== "search"), ...current, ...search]);
+  }, [prepared, query, q, locale, labels, names]);
 
   // The box moves through options in this order, which is the order they are drawn in.
-  useEffect(() => onOptions(options), [options, onOptions]);
+  const settled = prepared !== null || failed;
+  useEffect(() => {
+    onOptions(options, settled);
+  }, [options, settled, onOptions]);
 
   useEffect(() => {
     if (activeId) document.getElementById(activeId)?.scrollIntoView?.({ block: "nearest" });
@@ -141,11 +163,6 @@ export function SearchPopup({
           );
         })}
       </ul>
-      <p role="status" className="visually-hidden">
-        {options.length > 1
-          ? labels.suggestionCount.replace("{count}", String(options.length))
-          : labels.noSuggestions}
-      </p>
     </>
   );
 }

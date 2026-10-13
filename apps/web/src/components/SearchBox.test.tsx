@@ -16,11 +16,16 @@ vi.mock("next/dynamic", async () => {
     default: () =>
       function Popup(props: {
         listboxId: string;
-        onOptions(o: SearchOption[]): void;
+        query: string;
+        onOptions(o: SearchOption[], settled: boolean): void;
         activeId: string | null;
       }) {
-        const { onOptions } = props;
-        useEffect(() => onOptions(OPTIONS), [onOptions]);
+        const { onOptions, query } = props;
+        // "zz" finds nothing: only the full search is offered.
+        useEffect(
+          () => onOptions(query === "zz" ? OPTIONS.slice(-1) : OPTIONS, true),
+          [onOptions, query],
+        );
         return (
           <ul role="listbox" id={props.listboxId}>
             {OPTIONS.map((o) => (
@@ -50,6 +55,7 @@ const labels = {
   searchFor: "Search for “{q}”",
   suggestionCount: "Suggestions: {count}",
   noSuggestions: "None",
+  nationwide: "Across Israel",
 };
 
 let sheetSaw: boolean[] = [];
@@ -143,4 +149,59 @@ it("keeps an open business sheet open while Escape closes and clears the search 
   // Only now, with the box empty and closed, does Escape reach the sheet.
   fireEvent.keyDown(box(), { key: "Escape" });
   expect(push).toHaveBeenCalledWith("/en/haifa/beauty/barbershops", { scroll: false });
+});
+
+describe("SearchBox polish", () => {
+  const typed = async (value = "ha") => {
+    render(<SearchBox locale="en" labels={labels} />);
+    fireEvent.focus(box());
+    await act(async () => fireEvent.change(box(), { target: { value } }));
+  };
+
+  it("ignores Enter, the arrows and Escape while an IME is composing", async () => {
+    await typed();
+    fireEvent.keyDown(box(), { key: "ArrowDown" });
+    const before = box().getAttribute("aria-activedescendant");
+    fireEvent.keyDown(box(), { key: "ArrowDown", isComposing: true });
+    fireEvent.keyDown(box(), { key: "ArrowUp", keyCode: 229 });
+    expect(box().getAttribute("aria-activedescendant")).toBe(before);
+    fireEvent.keyDown(box(), { key: "Enter", isComposing: true });
+    expect(push).not.toHaveBeenCalled();
+    fireEvent.keyDown(box(), { key: "Escape", keyCode: 229 });
+    expect(box().getAttribute("aria-expanded")).toBe("true");
+    expect((box() as HTMLInputElement).value).toBe("ha");
+  });
+
+  it("reopens the list when a field with text is focused again", async () => {
+    await typed();
+    fireEvent.blur(box());
+    expect(box().getAttribute("aria-expanded")).toBe("false");
+    fireEvent.focus(box());
+    expect(box().getAttribute("aria-expanded")).toBe("true");
+  });
+
+  it("announces the suggestions, not the full-search row, and is always in the page", async () => {
+    render(<SearchBox locale="en" labels={labels} />);
+    expect(screen.getByRole("status").textContent).toBe("");
+    fireEvent.focus(box());
+    await act(async () => fireEvent.change(box(), { target: { value: "ha" } }));
+    expect(screen.getByRole("status").textContent).toBe("Suggestions: 2");
+    await act(async () => fireEvent.change(box(), { target: { value: "zz" } }));
+    expect(screen.getByRole("status").textContent).toBe("None");
+    fireEvent.keyDown(box(), { key: "Escape" });
+    expect(screen.getByRole("status").textContent).toBe("");
+  });
+
+  it("lets the browser pick the text direction", () => {
+    render(<SearchBox locale="he" labels={labels} />);
+    expect(box().getAttribute("dir")).toBe("auto");
+  });
+
+  it("shows the query of the search page it is on", async () => {
+    const { publishQuery } = await import("@/search/query");
+    render(<SearchBox locale="en" labels={labels} />);
+    await act(async () => publishQuery("barber haifa"));
+    expect((box() as HTMLInputElement).value).toBe("barber haifa");
+    expect(box().getAttribute("aria-expanded")).toBe("false");
+  });
 });

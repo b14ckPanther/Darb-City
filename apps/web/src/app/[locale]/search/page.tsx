@@ -7,6 +7,7 @@ import { t } from "@darb/i18n";
 import { rowLabels } from "@/components/BusinessList";
 import { CityBar } from "@/components/CityBar";
 import { SearchFallback } from "@/components/SearchFallback";
+import { SearchQuery } from "@/components/SearchQuery";
 import { SearchResults } from "@/components/SearchResults";
 import { StageData } from "@/components/StageData";
 import { searchLabels } from "@/components/SearchBar";
@@ -121,6 +122,7 @@ export default async function SearchPage({ params, searchParams }: Props) {
   return (
     <>
       <CityBar locale={locale} crumbs={crumbs} segments={paths.search()} />
+      <SearchQuery q={q} />
       <main id="main" className="frame">
         <div id="city-list" className="reveal">
           <h1 id="main-heading" tabIndex={-1} className="page-title">

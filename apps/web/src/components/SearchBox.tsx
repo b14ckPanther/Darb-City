@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useId, useRef, useState, type KeyboardEvent } from "react";
 import type { Locale } from "@darb/core";
+import { onQuery } from "@/search/query";
 import type { PopupProps } from "@/search/SearchPopup";
 import type { SearchLabels, SearchOption } from "@/search/types";
 import styles from "./SearchBox.module.css";
@@ -33,6 +34,8 @@ export function SearchBox({ locale, labels }: { locale: Locale; labels: SearchLa
   const [wanted, setWanted] = useState(false); // the lazy chunk was asked for
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState<SearchOption[]>([]);
+  const [settled, setSettled] = useState(false);
+  const [attempt, setAttempt] = useState(0);
   // The active option by id, so business names arriving late never move or drop the selection.
   const [activeKey, setActiveKey] = useState<string | null>(null);
   const active = activeKey === null ? -1 : options.findIndex((o) => o.id === activeKey);
@@ -55,7 +58,29 @@ export function SearchBox({ locale, labels }: { locale: Locale; labels: SearchLa
     return () => document.removeEventListener("keydown", onKey);
   }, []);
 
-  const onOptions = useCallback((next: SearchOption[]) => setOptions(next), []);
+  // On /search, the box shows the text that was searched (closed: it is already answered).
+  useEffect(
+    () =>
+      onQuery((q) => {
+        setValue(q);
+        setOpen(false);
+        setActiveKey(null);
+      }),
+    [],
+  );
+
+  const onOptions = useCallback((next: SearchOption[], isSettled: boolean) => {
+    setOptions(next);
+    setSettled(isSettled);
+  }, []);
+  // What the live region says: the suggestions, never the "Search for" row; nothing while closed.
+  const suggestions = options.filter((o) => o.group !== "search").length;
+  const status =
+    !open || !settled
+      ? ""
+      : suggestions > 0
+        ? labels.suggestionCount.replace("{count}", () => String(suggestions))
+        : labels.noSuggestions;
 
   const pick = useCallback(
     (option: SearchOption) => {
@@ -66,6 +91,8 @@ export function SearchBox({ locale, labels }: { locale: Locale; labels: SearchLa
   );
 
   function onKeyDown(e: KeyboardEvent<HTMLInputElement>) {
+    // An IME is composing (Hebrew, Arabic or CJK input): its keys belong to the candidate window.
+    if (e.nativeEvent.isComposing || e.keyCode === 229) return;
     const count = options.length;
     switch (e.key) {
       case "ArrowDown":
@@ -83,7 +110,7 @@ export function SearchBox({ locale, labels }: { locale: Locale; labels: SearchLa
         if (option) {
           e.preventDefault();
           pick(option);
-        } // otherwise the form submits to /search?q=
+        } else setOpen(false); // the form submits to /search?q= (next/form: no reload)
         return;
       }
       case "Escape": {
@@ -119,7 +146,12 @@ export function SearchBox({ locale, labels }: { locale: Locale; labels: SearchLa
         enterKeyHint="search"
         className={styles.input}
         value={value}
-        onFocus={() => setWanted(true)}
+        dir="auto"
+        onFocus={() => {
+          setWanted(true);
+          setAttempt((n) => n + 1);
+          if (value.trim() !== "") setOpen(true);
+        }}
         onChange={(e) => {
           setValue(e.target.value);
           setActiveKey(null);
@@ -141,11 +173,15 @@ export function SearchBox({ locale, labels }: { locale: Locale; labels: SearchLa
             labels={labels}
             listboxId={listboxId}
             activeId={activeId}
+            attempt={attempt}
             onOptions={onOptions}
             onPick={pick}
           />
         </div>
       ) : null}
+      <p role="status" className="visually-hidden">
+        {status}
+      </p>
     </div>
   );
 }
