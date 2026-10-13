@@ -1,0 +1,76 @@
+// @vitest-environment node
+import { afterEach, expect, it, vi } from "vitest";
+
+vi.mock("@/lib/api", () => ({
+  getPlaces: async () => [
+    {
+      id: "p",
+      slug: "sakhnin",
+      type: "city",
+      name: { en: "Sakhnin" },
+      status: "live",
+      lat: 0,
+      lng: 0,
+      parentId: null,
+    },
+  ],
+  getTaxonomy: async () => ({
+    sectors: [
+      {
+        id: "s",
+        slug: "food",
+        name: { en: "Food" },
+        tagline: { en: "" },
+        accent: "#000000",
+        order: 1,
+        kinds: [
+          {
+            id: "k",
+            slug: "restaurants",
+            sectorId: "s",
+            parentKindId: null,
+            name: { en: "Restaurants" },
+            template: "menu",
+            attributes: [],
+            icon: null,
+            order: 1,
+          },
+        ],
+      },
+    ],
+  }),
+  getSitemapBusinesses: async () => [
+    {
+      placeSlug: "sakhnin",
+      slug: "caramel",
+      primaryKindId: "k",
+      updatedAt: "2026-10-13T00:00:00.000Z",
+    },
+    { placeSlug: "sakhnin", slug: "orphan", primaryKindId: "gone", updatedAt: "2026-10-13" },
+  ],
+}));
+const { default: sitemap, generateSitemaps } = await import("./sitemap");
+afterEach(() => vi.unstubAllEnvs());
+
+it("has one sitemap per locale with places, sectors, kinds and real businesses", async () => {
+  vi.stubEnv("SITE_URL", "https://darb.co.il");
+  expect(await generateSitemaps()).toEqual([{ id: 0 }, { id: 1 }, { id: 2 }]);
+  const en = await sitemap({ id: Promise.resolve("2") });
+  const urls = en.map((e) => e.url);
+  expect(urls).toEqual([
+    "https://darb.co.il/en",
+    "https://darb.co.il/en/sakhnin",
+    "https://darb.co.il/en/sakhnin/food",
+    "https://darb.co.il/en/k/restaurants",
+    "https://darb.co.il/en/sakhnin/food/restaurants/caramel",
+  ]);
+  expect(en[1]?.alternates?.languages).toMatchObject({ he: "https://darb.co.il/sakhnin" });
+  expect(en[4]?.lastModified).toBe("2026-10-13T00:00:00.000Z");
+});
+
+it("gives the Hebrew home the bare origin", async () => {
+  vi.stubEnv("SITE_URL", "https://darb.co.il");
+  const he = await sitemap({ id: Promise.resolve("0") });
+  expect(he[0]?.url).toBe("https://darb.co.il/");
+  expect(he[1]?.url).toBe("https://darb.co.il/sakhnin");
+});

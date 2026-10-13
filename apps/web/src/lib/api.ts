@@ -12,6 +12,7 @@ import {
   type ResultsRequestDto,
   type SearchRequestDto,
   type SearchResponseDto,
+  type SitemapBusinessDto,
   type SuggestionDto,
   type TaxonomyDto,
 } from "@darb/contracts";
@@ -308,4 +309,14 @@ export async function getInstantIndex(): Promise<InstantIndexDto> {
   );
   if (res.status !== 200) throw new ApiUnavailableError(res);
   return res.body;
+}
+
+/** Real businesses for the sitemap; an unreachable API gives an empty list (never a failed sitemap). */
+export async function getSitemapBusinesses(): Promise<SitemapBusinessDto[]> {
+  const res = await call(() =>
+    client().sitemap.businesses({
+      fetchOptions: fetchOptions(cached(REVALIDATE.lists, tags.businesses)),
+    }),
+  );
+  return res.status === 200 ? res.body : [];
 }

@@ -149,3 +149,12 @@ export const ScreenSchema = z.object({
   font: z.string().min(1),
 });
 export type ScreenDto = z.infer<typeof ScreenSchema>;
+
+/** A real business page for the web sitemap (showroom examples are left out). */
+export const SitemapBusinessSchema = z.object({
+  placeSlug: SlugSchema,
+  slug: SlugSchema,
+  primaryKindId: z.string(),
+  updatedAt: z.string(),
+});
+export type SitemapBusinessDto = z.infer<typeof SitemapBusinessSchema>;

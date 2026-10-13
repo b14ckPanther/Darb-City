@@ -10,6 +10,7 @@ import {
   NotFoundSchema,
   PlaceDetailSchema,
   PlaceSchema,
+  SitemapBusinessSchema,
   SlugSchema,
   TaxonomySchema,
 } from "./schemas.js";
@@ -161,6 +162,13 @@ export const contract = c.router({
       method: "GET",
       path: "/search/instant-index",
       responses: { 200: InstantIndexSchema },
+    },
+  },
+  sitemap: {
+    businesses: {
+      method: "GET",
+      path: "/sitemap/businesses",
+      responses: { 200: z.array(SitemapBusinessSchema) },
     },
   },
   admin: adminContract,

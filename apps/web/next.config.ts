@@ -12,6 +12,8 @@ const config: NextConfig = {
   turbopack: { root: workspaceRoot },
   outputFileTracingRoot: workspaceRoot,
   env: { NEXT_PUBLIC_SEARCH_INDEX_URL: searchIndex.url },
+  // app/global-not-found.tsx: URLs that match no route at all (the root layout is [locale]).
+  experimental: { globalNotFound: true },
   // /map/vendor paths carry the MapLibre version and /search-index files their content hash, so
   // they never change; glyphs change rarely.
   headers: async () => [
