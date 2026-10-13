@@ -1,6 +1,6 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
-import { BUSINESS_KEY, HAIFA, LEVELS, localePath } from "./fixtures";
+import { BUSINESS_KEY, HAIFA, isPhone, LEVELS, localePath, settleStage } from "./fixtures";
 
 test.describe.configure({ timeout: 60_000 });
 
@@ -437,4 +437,18 @@ test.describe("phone", () => {
       violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(" ")).join(" | ")}`),
     ).toEqual([]);
   });
+});
+
+test("the city and the map load under the production CSP", async ({ page }, info) => {
+  const violations: string[] = [];
+  page.on("console", (m) => {
+    if (/Content Security Policy|Refused to/i.test(m.text())) violations.push(m.text());
+  });
+  const res = await page.goto("/sakhnin");
+  expect(res?.headers()["content-security-policy"]).toContain("worker-src 'self'");
+  await settleStage(page);
+  // On desktop the map draws (tiles, worker, glyphs) under the policy, not merely switches off.
+  if (!isPhone(info))
+    await expect(host(page)).toHaveAttribute("data-stage-state", "ready", { timeout: 30_000 });
+  expect(violations).toEqual([]);
 });

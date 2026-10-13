@@ -55,7 +55,7 @@ export class CityMap implements StageMap {
     if (!res.ok) throw new Error(`Map style: ${res.status}`);
     const style = prepareStyle((await res.json()) as StyleSpecification, {
       origin: window.location.origin,
-      tilesUrl: TILES_URL,
+      tilesUrl: TILES_URL ?? "",
     });
     style.sources[CITY_SOURCE] = { type: "geojson", data: cityCollection([]) };
     style.sources[PIN_SOURCE] = { type: "geojson", data: pinCollection([], null) };

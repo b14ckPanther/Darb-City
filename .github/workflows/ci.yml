@@ -24,6 +24,8 @@ jobs:
       NEXT_TELEMETRY_DISABLED: "1"
       TURBO_TELEMETRY_DISABLED: "1"
       SEARCH_PROXY_KEY: ci-proxy-key
+      # Production builds serve the map from the 1 KB fixture via /api/tiles (no R2 in CI).
+      NEXT_PUBLIC_LOCAL_TILES: "1"
       # No network and no keys: the model is replayed from recordings, embeddings are an offline hash.
       INTENT_PROVIDER: recorded
       EMBEDDING_PROVIDER: hash
