@@ -159,8 +159,12 @@ it("accepts a business summary with or without distance", () => {
     lng: 2,
     photo: null,
     openNow: null,
+    hours: { weekly: {}, exceptions: [] },
   };
   expect(BusinessSummarySchema.parse(base).distanceKm).toBeUndefined();
+  // Browsers recompute open-now from the hours (Plan 4 Task 19), so every summary carries them.
+  const { hours: _hours, ...withoutHours } = base;
+  expect(() => BusinessSummarySchema.parse(withoutHours)).toThrow();
   expect(BusinessSummarySchema.parse({ ...base, distanceKm: 1.5 }).distanceKm).toBe(1.5);
   expect(() => BusinessSummarySchema.parse({ ...base, distanceKm: -1 })).toThrow();
 });
