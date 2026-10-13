@@ -66,3 +66,58 @@ describe("SmartSearchService", () => {
     expect(res.items.map((b) => b.slug).sort()).toEqual(["abu-salim", "little-cuts"]);
   });
 });
+
+describe("SmartSearchService.results (chip edits)", () => {
+  const unused = async (): Promise<Resolved> => {
+    throw new Error("a chip edit never resolves the intent");
+  };
+
+  it("blocks a query Darb does not list and never embeds it", async () => {
+    const { svc, embeddings } = service(unused);
+    const res = await svc.results({ q: "beer", locale: "en", intent: EMPTY_INTENT });
+    expect(res?.status).toBe("blocked");
+    expect(res?.items).toEqual([]);
+    expect(embeddings.embed).not.toHaveBeenCalled();
+  });
+  it("blocks blocked free text from the URL (?chips=text&text=beer) and never embeds it", async () => {
+    const { svc, embeddings } = service(unused);
+    const res = await svc.results({
+      q: "beer",
+      locale: "en",
+      intent: { ...EMPTY_INTENT, kinds: ["barbershops"], freeText: "beer" },
+    });
+    expect(res?.status).toBe("blocked");
+    expect(embeddings.embed).not.toHaveBeenCalled();
+    const edited = await svc.results({
+      q: "barber",
+      locale: "en",
+      intent: { ...EMPTY_INTENT, kinds: ["barbershops"], freeText: "beer" },
+    });
+    expect(edited?.status).toBe("blocked");
+    expect(edited?.items).toEqual([]);
+    expect(embeddings.embed).not.toHaveBeenCalled();
+  });
+  it("keeps a look-alike of a blocked word (barber)", async () => {
+    const { svc } = service(unused);
+    const res = await svc.results({ q: "barber", locale: "en", intent: EMPTY_INTENT });
+    expect(res?.status).toBe("ok");
+  });
+  it("embeds the same text as the search, so removing an unrelated chip keeps the order", async () => {
+    const intent = { ...EMPTY_INTENT, kinds: ["barbershops"], nearMe: true, freeText: "kids" };
+    const q = "kids haircut barber near me";
+    const { svc, embeddings } = service(async (text) => ({
+      intent,
+      lane: "smart",
+      blocked: false,
+      instant: await instant.match(text),
+    }));
+    const searched = await svc.search({ q, locale: "en" });
+    const edited = await svc.results({ q, locale: "en", intent: { ...intent, nearMe: false } });
+    expect(searched.status).toBe("ok");
+    expect(edited?.status).toBe("ok");
+    const calls = vi.mocked(embeddings.embed).mock.calls.map((c) => c[0]);
+    expect(calls).toHaveLength(2);
+    expect(calls[1]).toEqual(calls[0]);
+    expect(edited?.items.map((b) => b.slug)).toEqual(searched.items.map((b) => b.slug));
+  });
+});

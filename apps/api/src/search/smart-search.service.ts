@@ -5,7 +5,7 @@ import type {
   SearchRequestDto,
   SearchResponseDto,
 } from "@darb/contracts";
-import { normalize } from "@darb/search-text";
+import { isBlocked, normalize } from "@darb/search-text";
 import { EMBEDDING_PROVIDER, type EmbeddingProvider } from "../ai/embeddings.js";
 import { CLOCK, type Clock } from "../businesses/businesses.controller.js";
 import { BusinessesRepository } from "../businesses/businesses.repository.js";
@@ -21,6 +21,16 @@ import { candidateSummary } from "./summary.js";
 export const NEAR_RADIUS_KM = 25;
 export const EMBED_TIMEOUT_MS = 800;
 type Point = { lat: number; lng: number };
+
+const blockedResponse = (intent: IntentDto): SearchResponseDto => ({
+  status: "blocked",
+  lane: "instant",
+  queryId: null,
+  intent,
+  needsLocation: false,
+  items: [],
+  nearest: [],
+});
 
 @Injectable()
 export class SmartSearchService {
@@ -49,15 +59,7 @@ export class SmartSearchService {
         lane: "blocked",
         resultCount: 0,
       });
-      return {
-        status: "blocked",
-        lane: "instant",
-        queryId: null,
-        intent: resolved.intent,
-        needsLocation: false,
-        items: [],
-        nearest: [],
-      };
+      return blockedResponse(resolved.intent);
     }
     const body = await this.answer(resolved.intent, req.near ?? null, await embedding);
     const queryId = await this.log.record({
@@ -75,11 +77,14 @@ export class SmartSearchService {
     const world = await this.instant.world();
     if (req.intent.kinds.some((k) => !world.kinds.has(k))) return null;
     if (req.intent.place && !world.places.has(req.intent.place)) return null;
-    const body = await this.answer(
-      req.intent,
-      req.near ?? null,
-      await this.embed(req.intent.freeText || req.q),
-    );
+    // The URL carries both the query and the free text: either may name what Darb does not list,
+    // and neither then reaches the embeddings provider or retrieval.
+    const names = world.prepared.names;
+    if (isBlocked(req.q, names) || isBlocked(req.intent.freeText, names))
+      return blockedResponse(req.intent);
+    // The same text search() embeds (the query), so a chip edit never changes the ranking by
+    // itself; the free text still narrows retrieval through the text filter.
+    const body = await this.answer(req.intent, req.near ?? null, await this.embed(req.q));
     return { ...body, lane: "instant", queryId: null };
   }
 
