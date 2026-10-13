@@ -1,3 +1,4 @@
+import Form from "next/form";
 import type { ReactNode } from "react";
 import type { Locale } from "@darb/core";
 import { t } from "@darb/i18n";
@@ -21,16 +22,19 @@ export function searchLabels(locale: Locale): SearchLabels {
 }
 
 /**
- * Top bar on desktop, docked at the bottom (thumb reach) on phones. Without JavaScript the form
- * still submits to /search?q=.
+ * Top bar on desktop, docked at the bottom (thumb reach) on phones.
  */
 export function SearchBar({ locale, nearMe }: { locale: Locale; nearMe?: ReactNode }) {
   return (
     <div className={styles.dock} data-search-bar="">
-      <form
+      {/*
+        next/form: Enter with nothing picked navigates on the client (the stage and map stay up);
+        without JavaScript it is a plain GET form to /search?q=.
+      */}
+      <Form
         role="search"
         action={href(locale, paths.search())}
-        method="get"
+        prefetch={false}
         className={styles.form}
       >
         <label htmlFor="q" className="visually-hidden">
@@ -43,7 +47,7 @@ export function SearchBar({ locale, nearMe }: { locale: Locale; nearMe?: ReactNo
             <path d="M16 16l4.5 4.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
           </svg>
         </button>
-      </form>
+      </Form>
       {nearMe}
     </div>
   );
