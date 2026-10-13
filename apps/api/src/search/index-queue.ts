@@ -10,6 +10,7 @@ import { Queue, Worker, type Job } from "bullmq";
 import { APP_CONFIG, type AppConfig } from "../config.js";
 import type { SearchEntityName } from "./documents.js";
 import { SearchIndexer } from "./indexer.service.js";
+import { InstantInvalidation } from "./instant-invalidation.js";
 import { InstantService } from "./instant.service.js";
 
 export interface IndexJob {
@@ -34,6 +35,7 @@ const connection = (config: AppConfig) => ({
   maxRetriesPerRequest: null,
 });
 const CHUNK = 500;
+export const NOTIFY_TIMEOUT_MS = 3000;
 const ATTEMPTS = 3;
 const UUID = /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/gi;
 
@@ -52,12 +54,13 @@ export class SearchEvents implements OnModuleDestroy {
 
   constructor(
     @Inject(APP_CONFIG) private readonly config: AppConfig,
-    private readonly instant: InstantService,
+    @Inject(InstantInvalidation)
+    private readonly invalidation: Pick<InstantInvalidation, "publish">,
   ) {}
 
   /** Plan 4's admin writes call this after each change (spec §6.2 domain events). */
   async changed(entity: SearchEntityName, ids: string[]): Promise<Job<IndexJob>[]> {
-    if (feedsInstant(entity)) this.instant.invalidate();
+    if (feedsInstant(entity)) this.invalidation.publish();
     const queue = this.open();
     const jobs: Job<IndexJob>[] = [];
     for (let i = 0; i < ids.length; i += CHUNK) {
@@ -73,6 +76,28 @@ export class SearchEvents implements OnModuleDestroy {
       );
     }
     return jobs;
+  }
+
+  /**
+   * For admin writes: hands the change to the queue and returns at once. It never throws; a Redis
+   * outage keeps the job in BullMQ's offline buffer and is logged after NOTIFY_TIMEOUT_MS (a full
+   * reindex job recovers anything lost with the process).
+   */
+  notify(entity: SearchEntityName, ids: string[]): void {
+    let timer: NodeJS.Timeout | undefined;
+    const late = new Promise<"late">((resolve) => {
+      timer = setTimeout(() => resolve("late"), NOTIFY_TIMEOUT_MS);
+      timer.unref();
+    });
+    void Promise.race([this.changed(entity, ids), late])
+      .then((out) => {
+        if (out === "late")
+          this.logger.warn(
+            `Search index change for ${ids.length} ${entity}(s) is waiting for Redis`,
+          );
+      })
+      .catch((err: Error) => this.logger.error(`Search index notify: ${describeError(err)}`))
+      .finally(() => clearTimeout(timer));
   }
 
   async onModuleDestroy(): Promise<void> {
