@@ -28,6 +28,8 @@ export interface ResultsLabels {
 }
 
 const fill = (s: string, k: string, v: string | number) => s.replace(`{${k}}`, String(v));
+/** The free-text chip is shown in quotes; the sentence that names it brings its own. */
+const unquoted = (label: string) => label.replace(/^“(.*)”$/u, "$1");
 
 export function SearchResults({
   locale,
@@ -175,7 +177,9 @@ export function SearchResults({
               </p>
             </>
           ) : view.narrowest ? (
-            <p className={styles.empty}>{fill(labels.noResults, "chip", view.narrowest.label)}</p>
+            <p className={styles.empty}>
+              {fill(labels.noResults, "chip", unquoted(view.narrowest.label))}
+            </p>
           ) : null}
           {view.nearest.length > 0 ? (
             <NoneYet title={labels.nearestPlaces} subtitle="" places={view.nearest} />

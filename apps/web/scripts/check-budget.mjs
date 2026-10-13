@@ -33,6 +33,8 @@ const ROUTES = [
   "/[locale]/[place]/[sector]/[kind]/[business]/page",
   "/[locale]/[place]/[sector]/[kind]/[business]/[...rest]/page",
   "/[locale]/k/[kind]/page",
+  // Keeps the stage since Plan 3 (M7), so it is held to the level budget too.
+  "/[locale]/search/page",
 ];
 
 const build = JSON.parse(readFileSync(join(NEXT, "build-manifest.json"), "utf8"));

@@ -1,5 +1,5 @@
 // Lazy (next/dynamic) chunks, grouped by the marker string each group's own code carries.
-import { readdirSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
 /** Every react-loadable-manifest.json under .next/server/app: the JS files of each import. */
@@ -12,11 +12,15 @@ export function loadableEntries(nextDir) {
     });
   const byId = new Map();
   for (const file of walk(join(nextDir, "server/app")))
-    for (const [id, entry] of Object.entries(JSON.parse(readFileSync(file, "utf8"))))
-      byId.set(
-        String(id),
-        (entry.files ?? []).filter((f) => f.endsWith(".js")),
+    for (const [id, entry] of Object.entries(JSON.parse(readFileSync(file, "utf8")))) {
+      // A route that already holds an import's modules (/search holds the search engine) can list
+      // a chunk Turbopack never emits: only files that exist are measured, and they never replace
+      // another route's emitted list for the same import.
+      const files = (entry.files ?? []).filter(
+        (f) => f.endsWith(".js") && existsSync(join(nextDir, f)),
       );
+      if (files.length > 0 && !byId.has(String(id))) byId.set(String(id), files);
+    }
   return [...byId.values()];
 }
 

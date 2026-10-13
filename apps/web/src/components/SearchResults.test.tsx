@@ -111,6 +111,17 @@ describe("SearchResults", () => {
     );
     expect(screen.getByText("Try removing “Open now”.")).toBeTruthy();
   });
+  it("quotes free text once when it suggests removing it", () => {
+    const text = { id: "text", type: "text" as const, label: "“pistachio”" };
+    render(
+      <SearchResults
+        locale="en"
+        initial={{ ...view, rows: [], narrowest: text }}
+        labels={labels}
+      />,
+    );
+    expect(screen.getByText("Try removing “pistachio”.")).toBeTruthy();
+  });
   it("says nothing is open right now and links the same kind without open now", () => {
     render(
       <SearchResults

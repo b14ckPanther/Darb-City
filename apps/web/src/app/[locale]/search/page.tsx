@@ -25,6 +25,12 @@ type Props = {
   searchParams: Promise<{ q?: string | string[] }>;
 };
 
+/**
+ * Every search renders on request with the visitor's query (and IP, for the rate limit). The
+ * [locale] layout's static params would otherwise prerender /search and fail on headers().
+ */
+export const dynamic = "force-dynamic";
+
 const queryOf = (raw: string | string[] | undefined) =>
   (Array.isArray(raw) ? raw[0] : raw)?.trim().slice(0, 200) ?? "";
 
@@ -97,15 +103,19 @@ export default async function SearchPage({ params, searchParams }: Props) {
         }}
       />
     ) : (
-      <SearchFallback
-        locale={locale}
-        q={q}
-        labels={{
-          ...searchLabels(locale),
-          notice: t(locale, "searchUnavailable"),
-          retry: t(locale, "retry"),
-        }}
-      />
+      <>
+        {/* Lane 1 links have no pins: the map shows the country. */}
+        <StageData level={COUNTRY_STAGE} />
+        <SearchFallback
+          locale={locale}
+          q={q}
+          labels={{
+            ...searchLabels(locale),
+            notice: t(locale, "searchUnavailable"),
+            retry: t(locale, "retry"),
+          }}
+        />
+      </>
     );
   }
   return (

@@ -21,6 +21,17 @@ function fakeBuild() {
   writeFileSync(join(page, "react-loadable-manifest.json"), JSON.stringify(manifest));
   // The same import seen from another route: counted once.
   writeFileSync(join(kind, "react-loadable-manifest.json"), JSON.stringify({ "1": manifest["1"] }));
+  // Turbopack names a route-specific chunk for an import whose modules the route already holds
+  // (/search holds the engine), and never emits it: it must not replace the emitted one.
+  const search = join(next, "server/app/[locale]/search/page");
+  mkdirSync(search, { recursive: true });
+  writeFileSync(
+    join(search, "react-loadable-manifest.json"),
+    JSON.stringify({ "2": { id: 2, files: ["static/chunks/never-emitted.js"] } }),
+  );
+  mkdirSync(join(next, "static/chunks"), { recursive: true });
+  for (const file of ["stage.js", "search.js", "shared.js", "s.css"])
+    writeFileSync(join(next, "static/chunks", file), "");
   return next;
 }
 
@@ -36,6 +47,12 @@ describe("lazy groups", () => {
     const entries = loadableEntries(fakeBuild());
     expect(entries).toHaveLength(2);
     expect(entries.flat()).not.toContain("static/chunks/s.css");
+  });
+
+  it("skips chunks the build never emitted, keeping the import's emitted files", () => {
+    const entries = loadableEntries(fakeBuild());
+    expect(entries.flat()).not.toContain("static/chunks/never-emitted.js");
+    expect(entries).toContainEqual(["static/chunks/search.js", "static/chunks/shared.js"]);
   });
 
   it("puts each import's files in the group whose marker it carries", () => {
