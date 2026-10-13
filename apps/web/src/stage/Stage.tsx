@@ -40,10 +40,12 @@ const upHref = () =>
   document.querySelector<HTMLAnchorElement>("[data-path-bar] [data-up]")?.getAttribute("href") ??
   null;
 
+const SEARCH_PATH = /^(?:\/(?:ar|en))?\/search$/;
+
 /**
  * The Zoomable City (spec §3.1): the map at levels 0 and 3–4, the plaza at 1–2, moved by the
  * Director on every level change. Desktop: beside the list. Phone: behind a Map/List pill at levels
- * 0–2. Loaded lazily by StageMount; any failure hands the city back to the list (spec §7).
+ * 0–2 and on /search. Loaded lazily by StageMount; any failure hands the city back to the list (spec §7).
  */
 export function Stage({ locale, labels, onFail }: StageProps) {
   const pathname = usePathname();
@@ -66,7 +68,9 @@ export function Stage({ locale, labels, onFail }: StageProps) {
   const reducedNow = useRef(reduced);
   const desktopNow = useRef(desktop);
   const textDir = dir(locale);
-  const showToggle = !desktop && level.depth <= 2;
+  // Phone: the pill at levels 0–2, and on /search, whose results are pins on the map (fix round 1).
+  // A kind list (level 3) hands the phone back to the list.
+  const showToggle = !desktop && (level.depth <= 2 || SEARCH_PATH.test(pathname));
   const visible = desktop || (open && showToggle);
 
   useEffect(() => {
