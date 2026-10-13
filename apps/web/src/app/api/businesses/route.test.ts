@@ -14,7 +14,7 @@ vi.mock("@/lib/api", () => ({
   getTaxonomy,
 }));
 const api = await import("@/lib/api");
-const { GET } = await import("./route");
+const { GET, POST } = await import("./route");
 
 afterEach(() => vi.resetAllMocks());
 
@@ -40,4 +40,47 @@ it("answers 503 when the API is down", async () => {
   getTaxonomy.mockResolvedValue({ sectors: [] });
   getPlace.mockResolvedValue(null);
   expect((await get(query)).status).toBe(503);
+});
+
+const post = (body: unknown) =>
+  POST(
+    new Request("http://web.test/api/businesses", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(body),
+    }),
+  );
+
+it("filters in SQL with a point rounded again here, never cached", async () => {
+  getBusinesses.mockResolvedValue({ items: [], nextCursor: null });
+  getTaxonomy.mockResolvedValue({ sectors: [] });
+  getPlace.mockResolvedValue({
+    slug: "sakhnin",
+    name: { en: "Sakhnin" },
+    ancestors: [],
+    children: [],
+  });
+  const res = await post({
+    locale: "en",
+    place: "sakhnin",
+    kind: "restaurants",
+    open: true,
+    delivers: false,
+    near: { lat: 32.864499, lng: 35.30111 },
+  });
+  expect(res.status).toBe(200);
+  expect(res.headers.get("cache-control")).toBe("no-store");
+  expect(await res.json()).toEqual({ rows: [], nextCursor: null });
+  expect(getBusinesses).toHaveBeenCalledWith("sakhnin", {
+    kind: "restaurants",
+    cursor: undefined,
+    open: true,
+    delivers: false,
+    near: { lat: 32.864, lng: 35.301 },
+  });
+});
+
+it("answers 400 to a filter request without a kind", async () => {
+  expect((await post({ locale: "en", place: "sakhnin", open: true })).status).toBe(400);
+  expect(getBusinesses).not.toHaveBeenCalled();
 });
