@@ -17,6 +17,8 @@
     "tiles:test": "node scripts/tiles/make-test-tiles.mjs"
   },
   "dependencies": {
+    "@clerk/localizations": "catalog:",
+    "@clerk/nextjs": "catalog:",
     "@darb/contracts": "workspace:*",
     "@darb/core": "workspace:*",
     "@darb/i18n": "workspace:*",
@@ -29,6 +31,7 @@
     "pmtiles": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
+    "server-only": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {

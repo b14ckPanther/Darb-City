@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "catalog:",
+    "@clerk/backend": "catalog:",
     "@darb/contracts": "workspace:*",
     "@darb/core": "workspace:*",
     "@darb/search-text": "workspace:*",
