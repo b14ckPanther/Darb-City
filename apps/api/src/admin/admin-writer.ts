@@ -1,6 +1,6 @@
-import { Injectable } from "@nestjs/common";
+import { ConflictException, Injectable } from "@nestjs/common";
 import type { AdminActor } from "../auth/admin.guard.js";
-import type { Prisma } from "../generated/prisma/client.js";
+import { Prisma } from "../generated/prisma/client.js";
 import type { AuditAction, AuditEntity } from "../generated/prisma/enums.js";
 import { PrismaService } from "../prisma/prisma.service.js";
 import type { SearchEntityName } from "../search/documents.js";
@@ -38,19 +38,29 @@ export class AdminWriter {
     entity: AuditEntity,
     run: (tx: Prisma.TransactionClient) => Promise<WriteResult<T>>,
   ): Promise<T> {
-    const result = await this.prisma.$transaction(async (tx) => {
-      const r = await run(tx);
-      await tx.auditLog.create({
-        data: {
-          actorId: actor.userId,
-          action,
-          entityType: entity,
-          entityId: r.entityId,
-          fields: r.fields,
-        },
+    const result = await this.prisma
+      .$transaction(async (tx) => {
+        const r = await run(tx);
+        await tx.auditLog.create({
+          data: {
+            actorId: actor.userId,
+            action,
+            entityType: entity,
+            entityId: r.entityId,
+            fields: r.fields,
+          },
+        });
+        return r;
+      })
+      .catch((err: unknown) => {
+        // The callers check slugs first; this is the race where another write got there between.
+        if (err instanceof Prisma.PrismaClientKnownRequestError && err.code === "P2002")
+          throw new ConflictException({
+            message: "That address is already in use; pick another",
+            code: "already_exists",
+          });
+        throw err;
       });
-      return r;
-    });
     for (const s of result.search ?? []) if (s.ids.length > 0) this.events.notify(s.entity, s.ids);
     const job: Promise<unknown> = this.revalidator
       .revalidate(result.tags, { immediate: result.immediate })

@@ -15,6 +15,7 @@ import { PrismaService } from "../prisma/prisma.service.js";
 import { AdminWriter } from "./admin-writer.js";
 import { json } from "./json.js";
 import { conflict, invalid, notFound } from "./outcome.js";
+import { nameOrSlugFilters } from "./text-search.js";
 import { webTags } from "./tags.js";
 
 const STATUSES = new Set(["live", "soon"]);
@@ -37,8 +38,7 @@ export const toAdminPlace = (p: Place): AdminPlaceDto => ({
 
 /** Name text in any language, or the slug. */
 export const nameOrSlug = (q: string): Prisma.PlaceWhereInput[] => [
-  { slug: { contains: q.toLowerCase() } },
-  ...(["he", "ar", "en"] as const).map((l) => ({ name: { path: [l], string_contains: q } })),
+  ...nameOrSlugFilters(q),
   { aliases: { has: q } },
 ];
 

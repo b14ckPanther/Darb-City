@@ -149,14 +149,19 @@ const kindFields = z.object({
   order: z.number().int().min(0).max(9999),
   status: z.enum(["active", "hidden"]),
 });
-export const AdminKindCreateSchema = kindFields.extend({
-  slug: NewSlugSchema,
-  parentKindId: kindFields.shape.parentKindId.default(null),
-  attributes: kindFields.shape.attributes.default([]),
-  icon: kindFields.shape.icon.default(null),
-  /** New kinds start hidden: they are reviewed before anyone can see them (spec §4.3). */
-  status: kindFields.shape.status.default("hidden"),
-});
+/**
+ * New kinds always start hidden: they are reviewed before anyone can see them (spec §4.3), and
+ * going active is a separate, audited update. A create body that names a status is refused.
+ */
+export const AdminKindCreateSchema = kindFields
+  .omit({ status: true })
+  .extend({
+    slug: NewSlugSchema,
+    parentKindId: kindFields.shape.parentKindId.default(null),
+    attributes: kindFields.shape.attributes.default([]),
+    icon: kindFields.shape.icon.default(null),
+  })
+  .strict();
 export const AdminKindPatchSchema = kindFields.partial().strict();
 
 // Businesses

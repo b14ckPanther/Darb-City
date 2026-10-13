@@ -16,6 +16,7 @@ import { AdminWriter } from "./admin-writer.js";
 import { json } from "./json.js";
 import { conflict, invalid, notFound } from "./outcome.js";
 import { webTags } from "./tags.js";
+import { nameOrSlugFilters } from "./text-search.js";
 
 type Synonyms = AdminKindDto["synonyms"];
 type KindRow = Kind & { _count: { primaryFor: number } };
@@ -36,6 +37,8 @@ export const toAdminKind = (k: KindRow): AdminKindDto => ({
   editedAt: k.editedAt?.toISOString() ?? null,
 });
 const withCount = { _count: { select: { primaryFor: true } } } as const;
+/** How many ancestors the cycle check walks before it gives up and refuses. */
+const MAX_KIND_DEPTH = 10;
 
 @Injectable()
 export class KindsAdmin {
@@ -51,12 +54,7 @@ export class KindsAdmin {
       ...(query.sector ? { sectorId: query.sector } : {}),
       ...(q
         ? {
-            OR: [
-              { slug: { contains: q.toLowerCase() } },
-              ...(["he", "ar", "en"] as const).map((l) => ({
-                name: { path: [l], string_contains: q },
-              })),
-            ],
+            OR: nameOrSlugFilters(q),
           }
         : {}),
     };
@@ -73,17 +71,27 @@ export class KindsAdmin {
     return k ? { status: 200 as const, body: toAdminKind(k) } : notFound("kind");
   }
 
-  /** A parent must sit in the same sector and must not be the kind or one of its descendants. */
+  /**
+   * A parent must sit in the same sector and must not be the kind or one of its descendants.
+   * The ancestor walk is capped; a tree too deep to finish checking is refused, never allowed.
+   */
   private async parentProblem(
     kindId: string | null,
     sectorId: string,
     parentId: string,
-  ): Promise<string | null> {
+  ): Promise<{ message: string; code?: string } | null> {
     let cursor = await this.prisma.kind.findUnique({ where: { id: parentId } });
-    if (!cursor) return "The parent kind does not exist";
-    if (cursor.sectorId !== sectorId) return "The parent kind must be in the same sector";
-    for (let depth = 0; cursor && depth < 10; depth++) {
-      if (cursor.id === kindId) return "A kind cannot sit under itself or its own sub-kinds";
+    if (!cursor) return { message: "The parent kind does not exist" };
+    if (cursor.sectorId !== sectorId)
+      return { message: "The parent kind must be in the same sector" };
+    const visited = new Set<string>();
+    for (let depth = 0; cursor; depth++) {
+      if (cursor.id === kindId)
+        return { message: "A kind cannot sit under itself or its own sub-kinds" };
+      if (visited.has(cursor.id)) return { message: "The kind tree already has a loop" };
+      if (depth >= MAX_KIND_DEPTH)
+        return { message: "The kind tree is too deep", code: "kind_tree_too_deep" };
+      visited.add(cursor.id);
       cursor = cursor.parentKindId
         ? await this.prisma.kind.findUnique({ where: { id: cursor.parentKindId } })
         : null;
@@ -98,12 +106,13 @@ export class KindsAdmin {
       return conflict(`The address "${dto.slug}" is already used by another kind`);
     if (dto.parentKindId) {
       const problem = await this.parentProblem(null, dto.sectorId, dto.parentKindId);
-      if (problem) return invalid(problem);
+      if (problem) return invalid(problem.message, undefined, problem.code);
     }
     const row = await this.writer.write(actor, "create", "kind", async (tx) => {
       const k = await tx.kind.create({
         data: {
           ...dto,
+          status: "hidden",
           name: json(dto.name),
           synonyms: json(dto.synonyms),
           contentSchema: json(SCREEN_SCHEMA),
@@ -130,10 +139,20 @@ export class KindsAdmin {
     const sectorId = patch.sectorId ?? before.sectorId;
     if (patch.sectorId && !(await this.prisma.sector.findUnique({ where: { id: patch.sectorId } })))
       return notFound("sector");
+    // Sub-kinds must share their parent's sector; moving the whole subtree is not offered in v1.
+    if (
+      patch.sectorId &&
+      patch.sectorId !== before.sectorId &&
+      (await this.prisma.kind.count({ where: { parentKindId: id } })) > 0
+    )
+      return conflict(
+        "Move or detach this kind's sub-kinds before changing its sector",
+        "kind_has_sub_kinds",
+      );
     const parentId = patch.parentKindId === undefined ? before.parentKindId : patch.parentKindId;
     if (parentId) {
       const problem = await this.parentProblem(id, sectorId, parentId);
-      if (problem) return invalid(problem);
+      if (problem) return invalid(problem.message, undefined, problem.code);
     }
     const row = await this.writer.write(actor, "update", "kind", async (tx) => {
       const k = await tx.kind.update({

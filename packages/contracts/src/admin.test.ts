@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   AdminBusinessCreateSchema,
   AdminBusinessPatchSchema,
+  AdminKindCreateSchema,
   AdminPlaceCreateSchema,
   AdminPlacePatchSchema,
   AdminStatusSchema,
@@ -68,6 +69,19 @@ describe("admin schemas", () => {
     expect(AdminPlacePatchSchema.safeParse({ slug: "renamed" }).success).toBe(false);
     expect(AdminPlacePatchSchema.safeParse({ status: "live" }).success).toBe(true);
     expect(AdminBusinessPatchSchema.safeParse({ placeId: business.placeId }).success).toBe(false);
+  });
+  it("new kinds start hidden: a create body cannot set status", () => {
+    const kind = {
+      slug: "beard-studios",
+      sectorId: business.placeId,
+      name: { en: "Beard studios" },
+      synonyms: { he: [], ar: [], en: [] },
+      template: "booking",
+      order: 50,
+    };
+    expect(AdminKindCreateSchema.parse(kind)).not.toHaveProperty("status");
+    expect(AdminKindCreateSchema.safeParse({ ...kind, status: "active" }).success).toBe(false);
+    expect(AdminKindCreateSchema.safeParse({ ...kind, status: "hidden" }).success).toBe(false);
   });
   it("status bodies take an optional immediate flag", () => {
     expect(AdminStatusSchema.parse({ status: "suspended" })).toEqual({ status: "suspended" });

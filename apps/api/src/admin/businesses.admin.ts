@@ -19,6 +19,7 @@ import { ExperienceValidator } from "./experience.js";
 import { json } from "./json.js";
 import { conflict, invalid, notFound } from "./outcome.js";
 import { webTags } from "./tags.js";
+import { nameOrSlugFilters } from "./text-search.js";
 
 type Row = Business & { place: { slug: string }; kinds: { kindId: string }[] };
 const include = { place: { select: { slug: true } }, kinds: { select: { kindId: true } } } as const;
@@ -55,6 +56,17 @@ export const toAdminBusiness = (b: Row): AdminBusinessDto => ({
   brandId: b.brandId,
 });
 
+/**
+ * Showroom examples (fictional) stay out of search engines by their tier, so the admin can never
+ * turn one into a real listing, nor hide a real business by labelling it an example.
+ */
+const exampleTierFixed = () =>
+  invalid(
+    "Showroom examples stay examples, and real businesses cannot become one; create a new business instead",
+    undefined,
+    "example_tier_fixed",
+  );
+
 const hasApps = (apps: AdminBusinessDto["apps"] | undefined) =>
   Boolean(apps && Object.keys(apps).length > 0);
 
@@ -84,12 +96,7 @@ export class BusinessesAdmin {
         : {}),
       ...(q
         ? {
-            OR: [
-              { slug: { contains: q.toLowerCase() } },
-              ...(["he", "ar", "en"] as const).map((l) => ({
-                name: { path: [l], string_contains: q },
-              })),
-            ],
+            OR: nameOrSlugFilters(q),
           }
         : {}),
     };
@@ -140,6 +147,7 @@ export class BusinessesAdmin {
   async create(actor: AdminActor, dto: AdminBusinessCreateDto) {
     const place = await this.prisma.place.findUnique({ where: { id: dto.placeId } });
     if (!place) return notFound("place");
+    if (dto.tier === "example") return exampleTierFixed();
     const problem = await this.problem({ ...dto, checkExperience: true });
     if (problem) return problem;
     if (
@@ -183,6 +191,8 @@ export class BusinessesAdmin {
     if (!before) return notFound("business");
     const fields = Object.keys(patch).sort();
     if (fields.length === 0) return invalid("Nothing to change");
+    if (patch.tier !== undefined && (patch.tier === "example") !== (before.tier === "example"))
+      return exampleTierFixed();
     const primaryKindId = patch.primaryKindId ?? before.primaryKindId;
     const problem = await this.problem({
       primaryKindId,
@@ -214,9 +224,10 @@ export class BusinessesAdmin {
     }
     const row = await this.writer.write(actor, "update", "business", async (tx) => {
       if (kindIds || patch.primaryKindId) {
-        const links = [
-          ...new Set([primaryKindId, ...(kindIds ?? before.kinds.map((k) => k.kindId))]),
-        ];
+        // A new primary kind replaces the old one; it is not kept on as a secondary.
+        const secondary =
+          kindIds ?? before.kinds.map((k) => k.kindId).filter((k) => k !== before.primaryKindId);
+        const links = [...new Set([primaryKindId, ...secondary])];
         await tx.businessKind.deleteMany({ where: { businessId: id } });
         await tx.businessKind.createMany({
           data: links.map((kindId) => ({ businessId: id, kindId })),

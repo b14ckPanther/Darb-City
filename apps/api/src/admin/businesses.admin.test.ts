@@ -118,6 +118,48 @@ describe("edit and status", () => {
     expect(res.status).toBe(400);
   });
 
+  it("changing the primary kind alone replaces the old primary link", async () => {
+    const res = await as(http().patch(`/admin/businesses/${f.abuSalim.id}`)).send({
+      primaryKindId: f.kidsCuts.id,
+    });
+    expect(res.status).toBe(200);
+    expect(res.body.kindIds).toEqual([f.kidsCuts.id]);
+    const links = await prisma.businessKind.findMany({ where: { businessId: f.abuSalim.id } });
+    expect(links.map((l) => l.kindId)).toEqual([f.kidsCuts.id]);
+  });
+
+  it("keeps showroom examples and real businesses apart: tier never moves to or from example", async () => {
+    const toReal = await as(http().patch(`/admin/businesses/${f.abuSalim.id}`)).send({
+      tier: "verified",
+    });
+    expect(toReal.status).toBe(400);
+    expect(toReal.body.code).toBe("example_tier_fixed");
+    const created = await as(http().post("/admin/businesses")).send(draft());
+    const toExample = await as(http().patch(`/admin/businesses/${created.body.id}`)).send({
+      tier: "example",
+    });
+    expect(toExample.status).toBe(400);
+    expect(toExample.body.code).toBe("example_tier_fixed");
+    expect((await prisma.business.findUniqueOrThrow({ where: { id: f.abuSalim.id } })).tier).toBe(
+      "example",
+    );
+    const same = await as(http().patch(`/admin/businesses/${f.abuSalim.id}`)).send({
+      tier: "example",
+    });
+    expect(same.status).toBe(200);
+  });
+
+  it("refuses to create a business as a showroom example", async () => {
+    const res = await as(http().post("/admin/businesses")).send({ ...draft(), tier: "example" });
+    expect(res.status).toBe(400);
+    expect(res.body.code).toBe("example_tier_fixed");
+  });
+
+  it("finds English names whatever the case", async () => {
+    const res = await as(http().get("/admin/businesses?q=LITTLE%20cuts"));
+    expect(res.body.items.map((b: { slug: string }) => b.slug)).toEqual(["little-cuts"]);
+  });
+
   it("lists by place and text, newest first", async () => {
     const res = await as(http().get("/admin/businesses?place=sakhnin&q=little"));
     expect(res.body.items.map((b: { slug: string }) => b.slug)).toEqual(["little-cuts"]);

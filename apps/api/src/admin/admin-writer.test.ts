@@ -1,3 +1,4 @@
+import { ConflictException } from "@nestjs/common";
 import { afterAll, beforeEach, expect, it, vi } from "vitest";
 import { resetDatabase, testPrisma } from "../../test/db.js";
 import { seedFixtures, type Fixtures } from "../../test/fixtures.js";
@@ -65,4 +66,28 @@ it("rolls back the change and the audit row together, and notifies nobody", asyn
   expect(await prisma.auditLog.count()).toBe(0);
   expect(notify).not.toHaveBeenCalled();
   expect(revalidate).not.toHaveBeenCalled();
+});
+
+it("turns a unique-constraint race into a 409 conflict, not a 500", async () => {
+  const notify = vi.fn();
+  const writer = new AdminWriter(
+    prisma,
+    { notify } as unknown as SearchEvents,
+    { revalidate: vi.fn(async () => true) } as unknown as WebRevalidator,
+  );
+  // As if another request took the slug between the pre-check and this write.
+  const write = writer.write(actor, "update", "business", async (tx) => {
+    const b = await tx.business.update({
+      where: { id: f.littleCuts.id },
+      data: { slug: f.abuSalim.slug, placeId: f.abuSalim.placeId },
+    });
+    return { row: b, entityId: b.id, fields: ["slug"], tags: [] };
+  });
+  await expect(write).rejects.toBeInstanceOf(ConflictException);
+  await expect(write).rejects.toMatchObject({
+    response: { code: "already_exists" },
+    status: 409,
+  });
+  expect(notify).not.toHaveBeenCalled();
+  expect(await prisma.auditLog.count()).toBe(0);
 });

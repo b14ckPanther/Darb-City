@@ -73,3 +73,66 @@ it("hiding an active kind is an immediate takedown", async () => {
   expect(res.status).toBe(200);
   expect(revalidate).toHaveBeenCalledWith(["taxonomy", "businesses"], { immediate: true });
 });
+
+it("refuses to create a kind as active", async () => {
+  const res = await http()
+    .post("/admin/kinds")
+    .set("authorization", ADMIN)
+    .send({
+      slug: "beard-studios",
+      sectorId: f.beauty.id,
+      name: { en: "Beard studios" },
+      synonyms,
+      template: "booking",
+      order: 50,
+      status: "active",
+    });
+  expect(res.status).toBe(400);
+  expect(await prisma.kind.count({ where: { slug: "beard-studios" } })).toBe(0);
+});
+
+it("refuses to move a kind with sub-kinds to another sector", async () => {
+  const other = await prisma.sector.findFirstOrThrow({ where: { id: { not: f.beauty.id } } });
+  const res = await http()
+    .patch(`/admin/kinds/${f.barbershops.id}`)
+    .set("authorization", ADMIN)
+    .send({ sectorId: other.id });
+  expect(res.status).toBe(409);
+  expect(res.body.code).toBe("kind_has_sub_kinds");
+  const [parent, child] = await Promise.all([
+    prisma.kind.findUniqueOrThrow({ where: { id: f.barbershops.id } }),
+    prisma.kind.findUniqueOrThrow({ where: { id: f.kidsCuts.id } }),
+  ]);
+  expect([parent.sectorId, child.sectorId]).toEqual([f.beauty.id, f.beauty.id]);
+  expect(await prisma.auditLog.count()).toBe(0);
+});
+
+it("refuses a parent when the kind tree is too deep to check for a cycle", async () => {
+  // A chain deeper than the walk's cap, with the kind being moved at its very top.
+  let parentKindId: string | null = f.kidsCuts.id;
+  const chain: string[] = [];
+  for (let i = 0; i < 12; i++) {
+    const k: { id: string } = await prisma.kind.create({
+      data: {
+        slug: `deep-${i}`,
+        sectorId: f.beauty.id,
+        parentKindId,
+        name: { en: `Deep ${i}` },
+        synonyms: { he: [], ar: [], en: [] },
+        template: "booking",
+        contentSchema: {},
+        order: i,
+      },
+    });
+    chain.push(k.id);
+    parentKindId = k.id;
+  }
+  const res = await http()
+    .patch(`/admin/kinds/${f.barbershops.id}`)
+    .set("authorization", ADMIN)
+    .send({ parentKindId: chain.at(-1) });
+  expect(res.status).toBe(400);
+  expect(res.body.code).toBe("kind_tree_too_deep");
+  const row = await prisma.kind.findUniqueOrThrow({ where: { id: f.barbershops.id } });
+  expect(row.parentKindId).toBeNull();
+});
