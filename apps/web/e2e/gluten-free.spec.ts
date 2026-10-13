@@ -20,10 +20,10 @@ test("the gluten-free chip filters in place, badges every row and is shareable",
   await filtered;
   await expect(chip).toHaveAttribute("aria-pressed", "true");
   await expect(page).toHaveURL(`${RESTAURANTS}?glutenFree=1`);
+  // Caramel (Task 28) is Akko's fully gluten-free restaurant; every row shows the badge.
   const rows = page.locator("[data-business-list] li");
-  const count = await rows.count();
-  if (count > 0) await expect(rows.locator("[data-gluten-free]")).toHaveCount(count);
-  else await expect(page.locator("[data-filter-empty]")).toBeVisible();
+  await expect(page.locator('[data-business="akko/caramel"]')).toBeVisible();
+  await expect(rows.locator("[data-gluten-free]")).toHaveCount(await rows.count());
   await page.reload();
   await expect(page.locator('[data-filter="gluten-free"]')).toHaveAttribute("aria-pressed", "true");
 });

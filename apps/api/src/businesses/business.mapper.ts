@@ -1,10 +1,12 @@
-import { isOpenAt, type Hours, type Localized } from "@darb/core";
+import { isByAppointment, isOpenAt, type Hours, type Localized } from "@darb/core";
 import type { BusinessDetailDto, BusinessSummaryDto } from "@darb/contracts";
 import type { Business } from "../generated/prisma/client.js";
 
 type Photo = { key: string; alt: Localized };
 
+/** Null when there is nothing to say: no hours at all, or visits by appointment only. */
 export function openNow(hours: Hours, now: Date): boolean | null {
+  if (isByAppointment(hours)) return null;
   const hasAny =
     Object.values(hours.weekly).some((i) => i && i.length > 0) || hours.exceptions.length > 0;
   return hasAny ? isOpenAt(hours, now) : null;

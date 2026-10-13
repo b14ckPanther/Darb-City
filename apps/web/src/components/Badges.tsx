@@ -17,6 +17,15 @@ export function GlutenFreeBadge({ label }: { label: string }) {
   );
 }
 
+/** Visits by arrangement only (Task 28): said instead of open or closed. */
+export function AppointmentBadge({ label }: { label: string }) {
+  return (
+    <span className={styles.open} data-appointment="">
+      {label}
+    </span>
+  );
+}
+
 export function OpenState({
   openNow,
   labels,

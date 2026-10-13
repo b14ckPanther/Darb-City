@@ -1,0 +1,626 @@
+{
+  "brands": [
+    {
+      "slug": "caramel",
+      "name": {
+        "he": "קרמל",
+        "ar": "كراميل",
+        "en": "Caramel"
+      }
+    },
+    {
+      "slug": "raghad",
+      "name": {
+        "he": "רגד ביוטי",
+        "ar": "رغد بيوتي",
+        "en": "Raghad Beauty"
+      }
+    },
+    {
+      "slug": "paz",
+      "name": {
+        "he": "פז",
+        "ar": "باز",
+        "en": "Paz"
+      }
+    }
+  ],
+  "businesses": [
+    {
+      "slug": "caramel",
+      "place": "akko",
+      "brand": "caramel",
+      "primaryKind": "restaurants",
+      "kinds": [
+        "restaurants",
+        "sweets"
+      ],
+      "name": {
+        "he": "קרמל",
+        "ar": "كراميل",
+        "en": "Caramel"
+      },
+      "tagline": {
+        "he": "גן עדן לצליאקים, הכל ללא גלוטן",
+        "ar": "جنّة لمرضى السيلياك، كل شيء خالٍ من الغلوتين",
+        "en": "A celiac's paradise, 100% gluten-free"
+      },
+      "address": {
+        "he": "כיכר הדייגים (ונציה), נמל עכו העתיקה",
+        "ar": "ساحة الصيادين (فينيسيا)، ميناء عكا القديمة",
+        "en": "Fishermen's Square (Venezia), Akko old port"
+      },
+      "lat": 32.9281731,
+      "lng": 35.0756378,
+      "pinApproximate": true,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "09:00",
+              "close": "17:30"
+            }
+          ],
+          "1": [
+            {
+              "open": "09:00",
+              "close": "17:30"
+            }
+          ],
+          "2": [
+            {
+              "open": "09:00",
+              "close": "17:30"
+            }
+          ],
+          "3": [
+            {
+              "open": "09:00",
+              "close": "17:30"
+            }
+          ],
+          "4": [
+            {
+              "open": "09:00",
+              "close": "17:30"
+            }
+          ],
+          "5": [
+            {
+              "open": "09:00",
+              "close": "16:30"
+            }
+          ],
+          "6": [
+            {
+              "open": "09:00",
+              "close": "17:30"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "delivers": true
+      },
+      "dietary": [
+        "gluten_free"
+      ],
+      "experience": {
+        "brand": {
+          "he": "קרמל",
+          "ar": "كراميل",
+          "en": "Caramel"
+        },
+        "title": {
+          "he": "גן עדן לצליאקים, הכל ללא גלוטן",
+          "ar": "جنّة لمرضى السيلياك، كل شيء خالٍ من الغلوتين",
+          "en": "A celiac's paradise, 100% gluten-free"
+        },
+        "tags": [
+          {
+            "he": "ללא גלוטן",
+            "ar": "خالٍ من الغلوتين",
+            "en": "Gluten-free"
+          },
+          {
+            "he": "משלוחים",
+            "ar": "توصيل",
+            "en": "Delivery"
+          },
+          {
+            "he": "ישיבה במקום",
+            "ar": "أكل بالمحل",
+            "en": "Eat in"
+          },
+          {
+            "he": "טייק אוויי",
+            "ar": "تيك أواي",
+            "en": "Takeaway"
+          }
+        ],
+        "items": [
+          {
+            "label": {
+              "he": "ארוחות",
+              "ar": "وجبات",
+              "en": "Meals"
+            },
+            "meta": {
+              "he": "כריכי חלה ולאפה: שניצל, קבב, שווארמה",
+              "ar": "سندويشات حلّة ولفّة: شنيتسل، كباب، شاورما",
+              "en": "Challah and laffa sandwiches: schnitzel, kebab, shawarma"
+            }
+          },
+          {
+            "label": {
+              "he": "המבורגרים וקריספי בורגר",
+              "ar": "برغر وكريسبي برغر",
+              "en": "Burgers and crispy burger"
+            }
+          },
+          {
+            "label": {
+              "he": "אוכל ערבי ביתי",
+              "ar": "أكلات بيتية عربية",
+              "en": "Arab home cooking"
+            },
+            "meta": {
+              "he": "שישברק, קובה",
+              "ar": "شيشبرك، كبة",
+              "en": "Shishbarak, kubbeh"
+            }
+          },
+          {
+            "label": {
+              "he": "קינוחים ועוגות",
+              "ar": "حلويات وكعكات",
+              "en": "Desserts and cakes"
+            },
+            "meta": {
+              "he": "כולל כנאפה ללא גלוטן",
+              "ar": "بما فيها كنافة خالية من الغلوتين",
+              "en": "Including gluten-free knafeh"
+            }
+          },
+          {
+            "label": {
+              "he": "הזמנת עוגות לאירועים",
+              "ar": "طلبيات كعك للمناسبات",
+              "en": "Cake orders for events"
+            }
+          },
+          {
+            "label": {
+              "he": "שתייה חמה וקרה",
+              "ar": "مشروبات ساخنة وباردة",
+              "en": "Hot and cold drinks"
+            }
+          }
+        ],
+        "cta": {
+          "he": "לתפריט",
+          "ar": "القائمة",
+          "en": "Open menu"
+        },
+        "palette": {
+          "bg": "#0D0806",
+          "surface": "#1F1712",
+          "ink": "#FBF3E6",
+          "accent": "#E9A43A"
+        },
+        "font": "Heebo"
+      },
+      "tier": "darb",
+      "phone": "+972 52-438-2229",
+      "whatsapp": null,
+      "website": "https://caramel.darb.co.il",
+      "apps": {
+        "web": "https://caramel.darb.co.il"
+      }
+    },
+    {
+      "slug": "raghad",
+      "place": "nahf",
+      "brand": "raghad",
+      "primaryKind": "cosmetics",
+      "kinds": [
+        "cosmetics"
+      ],
+      "name": {
+        "he": "רגד ביוטי",
+        "ar": "رغد بيوتي",
+        "en": "Raghad Beauty"
+      },
+      "tagline": {
+        "he": "לכל קווצה הטיפוח שלה",
+        "ar": "لكل خصلة عنايتها",
+        "en": "Care for every strand"
+      },
+      "address": {
+        "he": "נחף",
+        "ar": "نحف",
+        "en": "Nahf"
+      },
+      "lat": 32.9345686,
+      "lng": 35.31763,
+      "hours": {
+        "weekly": {},
+        "exceptions": [],
+        "byAppointment": true
+      },
+      "attributes": {
+        "delivers": true,
+        "addressHidden": true
+      },
+      "experience": {
+        "brand": {
+          "he": "רגד ביוטי",
+          "ar": "رغد بيوتي",
+          "en": "Raghad Beauty"
+        },
+        "title": {
+          "he": "לכל קווצה הטיפוח שלה",
+          "ar": "لكل خصلة عنايتها",
+          "en": "Care for every strand"
+        },
+        "tags": [
+          {
+            "he": "משלוחים",
+            "ar": "توصيل",
+            "en": "Delivery"
+          },
+          {
+            "he": "איסוף בתיאום מראש",
+            "ar": "استلام بموعد مسبق",
+            "en": "Pickup by appointment"
+          }
+        ],
+        "items": [
+          {
+            "label": {
+              "he": "קרמים ומסכות שיער של סקאלה",
+              "ar": "كريمات وماسكات شعر سكالا",
+              "en": "Skala hair creams and masks"
+            }
+          },
+          {
+            "label": {
+              "he": "בחירה לפי סוג שיער",
+              "ar": "اختيارات حسب نوع الشعر",
+              "en": "Picks by hair type"
+            },
+            "meta": {
+              "he": "חלק, גלי, מתולתל, אפרו",
+              "ar": "ناعم، مموّج، مجعّد، أفرو",
+              "en": "Straight, wavy, curly, afro"
+            }
+          },
+          {
+            "label": {
+              "he": "סדרות לחות, חלבון והזנה",
+              "ar": "خطوط ترطيب وبروتين وتغذية",
+              "en": "Moisture, protein and nourishment lines"
+            }
+          },
+          {
+            "label": {
+              "he": "משלוחים בכל הצפון",
+              "ar": "توصيل لكل الشمال",
+              "en": "Delivery across the North"
+            }
+          },
+          {
+            "label": {
+              "he": "תשלום במזומן או בביט",
+              "ar": "الدفع نقدًا أو عبر بيت",
+              "en": "Pay cash or Bit"
+            }
+          }
+        ],
+        "cta": {
+          "he": "לחנות",
+          "ar": "تسوّقي الآن",
+          "en": "Shop now"
+        },
+        "palette": {
+          "bg": "#26102B",
+          "surface": "#3A1F40",
+          "ink": "#FBF2FA",
+          "accent": "#3FB7AC"
+        },
+        "font": "Cairo"
+      },
+      "tier": "darb",
+      "phone": "+972 50-477-4367",
+      "whatsapp": "+972 50-477-4367",
+      "website": "https://raghad.darb.co.il",
+      "apps": {
+        "web": "https://raghad.darb.co.il"
+      }
+    },
+    {
+      "slug": "paz-kiryat-ata",
+      "place": "kiryat-ata",
+      "brand": "paz",
+      "primaryKind": "stations",
+      "kinds": [
+        "stations"
+      ],
+      "name": {
+        "he": "פז קריית אתא",
+        "ar": "باز كريات آتا",
+        "en": "Paz Kiryat Ata"
+      },
+      "tagline": {
+        "he": "תמיד פתוח, תמיד בדרך",
+        "ar": "مفتوح دائمًا، دائمًا على الطريق",
+        "en": "Always open, always on your way"
+      },
+      "address": {
+        "he": "דרך דשנים 18, קריית אתא (כניסה מערבית)",
+        "ar": "طريق دشانيم 18، كريات آتا (المدخل الغربي)",
+        "en": "18 Derech Deshanim, Kiryat Ata (western entrance)"
+      },
+      "lat": 32.8115853,
+      "lng": 35.1163747,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "5": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "6": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "delivers": false,
+        "primaryAction": "directions"
+      },
+      "experience": {
+        "brand": {
+          "he": "פז קריית אתא",
+          "ar": "باز كريات آتا",
+          "en": "Paz Kiryat Ata"
+        },
+        "title": {
+          "he": "תמיד פתוח, תמיד בדרך",
+          "ar": "مفتوح دائمًا، دائمًا على الطريق",
+          "en": "Always open, always on your way"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "דלק 24/7",
+              "ar": "وقود 24/7",
+              "en": "Fuel 24/7"
+            }
+          },
+          {
+            "label": {
+              "he": "חנות ילו קטנה",
+              "ar": "متجر يلو صغير",
+              "en": "Small Yellow shop"
+            },
+            "meta": {
+              "he": "סגורה ביום כיפור",
+              "ar": "مغلق في يوم الغفران (كيبور)",
+              "en": "Closed on Yom Kippur"
+            }
+          },
+          {
+            "label": {
+              "he": "אוויר ומים",
+              "ar": "هواء وماء",
+              "en": "Air and water"
+            }
+          }
+        ],
+        "cta": {
+          "he": "נווט",
+          "ar": "اذهب",
+          "en": "Navigate"
+        },
+        "palette": {
+          "bg": "#FFD100",
+          "surface": "#FFE566",
+          "ink": "#0B1630",
+          "accent": "#0033A0"
+        },
+        "font": "Heebo"
+      },
+      "tier": "darb",
+      "phone": "+972 54-323-3662",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "pinApproximate": true
+    },
+    {
+      "slug": "paz-kiryat-motzkin",
+      "place": "kiryat-motzkin",
+      "brand": "paz",
+      "primaryKind": "stations",
+      "kinds": [
+        "stations"
+      ],
+      "name": {
+        "he": "פז כורדני",
+        "ar": "باز كورداني",
+        "en": "Paz Curdani"
+      },
+      "tagline": {
+        "he": "תמיד פתוח, תמיד בדרך",
+        "ar": "مفتوح دائمًا، دائمًا على الطريق",
+        "en": "Always open, always on your way"
+      },
+      "address": {
+        "he": "שדרות ירושלים 1, קריית מוצקין",
+        "ar": "شديروت يروشلايم 1، كريات موتسكين",
+        "en": "1 Sderot Yerushalayim, Kiryat Motzkin"
+      },
+      "lat": 32.8587,
+      "lng": 35.0908,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "5": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "6": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "delivers": false,
+        "primaryAction": "directions"
+      },
+      "experience": {
+        "brand": {
+          "he": "פז כורדני",
+          "ar": "باز كورداني",
+          "en": "Paz Curdani"
+        },
+        "title": {
+          "he": "תמיד פתוח, תמיד בדרך",
+          "ar": "مفتوح دائمًا، دائمًا على الطريق",
+          "en": "Always open, always on your way"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "דלק 24/7",
+              "ar": "وقود 24/7",
+              "en": "Fuel 24/7"
+            }
+          },
+          {
+            "label": {
+              "he": "מרקט ילו גדול",
+              "ar": "ماركت يلو كبير",
+              "en": "Big Yellow market"
+            },
+            "meta": {
+              "he": "סגורה ביום כיפור",
+              "ar": "مغلق في يوم الغفران (كيبور)",
+              "en": "Closed on Yom Kippur"
+            }
+          },
+          {
+            "label": {
+              "he": "שטיפת רכב",
+              "ar": "غسيل سيارات",
+              "en": "Car wash"
+            }
+          },
+          {
+            "label": {
+              "he": "טעינה לרכב חשמלי",
+              "ar": "شحن سيارات كهربائية",
+              "en": "EV charging"
+            }
+          },
+          {
+            "label": {
+              "he": "אוויר ומים",
+              "ar": "هواء وماء",
+              "en": "Air and water"
+            }
+          }
+        ],
+        "cta": {
+          "he": "נווט",
+          "ar": "اذهب",
+          "en": "Navigate"
+        },
+        "palette": {
+          "bg": "#FFD100",
+          "surface": "#FFE566",
+          "ink": "#0B1630",
+          "accent": "#0033A0"
+        },
+        "font": "Heebo"
+      },
+      "tier": "darb",
+      "phone": "+972 54-323-3662",
+      "whatsapp": null,
+      "website": null,
+      "apps": {}
+    }
+  ]
+}

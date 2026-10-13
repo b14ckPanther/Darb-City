@@ -1,4 +1,4 @@
-import type { Locale } from "@darb/core";
+import { isByAppointment, type Locale } from "@darb/core";
 import type { BusinessDetailDto } from "@darb/contracts";
 import { t } from "@darb/i18n";
 import { hasHours, hoursRows } from "@/lib/format";
@@ -16,7 +16,11 @@ export function HoursTable({
       <h3 id="hours-title" className={styles.sectionTitle}>
         {t(locale, "hours")}
       </h3>
-      {hasHours(hours) ? (
+      {isByAppointment(hours) ? (
+        <p className={styles.muted} data-appointment-hours="">
+          {t(locale, "byAppointment")}
+        </p>
+      ) : hasHours(hours) ? (
         <table className={styles.hours}>
           <tbody>
             {hoursRows(hours, locale).map((row) => (

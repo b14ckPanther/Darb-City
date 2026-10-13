@@ -1,4 +1,4 @@
-import { pickText, type Hours, type Locale, type Localized } from "@darb/core";
+import { isByAppointment, pickText, type Hours, type Locale, type Localized } from "@darb/core";
 import type { BusinessSummaryDto, PlaceDetailDto, PlaceDto } from "@darb/contracts";
 import { href, paths } from "./routes";
 import type { TaxonomyIndex } from "./taxonomy";
@@ -21,6 +21,8 @@ export interface BusinessRowData {
   distance: string | null;
   /** A fully gluten-free kitchen (Task 27b): the row shows a badge. */
   glutenFree: boolean;
+  /** Visits by appointment only (Task 28): "By appointment" instead of open or closed. */
+  byAppointment: boolean;
 }
 
 export interface RowContext {
@@ -68,6 +70,7 @@ export function toBusinessRow(b: BusinessSummaryDto, ctx: RowContext): BusinessR
     lng: b.lng,
     distance: b.distanceKm !== undefined && ctx.kmLabel ? ctx.kmLabel(b.distanceKm) : null,
     glutenFree: b.dietary.includes("gluten_free"),
+    byAppointment: isByAppointment(b.hours),
   };
 }
 

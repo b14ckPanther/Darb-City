@@ -11,7 +11,7 @@ import { Ajv } from "ajv";
 import { describe, expect, it } from "vitest";
 import {
   loadBrands,
-  loadBusinesses,
+  loadShowroom,
   loadKinds,
   loadPlaces,
   loadScreens,
@@ -229,7 +229,7 @@ describe("places", () => {
 });
 
 describe("showroom businesses", () => {
-  const businesses = loadBusinesses();
+  const businesses = loadShowroom();
   const places = new Map(loadPlaces().map((p) => [p.slug, p]));
   const kindSlugs = new Set(loadKinds().map((k) => k.slug));
   const brandSlugs = new Set(loadBrands().map((b) => b.slug));
@@ -437,7 +437,7 @@ describe("weekend pattern", () => {
       expect(christian, code).not.toContain(code);
   });
   it("gives showroom businesses there the local week, but not restaurants or mosques", () => {
-    const businesses = loadBusinesses();
+    const businesses = loadShowroom();
     const at = (place: string, kind: string) =>
       businesses.find((b) => b.place === place && b.primaryKind === kind)!;
     expect(at("sakhnin", "barbershops").hours.weekly[6]?.length).toBeGreaterThan(0);

@@ -21,6 +21,7 @@ const row = (key: string, extra: object = {}) => ({
   lng: 35.3,
   distance: null,
   glutenFree: false,
+  byAppointment: false,
   ...extra,
 });
 const labels = {
@@ -37,7 +38,13 @@ const labels = {
   filterNoResults: "Nothing here matches these filters yet.",
   nothingOpen: "Nothing is open right now.",
   includeClosed: "Show them all, open or closed",
-  rows: { example: "Example", openNow: "Open now", closed: "Closed", glutenFree: "Gluten-free" },
+  rows: {
+    example: "Example",
+    openNow: "Open now",
+    closed: "Closed",
+    glutenFree: "Gluten-free",
+    byAppointment: "By appointment",
+  },
 };
 const props = {
   locale: "en" as const,

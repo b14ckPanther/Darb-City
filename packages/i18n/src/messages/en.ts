@@ -7,6 +7,8 @@ export const en = {
   closed: "Closed",
   delivers: "Delivers",
   glutenFree: "Gluten-free",
+  byAppointment: "By appointment",
+  builtByDarb: "Built by Darb",
   example: "Example",
   forBusiness: "For businesses",
   noneHereYet: "None in {place} yet",

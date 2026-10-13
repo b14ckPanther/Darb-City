@@ -68,7 +68,19 @@ describe("business rows", () => {
       lng: 35.3,
       distance: null,
       glutenFree: false,
+      byAppointment: false,
     });
+  });
+  it("marks a by-appointment business, which has no open-now state (Task 28)", () => {
+    const row = toBusinessRow(
+      {
+        ...business("raghad", "haifa"),
+        openNow: null,
+        hours: { weekly: {}, exceptions: [], byAppointment: true },
+      },
+      ctx,
+    );
+    expect([row?.byAppointment, row?.hours, row?.openNow]).toEqual([true, null, null]);
   });
   it("marks a fully gluten-free kitchen (Task 27b)", () => {
     const gf = { ...business("samers", "haifa"), dietary: ["gluten_free" as const] };

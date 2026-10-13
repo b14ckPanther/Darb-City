@@ -80,3 +80,24 @@ it("never claims a copy when there is no clipboard", async () => {
     expect(screen.getByRole("status").textContent).toBe("Couldn't copy the link"),
   );
 });
+
+it("opens an app or directions as the primary link, in a new tab (Task 28)", () => {
+  const { unmount } = render(
+    <SheetActions {...base} primary={{ kind: "app", href: "https://caramel.darb.co.il/" }} />,
+  );
+  const app = screen.getByRole("link", { name: "Book a chair" });
+  expect([app.getAttribute("href"), app.getAttribute("target")]).toEqual([
+    "https://caramel.darb.co.il/",
+    "_blank",
+  ]);
+  unmount();
+  render(
+    <SheetActions
+      {...base}
+      primary={{ kind: "directions", href: base.secondary.directions! }}
+      secondary={{ ...base.secondary, directions: null }}
+    />,
+  );
+  expect(screen.getByRole("link", { name: "Book a chair" }).getAttribute("target")).toBe("_blank");
+  expect(screen.queryByRole("link", { name: "Directions" })).toBeNull();
+});

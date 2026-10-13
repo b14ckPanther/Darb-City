@@ -9,6 +9,8 @@ export const ar: Messages = {
   closed: "مغلق",
   delivers: "توصيل",
   glutenFree: "خالٍ من الغلوتين",
+  byAppointment: "بموعد مسبق",
+  builtByDarb: "صُنع بواسطة درب",
   example: "مثال",
   forBusiness: "للمصالح التجارية",
   noneHereYet: "لا يوجد في {place} بعد",

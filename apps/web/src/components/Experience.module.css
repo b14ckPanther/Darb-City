@@ -116,3 +116,15 @@
   color: var(--gold-300);
   font-weight: 700;
 }
+
+.builtBy {
+  margin: 0;
+  font-size: var(--step--1);
+  color: var(--text-muted);
+}
+
+.builtBy a {
+  color: var(--text-soft);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

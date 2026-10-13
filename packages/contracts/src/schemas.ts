@@ -17,6 +17,8 @@ export const HoursSchema = z.object({
   exceptions: z.array(
     z.object({ date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/), intervals: z.array(IntervalSchema) }),
   ),
+  /** Visits by arrangement only: never open now, shown as "By appointment" (Task 28). */
+  byAppointment: z.boolean().optional(),
 });
 
 /** Whole-business dietary facts (core DIETARY); gluten_free means the entire kitchen is. */

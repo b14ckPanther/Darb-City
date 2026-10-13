@@ -108,21 +108,21 @@ export const forBusiness: Record<Locale, ForBusinessCopy> = {
   },
 };
 
-export const LIVE_CLIENTS: { name: Localized; kind: Localized; url: string }[] = [
+/** A client without a url has no public app (Paz's is for its staff only, Task 28). */
+export const LIVE_CLIENTS: { name: Localized; kind: Localized; url?: string }[] = [
   {
     name: { he: "קרמל", ar: "كراميل", en: "Caramel" },
     kind: { he: "מסעדה", ar: "مطعم", en: "Restaurant" },
     url: "https://caramel.darb.co.il",
   },
   {
-    name: { he: "רגד", ar: "رغد", en: "Raghad" },
+    name: { he: "רגד ביוטי", ar: "رغد بيوتي", en: "Raghad Beauty" },
     kind: { he: "חנות", ar: "متجر", en: "Shop" },
     url: "https://raghad.darb.co.il",
   },
   {
     name: { he: "פז", ar: "باز", en: "Paz" },
     kind: { he: "תחנות דלק", ar: "محطات وقود", en: "Fuel stations" },
-    url: "https://paz.darb.co.il",
   },
 ];
 

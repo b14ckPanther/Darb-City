@@ -64,6 +64,8 @@ const en = {
   fieldExperience: "Experience content (JSON)",
   fieldDelivers: "Delivers",
   fieldGlutenFree: "Gluten-free kitchen",
+  fieldByAppointment: "By appointment only (no open or closed badge)",
+  fieldAddressHidden: "Keep the street private (home business: no directions)",
   fieldGlutenFreeHint:
     "Only when the whole kitchen and menu are gluten-free, safe for people with celiac disease. Not for a place that only has gluten-free options.",
   none: "None",
@@ -190,6 +192,8 @@ const he: Messages = {
   fieldExperience: "תוכן החוויה (JSON)",
   fieldDelivers: "משלוחים",
   fieldGlutenFree: "מטבח ללא גלוטן",
+  fieldByAppointment: "בתיאום מראש בלבד (בלי תג פתוח או סגור)",
+  fieldAddressHidden: "הכתובת פרטית (עסק ביתי: בלי ניווט)",
   fieldGlutenFreeHint:
     "רק כשכל המטבח וכל התפריט ללא גלוטן, בטוחים לחולי צליאק. לא למקום שיש בו רק אפשרויות ללא גלוטן.",
   none: "ללא",
@@ -311,6 +315,8 @@ const ar: Messages = {
   fieldExperience: "محتوى التجربة (JSON)",
   fieldDelivers: "توصيل",
   fieldGlutenFree: "مطبخ خالٍ من الغلوتين",
+  fieldByAppointment: "بموعد مسبق فقط (بدون شارة مفتوح أو مغلق)",
+  fieldAddressHidden: "العنوان خاص (مصلحة بيتية: بدون اتجاهات)",
   fieldGlutenFreeHint:
     "فقط عندما يكون المطبخ كله والقائمة كلها خاليين من الغلوتين وآمنين لمرضى السيلياك. ليس لمكان فيه خيارات خالية من الغلوتين فقط.",
   none: "لا شيء",

@@ -20,7 +20,7 @@ export function BusinessForm({
 }) {
   const b = business;
   const kindSlug = new Map(kinds.map((k) => [k.id, k.slug]));
-  const { delivers: _d, ...otherAttributes } = b?.attributes ?? {};
+  const { delivers: _d, addressHidden: _h, ...otherAttributes } = b?.attributes ?? {};
   const days = (["day0", "day1", "day2", "day3", "day4", "day5", "day6"] as const).map((d) =>
     at(locale, d),
   );
@@ -172,6 +172,15 @@ export function BusinessForm({
           close: at(locale, "closes"),
         }}
       />
+      <label className={styles.actions}>
+        <input
+          type="checkbox"
+          name="byAppointment"
+          defaultChecked={b?.hours.byAppointment === true}
+          style={{ inlineSize: 24, blockSize: 24 }}
+        />
+        {at(locale, "fieldByAppointment")}
+      </label>
       <TextArea
         label={at(locale, "fieldExceptions")}
         name="hours.exceptions"
@@ -187,6 +196,15 @@ export function BusinessForm({
           style={{ inlineSize: 24, blockSize: 24 }}
         />
         {at(locale, "fieldDelivers")}
+      </label>
+      <label className={styles.actions}>
+        <input
+          type="checkbox"
+          name="addressHidden"
+          defaultChecked={b?.attributes.addressHidden === true}
+          style={{ inlineSize: 24, blockSize: 24 }}
+        />
+        {at(locale, "fieldAddressHidden")}
       </label>
       <div className={styles.field}>
         <label className={styles.actions}>

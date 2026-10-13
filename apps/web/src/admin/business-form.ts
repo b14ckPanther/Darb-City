@@ -35,7 +35,7 @@ const compactWeekly = (weekly: unknown): WeeklyHours =>
 /**
  * A saved business in the shape the form produces, so an unchanged field diffs as unchanged:
  * extra kinds without the primary, sorted; delivers always present; dietary sorted; closed days
- * absent.
+ * absent; byAppointment and addressHidden only when true.
  */
 export function comparable<
   T extends {
@@ -43,15 +43,25 @@ export function comparable<
     kindIds: string[];
     attributes: Record<string, unknown>;
     dietary: readonly string[];
-    hours: { weekly: unknown; exceptions: unknown };
+    hours: { weekly: unknown; exceptions: unknown; byAppointment?: boolean };
   },
 >(b: T): T {
+  const { addressHidden, ...attributes } = b.attributes;
+  const { byAppointment, ...hours } = b.hours;
   return {
     ...b,
     kindIds: b.kindIds.filter((k) => k !== b.primaryKindId).sort(),
-    attributes: { ...b.attributes, delivers: b.attributes.delivers === true },
+    attributes: {
+      ...attributes,
+      delivers: b.attributes.delivers === true,
+      ...(addressHidden === true ? { addressHidden: true } : {}),
+    },
     dietary: [...b.dietary].sort(),
-    hours: { ...b.hours, weekly: compactWeekly(b.hours.weekly) },
+    hours: {
+      ...hours,
+      weekly: compactWeekly(b.hours.weekly),
+      ...(byAppointment === true ? { byAppointment: true } : {}),
+    },
   };
 }
 
@@ -90,8 +100,16 @@ export function businessFromForm(fd: FormData): {
       phone: orNull(text(fd, "phone")),
       whatsapp: orNull(text(fd, "whatsapp")),
       website: orNull(text(fd, "website")),
-      hours: { weekly: compactWeekly(weekly), exceptions: ex.ok ? ex.value : [] },
-      attributes: { ...base, delivers: fd.get("delivers") === "on" },
+      hours: {
+        weekly: compactWeekly(weekly),
+        exceptions: ex.ok ? ex.value : [],
+        ...(fd.get("byAppointment") === "on" ? { byAppointment: true } : {}),
+      },
+      attributes: {
+        ...base,
+        delivers: fd.get("delivers") === "on",
+        ...(fd.get("addressHidden") === "on" ? { addressHidden: true } : {}),
+      },
       dietary: fd.get("glutenFree") === "on" ? ["gluten_free"] : [],
       experience: (experience ?? {}) as Record<string, unknown>,
       tier: text(fd, "tier") as BusinessFormData["tier"],

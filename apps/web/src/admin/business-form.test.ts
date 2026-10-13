@@ -84,3 +84,29 @@ it("reads the gluten-free kitchen toggle into the dietary set (Task 27b)", () =>
   expect(businessFromForm(form({ glutenFree: "on" })).data.dietary).toEqual(["gluten_free"]);
   expect(businessFromForm(form()).data.dietary).toEqual([]);
 });
+
+it("reads by appointment into the hours and a private address into the attributes (Task 28)", () => {
+  const { data } = businessFromForm(form({ byAppointment: "on", addressHidden: "on" }));
+  expect(data.hours).toMatchObject({ byAppointment: true });
+  expect(data.attributes).toEqual({ parking: true, delivers: true, addressHidden: true });
+  const plain = businessFromForm(form()).data;
+  expect(plain.hours?.byAppointment).toBeUndefined();
+  expect(plain.attributes).toEqual({ parking: true, delivers: true });
+});
+
+it("compares by appointment and a private address the way the form reads them", () => {
+  const saved = {
+    primaryKindId: "p",
+    kindIds: [],
+    attributes: { addressHidden: false, delivers: true },
+    dietary: [],
+    hours: { weekly: {}, exceptions: [], byAppointment: false },
+  };
+  expect(comparable(saved)).toEqual({
+    primaryKindId: "p",
+    kindIds: [],
+    attributes: { delivers: true },
+    dietary: [],
+    hours: { weekly: {}, exceptions: [] },
+  });
+});

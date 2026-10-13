@@ -11,6 +11,7 @@ export function rowLabels(locale: Locale): RowLabels {
     openNow: t(locale, "openNow"),
     closed: t(locale, "closed"),
     glutenFree: t(locale, "glutenFree"),
+    byAppointment: t(locale, "byAppointment"),
   };
 }
 

@@ -22,8 +22,15 @@ export const loadScreens = (): Record<string, SeedScreen> => ({
   ...read<Record<string, SeedScreen>>("extra-screens.json"),
 });
 export const loadPlaces = () => read<SeedPlace[]>("places.json");
-export const loadBrands = () => read<SeedBrand[]>("brands.json");
-export const loadBusinesses = (): SeedBusiness[] => {
+/** Darb's real clients (spec §11): darb tier, own experience screens, owner-supplied details. */
+export const loadClients = (): { brands: SeedBrand[]; businesses: SeedBusiness[] } =>
+  read<{ brands: SeedBrand[]; businesses: SeedBusiness[] }>("clients.json");
+export const loadBrands = (): SeedBrand[] => [
+  ...read<SeedBrand[]>("brands.json"),
+  ...loadClients().brands,
+];
+/** The showroom examples, each with its kind's screen attached. */
+export const loadShowroom = (): SeedBusiness[] => {
   const screens = loadScreens();
   return read<SeedBusinessRecord[]>("businesses.json").map((b) => {
     const experience = screens[b.primaryKind];
@@ -31,5 +38,10 @@ export const loadBusinesses = (): SeedBusiness[] => {
     return { ...b, experience };
   });
 };
+/** Showroom examples plus real clients. */
+export const loadBusinesses = (): SeedBusiness[] => [
+  ...loadShowroom(),
+  ...loadClients().businesses,
+];
 export const loadWeekend = () => read<{ arabDruze: string[]; christian: string[] }>("weekend.json");
 export { toArabDruzeWeek, toChristianWeek } from "./showroom.js";

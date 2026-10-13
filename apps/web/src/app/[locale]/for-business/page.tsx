@@ -69,19 +69,31 @@ export default async function ForBusinessPage({ params }: Props) {
         <section aria-labelledby="clients-title" className={styles.section}>
           <h2 id="clients-title">{copy.clientsTitle}</h2>
           <ul className={styles.clients}>
-            {LIVE_CLIENTS.map((client) => (
-              <li key={client.url}>
-                <a
-                  href={client.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.client}
-                >
+            {LIVE_CLIENTS.map((client) => {
+              const body = (
+                <>
                   <span className={styles.clientName}>{pickText(client.name, locale)}</span>
                   <span className={styles.clientKind}>{pickText(client.kind, locale)}</span>
-                </a>
-              </li>
-            ))}
+                </>
+              );
+              return (
+                <li key={client.name.en}>
+                  {client.url ? (
+                    <a
+                      href={client.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.client}
+                    >
+                      {body}
+                    </a>
+                  ) : (
+                    // A staff-only app: named as client work, never linked.
+                    <span className={styles.client}>{body}</span>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </section>
         <section aria-labelledby="contact-title" className={styles.section}>

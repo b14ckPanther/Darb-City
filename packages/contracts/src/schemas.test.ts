@@ -206,3 +206,11 @@ describe("dietary (Task 27b)", () => {
     expect(query.safeParse({ dietary: "vegan-ish" }).success).toBe(false);
   });
 });
+
+describe("hours by appointment (Task 28)", () => {
+  it("keeps the flag through parsing, and stays optional", () => {
+    const hours = { weekly: {}, exceptions: [], byAppointment: true };
+    expect(HoursSchema.parse(hours)).toEqual(hours);
+    expect(HoursSchema.parse({ weekly: {}, exceptions: [] }).byAppointment).toBeUndefined();
+  });
+});

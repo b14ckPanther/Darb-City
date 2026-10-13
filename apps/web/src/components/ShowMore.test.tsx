@@ -24,6 +24,7 @@ const props = {
     openNow: "Open now",
     closed: "Closed",
     glutenFree: "Gluten-free",
+    byAppointment: "By appointment",
   },
 };
 

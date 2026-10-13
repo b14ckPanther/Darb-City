@@ -9,6 +9,8 @@ export const he: Messages = {
   closed: "סגור",
   delivers: "משלוחים",
   glutenFree: "ללא גלוטן",
+  byAppointment: "בתיאום מראש",
+  builtByDarb: "נבנה על ידי דרב",
   example: "דוגמה",
   forBusiness: "לעסקים",
   noneHereYet: "עוד אין ב{place}",

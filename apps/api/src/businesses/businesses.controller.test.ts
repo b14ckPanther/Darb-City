@@ -163,3 +163,46 @@ describe("GET /kinds/:kindSlug/nearest-places", () => {
     expect((await get("/kinds/barbershops/nearest-places?lat=&lng=35")).status).toBe(400);
   });
 });
+
+describe("by appointment (Task 28)", () => {
+  it("has no open-now state, keeps the flag, and never passes the open-now filter", async () => {
+    const prisma = app.get(PrismaService);
+    await prisma.business.update({
+      where: {
+        placeId_slug: {
+          placeId: (await prisma.place.findUniqueOrThrow({ where: { slug: "sakhnin" } })).id,
+          slug: "abu-salim",
+        },
+      },
+      data: {
+        hours: {
+          weekly: { 1: [{ open: "00:00", close: "24:00" }] },
+          exceptions: [],
+          byAppointment: true,
+        },
+      },
+    });
+    try {
+      const res = await get("/places/sakhnin/businesses?kind=barbershops");
+      const abu = res.body.items.find((b: { slug: string }) => b.slug === "abu-salim");
+      expect([abu.openNow, abu.hours.byAppointment]).toEqual([null, true]);
+      const open = await get("/places/sakhnin/businesses?kind=barbershops&openNow=true");
+      expect(slugs(open.body.items)).toEqual([]);
+      const detail = await get("/places/sakhnin/businesses/abu-salim");
+      expect([detail.body.openNow, detail.body.hours.byAppointment]).toEqual([null, true]);
+    } finally {
+      await prisma.business.updateMany({
+        where: { slug: "abu-salim" },
+        data: {
+          hours: {
+            weekly: {
+              0: [{ open: "09:00", close: "19:00" }],
+              1: [{ open: "09:00", close: "19:00" }],
+            },
+            exceptions: [],
+          },
+        },
+      });
+    }
+  });
+});

@@ -270,3 +270,31 @@ it("writes a business's dietary facts, empty when the data has none (Task 27b)",
     ["samer", []],
   ]);
 });
+
+it("writes a client's contact details and app links", async () => {
+  const client = {
+    ...data.businesses[0]!,
+    slug: "client",
+    tier: "darb" as const,
+    phone: "+972 4-000-0000",
+    whatsapp: null,
+    website: "https://client.darb.co.il",
+    apps: { web: "https://client.darb.co.il" },
+    pinApproximate: true,
+  };
+  await loadSeed(prisma, { ...data, businesses: [...data.businesses, client] });
+  const row = await prisma.business.findFirstOrThrow({ where: { slug: "client" } });
+  expect([row.phone, row.website, row.apps, row.tier]).toEqual([
+    "+972 4-000-0000",
+    "https://client.darb.co.il",
+    { web: "https://client.darb.co.il" },
+    "darb",
+  ]);
+  const showroom = await prisma.business.findFirstOrThrow({ where: { slug: "samer" } });
+  expect([showroom.phone, showroom.whatsapp, showroom.website, showroom.apps]).toEqual([
+    null,
+    null,
+    null,
+    {},
+  ]);
+});
