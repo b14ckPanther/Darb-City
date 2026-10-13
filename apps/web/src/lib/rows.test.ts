@@ -43,6 +43,7 @@ const business = (slug: string, placeSlug: string, primaryKindId = "k1"): Busine
   photo: null,
   openNow: true,
   hours: { weekly: { "0": [{ open: "09:00", close: "17:00" }] }, exceptions: [] },
+  dietary: [],
 });
 
 const haifa = {
@@ -66,7 +67,12 @@ describe("business rows", () => {
       lat: 32.8,
       lng: 35.3,
       distance: null,
+      glutenFree: false,
     });
+  });
+  it("marks a fully gluten-free kitchen (Task 27b)", () => {
+    const gf = { ...business("samers", "haifa"), dietary: ["gluten_free" as const] };
+    expect(toBusinessRow(gf, ctx)?.glutenFree).toBe(true);
   });
   it("carries no hours for a business without any, so the browser never recomputes it", () => {
     const none = { ...business("samers", "haifa"), openNow: null };

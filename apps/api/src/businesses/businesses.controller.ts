@@ -42,6 +42,7 @@ export class BusinessesController {
           limit: query.limit,
           openAt: query.openNow ? now : null,
           delivers: query.delivers ?? false,
+          dietary: query.dietary ? [query.dietary] : [],
           near:
             query.lat !== undefined && query.lng !== undefined
               ? { lat: query.lat, lng: query.lng }

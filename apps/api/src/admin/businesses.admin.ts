@@ -50,6 +50,7 @@ export const toAdminBusiness = (b: Row): AdminBusinessDto => ({
   website: b.website,
   hours: b.hours as unknown as Hours as AdminBusinessDto["hours"],
   attributes: b.attributes as AdminBusinessDto["attributes"],
+  dietary: b.dietary,
   experience: b.experience as AdminBusinessDto["experience"],
   tier: b.tier,
   apps: b.apps as AdminBusinessDto["apps"],

@@ -352,3 +352,33 @@ describe("GET /search/instant-index", () => {
     }
   });
 });
+
+describe("gluten-free search in lane 1 (Task 27b)", () => {
+  it("finds fully gluten-free businesses from he/ar/en words, never asking the model", async () => {
+    await prisma.business.updateMany({
+      where: { slug: "tamra-barber" },
+      data: { dietary: ["gluten_free"] },
+    });
+    try {
+      for (const [q, locale] of [
+        ["ללא גלוטן", "he"],
+        ["خالٍ من الغلوتين", "ar"],
+        ["gluten-free", "en"],
+        ["celiac barber", "en"],
+      ] as const) {
+        const res = await post("/search", { q, locale }, "10.27.0.1");
+        expect(res.status).toBe(200);
+        expect(res.body).toMatchObject({ lane: "instant", intent: { dietary: ["gluten_free"] } });
+        expect(res.body.items.map((b: { slug: string }) => b.slug)).toEqual(["tamra-barber"]);
+        expect(res.body.items[0].dietary).toEqual(["gluten_free"]);
+        await redis.del(...(await redis.keys("darb:*")));
+      }
+      expect(extract).not.toHaveBeenCalled();
+    } finally {
+      await prisma.business.updateMany({
+        where: { slug: "tamra-barber" },
+        data: { dietary: [] },
+      });
+    }
+  });
+});

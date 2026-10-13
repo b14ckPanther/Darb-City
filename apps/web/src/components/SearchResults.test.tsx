@@ -26,6 +26,7 @@ const row = (key: string) => ({
   lat: 32.9,
   lng: 35.1,
   distance: null,
+  glutenFree: false,
 });
 const view: SearchView = {
   status: "ok",
@@ -57,7 +58,7 @@ const labels = {
   unreachable: "Can't reach Darb.",
   nearestPlaces: "Nearest places",
   nothingOpen: "Nothing is open right now.",
-  rows: { example: "Example", openNow: "Open now", closed: "Closed" },
+  rows: { example: "Example", openNow: "Open now", closed: "Closed", glutenFree: "Gluten-free" },
 };
 
 describe("SearchResults", () => {

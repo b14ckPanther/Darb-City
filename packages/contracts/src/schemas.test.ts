@@ -168,3 +168,41 @@ it("accepts a business summary with or without distance", () => {
   expect(BusinessSummarySchema.parse({ ...base, distanceKm: 1.5 }).distanceKm).toBe(1.5);
   expect(() => BusinessSummarySchema.parse({ ...base, distanceKm: -1 })).toThrow();
 });
+
+describe("dietary (Task 27b)", () => {
+  const base = {
+    id: "1",
+    slug: "a",
+    name: { en: "A" },
+    tagline: { en: "A" },
+    tier: "darb",
+    primaryKindId: "k",
+    placeId: "p",
+    placeSlug: "akko",
+    lat: 1,
+    lng: 2,
+    photo: null,
+    openNow: null,
+    hours: { weekly: {}, exceptions: [] },
+  };
+  it("summaries carry the dietary set, empty when absent", () => {
+    expect(BusinessSummarySchema.parse(base).dietary).toEqual([]);
+    expect(BusinessSummarySchema.parse({ ...base, dietary: ["gluten_free"] }).dietary).toEqual([
+      "gluten_free",
+    ]);
+    expect(() => BusinessSummarySchema.parse({ ...base, dietary: ["gluten_option"] })).toThrow();
+  });
+  it("lists filter by a dietary value, combinable with the others", () => {
+    const query = contract.businesses.list.query;
+    expect(
+      query.parse({
+        dietary: "gluten_free",
+        openNow: "true",
+        delivers: "true",
+        lat: "32",
+        lng: "35",
+      }),
+    ).toMatchObject({ dietary: "gluten_free", openNow: true, delivers: true });
+    expect(query.safeParse({ dietary: "vegan-ish" }).success).toBe(false);
+  });
+});

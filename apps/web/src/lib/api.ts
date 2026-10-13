@@ -16,7 +16,7 @@ import {
   type SuggestionDto,
   type TaxonomyDto,
 } from "@darb/contracts";
-import { isSlug } from "@darb/core";
+import { isSlug, type Dietary } from "@darb/core";
 import { initClient, type ApiFetcher } from "@ts-rest/core";
 
 /** The API could not be reached or answered with an error it should never give. */
@@ -139,6 +139,8 @@ export async function getBusinesses(
     limit?: number;
     open?: boolean;
     delivers?: boolean;
+    /** A whole-business dietary fact every result must have (Task 27b). */
+    dietary?: Dietary;
     /** A person's position: fetched no-store, never cached. */
     near?: { lat: number; lng: number };
   } = {},
@@ -150,6 +152,7 @@ export async function getBusinesses(
     ...(options.limit ? { limit: options.limit } : {}),
     ...(options.open ? { openNow: "true" as const } : {}),
     ...(options.delivers ? { delivers: "true" as const } : {}),
+    ...(options.dietary ? { dietary: options.dietary } : {}),
     ...(options.near ? { lat: options.near.lat, lng: options.near.lng } : {}),
   };
   const res = await call(() =>

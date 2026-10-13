@@ -1,4 +1,4 @@
-import { isSlug, PLACE_STATUSES, PLACE_TYPES, TEMPLATES, TIERS } from "@darb/core";
+import { DIETARY, isSlug, PLACE_STATUSES, PLACE_TYPES, TEMPLATES, TIERS } from "@darb/core";
 import { z } from "zod";
 
 const text = z.string().optional();
@@ -18,6 +18,9 @@ export const HoursSchema = z.object({
     z.object({ date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/), intervals: z.array(IntervalSchema) }),
   ),
 });
+
+/** Whole-business dietary facts (core DIETARY); gluten_free means the entire kitchen is. */
+export const DietarySchema = z.enum(DIETARY);
 
 export const PlaceSchema = z.object({
   id: z.string(),
@@ -82,6 +85,8 @@ export const BusinessSummarySchema = z.object({
   openNow: z.boolean().nullable(),
   /** Weekly hours, so browsers recompute open-now on cached pages (Plan 4). */
   hours: HoursSchema,
+  /** Whole-business dietary facts: gluten_free is a fully gluten-free kitchen (Task 27b). */
+  dietary: z.array(DietarySchema).default([]),
   /** Kilometres from the point a list was sorted by; absent otherwise. */
   distanceKm: z.number().nonnegative().optional(),
 });

@@ -165,7 +165,7 @@ describe("matchInstant", () => {
   });
   it("records cues, blocked and leftovers", () => {
     const { r } = top("knafeh near me open now with pistachio");
-    expect(r.cues).toEqual({ openNow: true, delivers: false, nearMe: true });
+    expect(r.cues).toEqual({ openNow: true, delivers: false, nearMe: true, glutenFree: false });
     expect(r.unmatched).toEqual(["pistachio"]);
     expect(r.sentence).toBe(true);
     expect(matchInstant(prepared, "bars in haifa").blocked).toBe(true);
@@ -189,4 +189,15 @@ describe("matchInstant", () => {
     for (let i = 0; i < 10; i++) matchInstant(big, "barbr in sakhnin");
     expect((Date.now() - start) / 10).toBeLessThan(50);
   });
+});
+
+describe("gluten-free queries (Task 27b)", () => {
+  it.each(["ללא גלוטן בעכו", "مطعم خالٍ من الغلوتين", "gluten-free restaurant", "celiac"])(
+    "%s is a dietary filter in lane 1, not leftover text",
+    (q) => {
+      const r = matchInstant(prepared, q);
+      expect(r.cues.glutenFree).toBe(true);
+      expect(r.unmatched.join(" ")).not.toMatch(/gluten|גלוטנ|غلوتين|celiac/);
+    },
+  );
 });

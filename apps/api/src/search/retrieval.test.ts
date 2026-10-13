@@ -16,6 +16,7 @@ const NONE: RetrievalFilters = {
   radiusKm: null,
   openAt: null,
   delivers: false,
+  dietary: [],
   text: "",
   embedding: null,
 };

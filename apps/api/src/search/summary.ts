@@ -20,6 +20,7 @@ export function candidateSummary(c: Ranked, now: Date): BusinessSummaryDto {
     photo: photos[0]?.key ?? null,
     openNow: openNow(row.hours as Hours, now),
     hours: row.hours as BusinessSummaryDto["hours"],
+    dietary: row.dietary ?? [],
     ...(c.km === null ? {} : { distanceKm: c.km }),
   };
 }

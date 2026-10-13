@@ -19,7 +19,12 @@ const props = {
   kind: "barbershops",
   cursor: "c1",
   labels: { showMore: "Show more", unreachable: "Darb can't be reached right now." },
-  rowLabels: { example: "Example", openNow: "Open now", closed: "Closed" },
+  rowLabels: {
+    example: "Example",
+    openNow: "Open now",
+    closed: "Closed",
+    glutenFree: "Gluten-free",
+  },
 };
 
 it("appends the next page and stops at the last one", async () => {

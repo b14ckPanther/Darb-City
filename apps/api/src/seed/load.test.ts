@@ -260,3 +260,13 @@ it("still places children under an edited parent and overwrites rows released ba
   expect(sakhnin.path).toBe("/israel/northern-district/sakhnin/");
   expect((await prisma.business.findFirstOrThrow()).name).toEqual({ en: "Samer" });
 });
+
+it("writes a business's dietary facts, empty when the data has none (Task 27b)", async () => {
+  const gf = { ...data.businesses[0]!, slug: "gf", brand: null, dietary: ["gluten_free" as const] };
+  await loadSeed(prisma, { ...data, businesses: [...data.businesses, gf] });
+  const rows = await prisma.business.findMany({ orderBy: { slug: "asc" } });
+  expect(rows.map((b) => [b.slug, b.dietary])).toEqual([
+    ["gf", ["gluten_free"]],
+    ["samer", []],
+  ]);
+});

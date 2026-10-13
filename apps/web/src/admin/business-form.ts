@@ -34,13 +34,15 @@ const compactWeekly = (weekly: unknown): WeeklyHours =>
 
 /**
  * A saved business in the shape the form produces, so an unchanged field diffs as unchanged:
- * extra kinds without the primary, sorted; delivers always present; closed days absent.
+ * extra kinds without the primary, sorted; delivers always present; dietary sorted; closed days
+ * absent.
  */
 export function comparable<
   T extends {
     primaryKindId: string;
     kindIds: string[];
     attributes: Record<string, unknown>;
+    dietary: readonly string[];
     hours: { weekly: unknown; exceptions: unknown };
   },
 >(b: T): T {
@@ -48,6 +50,7 @@ export function comparable<
     ...b,
     kindIds: b.kindIds.filter((k) => k !== b.primaryKindId).sort(),
     attributes: { ...b.attributes, delivers: b.attributes.delivers === true },
+    dietary: [...b.dietary].sort(),
     hours: { ...b.hours, weekly: compactWeekly(b.hours.weekly) },
   };
 }
@@ -89,6 +92,7 @@ export function businessFromForm(fd: FormData): {
       website: orNull(text(fd, "website")),
       hours: { weekly: compactWeekly(weekly), exceptions: ex.ok ? ex.value : [] },
       attributes: { ...base, delivers: fd.get("delivers") === "on" },
+      dietary: fd.get("glutenFree") === "on" ? ["gluten_free"] : [],
       experience: (experience ?? {}) as Record<string, unknown>,
       tier: text(fd, "tier") as BusinessFormData["tier"],
       apps,

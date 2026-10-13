@@ -3,7 +3,7 @@ import type { BusinessDetailDto, KindDto } from "@darb/contracts";
 import { t } from "@darb/i18n";
 import { formatPhone } from "@/lib/format";
 import { directionsHref, primaryAction, safeHttpUrl, telHref, whatsappHref } from "@/lib/links";
-import { ExampleBadge } from "./Badges";
+import { ExampleBadge, GlutenFreeBadge } from "./Badges";
 import { LiveOpenState } from "./LiveOpenState";
 import { LocaleSwitch } from "./CityBar";
 import { HoursTable } from "./HoursTable";
@@ -53,6 +53,9 @@ export function ExperienceView({
         </p>
         <p className={styles.badges}>
           {business.tier === "example" ? <ExampleBadge label={t(locale, "example")} /> : null}
+          {business.dietary.includes("gluten_free") ? (
+            <GlutenFreeBadge label={t(locale, "glutenFree")} />
+          ) : null}
           <LiveOpenState
             openNow={business.openNow}
             hours={business.openNow === null ? null : business.hours}

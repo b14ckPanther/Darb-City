@@ -1,7 +1,7 @@
 import { initContract } from "@ts-rest/core";
 import { isReservedSlug, PLACE_STATUSES, PLACE_TYPES, TEMPLATES, TIERS } from "@darb/core";
 import { z } from "zod";
-import { HoursSchema, LocalizedSchema, SlugSchema } from "./schemas.js";
+import { DietarySchema, HoursSchema, LocalizedSchema, SlugSchema } from "./schemas.js";
 import { MissingReportSchema, ReportQuerySchema } from "./search.js";
 
 const c = initContract();
@@ -195,6 +195,8 @@ const businessFields = z.object({
   website: httpUrl.nullable(),
   hours: HoursSchema,
   attributes: z.record(z.string().max(40), z.union([z.boolean(), z.string().max(200), z.number()])),
+  // No default here: a partial PATCH must never reset it.
+  dietary: z.array(DietarySchema).max(10),
   experience: z.record(z.string(), z.unknown()),
   tier: z.enum(TIERS),
   apps: AppsSchema,
@@ -203,6 +205,7 @@ export const AdminBusinessSchema = AdminBusinessRowSchema.extend(businessFields.
   brandId: id.nullable(),
 });
 export const AdminBusinessCreateSchema = businessFields.extend({
+  dietary: businessFields.shape.dietary.default([]),
   slug: NewSlugSchema,
   placeId: id,
   status: z.enum(["draft", "published"]).default("draft"),

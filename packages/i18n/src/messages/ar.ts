@@ -8,6 +8,7 @@ export const ar: Messages = {
   openNow: "مفتوح الآن",
   closed: "مغلق",
   delivers: "توصيل",
+  glutenFree: "خالٍ من الغلوتين",
   example: "مثال",
   forBusiness: "للمصالح التجارية",
   noneHereYet: "لا يوجد في {place} بعد",

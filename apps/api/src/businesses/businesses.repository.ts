@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { Prisma, type Business, type Place } from "../generated/prisma/client.js";
+import { Prisma, type Business, type Dietary, type Place } from "../generated/prisma/client.js";
 import { PrismaService } from "../prisma/prisma.service.js";
 
 export type BusinessWithPlace = Business & { place: { slug: string } };
@@ -14,6 +14,8 @@ export interface PageArgs {
   openAt: Date | null;
   /** Only businesses whose attributes say they deliver. */
   delivers: boolean;
+  /** Only businesses with every one of these whole-business dietary facts. */
+  dietary: Dietary[];
   /** Sort by distance from this point (used once, never stored). */
   near: { lat: number; lng: number } | null;
 }
@@ -62,6 +64,7 @@ export class BusinessesRepository {
         : []),
       ...(args.openAt ? [Prisma.sql`darb_open_at(b.hours, ${args.openAt})`] : []),
       ...(args.delivers ? [Prisma.sql`b.attributes @> '{"delivers": true}'::jsonb`] : []),
+      ...(args.dietary.length > 0 ? [Prisma.sql`b.dietary @> ${args.dietary}::"Dietary"[]`] : []),
     ];
     const km = here ? Prisma.sql`ST_Distance(b.point, ${here}) / 1000` : Prisma.sql`NULL::float8`;
     const order = here

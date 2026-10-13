@@ -1,4 +1,4 @@
-import type { Hours, Localized, PlaceStatus, PlaceType, Template, Tier } from "@darb/core";
+import type { Dietary, Hours, Localized, PlaceStatus, PlaceType, Template, Tier } from "@darb/core";
 
 export interface SeedSector {
   slug: string;
@@ -57,6 +57,8 @@ export interface SeedBusiness {
   lng: number;
   hours: Hours;
   attributes: Record<string, boolean | string | number>;
+  /** Whole-business dietary facts; gluten_free is a fully gluten-free kitchen (Task 27b). */
+  dietary?: Dietary[];
   experience: SeedScreen;
   tier: Tier;
 }

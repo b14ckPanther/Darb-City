@@ -188,6 +188,21 @@ export function BusinessForm({
         />
         {at(locale, "fieldDelivers")}
       </label>
+      <div className={styles.field}>
+        <label className={styles.actions}>
+          <input
+            type="checkbox"
+            name="glutenFree"
+            defaultChecked={b?.dietary.includes("gluten_free") === true}
+            aria-describedby="glutenFree-hint"
+            style={{ inlineSize: 24, blockSize: 24 }}
+          />
+          {at(locale, "fieldGlutenFree")}
+        </label>
+        <small id="glutenFree-hint" className={styles.hint}>
+          {at(locale, "fieldGlutenFreeHint")}
+        </small>
+      </div>
       <TextArea
         label={at(locale, "fieldExperience")}
         name="experience"

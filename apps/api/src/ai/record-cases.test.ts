@@ -17,7 +17,7 @@ const lane1 = async (q: string) =>
   ({
     normalized: q,
     blocked: false,
-    cues: { openNow: false, delivers: false, nearMe: false },
+    cues: { openNow: false, delivers: false, nearMe: false, glutenFree: false },
     sentence: false,
     places: [],
     kinds: [],

@@ -49,6 +49,12 @@ enum Tier {
   darb
 }
 
+/// Facts about a whole business (packages/core DIETARY). gluten_free: the entire kitchen is
+/// gluten-free, safe for celiac disease; never "has a gluten-free option".
+enum Dietary {
+  gluten_free
+}
+
 enum BusinessSource {
   seed
   self
@@ -184,6 +190,7 @@ model Business {
   photos         Json                                  @default("[]")
   hours          Json
   attributes     Json                                  @default("{}")
+  dietary        Dietary[]                             @default([])
   experience     Json
   tier           Tier
   apps           Json                                  @default("{}")
@@ -204,6 +211,7 @@ model Business {
   @@index([primaryKindId])
   @@index([status])
   @@index([attributes(ops: JsonbPathOps)], type: Gin)
+  @@index([dietary], type: Gin)
 }
 
 model BusinessKind {

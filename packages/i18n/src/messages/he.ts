@@ -8,6 +8,7 @@ export const he: Messages = {
   openNow: "פתוח עכשיו",
   closed: "סגור",
   delivers: "משלוחים",
+  glutenFree: "ללא גלוטן",
   example: "דוגמה",
   forBusiness: "לעסקים",
   noneHereYet: "עוד אין ב{place}",

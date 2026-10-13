@@ -204,6 +204,7 @@ export async function loadSeed(prisma: PrismaService, data: SeedData): Promise<S
           address: json(b.address),
           hours: json(b.hours),
           attributes: json(b.attributes),
+          dietary: b.dietary ?? [],
           experience: json(b.experience),
           tier: b.tier,
           source: "seed" as const,

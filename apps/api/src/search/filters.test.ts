@@ -65,8 +65,20 @@ describe("intent from lane 1", () => {
       nearMe: false,
       openNow: true,
       attributes: { delivers: false },
+      dietary: [],
       freeText: "pistachio",
     });
+  });
+  it("turns gluten-free words into the dietary filter, explained without the model (Task 27b)", () => {
+    expect(intentFromInstant(m("gluten free knafeh in haifa"))).toMatchObject({
+      kinds: ["sweets"],
+      place: "haifa",
+      dietary: ["gluten_free"],
+      freeText: "",
+    });
+    expect(explainedByInstant(m("ללא גלוטן"))).toBe(true);
+    expect(explainedByInstant(m("خالٍ من الغلوتين في حيفا"))).toBe(true);
+    expect(explainedByInstant(m("celiac somewhere to fix my bike chain"))).toBe(false);
   });
   it("keeps every kind tied on the same word", () => {
     expect(intentFromInstant(m("روضة في حيفا")).kinds).toEqual(["daycare", "kindergartens"]);
@@ -87,7 +99,7 @@ describe("intent from lane 1", () => {
 
 describe("validating the model's answer", () => {
   const allowed = { kinds: new Set(["sweets", "cafes"]), places: new Set(["haifa"]) };
-  const cues = { openNow: false, delivers: false, nearMe: false };
+  const cues = { openNow: false, delivers: false, nearMe: false, glutenFree: false };
   it("drops slugs outside the candidates and active kinds", () => {
     expect(
       validateIntent(
@@ -108,6 +120,7 @@ describe("validating the model's answer", () => {
       nearMe: false,
       openNow: false,
       attributes: { delivers: true },
+      dietary: [],
       freeText: "pistachio",
     });
   });
@@ -122,13 +135,14 @@ describe("validating the model's answer", () => {
         freeText: "",
       },
       { kinds: new Set(["sweets", "cafes"]), places: allowed.places },
-      { openNow: true, delivers: false, nearMe: true },
+      { openNow: true, delivers: false, nearMe: true, glutenFree: true },
     );
     expect(out).toMatchObject({
       kinds: ["sweets", "cafes"],
       place: "haifa",
       openNow: true,
       nearMe: true,
+      dietary: ["gluten_free"],
     });
   });
 });

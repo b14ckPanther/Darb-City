@@ -63,6 +63,9 @@ const en = {
   fieldExceptions: "Special days, one per line: 2026-12-25 closed, or 2026-12-31 09:00-13:00",
   fieldExperience: "Experience content (JSON)",
   fieldDelivers: "Delivers",
+  fieldGlutenFree: "Gluten-free kitchen",
+  fieldGlutenFreeHint:
+    "Only when the whole kitchen and menu are gluten-free, safe for people with celiac disease. Not for a place that only has gluten-free options.",
   none: "None",
   langHe: "Hebrew",
   langAr: "Arabic",
@@ -186,6 +189,9 @@ const he: Messages = {
   fieldExceptions: "ימים מיוחדים, אחד בכל שורה: 2026-12-25 closed או 2026-12-31 09:00-13:00",
   fieldExperience: "תוכן החוויה (JSON)",
   fieldDelivers: "משלוחים",
+  fieldGlutenFree: "מטבח ללא גלוטן",
+  fieldGlutenFreeHint:
+    "רק כשכל המטבח וכל התפריט ללא גלוטן, בטוחים לחולי צליאק. לא למקום שיש בו רק אפשרויות ללא גלוטן.",
   none: "ללא",
   langHe: "עברית",
   langAr: "ערבית",
@@ -304,6 +310,9 @@ const ar: Messages = {
   fieldExceptions: "أيام خاصة، واحد في كل سطر: 2026-12-25 closed أو 2026-12-31 09:00-13:00",
   fieldExperience: "محتوى التجربة (JSON)",
   fieldDelivers: "توصيل",
+  fieldGlutenFree: "مطبخ خالٍ من الغلوتين",
+  fieldGlutenFreeHint:
+    "فقط عندما يكون المطبخ كله والقائمة كلها خاليين من الغلوتين وآمنين لمرضى السيلياك. ليس لمكان فيه خيارات خالية من الغلوتين فقط.",
   none: "لا شيء",
   langHe: "العبرية",
   langAr: "العربية",

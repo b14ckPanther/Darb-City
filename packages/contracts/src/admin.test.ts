@@ -91,3 +91,19 @@ describe("admin schemas", () => {
     expect(contract.admin.businesses.status.path).toBe("/admin/businesses/:id/status");
   });
 });
+
+describe("admin dietary (Task 27b)", () => {
+  it("creates with no dietary facts by default and accepts gluten_free", () => {
+    expect(AdminBusinessCreateSchema.parse(business).dietary).toEqual([]);
+    expect(
+      AdminBusinessCreateSchema.parse({ ...business, dietary: ["gluten_free"] }).dietary,
+    ).toEqual(["gluten_free"]);
+    expect(AdminBusinessCreateSchema.safeParse({ ...business, dietary: ["x"] }).success).toBe(
+      false,
+    );
+  });
+  it("a patch without dietary never touches it", () => {
+    expect(AdminBusinessPatchSchema.parse({ phone: null })).toEqual({ phone: null });
+    expect(AdminBusinessPatchSchema.parse({ dietary: [] })).toEqual({ dietary: [] });
+  });
+});

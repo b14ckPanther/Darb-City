@@ -41,6 +41,8 @@ beforeAll(async () => {
         lat: 32.8638,
         lng: 35.31 + i * 0.01,
         attributes: i % 2 ? { delivers: true } : {},
+        // extra-1 and extra-2 have fully gluten-free kitchens (Task 27b)
+        dietary: i <= 2 ? ["gluten_free"] : [],
         hours:
           i % 2
             ? { weekly: { 1: [{ open: "09:00", close: "18:00" }] }, exceptions: [] }
@@ -75,6 +77,27 @@ describe("level-3 filters", () => {
   it("filters by delivers", async () => {
     const res = await get("/places/sakhnin/businesses?kind=barbershops&delivers=true");
     expect(slugs(res)).toEqual(["extra-1", "extra-3", "extra-5"]);
+  });
+  it("filters by a dietary fact and shows it on every summary (Task 27b)", async () => {
+    const res = await get("/places/sakhnin/businesses?kind=barbershops&dietary=gluten_free");
+    expect(slugs(res)).toEqual(["extra-1", "extra-2"]);
+    expect(res.body.items.map((b: { dietary: string[] }) => b.dietary)).toEqual([
+      ["gluten_free"],
+      ["gluten_free"],
+    ]);
+    const plain = await get("/places/sakhnin/businesses?kind=barbershops");
+    expect(plain.body.items.find((b: { slug: string }) => b.slug === "abu-salim").dietary).toEqual(
+      [],
+    );
+  });
+  it("combines dietary with open now, delivers and near me", async () => {
+    const combined = await all(
+      "/places/sakhnin/businesses?kind=barbershops&dietary=gluten_free&openNow=true&delivers=true&lat=32.8638&lng=35.38",
+    );
+    expect(combined).toEqual(["extra-1"]);
+    expect((await get("/places/sakhnin/businesses?kind=barbershops&dietary=vegan")).status).toBe(
+      400,
+    );
   });
   it("sorts by distance and reports it, nearest first", async () => {
     const res = await get("/places/sakhnin/businesses?kind=barbershops&lat=32.8638&lng=35.38");

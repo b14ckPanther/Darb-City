@@ -16,6 +16,7 @@ const row = (slug: string, tier: Candidate["row"]["tier"] = "example") => ({
   lng: 0,
   photos: [],
   hours: { weekly: {}, exceptions: [] },
+  dietary: [],
 });
 const c = (
   slug: string,

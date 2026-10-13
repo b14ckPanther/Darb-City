@@ -82,6 +82,7 @@ describe("create", () => {
       ["businesses", "business:sakhnin/fade-lab", "place:sakhnin"],
       { immediate: undefined },
     );
+    expect(res.body.dietary).toEqual([]);
     expect((await as(http().post("/admin/businesses")).send(draft())).status).toBe(409);
   });
 });
@@ -105,6 +106,25 @@ describe("edit and status", () => {
       (a) => a.action,
     );
     expect(actions).toEqual(["update", "status"]);
+  });
+
+  it("toggles a gluten-free kitchen, audited by field name only (Task 27b)", async () => {
+    const on = await as(http().patch(`/admin/businesses/${f.abuSalim.id}`)).send({
+      dietary: ["gluten_free"],
+    });
+    expect([on.status, on.body.dietary]).toEqual([200, ["gluten_free"]]);
+    const other = await as(http().patch(`/admin/businesses/${f.abuSalim.id}`)).send({
+      phone: "+972 50-111-1111",
+    });
+    expect(other.body.dietary).toEqual(["gluten_free"]); // untouched by a patch without it
+    const off = await as(http().patch(`/admin/businesses/${f.abuSalim.id}`)).send({ dietary: [] });
+    expect(off.body.dietary).toEqual([]);
+    const audits = await prisma.auditLog.findMany({ orderBy: { at: "asc" } });
+    expect(audits.map((a) => a.fields)).toEqual([["dietary"], ["phone"], ["dietary"]]);
+    const bad = await as(http().patch(`/admin/businesses/${f.abuSalim.id}`)).send({
+      dietary: ["gluten_option"],
+    });
+    expect(bad.status).toBe(400);
   });
 
   it("re-validates the stored experience when the primary kind changes", async () => {

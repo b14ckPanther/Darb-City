@@ -66,6 +66,7 @@ it("filters in SQL with a point rounded again here, never cached", async () => {
     kind: "restaurants",
     open: true,
     delivers: false,
+    glutenFree: true,
     near: { lat: 32.864499, lng: 35.30111 },
   });
   expect(res.status).toBe(200);
@@ -76,6 +77,7 @@ it("filters in SQL with a point rounded again here, never cached", async () => {
     cursor: undefined,
     open: true,
     delivers: false,
+    dietary: "gluten_free",
     near: { lat: 32.864, lng: 35.301 },
   });
 });

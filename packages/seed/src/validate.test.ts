@@ -1,4 +1,12 @@
-import { hasText, isReservedSlug, isSlug, LOCALES, TEMPLATES, type Localized } from "@darb/core";
+import {
+  DIETARY,
+  hasText,
+  isReservedSlug,
+  isSlug,
+  LOCALES,
+  TEMPLATES,
+  type Localized,
+} from "@darb/core";
 import { Ajv } from "ajv";
 import { describe, expect, it } from "vitest";
 import {
@@ -234,6 +242,13 @@ describe("showroom businesses", () => {
       for (const k of b.kinds) expect(kindSlugs.has(k), k).toBe(true);
       if (b.brand) expect(brandSlugs.has(b.brand), b.brand).toBe(true);
       expect(validate(b.experience), `${b.place}/${b.slug}`).toBe(true);
+    }
+  });
+  it("only use known dietary facts, never repeated (Task 27b)", () => {
+    for (const b of businesses) {
+      const dietary = b.dietary ?? [];
+      for (const d of dietary) expect(DIETARY, `${b.place}/${b.slug}`).toContain(d);
+      expect(new Set(dietary).size).toBe(dietary.length);
     }
   });
   it("have slugs unique within their place", () => {

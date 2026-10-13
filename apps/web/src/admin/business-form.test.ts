@@ -68,12 +68,19 @@ it("compares a saved business the way the form reads it", () => {
     primaryKindId: "p",
     kindIds: ["p", "b", "a"],
     attributes: { parking: true },
+    dietary: ["gluten_free" as const],
     hours: { weekly: { "0": [{ open: "12:00", close: "23:00" }], "3": [] }, exceptions: [] },
   };
   expect(comparable(saved)).toEqual({
     primaryKindId: "p",
     kindIds: ["a", "b"],
     attributes: { parking: true, delivers: false },
+    dietary: ["gluten_free"],
     hours: { weekly: { "0": [{ open: "12:00", close: "23:00" }] }, exceptions: [] },
   });
+});
+
+it("reads the gluten-free kitchen toggle into the dietary set (Task 27b)", () => {
+  expect(businessFromForm(form({ glutenFree: "on" })).data.dietary).toEqual(["gluten_free"]);
+  expect(businessFromForm(form()).data.dietary).toEqual([]);
 });

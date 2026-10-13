@@ -2,6 +2,7 @@ import { initContract } from "@ts-rest/core";
 import { z } from "zod";
 import {
   BadRequestSchema,
+  DietarySchema,
   BusinessDetailSchema,
   BusinessPageSchema,
   DensitySchema,
@@ -74,6 +75,8 @@ export const contract = c.router({
             .enum(["true", "false"])
             .transform((v) => v === "true")
             .optional(),
+          /** Only businesses with this whole-business dietary fact (dietary=gluten_free). */
+          dietary: DietarySchema.optional(),
           /** With lng: sort by distance from this point. Used once, never stored or logged. */
           lat: coordinate(-90, 90).optional(),
           lng: coordinate(-180, 180).optional(),

@@ -26,6 +26,7 @@ export function toBusinessSummary(row: Business, placeSlug: string, now: Date): 
     photo: photos[0]?.key ?? null,
     openNow: openNow(row.hours as unknown as Hours, now),
     hours: row.hours as unknown as BusinessSummaryDto["hours"],
+    dietary: row.dietary,
   };
 }
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { BusinessRowData } from "@/lib/rows";
-import { ExampleBadge } from "./Badges";
+import { ExampleBadge, GlutenFreeBadge } from "./Badges";
 import { LiveOpenState } from "./LiveOpenState";
 import styles from "./List.module.css";
 
@@ -8,6 +8,7 @@ export interface RowLabels {
   example: string;
   openNow: string;
   closed: string;
+  glutenFree: string;
 }
 
 /** Pure: rendered by the server list and by ShowMore on the client. */
@@ -42,6 +43,7 @@ export function BusinessRow({
             </span>
           ) : null}
           {row.example ? <ExampleBadge label={labels.example} /> : null}
+          {row.glutenFree ? <GlutenFreeBadge label={labels.glutenFree} /> : null}
           <LiveOpenState
             openNow={row.openNow}
             hours={row.hours}

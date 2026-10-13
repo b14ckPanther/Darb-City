@@ -6,6 +6,7 @@ export const en = {
   openNow: "Open now",
   closed: "Closed",
   delivers: "Delivers",
+  glutenFree: "Gluten-free",
   example: "Example",
   forBusiness: "For businesses",
   noneHereYet: "None in {place} yet",

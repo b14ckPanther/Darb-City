@@ -19,6 +19,8 @@ export interface BusinessRowData {
   lng: number;
   /** Shown on distance-sorted lists ("1.3 km"). */
   distance: string | null;
+  /** A fully gluten-free kitchen (Task 27b): the row shows a badge. */
+  glutenFree: boolean;
 }
 
 export interface RowContext {
@@ -65,6 +67,7 @@ export function toBusinessRow(b: BusinessSummaryDto, ctx: RowContext): BusinessR
     lat: b.lat,
     lng: b.lng,
     distance: b.distanceKm !== undefined && ctx.kmLabel ? ctx.kmLabel(b.distanceKm) : null,
+    glutenFree: b.dietary.includes("gluten_free"),
   };
 }
 
