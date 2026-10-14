@@ -153,16 +153,22 @@ export async function getBusinesses(
     ...(options.open ? { openNow: "true" as const } : {}),
     ...(options.delivers ? { delivers: "true" as const } : {}),
     ...(options.dietary ? { dietary: options.dietary } : {}),
-    ...(options.near ? { lat: options.near.lat, lng: options.near.lng } : {}),
   };
+  const near = options.near;
+  // A person's position goes in a POST body, never in the URL (spec §5.4), and is never cached.
   const res = await call(() =>
-    client().businesses.list({
-      params: { placeSlug },
-      query,
-      fetchOptions: fetchOptions(
-        options.near ? "no-store" : cached(REVALIDATE.lists, tags.businesses),
-      ),
-    }),
+    near
+      ? client().businesses.listNear({
+          params: { placeSlug },
+          query,
+          body: { lat: near.lat, lng: near.lng },
+          fetchOptions: { cache: "no-store" },
+        })
+      : client().businesses.list({
+          params: { placeSlug },
+          query,
+          fetchOptions: fetchOptions(cached(REVALIDATE.lists, tags.businesses)),
+        }),
   );
   if (res.status === 400) throw new ApiBadRequestError(res.body);
   return res.status === 200 ? res.body : null;
@@ -195,7 +201,9 @@ export async function getNearestPlacesWithKind(
   const res = await call(() =>
     client().businesses.nearestPlaces({
       params: { kindSlug },
-      query: { lat, lng, limit },
+      // POST: the point stays out of the URL. "cached" is only ever a place's own public point;
+      // Next's data cache keys a POST on a hash of its body, so nothing logs the coordinates.
+      body: { lat, lng, limit },
       fetchOptions: fetchOptions(
         cache === "no-store" ? "no-store" : cached(REVALIDATE.lists, tags.businesses),
       ),
@@ -204,7 +212,10 @@ export async function getNearestPlacesWithKind(
   return res.status === 200 ? res.body : null;
 }
 
-/** "no-store" for a person's live position (never cached); "cached" for a place's own point. */
+/**
+ * "no-store" for a person's live position (never cached); "cached" for a place's own public point.
+ * Either way the point travels in a POST body, never in the URL (spec §5.4).
+ */
 export async function getNearestPlace(
   lat: number,
   lng: number,
@@ -212,7 +223,7 @@ export async function getNearestPlace(
 ): Promise<PlaceDto | null> {
   const res = await call(() =>
     client().places.nearest({
-      query: { lat, lng },
+      body: { lat, lng },
       fetchOptions: fetchOptions(
         cache === "no-store" ? "no-store" : cached(REVALIDATE.taxonomy, tags.places),
       ),

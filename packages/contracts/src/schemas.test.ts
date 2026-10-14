@@ -101,15 +101,42 @@ describe("BusinessPageSchema", () => {
 });
 
 describe("coordinates", () => {
-  const query = contract.places.nearest.query;
-  it("accept numbers and numeric strings", () => {
-    expect(query.parse({ lat: "32.85", lng: 35.2 })).toEqual({ lat: 32.85, lng: 35.2 });
+  const body = contract.places.nearest.body;
+  it("accept JSON numbers in range", () => {
+    expect(body.parse({ lat: 32.85, lng: 35.2 })).toEqual({ lat: 32.85, lng: 35.2 });
   });
-  it("reject blank, non-numeric and out-of-range values", () => {
-    expect(query.safeParse({ lat: "", lng: "35" }).success).toBe(false);
-    expect(query.safeParse({ lat: "  ", lng: "35" }).success).toBe(false);
-    expect(query.safeParse({ lat: "abc", lng: "35" }).success).toBe(false);
-    expect(query.safeParse({ lat: "91", lng: "35" }).success).toBe(false);
+  it("reject strings, missing and out-of-range values", () => {
+    expect(body.safeParse({ lat: "", lng: 35 }).success).toBe(false);
+    expect(body.safeParse({ lat: "32.8", lng: 35 }).success).toBe(false);
+    expect(body.safeParse({ lng: 35 }).success).toBe(false);
+    expect(body.safeParse({ lat: 91, lng: 35 }).success).toBe(false);
+  });
+});
+
+/** Every route of a ts-rest router, flattened. */
+const routes = (router: object): { method: string; path: string; query?: unknown }[] =>
+  Object.values(router).flatMap((r: { method?: string }) =>
+    typeof r.method === "string" ? [r as never] : routes(r),
+  );
+
+describe("visitor coordinates never travel in a URL (spec §5.4)", () => {
+  it("no route takes lat, lng or near in its query string", () => {
+    const all = routes(contract);
+    expect(all.length).toBeGreaterThan(10);
+    for (const route of all) {
+      // A refined object (ZodEffects) keeps its shape one level down.
+      type Q = { shape?: Record<string, unknown>; _def?: { schema?: Q } } | undefined;
+      const query = route.query as Q;
+      const shape = query?.shape ?? query?._def?.schema?.shape ?? {};
+      for (const key of ["lat", "lng", "near"])
+        expect(shape, `${route.method} ${route.path} takes ${key}`).not.toHaveProperty(key);
+    }
+  });
+  it("the three coordinate routes are POSTs with the point in the body", () => {
+    expect(contract.places.nearest.method).toBe("POST");
+    expect(contract.businesses.nearestPlaces.method).toBe("POST");
+    expect(contract.businesses.listNear.method).toBe("POST");
+    expect(contract.businesses.list.query.safeParse({ lat: 32.8 }).data).not.toHaveProperty("lat");
   });
 });
 

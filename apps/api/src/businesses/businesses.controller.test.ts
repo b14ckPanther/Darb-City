@@ -141,9 +141,11 @@ describe("GET /places/:placeSlug/kind-counts", () => {
   });
 });
 
-describe("GET /kinds/:kindSlug/nearest-places", () => {
+describe("POST /kinds/:kindSlug/nearest-places", () => {
+  const nearest = (kind: string, body: object) =>
+    request(app.getHttpServer()).post(`/kinds/${kind}/nearest-places`).send(body);
   it("orders live places that have the kind by distance", async () => {
-    const res = await get("/kinds/barbershops/nearest-places?lat=32.853&lng=35.198");
+    const res = await nearest("barbershops", { lat: 32.853, lng: 35.198 });
     expect(res.status).toBe(200);
     expect(res.body.map((p: { slug: string }) => p.slug)).toEqual(["tamra", "sakhnin"]);
     expect(res.body.map((p: { count: number }) => p.count)).toEqual([1, 2]);
@@ -152,15 +154,19 @@ describe("GET /kinds/:kindSlug/nearest-places", () => {
     expect(res.body[1].distanceKm).toBeLessThan(11);
   });
   it("respects the limit and includes sub-kinds only where they exist", async () => {
-    const one = await get("/kinds/barbershops/nearest-places?lat=32.86&lng=35.3&limit=1");
+    const one = await nearest("barbershops", { lat: 32.86, lng: 35.3, limit: 1 });
     expect(one.body.map((p: { slug: string }) => p.slug)).toEqual(["sakhnin"]);
-    const kids = await get("/kinds/kids-haircuts/nearest-places?lat=32.853&lng=35.198");
+    const kids = await nearest("kids-haircuts", { lat: 32.853, lng: 35.198 });
     expect(kids.body.map((p: { slug: string }) => p.slug)).toEqual(["sakhnin"]);
   });
-  it("404s for unknown and hidden kinds, 400s for blank coordinates", async () => {
-    expect((await get("/kinds/nope/nearest-places?lat=32&lng=35")).status).toBe(404);
-    expect((await get("/kinds/hidden-kind/nearest-places?lat=32&lng=35")).status).toBe(404);
-    expect((await get("/kinds/barbershops/nearest-places?lat=&lng=35")).status).toBe(400);
+  it("404s for unknown and hidden kinds, 400s for blank or missing coordinates", async () => {
+    expect((await nearest("nope", { lat: 32, lng: 35 })).status).toBe(404);
+    expect((await nearest("hidden-kind", { lat: 32, lng: 35 })).status).toBe(404);
+    expect((await nearest("barbershops", { lat: "", lng: 35 })).status).toBe(400);
+    expect((await nearest("barbershops", { lng: 35 })).status).toBe(400);
+  });
+  it("no longer answers a GET with coordinates in the URL", async () => {
+    expect((await get("/kinds/barbershops/nearest-places?lat=32&lng=35")).status).toBe(404);
   });
 });
 
