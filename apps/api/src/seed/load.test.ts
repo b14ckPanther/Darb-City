@@ -280,7 +280,6 @@ it("writes a client's contact details and app links", async () => {
     whatsapp: null,
     website: "https://client.darb.co.il",
     apps: { web: "https://client.darb.co.il" },
-    pinApproximate: true,
   };
   await loadSeed(prisma, { ...data, businesses: [...data.businesses, client] });
   const row = await prisma.business.findFirstOrThrow({ where: { slug: "client" } });

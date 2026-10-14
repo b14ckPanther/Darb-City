@@ -50,9 +50,8 @@
         "ar": "ساحة الصيادين (فينيسيا)، ميناء عكا القديمة",
         "en": "Fishermen's Square (Venezia), Akko old port"
       },
-      "lat": 32.9281731,
-      "lng": 35.0756378,
-      "pinApproximate": true,
+      "lat": 32.9204758,
+      "lng": 35.0695751,
       "hours": {
         "weekly": {
           "0": [
@@ -362,8 +361,8 @@
         "ar": "طريق دشانيم 18، كريات آتا (المدخل الغربي)",
         "en": "18 Derech Deshanim, Kiryat Ata (western entrance)"
       },
-      "lat": 32.8115853,
-      "lng": 35.1163747,
+      "lat": 32.8046802,
+      "lng": 35.075422,
       "hours": {
         "weekly": {
           "0": [
@@ -471,8 +470,7 @@
       "phone": "+972 54-323-3662",
       "whatsapp": null,
       "website": null,
-      "apps": {},
-      "pinApproximate": true
+      "apps": {}
     },
     {
       "slug": "paz-kiryat-motzkin",
@@ -576,7 +574,7 @@
               "en": "Big Yellow market"
             },
             "meta": {
-              "he": "סגורה ביום כיפור",
+              "he": "סגור ביום כיפור",
               "ar": "مغلق في يوم الغفران (كيبور)",
               "en": "Closed on Yom Kippur"
             }

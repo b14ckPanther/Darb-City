@@ -108,12 +108,15 @@ describe("real clients", () => {
     ]);
     expect(bySlug("paz-kiryat-motzkin").name.he).toBe("פז כורדני");
 
-    // Pins taken from the town's centre until the owner places them in admin.
-    const approximate = clients.businesses.filter((b) => b.pinApproximate).map((b) => b.slug);
-    expect(approximate.sort()).toEqual(["caramel", "paz-kiryat-ata"]);
-    for (const slug of approximate) {
+    // Exact pins supplied by the owner (Waze), 2026-10-14.
+    const exact = {
+      "paz-kiryat-ata": [32.8046802, 35.075422],
+      caramel: [32.9204758, 35.0695751],
+    } as const;
+    for (const [slug, [lat, lng]] of Object.entries(exact)) {
       const b = bySlug(slug);
-      expect([b.lat, b.lng]).toEqual([places.get(b.place)!.lat, places.get(b.place)!.lng]);
+      expect([b.lat, b.lng]).toEqual([lat, lng]);
+      expect(km(places.get(b.place)!, b)).toBeLessThan(15);
     }
   });
 

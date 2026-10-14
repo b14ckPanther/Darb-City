@@ -70,7 +70,6 @@ export interface SeedBusiness {
    * Ledger note, never written to the database: the pin is the town's centre because the exact
    * spot was not given yet. The owner moves it in /admin (Task 28).
    */
-  pinApproximate?: boolean;
 }
 
 /** Stored shape in businesses.json: the screen is attached by loadShowroom(). */
