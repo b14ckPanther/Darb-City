@@ -7,6 +7,7 @@ import {
   type ExecutionContext,
 } from "@nestjs/common";
 import { APP_CONFIG, type AppConfig } from "../config.js";
+import { Prisma } from "../generated/prisma/client.js";
 import { PrismaService } from "../prisma/prisma.service.js";
 import { TOKEN_VERIFIER, type TokenVerifier } from "./token-verifier.js";
 
@@ -44,13 +45,27 @@ export class AdminGuard implements CanActivate {
       claims.email !== null &&
       claims.emailVerified &&
       this.config.auth.adminEmails.includes(claims.email);
-    const user = await this.prisma.user.upsert({
-      where: { clerkUserId: claims.sub },
-      create: { clerkUserId: claims.sub, isAdmin: allowlisted },
-      update: {},
-    });
+    const user = await this.userFor(claims.sub, allowlisted);
     if (!user.isAdmin) throw new ForbiddenException("This account is not a Darb admin");
     req.admin = { userId: user.id, clerkUserId: user.clerkUserId };
     return true;
+  }
+
+  /**
+   * The User row, created at first sight. Concurrent first requests (parallel page fetches right
+   * after sign-in) race on the clerkUserId key: the losers re-read the winner's row instead of 500ing.
+   */
+  private async userFor(clerkUserId: string, allowlisted: boolean) {
+    try {
+      return await this.prisma.user.upsert({
+        where: { clerkUserId },
+        create: { clerkUserId, isAdmin: allowlisted },
+        update: {},
+      });
+    } catch (err) {
+      if (err instanceof Prisma.PrismaClientKnownRequestError && err.code === "P2002")
+        return this.prisma.user.findUniqueOrThrow({ where: { clerkUserId } });
+      throw err;
+    }
   }
 }

@@ -61,3 +61,19 @@ it("does not promote an existing user later added to the allowlist; the CLI does
   await grantAdmin(prisma, "user_c", false);
   await expect(guard.canActivate(c())).rejects.toBeInstanceOf(ForbiddenException);
 });
+
+it("admits concurrent first requests for the same new user (no unique-key race)", async () => {
+  // Each round is a new Clerk user whose first requests arrive together (e.g. parallel admin
+  // page fetches right after sign-in): all of them must pass, and only one row may exist.
+  for (let round = 0; round < 20; round++) {
+    const c = () => ctx(`Bearer fake.user_race${round}.admin@darb.test`).ctx;
+    const results = await Promise.allSettled([c(), c(), c(), c()].map((x) => guard.canActivate(x)));
+    expect(results.map((r) => r.status)).toEqual([
+      "fulfilled",
+      "fulfilled",
+      "fulfilled",
+      "fulfilled",
+    ]);
+    expect(await prisma.user.count({ where: { clerkUserId: `user_race${round}` } })).toBe(1);
+  }
+});
