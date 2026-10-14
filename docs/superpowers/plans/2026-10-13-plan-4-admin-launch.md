@@ -9263,6 +9263,7 @@ Tick each box. Store every secret only in the provider and in GitHub Environment
 ## 2. Railway (API + Redis, EU)
 - [ ] railway.com → New project `darb-city`, region **EU West (Amsterdam)**. Create environments `production` and `staging`.
 - [ ] In each environment: **+ New → Database → Redis**.
+- [ ] **Before the first Railway deploy:** pin the base image. In `apps/api/Dockerfile` replace both `sha256:REPLACE_WITH_PRINTED_DIGEST` (the build stage and the runtime stage) with the digest printed by `docker buildx imagetools inspect node:22.23.3-bookworm-slim --format '{{json .Manifest.Digest}}'` (or `docker pull node:22.23.3-bookworm-slim` then `docker inspect --format '{{index .RepoDigests 0}}' node:22.23.3-bookworm-slim`). Commit that change; the Railway build fails until it is done.
 - [ ] **+ New → GitHub repo** `b14ckPanther/Darb-City`. Service name `api`. Settings → Build: Dockerfile path `apps/api/Dockerfile`, root `/`. Watch paths: `apps/api/**`, `packages/**`, `pnpm-lock.yaml`.
 - [ ] Settings → Deploy: **Pre-deploy command** `pnpm --filter @darb/api exec prisma migrate deploy`; healthcheck path `/health`; restart policy On failure; replicas 1.
 - [ ] Settings → Source: branch `main`, **Wait for CI** on, for both environments.
@@ -9285,7 +9286,7 @@ Tick each box. Store every secret only in the provider and in GitHub Environment
 - [ ] Configure → Restrictions: Access mode **Invite-only** (the Allowlist needs Clerk Pro and is not used). Invite `founder@darb.co.il` and `nmcryptoinvest@gmail.com`. Done on the Development instance 2026-10-14 (`docs/launch/accounts.md`).
 - [ ] Sessions → Customize session token → Claims: `{"email": "{{user.primary_email_address}}", "email_verified": "{{user.email_verified}}"}`. If Clerk rejects `email_verified`, keep only `email` and grant yourself with `admin:grant`. The API then never auto-grants, which is the safe side.
 - [ ] Development instance: copy `pk_test_…`, `sk_test_…` and the JWT public key (API keys → Show JWT public key) into staging and preview.
-- [ ] Production instance: domain `darb.co.il`. Add the DNS records Clerk lists (for example `clerk.darb.co.il`). Copy `pk_live_…`, `sk_live_…` and the PEM into production. Set Invite-only and the same session token claims there, and re-invite both admins (invitations do not carry over).
+- [ ] Production instance: domain `darb.co.il`. Add the DNS records Clerk lists (for example `clerk.darb.co.il`) in Cloudflare as **DNS only** (grey cloud, not proxied). Copy `pk_live_…`, `sk_live_…` and the PEM into production. Set Invite-only and the same session token claims there, and re-invite both admins (invitations do not carry over).
 
 ## 5. Vercel (web)
 - [ ] vercel.com → Add New → Project → import `b14ckPanther/Darb-City`. Root directory `apps/web`, framework Next.js, Node 22. The project is named `darb-city` (the old site's project stays untouched).

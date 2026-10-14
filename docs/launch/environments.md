@@ -45,6 +45,59 @@ Values never live in the repo. "secret" means a random value of at least 32 char
 
 Never set `ADMIN_FAKE_AUTH` or `NEXT_PUBLIC_LOCAL_TILES` on Vercel.
 
+## Complete reference: every variable the code reads
+
+The tables above show what to set per environment. This list is every variable read by `apps/api/src/config.ts` and `apps/web/src`, so nothing is missed. No values appear here.
+
+### API (`apps/api/src/config.ts`)
+
+Required in production (startup fails without them): `DATABASE_URL`; `SEARCH_PROXY_KEY` (secret, at least 32 characters, never the `.env.example` value); `IP_HASH_SALT` (secret, at least 32 characters); `CLERK_AUTHORIZED_PARTIES` (when `AUTH_VERIFIER` is `clerk`); `CLERK_SECRET_KEY` or `CLERK_JWT_KEY` (when `AUTH_VERIFIER` is `clerk`); `REVALIDATE_SECRET` (at least 32 characters, whenever `REVALIDATE_URL` is set, which must be `https`); `ANTHROPIC_API_KEY` when `INTENT_PROVIDER=anthropic`; `VOYAGE_API_KEY` when `EMBEDDING_PROVIDER=voyage`. `AUTH_VERIFIER=fake` is refused in production.
+
+| Variable | Default | Notes |
+|---|---|---|
+| `PORT` | 4000 | Railway sets it. |
+| `WEB_ORIGIN` | `http://localhost:3000` | Set to the web origin (CORS). |
+| `REDIS_URL` | `redis://localhost:6380` | Set in production. |
+| `TRUST_PROXY` | 0 | Number of proxy hops, 0 to 5. Set 1 on Railway. |
+| `SEARCH_RATE_LIMIT` | 30 | Search requests per minute per visitor. |
+| `SEARCH_RESULTS_RATE_LIMIT` | 120 | Results requests per minute per visitor. |
+| `SEARCH_CLICK_RATE_LIMIT` | 120 | Click events per minute per visitor. |
+| `SUGGEST_RATE_LIMIT` | 240 | Suggest requests per minute per visitor. |
+| `INTENT_PROVIDER` | unset, derived | `anthropic`, `recorded` or `off`. Anthropic when a key is set. |
+| `INTENT_MODEL` | `claude-haiku-5-5` | |
+| `INTENT_TIMEOUT_MS` | 1500 | 100 to 10000. Model call timeout before falling back. |
+| `INTENT_NEGATIVE_CACHE_SECONDS` | 3600 | How long a failed intent is remembered. |
+| `EMBEDDING_PROVIDER` | unset, derived | `voyage` or `hash`. |
+| `EMBEDDING_MODEL` | `voyage-4-lite` | 512 dimensions. |
+| `MODEL_CALLS_PER_MINUTE` | 60 | Cost ceiling. 0 stops model calls. |
+| `MODEL_CALLS_PER_DAY` | 5000 | Cost ceiling. |
+| `SEARCH_INDEX_WORKER` | on | `true`, `1` or `0`. Run the index worker in this process. |
+| `SEARCH_LOG_RETENTION_DAYS` | 90 | 7 to 365. |
+| `SEARCH_REPORT_KEY` | unset | Optional secret. Unlocks `GET /search/report` for the admin; unset, the route answers 404. Set it in production to use the search report. |
+| `AUTH_VERIFIER` | `clerk` when a Clerk key is set | `clerk`, `fake` (tests only) or `off`. |
+| `ADMIN_EMAILS` | unset | Comma-separated, lower-cased. |
+| `REVALIDATE_URL` | unset | Unset turns web revalidation off. |
+| `NODE_ENV` | unset | `production` switches on the checks above. |
+| `MIGRATE_DATABASE_URL` | unset | Direct Neon URL, read by the pre-deploy migration and the `Seed and reindex` workflow, not by the app. |
+| `SEARCH_RECORDINGS` | `test/search-quality/cases.json` | Tests and CI only (recorded intent). Never set in production. |
+
+### Web (`apps/web/src`, `next.config.ts`)
+
+Required in production (the web build fails without them): `API_URL`; `SEARCH_PROXY_KEY` (same value as the API, at least 32 characters); `REVALIDATE_SECRET` (same value as the API, at least 32 characters); `SITE_URL` outside Vercel (on Vercel `VERCEL_URL` is used when unset).
+
+| Variable | Default | Notes |
+|---|---|---|
+| `NEXT_PUBLIC_MAP_TILES_URL` | unset | Build time. Public PMTiles URL; required for the map in production. |
+| `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` | unset | Needed with `CLERK_SECRET_KEY` for admin sign-in. |
+| `CLERK_SECRET_KEY` | unset | Server only. |
+| `SITE_INDEXABLE` | unset | `1` lets a self-hosted production site be indexed. Vercel indexes only `VERCEL_ENV=production`. |
+| `MAP_TILES_DIR` | `.tiles` | Self-hosting and e2e only; serves `/api/tiles`. Not needed with R2. |
+| `NEXT_PUBLIC_SEARCH_INDEX_URL` | derived by `next.config.ts` | Do not set by hand. |
+| `NEXT_PUBLIC_LOCAL_TILES`, `ADMIN_FAKE_AUTH` | unset | Local development only. Never set on Vercel. |
+| `VERCEL`, `VERCEL_ENV`, `VERCEL_URL`, `NEXT_RUNTIME`, `NODE_ENV` | | Set by Vercel and Next.js. Do not set. |
+| `VERCEL_AUTOMATION_BYPASS_SECRET` | unset | Optional. Vercel's Protection Bypass for Automation secret. Read by `apps/web/playwright.config.ts` only, to run the smoke e2e against a protected preview URL (sent as `x-vercel-protection-bypass`). Keep it in GitHub Environments or the local shell, not in the Vercel project. |
+| `WEB_API_DOWN_URL` | `http://localhost:3101` | e2e only. |
+
 ## GitHub Environments (`staging`, `production`)
 
 Secrets: `DATABASE_URL`, `MIGRATE_DATABASE_URL`, `VOYAGE_API_KEY`, `REVALIDATE_SECRET`, `SEARCH_PROXY_KEY`, `IP_HASH_SALT`. Variable: `REVALIDATE_URL`. `production` requires the owner as reviewer.

@@ -43,12 +43,13 @@ Email for `founder@darb.co.il` and the current site depend on today's records. A
 - Access mode: **Invite-only**. The Allowlist feature needs Clerk Pro, so it is **not** used; the API's own `ADMIN_EMAILS` and `User.isAdmin` are the real gate.
 - Invited: `founder@darb.co.il` and `nmcryptoinvest@gmail.com`.
 - Session token claims saved: `{"email": "{{user.primary_email_address}}", "email_verified": "{{user.email_verified}}"}`. The preview showed `email_verified` rendered as the boolean `true`, which is what the admin guard needs.
-- [ ] At cut-over: create the **Production** instance (domain `darb.co.il`, DNS records such as `clerk.darb.co.il` added in Cloudflare after the DNS move), set the same email-only sign-in, Invite-only mode and session token claims, and **re-invite both** addresses (invitations do not carry over from Development).
+- [ ] At cut-over: create the **Production** instance (domain `darb.co.il`, DNS records such as `clerk.darb.co.il` added in Cloudflare after the DNS move; every Clerk record there must be **DNS only**, the grey cloud, never proxied: Clerk verifies the CNAMEs and issues certificates itself, and the orange cloud breaks both), set the same email-only sign-in, Invite-only mode and session token claims, and **re-invite both** addresses (invitations do not carry over from Development).
 
 ## Railway (API and Redis)
 
 - Account exists, on the **trial**.
 - [ ] Create the project (environments `production` and `staging`) as in the cloud-setup checklist.
+- [ ] Before the first deploy, replace both `sha256:REPLACE_WITH_PRINTED_DIGEST` in `apps/api/Dockerfile` with the digest printed by `docker buildx imagetools inspect node:22.23.3-bookworm-slim --format '{{json .Manifest.Digest}}'`, and commit it. The Railway build fails until this is done.
 - [ ] Upgrade to the **Hobby** plan before launch (the trial ends and must not host production).
 
 ## Anthropic (smart search intent)
