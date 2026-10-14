@@ -34,7 +34,8 @@ for (const b of clients.businesses) {
       // Paz: its app is for staff only; the main button navigates to the station.
       await expect(main).toHaveAttribute("href", /google\.com\/maps\/dir/);
     }
-    await expect(page.locator("[data-example-badge]")).toHaveCount(0);
+    // The sheet is the client's; the showroom list behind it keeps its example badges.
+    await expect(page.locator("[data-sheet] [data-example-badge]")).toHaveCount(0);
     const note = page.locator("[data-built-by-darb] a");
     await expect(note).toHaveText("Built by Darb");
     await expect(note).toHaveAttribute("href", "/en/for-business");
