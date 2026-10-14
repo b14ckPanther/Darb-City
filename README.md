@@ -104,4 +104,4 @@ glyphs (SIL OFL 1.1, `apps/web/map-assets/glyphs/OFL.txt`). The map always shows
 
 ## Deploy
 
-Hosting, release flow and fallback: `docs/launch/hosting.md`. Variables per environment: `docs/launch/environments.md`. Launch and rollback: `docs/launch/runbook.md`.
+Hosting, release flow and fallback: `docs/launch/hosting.md`. Variables per environment: `docs/launch/environments.md`. Launch and rollback: `docs/launch/runbook.md`. What exists in each provider, and the careful DNS move to Cloudflare: `docs/launch/accounts.md`.

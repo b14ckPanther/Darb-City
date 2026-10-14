@@ -9255,7 +9255,7 @@ Write `docs/launch/cloud-setup.md` with this content:
 Tick each box. Store every secret only in the provider and in GitHub Environments.
 
 ## 1. Neon (database, EU)
-- [ ] console.neon.tech → New project `darb-city`, Postgres 17, region **AWS Europe Central 1 (Frankfurt)**.
+- [ ] console.neon.tech → New project `darb-city`, Postgres 17, region **AWS Europe Central 1 (Frankfurt)**. Done 2026-10-14 as project **Darb** (database `neondb`, role `neondb_owner`; `docs/launch/accounts.md`).
 - [ ] Branches: keep `main` (production) and create `staging` from `main`.
 - [ ] For each branch, copy the **pooled** connection string (`DATABASE_URL`) and the **direct** one (`MIGRATE_DATABASE_URL`).
 - [ ] SQL editor on `main`: `CREATE EXTENSION IF NOT EXISTS postgis; CREATE EXTENSION IF NOT EXISTS vector; CREATE EXTENSION IF NOT EXISTS pg_trgm;` (the migrations also create them; this confirms Neon allows them). Repeat on `staging`.
@@ -9271,9 +9271,9 @@ Tick each box. Store every secret only in the provider and in GitHub Environment
 - [ ] After the first deploy: `railway run --service api --environment production pnpm --filter @darb/api admin:grant <your Clerk user id>` (optional when `ADMIN_EMAILS` already covers you).
 
 ## 3. Cloudflare R2 (map tiles)
-- [ ] Is darb.co.il's DNS on Cloudflare? If yes, use `tiles.darb.co.il`. If not, tell the developer; staging can use the bucket's r2.dev URL, but production needs a custom domain on a Cloudflare zone.
+- [ ] Is darb.co.il's DNS on Cloudflare? If yes, use `tiles.darb.co.il`. If not, tell the developer; staging can use the bucket's r2.dev URL, but production needs a custom domain on a Cloudflare zone. (2026-10-14: no zone yet; DNS is at LiveDNS / Domain The Net and moves at cut-over with the checklist in `docs/launch/accounts.md`.)
 - [ ] `npx wrangler@4.143.0 login`
-- [ ] `npx wrangler@4.143.0 r2 bucket create darb-tiles --location eeur`
+- [ ] `npx wrangler@4.143.0 r2 bucket create darb-tiles --location eeur` (done in the dashboard 2026-10-14: Automatic location, Eastern Europe, Standard, public access off)
 - [ ] `npx wrangler@4.143.0 r2 bucket cors set darb-tiles --file infra/r2/tiles-cors.json`
 - [ ] `pnpm --filter @darb/web tiles:israel` (it prints the build date, for example `20261001`)
 - [ ] `npx wrangler@4.143.0 r2 object put darb-tiles/israel-<build>.pmtiles --file apps/web/.tiles/israel.pmtiles --remote --content-type application/octet-stream --cache-control "public, max-age=31536000, immutable"`
@@ -9282,10 +9282,10 @@ Tick each box. Store every secret only in the provider and in GitHub Environment
 
 ## 4. Clerk (admin sign-in only)
 - [ ] dashboard.clerk.com → Create application **Darb admin**, with Email only (no social).
-- [ ] Configure → Restrictions: **Sign-up mode Restricted**; Allowlist `founder@darb.co.il`.
+- [ ] Configure → Restrictions: Access mode **Invite-only** (the Allowlist needs Clerk Pro and is not used). Invite `founder@darb.co.il` and `nmcryptoinvest@gmail.com`. Done on the Development instance 2026-10-14 (`docs/launch/accounts.md`).
 - [ ] Sessions → Customize session token → Claims: `{"email": "{{user.primary_email_address}}", "email_verified": "{{user.email_verified}}"}`. If Clerk rejects `email_verified`, keep only `email` and grant yourself with `admin:grant`. The API then never auto-grants, which is the safe side.
 - [ ] Development instance: copy `pk_test_…`, `sk_test_…` and the JWT public key (API keys → Show JWT public key) into staging and preview.
-- [ ] Production instance: domain `darb.co.il`. Add the DNS records Clerk lists (for example `clerk.darb.co.il`). Copy `pk_live_…`, `sk_live_…` and the PEM into production.
+- [ ] Production instance: domain `darb.co.il`. Add the DNS records Clerk lists (for example `clerk.darb.co.il`). Copy `pk_live_…`, `sk_live_…` and the PEM into production. Set Invite-only and the same session token claims there, and re-invite both admins (invitations do not carry over).
 
 ## 5. Vercel (web)
 - [ ] vercel.com → Add New → Project → import `b14ckPanther/Darb-City`. Root directory `apps/web`, framework Next.js, Node 22. The project is named `darb-city` (the old site's project stays untouched).
@@ -9299,7 +9299,7 @@ Tick each box. Store every secret only in the provider and in GitHub Environment
 - [ ] Settings → Branches → protect `main`: require a PR, require the `CI` check, and no force pushes.
 
 ## 7. Model keys (after Tasks 5–11 are merged)
-- [ ] Anthropic console → API key for `darb-api-production` → Railway production `ANTHROPIC_API_KEY`. Set a monthly spend limit of $20 in the console.
+- [ ] Anthropic console → API key `darb-prod` → Railway production `ANTHROPIC_API_KEY`. Monthly spend limit $50, auto-reload off (set 2026-10-14).
 - [ ] Voyage AI → API key → Railway production `VOYAGE_API_KEY` and the GitHub `production` secret.
 - [ ] Confirm the embedding size. Paste the key only in your terminal:
       `curl -s https://api.voyageai.com/v1/embeddings -H "Authorization: Bearer $VOYAGE_API_KEY" -H "content-type: application/json" -d '{"input":["test"],"model":"voyage-4-lite","output_dimension":512}' | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>console.log(JSON.parse(s).data[0].embedding.length))'` must print `512`.
