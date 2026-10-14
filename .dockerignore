@@ -1,0 +1,12 @@
+**/node_modules
+**/.next
+**/dist
+**/.turbo
+apps/web/.tiles
+apps/web/test-results
+apps/web/playwright-report
+apps/web/.screens
+**/.env
+**/.env.*
+!**/.env.example
+.git

@@ -101,3 +101,7 @@ Licences and attribution: map data © OpenStreetMap contributors (ODbL), tiles a
 Protomaps (BSD-3-Clause), MapLibre GL JS, pmtiles and go-pmtiles (BSD-3-Clause), and Noto Sans
 glyphs (SIL OFL 1.1, `apps/web/map-assets/glyphs/OFL.txt`). The map always shows
 "Map data: © OpenStreetMap · Protomaps".
+
+## Deploy
+
+Hosting, release flow and fallback: `docs/launch/hosting.md`. Variables per environment: `docs/launch/environments.md`. Launch and rollback: `docs/launch/runbook.md`.

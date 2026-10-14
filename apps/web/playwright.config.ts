@@ -33,7 +33,18 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0,
   workers: process.env.CI ? 2 : undefined,
   reporter: process.env.CI ? [["list"], ["html", { open: "never" }]] : "list",
-  use: { baseURL: WEB, trace: "retain-on-failure" },
+  use: {
+    baseURL: WEB,
+    trace: "retain-on-failure",
+    // Vercel previews are protected; the owner's bypass secret lets e2e reach them (never in CI logs).
+    ...(process.env.VERCEL_AUTOMATION_BYPASS_SECRET
+      ? {
+          extraHTTPHeaders: {
+            "x-vercel-protection-bypass": process.env.VERCEL_AUTOMATION_BYPASS_SECRET,
+          },
+        }
+      : {}),
+  },
   projects: [
     {
       name: "phone",
