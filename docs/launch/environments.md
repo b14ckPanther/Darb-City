@@ -87,7 +87,7 @@ Required in production (startup fails without them): `DATABASE_URL`; `SEARCH_PRO
 
 ### Web (`apps/web/src`, `next.config.ts`)
 
-Required in production (the web build fails without them): `API_URL`; `SEARCH_PROXY_KEY` (same value as the API, at least 32 characters); `REVALIDATE_SECRET` (same value as the API, at least 32 characters); `SITE_URL` outside Vercel (on Vercel `VERCEL_URL` is used when unset).
+Required in production (the web server refuses to start without them; `assertServerEnv` runs from `instrumentation.ts` at server start, not at build time, so a deployment missing one still builds and then answers 500; open the deployment before promoting it, and roll back if it fails): `API_URL`; `SEARCH_PROXY_KEY` (same value as the API, at least 32 characters); `REVALIDATE_SECRET` (same value as the API, at least 32 characters); `SITE_URL` outside Vercel (on Vercel `VERCEL_URL` is used when unset).
 
 | Variable | Default | Notes |
 |---|---|---|

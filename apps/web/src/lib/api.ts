@@ -314,7 +314,10 @@ export async function getInstantIndex(): Promise<InstantIndexDto> {
   return res.body;
 }
 
-/** Real businesses for the sitemap; an unreachable API gives an empty list (never a failed sitemap). */
+/**
+ * Real businesses for the sitemap. An unreachable API throws ApiUnavailableError (the sitemap
+ * fails rather than publishing an empty list); only a non-200 answer gives [].
+ */
 export async function getSitemapBusinesses(): Promise<SitemapBusinessDto[]> {
   const res = await call(() =>
     client().sitemap.businesses({
