@@ -1,5 +1,5 @@
 # Darb API (Railway). Build from the repo root: docker build -f apps/api/Dockerfile .
-FROM node:22.23.3-bookworm-slim@sha256:REPLACE_WITH_PRINTED_DIGEST AS build
+FROM node:22.23.3-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392 AS build
 WORKDIR /app
 # openssl before install: Prisma picks its schema engine by the OpenSSL it finds (3.x, as at runtime).
 RUN corepack enable && apt-get update && apt-get install -y --no-install-recommends ca-certificates openssl && rm -rf /var/lib/apt/lists/*
@@ -7,7 +7,7 @@ COPY . .
 RUN pnpm install --frozen-lockfile
 RUN pnpm exec turbo run build --filter=@darb/api
 
-FROM node:22.23.3-bookworm-slim@sha256:REPLACE_WITH_PRINTED_DIGEST
+FROM node:22.23.3-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392
 WORKDIR /app
 RUN corepack enable && apt-get update && apt-get install -y --no-install-recommends ca-certificates openssl && rm -rf /var/lib/apt/lists/*
 ENV NODE_ENV=production
