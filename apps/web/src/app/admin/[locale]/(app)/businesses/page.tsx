@@ -7,6 +7,7 @@ import { OwnerBadge, StatusBadge } from "@/admin/Badges";
 import { at } from "@/admin/copy";
 import { one, withParams, type SearchParams } from "@/admin/params";
 import { adminHref } from "@/admin/routes";
+import { TakedownWarning } from "@/admin/TakedownWarning";
 import { Pager, Toolbar } from "@/admin/Toolbar";
 import { isLocale } from "@/lib/locale";
 import styles from "@/admin/admin.module.css";
@@ -23,6 +24,8 @@ export default async function BusinessesPage({
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const sp = await searchParams;
+  // After a delete the web did not confirm: the deleted business's id, for its Retry.
+  const stale = one(sp.stale);
   const filters = {
     q: one(sp.q),
     status: one(sp.status),
@@ -42,6 +45,7 @@ export default async function BusinessesPage({
           {at(locale, "newBusiness")}
         </Link>
       </div>
+      {stale ? <TakedownWarning locale={locale} entity="business" id={stale} back="list" /> : null}
       <Toolbar
         locale={locale}
         action={base}

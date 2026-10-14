@@ -71,6 +71,7 @@ it("hiding an active kind is an immediate takedown", async () => {
     .set("authorization", ADMIN)
     .send({ status: "hidden" });
   expect(res.status).toBe(200);
+  expect(res.body.revalidated).toBe(true);
   expect(revalidate).toHaveBeenCalledWith(["taxonomy", "businesses"], { immediate: true });
 });
 

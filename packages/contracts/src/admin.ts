@@ -250,6 +250,14 @@ export type AdminErrorDto = z.infer<typeof AdminErrorSchema>;
 
 const byId = z.object({ id });
 const empty = z.object({}).strict();
+/**
+ * Takedowns (suspend, back to draft, delete, kind hidden, place no longer live) wait for the web
+ * to drop its cached pages and say whether it did. false: the change is saved and out of search,
+ * but public pages may still show it until a retry succeeds. Absent: nothing to confirm.
+ */
+const revalidated = { revalidated: z.boolean().optional() };
+export const AdminRevalidateResultSchema = z.object({ revalidated: z.boolean() });
+export type AdminRevalidateResultDto = z.infer<typeof AdminRevalidateResultSchema>;
 
 export const adminContract = c.router({
   misc: c.router({
@@ -274,6 +282,14 @@ export const adminContract = c.router({
       pathParams: z.object({ entity: z.enum(ADMIN_ENTITIES), id }),
       body: empty,
       responses: { 200: z.object({ released: z.literal(true) }), ...writeErrors },
+    },
+    /** Retry: asks the web again to drop the entity's pages at once, and waits for the answer. */
+    revalidate: {
+      method: "POST",
+      path: "/admin/revalidate/:entity/:id",
+      pathParams: z.object({ entity: z.enum(ADMIN_ENTITIES), id }),
+      body: empty,
+      responses: { 200: AdminRevalidateResultSchema, ...writeErrors },
     },
   }),
   places: c.router({
@@ -300,7 +316,7 @@ export const adminContract = c.router({
       path: "/admin/places/:id",
       pathParams: byId,
       body: AdminPlacePatchSchema,
-      responses: { 200: AdminPlaceSchema, ...writeErrors },
+      responses: { 200: AdminPlaceSchema.extend(revalidated), ...writeErrors },
     },
   }),
   sectors: c.router({
@@ -347,7 +363,7 @@ export const adminContract = c.router({
       path: "/admin/kinds/:id",
       pathParams: byId,
       body: AdminKindPatchSchema,
-      responses: { 200: AdminKindSchema, ...writeErrors },
+      responses: { 200: AdminKindSchema.extend(revalidated), ...writeErrors },
     },
   }),
   businesses: c.router({
@@ -381,7 +397,7 @@ export const adminContract = c.router({
       path: "/admin/businesses/:id/status",
       pathParams: byId,
       body: AdminStatusSchema,
-      responses: { 200: AdminBusinessSchema, ...writeErrors },
+      responses: { 200: AdminBusinessSchema.extend(revalidated), ...writeErrors },
     },
     /** Only drafts the admin created; everything else is suspended instead. */
     remove: {
@@ -389,7 +405,7 @@ export const adminContract = c.router({
       path: "/admin/businesses/:id/delete",
       pathParams: byId,
       body: empty,
-      responses: { 200: z.object({ deleted: z.literal(true) }), ...writeErrors },
+      responses: { 200: z.object({ deleted: z.literal(true), ...revalidated }), ...writeErrors },
     },
   }),
 });

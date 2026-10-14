@@ -17,7 +17,7 @@ import { actionFailed, answered, apiError } from "./admin-errors";
 import { businessFromForm, comparable } from "./business-form";
 import { at } from "./copy";
 import { changedOnly, text, zodErrors } from "./form-data";
-import { adminHref } from "./routes";
+import { adminHref, takedownHref } from "./routes";
 
 const localeOf = (fd: FormData): Locale => {
   const l = text(fd, "locale");
@@ -106,6 +106,9 @@ export async function setBusinessStatus(_prev: ActionState, fd: FormData): Promi
   if (res.status === 401) redirect(adminHref(locale, "/sign-in"));
   if (res.status !== 200) return actionFailed(locale, "errStatusNotChanged", res);
   revalidatePath("/admin/[locale]", "layout");
+  // Saved, but the web did not confirm it dropped the public pages: show the warning and Retry.
+  if (res.body.revalidated === false)
+    redirect(takedownHref(locale, "business", text(fd, "id"), "page", true));
   return { ok: true, message: null, errors: [] };
 }
 
@@ -121,5 +124,7 @@ export async function deleteBusiness(_prev: ActionState, fd: FormData): Promise<
   if (res.status === 401) redirect(adminHref(locale, "/sign-in"));
   if (res.status !== 200) return actionFailed(locale, "errNotDeleted", res);
   revalidatePath("/admin/[locale]", "layout");
-  redirect(adminHref(locale, "/businesses"));
+  redirect(
+    takedownHref(locale, "business", text(fd, "id"), "list", res.body.revalidated === false),
+  );
 }

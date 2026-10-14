@@ -17,7 +17,7 @@ import { PrismaService } from "../prisma/prisma.service.js";
 import { AdminWriter } from "./admin-writer.js";
 import { ExperienceValidator } from "./experience.js";
 import { json } from "./json.js";
-import { conflict, invalid, notFound } from "./outcome.js";
+import { conflict, invalid, notFound, outcome } from "./outcome.js";
 import { webTags } from "./tags.js";
 import { nameOrSlugFilters } from "./text-search.js";
 
@@ -249,22 +249,27 @@ export class BusinessesAdmin {
   async status(actor: AdminActor, id: string, body: AdminStatusDto) {
     const before = await this.prisma.business.findUnique({ where: { id }, include });
     if (!before) return notFound("business");
-    const row = await this.writer.write(actor, "status", "business", async (tx) => {
-      const b = await tx.business.update({
-        where: { id },
-        data: { status: body.status, editedAt: new Date() },
-        include,
-      });
-      return {
-        row: b,
-        entityId: id,
-        fields: ["status"],
-        tags: webTags.business(b.place.slug, b.slug),
-        search: [{ entity: "business" as const, ids: [id] }],
-        immediate: body.immediate ?? body.status !== "published",
-      };
-    });
-    return { status: 200 as const, body: toAdminBusiness(row) };
+    const { row, revalidated } = await this.writer.writeReporting(
+      actor,
+      "status",
+      "business",
+      async (tx) => {
+        const b = await tx.business.update({
+          where: { id },
+          data: { status: body.status, editedAt: new Date() },
+          include,
+        });
+        return {
+          row: b,
+          entityId: id,
+          fields: ["status"],
+          tags: webTags.business(b.place.slug, b.slug),
+          search: [{ entity: "business" as const, ids: [id] }],
+          immediate: body.immediate ?? body.status !== "published",
+        };
+      },
+    );
+    return { status: 200 as const, body: { ...toAdminBusiness(row), ...outcome(revalidated) } };
   }
 
   async remove(actor: AdminActor, id: string) {
@@ -272,18 +277,23 @@ export class BusinessesAdmin {
     if (!before) return notFound("business");
     if (before.source !== "admin" || before.status !== "draft")
       return conflict("Only drafts created in admin can be deleted; suspend this business instead");
-    await this.writer.write(actor, "delete", "business", async (tx) => {
-      await tx.business.delete({ where: { id } });
-      return {
-        row: null,
-        entityId: id,
-        fields: [],
-        tags: webTags.business(before.place.slug, before.slug),
-        search: [{ entity: "business" as const, ids: [id] }],
-        immediate: true,
-      };
-    });
-    return { status: 200 as const, body: { deleted: true as const } };
+    const { revalidated } = await this.writer.writeReporting(
+      actor,
+      "delete",
+      "business",
+      async (tx) => {
+        await tx.business.delete({ where: { id } });
+        return {
+          row: null,
+          entityId: id,
+          fields: [],
+          tags: webTags.business(before.place.slug, before.slug),
+          search: [{ entity: "business" as const, ids: [id] }],
+          immediate: true,
+        };
+      },
+    );
+    return { status: 200 as const, body: { deleted: true as const, ...outcome(revalidated) } };
   }
 }
 

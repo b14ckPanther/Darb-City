@@ -1,9 +1,10 @@
 // @vitest-environment node
-import { beforeEach, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const api = vi.hoisted(() => ({
   businesses: { status: vi.fn(), remove: vi.fn() },
-  misc: { release: vi.fn() },
+  misc: { release: vi.fn(), revalidate: vi.fn() },
+  kinds: { get: vi.fn(), update: vi.fn() },
 }));
 const nav = vi.hoisted(() => ({
   redirect: vi.fn((to: string) => {
@@ -17,7 +18,7 @@ vi.mock("next/navigation", () => nav);
 vi.mock("next/cache", () => cache);
 
 const { setBusinessStatus, deleteBusiness } = await import("./business-actions");
-const { releaseEntity } = await import("./actions");
+const { releaseEntity, retryTakedown, saveKind } = await import("./actions");
 import { idle } from "./action-state";
 import { at } from "./copy";
 
@@ -109,4 +110,108 @@ it("a refused return-to-seed is an alert; a 401 goes to sign-in", async () => {
   api.misc.release.mockResolvedValue({ status: 200, body: { released: true } });
   expect(await releaseEntity(idle, fd("en"))).toEqual({ ok: true, message: null, errors: [] });
   expect(cache.revalidatePath).toHaveBeenCalledWith("/admin/[locale]", "layout");
+});
+
+describe("a takedown the web did not confirm (revalidated: false)", () => {
+  it("a suspend goes to the business page with the warning, not a plain success", async () => {
+    api.businesses.status.mockResolvedValue({ status: 200, body: { revalidated: false } });
+    await expect(
+      setBusinessStatus(idle, form({ id: "b1", status: "suspended", locale: "ar" })),
+    ).rejects.toThrow("NEXT_REDIRECT /ar/admin/businesses/b1?stale=1");
+    expect(cache.revalidatePath).toHaveBeenCalledWith("/admin/[locale]", "layout");
+  });
+  it("a confirmed suspend stays a plain success", async () => {
+    api.businesses.status.mockResolvedValue({ status: 200, body: { revalidated: true } });
+    expect(
+      await setBusinessStatus(idle, form({ id: "b1", status: "suspended", locale: "he" })),
+    ).toEqual({ ok: true, message: null, errors: [] });
+  });
+  it("a delete opens the list with the warning for that business", async () => {
+    api.businesses.remove.mockResolvedValue({
+      status: 200,
+      body: { deleted: true, revalidated: false },
+    });
+    await expect(deleteBusiness(idle, form({ id: "b1", locale: "he" }))).rejects.toThrow(
+      "NEXT_REDIRECT /admin/businesses?stale=b1",
+    );
+  });
+  it("hiding a kind reloads its page with the warning", async () => {
+    const kind = {
+      id: "k1",
+      slug: "nails",
+      sectorId: "s1",
+      parentKindId: null,
+      name: { he: "ציפורניים" },
+      synonyms: { he: [], ar: [], en: [] },
+      template: "booking",
+      attributes: [],
+      icon: null,
+      order: 1,
+      status: "active",
+      businessCount: 0,
+      editedAt: null,
+    };
+    api.kinds.get.mockResolvedValue({ status: 200, body: kind });
+    api.kinds.update.mockResolvedValue({
+      status: 200,
+      body: { ...kind, status: "hidden", revalidated: false },
+    });
+    const fd = form({
+      id: "k1",
+      locale: "en",
+      sectorId: "s1",
+      parentKindId: "",
+      "name.he": "ציפורניים",
+      "synonyms.he": "",
+      "synonyms.ar": "",
+      "synonyms.en": "",
+      template: "booking",
+      attributes: "",
+      icon: "",
+      order: "1",
+      status: "hidden",
+    });
+    await expect(saveKind(idle, fd)).rejects.toThrow("NEXT_REDIRECT /en/admin/kinds/k1?stale=1");
+    expect(api.kinds.update).toHaveBeenCalledWith({
+      params: { id: "k1" },
+      body: { status: "hidden" },
+    });
+  });
+});
+
+describe("Retry", () => {
+  const fd = (locale: string, back = "page") =>
+    form({ entity: "business", id: "b1", locale, back });
+  it("a confirmed retry returns to the clean page or list", async () => {
+    api.misc.revalidate.mockResolvedValue({ status: 200, body: { revalidated: true } });
+    await expect(retryTakedown(idle, fd("en"))).rejects.toThrow(
+      "NEXT_REDIRECT /en/admin/businesses/b1",
+    );
+    expect(api.misc.revalidate).toHaveBeenCalledWith({
+      params: { entity: "business", id: "b1" },
+      body: {},
+    });
+    await expect(retryTakedown(idle, fd("he", "list"))).rejects.toThrow(
+      /NEXT_REDIRECT \/admin\/businesses$/,
+    );
+  });
+  it("a failed retry says so in the admin's language", async () => {
+    for (const locale of ["he", "ar", "en"] as const) {
+      api.misc.revalidate.mockResolvedValue({ status: 200, body: { revalidated: false } });
+      expect(await retryTakedown(idle, fd(locale))).toEqual({
+        ok: false,
+        message: at(locale, "errNotRevalidated"),
+        errors: [],
+      });
+      api.misc.revalidate.mockRejectedValue(new Error("fetch failed"));
+      expect((await retryTakedown(idle, fd(locale))).message).toBe(at(locale, "errNotRevalidated"));
+    }
+    api.misc.revalidate.mockResolvedValue({ status: 401, body: {} });
+    await expect(retryTakedown(idle, fd("ar"))).rejects.toThrow("NEXT_REDIRECT /ar/admin/sign-in");
+  });
+  it("refuses an unknown entity without calling the API", async () => {
+    const state = await retryTakedown(idle, form({ entity: "user", id: "u1", locale: "en" }));
+    expect(state.ok).toBe(false);
+    expect(api.misc.revalidate).not.toHaveBeenCalled();
+  });
 });

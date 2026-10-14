@@ -7,6 +7,7 @@ import { StatusBadge } from "@/admin/Badges";
 import { BusinessForm } from "@/admin/BusinessForm";
 import { at } from "@/admin/copy";
 import { EntityMeta } from "@/admin/EntityMeta";
+import { one, type SearchParams } from "@/admin/params";
 import { StatusActions } from "@/admin/StatusActions";
 import { isLocale } from "@/lib/locale";
 import { href, paths } from "@/lib/routes";
@@ -14,10 +15,13 @@ import styles from "@/admin/admin.module.css";
 
 export default async function EditBusiness({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string; id: string }>;
+  searchParams: Promise<SearchParams>;
 }) {
   const { locale, id } = await params;
+  const stale = one((await searchParams).stale) === "1";
   if (!isLocale(locale)) notFound();
   const api = await adminApi();
   const [b, kinds, sectors] = await Promise.all([
@@ -46,7 +50,7 @@ export default async function EditBusiness({
       <p className={styles.hint} dir="ltr">
         {b.placeSlug}/{b.slug} · {b.source} · {b.tier}
       </p>
-      <StatusActions locale={locale} business={b} />
+      <StatusActions locale={locale} business={b} stale={stale} />
       <BusinessForm locale={locale} kinds={kinds} business={b} />
       <EntityMeta locale={locale} entity="business" id={b.id} editedAt={b.editedAt} />
     </>

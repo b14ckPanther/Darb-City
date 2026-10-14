@@ -122,6 +122,14 @@
   border-radius: 8px;
   max-inline-size: 60ch;
 }
+.warning {
+  background: #3a2a0e;
+  border-inline-start: 4px solid var(--gold);
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-block-end: 16px;
+  max-inline-size: 70ch;
+}
 .error {
   background: #3a1410;
   border-inline-start: 4px solid #f0a08a;

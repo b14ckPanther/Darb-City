@@ -14,7 +14,7 @@ import type { Kind, Prisma } from "../generated/prisma/client.js";
 import { PrismaService } from "../prisma/prisma.service.js";
 import { AdminWriter } from "./admin-writer.js";
 import { json } from "./json.js";
-import { conflict, invalid, notFound } from "./outcome.js";
+import { conflict, invalid, notFound, outcome } from "./outcome.js";
 import { webTags } from "./tags.js";
 import { nameOrSlugFilters } from "./text-search.js";
 
@@ -154,27 +154,32 @@ export class KindsAdmin {
       const problem = await this.parentProblem(id, sectorId, parentId);
       if (problem) return invalid(problem.message, undefined, problem.code);
     }
-    const row = await this.writer.write(actor, "update", "kind", async (tx) => {
-      const k = await tx.kind.update({
-        where: { id },
-        data: {
-          ...patch,
-          ...(patch.name ? { name: json(patch.name) } : {}),
-          ...(patch.synonyms ? { synonyms: json(patch.synonyms) } : {}),
-          editedAt: new Date(),
-        },
-        include: withCount,
-      });
-      return {
-        row: k,
-        entityId: id,
-        fields,
-        tags: webTags.kind(),
-        search: [{ entity: "kind" as const, ids: [id] }],
-        immediate: before.status === "active" && k.status === "hidden" ? true : undefined,
-      };
-    });
-    return { status: 200 as const, body: toAdminKind(row) };
+    const { row, revalidated } = await this.writer.writeReporting(
+      actor,
+      "update",
+      "kind",
+      async (tx) => {
+        const k = await tx.kind.update({
+          where: { id },
+          data: {
+            ...patch,
+            ...(patch.name ? { name: json(patch.name) } : {}),
+            ...(patch.synonyms ? { synonyms: json(patch.synonyms) } : {}),
+            editedAt: new Date(),
+          },
+          include: withCount,
+        });
+        return {
+          row: k,
+          entityId: id,
+          fields,
+          tags: webTags.kind(),
+          search: [{ entity: "kind" as const, ids: [id] }],
+          immediate: before.status === "active" && k.status === "hidden" ? true : undefined,
+        };
+      },
+    );
+    return { status: 200 as const, body: { ...toAdminKind(row), ...outcome(revalidated) } };
   }
 }
 

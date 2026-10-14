@@ -11,3 +11,6 @@ export const invalid = (message: string, errors?: string[], code?: string) => ({
   status: 400 as const,
   body: { message, ...(errors ? { errors } : {}), ...(code ? { code } : {}) },
 });
+/** A takedown's web revalidation outcome, only when there is one to report. */
+export const outcome = (revalidated: boolean | undefined) =>
+  revalidated === undefined ? {} : { revalidated };

@@ -105,6 +105,7 @@ describe("places", () => {
       .set("authorization", ADMIN)
       .send({ status: "soon" });
     expect(res.status).toBe(200);
+    expect(res.body.revalidated).toBe(true);
     expect(revalidate).toHaveBeenCalledWith(["places", "place:sakhnin"], { immediate: true });
     expect(
       (await prisma.place.findUniqueOrThrow({ where: { id: f.sakhnin.id } })).editedAt,

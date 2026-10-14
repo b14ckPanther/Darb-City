@@ -98,6 +98,7 @@ describe("edit and status", () => {
       status: "suspended",
     });
     expect([res.status, res.body.status]).toEqual([200, "suspended"]);
+    expect(res.body.revalidated).toBe(true);
     expect(revalidate).toHaveBeenLastCalledWith(expect.arrayContaining(["businesses"]), {
       immediate: true,
     });
@@ -186,6 +187,55 @@ describe("edit and status", () => {
   });
 });
 
+describe("takedown outcome", () => {
+  it("says when the web did not drop its pages, and only for takedowns", async () => {
+    revalidate.mockResolvedValueOnce(false);
+    const down = await as(http().post(`/admin/businesses/${f.abuSalim.id}/status`)).send({
+      status: "suspended",
+    });
+    expect([down.status, down.body.status, down.body.revalidated]).toEqual([
+      200,
+      "suspended",
+      false,
+    ]);
+    const publish = await as(http().post(`/admin/businesses/${f.abuSalim.id}/status`)).send({
+      status: "published",
+    });
+    expect(publish.status).toBe(200);
+    expect(publish.body).not.toHaveProperty("revalidated");
+    const edit = await as(http().patch(`/admin/businesses/${f.abuSalim.id}`)).send({
+      name: { ar: "أبو سليم" },
+    });
+    expect(edit.body).not.toHaveProperty("revalidated");
+  });
+  it("retries: the web is asked again for the business's pages, at once", async () => {
+    revalidate.mockClear();
+    const res = await as(http().post(`/admin/revalidate/business/${f.abuSalim.id}`)).send({});
+    expect(res.body).toEqual({ revalidated: true });
+    expect(revalidate).toHaveBeenCalledWith(
+      expect.arrayContaining(["businesses", "business:sakhnin/abu-salim"]),
+      { immediate: true },
+    );
+    revalidate.mockResolvedValueOnce(false);
+    expect(
+      (await as(http().post(`/admin/revalidate/kind/${f.barbershops.id}`)).send({})).body,
+    ).toEqual({ revalidated: false });
+  });
+  it("retries a deleted business through the businesses tag", async () => {
+    revalidate.mockClear();
+    const gone = "0190a000-0000-7000-8000-00000000dead";
+    const res = await as(http().post(`/admin/revalidate/business/${gone}`)).send({});
+    expect(res.body).toEqual({ revalidated: true });
+    expect(revalidate).toHaveBeenCalledWith(["businesses"], { immediate: true });
+    expect((await as(http().post(`/admin/revalidate/place/${gone}`)).send({})).status).toBe(404);
+  });
+  it("retry is admin only", async () => {
+    expect((await http().post(`/admin/revalidate/business/${f.abuSalim.id}`).send({})).status).toBe(
+      401,
+    );
+  });
+});
+
 describe("delete", () => {
   it("deletes admin drafts only", async () => {
     expect(
@@ -193,7 +243,7 @@ describe("delete", () => {
     ).toBe(409);
     const created = await as(http().post("/admin/businesses")).send(draft());
     const res = await as(http().post(`/admin/businesses/${created.body.id}/delete`)).send({});
-    expect(res.status).toBe(200);
+    expect(res.body).toEqual({ deleted: true, revalidated: true });
     expect(await prisma.business.count({ where: { id: created.body.id } })).toBe(0);
   });
 });

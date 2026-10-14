@@ -9,6 +9,7 @@ const CODES: Record<string, AdminKey> = {
   kind_has_sub_kinds: "errKindHasSubKinds",
   kind_tree_too_deep: "errKindTreeTooDeep",
   example_tier_fixed: "errExampleTier",
+  no_seed_source: "errNoSeedSource",
 };
 
 /**

@@ -14,7 +14,7 @@ import type { Place, Prisma } from "../generated/prisma/client.js";
 import { PrismaService } from "../prisma/prisma.service.js";
 import { AdminWriter } from "./admin-writer.js";
 import { json } from "./json.js";
-import { conflict, invalid, notFound } from "./outcome.js";
+import { conflict, invalid, notFound, outcome } from "./outcome.js";
 import { nameOrSlugFilters } from "./text-search.js";
 import { webTags } from "./tags.js";
 
@@ -111,25 +111,30 @@ export class PlacesAdmin {
     if (!before) return notFound("place");
     const fields = Object.keys(patch).sort();
     if (fields.length === 0) return invalid("Nothing to change");
-    const row = await this.writer.write(actor, "update", "place", async (tx) => {
-      const p = await tx.place.update({
-        where: { id },
-        data: {
-          ...patch,
-          ...(patch.name ? { name: json(patch.name) } : {}),
-          editedAt: new Date(),
-        },
-      });
-      return {
-        row: p,
-        entityId: id,
-        fields,
-        tags: webTags.place(p.slug),
-        search: [{ entity: "place" as const, ids: [id] }],
-        immediate: before.status === "live" && p.status !== "live" ? true : undefined,
-      };
-    });
-    return { status: 200 as const, body: toAdminPlace(row) };
+    const { row, revalidated } = await this.writer.writeReporting(
+      actor,
+      "update",
+      "place",
+      async (tx) => {
+        const p = await tx.place.update({
+          where: { id },
+          data: {
+            ...patch,
+            ...(patch.name ? { name: json(patch.name) } : {}),
+            editedAt: new Date(),
+          },
+        });
+        return {
+          row: p,
+          entityId: id,
+          fields,
+          tags: webTags.place(p.slug),
+          search: [{ entity: "place" as const, ids: [id] }],
+          immediate: before.status === "live" && p.status !== "live" ? true : undefined,
+        };
+      },
+    );
+    return { status: 200 as const, body: { ...toAdminPlace(row), ...outcome(revalidated) } };
   }
 }
 

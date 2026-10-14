@@ -6,16 +6,21 @@ import { ActionForm } from "@/admin/ActionForm";
 import { adminApi, okOr } from "@/admin/api";
 import { at } from "@/admin/copy";
 import { EntityMeta } from "@/admin/EntityMeta";
+import { TakedownWarning } from "@/admin/TakedownWarning";
+import { one, type SearchParams } from "@/admin/params";
 import { LocalizedFields, SelectField, TextArea, TextField } from "@/admin/fields";
 import { isLocale } from "@/lib/locale";
 import styles from "@/admin/admin.module.css";
 
 export default async function EditKind({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string; id: string }>;
+  searchParams: Promise<SearchParams>;
 }) {
   const { locale, id } = await params;
+  const stale = one((await searchParams).stale) === "1";
   if (!isLocale(locale)) notFound();
   const api = await adminApi();
   const [k, sectors, kinds] = await Promise.all([
@@ -33,6 +38,7 @@ export default async function EditKind({
       <p className={styles.hint} dir="ltr">
         {k.slug} · {at(locale, "businessesCount", { count: k.businessCount })}
       </p>
+      {stale ? <TakedownWarning locale={locale} entity="kind" id={k.id} back="page" /> : null}
       <ActionForm
         action={saveKind}
         submit={at(locale, "save")}

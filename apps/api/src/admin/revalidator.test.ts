@@ -39,3 +39,8 @@ it("is a no-op without a URL", async () => {
   const r = new WebRevalidator(loadConfig({ DATABASE_URL: "postgresql://a/b" }));
   expect(await r.revalidate(["taxonomy"])).toBe(false);
 });
+
+it("is enabled only with both a URL and a secret", () => {
+  expect(new WebRevalidator(config).enabled).toBe(true);
+  expect(new WebRevalidator(loadConfig({ DATABASE_URL: "postgresql://a/b" })).enabled).toBe(false);
+});

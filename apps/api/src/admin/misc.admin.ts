@@ -33,24 +33,37 @@ export class MiscAdmin {
     }));
   }
 
+  /** The web cache tags of one entity, or null when it does not exist. */
+  private async tagsFor(entity: AdminEntity, id: string): Promise<string[] | null> {
+    if (entity === "place") {
+      const p = await this.prisma.place.findUnique({ where: { id } });
+      return p ? webTags.place(p.slug) : null;
+    }
+    if (entity === "sector")
+      return (await this.prisma.sector.findUnique({ where: { id } })) ? webTags.sector() : null;
+    if (entity === "kind")
+      return (await this.prisma.kind.findUnique({ where: { id } })) ? webTags.kind() : null;
+    const b = await this.prisma.business.findUnique({
+      where: { id },
+      include: { place: { select: { slug: true } } },
+    });
+    return b ? webTags.business(b.place.slug, b.slug) : null;
+  }
+
+  /**
+   * Retry after a takedown whose web revalidation failed. A deleted business has no row left, so
+   * its retry expires "businesses", which covers every list, count and detail page.
+   */
+  async revalidate(entity: AdminEntity, id: string) {
+    const tags =
+      (await this.tagsFor(entity, id)) ?? (entity === "business" ? ["businesses"] : null);
+    if (!tags) return notFound(entity);
+    return { status: 200 as const, body: { revalidated: await this.writer.retryTakedown(tags) } };
+  }
+
   /** "Return to seed data": the next seed run overwrites this row again (Task 3). */
   async release(actor: AdminActor, entity: AdminEntity, id: string) {
-    const tagsFor = async (): Promise<string[] | null> => {
-      if (entity === "place") {
-        const p = await this.prisma.place.findUnique({ where: { id } });
-        return p ? webTags.place(p.slug) : null;
-      }
-      if (entity === "sector")
-        return (await this.prisma.sector.findUnique({ where: { id } })) ? webTags.sector() : null;
-      if (entity === "kind")
-        return (await this.prisma.kind.findUnique({ where: { id } })) ? webTags.kind() : null;
-      const b = await this.prisma.business.findUnique({
-        where: { id },
-        include: { place: { select: { slug: true } } },
-      });
-      return b ? webTags.business(b.place.slug, b.slug) : null;
-    };
-    const tags = await tagsFor();
+    const tags = await this.tagsFor(entity, id);
     if (!tags) return notFound(entity);
     await this.writer.write(actor, "release", entity, async (tx) => {
       const data = { editedAt: null };
@@ -95,6 +108,7 @@ export class AdminMiscController {
         };
       },
       release: async ({ params }) => this.misc.release(actor, params.entity, params.id),
+      revalidate: async ({ params }) => this.misc.revalidate(params.entity, params.id),
     });
   }
 }

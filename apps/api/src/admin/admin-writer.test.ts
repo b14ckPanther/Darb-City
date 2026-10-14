@@ -1,5 +1,5 @@
 import { ConflictException } from "@nestjs/common";
-import { afterAll, beforeEach, expect, it, vi } from "vitest";
+import { afterAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { resetDatabase, testPrisma } from "../../test/db.js";
 import { seedFixtures, type Fixtures } from "../../test/fixtures.js";
 import type { SearchEvents } from "../search/index-queue.js";
@@ -90,4 +90,79 @@ it("turns a unique-constraint race into a 409 conflict, not a 500", async () => 
   });
   expect(notify).not.toHaveBeenCalled();
   expect(await prisma.auditLog.count()).toBe(0);
+});
+
+describe("takedowns wait for the web and report the outcome", () => {
+  const takedown = (writer: AdminWriter, immediate?: true) =>
+    writer.writeReporting(actor, "status", "business", async (tx) => {
+      const b = await tx.business.update({
+        where: { id: f.abuSalim.id },
+        data: { status: "suspended" },
+      });
+      return { row: b, entityId: b.id, fields: ["status"], tags: ["businesses"], immediate };
+    });
+  const make = (revalidate: () => Promise<boolean>, enabled = true) =>
+    new AdminWriter(prisma, { notify: vi.fn() } as never, { revalidate, enabled } as never);
+
+  it("reports true when the web confirms", async () => {
+    const out = await takedown(
+      make(async () => true),
+      true,
+    );
+    expect(out.revalidated).toBe(true);
+    expect(out.row.status).toBe("suspended");
+  });
+  it("reports false when the web refuses or is unreachable", async () => {
+    expect(
+      (
+        await takedown(
+          make(async () => false),
+          true,
+        )
+      ).revalidated,
+    ).toBe(false);
+    expect(
+      (
+        await takedown(
+          make(async () => {
+            throw new Error("down");
+          }),
+          true,
+        )
+      ).revalidated,
+    ).toBe(false);
+  });
+  it("answers false after the cap, while the revalidation keeps running", async () => {
+    let finish!: (ok: boolean) => void;
+    const writer = make(() => new Promise<boolean>((resolve) => (finish = resolve)));
+    writer.takedownWaitMs = 20;
+    const out = await takedown(writer, true);
+    expect(out.revalidated).toBe(false);
+    let settled = false;
+    const done = writer.settled().then(() => (settled = true));
+    await new Promise((r) => setTimeout(r, 10));
+    expect(settled).toBe(false);
+    finish(true);
+    await done;
+  });
+  it("never waits for or reports an ordinary edit", async () => {
+    const writer = make(() => new Promise<boolean>(() => undefined));
+    writer.takedownWaitMs = 60_000;
+    const out = await takedown(writer);
+    expect(out).not.toHaveProperty("revalidated");
+  });
+  it("reports nothing when revalidation is not configured (development)", async () => {
+    const out = await takedown(
+      make(async () => false, false),
+      true,
+    );
+    expect(out).not.toHaveProperty("revalidated");
+  });
+  it("retries a takedown's tags immediately, with the same cap", async () => {
+    const revalidate = vi.fn(async () => true);
+    const writer = make(revalidate);
+    expect(await writer.retryTakedown(["businesses"])).toBe(true);
+    expect(revalidate).toHaveBeenCalledWith(["businesses"], { immediate: true });
+    expect(await make(async () => true, false).retryTakedown(["businesses"])).toBe(false);
+  });
 });

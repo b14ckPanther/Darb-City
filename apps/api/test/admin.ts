@@ -25,7 +25,7 @@ export async function createAdminTestApp(): Promise<AdminTestApp> {
       .overrideProvider(SearchEvents)
       .useValue({ notify, changed: vi.fn(async () => []), onModuleDestroy: async () => undefined })
       .overrideProvider(WebRevalidator)
-      .useValue({ revalidate }),
+      .useValue({ revalidate, enabled: true }),
   );
   return { ...created, notify, revalidate };
 }

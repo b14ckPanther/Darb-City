@@ -11,6 +11,11 @@ export class WebRevalidator {
 
   constructor(@Inject(APP_CONFIG) private readonly config: AppConfig) {}
 
+  /** Off when REVALIDATE_URL is unset (development): pages then refresh on their own timer. */
+  get enabled(): boolean {
+    return Boolean(this.config.admin.revalidateUrl && this.config.admin.revalidateSecret);
+  }
+
   async revalidate(tags: string[], options: { immediate?: boolean } = {}): Promise<boolean> {
     const { revalidateUrl: url, revalidateSecret: secret } = this.config.admin;
     if (!url || !secret) {
