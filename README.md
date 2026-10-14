@@ -22,9 +22,14 @@ suspends that row. **Return to seed data** in `/admin` clears the stamp, so the 
 overwrites the row again.
 
     pnpm test         # needs `pnpm infra:up`
-    pnpm --filter @darb/web e2e   # Playwright; needs the seeded database
+    pnpm --filter @darb/web e2e   # Playwright; needs E2E_DATABASE_URL (below)
     # e2e starts its own servers on :3100, :3101 and :4100 (recorded intents, offline embeddings),
-    # never the dev servers; override with WEB_URL, API_URL and WEB_API_DOWN_URL
+    # never the dev servers; override with WEB_URL, API_URL and WEB_API_DOWN_URL.
+    # The admin specs write businesses and audit rows, so e2e refuses to start unless
+    # E2E_DATABASE_URL names a throwaway database ending in _e2e or _test (CI=true may use its own
+    # DATABASE_URL). Migrate and seed it first, e.g. with DATABASE_URL=$E2E_DATABASE_URL:
+    #   pnpm --filter @darb/api db:deploy && pnpm --filter @darb/api db:seed
+    # An API already listening on :4100 is reused only with E2E_REUSE_API=1.
     pnpm typecheck && pnpm lint && pnpm format:check
 
 ## Search

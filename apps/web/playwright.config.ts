@@ -1,4 +1,5 @@
 import { defineConfig } from "@playwright/test";
+import { e2eDatabaseUrl } from "./e2e/e2e-database";
 import { WEB_API_DOWN } from "./e2e/fixtures";
 
 /**
@@ -23,6 +24,13 @@ const WEBGL = { args: ["--enable-unsafe-swiftshader", "--ignore-gpu-blocklist"] 
 const TILES = { MAP_TILES_DIR: "e2e/tiles" };
 /** The API revalidates the web after admin writes; both sides share this secret. */
 const REVALIDATE_SECRET = "e2e-revalidate-secret";
+/** Refuses to load without a throwaway database (e2e/e2e-database.ts): admin.spec writes to it. */
+const E2E_DB = e2eDatabaseUrl(process.env);
+/**
+ * The API e2e starts is the only one it trusts to use E2E_DB. An API already on :4100 may point
+ * at any database, so it is reused only on an explicit E2E_REUSE_API=1.
+ */
+const REUSE_API = process.env.E2E_REUSE_API === "1";
 /** Admin e2e signs in with fake tokens (refused in production and off localhost). */
 const ADMIN = { ADMIN_FAKE_AUTH: "1", REVALIDATE_SECRET };
 
@@ -71,9 +79,12 @@ export default defineConfig({
       command: "pnpm --filter @darb/api start",
       cwd: "../..",
       url: `${API}/health`,
-      reuseExistingServer: !process.env.CI,
+      reuseExistingServer: REUSE_API,
       timeout: 60_000,
       env: {
+        // Set here, these win over apps/api/.env (dotenv never overrides the environment).
+        DATABASE_URL: E2E_DB,
+        MIGRATE_DATABASE_URL: E2E_DB,
         PORT: port(API),
         WEB_ORIGIN: WEB,
         ...OFFLINE_PROVIDERS,
