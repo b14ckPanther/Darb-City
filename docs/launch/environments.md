@@ -12,7 +12,7 @@ Values never live in the repo. "secret" means a random value of at least 32 char
 | `REDIS_URL` | `${{Redis.REDIS_URL}}` (Railway reference) | same, staging Redis | |
 | `PORT` | set by Railway | set by Railway | |
 | `TRUST_PROXY` | 1 | 1 | Railway edge |
-| `WEB_ORIGIN` | https://darb.co.il | the staging web URL | CORS |
+| `WEB_ORIGIN` | https://darb.co.il | the staging web origin | CORS |
 | `SEARCH_PROXY_KEY` | secret (also on web) | another secret | ≥ 32 |
 | `IP_HASH_SALT` | secret | secret | ≥ 32 |
 | `INTENT_PROVIDER` | anthropic | anthropic or off | |
@@ -25,11 +25,15 @@ Values never live in the repo. "secret" means a random value of at least 32 char
 | `AUTH_VERIFIER` | clerk | clerk | never `fake` |
 | `CLERK_SECRET_KEY` | Clerk production `sk_live_…` | Clerk development `sk_test_…` | app "Darb admin", Invite-only |
 | `CLERK_JWT_KEY` | Clerk production PEM | Clerk development PEM | networkless verification |
-| `CLERK_AUTHORIZED_PARTIES` | https://darb.co.il,https://www.darb.co.il | unset (previews vary) | |
+| `CLERK_AUTHORIZED_PARTIES` | https://darb.co.il,https://www.darb.co.il | the staging web origin(s), e.g. `https://darb-city-git-staging-<team>.vercel.app` | required: staging runs `NODE_ENV=production` with Clerk, and the API refuses to start with this empty. See the note below. |
 | `ADMIN_EMAILS` | founder@darb.co.il,nmcryptoinvest@gmail.com | founder@darb.co.il,nmcryptoinvest@gmail.com | first sign-in only; both are also granted with `admin:grant` (`accounts.md`) |
-| `REVALIDATE_URL` | https://darb.co.il/api/revalidate | the staging web URL + /api/revalidate | |
+| `REVALIDATE_URL` | https://darb.co.il/api/revalidate | the staging web origin + /api/revalidate | |
 | `REVALIDATE_SECRET` | secret (also on web) | secret | |
 | `SEARCH_INDEX_WORKER` | true | true | |
+
+**The staging web origin** is one stable URL: the Vercel branch URL of the `staging` branch (`https://darb-city-git-staging-<team>.vercel.app`), or a custom domain such as `https://staging.darb.co.il` if one is assigned. Use it for `WEB_ORIGIN` and `REVALIDATE_URL`, and list it in `CLERK_AUTHORIZED_PARTIES` (comma-separated, if staging admin is reached on more than one origin).
+
+**Admin sign-in works only on the staging and production origins.** Per-PR Vercel preview URLs change with every deployment, so their Clerk session tokens carry an `azp` that is not in `CLERK_AUTHORIZED_PARTIES` and the API answers 401. Previews are for the public pages; test the admin on staging (or locally with `ADMIN_FAKE_AUTH`).
 
 ## Web (Vercel project `darb-city`, root `apps/web`)
 

@@ -159,6 +159,15 @@ it("production Clerk needs authorized parties", () => {
   expect(
     loadConfig({ ...clerk, CLERK_AUTHORIZED_PARTIES: "https://darb.co.il" }).auth.authorizedParties,
   ).toEqual(["https://darb.co.il"]);
+  // Staging (docs/launch/environments.md): production mode, Clerk development keys, and the
+  // staging web origin as the one authorized party.
+  const staging = loadConfig({
+    ...clerk,
+    CLERK_SECRET_KEY: "sk_test_1",
+    CLERK_AUTHORIZED_PARTIES: "https://darb-city-git-staging-team.vercel.app",
+  });
+  expect(staging.production).toBe(true);
+  expect(staging.auth.authorizedParties).toEqual(["https://darb-city-git-staging-team.vercel.app"]);
   // Outside production an empty list stays allowed (local Clerk development).
   expect(loadConfig({ ...base, CLERK_SECRET_KEY: "sk_test_1" }).auth.verifier).toBe("clerk");
 });
