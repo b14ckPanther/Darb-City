@@ -51,4 +51,6 @@ jobs:
       - name: Reindex (embeds only changed rows)
         run: pnpm --filter @darb/api search:reindex
       - name: Refresh cached web pages
+        # Skipped until the environment has a web origin (REVALIDATE_URL variable) to refresh.
+        if: ${{ vars.REVALIDATE_URL != '' }}
         run: pnpm --filter @darb/api web:revalidate
