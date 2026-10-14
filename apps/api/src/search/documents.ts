@@ -1,5 +1,6 @@
 import type { Hours, Localized, Tier } from "@darb/core";
 import { normalize } from "@darb/search-text";
+import { publicPoint } from "../businesses/public-point.js";
 
 export type SearchEntityName = "place" | "kind" | "business";
 
@@ -53,6 +54,8 @@ export interface BusinessSource {
   experience: Record<string, unknown>;
   placePath: string;
   placeName: Localized;
+  /** The place's centre, used instead of the pin when the street is kept private. */
+  placePoint: { lat: number; lng: number };
   kinds: { id: string; name: Localized; synonyms: Synonyms }[];
 }
 
@@ -127,8 +130,8 @@ export function businessDocument(b: BusinessSource): DocumentRow {
     kindIds: b.kinds.map((k) => k.id),
     attributes: b.attributes,
     tier: b.tier,
-    lat: b.lat,
-    lng: b.lng,
+    // Distances and radius filters use this point: never a private street's pin.
+    ...publicPoint(b, b.placePoint),
     nameText: join(values(b.name)),
     text: join([...values(b.name), ...values(b.tagline), ...kindWords, ...values(b.placeName)]),
     embedText: [

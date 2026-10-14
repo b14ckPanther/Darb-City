@@ -96,7 +96,7 @@ export class SearchIndexer {
         place: { is: { status: "live" } },
       },
       include: {
-        place: { select: { path: true, name: true } },
+        place: { select: { path: true, name: true, lat: true, lng: true } },
         kinds: { where: { kind: { is: { status: "active" } } }, include: { kind: true } },
       },
       orderBy: { id: "asc" },
@@ -113,6 +113,7 @@ export class SearchIndexer {
         experience: b.experience as Record<string, unknown>,
         placePath: b.place.path,
         placeName: b.place.name as Localized,
+        placePoint: { lat: b.place.lat, lng: b.place.lng },
         kinds: b.kinds.map(({ kind }) => ({
           id: kind.id,
           name: kind.name as Localized,

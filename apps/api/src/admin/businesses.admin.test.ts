@@ -187,6 +187,20 @@ describe("edit and status", () => {
   });
 });
 
+it("the admin still sees the real pin of a business that keeps its street private", async () => {
+  await as(http().patch(`/admin/businesses/${f.abuSalim.id}`)).send({
+    attributes: { addressHidden: true },
+    lat: 32.9,
+    lng: 35.4,
+  });
+  const res = await as(http().get(`/admin/businesses/${f.abuSalim.id}`));
+  expect([res.body.lat, res.body.lng, res.body.attributes.addressHidden]).toEqual([
+    32.9,
+    35.4,
+    true,
+  ]);
+});
+
 describe("takedown outcome", () => {
   it("says when the web did not drop its pages, and only for takedowns", async () => {
     revalidate.mockResolvedValueOnce(false);

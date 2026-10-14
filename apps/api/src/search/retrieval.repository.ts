@@ -4,6 +4,7 @@ import { vectorLiteral } from "../ai/embeddings.js";
 import { Prisma } from "../generated/prisma/client.js";
 import { PrismaService } from "../prisma/prisma.service.js";
 import { RANKING } from "./ranking.config.js";
+import { ADDRESS_HIDDEN_SQL } from "../businesses/public-point.js";
 
 export interface RetrievalFilters {
   kindIds: string[] | null;
@@ -109,7 +110,10 @@ export class RetrievalRepository {
       })[]
     >`
       SELECT b.id, b.slug, b.name, b.tagline, b.tier, b."primaryKindId", b."placeId", p.slug AS "placeSlug",
-             b.lat, b.lng, b.photos, b.hours, b.dietary::text[] AS dietary, d.completeness,
+             -- A business that keeps its street private shows its place's centre, never its pin.
+             CASE WHEN ${ADDRESS_HIDDEN_SQL} THEN p.lat ELSE b.lat END AS lat,
+             CASE WHEN ${ADDRESS_HIDDEN_SQL} THEN p.lng ELSE b.lng END AS lng,
+             b.photos, b.hours, b.dietary::text[] AS dietary, d.completeness,
              ${textScore} AS text_score, ${vectorScore} AS vector_score, ${km} AS km
       FROM "SearchDocument" d
       JOIN "Business" b ON b.id = d."entityId"

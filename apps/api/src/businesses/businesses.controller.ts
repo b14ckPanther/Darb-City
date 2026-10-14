@@ -36,7 +36,7 @@ export class BusinessesController {
             status: 404,
             body: { message: `No business "${params.slug}" in "${params.placeSlug}"` },
           };
-        return { status: 200, body: toBusinessDetail(row, row.place.slug, this.clock()) };
+        return { status: 200, body: toBusinessDetail(row, row.place, this.clock()) };
       },
       kindCounts: async ({ params }) => {
         const place = await this.places.bySlug(params.placeSlug);
@@ -97,7 +97,7 @@ export class BusinessesController {
       status: 200 as const,
       body: {
         items: rows.map((r) => ({
-          ...toBusinessSummary(r, r.place.slug, now),
+          ...toBusinessSummary(r, r.place, now),
           ...(r.distanceKm === null ? {} : { distanceKm: r.distanceKm }),
         })),
         nextCursor: hasMore ? encodeCursor(offset + query.limit) : null,

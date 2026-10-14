@@ -1,8 +1,10 @@
 import { Injectable } from "@nestjs/common";
 import { Prisma, type Business, type Dietary, type Place } from "../generated/prisma/client.js";
 import { PrismaService } from "../prisma/prisma.service.js";
+import { ADDRESS_HIDDEN_SQL } from "./public-point.js";
 
-export type BusinessWithPlace = Business & { place: { slug: string } };
+export type BusinessWithPlace = Business & { place: { slug: string; lat: number; lng: number } };
+const placeRef = { select: { slug: true, lat: true, lng: true } } as const;
 
 export interface PageArgs {
   placeIds: string[];
@@ -66,7 +68,10 @@ export class BusinessesRepository {
       ...(args.delivers ? [Prisma.sql`b.attributes @> '{"delivers": true}'::jsonb`] : []),
       ...(args.dietary.length > 0 ? [Prisma.sql`b.dietary @> ${args.dietary}::"Dietary"[]`] : []),
     ];
-    const km = here ? Prisma.sql`ST_Distance(b.point, ${here}) / 1000` : Prisma.sql`NULL::float8`;
+    // A business that keeps its street private is measured from its place's centre, never its pin.
+    const km = here
+      ? Prisma.sql`ST_Distance(CASE WHEN ${ADDRESS_HIDDEN_SQL} THEN p.point ELSE b.point END, ${here}) / 1000`
+      : Prisma.sql`NULL::float8`;
     const order = here
       ? Prisma.sql`km ASC, b.slug ASC, b.id ASC`
       : Prisma.sql`b.tier DESC, b.slug ASC, b.id ASC`;
@@ -74,13 +79,14 @@ export class BusinessesRepository {
       SELECT b.id, ${km} AS km
       FROM "Business" b
       JOIN "Kind" pk ON pk.id = b."primaryKindId"
+      JOIN "Place" p ON p.id = b."placeId"
       WHERE ${Prisma.join(where, " AND ")}
       ORDER BY ${order}
       OFFSET ${args.offset} LIMIT ${args.limit + 1}`;
     const pageIds = picked.slice(0, args.limit);
     const loaded = await this.prisma.business.findMany({
       where: { id: { in: pageIds.map((p) => p.id) } },
-      include: { place: { select: { slug: true } } },
+      include: { place: placeRef },
     });
     const byId = new Map(loaded.map((r) => [r.id, r]));
     return {
@@ -107,7 +113,7 @@ export class BusinessesRepository {
       },
       include: {
         kinds: { where: { kind: { is: { status: "active" } } }, select: { kindId: true } },
-        place: { select: { slug: true, path: true } },
+        place: { select: { slug: true, path: true, lat: true, lng: true } },
       },
     });
     return closestInSubtree(rows, placePath);

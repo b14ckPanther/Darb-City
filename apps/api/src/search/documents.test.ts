@@ -20,6 +20,7 @@ const business = {
   experience: { items: [{ label: { en: "Hummus" } }] },
   placePath: "/israel/northern-district/sakhnin/",
   placeName: { he: "סח'נין", ar: "سخنين", en: "Sakhnin" },
+  placePoint: { lat: 32.8638, lng: 35.3023 },
   kinds: [
     {
       id: "k1",
@@ -46,6 +47,11 @@ describe("documents", () => {
       expect(doc.text).toContain(word);
     expect(doc.embedText).toContain("Hummus Al Balad");
     expect(doc.embedText).toContain("Hummus and falafel");
+  });
+  it("indexes a private street at its place's centre, never its pin", () => {
+    expect(businessDocument(business)).toMatchObject({ lat: 32.86, lng: 35.3 });
+    const home = { ...business, attributes: { addressHidden: true } };
+    expect(businessDocument(home)).toMatchObject({ lat: 32.8638, lng: 35.3023 });
   });
   it("scores completeness over seven facts", () => {
     expect(completeness(business)).toBeCloseTo(4 / 7, 5); // tagline, address, hours, experience

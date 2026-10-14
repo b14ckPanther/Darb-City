@@ -212,3 +212,37 @@ describe("by appointment (Task 28)", () => {
     }
   });
 });
+
+describe("Keep street private (a home business)", () => {
+  // Abu Salim's stored pin (32.864, 35.303) is the home; Sakhnin's centre is 32.8638, 35.3023.
+  const SAKHNIN = { lat: 32.8638, lng: 35.3023 };
+  beforeAll(async () => {
+    const prisma = app.get(PrismaService);
+    await prisma.business.updateMany({
+      where: { slug: "abu-salim" },
+      data: { attributes: { addressHidden: true }, lat: 32.9, lng: 35.4 },
+    });
+  });
+  afterAll(async () => {
+    const prisma = app.get(PrismaService);
+    await prisma.business.updateMany({
+      where: { slug: "abu-salim" },
+      data: { attributes: {}, lat: 32.864, lng: 35.303 },
+    });
+  });
+  const abu = (items: { slug: string }[]) => items.find((b) => b.slug === "abu-salim") as never;
+
+  it("publishes the place's centre, never the stored pin, in lists and the detail", async () => {
+    const list = await get("/places/sakhnin/businesses?kind=barbershops");
+    expect(abu(list.body.items)).toMatchObject(SAKHNIN);
+    const detail = await get("/places/sakhnin/businesses/abu-salim");
+    expect(detail.body).toMatchObject(SAKHNIN);
+    expect(JSON.stringify(detail.body)).not.toContain("32.9");
+  });
+  it("measures distance from the place's centre too", async () => {
+    const res = await request(app.getHttpServer())
+      .post("/places/sakhnin/businesses/near?kind=barbershops")
+      .send(SAKHNIN);
+    expect((abu(res.body.items) as { distanceKm: number }).distanceKm).toBeLessThan(0.01);
+  });
+});
