@@ -1,5 +1,6 @@
 import type { AdminBusinessDto } from "@darb/contracts";
 import type { Locale } from "@darb/core";
+import { ActionButton } from "./ActionButton";
 import { deleteBusiness, setBusinessStatus } from "./business-actions";
 import { at } from "./copy";
 import styles from "./admin.module.css";
@@ -13,14 +14,12 @@ export function StatusActions({
   business: AdminBusinessDto;
 }) {
   const button = (status: "published" | "suspended" | "draft", label: string, cls: string) => (
-    <form action={setBusinessStatus}>
-      <input type="hidden" name="id" value={business.id} />
-      <input type="hidden" name="status" value={status} />
-      <input type="hidden" name="locale" value={locale} />
-      <button type="submit" className={cls}>
-        {label}
-      </button>
-    </form>
+    <ActionButton
+      action={setBusinessStatus}
+      fields={{ id: business.id, status, locale }}
+      label={label}
+      className={cls}
+    />
   );
   return (
     <section className={styles.card} aria-label={at(locale, "status")}>
@@ -35,13 +34,12 @@ export function StatusActions({
           ? button("draft", at(locale, "toDraft"), styles.ghost!)
           : null}
         {business.source === "admin" && business.status === "draft" ? (
-          <form action={deleteBusiness}>
-            <input type="hidden" name="id" value={business.id} />
-            <input type="hidden" name="locale" value={locale} />
-            <button type="submit" className={styles.danger}>
-              {at(locale, "deleteDraft")}
-            </button>
-          </form>
+          <ActionButton
+            action={deleteBusiness}
+            fields={{ id: business.id, locale }}
+            label={at(locale, "deleteDraft")}
+            className={styles.danger}
+          />
         ) : null}
       </div>
       <p className={styles.hint}>{at(locale, "suspendHint")}</p>

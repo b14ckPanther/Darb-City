@@ -35,3 +35,29 @@ export function apiError(
     : [];
   return { ok: false, message, errors: known ? errors : [] };
 }
+
+/**
+ * A one-button action (status, delete, return to seed) that did not happen: the admin's own words
+ * say what did not change (`headline`), and the API's reason, when it gave one, follows.
+ */
+export function actionFailed(
+  locale: Locale,
+  headline: AdminKey,
+  res?: { status: number; body: unknown },
+): ActionState {
+  const reason = res ? apiError(locale, res) : null;
+  const errors =
+    reason && reason.message !== at(locale, "errorGeneric")
+      ? [reason.message ?? "", ...reason.errors].filter(Boolean)
+      : [];
+  return { ok: false, message: at(locale, headline), errors };
+}
+
+/** The API's answer, or null when there was none (unreachable, or a 5xx the contract does not list). */
+export async function answered<T>(call: () => Promise<T>): Promise<T | null> {
+  try {
+    return await call();
+  } catch {
+    return null;
+  }
+}

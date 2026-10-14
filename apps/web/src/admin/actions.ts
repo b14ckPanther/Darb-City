@@ -18,7 +18,7 @@ import { revalidatePath } from "next/cache";
 import { notFound, redirect } from "next/navigation";
 import { isLocale } from "@/lib/locale";
 import type { ActionState } from "./action-state";
-import { apiError } from "./admin-errors";
+import { actionFailed, answered, apiError } from "./admin-errors";
 import { adminApi } from "./api";
 import { at } from "./copy";
 import { changedOnly, kindFields, placeFields, sectorFields, text, zodErrors } from "./form-data";
@@ -136,9 +136,20 @@ export async function saveKind(_prev: ActionState, fd: FormData): Promise<Action
   );
 }
 
-export async function releaseEntity(fd: FormData): Promise<void> {
+export async function releaseEntity(_prev: ActionState, fd: FormData): Promise<ActionState> {
+  const locale = localeOf(fd);
   const entity = text(fd, "entity") as AdminEntity;
-  if (!(ADMIN_ENTITIES as readonly string[]).includes(entity)) return;
-  await (await adminApi()).misc.release({ params: { entity, id: text(fd, "id") }, body: {} });
+  if (!(ADMIN_ENTITIES as readonly string[]).includes(entity))
+    return actionFailed(locale, "errNotReleased");
+  const res = await answered(async () =>
+    (await adminApi()).misc.release({
+      params: { entity, id: text(fd, "id") },
+      body: {},
+    }),
+  );
+  if (!res) return actionFailed(locale, "errNotReleased");
+  if (res.status === 401) redirect(adminHref(locale, "/sign-in"));
+  if (res.status !== 200) return actionFailed(locale, "errNotReleased", res);
   revalidatePath("/admin/[locale]", "layout");
+  return { ok: true, message: null, errors: [] };
 }

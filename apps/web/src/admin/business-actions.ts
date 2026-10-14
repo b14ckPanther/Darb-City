@@ -13,7 +13,7 @@ import { notFound, redirect } from "next/navigation";
 import { isLocale } from "@/lib/locale";
 import type { ActionState } from "./action-state";
 import { adminApi } from "./api";
-import { apiError } from "./admin-errors";
+import { actionFailed, answered, apiError } from "./admin-errors";
 import { businessFromForm, comparable } from "./business-form";
 import { at } from "./copy";
 import { changedOnly, text, zodErrors } from "./form-data";
@@ -90,20 +90,36 @@ export async function saveBusiness(_prev: ActionState, fd: FormData): Promise<Ac
   return apiError(locale, res, id ? {} : { conflict: "errAlreadyExists" });
 }
 
-export async function setBusinessStatus(fd: FormData): Promise<void> {
+export async function setBusinessStatus(_prev: ActionState, fd: FormData): Promise<ActionState> {
+  const locale = localeOf(fd);
   const status = text(fd, "status");
-  if (status !== "published" && status !== "suspended" && status !== "draft") return;
-  const res = await (
-    await adminApi()
-  ).businesses.status({ params: { id: text(fd, "id") }, body: { status } });
-  if (res.status === 401) redirect(adminHref(localeOf(fd), "/sign-in"));
+  if (status !== "published" && status !== "suspended" && status !== "draft")
+    return actionFailed(locale, "errStatusNotChanged");
+  // Suspending is the takedown: an API that is down or answers 5xx must show, never pass silently.
+  const res = await answered(async () =>
+    (await adminApi()).businesses.status({
+      params: { id: text(fd, "id") },
+      body: { status },
+    }),
+  );
+  if (!res) return actionFailed(locale, "errStatusNotChanged");
+  if (res.status === 401) redirect(adminHref(locale, "/sign-in"));
+  if (res.status !== 200) return actionFailed(locale, "errStatusNotChanged", res);
   revalidatePath("/admin/[locale]", "layout");
+  return { ok: true, message: null, errors: [] };
 }
 
-export async function deleteBusiness(fd: FormData): Promise<void> {
+export async function deleteBusiness(_prev: ActionState, fd: FormData): Promise<ActionState> {
   const locale = localeOf(fd);
-  const res = await (
-    await adminApi()
-  ).businesses.remove({ params: { id: text(fd, "id") }, body: {} });
-  if (res.status === 200) redirect(adminHref(locale, "/businesses"));
+  const res = await answered(async () =>
+    (await adminApi()).businesses.remove({
+      params: { id: text(fd, "id") },
+      body: {},
+    }),
+  );
+  if (!res) return actionFailed(locale, "errNotDeleted");
+  if (res.status === 401) redirect(adminHref(locale, "/sign-in"));
+  if (res.status !== 200) return actionFailed(locale, "errNotDeleted", res);
+  revalidatePath("/admin/[locale]", "layout");
+  redirect(adminHref(locale, "/businesses"));
 }

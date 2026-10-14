@@ -1,6 +1,7 @@
 import type { AdminEntity, AuditRowDto } from "@darb/contracts";
 import type { Locale } from "@darb/core";
 import { adminApi, okOr } from "./api";
+import { ActionButton } from "./ActionButton";
 import { releaseEntity } from "./actions";
 import { OwnerBadge } from "./Badges";
 import { at } from "./copy";
@@ -33,15 +34,14 @@ export async function EntityMeta({
         <OwnerBadge locale={locale} editedAt={editedAt} />
       </p>
       {editedAt ? (
-        <form action={releaseEntity} className={styles.actions}>
-          <input type="hidden" name="locale" value={locale} />
-          <input type="hidden" name="entity" value={entity} />
-          <input type="hidden" name="id" value={id} />
-          <button type="submit" className={styles.ghost}>
-            {at(locale, "release")}
-          </button>
+        <ActionButton
+          action={releaseEntity}
+          fields={{ locale, entity, id }}
+          label={at(locale, "release")}
+          className={styles.ghost}
+        >
           <small className={styles.hint}>{at(locale, "releaseHint")}</small>
-        </form>
+        </ActionButton>
       ) : null}
       <h2 id="history" className={styles.h2}>
         {at(locale, "history")}
