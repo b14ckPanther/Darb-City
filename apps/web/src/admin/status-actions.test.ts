@@ -215,3 +215,17 @@ describe("Retry", () => {
     expect(api.misc.revalidate).not.toHaveBeenCalled();
   });
 });
+
+it("a return-to-seed on an admin-created row says why, in the admin's language", async () => {
+  for (const locale of ["he", "ar", "en"] as const) {
+    api.misc.release.mockResolvedValue({
+      status: 409,
+      body: { message: "This was created in admin", code: "no_seed_source" },
+    });
+    expect(await releaseEntity(idle, form({ entity: "kind", id: "k1", locale }))).toEqual({
+      ok: false,
+      message: at(locale, "errNotReleased"),
+      errors: [at(locale, "errNoSeedSource")],
+    });
+  }
+});

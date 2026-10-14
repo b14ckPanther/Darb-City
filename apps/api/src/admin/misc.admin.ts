@@ -5,7 +5,8 @@ import { AdminGuard, type AdminActor, type AdminRequest } from "../auth/admin.gu
 import { PrismaService } from "../prisma/prisma.service.js";
 import { ReportRepository } from "../search/report.repository.js";
 import { AdminWriter } from "./admin-writer.js";
-import { notFound } from "./outcome.js";
+import { conflict, notFound } from "./outcome.js";
+import { seedSource } from "./seed-source.js";
 import { webTags } from "./tags.js";
 
 @Injectable()
@@ -61,10 +62,38 @@ export class MiscAdmin {
     return { status: 200 as const, body: { revalidated: await this.writer.retryTakedown(tags) } };
   }
 
+  /** Whether the row exists and has a seed counterpart; null when it does not exist. */
+  private async seeded(entity: AdminEntity, id: string): Promise<boolean | null> {
+    if (entity === "place") {
+      const p = await this.prisma.place.findUnique({ where: { id } });
+      return p ? seedSource.place(p) : null;
+    }
+    if (entity === "sector") {
+      const s = await this.prisma.sector.findUnique({ where: { id } });
+      return s ? seedSource.sector(s.slug) : null;
+    }
+    if (entity === "kind") {
+      const k = await this.prisma.kind.findUnique({ where: { id } });
+      return k ? seedSource.kind(k.slug) : null;
+    }
+    const b = await this.prisma.business.findUnique({
+      where: { id },
+      include: { place: { select: { slug: true } } },
+    });
+    return b ? seedSource.business(b.place.slug, b.slug) : null;
+  }
+
   /** "Return to seed data": the next seed run overwrites this row again (Task 3). */
   async release(actor: AdminActor, entity: AdminEntity, id: string) {
     const tags = await this.tagsFor(entity, id);
     if (!tags) return notFound(entity);
+    // An admin-created row has nothing to return to: releasing it would only let the next seed
+    // run hide or suspend it (12-17 #10).
+    if (!(await this.seeded(entity, id)))
+      return conflict(
+        "This was created in admin, so there is no seed data to return to",
+        "no_seed_source",
+      );
     await this.writer.write(actor, "release", entity, async (tx) => {
       const data = { editedAt: null };
       if (entity === "place") await tx.place.update({ where: { id }, data });

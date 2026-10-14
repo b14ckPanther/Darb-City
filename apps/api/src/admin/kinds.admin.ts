@@ -17,6 +17,7 @@ import { json } from "./json.js";
 import { conflict, invalid, notFound, outcome } from "./outcome.js";
 import { webTags } from "./tags.js";
 import { nameOrSlugFilters } from "./text-search.js";
+import { seedSource } from "./seed-source.js";
 
 type Synonyms = AdminKindDto["synonyms"];
 type KindRow = Kind & { _count: { primaryFor: number } };
@@ -35,6 +36,7 @@ export const toAdminKind = (k: KindRow): AdminKindDto => ({
   status: k.status,
   businessCount: k._count.primaryFor,
   editedAt: k.editedAt?.toISOString() ?? null,
+  seedSource: seedSource.kind(k.slug),
 });
 const withCount = { _count: { select: { primaryFor: true } } } as const;
 /** How many ancestors the cycle check walks before it gives up and refuses. */

@@ -52,7 +52,13 @@ export default async function EditBusiness({
       </p>
       <StatusActions locale={locale} business={b} stale={stale} />
       <BusinessForm locale={locale} kinds={kinds} business={b} />
-      <EntityMeta locale={locale} entity="business" id={b.id} editedAt={b.editedAt} />
+      <EntityMeta
+        locale={locale}
+        entity="business"
+        id={b.id}
+        editedAt={b.editedAt}
+        seedSource={b.seedSource}
+      />
     </>
   );
 }

@@ -92,7 +92,13 @@ export default async function EditPlace({
           />
         </div>
       </ActionForm>
-      <EntityMeta locale={locale} entity="place" id={p.id} editedAt={p.editedAt} />
+      <EntityMeta
+        locale={locale}
+        entity="place"
+        id={p.id}
+        editedAt={p.editedAt}
+        seedSource={p.seedSource}
+      />
     </>
   );
 }

@@ -17,6 +17,7 @@ import { json } from "./json.js";
 import { conflict, invalid, notFound, outcome } from "./outcome.js";
 import { nameOrSlugFilters } from "./text-search.js";
 import { webTags } from "./tags.js";
+import { seedSource } from "./seed-source.js";
 
 const STATUSES = new Set(["live", "soon"]);
 
@@ -34,6 +35,7 @@ export const toAdminPlace = (p: Place): AdminPlaceDto => ({
   cbsCode: p.cbsCode,
   status: p.status,
   editedAt: p.editedAt?.toISOString() ?? null,
+  seedSource: seedSource.place(p),
 });
 
 /** Name text in any language, or the slug. */

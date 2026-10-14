@@ -126,7 +126,13 @@ export default async function EditKind({
           dir="ltr"
         />
       </ActionForm>
-      <EntityMeta locale={locale} entity="kind" id={k.id} editedAt={k.editedAt} />
+      <EntityMeta
+        locale={locale}
+        entity="kind"
+        id={k.id}
+        editedAt={k.editedAt}
+        seedSource={k.seedSource}
+      />
     </>
   );
 }

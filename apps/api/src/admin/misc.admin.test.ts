@@ -66,3 +66,35 @@ it("serves the Missing report to admins only, with no-store", async () => {
   expect(res.body.missingKinds).toEqual([{ term: "ice skating", count: 1 }]);
   expect((await http().get("/admin/report").set("authorization", STRANGER)).status).toBe(403);
 });
+
+it("refuses to return an admin-created row to seed data: there is none (409 no_seed_source)", async () => {
+  // kids-haircuts is a fixture kind with no seed counterpart, like one created in admin.
+  await prisma.kind.update({ where: { id: f.kidsCuts.id }, data: { editedAt: new Date() } });
+  const kind = await http().get(`/admin/kinds/${f.kidsCuts.id}`).set("authorization", ADMIN);
+  expect(kind.body.seedSource).toBe(false);
+  const res = await http()
+    .post(`/admin/release/kind/${f.kidsCuts.id}`)
+    .set("authorization", ADMIN)
+    .send({});
+  expect([res.status, res.body.code]).toEqual([409, "no_seed_source"]);
+  expect(
+    (await prisma.kind.findUniqueOrThrow({ where: { id: f.kidsCuts.id } })).editedAt,
+  ).not.toBeNull();
+  expect(await prisma.auditLog.count({ where: { action: "release" } })).toBe(0);
+  const business = await http()
+    .post(`/admin/release/business/${f.abuSalim.id}`)
+    .set("authorization", ADMIN)
+    .send({});
+  expect([business.status, business.body.code]).toEqual([409, "no_seed_source"]);
+});
+
+it("marks which rows have seed data behind them", async () => {
+  const kind = await http().get(`/admin/kinds/${f.barbershops.id}`).set("authorization", ADMIN);
+  expect(kind.body.seedSource).toBe(true);
+  const place = await http().get(`/admin/places/${f.tamra.id}`).set("authorization", ADMIN);
+  expect(place.body.seedSource).toBe(true);
+  const sectors = await http().get("/admin/sectors").set("authorization", ADMIN);
+  expect(sectors.body.every((s: { seedSource: boolean }) => s.seedSource)).toBe(true);
+  const biz = await http().get(`/admin/businesses/${f.abuSalim.id}`).set("authorization", ADMIN);
+  expect(biz.body.seedSource).toBe(false);
+});

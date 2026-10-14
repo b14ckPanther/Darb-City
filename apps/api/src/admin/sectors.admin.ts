@@ -14,6 +14,7 @@ import { AdminWriter } from "./admin-writer.js";
 import { json } from "./json.js";
 import { conflict, invalid, notFound } from "./outcome.js";
 import { webTags } from "./tags.js";
+import { seedSource } from "./seed-source.js";
 
 export const toAdminSector = (s: Sector): AdminSectorDto => ({
   id: s.id,
@@ -23,6 +24,7 @@ export const toAdminSector = (s: Sector): AdminSectorDto => ({
   accent: s.accent,
   order: s.order,
   editedAt: s.editedAt?.toISOString() ?? null,
+  seedSource: seedSource.sector(s.slug),
 });
 
 @Injectable()

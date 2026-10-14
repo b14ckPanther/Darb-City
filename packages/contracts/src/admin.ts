@@ -11,6 +11,8 @@ export type AdminEntity = (typeof ADMIN_ENTITIES)[number];
 
 const id = z.string().uuid();
 const stamp = z.string().nullable();
+/** The row has a counterpart in the seed data, so "Return to seed data" applies to it. */
+const seedSource = z.boolean();
 /** New slugs are permanent URLs: never a route the web app owns. */
 const NewSlugSchema = SlugSchema.refine((s) => !isReservedSlug(s), {
   message: "This slug is reserved",
@@ -84,6 +86,7 @@ export const AdminPlaceSchema = z.object({
   cbsCode: z.string().nullable(),
   status: z.enum(PLACE_STATUSES),
   editedAt: stamp,
+  seedSource,
 });
 const placeFields = z.object({
   name: LocalizedSchema,
@@ -112,6 +115,7 @@ export const AdminSectorSchema = z.object({
   accent: z.string(),
   order: z.number().int(),
   editedAt: stamp,
+  seedSource,
 });
 const sectorFields = z.object({
   name: LocalizedSchema,
@@ -137,6 +141,7 @@ export const AdminKindSchema = z.object({
   status: z.enum(["active", "hidden"]),
   businessCount: z.number().int().nonnegative(),
   editedAt: stamp,
+  seedSource,
 });
 const kindFields = z.object({
   sectorId: id,
@@ -178,6 +183,7 @@ export const AdminBusinessRowSchema = z.object({
   source: z.enum(["seed", "self", "claimed", "admin"]),
   editedAt: stamp,
   updatedAt: z.string(),
+  seedSource,
 });
 const AppsSchema = z
   .object({ web: httpUrl.optional(), ios: httpUrl.optional(), android: httpUrl.optional() })
@@ -275,7 +281,10 @@ export const adminContract = c.router({
       query: ReportQuerySchema,
       responses: { 200: MissingReportSchema, ...guarded },
     },
-    /** Clears editedAt: the next seed run overwrites the row again. */
+    /**
+     * Clears editedAt: the next seed run overwrites the row again. A row with no seed counterpart
+     * (seedSource false: created in admin) is refused with 409 code no_seed_source.
+     */
     release: {
       method: "POST",
       path: "/admin/release/:entity/:id",

@@ -59,7 +59,13 @@ export default async function EditSector({
           />
         </div>
       </ActionForm>
-      <EntityMeta locale={locale} entity="sector" id={s.id} editedAt={s.editedAt} />
+      <EntityMeta
+        locale={locale}
+        entity="sector"
+        id={s.id}
+        editedAt={s.editedAt}
+        seedSource={s.seedSource}
+      />
     </>
   );
 }

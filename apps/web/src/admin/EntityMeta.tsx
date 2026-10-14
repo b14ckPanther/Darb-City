@@ -7,17 +7,23 @@ import { OwnerBadge } from "./Badges";
 import { at } from "./copy";
 import styles from "./admin.module.css";
 
-/** Who owns the row (seed or admin), "Return to seed data", and the audit trail. */
+/**
+ * Who owns the row (seed or admin), "Return to seed data", and the audit trail. The button only
+ * shows for an edited row that has seed data behind it: an admin-created row has nothing to return
+ * to (the API refuses it with no_seed_source).
+ */
 export async function EntityMeta({
   locale,
   entity,
   id,
   editedAt,
+  seedSource,
 }: {
   locale: Locale;
   entity: AdminEntity;
   id: string;
   editedAt: string | null;
+  seedSource: boolean;
 }) {
   const audit = okOr<AuditRowDto[]>(
     await (await adminApi()).misc.audit({ query: { entityType: entity, entityId: id } }),
@@ -33,7 +39,7 @@ export async function EntityMeta({
       <p>
         <OwnerBadge locale={locale} editedAt={editedAt} />
       </p>
-      {editedAt ? (
+      {editedAt && seedSource ? (
         <ActionButton
           action={releaseEntity}
           fields={{ locale, entity, id }}

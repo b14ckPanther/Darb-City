@@ -20,6 +20,7 @@ import { json } from "./json.js";
 import { conflict, invalid, notFound, outcome } from "./outcome.js";
 import { webTags } from "./tags.js";
 import { nameOrSlugFilters } from "./text-search.js";
+import { seedSource } from "./seed-source.js";
 
 type Row = Business & { place: { slug: string }; kinds: { kindId: string }[] };
 const include = { place: { select: { slug: true } }, kinds: { select: { kindId: true } } } as const;
@@ -37,6 +38,7 @@ export const toAdminBusinessRow = (b: Row): AdminBusinessRowDto => ({
   source: b.source,
   editedAt: b.editedAt?.toISOString() ?? null,
   updatedAt: b.updatedAt.toISOString(),
+  seedSource: seedSource.business(b.place.slug, b.slug),
 });
 export const toAdminBusiness = (b: Row): AdminBusinessDto => ({
   ...toAdminBusinessRow(b),
