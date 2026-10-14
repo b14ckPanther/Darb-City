@@ -41,12 +41,22 @@ function adminResponse(request: NextRequest): NextResponse {
   for (const [k, v] of Object.entries(securityHeaders())) res.headers.set(k, v);
   return res;
 }
+/** The internal shape the rewrite targets (app/admin/[locale]); reachable only through adminResponse. */
+const INTERNAL_ADMIN = /^\/admin\/(?:he|ar|en)(?:\/|$)/;
+function internalAdminNotFound(): NextResponse {
+  const res = new NextResponse("Not found", { status: 404 });
+  res.headers.set("x-robots-tag", "noindex, nofollow");
+  res.headers.set("cache-control", "no-store");
+  for (const [k, v] of Object.entries(securityHeaders())) res.headers.set(k, v);
+  return res;
+}
 const clerkAdmin = clerkMiddleware(async (_auth, request) => adminResponse(request));
 
 export async function proxy(
   request: NextRequest,
   event?: NextFetchEvent,
 ): Promise<NextResponse | Response> {
+  if (INTERNAL_ADMIN.test(request.nextUrl.pathname)) return internalAdminNotFound();
   if (adminRoute(request.nextUrl.pathname)) {
     // Clerk runs only on admin requests: public pages never load or call Clerk.
     if (adminAuthMode() === "clerk" && event)
@@ -63,7 +73,16 @@ export async function proxy(
 }
 
 export const config = {
-  // Route handlers, Next internals, brand files and anything with a file extension skip the proxy.
+  // Route handlers, Next internals, brand files and anything with a file extension skip the proxy,
+  // except admin paths: a dot in an admin path (/admin/businesses/x.y) must still get the nonce
+  // CSP and noindex, and the internal /admin/<locale> shape must still 404.
   // /__clerk/ is Clerk's frontend API proxy path, kept for later.
-  matcher: ["/((?!api/|_next/|brand/|.*\\..*).*)", "/__clerk/(.*)"],
+  matcher: [
+    "/((?!api/|_next/|brand/|.*\\..*).*)",
+    "/admin",
+    "/admin/:path*",
+    "/(ar|en)/admin",
+    "/(ar|en)/admin/:path*",
+    "/__clerk/(.*)",
+  ],
 };
