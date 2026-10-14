@@ -16,6 +16,7 @@ const NONE: RetrievalFilters = {
   radiusKm: null,
   openAt: null,
   delivers: false,
+  dietary: [],
   text: "",
   embedding: null,
 };
@@ -145,5 +146,24 @@ describe("the candidate pre-cut", () => {
     } finally {
       await new SearchIndexer(prisma, hash).index("business", [f.tamraBarber.id]);
     }
+  });
+});
+
+describe("Keep street private", () => {
+  it("search shows the place's centre and measures from it, never the stored pin", async () => {
+    await prisma.business.update({
+      where: { id: f.abuSalim.id },
+      data: { attributes: { addressHidden: true }, lat: 32.95, lng: 35.45 },
+    });
+    await new SearchIndexer(prisma, hash).indexAll();
+    const rows = await repo.retrieve({
+      ...NONE,
+      kindIds: [f.barbershops.id],
+      near: { lat: 32.8638, lng: 35.3023 },
+      radiusKm: 5,
+    });
+    const abu = rows.find((r) => r.row.slug === "abu-salim")!;
+    expect([abu.row.lat, abu.row.lng]).toEqual([32.8638, 35.3023]);
+    expect(abu.km).toBeLessThan(0.01);
   });
 });

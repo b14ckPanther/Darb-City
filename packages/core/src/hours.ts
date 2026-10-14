@@ -12,6 +12,15 @@ export interface Hours {
   weekly: Partial<Record<Weekday, Interval[]>>;
   /** Dated overrides (`YYYY-MM-DD`, Israel local). Empty `intervals` means closed all day. */
   exceptions: { date: string; intervals: Interval[] }[];
+  /**
+   * Visits by arrangement only (a home business, Task 28): never "open now", and pages say
+   * "By appointment" instead of an open or closed badge.
+   */
+  byAppointment?: boolean;
+}
+
+export function isByAppointment(hours: { byAppointment?: boolean }): boolean {
+  return hours.byAppointment === true;
 }
 
 const WEEKDAYS: Record<string, Weekday> = {
@@ -66,6 +75,7 @@ function intervalsFor(hours: Hours, date: string, weekday: Weekday): Interval[] 
 }
 
 export function isOpenAt(hours: Hours, at: Date): boolean {
+  if (isByAppointment(hours)) return false;
   const now = local(at);
   for (const { open, close } of intervalsFor(hours, now.date, now.weekday)) {
     const o = toMinutes(open);

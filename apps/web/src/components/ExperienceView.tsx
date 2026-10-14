@@ -1,9 +1,19 @@
-import { pickText, type Locale } from "@darb/core";
+import Link from "next/link";
+import { isByAppointment, pickText, type Locale } from "@darb/core";
 import type { BusinessDetailDto, KindDto } from "@darb/contracts";
 import { t } from "@darb/i18n";
 import { formatPhone } from "@/lib/format";
-import { directionsHref, primaryAction, safeHttpUrl, telHref, whatsappHref } from "@/lib/links";
-import { ExampleBadge, OpenState } from "./Badges";
+import {
+  addressHidden,
+  directionsHref,
+  primaryAction,
+  safeHttpUrl,
+  telHref,
+  whatsappHref,
+} from "@/lib/links";
+import { href, paths } from "@/lib/routes";
+import { AppointmentBadge, ExampleBadge, GlutenFreeBadge } from "./Badges";
+import { LiveOpenState } from "./LiveOpenState";
 import { LocaleSwitch } from "./CityBar";
 import { HoursTable } from "./HoursTable";
 import { SheetActions } from "./SheetActions";
@@ -32,13 +42,19 @@ export function ExperienceView({
 }: ExperienceViewProps) {
   const name = pickText(business.name, locale);
   const screen = parseScreen(business.experience);
+  const primary = primaryAction(business, locale);
+  const mainHref = "href" in primary ? primary.href : null;
+  // Each link once: the app the main button opens is not repeated below it.
   const apps =
     business.tier === "darb"
       ? [business.apps.web, business.apps.ios, business.apps.android]
           .map((url) => safeHttpUrl(url))
-          .filter((url): url is string => url !== null)
+          .filter((url): url is string => url !== null && url !== mainHref)
           .map((url) => ({ label: t(locale, "openTheApp"), href: url }))
       : [];
+  const website = safeHttpUrl(business.website);
+  const directions = directionsHref(business.lat, business.lng);
+  const appointment = isByAppointment(business.hours);
   const greeting = t(locale, "whatsappGreeting", { name });
   return (
     <article className={styles.view}>
@@ -52,10 +68,18 @@ export function ExperienceView({
         </p>
         <p className={styles.badges}>
           {business.tier === "example" ? <ExampleBadge label={t(locale, "example")} /> : null}
-          <OpenState
-            openNow={business.openNow}
-            labels={{ open: t(locale, "openNow"), closed: t(locale, "closed") }}
-          />
+          {business.dietary.includes("gluten_free") ? (
+            <GlutenFreeBadge label={t(locale, "glutenFree")} />
+          ) : null}
+          {appointment ? (
+            <AppointmentBadge label={t(locale, "byAppointment")} />
+          ) : (
+            <LiveOpenState
+              openNow={business.openNow}
+              hours={business.openNow === null ? null : business.hours}
+              labels={{ open: t(locale, "openNow"), closed: t(locale, "closed") }}
+            />
+          )}
         </p>
         {business.phone ? (
           <p className={styles.muted}>
@@ -65,13 +89,14 @@ export function ExperienceView({
       </header>
       {screen ? <ScreenView screen={screen} template={kind.template} locale={locale} /> : null}
       <SheetActions
-        primary={primaryAction(business, locale)}
+        primary={primary}
         ctaLabel={screen ? pickText(screen.cta, locale) : t(locale, "call")}
         secondary={{
           call: business.phone ? telHref(business.phone) : null,
           whatsapp: business.whatsapp ? whatsappHref(business.whatsapp, greeting) : null,
-          directions: directionsHref(business.lat, business.lng),
-          website: safeHttpUrl(business.website),
+          directions:
+            addressHidden(business.attributes) || directions === mainHref ? null : directions,
+          website: website === mainHref || apps.some((a) => a.href === website) ? null : website,
           apps,
         }}
         share={{ url: shareUrl, title: name }}
@@ -87,6 +112,12 @@ export function ExperienceView({
         }}
       />
       <HoursTable locale={locale} hours={business.hours} />
+      {business.tier === "darb" ? (
+        // Every Darb client's listing invites other business owners (Task 28).
+        <p className={styles.builtBy} data-built-by-darb="">
+          <Link href={href(locale, paths.forBusiness())}>{t(locale, "builtByDarb")}</Link>
+        </p>
+      ) : null}
     </article>
   );
 }

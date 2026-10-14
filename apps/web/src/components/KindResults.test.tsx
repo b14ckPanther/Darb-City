@@ -15,10 +15,13 @@ const row = (key: string, extra: object = {}) => ({
   href: `/en/sakhnin/food/restaurants/${key}`,
   example: true,
   openNow: true,
+  hours: null,
   placeName: null,
   lat: 32.86,
   lng: 35.3,
   distance: null,
+  glutenFree: false,
+  byAppointment: false,
   ...extra,
 });
 const labels = {
@@ -27,6 +30,7 @@ const labels = {
   openNow: "Open now",
   delivers: "Delivers",
   nearMe: "Near me",
+  glutenFree: "Gluten-free",
   locating: "Finding you…",
   locationDenied: "Location is off.",
   showMore: "Show more",
@@ -34,7 +38,13 @@ const labels = {
   filterNoResults: "Nothing here matches these filters yet.",
   nothingOpen: "Nothing is open right now.",
   includeClosed: "Show them all, open or closed",
-  rows: { example: "Example", openNow: "Open now", closed: "Closed" },
+  rows: {
+    example: "Example",
+    openNow: "Open now",
+    closed: "Closed",
+    glutenFree: "Gluten-free",
+    byAppointment: "By appointment",
+  },
 };
 const props = {
   locale: "en" as const,
@@ -44,6 +54,7 @@ const props = {
   initialRows: [row("a"), row("b")],
   initialCursor: "c1",
   deliversAvailable: true,
+  glutenFreeAvailable: true,
   labels,
 };
 const pins = () =>
@@ -79,6 +90,7 @@ describe("KindResults", () => {
       kind: "restaurants",
       open: true,
       delivers: false,
+      glutenFree: false,
     });
     expect(window.location.search).toBe("?open=1");
     await waitFor(() => expect(pins()).toEqual(["b"]));
@@ -190,5 +202,30 @@ describe("KindResults", () => {
     const last = sent(fetchMock, fetchMock.mock.calls.length - 1);
     expect(last.open).toBe(true);
     expect(last.near).toEqual({ lat: 32.86, lng: 35.3 });
+  });
+});
+
+describe("gluten-free filter (Task 27b)", () => {
+  it("filters to gluten-free kitchens, in the URL like the other filters", async () => {
+    const fetchMock = vi.fn(async () => Response.json({ rows: [row("b")], nextCursor: null }));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<KindResults {...props} />);
+    const gf = screen.getByRole("button", { name: "Gluten-free" });
+    expect(gf.getAttribute("data-filter")).toBe("gluten-free");
+    await act(async () => fireEvent.click(gf));
+    expect(gf.getAttribute("aria-pressed")).toBe("true");
+    expect(sent(fetchMock, 0).glutenFree).toBe(true);
+    expect(window.location.search).toBe("?glutenFree=1");
+    await waitFor(() => expect(pins()).toEqual(["b"]));
+  });
+  it("is offered only where it applies, and read from a shared URL", async () => {
+    const { unmount } = render(<KindResults {...props} glutenFreeAvailable={false} />);
+    expect(screen.queryByRole("button", { name: "Gluten-free" })).toBeNull();
+    unmount();
+    window.history.replaceState(null, "", "/en/sakhnin/food/restaurants?glutenFree=1");
+    const fetchMock = vi.fn(async () => Response.json({ rows: [], nextCursor: null }));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<KindResults {...props} />);
+    await waitFor(() => expect(sent(fetchMock, 0).glutenFree).toBe(true));
   });
 });

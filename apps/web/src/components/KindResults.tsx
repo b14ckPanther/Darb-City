@@ -17,6 +17,7 @@ export interface KindResultsLabels {
   filters: string;
   openNow: string;
   delivers: string;
+  glutenFree: string;
   nearMe: string;
   locating: string;
   locationDenied: string;
@@ -35,30 +36,40 @@ export interface KindResultsProps {
   initialRows: BusinessRowData[];
   initialCursor: string | null;
   deliversAvailable: boolean;
+  /** Food kinds only: a whole gluten-free kitchen means nothing for a barber (Task 27b). */
+  glutenFreeAvailable: boolean;
   labels: KindResultsLabels;
 }
 type Point = { lat: number; lng: number };
 interface Filters {
   open: boolean;
   delivers: boolean;
+  glutenFree: boolean;
   near: Point | null;
 }
 
-const active = (f: Filters) => f.open || f.delivers || f.near !== null;
+const active = (f: Filters) => f.open || f.delivers || f.glutenFree || f.near !== null;
 
-/** ?open=1 and ?delivers=1 mirror the toggles; Near me never enters the URL. */
+/** ?open=1, ?delivers=1 and ?glutenFree=1 mirror the toggles; Near me never enters the URL. */
 function writeUrl(f: Filters) {
   const url = new URL(window.location.href);
   url.searchParams.delete("open");
   url.searchParams.delete("delivers");
+  url.searchParams.delete("glutenFree");
   if (f.open) url.searchParams.set("open", "1");
   if (f.delivers) url.searchParams.set("delivers", "1");
+  if (f.glutenFree) url.searchParams.set("glutenFree", "1");
   if (url.href !== window.location.href) window.history.replaceState(window.history.state, "", url);
 }
 
 export function KindResults(props: KindResultsProps) {
-  const { locale, place, kind, stagePlace, deliversAvailable, labels } = props;
-  const [filters, setFilters] = useState<Filters>({ open: false, delivers: false, near: null });
+  const { locale, place, kind, stagePlace, deliversAvailable, glutenFreeAvailable, labels } = props;
+  const [filters, setFilters] = useState<Filters>({
+    open: false,
+    delivers: false,
+    glutenFree: false,
+    near: null,
+  });
   const [rows, setRows] = useState(props.initialRows);
   const [cursor, setCursor] = useState(props.initialCursor);
   const [state, setState] = useState<"idle" | "loading" | "locating" | "denied" | "error">("idle");
@@ -98,6 +109,7 @@ export function KindResults(props: KindResultsProps) {
           kind,
           open: next.open,
           delivers: next.delivers,
+          glutenFree: next.glutenFree,
           ...(next.near ? { near: roundPoint(next.near) } : {}),
           ...(after ? { cursor: after } : {}),
         }),
@@ -137,6 +149,7 @@ export function KindResults(props: KindResultsProps) {
     const fromUrl = {
       open: q.get("open") === "1",
       delivers: deliversAvailable && q.get("delivers") === "1",
+      glutenFree: glutenFreeAvailable && q.get("glutenFree") === "1",
       near: null,
     };
     if (!active(fromUrl)) return;
@@ -186,6 +199,17 @@ export function KindResults(props: KindResultsProps) {
             {labels.delivers}
           </button>
         ) : null}
+        {glutenFreeAvailable ? (
+          <button
+            type="button"
+            className={styles.toggle}
+            aria-pressed={filters.glutenFree}
+            onClick={() => apply({ ...filters, glutenFree: !filters.glutenFree })}
+            data-filter="gluten-free"
+          >
+            {labels.glutenFree}
+          </button>
+        ) : null}
         <button
           type="button"
           className={styles.toggle}
@@ -205,7 +229,7 @@ export function KindResults(props: KindResultsProps) {
             <BusinessRow key={row.key} row={row} labels={labels.rows} />
           ))}
         </ul>
-      ) : filters.open && !filters.delivers ? (
+      ) : filters.open && !filters.delivers && !filters.glutenFree ? (
         // Open now emptied the list: say so, and offer the same kind open or closed.
         <div className={styles.empty} data-filter-empty="">
           <p>{labels.nothingOpen}</p>

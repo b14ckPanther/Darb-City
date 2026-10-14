@@ -12,7 +12,8 @@ export interface SheetActionsProps {
   secondary: {
     call: string | null;
     whatsapp: string | null;
-    directions: string;
+    /** Null for a home business (its pin is only the town) or when it is the main button. */
+    directions: string | null;
     website: string | null;
     apps: { label: string; href: string }[];
   };
@@ -54,12 +55,15 @@ export function SheetActions({ primary, ctaLabel, secondary, share, labels }: Sh
 
   return (
     <div className={styles.actions}>
-      {primary.kind === "whatsapp" || primary.kind === "call" ? (
+      {primary.kind === "whatsapp" ||
+      primary.kind === "call" ||
+      primary.kind === "app" ||
+      primary.kind === "directions" ? (
         <a
           href={primary.href}
           className={styles.primary}
           data-primary-action=""
-          {...(primary.kind === "whatsapp" ? external : {})}
+          {...(primary.kind === "call" ? {} : external)}
         >
           {ctaLabel}
         </a>
@@ -89,11 +93,13 @@ export function SheetActions({ primary, ctaLabel, secondary, share, labels }: Sh
             </a>
           </li>
         ) : null}
-        <li>
-          <a href={secondary.directions} {...external}>
-            {labels.directions}
-          </a>
-        </li>
+        {secondary.directions ? (
+          <li>
+            <a href={secondary.directions} {...external}>
+              {labels.directions}
+            </a>
+          </li>
+        ) : null}
         <li>
           <button type="button" onClick={onShare}>
             {labels.share}

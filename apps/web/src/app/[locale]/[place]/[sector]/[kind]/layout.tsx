@@ -66,11 +66,13 @@ export default orUnavailable(async function KindLayout({ children, params }: Pro
               initialRows={rows}
               initialCursor={page.nextCursor}
               deliversAvailable={kind.attributes.includes("delivers")}
+              glutenFreeAvailable={sector.slug === "food"}
               labels={{
                 businesses: t(locale, "businesses"),
                 filters: t(locale, "filters"),
                 openNow: t(locale, "openNow"),
                 delivers: t(locale, "delivers"),
+                glutenFree: t(locale, "glutenFree"),
                 nearMe: t(locale, "nearMe"),
                 locating: t(locale, "locating"),
                 locationDenied: t(locale, "locationDenied"),

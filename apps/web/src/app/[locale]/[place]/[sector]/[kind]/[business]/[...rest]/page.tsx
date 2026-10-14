@@ -4,7 +4,7 @@ import { BusinessLevelView, businessLevelMetadata } from "@/components/BusinessL
 import { loadBusinessLevel } from "@/lib/levels";
 import { metadataOrUnavailable, orUnavailable } from "@/lib/unavailable";
 
-export const revalidate = 300;
+export const revalidate = 86400;
 export function generateStaticParams() {
   return [];
 }

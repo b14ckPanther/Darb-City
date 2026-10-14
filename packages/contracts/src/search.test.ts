@@ -64,3 +64,15 @@ describe("search schemas", () => {
     expect(contract.search.report.path).toBe("/search/report");
   });
 });
+
+describe("intent dietary (Task 27b)", () => {
+  it("has no dietary filter by default, and an older cached intent without it still parses", () => {
+    expect(EMPTY_INTENT.dietary).toEqual([]);
+    const { dietary: _d, ...older } = EMPTY_INTENT;
+    expect(IntentSchema.parse(older).dietary).toEqual([]);
+    expect(IntentSchema.parse({ ...EMPTY_INTENT, dietary: ["gluten_free"] }).dietary).toEqual([
+      "gluten_free",
+    ]);
+    expect(() => IntentSchema.parse({ ...EMPTY_INTENT, dietary: ["x"] })).toThrow();
+  });
+});

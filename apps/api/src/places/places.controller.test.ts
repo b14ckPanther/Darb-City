@@ -47,29 +47,28 @@ describe("GET /places/:slug", () => {
   });
 });
 
-describe("GET /nearest-place", () => {
+describe("POST /nearest-place", () => {
+  const nearest = (body: object) => request(app.getHttpServer()).post("/nearest-place").send(body);
   it("finds the nearest live settlement, skipping soon places", async () => {
-    const res = await request(app.getHttpServer()).get("/nearest-place?lat=32.85&lng=35.21");
+    const res = await nearest({ lat: 32.85, lng: 35.21 });
     expect(res.status).toBe(200);
     expect(res.body.slug).toBe("tamra");
+    expect(res.body.status).toBe("live");
   });
   it("never returns a soon place even when it is closest", async () => {
-    const res = await request(app.getHttpServer()).get("/nearest-place?lat=29.55&lng=34.95");
+    const res = await nearest({ lat: 29.55, lng: 34.95 });
     expect(res.body.slug).not.toBe("eilat");
   });
   it("rejects out-of-range coordinates", async () => {
-    const res = await request(app.getHttpServer()).get("/nearest-place?lat=200&lng=35");
-    expect(res.status).toBe(400);
+    expect((await nearest({ lat: 200, lng: 35 })).status).toBe(400);
   });
-  it("rejects blank coordinates instead of reading them as zero", async () => {
-    expect((await request(app.getHttpServer()).get("/nearest-place?lat=&lng=35")).status).toBe(400);
-    expect((await request(app.getHttpServer()).get("/nearest-place?lat=32.8&lng=")).status).toBe(
-      400,
-    );
+  it("rejects blank, string and missing coordinates instead of reading them as zero", async () => {
+    expect((await nearest({ lat: "", lng: 35 })).status).toBe(400);
+    expect((await nearest({ lat: "32.8", lng: 35 })).status).toBe(400);
+    expect((await nearest({ lat: 32.8 })).status).toBe(400);
   });
-  it("answers 200 with a live place for valid coordinates", async () => {
+  it("no longer answers a GET with coordinates in the URL", async () => {
     const res = await request(app.getHttpServer()).get("/nearest-place?lat=32.85&lng=35.21");
-    expect(res.status).toBe(200);
-    expect(res.body.status).toBe("live");
+    expect(res.status).toBe(404);
   });
 });

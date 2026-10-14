@@ -12,6 +12,9 @@ allowBuilds:
 catalog:
   "@anthropic-ai/sdk": 0.128.0
   "@axe-core/playwright": 4.13.0
+  "@clerk/backend": 3.20.1
+  "@clerk/localizations": 4.20.0
+  "@clerk/nextjs": 7.9.7
   "@eslint/js": 10.0.1
   "@nestjs/common": 11.2.7
   "@nestjs/core": 11.2.7
@@ -50,6 +53,7 @@ catalog:
   react-dom: 19.3.0
   reflect-metadata: 0.2.2
   rxjs: 7.8.2
+  server-only: 0.0.1
   supertest: 7.3.1
   tsx: 4.23.15
   turbo: 2.11.7
@@ -58,3 +62,10 @@ catalog:
   unplugin-swc: 2.0.0
   vitest: 5.0.3
   zod: 3.25.76
+
+# Transitive Clerk ranges (^) would resolve to releases younger than 14 days; pin them exactly.
+overrides:
+  "@clerk/backend": 3.20.1
+  "@clerk/react": 6.17.2
+  "@clerk/shared": 4.36.0
+  "@tanstack/query-core": 5.104.0

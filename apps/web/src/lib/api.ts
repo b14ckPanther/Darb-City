@@ -1,8 +1,10 @@
+import "server-only";
 import {
   contract,
   type BusinessDetailDto,
   type BusinessPageDto,
   type DensityDto,
+  type InstantIndexDto,
   type KindCountsDto,
   type NearestPlaceDto,
   type PlaceDetailDto,
@@ -10,10 +12,11 @@ import {
   type ResultsRequestDto,
   type SearchRequestDto,
   type SearchResponseDto,
+  type SitemapBusinessDto,
   type SuggestionDto,
   type TaxonomyDto,
 } from "@darb/contracts";
-import { isSlug } from "@darb/core";
+import { isSlug, type Dietary } from "@darb/core";
 import { initClient, type ApiFetcher } from "@ts-rest/core";
 
 /** The API could not be reached or answered with an error it should never give. */
@@ -32,7 +35,8 @@ export class ApiBadRequestError extends Error {
   }
 }
 
-export const REVALIDATE = { lists: 300, taxonomy: 3600 } as const;
+/** Admin writes revalidate by tag; open-now is computed in the browser (Task 19), so a day is safe. */
+export const REVALIDATE = { lists: 86400, taxonomy: 86400 } as const;
 
 export const tags = {
   taxonomy: "taxonomy",
@@ -135,6 +139,8 @@ export async function getBusinesses(
     limit?: number;
     open?: boolean;
     delivers?: boolean;
+    /** A whole-business dietary fact every result must have (Task 27b). */
+    dietary?: Dietary;
     /** A person's position: fetched no-store, never cached. */
     near?: { lat: number; lng: number };
   } = {},
@@ -146,16 +152,23 @@ export async function getBusinesses(
     ...(options.limit ? { limit: options.limit } : {}),
     ...(options.open ? { openNow: "true" as const } : {}),
     ...(options.delivers ? { delivers: "true" as const } : {}),
-    ...(options.near ? { lat: options.near.lat, lng: options.near.lng } : {}),
+    ...(options.dietary ? { dietary: options.dietary } : {}),
   };
+  const near = options.near;
+  // A person's position goes in a POST body, never in the URL (spec §5.4), and is never cached.
   const res = await call(() =>
-    client().businesses.list({
-      params: { placeSlug },
-      query,
-      fetchOptions: fetchOptions(
-        options.near ? "no-store" : cached(REVALIDATE.lists, tags.businesses),
-      ),
-    }),
+    near
+      ? client().businesses.listNear({
+          params: { placeSlug },
+          query,
+          body: { lat: near.lat, lng: near.lng },
+          fetchOptions: { cache: "no-store" },
+        })
+      : client().businesses.list({
+          params: { placeSlug },
+          query,
+          fetchOptions: fetchOptions(cached(REVALIDATE.lists, tags.businesses)),
+        }),
   );
   if (res.status === 400) throw new ApiBadRequestError(res.body);
   return res.status === 200 ? res.body : null;
@@ -188,7 +201,9 @@ export async function getNearestPlacesWithKind(
   const res = await call(() =>
     client().businesses.nearestPlaces({
       params: { kindSlug },
-      query: { lat, lng, limit },
+      // POST: the point stays out of the URL. "cached" is only ever a place's own public point;
+      // Next's data cache keys a POST on a hash of its body, so nothing logs the coordinates.
+      body: { lat, lng, limit },
       fetchOptions: fetchOptions(
         cache === "no-store" ? "no-store" : cached(REVALIDATE.lists, tags.businesses),
       ),
@@ -197,7 +212,10 @@ export async function getNearestPlacesWithKind(
   return res.status === 200 ? res.body : null;
 }
 
-/** "no-store" for a person's live position (never cached); "cached" for a place's own point. */
+/**
+ * "no-store" for a person's live position (never cached); "cached" for a place's own public point.
+ * Either way the point travels in a POST body, never in the URL (spec §5.4).
+ */
 export async function getNearestPlace(
   lat: number,
   lng: number,
@@ -205,7 +223,7 @@ export async function getNearestPlace(
 ): Promise<PlaceDto | null> {
   const res = await call(() =>
     client().places.nearest({
-      query: { lat, lng },
+      body: { lat, lng },
       fetchOptions: fetchOptions(
         cache === "no-store" ? "no-store" : cached(REVALIDATE.taxonomy, tags.places),
       ),
@@ -260,13 +278,28 @@ export async function postResults(body: ResultsRequestDto, ip: string): Promise<
   return { status: 400 };
 }
 
+let warnedSuggestLimit = false;
+
+/**
+ * The key marks this server as the trusted proxy, so the API does not count every visitor against
+ * one bucket. Production refuses to start without it (lib/env.ts); development sends none and the
+ * API limits the dev server as one caller.
+ */
 export async function getSuggestions(q: string, place?: string): Promise<SuggestionDto[]> {
+  const key = process.env.SEARCH_PROXY_KEY?.trim();
   const res = await call(() =>
     client().search.suggest({
       query: { q, limit: 5, ...(place && isSlug(place) ? { place } : {}) },
+      extraHeaders: key ? { "x-darb-proxy-key": key } : {},
       fetchOptions: { next: { revalidate: 300, tags: [tags.businesses] } },
     }),
   );
+  if (res.status === 429 && !warnedSuggestLimit) {
+    warnedSuggestLimit = true;
+    console.warn(
+      "The API rate-limited this server's suggest calls: SEARCH_PROXY_KEY must equal the API's",
+    );
+  }
   return res.status === 200 ? res.body : [];
 }
 
@@ -279,4 +312,28 @@ export async function postClick(queryId: string, key: string, ip: string): Promi
       fetchOptions: { cache: "no-store" },
     }),
   );
+}
+
+/** The live lane-1 index; refreshed when an admin write revalidates places or taxonomy. */
+export async function getInstantIndex(): Promise<InstantIndexDto> {
+  const res = await call(() =>
+    client().search.instantIndex({
+      fetchOptions: fetchOptions(cached(REVALIDATE.taxonomy, tags.taxonomy, tags.places)),
+    }),
+  );
+  if (res.status !== 200) throw new ApiUnavailableError(res);
+  return res.body;
+}
+
+/**
+ * Real businesses for the sitemap. An unreachable API throws ApiUnavailableError (the sitemap
+ * fails rather than publishing an empty list); only a non-200 answer gives [].
+ */
+export async function getSitemapBusinesses(): Promise<SitemapBusinessDto[]> {
+  const res = await call(() =>
+    client().sitemap.businesses({
+      fetchOptions: fetchOptions(cached(REVALIDATE.lists, tags.businesses)),
+    }),
+  );
+  return res.status === 200 ? res.body : [];
 }

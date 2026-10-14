@@ -37,3 +37,24 @@ it("refuses a wrong secret and a bad body", async () => {
   expect((await post({ nope: true }, "s3cret")).status).toBe(400);
   expect(revalidateTag).not.toHaveBeenCalled();
 });
+
+it("expires tags at once for takedowns", async () => {
+  const res = await post({ tags: ["businesses"], immediate: true }, "s3cret");
+  expect(res.status).toBe(200);
+  expect(revalidateTag.mock.calls).toEqual([["businesses", { expire: 0 }]]);
+});
+
+it("accepts the API revalidator's exact request shape", async () => {
+  // apps/api/src/admin/revalidator.ts always sends `immediate` as a boolean.
+  const res = await post({ tags: ["places", "places"], immediate: false }, "s3cret");
+  expect(res.status).toBe(200);
+  expect(await res.json()).toEqual({ revalidated: ["places", "places"], immediate: false });
+  expect(revalidateTag.mock.calls).toEqual([
+    ["places", "max"],
+    ["places", "max"],
+  ]);
+});
+
+it("refuses a secret of another length without throwing", async () => {
+  expect((await post({ tags: ["places"] }, "s3cret-and-more")).status).toBe(401);
+});

@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import { placeKindShortcut } from "@/lib/levels";
 import { orUnavailable } from "@/lib/unavailable";
 
-export const revalidate = 300;
+export const revalidate = 86400;
 export function generateStaticParams() {
   return [];
 }

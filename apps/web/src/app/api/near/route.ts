@@ -6,23 +6,24 @@ import {
   getNearestPlacesWithKind,
   getTaxonomy,
 } from "@/lib/api";
+import { roundPoint } from "@/lib/client-ip";
 import { href, paths } from "@/lib/routes";
 import { indexTaxonomy } from "@/lib/taxonomy";
 
-const coordinate = (min: number, max: number) =>
-  z.string().trim().min(1).pipe(z.coerce.number().min(min).max(max));
-const Query = z.object({
+const coordinate = (min: number, max: number) => z.number().min(min).max(max);
+const Body = z.object({
   locale: z.enum(["he", "ar", "en"]),
   lat: coordinate(-90, 90),
   lng: coordinate(-180, 180),
   kind: SlugSchema.optional(),
 });
 
-/** A person's position is used once, never cached and never logged. */
-export async function GET(request: Request): Promise<Response> {
-  const parsed = Query.safeParse(Object.fromEntries(new URL(request.url).searchParams));
-  if (!parsed.success) return Response.json({ message: "Bad query" }, { status: 400 });
-  const { locale, lat, lng, kind } = parsed.data;
+/** A person's position: in the body (never a URL or a log), rounded, never cached. */
+export async function POST(request: Request): Promise<Response> {
+  const parsed = Body.safeParse(await request.json().catch(() => null));
+  if (!parsed.success) return Response.json({ message: "Bad body" }, { status: 400 });
+  const { locale, kind } = parsed.data;
+  const { lat, lng } = roundPoint(parsed.data);
   try {
     if (kind) {
       const index = indexTaxonomy(await getTaxonomy());

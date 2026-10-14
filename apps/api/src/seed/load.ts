@@ -1,7 +1,8 @@
-// Seeding owns every field it writes on places, sectors, kinds, brands and seed businesses: each run
-// overwrites them from packages/seed/data, hides kinds that left the data and suspends seed businesses
-// that left it. Plan 4 must settle who owns these fields once admins can edit them, or a re-seed
-// will silently undo those edits.
+// Seed ownership (Plan 4, decision 2): the seed owns a row while its editedAt is null. Each run
+// creates missing rows and overwrites seed-owned ones from packages/seed/data, hides seed-owned
+// kinds that left the data and suspends seed-owned businesses that left it. A row an admin has
+// edited (editedAt set) is never updated, hidden, suspended or relinked; "Return to seed data" in
+// the admin clears editedAt so the next run overwrites it again.
 import type { SeedBrand, SeedBusiness, SeedKind, SeedPlace, SeedSector } from "@darb/seed";
 import { SCREEN_SCHEMA } from "@darb/seed";
 import { Ajv } from "ajv";
@@ -32,6 +33,7 @@ const validateScreen = new Ajv({ allErrors: true }).compile(SCREEN_SCHEMA);
 const TX = { maxWait: 10_000, timeout: 120_000 };
 /** Businesses per transaction: big enough to save round trips, small enough to keep locks short. */
 const BUSINESS_CHUNK = 1000;
+const EDITED = { editedAt: { not: null } } as const;
 
 export async function loadSeed(prisma: PrismaService, data: SeedData): Promise<SeedCounts> {
   for (const b of data.businesses) {
@@ -44,8 +46,21 @@ export async function loadSeed(prisma: PrismaService, data: SeedData): Promise<S
 
   const placeIds = new Map<string, string>();
   const paths = new Map<string, string>();
+  const editedPlaces = await prisma.place.findMany({
+    where: EDITED,
+    select: { id: true, slug: true, path: true, cbsCode: true },
+  });
+  const editedByCbs = new Map(editedPlaces.filter((p) => p.cbsCode).map((p) => [p.cbsCode!, p]));
+  const editedBySlug = new Map(editedPlaces.map((p) => [p.slug, p]));
   await prisma.$transaction(async (tx) => {
     for (const p of data.places) {
+      const edited =
+        (p.cbsCode ? editedByCbs.get(p.cbsCode) : undefined) ?? editedBySlug.get(p.slug);
+      if (edited) {
+        placeIds.set(p.slug, edited.id);
+        paths.set(p.slug, edited.path);
+        continue;
+      }
       const parentId = p.parent ? placeIds.get(p.parent) : null;
       if (p.parent && !parentId)
         throw new Error(`Place ${p.slug} comes before its parent ${p.parent}`);
@@ -75,8 +90,25 @@ export async function loadSeed(prisma: PrismaService, data: SeedData): Promise<S
 
   const sectorIds = new Map<string, string>();
   const kindIds = new Map<string, string>();
+  const editedSectors = new Map(
+    (await prisma.sector.findMany({ where: EDITED, select: { id: true, slug: true } })).map((s) => [
+      s.slug,
+      s.id,
+    ]),
+  );
+  const editedKinds = new Map(
+    (await prisma.kind.findMany({ where: EDITED, select: { id: true, slug: true } })).map((k) => [
+      k.slug,
+      k.id,
+    ]),
+  );
   await prisma.$transaction(async (tx) => {
     for (const s of data.sectors) {
+      const edited = editedSectors.get(s.slug);
+      if (edited) {
+        sectorIds.set(s.slug, edited);
+        continue;
+      }
       const fields = {
         name: json(s.name),
         tagline: json(s.tagline),
@@ -99,6 +131,11 @@ export async function loadSeed(prisma: PrismaService, data: SeedData): Promise<S
           `Kind parents form a cycle or are missing: ${pending.map((k) => k.slug).join(", ")}`,
         );
       const k = pending.splice(index, 1)[0]!;
+      const edited = editedKinds.get(k.slug);
+      if (edited) {
+        kindIds.set(k.slug, edited);
+        continue;
+      }
       const fields = {
         sectorId: sectorIds.get(k.sector)!,
         parentKindId: k.parent ? kindIds.get(k.parent)! : null,
@@ -119,7 +156,7 @@ export async function loadSeed(prisma: PrismaService, data: SeedData): Promise<S
       kindIds.set(k.slug, row.id);
     }
     await tx.kind.updateMany({
-      where: { slug: { notIn: data.kinds.map((k) => k.slug) } },
+      where: { slug: { notIn: data.kinds.map((k) => k.slug) }, editedAt: null },
       data: { status: "hidden" },
     });
   }, TX);
@@ -136,6 +173,14 @@ export async function loadSeed(prisma: PrismaService, data: SeedData): Promise<S
     }
   }, TX);
 
+  const editedBusinesses = new Map(
+    (
+      await prisma.business.findMany({
+        where: EDITED,
+        select: { id: true, placeId: true, slug: true },
+      })
+    ).map((b) => [`${b.placeId}/${b.slug}`, b.id]),
+  );
   const businessIds: string[] = [];
   for (let start = 0; start < data.businesses.length; start += BUSINESS_CHUNK) {
     const chunk = data.businesses.slice(start, start + BUSINESS_CHUNK);
@@ -145,6 +190,11 @@ export async function loadSeed(prisma: PrismaService, data: SeedData): Promise<S
       for (const b of chunk) {
         const placeId = placeIds.get(b.place);
         if (!placeId) throw new Error(`Business ${b.slug} is in unknown place ${b.place}`);
+        const edited = editedBusinesses.get(`${placeId}/${b.slug}`);
+        if (edited) {
+          businessIds.push(edited); // kept: never suspended, never relinked
+          continue;
+        }
         const fields = {
           name: json(b.name),
           tagline: json(b.tagline),
@@ -154,8 +204,13 @@ export async function loadSeed(prisma: PrismaService, data: SeedData): Promise<S
           address: json(b.address),
           hours: json(b.hours),
           attributes: json(b.attributes),
+          dietary: b.dietary ?? [],
           experience: json(b.experience),
           tier: b.tier,
+          phone: b.phone ?? null,
+          whatsapp: b.whatsapp ?? null,
+          website: b.website ?? null,
+          apps: json(b.apps ?? {}),
           source: "seed" as const,
           status: "published" as const,
           brandId: b.brand ? brandIds.get(b.brand)! : null,
@@ -176,7 +231,7 @@ export async function loadSeed(prisma: PrismaService, data: SeedData): Promise<S
   }
   // Seed businesses that left the data stay in place (claims may point at them) but go dark.
   await prisma.business.updateMany({
-    where: { source: "seed", id: { notIn: businessIds } },
+    where: { source: "seed", editedAt: null, id: { notIn: businessIds } },
     data: { status: "suspended" },
   });
 

@@ -25,6 +25,7 @@ export async function viewContext(locale: Locale, intent: IntentDto): Promise<Vi
     labels: {
       openNow: t(locale, "openNow"),
       delivers: t(locale, "delivers"),
+      glutenFree: t(locale, "glutenFree"),
       nearMe: t(locale, "nearMe"),
       kindInPlace: t(locale, "kindInPlace"),
       kindNationwide: t(locale, "kindNationwide"),

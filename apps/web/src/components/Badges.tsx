@@ -8,6 +8,24 @@ export function ExampleBadge({ label }: { label: string }) {
   );
 }
 
+/** A fully gluten-free kitchen, safe for celiac disease (Task 27b); never "has an option". */
+export function GlutenFreeBadge({ label }: { label: string }) {
+  return (
+    <span className={styles.glutenFree} data-gluten-free="">
+      {label}
+    </span>
+  );
+}
+
+/** Visits by arrangement only (Task 28): said instead of open or closed. */
+export function AppointmentBadge({ label }: { label: string }) {
+  return (
+    <span className={styles.open} data-appointment="">
+      {label}
+    </span>
+  );
+}
+
 export function OpenState({
   openNow,
   labels,

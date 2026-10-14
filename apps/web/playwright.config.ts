@@ -1,4 +1,5 @@
 import { defineConfig } from "@playwright/test";
+import { e2eDatabaseUrl } from "./e2e/e2e-database";
 import { WEB_API_DOWN } from "./e2e/fixtures";
 
 /**
@@ -21,6 +22,17 @@ const OFFLINE_PROVIDERS = { INTENT_PROVIDER: "recorded", EMBEDDING_PROVIDER: "ha
 const WEBGL = { args: ["--enable-unsafe-swiftshader", "--ignore-gpu-blocklist"] };
 /** The 1 KB fixture archive (scripts/tiles/make-test-tiles.mjs): CI never downloads tiles. */
 const TILES = { MAP_TILES_DIR: "e2e/tiles" };
+/** The API revalidates the web after admin writes; both sides share this secret. */
+const REVALIDATE_SECRET = "e2e-revalidate-secret";
+/** Refuses to load without a throwaway database (e2e/e2e-database.ts): admin.spec writes to it. */
+const E2E_DB = e2eDatabaseUrl(process.env);
+/**
+ * The API e2e starts is the only one it trusts to use E2E_DB. An API already on :4100 may point
+ * at any database, so it is reused only on an explicit E2E_REUSE_API=1.
+ */
+const REUSE_API = process.env.E2E_REUSE_API === "1";
+/** Admin e2e signs in with fake tokens (refused in production and off localhost). */
+const ADMIN = { ADMIN_FAKE_AUTH: "1", REVALIDATE_SECRET };
 
 export default defineConfig({
   testDir: "./e2e",
@@ -29,7 +41,18 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0,
   workers: process.env.CI ? 2 : undefined,
   reporter: process.env.CI ? [["list"], ["html", { open: "never" }]] : "list",
-  use: { baseURL: WEB, trace: "retain-on-failure" },
+  use: {
+    baseURL: WEB,
+    trace: "retain-on-failure",
+    // Vercel previews are protected; the owner's bypass secret lets e2e reach them (never in CI logs).
+    ...(process.env.VERCEL_AUTOMATION_BYPASS_SECRET
+      ? {
+          extraHTTPHeaders: {
+            "x-vercel-protection-bypass": process.env.VERCEL_AUTOMATION_BYPASS_SECRET,
+          },
+        }
+      : {}),
+  },
   projects: [
     {
       name: "phone",
@@ -56,15 +79,22 @@ export default defineConfig({
       command: "pnpm --filter @darb/api start",
       cwd: "../..",
       url: `${API}/health`,
-      reuseExistingServer: !process.env.CI,
+      reuseExistingServer: REUSE_API,
       timeout: 60_000,
       env: {
+        // Set here, these win over apps/api/.env (dotenv never overrides the environment).
+        DATABASE_URL: E2E_DB,
+        MIGRATE_DATABASE_URL: E2E_DB,
         PORT: port(API),
         WEB_ORIGIN: WEB,
         ...OFFLINE_PROVIDERS,
         SEARCH_PROXY_KEY: "e2e-proxy-key",
         SEARCH_RATE_LIMIT: "100000",
         SEARCH_RESULTS_RATE_LIMIT: "100000",
+        AUTH_VERIFIER: "fake",
+        ADMIN_EMAILS: "e2e-admin@darb.test",
+        REVALIDATE_URL: `${WEB}/api/revalidate`,
+        REVALIDATE_SECRET,
       },
     },
     {
@@ -72,7 +102,7 @@ export default defineConfig({
       url: `${WEB}/for-business`,
       reuseExistingServer: !process.env.CI,
       timeout: 120_000,
-      env: { API_URL: API, SITE_URL: WEB, SEARCH_PROXY_KEY: "e2e-proxy-key", ...TILES },
+      env: { API_URL: API, SITE_URL: WEB, SEARCH_PROXY_KEY: "e2e-proxy-key", ...TILES, ...ADMIN },
     },
     {
       command: `pnpm exec next start --port ${port(WEB_API_DOWN)}`,
@@ -85,6 +115,7 @@ export default defineConfig({
         SITE_URL: WEB_API_DOWN,
         SEARCH_PROXY_KEY: "e2e-proxy-key",
         ...TILES,
+        ...ADMIN,
       },
     },
   ],

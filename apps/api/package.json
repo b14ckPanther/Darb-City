@@ -14,13 +14,17 @@
     "db:seed": "prisma generate && tsx src/seed/run.ts",
     "search:reindex": "prisma generate && tsx src/search/reindex.ts",
     "search:quality": "prisma generate && vitest run --config vitest.quality.config.ts",
-    "search:record": "prisma generate && tsx scripts/record-intents.ts"
+    "search:record": "prisma generate && tsx scripts/record-intents.ts",
+    "admin:grant": "prisma generate && tsx src/auth/grant-cli.ts",
+    "web:revalidate": "tsx src/admin/revalidate-all.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "catalog:",
+    "@clerk/backend": "catalog:",
     "@darb/contracts": "workspace:*",
     "@darb/core": "workspace:*",
     "@darb/search-text": "workspace:*",
+    "@darb/seed": "workspace:*",
     "@nestjs/common": "catalog:",
     "@nestjs/core": "catalog:",
     "@nestjs/platform-express": "catalog:",
@@ -37,7 +41,6 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@darb/seed": "workspace:*",
     "@nestjs/testing": "catalog:",
     "@swc/core": "catalog:",
     "@types/node": "catalog:",

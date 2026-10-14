@@ -55,6 +55,7 @@ const Body = z.object({
   cursor: z.string().min(1).max(512).optional(),
   open: z.boolean().optional(),
   delivers: z.boolean().optional(),
+  glutenFree: z.boolean().optional(),
   near: z
     .object({ lat: z.number().min(-90).max(90), lng: z.number().min(-180).max(180) })
     .optional(),
@@ -64,7 +65,7 @@ const Body = z.object({
 export async function POST(request: Request): Promise<Response> {
   const parsed = Body.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return Response.json({ message: "Bad query" }, { status: 400 });
-  const { locale, place, kind, cursor, open, delivers, near } = parsed.data;
+  const { locale, place, kind, cursor, open, delivers, glutenFree, near } = parsed.data;
   try {
     const [page, taxonomy, detail] = await Promise.all([
       getBusinesses(place, {
@@ -72,6 +73,7 @@ export async function POST(request: Request): Promise<Response> {
         cursor,
         open,
         delivers,
+        ...(glutenFree ? { dietary: "gluten_free" as const } : {}),
         ...(near ? { near: roundPoint(near) } : {}),
       }),
       getTaxonomy(),

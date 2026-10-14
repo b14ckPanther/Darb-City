@@ -2,6 +2,7 @@ import { initContract } from "@ts-rest/core";
 import { z } from "zod";
 import {
   BadRequestSchema,
+  DietarySchema,
   BusinessDetailSchema,
   BusinessPageSchema,
   DensitySchema,
@@ -10,11 +11,13 @@ import {
   NotFoundSchema,
   PlaceDetailSchema,
   PlaceSchema,
+  SitemapBusinessSchema,
   SlugSchema,
   TaxonomySchema,
 } from "./schemas.js";
 import {
   ClickRequestSchema,
+  InstantIndexSchema,
   MissingReportSchema,
   ReportQuerySchema,
   ResultsRequestSchema,
@@ -24,12 +27,35 @@ import {
   SuggestionSchema,
   TooManySchema,
 } from "./search.js";
+import { adminContract } from "./admin.js";
 
 const c = initContract();
 
-/** A coordinate from a query string. Blank strings are rejected instead of coerced to 0. */
-const coordinate = (min: number, max: number) =>
-  z.union([z.number(), z.string().trim().min(1)]).pipe(z.coerce.number().min(min).max(max));
+/**
+ * A point in a JSON body. Coordinates never travel in a URL (spec §5.4): query strings end up in
+ * access logs, proxies and caches, and a visitor's position must not be stored anywhere.
+ */
+export const PointBodySchema = z.object({
+  lat: z.number().min(-90).max(90),
+  lng: z.number().min(-180).max(180),
+});
+
+/** Filters of a place's business list. Shared by the cached list and the near-sorted POST. */
+const BusinessListQuerySchema = z.object({
+  kind: SlugSchema.optional(),
+  openNow: z
+    .enum(["true", "false"])
+    .transform((v) => v === "true")
+    .optional(),
+  delivers: z
+    .enum(["true", "false"])
+    .transform((v) => v === "true")
+    .optional(),
+  /** Only businesses with this whole-business dietary fact (dietary=gluten_free). */
+  dietary: DietarySchema.optional(),
+  limit: z.coerce.number().int().min(1).max(100).default(30),
+  cursor: z.string().min(1).max(512).optional(),
+});
 
 export const contract = c.router({
   places: {
@@ -45,10 +71,11 @@ export const contract = c.router({
       pathParams: z.object({ slug: SlugSchema }),
       responses: { 200: PlaceDetailSchema, 404: NotFoundSchema },
     },
+    /** The nearest live settlement to a point (POST: the point stays out of the URL). */
     nearest: {
-      method: "GET",
+      method: "POST",
       path: "/nearest-place",
-      query: z.object({ lat: coordinate(-90, 90), lng: coordinate(-180, 180) }),
+      body: PointBodySchema,
       responses: { 200: PlaceSchema, 404: NotFoundSchema },
     },
   },
@@ -60,26 +87,16 @@ export const contract = c.router({
       method: "GET",
       path: "/places/:placeSlug/businesses",
       pathParams: z.object({ placeSlug: SlugSchema }),
-      query: z
-        .object({
-          kind: SlugSchema.optional(),
-          openNow: z
-            .enum(["true", "false"])
-            .transform((v) => v === "true")
-            .optional(),
-          delivers: z
-            .enum(["true", "false"])
-            .transform((v) => v === "true")
-            .optional(),
-          /** With lng: sort by distance from this point. Used once, never stored or logged. */
-          lat: coordinate(-90, 90).optional(),
-          lng: coordinate(-180, 180).optional(),
-          limit: z.coerce.number().int().min(1).max(100).default(30),
-          cursor: z.string().min(1).max(512).optional(),
-        })
-        .refine((q) => (q.lat === undefined) === (q.lng === undefined), {
-          message: "lat and lng go together",
-        }),
+      query: BusinessListQuerySchema,
+      responses: { 200: BusinessPageSchema, 400: BadRequestSchema, 404: NotFoundSchema },
+    },
+    /** The same list sorted by distance from a point in the body. Used once, never stored or logged. */
+    listNear: {
+      method: "POST",
+      path: "/places/:placeSlug/businesses/near",
+      pathParams: z.object({ placeSlug: SlugSchema }),
+      query: BusinessListQuerySchema,
+      body: PointBodySchema,
       responses: { 200: BusinessPageSchema, 400: BadRequestSchema, 404: NotFoundSchema },
     },
     /**
@@ -100,14 +117,10 @@ export const contract = c.router({
       responses: { 200: KindCountsSchema, 404: NotFoundSchema },
     },
     nearestPlaces: {
-      method: "GET",
+      method: "POST",
       path: "/kinds/:kindSlug/nearest-places",
       pathParams: z.object({ kindSlug: SlugSchema }),
-      query: z.object({
-        lat: coordinate(-90, 90),
-        lng: coordinate(-180, 180),
-        limit: z.coerce.number().int().min(1).max(20).default(5),
-      }),
+      body: PointBodySchema.extend({ limit: z.number().int().min(1).max(20).default(5) }),
       responses: { 200: z.array(NearestPlaceSchema), 404: NotFoundSchema },
     },
     density: {
@@ -121,7 +134,7 @@ export const contract = c.router({
       method: "GET",
       path: "/search/suggest",
       query: SuggestQuerySchema,
-      responses: { 200: z.array(SuggestionSchema) },
+      responses: { 200: z.array(SuggestionSchema), 429: TooManySchema },
     },
     search: {
       method: "POST",
@@ -154,5 +167,19 @@ export const contract = c.router({
       query: ReportQuerySchema,
       responses: { 200: MissingReportSchema, 404: NotFoundSchema },
     },
+    /** The live instant index (admin-added places and kinds appear without a web build). */
+    instantIndex: {
+      method: "GET",
+      path: "/search/instant-index",
+      responses: { 200: InstantIndexSchema },
+    },
   },
+  sitemap: {
+    businesses: {
+      method: "GET",
+      path: "/sitemap/businesses",
+      responses: { 200: z.array(SitemapBusinessSchema) },
+    },
+  },
+  admin: adminContract,
 });

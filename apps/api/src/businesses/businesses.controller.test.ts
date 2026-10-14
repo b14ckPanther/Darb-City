@@ -46,6 +46,12 @@ describe("GET /places/:placeSlug/businesses", () => {
     );
     expect(byslug).toEqual({ "abu-salim": true, "little-cuts": null });
   });
+  it("carries the weekly hours so browsers recompute open-now on cached pages", async () => {
+    const res = await get("/places/sakhnin/businesses?kind=barbershops");
+    const abu = res.body.items.find((b: { slug: string }) => b.slug === "abu-salim");
+    expect(abu.hours).toMatchObject({ weekly: expect.any(Object), exceptions: [] });
+    expect(Object.keys(abu.hours.weekly).length).toBeGreaterThan(0);
+  });
   it("filters to open businesses", async () => {
     const res = await get("/places/sakhnin/businesses?kind=barbershops&openNow=true");
     expect(slugs(res.body.items)).toEqual(["abu-salim"]);
@@ -135,9 +141,11 @@ describe("GET /places/:placeSlug/kind-counts", () => {
   });
 });
 
-describe("GET /kinds/:kindSlug/nearest-places", () => {
+describe("POST /kinds/:kindSlug/nearest-places", () => {
+  const nearest = (kind: string, body: object) =>
+    request(app.getHttpServer()).post(`/kinds/${kind}/nearest-places`).send(body);
   it("orders live places that have the kind by distance", async () => {
-    const res = await get("/kinds/barbershops/nearest-places?lat=32.853&lng=35.198");
+    const res = await nearest("barbershops", { lat: 32.853, lng: 35.198 });
     expect(res.status).toBe(200);
     expect(res.body.map((p: { slug: string }) => p.slug)).toEqual(["tamra", "sakhnin"]);
     expect(res.body.map((p: { count: number }) => p.count)).toEqual([1, 2]);
@@ -146,14 +154,95 @@ describe("GET /kinds/:kindSlug/nearest-places", () => {
     expect(res.body[1].distanceKm).toBeLessThan(11);
   });
   it("respects the limit and includes sub-kinds only where they exist", async () => {
-    const one = await get("/kinds/barbershops/nearest-places?lat=32.86&lng=35.3&limit=1");
+    const one = await nearest("barbershops", { lat: 32.86, lng: 35.3, limit: 1 });
     expect(one.body.map((p: { slug: string }) => p.slug)).toEqual(["sakhnin"]);
-    const kids = await get("/kinds/kids-haircuts/nearest-places?lat=32.853&lng=35.198");
+    const kids = await nearest("kids-haircuts", { lat: 32.853, lng: 35.198 });
     expect(kids.body.map((p: { slug: string }) => p.slug)).toEqual(["sakhnin"]);
   });
-  it("404s for unknown and hidden kinds, 400s for blank coordinates", async () => {
-    expect((await get("/kinds/nope/nearest-places?lat=32&lng=35")).status).toBe(404);
-    expect((await get("/kinds/hidden-kind/nearest-places?lat=32&lng=35")).status).toBe(404);
-    expect((await get("/kinds/barbershops/nearest-places?lat=&lng=35")).status).toBe(400);
+  it("404s for unknown and hidden kinds, 400s for blank or missing coordinates", async () => {
+    expect((await nearest("nope", { lat: 32, lng: 35 })).status).toBe(404);
+    expect((await nearest("hidden-kind", { lat: 32, lng: 35 })).status).toBe(404);
+    expect((await nearest("barbershops", { lat: "", lng: 35 })).status).toBe(400);
+    expect((await nearest("barbershops", { lng: 35 })).status).toBe(400);
+  });
+  it("no longer answers a GET with coordinates in the URL", async () => {
+    expect((await get("/kinds/barbershops/nearest-places?lat=32&lng=35")).status).toBe(404);
+  });
+});
+
+describe("by appointment (Task 28)", () => {
+  it("has no open-now state, keeps the flag, and never passes the open-now filter", async () => {
+    const prisma = app.get(PrismaService);
+    await prisma.business.update({
+      where: {
+        placeId_slug: {
+          placeId: (await prisma.place.findUniqueOrThrow({ where: { slug: "sakhnin" } })).id,
+          slug: "abu-salim",
+        },
+      },
+      data: {
+        hours: {
+          weekly: { 1: [{ open: "00:00", close: "24:00" }] },
+          exceptions: [],
+          byAppointment: true,
+        },
+      },
+    });
+    try {
+      const res = await get("/places/sakhnin/businesses?kind=barbershops");
+      const abu = res.body.items.find((b: { slug: string }) => b.slug === "abu-salim");
+      expect([abu.openNow, abu.hours.byAppointment]).toEqual([null, true]);
+      const open = await get("/places/sakhnin/businesses?kind=barbershops&openNow=true");
+      expect(slugs(open.body.items)).toEqual([]);
+      const detail = await get("/places/sakhnin/businesses/abu-salim");
+      expect([detail.body.openNow, detail.body.hours.byAppointment]).toEqual([null, true]);
+    } finally {
+      await prisma.business.updateMany({
+        where: { slug: "abu-salim" },
+        data: {
+          hours: {
+            weekly: {
+              0: [{ open: "09:00", close: "19:00" }],
+              1: [{ open: "09:00", close: "19:00" }],
+            },
+            exceptions: [],
+          },
+        },
+      });
+    }
+  });
+});
+
+describe("Keep street private (a home business)", () => {
+  // Abu Salim's stored pin (32.864, 35.303) is the home; Sakhnin's centre is 32.8638, 35.3023.
+  const SAKHNIN = { lat: 32.8638, lng: 35.3023 };
+  beforeAll(async () => {
+    const prisma = app.get(PrismaService);
+    await prisma.business.updateMany({
+      where: { slug: "abu-salim" },
+      data: { attributes: { addressHidden: true }, lat: 32.9, lng: 35.4 },
+    });
+  });
+  afterAll(async () => {
+    const prisma = app.get(PrismaService);
+    await prisma.business.updateMany({
+      where: { slug: "abu-salim" },
+      data: { attributes: {}, lat: 32.864, lng: 35.303 },
+    });
+  });
+  const abu = (items: { slug: string }[]) => items.find((b) => b.slug === "abu-salim") as never;
+
+  it("publishes the place's centre, never the stored pin, in lists and the detail", async () => {
+    const list = await get("/places/sakhnin/businesses?kind=barbershops");
+    expect(abu(list.body.items)).toMatchObject(SAKHNIN);
+    const detail = await get("/places/sakhnin/businesses/abu-salim");
+    expect(detail.body).toMatchObject(SAKHNIN);
+    expect(JSON.stringify(detail.body)).not.toContain("32.9");
+  });
+  it("measures distance from the place's centre too", async () => {
+    const res = await request(app.getHttpServer())
+      .post("/places/sakhnin/businesses/near?kind=barbershops")
+      .send(SAKHNIN);
+    expect((abu(res.body.items) as { distanceKm: number }).distanceKm).toBeLessThan(0.01);
   });
 });

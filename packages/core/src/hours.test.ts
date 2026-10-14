@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isOpenAt, type Hours } from "./hours.js";
+import { isByAppointment, isOpenAt, type Hours } from "./hours.js";
 
 const at = (iso: string) => new Date(iso);
 const weekdays: Hours = { weekly: { 1: [{ open: "09:00", close: "17:00" }] }, exceptions: [] };
@@ -46,5 +46,21 @@ describe("isOpenAt", () => {
   it("treats 24:00 as the end of the day", () => {
     const lateSat: Hours = { weekly: { 6: [{ open: "18:00", close: "24:00" }] }, exceptions: [] };
     expect(isOpenAt(lateSat, at("2026-10-17T20:59:00Z"))).toBe(true); // Sat 23:59
+  });
+});
+
+describe("by appointment (Task 28)", () => {
+  it("is never open now, whatever hours it also lists", () => {
+    const appointment: Hours = { weekly: {}, exceptions: [], byAppointment: true };
+    expect(isOpenAt(appointment, new Date("2026-10-12T06:30:00Z"))).toBe(false);
+    const withHours: Hours = {
+      weekly: { 1: [{ open: "00:00", close: "24:00" }] },
+      exceptions: [],
+      byAppointment: true,
+    };
+    expect(isOpenAt(withHours, new Date("2026-10-12T06:30:00Z"))).toBe(false);
+    expect(isByAppointment(appointment)).toBe(true);
+    const plain: Hours = { weekly: {}, exceptions: [] };
+    expect(isByAppointment(plain)).toBe(false);
   });
 });

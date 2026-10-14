@@ -10,6 +10,18 @@
   line-height: 1.4;
 }
 
+.glutenFree {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px var(--space-2);
+  border: 1px solid currentColor;
+  border-radius: var(--radius-pill);
+  color: var(--text);
+  font-size: var(--step--1);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
 .open {
   display: inline-flex;
   align-items: center;

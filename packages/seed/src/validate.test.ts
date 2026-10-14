@@ -1,9 +1,17 @@
-import { hasText, isReservedSlug, isSlug, LOCALES, TEMPLATES, type Localized } from "@darb/core";
+import {
+  DIETARY,
+  hasText,
+  isReservedSlug,
+  isSlug,
+  LOCALES,
+  TEMPLATES,
+  type Localized,
+} from "@darb/core";
 import { Ajv } from "ajv";
 import { describe, expect, it } from "vitest";
 import {
   loadBrands,
-  loadBusinesses,
+  loadShowroom,
   loadKinds,
   loadPlaces,
   loadScreens,
@@ -221,7 +229,7 @@ describe("places", () => {
 });
 
 describe("showroom businesses", () => {
-  const businesses = loadBusinesses();
+  const businesses = loadShowroom();
   const places = new Map(loadPlaces().map((p) => [p.slug, p]));
   const kindSlugs = new Set(loadKinds().map((k) => k.slug));
   const brandSlugs = new Set(loadBrands().map((b) => b.slug));
@@ -234,6 +242,13 @@ describe("showroom businesses", () => {
       for (const k of b.kinds) expect(kindSlugs.has(k), k).toBe(true);
       if (b.brand) expect(brandSlugs.has(b.brand), b.brand).toBe(true);
       expect(validate(b.experience), `${b.place}/${b.slug}`).toBe(true);
+    }
+  });
+  it("only use known dietary facts, never repeated (Task 27b)", () => {
+    for (const b of businesses) {
+      const dietary = b.dietary ?? [];
+      for (const d of dietary) expect(DIETARY, `${b.place}/${b.slug}`).toContain(d);
+      expect(new Set(dietary).size).toBe(dietary.length);
     }
   });
   it("have slugs unique within their place", () => {
@@ -422,7 +437,7 @@ describe("weekend pattern", () => {
       expect(christian, code).not.toContain(code);
   });
   it("gives showroom businesses there the local week, but not restaurants or mosques", () => {
-    const businesses = loadBusinesses();
+    const businesses = loadShowroom();
     const at = (place: string, kind: string) =>
       businesses.find((b) => b.place === place && b.primaryKind === kind)!;
     expect(at("sakhnin", "barbershops").hours.weekly[6]?.length).toBeGreaterThan(0);

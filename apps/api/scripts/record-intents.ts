@@ -19,18 +19,18 @@ if (!config.search.anthropicApiKey) throw new Error("search:record needs ANTHROP
 const prisma = new PrismaService(config);
 try {
   const instant = new InstantService(prisma);
-  const kinds = [...(await instant.world()).kinds.keys()].sort();
   const provider = new AnthropicIntentProvider(
     new Anthropic({ apiKey: config.search.anthropicApiKey, maxRetries: 2, timeout: 20_000 }),
     config.search.intentModel,
-    kinds,
   );
+  const activeKinds = [...(await instant.world()).kinds.keys()].sort();
   const cases = JSON.parse(readFileSync(FILE, "utf8")) as RecordedCase[];
   const { changed, failed } = await recordCases(
     cases,
     provider,
     (q) => instant.match(q),
     config.search.intentModel,
+    activeKinds,
   );
   writeFileSync(FILE, `[\n${cases.map((c) => `  ${JSON.stringify(c)}`).join(",\n")}\n]\n`);
   console.log(

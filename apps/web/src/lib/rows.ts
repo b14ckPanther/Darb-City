@@ -1,4 +1,4 @@
-import { pickText, type Locale, type Localized } from "@darb/core";
+import { isByAppointment, pickText, type Hours, type Locale, type Localized } from "@darb/core";
 import type { BusinessSummaryDto, PlaceDetailDto, PlaceDto } from "@darb/contracts";
 import { href, paths } from "./routes";
 import type { TaxonomyIndex } from "./taxonomy";
@@ -11,12 +11,18 @@ export interface BusinessRowData {
   href: string;
   example: boolean;
   openNow: boolean | null;
+  /** For the browser's own open-now (LiveOpenState); null when the business has no hours. */
+  hours: Hours | null;
   /** Shown when the business is in another place than the one being listed. */
   placeName: string | null;
   lat: number;
   lng: number;
   /** Shown on distance-sorted lists ("1.3 km"). */
   distance: string | null;
+  /** A fully gluten-free kitchen (Task 27b): the row shows a badge. */
+  glutenFree: boolean;
+  /** Visits by appointment only (Task 28): "By appointment" instead of open or closed. */
+  byAppointment: boolean;
 }
 
 export interface RowContext {
@@ -58,10 +64,13 @@ export function toBusinessRow(b: BusinessSummaryDto, ctx: RowContext): BusinessR
     ),
     example: b.tier === "example",
     openNow: b.openNow,
+    hours: b.openNow === null ? null : b.hours,
     placeName: b.placeSlug === ctx.here || !name ? null : pickText(name, ctx.locale),
     lat: b.lat,
     lng: b.lng,
     distance: b.distanceKm !== undefined && ctx.kmLabel ? ctx.kmLabel(b.distanceKm) : null,
+    glutenFree: b.dietary.includes("gluten_free"),
+    byAppointment: isByAppointment(b.hours),
   };
 }
 

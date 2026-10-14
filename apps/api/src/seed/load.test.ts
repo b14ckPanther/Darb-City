@@ -207,3 +207,93 @@ it("republishes a suspended seeded business that comes back", async () => {
   await loadSeed(prisma, data);
   expect((await prisma.business.findFirstOrThrow()).status).toBe("published");
 });
+
+it("admin-edited rows are never overwritten, hidden or suspended", async () => {
+  await loadSeed(prisma, data);
+  const stamp = { editedAt: new Date() };
+  await prisma.place.update({
+    where: { slug: "sakhnin" },
+    data: { name: { en: "Sakhnin (admin)" }, ...stamp },
+  });
+  await prisma.sector.update({ where: { slug: "beauty" }, data: { accent: "#123456", ...stamp } });
+  await prisma.kind.update({
+    where: { slug: "kids-haircuts" },
+    data: { name: { en: "Kids (admin)" }, ...stamp },
+  });
+  const biz = await prisma.business.findFirstOrThrow({ where: { slug: "samer" } });
+  await prisma.business.update({
+    where: { id: biz.id },
+    data: { name: { en: "Samer (admin)" }, ...stamp },
+  });
+  await prisma.businessKind.deleteMany({ where: { businessId: biz.id } });
+
+  // The data drops the edited kind and business: the seed would hide and suspend them.
+  await loadSeed(prisma, {
+    ...data,
+    kinds: data.kinds.filter((k) => k.slug !== "kids-haircuts"),
+    businesses: [],
+  });
+
+  expect((await prisma.place.findUniqueOrThrow({ where: { slug: "sakhnin" } })).name).toEqual({
+    en: "Sakhnin (admin)",
+  });
+  expect((await prisma.sector.findUniqueOrThrow({ where: { slug: "beauty" } })).accent).toBe(
+    "#123456",
+  );
+  const kids = await prisma.kind.findUniqueOrThrow({ where: { slug: "kids-haircuts" } });
+  expect([kids.name, kids.status]).toEqual([{ en: "Kids (admin)" }, "active"]);
+  const after = await prisma.business.findUniqueOrThrow({ where: { id: biz.id } });
+  expect([after.name, after.status]).toEqual([{ en: "Samer (admin)" }, "published"]);
+  expect(await prisma.businessKind.count({ where: { businessId: biz.id } })).toBe(0);
+});
+
+it("still places children under an edited parent and overwrites rows released back to the seed", async () => {
+  await loadSeed(prisma, data);
+  await prisma.place.update({
+    where: { slug: "northern-district" },
+    data: { editedAt: new Date() },
+  });
+  await prisma.business.updateMany({ data: { name: { en: "Local" }, editedAt: new Date() } });
+  await prisma.business.updateMany({ data: { editedAt: null } }); // "Return to seed data"
+  await loadSeed(prisma, data);
+  const sakhnin = await prisma.place.findUniqueOrThrow({ where: { slug: "sakhnin" } });
+  expect(sakhnin.path).toBe("/israel/northern-district/sakhnin/");
+  expect((await prisma.business.findFirstOrThrow()).name).toEqual({ en: "Samer" });
+});
+
+it("writes a business's dietary facts, empty when the data has none (Task 27b)", async () => {
+  const gf = { ...data.businesses[0]!, slug: "gf", brand: null, dietary: ["gluten_free" as const] };
+  await loadSeed(prisma, { ...data, businesses: [...data.businesses, gf] });
+  const rows = await prisma.business.findMany({ orderBy: { slug: "asc" } });
+  expect(rows.map((b) => [b.slug, b.dietary])).toEqual([
+    ["gf", ["gluten_free"]],
+    ["samer", []],
+  ]);
+});
+
+it("writes a client's contact details and app links", async () => {
+  const client = {
+    ...data.businesses[0]!,
+    slug: "client",
+    tier: "darb" as const,
+    phone: "+972 4-000-0000",
+    whatsapp: null,
+    website: "https://client.darb.co.il",
+    apps: { web: "https://client.darb.co.il" },
+  };
+  await loadSeed(prisma, { ...data, businesses: [...data.businesses, client] });
+  const row = await prisma.business.findFirstOrThrow({ where: { slug: "client" } });
+  expect([row.phone, row.website, row.apps, row.tier]).toEqual([
+    "+972 4-000-0000",
+    "https://client.darb.co.il",
+    { web: "https://client.darb.co.il" },
+    "darb",
+  ]);
+  const showroom = await prisma.business.findFirstOrThrow({ where: { slug: "samer" } });
+  expect([showroom.phone, showroom.whatsapp, showroom.website, showroom.apps]).toEqual([
+    null,
+    null,
+    null,
+    {},
+  ]);
+});

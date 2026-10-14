@@ -35,15 +35,43 @@ export function directionsHref(lat: number, lng: number): string {
 }
 
 export type PrimaryAction =
+  | { kind: "app"; href: string }
+  | { kind: "directions"; href: string }
   | { kind: "whatsapp"; href: string }
   | { kind: "call"; href: string }
   | { kind: "example" }
   | { kind: "none" };
 
+/** A home business keeps its street private: nothing navigates to its town-level pin. */
+export const addressHidden = (attributes: Record<string, unknown> | undefined) =>
+  attributes?.["addressHidden"] === true;
+
+/**
+ * The main button: a Darb client's own app first (darb tier only), then directions when the
+ * business asks for them (attributes.primaryAction, e.g. a fuel station), then WhatsApp or a call.
+ */
 export function primaryAction(
-  business: { whatsapp: string | null; phone: string | null; tier: Tier; name: Localized },
+  business: {
+    whatsapp: string | null;
+    phone: string | null;
+    tier: Tier;
+    name: Localized;
+    apps?: { web?: string };
+    attributes?: Record<string, unknown>;
+    lat?: number;
+    lng?: number;
+  },
   locale: Locale,
 ): PrimaryAction {
+  const app = business.tier === "darb" ? safeHttpUrl(business.apps?.web) : null;
+  if (app) return { kind: "app", href: app };
+  if (
+    business.attributes?.["primaryAction"] === "directions" &&
+    !addressHidden(business.attributes) &&
+    business.lat !== undefined &&
+    business.lng !== undefined
+  )
+    return { kind: "directions", href: directionsHref(business.lat, business.lng) };
   const greeting = t(locale, "whatsappGreeting", { name: pickText(business.name, locale) });
   const whatsapp = business.whatsapp ? whatsappHref(business.whatsapp, greeting) : null;
   if (whatsapp) return { kind: "whatsapp", href: whatsapp };

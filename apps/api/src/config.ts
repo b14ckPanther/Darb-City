@@ -18,6 +18,27 @@ export interface SearchConfig {
   indexWorker: boolean;
   /** SEARCH_REPORT_KEY: the shared secret for GET /search/report; unset, the endpoint is a 404. */
   reportKey: string | null;
+  modelCallsPerMinute: number;
+  modelCallsPerDay: number;
+  negativeCacheSeconds: number;
+  suggestRateLimit: number;
+  logRetentionDays: number;
+}
+
+export interface AuthConfig {
+  /** "clerk" in production; "fake" only for tests and local e2e (refused when NODE_ENV=production). */
+  verifier: "clerk" | "fake" | "off";
+  clerkSecretKey: string | null;
+  /** PEM public key: verifies without a network call when set. */
+  clerkJwtKey: string | null;
+  authorizedParties: string[];
+  /** Lower-cased; granted admin when their User row is first created and the email is verified. */
+  adminEmails: string[];
+}
+export interface AdminConfig {
+  /** Web route the API posts tags to; null turns revalidation off (logged once). */
+  revalidateUrl: string | null;
+  revalidateSecret: string | null;
 }
 
 export interface AppConfig {
@@ -25,6 +46,9 @@ export interface AppConfig {
   port: number;
   webOrigin: string;
   search: SearchConfig;
+  auth: AuthConfig;
+  admin: AdminConfig;
+  production: boolean;
 }
 
 export const APP_CONFIG = Symbol("APP_CONFIG");
@@ -58,6 +82,22 @@ const schema = z.object({
   VOYAGE_API_KEY: optional,
   SEARCH_INDEX_WORKER: flag,
   SEARCH_REPORT_KEY: optional,
+  MODEL_CALLS_PER_MINUTE: z.coerce.number().int().min(0).default(60),
+  MODEL_CALLS_PER_DAY: z.coerce.number().int().min(0).default(5000),
+  INTENT_NEGATIVE_CACHE_SECONDS: z.coerce.number().int().min(0).default(3600),
+  SUGGEST_RATE_LIMIT: z.coerce.number().int().positive().default(240),
+  SEARCH_LOG_RETENTION_DAYS: z.coerce.number().int().min(7).max(365).default(90),
+  AUTH_VERIFIER: z.enum(["clerk", "fake", "off"]).optional(),
+  CLERK_SECRET_KEY: optional,
+  CLERK_JWT_KEY: optional,
+  CLERK_AUTHORIZED_PARTIES: optional,
+  ADMIN_EMAILS: optional,
+  REVALIDATE_URL: z
+    .string()
+    .url()
+    .refine((v) => /^https?:\/\//i.test(v), "must be an http(s) URL")
+    .optional(),
+  REVALIDATE_SECRET: optional,
   NODE_ENV: z.string().optional(),
 });
 
@@ -70,8 +110,12 @@ const randomSalt = () =>
     b.toString(16).padStart(2, "0"),
   ).join("");
 
+/** A blank line such as `REVALIDATE_URL=` means unset (defaults apply), never a parse error. */
+const withoutBlanks = (env: NodeJS.ProcessEnv): NodeJS.ProcessEnv =>
+  Object.fromEntries(Object.entries(env).filter(([, v]) => v === undefined || v.trim() !== ""));
+
 export function loadConfig(env: NodeJS.ProcessEnv): AppConfig {
-  const parsed = schema.safeParse(env);
+  const parsed = schema.safeParse(withoutBlanks(env));
   if (!parsed.success) {
     throw new Error(
       `Invalid environment: ${parsed.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`).join("; ")}`,
@@ -88,10 +132,48 @@ export function loadConfig(env: NodeJS.ProcessEnv): AppConfig {
     throw new Error(
       "Invalid environment: SEARCH_PROXY_KEY is the .env.example value; set a long random secret in production",
     );
+  const production = e.NODE_ENV === "production";
+  const list = (v: string | null) =>
+    (v ?? "")
+      .split(",")
+      .map((s) => s.trim())
+      .filter((s) => s !== "");
+  const verifier = e.AUTH_VERIFIER ?? (e.CLERK_SECRET_KEY || e.CLERK_JWT_KEY ? "clerk" : "off");
+  const fail = (msg: string) => {
+    throw new Error(`Invalid environment: ${msg}`);
+  };
+  if (verifier === "clerk" && !e.CLERK_SECRET_KEY && !e.CLERK_JWT_KEY)
+    fail("AUTH_VERIFIER=clerk needs CLERK_SECRET_KEY or CLERK_JWT_KEY");
+  if (production) {
+    if ((e.SEARCH_PROXY_KEY ?? "").length < 32)
+      fail("SEARCH_PROXY_KEY must be a random secret of at least 32 characters in production");
+    if ((e.IP_HASH_SALT ?? "").length < 32)
+      fail("IP_HASH_SALT must be a random secret of at least 32 characters in production");
+    if (verifier === "fake") fail("AUTH_VERIFIER=fake is for tests only");
+    if (e.REVALIDATE_URL && (e.REVALIDATE_SECRET ?? "").length < 32)
+      fail("REVALIDATE_SECRET must be at least 32 characters when REVALIDATE_URL is set");
+    // The shared secret travels in a header: never in clear text across the internet.
+    if (e.REVALIDATE_URL && !/^https:\/\//i.test(e.REVALIDATE_URL))
+      fail("REVALIDATE_URL must be https in production");
+    // Without azp checks, a session token minted for any other Clerk app origin would pass.
+    if (verifier === "clerk" && list(e.CLERK_AUTHORIZED_PARTIES).length === 0)
+      fail(
+        "CLERK_AUTHORIZED_PARTIES must list the web origins (e.g. https://darb.co.il) in production",
+      );
+  }
   return {
     databaseUrl: e.DATABASE_URL,
     port: e.PORT,
     webOrigin: e.WEB_ORIGIN,
+    production,
+    auth: {
+      verifier,
+      clerkSecretKey: e.CLERK_SECRET_KEY,
+      clerkJwtKey: e.CLERK_JWT_KEY,
+      authorizedParties: list(e.CLERK_AUTHORIZED_PARTIES),
+      adminEmails: list(e.ADMIN_EMAILS).map((m) => m.toLowerCase()),
+    },
+    admin: { revalidateUrl: e.REVALIDATE_URL ?? null, revalidateSecret: e.REVALIDATE_SECRET },
     search: {
       redisUrl: e.REDIS_URL,
       trustProxy: e.TRUST_PROXY,
@@ -109,6 +191,11 @@ export function loadConfig(env: NodeJS.ProcessEnv): AppConfig {
       voyageApiKey: e.VOYAGE_API_KEY,
       indexWorker: e.SEARCH_INDEX_WORKER,
       reportKey: e.SEARCH_REPORT_KEY,
+      modelCallsPerMinute: e.MODEL_CALLS_PER_MINUTE,
+      modelCallsPerDay: e.MODEL_CALLS_PER_DAY,
+      negativeCacheSeconds: e.INTENT_NEGATIVE_CACHE_SECONDS,
+      suggestRateLimit: e.SUGGEST_RATE_LIMIT,
+      logRetentionDays: e.SEARCH_LOG_RETENTION_DAYS,
     },
   };
 }

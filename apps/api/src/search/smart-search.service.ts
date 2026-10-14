@@ -137,6 +137,7 @@ export class SmartSearchService {
       radiusKm: point && !place ? NEAR_RADIUS_KM : null,
       openAt: intent.openNow ? now : null,
       delivers: intent.attributes.delivers,
+      dietary: intent.dietary,
       text: normalize(intent.freeText),
       embedding,
     };

@@ -2,6 +2,7 @@ import { expect, it } from "vitest";
 import { loadConfig } from "./config.js";
 
 const base = { DATABASE_URL: "postgresql://a/b" };
+const long = "x".repeat(32);
 
 it("reads and defaults the environment", () => {
   const config = loadConfig(base);
@@ -55,7 +56,135 @@ it("refuses the example proxy key in production", () => {
   expect(() => loadConfig({ ...dev, NODE_ENV: "production" })).toThrow(/SEARCH_PROXY_KEY/);
   expect(loadConfig(dev).search.proxyKey).toBe("dev-proxy-key");
   expect(
-    loadConfig({ ...base, NODE_ENV: "production", SEARCH_PROXY_KEY: "a-real-secret" }).search
-      .proxyKey,
-  ).toBe("a-real-secret");
+    loadConfig({ ...base, NODE_ENV: "production", SEARCH_PROXY_KEY: long, IP_HASH_SALT: long })
+      .search.proxyKey,
+  ).toBe(long);
+});
+
+const prod = {
+  ...base,
+  NODE_ENV: "production",
+  SEARCH_PROXY_KEY: long,
+  IP_HASH_SALT: long,
+};
+
+it("defaults the Plan 4 settings", () => {
+  const config = loadConfig(base);
+  expect(config.auth).toEqual({
+    verifier: "off",
+    clerkSecretKey: null,
+    clerkJwtKey: null,
+    authorizedParties: [],
+    adminEmails: [],
+  });
+  expect(config.admin).toEqual({ revalidateUrl: null, revalidateSecret: null });
+  expect(config.search).toMatchObject({
+    modelCallsPerMinute: 60,
+    modelCallsPerDay: 5000,
+    negativeCacheSeconds: 3600,
+    suggestRateLimit: 240,
+    logRetentionDays: 90,
+  });
+  expect(config.production).toBe(false);
+});
+
+it("reads Clerk, the allowlist and revalidation", () => {
+  const config = loadConfig({
+    ...base,
+    CLERK_SECRET_KEY: "sk_test_1",
+    CLERK_AUTHORIZED_PARTIES: "https://darb.co.il, https://www.darb.co.il",
+    ADMIN_EMAILS: "Founder@Darb.co.il ,ops@darb.co.il",
+    REVALIDATE_URL: "http://localhost:3000/api/revalidate",
+    REVALIDATE_SECRET: "s",
+  });
+  expect(config.auth.verifier).toBe("clerk");
+  expect(config.auth.authorizedParties).toEqual(["https://darb.co.il", "https://www.darb.co.il"]);
+  expect(config.auth.adminEmails).toEqual(["founder@darb.co.il", "ops@darb.co.il"]);
+  expect(config.admin.revalidateUrl).toBe("http://localhost:3000/api/revalidate");
+});
+
+it("refuses weak or missing production secrets", () => {
+  expect(loadConfig(prod).production).toBe(true);
+  expect(() => loadConfig({ ...prod, SEARCH_PROXY_KEY: "short" })).toThrow(/SEARCH_PROXY_KEY/);
+  expect(() => loadConfig({ ...prod, SEARCH_PROXY_KEY: undefined })).toThrow(/SEARCH_PROXY_KEY/);
+  expect(() => loadConfig({ ...prod, IP_HASH_SALT: undefined })).toThrow(/IP_HASH_SALT/);
+  expect(() => loadConfig({ ...prod, AUTH_VERIFIER: "fake" })).toThrow(/AUTH_VERIFIER/);
+  expect(() => loadConfig({ ...prod, AUTH_VERIFIER: "clerk" })).toThrow(/CLERK_SECRET_KEY/);
+  expect(() =>
+    loadConfig({
+      ...prod,
+      REVALIDATE_URL: "https://darb.co.il/api/revalidate",
+      REVALIDATE_SECRET: "s",
+    }),
+  ).toThrow(/REVALIDATE_SECRET/);
+});
+
+it("allows the fake verifier outside production only", () => {
+  expect(loadConfig({ ...base, AUTH_VERIFIER: "fake" }).auth.verifier).toBe("fake");
+});
+
+it("treats an empty env line as unset instead of refusing to start", () => {
+  const config = loadConfig({
+    ...base,
+    REVALIDATE_URL: "",
+    REVALIDATE_SECRET: "",
+    WEB_ORIGIN: "",
+    REDIS_URL: " ",
+    PORT: "",
+    INTENT_PROVIDER: "",
+    EMBEDDING_PROVIDER: "",
+    AUTH_VERIFIER: "",
+    SEARCH_INDEX_WORKER: "",
+    MODEL_CALLS_PER_DAY: "",
+  });
+  expect(config.admin).toEqual({ revalidateUrl: null, revalidateSecret: null });
+  expect(config.webOrigin).toBe("http://localhost:3000");
+  expect(config.search.redisUrl).toBe("redis://localhost:6380");
+  expect(config.port).toBe(4000);
+  expect(config.search.intentProvider).toBe("off");
+  expect(config.search.embeddingProvider).toBe("hash");
+  expect(config.auth.verifier).toBe("off");
+  expect(config.search.indexWorker).toBe(true);
+  expect(config.search.modelCallsPerDay).toBe(5000);
+  expect(() => loadConfig({ DATABASE_URL: "" })).toThrow(/DATABASE_URL/);
+  expect(() => loadConfig({ ...base, REVALIDATE_URL: "not a url" })).toThrow(/REVALIDATE_URL/);
+});
+
+it("production Clerk needs authorized parties", () => {
+  const clerk = { ...prod, CLERK_SECRET_KEY: "sk_live_1" };
+  expect(() => loadConfig(clerk)).toThrow(/CLERK_AUTHORIZED_PARTIES/);
+  expect(() => loadConfig({ ...clerk, CLERK_AUTHORIZED_PARTIES: " , " })).toThrow(
+    /CLERK_AUTHORIZED_PARTIES/,
+  );
+  expect(
+    loadConfig({ ...clerk, CLERK_AUTHORIZED_PARTIES: "https://darb.co.il" }).auth.authorizedParties,
+  ).toEqual(["https://darb.co.il"]);
+  // Staging (docs/launch/environments.md): production mode, Clerk development keys, and the
+  // staging web origin as the one authorized party.
+  const staging = loadConfig({
+    ...clerk,
+    CLERK_SECRET_KEY: "sk_test_1",
+    CLERK_AUTHORIZED_PARTIES: "https://darb-city-git-staging-team.vercel.app",
+  });
+  expect(staging.production).toBe(true);
+  expect(staging.auth.authorizedParties).toEqual(["https://darb-city-git-staging-team.vercel.app"]);
+  // Outside production an empty list stays allowed (local Clerk development).
+  expect(loadConfig({ ...base, CLERK_SECRET_KEY: "sk_test_1" }).auth.verifier).toBe("clerk");
+});
+
+it("REVALIDATE_URL is https in production and http(s) everywhere", () => {
+  const secret = { REVALIDATE_SECRET: long };
+  expect(() =>
+    loadConfig({ ...prod, ...secret, REVALIDATE_URL: "http://darb.co.il/api/revalidate" }),
+  ).toThrow(/REVALIDATE_URL/);
+  expect(
+    loadConfig({ ...prod, ...secret, REVALIDATE_URL: "https://darb.co.il/api/revalidate" }).admin
+      .revalidateUrl,
+  ).toBe("https://darb.co.il/api/revalidate");
+  for (const url of ["ftp://darb.co.il/x", "file:///etc/passwd", "javascript:alert(1)"]) {
+    expect(() => loadConfig({ ...base, REVALIDATE_URL: url })).toThrow(/REVALIDATE_URL/);
+  }
+  expect(
+    loadConfig({ ...base, REVALIDATE_URL: "http://localhost:3000/api/revalidate" }).admin,
+  ).toMatchObject({ revalidateUrl: "http://localhost:3000/api/revalidate" });
 });

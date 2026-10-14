@@ -48,6 +48,7 @@ const ctx: ViewContext = {
     openNow: "Open now",
     delivers: "Delivers",
     nearMe: "Near me",
+    glutenFree: "Gluten-free",
     kindInPlace: "{kind} in {place}",
     kindNationwide: "{kind} across Israel",
   },
@@ -73,6 +74,8 @@ const item = {
   lng: 35.071,
   photo: null,
   openNow: true,
+  hours: { weekly: {}, exceptions: [] },
+  dietary: [],
   distanceKm: 1.25,
 };
 const response: SearchResponseDto = {
@@ -229,5 +232,25 @@ describe("chip edits in the URL", () => {
     const many = Array.from({ length: 8 }, (_, i) => `kind:k${i}`).join(",");
     expect(intentFromUrl(many, undefined)?.kinds).toHaveLength(5);
     expect(intentFromUrl("text", "x".repeat(300))?.freeText).toHaveLength(120);
+  });
+});
+
+describe("gluten-free chip (Task 27b)", () => {
+  const gf = { ...intent, dietary: ["gluten_free" as const], freeText: "" };
+  it("draws, removes and narrows it like the other filters", () => {
+    expect(chipsFor(gf, ctx).map((c) => [c.id, c.label])).toEqual([
+      ["place:akko", "Akko"],
+      ["kind:sweets", "Knafeh and Arabic sweets"],
+      ["openNow", "Open now"],
+      ["glutenFree", "Gluten-free"],
+    ]);
+    expect(removeChip(gf, "glutenFree")).toEqual({ ...gf, dietary: [] });
+    expect(narrowestChip(chipsFor({ ...gf, openNow: false }, ctx))?.id).toBe("glutenFree");
+  });
+  it("keeps it in the edited URL and reads it back", () => {
+    const href = editedHref("he", "ללא גלוטן", gf);
+    expect(href).toContain("chips=place:akko,kind:sweets,openNow,glutenFree");
+    const url = new URL(href, "http://x");
+    expect(intentFromUrl(url.searchParams.get("chips") ?? undefined, undefined)).toEqual(gf);
   });
 });

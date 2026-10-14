@@ -13,7 +13,7 @@ import { siteUrl } from "@/lib/site";
 /** Canonical at the business's own place, wherever it was opened from. */
 export function businessLevelMetadata(level: BusinessLevel): Metadata {
   const { locale, home, kind, business, canonical } = level;
-  return pageMetadata({
+  const meta = pageMetadata({
     locale,
     segments: canonical,
     title: pickText(business.name, locale),
@@ -24,6 +24,8 @@ export function businessLevelMetadata(level: BusinessLevel): Metadata {
         place: pickText(home.name, locale),
       }),
   });
+  // Showroom examples are fictional: kept out of search engines (Plan 4 decision 4).
+  return business.tier === "example" ? { ...meta, robots: { index: false, follow: true } } : meta;
 }
 
 /** Level 4: the sheet over the listed place's kind list; closing returns to that list. */

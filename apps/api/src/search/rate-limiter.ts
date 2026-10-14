@@ -3,12 +3,13 @@ import { Inject, Injectable } from "@nestjs/common";
 import type { Redis } from "ioredis";
 import { APP_CONFIG, type AppConfig } from "../config.js";
 import { REDIS } from "../redis/redis.module.js";
+import { ipBucket } from "./ip-bucket.js";
 
 export const ipHash = (salt: string, ip: string) =>
   createHash("sha256").update(`${salt}:${ip}`).digest("hex").slice(0, 32);
 
 /** "report" counts wrong report keys only. */
-type Bucket = "search" | "results" | "click" | "report";
+type Bucket = "search" | "results" | "click" | "report" | "suggest";
 
 @Injectable()
 export class RateLimiter {
@@ -18,7 +19,7 @@ export class RateLimiter {
   ) {}
 
   private key(bucket: Bucket, ip: string, window: number): string {
-    return `darb:rl:${bucket}:${ipHash(this.config.search.ipSalt, ip)}:${window}`;
+    return `darb:rl:${bucket}:${ipHash(this.config.search.ipSalt, ipBucket(ip))}:${window}`;
   }
 
   /** Whether this minute's count is still within the limit, without adding to it. */

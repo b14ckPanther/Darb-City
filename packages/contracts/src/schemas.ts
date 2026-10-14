@@ -1,4 +1,4 @@
-import { isSlug, PLACE_STATUSES, PLACE_TYPES, TEMPLATES, TIERS } from "@darb/core";
+import { DIETARY, isSlug, PLACE_STATUSES, PLACE_TYPES, TEMPLATES, TIERS } from "@darb/core";
 import { z } from "zod";
 
 const text = z.string().optional();
@@ -17,7 +17,12 @@ export const HoursSchema = z.object({
   exceptions: z.array(
     z.object({ date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/), intervals: z.array(IntervalSchema) }),
   ),
+  /** Visits by arrangement only: never open now, shown as "By appointment" (Task 28). */
+  byAppointment: z.boolean().optional(),
 });
+
+/** Whole-business dietary facts (core DIETARY); gluten_free means the entire kitchen is. */
+export const DietarySchema = z.enum(DIETARY);
 
 export const PlaceSchema = z.object({
   id: z.string(),
@@ -80,6 +85,10 @@ export const BusinessSummarySchema = z.object({
   photo: z.string().nullable(),
   /** Null when the business has no hours at all. */
   openNow: z.boolean().nullable(),
+  /** Weekly hours, so browsers recompute open-now on cached pages (Plan 4). */
+  hours: HoursSchema,
+  /** Whole-business dietary facts: gluten_free is a fully gluten-free kitchen (Task 27b). */
+  dietary: z.array(DietarySchema).default([]),
   /** Kilometres from the point a list was sorted by; absent otherwise. */
   distanceKm: z.number().nonnegative().optional(),
 });
@@ -147,3 +156,12 @@ export const ScreenSchema = z.object({
   font: z.string().min(1),
 });
 export type ScreenDto = z.infer<typeof ScreenSchema>;
+
+/** A real business page for the web sitemap (showroom examples are left out). */
+export const SitemapBusinessSchema = z.object({
+  placeSlug: SlugSchema,
+  slug: SlugSchema,
+  primaryKindId: z.string(),
+  updatedAt: z.string(),
+});
+export type SitemapBusinessDto = z.infer<typeof SitemapBusinessSchema>;

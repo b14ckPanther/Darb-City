@@ -4,7 +4,15 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { expect, it } from "vitest";
 import { buildMapAssets, maplibreVersion, VENDOR_FILES } from "../../scripts/copy-map.mjs";
-import { MAPLIBRE_CSS_URL, MAPLIBRE_URL, MAPLIBRE_VERSION, styleUrl, TILES_URL } from "./vendor";
+import {
+  MAPLIBRE_CSS_URL,
+  MAPLIBRE_URL,
+  MAPLIBRE_VERSION,
+  styleUrl,
+  tilesOrigin,
+  tilesUrl,
+  TILES_URL,
+} from "./vendor";
 
 it("pins the vendored MapLibre to the installed version", () => {
   expect(MAPLIBRE_VERSION).toBe(maplibreVersion());
@@ -34,4 +42,27 @@ it("ships MapLibre's licence beside the vendored modules", () => {
   const licence = readFileSync(join(vendor, "LICENSE.txt"), "utf8");
   expect(licence).toContain("Copyright (c) 2023, MapLibre contributors");
   expect(licence).toContain("BSD");
+});
+
+it("never boots the stage in production without a tiles URL", () => {
+  expect(
+    tilesUrl({
+      url: "https://tiles.darb.co.il/israel-20261001.pmtiles",
+      local: undefined,
+      nodeEnv: "production",
+    }),
+  ).toBe("https://tiles.darb.co.il/israel-20261001.pmtiles");
+  expect(tilesUrl({ url: undefined, local: undefined, nodeEnv: "production" })).toBeNull();
+  expect(tilesUrl({ url: undefined, local: "1", nodeEnv: "production" })).toBe(
+    "/api/tiles/israel.pmtiles",
+  );
+  expect(tilesUrl({ url: "", local: undefined, nodeEnv: "development" })).toBe(
+    "/api/tiles/israel.pmtiles",
+  );
+});
+
+it("names the tiles origin only when tiles live elsewhere", () => {
+  expect(tilesOrigin("https://tiles.darb.co.il/israel.pmtiles")).toBe("https://tiles.darb.co.il");
+  expect(tilesOrigin("/api/tiles/israel.pmtiles")).toBeNull();
+  expect(tilesOrigin(null)).toBeNull();
 });

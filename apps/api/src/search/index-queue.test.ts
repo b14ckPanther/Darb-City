@@ -9,6 +9,7 @@ import { AiModule } from "../ai/ai.module.js";
 import { loadConfig, type AppConfig } from "../config.js";
 import { PrismaModule } from "../prisma/prisma.module.js";
 import { PrismaService } from "../prisma/prisma.service.js";
+import { RedisModule } from "../redis/redis.module.js";
 import { SearchEvents, SearchIndexWorker, jobKey, queueName } from "./index-queue.js";
 import { SearchIndexer } from "./indexer.service.js";
 import { InstantService } from "./instant.service.js";
@@ -18,7 +19,7 @@ const url = testDatabaseUrl();
 // The test environment turns the worker off (vitest.config.ts); this file is the one that needs it.
 process.env["SEARCH_INDEX_WORKER"] = "true";
 const moduleRef = await Test.createTestingModule({
-  imports: [PrismaModule, AiModule, SearchIndexModule],
+  imports: [PrismaModule, RedisModule, AiModule, SearchIndexModule],
 }).compile();
 await moduleRef.init();
 const prisma = moduleRef.get(PrismaService);
@@ -99,7 +100,7 @@ describe("without a worker on the queue", () => {
 
   it("enqueues repeated changes to the same ids once", async () => {
     const config = isolated("darb_test_dedupe");
-    const lone = new SearchEvents(config, new InstantService(prisma));
+    const lone = new SearchEvents(config, { publish: () => undefined });
     const queue = new Queue(queueName(config.databaseUrl), { connection: { url: redisUrl } });
     try {
       await queue.obliterate({ force: true });
@@ -119,7 +120,7 @@ describe("without a worker on the queue", () => {
   it("opens no Redis connection until the first change", async () => {
     const base = isolated("darb_test_lazy");
     const config = { ...base, search: { ...base.search, redisUrl: "redis://127.0.0.1:1" } };
-    const lone = new SearchEvents(config, new InstantService(prisma));
+    const lone = new SearchEvents(config, { publish: () => undefined });
     expect((lone as unknown as { queue: unknown }).queue).toBeNull();
     await lone.onModuleDestroy();
   });
@@ -134,7 +135,7 @@ describe("without a worker on the queue", () => {
     } as unknown as SearchIndexer;
     const warn = vi.spyOn(Logger.prototype, "warn").mockImplementation(() => undefined);
     const worker = new SearchIndexWorker(config, failing, new InstantService(prisma));
-    const lone = new SearchEvents(config, new InstantService(prisma));
+    const lone = new SearchEvents(config, { publish: () => undefined });
     const queue = new Queue(queueName(config.databaseUrl), { connection: { url: redisUrl } });
     try {
       await queue.obliterate({ force: true });

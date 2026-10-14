@@ -14,7 +14,7 @@ import { href, paths } from "@/lib/routes";
 import { sectorStage } from "@/lib/stage-data";
 import { metadataOrUnavailable, orUnavailable } from "@/lib/unavailable";
 
-export const revalidate = 300;
+export const revalidate = 86400;
 export function generateStaticParams() {
   return [];
 }

@@ -41,6 +41,8 @@ beforeAll(async () => {
         lat: 32.8638,
         lng: 35.31 + i * 0.01,
         attributes: i % 2 ? { delivers: true } : {},
+        // extra-1 and extra-2 have fully gluten-free kitchens (Task 27b)
+        dietary: i <= 2 ? ["gluten_free"] : [],
         hours:
           i % 2
             ? { weekly: { 1: [{ open: "09:00", close: "18:00" }] }, exceptions: [] }
@@ -53,13 +55,18 @@ beforeAll(async () => {
 afterAll(() => app.close());
 
 const get = (path: string) => request(app.getHttpServer()).get(path);
+/** Near-sorted lists are POSTs: the point travels in the body, never in the URL (spec §5.4). */
+const POINT = { lat: 32.8638, lng: 35.38 };
+const near = (path: string, point: object = POINT) =>
+  request(app.getHttpServer()).post(path.replace("/businesses?", "/businesses/near?")).send(point);
 const slugs = (res: request.Response) => res.body.items.map((b: { slug: string }) => b.slug);
 
-async function all(path: string): Promise<string[]> {
+async function all(path: string, point?: object): Promise<string[]> {
   const out: string[] = [];
   let cursor: string | null = null;
+  const fetch = (p: string) => (point ? near(p, point) : get(p));
   do {
-    const res = await get(`${path}&limit=2${cursor ? `&cursor=${cursor}` : ""}`);
+    const res = await fetch(`${path}&limit=2${cursor ? `&cursor=${cursor}` : ""}`);
     expect(res.status).toBe(200);
     out.push(...slugs(res));
     cursor = res.body.nextCursor;
@@ -76,15 +83,38 @@ describe("level-3 filters", () => {
     const res = await get("/places/sakhnin/businesses?kind=barbershops&delivers=true");
     expect(slugs(res)).toEqual(["extra-1", "extra-3", "extra-5"]);
   });
+  it("filters by a dietary fact and shows it on every summary (Task 27b)", async () => {
+    const res = await get("/places/sakhnin/businesses?kind=barbershops&dietary=gluten_free");
+    expect(slugs(res)).toEqual(["extra-1", "extra-2"]);
+    expect(res.body.items.map((b: { dietary: string[] }) => b.dietary)).toEqual([
+      ["gluten_free"],
+      ["gluten_free"],
+    ]);
+    const plain = await get("/places/sakhnin/businesses?kind=barbershops");
+    expect(plain.body.items.find((b: { slug: string }) => b.slug === "abu-salim").dietary).toEqual(
+      [],
+    );
+  });
+  it("combines dietary with open now, delivers and near me", async () => {
+    const combined = await all(
+      "/places/sakhnin/businesses?kind=barbershops&dietary=gluten_free&openNow=true&delivers=true",
+      POINT,
+    );
+    expect(combined).toEqual(["extra-1"]);
+    expect((await get("/places/sakhnin/businesses?kind=barbershops&dietary=vegan")).status).toBe(
+      400,
+    );
+  });
   it("sorts by distance and reports it, nearest first", async () => {
-    const res = await get("/places/sakhnin/businesses?kind=barbershops&lat=32.8638&lng=35.38");
+    const res = await near("/places/sakhnin/businesses?kind=barbershops");
     expect(slugs(res).slice(0, 3)).toEqual(["extra-6", "extra-5", "extra-4"]);
     expect(res.body.items[0].distanceKm).toBeLessThan(1);
     expect(res.body.items[0].distanceKm).toBeGreaterThanOrEqual(0);
   });
   it("pages distance order without gaps or repeats, with filters combined", async () => {
     const paged = await all(
-      "/places/sakhnin/businesses?kind=barbershops&openNow=true&delivers=true&lat=32.8638&lng=35.38",
+      "/places/sakhnin/businesses?kind=barbershops&openNow=true&delivers=true",
+      POINT,
     );
     expect(paged).toEqual(["extra-5", "extra-3", "extra-1"]);
   });
@@ -92,7 +122,18 @@ describe("level-3 filters", () => {
     const res = await get("/places/sakhnin/businesses?kind=barbershops");
     expect(res.body.items[0].distanceKm).toBeUndefined();
   });
-  it("rejects half a coordinate", async () => {
-    expect((await get("/places/sakhnin/businesses?kind=barbershops&lat=32.8")).status).toBe(400);
+  it("rejects half a point, strings and out-of-range values", async () => {
+    const list = "/places/sakhnin/businesses?kind=barbershops";
+    expect((await near(list, { lat: 32.8 })).status).toBe(400);
+    expect((await near(list, { lat: "32.8", lng: 35.3 })).status).toBe(400);
+    expect((await near(list, { lat: 91, lng: 35.3 })).status).toBe(400);
+  });
+  it("ignores coordinates in a GET query string: they are never read from a URL", async () => {
+    const res = await get("/places/sakhnin/businesses?kind=barbershops&lat=32.8638&lng=35.38");
+    expect(res.status).toBe(200);
+    expect(res.body.items[0].distanceKm).toBeUndefined();
+  });
+  it("404s the near list for an unknown place", async () => {
+    expect((await near("/places/nowhere/businesses?kind=barbershops")).status).toBe(404);
   });
 });

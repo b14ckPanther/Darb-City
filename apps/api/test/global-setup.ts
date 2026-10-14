@@ -19,7 +19,8 @@ export default async function setup(): Promise<void> {
   await client.end();
   execSync("pnpm exec prisma migrate deploy", {
     cwd: new URL("..", import.meta.url),
-    env: { ...process.env, DATABASE_URL: url },
+    // prisma.config.ts prefers MIGRATE_DATABASE_URL: pin it too, so tests never migrate another DB.
+    env: { ...process.env, DATABASE_URL: url, MIGRATE_DATABASE_URL: url },
     stdio: "inherit",
   });
 }

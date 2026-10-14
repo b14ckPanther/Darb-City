@@ -101,15 +101,42 @@ describe("BusinessPageSchema", () => {
 });
 
 describe("coordinates", () => {
-  const query = contract.places.nearest.query;
-  it("accept numbers and numeric strings", () => {
-    expect(query.parse({ lat: "32.85", lng: 35.2 })).toEqual({ lat: 32.85, lng: 35.2 });
+  const body = contract.places.nearest.body;
+  it("accept JSON numbers in range", () => {
+    expect(body.parse({ lat: 32.85, lng: 35.2 })).toEqual({ lat: 32.85, lng: 35.2 });
   });
-  it("reject blank, non-numeric and out-of-range values", () => {
-    expect(query.safeParse({ lat: "", lng: "35" }).success).toBe(false);
-    expect(query.safeParse({ lat: "  ", lng: "35" }).success).toBe(false);
-    expect(query.safeParse({ lat: "abc", lng: "35" }).success).toBe(false);
-    expect(query.safeParse({ lat: "91", lng: "35" }).success).toBe(false);
+  it("reject strings, missing and out-of-range values", () => {
+    expect(body.safeParse({ lat: "", lng: 35 }).success).toBe(false);
+    expect(body.safeParse({ lat: "32.8", lng: 35 }).success).toBe(false);
+    expect(body.safeParse({ lng: 35 }).success).toBe(false);
+    expect(body.safeParse({ lat: 91, lng: 35 }).success).toBe(false);
+  });
+});
+
+/** Every route of a ts-rest router, flattened. */
+const routes = (router: object): { method: string; path: string; query?: unknown }[] =>
+  Object.values(router).flatMap((r: { method?: string }) =>
+    typeof r.method === "string" ? [r as never] : routes(r),
+  );
+
+describe("visitor coordinates never travel in a URL (spec §5.4)", () => {
+  it("no route takes lat, lng or near in its query string", () => {
+    const all = routes(contract);
+    expect(all.length).toBeGreaterThan(10);
+    for (const route of all) {
+      // A refined object (ZodEffects) keeps its shape one level down.
+      type Q = { shape?: Record<string, unknown>; _def?: { schema?: Q } } | undefined;
+      const query = route.query as Q;
+      const shape = query?.shape ?? query?._def?.schema?.shape ?? {};
+      for (const key of ["lat", "lng", "near"])
+        expect(shape, `${route.method} ${route.path} takes ${key}`).not.toHaveProperty(key);
+    }
+  });
+  it("the three coordinate routes are POSTs with the point in the body", () => {
+    expect(contract.places.nearest.method).toBe("POST");
+    expect(contract.businesses.nearestPlaces.method).toBe("POST");
+    expect(contract.businesses.listNear.method).toBe("POST");
+    expect(contract.businesses.list.query.safeParse({ lat: 32.8 }).data).not.toHaveProperty("lat");
   });
 });
 
@@ -159,8 +186,58 @@ it("accepts a business summary with or without distance", () => {
     lng: 2,
     photo: null,
     openNow: null,
+    hours: { weekly: {}, exceptions: [] },
   };
   expect(BusinessSummarySchema.parse(base).distanceKm).toBeUndefined();
+  // Browsers recompute open-now from the hours (Plan 4 Task 19), so every summary carries them.
+  const { hours: _hours, ...withoutHours } = base;
+  expect(() => BusinessSummarySchema.parse(withoutHours)).toThrow();
   expect(BusinessSummarySchema.parse({ ...base, distanceKm: 1.5 }).distanceKm).toBe(1.5);
   expect(() => BusinessSummarySchema.parse({ ...base, distanceKm: -1 })).toThrow();
+});
+
+describe("dietary (Task 27b)", () => {
+  const base = {
+    id: "1",
+    slug: "a",
+    name: { en: "A" },
+    tagline: { en: "A" },
+    tier: "darb",
+    primaryKindId: "k",
+    placeId: "p",
+    placeSlug: "akko",
+    lat: 1,
+    lng: 2,
+    photo: null,
+    openNow: null,
+    hours: { weekly: {}, exceptions: [] },
+  };
+  it("summaries carry the dietary set, empty when absent", () => {
+    expect(BusinessSummarySchema.parse(base).dietary).toEqual([]);
+    expect(BusinessSummarySchema.parse({ ...base, dietary: ["gluten_free"] }).dietary).toEqual([
+      "gluten_free",
+    ]);
+    expect(() => BusinessSummarySchema.parse({ ...base, dietary: ["gluten_option"] })).toThrow();
+  });
+  it("lists filter by a dietary value, combinable with the others", () => {
+    const query = contract.businesses.list.query;
+    expect(
+      query.parse({
+        dietary: "gluten_free",
+        openNow: "true",
+        delivers: "true",
+        lat: "32",
+        lng: "35",
+      }),
+    ).toMatchObject({ dietary: "gluten_free", openNow: true, delivers: true });
+    expect(query.safeParse({ dietary: "vegan-ish" }).success).toBe(false);
+  });
+});
+
+describe("hours by appointment (Task 28)", () => {
+  it("keeps the flag through parsing, and stays optional", () => {
+    const hours = { weekly: {}, exceptions: [], byAppointment: true };
+    expect(HoursSchema.parse(hours)).toEqual(hours);
+    expect(HoursSchema.parse({ weekly: {}, exceptions: [] }).byAppointment).toBeUndefined();
+  });
 });

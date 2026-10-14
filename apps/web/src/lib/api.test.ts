@@ -10,6 +10,7 @@ import {
   getNearestPlace,
   getNearestPlacesWithKind,
   getPlace,
+  getSuggestions,
   postSearch,
 } from "./api";
 
@@ -45,7 +46,7 @@ describe("api client", () => {
     const [url, init] = fetchMock.mock.calls[0]!;
     expect(String(url)).toBe("http://api.test/places/haifa");
     expect((init as RequestInit & { next?: unknown }).next).toEqual({
-      revalidate: 300,
+      revalidate: 86400,
       tags: ["places", "place:haifa"],
     });
   });
@@ -60,14 +61,49 @@ describe("api client", () => {
       "http://api.test/places/sakhnin/businesses?kind=barbershops",
     );
   });
-  it("can skip the cache for live lookups", async () => {
+  it("can skip the cache for live lookups, with the point in a POST body", async () => {
     fetchMock.mockResolvedValue(
       Response.json({ ...place, ancestors: undefined, children: undefined }),
     );
     await getNearestPlace(32.85, 35.33, "no-store");
     const [url, init] = fetchMock.mock.calls[0]!;
-    expect(String(url)).toBe("http://api.test/nearest-place?lat=32.85&lng=35.33");
+    expect(String(url)).toBe("http://api.test/nearest-place");
+    expect((init as RequestInit).method).toBe("POST");
+    expect(JSON.parse(String((init as RequestInit).body))).toEqual({ lat: 32.85, lng: 35.33 });
     expect((init as RequestInit).cache).toBe("no-store");
+  });
+  it("never puts a point in a URL, cached or not (spec §5.4)", async () => {
+    fetchMock.mockImplementation(async () => Response.json([]));
+    await getNearestPlacesWithKind("barbershops", 32.8, 35.3, 5);
+    await getNearestPlacesWithKind("barbershops", 32.81, 35.31, 1, "no-store");
+    fetchMock.mockImplementation(async () => Response.json({ items: [], nextCursor: null }));
+    await getBusinesses("sakhnin", { kind: "barbershops", near: { lat: 32.864, lng: 35.301 } });
+    const calls = fetchMock.mock.calls.map(([url, init]) => ({
+      url: String(url),
+      method: (init as RequestInit).method,
+      body: JSON.parse(String((init as RequestInit).body)),
+      cache: (init as RequestInit).cache,
+      next: (init as RequestInit & { next?: unknown }).next,
+    }));
+    for (const call of calls) {
+      expect(call.url).not.toMatch(/lat|lng|32\.8|35\.3/);
+      expect(call.method).toBe("POST");
+    }
+    expect(calls[0]).toMatchObject({
+      url: "http://api.test/kinds/barbershops/nearest-places",
+      body: { lat: 32.8, lng: 35.3, limit: 5 },
+      next: { revalidate: 86400, tags: ["businesses"] },
+    });
+    expect(calls[1]).toMatchObject({
+      body: { lat: 32.81, lng: 35.31, limit: 1 },
+      cache: "no-store",
+    });
+    expect(calls[2]).toMatchObject({
+      url: "http://api.test/places/sakhnin/businesses/near?kind=barbershops",
+      body: { lat: 32.864, lng: 35.301 },
+      cache: "no-store",
+    });
+    expect(calls[2]!.next).toBeUndefined();
   });
   it("reports an unreachable or failing API as ApiUnavailableError", async () => {
     fetchMock.mockRejectedValue(new TypeError("fetch failed"));
@@ -90,7 +126,7 @@ describe("api client", () => {
     const [url, init] = fetchMock.mock.calls[0]!;
     expect(String(url)).toBe("http://api.test/density");
     expect((init as RequestInit & { next?: unknown }).next).toEqual({
-      revalidate: 300,
+      revalidate: 86400,
       tags: ["businesses", "places"],
     });
   });
@@ -134,5 +170,25 @@ describe("search calls", () => {
     expect(headers.get("x-darb-client-ip")).toBe("5.6.7.8");
     expect(log).not.toHaveBeenCalled();
     expect(info).not.toHaveBeenCalled();
+  });
+});
+
+describe("suggestions", () => {
+  it("vouch with the proxy key, and say so when the API limits this server", async () => {
+    vi.stubEnv("SEARCH_PROXY_KEY", "k");
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    fetchMock.mockResolvedValue(Response.json([], { status: 200 }));
+    await getSuggestions("ba");
+    expect(new Headers(fetchMock.mock.calls[0]![1]?.headers).get("x-darb-proxy-key")).toBe("k");
+    fetchMock.mockResolvedValue(Response.json({ message: "slow", retryAfter: 9 }, { status: 429 }));
+    expect(await getSuggestions("ba")).toEqual([]);
+    expect(warn).toHaveBeenCalledWith(expect.stringMatching(/SEARCH_PROXY_KEY/));
+    warn.mockRestore();
+  });
+  it("send no empty proxy header when the key is unset (development)", async () => {
+    vi.stubEnv("SEARCH_PROXY_KEY", "");
+    fetchMock.mockResolvedValue(Response.json([], { status: 200 }));
+    await getSuggestions("ba");
+    expect(new Headers(fetchMock.mock.calls[0]![1]?.headers).has("x-darb-proxy-key")).toBe(false);
   });
 });

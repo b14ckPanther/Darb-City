@@ -1,9 +1,10 @@
 import { Injectable } from "@nestjs/common";
-import type { Localized, Tier } from "@darb/core";
+import type { Dietary, Localized, Tier } from "@darb/core";
 import { vectorLiteral } from "../ai/embeddings.js";
 import { Prisma } from "../generated/prisma/client.js";
 import { PrismaService } from "../prisma/prisma.service.js";
 import { RANKING } from "./ranking.config.js";
+import { ADDRESS_HIDDEN_SQL } from "../businesses/public-point.js";
 
 export interface RetrievalFilters {
   kindIds: string[] | null;
@@ -12,6 +13,8 @@ export interface RetrievalFilters {
   radiusKm: number | null;
   openAt: Date | null;
   delivers: boolean;
+  /** Whole-business dietary facts every result must have (Task 27b). */
+  dietary: Dietary[];
   text: string;
   embedding: number[] | null;
 }
@@ -30,6 +33,7 @@ export interface Candidate {
     lng: number;
     photos: unknown;
     hours: unknown;
+    dietary: Dietary[];
   };
   text: number;
   vector: number;
@@ -48,7 +52,8 @@ export class RetrievalRepository {
   constructor(private readonly prisma: PrismaService) {}
 
   async retrieve(f: RetrievalFilters): Promise<Candidate[]> {
-    const scoped = f.kindIds !== null || f.placePath !== null || f.near !== null;
+    const scoped =
+      f.kindIds !== null || f.placePath !== null || f.near !== null || f.dietary.length > 0;
     if (!scoped && f.text === "") return [];
     const here = f.near
       ? Prisma.sql`ST_SetSRID(ST_MakePoint(${f.near.lng}, ${f.near.lat}), 4326)::geography`
@@ -89,6 +94,7 @@ export class RetrievalRepository {
         : []),
       ...(f.openAt ? [Prisma.sql`darb_open_at(b.hours, ${f.openAt})`] : []),
       ...(f.delivers ? [Prisma.sql`b.attributes @> '{"delivers": true}'::jsonb`] : []),
+      ...(f.dietary.length > 0 ? [Prisma.sql`b.dietary @> ${f.dietary}::"Dietary"[]`] : []),
       ...(!f.kindIds && f.text
         ? [
             Prisma.sql`(${f.text} <% d.text OR d.tsv @@ plainto_tsquery('simple', ${f.text})${vec ? Prisma.sql` OR d.embedding <=> ${vec} < 0.6` : Prisma.empty})`,
@@ -104,7 +110,10 @@ export class RetrievalRepository {
       })[]
     >`
       SELECT b.id, b.slug, b.name, b.tagline, b.tier, b."primaryKindId", b."placeId", p.slug AS "placeSlug",
-             b.lat, b.lng, b.photos, b.hours, d.completeness,
+             -- A business that keeps its street private shows its place's centre, never its pin.
+             CASE WHEN ${ADDRESS_HIDDEN_SQL} THEN p.lat ELSE b.lat END AS lat,
+             CASE WHEN ${ADDRESS_HIDDEN_SQL} THEN p.lng ELSE b.lng END AS lng,
+             b.photos, b.hours, b.dietary::text[] AS dietary, d.completeness,
              ${textScore} AS text_score, ${vectorScore} AS vector_score, ${km} AS km
       FROM "SearchDocument" d
       JOIN "Business" b ON b.id = d."entityId"

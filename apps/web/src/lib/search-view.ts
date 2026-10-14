@@ -8,7 +8,7 @@ import { toRows, type BusinessRowData } from "./rows";
 import { searchStage } from "./stage-data";
 import type { TaxonomyIndex } from "./taxonomy";
 
-export type ChipType = "place" | "kind" | "openNow" | "delivers" | "nearMe" | "text";
+export type ChipType = "place" | "kind" | "openNow" | "delivers" | "glutenFree" | "nearMe" | "text";
 export interface Chip {
   id: string;
   type: ChipType;
@@ -39,6 +39,7 @@ export interface ViewContext {
     openNow: string;
     delivers: string;
     nearMe: string;
+    glutenFree: string;
     kindInPlace: string; // with {kind} and {place}
     kindNationwide: string; // with {kind}
   };
@@ -70,6 +71,8 @@ export function chipsFor(intent: IntentDto, ctx: ViewContext): Chip[] {
   if (intent.openNow) chips.push({ id: "openNow", type: "openNow", label: ctx.labels.openNow });
   if (intent.attributes.delivers)
     chips.push({ id: "delivers", type: "delivers", label: ctx.labels.delivers });
+  if (intent.dietary.includes("gluten_free"))
+    chips.push({ id: "glutenFree", type: "glutenFree", label: ctx.labels.glutenFree });
   if (intent.nearMe) chips.push({ id: "nearMe", type: "nearMe", label: ctx.labels.nearMe });
   if (intent.freeText)
     chips.push({ id: "text", type: "text", label: QUOTE[ctx.locale](intent.freeText) });
@@ -82,12 +85,14 @@ export function removeChip(intent: IntentDto, chipId: string): IntentDto {
     return { ...intent, kinds: intent.kinds.filter((k) => `kind:${k}` !== chipId) };
   if (chipId === "openNow") return { ...intent, openNow: false };
   if (chipId === "delivers") return { ...intent, attributes: { delivers: false } };
+  if (chipId === "glutenFree")
+    return { ...intent, dietary: intent.dietary.filter((d) => d !== "gluten_free") };
   if (chipId === "nearMe") return { ...intent, nearMe: false };
   if (chipId === "text") return { ...intent, freeText: "" };
   return intent;
 }
 
-const NARROW: ChipType[] = ["text", "openNow", "delivers", "nearMe", "kind", "place"];
+const NARROW: ChipType[] = ["text", "openNow", "delivers", "glutenFree", "nearMe", "kind", "place"];
 export function narrowestChip(chips: readonly Chip[]): Chip | null {
   for (const type of NARROW) {
     const chip = chips.filter((c) => c.type === type).at(-1);
@@ -160,7 +165,7 @@ export function toSearchView(res: SearchResponseDto, q: string, ctx: ViewContext
 /*
  * Chip edits live in the URL (fix round 1), so a reload or a shared link shows the same results
  * without asking the model again: `chips` lists the chips that are left, by the same ids as
- * `data-chip` (place:<slug>, kind:<slug>, openNow, delivers, nearMe, text), and `text` carries the
+ * `data-chip` (place:<slug>, kind:<slug>, openNow, delivers, glutenFree, nearMe, text), and `text` carries the
  * free text when its chip is kept. No `chips` means the query was never edited.
  */
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -173,6 +178,7 @@ export function editedHref(locale: Locale, q: string, intent: IntentDto): string
     ...intent.kinds.map((k) => `kind:${k}`),
     ...(intent.openNow ? ["openNow"] : []),
     ...(intent.attributes.delivers ? ["delivers"] : []),
+    ...(intent.dietary.includes("gluten_free") ? ["glutenFree"] : []),
     ...(intent.nearMe ? ["nearMe"] : []),
     ...(intent.freeText ? ["text"] : []),
   ];
@@ -192,6 +198,7 @@ export function intentFromUrl(
     nearMe: false,
     openNow: false,
     attributes: { delivers: false },
+    dietary: [],
     freeText: "",
   };
   for (const id of chips.split(",")) {
@@ -201,6 +208,8 @@ export function intentFromUrl(
       if (intent.kinds.length < MAX_KINDS) intent.kinds.push(slug);
     } else if (id === "openNow") intent.openNow = true;
     else if (id === "delivers") intent.attributes.delivers = true;
+    else if (id === "glutenFree" && !intent.dietary.includes("gluten_free"))
+      intent.dietary.push("gluten_free");
     else if (id === "nearMe") intent.nearMe = true;
     else if (id === "text") intent.freeText = (text ?? "").trim().slice(0, MAX_TEXT);
   }

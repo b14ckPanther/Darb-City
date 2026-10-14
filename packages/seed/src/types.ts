@@ -1,4 +1,4 @@
-import type { Hours, Localized, PlaceStatus, PlaceType, Template, Tier } from "@darb/core";
+import type { Dietary, Hours, Localized, PlaceStatus, PlaceType, Template, Tier } from "@darb/core";
 
 export interface SeedSector {
   slug: string;
@@ -57,9 +57,20 @@ export interface SeedBusiness {
   lng: number;
   hours: Hours;
   attributes: Record<string, boolean | string | number>;
+  /** Whole-business dietary facts; gluten_free is a fully gluten-free kitchen (Task 27b). */
+  dietary?: Dietary[];
   experience: SeedScreen;
   tier: Tier;
+  /** Real clients only (clients.json); showroom examples have none. */
+  phone?: string | null;
+  whatsapp?: string | null;
+  website?: string | null;
+  apps?: { web?: string; ios?: string; android?: string };
+  /**
+   * Ledger note, never written to the database: the pin is the town's centre because the exact
+   * spot was not given yet. The owner moves it in /admin (Task 28).
+   */
 }
 
-/** Stored shape in businesses.json: the screen is attached by loadBusinesses(). */
+/** Stored shape in businesses.json: the screen is attached by loadShowroom(). */
 export type SeedBusinessRecord = Omit<SeedBusiness, "experience">;

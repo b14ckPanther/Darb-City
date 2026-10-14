@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { Inject, Injectable } from "@nestjs/common";
 import type { Hours, Localized } from "@darb/core";
 import { EMBEDDING_PROVIDER, vectorLiteral, type EmbeddingProvider } from "../ai/embeddings.js";
@@ -95,7 +96,7 @@ export class SearchIndexer {
         place: { is: { status: "live" } },
       },
       include: {
-        place: { select: { path: true, name: true } },
+        place: { select: { path: true, name: true, lat: true, lng: true } },
         kinds: { where: { kind: { is: { status: "active" } } }, include: { kind: true } },
       },
       orderBy: { id: "asc" },
@@ -112,6 +113,7 @@ export class SearchIndexer {
         experience: b.experience as Record<string, unknown>,
         placePath: b.place.path,
         placeName: b.place.name as Localized,
+        placePoint: { lat: b.place.lat, lng: b.place.lng },
         kinds: b.kinds.map(({ kind }) => ({
           id: kind.id,
           name: kind.name as Localized,
@@ -124,26 +126,47 @@ export class SearchIndexer {
   private async write(rows: DocumentRow[]): Promise<void> {
     for (let start = 0; start < rows.length; start += EMBED_BATCH) {
       const batch = rows.slice(start, start + EMBED_BATCH);
-      const vectors = await this.embeddings.embed(
-        batch.map((r) => r.embedText),
+      const hashes = batch.map((r) =>
+        createHash("sha256")
+          .update(`${this.embeddings.name}\n${r.embedText}`)
+          .digest("hex")
+          .slice(0, 32),
+      );
+      const stored = new Map(
+        (
+          await this.prisma.$queryRaw<{ entityId: string; embedHash: string | null }[]>`
+            SELECT "entityId", "embedHash" FROM "SearchDocument"
+            WHERE "entityType" = ${batch[0]!.entityType}::"SearchEntity"
+              AND "entityId" = ANY(${batch.map((r) => r.entityId)}::uuid[])
+              AND embedding IS NOT NULL`
+        ).map((s) => [s.entityId, s.embedHash]),
+      );
+      const changed = batch.flatMap((r, i) => (stored.get(r.entityId) === hashes[i] ? [] : [i]));
+      const fresh = await this.embeddings.embed(
+        changed.map((i) => batch[i]!.embedText),
         "document",
       );
+      const vectors = new Map(changed.map((i, n) => [i, fresh[n]]));
       const values = batch.map(
         (r, i) => Prisma.sql`(
         gen_random_uuid(), ${r.entityType}::"SearchEntity", ${r.entityId}::uuid, ${r.slug}, ${r.placePath},
         ${r.kindIds}::uuid[], ${JSON.stringify(r.attributes)}::jsonb, ${r.tier}::"Tier", ${r.lat}, ${r.lng},
-        ${r.nameText}, ${r.text}, ${storedVector(vectors[i])}::vector, ${r.completeness}, now())`,
+        ${r.nameText}, ${r.text}, ${storedVector(vectors.get(i))}::vector, ${hashes[i]}, ${r.completeness}, now())`,
       );
+      // An unchanged hash keeps the stored vector (no re-embedding); a changed one takes the new one.
       await this.prisma.$executeRaw`
         INSERT INTO "SearchDocument" ("id", "entityType", "entityId", "slug", "placePath", "kindIds",
-          "attributes", "tier", "lat", "lng", "nameText", "text", "embedding", "completeness", "updatedAt")
+          "attributes", "tier", "lat", "lng", "nameText", "text", "embedding", "embedHash", "completeness", "updatedAt")
         VALUES ${Prisma.join(values)}
         ON CONFLICT ("entityType", "entityId") DO UPDATE SET
           "slug" = EXCLUDED."slug", "placePath" = EXCLUDED."placePath", "kindIds" = EXCLUDED."kindIds",
           "attributes" = EXCLUDED."attributes", "tier" = EXCLUDED."tier", "lat" = EXCLUDED."lat",
           "lng" = EXCLUDED."lng", "nameText" = EXCLUDED."nameText", "text" = EXCLUDED."text",
-          "embedding" = EXCLUDED."embedding", "completeness" = EXCLUDED."completeness",
-          "updatedAt" = EXCLUDED."updatedAt"`;
+          "embedding" = CASE
+            WHEN "SearchDocument"."embedHash" = EXCLUDED."embedHash" AND "SearchDocument"."embedding" IS NOT NULL
+            THEN "SearchDocument"."embedding" ELSE EXCLUDED."embedding" END,
+          "embedHash" = EXCLUDED."embedHash",
+          "completeness" = EXCLUDED."completeness", "updatedAt" = EXCLUDED."updatedAt"`;
     }
   }
 }

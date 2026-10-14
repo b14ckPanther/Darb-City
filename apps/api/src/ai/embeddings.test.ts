@@ -88,3 +88,48 @@ it("picks the provider from config, and writes pgvector literals", () => {
   ).toBe("voyage-4-lite");
   expect(vectorLiteral([0.5, -1, 0])).toBe("[0.5,-1,0]");
 });
+
+const ok = (n: number) =>
+  new Response(
+    JSON.stringify({
+      data: Array.from({ length: n }, (_, index) => ({ index, embedding: Array(512).fill(0.1) })),
+    }),
+    { status: 200, headers: { "content-type": "application/json" } },
+  );
+
+it("backs off on 429 for documents, honouring Retry-After", async () => {
+  const sleeps: number[] = [];
+  const responses = [
+    new Response("", { status: 429, headers: { "retry-after": "2" } }),
+    new Response("", { status: 503 }),
+    ok(1),
+  ];
+  const fetchImpl = (async () => responses.shift()!) as typeof fetch;
+  const voyage = new VoyageEmbeddingProvider("k", "voyage-4-lite", fetchImpl, async (ms) => {
+    sleeps.push(ms);
+  });
+  const out = await voyage.embed(["a"], "document");
+  expect(out).toHaveLength(1);
+  expect(sleeps).toEqual([2000, 2000]);
+});
+
+it("never retries a query embedding", async () => {
+  let calls = 0;
+  const fetchImpl = (async () => {
+    calls += 1;
+    return new Response("", { status: 429 });
+  }) as typeof fetch;
+  const voyage = new VoyageEmbeddingProvider("k", "m", fetchImpl, async () => undefined);
+  await expect(voyage.embed(["a"], "query")).rejects.toThrow(/429/);
+  expect(calls).toBe(1);
+});
+
+it("gives up after four retries", async () => {
+  const fetchImpl = (async () => new Response("", { status: 429 })) as typeof fetch;
+  const sleeps: number[] = [];
+  const voyage = new VoyageEmbeddingProvider("k", "m", fetchImpl, async (ms) => {
+    sleeps.push(ms);
+  });
+  await expect(voyage.embed(["a"], "document")).rejects.toThrow(/429/);
+  expect(sleeps).toEqual([1000, 2000, 4000, 8000]);
+});

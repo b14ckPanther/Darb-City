@@ -24,6 +24,8 @@ jobs:
       NEXT_TELEMETRY_DISABLED: "1"
       TURBO_TELEMETRY_DISABLED: "1"
       SEARCH_PROXY_KEY: ci-proxy-key
+      # Production builds serve the map from the 1 KB fixture via /api/tiles (no R2 in CI).
+      NEXT_PUBLIC_LOCAL_TILES: "1"
       # No network and no keys: the model is replayed from recordings, embeddings are an offline hash.
       INTENT_PROVIDER: recorded
       EMBEDDING_PROVIDER: hash
@@ -52,6 +54,8 @@ jobs:
         run: pnpm --filter @darb/web exec node scripts/tiles/make-test-tiles.mjs --check
       - name: Migrate and seed the e2e database
         run: pnpm --filter @darb/api db:deploy && pnpm --filter @darb/api db:seed
+      - name: The migrated database matches the Prisma schema (no drift)
+        run: pnpm --filter @darb/api exec prisma migrate diff --from-config-datasource --to-schema prisma/schema.prisma --exit-code
       - name: Search quality set (recorded intents, offline embeddings)
         run: pnpm --filter @darb/api search:quality
       - name: First-load JS, lazy stage and lazy search budgets

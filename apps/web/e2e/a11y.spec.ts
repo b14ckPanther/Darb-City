@@ -9,6 +9,11 @@ const PAGES = [
   "/search?q=barber%20haifa",
   "/search?q=bars",
   "/sakhnin/food/restaurants?open=1",
+  // Task 27b/28: the gluten-free filter and the real clients' own palettes.
+  "/akko/food/restaurants?glutenFree=1",
+  "/akko/food/restaurants/caramel",
+  "/nahf/beauty/cosmetics/raghad",
+  "/kiryat-motzkin/services/stations/paz-kiryat-motzkin",
 ];
 
 for (const locale of LOCALES) {

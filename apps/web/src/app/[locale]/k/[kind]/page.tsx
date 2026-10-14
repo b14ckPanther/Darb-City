@@ -17,7 +17,7 @@ import { COUNTRY_STAGE } from "@/lib/stage-data";
 import { indexTaxonomy } from "@/lib/taxonomy";
 import { metadataOrUnavailable, orUnavailable } from "@/lib/unavailable";
 
-export const revalidate = 300;
+export const revalidate = 86400;
 export function generateStaticParams() {
   return [];
 }

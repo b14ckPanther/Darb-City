@@ -31,8 +31,8 @@ export class PlacesController {
           },
         };
       },
-      nearest: async ({ query }) => {
-        const place = await this.places.nearestLive(query.lat, query.lng);
+      nearest: async ({ body }) => {
+        const place = await this.places.nearestLive(body.lat, body.lng);
         if (!place) return { status: 404, body: { message: "No live place yet" } };
         return { status: 200, body: toPlaceDto(place) };
       },

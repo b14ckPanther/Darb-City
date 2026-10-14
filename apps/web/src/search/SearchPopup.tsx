@@ -9,7 +9,6 @@ import styles from "@/components/SearchBox.module.css";
 
 /** check-budget.mjs finds this string in the search group's lazy chunk and in no first-load chunk. */
 export const SEARCH_CHUNK_MARKER = "darb:search-chunk";
-const INDEX_URL = process.env.NEXT_PUBLIC_SEARCH_INDEX_URL ?? "";
 
 export interface PopupProps {
   locale: Locale;
@@ -50,7 +49,7 @@ export function SearchPopup({
   useEffect(() => {
     if (prepared) return;
     let live = true;
-    loadPrepared(INDEX_URL).then(
+    loadPrepared().then(
       (p) => {
         if (!live) return;
         setPrepared(p);

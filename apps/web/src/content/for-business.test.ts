@@ -22,8 +22,10 @@ it("tells every locale the same three things", () => {
 it("links only to safe https client work and contact", () => {
   expect(LIVE_CLIENTS).toHaveLength(3);
   for (const client of LIVE_CLIENTS) {
-    expect(safeHttpUrl(client.url)).toBe(new URL(client.url).href);
-    expect(client.url.startsWith("https://")).toBe(true);
+    if (client.url) {
+      expect(safeHttpUrl(client.url)).toBe(new URL(client.url).href);
+      expect(client.url.startsWith("https://")).toBe(true);
+    }
     for (const locale of LOCALES) {
       expect(client.name[locale]?.trim()).toBeTruthy();
       expect(client.kind[locale]?.trim()).toBeTruthy();
@@ -48,4 +50,13 @@ it("describes app-store publishing as a service, with the store names isolated i
     // Every Latin letter sits inside an isolated run, never loose in the RTL text.
     for (const part of parts) if (typeof part === "string") expect(part).not.toMatch(/[A-Za-z]/);
   }
+});
+
+it("never links Paz's staff-only app (Task 28)", () => {
+  const paz = LIVE_CLIENTS.find((c) => c.name.en === "Paz");
+  expect(paz?.url).toBeUndefined();
+  expect(JSON.stringify(LIVE_CLIENTS)).not.toMatch(/paz\.darb\.co\.il/);
+  expect(LIVE_CLIENTS.find((c) => c.name.en === "Raghad Beauty")?.url).toBe(
+    "https://raghad.darb.co.il",
+  );
 });

@@ -20,7 +20,7 @@ export function SearchFallback({
   const [options, setOptions] = useState<SearchOption[]>([]);
   useEffect(() => {
     let live = true;
-    loadPrepared(process.env.NEXT_PUBLIC_SEARCH_INDEX_URL ?? "").then(
+    loadPrepared().then(
       (p) => {
         if (live)
           setOptions(instantOptions(p, q, locale, labels).filter((o) => o.group !== "search"));

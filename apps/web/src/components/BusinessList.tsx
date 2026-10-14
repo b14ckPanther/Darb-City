@@ -10,6 +10,8 @@ export function rowLabels(locale: Locale): RowLabels {
     example: t(locale, "example"),
     openNow: t(locale, "openNow"),
     closed: t(locale, "closed"),
+    glutenFree: t(locale, "glutenFree"),
+    byAppointment: t(locale, "byAppointment"),
   };
 }
 

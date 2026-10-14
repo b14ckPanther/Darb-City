@@ -1,6 +1,7 @@
 import { z } from "zod";
 import {
   BusinessSummarySchema,
+  DietarySchema,
   LocalizedSchema,
   NearestPlaceSchema,
   SlugSchema,
@@ -21,6 +22,8 @@ export const IntentSchema = z.object({
   nearMe: z.boolean(),
   openNow: z.boolean(),
   attributes: z.object({ delivers: z.boolean() }),
+  /** Whole-business dietary facts asked for ("gluten free", "ללא גלוטן"); lane 1 finds them. */
+  dietary: z.array(DietarySchema).max(4).default([]),
   freeText: z.string().max(120),
 });
 export type IntentDto = z.infer<typeof IntentSchema>;
@@ -31,6 +34,7 @@ export const EMPTY_INTENT: IntentDto = {
   nearMe: false,
   openNow: false,
   attributes: { delivers: false },
+  dietary: [],
   freeText: "",
 };
 
@@ -119,3 +123,9 @@ export const TooManySchema = z.object({
   message: z.string(),
   retryAfter: z.number().int().nonnegative(),
 });
+
+/** The lane-1 index (packages/search-text InstantIndex); entries are checked by the matcher. */
+export const InstantIndexSchema = z
+  .object({ v: z.literal(1), places: z.array(z.unknown()), kinds: z.array(z.unknown()) })
+  .passthrough();
+export type InstantIndexDto = z.infer<typeof InstantIndexSchema>;

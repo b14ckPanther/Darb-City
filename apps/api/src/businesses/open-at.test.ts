@@ -34,6 +34,12 @@ const SAMPLES: Record<string, Hours> = {
     exceptions: [{ date: "2026-10-12", intervals: [{ open: "20:00", close: "01:00" }] }],
   },
   empty: { weekly: {}, exceptions: [] },
+  // Task 28: by appointment is never open now, even with hours listed.
+  appointment: {
+    weekly: { 3: [{ open: "00:00", close: "24:00" }] },
+    exceptions: [],
+    byAppointment: true,
+  },
 };
 
 /** Every 30 minutes across a week that crosses the end of daylight saving time (2026-10-25). */

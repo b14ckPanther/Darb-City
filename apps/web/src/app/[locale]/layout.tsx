@@ -14,6 +14,7 @@ import { NearMe } from "@/components/NearMe";
 import { href } from "@/lib/routes";
 import { StageMount } from "@/components/StageMount";
 import { stageBootScript } from "@/lib/stage-boot";
+import { TILES_URL } from "@/stage/vendor";
 import type { StageLabels } from "@/stage/types";
 import "../globals.css";
 
@@ -83,6 +84,8 @@ const stageLabels = (locale: Locale): StageLabels => ({
 export default async function RootLayout({ children, params }: LayoutProps) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
+  // No tiles (a production build without a tiles URL): no map, the list is the whole city.
+  const stage = TILES_URL !== null;
   return (
     <html
       lang={locale}
@@ -93,7 +96,9 @@ export default async function RootLayout({ children, params }: LayoutProps) {
     >
       <head>
         <style id="darb-tokens" dangerouslySetInnerHTML={{ __html: tokensCss() }} />
-        <script id="darb-stage-boot" dangerouslySetInnerHTML={{ __html: stageBootScript() }} />
+        {stage ? (
+          <script id="darb-stage-boot" dangerouslySetInnerHTML={{ __html: stageBootScript() }} />
+        ) : null}
       </head>
       <body>
         <DoorDefs />
@@ -117,7 +122,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
         <div className="city" data-city="">
           {children}
         </div>
-        <StageMount locale={locale} labels={stageLabels(locale)} />
+        {stage ? <StageMount locale={locale} labels={stageLabels(locale)} /> : null}
       </body>
     </html>
   );

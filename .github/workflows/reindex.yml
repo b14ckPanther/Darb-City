@@ -1,0 +1,54 @@
+name: Seed and reindex
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: staging or production
+        required: true
+        type: choice
+        options: [staging, production]
+      seed:
+        description: Load packages/seed data first (never overwrites admin edits)
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: reindex-${{ inputs.environment }}
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    # The GitHub Environment holds the secrets and requires the owner's approval for production.
+    environment: ${{ inputs.environment }}
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      MIGRATE_DATABASE_URL: ${{ secrets.MIGRATE_DATABASE_URL }}
+      VOYAGE_API_KEY: ${{ secrets.VOYAGE_API_KEY }}
+      EMBEDDING_PROVIDER: voyage
+      INTENT_PROVIDER: "off"
+      REVALIDATE_URL: ${{ vars.REVALIDATE_URL }}
+      REVALIDATE_SECRET: ${{ secrets.REVALIDATE_SECRET }}
+      SEARCH_PROXY_KEY: ${{ secrets.SEARCH_PROXY_KEY }}
+      IP_HASH_SALT: ${{ secrets.IP_HASH_SALT }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec turbo run build --filter=@darb/api^...
+      - name: Seed (no embeddings)
+        if: ${{ inputs.seed }}
+        run: pnpm --filter @darb/api db:seed -- --no-index
+      - name: Reindex (embeds only changed rows)
+        run: pnpm --filter @darb/api search:reindex
+      - name: Refresh cached web pages
+        run: pnpm --filter @darb/api web:revalidate

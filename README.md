@@ -16,10 +16,20 @@ Requires Node ≥ 22.12, pnpm 11 and Docker Desktop.
 
     pnpm --filter @darb/api db:seed   # re-run the idempotent seed loader (~17s for the full dataset)
 
+Seed ownership: the seed owns a place, sector, kind or business while its `editedAt` is empty.
+The first admin edit stamps `editedAt`, and from then on `db:seed` never overwrites, hides or
+suspends that row. **Return to seed data** in `/admin` clears the stamp, so the next seed run
+overwrites the row again.
+
     pnpm test         # needs `pnpm infra:up`
-    pnpm --filter @darb/web e2e   # Playwright; needs the seeded database
+    pnpm --filter @darb/web e2e   # Playwright; needs E2E_DATABASE_URL (below)
     # e2e starts its own servers on :3100, :3101 and :4100 (recorded intents, offline embeddings),
-    # never the dev servers; override with WEB_URL, API_URL and WEB_API_DOWN_URL
+    # never the dev servers; override with WEB_URL, API_URL and WEB_API_DOWN_URL.
+    # The admin specs write businesses and audit rows, so e2e refuses to start unless
+    # E2E_DATABASE_URL names a throwaway database ending in _e2e or _test (CI=true may use its own
+    # DATABASE_URL). Migrate and seed it first, e.g. with DATABASE_URL=$E2E_DATABASE_URL:
+    #   pnpm --filter @darb/api db:deploy && pnpm --filter @darb/api db:seed
+    # An API already listening on :4100 is reused only with E2E_REUSE_API=1.
     pnpm typecheck && pnpm lint && pnpm format:check
 
 ## Search
@@ -39,6 +49,8 @@ Requires Node ≥ 22.12, pnpm 11 and Docker Desktop.
   re-records the model's answers (needs a key; review the diff).
 - The search log is anonymous (no IP, user or coordinates). `GET /search/report` (header
   `x-darb-report-key`) feeds Plan 4's Missing kinds and places screen.
+- Search log rows are deleted after `SEARCH_LOG_RETENTION_DAYS` (default 90). `db:seed -- --no-index`
+  loads data without embeddings; `search:reindex` then embeds only changed rows.
 
 When lane 1 alone fully explains a query (a known kind and place), the model is skipped. When the
 model is slow, down or refuses, the page shows the same results lane 1 would, with no error copy.
@@ -94,3 +106,7 @@ Licences and attribution: map data © OpenStreetMap contributors (ODbL), tiles a
 Protomaps (BSD-3-Clause), MapLibre GL JS, pmtiles and go-pmtiles (BSD-3-Clause), and Noto Sans
 glyphs (SIL OFL 1.1, `apps/web/map-assets/glyphs/OFL.txt`). The map always shows
 "Map data: © OpenStreetMap · Protomaps".
+
+## Deploy
+
+Hosting, release flow and fallback: `docs/launch/hosting.md`. Variables per environment: `docs/launch/environments.md`. Launch and rollback: `docs/launch/runbook.md`. What exists in each provider, and the careful DNS move to Cloudflare: `docs/launch/accounts.md`.

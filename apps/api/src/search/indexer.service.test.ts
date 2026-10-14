@@ -1,7 +1,7 @@
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { resetDatabase, testPrisma } from "../../test/db.js";
 import { seedFixtures } from "../../test/fixtures.js";
-import type { EmbeddingProvider } from "../ai/embeddings.js";
+import type { EmbeddingProvider, EmbedPurpose } from "../ai/embeddings.js";
 import { HashEmbeddingProvider } from "../ai/hash-embedding.provider.js";
 import { SearchIndexer } from "./indexer.service.js";
 
@@ -86,4 +86,34 @@ describe("SearchIndexer limits", () => {
       SELECT embedding IS NOT NULL AS has_vector FROM "SearchDocument" WHERE "entityId" = ${f.eilat.id}::uuid`;
     expect(row).toEqual({ has_vector: false });
   });
+});
+
+class CountingProvider implements EmbeddingProvider {
+  readonly name = "hash";
+  texts = 0;
+  private readonly inner = new HashEmbeddingProvider();
+  async embed(texts: string[], purpose: EmbedPurpose) {
+    this.texts += texts.length;
+    return this.inner.embed(texts, purpose);
+  }
+}
+
+it("embeds only rows whose text changed", async () => {
+  await resetDatabase(prisma);
+  await seedFixtures(prisma);
+  const counting = new CountingProvider();
+  const indexer = new SearchIndexer(prisma, counting);
+  await indexer.indexAll();
+  const first = counting.texts;
+  expect(first).toBeGreaterThan(0);
+  counting.texts = 0;
+  await indexer.indexAll();
+  expect(counting.texts).toBe(0);
+  const b = await prisma.business.findFirstOrThrow({ where: { slug: "abu-salim" } });
+  await prisma.business.update({ where: { id: b.id }, data: { name: { ar: "أبو سليم الجديد" } } });
+  await indexer.index("business", [b.id]);
+  expect(counting.texts).toBe(1);
+  const [doc] = await prisma.$queryRaw<{ has: boolean }[]>`
+    SELECT embedding IS NOT NULL AS has FROM "SearchDocument" WHERE "entityId" = ${b.id}::uuid`;
+  expect(doc?.has).toBe(true);
 });

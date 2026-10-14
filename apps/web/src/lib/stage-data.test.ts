@@ -56,6 +56,8 @@ const business = (slug: string, placeSlug: string): BusinessSummaryDto => ({
   lng: 35.01,
   photo: null,
   openNow: null,
+  hours: { weekly: {}, exceptions: [] },
+  dietary: [],
 });
 
 describe("stage levels", () => {
@@ -126,10 +128,13 @@ describe("search on the map", () => {
     href: `/${key}`,
     example: false,
     openNow: null,
+    hours: null,
     placeName: key.split("/")[0]!,
     lat,
     lng,
     distance: null,
+    glutenFree: false,
+    byAppointment: false,
   });
   it("frames every result of a nationwide search, not the first result's city", () => {
     const stage = searchStage(null, [row("haifa/a", 32.8, 35.0), row("eilat/b", 29.55, 34.95)]);

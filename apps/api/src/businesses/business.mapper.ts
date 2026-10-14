@@ -1,17 +1,23 @@
-import { isOpenAt, type Hours, type Localized } from "@darb/core";
+import { isByAppointment, isOpenAt, type Hours, type Localized } from "@darb/core";
 import type { BusinessDetailDto, BusinessSummaryDto } from "@darb/contracts";
 import type { Business } from "../generated/prisma/client.js";
+import { publicPoint } from "./public-point.js";
 
 type Photo = { key: string; alt: Localized };
+/** The business's own place: its slug, and its centre for a business that keeps its street private. */
+export type PlaceRef = { slug: string; lat: number; lng: number };
 
+/** Null when there is nothing to say: no hours at all, or visits by appointment only. */
 export function openNow(hours: Hours, now: Date): boolean | null {
+  if (isByAppointment(hours)) return null;
   const hasAny =
     Object.values(hours.weekly).some((i) => i && i.length > 0) || hours.exceptions.length > 0;
   return hasAny ? isOpenAt(hours, now) : null;
 }
 
-export function toBusinessSummary(row: Business, placeSlug: string, now: Date): BusinessSummaryDto {
+export function toBusinessSummary(row: Business, place: PlaceRef, now: Date): BusinessSummaryDto {
   const photos = row.photos as Photo[];
+  const point = publicPoint(row, place);
   return {
     id: row.id,
     slug: row.slug,
@@ -20,21 +26,23 @@ export function toBusinessSummary(row: Business, placeSlug: string, now: Date): 
     tier: row.tier,
     primaryKindId: row.primaryKindId,
     placeId: row.placeId,
-    placeSlug,
-    lat: row.lat,
-    lng: row.lng,
+    placeSlug: place.slug,
+    lat: point.lat,
+    lng: point.lng,
     photo: photos[0]?.key ?? null,
     openNow: openNow(row.hours as unknown as Hours, now),
+    hours: row.hours as unknown as BusinessSummaryDto["hours"],
+    dietary: row.dietary,
   };
 }
 
 export function toBusinessDetail(
   row: Business & { kinds: { kindId: string }[] },
-  placeSlug: string,
+  place: PlaceRef,
   now: Date,
 ): BusinessDetailDto {
   return {
-    ...toBusinessSummary(row, placeSlug, now),
+    ...toBusinessSummary(row, place, now),
     kindIds: row.kinds.map((k) => k.kindId),
     address: row.address as Localized,
     phone: row.phone,

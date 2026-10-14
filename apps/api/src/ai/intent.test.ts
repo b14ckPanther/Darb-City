@@ -14,6 +14,7 @@ const request: IntentRequest = {
   query: "knafeh near me open now",
   locale: "en",
   candidates: { kinds: [{ slug: "sweets", name: "Knafeh and Arabic sweets" }], places: [] },
+  activeKinds: [],
 };
 const intent: RawIntent = {
   kinds: ["sweets"],
@@ -36,8 +37,13 @@ const toolUse = (input: unknown): Anthropic.ContentBlock =>
 describe("Anthropic intent provider", () => {
   it("forces one strict tool call on the configured model, with a cached system prompt", async () => {
     const { client, create } = fakeClient({ content: [toolUse(intent)] });
-    const provider = new AnthropicIntentProvider(client, "claude-haiku-5-5", ["sweets", "cafes"]);
-    expect(await provider.extract(request, new AbortController().signal)).toEqual(intent);
+    const provider = new AnthropicIntentProvider(client, "claude-haiku-5-5");
+    expect(
+      await provider.extract(
+        { ...request, activeKinds: ["cafes", "sweets"] },
+        new AbortController().signal,
+      ),
+    ).toEqual(intent);
     const [params, options] = create.mock.calls[0] as unknown as [
       Anthropic.MessageCreateParamsNonStreaming,
       { signal: AbortSignal },
@@ -56,7 +62,7 @@ describe("Anthropic intent provider", () => {
     expect(params.system).toEqual([
       {
         type: "text",
-        text: systemPrompt(["sweets", "cafes"]),
+        text: systemPrompt(["cafes", "sweets"]),
         cache_control: { type: "ephemeral" },
       },
     ]);
@@ -72,7 +78,7 @@ describe("Anthropic intent provider", () => {
     ]) {
       const { client } = fakeClient(message);
       expect(
-        await new AnthropicIntentProvider(client, "m", []).extract(
+        await new AnthropicIntentProvider(client, "m").extract(
           request,
           new AbortController().signal,
         ),
@@ -84,7 +90,7 @@ describe("Anthropic intent provider", () => {
       messages: { create: vi.fn().mockRejectedValue(new Error("boom")) },
     } as unknown as Pick<Anthropic, "messages">;
     await expect(
-      new AnthropicIntentProvider(client, "m", []).extract(request, new AbortController().signal),
+      new AnthropicIntentProvider(client, "m").extract(request, new AbortController().signal),
     ).rejects.toThrow("boom");
   });
 });
@@ -124,4 +130,25 @@ describe("recorded and off providers", () => {
   it("off answers null at once", async () => {
     expect(await new OffIntentProvider().extract(request, new AbortController().signal)).toBeNull();
   });
+});
+
+it("builds the system prompt from the request's kind list and reuses identical bytes", async () => {
+  const calls: unknown[] = [];
+  const client = {
+    messages: {
+      create: async (body: { system: unknown }) => {
+        calls.push(body.system);
+        return { stop_reason: "end_turn", content: [] };
+      },
+    },
+  } as unknown as ConstructorParameters<typeof AnthropicIntentProvider>[0];
+  const provider = new AnthropicIntentProvider(client, "m");
+  const base = { query: "q", locale: "en" as const, candidates: { kinds: [], places: [] } };
+  const signal = new AbortController().signal;
+  await provider.extract({ ...base, activeKinds: ["a", "b"] }, signal);
+  await provider.extract({ ...base, activeKinds: ["a", "b"] }, signal);
+  await provider.extract({ ...base, activeKinds: ["a", "b", "c"] }, signal);
+  expect(calls[0]).toBe(calls[1]); // same array instance: memoized
+  expect(JSON.stringify(calls[2])).toContain("c");
+  expect(calls[2]).not.toBe(calls[1]);
 });
