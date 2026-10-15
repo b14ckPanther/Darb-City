@@ -15,20 +15,26 @@ const NAV: [string, AdminKey][] = [
   ["/kinds", "navKinds"],
   ["/businesses", "navBusinesses"],
   ["/plans", "navPlans"],
+  ["/inquiries", "navInquiries"],
   ["/report", "navReport"],
 ];
 const LOCALE_NAMES: Record<Locale, string> = { he: "עברית", ar: "العربية", en: "English" };
 
-/** `path` is the admin path after the locale ("/places/…"), for active links and the locale switch. */
+/**
+ * `path` is the admin path after the locale ("/places/…"), for active links and the locale switch.
+ * `newInquiries` puts a count on the Messages link while any are waiting.
+ */
 export function AdminShell({
   locale,
   path,
   mode,
+  newInquiries = 0,
   children,
 }: {
   locale: Locale;
   path: string;
   mode: AdminAuthMode;
+  newInquiries?: number;
   children: ReactNode;
 }) {
   return (
@@ -48,6 +54,16 @@ export function AdminShell({
                 className={styles.navLink}
               >
                 {at(locale, key)}
+                {href === "/inquiries" && newInquiries > 0 ? (
+                  <>
+                    <span className={styles.count} aria-hidden="true">
+                      {newInquiries}
+                    </span>
+                    <span className={styles.srOnly}>
+                      {`, ${at(locale, "inquiryNewCount", { count: newInquiries })}`}
+                    </span>
+                  </>
+                ) : null}
               </Link>
             );
           })}

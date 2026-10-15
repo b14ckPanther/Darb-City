@@ -2,7 +2,7 @@ import { headers } from "next/headers";
 import { notFound, redirect } from "next/navigation";
 import type { ReactNode } from "react";
 import { AdminShell } from "@/admin/AdminShell";
-import { adminSession } from "@/admin/api";
+import { adminApi, adminSession } from "@/admin/api";
 import { at } from "@/admin/copy";
 import { adminAuthMode } from "@/admin/mode";
 import { adminHref, adminRoute } from "@/admin/routes";
@@ -29,10 +29,22 @@ export default async function AdminAppLayout({
         </p>
       </main>
     );
+  // The Messages badge: a failed count only hides the badge, never the admin.
+  const inbox = await (
+    await adminApi()
+  ).inquiries
+    .list({ query: { status: "new", limit: 1 } })
+    .catch(() => null);
+  const newInquiries = inbox?.status === 200 ? inbox.body.newCount : 0;
   // The proxy rewrote /ar/admin/x to /admin/ar/x; the original path is in next-url when present.
   const original = (await headers()).get("x-darb-admin-path") ?? "";
   return (
-    <AdminShell locale={locale} path={adminRoute(original)?.rest ?? ""} mode={adminAuthMode()}>
+    <AdminShell
+      locale={locale}
+      path={adminRoute(original)?.rest ?? ""}
+      mode={adminAuthMode()}
+      newInquiries={newInquiries}
+    >
       {children}
     </AdminShell>
   );

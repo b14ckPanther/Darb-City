@@ -145,9 +145,7 @@ describe("the admin inbox", () => {
       .set("authorization", ADMIN)
       .send({ status: "handled" });
     expect([done.status, done.body.status]).toEqual([200, "handled"]);
-    const open = await http()
-      .get("/admin/inquiries?status=new")
-      .set("authorization", ADMIN);
+    const open = await http().get("/admin/inquiries?status=new").set("authorization", ADMIN);
     expect(open.body.items.map((i: { name: string }) => i.name)).toEqual(["First"]);
     expect(open.body.newCount).toBe(1);
 
