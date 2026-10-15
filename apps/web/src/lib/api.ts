@@ -9,6 +9,7 @@ import {
   type NearestPlaceDto,
   type PlaceDetailDto,
   type PlaceDto,
+  type PricingDto,
   type ResultsRequestDto,
   type SearchRequestDto,
   type SearchResponseDto,
@@ -44,6 +45,7 @@ export const tags = {
   place: (slug: string) => `place:${slug}`,
   businesses: "businesses",
   business: (place: string, slug: string) => `business:${place}/${slug}`,
+  pricing: "pricing",
 };
 
 type Cache = "no-store" | { revalidate: number; tags: string[] };
@@ -230,6 +232,17 @@ export async function getNearestPlace(
     }),
   );
   return res.status === 200 ? res.body : null;
+}
+
+/** Live plans and the pricing page's copy, all edited in the admin. Throws when the API is down. */
+export async function getPricing(): Promise<PricingDto> {
+  const res = await call(() =>
+    client().pricing.get({
+      fetchOptions: fetchOptions(cached(REVALIDATE.taxonomy, tags.pricing)),
+    }),
+  );
+  if (res.status === 200) return res.body;
+  throw new ApiUnavailableError(res);
 }
 
 /** Business counts per live settlement (the map's glow). Throws when the API is down. */

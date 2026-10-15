@@ -15,6 +15,9 @@ const LISTS = {
   sector: "sectors",
   kind: "kinds",
   business: "businesses",
+  // Plans and texts are never taken down (no write of theirs is immediate); listed for the types.
+  plan: "plans",
+  text: "plans/texts",
 } as const;
 
 /**

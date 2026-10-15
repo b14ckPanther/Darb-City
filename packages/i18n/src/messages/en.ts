@@ -11,6 +11,10 @@ export const en = {
   builtByDarb: "Built by Darb",
   example: "Example",
   forBusiness: "For businesses",
+  pricing: "Pricing",
+  pricingSoon:
+    "The plans are being polished. Write to us and we will tell you everything in person.",
+  included: "Included",
   noneHereYet: "None in {place} yet",
   nearestPlaces: "Nearest places that have one",
   openTheApp: "Open the app",

@@ -132,6 +132,40 @@ const en = {
   errorFix: "Fix these and save again:",
   openPublic: "Open the public page",
   businessesCount: "{count} businesses",
+  navPlans: "Plans",
+  newPlan: "New plan",
+  pageTexts: "Pricing page texts",
+  pageTextsHint:
+    "Every box is one spot on the pricing page. An empty language falls back to another one.",
+  fieldMonthly: "Monthly price (₪, whole shekels)",
+  fieldMonthlyHint:
+    "0 shows the word for free. Leave it empty for a custom price: the page shows the Let's talk words instead.",
+  fieldSetup: "One-time setup (₪)",
+  fieldSetupHint: "Leave it empty when there is no setup fee.",
+  fieldPriceNote: "Price note",
+  fieldFeatures: "What is included, one per line",
+  fieldHighlighted: "Highlight this plan (gold edge and badge)",
+  fieldCtaLabel: "Button text",
+  fieldCtaHref: "Button link",
+  fieldCtaHrefHint: "An https:// link, a mailto: address, or a path on Darb such as /for-business.",
+  fieldFinePrint: "Small print",
+  pricePerMonth: "Per month",
+  priceCustom: "Custom",
+  highlighted: "Highlighted",
+  text_pricing_eyebrow: "Small line above the title",
+  text_pricing_title: "Title",
+  text_pricing_intro: "Introduction",
+  text_pricing_badge: "Badge on the highlighted plan",
+  text_pricing_free: "Price word for a free plan",
+  text_pricing_custom: "Price words for a custom plan",
+  text_pricing_setup: "Setup line ({amount} becomes the setup price)",
+  text_pricing_termsTitle: "Terms title",
+  text_pricing_terms: "Terms, one per line",
+  text_pricing_faqTitle: "Questions title",
+  text_pricing_faq:
+    "Questions: a blank line between entries, the question on the first line of each",
+  text_pricing_contactTitle: "Contact title",
+  text_pricing_contactBody: "Contact text",
 } as const;
 
 export type AdminKey = keyof typeof en;
@@ -266,6 +300,38 @@ const he: Messages = {
   errorFix: "תקנו את אלה ושמרו שוב:",
   openPublic: "פתיחת הדף הציבורי",
   businessesCount: "{count} עסקים",
+  navPlans: "תוכניות",
+  newPlan: "תוכנית חדשה",
+  pageTexts: "טקסטים של עמוד המחירים",
+  pageTextsHint: "כל תיבה היא מקום אחד בעמוד המחירים. שפה ריקה מוחלפת בשפה אחרת.",
+  fieldMonthly: "מחיר חודשי (₪, שקלים שלמים)",
+  fieldMonthlyHint:
+    '0 מציג את המילה לחינם. השאירו ריק למחיר מותאם אישית: העמוד יציג במקומו את המילים "בואו נדבר".',
+  fieldSetup: "הקמה חד פעמית (₪)",
+  fieldSetupHint: "השאירו ריק כשאין דמי הקמה.",
+  fieldPriceNote: "הערה ליד המחיר",
+  fieldFeatures: "מה כלול, שורה לכל פריט",
+  fieldHighlighted: "הדגשת התוכנית (מסגרת זהב ותג)",
+  fieldCtaLabel: "טקסט הכפתור",
+  fieldCtaHref: "קישור הכפתור",
+  fieldCtaHrefHint: "קישור https://, כתובת mailto: או נתיב בדרב כמו /for-business.",
+  fieldFinePrint: "אותיות קטנות",
+  pricePerMonth: "לחודש",
+  priceCustom: "מותאם אישית",
+  highlighted: "מודגשת",
+  text_pricing_eyebrow: "שורה קטנה מעל הכותרת",
+  text_pricing_title: "כותרת",
+  text_pricing_intro: "פתיח",
+  text_pricing_badge: "תג על התוכנית המודגשת",
+  text_pricing_free: "מילת המחיר לתוכנית חינמית",
+  text_pricing_custom: "מילות המחיר לתוכנית מותאמת אישית",
+  text_pricing_setup: "שורת ההקמה ({amount} הופך למחיר ההקמה)",
+  text_pricing_termsTitle: "כותרת התנאים",
+  text_pricing_terms: "תנאים, שורה לכל תנאי",
+  text_pricing_faqTitle: "כותרת השאלות",
+  text_pricing_faq: "שאלות: שורה ריקה בין שאלה לשאלה, והשאלה בשורה הראשונה של כל אחת",
+  text_pricing_contactTitle: "כותרת יצירת הקשר",
+  text_pricing_contactBody: "טקסט יצירת הקשר",
 };
 
 const ar: Messages = {
@@ -397,6 +463,38 @@ const ar: Messages = {
   errorFix: "صحّح ما يلي واحفظ من جديد:",
   openPublic: "فتح الصفحة العامة",
   businessesCount: "{count} مصلحة",
+  navPlans: "الخطط",
+  newPlan: "خطة جديدة",
+  pageTexts: "نصوص صفحة الأسعار",
+  pageTextsHint: "كل خانة هي مكان واحد بصفحة الأسعار. اللغة الفاضية بتتبدل بلغة تانية.",
+  fieldMonthly: "السعر بالشهر (₪، شواقل كاملة)",
+  fieldMonthlyHint:
+    '0 بيعرض كلمة ببلاش. خلّيه فاضي لسعر حسب الطلب: الصفحة بتعرض بداله كلمات "إحكي معنا".',
+  fieldSetup: "تجهيز مرة وحدة (₪)",
+  fieldSetupHint: "خلّيه فاضي إذا ما في رسوم تجهيز.",
+  fieldPriceNote: "ملاحظة جنب السعر",
+  fieldFeatures: "شو مشمول، كل بند بسطر",
+  fieldHighlighted: "إبراز الخطة (إطار دهبي وشارة)",
+  fieldCtaLabel: "نص الزر",
+  fieldCtaHref: "رابط الزر",
+  fieldCtaHrefHint: "رابط https://، عنوان mailto: أو مسار بدرب زي /for-business.",
+  fieldFinePrint: "الكلام الزغير",
+  pricePerMonth: "بالشهر",
+  priceCustom: "حسب الطلب",
+  highlighted: "مبرزة",
+  text_pricing_eyebrow: "سطر زغير فوق العنوان",
+  text_pricing_title: "العنوان",
+  text_pricing_intro: "المقدمة",
+  text_pricing_badge: "شارة الخطة المبرزة",
+  text_pricing_free: "كلمة السعر لخطة ببلاش",
+  text_pricing_custom: "كلمات السعر لخطة حسب الطلب",
+  text_pricing_setup: "سطر التجهيز ({amount} بصير سعر التجهيز)",
+  text_pricing_termsTitle: "عنوان الشروط",
+  text_pricing_terms: "الشروط، كل شرط بسطر",
+  text_pricing_faqTitle: "عنوان الأسئلة",
+  text_pricing_faq: "الأسئلة: سطر فاضي بين كل سؤال والتاني، والسؤال بأول سطر من كل وحدة",
+  text_pricing_contactTitle: "عنوان التواصل",
+  text_pricing_contactBody: "نص التواصل",
 };
 
 export const adminCopy: Record<Locale, Messages> = { he, ar, en };
@@ -409,4 +507,10 @@ export function at(
   return adminCopy[locale][key].replace(/\{(\w+)\}/g, (m, name: string) =>
     Object.hasOwn(vars, name) ? String(vars[name]) : m,
   );
+}
+
+/** A page text's label ("pricing.title" → "Title"), or the key itself for one this copy lacks. */
+export function textLabel(locale: Locale, key: string): string {
+  const name = `text_${key.replace(/\./g, "_")}`;
+  return Object.hasOwn(adminCopy[locale], name) ? at(locale, name as AdminKey) : key;
 }

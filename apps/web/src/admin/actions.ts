@@ -5,13 +5,17 @@ import {
   AdminKindPatchSchema,
   AdminPlaceCreateSchema,
   AdminPlacePatchSchema,
+  AdminPlanCreateSchema,
+  AdminPlanPatchSchema,
   AdminSectorCreateSchema,
   AdminSectorPatchSchema,
   ADMIN_ENTITIES,
   type AdminEntity,
   type AdminKindDto,
   type AdminPlaceDto,
+  type AdminPlanDto,
   type AdminSectorDto,
+  type AdminTextDto,
 } from "@darb/contracts";
 import type { Locale } from "@darb/core";
 import { revalidatePath } from "next/cache";
@@ -21,7 +25,16 @@ import type { ActionState } from "./action-state";
 import { actionFailed, answered, apiError } from "./admin-errors";
 import { adminApi } from "./api";
 import { at } from "./copy";
-import { changedOnly, kindFields, placeFields, sectorFields, text, zodErrors } from "./form-data";
+import {
+  changedOnly,
+  kindFields,
+  localized,
+  placeFields,
+  planFields,
+  sectorFields,
+  text,
+  zodErrors,
+} from "./form-data";
 import { adminHref, takedownHref } from "./routes";
 
 const localeOf = (fd: FormData): Locale => {
@@ -145,6 +158,50 @@ export async function saveKind(_prev: ActionState, fd: FormData): Promise<Action
   return send(locale, await api.kinds.create({ body: parsed.data }), (b) =>
     adminHref(locale, `/kinds/${b.id}`),
   );
+}
+
+export async function savePlan(_prev: ActionState, fd: FormData): Promise<ActionState> {
+  const locale = localeOf(fd);
+  const id = text(fd, "id");
+  const api = await adminApi();
+  const fields = planFields(fd);
+  if (id) {
+    const before = current<AdminPlanDto>(locale, await api.plans.get({ params: { id } }));
+    const patch = changedOnly(fields, before);
+    if (Object.keys(patch).length === 0) return saved(locale);
+    const parsed = AdminPlanPatchSchema.safeParse(patch);
+    if (!parsed.success) return invalid(locale, zodErrors(parsed.error));
+    return send(locale, await api.plans.update({ params: { id }, body: parsed.data }), null);
+  }
+  const parsed = AdminPlanCreateSchema.safeParse({ ...fields, slug: text(fd, "slug") });
+  if (!parsed.success) return invalid(locale, zodErrors(parsed.error));
+  return send(locale, await api.plans.create({ body: parsed.data }), (b) =>
+    adminHref(locale, `/plans/${b.id}`),
+  );
+}
+
+/**
+ * The pricing page texts, all in one form: each changed text is its own audited write. A refused
+ * write stops there; the texts saved before it stay saved, and saving again sends only the rest.
+ */
+export async function savePageTexts(_prev: ActionState, fd: FormData): Promise<ActionState> {
+  const locale = localeOf(fd);
+  const api = await adminApi();
+  const all = current<AdminTextDto[]>(locale, await api.texts.list());
+  const changed = all.filter(
+    (t) =>
+      fd.has(`text.${t.id}.he`) &&
+      Object.keys(changedOnly({ value: localized(fd, `text.${t.id}`) }, t)).length > 0,
+  );
+  for (const t of changed) {
+    const res = await api.texts.update({
+      params: { id: t.id },
+      body: { value: localized(fd, `text.${t.id}`) },
+    });
+    if (res.status !== 200) return send(locale, res, null);
+  }
+  if (changed.length > 0) revalidatePath("/admin/[locale]", "layout");
+  return saved(locale);
 }
 
 export async function releaseEntity(_prev: ActionState, fd: FormData): Promise<ActionState> {
