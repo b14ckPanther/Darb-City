@@ -7,6 +7,7 @@ import {
   BusinessPageSchema,
   DensitySchema,
   KindCountsSchema,
+  PlaceCountsSchema,
   NearestPlaceSchema,
   NotFoundSchema,
   PlaceDetailSchema,
@@ -127,6 +128,11 @@ export const contract = c.router({
       method: "GET",
       path: "/density",
       responses: { 200: DensitySchema },
+    },
+    placeCounts: {
+      method: "GET",
+      path: "/place-counts",
+      responses: { 200: PlaceCountsSchema },
     },
   },
   search: {

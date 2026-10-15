@@ -14,6 +14,7 @@ export const he: Messages = {
   example: "דוגמה",
   forBusiness: "לעסקים",
   noneHereYet: "עוד אין ב{place}",
+  nothingListedYet: "עוד אין כאן עסקים ברשימה.",
   nearestPlaces: "המקומות הקרובים שיש בהם",
   openTheApp: "לאפליקציה",
   call: "חיוג",

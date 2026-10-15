@@ -7,6 +7,7 @@ import {
   type InstantIndexDto,
   type KindCountsDto,
   type NearestPlaceDto,
+  type PlaceCountsDto,
   type PlaceDetailDto,
   type PlaceDto,
   type ResultsRequestDto,
@@ -236,6 +237,16 @@ export async function getNearestPlace(
 export async function getDensity(): Promise<DensityDto> {
   const res = await call(() =>
     client().businesses.density({
+      fetchOptions: fetchOptions(cached(REVALIDATE.lists, tags.businesses, tags.places)),
+    }),
+  );
+  if (res.status === 200) return res.body;
+  throw new ApiUnavailableError(res);
+}
+
+export async function getPlaceCounts(): Promise<PlaceCountsDto> {
+  const res = await call(() =>
+    client().businesses.placeCounts({
       fetchOptions: fetchOptions(cached(REVALIDATE.lists, tags.businesses, tags.places)),
     }),
   );

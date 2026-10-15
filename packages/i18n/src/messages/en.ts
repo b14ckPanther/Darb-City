@@ -12,6 +12,7 @@ export const en = {
   example: "Example",
   forBusiness: "For businesses",
   noneHereYet: "None in {place} yet",
+  nothingListedYet: "No businesses are listed here yet.",
   nearestPlaces: "Nearest places that have one",
   openTheApp: "Open the app",
   call: "Call",

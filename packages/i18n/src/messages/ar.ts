@@ -14,6 +14,7 @@ export const ar: Messages = {
   example: "مثال",
   forBusiness: "للمصالح التجارية",
   noneHereYet: "لا يوجد في {place} بعد",
+  nothingListedYet: "لا توجد مصالح مدرجة هنا بعد.",
   nearestPlaces: "أقرب الأماكن التي يوجد فيها",
   openTheApp: "افتح التطبيق",
   call: "اتصال",
