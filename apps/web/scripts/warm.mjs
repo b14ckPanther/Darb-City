@@ -1,12 +1,14 @@
-// After a production deploy: render every level 0–2 page once, so a later API outage finds them
-// cached (hosting decision, Plan 4). Usage: node apps/web/scripts/warm.mjs https://darb.co.il
+// After a production deploy: render the home and place pages once, so a later API outage finds
+// them cached (hosting decision, Plan 4). Usage: node apps/web/scripts/warm.mjs https://darb.co.il
+// Levels 0–1 only: with sector pages it was about 30,000 renders (1,138 places × 18 sectors × 3
+// languages), which outran the job's 20 minutes and spent a Vercel function call on each.
 export const locs = (xml) => [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
 
-/** Home, place and place/sector pages in any locale (and /k/<kind>), not businesses or kind lists. */
+/** Home and place pages in any locale, not sector, kind or business pages. */
 export function shallow(url, site) {
   const parts = new URL(url).pathname.split("/").filter(Boolean);
   if (parts[0] === "ar" || parts[0] === "en") parts.shift();
-  return url.startsWith(site) && parts.length <= 2;
+  return url.startsWith(site) && parts.length <= 1 && parts[0] !== "k";
 }
 
 async function main(site) {
