@@ -39,6 +39,7 @@ describe("reserved slugs", () => {
         "admin",
         "api",
         "for-business",
+        "pricing",
         "search",
         "login",
         "register",
@@ -47,7 +48,7 @@ describe("reserved slugs", () => {
       ].sort(),
     );
   });
-  it.each(["ar", "he", "k", "admin", "for-business", "_next", "brand"])(
+  it.each(["ar", "he", "k", "admin", "for-business", "pricing", "_next", "brand"])(
     "%s is reserved",
     (value) => {
       expect(isReservedSlug(value)).toBe(true);

@@ -84,6 +84,11 @@ enum OrgRole {
   staff
 }
 
+enum PlanStatus {
+  live
+  hidden
+}
+
 enum SearchEntity {
   place
   kind
@@ -267,6 +272,42 @@ model Claim {
   reviewedAt   DateTime?
 }
 
+/// A pricing plan on /pricing. Prices are whole shekels; a null monthly price is "Let's talk".
+model Plan {
+  id          String     @id @default(uuid(7)) @db.Uuid
+  slug        String     @unique
+  order       Int
+  status      PlanStatus @default(live)
+  name        Json
+  tagline     Json
+  /// Per month in whole ILS; 0 is free, null is a custom quote.
+  monthly     Int?
+  /// One-time setup fee in whole ILS, when there is one.
+  setup       Int?
+  /// "per month", "from": shown beside the price. {} when there is none.
+  priceNote   Json
+  /// One list per language: { he: string[], ar: string[], en: string[] }.
+  features    Json
+  highlighted Boolean    @default(false)
+  ctaLabel    Json
+  ctaHref     String
+  /// The plan's own small print. {} when there is none.
+  finePrint   Json
+  /// Set by every admin write; null means the seed loader owns the row (Plan 4).
+  editedAt    DateTime?
+
+  @@index([status, order])
+}
+
+/// Page copy the admin edits, by key ("pricing.title"). The code owns the slots, never the words.
+model SiteText {
+  id       String    @id @default(uuid(7)) @db.Uuid
+  key      String    @unique
+  value    Json
+  /// Set by every admin write; null means the seed loader owns the row (Plan 4).
+  editedAt DateTime?
+}
+
 /// Spec §4.6: one per place, kind and published business. Rebuilt by the search-index jobs.
 model SearchDocument {
   id           String                                @id @default(uuid(7)) @db.Uuid
@@ -333,6 +374,8 @@ enum AuditEntity {
   sector
   kind
   business
+  plan
+  text
 }
 
 /// Who changed what, and when. Field names only: values live in the rows themselves.

@@ -14,4 +14,8 @@ it("matches seed rows the way the seed loader does", () => {
   expect(seedSource.business("sakhnin", "samers-barbershop")).toBe(true);
   expect(seedSource.business("eilat", "abu-salim")).toBe(false);
   expect(seedSource.business("sakhnin", "fade-lab")).toBe(false);
+  expect(seedSource.plan("signature")).toBe(true);
+  expect(seedSource.plan("made-up")).toBe(false);
+  expect(seedSource.text("pricing.title")).toBe(true);
+  expect(seedSource.text("pricing.made-up")).toBe(false);
 });

@@ -98,11 +98,37 @@ const data: SeedData = {
       tier: "example",
     },
   ],
+  plans: [
+    {
+      slug: "presence",
+      order: 1,
+      status: "live",
+      name: { en: "Presence" },
+      tagline: { en: "Be found" },
+      monthly: 0,
+      setup: null,
+      priceNote: {},
+      features: { he: [], ar: [], en: ["A pin"] },
+      highlighted: false,
+      ctaLabel: { en: "Join" },
+      ctaHref: "mailto:founder@darb.co.il",
+      finePrint: {},
+    },
+  ],
+  texts: [{ key: "pricing.title", value: { en: "Pricing" } }],
 };
 
 it("loads a full tree with paths, sub-kinds and published businesses", async () => {
   const counts = await loadSeed(prisma, data);
-  expect(counts).toEqual({ places: 3, sectors: 1, kinds: 2, brands: 1, businesses: 1 });
+  expect(counts).toEqual({
+    places: 3,
+    sectors: 1,
+    kinds: 2,
+    brands: 1,
+    businesses: 1,
+    plans: 1,
+    texts: 1,
+  });
   const sakhnin = await prisma.place.findUniqueOrThrow({ where: { slug: "sakhnin" } });
   expect(sakhnin.path).toBe("/israel/northern-district/sakhnin/");
   const kids = await prisma.kind.findUniqueOrThrow({
@@ -296,4 +322,45 @@ it("writes a client's contact details and app links", async () => {
     null,
     {},
   ]);
+});
+
+it("seeds plans and texts, hides plans that left the data and keeps edited ones", async () => {
+  const signature = { ...data.plans![0]!, slug: "signature", monthly: 349, highlighted: true };
+  await loadSeed(prisma, { ...data, plans: [...data.plans!, signature] });
+  expect(
+    await prisma.siteText.findUniqueOrThrow({ where: { key: "pricing.title" } }),
+  ).toMatchObject({ value: { en: "Pricing" }, editedAt: null });
+  await prisma.plan.update({
+    where: { slug: "presence" },
+    data: { monthly: 19, status: "hidden", editedAt: new Date() },
+  });
+  await prisma.siteText.update({
+    where: { key: "pricing.title" },
+    data: { value: { en: "Plans" }, editedAt: new Date() },
+  });
+  // The data drops both plans: the seed hides the one it owns and never touches the edited one.
+  await loadSeed(prisma, { ...data, plans: [], texts: [{ key: "pricing.title", value: {} }] });
+  const plans = await prisma.plan.findMany({ orderBy: { slug: "asc" } });
+  expect(plans.map((p) => [p.slug, p.status, p.monthly])).toEqual([
+    ["presence", "hidden", 19],
+    ["signature", "hidden", 349],
+  ]);
+  expect(
+    (await prisma.siteText.findUniqueOrThrow({ where: { key: "pricing.title" } })).value,
+  ).toEqual({ en: "Plans" });
+});
+
+it("seeds the real pricing data when the caller passes none (src/seed/run.ts)", async () => {
+  const { plans: _p, texts: _t, ...rest } = data;
+  const counts = await loadSeed(prisma, rest);
+  expect(counts.plans).toBeGreaterThanOrEqual(4);
+  const plans = await prisma.plan.findMany({
+    where: { status: "live" },
+    orderBy: { order: "asc" },
+  });
+  expect(plans.map((p) => p.slug)).toEqual(["presence", "spotlight", "signature", "ecosystem"]);
+  expect(plans.filter((p) => p.highlighted).map((p) => p.slug)).toEqual(["signature"]);
+  expect(await prisma.siteText.count({ where: { key: { startsWith: "pricing." } } })).toBe(
+    counts.texts,
+  );
 });

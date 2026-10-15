@@ -44,6 +44,10 @@ export class MiscAdmin {
       return (await this.prisma.sector.findUnique({ where: { id } })) ? webTags.sector() : null;
     if (entity === "kind")
       return (await this.prisma.kind.findUnique({ where: { id } })) ? webTags.kind() : null;
+    if (entity === "plan")
+      return (await this.prisma.plan.findUnique({ where: { id } })) ? webTags.plan() : null;
+    if (entity === "text")
+      return (await this.prisma.siteText.findUnique({ where: { id } })) ? webTags.text() : null;
     const b = await this.prisma.business.findUnique({
       where: { id },
       include: { place: { select: { slug: true } } },
@@ -76,6 +80,14 @@ export class MiscAdmin {
       const k = await this.prisma.kind.findUnique({ where: { id } });
       return k ? seedSource.kind(k.slug) : null;
     }
+    if (entity === "plan") {
+      const p = await this.prisma.plan.findUnique({ where: { id } });
+      return p ? seedSource.plan(p.slug) : null;
+    }
+    if (entity === "text") {
+      const t = await this.prisma.siteText.findUnique({ where: { id } });
+      return t ? seedSource.text(t.key) : null;
+    }
     const b = await this.prisma.business.findUnique({
       where: { id },
       include: { place: { select: { slug: true } } },
@@ -99,6 +111,8 @@ export class MiscAdmin {
       if (entity === "place") await tx.place.update({ where: { id }, data });
       else if (entity === "sector") await tx.sector.update({ where: { id }, data });
       else if (entity === "kind") await tx.kind.update({ where: { id }, data });
+      else if (entity === "plan") await tx.plan.update({ where: { id }, data });
+      else if (entity === "text") await tx.siteText.update({ where: { id }, data });
       else await tx.business.update({ where: { id }, data });
       return { row: null, entityId: id, fields: ["editedAt"], tags };
     });

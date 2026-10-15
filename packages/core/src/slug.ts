@@ -29,6 +29,7 @@ export const RESERVED_SLUGS: readonly string[] = [
   "admin",
   "api",
   "for-business",
+  "pricing",
   "search",
   "login",
   "register",
