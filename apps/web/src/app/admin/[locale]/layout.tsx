@@ -2,11 +2,12 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { arSA, enUS, heIL } from "@clerk/localizations";
 import type { Metadata } from "next";
 import { Cairo, Heebo, Ubuntu } from "next/font/google";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import type { Locale } from "@darb/core";
 import { dir } from "@darb/i18n";
 import { adminAuthMode } from "@/admin/mode";
 import { at } from "@/admin/copy";
+import { fontStack } from "@/lib/font-stack";
 import { isLocale } from "@/lib/locale";
 import { tokensCss } from "@/lib/tokens-css";
 import styles from "@/admin/admin.module.css";
@@ -19,6 +20,7 @@ const ubuntu = Ubuntu({
 });
 const heebo = Heebo({ subsets: ["hebrew"], display: "swap", variable: "--font-hebrew" });
 const cairo = Cairo({ subsets: ["arabic"], display: "swap", variable: "--font-arabic" });
+const bodyFont = fontStack(ubuntu, heebo, cairo);
 const CLERK_LOCALES = { he: heIL, ar: arSA, en: enUS } as const;
 
 export const dynamic = "force-dynamic";
@@ -49,6 +51,7 @@ export default async function AdminRootLayout({
       lang={locale}
       dir={dir(locale)}
       className={[ubuntu.variable, heebo.variable, cairo.variable].join(" ")}
+      style={{ "--font-body": bodyFont } as CSSProperties}
     >
       <head>
         <style dangerouslySetInnerHTML={{ __html: tokensCss() }} />
