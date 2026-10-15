@@ -4,5 +4,19 @@
   "installCommand": "pnpm install --frozen-lockfile",
   "buildCommand": "pnpm exec turbo run build --filter=@darb/web",
   "regions": ["fra1"],
-  "github": { "autoJobCancelation": true }
+  "github": { "autoJobCancelation": true },
+  "redirects": [
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "admin.darb.co.il" }],
+      "destination": "https://darb.co.il/admin",
+      "permanent": true
+    },
+    {
+      "source": "/:path+",
+      "has": [{ "type": "host", "value": "admin.darb.co.il" }],
+      "destination": "https://darb.co.il/admin/:path+",
+      "permanent": true
+    }
+  ]
 }

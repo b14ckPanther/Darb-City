@@ -46,6 +46,7 @@ Values never live in the repo. "secret" means a random value of at least 32 char
 | `NEXT_PUBLIC_MAP_TILES_URL` | https://tiles.darb.co.il/israel-<build>.pmtiles | same file | build time |
 | `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` | `pk_live_…` | `pk_test_…` | |
 | `CLERK_SECRET_KEY` | `sk_live_…` | `sk_test_…` | |
+| `CLERK_DISABLE_AUTO_PROXY` | `1` | unset | Without it, a build whose production URL is `*.vercel.app` turns on Clerk's `/__clerk` proxy, which this app does not serve, and sign-in lands on the 404 page. |
 
 Never set `ADMIN_FAKE_AUTH` or `NEXT_PUBLIC_LOCAL_TILES` on Vercel.
 
