@@ -163,6 +163,10 @@
 }
 
 .open {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  min-block-size: var(--tap);
   color: var(--accent-bright);
   font-weight: 700;
 }

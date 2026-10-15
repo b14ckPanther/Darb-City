@@ -91,7 +91,8 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  min-block-size: 36px;
+  min-block-size: var(--tap);
+  min-inline-size: var(--tap);
   color: var(--text-soft);
   text-decoration: none;
 }
@@ -137,6 +138,11 @@
 
 .legal a,
 .languages a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: var(--tap);
+  min-inline-size: var(--tap);
   text-decoration: none;
 }
 
@@ -177,9 +183,9 @@
 .column .iconLink {
   display: inline-grid;
   place-items: center;
-  inline-size: 40px;
-  block-size: 40px;
-  min-block-size: 40px;
+  inline-size: var(--tap);
+  block-size: var(--tap);
+  min-block-size: var(--tap);
   border: 1px solid var(--line-soft);
   border-radius: 50%;
   background: rgb(251 247 236 / 0.03);
@@ -250,12 +256,6 @@
 
 .team .icons {
   gap: 6px;
-}
-
-.team .iconLink {
-  inline-size: 34px;
-  block-size: 34px;
-  min-block-size: 34px;
 }
 
 @media (prefers-reduced-motion: reduce) {
