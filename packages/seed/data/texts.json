@@ -27,7 +27,7 @@
     "key": "pricing.badge",
     "value": {
       "he": "הנבחר ביותר",
-      "ar": "الأكتر طلب",
+      "ar": "الأكثر طلب",
       "en": "Most chosen"
     }
   },
@@ -83,7 +83,7 @@
     "key": "pricing.faq",
     "value": {
       "he": "צריך שיהיה לי כבר אתר?\nלא. הרבה מהלקוחות שלנו התחילו רק עם מספר טלפון. משם אנחנו בונים.\n\nמה זה באמת \"אף פעם לא תבנית\"?\nהעיצוב שלכם נרשם בשביל העסק שלכם ונשאר שלכם. אנחנו לא מוכרים אותו שוב ולא מתחילים מערכת עיצוב שחמישים עסקים אחרים משתמשים בה.\n\nאיך החיפוש החכם מוצא אותי?\nהוא מבין למה אנשים מתכוונים, לא רק מה הקלידו. \"מספרה פתוחה עכשיו בסח'נין\" מוצא את הספר, בכל שפה.\n\nאפשר להתחיל בקטן ולגדול?\nכן. מתחילים בנוכחות, עולים כשמוכנים, וכל מה שכבר יש לכם עובר איתכם.",
-      "ar": "لازم يكون عندي موقع من قبل؟\nلا. كتير من زباينا بلّشوا برقم تلفون بس. ومن هناك منبني.\n\nشو يعني عنجد \"عمره ما يكون قالب\"؟\nالتصميم تبعك منرسمه لمصلحتك وبضل إلك. ما منبيعه مرة تانية، وما منبلّش من قالب بستعمله خمسين محل غيرك.\n\nكيف البحث الذكي بلاقيني؟\nبفهم شو قصد الناس، مش بس شو كتبوا. \"حلاق فاتح هلأ بسخنين\" بلاقي الحلاق، بأي لغة.\n\nبقدر أبلّش صغير وأكبر؟\nآه. بتبلّش بحضور، بتطلع لما تكون جاهز، وكل إشي عندك بنتقل معك.",
+      "ar": "لازم يكون عندي موقع من قبل؟\nلا. كثير من زباينا بلّشوا برقم تلفون بس. ومن هناك منبني.\n\nشو يعني عنجد \"عمره ما يكون قالب\"؟\nالتصميم تبعك منرسمه لمصلحتك وبضل إلك. ما منبيعه مرة تانية، وما منبلّش من قالب بستعمله خمسين محل غيرك.\n\nكيف البحث الذكي بلاقيني؟\nبفهم شو قصد الناس، مش بس شو كتبوا. \"حلاق فاتح هلأ بسخنين\" بلاقي الحلاق، بأي لغة.\n\nبقدر أبلّش صغير وأكبر؟\nآه. بتبلّش بحضور، بتطلع لما تكون جاهز، وكل إشي عندك بنتقل معك.",
       "en": "Do I need a website already?\nNo. Many of our clients started with nothing but a phone number. We build from there.\n\nWhat does \"never a template\" really mean?\nYour design is drawn for your business and stays yours. We never resell it, and we never start from a theme fifty other shops already use.\n\nHow does the smart search find me?\nIt understands what people mean, not only what they type. \"A barber open now in Sakhnin\" finds the barber, in any language.\n\nCan I start small and grow?\nYes. Start with Presence, move up when you are ready, and everything you have comes with you."
     }
   },
