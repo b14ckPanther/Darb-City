@@ -81,6 +81,11 @@
   color: var(--accent);
 }
 
+.contact {
+  margin-block: var(--space-6) 0;
+  font-weight: 700;
+}
+
 .notice {
   margin-block-start: var(--space-7);
   padding-block-start: var(--space-5);

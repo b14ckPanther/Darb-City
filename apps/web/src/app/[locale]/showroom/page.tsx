@@ -3,7 +3,6 @@ import Link from "next/link";
 import { LOCALES } from "@darb/core";
 import { Footer } from "@/components/Footer";
 import { Showroom } from "@/components/showroom/Showroom";
-import { SOCIAL } from "@/content/footer";
 import { showroom } from "@/content/showroom";
 import { localeOrNotFound } from "@/lib/levels";
 import { pageMetadata } from "@/lib/metadata";
@@ -62,9 +61,9 @@ export default async function ShowroomPage({ params }: Props) {
           </h2>
           <p>{copy.cta.body}</p>
           <div className={landing.actions}>
-            <a href={SOCIAL.email.href} className={landing.primary}>
+            <Link href={href(locale, paths.contact())} className={landing.primary}>
               {copy.cta.talk}
-            </a>
+            </Link>
             <Link href={href(locale, paths.pricing())} className={landing.secondary}>
               {copy.cta.pricing}
             </Link>

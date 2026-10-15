@@ -1,8 +1,10 @@
+import Link from "next/link";
 import { Fragment, type ReactNode } from "react";
 import type { Locale } from "@darb/core";
-import { dir } from "@darb/i18n";
+import { dir, t } from "@darb/i18n";
 import { LEGAL_UPDATED, legalChrome, type LegalBlock, type LegalDoc } from "@/content/legal";
 import { INTL_TAG } from "@/lib/locale";
+import { href, paths } from "@/lib/routes";
 import styles from "./LegalDocument.module.css";
 
 /** A Latin run: a name, an address or a code, with the words, digits and spaces inside it. */
@@ -11,8 +13,10 @@ const EMAILS = /[^\s@()]+@[^\s@()]+\.[a-z]{2,}/g;
 const EMAIL = /^[^@\s]+@[^@\s]+\.[a-z]{2,}$/;
 
 /**
- * Plain copy with email addresses as links. In Hebrew and Arabic every Latin run is isolated
- * (`<bdi dir="ltr">`), so "founder@darb.co.il" or "Voyage AI" keeps its order inside RTL text.
+ * Plain copy. The law asks for a written address, so it stays in the text, but as text: people
+ * write through the contact page (linked below), never a mail pop-up. In Hebrew and Arabic every
+ * Latin run is isolated (`<bdi dir="ltr">`), so "founder@darb.co.il" or "Voyage AI" keeps its
+ * order inside RTL text; in English an address is kept left to right on its own.
  */
 export function Prose({ text, rtl }: { text: string; rtl: boolean }): ReactNode {
   const parts: ReactNode[] = [];
@@ -23,15 +27,7 @@ export function Prose({ text, rtl }: { text: string; rtl: boolean }): ReactNode 
     const start = match.index;
     if (start > last) parts.push(text.slice(last, start));
     const inner = rtl ? <bdi dir="ltr">{run}</bdi> : run;
-    parts.push(
-      EMAIL.test(run) ? (
-        <a className="text-link" href={`mailto:${run}`}>
-          {rtl ? inner : <span dir="ltr">{run}</span>}
-        </a>
-      ) : (
-        inner
-      ),
-    );
+    parts.push(EMAIL.test(run) && !rtl ? <span dir="ltr">{run}</span> : inner);
     last = start + run.length;
   }
   if (last < text.length) parts.push(text.slice(last));
@@ -105,6 +101,11 @@ export function LegalDocument({ locale, doc }: { locale: Locale; doc: LegalDoc }
             ))}
           </section>
         ))}
+        <p className={styles.contact}>
+          <Link className="text-link" href={href(locale, paths.contact())}>
+            {t(locale, "contactUs")}
+          </Link>
+        </p>
         <p className={styles.notice}>{chrome.notice}</p>
       </article>
     </main>

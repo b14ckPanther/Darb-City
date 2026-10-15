@@ -9,7 +9,7 @@ const base = {
   priceNote: {},
   finePrint: {},
   highlighted: false,
-  ctaHref: "mailto:founder@darb.co.il",
+  ctaHref: "/contact?plan=ecosystem",
 };
 const pricing: PricingDto = {
   plans: [
@@ -22,6 +22,7 @@ const pricing: PricingDto = {
       monthly: 0,
       features: { he: ["נעץ על המפה"], ar: [], en: ["A pin on the map"] },
       ctaLabel: { he: "הכניסו אותי", en: "Put me on Darb" },
+      ctaHref: "/contact?topic=join",
     },
     {
       ...base,
@@ -77,19 +78,33 @@ it("shows each plan's price, button and features from the data, in English", () 
     "https://instagram.com/darbco",
     "_blank",
   ]);
-  const mail = within(cards[0]!).getByRole("link", { name: "Put me on Darb" });
-  expect(mail.getAttribute("target")).toBeNull();
+  const join = within(cards[0]!).getByRole("link", { name: "Put me on Darb" });
+  // A path on Darb opens in the same tab, in the visitor's language.
+  expect([join.getAttribute("href"), join.getAttribute("target")]).toEqual([
+    "/en/contact?topic=join",
+    null,
+  ]);
   expect(screen.getAllByRole("listitem").map((li) => li.textContent)).toContain("Cancel any time.");
   expect(screen.getByText("Do I need a site?")).toBeTruthy();
 });
 
 it("speaks Hebrew, falls back per field, and badges only the highlighted plan", () => {
   render(<PricingView locale="he" pricing={pricing} />);
+  expect(screen.getByRole("link", { name: "Let's build it together" }).getAttribute("href")).toBe(
+    "/contact?plan=ecosystem",
+  );
   expect(screen.getAllByText("הנבחר ביותר")).toHaveLength(1);
   expect(screen.getByText("נעץ על המפה")).toBeTruthy();
   // No Hebrew features yet: the English list stands in rather than an empty card.
   expect(screen.getByText("Never a template")).toBeTruthy();
   expect(screen.getByText("בואו נדבר")).toBeTruthy();
+});
+
+it("sends the contact section to the contact page, never a mail pop-up", () => {
+  const texts = { ...pricing.texts, "pricing.contactTitle": { en: "Not sure?" } };
+  const { container } = render(<PricingView locale="en" pricing={{ ...pricing, texts }} />);
+  expect(screen.getByRole("link", { name: "Contact us" }).getAttribute("href")).toBe("/en/contact");
+  expect(container.querySelector('a[href^="mailto:"]')).toBeNull();
 });
 
 it("says plans are coming when there are none, and leaves out empty sections", () => {

@@ -91,7 +91,7 @@ export function PlanForm({ locale, plan }: { locale: Locale; plan?: AdminPlanDto
       <TextField
         label={at(locale, "fieldCtaHref")}
         name="ctaHref"
-        defaultValue={p?.ctaHref ?? "mailto:founder@darb.co.il"}
+        defaultValue={p?.ctaHref ?? "/contact"}
         dir="ltr"
         required
         hint={at(locale, "fieldCtaHrefHint")}

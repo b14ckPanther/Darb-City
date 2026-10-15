@@ -4,6 +4,7 @@ import {
   type BusinessDetailDto,
   type BusinessPageDto,
   type DensityDto,
+  type InquiryCreateDto,
   type InstantIndexDto,
   type KindCountsDto,
   type NearestPlaceDto,
@@ -336,6 +337,22 @@ export async function postClick(queryId: string, key: string, ip: string): Promi
       fetchOptions: { cache: "no-store" },
     }),
   );
+}
+
+export type InquiryCall = { status: 201 } | { status: 429; retryAfter: number } | { status: 400 };
+
+/** A /contact message. The API limits each visitor, so this server vouches for the visitor's IP. */
+export async function postInquiry(body: InquiryCreateDto, ip: string): Promise<InquiryCall> {
+  const res = await call(() =>
+    client().inquiries.create({
+      body,
+      extraHeaders: proxyHeaders(ip),
+      fetchOptions: { cache: "no-store" },
+    }),
+  );
+  if (res.status === 201) return { status: 201 };
+  if (res.status === 429) return { status: 429, retryAfter: res.body.retryAfter };
+  return { status: 400 };
 }
 
 /** The live lane-1 index; refreshed when an admin write revalidates places or taxonomy. */

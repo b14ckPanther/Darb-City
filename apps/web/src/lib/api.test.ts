@@ -13,6 +13,7 @@ import {
   getPlace,
   getPricing,
   getSuggestions,
+  postInquiry,
   postSearch,
 } from "./api";
 
@@ -197,6 +198,32 @@ describe("search calls", () => {
     expect(headers.get("x-darb-client-ip")).toBe("5.6.7.8");
     expect(log).not.toHaveBeenCalled();
     expect(info).not.toHaveBeenCalled();
+  });
+});
+
+describe("contact messages", () => {
+  it("vouch for the visitor, never cache, and pass on the limit", async () => {
+    vi.stubEnv("SEARCH_PROXY_KEY", "k");
+    const body = {
+      name: "Lina",
+      contact: "lina@example.com",
+      topic: "general" as const,
+      message: "Do you build apps for clinics?",
+      locale: "en" as const,
+    };
+    fetchMock.mockResolvedValueOnce(Response.json({ ok: true }, { status: 201 }));
+    expect(await postInquiry(body, "5.6.7.8")).toEqual({ status: 201 });
+    const [url, init] = fetchMock.mock.calls[0]!;
+    expect([String(url), init?.method, init?.cache]).toEqual([
+      "http://api.test/inquiries",
+      "POST",
+      "no-store",
+    ]);
+    expect(new Headers(init?.headers).get("x-darb-client-ip")).toBe("5.6.7.8");
+    fetchMock.mockResolvedValueOnce(
+      Response.json({ message: "slow down", retryAfter: 300 }, { status: 429 }),
+    );
+    expect(await postInquiry(body, "5.6.7.8")).toEqual({ status: 429, retryAfter: 300 });
   });
 });
 

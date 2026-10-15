@@ -5,6 +5,7 @@ import { AdminWriter } from "./admin-writer.js";
 import { ReportRepository } from "../search/report.repository.js";
 import { AdminBusinessesController, BusinessesAdmin } from "./businesses.admin.js";
 import { ExperienceValidator } from "./experience.js";
+import { AdminInquiriesController, InquiriesAdmin } from "./inquiries.admin.js";
 import { AdminMiscController, MiscAdmin } from "./misc.admin.js";
 import { AdminKindsController, KindsAdmin } from "./kinds.admin.js";
 import { AdminPlacesController, PlacesAdmin } from "./places.admin.js";
@@ -24,6 +25,7 @@ import { AdminTextsController, TextsAdmin } from "./texts.admin.js";
     AdminMiscController,
     AdminPlansController,
     AdminTextsController,
+    AdminInquiriesController,
   ],
   providers: [
     AdminWriter,
@@ -36,6 +38,7 @@ import { AdminTextsController, TextsAdmin } from "./texts.admin.js";
     MiscAdmin,
     PlansAdmin,
     TextsAdmin,
+    InquiriesAdmin,
     ReportRepository,
   ],
   exports: [AdminWriter, WebRevalidator],

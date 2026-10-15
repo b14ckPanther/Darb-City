@@ -20,7 +20,6 @@ export interface ForBusinessCopy {
   clientsTitle: string;
   contactTitle: string;
   contactBody: string;
-  email: string;
   instagram: string;
 }
 
@@ -45,7 +44,6 @@ export const forBusiness: Record<Locale, ForBusinessCopy> = {
     clientsTitle: "Live client work",
     contactTitle: "Talk to us",
     contactBody: "Tell us about your business and what your customers should be able to do.",
-    email: "Email",
     instagram: "Instagram",
   },
   he: {
@@ -74,7 +72,6 @@ export const forBusiness: Record<Locale, ForBusinessCopy> = {
     clientsTitle: "עבודות חיות של לקוחות",
     contactTitle: "דברו איתנו",
     contactBody: "ספרו לנו על העסק ומה הלקוחות שלכם צריכים לעשות בו.",
-    email: "אימייל",
     instagram: "אינסטגרם",
   },
   ar: {
@@ -103,7 +100,6 @@ export const forBusiness: Record<Locale, ForBusinessCopy> = {
     clientsTitle: "أعمال منشورة لزبائننا",
     contactTitle: "تحدّث معنا",
     contactBody: "أخبرنا عن مصلحتك وماذا يجب أن يستطيع زبائنك فعله.",
-    email: "البريد الإلكتروني",
     instagram: "إنستغرام",
   },
 };
@@ -127,6 +123,5 @@ export const LIVE_CLIENTS: { name: Localized; kind: Localized; url?: string }[] 
 ];
 
 export const CONTACT = {
-  email: "founder@darb.co.il",
   instagram: "https://www.instagram.com/darbco/",
 };

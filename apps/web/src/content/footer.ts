@@ -3,7 +3,6 @@ import type { Locale } from "@darb/core";
 /** Darb's channels and the founder's, as shown on zangeel.dev. */
 export const SOCIAL = {
   darbInstagram: { href: "https://www.instagram.com/darbco/", handle: "@darbco" },
-  email: { href: "mailto:founder@darb.co.il", handle: "founder@darb.co.il" },
   portfolio: { href: "https://zangeel.dev", handle: "zangeel.dev" },
   founderInstagram: { href: "https://www.instagram.com/noormosa.97/", handle: "@noormosa.97" },
   linkedin: { href: "https://www.linkedin.com/in/nmprofessor/", handle: "LinkedIn" },

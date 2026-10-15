@@ -188,3 +188,21 @@ it("REVALIDATE_URL is https in production and http(s) everywhere", () => {
     loadConfig({ ...base, REVALIDATE_URL: "http://localhost:3000/api/revalidate" }).admin,
   ).toMatchObject({ revalidateUrl: "http://localhost:3000/api/revalidate" });
 });
+
+it("defaults the contact form's limit and mail, and reads them", () => {
+  expect(loadConfig(base).inquiry).toEqual({
+    rateLimit: 5,
+    rateWindowSeconds: 600,
+    resendApiKey: null,
+    mailFrom: "Darb <hello@darb.co.il>",
+    mailTo: "founder@darb.co.il",
+  });
+  const set = loadConfig({
+    ...base,
+    INQUIRY_RATE_LIMIT: "3",
+    RESEND_API_KEY: "re_x",
+    MAIL_TO: "inbox@darb.co.il",
+  }).inquiry;
+  expect([set.rateLimit, set.resendApiKey, set.mailTo]).toEqual([3, "re_x", "inbox@darb.co.il"]);
+  expect(() => loadConfig({ ...base, MAIL_TO: "not an address" })).toThrow(/MAIL_TO/);
+});

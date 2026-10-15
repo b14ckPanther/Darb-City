@@ -52,14 +52,20 @@ function Icon({ name }: { name: SocialIcon }) {
 /** A round icon link: the label is its accessible name and its tooltip. */
 function IconLink({ icon, label, href }: { icon: SocialIcon; label: string; href: string }) {
   const external = href.startsWith("http");
+  if (!external)
+    return (
+      <Link className={styles.iconLink} href={href} aria-label={label} title={label}>
+        <Icon name={icon} />
+      </Link>
+    );
   return (
     <a
       className={styles.iconLink}
       href={href}
       aria-label={label}
       title={label}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noopener" : undefined}
+      target="_blank"
+      rel="noopener"
     >
       <Icon name={icon} />
     </a>
@@ -96,9 +102,9 @@ export function Footer({
             </span>
           </Link>
           <p className={styles.motto}>{copy.motto}</p>
-          <a className={styles.cta} href={SOCIAL.email.href}>
+          <Link className={styles.cta} href={href(locale, paths.contact())}>
             {copy.cta}
-          </a>
+          </Link>
         </div>
 
         <nav aria-label={copy.exploreTitle} className={styles.column}>
@@ -116,7 +122,11 @@ export function Footer({
           <h2 className={styles.heading}>{copy.darbTitle}</h2>
           <div className={styles.icons}>
             <IconLink icon="instagram" label="Instagram @darbco" href={SOCIAL.darbInstagram.href} />
-            <IconLink icon="email" label={SOCIAL.email.handle} href={SOCIAL.email.href} />
+            <IconLink
+              icon="email"
+              label={t(locale, "contactUs")}
+              href={href(locale, paths.contact())}
+            />
           </div>
         </div>
         <div className={`${styles.column} ${styles.team}`}>

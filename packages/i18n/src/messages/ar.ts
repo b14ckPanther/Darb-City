@@ -15,6 +15,7 @@ export const ar: Messages = {
   forBusiness: "للمصالح التجارية",
   pricing: "الأسعار",
   pricingSoon: "الخطط لسا بنلمّعها. إكتبلنا ومنحكيلك كل إشي شخصيًا.",
+  contactUs: "تواصل معنا",
   included: "مشمول",
   noneHereYet: "لا يوجد في {place} بعد",
   nothingListedYet: "لا توجد مصالح مدرجة هنا بعد.",

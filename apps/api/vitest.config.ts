@@ -16,6 +16,8 @@ export default defineConfig({
       // (src/ai/offline-providers.test.ts checks it).
       INTENT_PROVIDER: "recorded",
       EMBEDDING_PROVIDER: "hash",
+      // No contact mail leaves a test run (src/inquiries/inquiries.test.ts sets a key and mocks fetch).
+      RESEND_API_KEY: "",
       // Admin tests sign in with fake tokens (src/auth/fake-token-verifier.ts).
       AUTH_VERIFIER: "fake",
       ADMIN_EMAILS: "admin@darb.test",
