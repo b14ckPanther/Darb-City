@@ -119,32 +119,30 @@ export function Footer({
             <IconLink icon="email" label={SOCIAL.email.handle} href={SOCIAL.email.href} />
           </div>
         </div>
+        <div className={`${styles.column} ${styles.team}`}>
+          <h2 className={styles.heading}>{copy.founderTitle}</h2>
+          <ul className={styles.people}>
+            {PEOPLE.map((person) => (
+              <li key={person.id} className={styles.person}>
+                <span className={styles.personText}>
+                  <span className={styles.personName}>{person.names[locale]}</span>
+                  <span className={styles.personRole}>{copy.roles[person.id]}</span>
+                </span>
+                <span className={styles.icons}>
+                  {person.links.map((l) => (
+                    <IconLink
+                      key={l.href}
+                      icon={l.icon}
+                      label={`${person.names[locale]} · ${l.label}`}
+                      href={l.href}
+                    />
+                  ))}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-
-      <section className={`frame ${styles.credits}`} aria-labelledby="credits-title">
-        <h2 id="credits-title" className={styles.heading}>
-          {copy.founderTitle}
-        </h2>
-        <ul className={styles.people}>
-          {PEOPLE.map((person, i) => (
-            <li key={person.id} className={styles.person}>
-              {i > 0 ? <span className={styles.road} aria-hidden="true" /> : null}
-              <span className={styles.personName}>{person.names[locale]}</span>
-              <span className={styles.personRole}>{copy.roles[person.id]}</span>
-              <span className={styles.icons}>
-                {person.links.map((l) => (
-                  <IconLink
-                    key={l.href}
-                    icon={l.icon}
-                    label={`${person.names[locale]} · ${l.label}`}
-                    href={l.href}
-                  />
-                ))}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </section>
 
       <div className={`frame ${styles.base}`}>
         <p>

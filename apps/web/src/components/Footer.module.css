@@ -195,125 +195,72 @@
   transform: translateY(-2px);
 }
 
-/* ---- Credits: the people behind Darb, joined by a short gold road ---- */
-
-.credits {
-  display: grid;
-  justify-items: center;
-  gap: var(--space-5);
-  margin-block-start: var(--space-8);
-  text-align: center;
-}
+/* ---- The people behind Darb: one row per person, a gold rail along the start edge ---- */
 
 .people {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  gap: var(--space-5);
+  display: grid;
+  gap: var(--space-4);
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .person {
-  display: grid;
-  grid-template-columns: auto;
-  justify-items: center;
-  gap: var(--space-2);
-}
-
-.person:has(.road) {
-  grid-template-columns: auto auto;
-  column-gap: var(--space-5);
-}
-
-.person:has(.road) > :not(.road) {
-  grid-column: 2;
-}
-
-/* The road between two names, with light travelling along it. */
-.road {
   position: relative;
-  grid-row: 1;
-  grid-column: 1;
-  align-self: center;
-  inline-size: clamp(40px, 8vw, 96px);
-  block-size: 1px;
-  background: var(--line);
-  overflow: hidden;
+  display: grid;
+  gap: var(--space-2);
+  padding-inline-start: var(--space-4);
 }
 
-.road::after {
+/* A short gold rail that fills on hover, like the road reaching a stop. */
+.person::before {
   content: "";
   position: absolute;
-  inset: -1px 0;
-  background: linear-gradient(90deg, transparent, var(--gold-300), transparent);
-  transform: translateX(-100%);
-  animation: travel 3.2s ease-in-out infinite;
-}
-
-@keyframes travel {
-  to {
-    transform: translateX(100%);
-  }
-}
-
-/* Each name in gold, with a slow sheen passing over it. */
-.personName {
-  position: relative;
-  font-size: var(--step-2);
-  font-weight: 500;
-  line-height: 1.2;
-  background: linear-gradient(100deg, var(--gold-100), var(--gold) 50%, var(--gold-900));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  inset-block: 2px;
+  inset-inline-start: 0;
+  inline-size: 2px;
+  border-radius: 2px;
+  background: linear-gradient(var(--gold-300), var(--gold-900));
+  transform: scaleY(0.35);
+  transform-origin: top;
   transition: transform 500ms var(--ease-out);
 }
 
-.person:hover .personName {
-  transform: translateY(-3px);
+.person:hover::before,
+.person:focus-within::before {
+  transform: scaleY(1);
+}
+
+.personText {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.personName {
+  color: var(--gold-300);
+  font-size: var(--step-1);
+  font-weight: 700;
 }
 
 .personRole {
   color: var(--text-muted);
   font-size: var(--step--1);
-  letter-spacing: 0.06em;
 }
 
-.credits .icons {
-  justify-content: center;
+.team .icons {
+  gap: 6px;
 }
 
-.credits .iconLink {
-  display: inline-grid;
-  place-items: center;
-  inline-size: 40px;
-  block-size: 40px;
-  border: 1px solid var(--line-soft);
-  border-radius: 50%;
-  background: rgb(251 247 236 / 0.03);
-  color: var(--text-soft);
-  transition: transform 400ms var(--ease-out);
-}
-
-.credits .iconLink:hover,
-.credits .iconLink:focus-visible {
-  border-color: var(--gold);
-  background: rgb(217 165 76 / 0.12);
-  color: var(--gold-300);
-  transform: translateY(-2px);
+.team .iconLink {
+  inline-size: 34px;
+  block-size: 34px;
+  min-block-size: 34px;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .column .iconLink,
-  .credits .iconLink,
-  .personName {
+  .person::before {
     transition: none;
-  }
-
-  .road::after {
-    animation: none;
   }
 }
