@@ -7,6 +7,15 @@ import { fakeSignIn } from "@/admin/session-actions";
 import { isLocale } from "@/lib/locale";
 import styles from "@/admin/admin.module.css";
 
+/** Emails, passwords and codes read left to right, also in the Hebrew and Arabic sign-in. */
+const LTR_FIELDS = {
+  elements: {
+    formFieldInput: { direction: "ltr" },
+    otpCodeFieldInput: { direction: "ltr" },
+    identityPreviewText: { direction: "ltr" },
+  },
+} as const;
+
 export default async function SignInPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
@@ -19,6 +28,7 @@ export default async function SignInPage({ params }: { params: Promise<{ locale:
           routing="path"
           path={adminHref(locale, "/sign-in")}
           forceRedirectUrl={adminHref(locale)}
+          appearance={LTR_FIELDS}
         />
       ) : mode === "fake" ? (
         <form action={fakeSignIn} className={styles.card}>
