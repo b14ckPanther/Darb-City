@@ -15,7 +15,7 @@ export async function generateSitemaps() {
   return LOCALES.map((_, id) => ({ id }));
 }
 
-/** One sitemap per locale: places, place × sector, nationwide kinds, and real businesses. */
+/** One sitemap per locale: the legal pages, places, place × sector, nationwide kinds, and real businesses. */
 export default async function sitemap(props: {
   id: Promise<string>;
 }): Promise<MetadataRoute.Sitemap> {
@@ -42,6 +42,9 @@ export default async function sitemap(props: {
   });
   return [
     entry(paths.home()),
+    entry(paths.accessibility()),
+    entry(paths.terms()),
+    entry(paths.privacy()),
     ...places.map((p) => entry(paths.place(p.slug))),
     ...places.flatMap((p) => taxonomy.sectors.map((s) => entry(paths.sector(p.slug, s.slug)))),
     ...[...kinds.values()].map((k) => entry(paths.nationalKind(k.kind))),

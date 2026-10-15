@@ -27,6 +27,9 @@ export const paths = {
   nationalKind: (kind: string) => ["k", kind],
   placeKind: (place: string, kind: string) => [place, "k", kind],
   forBusiness: () => ["for-business"],
+  accessibility: () => ["accessibility"],
+  terms: () => ["terms"],
+  privacy: () => ["privacy"],
   search: () => ["search"],
 };
 

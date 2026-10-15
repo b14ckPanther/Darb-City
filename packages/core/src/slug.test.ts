@@ -44,6 +44,9 @@ describe("reserved slugs", () => {
         "register",
         "_next",
         "brand",
+        "accessibility",
+        "terms",
+        "privacy",
       ].sort(),
     );
   });

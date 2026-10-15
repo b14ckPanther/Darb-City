@@ -60,20 +60,25 @@ it("has one sitemap per locale with places, sectors, kinds and real businesses",
   const urls = en.map((e) => e.url);
   expect(urls).toEqual([
     "https://darb.co.il/en",
+    "https://darb.co.il/en/accessibility",
+    "https://darb.co.il/en/terms",
+    "https://darb.co.il/en/privacy",
     "https://darb.co.il/en/sakhnin",
     "https://darb.co.il/en/sakhnin/food",
     "https://darb.co.il/en/k/restaurants",
     "https://darb.co.il/en/sakhnin/food/restaurants/caramel",
   ]);
-  expect(en[1]?.alternates?.languages).toMatchObject({ he: "https://darb.co.il/sakhnin" });
-  expect(en[4]?.lastModified).toBe("2026-10-13T00:00:00.000Z");
+  expect(en[1]?.alternates?.languages).toMatchObject({ he: "https://darb.co.il/accessibility" });
+  expect(en[4]?.alternates?.languages).toMatchObject({ he: "https://darb.co.il/sakhnin" });
+  expect(en[7]?.lastModified).toBe("2026-10-13T00:00:00.000Z");
 });
 
 it("gives the Hebrew home the bare origin", async () => {
   vi.stubEnv("SITE_URL", "https://darb.co.il");
   const he = await sitemap({ id: Promise.resolve("0") });
   expect(he[0]?.url).toBe("https://darb.co.il/");
-  expect(he[1]?.url).toBe("https://darb.co.il/sakhnin");
+  expect(he[1]?.url).toBe("https://darb.co.il/accessibility");
+  expect(he[4]?.url).toBe("https://darb.co.il/sakhnin");
 });
 
 it("renders on request, so the build never needs the API (its fetches stay cached a day)", () => {
