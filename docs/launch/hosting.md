@@ -26,7 +26,7 @@
 1. PR: GitHub CI (typecheck, lint, unit, API integration, search quality, budgets, e2e and axe). Vercel builds a protected preview that talks to the **staging** API.
 2. Merge to `main`, after CI is green (branch protection):
    - Railway production and staging run `pnpm --filter @darb/api exec prisma migrate deploy` once (pre-deploy), then start the new API. A failed migration keeps the old API running.
-   - Vercel builds production. `warm.yml` renders every level 0–2 page once the deployment succeeds.
+   - Vercel builds production. `warm.yml` renders every level 0–2 page once the deployment succeeds. It stays off until the cut-over sets the repository variable `WARM_SITE_URL=https://darb.co.il` (Settings → Secrets and variables → Actions → Variables).
 3. Data: `Seed and reindex` (Actions → Run workflow) seeds and/or reindexes staging or production. Production needs the owner's approval in the GitHub Environment.
 4. Migrations are expand/contract: add columns and endpoints first, deploy, then remove old ones in a later release. A preview web never needs an unreleased API change.
 
