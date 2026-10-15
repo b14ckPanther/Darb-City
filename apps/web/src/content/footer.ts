@@ -28,7 +28,7 @@ export const PEOPLE = [
   {
     id: "lama",
     name: "Lama",
-    names: { he: "לאמה", ar: "لمى", en: "Lama" },
+    names: { he: "למא", ar: "لمى", en: "Lama" },
     links: [
       {
         icon: "linkedin",

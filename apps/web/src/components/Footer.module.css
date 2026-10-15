@@ -238,7 +238,7 @@
   grid-row: 1;
   grid-column: 1;
   align-self: center;
-  inline-size: clamp(48px, 12vw, 140px);
+  inline-size: clamp(40px, 8vw, 96px);
   block-size: 1px;
   background: var(--line);
   overflow: hidden;
@@ -262,10 +262,9 @@
 /* Each name in gold, with a slow sheen passing over it. */
 .personName {
   position: relative;
-  font-size: clamp(2rem, 1.4rem + 2.6vw, 3.4rem);
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.02em;
+  font-size: var(--step-2);
+  font-weight: 500;
+  line-height: 1.2;
   background: linear-gradient(100deg, var(--gold-100), var(--gold) 50%, var(--gold-900));
   -webkit-background-clip: text;
   background-clip: text;
