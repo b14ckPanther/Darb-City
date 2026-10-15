@@ -33,6 +33,15 @@ it("prices in whole shekels and links only to mail, https or a path", () => {
   }
 });
 
+it("sends every plan's button to the contact page, never a mail pop-up", () => {
+  for (const p of plans) {
+    expect(p.ctaHref, p.slug).not.toMatch(/^mailto:/);
+    expect(p.ctaHref, p.slug).toBe(
+      p.monthly === 0 ? "/contact?topic=join" : `/contact?plan=${p.slug}`,
+    );
+  }
+});
+
 it("has every page text in every language, the same FAQ in each, and never the word halal", () => {
   expect(new Set(texts.map((t) => t.key)).size).toBe(texts.length);
   for (const t of texts) expect(every(t.value), t.key).toBe(true);

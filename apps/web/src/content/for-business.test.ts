@@ -32,7 +32,6 @@ it("links only to safe https client work and contact", () => {
     }
   }
   expect(safeHttpUrl(CONTACT.instagram)).toBe(new URL(CONTACT.instagram).href);
-  expect(CONTACT.email).toMatch(/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/);
 });
 
 it("describes app-store publishing as a service, with the store names isolated in RTL copy", () => {

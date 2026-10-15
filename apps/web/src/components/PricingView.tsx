@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { PlanDto, PricingDto } from "@darb/contracts";
 import { pickText, type Locale } from "@darb/core";
 import { t } from "@darb/i18n";
@@ -10,6 +11,7 @@ import {
   shekelParts,
   textLines,
 } from "@/lib/pricing";
+import { href, localeHref, paths } from "@/lib/routes";
 import styles from "./Pricing.module.css";
 
 /** Links that leave Darb open in a new tab; mail and paths on this site stay where they are. */
@@ -75,6 +77,7 @@ function PlanCard({
   const tagline = pickText(plan.tagline, locale);
   const finePrint = pickText(plan.finePrint, locale);
   const features = plan.features[locale].length > 0 ? plan.features[locale] : plan.features.en;
+  const ctaClass = plan.highlighted ? `${styles.cta} ${styles.ctaPrimary}` : styles.cta;
   return (
     <li
       className={[styles.card, plan.highlighted ? styles.featured : "", wide ? styles.wide : ""]
@@ -87,13 +90,16 @@ function PlanCard({
         <h2 className={styles.name}>{pickText(plan.name, locale)}</h2>
         {tagline ? <p className={styles.tagline}>{tagline}</p> : null}
         <Price plan={plan} pricing={pricing} locale={locale} />
-        <a
-          href={plan.ctaHref}
-          className={plan.highlighted ? `${styles.cta} ${styles.ctaPrimary}` : styles.cta}
-          {...external(plan.ctaHref)}
-        >
-          {pickText(plan.ctaLabel, locale)}
-        </a>
+        {/* A path on Darb ("/contact?plan=spotlight") stays in the visitor's language. */}
+        {plan.ctaHref.startsWith("/") ? (
+          <Link href={localeHref(locale, plan.ctaHref)} className={ctaClass}>
+            {pickText(plan.ctaLabel, locale)}
+          </Link>
+        ) : (
+          <a href={plan.ctaHref} className={ctaClass} {...external(plan.ctaHref)}>
+            {pickText(plan.ctaLabel, locale)}
+          </a>
+        )}
       </div>
       {features.length > 0 ? (
         <ul className={styles.features} aria-label={t(locale, "included")}>
@@ -184,9 +190,12 @@ export function PricingView({ locale, pricing }: { locale: Locale; pricing: Pric
           </h2>
           <p>{text("pricing.contactBody")}</p>
           <p className={styles.contactLinks}>
-            <a className={`${styles.cta} ${styles.ctaPrimary}`} href={`mailto:${CONTACT.email}`}>
-              <span dir="ltr">{CONTACT.email}</span>
-            </a>
+            <Link
+              className={`${styles.cta} ${styles.ctaPrimary}`}
+              href={href(locale, paths.contact())}
+            >
+              {t(locale, "contactUs")}
+            </Link>
             <a className={styles.cta} href={CONTACT.instagram} {...external(CONTACT.instagram)}>
               <span dir="ltr">@darbco</span>
             </a>

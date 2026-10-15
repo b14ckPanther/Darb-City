@@ -147,7 +147,8 @@ const en = {
   fieldHighlighted: "Highlight this plan (gold edge and badge)",
   fieldCtaLabel: "Button text",
   fieldCtaHref: "Button link",
-  fieldCtaHrefHint: "An https:// link, a mailto: address, or a path on Darb such as /for-business.",
+  fieldCtaHrefHint:
+    "A path on Darb such as /contact?plan=spotlight (the contact form, opened on this plan), or an https:// link.",
   fieldFinePrint: "Small print",
   pricePerMonth: "Per month",
   priceCustom: "Custom",
@@ -314,7 +315,8 @@ const he: Messages = {
   fieldHighlighted: "הדגשת התוכנית (מסגרת זהב ותג)",
   fieldCtaLabel: "טקסט הכפתור",
   fieldCtaHref: "קישור הכפתור",
-  fieldCtaHrefHint: "קישור https://, כתובת mailto: או נתיב בדרב כמו /for-business.",
+  fieldCtaHrefHint:
+    "נתיב בדרב כמו /contact?plan=spotlight (טופס יצירת הקשר, פתוח על התוכנית הזו), או קישור https://.",
   fieldFinePrint: "אותיות קטנות",
   pricePerMonth: "לחודש",
   priceCustom: "מותאם אישית",
@@ -477,7 +479,8 @@ const ar: Messages = {
   fieldHighlighted: "إبراز الخطة (إطار دهبي وشارة)",
   fieldCtaLabel: "نص الزر",
   fieldCtaHref: "رابط الزر",
-  fieldCtaHrefHint: "رابط https://، عنوان mailto: أو مسار بدرب زي /for-business.",
+  fieldCtaHrefHint:
+    "مسار بدرب زي /contact?plan=spotlight (فورم التواصل، مفتوح على هاي الخطة)، أو رابط https://.",
   fieldFinePrint: "الكلام الزغير",
   pricePerMonth: "بالشهر",
   priceCustom: "حسب الطلب",

@@ -9,7 +9,6 @@ import { Road } from "@/components/landing/Road";
 import { Reveal, ScrollScene } from "@/components/landing/ScrollScene";
 import { Words } from "@/components/landing/Words";
 import { landing } from "@/content/landing";
-import { SOCIAL } from "@/content/footer";
 import { localeOrNotFound } from "@/lib/levels";
 import { pageMetadata } from "@/lib/metadata";
 import { href, paths } from "@/lib/routes";
@@ -217,9 +216,9 @@ export default async function LandingPage({ params }: Props) {
               <Link href={href(locale, paths.pricing())} className={styles.primary}>
                 {copy.join.pricing}
               </Link>
-              <a href={SOCIAL.email.href} className={styles.secondary}>
+              <Link href={href(locale, paths.contact())} className={styles.secondary}>
                 {copy.join.talk}
-              </a>
+              </Link>
             </div>
           </Reveal>
         </section>

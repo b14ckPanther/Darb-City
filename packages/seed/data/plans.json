@@ -49,7 +49,7 @@
       "ar": "سجّل مصلحتي",
       "en": "List my business"
     },
-    "ctaHref": "mailto:founder@darb.co.il?subject=Darb%20Presence",
+    "ctaHref": "/contact?topic=join",
     "finePrint": {
       "he": "בלי חוזה ובלי התחייבות. טעות בפרטים? כתבו לנו ונתקן.",
       "ar": "بلا عقد وبلا التزام. في غلط بالتفاصيل؟ إحكيلنا ومنصلّحه.",
@@ -106,7 +106,7 @@
       "ar": "بدي أكون مميّز",
       "en": "Feature my business"
     },
-    "ctaHref": "mailto:founder@darb.co.il?subject=Darb%20Spotlight",
+    "ctaHref": "/contact?plan=spotlight",
     "finePrint": {
       "he": "תשלום חודשי. מבטלים מתי שרוצים, והרישום בחינם נשאר.",
       "ar": "دفع كل شهر. بتلغي وقت ما بدك، وبضل الإدراج المجاني.",
@@ -169,7 +169,7 @@
       "ar": "بدي موقع إلي",
       "en": "I want my own website"
     },
-    "ctaHref": "mailto:founder@darb.co.il?subject=Darb%20Signature",
+    "ctaHref": "/contact?plan=signature",
     "finePrint": {
       "he": "את מחיר הבנייה קובעים אחרי שיחה בחינם. המחיר החודשי תלוי בגודל האתר, ואתם יודעים את הסכום המדויק לפני שמתחילים.",
       "ar": "سعر البناء منحدده بعد مكالمة ببلاش. السعر الشهري حسب حجم الموقع، وبتعرف المبلغ بالزبط قبل ما نبلّش.",
@@ -229,7 +229,7 @@
       "ar": "احجز مكالمة ببلاش",
       "en": "Book a free call"
     },
-    "ctaHref": "mailto:founder@darb.co.il?subject=Darb%20Ecosystem",
+    "ctaHref": "/contact?plan=ecosystem",
     "finePrint": {
       "he": "בונים בשלבים, ומשלמים רק על מה שכבר עובד.",
       "ar": "منبني على مراحل، وبتدفع بس على اللي صار شغّال.",
