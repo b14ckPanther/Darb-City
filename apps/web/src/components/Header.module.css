@@ -48,6 +48,10 @@
   margin-inline: 0.3em;
 }
 
+.navSlot {
+  margin-inline-start: auto;
+}
+
 .forBusiness {
   margin-inline-start: auto;
   display: inline-flex;

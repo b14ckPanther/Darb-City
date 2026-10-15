@@ -35,12 +35,12 @@ export const footer: Record<Locale, FooterCopy> = {
     legal: { accessibility: "הצהרת נגישות", terms: "תנאי שימוש", privacy: "מדיניות פרטיות" },
   },
   ar: {
-    motto: "كل أنواع المصالح. كل مدينة وقرية. درب واحد.",
-    cta: "عندك مصلحة؟ لنتحدث",
+    motto: "كل أنواع المصالح. كل بلد وكل قرية. درب واحد.",
+    cta: "عندك مصلحة؟ يلا نحكي",
     exploreTitle: "اكتشف",
     darbTitle: "درب",
     founderTitle: "المؤسس",
-    links: { explore: "المدينة", search: "بحث", showroom: "المعرض", pricing: "الخطط والأسعار" },
+    links: { explore: "البلد", search: "دوّر", showroom: "المعرض", pricing: "الخطط والأسعار" },
     rights: "جميع الحقوق محفوظة",
     languages: "اللغة",
     legal: {

@@ -26,6 +26,8 @@
     "@darb/stage": "workspace:*",
     "@darb/tokens": "workspace:*",
     "@ts-rest/core": "catalog:",
+    "gsap": "catalog:",
+    "lenis": "catalog:",
     "maplibre-gl": "catalog:",
     "next": "catalog:",
     "pmtiles": "catalog:",

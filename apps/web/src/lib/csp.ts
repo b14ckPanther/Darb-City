@@ -35,6 +35,8 @@ export function publicCsp({
     ...base(dev),
     "script-src": ["'self'", "'unsafe-inline'", ...(dev ? ["'unsafe-eval'"] : [])],
     "connect-src": ["'self'", ...(tilesOrigin ? [tilesOrigin] : []), ...(dev ? ["ws:"] : [])],
+    // The showroom runs Darb's client builds live, and they all live on darb.co.il subdomains.
+    "frame-src": ["https://*.darb.co.il"],
   });
 }
 

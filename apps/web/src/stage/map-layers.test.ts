@@ -13,7 +13,7 @@ import {
   PIN_SOURCE,
 } from "./map-layers";
 
-it("draws live places as gold glows and dots with ivory names, and business pins on top", () => {
+it("draws a density surface, proportional points and ivory names, and business pins on top", () => {
   const layers = darbLayers();
   expect(layers.map((l) => l.id)).toEqual([CITY_GLOW, CITY_DOT, CITY_LABEL, PIN_LAYER]);
   for (const layer of layers.slice(0, 3)) expect(layer).toMatchObject({ source: CITY_SOURCE });
@@ -22,6 +22,10 @@ it("draws live places as gold glows and dots with ivory names, and business pins
   expect(json).not.toMatch(/icon-/);
   for (const colour of [colors.gold, colors.gold300, colors.ivory, colors.night])
     expect(json).toContain(colour);
+  expect(layers[0]).toMatchObject({ type: "heatmap" });
+  // Empty places are never drawn, sized or named.
+  for (const layer of layers.slice(0, 3))
+    expect(JSON.stringify((layer as { filter?: unknown }).filter)).toContain('["get","count"],0');
 });
 
 it("labels places with the one self-hosted font", () => {

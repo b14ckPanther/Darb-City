@@ -12,11 +12,14 @@ export function ScrollScene({
   children,
   as: Tag = "section",
   labelledBy,
+  stop,
 }: {
   className?: string;
   children: ReactNode;
   as?: "section" | "div";
   labelledBy?: string;
+  /** A station on the landing road (Road lights it up when the road arrives). */
+  stop?: boolean;
 }) {
   const ref = useRef<HTMLElement>(null);
 
@@ -58,7 +61,12 @@ export function ScrollScene({
   }, []);
 
   return (
-    <Tag ref={ref as never} className={className} aria-labelledby={labelledBy}>
+    <Tag
+      ref={ref as never}
+      className={className}
+      aria-labelledby={labelledBy}
+      data-stop={stop ? "" : undefined}
+    >
       {children}
     </Tag>
   );

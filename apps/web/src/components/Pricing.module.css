@@ -55,7 +55,10 @@
 
 .plans {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 248px), 1fr));
+  /* Two roomy columns at most: four narrow cards made the features wrap word by word. */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+  max-inline-size: 960px;
+  margin-inline: auto;
   gap: var(--space-4);
   align-items: stretch;
   margin: var(--space-5) 0 var(--space-8);

@@ -4,7 +4,10 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 import { Footer } from "@/components/Footer";
 import { Blueprint } from "@/components/landing/Blueprint";
+import { LayerIcon } from "@/components/landing/LayerIcon";
+import { Road } from "@/components/landing/Road";
 import { Reveal, ScrollScene } from "@/components/landing/ScrollScene";
+import { Words } from "@/components/landing/Words";
 import { landing } from "@/content/landing";
 import { SOCIAL } from "@/content/footer";
 import { localeOrNotFound } from "@/lib/levels";
@@ -32,7 +35,8 @@ export default async function LandingPage({ params }: Props) {
   const layers = copy.platform.layers;
   return (
     <div className={styles.page}>
-      <main id="main">
+      <main id="main" className={styles.main}>
+        <Road startSelector="[data-road-start]" />
         <section className={styles.hero} aria-labelledby="main-heading">
           <div className={styles.heroStage}>
             <div className={styles.heroGlow} aria-hidden="true" />
@@ -53,7 +57,7 @@ export default async function LandingPage({ params }: Props) {
               </div>
             </div>
             <div className={styles.heroVisual} aria-hidden="true">
-              <div className={styles.markWrap}>
+              <div className={styles.markWrap} data-road-start="">
                 <Blueprint className={styles.blueprint} />
                 <Image
                   className={styles.mark}
@@ -72,7 +76,7 @@ export default async function LandingPage({ params }: Props) {
           </div>
         </section>
 
-        <section className={`frame ${styles.story}`} aria-labelledby="story-title">
+        <section className={`frame ${styles.story}`} aria-labelledby="story-title" data-stop="">
           <Reveal className={styles.storyInner}>
             <span id="story-title" className={styles.eyebrow}>
               {copy.story.eyebrow}
@@ -92,14 +96,14 @@ export default async function LandingPage({ params }: Props) {
           </Reveal>
         </section>
 
-        <ScrollScene className={styles.platform} labelledBy="platform-title">
+        <ScrollScene className={styles.platform} labelledBy="platform-title" stop>
           <div className={`frame ${styles.platformStage}`}>
             <div className={styles.platformHead}>
               <span className={styles.eyebrow} style={{ justifySelf: "center" }}>
                 {copy.platform.eyebrow}
               </span>
               <h2 id="platform-title" className={styles.sectionTitle}>
-                {copy.platform.title}
+                <Words text={copy.platform.title} />
               </h2>
             </div>
             <div className={styles.platformBody}>
@@ -110,7 +114,12 @@ export default async function LandingPage({ params }: Props) {
                     className={styles.plate}
                     data-n={String(i + 1).padStart(2, "0")}
                     style={{ "--i": i } as CSSProperties}
-                  />
+                  >
+                    <span className={styles.plateFace}>
+                      <LayerIcon index={i} />
+                      <span className={styles.plateTitle}>{layer.title}</span>
+                    </span>
+                  </span>
                 ))}
               </div>
               <ol className={styles.steps}>
@@ -144,11 +153,15 @@ export default async function LandingPage({ params }: Props) {
           </div>
         </ScrollScene>
 
-        <section className={`frame ${styles.searchBand}`} aria-labelledby="search-title">
+        <section
+          className={`frame ${styles.searchBand}`}
+          aria-labelledby="search-title"
+          data-stop=""
+        >
           <Reveal className={styles.searchCard}>
             <span className={styles.eyebrow}>{copy.search.eyebrow}</span>
             <h2 id="search-title" className={styles.sectionTitle}>
-              {copy.search.title}
+              <Words text={copy.search.title} />
             </h2>
             <p>{copy.search.body}</p>
             <ul className={styles.examples}>
@@ -166,11 +179,11 @@ export default async function LandingPage({ params }: Props) {
           </Reveal>
         </section>
 
-        <section className={`frame ${styles.made}`} aria-labelledby="made-title">
+        <section className={`frame ${styles.made}`} aria-labelledby="made-title" data-stop="">
           <div className={styles.madeHead}>
             <span className={styles.eyebrow}>{copy.made.eyebrow}</span>
             <h2 id="made-title" className={styles.sectionTitle}>
-              {copy.made.title}
+              <Words text={copy.made.title} />
             </h2>
             <p>{copy.made.body}</p>
           </div>
@@ -194,10 +207,10 @@ export default async function LandingPage({ params }: Props) {
           </ul>
         </section>
 
-        <section className={`frame ${styles.join}`} aria-labelledby="join-title">
+        <section className={`frame ${styles.join}`} aria-labelledby="join-title" data-stop="">
           <Reveal className={styles.joinCard}>
             <h2 id="join-title" className={styles.sectionTitle}>
-              {copy.join.title}
+              <Words text={copy.join.title} />
             </h2>
             <p>{copy.join.body}</p>
             <div className={styles.actions}>
