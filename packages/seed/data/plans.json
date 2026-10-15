@@ -23,21 +23,21 @@
     "features": {
       "he": [
         "העסק שלכם בדרב, בעיר, במחוז ובקטגוריה שלו",
-        "החיפוש החכם מבוסס ה-AI מוצא אתכם בכל שפה, גם כשמתארים במילים שלהם מה צריך",
+        "החיפוש החכם מוצא אתכם בכל שפה, גם כשמתארים במילים שלהם מה צריך",
         "נעץ משלכם על המפה החיה",
         "שעות פתיחה חיות: פתוח או סגור, ממש עכשיו",
         "התקשרות, וואטסאפ וניווט, בלחיצה אחת"
       ],
       "ar": [
         "مصلحتك على درب، ببلدها وبمنطقتها وبفئتها",
-        "البحث الذكي بالـAI بلاقيك بأي لغة، حتى لما الناس يوصفوا شو بدهم بكلامهم",
+        "البحث الذكي بلاقيك بأي لغة، حتى لما الناس يوصفوا شو بدهم بكلامهم",
         "الدبوس تبعك على الخريطة اللايف",
         "ساعات دوام لايف: فاتح ولا مسكّر",
         "اتصال، واتساب ووصف الطريق، بكبسة وحدة"
       ],
       "en": [
         "Your business on Darb, in its town, district and category",
-        "Found by AI smart search in any language, even when people describe what they need in their own words",
+        "Found by smart search in any language, even when people describe what they need in their own words",
         "Your pin on the live map",
         "Live opening hours: open or closed, right now",
         "Call, WhatsApp and directions, one tap each"
@@ -80,21 +80,21 @@
     "features": {
       "he": [
         "כל מה שיש בנוכחות",
-        "פרופיל רב לשוני שנכתב עם AI ומלוטש על ידינו",
+        "פרופיל רב לשוני שאנחנו כותבים ומלטשים בשבילכם",
         "התמונות שלכם, במקום הכי בולט",
         "מקום מודגש בעיר שלכם ובקטגוריה שלכם",
         "דוח חודשי: מה חיפשו לידכם, ומה לא מצאו"
       ],
       "ar": [
         "كل إشي بحضور",
-        "بروفايل بكل اللغات، مكتوب بالـAI ومنقّح بإيدينا",
+        "بروفايل بكل اللغات، بنكتبه وبنرتبه إلكم",
         "صورك، بأول الصفحة",
         "مكان مميز ببلدك وبفئتك",
         "تقرير كل شهر: شو دوّروا الناس جنبك، وشو ما لاقوا"
       ],
       "en": [
         "Everything in Presence",
-        "A multilingual profile written with AI and polished by us",
+        "A multilingual profile we write and polish for you",
         "Your photos, front and centre",
         "Featured placement in your town and your category",
         "A monthly note on what people searched for near you, and what they couldn't find"
@@ -141,7 +141,7 @@
         "תפריט, קטלוג או תורים שנבנו סביב הדרך שבה העסק שלכם באמת עובד",
         "תנועה ואינטראקציות שנוצרו למותג שלכם, לא נבחרו מתוך ערכת עיצוב",
         "דומיין משלכם, אחסון ואבטחה, הכול עלינו",
-        "עדכונים במשפט אחד: אתם אומרים, ה-AI מנסח, אנחנו בודקים, וזה באוויר",
+        "עדכונים במשפט אחד: אתם אומרים, אנחנו מנסחים ובודקים, וזה באוויר",
         "אף פעם לא תבנית. לאף אחד אחר לא יהיה העיצוב שלכם"
       ],
       "ar": [
@@ -150,7 +150,7 @@
         "منيو، كتالوج أو حجوزات مبنية على الطريقة اللي بتشتغل فيها مصلحتك عنجد",
         "حركة وتفاعلات معمولة لعلامتك، مش منقّاة من قالب جاهز",
         "دومين إلك، استضافة وحماية، كله علينا",
-        "تحديثات بجملة وحدة: إنت بتحكي، الـAI بكتب، إحنا بنراجع، وبصير أونلاين",
+        "تحديثات بجملة وحدة: إنت بتحكي، إحنا بنكتب وبنراجع، وبصير أونلاين",
         "عمره ما رح يكون قالب. ما حدا غيرك رح يكون عنده التصميم تبعك"
       ],
       "en": [
@@ -159,7 +159,7 @@
         "A menu, catalogue or booking flow shaped around how your business really works",
         "Motion and interactions made for your brand, never picked from a theme",
         "Your own domain, hosting and security, all handled",
-        "Updates in one sentence: you say it, AI drafts it, we check it, it's live",
+        "Updates in one sentence: you say it, we write and check it, it's live",
         "Never a template. Nobody else will ever have your design"
       ]
     },
@@ -201,7 +201,7 @@
       "he": [
         "כל מה שיש בחותם",
         "אפליקציות נייטיב ל-iOS ול-Android, בשם שלכם",
-        "קונסיירז' AI שעונה, מקבל הזמנות וקובע תורים, יום ולילה",
+        "עוזר דיגיטלי שעונה, מקבל הזמנות וקובע תורים, יום ולילה",
         "לוח ניהול משלכם לתפריטים, מחירים, צוות ולקוחות",
         "חיבור לכלים שכבר עובדים אצלכם: תשלומים, קופה, יומנים ומשלוחים",
         "שפת מותג שלמה: צבעים, טיפוגרפיה וקול"
@@ -209,7 +209,7 @@
       "ar": [
         "كل إشي ببصمة",
         "تطبيقات أصلية لـ iOS و Android، باسمك",
-        "مساعد AI بجاوب، بستقبل طلبيات وبحجز دور، ليل نهار",
+        "مساعد ديجيتال بجاوب، بستقبل طلبيات وبحجز دور، ليل نهار",
         "لوحة إدارة إلك للمنيو، الأسعار، الطاقم والزباين",
         "ربط مع الأدوات اللي بتشتغل فيها: دفع، كاشير، مواعيد وتوصيل",
         "هوية كاملة لعلامتك: ألوان، خطوط وصوت"
@@ -217,7 +217,7 @@
       "en": [
         "Everything in Signature",
         "Native iOS and Android apps, published under your name",
-        "An AI concierge that answers, takes orders and books, day and night",
+        "A digital assistant that answers, takes orders and books, day and night",
         "Your own admin dashboard for menus, prices, staff and customers",
         "Integrations with the tools you already run: payments, till, calendars, delivery",
         "A complete brand system: colour, type and voice"
