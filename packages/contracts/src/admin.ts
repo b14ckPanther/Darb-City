@@ -10,7 +10,8 @@ import {
   ShekelsSchema,
   SiteTextKeySchema,
 } from "./pricing.js";
-import { MissingReportSchema, ReportQuerySchema } from "./search.js";
+import { INQUIRY_STATUSES, INQUIRY_TOPICS } from "./inquiry.js";
+import { LocaleSchema, MissingReportSchema, ReportQuerySchema } from "./search.js";
 
 const c = initContract();
 
@@ -275,6 +276,33 @@ export const AdminTextPatchSchema = z
   })
   .strict();
 
+// Inquiries (the /contact inbox)
+export const AdminInquirySchema = z.object({
+  id,
+  name: z.string(),
+  contact: z.string(),
+  businessName: z.string().nullable(),
+  topic: z.enum(INQUIRY_TOPICS),
+  plan: z.string().nullable(),
+  message: z.string(),
+  locale: LocaleSchema,
+  status: z.enum(INQUIRY_STATUSES),
+  emailedAt: stamp,
+  createdAt: z.string(),
+});
+export const AdminInquiryListQuerySchema = z.object({
+  status: z.enum(INQUIRY_STATUSES).optional(),
+  cursor: z.string().max(200).optional(),
+  limit: z.coerce.number().int().min(1).max(100).default(50),
+});
+/** Newest first; `newCount` is every new inquiry, whatever the filter (the nav's badge). */
+export const AdminInquiryPageSchema = z.object({
+  items: z.array(AdminInquirySchema),
+  nextCursor: z.string().nullable(),
+  newCount: z.number().int().nonnegative(),
+});
+export const AdminInquiryStatusSchema = z.object({ status: z.enum(INQUIRY_STATUSES) }).strict();
+
 // Audit and identity
 export const AuditRowSchema = z.object({
   id,
@@ -309,6 +337,9 @@ export type AdminPlanCreateDto = z.infer<typeof AdminPlanCreateSchema>;
 export type AdminPlanPatchDto = z.infer<typeof AdminPlanPatchSchema>;
 export type AdminTextDto = z.infer<typeof AdminTextSchema>;
 export type AdminTextPatchDto = z.infer<typeof AdminTextPatchSchema>;
+export type AdminInquiryDto = z.infer<typeof AdminInquirySchema>;
+export type AdminInquiryListQueryDto = z.infer<typeof AdminInquiryListQuerySchema>;
+export type AdminInquiryPageDto = z.infer<typeof AdminInquiryPageSchema>;
 export type AuditRowDto = z.infer<typeof AuditRowSchema>;
 export type AdminErrorDto = z.infer<typeof AdminErrorSchema>;
 
@@ -513,6 +544,22 @@ export const adminContract = c.router({
       pathParams: byId,
       body: AdminTextPatchSchema,
       responses: { 200: AdminTextSchema, ...writeErrors },
+    },
+  }),
+  inquiries: c.router({
+    list: {
+      method: "GET",
+      path: "/admin/inquiries",
+      query: AdminInquiryListQuerySchema,
+      responses: { 200: AdminInquiryPageSchema, ...guarded },
+    },
+    /** Mark handled, or reopen. Not audited: an inquiry is mail, not site content. */
+    status: {
+      method: "PATCH",
+      path: "/admin/inquiries/:id",
+      pathParams: byId,
+      body: AdminInquiryStatusSchema,
+      responses: { 200: AdminInquirySchema, ...writeErrors },
     },
   }),
 });

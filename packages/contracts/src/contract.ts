@@ -29,6 +29,7 @@ import {
   TooManySchema,
 } from "./search.js";
 import { adminContract } from "./admin.js";
+import { InquiryAcceptedSchema, InquiryCreateSchema } from "./inquiry.js";
 import { PricingSchema } from "./pricing.js";
 
 const c = initContract();
@@ -184,6 +185,15 @@ export const contract = c.router({
   pricing: {
     /** Live plans in order, and the page's copy. */
     get: { method: "GET", path: "/pricing", responses: { 200: PricingSchema } },
+  },
+  inquiries: {
+    /** The /contact form: stored for the admin inbox and mailed to the founder. */
+    create: {
+      method: "POST",
+      path: "/inquiries",
+      body: InquiryCreateSchema,
+      responses: { 201: InquiryAcceptedSchema, 400: BadRequestSchema, 429: TooManySchema },
+    },
   },
   sitemap: {
     businesses: {
