@@ -10,17 +10,17 @@
   {
     "key": "pricing.title",
     "value": {
-      "he": "לא תבנית. דרך שנבנתה בשבילכם.",
-      "ar": "مش قالب. درب معمول إلك.",
-      "en": "Not a template. A path made for you."
+      "he": "מחירים פשוטים. בלי הפתעות.",
+      "ar": "أسعار واضحة. بلا مفاجآت.",
+      "en": "Simple prices. No surprises."
     }
   },
   {
     "key": "pricing.intro",
     "value": {
-      "he": "דרב התחילה מרעיון אחד: כל עסק ראוי שימצאו אותו, והטובים ראויים למשהו שאין לאף אחד אחר. התחילו בחינם, בלטו בעיר שלכם, או תנו לנו לבנות אפליקציה שקיימת רק בשבילכם. החיפוש החכם מוצא, ואנחנו יוצרים.",
-      "ar": "درب بلّش من فكرة وحدة: كل مصلحة بتستاهل الناس يلاقوها، والمميزة بتستاهل إشي ما حدا غيرها عنده. بلّش ببلاش، إبرز ببلدك، أو خلّينا نبنيلك تطبيق موجود إلك لحالك. البحث الذكي بلاقي، وإحنا منصنع.",
-      "en": "Darb started with one idea: every business deserves to be found, and the great ones deserve something nobody else has. Start free, stand out in your town, or let us build an app that exists only for you. Smart search does the finding; we do the craft."
+      "he": "כל עסק יכול להופיע בדרב בחינם. רוצים שיראו אתכם יותר, או אתר משלכם? בחרו מה שמתאים לכם, ואפשר לשנות מתי שרוצים.",
+      "ar": "كل مصلحة بتقدر تطلع على درب ببلاش. بدك الناس يشوفوك أكثر، أو بدك موقع إلك؟ اختار اللي بناسبك، وبتقدر تغيّر وقت ما بدك.",
+      "en": "Every business can be on Darb for free. Want more people to see you, or a website of your own? Pick what fits, and change any time."
     }
   },
   {
@@ -50,9 +50,9 @@
   {
     "key": "pricing.setup",
     "value": {
-      "he": "+ {amount} הקמה חד פעמית",
-      "ar": "+ {amount} تجهيز مرة وحدة",
-      "en": "+ {amount} one-time setup"
+      "he": "+ {amount} חד פעמי על הבנייה",
+      "ar": "+ {amount} مرة وحدة عالبناء",
+      "en": "+ {amount} one-time build fee"
     }
   },
   {
@@ -66,9 +66,9 @@
   {
     "key": "pricing.terms",
     "value": {
-      "he": "המחירים בשקלים ואינם כוללים מע\"מ.\nתוכניות חודשיות מתחדשות כל חודש, ואפשר לבטל בכל עת.\nבנייה בהתאמה אישית מתומחרת אחרי שיחה בחינם, לפני שמתחילים לעבוד.\nמחירים עשויים להשתנות. אם זה קורה, נודיע לכם מראש, לפני החיוב הבא.",
-      "ar": "الأسعار بالشيكل ومش شاملة الضريبة.\nالخطط الشهرية بتتجدد كل شهر، وبتقدر تلغي وقت ما بدك.\nالبناء حسب الطلب منسعّره بعد مكالمة ببلاش، قبل ما نبلّش أي شغل.\nممكن الأسعار تتغير. إذا صار هيك، منحكيلك من قبل، قبل الدفعة الجاي.",
-      "en": "Prices are in Israeli shekels and do not include VAT.\nMonthly plans renew each month, and you can cancel any time.\nCustom builds are quoted after a free call, before any work starts.\nPrices may change. If they do, we tell you in advance, before your next bill."
+      "he": "המחירים בשקלים ולא כוללים מע\"מ.\nהתשלום החודשי מתחדש כל חודש, ואפשר לבטל בכל זמן.\nאת מחיר הבנייה קובעים אחרי שיחה בחינם, לפני שמתחילים לעבוד.\nאם המחירים ישתנו, נודיע לכם מראש, לפני התשלום הבא.",
+      "ar": "الأسعار بالشيكل ومش شاملة الضريبة.\nالدفع الشهري بتجدد كل شهر، وبتقدر تلغي وقت ما بدك.\nسعر البناء منحدده بعد مكالمة ببلاش، قبل ما نبلّش أي شغل.\nإذا الأسعار تغيّرت، منحكيلك من قبل، قبل الدفعة الجاي.",
+      "en": "Prices are in shekels and do not include VAT.\nMonthly payments renew each month, and you can cancel any time.\nThe build price is set after a free call, before any work starts.\nIf prices change, we tell you in advance, before your next payment."
     }
   },
   {
@@ -82,25 +82,25 @@
   {
     "key": "pricing.faq",
     "value": {
-      "he": "צריך שיהיה לי כבר אתר?\nלא. הרבה מהלקוחות שלנו התחילו רק עם מספר טלפון. משם אנחנו בונים.\n\nמה זה באמת \"אף פעם לא תבנית\"?\nהעיצוב שלכם נרשם בשביל העסק שלכם ונשאר שלכם. אנחנו לא מוכרים אותו שוב ולא מתחילים מערכת עיצוב שחמישים עסקים אחרים משתמשים בה.\n\nאיך החיפוש החכם מוצא אותי?\nהוא מבין למה אנשים מתכוונים, לא רק מה הקלידו. \"מספרה פתוחה עכשיו בסח'נין\" מוצא את הספר, בכל שפה.\n\nאפשר להתחיל בקטן ולגדול?\nכן. מתחילים בנוכחות, עולים כשמוכנים, וכל מה שכבר יש לכם עובר איתכם.",
-      "ar": "لازم يكون عندي موقع من قبل؟\nلا. كثير من زباينا بلّشوا برقم تلفون بس. ومن هناك منبني.\n\nشو يعني عنجد \"عمره ما يكون قالب\"؟\nالتصميم تبعك منرسمه لمصلحتك وبضل إلك. ما منبيعه مرة تانية، وما منبلّش من قالب بستعمله خمسين محل غيرك.\n\nكيف البحث الذكي بلاقيني؟\nبفهم شو قصد الناس، مش بس شو كتبوا. \"حلاق فاتح هلأ بسخنين\" بلاقي الحلاق، بأي لغة.\n\nبقدر أبلّش صغير وأكبر؟\nآه. بتبلّش بحضور، بتطلع لما تكون جاهز، وكل إشي عندك بنتقل معك.",
-      "en": "Do I need a website already?\nNo. Many of our clients started with nothing but a phone number. We build from there.\n\nWhat does \"never a template\" really mean?\nYour design is drawn for your business and stays yours. We never resell it, and we never start from a theme fifty other shops already use.\n\nHow does the smart search find me?\nIt understands what people mean, not only what they type. \"A barber open now in Sakhnin\" finds the barber, in any language.\n\nCan I start small and grow?\nYes. Start with Presence, move up when you are ready, and everything you have comes with you."
+      "he": "צריך שיהיה לי כבר אתר?\nלא. הרבה מהלקוחות שלנו התחילו רק עם מספר טלפון. משם אנחנו בונים.\n\nהעיצוב שלי יהיה רק שלי?\nכן. אנחנו מעצבים בשביל העסק שלכם בלבד, ולא נותנים את אותו עיצוב לאף אחד אחר.\n\nאיך אנשים מוצאים אותי בחיפוש?\nהחיפוש מבין מה אנשים מחפשים, גם כשהם כותבים במילים שלהם. \"מספרה פתוחה עכשיו בסח'נין\" מוצא את הספר, בכל שפה.\n\nאפשר להתחיל בקטן ולגדול?\nכן. מתחילים ברישום בחינם, משדרגים כשמוכנים, וכל מה שכבר יש לכם נשאר.",
+      "ar": "لازم يكون عندي موقع من قبل؟\nلا. كثير من زباينا بلّشوا برقم تلفون بس. ومن هناك منبني.\n\nالتصميم رح يكون إلي لحالي؟\nآه. منصمّم لمصلحتك بس، وما منعطي نفس التصميم لحدا تاني.\n\nكيف الناس بلاقوني بالبحث؟\nالبحث بفهم شو الناس بدهم، حتى لو كتبوا بكلامهم. \"حلاق فاتح بهالوقت بسخنين\" بلاقي الحلاق، بأي لغة.\n\nبقدر أبلّش صغير وأكبر؟\nآه. بتبلّش بالإدراج المجاني، بتطلّع لما تكون جاهز، وكل إشي عندك بضل.",
+      "en": "Do I need a website already?\nNo. Many of our clients started with nothing but a phone number. We build from there.\n\nWill my design be only mine?\nYes. We design for your business alone, and never give the same design to anyone else.\n\nHow do people find me in search?\nSearch understands what people are looking for, even in their own words. \"A barber open now in Sakhnin\" finds the barber, in any language.\n\nCan I start small and grow?\nYes. Start with the free listing, upgrade when you're ready, and everything you have stays."
     }
   },
   {
     "key": "pricing.contactTitle",
     "value": {
-      "he": "לא בטוחים איזו דרך מתאימה לכם?",
-      "ar": "مش متأكد أي درب بناسبك؟",
-      "en": "Not sure which path fits?"
+      "he": "לא בטוחים מה מתאים לכם?",
+      "ar": "مش متأكد شو بناسبك؟",
+      "en": "Not sure what fits you?"
     }
   },
   {
     "key": "pricing.contactBody",
     "value": {
-      "he": "כתבו ישירות למייסד. ספרו לנו על העסק, ונענה לכם באופן אישי.",
-      "ar": "إكتب للمؤسس مباشرة. إحكيلنا عن مصلحتك، ومنرجعلك شخصيًا.",
-      "en": "Write to the founder directly. Tell us about your business and we will answer you personally."
+      "he": "ספרו לנו על העסק, ונענה לכם באופן אישי.",
+      "ar": "إحكيلنا عن مصلحتك، ومنرجعلك شخصيًا.",
+      "en": "Tell us about your business and we'll answer you personally."
     }
   }
 ]

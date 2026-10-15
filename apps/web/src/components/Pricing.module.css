@@ -69,15 +69,19 @@
   list-style: none;
 }
 
+.freeRow,
 .paidRow {
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-  align-items: stretch;
+  max-inline-size: 960px;
+  margin-inline: auto;
+  inline-size: 100%;
 }
 
-/* Three paid plans side by side on wide screens, the featured one in the middle and lifted. */
-@media (min-width: 1000px) {
+/* Three paid plans side by side only when each gets room to breathe, the featured one lifted. */
+@media (min-width: 1240px) {
   .paidRow[data-count="3"] {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-inline-size: none;
+    gap: var(--space-5);
     padding-block-start: var(--space-4);
   }
 
@@ -92,7 +96,10 @@
   gap: var(--space-4);
 }
 
-/* The free plan: one wide card, the offer at the start and what it includes beside it. */
+/*
+ * Wide cards: the offer at the start and what it includes beside it. The free plan is always one;
+ * the paid plans are too (below) until the screen fits three roomy columns.
+ */
 @media (min-width: 900px) {
   .card.wide {
     display: grid;
@@ -108,13 +115,38 @@
 
   .wide .features {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    padding: 0 0 0;
+    padding-block-start: 0;
     padding-inline-start: var(--space-6);
     border-block-start: 0;
     border-inline-start: 1px solid var(--line-soft);
   }
 
   .wide .finePrint {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1239px) {
+  .paidRow > .card {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    column-gap: var(--space-7);
+    align-items: center;
+    padding: var(--space-6);
+  }
+
+  .paidRow .tagline {
+    min-block-size: 0;
+  }
+
+  .paidRow .features {
+    padding-block-start: 0;
+    padding-inline-start: var(--space-6);
+    border-block-start: 0;
+    border-inline-start: 1px solid var(--line-soft);
+  }
+
+  .paidRow .finePrint {
     grid-column: 1 / -1;
   }
 }
