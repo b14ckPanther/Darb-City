@@ -25,8 +25,8 @@ export async function generateSitemaps() {
 }
 
 /**
- * One sitemap per locale: places, place × sector, nationwide kinds, and real businesses. Places,
- * sectors and kinds without a published business are left out.
+ * One sitemap per locale: the legal pages, places, place × sector, nationwide kinds, and real
+ * businesses. Places, sectors and kinds without a published business are left out.
  */
 export default async function sitemap(props: {
   id: Promise<string>;
@@ -66,6 +66,9 @@ export default async function sitemap(props: {
   });
   return [
     entry(paths.home()),
+    entry(paths.accessibility()),
+    entry(paths.terms()),
+    entry(paths.privacy()),
     ...places.map((p) => entry(paths.place(p.slug))),
     ...places.flatMap((p) =>
       (sectorsByPlace.get(p.slug) ?? []).map((s) => entry(paths.sector(p.slug, s.slug))),

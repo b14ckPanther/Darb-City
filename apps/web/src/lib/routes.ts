@@ -34,7 +34,6 @@ export const paths = {
   terms: () => ["terms"],
   privacy: () => ["privacy"],
   forBusiness: () => ["for-business"],
-  pricing: () => ["pricing"],
   search: () => ["search"],
 };
 
