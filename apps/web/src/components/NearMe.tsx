@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import type { Locale } from "@darb/core";
 import styles from "./NearMe.module.css";
@@ -17,6 +17,7 @@ export interface NearMeProps {
 
 export function NearMe({ locale, kind, homeHref, labels }: NearMeProps) {
   const router = useRouter();
+  const pathname = usePathname();
   const [state, setState] = useState<"idle" | "locating" | "denied">("idle");
 
   function locate() {
@@ -39,10 +40,13 @@ export function NearMe({ locale, kind, homeHref, labels }: NearMeProps) {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(payload),
+            signal: AbortSignal.timeout(10_000),
           });
           if (!res.ok) throw new Error(String(res.status));
           const { href } = (await res.json()) as { href: string };
-          router.push(href);
+          // The button lives in the header and outlives the page, so it is reset once found.
+          if (href !== pathname) router.push(href);
+          setState("idle");
         } catch {
           setState("denied");
         }
