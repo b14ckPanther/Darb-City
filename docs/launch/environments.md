@@ -30,6 +30,9 @@ Values never live in the repo. "secret" means a random value of at least 32 char
 | `REVALIDATE_URL` | https://darb.co.il/api/revalidate | the staging web origin + /api/revalidate | |
 | `REVALIDATE_SECRET` | secret (also on web) | secret | |
 | `SEARCH_INDEX_WORKER` | true | true | |
+| `RESEND_API_KEY` | Resend key | Resend key or unset | contact form mail; unset, messages reach the admin inbox only |
+| `MAIL_FROM` | Darb <hello@darb.co.il> | same | sender on the Resend-verified domain |
+| `MAIL_TO` | founder@darb.co.il | founder@darb.co.il | |
 
 **The staging web origin** is one stable URL: the Vercel branch URL of the `staging` branch (`https://darb-city-git-staging-<team>.vercel.app`), or a custom domain such as `https://staging.darb.co.il` if one is assigned. Use it for `WEB_ORIGIN` and `REVALIDATE_URL`, and list it in `CLERK_AUTHORIZED_PARTIES` (comma-separated, if staging admin is reached on more than one origin).
 
@@ -82,6 +85,11 @@ Required in production (startup fails without them): `DATABASE_URL`; `SEARCH_PRO
 | `AUTH_VERIFIER` | `clerk` when a Clerk key is set | `clerk`, `fake` (tests only) or `off`. |
 | `ADMIN_EMAILS` | unset | Comma-separated, lower-cased. |
 | `REVALIDATE_URL` | unset | Unset turns web revalidation off. |
+| `RESEND_API_KEY` | unset | Optional secret. Mails each /contact message through Resend; unset, messages are only stored (admin inbox). |
+| `MAIL_FROM` | `Darb <hello@darb.co.il>` | The contact mail's sender. Its domain must be verified in Resend. |
+| `MAIL_TO` | `founder@darb.co.il` | Where contact mail goes. |
+| `INQUIRY_RATE_LIMIT` | 5 | Contact messages per visitor per window. |
+| `INQUIRY_RATE_WINDOW_SECONDS` | 600 | 60 to 86400. |
 | `NODE_ENV` | unset | `production` switches on the checks above. |
 | `MIGRATE_DATABASE_URL` | unset | Direct Neon URL, read by the pre-deploy migration and the `Seed and reindex` workflow, not by the app. |
 | `SEARCH_RECORDINGS` | `test/search-quality/cases.json` | Tests and CI only (recorded intent). Never set in production. |

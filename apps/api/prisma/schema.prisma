@@ -361,6 +361,40 @@ model SearchQuery {
   @@index([createdAt])
 }
 
+enum InquiryTopic {
+  general
+  join
+  plan
+  other
+}
+
+enum InquiryStatus {
+  new
+  handled
+}
+
+/// A message from the /contact form: the admin inbox, also mailed to the founder.
+model Inquiry {
+  id           String        @id @default(uuid(7)) @db.Uuid
+  name         String
+  /// A phone number or an email address, as typed.
+  contact      String
+  businessName String?
+  topic        InquiryTopic
+  /// The plan's slug when the form was opened from a plan's button (?plan=).
+  plan         String?
+  message      String
+  locale       String
+  /// Salted hash of the sender's IP bucket (as the rate limiter keys it), never the IP itself.
+  ipHash       String?
+  status       InquiryStatus @default(new)
+  /// When the mail to the founder was accepted; null when mail is off or it failed.
+  emailedAt    DateTime?
+  createdAt    DateTime      @default(now())
+
+  @@index([status, createdAt])
+}
+
 enum AuditAction {
   create
   update

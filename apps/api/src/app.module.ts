@@ -3,6 +3,7 @@ import { AdminModule } from "./admin/admin.module.js";
 import { AiModule } from "./ai/ai.module.js";
 import { BusinessesModule } from "./businesses/businesses.module.js";
 import { HealthController } from "./health/health.controller.js";
+import { InquiriesModule } from "./inquiries/inquiries.module.js";
 import { PlacesModule } from "./places/places.module.js";
 import { PricingModule } from "./pricing/pricing.module.js";
 import { PrismaModule } from "./prisma/prisma.module.js";
@@ -20,6 +21,7 @@ import { TaxonomyModule } from "./taxonomy/taxonomy.module.js";
     BusinessesModule,
     SearchModule,
     PricingModule,
+    InquiriesModule,
     AdminModule,
   ],
   controllers: [HealthController],

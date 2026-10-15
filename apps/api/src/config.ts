@@ -41,6 +41,17 @@ export interface AdminConfig {
   revalidateSecret: string | null;
 }
 
+/** The /contact form: its rate limit, and where its mail goes. */
+export interface InquiryConfig {
+  /** Messages one visitor may send per window. */
+  rateLimit: number;
+  rateWindowSeconds: number;
+  /** RESEND_API_KEY; null turns the mail off (logged once), the inbox still stores every message. */
+  resendApiKey: string | null;
+  mailFrom: string;
+  mailTo: string;
+}
+
 export interface AppConfig {
   databaseUrl: string;
   port: number;
@@ -48,6 +59,7 @@ export interface AppConfig {
   search: SearchConfig;
   auth: AuthConfig;
   admin: AdminConfig;
+  inquiry: InquiryConfig;
   production: boolean;
 }
 
@@ -98,6 +110,11 @@ const schema = z.object({
     .refine((v) => /^https?:\/\//i.test(v), "must be an http(s) URL")
     .optional(),
   REVALIDATE_SECRET: optional,
+  INQUIRY_RATE_LIMIT: z.coerce.number().int().positive().default(5),
+  INQUIRY_RATE_WINDOW_SECONDS: z.coerce.number().int().min(60).max(86_400).default(600),
+  RESEND_API_KEY: optional,
+  MAIL_FROM: z.string().min(3).default("Darb <hello@darb.co.il>"),
+  MAIL_TO: z.string().email().default("founder@darb.co.il"),
   NODE_ENV: z.string().optional(),
 });
 
@@ -174,6 +191,13 @@ export function loadConfig(env: NodeJS.ProcessEnv): AppConfig {
       adminEmails: list(e.ADMIN_EMAILS).map((m) => m.toLowerCase()),
     },
     admin: { revalidateUrl: e.REVALIDATE_URL ?? null, revalidateSecret: e.REVALIDATE_SECRET },
+    inquiry: {
+      rateLimit: e.INQUIRY_RATE_LIMIT,
+      rateWindowSeconds: e.INQUIRY_RATE_WINDOW_SECONDS,
+      resendApiKey: e.RESEND_API_KEY,
+      mailFrom: e.MAIL_FROM,
+      mailTo: e.MAIL_TO,
+    },
     search: {
       redisUrl: e.REDIS_URL,
       trustProxy: e.TRUST_PROXY,
