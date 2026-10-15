@@ -60,7 +60,7 @@ export const en = {
   hours: "Opening hours",
   hoursUnknown: "Hours not listed",
   close: "Close",
-  exampleNotice: "This is an example — this is what your customers would see",
+  exampleNotice: "This is an example. This is what your customers would see",
   whatsappGreeting: "Hello {name}, I found you on Darb.",
   website: "Website",
   linkCopied: "Link copied",

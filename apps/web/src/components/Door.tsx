@@ -64,6 +64,10 @@ export interface DoorProps {
   accent?: string;
 }
 
+/**
+ * A category card: an accent dot, the name, an optional line, and the count. (The doorway shape is
+ * kept for the brand mark only; DoorDefs and DoorRim stay for the plaza scenery.)
+ */
 export function Door({
   slug,
   href,
@@ -85,16 +89,12 @@ export function Door({
         data-count={count}
         data-empty={count === 0 ? "" : undefined}
       >
-        <span className={styles.frame} aria-hidden="true">
-          <span className={styles.glow} />
-          <DoorRim className={styles.rim} />
-          <span className={styles.countInFrame}>{countText}</span>
-        </span>
+        <span className={styles.dot} aria-hidden="true" />
         <span className={styles.text}>
           <span className={styles.label}>{label}</span>
           {sublabel ? <span className={styles.sublabel}>{sublabel}</span> : null}
         </span>
-        <span className={styles.countInline} aria-hidden="true">
+        <span className={styles.count} aria-hidden="true">
           {countText}
         </span>
         <span className="visually-hidden">{countLabel}</span>

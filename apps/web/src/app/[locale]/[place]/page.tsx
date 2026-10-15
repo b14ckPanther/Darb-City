@@ -33,7 +33,7 @@ export const generateMetadata = metadataOrUnavailable(async function metadata({
     locale,
     segments: paths.place(place.slug),
     title: name,
-    description: `${name} — ${t(locale, "tagline")}`,
+    description: `${name} | ${t(locale, "tagline")}`,
   });
 });
 

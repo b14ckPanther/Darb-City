@@ -21,7 +21,7 @@ const base: SheetActionsProps = {
     directions: "Directions",
     share: "Share",
     website: "Website",
-    exampleNotice: "This is an example — this is what your customers would see",
+    exampleNotice: "This is an example. This is what your customers would see",
     linkCopied: "Link copied",
     linkCopyFailed: "Couldn't copy the link",
   },

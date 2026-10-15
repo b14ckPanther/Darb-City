@@ -22,6 +22,12 @@ const PHYSICAL = [
   /border-(?:top|bottom)-(?:left|right)-radius/,
 ];
 const MOTION_PROPS = new Set(["opacity", "transform"]);
+/**
+ * The landing hero is drawn once on arrival: SVG strokes draw in (stroke-dashoffset) and the mark is
+ * painted in (clip-path). Both run once, for about a second, on a few small elements.
+ */
+const ONE_TIME_DRAWING = new Set(["stroke-dashoffset", "clip-path"]);
+const drawsOnce = (file: string) => file.endsWith(join("landing", "Landing.module.css"));
 
 describe.each(cssFiles(SRC))("%s", (file) => {
   const css = readFileSync(file, "utf8");
@@ -43,7 +49,9 @@ describe.each(cssFiles(SRC))("%s", (file) => {
   it("animates only transform and opacity in keyframes", () => {
     for (const [, body] of css.matchAll(/@keyframes[^{]+\{([\s\S]*?\})\s*\}/g)) {
       for (const [, property] of body!.matchAll(/([a-z-]+)\s*:/g)) {
-        expect(MOTION_PROPS.has(property!), property).toBe(true);
+        const allowed =
+          MOTION_PROPS.has(property!) || (drawsOnce(file) && ONE_TIME_DRAWING.has(property!));
+        expect(allowed, property).toBe(true);
       }
     }
   });

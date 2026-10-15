@@ -20,7 +20,7 @@ export interface CrumbTarget {
 
 /** Israel ▸ (parent city) ▸ place ▸ sector ▸ kind ▸ business. Regions are not steps people take. */
 export function crumbsFor(locale: Locale, at: CrumbTarget): Crumb[] {
-  const crumbs: Crumb[] = [{ label: t(locale, "country"), href: href(locale) }];
+  const crumbs: Crumb[] = [{ label: t(locale, "country"), href: href(locale, paths.explore()) }];
   if (at.page) return [...crumbs, at.page];
   if (at.nationalKind) {
     crumbs.push({

@@ -3,7 +3,7 @@ import { Fragment } from "react";
 import { LOCALES, pickText } from "@darb/core";
 import { t } from "@darb/i18n";
 import { CityBar } from "@/components/CityBar";
-import { DoorRim } from "@/components/Door";
+
 import { CONTACT, forBusiness, LIVE_CLIENTS, type RichText } from "@/content/for-business";
 import { crumbsFor } from "@/lib/crumbs";
 import { localeOrNotFound } from "@/lib/levels";
@@ -58,7 +58,6 @@ export default async function ForBusinessPage({ params }: Props) {
         <ul className={styles.points}>
           {copy.points.map((point) => (
             <li key={point.title} className={styles.point}>
-              <DoorRim className={styles.rim} />
               <h2 className={styles.pointTitle}>{point.title}</h2>
               <p>
                 <Rich text={point.body} />

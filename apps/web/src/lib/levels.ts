@@ -25,7 +25,7 @@ export interface SectorLevel extends PlaceLevel {
 
 export async function loadPlaceLevel(raw: { locale: string; place: string }): Promise<PlaceLevel> {
   const locale = localeOrNotFound(raw.locale);
-  if (raw.place === COUNTRY_SLUG) permanentRedirect(href(locale));
+  if (raw.place === COUNTRY_SLUG) permanentRedirect(href(locale, paths.explore()));
   const [place, taxonomy] = await Promise.all([getPlace(raw.place), getTaxonomy()]);
   if (!place) notFound();
   return { locale, place, index: indexTaxonomy(taxonomy) };

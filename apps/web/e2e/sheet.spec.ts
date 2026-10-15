@@ -86,7 +86,7 @@ test("an example business explains itself instead of calling", async ({ page }) 
   await page.goto(`/en${LEVELS.business}`);
   await page.locator("[data-primary-action]").click();
   await expect(page.locator("[data-sheet-status]")).toHaveText(
-    "This is an example — this is what your customers would see",
+    "This is an example. This is what your customers would see",
   );
 });
 

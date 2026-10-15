@@ -27,7 +27,7 @@ const barbers = { id: "k1", slug: "barbershops", name: { en: "Barbershops" } } a
 describe("crumbsFor", () => {
   it("starts at Israel and skips the country and regions", () => {
     expect(crumbsFor("en", { place: kiryatHaim, sector: beauty, kind: barbers })).toEqual([
-      { label: "Israel", href: "/en" },
+      { label: "Israel", href: "/en/israel" },
       { label: "Haifa", href: "/en/haifa" },
       { label: "Kiryat Haim", href: "/en/kiryat-haim" },
       { label: "Beauty Row", href: "/en/kiryat-haim/beauty" },
@@ -63,7 +63,7 @@ describe("crumbsFor", () => {
   });
   it("goes straight from Israel to a national kind or a static page", () => {
     expect(crumbsFor("ar", { nationalKind: barbers })).toEqual([
-      { label: "إسرائيل", href: "/ar" },
+      { label: "إسرائيل", href: "/ar/israel" },
       { label: "Barbershops", href: "/ar/k/barbershops" },
     ]);
     expect(

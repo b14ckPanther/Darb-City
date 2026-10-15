@@ -62,7 +62,7 @@ export const ar: Messages = {
   hours: "ساعات العمل",
   hoursUnknown: "ساعات العمل غير مذكورة",
   close: "إغلاق",
-  exampleNotice: "هذا مثال — هكذا سيرى زبائنك مصلحتك",
+  exampleNotice: "هذا مثال. هكذا سيرى زبائنك مصلحتك",
   whatsappGreeting: "مرحبًا {name}، وجدتكم على درب.",
   website: "الموقع",
   linkCopied: "تم نسخ الرابط",

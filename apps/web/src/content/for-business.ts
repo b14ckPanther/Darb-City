@@ -27,7 +27,7 @@ export interface ForBusinessCopy {
 export const forBusiness: Record<Locale, ForBusinessCopy> = {
   en: {
     title: "Your business, as an app",
-    lead: "Darb builds a web app and a native app for any kind of business, in any town, in Hebrew, Arabic and English.",
+    lead: "Darb builds a web app and a native app for any kind of business, in any town, in any language.",
     points: [
       {
         title: "Any kind of business",
@@ -50,7 +50,7 @@ export const forBusiness: Record<Locale, ForBusinessCopy> = {
   },
   he: {
     title: "העסק שלכם, כאפליקציה",
-    lead: "דרב בונה אפליקציית ווב ואפליקציה נייטיב לכל סוג עסק, בכל יישוב, בעברית, בערבית ובאנגלית.",
+    lead: "דרב בונה אפליקציית ווב ואפליקציה נייטיב לכל סוג עסק, בכל יישוב, בכל שפה.",
     points: [
       {
         title: "כל סוג של עסק",
@@ -79,7 +79,7 @@ export const forBusiness: Record<Locale, ForBusinessCopy> = {
   },
   ar: {
     title: "مصلحتك، كتطبيق",
-    lead: "درب تبني تطبيق ويب وتطبيقًا أصليًا لأي نوع من المصالح، في أي بلدة، بالعربية والعبرية والإنجليزية.",
+    lead: "درب تبني تطبيق ويب وتطبيقًا أصليًا لأي نوع من المصالح، في أي بلدة، بأي لغة.",
     points: [
       {
         title: "أي نوع من المصالح",

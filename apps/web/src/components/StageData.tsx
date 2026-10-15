@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import type { StageLevel } from "@darb/stage";
 import { stageStore } from "@/lib/stage-store";
 
@@ -12,7 +12,13 @@ const holders = new Map<StageLevel, number>();
  * unmount waits a microtask, so a page replaced in the same commit hands over straight to the next
  * level and the stage never sees null in between.
  */
-export function StageData({ level }: { level: StageLevel }) {
+export function StageData({ level: given }: { level: StageLevel }) {
+  // The plaza (doorways under a gate) is retired: places and sectors show the map, so their doors
+  // are not handed to the stage. The list on the page still carries every category.
+  const level = useMemo(
+    () => (given.depth === 1 || given.depth === 2 ? { ...given, doors: [] } : given),
+    [given],
+  );
   useEffect(() => {
     holders.set(level, (holders.get(level) ?? 0) + 1);
     stageStore.set(level);
