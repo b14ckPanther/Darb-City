@@ -25,3 +25,9 @@ it("edits intervals and writes the weekly JSON into the form", () => {
   fireEvent.click(screen.getByRole("button", { name: "Sun · Remove 1" }));
   expect(hidden()["0"]).toEqual([]);
 });
+
+it("keeps times left to right, so 17:30 does not read as 30:17 in Hebrew and Arabic", () => {
+  render(<HoursEditor weekly={{ "0": [{ open: "09:00", close: "17:30" }] }} labels={labels} />);
+  expect(screen.getByLabelText("Sun · Opens 1").getAttribute("dir")).toBe("ltr");
+  expect(screen.getByLabelText("Sun · Closes 1").getAttribute("dir")).toBe("ltr");
+});

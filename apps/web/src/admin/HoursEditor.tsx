@@ -44,6 +44,7 @@ export function HoursEditor({
               <span key={i} className={styles.actions} style={{ margin: 0 }}>
                 <input
                   type="time"
+                  dir="ltr"
                   aria-label={`${name} · ${labels.open} ${i + 1}`}
                   value={iv.open}
                   onChange={(e) =>
@@ -56,6 +57,7 @@ export function HoursEditor({
                 <span aria-hidden="true">–</span>
                 <input
                   type="time"
+                  dir="ltr"
                   aria-label={`${name} · ${labels.close} ${i + 1}`}
                   value={iv.close}
                   onChange={(e) =>
