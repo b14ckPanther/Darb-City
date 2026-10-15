@@ -428,6 +428,7 @@
   block-size: 360svh;
 }
 
+
 .platformStage {
   position: sticky;
   inset-block-start: 0;
@@ -743,6 +744,32 @@
   max-inline-size: 34rem;
   margin: 0;
   color: var(--text-soft);
+}
+
+/*
+ * Phones: the steps and the plates do not fit one pinned screen, so the section flows normally,
+ * the plates sit closed above the steps, and every step reads at full strength.
+ */
+@media (max-width: 899px) {
+  .platform {
+    block-size: auto;
+    --p: 1;
+  }
+
+  .platformStage {
+    position: static;
+    block-size: auto;
+    padding-block: var(--space-8);
+  }
+
+  .platform .step {
+    opacity: 1;
+    border-inline-start-color: var(--gold);
+  }
+
+  .iso {
+    block-size: 220px;
+  }
 }
 
 /* ---- One-time entrances ---- */

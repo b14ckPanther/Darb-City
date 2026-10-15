@@ -773,7 +773,7 @@ const terms: Record<Locale, LegalDoc> = {
         id: "service",
         title: "השירות",
         blocks: [
-          "דרב הוא מדריך עסקים בכל רחבי ישראל, בעברית, בערבית ובאנגלית. הוא כולל חיפוש חכם שמבין מה שאתם מקלידים, מפה ורחבה של דלתות עסקים, ותצוגה של אפליקציות לדוגמה ושל עבודות ללקוחות, שמראה מה דרב בונה לעסקים. השימוש במדריך חינם ולא דורש חשבון.",
+          "דרב הוא מדריך עסקים בכל רחבי ישראל, בכמה שפות. הוא כולל חיפוש חכם שמבין מה שאתם מקלידים, מפה של עסקים, ותצוגה שבה האפליקציות שדרב בנה ללקוחות רצות בשידור חי. השימוש במדריך חינם ולא דורש חשבון.",
         ],
       },
       {
@@ -789,7 +789,7 @@ const terms: Record<Locale, LegalDoc> = {
         id: "links",
         title: "קישורים ואתרים של לקוחות",
         blocks: [
-          "האתר מקשר לאתרים אחרים, כולל לאפליקציות שדרב בנה לעסקים. האתרים האלה מופעלים על ידי העסקים עצמם, לפי התנאים ומדיניות הפרטיות שלהם, ואנחנו לא אחראים לתוכן שלהם או לעסקאות שתעשו בהם. מסכי הדוגמה בתצוגה ממחישים את סוג האפליקציות שאנחנו בונים.",
+          "האתר מקשר לאתרים אחרים, כולל לאפליקציות שדרב בנה לעסקים. האתרים האלה מופעלים על ידי העסקים עצמם, לפי התנאים ומדיניות הפרטיות שלהם, ואנחנו לא אחראים לתוכן שלהם או לעסקאות שתעשו בהם. בתצוגה, האתרים של הלקוחות נטענים בתוך מסגרת (iframe) ישירות מהשרתים שלהם, והם כפופים לתנאים ולמדיניות הפרטיות שלהם.",
         ],
       },
       {
@@ -867,7 +867,7 @@ const terms: Record<Locale, LegalDoc> = {
         id: "service",
         title: "الخدمة",
         blocks: [
-          "درب دليل للمصالح في جميع أنحاء إسرائيل، بالعربية والعبرية والإنجليزية. يتضمن بحثًا ذكيًا يفهم ما تكتبونه، وخريطة وساحة لأبواب المصالح، ومعرضًا لتطبيقات نموذجية ولأعمال لزبائننا يُظهر ما يبنيه درب للمصالح. استخدام الدليل مجاني ولا يحتاج إلى حساب.",
+          "درب دليل للمصالح بكل البلاد، بأكثر من لغة. فيه بحث ذكي بفهم شو بتكتبوا، وخريطة للمصالح، ومعرض بتشتغل فيه التطبيقات اللي عملها درب لزبائنه لايف. استخدام الدليل مجاني ولا يحتاج إلى حساب.",
         ],
       },
       {
@@ -883,7 +883,7 @@ const terms: Record<Locale, LegalDoc> = {
         id: "links",
         title: "الروابط ومواقع الزبائن",
         blocks: [
-          "يربط الموقع بمواقع أخرى، منها تطبيقات بناها درب لمصالح. هذه المواقع تديرها المصالح نفسها، وفق شروطها وسياسات الخصوصية الخاصة بها، ولسنا مسؤولين عن محتواها أو عن أي معاملات تجرونها فيها. شاشات النماذج في المعرض توضح نوع التطبيقات التي نبنيها.",
+          "يربط الموقع بمواقع أخرى، منها تطبيقات بناها درب لمصالح. هذه المواقع تديرها المصالح نفسها، وفق شروطها وسياسات الخصوصية الخاصة بها، ولسنا مسؤولين عن محتواها أو عن أي معاملات تجرونها فيها. في المعرض، مواقع الزبائن بتنفتح جوّا إطار (iframe) مباشرة من سيرفراتهم، وبتخضع لشروطهم وسياسات الخصوصية تبعتهم.",
         ],
       },
       {
@@ -963,7 +963,7 @@ const terms: Record<Locale, LegalDoc> = {
         id: "service",
         title: "The service",
         blocks: [
-          "Darb is a directory of businesses across Israel, in Hebrew, Arabic and English. It includes a smart search that understands what you type, a map and a plaza of business doors, and a showroom of example apps and client work that shows what Darb builds for businesses. Using the directory is free and needs no account.",
+          "Darb is a directory of businesses across Israel, in several languages. It includes a smart search that understands what you type, a map of businesses, and a showroom where the apps Darb built for clients run live. Using the directory is free and needs no account.",
         ],
       },
       {
@@ -979,7 +979,7 @@ const terms: Record<Locale, LegalDoc> = {
         id: "links",
         title: "Links and client sites",
         blocks: [
-          "The site links to other sites, including apps Darb built for businesses. Those sites are run by the businesses themselves, under their own terms and privacy policies, and we are not responsible for their content or for any transaction you make with them. The example screens in the showroom illustrate the kind of apps we build.",
+          "The site links to other sites, including apps Darb built for businesses. Those sites are run by the businesses themselves, under their own terms and privacy policies, and we are not responsible for their content or for any transaction you make with them. In the showroom, client sites load inside a frame (iframe) directly from their own servers and are subject to their own terms and privacy policies.",
         ],
       },
       {
