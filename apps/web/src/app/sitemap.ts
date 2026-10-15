@@ -1,8 +1,17 @@
 import type { MetadataRoute } from "next";
 import { LOCALES } from "@darb/core";
-import { getPlaces, getSitemapBusinesses, getTaxonomy } from "@/lib/api";
+import {
+  getKindCounts,
+  getPlaceCounts,
+  getPlaces,
+  getSitemapBusinesses,
+  getTaxonomy,
+} from "@/lib/api";
 import { href, languageAlternates, paths } from "@/lib/routes";
 import { siteUrl } from "@/lib/site";
+import { sectorTotals, indexTaxonomy } from "@/lib/taxonomy";
+import { COUNTRY_SLUG } from "@/lib/levels";
+import { withBusinesses } from "@/lib/visible";
 
 /**
  * Rendered per request: a build-time prerender would need the API (the build never calls it, and an
@@ -15,17 +24,32 @@ export async function generateSitemaps() {
   return LOCALES.map((_, id) => ({ id }));
 }
 
-/** One sitemap per locale: places, place × sector, nationwide kinds, and real businesses. */
+/**
+ * One sitemap per locale: places, place × sector, nationwide kinds, and real businesses. Places,
+ * sectors and kinds without a published business are left out.
+ */
 export default async function sitemap(props: {
   id: Promise<string>;
 }): Promise<MetadataRoute.Sitemap> {
   const locale = LOCALES[Number(await props.id)] ?? "he";
   const site = siteUrl();
-  const [places, taxonomy, businesses] = await Promise.all([
+  const [livePlaces, counts, taxonomy, businesses, nationalCounts] = await Promise.all([
     getPlaces("live"),
+    getPlaceCounts(),
     getTaxonomy(),
     getSitemapBusinesses(),
+    getKindCounts(COUNTRY_SLUG),
   ]);
+  const places = withBusinesses(livePlaces, counts);
+  const index = indexTaxonomy(taxonomy);
+  const sectorsByPlace = new Map(
+    await Promise.all(
+      places.map(async (p) => {
+        const totals = sectorTotals(index, (await getKindCounts(p.slug)) ?? {});
+        return [p.slug, taxonomy.sectors.filter((s) => (totals.get(s.slug) ?? 0) > 0)] as const;
+      }),
+    ),
+  );
   const kinds = new Map(
     taxonomy.sectors.flatMap((s) => s.kinds.map((k) => [k.id, { kind: k.slug, sector: s.slug }])),
   );
@@ -43,8 +67,12 @@ export default async function sitemap(props: {
   return [
     entry(paths.home()),
     ...places.map((p) => entry(paths.place(p.slug))),
-    ...places.flatMap((p) => taxonomy.sectors.map((s) => entry(paths.sector(p.slug, s.slug)))),
-    ...[...kinds.values()].map((k) => entry(paths.nationalKind(k.kind))),
+    ...places.flatMap((p) =>
+      (sectorsByPlace.get(p.slug) ?? []).map((s) => entry(paths.sector(p.slug, s.slug))),
+    ),
+    ...[...kinds.values()]
+      .filter((k) => (nationalCounts?.[k.kind] ?? 0) > 0)
+      .map((k) => entry(paths.nationalKind(k.kind))),
     ...businesses.flatMap((b) => {
       const k = kinds.get(b.primaryKindId);
       return k ? [entry(paths.business(b.placeSlug, k.sector, k.kind, b.slug), b.updatedAt)] : [];

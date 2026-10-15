@@ -135,6 +135,14 @@ export type KindCountsDto = z.infer<typeof KindCountsSchema>;
 export const DensitySchema = z.record(z.string(), z.number().int().nonnegative());
 export type DensityDto = z.infer<typeof DensitySchema>;
 
+/**
+ * Published businesses (primary kind active) in each live place's subtree, by place slug, at any
+ * level (regions and neighbourhoods too). Every live place below the country is present, with 0
+ * when it has none. Lets browse pages hide places with nothing to show.
+ */
+export const PlaceCountsSchema = z.record(z.string(), z.number().int().nonnegative());
+export type PlaceCountsDto = z.infer<typeof PlaceCountsSchema>;
+
 export const NearestPlaceSchema = PlaceSchema.extend({
   distanceKm: z.number().nonnegative(),
   /** Published businesses of the kind there. */

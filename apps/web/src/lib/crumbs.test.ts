@@ -98,6 +98,13 @@ describe("subPlaceChips", () => {
       { key: "kiryat-haim", label: "Kiryat Haim", href: "/kiryat-haim", current: true },
     ]);
   });
+  it("drops neighbourhoods without businesses when given place counts", () => {
+    expect(subPlaceChips("en", haifa, [], { haifa: 3, "kiryat-haim": 0 })).toEqual([]);
+    expect(subPlaceChips("en", haifa, [], { "kiryat-haim": 2 }).map((c) => c.key)).toEqual([
+      "haifa",
+      "kiryat-haim",
+    ]);
+  });
   it("offers nothing for a place without neighbourhoods", () => {
     expect(subPlaceChips("en", { ...haifa, children: [] }, [])).toEqual([]);
   });

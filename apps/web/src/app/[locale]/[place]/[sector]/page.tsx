@@ -5,13 +5,14 @@ import { CityBar } from "@/components/CityBar";
 import { Door, DoorGrid } from "@/components/Door";
 import { StageData } from "@/components/StageData";
 import { SubPlaceChips } from "@/components/SubPlaceChips";
-import { getKindCounts } from "@/lib/api";
+import { getKindCounts, getPlaceCounts } from "@/lib/api";
 import { crumbsFor, subPlaceChips } from "@/lib/crumbs";
 import { formatNumber } from "@/lib/format";
 import { loadSectorLevel } from "@/lib/levels";
 import { pageMetadata } from "@/lib/metadata";
 import { href, paths } from "@/lib/routes";
 import { sectorStage } from "@/lib/stage-data";
+import { withBusinessesTaxonomy } from "@/lib/visible";
 import { metadataOrUnavailable, orUnavailable } from "@/lib/unavailable";
 
 export const revalidate = 86400;
@@ -36,7 +37,9 @@ export const generateMetadata = metadataOrUnavailable(async function metadata({
 export default orUnavailable(async function SectorPage({ params }: Props) {
   const { locale, place, sector, index } = await loadSectorLevel(await params);
   const counts = (await getKindCounts(place.slug)) ?? {};
-  const chips = subPlaceChips(locale, place, [sector.slug]);
+  const shown = withBusinessesTaxonomy(index, counts);
+  const doors = shown.doorsBySector.get(sector.id) ?? [];
+  const chips = subPlaceChips(locale, place, [sector.slug], await getPlaceCounts());
   return (
     <>
       <CityBar
@@ -44,7 +47,7 @@ export default orUnavailable(async function SectorPage({ params }: Props) {
         crumbs={crumbsFor(locale, { place, sector })}
         segments={paths.sector(place.slug, sector.slug)}
       />
-      <StageData level={sectorStage(locale, place, sector, index, counts)} />
+      <StageData level={sectorStage(locale, place, sector, shown, counts)} />
       <main id="main" className="frame reveal">
         <h1 id="main-heading" tabIndex={-1} className="page-title">
           {pickText(sector.name, locale)}
@@ -54,7 +57,7 @@ export default orUnavailable(async function SectorPage({ params }: Props) {
           <SubPlaceChips label={t(locale, "neighbourhoods")} chips={chips} />
         ) : null}
         <DoorGrid label={pickText(sector.name, locale)}>
-          {(index.doorsBySector.get(sector.id) ?? []).map((kind) => {
+          {doors.map((kind) => {
             const count = counts[kind.slug] ?? 0;
             const countText = formatNumber(count, locale);
             return (
@@ -71,6 +74,7 @@ export default orUnavailable(async function SectorPage({ params }: Props) {
             );
           })}
         </DoorGrid>
+        {doors.length === 0 ? <p className="lede">{t(locale, "nothingListedYet")}</p> : null}
       </main>
     </>
   );

@@ -7,7 +7,7 @@ import { Door, DoorGrid } from "@/components/Door";
 import { PlaceIndex } from "@/components/PlaceIndex";
 import { StageData } from "@/components/StageData";
 import { SubPlaceChips } from "@/components/SubPlaceChips";
-import { getKindCounts, getNearestPlace } from "@/lib/api";
+import { getKindCounts, getNearestPlace, getPlaceCounts } from "@/lib/api";
 import { crumbsFor, subPlaceChips } from "@/lib/crumbs";
 import { formatNumber } from "@/lib/format";
 import { loadPlaceLevel } from "@/lib/levels";
@@ -15,6 +15,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { href, paths } from "@/lib/routes";
 import { placeStage, soonStage } from "@/lib/stage-data";
 import { sectorTotals } from "@/lib/taxonomy";
+import { withBusinessesTaxonomy } from "@/lib/visible";
 import { metadataOrUnavailable, orUnavailable } from "@/lib/unavailable";
 
 export const revalidate = 86400;
@@ -71,8 +72,10 @@ export default orUnavailable(async function PlacePage({ params }: Props) {
     );
   }
 
-  const totals = sectorTotals(index, (await getKindCounts(place.slug)) ?? {});
-  const chips = subPlaceChips(locale, place, []);
+  const counts = (await getKindCounts(place.slug)) ?? {};
+  const totals = sectorTotals(index, counts);
+  const shown = withBusinessesTaxonomy(index, counts);
+  const chips = subPlaceChips(locale, place, [], await getPlaceCounts());
   const settlements =
     place.type === "region"
       ? place.children.filter((c) => c.status === "live" && c.type !== "neighbourhood")
@@ -80,7 +83,7 @@ export default orUnavailable(async function PlacePage({ params }: Props) {
   return (
     <>
       {bar}
-      <StageData level={placeStage(locale, place, index, totals)} />
+      <StageData level={placeStage(locale, place, shown, totals)} />
       <main id="main" className="frame reveal">
         <h1 id="main-heading" tabIndex={-1} className="page-title">
           {name}
@@ -89,7 +92,7 @@ export default orUnavailable(async function PlacePage({ params }: Props) {
           <SubPlaceChips label={t(locale, "neighbourhoods")} chips={chips} />
         ) : null}
         <DoorGrid label={t(locale, "allKinds")}>
-          {index.sectors.map((sector) => {
+          {shown.sectors.map((sector) => {
             const count = totals.get(sector.slug) ?? 0;
             const countText = formatNumber(count, locale);
             return (
@@ -107,6 +110,9 @@ export default orUnavailable(async function PlacePage({ params }: Props) {
             );
           })}
         </DoorGrid>
+        {shown.sectors.length === 0 ? (
+          <p className="lede">{t(locale, "nothingListedYet")}</p>
+        ) : null}
         {settlements.length > 0 ? (
           <PlaceIndex locale={locale} regions={[{ slug: place.slug, name, places: settlements }]} />
         ) : null}

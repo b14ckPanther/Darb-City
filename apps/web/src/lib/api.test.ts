@@ -7,6 +7,7 @@ import {
   getBusinesses,
   getDensity,
   getKindCounts,
+  getPlaceCounts,
   getNearestPlace,
   getNearestPlacesWithKind,
   getPlace,
@@ -125,6 +126,17 @@ describe("api client", () => {
     expect(await getDensity()).toEqual({ sakhnin: 4 });
     const [url, init] = fetchMock.mock.calls[0]!;
     expect(String(url)).toBe("http://api.test/density");
+    expect((init as RequestInit & { next?: unknown }).next).toEqual({
+      revalidate: 86400,
+      tags: ["businesses", "places"],
+    });
+  });
+
+  it("fetches place counts with the businesses and places tags", async () => {
+    fetchMock.mockResolvedValue(Response.json({ sakhnin: 4, haifa: 0 }));
+    expect(await getPlaceCounts()).toEqual({ sakhnin: 4, haifa: 0 });
+    const [url, init] = fetchMock.mock.calls[0]!;
+    expect(String(url)).toBe("http://api.test/place-counts");
     expect((init as RequestInit & { next?: unknown }).next).toEqual({
       revalidate: 86400,
       tags: ["businesses", "places"],
