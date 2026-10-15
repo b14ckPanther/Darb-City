@@ -66,7 +66,7 @@ export const footer: Record<Locale, FooterCopy> = {
     darbTitle: "דרב",
     founderTitle: "האנשים מאחורי דרב",
     roles: { noor: 'מייסד ומנכ"ל', lama: "שותפה מייסדת ו-CPO" },
-    links: { explore: "העיר", search: "חיפוש", showroom: "תצוגה", pricing: "תוכניות ומחירים" },
+    links: { explore: "המפה", search: "חיפוש", showroom: "תצוגה", pricing: "תוכניות ומחירים" },
     rights: "כל הזכויות שמורות",
     languages: "שפה",
     legal: { accessibility: "הצהרת נגישות", terms: "תנאי שימוש", privacy: "מדיניות פרטיות" },
@@ -78,7 +78,7 @@ export const footer: Record<Locale, FooterCopy> = {
     darbTitle: "درب",
     founderTitle: "الناس ورا درب",
     roles: { noor: "المؤسس والـ CEO", lama: "شريكة مؤسسة والـ CPO" },
-    links: { explore: "البلد", search: "دوّر", showroom: "المعرض", pricing: "الخطط والأسعار" },
+    links: { explore: "الخريطة", search: "دوّر", showroom: "المعرض", pricing: "الخطط والأسعار" },
     rights: "جميع الحقوق محفوظة",
     languages: "اللغة",
     legal: {
@@ -95,7 +95,7 @@ export const footer: Record<Locale, FooterCopy> = {
     founderTitle: "The people behind Darb",
     roles: { noor: "Founder & CEO", lama: "Co-founder & CPO" },
     links: {
-      explore: "The city",
+      explore: "Map",
       search: "Search",
       showroom: "Showroom",
       pricing: "Plans & pricing",
