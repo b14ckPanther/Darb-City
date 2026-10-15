@@ -42,6 +42,12 @@ it("has every page text in every language, the same FAQ in each, and never the w
   expect(JSON.stringify([plans, texts])).not.toMatch(/halal|חלאל|حلال/i);
 });
 
+it("never names languages: more are coming, so the copy says any language", () => {
+  expect(JSON.stringify([plans, texts])).not.toMatch(
+    /Hebrew|Arabic|English|עברית|ערבית|אנגלית|العربية|العبرية|الإنجليزية/,
+  );
+});
+
 it("never uses long dashes or the maqaf: the owner's copy uses a hyphen, a comma or a period", () => {
   expect(JSON.stringify([plans, texts])).not.toMatch(/[\u2013\u2014\u05be]/);
 });
