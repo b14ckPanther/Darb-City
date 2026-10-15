@@ -6,7 +6,7 @@
 |---|---|---|
 | Custom ISR cache handler (`apps/web/cache-handler.mjs`) | Not used. Vercel's platform cache replaces it. | Used. It is a private Next internal pinned to 16.3.6 and must be re-verified on every Next upgrade. |
 | API down, page already cached | Kept, but only if the render **throws**: Vercel keeps the last good copy when regeneration fails. Task 18 makes `orUnavailable` rethrow on Vercel and raises the time-based revalidate to one day, so regeneration is rare (freshness comes from tag revalidation and client-side open state). | Kept. The handler refuses to store the retry view. |
-| API down, page never cached | A 500 from the platform. Mitigated by a post-deploy warm-up of every level 0–2 URL in the sitemap (Task 29). | A retry view (200, not cached). |
+| API down, page never cached | A 500 from the platform. Mitigated by a post-deploy warm-up of the home and place pages (levels 0–1) in the sitemap (Task 29). | A retry view (200, not cached). |
 | Tiles on R2 | Same: browser to R2 directly, with CORS. | Same. |
 | Edge cache | Global Vercel CDN, so cached HTML is served from the nearest PoP (Frankfurt or Paris for Israel). | One origin region (Amsterdam), about 70 ms RTT from Israel, with no HTML CDN unless Cloudflare proxying is added (another moving part). |
 | Revalidation across instances | Platform-wide `revalidateTag`. | The file-system cache is per replica, so it is correct only with **one** web replica. |
@@ -26,7 +26,7 @@
 1. PR: GitHub CI (typecheck, lint, unit, API integration, search quality, budgets, e2e and axe). Vercel builds a protected preview that talks to the **staging** API.
 2. Merge to `main`, after CI is green (branch protection):
    - Railway production and staging run `pnpm --filter @darb/api exec prisma migrate deploy` once (pre-deploy), then start the new API. A failed migration keeps the old API running.
-   - Vercel builds production. `warm.yml` renders every level 0–2 page once the deployment succeeds. It stays off until the cut-over sets the repository variable `WARM_SITE_URL=https://darb.co.il` (Settings → Secrets and variables → Actions → Variables).
+   - Vercel builds production. `warm.yml` renders the home and place pages (levels 0–1, about 1,600) once the deployment succeeds. It stays off until the cut-over sets the repository variable `WARM_SITE_URL=https://darb.co.il` (Settings → Secrets and variables → Actions → Variables).
 3. Data: `Seed and reindex` (Actions → Run workflow) seeds and/or reindexes staging or production. Production needs the owner's approval in the GitHub Environment.
 4. Migrations are expand/contract: add columns and endpoints first, deploy, then remove old ones in a later release. A preview web never needs an unreleased API change.
 
