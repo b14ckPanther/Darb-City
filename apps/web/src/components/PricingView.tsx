@@ -64,29 +64,37 @@ function PlanCard({
   plan,
   pricing,
   locale,
+  wide = false,
 }: {
   plan: PlanDto;
   pricing: PricingDto;
   locale: Locale;
+  wide?: boolean;
 }) {
   const badge = plan.highlighted ? pricingText(pricing.texts, "pricing.badge", locale) : "";
   const tagline = pickText(plan.tagline, locale);
   const finePrint = pickText(plan.finePrint, locale);
   const features = plan.features[locale].length > 0 ? plan.features[locale] : plan.features.en;
   return (
-    <li className={plan.highlighted ? `${styles.card} ${styles.featured}` : styles.card}>
+    <li
+      className={[styles.card, plan.highlighted ? styles.featured : "", wide ? styles.wide : ""]
+        .filter(Boolean)
+        .join(" ")}
+    >
       {plan.highlighted ? <span className={styles.edge} aria-hidden="true" /> : null}
       {badge ? <p className={styles.badge}>{badge}</p> : null}
-      <h2 className={styles.name}>{pickText(plan.name, locale)}</h2>
-      {tagline ? <p className={styles.tagline}>{tagline}</p> : null}
-      <Price plan={plan} pricing={pricing} locale={locale} />
-      <a
-        href={plan.ctaHref}
-        className={plan.highlighted ? `${styles.cta} ${styles.ctaPrimary}` : styles.cta}
-        {...external(plan.ctaHref)}
-      >
-        {pickText(plan.ctaLabel, locale)}
-      </a>
+      <div className={styles.head}>
+        <h2 className={styles.name}>{pickText(plan.name, locale)}</h2>
+        {tagline ? <p className={styles.tagline}>{tagline}</p> : null}
+        <Price plan={plan} pricing={pricing} locale={locale} />
+        <a
+          href={plan.ctaHref}
+          className={plan.highlighted ? `${styles.cta} ${styles.ctaPrimary}` : styles.cta}
+          {...external(plan.ctaHref)}
+        >
+          {pickText(plan.ctaLabel, locale)}
+        </a>
+      </div>
       {features.length > 0 ? (
         <ul className={styles.features} aria-label={t(locale, "included")}>
           {features.map((f) => (
@@ -110,6 +118,9 @@ export function PricingView({ locale, pricing }: { locale: Locale; pricing: Pric
   const terms = textLines(text("pricing.terms"));
   const faq = faqEntries(text("pricing.faq"));
   const contactTitle = text("pricing.contactTitle");
+  // The free plan stands alone on top, a door anyone can walk through; the paid ones sit under it.
+  const free = pricing.plans.filter((p) => p.monthly === 0);
+  const paid = pricing.plans.filter((p) => p.monthly !== 0);
   return (
     <>
       <header className={styles.hero}>
@@ -120,11 +131,22 @@ export function PricingView({ locale, pricing }: { locale: Locale; pricing: Pric
         {intro ? <p className={`lede ${styles.intro}`}>{intro}</p> : null}
       </header>
       {pricing.plans.length > 0 ? (
-        <ul className={styles.plans}>
-          {pricing.plans.map((plan) => (
-            <PlanCard key={plan.id} plan={plan} pricing={pricing} locale={locale} />
-          ))}
-        </ul>
+        <div className={styles.plans}>
+          {free.length > 0 ? (
+            <ul className={styles.freeRow}>
+              {free.map((plan) => (
+                <PlanCard key={plan.id} plan={plan} pricing={pricing} locale={locale} wide />
+              ))}
+            </ul>
+          ) : null}
+          {paid.length > 0 ? (
+            <ul className={styles.paidRow} data-count={paid.length}>
+              {paid.map((plan) => (
+                <PlanCard key={plan.id} plan={plan} pricing={pricing} locale={locale} />
+              ))}
+            </ul>
+          ) : null}
+        </div>
       ) : (
         <p className="quiet">{t(locale, "pricingSoon")}</p>
       )}

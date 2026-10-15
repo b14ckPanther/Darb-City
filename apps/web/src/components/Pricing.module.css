@@ -55,15 +55,68 @@
 
 .plans {
   display: grid;
-  /* Two roomy columns at most: four narrow cards made the features wrap word by word. */
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
-  max-inline-size: 960px;
-  margin-inline: auto;
+  gap: var(--space-6);
+  max-inline-size: 1180px;
+  margin: var(--space-5) auto var(--space-8);
+}
+
+.freeRow,
+.paidRow {
+  display: grid;
   gap: var(--space-4);
-  align-items: stretch;
-  margin: var(--space-5) 0 var(--space-8);
+  margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.paidRow {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  align-items: stretch;
+}
+
+/* Three paid plans side by side on wide screens, the featured one in the middle and lifted. */
+@media (min-width: 1000px) {
+  .paidRow[data-count="3"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding-block-start: var(--space-4);
+  }
+
+  .paidRow[data-count="3"] > .featured {
+    margin-block-start: calc(var(--space-4) * -1);
+  }
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* The free plan: one wide card, the offer at the start and what it includes beside it. */
+@media (min-width: 900px) {
+  .card.wide {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    column-gap: var(--space-7);
+    align-items: center;
+    padding: var(--space-6);
+  }
+
+  .wide .tagline {
+    min-block-size: 0;
+  }
+
+  .wide .features {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 0 0 0;
+    padding-inline-start: var(--space-6);
+    border-block-start: 0;
+    border-inline-start: 1px solid var(--line-soft);
+  }
+
+  .wide .finePrint {
+    grid-column: 1 / -1;
+  }
 }
 
 .card {
