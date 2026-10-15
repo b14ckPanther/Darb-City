@@ -27,6 +27,7 @@ export interface ShowroomCopy {
   frameTitle: string;
   /** Alt text for a project's screenshots, "{name}" filled in. */
   shotAlt: string;
+  turn: string;
   clients: ShowroomClient[];
   cta: { title: string; body: string; talk: string; pricing: string };
 }
@@ -53,6 +54,7 @@ export const showroom: Record<Locale, ShowroomCopy> = {
     devices: { laptop: "מחשב", phone: "טלפון" },
     frameTitle: "{name} בתצוגה חיה",
     shotAlt: "האתר של {name}",
+    turn: "סובבו את הטלפון לתצוגה גדולה",
     clients: [
       {
         id: "caramel",
@@ -101,6 +103,7 @@ export const showroom: Record<Locale, ShowroomCopy> = {
     devices: { laptop: "كمبيوتر", phone: "تلفون" },
     frameTitle: "{name} لايف",
     shotAlt: "موقع {name}",
+    turn: "لفّ التلفون عشان تشوفه أكبر",
     clients: [
       {
         id: "caramel",
@@ -149,6 +152,7 @@ export const showroom: Record<Locale, ShowroomCopy> = {
     devices: { laptop: "Laptop", phone: "Phone" },
     frameTitle: "{name}, live preview",
     shotAlt: "{name}'s website",
+    turn: "Turn your phone for a bigger view",
     clients: [
       {
         id: "caramel",
