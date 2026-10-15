@@ -2,11 +2,19 @@ import { initContract } from "@ts-rest/core";
 import { isReservedSlug, PLACE_STATUSES, PLACE_TYPES, TEMPLATES, TIERS } from "@darb/core";
 import { z } from "zod";
 import { DietarySchema, HoursSchema, LocalizedSchema, SlugSchema } from "./schemas.js";
+import {
+  CtaHrefSchema,
+  LocalizedListSchema,
+  LocalizedOptionalSchema,
+  PlanSchema,
+  ShekelsSchema,
+  SiteTextKeySchema,
+} from "./pricing.js";
 import { MissingReportSchema, ReportQuerySchema } from "./search.js";
 
 const c = initContract();
 
-export const ADMIN_ENTITIES = ["place", "sector", "kind", "business"] as const;
+export const ADMIN_ENTITIES = ["place", "sector", "kind", "business", "plan", "text"] as const;
 export type AdminEntity = (typeof ADMIN_ENTITIES)[number];
 
 const id = z.string().uuid();
@@ -222,6 +230,51 @@ export const AdminStatusSchema = z.object({
   immediate: z.boolean().optional(),
 });
 
+// Plans (/pricing)
+const PlanStatus = z.enum(["live", "hidden"]);
+export const AdminPlanSchema = PlanSchema.extend({
+  status: PlanStatus,
+  editedAt: stamp,
+  seedSource,
+});
+const planFields = z.object({
+  name: LocalizedSchema,
+  tagline: LocalizedOptionalSchema,
+  monthly: ShekelsSchema.nullable(),
+  setup: ShekelsSchema.nullable(),
+  priceNote: LocalizedOptionalSchema,
+  features: LocalizedListSchema,
+  highlighted: z.boolean(),
+  ctaLabel: LocalizedSchema,
+  ctaHref: CtaHrefSchema,
+  finePrint: LocalizedOptionalSchema,
+  order: z.number().int().min(0).max(999),
+  status: PlanStatus,
+});
+/** A new plan starts hidden unless the body says live: it is read over before anyone sees it. */
+export const AdminPlanCreateSchema = planFields
+  .extend({ slug: SlugSchema, status: PlanStatus.default("hidden") })
+  .strict();
+export const AdminPlanPatchSchema = planFields.partial().strict();
+
+// Site texts (page copy by key)
+export const AdminTextSchema = z.object({
+  id,
+  key: SiteTextKeySchema,
+  value: LocalizedOptionalSchema,
+  editedAt: stamp,
+  seedSource,
+});
+export const AdminTextPatchSchema = z
+  .object({
+    value: z.object({
+      he: z.string().max(4000).optional(),
+      ar: z.string().max(4000).optional(),
+      en: z.string().max(4000).optional(),
+    }),
+  })
+  .strict();
+
 // Audit and identity
 export const AuditRowSchema = z.object({
   id,
@@ -251,6 +304,11 @@ export type AdminStatusDto = z.infer<typeof AdminStatusSchema>;
 export type AdminListQueryDto = z.infer<typeof AdminListQuerySchema>;
 export type AdminBusinessListQueryDto = z.infer<typeof AdminBusinessListQuerySchema>;
 export type AdminKindListQueryDto = z.infer<typeof AdminKindListQuerySchema>;
+export type AdminPlanDto = z.infer<typeof AdminPlanSchema>;
+export type AdminPlanCreateDto = z.infer<typeof AdminPlanCreateSchema>;
+export type AdminPlanPatchDto = z.infer<typeof AdminPlanPatchSchema>;
+export type AdminTextDto = z.infer<typeof AdminTextSchema>;
+export type AdminTextPatchDto = z.infer<typeof AdminTextPatchSchema>;
 export type AuditRowDto = z.infer<typeof AuditRowSchema>;
 export type AdminErrorDto = z.infer<typeof AdminErrorSchema>;
 
@@ -415,6 +473,46 @@ export const adminContract = c.router({
       pathParams: byId,
       body: empty,
       responses: { 200: z.object({ deleted: z.literal(true), ...revalidated }), ...writeErrors },
+    },
+  }),
+  plans: c.router({
+    list: {
+      method: "GET",
+      path: "/admin/plans",
+      responses: { 200: z.array(AdminPlanSchema), ...guarded },
+    },
+    get: {
+      method: "GET",
+      path: "/admin/plans/:id",
+      pathParams: byId,
+      responses: { 200: AdminPlanSchema, 404: AdminErrorSchema, ...guarded },
+    },
+    create: {
+      method: "POST",
+      path: "/admin/plans",
+      body: AdminPlanCreateSchema,
+      responses: { 201: AdminPlanSchema, ...writeErrors },
+    },
+    update: {
+      method: "PATCH",
+      path: "/admin/plans/:id",
+      pathParams: byId,
+      body: AdminPlanPatchSchema,
+      responses: { 200: AdminPlanSchema, ...writeErrors },
+    },
+  }),
+  texts: c.router({
+    list: {
+      method: "GET",
+      path: "/admin/texts",
+      responses: { 200: z.array(AdminTextSchema), ...guarded },
+    },
+    update: {
+      method: "PATCH",
+      path: "/admin/texts/:id",
+      pathParams: byId,
+      body: AdminTextPatchSchema,
+      responses: { 200: AdminTextSchema, ...writeErrors },
     },
   }),
 });

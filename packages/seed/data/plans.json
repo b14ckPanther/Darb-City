@@ -1,0 +1,239 @@
+[
+  {
+    "slug": "presence",
+    "order": 1,
+    "status": "live",
+    "name": {
+      "he": "נוכחות",
+      "ar": "حضور",
+      "en": "Presence"
+    },
+    "tagline": {
+      "he": "שימצאו אתכם ברגע שמחפשים.",
+      "ar": "خلّي الناس يلاقوك أول ما يدوّروا.",
+      "en": "Be found the moment someone looks."
+    },
+    "monthly": 0,
+    "setup": null,
+    "priceNote": {
+      "he": "בלי כרטיס אשראי",
+      "ar": "بدون ما تحط بطاقة",
+      "en": "no card needed"
+    },
+    "features": {
+      "he": [
+        "העסק שלכם בדרב, בעיר, במחוז ובקטגוריה שלו",
+        "החיפוש החכם מבוסס ה-AI מוצא אתכם בכל שפה, גם כשמתארים במילים שלהם מה צריך",
+        "נעץ משלכם על המפה החיה",
+        "שעות פתיחה חיות: פתוח או סגור, ממש עכשיו",
+        "התקשרות, וואטסאפ וניווט, בלחיצה אחת"
+      ],
+      "ar": [
+        "مصلحتك على درب، ببلدها وبمنطقتها وبفئتها",
+        "البحث الذكي بالـAI بلاقيك بأي لغة، حتى لما الناس يوصفوا شو بدهم بكلامهم",
+        "الدبوس تبعك على الخريطة الحية",
+        "ساعات دوام حية: فاتح ولا مسكّر، هلأ",
+        "اتصال، واتساب ووصف الطريق، بكبسة وحدة"
+      ],
+      "en": [
+        "Your business on Darb, in its town, district and category",
+        "Found by AI smart search in any language, even when people describe what they need in their own words",
+        "Your pin on the live map",
+        "Live opening hours: open or closed, right now",
+        "Call, WhatsApp and directions, one tap each"
+      ]
+    },
+    "highlighted": false,
+    "ctaLabel": {
+      "he": "הכניסו אותי לדרב",
+      "ar": "حطّني على درب",
+      "en": "Put me on Darb"
+    },
+    "ctaHref": "mailto:founder@darb.co.il?subject=Darb%20Presence",
+    "finePrint": {
+      "he": "בלי חוזה ובלי התחייבות. משהו לא מדויק ברישום? כתבו לנו ונתקן.",
+      "ar": "بلا عقد وبلا التزام. في إشي غلط بمعلوماتك؟ إكتبلنا ومنصلّحه.",
+      "en": "No contract, no commitment. Something wrong in your listing? Write to us and we fix it."
+    }
+  },
+  {
+    "slug": "spotlight",
+    "order": 2,
+    "status": "live",
+    "name": {
+      "he": "זרקור",
+      "ar": "تحت الضو",
+      "en": "Spotlight"
+    },
+    "tagline": {
+      "he": "לבלוט בעיר שלכם, בכל שפה.",
+      "ar": "إبرز ببلدك، بكل لغة.",
+      "en": "Stand out in your town, in every language."
+    },
+    "monthly": 89,
+    "setup": null,
+    "priceNote": {
+      "he": "לחודש",
+      "ar": "بالشهر",
+      "en": "per month"
+    },
+    "features": {
+      "he": [
+        "כל מה שיש בנוכחות",
+        "פרופיל רב לשוני שנכתב עם AI ומלוטש על ידינו",
+        "התמונות שלכם, במקום הכי בולט",
+        "מקום מודגש בעיר שלכם ובקטגוריה שלכם",
+        "דוח חודשי: מה חיפשו לידכם, ומה לא מצאו"
+      ],
+      "ar": [
+        "كل إشي بحضور",
+        "بروفايل بكل اللغات، مكتوب بالـAI ومنقّح بإيدينا",
+        "صورك، بأول الصفحة",
+        "مكان مميز ببلدك وبفئتك",
+        "تقرير كل شهر: شو دوّروا الناس جنبك، وشو ما لاقوا"
+      ],
+      "en": [
+        "Everything in Presence",
+        "A multilingual profile written with AI and polished by us",
+        "Your photos, front and centre",
+        "Featured placement in your town and your category",
+        "A monthly note on what people searched for near you, and what they couldn't find"
+      ]
+    },
+    "highlighted": false,
+    "ctaLabel": {
+      "he": "שימו עליי זרקור",
+      "ar": "ضوّي عليّ",
+      "en": "Light me up"
+    },
+    "ctaHref": "mailto:founder@darb.co.il?subject=Darb%20Spotlight",
+    "finePrint": {
+      "he": "חיוב חודשי. מבטלים מתי שרוצים, והרישום בנוכחות נשאר.",
+      "ar": "الدفع كل شهر. بتلغي وقت ما بدك، وبضل إدراجك بحضور.",
+      "en": "Billed monthly. Cancel any time and your Presence listing stays."
+    }
+  },
+  {
+    "slug": "signature",
+    "order": 3,
+    "status": "live",
+    "name": {
+      "he": "חותם",
+      "ar": "بصمة",
+      "en": "Signature"
+    },
+    "tagline": {
+      "he": "אפליקציה שאין לאף עסק אחר בעולם.",
+      "ar": "تطبيق ما حدا بالعالم عنده متله.",
+      "en": "An app no other business on earth has."
+    },
+    "monthly": 349,
+    "setup": null,
+    "priceNote": {
+      "he": "לחודש, מחיר התחלתי · ועוד הקמה חד פעמית",
+      "ar": "بالشهر، سعر بداية · وفوقه تجهيز مرة وحدة",
+      "en": "per month, starting price · plus a one-time setup"
+    },
+    "features": {
+      "he": [
+        "כל מה שיש בזרקור",
+        "אפליקציית ווב אחת ויחידה שעוצבה רק בשבילכם, כמו של קרמל",
+        "תפריט, קטלוג או תורים שנבנו סביב הדרך שבה העסק שלכם באמת עובד",
+        "תנועה ואינטראקציות שנוצרו למותג שלכם, לא נבחרו מתוך ערכת עיצוב",
+        "דומיין משלכם, אחסון ואבטחה, הכול עלינו",
+        "עדכונים במשפט אחד: אתם אומרים, ה-AI מנסח, אנחנו בודקים, וזה באוויר",
+        "אף פעם לא תבנית. לאף אחד אחר לא יהיה העיצוב שלכם"
+      ],
+      "ar": [
+        "كل إشي بتحت الضو",
+        "تطبيق ويب واحد ووحيد، مصمم إلك لحالك، زي تبع كراميل",
+        "منيو، كتالوج أو حجوزات مبنية على الطريقة اللي بتشتغل فيها مصلحتك عنجد",
+        "حركة وتفاعلات معمولة لعلامتك، مش منقّاة من قالب جاهز",
+        "دومين إلك، استضافة وحماية، كله علينا",
+        "تحديثات بجملة وحدة: إنت بتحكي، الـAI بكتب، إحنا بنراجع، وبصير أونلاين",
+        "عمره ما رح يكون قالب. ما حدا غيرك رح يكون عنده التصميم تبعك"
+      ],
+      "en": [
+        "Everything in Spotlight",
+        "A one-of-a-kind web app designed only for you, like Caramel's",
+        "A menu, catalogue or booking flow shaped around how your business really works",
+        "Motion and interactions made for your brand, never picked from a theme",
+        "Your own domain, hosting and security, all handled",
+        "Updates in one sentence: you say it, AI drafts it, we check it, it's live",
+        "Never a template. Nobody else will ever have your design"
+      ]
+    },
+    "highlighted": true,
+    "ctaLabel": {
+      "he": "עצבו לי אפליקציה",
+      "ar": "صمّمولي تطبيقي",
+      "en": "Design my app"
+    },
+    "ctaHref": "mailto:founder@darb.co.il?subject=Darb%20Signature",
+    "finePrint": {
+      "he": "ההקמה מכסה עיצוב ובנייה ומתומחרת אחרי שיחה בחינם. המחיר החודשי תלוי בגודל האפליקציה, ואתם רואים את הסכום המדויק לפני שמתחילים.",
+      "ar": "التجهيز بشمل التصميم والبناء، ومنسعّره بعد مكالمة ببلاش. السعر الشهري حسب حجم التطبيق، وبتشوف المبلغ بالضبط قبل ما نبلّش.",
+      "en": "Setup covers design and build and is quoted after a free call. The monthly price depends on the size of your app; you see the exact figure before we start."
+    }
+  },
+  {
+    "slug": "ecosystem",
+    "order": 4,
+    "status": "live",
+    "name": {
+      "he": "אקוסיסטם",
+      "ar": "منظومة",
+      "en": "Ecosystem"
+    },
+    "tagline": {
+      "he": "כל העסק שלכם, כעולם שלם של אפליקציות.",
+      "ar": "كل مصلحتك، عالم كامل من التطبيقات.",
+      "en": "Your whole business, as its own world of apps."
+    },
+    "monthly": null,
+    "setup": null,
+    "priceNote": {
+      "he": "הצעת מחיר אחרי שיחה אחת בחינם",
+      "ar": "عرض سعر بعد مكالمة وحدة ببلاش",
+      "en": "a quote after one free call"
+    },
+    "features": {
+      "he": [
+        "כל מה שיש בחותם",
+        "אפליקציות נייטיב ל-iOS ול-Android, בשם שלכם",
+        "קונסיירז' AI שעונה, מקבל הזמנות וקובע תורים, יום ולילה",
+        "לוח ניהול משלכם לתפריטים, מחירים, צוות ולקוחות",
+        "חיבור לכלים שכבר עובדים אצלכם: תשלומים, קופה, יומנים ומשלוחים",
+        "שפת מותג שלמה: צבעים, טיפוגרפיה וקול"
+      ],
+      "ar": [
+        "كل إشي ببصمة",
+        "تطبيقات أصلية لـ iOS و Android، باسمك",
+        "مساعد AI بجاوب، بستقبل طلبيات وبحجز دور، ليل نهار",
+        "لوحة إدارة إلك للمنيو، الأسعار، الطاقم والزباين",
+        "ربط مع الأدوات اللي بتشتغل فيها: دفع، كاشير، مواعيد وتوصيل",
+        "هوية كاملة لعلامتك: ألوان، خطوط وصوت"
+      ],
+      "en": [
+        "Everything in Signature",
+        "Native iOS and Android apps, published under your name",
+        "An AI concierge that answers, takes orders and books, day and night",
+        "Your own admin dashboard for menus, prices, staff and customers",
+        "Integrations with the tools you already run: payments, till, calendars, delivery",
+        "A complete brand system: colour, type and voice"
+      ]
+    },
+    "highlighted": false,
+    "ctaLabel": {
+      "he": "בואו נבנה את זה יחד",
+      "ar": "يلا نبنيه سوا",
+      "en": "Let's build it together"
+    },
+    "ctaHref": "mailto:founder@darb.co.il?subject=Darb%20Ecosystem",
+    "finePrint": {
+      "he": "נבנה בשלבים ומתומחר לפי שלב, כך שמשלמים רק על מה שכבר באוויר.",
+      "ar": "منبنيه على مراحل ومنسعّر كل مرحلة، يعني بتدفع بس على اللي صار أونلاين.",
+      "en": "Built in stages and priced per stage, so you only pay for what is already live."
+    }
+  }
+]

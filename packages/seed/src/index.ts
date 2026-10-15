@@ -5,8 +5,10 @@ import type {
   SeedBusinessRecord,
   SeedKind,
   SeedPlace,
+  SeedPlan,
   SeedScreen,
   SeedSector,
+  SeedText,
 } from "./types.js";
 
 export * from "./types.js";
@@ -22,6 +24,9 @@ export const loadScreens = (): Record<string, SeedScreen> => ({
   ...read<Record<string, SeedScreen>>("extra-screens.json"),
 });
 export const loadPlaces = () => read<SeedPlace[]>("places.json");
+/** The pricing page: plans, and its copy by key. */
+export const loadPlans = () => read<SeedPlan[]>("plans.json");
+export const loadTexts = () => read<SeedText[]>("texts.json");
 /** Darb's real clients (spec §11): darb tier, own experience screens, owner-supplied details. */
 export const loadClients = (): { brands: SeedBrand[]; businesses: SeedBusiness[] } =>
   read<{ brands: SeedBrand[]; businesses: SeedBusiness[] }>("clients.json");

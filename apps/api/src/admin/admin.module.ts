@@ -8,8 +8,10 @@ import { ExperienceValidator } from "./experience.js";
 import { AdminMiscController, MiscAdmin } from "./misc.admin.js";
 import { AdminKindsController, KindsAdmin } from "./kinds.admin.js";
 import { AdminPlacesController, PlacesAdmin } from "./places.admin.js";
+import { AdminPlansController, PlansAdmin } from "./plans.admin.js";
 import { AdminSectorsController, SectorsAdmin } from "./sectors.admin.js";
 import { WebRevalidator } from "./revalidator.js";
+import { AdminTextsController, TextsAdmin } from "./texts.admin.js";
 
 /** Spec §6.2 Admin: guarded by Clerk and the admin flag. */
 @Module({
@@ -20,6 +22,8 @@ import { WebRevalidator } from "./revalidator.js";
     AdminKindsController,
     AdminBusinessesController,
     AdminMiscController,
+    AdminPlansController,
+    AdminTextsController,
   ],
   providers: [
     AdminWriter,
@@ -30,6 +34,8 @@ import { WebRevalidator } from "./revalidator.js";
     BusinessesAdmin,
     ExperienceValidator,
     MiscAdmin,
+    PlansAdmin,
+    TextsAdmin,
     ReportRepository,
   ],
   exports: [AdminWriter, WebRevalidator],

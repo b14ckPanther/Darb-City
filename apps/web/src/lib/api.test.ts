@@ -11,6 +11,7 @@ import {
   getNearestPlace,
   getNearestPlacesWithKind,
   getPlace,
+  getPricing,
   getSuggestions,
   postSearch,
 } from "./api";
@@ -141,6 +142,20 @@ describe("api client", () => {
       revalidate: 86400,
       tags: ["businesses", "places"],
     });
+  });
+
+  it("fetches pricing with the pricing tag, and throws when the API is down", async () => {
+    const page = { plans: [], texts: { "pricing.title": { en: "Pricing" } } };
+    fetchMock.mockResolvedValue(Response.json(page));
+    expect(await getPricing()).toEqual(page);
+    const [url, init] = fetchMock.mock.calls[0]!;
+    expect(String(url)).toBe("http://api.test/pricing");
+    expect((init as RequestInit & { next?: unknown }).next).toEqual({
+      revalidate: 86400,
+      tags: ["pricing"],
+    });
+    fetchMock.mockRejectedValue(new TypeError("fetch failed"));
+    await expect(getPricing()).rejects.toBeInstanceOf(ApiUnavailableError);
   });
 });
 

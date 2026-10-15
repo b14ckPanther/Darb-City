@@ -29,6 +29,7 @@ import {
   TooManySchema,
 } from "./search.js";
 import { adminContract } from "./admin.js";
+import { PricingSchema } from "./pricing.js";
 
 const c = initContract();
 
@@ -179,6 +180,10 @@ export const contract = c.router({
       path: "/search/instant-index",
       responses: { 200: InstantIndexSchema },
     },
+  },
+  pricing: {
+    /** Live plans in order, and the page's copy. */
+    get: { method: "GET", path: "/pricing", responses: { 200: PricingSchema } },
   },
   sitemap: {
     businesses: {

@@ -5,6 +5,7 @@ import {
   lines,
   localized,
   placeFields,
+  planFields,
   sectorFields,
   zodErrors,
 } from "./form-data";
@@ -101,4 +102,38 @@ it("keeps only the fields that differ from the saved row, whatever the key order
     aliases: [],
   });
   expect(changedOnly({ lat: 32.853 }, current)).toEqual({});
+});
+
+it("reads plan fields: an empty price is a custom quote, features one per line", () => {
+  expect(
+    planFields(
+      fd({
+        "name.en": "Signature",
+        monthly: "349",
+        setup: "",
+        "features.he": "אפליקציה\nדומיין",
+        "features.en": "An app\n\n",
+        highlighted: "on",
+        "ctaLabel.en": "Design my app",
+        ctaHref: " mailto:founder@darb.co.il ",
+        order: "3",
+        status: "live",
+      }),
+    ),
+  ).toEqual({
+    name: { en: "Signature" },
+    tagline: {},
+    monthly: 349,
+    setup: null,
+    priceNote: {},
+    features: { he: ["אפליקציה", "דומיין"], ar: [], en: ["An app"] },
+    highlighted: true,
+    ctaLabel: { en: "Design my app" },
+    ctaHref: "mailto:founder@darb.co.il",
+    finePrint: {},
+    order: 3,
+    status: "live",
+  });
+  expect(planFields(fd({ monthly: "" })).monthly).toBeNull();
+  expect(planFields(fd({})).highlighted).toBe(false);
 });
