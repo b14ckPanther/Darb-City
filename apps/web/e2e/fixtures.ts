@@ -11,13 +11,25 @@ export function localePath(locale: Locale, path: string): string {
 
 /** Sakhnin is a flagship: it has one example business of every active kind. */
 export const LEVELS = {
-  country: "/",
+  /** The country's place and kind index (the landing page took the root). */
+  country: "/israel",
   place: "/sakhnin",
   sector: "/sakhnin/beauty",
   kind: "/sakhnin/beauty/barbershops",
   business: "/sakhnin/beauty/barbershops/samers-barbershop",
   nationalKind: "/k/barbershops",
 } as const;
+/** Pages outside the city: no stage, the site footer (STAGE_EXCLUDED in src/lib/stage-boot.ts). */
+export const SITE_PAGES = [
+  "/",
+  "/showroom",
+  "/pricing",
+  "/contact",
+  "/for-business",
+  "/accessibility",
+  "/terms",
+  "/privacy",
+] as const;
 export const BUSINESS_KEY = "sakhnin/samers-barbershop";
 
 /**

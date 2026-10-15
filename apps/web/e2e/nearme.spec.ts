@@ -1,5 +1,5 @@
 import { expect, test, type Locator } from "@playwright/test";
-import { ARRABA, isPhone, settleStage } from "./fixtures";
+import { ARRABA, isPhone, LEVELS, localePath, settleStage } from "./fixtures";
 
 /** Whether the element drawn at the centre of `locator` is inside it (nothing stacks over it). */
 const onTop = (locator: Locator) =>
@@ -21,6 +21,11 @@ test.describe("with location", () => {
     expect(sent.method()).toBe("POST");
     expect(sent.url()).not.toContain("lat=");
     await expect(page).toHaveURL("/arraba");
+    // The header button now names the place it found, and keeps it after a reload.
+    const name = (await page.locator("#main-heading").innerText()).trim();
+    await expect(page.locator("[data-near-me]")).toContainText(name);
+    await page.reload();
+    await expect(page.locator("[data-near-me]")).toContainText(name);
   });
 
   test("on a national kind page, jumps to the nearest place that has it", async ({ page }) => {
@@ -45,7 +50,8 @@ test.describe("without location", () => {
   test("the message stands above the list column, the stage and the Map pill", async ({
     page,
   }, info) => {
-    await page.goto("/en");
+    // The landing page has no stage; the country index is the first city page.
+    await page.goto(localePath("en", LEVELS.country));
     await settleStage(page);
     await expect(page.locator("html")).toHaveAttribute("data-stage", "on");
     const pill = page.locator("[data-stage-toggle]");

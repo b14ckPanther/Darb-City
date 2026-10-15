@@ -29,6 +29,28 @@ async function pointOf(page: Page, id: string): Promise<[number, number]> {
   return point!;
 }
 
+/**
+ * Picks a live place on the country map. Nearby places share a count bubble until the map is
+ * close enough to split them, so the mouse wheel zooms in on the place until its own dot is there.
+ */
+async function pickPlace(page: Page, slug: string) {
+  for (let attempt = 0; attempt < 8; attempt++) {
+    const [x, y] = await pointOf(page, slug);
+    await page.mouse.click(x, y);
+    if (
+      await page.waitForURL(`/${slug}`, { timeout: 1500 }).then(
+        () => true,
+        () => false,
+      )
+    )
+      return;
+    await page.mouse.move(x, y);
+    await page.mouse.wheel(0, -400);
+    await page.waitForTimeout(800);
+  }
+  throw new Error(`no dot for ${slug} on the map`);
+}
+
 const center = (page: Page) =>
   page.evaluate(() => (window as unknown as { darbStage: DarbStage }).darbStage.center());
 
@@ -67,45 +89,58 @@ test.describe("desktop", () => {
     expect([...hosts]).toEqual([new URL(page.url()).host]);
   });
 
-  test("a place's plaza mirrors its list doors, in the same order", async ({ page }) => {
+  test("a place shows the map beside its category cards: the plaza is retired", async ({
+    page,
+  }) => {
+    for (const [path, level] of [
+      [LEVELS.place, "1"],
+      [LEVELS.sector, "2"],
+    ] as const) {
+      await stageAt(page, path);
+      await expect(host(page)).toHaveAttribute("data-stage-view", "map");
+      await expect(host(page)).toHaveAttribute("data-stage-level", level);
+      await expect(page.locator('[data-stage-layer="map"] canvas')).toBeVisible();
+      await expect(page.locator("[data-plaza], [data-plaza-door]")).toHaveCount(0);
+    }
     await stageAt(page, LEVELS.place);
-    await expect(host(page)).toHaveAttribute("data-stage-view", "plaza");
-    await expect(host(page)).toHaveAttribute("data-stage-level", "1");
-    const hrefs = (selector: string) =>
-      page.locator(selector).evaluateAll((els) => els.map((el) => el.getAttribute("href")));
-    const doors = await hrefs("[data-door]");
+    const doors = await page
+      .locator("[data-door]")
+      .evaluateAll((els) => els.map((el) => el.getAttribute("href")));
     expect(doors).toHaveLength(18);
-    expect(await hrefs("[data-plaza-door]")).toEqual(doors);
-    await expect(page.getByRole("navigation", { name: /: קטגוריות$/ })).toBeVisible();
+    expect(new Set(doors).size).toBe(18);
+    for (const door of doors) expect(door).toMatch(new RegExp(`^${LEVELS.place}/[a-z0-9-]+$`));
+    await expect(page.getByRole("list", { name: "כל סוגי העסקים" })).toBeVisible();
   });
 
   for (const [locale, rtl] of [
     ["he", true],
     ["en", false],
   ] as const)
-    test(`${locale}: the stage and the plaza's first door sit at the ${rtl ? "left / right" : "right / left"}`, async ({
+    test(`${locale}: the stage and the first category card sit at the ${rtl ? "left / right" : "right / left"}`, async ({
       page,
     }) => {
       await stageAt(page, localePath(locale, LEVELS.place));
-      const first = (await page.locator("[data-plaza-door]").nth(0).boundingBox())!;
-      const second = (await page.locator("[data-plaza-door]").nth(1).boundingBox())!;
+      const first = (await page.locator("[data-door]").nth(0).boundingBox())!;
+      const second = (await page.locator("[data-door]").nth(1).boundingBox())!;
       expect(first.x > second.x).toBe(rtl);
       expect((await page.locator("#stage").boundingBox())!.x < 10).toBe(rtl);
     });
 
   test("the camera follows each level to the right URL", async ({ page }) => {
     await stageAt(page, LEVELS.country);
-    await page.mouse.click(...(await pointOf(page, "sakhnin")));
+    await pickPlace(page, "sakhnin");
     await expect(page).toHaveURL(LEVELS.place);
     await expect(host(page)).toHaveAttribute("data-stage-path", LEVELS.place);
-    await expect(host(page)).toHaveAttribute("data-stage-view", "plaza");
+    // Map to map: the camera flies, no layer crossfades.
+    await expect(host(page)).toHaveAttribute("data-stage-view", "map");
     await expect(host(page)).toHaveAttribute("data-stage-motion", "fly");
-    await expect(host(page)).toHaveAttribute("data-stage-fade", "550");
-    await page.locator('[data-plaza-door="beauty"]').click();
+    await expect(host(page)).toHaveAttribute("data-stage-fade", "0");
+    await page.locator('[data-door="beauty"]').click();
     await expect(page).toHaveURL(LEVELS.sector);
     await expect(host(page)).toHaveAttribute("data-stage-path", LEVELS.sector);
     await expect(host(page)).toHaveAttribute("data-stage-level", "2");
-    await page.locator('[data-plaza-door="barbershops"]').click();
+    await expect(host(page)).toHaveAttribute("data-stage-view", "map");
+    await page.locator('[data-door="barbershops"]').click();
     await expect(page).toHaveURL(LEVELS.kind);
     await expect(host(page)).toHaveAttribute("data-stage-path", LEVELS.kind);
     await expect(host(page)).toHaveAttribute("data-stage-view", "map");
@@ -130,7 +165,7 @@ test.describe("desktop", () => {
 
   test("Back goes up a level, and the camera with it", async ({ page }) => {
     await stageAt(page, LEVELS.place);
-    await page.locator('[data-plaza-door="beauty"]').click();
+    await page.locator('[data-door="beauty"]').click();
     await expect(host(page)).toHaveAttribute("data-stage-path", LEVELS.sector);
     await page.goBack();
     await expect(page).toHaveURL(LEVELS.place);
@@ -139,30 +174,30 @@ test.describe("desktop", () => {
   });
 
   test("navigation during a camera move ends where the URL ends", async ({ page }) => {
-    await stageAt(page, LEVELS.place);
-    await page.locator('[data-plaza-door="beauty"]').click();
-    await expect(page).toHaveURL(LEVELS.sector);
-    // Back while the camera is still on its way to the sector.
-    await expect(host(page)).toHaveAttribute("data-stage-moving", "");
-    expect(await host(page).getAttribute("data-stage-path")).not.toBe(LEVELS.sector);
-    await page.goBack();
+    await stageAt(page, LEVELS.country);
+    await page.locator('#places a[href="/sakhnin"]').click();
     await expect(page).toHaveURL(LEVELS.place);
-    await expect(host(page)).toHaveAttribute("data-stage-path", LEVELS.place);
-    await expect(host(page)).toHaveAttribute("data-stage-level", "1");
+    // Back while the camera is still flying into the place.
+    await expect(host(page)).toHaveAttribute("data-stage-moving", "");
+    expect(await host(page).getAttribute("data-stage-path")).not.toBe(LEVELS.place);
+    await page.goBack();
+    await expect(page).toHaveURL(LEVELS.country);
+    await expect(host(page)).toHaveAttribute("data-stage-path", LEVELS.country);
+    await expect(host(page)).toHaveAttribute("data-stage-level", "0");
     await expect(host(page)).not.toHaveAttribute("data-stage-moving", "");
   });
 
   test("content appears before the camera settles", async ({ page }) => {
-    await stageAt(page, LEVELS.place);
-    const heading = await page.locator('[data-plaza-door="beauty"] span').first().innerText();
+    await stageAt(page, LEVELS.country);
+    const heading = await page.locator("#main-heading").innerText();
     const timing = page.evaluate(
       ({ heading, path }) =>
         new Promise<{ content: number; settled: number }>((resolve) => {
           let content = 0;
           const stage = document.querySelector("[data-stage-host]")!;
           const observer = new MutationObserver(() => {
-            if (!content && document.querySelector("#main-heading")?.textContent === heading)
-              content = performance.now();
+            const now = document.querySelector("#main-heading")?.textContent;
+            if (!content && now && now !== heading) content = performance.now();
             if (content && stage.getAttribute("data-stage-path") === path) {
               observer.disconnect();
               resolve({ content, settled: performance.now() });
@@ -175,9 +210,9 @@ test.describe("desktop", () => {
             attributes: true,
           });
         }),
-      { heading, path: LEVELS.sector },
+      { heading, path: LEVELS.place },
     );
-    await page.locator('[data-plaza-door="beauty"]').click();
+    await page.locator('#places a[href="/sakhnin"]').click();
     const { content, settled } = await timing;
     expect(content).toBeLessThan(settled);
   });
@@ -251,7 +286,7 @@ test.describe("desktop", () => {
           w.__tasks.push({ start: e.startTime, duration: e.duration });
       }).observe({ type: "longtask" });
     });
-    await page.mouse.click(...(await pointOf(page, "sakhnin")));
+    await page.locator('#places a[href="/sakhnin"]').click();
     await expect(host(page)).toHaveAttribute("data-stage-path", LEVELS.place);
     await page.waitForTimeout(300); // long-task entries arrive after their task
     const { moves, tasks } = await page.evaluate(() => {
@@ -357,8 +392,8 @@ test.describe("desktop", () => {
 test.describe("phone", () => {
   test.skip(({ isMobile }) => !isMobile, "phone only");
 
-  async function openStage(page: Page, path: string) {
-    await page.goto(path);
+  async function openStage(page: Page, path: string, { go = true } = {}) {
+    if (go) await page.goto(path);
     const toggle = page.locator("[data-stage-toggle]");
     await expect(toggle).toHaveText("מפה", { timeout: 30_000 });
     await toggle.click();
@@ -367,39 +402,24 @@ test.describe("phone", () => {
     await expect(host(page)).toHaveAttribute("data-stage-path", path);
   }
 
-  test("the Map pill opens the plaza with 44 px doors, and pinch-out goes up a level", async ({
+  test("the Map pill opens the map over the list, and List hands the list back", async ({
     page,
   }) => {
     await openStage(page, LEVELS.sector);
-    await expect(host(page)).toHaveAttribute("data-stage-view", "plaza");
+    await expect(host(page)).toHaveAttribute("data-stage-view", "map");
+    await expect(host(page)).toHaveAttribute("data-stage-level", "2");
+    await expect(page.locator('[data-stage-layer="map"] canvas')).toBeVisible();
+    await expect(page.locator("[data-plaza], [data-plaza-door]")).toHaveCount(0);
     await expect(page.locator("[data-city]")).toHaveAttribute("inert", "");
-    await expect(page.locator("[data-stage-toggle]")).toHaveText("רשימה");
-    const boxes = await page
-      .locator("[data-plaza-door]")
-      .evaluateAll((els) => els.map((el) => el.getBoundingClientRect().toJSON() as DOMRect));
-    expect(boxes.length).toBeGreaterThan(0);
-    for (const box of boxes) expect(Math.min(box.width, box.height)).toBeGreaterThanOrEqual(44);
-    const plaza = (await page.locator("[data-plaza]").boundingBox())!;
-    const cx = plaza.x + plaza.width / 2;
-    const cy = plaza.y + plaza.height / 2;
-    const cdp = await page.context().newCDPSession(page);
-    const touch = (type: string, points: [number, number][]) =>
-      cdp.send("Input.dispatchTouchEvent", {
-        type: type as "touchStart",
-        touchPoints: points.map(([x, y], id) => ({ x, y, id })),
-      });
-    await touch("touchStart", [
-      [cx - 120, cy],
-      [cx + 120, cy],
-    ]);
-    for (const d of [90, 60, 30])
-      await touch("touchMove", [
-        [cx - d, cy],
-        [cx + d, cy],
-      ]);
-    await touch("touchEnd", []);
-    await expect(page).toHaveURL(LEVELS.place);
-    await expect(host(page)).toHaveAttribute("data-stage-level", "1");
+    const toggle = page.locator("[data-stage-toggle]");
+    await expect(toggle).toHaveText("רשימה");
+    const pill = (await toggle.boundingBox())!;
+    expect(Math.min(pill.width, pill.height)).toBeGreaterThanOrEqual(44);
+    await toggle.click();
+    await expect(html(page)).not.toHaveAttribute("data-stage-open", "");
+    await expect(page.locator("[data-city]")).not.toHaveAttribute("inert", "");
+    await expect(toggle).toHaveText("מפה");
+    await expect(page.locator('[data-door="barbershops"]')).toBeVisible();
   });
 
   test("the docked search bar stays above the open stage and usable", async ({ page }) => {
@@ -411,7 +431,7 @@ test.describe("phone", () => {
         return document.elementFromPoint(box.x + box.width / 2, box.y + box.height / 2) === el;
       }),
     ).toBe(true);
-    // The stage ends above the pill: nothing of the plaza or the map sits under it or the bar.
+    // The stage ends above the pill: nothing of the map sits under it or the bar.
     const pill = (await page.locator("[data-stage-toggle]").boundingBox())!;
     const stage = (await host(page).boundingBox())!;
     expect(stage.y + stage.height).toBeLessThanOrEqual(pill.y);
@@ -420,8 +440,11 @@ test.describe("phone", () => {
   });
 
   test("level 3 hands the phone back to the list", async ({ page }) => {
-    await openStage(page, LEVELS.sector);
-    await page.locator('[data-plaza-door="barbershops"]').click();
+    // From a kind's list up to its sector, open the map there, then Back to the kind.
+    await page.goto(LEVELS.kind);
+    await page.goto(LEVELS.sector);
+    await openStage(page, LEVELS.sector, { go: false });
+    await page.goBack();
     await expect(page).toHaveURL(LEVELS.kind);
     await expect(html(page)).not.toHaveAttribute("data-stage-open", "");
     await expect(page.locator("[data-stage-toggle]")).toHaveCount(0);

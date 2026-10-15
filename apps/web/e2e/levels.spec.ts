@@ -7,6 +7,12 @@ test("level 0 links every live place and every kind", async ({ page }) => {
   await expect(page.locator('#kinds a[href="/k/barbershops"]')).toHaveCount(1);
 });
 
+test("the root is the landing page, and it leads to level 0", async ({ page }) => {
+  expect((await page.goto("/"))?.status()).toBe(200);
+  await expect(page.locator("#places")).toHaveCount(0);
+  await expect(page.locator(`main a[href="${LEVELS.country}"]`).first()).toBeVisible();
+});
+
 test("level 1 shows one door per sector with live counts", async ({ page }) => {
   await page.goto(LEVELS.place);
   await expect(page.locator("[data-door]")).toHaveCount(18);
@@ -14,10 +20,17 @@ test("level 1 shows one door per sector with live counts", async ({ page }) => {
   expect(beauty).toBeGreaterThan(0);
 });
 
-test("level 2 keeps empty doors visible", async ({ page }) => {
+test("level 2 lists only kinds that have businesses; the empty kind is still a page", async ({
+  page,
+}) => {
   await page.goto("/arraba/beauty");
   await expect(page.locator('[data-door="barbershops"]')).toHaveAttribute("data-count", "1");
-  await expect(page.locator('[data-door="nails"]')).toHaveAttribute("data-count", "0");
+  await expect(page.locator('[data-door="nails"]')).toHaveCount(0);
+  for (const count of await page
+    .locator("[data-door]")
+    .evaluateAll((els) => els.map((el) => Number(el.getAttribute("data-count")))))
+    expect(count).toBeGreaterThan(0);
+  expect((await page.goto(EMPTY_KIND))?.status()).toBe(200);
 });
 
 test("level 3 lists businesses that open the sheet", async ({ page }) => {

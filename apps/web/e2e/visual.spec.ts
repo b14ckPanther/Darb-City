@@ -6,6 +6,9 @@ const SHOTS: [string, string][] = [
   ["empty-kind", EMPTY_KIND],
   ["ar-business", localePath("ar", LEVELS.business)],
   ["en-business", localePath("en", LEVELS.business)],
+  ["landing", "/"],
+  ["showroom", "/showroom"],
+  ["pricing", "/pricing"],
   ["for-business", "/for-business"],
   ["not-found", "/sakhnim"],
 ];
