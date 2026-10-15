@@ -53,6 +53,7 @@ export default async function ShowroomPage({ params }: Props) {
             frameTitle: copy.frameTitle,
             devices: copy.devices,
             shotAlt: copy.shotAlt,
+            turn: copy.turn,
           }}
         />
         <section className={styles.cta} aria-labelledby="showroom-cta">
