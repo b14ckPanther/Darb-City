@@ -6,6 +6,7 @@
 /* ---- Wide: a rail of tabs ---- */
 
 .rail {
+  position: relative;
   display: none;
   gap: var(--space-1);
   margin: 0;
@@ -14,6 +15,36 @@
   border-radius: var(--radius-pill);
   background: rgb(251 247 236 / 0.03);
   list-style: none;
+}
+
+.rail > li {
+  position: relative;
+  z-index: 1;
+}
+
+/*
+ * The pill under the current tab. It is 1 px wide and scaled to the tab's width, then moved to its
+ * position, so it glides between tabs with transform alone. A thin gold road runs along its foot.
+ */
+.rail > .pill {
+  position: absolute;
+  inset-block: 4px;
+  inset-inline-start: 0;
+  z-index: 0;
+  inline-size: 1px;
+  border-radius: var(--radius-pill);
+  background: rgb(217 165 76 / 0.14);
+  box-shadow: inset 0 -2px 0 var(--gold);
+  transform-origin: 0 0;
+  transform: translateX(var(--x)) scaleX(var(--w));
+}
+
+:global([dir="rtl"]) .rail > .pill {
+  transform-origin: 100% 0;
+}
+
+.rail > .pill[data-settled] {
+  transition: transform 550ms var(--ease-out);
 }
 
 .tab {
@@ -34,36 +65,8 @@
   color: var(--text);
 }
 
-/* The current tab: a short gold road under the word. */
-.tab::after {
-  content: "";
-  position: absolute;
-  inset-inline: var(--space-4);
-  inset-block-end: 5px;
-  block-size: 2px;
-  border-radius: 2px;
-  background: linear-gradient(90deg, var(--gold-300), var(--gold));
-  transform: scaleX(0);
-  transition: transform 500ms var(--ease-out);
-}
-
 .tab[aria-current="page"] {
   color: var(--text);
-  background: rgb(217 165 76 / 0.1);
-}
-
-.tab[aria-current="page"]::after {
-  transform: scaleX(1);
-}
-
-@media (min-width: 1100px) {
-  .rail {
-    display: flex;
-  }
-
-  .menuButton {
-    display: none;
-  }
 }
 
 /* ---- Narrow: one button, a full-screen list ---- */
@@ -79,6 +82,16 @@
   background: transparent;
   color: var(--gold-300);
   cursor: pointer;
+}
+
+@media (min-width: 1100px) {
+  .rail {
+    display: flex;
+  }
+
+  .menuButton {
+    display: none;
+  }
 }
 
 .burger,
@@ -182,7 +195,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .tab::after,
+  .rail > .pill[data-settled],
   .burger,
   .burger::before,
   .burger::after {

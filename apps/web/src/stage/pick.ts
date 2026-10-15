@@ -1,9 +1,9 @@
-import { CITY_DOT, CITY_GLOW, CITY_LABEL, PIN_LAYER } from "./map-layers";
+import { CITY_DOT, CITY_LABEL, PIN_LAYER } from "./map-layers";
 
 /** A tap or click covers a 44 × 44 px target (WCAG 2.5.5), even where a dot is 5 px wide. */
 export const HIT_BOX = 44;
 /** Topmost first: pins, then place names, dots and glows. */
-export const PICKABLE = [PIN_LAYER, CITY_LABEL, CITY_DOT, CITY_GLOW];
+export const PICKABLE = [PIN_LAYER, CITY_LABEL, CITY_DOT];
 
 type ScreenPoint = { x: number; y: number };
 type Pixel = [number, number];

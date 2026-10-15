@@ -10,12 +10,48 @@ export const SOCIAL = {
   github: { href: "https://github.com/b14ckPanther", handle: "GitHub" },
 } as const;
 
+export type SocialIcon = "instagram" | "linkedin" | "github" | "email" | "web";
+
+/** The people behind Darb, credited in the footer; each link is an icon with an accessible name. */
+export const PEOPLE = [
+  {
+    id: "noor",
+    name: "Noor",
+    names: { he: "נור", ar: "نور", en: "Noor" },
+    links: [
+      { icon: "web", label: "zangeel.dev", href: "https://zangeel.dev" },
+      { icon: "instagram", label: "Instagram", href: "https://www.instagram.com/noormosa.97/" },
+      { icon: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/in/nmprofessor/" },
+      { icon: "github", label: "GitHub", href: "https://github.com/b14ckPanther" },
+    ],
+  },
+  {
+    id: "lama",
+    name: "Lama",
+    names: { he: "לאמה", ar: "لمى", en: "Lama" },
+    links: [
+      {
+        icon: "linkedin",
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/in/lama-zbedat-763165341/",
+      },
+      { icon: "github", label: "GitHub", href: "https://github.com/lzbedat3" },
+    ],
+  },
+] as const satisfies readonly {
+  id: string;
+  name: string;
+  names: Record<Locale, string>;
+  links: readonly { icon: SocialIcon; label: string; href: string }[];
+}[];
+
 export interface FooterCopy {
   motto: string;
   cta: string;
   exploreTitle: string;
   darbTitle: string;
   founderTitle: string;
+  roles: { noor: string; lama: string };
   links: { explore: string; search: string; showroom: string; pricing: string };
   rights: string;
   languages: string;
@@ -28,7 +64,8 @@ export const footer: Record<Locale, FooterCopy> = {
     cta: "יש לכם עסק? בואו נדבר",
     exploreTitle: "לגלות",
     darbTitle: "דרב",
-    founderTitle: "המייסד",
+    founderTitle: "האנשים מאחורי דרב",
+    roles: { noor: "מייסד", lama: "שם מהיום הראשון" },
     links: { explore: "העיר", search: "חיפוש", showroom: "תצוגה", pricing: "תוכניות ומחירים" },
     rights: "כל הזכויות שמורות",
     languages: "שפה",
@@ -39,7 +76,8 @@ export const footer: Record<Locale, FooterCopy> = {
     cta: "عندك مصلحة؟ يلا نحكي",
     exploreTitle: "اكتشف",
     darbTitle: "درب",
-    founderTitle: "المؤسس",
+    founderTitle: "الناس ورا درب",
+    roles: { noor: "المؤسس", lama: "معنا من أول يوم" },
     links: { explore: "البلد", search: "دوّر", showroom: "المعرض", pricing: "الخطط والأسعار" },
     rights: "جميع الحقوق محفوظة",
     languages: "اللغة",
@@ -54,7 +92,8 @@ export const footer: Record<Locale, FooterCopy> = {
     cta: "Own a business? Let's talk",
     exploreTitle: "Explore",
     darbTitle: "Darb",
-    founderTitle: "Founder",
+    founderTitle: "The people behind Darb",
+    roles: { noor: "Founder", lama: "There from day one" },
     links: {
       explore: "The city",
       search: "Search",

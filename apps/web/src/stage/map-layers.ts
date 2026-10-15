@@ -6,92 +6,73 @@ export const PIN_SOURCE = "darb-pins";
 export const CITY_GLOW = "darb-city-glow";
 export const CITY_DOT = "darb-city-dot";
 export const CITY_LABEL = "darb-city-label";
+export const CLUSTER_COUNT = "darb-cluster-count";
 export const PIN_LAYER = "darb-pin";
 /** The one self-hosted glyph font (scripts/map/style.mjs MAP_FONT). */
 export const MAP_FONT = "noto-sans-regular";
 
-const GOLD = (alpha: number) => `rgba(217, 165, 76, ${alpha})`;
-/** Places with businesses only: an empty town draws nothing and cannot be tapped. */
-const HAS_BUSINESSES = [">", ["get", "count"], 0];
+/** Clustered points carry point_count; single places do not. */
+const CLUSTER = ["has", "point_count"];
+const SINGLE = ["all", ["!", CLUSTER], [">", ["get", "count"], 0]];
 
 /**
- * Darb's own layers over the basemap, read like a night map rather than a scatter of identical
- * dots. Far out, one density surface shows where business is (weighted by each place's count).
- * Closer in it gives way to proportional points (area ∝ businesses), and names appear by
- * importance: the busiest places first, more as you zoom, never over each other. Pins on top.
+ * Darb's own layers over the basemap. Nearby places merge into one bubble that says how many
+ * businesses are there (tap it to zoom in); as you zoom, bubbles split into single places, each a
+ * small point sized by its count with its name beside it. Empty places are never drawn. Pins on top.
  */
 export function darbLayers(): LayerSpecification[] {
   return [
     {
       id: CITY_GLOW,
-      type: "heatmap",
+      type: "circle",
       source: CITY_SOURCE,
-      maxzoom: 11,
-      filter: HAS_BUSINESSES as never,
+      filter: CLUSTER as never,
       paint: {
-        "heatmap-weight": ["interpolate", ["linear"], ["get", "count"], 0, 0, 1, 0.25, 40, 1],
-        "heatmap-intensity": ["interpolate", ["linear"], ["zoom"], 6, 0.35, 10, 0.9],
-        "heatmap-radius": ["interpolate", ["linear"], ["zoom"], 6, 12, 10, 30],
-        "heatmap-color": [
-          "interpolate",
-          ["linear"],
-          ["heatmap-density"],
-          0,
-          GOLD(0),
-          0.15,
-          GOLD(0.12),
-          0.4,
-          GOLD(0.32),
-          0.7,
-          colors.gold,
-          1,
-          colors.gold100,
-        ],
-        "heatmap-opacity": ["interpolate", ["linear"], ["zoom"], 9, 0.8, 11, 0],
+        // Logarithmic, so a city of thousands never swallows its neighbours.
+        "circle-radius": ["+", 12, ["*", 3.2, ["ln", ["+", 1, ["get", "count"]]]]],
+        "circle-color": colors.forest900,
+        "circle-opacity": 0.92,
+        "circle-stroke-color": colors.gold,
+        "circle-stroke-width": 1.5,
       },
+    },
+    {
+      id: CLUSTER_COUNT,
+      type: "symbol",
+      source: CITY_SOURCE,
+      filter: CLUSTER as never,
+      layout: {
+        "text-field": ["to-string", ["get", "count"]],
+        "text-font": [MAP_FONT],
+        "text-size": 13,
+        "text-allow-overlap": true,
+      },
+      paint: { "text-color": colors.gold300 },
     },
     {
       id: CITY_DOT,
       type: "circle",
       source: CITY_SOURCE,
-      minzoom: 9.2,
-      filter: HAS_BUSINESSES as never,
+      filter: SINGLE as never,
       paint: {
-        // Proportional symbols: the radius grows with the square root of the count.
-        "circle-radius": [
-          "interpolate",
-          ["linear"],
-          ["zoom"],
-          8,
-          ["+", 2, ["*", 0.5, ["sqrt", ["get", "count"]]]],
-          13,
-          ["+", 4, ["*", 1.6, ["sqrt", ["get", "count"]]]],
-        ],
+        "circle-radius": ["+", 4, ["*", 1.4, ["ln", ["+", 1, ["get", "count"]]]]],
         "circle-color": colors.gold300,
-        "circle-opacity": ["interpolate", ["linear"], ["zoom"], 9.2, 0, 10.2, 0.9],
         "circle-stroke-color": colors.night,
-        "circle-stroke-width": 1.5,
-        "circle-stroke-opacity": ["interpolate", ["linear"], ["zoom"], 9.2, 0, 10.2, 1],
+        "circle-stroke-width": 2,
       },
     },
     {
       id: CITY_LABEL,
       type: "symbol",
       source: CITY_SOURCE,
-      minzoom: 7,
-      // Busier places earn their name sooner: 20+ businesses from zoom 7, any business from 10.
-      filter: [
-        "all",
-        HAS_BUSINESSES,
-        [">=", ["get", "count"], ["step", ["zoom"], 20, 8.5, 6, 10, 1]],
-      ] as never,
+      filter: SINGLE as never,
       layout: {
         "text-field": ["get", "name"],
         "text-font": [MAP_FONT],
-        "text-size": ["interpolate", ["linear"], ["zoom"], 7, 11, 10, 13, 13, 14],
+        "text-size": ["interpolate", ["linear"], ["zoom"], 8, 12, 13, 14],
         // Beside its point where there is room, never over a neighbour's name.
         "text-variable-anchor": ["top", "bottom", "left", "right"],
-        "text-radial-offset": 0.8,
+        "text-radial-offset": 0.9,
         "text-padding": 6,
         "symbol-sort-key": ["-", 0, ["get", "count"]],
       },

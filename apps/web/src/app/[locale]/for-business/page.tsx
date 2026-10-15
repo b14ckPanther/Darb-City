@@ -3,6 +3,7 @@ import { Fragment } from "react";
 import { LOCALES, pickText } from "@darb/core";
 import { t } from "@darb/i18n";
 import { CityBar } from "@/components/CityBar";
+import { Footer } from "@/components/Footer";
 
 import { CONTACT, forBusiness, LIVE_CLIENTS, type RichText } from "@/content/for-business";
 import { crumbsFor } from "@/lib/crumbs";
@@ -113,6 +114,7 @@ export default async function ForBusinessPage({ params }: Props) {
           </p>
         </section>
       </main>
+      <Footer locale={locale} segments={paths.forBusiness()} />
     </>
   );
 }

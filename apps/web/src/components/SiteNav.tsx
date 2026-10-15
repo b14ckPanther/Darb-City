@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useLayoutEffect, useRef, useState, type CSSProperties } from "react";
 import styles from "./SiteNav.module.css";
 
 export interface NavTab {
@@ -44,6 +44,32 @@ export function SiteNav({
   const [open, setOpen] = useState(false);
   const button = useRef<HTMLButtonElement>(null);
   const panelId = useId();
+  const rail = useRef<HTMLUListElement>(null);
+  const [mark, setMark] = useState<{ x: number; w: number } | null>(null);
+  const [settled, setSettled] = useState(false);
+
+  // One gold pill glides to the current tab (transform only), so a tab change reads as one motion.
+  useLayoutEffect(() => {
+    const place = () => {
+      const current = rail.current?.querySelector<HTMLElement>('[aria-current="page"]');
+      const box = rail.current?.getBoundingClientRect();
+      if (!current || !box) return setMark(null);
+      const r = current.getBoundingClientRect();
+      // Measured from the rail's start edge (the right one in Hebrew and Arabic).
+      const rtl = getComputedStyle(rail.current!).direction === "rtl";
+      setMark({ x: rtl ? r.right - box.right : r.left - box.left, w: r.width });
+    };
+    place();
+    const watch = new ResizeObserver(place);
+    if (rail.current) watch.observe(rail.current);
+    void document.fonts?.ready.then(place);
+    return () => watch.disconnect();
+  }, [path]);
+  useEffect(() => {
+    if (!mark || settled) return;
+    const id = requestAnimationFrame(() => setSettled(true));
+    return () => cancelAnimationFrame(id);
+  }, [mark, settled]);
 
   useEffect(() => setOpen(false), [path]);
   useEffect(() => {
@@ -63,7 +89,15 @@ export function SiteNav({
 
   return (
     <nav aria-label={label} className={styles.nav}>
-      <ul className={styles.rail}>
+      <ul ref={rail} className={styles.rail}>
+        {mark ? (
+          <li
+            aria-hidden="true"
+            className={styles.pill}
+            data-settled={settled ? "" : undefined}
+            style={{ "--x": `${mark.x}px`, "--w": `${mark.w}` } as CSSProperties}
+          />
+        ) : null}
         {tabs.map((tab) => (
           <li key={tab.href}>
             <Link
@@ -90,7 +124,7 @@ export function SiteNav({
       <div id={panelId} className={styles.panel} data-open={open ? "" : undefined} hidden={!open}>
         <ol className={styles.list}>
           {tabs.map((tab, i) => (
-            <li key={tab.href} style={{ "--i": i } as React.CSSProperties}>
+            <li key={tab.href} style={{ "--i": i } as CSSProperties}>
               <Link
                 href={tab.href}
                 className={styles.big}

@@ -12,7 +12,7 @@ import {
 } from "@darb/stage";
 import { moveCamera } from "./camera-move";
 import { loadMapLibre } from "./load-maplibre";
-import { CITY_SOURCE, darbLayers, PIN_SOURCE } from "./map-layers";
+import { CITY_GLOW, CITY_SOURCE, darbLayers, PIN_SOURCE } from "./map-layers";
 import { prepareStyle, PROTOMAPS_SOURCE } from "./map-style";
 import { pickAt } from "./pick";
 import type { StageMap } from "./types";
@@ -57,7 +57,15 @@ export class CityMap implements StageMap {
       origin: window.location.origin,
       tilesUrl: TILES_URL ?? "",
     });
-    style.sources[CITY_SOURCE] = { type: "geojson", data: cityCollection([]) };
+    // Places within ~60 px merge into one bubble whose count is the sum of their businesses.
+    style.sources[CITY_SOURCE] = {
+      type: "geojson",
+      data: cityCollection([]),
+      cluster: true,
+      clusterRadius: 72,
+      clusterMaxZoom: 11,
+      clusterProperties: { count: ["+", ["get", "count"]] },
+    };
     style.sources[PIN_SOURCE] = { type: "geojson", data: pinCollection([], null) };
     style.layers.push(...darbLayers());
     // Throws GPUInitializationError when the device will not give a WebGL2 context.
@@ -117,11 +125,19 @@ export class CityMap implements StageMap {
     canvas.setAttribute("tabindex", "-1");
     // A forgiving 44 px target around each tap: the dots are 5–12 px (pick.ts).
     this.map.on("click", (event) => {
+      // A bubble opens: zoom in on it until it splits into its places.
+      const bubble = this.map.queryRenderedFeatures(event.point, { layers: [CITY_GLOW] })[0];
+      if (bubble?.geometry.type === "Point") {
+        const [lng, lat] = bubble.geometry.coordinates as [number, number];
+        this.map.easeTo({ center: [lng, lat], zoom: this.map.getZoom() + 2, duration: 550 });
+        return;
+      }
       const picked = pickAt(this.map, event.point);
       if (picked) options.onPick(picked.href, picked.kind);
     });
     this.map.on("mousemove", (event) => {
-      canvas.style.cursor = pickAt(this.map, event.point) ? "pointer" : "";
+      const bubble = this.map.queryRenderedFeatures(event.point, { layers: [CITY_GLOW] }).length;
+      canvas.style.cursor = bubble || pickAt(this.map, event.point) ? "pointer" : "";
     });
     this.map.on("zoomend", (event) => {
       if (event.originalEvent && zoomedOut(this.target, this.map.getZoom())) options.onZoomOut();

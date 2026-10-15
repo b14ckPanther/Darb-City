@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { t } from "@darb/i18n";
 import { CityBar } from "@/components/CityBar";
+import { Footer } from "@/components/Footer";
 import { PricingView } from "@/components/PricingView";
 import { getPricing } from "@/lib/api";
 import { crumbsFor } from "@/lib/crumbs";
@@ -46,6 +47,7 @@ export default orUnavailable(async function PricingPage({ params }: Props) {
       <main id="main" className="frame reveal">
         <PricingView locale={locale} pricing={pricing} />
       </main>
+      <Footer locale={locale} segments={paths.pricing()} />
     </>
   );
 });

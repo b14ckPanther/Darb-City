@@ -166,3 +166,155 @@
   color: transparent;
   user-select: none;
 }
+
+.icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* Round, quiet icon links that warm to gold on hover and focus. */
+.column .iconLink {
+  display: inline-grid;
+  place-items: center;
+  inline-size: 40px;
+  block-size: 40px;
+  min-block-size: 40px;
+  border: 1px solid var(--line-soft);
+  border-radius: 50%;
+  background: rgb(251 247 236 / 0.03);
+  color: var(--text-soft);
+  transition: transform 400ms var(--ease-out);
+}
+
+.column .iconLink:hover,
+.column .iconLink:focus-visible {
+  border-color: var(--gold);
+  background: rgb(217 165 76 / 0.12);
+  color: var(--gold-300);
+  transform: translateY(-2px);
+}
+
+/* ---- Credits: the people behind Darb, joined by a short gold road ---- */
+
+.credits {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-5);
+  margin-block-start: var(--space-8);
+  text-align: center;
+}
+
+.people {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.person {
+  display: grid;
+  grid-template-columns: auto;
+  justify-items: center;
+  gap: var(--space-2);
+}
+
+.person:has(.road) {
+  grid-template-columns: auto auto;
+  column-gap: var(--space-5);
+}
+
+.person:has(.road) > :not(.road) {
+  grid-column: 2;
+}
+
+/* The road between two names, with light travelling along it. */
+.road {
+  position: relative;
+  grid-row: 1;
+  grid-column: 1;
+  align-self: center;
+  inline-size: clamp(48px, 12vw, 140px);
+  block-size: 1px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.road::after {
+  content: "";
+  position: absolute;
+  inset: -1px 0;
+  background: linear-gradient(90deg, transparent, var(--gold-300), transparent);
+  transform: translateX(-100%);
+  animation: travel 3.2s ease-in-out infinite;
+}
+
+@keyframes travel {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* Each name in gold, with a slow sheen passing over it. */
+.personName {
+  position: relative;
+  font-size: clamp(2rem, 1.4rem + 2.6vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  background: linear-gradient(100deg, var(--gold-100), var(--gold) 50%, var(--gold-900));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transition: transform 500ms var(--ease-out);
+}
+
+.person:hover .personName {
+  transform: translateY(-3px);
+}
+
+.personRole {
+  color: var(--text-muted);
+  font-size: var(--step--1);
+  letter-spacing: 0.06em;
+}
+
+.credits .icons {
+  justify-content: center;
+}
+
+.credits .iconLink {
+  display: inline-grid;
+  place-items: center;
+  inline-size: 40px;
+  block-size: 40px;
+  border: 1px solid var(--line-soft);
+  border-radius: 50%;
+  background: rgb(251 247 236 / 0.03);
+  color: var(--text-soft);
+  transition: transform 400ms var(--ease-out);
+}
+
+.credits .iconLink:hover,
+.credits .iconLink:focus-visible {
+  border-color: var(--gold);
+  background: rgb(217 165 76 / 0.12);
+  color: var(--gold-300);
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .column .iconLink,
+  .credits .iconLink,
+  .personName {
+    transition: none;
+  }
+
+  .road::after {
+    animation: none;
+  }
+}

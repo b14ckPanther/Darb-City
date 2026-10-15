@@ -226,10 +226,11 @@ h3 {
     background: var(--night);
     border-inline-end: 1px solid var(--line-soft);
   }
+}
 
-  html[data-stage="on"] [data-site-header] > .frame {
-    inline-size: 100%;
-  }
+/* One header on every page: full width, so moving between tabs never shifts it. */
+[data-site-header] > .frame {
+  inline-size: 100%;
 }
 
 @media (prefers-reduced-motion: reduce) {

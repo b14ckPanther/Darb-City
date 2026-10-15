@@ -3,17 +3,16 @@ import Link from "next/link";
 import type { Locale } from "@darb/core";
 import { LOCALES } from "@darb/core";
 import { t } from "@darb/i18n";
-import { footer, SOCIAL } from "@/content/footer";
+import { footer, PEOPLE, SOCIAL, type SocialIcon } from "@/content/footer";
 import { href, paths } from "@/lib/routes";
 import styles from "./Footer.module.css";
 
 const LANGUAGE_NAMES: Record<Locale, string> = { he: "עברית", ar: "العربية", en: "English" };
 
-function Icon({ name }: { name: keyof typeof SOCIAL }) {
+function Icon({ name }: { name: SocialIcon }) {
   const common = { width: 18, height: 18, viewBox: "0 0 24 24", "aria-hidden": true } as const;
   switch (name) {
-    case "darbInstagram":
-    case "founderInstagram":
+    case "instagram":
       return (
         <svg {...common} fill="none" stroke="currentColor" strokeWidth="1.8">
           <rect x="3" y="3" width="18" height="18" rx="5" />
@@ -40,13 +39,31 @@ function Icon({ name }: { name: keyof typeof SOCIAL }) {
           <path d="m4 7 8 6 8-6" />
         </svg>
       );
-    case "portfolio":
+    case "web":
       return (
         <svg {...common} fill="none" stroke="currentColor" strokeWidth="1.8">
-          <path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14" />
+          <circle cx="12" cy="12" r="9" />
+          <path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3Z" />
         </svg>
       );
   }
+}
+
+/** A round icon link: the label is its accessible name and its tooltip. */
+function IconLink({ icon, label, href }: { icon: SocialIcon; label: string; href: string }) {
+  const external = href.startsWith("http");
+  return (
+    <a
+      className={styles.iconLink}
+      href={href}
+      aria-label={label}
+      title={label}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noopener" : undefined}
+    >
+      <Icon name={icon} />
+    </a>
+  );
 }
 
 /** The site footer: the path's links, Darb's channels and the founder's. */
@@ -66,11 +83,6 @@ export function Footer({
     { label: copy.links.pricing, to: href(locale, paths.pricing()) },
     { label: t(locale, "forBusiness"), to: href(locale, paths.forBusiness()) },
   ];
-  const darb = (["darbInstagram", "email"] as const).map((key) => ({ key, ...SOCIAL[key] }));
-  const founder = (["portfolio", "founderInstagram", "linkedin", "github"] as const).map((key) => ({
-    key,
-    ...SOCIAL[key],
-  }));
   return (
     <footer className={styles.footer}>
       <div className={`frame ${styles.inner}`}>
@@ -102,32 +114,37 @@ export function Footer({
 
         <div className={styles.column}>
           <h2 className={styles.heading}>{copy.darbTitle}</h2>
-          <ul>
-            {darb.map((l) => (
-              <li key={l.key}>
-                <a href={l.href} rel={l.href.startsWith("http") ? "noopener" : undefined}>
-                  <Icon name={l.key} />
-                  <bdi dir="ltr">{l.handle}</bdi>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className={styles.column}>
-          <h2 className={styles.heading}>{copy.founderTitle}</h2>
-          <ul>
-            {founder.map((l) => (
-              <li key={l.key}>
-                <a href={l.href} rel="noopener">
-                  <Icon name={l.key} />
-                  <bdi dir="ltr">{l.handle}</bdi>
-                </a>
-              </li>
-            ))}
-          </ul>
+          <div className={styles.icons}>
+            <IconLink icon="instagram" label="Instagram @darbco" href={SOCIAL.darbInstagram.href} />
+            <IconLink icon="email" label={SOCIAL.email.handle} href={SOCIAL.email.href} />
+          </div>
         </div>
       </div>
+
+      <section className={`frame ${styles.credits}`} aria-labelledby="credits-title">
+        <h2 id="credits-title" className={styles.heading}>
+          {copy.founderTitle}
+        </h2>
+        <ul className={styles.people}>
+          {PEOPLE.map((person, i) => (
+            <li key={person.id} className={styles.person}>
+              {i > 0 ? <span className={styles.road} aria-hidden="true" /> : null}
+              <span className={styles.personName}>{person.names[locale]}</span>
+              <span className={styles.personRole}>{copy.roles[person.id]}</span>
+              <span className={styles.icons}>
+                {person.links.map((l) => (
+                  <IconLink
+                    key={l.href}
+                    icon={l.icon}
+                    label={`${person.names[locale]} · ${l.label}`}
+                    href={l.href}
+                  />
+                ))}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </section>
 
       <div className={`frame ${styles.base}`}>
         <p>

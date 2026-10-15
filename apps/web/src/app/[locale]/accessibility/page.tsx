@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { LOCALES } from "@darb/core";
 import { CityBar } from "@/components/CityBar";
+import { Footer } from "@/components/Footer";
 import { LegalDocument } from "@/components/LegalDocument";
 import { legal } from "@/content/legal";
 import { crumbsFor } from "@/lib/crumbs";
@@ -38,6 +39,7 @@ export default async function AccessibilityPage({ params }: Props) {
         segments={paths.accessibility()}
       />
       <LegalDocument locale={locale} doc={copy} />
+      <Footer locale={locale} segments={paths.accessibility()} />
     </>
   );
 }
