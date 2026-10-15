@@ -4,12 +4,9 @@ Carried from the Plan 4 execution ledger (2026-10-14). Every item below was park
 
 ## Owner verification at launch
 
-- Dockerfile digest pin: replace both `sha256:REPLACE_WITH_PRINTED_DIGEST` in `apps/api/Dockerfile` (lines 2 and 10) using `docker buildx imagetools inspect node:22.23.3-bookworm-slim --format '{{json .Manifest.Digest}}'`. The Railway build fails until this is done (checklist in `docs/launch/accounts.md:52`).
+Checked at launch on 2026-10-15 and removed: the Dockerfile digest pin, the Vercel environment name `Production` (the warm workflow ran on it), the production `email_verified` claim (admin sign-in works), the post-deploy reindex, and the local dev database migration.
+
 - GitHub action major-tag pins: `actions/checkout@v7`, `actions/setup-node@v7` and `pnpm/action-setup@v6` in the workflows are major tags copied from `ci.yml`, not SHA pins. Decide whether to pin to SHAs.
-- Vercel environment name: `.github/workflows/warm.yml` filters `deployment_status` on the environment `Production`. Confirm the new Vercel project reports exactly that name.
-- Clerk Production instance: confirm the `email_verified` session-token claim renders as boolean `true`, as it did in Development.
-- Reindex after deploy: run the reindex workflow once so hidden-street business pins in the search index snap to the place centre.
-- Local dev database: run `prisma migrate deploy` against it so the dietary migration (`Business.dietary`) is applied.
 - Local production builds: set `NEXT_PUBLIC_LOCAL_TILES=1` in `apps/web/.env.local`. Without it a local `next build` has no map stage. Production needs `NEXT_PUBLIC_MAP_TILES_URL` (R2) at build time.
 - Local e2e: every local `playwright` command, including `--list`, now needs `E2E_DATABASE_URL` pointing at a database whose name ends `_e2e` or `_test` (CI exempt). Set `E2E_REUSE_API=1` only to reuse a running API on purpose.
 

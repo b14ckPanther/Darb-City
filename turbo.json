@@ -2,6 +2,13 @@
   "$schema": "https://turbo.build/schema.json",
   "ui": "stream",
   "agentGuidance": false,
+  "globalPassThroughEnv": [
+    "API_URL",
+    "SEARCH_PROXY_KEY",
+    "REVALIDATE_SECRET",
+    "CLERK_SECRET_KEY",
+    "CLERK_DISABLE_AUTO_PROXY"
+  ],
   "tasks": {
     "build": { "dependsOn": ["^build"], "outputs": ["dist/**", ".next/**", "!.next/cache/**"] },
     "@darb/web#build": {
