@@ -47,8 +47,13 @@ export default async function ShowroomPage({ params }: Props) {
           labels={{
             live: copy.live,
             open: copy.open,
+            tryLive: copy.tryLive,
+            close: copy.close,
+            loading: copy.loading,
+            device: copy.device,
             frameTitle: copy.frameTitle,
             devices: copy.devices,
+            shotAlt: copy.shotAlt,
           }}
         />
         <section className={styles.cta} aria-labelledby="showroom-cta">

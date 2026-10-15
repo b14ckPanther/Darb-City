@@ -19,8 +19,14 @@ export interface ShowroomCopy {
   lead: string;
   live: string;
   open: string;
-  devices: { laptop: string; tablet: string; phone: string };
+  tryLive: string;
+  close: string;
+  loading: string;
+  device: string;
+  devices: { laptop: string; phone: string };
   frameTitle: string;
+  /** Alt text for a project's screenshots, "{name}" filled in. */
+  shotAlt: string;
   clients: ShowroomClient[];
   cta: { title: string; body: string; talk: string; pricing: string };
 }
@@ -34,14 +40,19 @@ const URLS = {
 export const showroom: Record<Locale, ShowroomCopy> = {
   he: {
     title: "התצוגה | דרב",
-    description: "אפליקציות שדרב בנה לעסקים אמיתיים, חיות, בטלפון, בטאבלט ובמחשב.",
+    description: "אפליקציות שדרב בנה לעסקים אמיתיים, חיות, בטלפון ובמחשב.",
     eyebrow: "התצוגה",
-    heading: "לא צילומי מסך. אפליקציות חיות.",
-    lead: "כל מה שתראו כאן רץ עכשיו, באמת. גללו, לחצו, נסו. כל אחת מהן נבנתה מאפס לעסק אחד.",
+    heading: "אפליקציות אמיתיות, לעסקים אמיתיים.",
+    lead: "כל אחת נבנתה מאפס לעסק אחד. רוצים לראות אותה עובדת? פתחו אותה חיה, ממש כאן, במחשב או בטלפון.",
     live: "חי עכשיו",
     open: "לפתוח באתר",
-    devices: { laptop: "מחשב", tablet: "טאבלט", phone: "טלפון" },
+    tryLive: "לנסות חי",
+    close: "סגירה",
+    loading: "טוען את האתר החי...",
+    device: "מכשיר",
+    devices: { laptop: "מחשב", phone: "טלפון" },
     frameTitle: "{name} בתצוגה חיה",
+    shotAlt: "האתר של {name}",
     clients: [
       {
         id: "caramel",
@@ -77,14 +88,19 @@ export const showroom: Record<Locale, ShowroomCopy> = {
   },
   ar: {
     title: "المعرض | درب",
-    description: "تطبيقات عملها درب لمصالح حقيقية، لايف، عالتلفون والتابلت والكمبيوتر.",
+    description: "تطبيقات عملها درب لمصالح حقيقية، لايف، عالتلفون والكمبيوتر.",
     eyebrow: "المعرض",
-    heading: "مش صور شاشة. تطبيقات لايف.",
-    lead: "كل إشي هون شغّال لايف، عن جد. انزل، اكبس، جرّب. كل واحد فيهم انعمل من الصفر لمصلحة وحدة.",
+    heading: "تطبيقات حقيقية، لمصالح حقيقية.",
+    lead: "كل واحد فيهم انعمل من الصفر لمصلحة وحدة. بدك تشوفه شغّال؟ افتحه لايف هون، عالكمبيوتر أو عالتلفون.",
     live: "لايف",
     open: "افتح الموقع",
-    devices: { laptop: "كمبيوتر", tablet: "تابلت", phone: "تلفون" },
+    tryLive: "جرّبه لايف",
+    close: "سكّر",
+    loading: "عم بحمّل الموقع...",
+    device: "الجهاز",
+    devices: { laptop: "كمبيوتر", phone: "تلفون" },
     frameTitle: "{name} لايف",
+    shotAlt: "موقع {name}",
     clients: [
       {
         id: "caramel",
@@ -120,14 +136,19 @@ export const showroom: Record<Locale, ShowroomCopy> = {
   },
   en: {
     title: "Showroom | Darb",
-    description: "Apps Darb built for real businesses, live, on a phone, a tablet and a laptop.",
+    description: "Apps Darb built for real businesses, live, on a phone and a laptop.",
     eyebrow: "Showroom",
-    heading: "Not screenshots. Live apps.",
-    lead: "Everything here is running right now, for real. Scroll, tap, try it. Each one was built from zero for one business.",
+    heading: "Real apps, for real businesses.",
+    lead: "Each one was built from zero for one business. Want to see it working? Open it live, right here, on a laptop or a phone.",
     live: "Live now",
     open: "Open the site",
-    devices: { laptop: "Laptop", tablet: "Tablet", phone: "Phone" },
+    tryLive: "Try it live",
+    close: "Close",
+    loading: "Loading the live site...",
+    device: "Device",
+    devices: { laptop: "Laptop", phone: "Phone" },
     frameTitle: "{name}, live preview",
+    shotAlt: "{name}'s website",
     clients: [
       {
         id: "caramel",
