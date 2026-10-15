@@ -286,16 +286,15 @@
   }
 }
 
-/* The drawing steps back once the material is on, and stays as a faint trace. */
+/* The drawing fades away completely once the material is on. */
 @keyframes settle {
   to {
-    opacity: 0.1;
+    opacity: 0;
   }
 }
 
 /* Painted in along the diagonal from the top corner, then it breathes. */
 .mark {
-  filter: drop-shadow(0 40px 60px rgb(0 0 0 / 0.55));
   transform-origin: 50% 85%;
   animation:
     paint 1.5s cubic-bezier(0.6, 0, 0.2, 1) 2.3s both,
@@ -800,7 +799,7 @@
   }
 
   .blueprint {
-    opacity: 0.1;
+    opacity: 0;
   }
 
   .page [data-reveal] {
