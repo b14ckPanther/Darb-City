@@ -44,8 +44,8 @@
     "parent": null,
     "name": {
       "he": "בתי קפה",
-      "ar": "مقاهي وكافيهات",
-      "en": "Cafés and coffee shops"
+      "ar": "كافيهات",
+      "en": "Cafés"
     },
     "synonyms": {
       "he": [
@@ -59,14 +59,16 @@
         "قهوة",
         "كوفي شوب",
         "مقهى",
-        "اسبريسو"
+        "اسبريسو",
+        "كوفي"
       ],
       "en": [
         "cafe",
         "coffee",
         "coffee shop",
         "espresso",
-        "latte"
+        "latte",
+        "café"
       ]
     },
     "template": "menu",
@@ -84,7 +86,7 @@
     "name": {
       "he": "שווארמה וגריל",
       "ar": "شاورما ومشاوي",
-      "en": "Shawarma and grill houses"
+      "en": "Shawarma & grill"
     },
     "synonyms": {
       "he": [
@@ -92,21 +94,26 @@
         "שוארמה",
         "גריל",
         "שיפודים",
-        "על האש"
+        "על האש",
+        "שווארמיה",
+        "שיפודייה"
       ],
       "ar": [
         "شاورما",
         "مشاوي",
         "مشويات",
         "شيش طاووق",
-        "كباب"
+        "كباب",
+        "شاورمة",
+        "شورما"
       ],
       "en": [
         "shawarma",
         "grill",
         "kebab",
         "skewers",
-        "bbq"
+        "bbq",
+        "shwarma"
       ]
     },
     "template": "tracker",
@@ -120,9 +127,9 @@
     "sector": "food",
     "parent": null,
     "name": {
-      "he": "מאפיות וקונדיטוריות",
-      "ar": "مخابز وحلويات",
-      "en": "Bakeries and patisseries"
+      "he": "מאפיות",
+      "ar": "مخابز وأفران",
+      "en": "Bakeries"
     },
     "synonyms": {
       "he": [
@@ -130,21 +137,25 @@
         "קונדיטוריה",
         "לחם",
         "מאפים",
-        "עוגות"
+        "עוגות",
+        "מאפיה"
       ],
       "ar": [
         "مخبز",
         "فرن",
         "خبز",
         "معجنات",
-        "كعك"
+        "كعك",
+        "افران",
+        "كعك بسمسم"
       ],
       "en": [
         "bakery",
         "bread",
         "pastry",
         "patisserie",
-        "cakes"
+        "cakes",
+        "bakeries"
       ]
     },
     "template": "menu",
@@ -160,9 +171,9 @@
     "sector": "food",
     "parent": null,
     "name": {
-      "he": "חומוסיות ופלאפל",
+      "he": "חומוס ופלאפל",
       "ar": "حمص وفلافل",
-      "en": "Hummus and falafel"
+      "en": "Hummus & falafel"
     },
     "synonyms": {
       "he": [
@@ -170,21 +181,26 @@
         "פלאפל",
         "חומוסייה",
         "פול",
-        "מסבחה"
+        "מסבחה",
+        "פלאפליה"
       ],
       "ar": [
         "حمص",
         "فلافل",
         "فول",
         "مسبحة",
-        "فطور"
+        "فطور",
+        "حمّص",
+        "مطعم حمص"
       ],
       "en": [
         "hummus",
         "falafel",
         "foul",
         "msabbaha",
-        "humus"
+        "humus",
+        "felafel",
+        "hummous"
       ]
     },
     "template": "pass",
@@ -198,9 +214,9 @@
     "sector": "food",
     "parent": null,
     "name": {
-      "he": "קייטרינג ושפים פרטיים",
-      "ar": "تموين وطباخين خاصين",
-      "en": "Catering and private chefs"
+      "he": "קייטרינג",
+      "ar": "كيترينغ",
+      "en": "Catering"
     },
     "synonyms": {
       "he": [
@@ -214,7 +230,9 @@
         "تموين",
         "طباخ خاص",
         "أكل للمناسبات",
-        "صواني"
+        "صواني",
+        "كاترينج",
+        "كيترينج"
       ],
       "en": [
         "catering",
@@ -236,8 +254,8 @@
     "parent": null,
     "name": {
       "he": "כנאפה וממתקים ערביים",
-      "ar": "كنافة وحلويات عربية",
-      "en": "Knafeh and Arabic sweets"
+      "ar": "كنافة وحلويات",
+      "en": "Knafeh & sweets"
     },
     "synonyms": {
       "he": [
@@ -252,14 +270,18 @@
         "بقلاوة",
         "حلويات",
         "حلو",
-        "قطايف"
+        "قطايف",
+        "محل حلويات"
       ],
       "en": [
         "knafeh",
         "kunafa",
         "baklava",
         "arabic sweets",
-        "dessert"
+        "dessert",
+        "knafe",
+        "kanafeh",
+        "sweets"
       ]
     },
     "template": "shop",
@@ -276,7 +298,7 @@
     "parent": null,
     "name": {
       "he": "פודטראקים",
-      "ar": "عربات أكل",
+      "ar": "فود ترك",
       "en": "Food trucks"
     },
     "synonyms": {
@@ -290,7 +312,8 @@
         "فود ترك",
         "عربة أكل",
         "أكل شارع",
-        "كرفان أكل"
+        "كرفان أكل",
+        "عربات أكل"
       ],
       "en": [
         "food truck",
@@ -310,9 +333,9 @@
     "sector": "food",
     "parent": null,
     "name": {
-      "he": "בתי קלייה: קפה, אגוזים ותבלינים",
-      "ar": "محامص: قهوة وبزورات وبهارات",
-      "en": "Roasteries: coffee, nuts and spices"
+      "he": "קלייה ופיצוחים",
+      "ar": "محامص وبزورات",
+      "en": "Roasteries & nuts"
     },
     "synonyms": {
       "he": [
@@ -327,7 +350,9 @@
         "بزر",
         "مكسرات",
         "بهارات",
-        "قهوة عربية"
+        "قهوة عربية",
+        "محامص",
+        "بزورات"
       ],
       "en": [
         "roastery",
@@ -349,21 +374,23 @@
     "parent": null,
     "name": {
       "he": "גלידריות",
-      "ar": "بوظة وجيلاتي",
-      "en": "Ice cream parlours"
+      "ar": "بوظة",
+      "en": "Ice cream"
     },
     "synonyms": {
       "he": [
         "גלידה",
         "גלידרייה",
         "ג'לטו",
-        "יוגורט"
+        "יוגורט",
+        "גלידריה"
       ],
       "ar": [
         "بوظة",
         "آيس كريم",
         "جيلاتي",
-        "بوظا"
+        "بوظا",
+        "ايس كريم"
       ],
       "en": [
         "ice cream",
@@ -385,9 +412,9 @@
     "sector": "food",
     "parent": null,
     "name": {
-      "he": "מיצים ושייקים טריים",
-      "ar": "عصائر وميلك شيك طازة",
-      "en": "Fresh juice and smoothie shops"
+      "he": "מיצים ושייקים",
+      "ar": "عصير وكوكتيل",
+      "en": "Juice & smoothies"
     },
     "synonyms": {
       "he": [
@@ -395,14 +422,17 @@
         "מיצים",
         "שייק",
         "סמוטי",
-        "מיץ טבעי"
+        "מיץ טבעי",
+        "מיצייה"
       ],
       "ar": [
         "عصير",
         "عصاير",
         "كوكتيل فواكه",
         "سموذي",
-        "عصير طبيعي"
+        "عصير طبيعي",
+        "كوكتيل",
+        "عصاير طبيعية"
       ],
       "en": [
         "juice",
@@ -423,9 +453,9 @@
     "sector": "food",
     "parent": null,
     "name": {
-      "he": "מנות מוכנות לשבוע",
-      "ar": "وجبات جاهزة للأسبوع",
-      "en": "Meal prep and weekly boxes"
+      "he": "אוכל ביתי מוכן",
+      "ar": "أكل بيتي جاهز",
+      "en": "Ready meals"
     },
     "synonyms": {
       "he": [
@@ -461,27 +491,32 @@
     "parent": null,
     "name": {
       "he": "מספרות",
-      "ar": "صالونات حلاقة",
-      "en": "Barbershops"
+      "ar": "حلاقين",
+      "en": "Barbers"
     },
     "synonyms": {
       "he": [
         "ספר",
         "מספרה",
         "תספורת",
-        "ברבר"
+        "ברבר",
+        "מספרת גברים",
+        "ספר גברים"
       ],
       "ar": [
         "حلاق",
         "حلاقة",
         "صالون رجالي",
-        "قص شعر"
+        "قص شعر",
+        "حلاق رجالي",
+        "صالون حلاقة"
       ],
       "en": [
         "barber",
         "barber shop",
         "haircut",
-        "fade"
+        "fade",
+        "barbershop"
       ]
     },
     "template": "booking",
@@ -495,8 +530,8 @@
     "sector": "beauty",
     "parent": null,
     "name": {
-      "he": "סלונים לשיער",
-      "ar": "صالونات شعر",
+      "he": "מעצבי שיער",
+      "ar": "صالونات وكوافير",
       "en": "Hair salons"
     },
     "synonyms": {
@@ -505,21 +540,26 @@
         "מספרה לנשים",
         "צבע לשיער",
         "פן",
-        "החלקה"
+        "החלקה",
+        "סלון שיער",
+        "מספרה"
       ],
       "ar": [
         "كوافير",
         "صالون نسائي",
         "صبغة شعر",
         "سشوار",
-        "تمليس"
+        "تمليس",
+        "صالون",
+        "كوافيرة"
       ],
       "en": [
         "hair salon",
         "hairdresser",
         "hair colour",
         "blow dry",
-        "keratin"
+        "keratin",
+        "salon"
       ]
     },
     "template": "booking",
@@ -533,9 +573,9 @@
     "sector": "beauty",
     "parent": null,
     "name": {
-      "he": "סטודיו לציפורניים",
-      "ar": "ستوديو أظافر",
-      "en": "Nail studios"
+      "he": "מניקור וציפורניים",
+      "ar": "أظافر ومناكير",
+      "en": "Nails & manicure"
     },
     "synonyms": {
       "he": [
@@ -543,14 +583,17 @@
         "פדיקור",
         "ציפורניים",
         "ג'ל",
-        "לק"
+        "לק",
+        "בניית ציפורניים"
       ],
       "ar": [
         "مناكير",
         "باديكير",
         "أظافر",
         "جل",
-        "مونيكير"
+        "مونيكير",
+        "مانيكير",
+        "اظافر"
       ],
       "en": [
         "nails",
@@ -572,8 +615,8 @@
     "parent": null,
     "name": {
       "he": "מאפרות",
-      "ar": "خبيرات مكياج",
-      "en": "Makeup artists"
+      "ar": "مكياج",
+      "en": "Makeup"
     },
     "synonyms": {
       "he": [
@@ -587,7 +630,8 @@
         "ميكب",
         "ميك اب",
         "مكياج عرايس",
-        "خبيرة تجميل"
+        "خبيرة تجميل",
+        "ميكاب"
       ],
       "en": [
         "makeup",
@@ -607,9 +651,9 @@
     "sector": "beauty",
     "parent": null,
     "name": {
-      "he": "ספא ועיסויים",
+      "he": "ספא ועיסוי",
       "ar": "سبا ومساج",
-      "en": "Spas and massage"
+      "en": "Spa & massage"
     },
     "synonyms": {
       "he": [
@@ -643,9 +687,9 @@
     "sector": "beauty",
     "parent": null,
     "name": {
-      "he": "סטודיו לגבות וריסים",
-      "ar": "ستوديو حواجب ورموش",
-      "en": "Brow and lash studios"
+      "he": "גבות וריסים",
+      "ar": "حواجب ورموش",
+      "en": "Brows & lashes"
     },
     "synonyms": {
       "he": [
@@ -681,9 +725,9 @@
     "sector": "beauty",
     "parent": null,
     "name": {
-      "he": "ספא וסלון לנשים בלבד",
-      "ar": "سبا وصالونات للنساء فقط",
-      "en": "Women-only spas and salons"
+      "he": "ספא לנשים בלבד",
+      "ar": "سبا للنساء فقط",
+      "en": "Women-only spa"
     },
     "synonyms": {
       "he": [
@@ -716,9 +760,9 @@
     "sector": "beauty",
     "parent": null,
     "name": {
-      "he": "קליניקות אסתטיקה ולייזר",
-      "ar": "عيادات تجميل وليزر",
-      "en": "Aesthetic and laser clinics"
+      "he": "אסתטיקה ולייזר",
+      "ar": "تجميل وليزر",
+      "en": "Aesthetics & laser"
     },
     "synonyms": {
       "he": [
@@ -733,7 +777,8 @@
         "ليزر",
         "إزالة شعر بالليزر",
         "بوتكس",
-        "فيلر"
+        "فيلر",
+        "بوتوكس"
       ],
       "en": [
         "aesthetics",
@@ -754,9 +799,9 @@
     "sector": "beauty",
     "parent": null,
     "name": {
-      "he": "הסרת שיער בסוכר ושעווה",
-      "ar": "إزالة شعر بالسكر والشمع",
-      "en": "Sugaring and waxing studios"
+      "he": "שעווה והסרת שיער",
+      "ar": "حلاوة وشمع",
+      "en": "Waxing & sugaring"
     },
     "synonyms": {
       "he": [
@@ -771,7 +816,8 @@
         "سكر",
         "شمع",
         "إزالة شعر",
-        "حلاوة سكر"
+        "حلاوة سكر",
+        "حلاوة للشعر"
       ],
       "en": [
         "sugaring",
@@ -791,22 +837,25 @@
     "sector": "beauty",
     "parent": null,
     "name": {
-      "he": "טיפולי פנים וקוסמטיקה",
-      "ar": "علاجات وجه وعناية بالبشرة",
-      "en": "Facials and skin care"
+      "he": "קוסמטיקה וטיפולי פנים",
+      "ar": "تنظيف بشرة",
+      "en": "Facials & skin care"
     },
     "synonyms": {
       "he": [
         "טיפול פנים",
         "קוסמטיקאית",
         "קוסמטיקה",
-        "ניקוי פנים"
+        "ניקוי פנים",
+        "קוסמטיקאיות"
       ],
       "ar": [
         "تنظيف بشرة",
         "عناية بالبشرة",
         "فيشال",
-        "تجميل وجه"
+        "تجميل وجه",
+        "كوسمتيكا",
+        "تنظيف وجه"
       ],
       "en": [
         "facial",
@@ -827,9 +876,9 @@
     "sector": "beauty",
     "parent": null,
     "name": {
-      "he": "חנויות קוסמטיקה וטיפוח",
-      "ar": "محلات مستحضرات تجميل وعناية",
-      "en": "Cosmetics and skincare shops"
+      "he": "חנויות קוסמטיקה",
+      "ar": "مستحضرات تجميل",
+      "en": "Cosmetics shops"
     },
     "synonyms": {
       "he": [
@@ -866,9 +915,9 @@
     "sector": "beauty",
     "parent": null,
     "name": {
-      "he": "מרפאות שיער וקרקפת",
-      "ar": "عيادات شعر وفروة رأس",
-      "en": "Scalp and hair-loss clinics"
+      "he": "השתלת שיער ונשירה",
+      "ar": "زراعة شعر وتساقط",
+      "en": "Hair loss & transplant"
     },
     "synonyms": {
       "he": [
@@ -902,9 +951,9 @@
     "sector": "health",
     "parent": null,
     "name": {
-      "he": "סטודיו ליוגה ופילאטיס",
-      "ar": "ستوديو يوغا وبيلاتيس",
-      "en": "Yoga and Pilates studios"
+      "he": "יוגה ופילאטיס",
+      "ar": "يوغا وبيلاتس",
+      "en": "Yoga & Pilates"
     },
     "synonyms": {
       "he": [
@@ -937,9 +986,9 @@
     "sector": "health",
     "parent": null,
     "name": {
-      "he": "מרפאות שיניים",
-      "ar": "عيادات أسنان",
-      "en": "Dental clinics"
+      "he": "רופאי שיניים",
+      "ar": "أطباء أسنان",
+      "en": "Dentists"
     },
     "synonyms": {
       "he": [
@@ -947,14 +996,17 @@
         "שיניים",
         "מרפאת שיניים",
         "שתלים",
-        "הלבנה"
+        "הלבנה",
+        "רופאת שיניים"
       ],
       "ar": [
         "طبيب أسنان",
         "دكتور أسنان",
         "اسنان",
         "زراعة أسنان",
-        "تبييض"
+        "تبييض",
+        "دكتور اسنان",
+        "طبيب اسنان"
       ],
       "en": [
         "dentist",
@@ -975,22 +1027,25 @@
     "sector": "health",
     "parent": null,
     "name": {
-      "he": "פיזיותרפיה ומרפאות",
-      "ar": "علاج طبيعي وعيادات",
-      "en": "Physiotherapy and medical clinics"
+      "he": "פיזיותרפיה",
+      "ar": "علاج طبيعي",
+      "en": "Physiotherapy"
     },
     "synonyms": {
       "he": [
         "פיזיותרפיה",
         "פיזיותרפיסט",
         "מרפאה",
-        "שיקום"
+        "שיקום",
+        "פיזיו"
       ],
       "ar": [
         "علاج طبيعي",
         "فيزيوثيرابي",
         "عيادة",
-        "تأهيل"
+        "تأهيل",
+        "فيزيو",
+        "فيزيوتيرابيا"
       ],
       "en": [
         "physio",
@@ -1011,9 +1066,9 @@
     "sector": "health",
     "parent": null,
     "name": {
-      "he": "תזונאים ודיאטנים",
+      "he": "דיאטנים ותזונאים",
       "ar": "أخصائيي تغذية",
-      "en": "Nutritionists and dietitians"
+      "en": "Dietitians"
     },
     "synonyms": {
       "he": [
@@ -1050,8 +1105,8 @@
     "parent": null,
     "name": {
       "he": "פסיכולוגים ומטפלים",
-      "ar": "أخصائيين نفسيين ومعالجين",
-      "en": "Psychologists and therapists"
+      "ar": "أخصائيين نفسيين",
+      "en": "Psychologists & therapists"
     },
     "synonyms": {
       "he": [
@@ -1087,9 +1142,9 @@
     "sector": "health",
     "parent": null,
     "name": {
-      "he": "אופטיקה ומכוני שמיעה",
-      "ar": "بصريات وعيادات سمع",
-      "en": "Optometrists and hearing clinics"
+      "he": "אופטיקה ומכשירי שמיעה",
+      "ar": "نظارات وسماعات أذن",
+      "en": "Opticians & hearing aids"
     },
     "synonyms": {
       "he": [
@@ -1097,14 +1152,17 @@
         "משקפיים",
         "עדשות מגע",
         "מכשיר שמיעה",
-        "בדיקת ראייה"
+        "בדיקת ראייה",
+        "אופטיקאי"
       ],
       "ar": [
         "نظارات",
         "بصريات",
         "عدسات",
         "سماعة أذن",
-        "فحص نظر"
+        "فحص نظر",
+        "اوبتيكا",
+        "محل نظارات"
       ],
       "en": [
         "optician",
@@ -1125,9 +1183,9 @@
     "sector": "health",
     "parent": null,
     "name": {
-      "he": "וטרינרים וטיפוח לחיות",
-      "ar": "بياطرة وتجميل حيوانات",
-      "en": "Veterinary clinics and pet grooming"
+      "he": "וטרינרים",
+      "ar": "بياطرة",
+      "en": "Vets"
     },
     "synonyms": {
       "he": [
@@ -1142,7 +1200,8 @@
         "دكتور حيوانات",
         "طبيب بيطري",
         "تجميل كلاب",
-        "قصّ قطط"
+        "قصّ قطط",
+        "بيطرية"
       ],
       "en": [
         "vet",
@@ -1179,7 +1238,8 @@
         "اجزخانة",
         "أدوية",
         "دوا",
-        "صيدلي"
+        "صيدلي",
+        "فارم"
       ],
       "en": [
         "pharmacy",
@@ -1202,8 +1262,8 @@
     "parent": null,
     "name": {
       "he": "קלינאיות תקשורת",
-      "ar": "أخصائيات نطق وتواصل",
-      "en": "Speech therapists"
+      "ar": "علاج نطق",
+      "en": "Speech therapy"
     },
     "synonyms": {
       "he": [
@@ -1309,7 +1369,7 @@
     "sector": "health",
     "parent": null,
     "name": {
-      "he": "אורתודונטים ויישור שיניים",
+      "he": "יישור שיניים",
       "ar": "تقويم أسنان",
       "en": "Orthodontists"
     },
@@ -1346,9 +1406,9 @@
     "sector": "sports",
     "parent": null,
     "name": {
-      "he": "חדרי כושר וסטודיו",
-      "ar": "نوادي رياضية وستوديوهات",
-      "en": "Gyms and fitness studios"
+      "he": "חדרי כושר",
+      "ar": "جيمات",
+      "en": "Gyms"
     },
     "synonyms": {
       "he": [
@@ -1356,14 +1416,17 @@
         "ג'ים",
         "כושר",
         "סטודיו",
-        "מנוי"
+        "מנוי",
+        "מכון כושר",
+        "מכוני כושר"
       ],
       "ar": [
         "جيم",
         "نادي رياضي",
         "صالة رياضة",
         "لياقة",
-        "اشتراك جيم"
+        "اشتراك جيم",
+        "نادي لياقة"
       ],
       "en": [
         "gym",
@@ -1384,8 +1447,8 @@
     "sector": "sports",
     "parent": null,
     "name": {
-      "he": "מאמנים אישיים",
-      "ar": "مدربين شخصيين",
+      "he": "מאמני כושר",
+      "ar": "مدربين رياضة",
       "en": "Personal trainers"
     },
     "synonyms": {
@@ -1419,9 +1482,9 @@
     "sector": "sports",
     "parent": null,
     "name": {
-      "he": "אקדמיות כדורגל",
+      "he": "בתי ספר לכדורגל",
       "ar": "أكاديميات كرة قدم",
-      "en": "Football academies"
+      "en": "Football schools"
     },
     "synonyms": {
       "he": [
@@ -1434,7 +1497,8 @@
         "كرة قدم",
         "فوتبول",
         "أكاديمية",
-        "تدريب كرة"
+        "تدريب كرة",
+        "فطبول"
       ],
       "en": [
         "football",
@@ -1454,9 +1518,9 @@
     "sector": "sports",
     "parent": null,
     "name": {
-      "he": "מועדוני ספורט וקבוצות",
-      "ar": "نوادي وفرق رياضية",
-      "en": "Sports clubs and teams"
+      "he": "מועדוני ספורט",
+      "ar": "نوادي رياضية",
+      "en": "Sports clubs"
     },
     "synonyms": {
       "he": [
@@ -1493,7 +1557,7 @@
     "parent": null,
     "name": {
       "he": "אומנויות לחימה",
-      "ar": "فنون قتالية",
+      "ar": "كاراتيه وفنون قتالية",
       "en": "Martial arts"
     },
     "synonyms": {
@@ -1530,9 +1594,9 @@
     "sector": "sports",
     "parent": null,
     "name": {
-      "he": "מגרשי פאדל וטניס",
-      "ar": "ملاعب بادل وتنس",
-      "en": "Padel and tennis courts"
+      "he": "פאדל וטניס",
+      "ar": "بادل وتنس",
+      "en": "Padel & tennis"
     },
     "synonyms": {
       "he": [
@@ -1565,7 +1629,7 @@
     "sector": "sports",
     "parent": null,
     "name": {
-      "he": "בריכות שחייה",
+      "he": "בריכות",
       "ar": "برك سباحة",
       "en": "Swimming pools"
     },
@@ -1602,7 +1666,7 @@
     "name": {
       "he": "קבוצות ריצה",
       "ar": "فرق ركض",
-      "en": "Running clubs"
+      "en": "Running groups"
     },
     "synonyms": {
       "he": [
@@ -1635,9 +1699,9 @@
     "sector": "sports",
     "parent": null,
     "name": {
-      "he": "ביגוד והנעלה לספורט",
-      "ar": "ملابس وأحذية رياضية",
-      "en": "Sportswear and shoes"
+      "he": "ביגוד ספורט",
+      "ar": "ملابس رياضة",
+      "en": "Sportswear"
     },
     "synonyms": {
       "he": [
@@ -1674,9 +1738,9 @@
     "sector": "sports",
     "parent": null,
     "name": {
-      "he": "מדריכי טיולים ומסלולים",
-      "ar": "أدلاء رحلات ومسارات",
-      "en": "Hiking guides and trails"
+      "he": "טיולים ומסלולים",
+      "ar": "رحلات ومسارات",
+      "en": "Hiking"
     },
     "synonyms": {
       "he": [
@@ -1712,9 +1776,9 @@
     "sector": "sports",
     "parent": null,
     "name": {
-      "he": "חנויות אופניים",
-      "ar": "محلات بسكليتات",
-      "en": "Bike shops"
+      "he": "אופניים",
+      "ar": "بسكليتات",
+      "en": "Bikes"
     },
     "synonyms": {
       "he": [
@@ -1727,7 +1791,8 @@
         "بسكليت",
         "دراجة",
         "بسكليت كهربائي",
-        "تصليح بسكليتات"
+        "تصليح بسكليتات",
+        "بسكليتة"
       ],
       "en": [
         "bike",
@@ -1751,8 +1816,8 @@
     "parent": null,
     "name": {
       "he": "ציוד דיג",
-      "ar": "معدات صيد سمك",
-      "en": "Fishing supplies"
+      "ar": "عدة صيد",
+      "en": "Fishing gear"
     },
     "synonyms": {
       "he": [
@@ -1785,9 +1850,9 @@
     "sector": "kids",
     "parent": null,
     "name": {
-      "he": "מעונות יום ופעוטונים",
-      "ar": "حضانات وبيوت أطفال",
-      "en": "Daycare and nurseries"
+      "he": "מעונות ופעוטונים",
+      "ar": "حضانات",
+      "en": "Daycare"
     },
     "synonyms": {
       "he": [
@@ -1821,8 +1886,8 @@
     "parent": null,
     "name": {
       "he": "גנים וצהרונים",
-      "ar": "روضات وبرامج بعد الظهر",
-      "en": "Kindergartens and after-school programmes"
+      "ar": "روضات",
+      "en": "Kindergartens"
     },
     "synonyms": {
       "he": [
@@ -1855,8 +1920,8 @@
     "sector": "kids",
     "parent": null,
     "name": {
-      "he": "חנויות לתינוקות",
-      "ar": "محلات أطفال رضّع",
+      "he": "מוצרי תינוקות",
+      "ar": "أغراض بيبي",
       "en": "Baby shops"
     },
     "synonyms": {
@@ -1895,9 +1960,9 @@
     "sector": "kids",
     "parent": null,
     "name": {
-      "he": "מרפאות ילדים",
-      "ar": "عيادات أطفال",
-      "en": "Pediatric clinics"
+      "he": "רופאי ילדים",
+      "ar": "أطباء أطفال",
+      "en": "Pediatricians"
     },
     "synonyms": {
       "he": [
@@ -1931,8 +1996,8 @@
     "parent": null,
     "name": {
       "he": "בגדי ילדים",
-      "ar": "ملابس أطفال",
-      "en": "Kids' clothing"
+      "ar": "أواعي أطفال",
+      "en": "Kids' clothes"
     },
     "synonyms": {
       "he": [
@@ -1967,9 +2032,9 @@
     "sector": "kids",
     "parent": null,
     "name": {
-      "he": "מטפלות ובייביסיטר",
-      "ar": "مربيات وبيبي سيتر",
-      "en": "Nannies and babysitters"
+      "he": "בייביסיטר ומטפלות",
+      "ar": "بيبي سيتر",
+      "en": "Babysitters & nannies"
     },
     "synonyms": {
       "he": [
@@ -2038,7 +2103,7 @@
     "parent": null,
     "name": {
       "he": "רופאי שיניים לילדים",
-      "ar": "أطباء أسنان للأطفال",
+      "ar": "أطباء أسنان أطفال",
       "en": "Kids' dentists"
     },
     "synonyms": {
@@ -2069,8 +2134,8 @@
     "sector": "kids",
     "parent": null,
     "name": {
-      "he": "חנויות צעצועים",
-      "ar": "محلات ألعاب",
+      "he": "צעצועים",
+      "ar": "ألعاب أطفال",
       "en": "Toy shops"
     },
     "synonyms": {
@@ -2084,7 +2149,8 @@
         "ألعاب",
         "العاب",
         "لعب أطفال",
-        "ليغو"
+        "ليغو",
+        "محل ألعاب"
       ],
       "en": [
         "toys",
@@ -2108,8 +2174,8 @@
     "parent": null,
     "name": {
       "he": "מפעילים לימי הולדת",
-      "ar": "منشطين أعياد ميلاد",
-      "en": "Birthday entertainers"
+      "ar": "فقرات أعياد ميلاد",
+      "en": "Party entertainers"
     },
     "synonyms": {
       "he": [
@@ -2124,7 +2190,8 @@
         "مهرج",
         "ألعاب وفقرات",
         "عيد ميلاد",
-        "فقرات أطفال"
+        "فقرات أطفال",
+        "مهرج أعياد ميلاد"
       ],
       "en": [
         "entertainer",
@@ -2145,8 +2212,8 @@
     "sector": "kids",
     "parent": null,
     "name": {
-      "he": "מתחמי ימי הולדת לילדים",
-      "ar": "أماكن أعياد ميلاد للأطفال",
+      "he": "מתחמי ימי הולדת",
+      "ar": "قاعات أعياد ميلاد",
       "en": "Kids' party venues"
     },
     "synonyms": {
@@ -2181,7 +2248,7 @@
     "parent": null,
     "name": {
       "he": "מורים פרטיים",
-      "ar": "معلمين خصوصيين",
+      "ar": "دروس خصوصية",
       "en": "Private tutors"
     },
     "synonyms": {
@@ -2215,9 +2282,9 @@
     "sector": "education",
     "parent": null,
     "name": {
-      "he": "בתי ספר למוזיקה ואמנות",
-      "ar": "مدارس موسيقى وفن",
-      "en": "Music and art schools"
+      "he": "חוגי מוזיקה ואמנות",
+      "ar": "دورات موسيقى ورسم",
+      "en": "Music & art classes"
     },
     "synonyms": {
       "he": [
@@ -2253,9 +2320,9 @@
     "sector": "education",
     "parent": null,
     "name": {
-      "he": "בתי ספר לתכנות לילדים",
-      "ar": "مدارس برمجة للأطفال",
-      "en": "Coding schools for kids"
+      "he": "חוגי תכנות לילדים",
+      "ar": "برمجة للأطفال",
+      "en": "Coding for kids"
     },
     "synonyms": {
       "he": [
@@ -2289,9 +2356,9 @@
     "sector": "education",
     "parent": null,
     "name": {
-      "he": "קורסים אונליין ומאמנים",
-      "ar": "دورات أونلاين وكوتشات",
-      "en": "Online courses and coaches"
+      "he": "קורסים וקואצ'ינג",
+      "ar": "كورسات وكوتشينغ",
+      "en": "Courses & coaching"
     },
     "synonyms": {
       "he": [
@@ -2306,7 +2373,8 @@
         "كورس",
         "دورة أونلاين",
         "كوتش",
-        "ورشة"
+        "ورشة",
+        "كورسات"
       ],
       "en": [
         "online course",
@@ -2327,9 +2395,9 @@
     "sector": "education",
     "parent": null,
     "name": {
-      "he": "מרכזים לערבית ועברית ובתי ספר לשפות",
-      "ar": "مراكز عربي وعبري ومدارس لغات",
-      "en": "Arabic, Hebrew and language schools"
+      "he": "אולפנים ושיעורי שפה",
+      "ar": "دورات لغات",
+      "en": "Language courses"
     },
     "synonyms": {
       "he": [
@@ -2344,7 +2412,9 @@
         "عربي",
         "انجليزي",
         "دورة لغة",
-        "أولبان"
+        "أولبان",
+        "دورة عبري",
+        "دورة انجليزي"
       ],
       "en": [
         "ulpan",
@@ -2365,9 +2435,9 @@
     "sector": "education",
     "parent": null,
     "name": {
-      "he": "הכנה לפסיכומטרי ולאוניברסיטה",
-      "ar": "تحضير للبسيخومتري والجامعة",
-      "en": "University and psychometric prep"
+      "he": "פסיכומטרי ומכינות",
+      "ar": "بسيخومتري وتحضيري",
+      "en": "Psychometric prep"
     },
     "synonyms": {
       "he": [
@@ -2402,9 +2472,9 @@
     "sector": "education",
     "parent": null,
     "name": {
-      "he": "מורים לנהיגה",
-      "ar": "معلمين سواقة",
-      "en": "Driving instructors"
+      "he": "מורי נהיגה",
+      "ar": "تعليم سواقة",
+      "en": "Driving lessons"
     },
     "synonyms": {
       "he": [
@@ -2418,7 +2488,9 @@
         "تعليم سواقة",
         "تست",
         "تيؤوريا",
-        "رخصة"
+        "رخصة",
+        "معلم سياقة",
+        "تعليم سياقة"
       ],
       "en": [
         "driving instructor",
@@ -2440,8 +2512,8 @@
     "parent": null,
     "name": {
       "he": "בתי ספר אסלאמיים",
-      "ar": "مدارس إسلامية خاصة",
-      "en": "Islamic private schools"
+      "ar": "مدارس إسلامية",
+      "en": "Islamic schools"
     },
     "synonyms": {
       "he": [
@@ -2472,8 +2544,8 @@
     "parent": null,
     "name": {
       "he": "הכשרות מקצועיות",
-      "ar": "تأهيل مهني",
-      "en": "Vocational training"
+      "ar": "دورات مهنية",
+      "en": "Vocational courses"
     },
     "synonyms": {
       "he": [
@@ -2506,9 +2578,9 @@
     "sector": "education",
     "parent": null,
     "name": {
-      "he": "סדנאות ובתי ספר לבישול",
-      "ar": "ورشات ومدارس طبخ",
-      "en": "Cooking schools and workshops"
+      "he": "סדנאות בישול",
+      "ar": "دورات طبخ",
+      "en": "Cooking classes"
     },
     "synonyms": {
       "he": [
@@ -2541,9 +2613,9 @@
     "sector": "education",
     "parent": null,
     "name": {
-      "he": "סדנאות תפירה ורקמה",
-      "ar": "ورشات خياطة وتطريز",
-      "en": "Sewing and embroidery workshops"
+      "he": "קורסי תפירה ורקמה",
+      "ar": "دورات خياطة وتطريز",
+      "en": "Sewing classes"
     },
     "synonyms": {
       "he": [
@@ -2576,22 +2648,24 @@
     "sector": "tech",
     "parent": null,
     "name": {
-      "he": "סטודיו לפיתוח תוכנה",
-      "ar": "ستوديوهات تطوير برمجيات",
-      "en": "Software studios"
+      "he": "פיתוח תוכנה ואתרים",
+      "ar": "برمجة ومواقع",
+      "en": "Software & websites"
     },
     "synonyms": {
       "he": [
         "פיתוח תוכנה",
         "בית תוכנה",
         "מתכנתים",
-        "פיתוח אתרים"
+        "פיתוח אתרים",
+        "בניית אתרים"
       ],
       "ar": [
         "برمجة",
         "تطوير برمجيات",
         "شركة برمجة",
-        "تصميم مواقع"
+        "تصميم مواقع",
+        "بناء مواقع"
       ],
       "en": [
         "software development",
@@ -2611,9 +2685,9 @@
     "sector": "tech",
     "parent": null,
     "name": {
-      "he": "תמיכת IT לעסקים",
-      "ar": "دعم تقني للمصالح",
-      "en": "IT support for business"
+      "he": "טכנאי מחשבים",
+      "ar": "فنيين كمبيوتر",
+      "en": "IT support"
     },
     "synonyms": {
       "he": [
@@ -2647,9 +2721,9 @@
     "sector": "tech",
     "parent": null,
     "name": {
-      "he": "חללי עבודה משותפים",
-      "ar": "مساحات عمل مشتركة",
-      "en": "Coworking spaces"
+      "he": "חללי עבודה",
+      "ar": "مكاتب مشتركة",
+      "en": "Coworking"
     },
     "synonyms": {
       "he": [
@@ -2682,8 +2756,8 @@
     "sector": "tech",
     "parent": null,
     "name": {
-      "he": "אבטחת מידע וסייבר",
-      "ar": "أمن معلومات وسايبر",
+      "he": "סייבר ואבטחת מידע",
+      "ar": "سايبر وأمن معلومات",
       "en": "Cybersecurity"
     },
     "synonyms": {
@@ -2717,9 +2791,9 @@
     "sector": "tech",
     "parent": null,
     "name": {
-      "he": "סטארטאפים ומוצרי SaaS",
-      "ar": "ستارت أب ومنتجات SaaS",
-      "en": "SaaS startups"
+      "he": "סטארטאפים",
+      "ar": "ستارت أب",
+      "en": "Startups"
     },
     "synonyms": {
       "he": [
@@ -2752,9 +2826,9 @@
     "sector": "tech",
     "parent": null,
     "name": {
-      "he": "סוכנויות שיווק דיגיטלי",
-      "ar": "وكالات تسويق ديجيتال",
-      "en": "Digital marketing agencies"
+      "he": "שיווק ופרסום",
+      "ar": "تسويق ودعاية",
+      "en": "Marketing & advertising"
     },
     "synonyms": {
       "he": [
@@ -2788,9 +2862,9 @@
     "sector": "tech",
     "parent": null,
     "name": {
-      "he": "ניהול רשתות חברתיות",
+      "he": "ניהול סושיאל",
       "ar": "إدارة سوشال ميديا",
-      "en": "Social media managers"
+      "en": "Social media management"
     },
     "synonyms": {
       "he": [
@@ -2826,9 +2900,9 @@
     "sector": "tech",
     "parent": null,
     "name": {
-      "he": "אחסון אתרים ודומיינים",
-      "ar": "استضافة مواقع ودومينات",
-      "en": "Web hosting and domains"
+      "he": "אחסון אתרים",
+      "ar": "استضافة مواقع",
+      "en": "Web hosting"
     },
     "synonyms": {
       "he": [
@@ -2861,9 +2935,9 @@
     "sector": "tech",
     "parent": null,
     "name": {
-      "he": "מפתחי אפליקציות",
-      "ar": "مطوري تطبيقات",
-      "en": "App developers"
+      "he": "פיתוח אפליקציות",
+      "ar": "تطوير تطبيقات",
+      "en": "App development"
     },
     "synonyms": {
       "he": [
@@ -2899,9 +2973,9 @@
     "sector": "tech",
     "parent": null,
     "name": {
-      "he": "סטודיו למשחקים",
-      "ar": "ستوديوهات ألعاب",
-      "en": "Game studios"
+      "he": "פיתוח משחקים",
+      "ar": "تطوير ألعاب",
+      "en": "Game development"
     },
     "synonyms": {
       "he": [
@@ -2932,9 +3006,9 @@
     "sector": "tech",
     "parent": null,
     "name": {
-      "he": "ייעוץ דאטה ובינה מלאכותית",
-      "ar": "استشارات بيانات وذكاء اصطناعي",
-      "en": "Data and AI consultancies"
+      "he": "בינה מלאכותית ודאטה",
+      "ar": "ذكاء اصطناعي وداتا",
+      "en": "AI & data"
     },
     "synonyms": {
       "he": [
@@ -2968,9 +3042,9 @@
     "sector": "services",
     "parent": null,
     "name": {
-      "he": "תחנות דלק ושירות",
-      "ar": "محطات وقود وخدمة",
-      "en": "Fuel and service stations"
+      "he": "תחנות דלק",
+      "ar": "محطات بنزين",
+      "en": "Gas stations"
     },
     "synonyms": {
       "he": [
@@ -2985,7 +3059,8 @@
         "كازية",
         "بنزين",
         "محطة بنزين",
-        "سولار"
+        "سولار",
+        "ستيشن"
       ],
       "en": [
         "gas station",
@@ -3008,7 +3083,7 @@
     "name": {
       "he": "עורכי דין ונוטריונים",
       "ar": "محامين وكتّاب عدل",
-      "en": "Lawyers and notaries"
+      "en": "Lawyers & notaries"
     },
     "synonyms": {
       "he": [
@@ -3022,7 +3097,8 @@
         "محامية",
         "كاتب عدل",
         "نوتريون",
-        "استشارة قانونية"
+        "استشارة قانونية",
+        "محامي طابو"
       ],
       "en": [
         "lawyer",
@@ -3043,8 +3119,8 @@
     "parent": null,
     "name": {
       "he": "רואי חשבון ויועצי מס",
-      "ar": "محاسبين ومستشاري ضريبة",
-      "en": "Accountants and tax advisors"
+      "ar": "محاسبين ومستشاري ضرائب",
+      "en": "Accountants & tax advisors"
     },
     "synonyms": {
       "he": [
@@ -3058,7 +3134,9 @@
         "محاسب",
         "مستشار ضرائب",
         "مسك دفاتر",
-        "ضريبة"
+        "ضريبة",
+        "رواه حشبون",
+        "مكتب محاسبة"
       ],
       "en": [
         "accountant",
@@ -3114,8 +3192,8 @@
     "sector": "services",
     "parent": null,
     "name": {
-      "he": "סוכני נדל\"ן",
-      "ar": "وكلاء عقارات",
+      "he": "נדל\"ן ותיווך",
+      "ar": "عقارات وسماسرة",
       "en": "Real estate agents"
     },
     "synonyms": {
@@ -3124,7 +3202,8 @@
         "מתווך",
         "דירה למכירה",
         "דירה להשכרה",
-        "תיווך"
+        "תיווך",
+        "מתווך דירות"
       ],
       "ar": [
         "عقارات",
@@ -3153,8 +3232,8 @@
     "parent": null,
     "name": {
       "he": "קבלנים ושיפוצים",
-      "ar": "مقاولين وترميمات",
-      "en": "Contractors and renovators"
+      "ar": "مقاولين وترميم",
+      "en": "Contractors & renovations"
     },
     "synonyms": {
       "he": [
@@ -3169,7 +3248,9 @@
         "ترميم",
         "تشطيب",
         "بناء",
-        "معلم بناء"
+        "معلم بناء",
+        "مقاول بناء",
+        "ترميمات"
       ],
       "en": [
         "contractor",
@@ -3190,8 +3271,8 @@
     "sector": "services",
     "parent": null,
     "name": {
-      "he": "שירותי ניקיון",
-      "ar": "خدمات تنظيف",
+      "he": "חברות ניקיון",
+      "ar": "شركات تنظيف",
       "en": "Cleaning services"
     },
     "synonyms": {
@@ -3225,9 +3306,9 @@
     "sector": "services",
     "parent": null,
     "name": {
-      "he": "חשמלאים, אינסטלטורים וטכנאים",
-      "ar": "كهربائيين وسمكرية وفنيين",
-      "en": "Electricians, plumbers and technicians"
+      "he": "חשמלאים ואינסטלטורים",
+      "ar": "كهربائيين وسباكين",
+      "en": "Electricians & plumbers"
     },
     "synonyms": {
       "he": [
@@ -3235,14 +3316,19 @@
         "אינסטלטור",
         "טכנאי",
         "טכנאי מזגנים",
-        "שרברב"
+        "שרברב",
+        "חשמלאי מוסמך"
       ],
       "ar": [
         "كهربجي",
         "سنكري",
         "فني",
         "فني مكيفات",
-        "كهربائي"
+        "كهربائي",
+        "سباك",
+        "أنابيب",
+        "فني أنابيب",
+        "سمكري"
       ],
       "en": [
         "electrician",
@@ -3263,22 +3349,25 @@
     "sector": "services",
     "parent": null,
     "name": {
-      "he": "מעבדות לתיקון טלפונים ומחשבים",
-      "ar": "تصليح تلفونات وكمبيوترات",
-      "en": "Phone and computer repair"
+      "he": "תיקון טלפונים ומחשבים",
+      "ar": "تصليح تلفونات وكمبيوتر",
+      "en": "Phone & computer repair"
     },
     "synonyms": {
       "he": [
         "תיקון טלפונים",
         "מעבדה",
         "החלפת מסך",
-        "תיקון מחשבים"
+        "תיקון מחשבים",
+        "מעבדת סלולר"
       ],
       "ar": [
         "تصليح تلفونات",
         "تصليح خلوي",
         "تغيير شاشة",
-        "تصليح كمبيوتر"
+        "تصليح كمبيوتر",
+        "تصليح بلفونات",
+        "مختبر تلفونات"
       ],
       "en": [
         "phone repair",
@@ -3299,7 +3388,7 @@
     "parent": null,
     "name": {
       "he": "הובלות",
-      "ar": "نقليات وتعزيل",
+      "ar": "نقليات",
       "en": "Movers"
     },
     "synonyms": {
@@ -3333,9 +3422,9 @@
     "sector": "services",
     "parent": null,
     "name": {
-      "he": "תפירה, תיקונים וניקוי יבש",
-      "ar": "خياطة وتصليحات وتنظيف ناشف",
-      "en": "Tailoring and dry cleaning"
+      "he": "תופרות וניקוי יבש",
+      "ar": "خياطين وتنظيف ناشف",
+      "en": "Tailors & dry cleaning"
     },
     "synonyms": {
       "he": [
@@ -3371,9 +3460,9 @@
     "sector": "services",
     "parent": null,
     "name": {
-      "he": "זגגות ואלומיניום",
-      "ar": "زجاج وألمنيوم",
-      "en": "Glass and aluminium"
+      "he": "אלומיניום וזגגות",
+      "ar": "ألمنيوم وزجاج",
+      "en": "Aluminium & glass"
     },
     "synonyms": {
       "he": [
@@ -3388,7 +3477,8 @@
         "زجاج",
         "شبابيك",
         "أباجورات",
-        "كابينة شاور"
+        "كابينة شاور",
+        "المنيوم"
       ],
       "en": [
         "glazier",
@@ -3411,7 +3501,7 @@
     "name": {
       "he": "אדריכלים ומעצבי פנים",
       "ar": "مهندسين معماريين ومصممي ديكور",
-      "en": "Architects and interior designers"
+      "en": "Architects & interior designers"
     },
     "synonyms": {
       "he": [
@@ -3444,9 +3534,9 @@
     "sector": "home",
     "parent": null,
     "name": {
-      "he": "חנויות רהיטים",
+      "he": "רהיטים",
       "ar": "محلات أثاث",
-      "en": "Furniture stores"
+      "en": "Furniture"
     },
     "synonyms": {
       "he": [
@@ -3484,7 +3574,7 @@
     "name": {
       "he": "מטבחים",
       "ar": "مطابخ",
-      "en": "Kitchen makers"
+      "en": "Kitchens"
     },
     "synonyms": {
       "he": [
@@ -3517,9 +3607,9 @@
     "sector": "home",
     "parent": null,
     "name": {
-      "he": "וילונות ובדים",
-      "ar": "برادي وأقمشة",
-      "en": "Curtains and fabric shops"
+      "he": "וילונות",
+      "ar": "برادي",
+      "en": "Curtains"
     },
     "synonyms": {
       "he": [
@@ -3552,9 +3642,9 @@
     "sector": "home",
     "parent": null,
     "name": {
-      "he": "מתקיני מערכות סולאריות",
-      "ar": "مركّبي طاقة شمسية",
-      "en": "Solar installers"
+      "he": "מערכות סולאריות",
+      "ar": "طاقة شمسية",
+      "en": "Solar panels"
     },
     "synonyms": {
       "he": [
@@ -3586,8 +3676,8 @@
     "sector": "home",
     "parent": null,
     "name": {
-      "he": "עיצוב ואביזרים לבית",
-      "ar": "ديكور وإكسسوارات للبيت",
+      "he": "אביזרי עיצוב לבית",
+      "ar": "ديكور للبيت",
       "en": "Home decor"
     },
     "synonyms": {
@@ -3658,9 +3748,9 @@
     "sector": "home",
     "parent": null,
     "name": {
-      "he": "גננים ומעצבי נוף",
-      "ar": "جنايني ومصممي حدائق",
-      "en": "Gardeners and landscapers"
+      "he": "גננים ועיצוב נוף",
+      "ar": "جنايني وتنسيق حدائق",
+      "en": "Gardeners"
     },
     "synonyms": {
       "he": [
@@ -3710,7 +3800,9 @@
         "فتح باب",
         "قفل",
         "نسخ مفاتيح",
-        "كوالين"
+        "كوالين",
+        "فتح أقفال",
+        "مفاتيح"
       ],
       "en": [
         "locksmith",
@@ -3731,7 +3823,7 @@
     "parent": null,
     "name": {
       "he": "הדברה",
-      "ar": "مكافحة حشرات",
+      "ar": "رش حشرات",
       "en": "Pest control"
     },
     "synonyms": {
@@ -3768,9 +3860,9 @@
     "sector": "home",
     "parent": null,
     "name": {
-      "he": "צבעים ושיפוץ קירות",
-      "ar": "دهّانين وترميم حيطان",
-      "en": "Interior painters"
+      "he": "צביעת דירות",
+      "ar": "دهّانين",
+      "en": "Painters"
     },
     "synonyms": {
       "he": [
@@ -3805,7 +3897,7 @@
     "name": {
       "he": "רפדים",
       "ar": "منجّدين",
-      "en": "Upholsterers"
+      "en": "Upholstery"
     },
     "synonyms": {
       "he": [
@@ -3838,9 +3930,9 @@
     "sector": "industry",
     "parent": null,
     "name": {
-      "he": "מפעלים ויצרנים",
-      "ar": "مصانع ومنتجين",
-      "en": "Factories and manufacturers"
+      "he": "מפעלים",
+      "ar": "مصانع",
+      "en": "Factories"
     },
     "synonyms": {
       "he": [
@@ -3875,7 +3967,7 @@
     "name": {
       "he": "סיטונאים",
       "ar": "تجار جملة",
-      "en": "Wholesalers"
+      "en": "Wholesale"
     },
     "synonyms": {
       "he": [
@@ -3910,9 +4002,9 @@
     "sector": "industry",
     "parent": null,
     "name": {
-      "he": "אריזות ממותגות",
-      "ar": "تغليف بالماركة",
-      "en": "Packaging makers"
+      "he": "אריזות",
+      "ar": "تغليف وعلب",
+      "en": "Packaging"
     },
     "synonyms": {
       "he": [
@@ -3945,9 +4037,9 @@
     "sector": "industry",
     "parent": null,
     "name": {
-      "he": "שליחויות ולוגיסטיקה",
-      "ar": "شحن ولوجستيكا",
-      "en": "Logistics and couriers"
+      "he": "שליחויות ומשלוחים",
+      "ar": "توصيل وشحن",
+      "en": "Couriers & delivery"
     },
     "synonyms": {
       "he": [
@@ -3980,9 +4072,9 @@
     "sector": "industry",
     "parent": null,
     "name": {
-      "he": "מחסנים ואחסון",
-      "ar": "مخازن وتخزين",
-      "en": "Warehouses and storage"
+      "he": "מחסנים",
+      "ar": "مخازن",
+      "en": "Warehouses & storage"
     },
     "synonyms": {
       "he": [
@@ -4015,9 +4107,9 @@
     "sector": "industry",
     "parent": null,
     "name": {
-      "he": "שלטים ומיתוג חזיתות",
-      "ar": "صناعة يافطات",
-      "en": "Sign makers"
+      "he": "שלטים",
+      "ar": "يافطات",
+      "en": "Signs"
     },
     "synonyms": {
       "he": [
@@ -4051,8 +4143,8 @@
     "parent": null,
     "name": {
       "he": "מסגריות",
-      "ar": "ورش حدادة",
-      "en": "Metal workshops"
+      "ar": "حدادين",
+      "en": "Metalwork & welding"
     },
     "synonyms": {
       "he": [
@@ -4088,16 +4180,17 @@
     "sector": "industry",
     "parent": null,
     "name": {
-      "he": "נגריות",
-      "ar": "منجرات وورش نجارة",
-      "en": "Carpentry workshops"
+      "he": "נגרים",
+      "ar": "نجارين",
+      "en": "Carpenters"
     },
     "synonyms": {
       "he": [
         "נגר",
         "נגרות",
         "ארונות",
-        "דלתות"
+        "דלתות",
+        "נגרייה"
       ],
       "ar": [
         "نجار",
@@ -4125,9 +4218,9 @@
     "sector": "industry",
     "parent": null,
     "name": {
-      "he": "חברות השמה",
-      "ar": "شركات توظيف",
-      "en": "Recruiting agencies"
+      "he": "חברות כוח אדם",
+      "ar": "مكاتب تشغيل",
+      "en": "Recruitment agencies"
     },
     "synonyms": {
       "he": [
@@ -4161,8 +4254,8 @@
     "sector": "industry",
     "parent": null,
     "name": {
-      "he": "חברות אבטחה",
-      "ar": "شركات حراسة وأمن",
+      "he": "חברות אבטחה ושמירה",
+      "ar": "شركات حراسة",
       "en": "Security companies"
     },
     "synonyms": {
@@ -4196,8 +4289,8 @@
     "sector": "auto",
     "parent": null,
     "name": {
-      "he": "סוכנויות ומגרשי רכב",
-      "ar": "وكالات ومعارض سيارات",
+      "he": "מגרשי רכב וסוכנויות",
+      "ar": "معارض سيارات",
       "en": "Car dealers"
     },
     "synonyms": {
@@ -4234,7 +4327,7 @@
     "name": {
       "he": "מוסכים",
       "ar": "كراجات",
-      "en": "Car garages"
+      "en": "Garages"
     },
     "synonyms": {
       "he": [
@@ -4247,7 +4340,10 @@
         "كراج",
         "ميكانيكي",
         "تصليح سيارات",
-        "صيانة سيارة"
+        "صيانة سيارة",
+        "جراج",
+        "جراجات",
+        "كراج سيارات"
       ],
       "en": [
         "garage",
@@ -4305,7 +4401,7 @@
     "name": {
       "he": "פנצ'ריות וצמיגים",
       "ar": "بنشرجية وكاوتشوك",
-      "en": "Tyre shops"
+      "en": "Tyres & punctures"
     },
     "synonyms": {
       "he": [
@@ -4341,9 +4437,9 @@
     "sector": "auto",
     "parent": null,
     "name": {
-      "he": "שטיפת רכב ודיטיילינג",
-      "ar": "غسيل سيارات وتلميع",
-      "en": "Car wash and detailing"
+      "he": "שטיפת רכב",
+      "ar": "غسيل سيارات",
+      "en": "Car wash"
     },
     "synonyms": {
       "he": [
@@ -4358,7 +4454,8 @@
         "مغسلة سيارات",
         "تلميع",
         "بوليش",
-        "تنظيف سيارة"
+        "تنظيف سيارة",
+        "مغسلة"
       ],
       "en": [
         "car wash",
@@ -4381,7 +4478,7 @@
     "name": {
       "he": "אופנועים וקטנועים",
       "ar": "موتورات وسكوترات",
-      "en": "Motorcycles and scooters"
+      "en": "Motorbikes & scooters"
     },
     "synonyms": {
       "he": [
@@ -4414,8 +4511,8 @@
     "sector": "auto",
     "parent": null,
     "name": {
-      "he": "עמדות טעינה לרכב חשמלי",
-      "ar": "محطات شحن للسيارات الكهربائية",
+      "he": "עמדות טעינה",
+      "ar": "شحن سيارات كهربائية",
       "en": "EV charging"
     },
     "synonyms": {
@@ -4450,8 +4547,8 @@
     "parent": null,
     "name": {
       "he": "מוניות והסעות",
-      "ar": "تكسيات وتوصيلات",
-      "en": "Taxis and transfers"
+      "ar": "تكسيات",
+      "en": "Taxis"
     },
     "synonyms": {
       "he": [
@@ -4466,7 +4563,8 @@
         "طلب تكسي",
         "توصيل",
         "سفريات",
-        "باص صغير"
+        "باص صغير",
+        "تاكسي"
       ],
       "en": [
         "taxi",
@@ -4487,16 +4585,17 @@
     "sector": "auto",
     "parent": null,
     "name": {
-      "he": "חלקי חילוף לרכב",
-      "ar": "قطع غيار سيارات",
-      "en": "Auto parts"
+      "he": "חלקי חילוף",
+      "ar": "قطع غيار",
+      "en": "Car parts"
     },
     "synonyms": {
       "he": [
         "חלקי חילוף",
         "חלפים",
         "אביזרים לרכב",
-        "שמן מנוע"
+        "שמן מנוע",
+        "חלפים לרכב"
       ],
       "ar": [
         "قطع غيار",
@@ -4524,9 +4623,9 @@
     "sector": "auto",
     "parent": null,
     "name": {
-      "he": "גרר ושירותי דרך",
-      "ar": "سحب ومساعدة على الطريق",
-      "en": "Towing and roadside help"
+      "he": "גרר",
+      "ar": "ونش وسحب سيارات",
+      "en": "Towing"
     },
     "synonyms": {
       "he": [
@@ -4561,8 +4660,8 @@
     "parent": null,
     "name": {
       "he": "פחחות וצבע",
-      "ar": "دهان وتجليس سيارات",
-      "en": "Panel beating and paint"
+      "ar": "سمكرة ودهان",
+      "en": "Body shops"
     },
     "synonyms": {
       "he": [
@@ -4575,7 +4674,8 @@
         "سمكرة",
         "دهان سيارات",
         "تجليس",
-        "بخاخ"
+        "بخاخ",
+        "سمكري"
       ],
       "en": [
         "body shop",
@@ -4596,9 +4696,9 @@
     "sector": "agriculture",
     "parent": null,
     "name": {
-      "he": "חוות עם מכירה ישירה",
-      "ar": "مزارع بيع مباشر",
-      "en": "Farms with direct sales"
+      "he": "תוצרת חקלאית",
+      "ar": "منتجات بلدية",
+      "en": "Farm produce"
     },
     "synonyms": {
       "he": [
@@ -4632,7 +4732,7 @@
     "parent": null,
     "name": {
       "he": "שווקי איכרים",
-      "ar": "أسواق فلاحين",
+      "ar": "أسواق خضرة",
       "en": "Farmers' markets"
     },
     "synonyms": {
@@ -4668,9 +4768,9 @@
     "sector": "agriculture",
     "parent": null,
     "name": {
-      "he": "משתלות שתילים",
-      "ar": "مشاتل أشتال",
-      "en": "Seedling nurseries"
+      "he": "שתילים",
+      "ar": "أشتال",
+      "en": "Seedlings"
     },
     "synonyms": {
       "he": [
@@ -4703,9 +4803,9 @@
     "sector": "agriculture",
     "parent": null,
     "name": {
-      "he": "כוורנים ודבש",
-      "ar": "نحّالين وعسل",
-      "en": "Beekeepers and honey"
+      "he": "דבש וכוורנים",
+      "ar": "عسل ونحّالين",
+      "en": "Honey & beekeepers"
     },
     "synonyms": {
       "he": [
@@ -4740,9 +4840,9 @@
     "sector": "agriculture",
     "parent": null,
     "name": {
-      "he": "רפתות ומחלבות",
-      "ar": "مزارع ألبان ومحالب",
-      "en": "Dairy farms"
+      "he": "מחלבות",
+      "ar": "ألبان وأجبان",
+      "en": "Dairy"
     },
     "synonyms": {
       "he": [
@@ -4780,7 +4880,7 @@
     "name": {
       "he": "בתי בד",
       "ar": "معاصر زيتون",
-      "en": "Olive oil presses"
+      "en": "Olive presses"
     },
     "synonyms": {
       "he": [
@@ -4814,9 +4914,9 @@
     "sector": "agriculture",
     "parent": null,
     "name": {
-      "he": "לולים וביצי חופש",
-      "ar": "مزارع بيض",
-      "en": "Egg farms"
+      "he": "לולים וביצים",
+      "ar": "بيض بلدي",
+      "en": "Eggs"
     },
     "synonyms": {
       "he": [
@@ -4849,9 +4949,9 @@
     "sector": "agriculture",
     "parent": null,
     "name": {
-      "he": "חוות סוסים ורכיבה",
-      "ar": "إسطبلات وركوب خيل",
-      "en": "Stables and horse riding"
+      "he": "חוות סוסים",
+      "ar": "ركوب خيل",
+      "en": "Horse riding"
     },
     "synonyms": {
       "he": [
@@ -4921,7 +5021,7 @@
     "name": {
       "he": "טרקטורים וציוד חקלאי",
       "ar": "تراكتورات ومعدات زراعية",
-      "en": "Tractors and farm equipment"
+      "en": "Tractors & farm equipment"
     },
     "synonyms": {
       "he": [
@@ -4954,9 +5054,9 @@
     "sector": "agriculture",
     "parent": null,
     "name": {
-      "he": "מערכות השקיה",
-      "ar": "أنظمة ري",
-      "en": "Irrigation systems"
+      "he": "השקיה",
+      "ar": "ري وتنقيط",
+      "en": "Irrigation"
     },
     "synonyms": {
       "he": [
@@ -4989,7 +5089,7 @@
     "sector": "agriculture",
     "parent": null,
     "name": {
-      "he": "וטרינרים לבעלי חיים במשק",
+      "he": "וטרינרים לצאן ובקר",
       "ar": "بياطرة مواشي",
       "en": "Livestock vets"
     },
@@ -5024,9 +5124,9 @@
     "sector": "events",
     "parent": null,
     "name": {
-      "he": "אולמות וגני אירועים",
-      "ar": "قاعات وحدائق أفراح",
-      "en": "Event venues and wedding halls"
+      "he": "אולמות אירועים",
+      "ar": "قاعات أفراح",
+      "en": "Wedding halls & venues"
     },
     "synonyms": {
       "he": [
@@ -5039,7 +5139,8 @@
         "قاعة",
         "قاعة أفراح",
         "صالة",
-        "حديقة أفراح"
+        "حديقة أفراح",
+        "قاعة أعراس"
       ],
       "en": [
         "wedding hall",
@@ -5059,8 +5160,8 @@
     "sector": "events",
     "parent": null,
     "name": {
-      "he": "מפיקי אירועים",
-      "ar": "منظمي مناسبات",
+      "he": "הפקת אירועים",
+      "ar": "تنظيم مناسبات",
       "en": "Event planners"
     },
     "synonyms": {
@@ -5094,9 +5195,9 @@
     "sector": "events",
     "parent": null,
     "name": {
-      "he": "אמניות חינה",
-      "ar": "فنانات حنّة",
-      "en": "Henna artists"
+      "he": "חינה",
+      "ar": "حنة",
+      "en": "Henna"
     },
     "synonyms": {
       "he": [
@@ -5164,9 +5265,9 @@
     "sector": "events",
     "parent": null,
     "name": {
-      "he": "השכרת שמלות כלה וערב",
-      "ar": "تأجير فساتين عرايس وسهرة",
-      "en": "Wedding dress rental"
+      "he": "שמלות כלה וערב",
+      "ar": "فساتين عرايس وسهرة",
+      "en": "Bridal & evening dresses"
     },
     "synonyms": {
       "he": [
@@ -5199,9 +5300,9 @@
     "sector": "events",
     "parent": null,
     "name": {
-      "he": "צלמים ווידאו",
-      "ar": "مصورين وفيديو",
-      "en": "Photographers and videographers"
+      "he": "צלמים",
+      "ar": "مصورين",
+      "en": "Photographers"
     },
     "synonyms": {
       "he": [
@@ -5237,9 +5338,9 @@
     "sector": "events",
     "parent": null,
     "name": {
-      "he": "בתי דפוס והזמנות",
-      "ar": "مطابع وكروت دعوة",
-      "en": "Printing and invitations"
+      "he": "בתי דפוס",
+      "ar": "مطابع",
+      "en": "Printing & invitations"
     },
     "synonyms": {
       "he": [
@@ -5307,9 +5408,9 @@
     "sector": "events",
     "parent": null,
     "name": {
-      "he": "אוהלי אירועים והושבה",
-      "ar": "خيم مناسبات وكراسي",
-      "en": "Event tents and seating"
+      "he": "השכרת אוהלים וכיסאות",
+      "ar": "خيم وكراسي للمناسبات",
+      "en": "Tent & chair rental"
     },
     "synonyms": {
       "he": [
@@ -5381,7 +5482,7 @@
     "parent": null,
     "name": {
       "he": "עיצוב אירועים",
-      "ar": "تزيين مناسبات",
+      "ar": "تزيين أفراح",
       "en": "Event decor"
     },
     "synonyms": {
@@ -5415,9 +5516,9 @@
     "sector": "events",
     "parent": null,
     "name": {
-      "he": "מזכרות ומתנות לאורחים",
-      "ar": "توزيعات وهدايا للضيوف",
-      "en": "Wedding and Eid favours"
+      "he": "מזכרות לאירועים",
+      "ar": "توزيعات",
+      "en": "Party favours"
     },
     "synonyms": {
       "he": [
@@ -5453,16 +5554,17 @@
     "sector": "travel",
     "parent": null,
     "name": {
-      "he": "מארגני עומרה וחג'",
-      "ar": "منظمي عمرة وحج",
-      "en": "Umrah and Hajj organisers"
+      "he": "עומרה וחאג'",
+      "ar": "حج وعمرة",
+      "en": "Umrah & Hajj"
     },
     "synonyms": {
       "he": [
         "עומרה",
         "חג'",
         "מכה",
-        "טיול למכה"
+        "טיול למכה",
+        "חאג'"
       ],
       "ar": [
         "عمرة",
@@ -5489,9 +5591,9 @@
     "sector": "travel",
     "parent": null,
     "name": {
-      "he": "מלונות בוטיק, צימרים ובתי הארחה",
-      "ar": "فنادق بوتيك وشاليهات وبيوت ضيافة",
-      "en": "Boutique hotels and guesthouses"
+      "he": "מלונות וצימרים",
+      "ar": "فنادق وشاليهات",
+      "en": "Hotels & guesthouses"
     },
     "synonyms": {
       "he": [
@@ -5525,9 +5627,9 @@
     "sector": "travel",
     "parent": null,
     "name": {
-      "he": "מדריכי טיולים וחוויות",
-      "ar": "أدلاء سياحيين وتجارب",
-      "en": "Tour guides and experiences"
+      "he": "סיורים מודרכים",
+      "ar": "جولات سياحية",
+      "en": "Guided tours"
     },
     "synonyms": {
       "he": [
@@ -5562,7 +5664,7 @@
     "name": {
       "he": "סוכנויות נסיעות",
       "ar": "مكاتب سفريات",
-      "en": "Travel agencies"
+      "en": "Travel agents"
     },
     "synonyms": {
       "he": [
@@ -5596,9 +5698,9 @@
     "sector": "travel",
     "parent": null,
     "name": {
-      "he": "קמפינג וגלמפינג",
-      "ar": "تخييم وغلامبينغ",
-      "en": "Campsites and glamping"
+      "he": "קמפינג",
+      "ar": "تخييم",
+      "en": "Camping"
     },
     "synonyms": {
       "he": [
@@ -5631,9 +5733,9 @@
     "sector": "travel",
     "parent": null,
     "name": {
-      "he": "חברות אוטובוסים וטיולים מאורגנים",
-      "ar": "شركات باصات ورحلات منظمة",
-      "en": "Coaches and group trips"
+      "he": "השכרת אוטובוסים",
+      "ar": "باصات ورحلات",
+      "en": "Bus hire & group trips"
     },
     "synonyms": {
       "he": [
@@ -5667,9 +5769,9 @@
     "sector": "travel",
     "parent": null,
     "name": {
-      "he": "תרגום ושירותי ויזה",
-      "ar": "ترجمة وخدمات فيزا",
-      "en": "Translation and visa services"
+      "he": "ויזות ותרגום מסמכים",
+      "ar": "فيزا وترجمة",
+      "en": "Visas & translation"
     },
     "synonyms": {
       "he": [
@@ -5703,8 +5805,8 @@
     "sector": "travel",
     "parent": null,
     "name": {
-      "he": "חלפני כספים",
-      "ar": "صرّافين",
+      "he": "צ'יינג' והמרת כסף",
+      "ar": "صرافة",
       "en": "Currency exchange"
     },
     "synonyms": {
@@ -5713,14 +5815,18 @@
         "החלפת כסף",
         "מט\"ח",
         "דולר",
-        "דינר"
+        "דינר",
+        "חלפן כספים",
+        "ציינג'"
       ],
       "ar": [
         "صراف",
         "صرافة",
         "تصريف عملة",
         "دولار",
-        "دينار"
+        "دينار",
+        "تشينج",
+        "صرافة عملة"
       ],
       "en": [
         "currency exchange",
@@ -5741,8 +5847,8 @@
     "parent": null,
     "name": {
       "he": "לימודים בחו\"ל",
-      "ar": "مستشاري تعليم بالخارج",
-      "en": "Study abroad advisers"
+      "ar": "تعليم بالخارج",
+      "en": "Study abroad"
     },
     "synonyms": {
       "he": [
@@ -5776,9 +5882,9 @@
     "sector": "travel",
     "parent": null,
     "name": {
-      "he": "מזוודות וציוד לטיול",
-      "ar": "شنط سفر ومعدات رحلات",
-      "en": "Luggage and travel gear"
+      "he": "מזוודות",
+      "ar": "شنط سفر",
+      "en": "Luggage"
     },
     "synonyms": {
       "he": [
@@ -5813,9 +5919,9 @@
     "sector": "travel",
     "parent": null,
     "name": {
-      "he": "הכנה לחאג'",
-      "ar": "دورات تحضير للحج",
-      "en": "Hajj preparation courses"
+      "he": "קורסי הכנה לחאג'",
+      "ar": "دورات حج",
+      "en": "Hajj courses"
     },
     "synonyms": {
       "he": [
@@ -5848,9 +5954,9 @@
     "sector": "retail",
     "parent": null,
     "name": {
-      "he": "חנויות אונליין ומרקטפלייס",
-      "ar": "متاجر أونلاين وماركت بليس",
-      "en": "Online stores and marketplaces"
+      "he": "חנויות אונליין",
+      "ar": "محلات أونلاين",
+      "en": "Online shops"
     },
     "synonyms": {
       "he": [
@@ -5885,9 +5991,9 @@
     "sector": "retail",
     "parent": null,
     "name": {
-      "he": "בוטיקים לאופנה",
-      "ar": "بوتيكات أزياء",
-      "en": "Fashion boutiques"
+      "he": "בגדים ואופנה",
+      "ar": "ملابس وأزياء",
+      "en": "Clothing & fashion"
     },
     "synonyms": {
       "he": [
@@ -5901,7 +6007,9 @@
         "أزياء",
         "ملابس",
         "أواعي",
-        "فساتين"
+        "فساتين",
+        "محل ملابس",
+        "محل أواعي"
       ],
       "en": [
         "boutique",
@@ -5923,9 +6031,9 @@
     "sector": "retail",
     "parent": null,
     "name": {
-      "he": "אמנים, יוצרים ופרילנסרים",
-      "ar": "فنانين ومبدعين وفريلانسرز",
-      "en": "Artists, creators and freelancers"
+      "he": "אמנים ועבודות יד",
+      "ar": "فنانين وشغل إيد",
+      "en": "Artists & handmade"
     },
     "synonyms": {
       "he": [
@@ -5961,9 +6069,9 @@
     "sector": "retail",
     "parent": null,
     "name": {
-      "he": "חנויות ספרים, מתנות וחנויות שכונתיות",
-      "ar": "مكتبات وهدايا ومحلات الحارة",
-      "en": "Bookshops, gift shops and local stores"
+      "he": "ספרים, מתנות וכלי כתיבה",
+      "ar": "مكتبات وقرطاسية",
+      "en": "Books, gifts & stationery"
     },
     "synonyms": {
       "he": [
@@ -6001,9 +6109,9 @@
     "sector": "retail",
     "parent": null,
     "name": {
-      "he": "משתלות וצמחי בית",
-      "ar": "مشاتل ونباتات بيت",
-      "en": "Plant shops and nurseries"
+      "he": "משתלות",
+      "ar": "مشاتل",
+      "en": "Plant nurseries"
     },
     "synonyms": {
       "he": [
@@ -6039,7 +6147,7 @@
     "parent": null,
     "name": {
       "he": "חנויות לחיות מחמד",
-      "ar": "محلات حيوانات أليفة",
+      "ar": "محلات حيوانات",
       "en": "Pet shops"
     },
     "synonyms": {
@@ -6075,9 +6183,9 @@
     "sector": "retail",
     "parent": null,
     "name": {
-      "he": "זהב ותכשיטים",
+      "he": "תכשיטים וזהב",
       "ar": "ذهب ومجوهرات",
-      "en": "Gold and jewellery"
+      "en": "Gold & jewellery"
     },
     "synonyms": {
       "he": [
@@ -6092,7 +6200,8 @@
         "صايغ",
         "مجوهرات",
         "خاتم",
-        "طقم ذهب"
+        "طقم ذهب",
+        "صياغ"
       ],
       "en": [
         "gold",
@@ -6113,9 +6222,9 @@
     "sector": "retail",
     "parent": null,
     "name": {
-      "he": "בשמים, עוד ובח'ור",
-      "ar": "عطور وعود وبخور",
-      "en": "Perfume, oud and bakhoor"
+      "he": "בשמים ובח'ור",
+      "ar": "عطور وبخور",
+      "en": "Perfume & oud"
     },
     "synonyms": {
       "he": [
@@ -6152,9 +6261,9 @@
     "sector": "retail",
     "parent": null,
     "name": {
-      "he": "שוקולטיירים וחנויות תמרים",
-      "ar": "شوكولاتة ومحلات تمر",
-      "en": "Chocolatiers and date shops"
+      "he": "שוקולד ותמרים",
+      "ar": "شوكولاتة وتمر",
+      "en": "Chocolate & dates"
     },
     "synonyms": {
       "he": [
@@ -6187,9 +6296,9 @@
     "sector": "retail",
     "parent": null,
     "name": {
-      "he": "טלפונים ומוצרי חשמל",
-      "ar": "تلفونات وأجهزة كهربائية",
-      "en": "Phones and electronics"
+      "he": "סלולר ומוצרי חשמל",
+      "ar": "تلفونات وكهربائيات",
+      "en": "Phones & electronics"
     },
     "synonyms": {
       "he": [
@@ -6204,7 +6313,9 @@
         "خلوي",
         "أدوات كهربائية",
         "سماعات",
-        "تلفزيون"
+        "تلفزيون",
+        "بلفون",
+        "محل تلفونات"
       ],
       "en": [
         "phone",
@@ -6262,9 +6373,9 @@
     "sector": "retail",
     "parent": null,
     "name": {
-      "he": "כלי בית ומטבח",
+      "he": "כלי בית",
       "ar": "أدوات بيت ومطبخ",
-      "en": "Kitchenware and home goods"
+      "en": "Housewares"
     },
     "synonyms": {
       "he": [
@@ -6298,9 +6409,9 @@
     "sector": "faith",
     "parent": null,
     "name": {
-      "he": "מסגדים ומרכזים אסלאמיים",
-      "ar": "جوامع ومراكز إسلامية",
-      "en": "Mosques and Islamic centres"
+      "he": "מסגדים",
+      "ar": "جوامع ومساجد",
+      "en": "Mosques"
     },
     "synonyms": {
       "he": [
@@ -6335,9 +6446,9 @@
     "sector": "faith",
     "parent": null,
     "name": {
-      "he": "בתי ספר לקוראן",
-      "ar": "مدارس قرآن",
-      "en": "Quran schools"
+      "he": "לימוד קוראן",
+      "ar": "تحفيظ قرآن",
+      "en": "Quran classes"
     },
     "synonyms": {
       "he": [
@@ -6387,7 +6498,8 @@
         "لحام",
         "لحمة حلال",
         "لحم",
-        "قصاب"
+        "قصاب",
+        "لحّام"
       ],
       "en": [
         "halal butcher",
@@ -6407,9 +6519,9 @@
     "sector": "faith",
     "parent": null,
     "name": {
-      "he": "בוטיקים לעבאיות וחיג'אבים",
-      "ar": "بوتيكات عبايات وحجابات",
-      "en": "Abaya and hijab boutiques"
+      "he": "עבאיות וחיג'אבים",
+      "ar": "عبايات وحجابات",
+      "en": "Abayas & hijabs"
     },
     "synonyms": {
       "he": [
@@ -6447,9 +6559,9 @@
     "sector": "faith",
     "parent": null,
     "name": {
-      "he": "קרנות זכאת וצדקה",
-      "ar": "صناديق زكاة وصدقة",
-      "en": "Zakat and sadaqah funds"
+      "he": "זכאת וצדקה",
+      "ar": "زكاة وصدقة",
+      "en": "Zakat & charity"
     },
     "synonyms": {
       "he": [
@@ -6486,7 +6598,7 @@
     "name": {
       "he": "ספרים ומתנות אסלאמיים",
       "ar": "كتب وهدايا إسلامية",
-      "en": "Islamic books and gifts"
+      "en": "Islamic books & gifts"
     },
     "synonyms": {
       "he": [
@@ -6523,9 +6635,9 @@
     "sector": "faith",
     "parent": null,
     "name": {
-      "he": "מטפלי חיג'אמה",
-      "ar": "معالجين حجامة",
-      "en": "Hijama therapists"
+      "he": "חיג'אמה",
+      "ar": "حجامة",
+      "en": "Hijama & cupping"
     },
     "synonyms": {
       "he": [
@@ -6558,9 +6670,9 @@
     "sector": "faith",
     "parent": null,
     "name": {
-      "he": "סיעוד ובדיקות מעבדה בבית",
-      "ar": "تمريض وفحوصات مختبر بالبيت",
-      "en": "Home nursing and lab tests"
+      "he": "סיעוד ובדיקות בבית",
+      "ar": "تمريض وفحوصات بالبيت",
+      "en": "Home nursing"
     },
     "synonyms": {
       "he": [
@@ -6593,9 +6705,9 @@
     "sector": "faith",
     "parent": null,
     "name": {
-      "he": "תרומות למסגד ווקף",
+      "he": "תרומות למסגד",
       "ar": "تبرعات للجامع ووقف",
-      "en": "Mosque donations and waqf"
+      "en": "Mosque donations"
     },
     "synonyms": {
       "he": [
@@ -6628,9 +6740,9 @@
     "sector": "faith",
     "parent": null,
     "name": {
-      "he": "מאזון ועריכת כתב אל כתאב",
-      "ar": "مأذونين وعقود زواج",
-      "en": "Ma'zoun and marriage contracts"
+      "he": "מאזון וכתב כתאב",
+      "ar": "مأذونين وكتب كتاب",
+      "en": "Ma'zoun & marriage contracts"
     },
     "synonyms": {
       "he": [
@@ -6665,9 +6777,9 @@
     "sector": "faith",
     "parent": null,
     "name": {
-      "he": "ג'לביות ולבוש אסלאמי לגברים",
-      "ar": "جلابيات ولبس إسلامي للرجال",
-      "en": "Thobes and Islamic menswear"
+      "he": "ג'לביות ולבוש לגברים",
+      "ar": "جلابيات وأثواب",
+      "en": "Thobes & jalabiyas"
     },
     "synonyms": {
       "he": [
@@ -6705,9 +6817,9 @@
     "sector": "faith",
     "parent": null,
     "name": {
-      "he": "שירותי ג'נאזה וקבורה",
-      "ar": "خدمات جنازة ودفن",
-      "en": "Janazah and funeral services"
+      "he": "הלוויות וקבורה",
+      "ar": "جنازة ودفن",
+      "en": "Funeral services"
     },
     "synonyms": {
       "he": [
@@ -6743,9 +6855,9 @@
     "sector": "civic",
     "parent": null,
     "name": {
-      "he": "שירותים עירוניים",
-      "ar": "خدمات البلدية",
-      "en": "Municipal services"
+      "he": "עירייה ומועצה",
+      "ar": "بلدية ومجلس محلي",
+      "en": "Council services"
     },
     "synonyms": {
       "he": [
@@ -6780,9 +6892,9 @@
     "sector": "civic",
     "parent": null,
     "name": {
-      "he": "רישום לבתי ספר וגנים",
+      "he": "רישום לגנים ובתי ספר",
       "ar": "تسجيل مدارس وروضات",
-      "en": "School and nursery registration"
+      "en": "School registration"
     },
     "synonyms": {
       "he": [
@@ -6815,9 +6927,9 @@
     "sector": "civic",
     "parent": null,
     "name": {
-      "he": "טיפות חלב ומרפאות ציבוריות",
-      "ar": "محطات أم وطفل وعيادات عامة",
-      "en": "Mother-and-baby and public clinics"
+      "he": "טיפות חלב וקופות חולים",
+      "ar": "عيادات أم وطفل وصناديق مرضى",
+      "en": "Health funds & baby clinics"
     },
     "synonyms": {
       "he": [
@@ -6831,7 +6943,9 @@
         "عيادة أم وطفل",
         "صندوق مرضى",
         "كوبات حوليم",
-        "تطعيمات"
+        "تطعيمات",
+        "كلاليت",
+        "مكابي"
       ],
       "en": [
         "mother and baby clinic",
@@ -6852,9 +6966,9 @@
     "sector": "civic",
     "parent": null,
     "name": {
-      "he": "ספריות ציבוריות",
+      "he": "ספריות",
       "ar": "مكتبات عامة",
-      "en": "Public libraries"
+      "en": "Libraries"
     },
     "synonyms": {
       "he": [
@@ -6887,9 +7001,9 @@
     "sector": "civic",
     "parent": null,
     "name": {
-      "he": "סניפי דואר ומשלוחים",
-      "ar": "مكاتب بريد وطرود",
-      "en": "Post offices and parcels"
+      "he": "סניפי דואר",
+      "ar": "مكاتب بريد",
+      "en": "Post offices"
     },
     "synonyms": {
       "he": [
@@ -6963,9 +7077,9 @@
     "sector": "civic",
     "parent": null,
     "name": {
-      "he": "חניה ותווי תושב",
-      "ar": "مواقف وتصاريح سكان",
-      "en": "Parking and resident permits"
+      "he": "חניה ותו חניה",
+      "ar": "مواقف وتصاريح",
+      "en": "Parking & permits"
     },
     "synonyms": {
       "he": [
@@ -6998,9 +7112,9 @@
     "sector": "civic",
     "parent": null,
     "name": {
-      "he": "רישוי בנייה והיתרים",
-      "ar": "ترخيص بناء وتصاريح",
-      "en": "Building permits and licensing"
+      "he": "היתרי בנייה ורישוי",
+      "ar": "رخص بناء",
+      "en": "Building permits"
     },
     "synonyms": {
       "he": [
@@ -7033,9 +7147,9 @@
     "sector": "civic",
     "parent": null,
     "name": {
-      "he": "תאגידי מים וחשמל",
-      "ar": "شركات مي وكهربا",
-      "en": "Water and utilities"
+      "he": "מים וחשמל",
+      "ar": "مي وكهربا",
+      "en": "Water & electricity"
     },
     "synonyms": {
       "he": [
@@ -7071,9 +7185,9 @@
     "sector": "civic",
     "parent": null,
     "name": {
-      "he": "מידע לשעת חירום",
-      "ar": "معلومات للطوارئ",
-      "en": "Emergency services information"
+      "he": "מוקדי חירום",
+      "ar": "طوارئ",
+      "en": "Emergency numbers"
     },
     "synonyms": {
       "he": [
@@ -7109,9 +7223,9 @@
     "sector": "community",
     "parent": null,
     "name": {
-      "he": "עמותות וארגוני צדקה",
-      "ar": "جمعيات ومؤسسات خيرية",
-      "en": "Non-profits and charities"
+      "he": "עמותות",
+      "ar": "جمعيات خيرية",
+      "en": "Charities & nonprofits"
     },
     "synonyms": {
       "he": [
@@ -7144,9 +7258,9 @@
     "sector": "community",
     "parent": null,
     "name": {
-      "he": "קרנות הלוואה ללא ריבית",
-      "ar": "صناديق قرض حسن بدون فايدة",
-      "en": "Interest-free loan funds"
+      "he": "גמ\"ח והלוואות ללא ריבית",
+      "ar": "قرض حسن",
+      "en": "Interest-free loans"
     },
     "synonyms": {
       "he": [
@@ -7179,7 +7293,7 @@
     "sector": "community",
     "parent": null,
     "name": {
-      "he": "מרכזים קהילתיים",
+      "he": "מתנ\"סים",
       "ar": "مراكز جماهيرية",
       "en": "Community centres"
     },
@@ -7214,9 +7328,9 @@
     "sector": "community",
     "parent": null,
     "name": {
-      "he": "מרכזי יום לגיל הזהב",
-      "ar": "مراكز يوم للمسنين",
-      "en": "Senior day centres"
+      "he": "מרכזי יום לקשישים",
+      "ar": "نوادي مسنين",
+      "en": "Senior centres"
     },
     "synonyms": {
       "he": [
@@ -7284,9 +7398,9 @@
     "sector": "community",
     "parent": null,
     "name": {
-      "he": "תנועות צופים",
+      "he": "צופים",
       "ar": "كشافة",
-      "en": "Scout groups"
+      "en": "Scouts"
     },
     "synonyms": {
       "he": [
@@ -7319,9 +7433,9 @@
     "sector": "community",
     "parent": null,
     "name": {
-      "he": "קבוצות מתנדבים",
-      "ar": "مجموعات تطوع",
-      "en": "Volunteer groups"
+      "he": "התנדבות",
+      "ar": "تطوع",
+      "en": "Volunteering"
     },
     "synonyms": {
       "he": [
@@ -7355,8 +7469,8 @@
     "parent": null,
     "name": {
       "he": "קואופרטיבים של נשים",
-      "ar": "تعاونيات نسائية",
-      "en": "Women's cooperatives"
+      "ar": "جمعيات نسائية",
+      "en": "Women's co-ops"
     },
     "synonyms": {
       "he": [
@@ -7426,16 +7540,17 @@
     "sector": "community",
     "parent": null,
     "name": {
-      "he": "חנויות יד שנייה לצדקה",
-      "ar": "محلات مستعمل خيرية",
-      "en": "Charity second-hand shops"
+      "he": "יד שנייה",
+      "ar": "محلات مستعمل",
+      "en": "Second-hand shops"
     },
     "synonyms": {
       "he": [
         "יד שנייה",
         "חנות יד שנייה",
         "בגדים משומשים",
-        "צדקה"
+        "צדקה",
+        "חנות יד 2"
       ],
       "ar": [
         "مستعمل",

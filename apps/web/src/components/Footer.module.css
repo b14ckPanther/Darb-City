@@ -1,0 +1,266 @@
+.footer {
+  position: relative;
+  margin-block-start: var(--space-8);
+  padding-block-start: var(--space-8);
+  border-block-start: 1px solid var(--line-soft);
+  background:
+    radial-gradient(80% 60% at 50% 100%, rgb(217 165 76 / 0.1), transparent 70%), var(--night);
+  overflow: clip;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1.6fr repeat(3, 1fr);
+  gap: var(--space-7);
+}
+
+@media (max-width: 899px) {
+  .inner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 499px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+.brand {
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  gap: var(--space-4);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+}
+
+.wordmark {
+  display: inline-flex;
+  gap: 6px;
+  font-size: var(--step-2);
+  font-weight: 700;
+}
+
+.slash {
+  color: var(--accent);
+}
+
+.motto {
+  max-inline-size: 24rem;
+  margin: 0;
+  color: var(--text-soft);
+  font-size: var(--step-1);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 48px;
+  padding-inline: var(--space-5);
+  border-radius: var(--radius-pill);
+  background: linear-gradient(180deg, var(--gold-300), var(--gold));
+  color: var(--night);
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 400ms ease;
+}
+
+.cta:hover {
+  transform: translateY(-2px);
+}
+
+.column ul {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.column a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-block-size: var(--tap);
+  min-inline-size: var(--tap);
+  color: var(--text-soft);
+  text-decoration: none;
+}
+
+.column a:hover {
+  color: var(--accent-bright);
+}
+
+.heading {
+  margin-block-end: var(--space-4);
+  color: var(--text-muted);
+  font-size: var(--step--1);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.base {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  margin-block-start: var(--space-8);
+  padding-block: var(--space-5);
+  border-block-start: 1px solid var(--line-soft);
+  color: var(--text-muted);
+  font-size: var(--step--1);
+}
+
+.base p {
+  margin: 0;
+}
+
+.legal,
+.languages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.legal a,
+.languages a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: var(--tap);
+  min-inline-size: var(--tap);
+  text-decoration: none;
+}
+
+.legal a:hover,
+.languages a:hover {
+  color: var(--accent-bright);
+}
+
+.languages a[aria-current] {
+  color: var(--accent-bright);
+  font-weight: 700;
+}
+
+/* The name, huge and faint, sinking under the edge of the page. */
+.giant {
+  margin: 0;
+  margin-block-end: -0.28em;
+  text-align: center;
+  font-size: clamp(3.5rem, 13vw, 12rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  background: linear-gradient(180deg, rgb(217 165 76 / 0.22), rgb(217 165 76 / 0));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  user-select: none;
+}
+
+.icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* Round, quiet icon links that warm to gold on hover and focus. */
+.column .iconLink {
+  display: inline-grid;
+  place-items: center;
+  inline-size: var(--tap);
+  block-size: var(--tap);
+  min-block-size: var(--tap);
+  border: 1px solid var(--line-soft);
+  border-radius: 50%;
+  background: rgb(251 247 236 / 0.03);
+  color: var(--text-soft);
+  transition: transform 400ms var(--ease-out);
+}
+
+.column .iconLink:hover,
+.column .iconLink:focus-visible {
+  border-color: var(--gold);
+  background: rgb(217 165 76 / 0.12);
+  color: var(--gold-300);
+  transform: translateY(-2px);
+}
+
+/* ---- The people behind Darb: one row per person, a gold rail along the start edge ---- */
+
+.people {
+  display: grid;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.person {
+  position: relative;
+  display: grid;
+  gap: var(--space-2);
+  padding-inline-start: var(--space-4);
+}
+
+/* A short gold rail that fills on hover, like the road reaching a stop. */
+.person::before {
+  content: "";
+  position: absolute;
+  inset-block: 2px;
+  inset-inline-start: 0;
+  inline-size: 2px;
+  border-radius: 2px;
+  background: linear-gradient(var(--gold-300), var(--gold-900));
+  transform: scaleY(0.35);
+  transform-origin: top;
+  transition: transform 500ms var(--ease-out);
+}
+
+.person:hover::before,
+.person:focus-within::before {
+  transform: scaleY(1);
+}
+
+.personText {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.personName {
+  color: var(--gold-300);
+  font-size: var(--step-1);
+  font-weight: 700;
+}
+
+.personRole {
+  color: var(--text-muted);
+  font-size: var(--step--1);
+}
+
+.team .icons {
+  gap: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .column .iconLink,
+  .person::before {
+    transition: none;
+  }
+}

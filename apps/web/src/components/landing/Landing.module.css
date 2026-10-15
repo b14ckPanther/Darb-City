@@ -1,0 +1,809 @@
+/* The landing page. Motion is transform and opacity only, driven by ScrollScene's --p (0..1). */
+
+.page {
+  overflow-x: clip;
+}
+
+/* The road (Road.tsx) runs under every section. */
+.main {
+  position: relative;
+}
+
+.main > :not(svg) {
+  position: relative;
+  z-index: 1;
+}
+
+/* A section waits for the road: its heading's words rise in one after another when it arrives. */
+.main[data-road] [data-stop]:not([data-reached]) [data-word] {
+  opacity: 0;
+  transform: translate3d(0, 0.45em, 0);
+}
+
+.main [data-word] {
+  display: inline-block;
+  transition:
+    opacity 600ms ease,
+    transform 600ms var(--ease-out);
+  transition-delay: calc(var(--w, 0) * 0.06s);
+}
+
+/* The station's eyebrow line stretches when the road reaches it. */
+.main[data-road] [data-stop]:not([data-reached]) .eyebrow::before {
+  transform: scaleX(0.2);
+}
+
+.eyebrow::before {
+  transform-origin: var(--line-origin, left);
+  transition: transform 700ms var(--ease-out);
+}
+
+:global([dir="rtl"]) .eyebrow::before {
+  --line-origin: right;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--accent-bright);
+  font-size: var(--step--1);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+  inline-size: 24px;
+  block-size: 1px;
+  background: currentColor;
+}
+
+.sectionTitle {
+  font-size: var(--step-4);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+/* ---- Hero: on arrival the mark is drawn as a blueprint, then painted in, then breathes. ---- */
+
+.hero {
+  position: relative;
+}
+
+.heroStage {
+  position: relative;
+  min-block-size: calc(100svh - 68px);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: var(--space-5);
+  padding-inline: max(var(--gutter), calc((100% - var(--frame)) / 2 + var(--gutter)));
+  padding-block: clamp(32px, 7svh, 88px) calc(var(--dock-size) + var(--space-6));
+  overflow: clip;
+}
+
+@media (min-width: 900px) {
+  .heroStage {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+    align-items: center;
+    gap: var(--space-7);
+    padding-block: var(--space-7);
+  }
+}
+
+.heroGlow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(42% 50% at var(--glow-x, 50%) 62%, rgb(217 165 76 / 0.18), transparent 70%),
+    radial-gradient(90% 60% at 50% 0%, var(--forest-900), transparent 70%);
+  pointer-events: none;
+  animation: glow 4.6s ease both;
+}
+
+@keyframes glow {
+  0%,
+  60% {
+    opacity: 0.35;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 900px) {
+  /* Behind the mark, which is the end column. */
+  .heroGlow {
+    --glow-x: 72%;
+  }
+
+  :global([dir="rtl"]) .heroGlow {
+    --glow-x: 28%;
+  }
+}
+
+.heroCopy {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  animation: rise 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+}
+
+.heroTitle {
+  margin-block: var(--space-4) var(--space-5);
+  font-size: clamp(2.6rem, 1.4rem + 5vw, 5.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.heroAccent {
+  display: block;
+  background: linear-gradient(100deg, var(--gold-100), var(--gold) 45%, var(--gold-900));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.heroLead {
+  max-inline-size: 38rem;
+  margin-inline: auto;
+  color: var(--text-soft);
+  font-size: var(--step-1);
+  text-wrap: pretty;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-block-start: var(--space-6);
+}
+
+@media (min-width: 900px) {
+  .heroCopy {
+    text-align: start;
+  }
+
+  .heroCopy .heroLead {
+    margin-inline: 0;
+  }
+
+  .heroCopy .actions {
+    justify-content: flex-start;
+  }
+}
+
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 52px;
+  padding-inline: var(--space-6);
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 400ms ease;
+}
+
+.primary {
+  background: linear-gradient(180deg, var(--gold-300), var(--gold));
+  color: var(--night);
+  box-shadow: 0 10px 30px rgb(217 165 76 / 0.28);
+}
+
+.secondary {
+  border: 1px solid var(--line);
+  color: var(--text);
+  background: rgb(251 247 236 / 0.03);
+}
+
+.primary:hover,
+.secondary:hover {
+  transform: translateY(-2px);
+}
+
+.secondary:hover {
+  border-color: var(--gold);
+}
+
+.heroVisual {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-block-size: 0;
+  block-size: 100%;
+  pointer-events: none;
+}
+
+/* The drawing and the mark share one grid cell, so the lines land on the mark. */
+.markWrap {
+  display: grid;
+  block-size: clamp(190px, 34svh, 300px);
+  aspect-ratio: 480 / 528;
+}
+
+@media (min-width: 900px) {
+  .markWrap {
+    block-size: clamp(320px, 58svh, 540px);
+  }
+}
+
+.markWrap > * {
+  grid-area: 1 / 1;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.blueprint {
+  color: var(--gold-300);
+  overflow: visible;
+  animation: settle 1.2s ease 3.6s both;
+}
+
+.blueprint [data-grid] {
+  opacity: 0;
+  animation: grid 700ms ease both;
+}
+
+.blueprint [data-lines] > * {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw 1.4s cubic-bezier(0.45, 0, 0.2, 1) var(--d, 0s) both;
+}
+
+.blueprint [data-labels] {
+  opacity: 0;
+  animation: labels 700ms ease 1.8s both;
+}
+
+@keyframes grid {
+  to {
+    opacity: 0.16;
+  }
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes labels {
+  to {
+    opacity: 0.8;
+  }
+}
+
+/* The drawing fades away completely once the material is on. */
+@keyframes settle {
+  to {
+    opacity: 0;
+  }
+}
+
+/* Painted in along the diagonal from the top corner, then it breathes. */
+.mark {
+  transform-origin: 50% 85%;
+  animation:
+    paint 1.5s cubic-bezier(0.6, 0, 0.2, 1) 2.3s both,
+    breathe 12s ease-in-out 3.8s infinite;
+}
+
+@keyframes paint {
+  from {
+    opacity: 0.2;
+    clip-path: polygon(0 0, 0 0, 0 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: polygon(0 0, 220% 0, 0 220%);
+  }
+}
+
+/* Starts and ends at rest, so it picks up from the painted mark without a jump. */
+@keyframes breathe {
+  0%,
+  100% {
+    transform: perspective(900px) rotateY(0deg) translateY(0);
+  }
+  30% {
+    transform: perspective(900px) rotateY(-6deg) translateY(-4px);
+  }
+  70% {
+    transform: perspective(900px) rotateY(6deg) translateY(-2px);
+  }
+}
+
+.scrollHint {
+  position: absolute;
+  inset-block-end: max(24px, env(safe-area-inset-bottom));
+  inset-inline: 0;
+  z-index: 3;
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  margin: 0;
+  color: var(--text-muted);
+  font-size: var(--step--1);
+  animation: rise 700ms ease 4s both;
+}
+
+.scrollHint::after {
+  content: "";
+  inline-size: 1px;
+  block-size: 36px;
+  background: linear-gradient(var(--gold), transparent);
+  animation: drip 2.4s ease-in-out infinite;
+  transform-origin: top;
+}
+
+@keyframes drip {
+  0% {
+    transform: scaleY(0);
+  }
+  60% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 899px) {
+  /* The docked search bar sits at the bottom on phones. */
+  .scrollHint {
+    display: none;
+  }
+}
+
+/* ---- Story ---- */
+
+.story {
+  padding-block: clamp(80px, 14vw, 180px);
+}
+
+.storyInner {
+  display: grid;
+  gap: var(--space-6);
+  max-inline-size: 46rem;
+  margin-inline: auto;
+}
+
+.storyText {
+  display: grid;
+  gap: var(--space-5);
+  font-size: clamp(1.25rem, 1.05rem + 0.9vw, 1.75rem);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+.storyText p {
+  margin: 0;
+}
+
+.storyText p:last-child {
+  color: var(--accent-bright);
+  font-weight: 700;
+}
+
+.signature {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.signature img {
+  border-radius: 50%;
+  background: var(--surface-2);
+}
+
+.signName {
+  display: block;
+  font-weight: 700;
+}
+
+.signRole {
+  color: var(--text-muted);
+  font-size: var(--step--1);
+}
+
+/* ---- Platform: the layers stack while the stage is pinned ---- */
+
+.platform {
+  position: relative;
+  block-size: 360svh;
+}
+
+.platformStage {
+  position: sticky;
+  inset-block-start: 0;
+  block-size: 100svh;
+  display: grid;
+  align-content: center;
+  gap: var(--space-6);
+  padding-block: var(--space-7);
+}
+
+.platformHead {
+  display: grid;
+  gap: var(--space-3);
+  text-align: center;
+}
+
+.platformBody {
+  display: grid;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .platformBody {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-8);
+  }
+}
+
+/*
+ * An exploded isometric stack: five plates float apart and close into one platform as --p grows.
+ * Plate i is "on" while --p sits in its fifth of the scroll; on = 1 - distance, clamped.
+ */
+.iso {
+  position: relative;
+  block-size: clamp(220px, 38svh, 420px);
+  perspective: 1400px;
+  pointer-events: none;
+}
+
+.plate {
+  --at: calc(var(--p, 0) * 5);
+  --on: clamp(
+    0,
+    calc(1 - max(calc(var(--at) - var(--i) - 0.5), calc(var(--i) + 0.5 - var(--at))) * 1.4),
+    1
+  );
+  --gap: calc(clamp(34px, 6svh, 70px) * (1 - var(--p, 0) * 0.62));
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  inline-size: clamp(170px, 30vmin, 300px);
+  aspect-ratio: 1;
+  margin-block-start: calc(clamp(170px, 30vmin, 300px) / -2);
+  margin-inline-start: calc(clamp(170px, 30vmin, 300px) / -2);
+  border-radius: 28px;
+  border: 1px solid rgb(251 247 236 / calc(0.1 + var(--on) * 0.4));
+  background:
+    linear-gradient(135deg, rgb(217 165 76 / calc(var(--on) * 0.45)), transparent 70%),
+    linear-gradient(135deg, rgb(13 51 37 / 0.92), rgb(5 24 17 / 0.95));
+  box-shadow:
+    0 0 calc(var(--on) * 60px) rgb(217 165 76 / calc(var(--on) * 0.35)),
+    0 30px 50px rgb(0 0 0 / 0.35);
+  transform: translate3d(0, calc((2 - var(--i)) * var(--gap)), 0) rotateX(60deg) rotateZ(-45deg);
+}
+
+/* What the layer is, printed on its face: an icon and its name, brightening with --on. */
+.plateFace {
+  position: absolute;
+  inset: 18% 14%;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 10px;
+  color: rgb(251 231 189 / calc(0.3 + var(--on) * 0.7));
+  text-align: center;
+}
+
+.plateTitle {
+  font-size: clamp(11px, 1.4vmin, 15px);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.plate::after {
+  content: attr(data-n);
+  position: absolute;
+  inset-block-start: 14px;
+  inset-inline-start: 18px;
+  color: rgb(251 231 189 / calc(0.25 + var(--on) * 0.75));
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+}
+
+.steps {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  --at: calc(var(--p, 0) * 5);
+  --on: clamp(
+    0,
+    calc(1 - max(calc(var(--at) - var(--i) - 0.5), calc(var(--i) + 0.5 - var(--at))) * 1.4),
+    1
+  );
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-4);
+  align-items: start;
+  padding: var(--space-3) var(--space-4);
+  border-inline-start: 2px solid rgb(217 165 76 / calc(0.12 + var(--on) * 0.88));
+  opacity: calc(0.4 + var(--on) * 0.6);
+}
+
+.stepIndex {
+  color: var(--accent-bright);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.stepTitle {
+  display: block;
+  font-weight: 700;
+  font-size: var(--step-1);
+}
+
+.stepBody {
+  color: var(--text-muted);
+  font-size: var(--step--1);
+}
+
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  inline-size: min(100%, 640px);
+  margin: 0 auto;
+}
+
+.side {
+  padding: var(--space-4);
+  border-radius: var(--radius-m);
+  border: 1px solid var(--line-soft);
+  font-size: var(--step--1);
+}
+
+.side strong {
+  display: block;
+  margin-block-end: var(--space-1);
+}
+
+.without {
+  color: var(--text-muted);
+  opacity: calc(1 - var(--p, 0) * 0.55);
+}
+
+.with {
+  border-color: var(--line);
+  background: rgb(217 165 76 / 0.08);
+  opacity: calc(0.35 + var(--p, 0) * 0.65);
+}
+
+@media (max-width: 599px) {
+  .compare {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- Search showcase ---- */
+
+.searchBand {
+  padding-block: clamp(72px, 12vw, 160px);
+}
+
+.searchCard {
+  display: grid;
+  gap: var(--space-5);
+  max-inline-size: 52rem;
+  margin-inline: auto;
+  padding: clamp(24px, 5vw, 56px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-l);
+  background:
+    radial-gradient(80% 120% at 100% 0%, rgb(217 165 76 / 0.12), transparent 60%), var(--surface-1);
+  box-shadow: var(--shadow-panel);
+}
+
+.examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.example {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-block-size: var(--tap);
+  padding-inline: var(--space-4);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-pill);
+  background: rgb(251 247 236 / 0.04);
+  text-decoration: none;
+  transition: transform 400ms ease;
+}
+
+.example:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.example::before {
+  content: "↗";
+  color: var(--accent-bright);
+}
+
+/* ---- Made by Darb ---- */
+
+.made {
+  padding-block: clamp(72px, 12vw, 160px);
+}
+
+.madeHead {
+  display: grid;
+  gap: var(--space-3);
+  max-inline-size: 44rem;
+  margin-block-end: var(--space-7);
+}
+
+.clients {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.client {
+  position: relative;
+  display: grid;
+  gap: var(--space-2);
+  align-content: end;
+  min-block-size: 260px;
+  padding: var(--space-5);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-l);
+  background:
+    radial-gradient(120% 90% at 0% 0%, rgb(217 165 76 / 0.16), transparent 55%),
+    linear-gradient(160deg, var(--forest-800), var(--forest-950));
+  text-decoration: none;
+  overflow: hidden;
+  transition: transform 400ms ease;
+}
+
+.client:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+}
+
+.clientName {
+  font-size: var(--step-3);
+  font-weight: 700;
+}
+
+.clientKind {
+  color: var(--text-muted);
+}
+
+.clientHost {
+  position: absolute;
+  inset-block-start: var(--space-5);
+  inset-inline-start: var(--space-5);
+  color: var(--accent-bright);
+  font-size: var(--step--1);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.clientOpen {
+  margin-block-start: var(--space-3);
+  color: var(--accent-bright);
+  font-weight: 700;
+}
+
+/* ---- Join ---- */
+
+.join {
+  padding-block: clamp(72px, 12vw, 160px);
+  text-align: center;
+}
+
+.joinCard {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-4);
+  padding: clamp(32px, 7vw, 80px) var(--space-5);
+  border-radius: 32px;
+  background:
+    radial-gradient(70% 90% at 50% 120%, rgb(217 165 76 / 0.3), transparent 70%),
+    linear-gradient(180deg, var(--forest-900), var(--forest-950));
+  border: 1px solid var(--line);
+}
+
+.joinCard p {
+  max-inline-size: 34rem;
+  margin: 0;
+  color: var(--text-soft);
+}
+
+/*
+ * Phones: the steps and the plates do not fit one pinned screen, so the section flows normally,
+ * the plates sit closed above the steps, and every step reads at full strength.
+ */
+@media (max-width: 899px) {
+  .platform {
+    block-size: auto;
+    --p: 1;
+  }
+
+  .platformStage {
+    position: static;
+    block-size: auto;
+    padding-block: var(--space-8);
+  }
+
+  .platform .step {
+    opacity: 1;
+    border-inline-start-color: var(--gold);
+  }
+
+  .iso {
+    block-size: 220px;
+  }
+}
+
+/* ---- One-time entrances ---- */
+
+.page [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity 700ms ease,
+    transform 700ms var(--ease-out);
+}
+
+.page [data-reveal][data-shown] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroCopy,
+  .heroGlow,
+  .mark,
+  .blueprint,
+  .blueprint [data-grid],
+  .blueprint [data-lines] > *,
+  .blueprint [data-labels],
+  .scrollHint,
+  .scrollHint::after {
+    animation: none;
+  }
+
+  .blueprint {
+    opacity: 0;
+  }
+
+  .page [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}

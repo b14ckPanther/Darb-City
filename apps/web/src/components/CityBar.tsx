@@ -19,16 +19,16 @@ export function LocaleSwitch({
       <ul>
         {LOCALES.map((l) => (
           <li key={l}>
-            <Link
+            {/* A plain link: another language is another root layout (lang, dir, fonts, boot script). */}
+            <a
               href={href(l, segments)}
               hrefLang={l}
               lang={l}
-              prefetch={false}
               aria-current={l === locale ? "true" : undefined}
               className={styles.locale}
             >
               {LANGUAGE_NAMES[l]}
-            </Link>
+            </a>
           </li>
         ))}
       </ul>

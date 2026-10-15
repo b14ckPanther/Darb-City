@@ -4,7 +4,7 @@ import { LEVELS, localePath } from "./fixtures";
 test("shows the path, marks where you are and goes up one level", async ({ page }) => {
   await page.goto(LEVELS.kind);
   const bar = page.locator("[data-path-bar]");
-  await expect(bar.locator("li")).toHaveCount(4); // Israel ▸ Sakhnin ▸ Beauty ▸ Barbershops
+  await expect(bar.locator("li")).toHaveCount(4); // Israel ▸ Sakhnin ▸ Beauty & care ▸ Barbers
   await expect(bar.locator('[aria-current="page"]')).toHaveCount(1);
   await bar.locator("[data-up]").click();
   await expect(page).toHaveURL(LEVELS.sector);

@@ -7,7 +7,7 @@ import { KindResults } from "@/components/KindResults";
 import { NoneYet } from "@/components/NoneYet";
 import { StageData } from "@/components/StageData";
 import { SubPlaceChips } from "@/components/SubPlaceChips";
-import { getBusinesses, getNearestPlacesWithKind } from "@/lib/api";
+import { getBusinesses, getNearestPlacesWithKind, getPlaceCounts } from "@/lib/api";
 import { subPlaceChips } from "@/lib/crumbs";
 import { formatKm } from "@/lib/format";
 import { loadKindLevelInSector } from "@/lib/levels";
@@ -45,7 +45,7 @@ export default orUnavailable(async function KindLayout({ children, params }: Pro
     rows.length === 0
       ? ((await getNearestPlacesWithKind(kind.slug, place.lat, place.lng, 5)) ?? [])
       : [];
-  const chips = subPlaceChips(locale, place, [sector.slug, kind.slug]);
+  const chips = subPlaceChips(locale, place, [sector.slug, kind.slug], await getPlaceCounts());
   return (
     <>
       {children}

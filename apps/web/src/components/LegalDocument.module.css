@@ -1,0 +1,97 @@
+/* Long-form reading: one measured column, numbered sections, contents with anchors. */
+.doc {
+  max-inline-size: 72ch;
+  margin-block-end: var(--space-8);
+  overflow-wrap: anywhere;
+}
+
+.doc p,
+.doc li {
+  line-height: 1.75;
+}
+
+.updated {
+  margin-block: 0 var(--space-4);
+  color: var(--text-muted);
+  font-size: var(--step--1);
+}
+
+.contents {
+  margin-block: 0 var(--space-7);
+  padding: var(--space-5);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-m);
+  background: var(--surface-1);
+}
+
+.contentsTitle {
+  font-size: var(--step-1);
+  margin-block-end: var(--space-3);
+}
+
+.contentsList {
+  margin: 0;
+  padding-inline-start: var(--space-5);
+  display: grid;
+  gap: var(--space-1);
+}
+
+.contentsList a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: var(--tap);
+  min-inline-size: var(--tap);
+}
+
+.contentsList li::marker {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.section {
+  /* An anchor jump leaves some air above the heading. */
+  scroll-margin-block-start: var(--space-5);
+  margin-block: var(--space-7);
+  padding-block-start: var(--space-6);
+  border-block-start: 1px solid var(--line-soft);
+}
+
+.sectionTitle {
+  font-size: var(--step-2);
+  margin-block-end: var(--space-4);
+}
+
+.number {
+  color: var(--accent-bright);
+  margin-inline-end: var(--space-1);
+}
+
+.section p {
+  margin-block: 0 var(--space-4);
+  color: var(--text-soft);
+}
+
+.list {
+  margin-block: 0 var(--space-4);
+  padding-inline-start: var(--space-5);
+  color: var(--text-soft);
+  display: grid;
+  gap: var(--space-3);
+}
+
+.list li::marker {
+  color: var(--accent);
+}
+
+.contact {
+  margin-block: var(--space-6) 0;
+  font-weight: 700;
+}
+
+.notice {
+  margin-block-start: var(--space-7);
+  padding-block-start: var(--space-5);
+  border-block-start: 1px solid var(--line);
+  color: var(--text-muted);
+  font-size: var(--step--1);
+}

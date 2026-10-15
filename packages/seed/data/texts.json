@@ -1,0 +1,106 @@
+[
+  {
+    "key": "pricing.eyebrow",
+    "value": {
+      "he": "מחירים",
+      "ar": "الأسعار",
+      "en": "Pricing"
+    }
+  },
+  {
+    "key": "pricing.title",
+    "value": {
+      "he": "מחירים פשוטים. בלי הפתעות.",
+      "ar": "أسعار واضحة. بلا مفاجآت.",
+      "en": "Simple prices. No surprises."
+    }
+  },
+  {
+    "key": "pricing.intro",
+    "value": {
+      "he": "כל עסק יכול להופיע בדרב בחינם. רוצים שיראו אתכם יותר, או אתר משלכם? בחרו מה שמתאים לכם, ואפשר לשנות מתי שרוצים.",
+      "ar": "كل مصلحة بتقدر تطلع على درب ببلاش. بدك الناس يشوفوك أكثر، أو بدك موقع إلك؟ اختار اللي بناسبك، وبتقدر تغيّر وقت ما بدك.",
+      "en": "Every business can be on Darb for free. Want more people to see you, or a website of your own? Pick what fits, and change any time."
+    }
+  },
+  {
+    "key": "pricing.badge",
+    "value": {
+      "he": "הנבחר ביותר",
+      "ar": "الأكثر طلب",
+      "en": "Most chosen"
+    }
+  },
+  {
+    "key": "pricing.free",
+    "value": {
+      "he": "חינם",
+      "ar": "ببلاش",
+      "en": "Free"
+    }
+  },
+  {
+    "key": "pricing.custom",
+    "value": {
+      "he": "בואו נדבר",
+      "ar": "إحكي معنا",
+      "en": "Let's talk"
+    }
+  },
+  {
+    "key": "pricing.setup",
+    "value": {
+      "he": "+ {amount} חד פעמי על הבנייה",
+      "ar": "+ {amount} مرة وحدة عالبناء",
+      "en": "+ {amount} one-time build fee"
+    }
+  },
+  {
+    "key": "pricing.termsTitle",
+    "value": {
+      "he": "התנאים, בפשטות",
+      "ar": "الشروط، ببساطة",
+      "en": "The terms, plainly"
+    }
+  },
+  {
+    "key": "pricing.terms",
+    "value": {
+      "he": "המחירים בשקלים ולא כוללים מע\"מ.\nהתשלום החודשי מתחדש כל חודש, ואפשר לבטל בכל זמן.\nאת מחיר הבנייה קובעים אחרי שיחה בחינם, לפני שמתחילים לעבוד.\nאם המחירים ישתנו, נודיע לכם מראש, לפני התשלום הבא.",
+      "ar": "الأسعار بالشيكل ومش شاملة الضريبة.\nالدفع الشهري بتجدد كل شهر، وبتقدر تلغي وقت ما بدك.\nسعر البناء منحدده بعد مكالمة ببلاش، قبل ما نبلّش أي شغل.\nإذا الأسعار تغيّرت، منحكيلك من قبل، قبل الدفعة الجاي.",
+      "en": "Prices are in shekels and do not include VAT.\nMonthly payments renew each month, and you can cancel any time.\nThe build price is set after a free call, before any work starts.\nIf prices change, we tell you in advance, before your next payment."
+    }
+  },
+  {
+    "key": "pricing.faqTitle",
+    "value": {
+      "he": "שאלות שאנשים שואלים",
+      "ar": "أسئلة الناس بتسألها",
+      "en": "Questions people ask"
+    }
+  },
+  {
+    "key": "pricing.faq",
+    "value": {
+      "he": "צריך שיהיה לי כבר אתר?\nלא. הרבה מהלקוחות שלנו התחילו רק עם מספר טלפון. משם אנחנו בונים.\n\nהעיצוב שלי יהיה רק שלי?\nכן. אנחנו מעצבים בשביל העסק שלכם בלבד, ולא נותנים את אותו עיצוב לאף אחד אחר.\n\nאיך אנשים מוצאים אותי בחיפוש?\nהחיפוש מבין מה אנשים מחפשים, גם כשהם כותבים במילים שלהם. \"מספרה פתוחה עכשיו בסח'נין\" מוצא את הספר, בכל שפה.\n\nאפשר להתחיל בקטן ולגדול?\nכן. מתחילים ברישום בחינם, משדרגים כשמוכנים, וכל מה שכבר יש לכם נשאר.",
+      "ar": "لازم يكون عندي موقع من قبل؟\nلا. كثير من زباينا بلّشوا برقم تلفون بس. ومن هناك منبني.\n\nالتصميم رح يكون إلي لحالي؟\nآه. منصمّم لمصلحتك بس، وما منعطي نفس التصميم لحدا تاني.\n\nكيف الناس بلاقوني بالبحث؟\nالبحث بفهم شو الناس بدهم، حتى لو كتبوا بكلامهم. \"حلاق فاتح بهالوقت بسخنين\" بلاقي الحلاق، بأي لغة.\n\nبقدر أبلّش صغير وأكبر؟\nآه. بتبلّش بالإدراج المجاني، بتطلّع لما تكون جاهز، وكل إشي عندك بضل.",
+      "en": "Do I need a website already?\nNo. Many of our clients started with nothing but a phone number. We build from there.\n\nWill my design be only mine?\nYes. We design for your business alone, and never give the same design to anyone else.\n\nHow do people find me in search?\nSearch understands what people are looking for, even in their own words. \"A barber open now in Sakhnin\" finds the barber, in any language.\n\nCan I start small and grow?\nYes. Start with the free listing, upgrade when you're ready, and everything you have stays."
+    }
+  },
+  {
+    "key": "pricing.contactTitle",
+    "value": {
+      "he": "לא בטוחים מה מתאים לכם?",
+      "ar": "مش متأكد شو بناسبك؟",
+      "en": "Not sure what fits you?"
+    }
+  },
+  {
+    "key": "pricing.contactBody",
+    "value": {
+      "he": "ספרו לנו על העסק, ונענה לכם באופן אישי.",
+      "ar": "إحكيلنا عن مصلحتك، ومنرجعلك شخصيًا.",
+      "en": "Tell us about your business and we'll answer you personally."
+    }
+  }
+]

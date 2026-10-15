@@ -20,6 +20,11 @@ beforeAll(async () => {
   });
   await created.prisma.place.update({ where: { id: f.tamra.id }, data: { status: "soon" } });
   await created.prisma.business.update({ where: { id: f.littleCuts.id }, data: { tier: "basic" } });
+  // Seed-suspended showroom example: real tier is irrelevant, it must not be listed.
+  await created.prisma.business.update({
+    where: { id: f.draft.id },
+    data: { status: "suspended" },
+  });
   await created.prisma.kind.update({ where: { id: f.kidsCuts.id }, data: { status: "hidden" } });
 });
 afterAll(() => app.close());

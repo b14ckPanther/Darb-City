@@ -1,10 +1,18 @@
 // Seed ownership (Plan 4, decision 2): the seed owns a row while its editedAt is null. Each run
 // creates missing rows and overwrites seed-owned ones from packages/seed/data, hides seed-owned
-// kinds that left the data and suspends seed-owned businesses that left it. A row an admin has
-// edited (editedAt set) is never updated, hidden, suspended or relinked; "Return to seed data" in
-// the admin clears editedAt so the next run overwrites it again.
-import type { SeedBrand, SeedBusiness, SeedKind, SeedPlace, SeedSector } from "@darb/seed";
-import { SCREEN_SCHEMA } from "@darb/seed";
+// kinds and plans that left the data and suspends seed-owned businesses that left it. A row an
+// admin has edited (editedAt set) is never updated, hidden, suspended or relinked; "Return to seed
+// data" in the admin clears editedAt so the next run overwrites it again.
+import type {
+  SeedBrand,
+  SeedBusiness,
+  SeedKind,
+  SeedPlace,
+  SeedPlan,
+  SeedSector,
+  SeedText,
+} from "@darb/seed";
+import { loadPlans, loadTexts, SCREEN_SCHEMA } from "@darb/seed";
 import { Ajv } from "ajv";
 import type { Prisma } from "../generated/prisma/client.js";
 import type { PrismaService } from "../prisma/prisma.service.js";
@@ -18,6 +26,9 @@ export interface SeedData {
   kinds: SeedKind[];
   brands: SeedBrand[];
   businesses: SeedBusiness[];
+  /** The pricing page; the seed's own data when left out (src/seed/run.ts passes none). */
+  plans?: SeedPlan[];
+  texts?: SeedText[];
 }
 export interface SeedCounts {
   places: number;
@@ -25,6 +36,8 @@ export interface SeedCounts {
   kinds: number;
   brands: number;
   businesses: number;
+  plans: number;
+  texts: number;
 }
 
 const validateScreen = new Ajv({ allErrors: true }).compile(SCREEN_SCHEMA);
@@ -239,11 +252,63 @@ export async function loadSeed(prisma: PrismaService, data: SeedData): Promise<S
     data: { status: "suspended" },
   });
 
+  const plans = data.plans ?? loadPlans();
+  const texts = data.texts ?? loadTexts();
+  await loadPricing(prisma, plans, texts);
+
   return {
     places: data.places.length,
     sectors: data.sectors.length,
     kinds: data.kinds.length,
     brands: data.brands.length,
     businesses: data.businesses.length,
+    plans: plans.length,
+    texts: texts.length,
   };
+}
+
+/** Plans by slug and texts by key; seed-owned plans that left the data are hidden, like kinds. */
+async function loadPricing(prisma: PrismaService, plans: SeedPlan[], texts: SeedText[]) {
+  const editedPlans = new Set(
+    (await prisma.plan.findMany({ where: EDITED, select: { slug: true } })).map((p) => p.slug),
+  );
+  const editedTexts = new Set(
+    (await prisma.siteText.findMany({ where: EDITED, select: { key: true } })).map((t) => t.key),
+  );
+  await prisma.$transaction(async (tx) => {
+    for (const p of plans) {
+      if (editedPlans.has(p.slug)) continue;
+      const fields = {
+        order: p.order,
+        status: p.status,
+        name: json(p.name),
+        tagline: json(p.tagline),
+        monthly: p.monthly,
+        setup: p.setup,
+        priceNote: json(p.priceNote),
+        features: json(p.features),
+        highlighted: p.highlighted,
+        ctaLabel: json(p.ctaLabel),
+        ctaHref: p.ctaHref,
+        finePrint: json(p.finePrint),
+      };
+      await tx.plan.upsert({
+        where: { slug: p.slug },
+        create: { slug: p.slug, ...fields },
+        update: fields,
+      });
+    }
+    await tx.plan.updateMany({
+      where: { slug: { notIn: plans.map((p) => p.slug) }, editedAt: null },
+      data: { status: "hidden" },
+    });
+    for (const t of texts) {
+      if (editedTexts.has(t.key)) continue;
+      await tx.siteText.upsert({
+        where: { key: t.key },
+        create: { key: t.key, value: json(t.value) },
+        update: { value: json(t.value) },
+      });
+    }
+  }, TX);
 }

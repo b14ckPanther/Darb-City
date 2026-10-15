@@ -30,7 +30,7 @@ const view = (onPinchOut = vi.fn()) =>
     <PlazaView
       scene={scene}
       caption="סח'נין"
-      label="סח'נין: רחובות ודלתות"
+      label="סח'נין: קטגוריות"
       countText={String}
       countLabel={(n) => `עסקים: ${n}`}
       parallax={false}
@@ -40,7 +40,7 @@ const view = (onPinchOut = vi.fn()) =>
 
 it("is a labelled navigation of real links, in the list's order", () => {
   view();
-  const nav = screen.getByRole("navigation", { name: "סח'נין: רחובות ודלתות" });
+  const nav = screen.getByRole("navigation", { name: "סח'נין: קטגוריות" });
   const links = within(nav).getAllByRole("link");
   expect(links.map((l) => l.getAttribute("href"))).toEqual(["/sakhnin/beauty", "/sakhnin/food"]);
   expect(links[0]!.textContent).toBe("יופיעסקים: 3");

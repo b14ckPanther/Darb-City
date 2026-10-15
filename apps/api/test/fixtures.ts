@@ -75,7 +75,7 @@ export async function seedFixtures(prisma: PrismaService) {
   const beauty = await prisma.sector.create({
     data: {
       slug: "beauty",
-      name: { en: "Beauty Row" },
+      name: { en: "Beauty & care" },
       tagline: { en: "Appointments" },
       accent: "#d9aaa2",
       order: 2,
@@ -84,7 +84,7 @@ export async function seedFixtures(prisma: PrismaService) {
   const food = await prisma.sector.create({
     data: {
       slug: "food",
-      name: { en: "The Tasting Quarter" },
+      name: { en: "Food & restaurants" },
       tagline: { en: "Plates" },
       accent: "#d6a473",
       order: 1,

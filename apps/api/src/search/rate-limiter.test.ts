@@ -38,6 +38,17 @@ describe("rate limiter", () => {
     expect(keys.some((k) => k.includes(ipHash("salt", "10.0.0.1")))).toBe(true);
     expect(await redis.ttl(keys[0]!)).toBeLessThanOrEqual(60);
   });
+  it("counts a longer window when asked, and keeps its key that long", async () => {
+    const limiter = new RateLimiter(redis, config);
+    for (let i = 0; i < 2; i++)
+      expect((await limiter.hit("inquiry", "10.0.0.4", 2, 600)).ok).toBe(true);
+    const refused = await limiter.hit("inquiry", "10.0.0.4", 2, 600);
+    expect(refused.ok).toBe(false);
+    expect(refused.retryAfter).toBeGreaterThan(0);
+    expect(refused.retryAfter).toBeLessThanOrEqual(600);
+    const [key] = await redis.keys("darb:rl:inquiry:*");
+    expect(await redis.ttl(key!)).toBeGreaterThan(60);
+  });
   it("fails open without Redis", async () => {
     const down = await createRedis("redis://127.0.0.1:9");
     expect((await new RateLimiter(down, config).hit("search", "x", 1)).ok).toBe(true);

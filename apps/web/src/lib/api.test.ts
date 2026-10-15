@@ -7,10 +7,13 @@ import {
   getBusinesses,
   getDensity,
   getKindCounts,
+  getPlaceCounts,
   getNearestPlace,
   getNearestPlacesWithKind,
   getPlace,
+  getPricing,
   getSuggestions,
+  postInquiry,
   postSearch,
 } from "./api";
 
@@ -130,6 +133,31 @@ describe("api client", () => {
       tags: ["businesses", "places"],
     });
   });
+
+  it("fetches place counts with the businesses and places tags", async () => {
+    fetchMock.mockResolvedValue(Response.json({ sakhnin: 4, haifa: 0 }));
+    expect(await getPlaceCounts()).toEqual({ sakhnin: 4, haifa: 0 });
+    const [url, init] = fetchMock.mock.calls[0]!;
+    expect(String(url)).toBe("http://api.test/place-counts");
+    expect((init as RequestInit & { next?: unknown }).next).toEqual({
+      revalidate: 86400,
+      tags: ["businesses", "places"],
+    });
+  });
+
+  it("fetches pricing with the pricing tag, and throws when the API is down", async () => {
+    const page = { plans: [], texts: { "pricing.title": { en: "Pricing" } } };
+    fetchMock.mockResolvedValue(Response.json(page));
+    expect(await getPricing()).toEqual(page);
+    const [url, init] = fetchMock.mock.calls[0]!;
+    expect(String(url)).toBe("http://api.test/pricing");
+    expect((init as RequestInit & { next?: unknown }).next).toEqual({
+      revalidate: 86400,
+      tags: ["pricing"],
+    });
+    fetchMock.mockRejectedValue(new TypeError("fetch failed"));
+    await expect(getPricing()).rejects.toBeInstanceOf(ApiUnavailableError);
+  });
 });
 
 describe("slug path params", () => {
@@ -170,6 +198,32 @@ describe("search calls", () => {
     expect(headers.get("x-darb-client-ip")).toBe("5.6.7.8");
     expect(log).not.toHaveBeenCalled();
     expect(info).not.toHaveBeenCalled();
+  });
+});
+
+describe("contact messages", () => {
+  it("vouch for the visitor, never cache, and pass on the limit", async () => {
+    vi.stubEnv("SEARCH_PROXY_KEY", "k");
+    const body = {
+      name: "Lina",
+      contact: "lina@example.com",
+      topic: "general" as const,
+      message: "Do you build apps for clinics?",
+      locale: "en" as const,
+    };
+    fetchMock.mockResolvedValueOnce(Response.json({ ok: true }, { status: 201 }));
+    expect(await postInquiry(body, "5.6.7.8")).toEqual({ status: 201 });
+    const [url, init] = fetchMock.mock.calls[0]!;
+    expect([String(url), init?.method, init?.cache]).toEqual([
+      "http://api.test/inquiries",
+      "POST",
+      "no-store",
+    ]);
+    expect(new Headers(init?.headers).get("x-darb-client-ip")).toBe("5.6.7.8");
+    fetchMock.mockResolvedValueOnce(
+      Response.json({ message: "slow down", retryAfter: 300 }, { status: 429 }),
+    );
+    expect(await postInquiry(body, "5.6.7.8")).toEqual({ status: 429, retryAfter: 300 });
   });
 });
 

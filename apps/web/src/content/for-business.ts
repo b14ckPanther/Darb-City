@@ -20,18 +20,17 @@ export interface ForBusinessCopy {
   clientsTitle: string;
   contactTitle: string;
   contactBody: string;
-  email: string;
   instagram: string;
 }
 
 export const forBusiness: Record<Locale, ForBusinessCopy> = {
   en: {
     title: "Your business, as an app",
-    lead: "Darb builds a web app and a native app for any kind of business, in any town, in Hebrew, Arabic and English.",
+    lead: "Darb builds a web app and a native app for any kind of business, in any town, in any language.",
     points: [
       {
         title: "Any kind of business",
-        body: "Restaurants, salons, garages, clinics, shops, mosques and two hundred more. Every door in this city shows what we build.",
+        body: "Restaurants, salons, garages, clinics, shops, mosques and two hundred more. Every business here shows what we build.",
       },
       {
         title: "A web app",
@@ -45,16 +44,15 @@ export const forBusiness: Record<Locale, ForBusinessCopy> = {
     clientsTitle: "Live client work",
     contactTitle: "Talk to us",
     contactBody: "Tell us about your business and what your customers should be able to do.",
-    email: "Email",
     instagram: "Instagram",
   },
   he: {
     title: "העסק שלכם, כאפליקציה",
-    lead: "דרב בונה אפליקציית ווב ואפליקציה נייטיב לכל סוג עסק, בכל יישוב, בעברית, בערבית ובאנגלית.",
+    lead: "דרב בונה אפליקציית ווב ואפליקציה נייטיב לכל סוג עסק, בכל יישוב, בכל שפה.",
     points: [
       {
         title: "כל סוג של עסק",
-        body: "מסעדות, מספרות, מוסכים, מרפאות, חנויות, מסגדים ועוד מאתיים סוגים. כל דלת בעיר הזו מראה מה אנחנו בונים.",
+        body: "מסעדות, מספרות, מוסכים, מרפאות, חנויות, מסגדים ועוד מאתיים סוגים. כל עסק כאן מראה מה אנחנו בונים.",
       },
       {
         title: "אפליקציית ווב",
@@ -74,16 +72,15 @@ export const forBusiness: Record<Locale, ForBusinessCopy> = {
     clientsTitle: "עבודות חיות של לקוחות",
     contactTitle: "דברו איתנו",
     contactBody: "ספרו לנו על העסק ומה הלקוחות שלכם צריכים לעשות בו.",
-    email: "אימייל",
     instagram: "אינסטגרם",
   },
   ar: {
     title: "مصلحتك، كتطبيق",
-    lead: "درب تبني تطبيق ويب وتطبيقًا أصليًا لأي نوع من المصالح، في أي بلدة، بالعربية والعبرية والإنجليزية.",
+    lead: "درب تبني تطبيق ويب وتطبيقًا أصليًا لأي نوع من المصالح، في أي بلدة، بأي لغة.",
     points: [
       {
         title: "أي نوع من المصالح",
-        body: "مطاعم، صالونات، كراجات، عيادات، محلات، مساجد ومئتا نوع آخر. كل باب في هذه المدينة يُريك ما نبنيه.",
+        body: "مطاعم، صالونات، كراجات، عيادات، محلات، مساجد ومئتا نوع آخر. كل مصلحة هنا تُريك ما نبنيه.",
       },
       {
         title: "تطبيق ويب",
@@ -103,7 +100,6 @@ export const forBusiness: Record<Locale, ForBusinessCopy> = {
     clientsTitle: "أعمال منشورة لزبائننا",
     contactTitle: "تحدّث معنا",
     contactBody: "أخبرنا عن مصلحتك وماذا يجب أن يستطيع زبائنك فعله.",
-    email: "البريد الإلكتروني",
     instagram: "إنستغرام",
   },
 };
@@ -127,6 +123,5 @@ export const LIVE_CLIENTS: { name: Localized; kind: Localized; url?: string }[] 
 ];
 
 export const CONTACT = {
-  email: "founder@darb.co.il",
   instagram: "https://www.instagram.com/darbco/",
 };

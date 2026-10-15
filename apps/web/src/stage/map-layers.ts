@@ -6,57 +6,74 @@ export const PIN_SOURCE = "darb-pins";
 export const CITY_GLOW = "darb-city-glow";
 export const CITY_DOT = "darb-city-dot";
 export const CITY_LABEL = "darb-city-label";
+export const CLUSTER_COUNT = "darb-cluster-count";
 export const PIN_LAYER = "darb-pin";
 /** The one self-hosted glyph font (scripts/map/style.mjs MAP_FONT). */
 export const MAP_FONT = "noto-sans-regular";
 
-/** Darb's own layers over the basemap: live places glowing by density, then business pins. */
+/** Clustered points carry point_count; single places do not. */
+const CLUSTER = ["has", "point_count"];
+const SINGLE = ["all", ["!", CLUSTER], [">", ["get", "count"], 0]];
+
+/**
+ * Darb's own layers over the basemap. Nearby places merge into one bubble that says how many
+ * businesses are there (tap it to zoom in); as you zoom, bubbles split into single places, each a
+ * small point sized by its count with its name beside it. Empty places are never drawn. Pins on top.
+ */
 export function darbLayers(): LayerSpecification[] {
   return [
     {
       id: CITY_GLOW,
       type: "circle",
       source: CITY_SOURCE,
-      filter: [">", ["get", "glow"], 0],
+      filter: CLUSTER as never,
       paint: {
-        "circle-radius": [
-          "interpolate",
-          ["linear"],
-          ["zoom"],
-          7,
-          ["get", "glow"],
-          12,
-          ["*", ["get", "glow"], 2.5],
-        ],
-        "circle-color": colors.gold,
-        "circle-opacity": 0.32,
-        "circle-blur": 0.9,
+        // Logarithmic, so a city of thousands never swallows its neighbours.
+        "circle-radius": ["+", 12, ["*", 3.2, ["ln", ["+", 1, ["get", "count"]]]]],
+        "circle-color": colors.forest900,
+        "circle-opacity": 0.92,
+        "circle-stroke-color": colors.gold,
+        "circle-stroke-width": 1.5,
       },
+    },
+    {
+      id: CLUSTER_COUNT,
+      type: "symbol",
+      source: CITY_SOURCE,
+      filter: CLUSTER as never,
+      layout: {
+        "text-field": ["to-string", ["get", "count"]],
+        "text-font": [MAP_FONT],
+        "text-size": 13,
+        "text-allow-overlap": true,
+      },
+      paint: { "text-color": colors.gold300 },
     },
     {
       id: CITY_DOT,
       type: "circle",
       source: CITY_SOURCE,
+      filter: SINGLE as never,
       paint: {
-        "circle-radius": ["interpolate", ["linear"], ["zoom"], 7, 2.5, 9, 3.5, 12, 6],
+        "circle-radius": ["+", 4, ["*", 1.4, ["ln", ["+", 1, ["get", "count"]]]]],
         "circle-color": colors.gold300,
         "circle-stroke-color": colors.night,
-        "circle-stroke-width": 1.5,
+        "circle-stroke-width": 2,
       },
     },
     {
       id: CITY_LABEL,
       type: "symbol",
       source: CITY_SOURCE,
-      minzoom: 7,
+      filter: SINGLE as never,
       layout: {
         "text-field": ["get", "name"],
         "text-font": [MAP_FONT],
-        "text-size": ["interpolate", ["linear"], ["zoom"], 7, 11, 10, 13, 13, 14],
-        // Beside its dot where there is room, never over a neighbour's name.
+        "text-size": ["interpolate", ["linear"], ["zoom"], 8, 12, 13, 14],
+        // Beside its point where there is room, never over a neighbour's name.
         "text-variable-anchor": ["top", "bottom", "left", "right"],
-        "text-radial-offset": 0.7,
-        "text-padding": 4,
+        "text-radial-offset": 0.9,
+        "text-padding": 6,
         "symbol-sort-key": ["-", 0, ["get", "count"]],
       },
       paint: {

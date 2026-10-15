@@ -57,6 +57,27 @@ export function kindFields(fd: FormData) {
   };
 }
 
+export function planFields(fd: FormData) {
+  return {
+    name: localized(fd, "name"),
+    tagline: localized(fd, "tagline"),
+    monthly: numberOrNull(fd, "monthly"),
+    setup: numberOrNull(fd, "setup"),
+    priceNote: localized(fd, "priceNote"),
+    features: {
+      he: lines(fd, "features.he"),
+      ar: lines(fd, "features.ar"),
+      en: lines(fd, "features.en"),
+    },
+    highlighted: fd.get("highlighted") === "on",
+    ctaLabel: localized(fd, "ctaLabel"),
+    ctaHref: text(fd, "ctaHref"),
+    finePrint: localized(fd, "finePrint"),
+    order: Number(text(fd, "order")),
+    status: text(fd, "status"),
+  };
+}
+
 export function zodErrors(error: {
   issues: { path: (string | number)[]; message: string }[];
 }): string[] {

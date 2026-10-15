@@ -2,7 +2,7 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, expect, it, vi } from "vitest";
 
 const push = vi.fn();
-vi.mock("next/navigation", () => ({ useRouter: () => ({ push }) }));
+vi.mock("next/navigation", () => ({ useRouter: () => ({ push }), usePathname: () => "/" }));
 const { NearMe } = await import("./NearMe");
 
 afterEach(() => {
@@ -47,4 +47,19 @@ it("explains in one line when location is denied", async () => {
   fireEvent.click(screen.getByRole("button", { name: "Near me" }));
   await waitFor(() => expect(screen.getByText(labels.denied)).toBeTruthy());
   expect(push).not.toHaveBeenCalled();
+});
+
+it("names the place it found and remembers it on this device", async () => {
+  stubLocation("granted");
+  localStorage.clear();
+  vi.stubGlobal(
+    "fetch",
+    vi.fn().mockResolvedValue(Response.json({ href: "/haifa", name: "חיפה" })),
+  );
+  const { unmount } = render(<NearMe locale="he" homeHref="/" labels={labels} />);
+  fireEvent.click(screen.getByRole("button", { name: "Near me" }));
+  await waitFor(() => expect(screen.getByRole("button", { name: "Near me: חיפה" })).toBeTruthy());
+  unmount();
+  render(<NearMe locale="he" homeHref="/" labels={labels} />);
+  await waitFor(() => expect(screen.getByText("חיפה")).toBeTruthy());
 });

@@ -4,11 +4,14 @@ import {
   type BusinessDetailDto,
   type BusinessPageDto,
   type DensityDto,
+  type InquiryCreateDto,
   type InstantIndexDto,
   type KindCountsDto,
   type NearestPlaceDto,
+  type PlaceCountsDto,
   type PlaceDetailDto,
   type PlaceDto,
+  type PricingDto,
   type ResultsRequestDto,
   type SearchRequestDto,
   type SearchResponseDto,
@@ -44,6 +47,7 @@ export const tags = {
   place: (slug: string) => `place:${slug}`,
   businesses: "businesses",
   business: (place: string, slug: string) => `business:${place}/${slug}`,
+  pricing: "pricing",
 };
 
 type Cache = "no-store" | { revalidate: number; tags: string[] };
@@ -232,10 +236,31 @@ export async function getNearestPlace(
   return res.status === 200 ? res.body : null;
 }
 
+/** Live plans and the pricing page's copy, all edited in the admin. Throws when the API is down. */
+export async function getPricing(): Promise<PricingDto> {
+  const res = await call(() =>
+    client().pricing.get({
+      fetchOptions: fetchOptions(cached(REVALIDATE.taxonomy, tags.pricing)),
+    }),
+  );
+  if (res.status === 200) return res.body;
+  throw new ApiUnavailableError(res);
+}
+
 /** Business counts per live settlement (the map's glow). Throws when the API is down. */
 export async function getDensity(): Promise<DensityDto> {
   const res = await call(() =>
     client().businesses.density({
+      fetchOptions: fetchOptions(cached(REVALIDATE.lists, tags.businesses, tags.places)),
+    }),
+  );
+  if (res.status === 200) return res.body;
+  throw new ApiUnavailableError(res);
+}
+
+export async function getPlaceCounts(): Promise<PlaceCountsDto> {
+  const res = await call(() =>
+    client().businesses.placeCounts({
       fetchOptions: fetchOptions(cached(REVALIDATE.lists, tags.businesses, tags.places)),
     }),
   );
@@ -312,6 +337,22 @@ export async function postClick(queryId: string, key: string, ip: string): Promi
       fetchOptions: { cache: "no-store" },
     }),
   );
+}
+
+export type InquiryCall = { status: 201 } | { status: 429; retryAfter: number } | { status: 400 };
+
+/** A /contact message. The API limits each visitor, so this server vouches for the visitor's IP. */
+export async function postInquiry(body: InquiryCreateDto, ip: string): Promise<InquiryCall> {
+  const res = await call(() =>
+    client().inquiries.create({
+      body,
+      extraHeaders: proxyHeaders(ip),
+      fetchOptions: { cache: "no-store" },
+    }),
+  );
+  if (res.status === 201) return { status: 201 };
+  if (res.status === 429) return { status: 429, retryAfter: res.body.retryAfter };
+  return { status: 400 };
 }
 
 /** The live lane-1 index; refreshed when an admin write revalidates places or taxonomy. */

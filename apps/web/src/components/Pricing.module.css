@@ -1,0 +1,494 @@
+/* The pricing page (/pricing). Logical properties only, so Hebrew and Arabic mirror on their own. */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  padding-block: var(--space-6) var(--space-5);
+  text-align: center;
+}
+
+/* A low gold light behind the headline: the page's one warm spot. */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset-block-start: -40px;
+  inset-inline: 0;
+  block-size: 320px;
+  background: radial-gradient(50% 60% at 50% 30%, rgb(217 165 76 / 0.16), transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: 0;
+  color: var(--gold-300);
+  font-size: var(--step--1);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before,
+.eyebrow::after {
+  content: "";
+  inline-size: 28px;
+  block-size: 1px;
+  background: var(--gold);
+  opacity: 0.7;
+}
+
+.title {
+  max-inline-size: 18ch;
+  margin-inline: auto;
+  font-size: clamp(2.25rem, 1.4rem + 3.6vw, 4rem);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.intro {
+  margin-inline: auto;
+  text-wrap: pretty;
+}
+
+.plans {
+  display: grid;
+  gap: var(--space-6);
+  max-inline-size: 1180px;
+  margin: var(--space-5) auto var(--space-8);
+}
+
+.freeRow,
+.paidRow {
+  display: grid;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.freeRow,
+.paidRow {
+  max-inline-size: 960px;
+  margin-inline: auto;
+  inline-size: 100%;
+}
+
+/* Three paid plans side by side only when each gets room to breathe, the featured one lifted. */
+@media (min-width: 1240px) {
+  .paidRow[data-count="3"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-inline-size: none;
+    gap: var(--space-5);
+    padding-block-start: var(--space-4);
+  }
+
+  .paidRow[data-count="3"] > .featured {
+    margin-block-start: calc(var(--space-4) * -1);
+  }
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/*
+ * Wide cards: the offer at the start and what it includes beside it. The free plan is always one;
+ * the paid plans are too (below) until the screen fits three roomy columns.
+ */
+@media (min-width: 900px) {
+  .card.wide {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    column-gap: var(--space-7);
+    align-items: center;
+    padding: var(--space-6);
+  }
+
+  .wide .tagline {
+    min-block-size: 0;
+  }
+
+  .wide .features {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding-block-start: 0;
+    padding-inline-start: var(--space-6);
+    border-block-start: 0;
+    border-inline-start: 1px solid var(--line-soft);
+  }
+
+  .wide .finePrint {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1239px) {
+  .paidRow > .card {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    column-gap: var(--space-7);
+    align-items: center;
+    padding: var(--space-6);
+  }
+
+  .paidRow .tagline {
+    min-block-size: 0;
+  }
+
+  .paidRow .features {
+    padding-block-start: 0;
+    padding-inline-start: var(--space-6);
+    border-block-start: 0;
+    border-inline-start: 1px solid var(--line-soft);
+  }
+
+  .paidRow .finePrint {
+    grid-column: 1 / -1;
+  }
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-inline-size: 0;
+  padding: var(--space-6) var(--space-5) var(--space-5);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-l);
+  background:
+    linear-gradient(180deg, rgb(251 247 236 / 0.035), transparent 40%),
+    linear-gradient(180deg, var(--surface-2), var(--surface-1));
+  box-shadow: inset 0 1px 0 rgb(251 231 189 / 0.05);
+  transition: transform var(--dur) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: var(--line);
+    box-shadow:
+      inset 0 1px 0 rgb(251 231 189 / 0.08),
+      0 24px 48px -24px rgb(0 0 0 / 0.6);
+  }
+}
+
+/*
+ * The hero plan: a thin gold edge that slowly travels around the card, over a warm glow. The edge
+ * is a ring (a masked layer the width of the border) with a conic gradient turning inside it, so
+ * only transform ever animates.
+ */
+.featured {
+  border-color: transparent;
+  background:
+    linear-gradient(180deg, rgb(240 199 122 / 0.06), transparent 45%),
+    linear-gradient(180deg, var(--surface-3), var(--surface-1));
+  box-shadow: 0 32px 80px -36px rgb(217 165 76 / 0.45);
+}
+
+@media (hover: hover) {
+  .featured:hover {
+    border-color: transparent;
+  }
+}
+
+.edge {
+  position: absolute;
+  inset: -1px;
+  padding: 1px;
+  border-radius: inherit;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+}
+
+.edge::before {
+  content: "";
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  /* Wider than any card is tall, so the turning square always covers the whole ring. */
+  inline-size: max(300%, 2000px);
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  background: conic-gradient(
+    rgb(217 165 76 / 0.25),
+    var(--gold-300) 10%,
+    rgb(217 165 76 / 0.25) 24%,
+    rgb(217 165 76 / 0.25) 60%,
+    var(--gold) 74%,
+    rgb(217 165 76 / 0.25)
+  );
+  animation: spin 9s linear infinite;
+}
+
+/* translate centres the square; transform alone turns it. */
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.badge {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: var(--space-5);
+  translate: 0 -50%;
+  margin: 0;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, var(--gold-100), var(--gold) 55%, var(--gold-600));
+  color: var(--night);
+  font-size: var(--step--1);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 6px 20px -6px rgb(217 165 76 / 0.6);
+}
+
+.name {
+  font-size: var(--step-2);
+  color: var(--gold-300);
+}
+
+.tagline {
+  margin: calc(var(--space-2) * -1) 0 0;
+  color: var(--text-soft);
+  min-block-size: 3.1em;
+}
+
+.price {
+  display: grid;
+  gap: var(--space-1);
+  padding-block: var(--space-2);
+}
+
+.price p {
+  margin: 0;
+}
+
+.amount {
+  font-size: clamp(2.25rem, 1.9rem + 1.2vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.currency {
+  font-size: 0.55em;
+  font-weight: 500;
+  color: var(--gold-300);
+  vertical-align: 0.6em;
+  margin-inline: 0.08em;
+}
+
+.note {
+  color: var(--text-muted);
+  font-size: var(--step--1);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-block-size: var(--tap);
+  padding-inline: var(--space-5);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--line);
+  background: rgb(251 247 236 / 0.03);
+  color: var(--gold-300);
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+}
+
+.cta:hover {
+  border-color: var(--gold);
+  background: rgb(217 165 76 / 0.1);
+}
+
+.ctaPrimary {
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--gold-300), var(--gold) 60%);
+  color: var(--night);
+}
+
+.ctaPrimary:hover {
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--gold-100), var(--gold-300) 60%);
+}
+
+.features {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: var(--space-4) 0 0;
+  border-block-start: 1px solid var(--line-soft);
+  list-style: none;
+}
+
+.features li {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  gap: var(--space-3);
+  align-items: start;
+  color: var(--text-soft);
+}
+
+.check {
+  inline-size: 20px;
+  block-size: 20px;
+  margin-block-start: 0.15em;
+  fill: rgb(217 165 76 / 0.14);
+  stroke: var(--gold-300);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.check circle {
+  stroke: none;
+}
+
+.finePrint {
+  margin: auto 0 0;
+  padding-block-start: var(--space-3);
+  color: var(--text-muted);
+  font-size: var(--step--1);
+}
+
+.more {
+  display: grid;
+  gap: var(--space-7);
+  margin-block-end: var(--space-7);
+}
+
+@media (min-width: 900px) {
+  .more {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: var(--space-8);
+  }
+}
+
+.sectionTitle {
+  font-size: var(--step-3);
+  margin-block-end: var(--space-4);
+}
+
+.termList {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: term;
+}
+
+.termList li {
+  counter-increment: term;
+  display: grid;
+  grid-template-columns: 2.5ch minmax(0, 1fr);
+  gap: var(--space-3);
+  color: var(--text-soft);
+}
+
+.termList li::before {
+  content: counter(term, decimal-leading-zero);
+  color: var(--gold);
+  font-weight: 700;
+  font-size: var(--step--1);
+  font-variant-numeric: tabular-nums;
+  padding-block-start: 0.2em;
+}
+
+.question {
+  border-block-end: 1px solid var(--line-soft);
+}
+
+.question summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-block-size: var(--tap);
+  padding-block: var(--space-3);
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+
+.question summary::-webkit-details-marker {
+  display: none;
+}
+
+/* A plus that turns into a cross when the answer is open. */
+.question summary::after {
+  content: "+";
+  flex: none;
+  display: grid;
+  place-items: center;
+  inline-size: 28px;
+  block-size: 28px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--line);
+  color: var(--gold-300);
+  font-weight: 500;
+  line-height: 1;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.question[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.question p {
+  margin: 0 0 var(--space-4);
+  color: var(--text-soft);
+}
+
+.contact {
+  margin-block: 0 var(--space-8);
+  padding: var(--space-6) var(--space-5);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-l);
+  background:
+    radial-gradient(80% 120% at 50% 0%, rgb(217 165 76 / 0.1), transparent 60%), var(--surface-1);
+  text-align: center;
+}
+
+.contact > p {
+  max-inline-size: 52ch;
+  margin-inline: auto;
+  color: var(--text-soft);
+}
+
+.contactLinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-block: var(--space-5) 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .edge::before {
+    animation: none;
+  }
+
+  .card,
+  .card:hover {
+    transform: none;
+  }
+}

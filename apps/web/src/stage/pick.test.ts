@@ -1,6 +1,6 @@
 // @vitest-environment node
 import { describe, expect, it } from "vitest";
-import { CITY_DOT, CITY_GLOW, CITY_LABEL, PIN_LAYER } from "./map-layers";
+import { CITY_DOT, CITY_LABEL, PIN_LAYER } from "./map-layers";
 import { HIT_BOX, pickAt, PICKABLE, type PickableMap } from "./pick";
 
 type Pixel = [number, number];
@@ -87,15 +87,6 @@ describe("pickAt", () => {
     expect(pickAt(map, { x: 100, y: 120 })).toEqual({ href: "/sakhnin", kind: "place" });
   });
 
-  it("does not let a big glow beat a nearer dot", () => {
-    const glow: FakeFeature = {
-      ...dot(CITY_GLOW, "/sakhnin", 100, 100),
-      covers: { x0: 40, y0: 40, x1: 160, y1: 160 },
-    };
-    const { map } = fakeMap([glow, dot(CITY_DOT, "/arraba", 140, 100)]);
-    expect(pickAt(map, { x: 132, y: 100 })).toEqual({ href: "/arraba", kind: "place" });
-  });
-
   it("reports a business pin as a business", () => {
     const { map } = fakeMap([dot(PIN_LAYER, "/sakhnin/beauty/barbershops/samers", 50, 50, 8)]);
     expect(pickAt(map, { x: 62, y: 58 })).toEqual({
@@ -110,6 +101,6 @@ describe("pickAt", () => {
   });
 
   it("can pick names, dots, glows and pins", () => {
-    expect([...PICKABLE].sort()).toEqual([CITY_DOT, CITY_GLOW, CITY_LABEL, PIN_LAYER].sort());
+    expect([...PICKABLE].sort()).toEqual([CITY_DOT, CITY_LABEL, PIN_LAYER].sort());
   });
 });

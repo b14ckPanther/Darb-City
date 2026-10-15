@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Fragment } from "react";
 import { LOCALES, pickText } from "@darb/core";
 import { t } from "@darb/i18n";
 import { CityBar } from "@/components/CityBar";
-import { DoorRim } from "@/components/Door";
+import { Footer } from "@/components/Footer";
+
 import { CONTACT, forBusiness, LIVE_CLIENTS, type RichText } from "@/content/for-business";
 import { crumbsFor } from "@/lib/crumbs";
 import { localeOrNotFound } from "@/lib/levels";
@@ -58,7 +60,6 @@ export default async function ForBusinessPage({ params }: Props) {
         <ul className={styles.points}>
           {copy.points.map((point) => (
             <li key={point.title} className={styles.point}>
-              <DoorRim className={styles.rim} />
               <h2 className={styles.pointTitle}>{point.title}</h2>
               <p>
                 <Rich text={point.body} />
@@ -100,9 +101,9 @@ export default async function ForBusinessPage({ params }: Props) {
           <h2 id="contact-title">{copy.contactTitle}</h2>
           <p>{copy.contactBody}</p>
           <p className={styles.contact}>
-            <a className="button-link" href={`mailto:${CONTACT.email}`}>
-              {copy.email}: <span dir="ltr">{CONTACT.email}</span>
-            </a>
+            <Link className="button-link" href={href(locale, paths.contact())}>
+              {t(locale, "contactUs")}
+            </Link>
             <a
               className="button-link"
               href={CONTACT.instagram}
@@ -114,6 +115,7 @@ export default async function ForBusinessPage({ params }: Props) {
           </p>
         </section>
       </main>
+      <Footer locale={locale} segments={paths.forBusiness()} />
     </>
   );
 }

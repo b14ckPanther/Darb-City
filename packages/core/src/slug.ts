@@ -29,11 +29,16 @@ export const RESERVED_SLUGS: readonly string[] = [
   "admin",
   "api",
   "for-business",
+  "pricing",
+  "contact",
   "search",
   "login",
   "register",
   "_next",
   "brand",
+  "accessibility",
+  "terms",
+  "privacy",
 ];
 const RESERVED = new Set(RESERVED_SLUGS);
 

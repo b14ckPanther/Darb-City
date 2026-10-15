@@ -1,0 +1,43 @@
+.page {
+  padding-block: clamp(40px, 8vw, 96px) var(--space-8);
+}
+
+.head {
+  display: grid;
+  gap: var(--space-4);
+  max-inline-size: 44rem;
+  margin-block-end: var(--space-7);
+}
+
+.title {
+  font-size: clamp(2.2rem, 1.4rem + 4vw, 4.4rem);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.lead {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: var(--step-1);
+}
+
+.cta {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-4);
+  margin-block-start: var(--space-8);
+  padding: clamp(32px, 7vw, 72px) var(--space-5);
+  border: 1px solid var(--line);
+  border-radius: 32px;
+  background:
+    radial-gradient(70% 90% at 50% 120%, rgb(217 165 76 / 0.28), transparent 70%),
+    linear-gradient(180deg, var(--forest-900), var(--forest-950));
+  text-align: center;
+}
+
+.cta p {
+  max-inline-size: 34rem;
+  margin: 0;
+  color: var(--text-soft);
+}

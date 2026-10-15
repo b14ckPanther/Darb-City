@@ -1,11 +1,11 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
-import { EMPTY_KIND, LEVELS, LOCALES, localePath, settleStage } from "./fixtures";
+import { EMPTY_KIND, LEVELS, LOCALES, localePath, settleStage, SITE_PAGES } from "./fixtures";
 
 const PAGES = [
   ...Object.values(LEVELS),
   EMPTY_KIND,
-  "/for-business",
+  ...SITE_PAGES,
   "/search?q=barber%20haifa",
   "/search?q=bars",
   "/sakhnin/food/restaurants?open=1",

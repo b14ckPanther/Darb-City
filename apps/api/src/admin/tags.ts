@@ -11,4 +11,7 @@ export const webTags = {
     `business:${placeSlug}/${slug}`,
     `place:${placeSlug}`,
   ],
+  plan: () => ["pricing"],
+  /** Every site text is on the pricing page today. */
+  text: () => ["pricing"],
 };

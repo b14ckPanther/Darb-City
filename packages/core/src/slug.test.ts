@@ -39,15 +39,20 @@ describe("reserved slugs", () => {
         "admin",
         "api",
         "for-business",
+        "pricing",
+        "contact",
         "search",
         "login",
         "register",
         "_next",
         "brand",
+        "accessibility",
+        "terms",
+        "privacy",
       ].sort(),
     );
   });
-  it.each(["ar", "he", "k", "admin", "for-business", "_next", "brand"])(
+  it.each(["ar", "he", "k", "admin", "for-business", "pricing", "contact", "_next", "brand"])(
     "%s is reserved",
     (value) => {
       expect(isReservedSlug(value)).toBe(true);

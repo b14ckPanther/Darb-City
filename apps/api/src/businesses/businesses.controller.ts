@@ -63,6 +63,7 @@ export class BusinessesController {
         };
       },
       density: async () => ({ status: 200, body: await this.businesses.density() }),
+      placeCounts: async () => ({ status: 200, body: await this.businesses.placeCounts() }),
     });
   }
 

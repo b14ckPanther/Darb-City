@@ -21,16 +21,16 @@ const kiryatHaim: PlaceDetailDto = {
   ],
   children: [],
 };
-const beauty = { id: "s1", slug: "beauty", name: { en: "Beauty Row" } } as SectorDto;
+const beauty = { id: "s1", slug: "beauty", name: { en: "Beauty & care" } } as SectorDto;
 const barbers = { id: "k1", slug: "barbershops", name: { en: "Barbershops" } } as KindDto;
 
 describe("crumbsFor", () => {
   it("starts at Israel and skips the country and regions", () => {
     expect(crumbsFor("en", { place: kiryatHaim, sector: beauty, kind: barbers })).toEqual([
-      { label: "Israel", href: "/en" },
+      { label: "Israel", href: "/en/israel" },
       { label: "Haifa", href: "/en/haifa" },
       { label: "Kiryat Haim", href: "/en/kiryat-haim" },
-      { label: "Beauty Row", href: "/en/kiryat-haim/beauty" },
+      { label: "Beauty & care", href: "/en/kiryat-haim/beauty" },
       { label: "Barbershops", href: "/en/kiryat-haim/beauty/barbershops" },
     ]);
   });
@@ -63,7 +63,7 @@ describe("crumbsFor", () => {
   });
   it("goes straight from Israel to a national kind or a static page", () => {
     expect(crumbsFor("ar", { nationalKind: barbers })).toEqual([
-      { label: "إسرائيل", href: "/ar" },
+      { label: "إسرائيل", href: "/ar/israel" },
       { label: "Barbershops", href: "/ar/k/barbershops" },
     ]);
     expect(
@@ -96,6 +96,13 @@ describe("subPlaceChips", () => {
     expect(subPlaceChips("he", kiryatHaim, [])).toEqual([
       { key: "haifa", label: "כל Haifa", href: "/haifa", current: false },
       { key: "kiryat-haim", label: "Kiryat Haim", href: "/kiryat-haim", current: true },
+    ]);
+  });
+  it("drops neighbourhoods without businesses when given place counts", () => {
+    expect(subPlaceChips("en", haifa, [], { haifa: 3, "kiryat-haim": 0 })).toEqual([]);
+    expect(subPlaceChips("en", haifa, [], { "kiryat-haim": 2 }).map((c) => c.key)).toEqual([
+      "haifa",
+      "kiryat-haim",
     ]);
   });
   it("offers nothing for a place without neighbourhoods", () => {

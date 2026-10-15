@@ -1,0 +1,28 @@
+/* The road sits under the content, across the whole landing page. */
+.road {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  z-index: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.line,
+.glow {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.line {
+  stroke: var(--gold-300);
+  stroke-width: 1.5;
+}
+
+.glow {
+  stroke: var(--gold);
+  stroke-width: 8;
+  opacity: 0.12;
+}

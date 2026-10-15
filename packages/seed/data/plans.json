@@ -1,0 +1,239 @@
+[
+  {
+    "slug": "presence",
+    "order": 1,
+    "status": "live",
+    "name": {
+      "he": "רישום בחינם",
+      "ar": "إدراج ببلاش",
+      "en": "Free listing"
+    },
+    "tagline": {
+      "he": "העסק שלכם מופיע בדרב, ואנשים מוצאים אתכם.",
+      "ar": "مصلحتك بتطلع على درب، والناس بلاقوك.",
+      "en": "Your business shows up on Darb, and people find you."
+    },
+    "monthly": 0,
+    "setup": null,
+    "priceNote": {
+      "he": "בלי כרטיס אשראי",
+      "ar": "بدون بطاقة",
+      "en": "no card needed"
+    },
+    "features": {
+      "he": [
+        "העסק שלכם מופיע בעיר שלכם ותחת סוג העסק",
+        "אנשים מוצאים אתכם בחיפוש, בכל שפה, גם כשהם כותבים במילים שלהם",
+        "המקום שלכם מסומן על המפה",
+        "שעות פתיחה: רואים אם אתם פתוחים עכשיו",
+        "כפתורים לחיוג, וואטסאפ וניווט"
+      ],
+      "ar": [
+        "مصلحتك بتطلع ببلدك وتحت نوع شغلك",
+        "الناس بلاقوك بالبحث، بأي لغة، حتى لو كتبوا بكلامهم",
+        "محلك معلّم على الخريطة",
+        "ساعات الدوام: الناس بشوفوا إذا إنت فاتح",
+        "كبسات للاتصال، واتساب ووصف الطريق"
+      ],
+      "en": [
+        "Your business listed in your town, under what you do",
+        "People find you by searching, in any language, even in their own words",
+        "Your place marked on the map",
+        "Opening hours, so people see if you're open now",
+        "Buttons to call, WhatsApp and get directions"
+      ]
+    },
+    "highlighted": false,
+    "ctaLabel": {
+      "he": "רשמו את העסק שלי",
+      "ar": "سجّل مصلحتي",
+      "en": "List my business"
+    },
+    "ctaHref": "/contact?topic=join",
+    "finePrint": {
+      "he": "בלי חוזה ובלי התחייבות. טעות בפרטים? כתבו לנו ונתקן.",
+      "ar": "بلا عقد وبلا التزام. في غلط بالتفاصيل؟ إحكيلنا ومنصلّحه.",
+      "en": "No contract, no commitment. Something wrong? Tell us and we fix it."
+    }
+  },
+  {
+    "slug": "spotlight",
+    "order": 2,
+    "status": "live",
+    "name": {
+      "he": "רישום מודגש",
+      "ar": "إدراج مميّز",
+      "en": "Featured listing"
+    },
+    "tagline": {
+      "he": "מופיעים לפני אחרים בעיר שלכם.",
+      "ar": "بتطلع قبل غيرك ببلدك.",
+      "en": "Show up before others in your town."
+    },
+    "monthly": 89,
+    "setup": null,
+    "priceNote": {
+      "he": "לחודש",
+      "ar": "بالشهر",
+      "en": "per month"
+    },
+    "features": {
+      "he": [
+        "כל מה שיש ברישום בחינם",
+        "אנחנו כותבים לכם את תיאור העסק, בכל השפות",
+        "התמונות שלכם בראש העמוד",
+        "מקום בולט בעיר שלכם ותחת סוג העסק",
+        "פעם בחודש: מה אנשים חיפשו לידכם"
+      ],
+      "ar": [
+        "كل إشي بالإدراج المجاني",
+        "منكتبلك وصف مصلحتك، بكل اللغات",
+        "صورك بأول الصفحة",
+        "مكان بارز ببلدك وتحت نوع شغلك",
+        "مرة بالشهر: شو الناس دوّروا جنبك"
+      ],
+      "en": [
+        "Everything in the free listing",
+        "We write your business description, in every language",
+        "Your photos at the top of your page",
+        "A standout spot in your town, under what you do",
+        "Once a month: what people near you searched for"
+      ]
+    },
+    "highlighted": false,
+    "ctaLabel": {
+      "he": "אני רוצה להיות מודגש",
+      "ar": "بدي أكون مميّز",
+      "en": "Feature my business"
+    },
+    "ctaHref": "/contact?plan=spotlight",
+    "finePrint": {
+      "he": "תשלום חודשי. מבטלים מתי שרוצים, והרישום בחינם נשאר.",
+      "ar": "دفع كل شهر. بتلغي وقت ما بدك، وبضل الإدراج المجاني.",
+      "en": "Paid monthly. Cancel any time, and your free listing stays."
+    }
+  },
+  {
+    "slug": "signature",
+    "order": 3,
+    "status": "live",
+    "name": {
+      "he": "אתר משלכם",
+      "ar": "موقع إلك",
+      "en": "Your own website"
+    },
+    "tagline": {
+      "he": "אתר שעוצב רק לעסק שלכם, ונראה מעולה בטלפון.",
+      "ar": "موقع مصمّم لمصلحتك لحالها، وبطلع حلو عالتلفون.",
+      "en": "A website designed only for your business, great on any phone."
+    },
+    "monthly": 349,
+    "setup": null,
+    "priceNote": {
+      "he": "לחודש, מחיר התחלתי · ועוד תשלום חד פעמי על הבנייה",
+      "ar": "بالشهر، سعر بداية · وفوقه دفعة وحدة عالبناء",
+      "en": "per month, starting price · plus a one-time build fee"
+    },
+    "features": {
+      "he": [
+        "כל מה שיש ברישום המודגש",
+        "אתר שעוצב מאפס בשבילכם, כמו של קרמל",
+        "תפריט, מוצרים או קביעת תורים, בדיוק איך שהעסק שלכם עובד",
+        "עיצוב בצבעים ובסגנון של העסק שלכם",
+        "כתובת אתר משלכם, ואנחנו דואגים שהכול יעבוד ויהיה מוגן",
+        "רוצים לשנות משהו? שולחים לנו הודעה ואנחנו מעדכנים",
+        "אף אחד אחר לא יקבל את אותו עיצוב"
+      ],
+      "ar": [
+        "كل إشي بالإدراج المميّز",
+        "موقع مصمّم من الصفر إلك، زي تبع كراميل",
+        "منيو، منتجات أو حجز دور، بالزبط زي ما بتشتغل مصلحتك",
+        "تصميم بألوان وستايل مصلحتك",
+        "عنوان موقع إلك، وإحنا منهتم إنه كل إشي يشتغل ويكون محمي",
+        "بدك تغيّر إشي؟ ابعتلنا رسالة ومنعدّله",
+        "ما حدا غيرك رح ياخد نفس التصميم"
+      ],
+      "en": [
+        "Everything in the featured listing",
+        "A website designed from scratch for you, like Caramel's",
+        "A menu, products or booking, exactly how your business works",
+        "Designed in your business's colours and style",
+        "Your own web address; we keep everything running and safe",
+        "Want to change something? Send us a message and we update it",
+        "Nobody else gets the same design"
+      ]
+    },
+    "highlighted": true,
+    "ctaLabel": {
+      "he": "אני רוצה אתר משלי",
+      "ar": "بدي موقع إلي",
+      "en": "I want my own website"
+    },
+    "ctaHref": "/contact?plan=signature",
+    "finePrint": {
+      "he": "את מחיר הבנייה קובעים אחרי שיחה בחינם. המחיר החודשי תלוי בגודל האתר, ואתם יודעים את הסכום המדויק לפני שמתחילים.",
+      "ar": "سعر البناء منحدده بعد مكالمة ببلاش. السعر الشهري حسب حجم الموقع، وبتعرف المبلغ بالزبط قبل ما نبلّش.",
+      "en": "The build price is set after a free call. The monthly price depends on the size of your site, and you know the exact amount before we start."
+    }
+  },
+  {
+    "slug": "ecosystem",
+    "order": 4,
+    "status": "live",
+    "name": {
+      "he": "אפליקציה ומערכת מלאה",
+      "ar": "تطبيق ونظام كامل",
+      "en": "App and full system"
+    },
+    "tagline": {
+      "he": "אפליקציה לטלפון ומערכת שמנהלת את כל העסק.",
+      "ar": "تطبيق للتلفون ونظام بدير كل مصلحتك.",
+      "en": "A phone app and a system that runs your whole business."
+    },
+    "monthly": null,
+    "setup": null,
+    "priceNote": {
+      "he": "המחיר נקבע אחרי שיחה בחינם",
+      "ar": "السعر بعد مكالمة ببلاش",
+      "en": "price set after a free call"
+    },
+    "features": {
+      "he": [
+        "כל מה שיש באתר משלכם",
+        "אפליקציה בשם העסק שלכם, להורדה באייפון ובאנדרואיד",
+        "עוזר אוטומטי שעונה ללקוחות, מקבל הזמנות וקובע תורים, 24 שעות ביממה",
+        "מסך ניהול משלכם: תפריט, מחירים, עובדים ולקוחות",
+        "חיבור למה שכבר עובד אצלכם: תשלומים, קופה, יומן ומשלוחים",
+        "לוגו, צבעים וסגנון אחיד לכל העסק"
+      ],
+      "ar": [
+        "كل إشي بموقع إلك",
+        "تطبيق باسم مصلحتك، للتنزيل عالآيفون والأندرويد",
+        "مساعد أوتوماتيكي بجاوب الزباين، بستقبل طلبيات وبحجز دور، 24 ساعة",
+        "شاشة إدارة إلك: منيو، أسعار، عمّال وزباين",
+        "ربط مع اللي بتستعمله: دفع، كاشير، مواعيد وتوصيل",
+        "لوجو، ألوان وستايل واحد لكل المصلحة"
+      ],
+      "en": [
+        "Everything in your own website",
+        "An app with your business's name, on iPhone and Android",
+        "An automatic helper that answers customers, takes orders and books, around the clock",
+        "Your own control screen for menu, prices, staff and customers",
+        "Connected to what you already use: payments, till, calendar and delivery",
+        "One logo, colours and style across your whole business"
+      ]
+    },
+    "highlighted": false,
+    "ctaLabel": {
+      "he": "קבעו שיחה בחינם",
+      "ar": "احجز مكالمة ببلاش",
+      "en": "Book a free call"
+    },
+    "ctaHref": "/contact?plan=ecosystem",
+    "finePrint": {
+      "he": "בונים בשלבים, ומשלמים רק על מה שכבר עובד.",
+      "ar": "منبني على مراحل، وبتدفع بس على اللي صار شغّال.",
+      "en": "We build in stages, and you only pay for what is already working."
+    }
+  }
+]

@@ -25,9 +25,9 @@ const near = (body: unknown) =>
   );
 
 it("sends a person to the nearest live place, uncached", async () => {
-  getNearestPlace.mockResolvedValue({ slug: "arraba" });
+  getNearestPlace.mockResolvedValue({ slug: "arraba", name: { ar: "عرّابة", en: "Arraba" } });
   const res = await near({ locale: "ar", lat: 32.85, lng: 35.34 });
-  expect(await res.json()).toEqual({ href: "/ar/arraba" });
+  expect(await res.json()).toEqual({ href: "/ar/arraba", name: "عرّابة" });
   expect(getNearestPlace).toHaveBeenCalledWith(32.85, 35.34, "no-store");
 });
 
@@ -57,9 +57,11 @@ it("sends them to the nearest place with the kind on a national kind page", asyn
       },
     ],
   });
-  getNearestPlacesWithKind.mockResolvedValue([{ slug: "sakhnin" }]);
+  getNearestPlacesWithKind.mockResolvedValue([
+    { slug: "sakhnin", name: { he: "סח'נין", en: "Sakhnin" } },
+  ]);
   const res = await near({ locale: "he", lat: 32.85, lng: 35.34, kind: "nails" });
-  expect(await res.json()).toEqual({ href: "/sakhnin/beauty/nails" });
+  expect(await res.json()).toEqual({ href: "/sakhnin/beauty/nails", name: "סח'נין" });
   expect(getNearestPlacesWithKind).toHaveBeenCalledWith("nails", 32.85, 35.34, 1, "no-store");
 });
 
@@ -75,7 +77,7 @@ it("rejects bad coordinates and reports nothing found", async () => {
 });
 
 it("rounds the position before it reaches the API", async () => {
-  getNearestPlace.mockResolvedValue({ slug: "sakhnin" });
+  getNearestPlace.mockResolvedValue({ slug: "sakhnin", name: { en: "Sakhnin" } });
   await near({ locale: "en", lat: 32.8486259, lng: 35.3358268 });
   expect(getNearestPlace).toHaveBeenCalledWith(32.849, 35.336, "no-store");
 });

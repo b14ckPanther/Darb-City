@@ -20,7 +20,7 @@ export interface CrumbTarget {
 
 /** Israel ▸ (parent city) ▸ place ▸ sector ▸ kind ▸ business. Regions are not steps people take. */
 export function crumbsFor(locale: Locale, at: CrumbTarget): Crumb[] {
-  const crumbs: Crumb[] = [{ label: t(locale, "country"), href: href(locale) }];
+  const crumbs: Crumb[] = [{ label: t(locale, "country"), href: href(locale, paths.explore()) }];
   if (at.page) return [...crumbs, at.page];
   if (at.nationalKind) {
     crumbs.push({
@@ -77,11 +77,13 @@ export interface Chip {
 /**
  * Neighbourhoods narrow a level as a filter, never as extra URL depth: each chip is the same level
  * (`tail` = the sector and kind segments, if any) in the neighbourhood or in the whole city.
+ * With `counts` (place counts), neighbourhoods without businesses get no chip.
  */
 export function subPlaceChips(
   locale: Locale,
   place: PlaceDetailDto,
   tail: readonly string[],
+  counts?: Record<string, number>,
 ): Chip[] {
   const name = (p: { name: Localized }) => pickText(p.name, locale);
   if (place.type === "neighbourhood") {
@@ -103,7 +105,7 @@ export function subPlaceChips(
     ];
   }
   const neighbourhoods = place.children.filter(
-    (c) => c.type === "neighbourhood" && c.status === "live",
+    (c) => c.type === "neighbourhood" && c.status === "live" && (!counts || counts[c.slug]),
   );
   if (neighbourhoods.length === 0) return [];
   return [

@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 import { isPhone, LEVELS } from "./fixtures";
 
-for (const [name, path] of Object.entries(LEVELS)) {
+for (const [name, path] of [...Object.entries(LEVELS), ["landing", "/"] as const]) {
   test(`${name}: Largest Contentful Paint under 1.5 s on fast 4G`, async ({ page }, info) => {
     test.skip(!isPhone(info), "phone only");
     await page.goto(path); // warm the ISR cache: the budget is for cached pages

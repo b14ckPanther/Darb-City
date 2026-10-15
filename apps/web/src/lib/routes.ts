@@ -26,9 +26,26 @@ export const paths = {
     own === listed ? [listed, sector, kind, business] : [listed, sector, kind, own, business],
   nationalKind: (kind: string) => ["k", kind],
   placeKind: (place: string, kind: string) => [place, "k", kind],
+  /** The country's place and kind index (the landing page took the root). */
+  explore: () => ["israel"],
+  showroom: () => ["showroom"],
+  pricing: () => ["pricing"],
+  contact: () => ["contact"],
+  accessibility: () => ["accessibility"],
+  terms: () => ["terms"],
+  privacy: () => ["privacy"],
   forBusiness: () => ["for-business"],
   search: () => ["search"],
 };
+
+/**
+ * A path on this site written without a locale ("/contact?plan=spotlight", from a plan's button),
+ * in the locale's own URL space.
+ */
+export function localeHref(locale: Locale, path: string): string {
+  if (locale === "he") return path;
+  return path === "/" ? `/${locale}` : `/${locale}${path}`;
+}
 
 export function languageAlternates(segments: readonly string[]): Record<string, string> {
   return {

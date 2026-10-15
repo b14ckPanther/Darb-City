@@ -74,3 +74,24 @@ export interface SeedBusiness {
 
 /** Stored shape in businesses.json: the screen is attached by loadShowroom(). */
 export type SeedBusinessRecord = Omit<SeedBusiness, "experience">;
+/** A pricing plan (/pricing). Whole shekels; monthly null is a custom quote, 0 is free. */
+export interface SeedPlan {
+  slug: string;
+  order: number;
+  status: "live" | "hidden";
+  name: Localized;
+  tagline: Localized;
+  monthly: number | null;
+  setup: number | null;
+  priceNote: Localized;
+  features: { he: string[]; ar: string[]; en: string[] };
+  highlighted: boolean;
+  ctaLabel: Localized;
+  ctaHref: string;
+  finePrint: Localized;
+}
+/** Page copy by key ("pricing.title"). */
+export interface SeedText {
+  key: string;
+  value: Localized;
+}

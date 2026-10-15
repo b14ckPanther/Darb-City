@@ -21,7 +21,9 @@ const SearchPopup = dynamic<PopupProps>(
 function placeFrom(pathname: string): string | null {
   const parts = pathname.split("/").filter(Boolean);
   const first = parts[0] === "ar" || parts[0] === "en" ? parts[1] : parts[0];
-  return first && !["k", "search", "for-business"].includes(first) ? first : null;
+  return first && !["k", "search", "for-business", "pricing", "contact"].includes(first)
+    ? first
+    : null;
 }
 
 /** WAI-ARIA editable combobox with list autocomplete (APG "combobox with listbox popup"). */

@@ -19,6 +19,7 @@ export default async function AdminHome({ params }: { params: Promise<{ locale: 
     ["/kinds", "navKinds"],
     ["/businesses", "navBusinesses"],
     ["/sectors", "navSectors"],
+    ["/plans", "navPlans"],
   ] as const;
   return (
     <>
