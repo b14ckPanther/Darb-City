@@ -42,6 +42,8 @@ describe("stageAllowed", () => {
       "/ar/for-business",
       "/showroom",
       "/en/pricing",
+      "/contact",
+      "/ar/contact",
     ])
       expect(stageAllowed(path), path).toBe(false);
   });

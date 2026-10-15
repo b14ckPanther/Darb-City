@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { href, languageAlternates, paths } from "./routes";
+import { href, localeHref, languageAlternates, paths } from "./routes";
 
 describe("href", () => {
   it("leaves Hebrew unprefixed and prefixes Arabic and English", () => {
@@ -34,5 +34,13 @@ describe("languageAlternates", () => {
       en: "/en/haifa",
       "x-default": "/haifa",
     });
+  });
+});
+
+describe("localeHref", () => {
+  it("puts a plan button's path into the locale's URL space", () => {
+    expect(localeHref("he", "/contact?plan=spotlight")).toBe("/contact?plan=spotlight");
+    expect(localeHref("en", "/contact?plan=spotlight")).toBe("/en/contact?plan=spotlight");
+    expect(localeHref("ar", "/")).toBe("/ar");
   });
 });

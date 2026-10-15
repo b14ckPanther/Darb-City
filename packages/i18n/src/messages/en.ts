@@ -14,6 +14,7 @@ export const en = {
   pricing: "Pricing",
   pricingSoon:
     "The plans are being polished. Write to us and we will tell you everything in person.",
+  contactUs: "Contact us",
   included: "Included",
   noneHereYet: "None in {place} yet",
   nothingListedYet: "No businesses are listed here yet.",

@@ -15,6 +15,7 @@ export const he: Messages = {
   forBusiness: "לעסקים",
   pricing: "מחירים",
   pricingSoon: "התוכניות עוד מתלטשות. כתבו לנו ונספר לכם הכול באופן אישי.",
+  contactUs: "צרו קשר",
   included: "כלול",
   noneHereYet: "עוד אין ב{place}",
   nothingListedYet: "עוד אין כאן עסקים ברשימה.",
