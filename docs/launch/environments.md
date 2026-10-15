@@ -105,7 +105,9 @@ Required in production (the web server refuses to start without them; `assertSer
 
 ## GitHub Environments (`staging`, `production`)
 
-Secrets: `DATABASE_URL`, `MIGRATE_DATABASE_URL`, `VOYAGE_API_KEY`, `REVALIDATE_SECRET`, `SEARCH_PROXY_KEY`, `IP_HASH_SALT`. Variable: `REVALIDATE_URL`. `production` requires the owner as reviewer.
+Secrets: `DATABASE_URL`, `MIGRATE_DATABASE_URL`, `VOYAGE_API_KEY`, `REVALIDATE_SECRET`, `SEARCH_PROXY_KEY`, `IP_HASH_SALT`. Variables: `REVALIDATE_URL`, `SEED_SHOWROOM`. `production` requires the owner as reviewer.
+
+`SEED_SHOWROOM=0` on `production` seeds only the real clients: the fictional showroom examples are suspended (not deleted) and drop out of pages, sitemaps and search after the next seed and reindex. Leave it unset on `staging` to keep them. Unsetting it and re-running Seed and reindex with `seed` ticked restores them.
 
 ## CI (`.github/workflows/ci.yml`)
 

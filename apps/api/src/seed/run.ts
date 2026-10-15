@@ -1,9 +1,17 @@
 import "dotenv/config";
-import { loadBrands, loadBusinesses, loadKinds, loadPlaces, loadSectors } from "@darb/seed";
+import {
+  loadBrands,
+  loadBusinesses,
+  loadClients,
+  loadKinds,
+  loadPlaces,
+  loadSectors,
+} from "@darb/seed";
 import { embeddingProviderFor } from "../ai/embeddings.js";
 import { loadConfig } from "../config.js";
 import { PrismaService } from "../prisma/prisma.service.js";
 import { SearchIndexer } from "../search/indexer.service.js";
+import { pickBusinesses } from "./choose.js";
 import { loadSeed } from "./load.js";
 
 const config = loadConfig(process.env);
@@ -14,7 +22,10 @@ const counts = await loadSeed(prisma, {
   sectors: loadSectors(),
   kinds: loadKinds(),
   brands: loadBrands(),
-  businesses: loadBusinesses(),
+  businesses: pickBusinesses(process.env, {
+    all: loadBusinesses,
+    real: () => loadClients().businesses,
+  }),
 });
 console.log(`Seeded ${JSON.stringify(counts)} in ${((Date.now() - started) / 1000).toFixed(1)}s`);
 // Decision 8: the seed indexes directly (not through the queue), in batches of 128 embeddings.

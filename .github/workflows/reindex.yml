@@ -42,6 +42,7 @@ jobs:
       REVALIDATE_SECRET: ${{ secrets.REVALIDATE_SECRET }}
       SEARCH_PROXY_KEY: ${{ secrets.SEARCH_PROXY_KEY }}
       IP_HASH_SALT: ${{ secrets.IP_HASH_SALT }}
+      SEED_SHOWROOM: ${{ vars.SEED_SHOWROOM }}
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6
