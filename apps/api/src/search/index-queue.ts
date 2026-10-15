@@ -89,14 +89,17 @@ export class SearchEvents implements OnModuleDestroy {
       timer = setTimeout(() => resolve("late"), NOTIFY_TIMEOUT_MS);
       timer.unref();
     });
-    void Promise.race([this.changed(entity, ids), late])
+    // Logged on the change itself, so a failure after the "late" warning is not lost.
+    const done = this.changed(entity, ids).catch((err: Error) => {
+      this.logger.error(`Search index notify: ${describeError(err)}`);
+    });
+    void Promise.race([done, late])
       .then((out) => {
         if (out === "late")
           this.logger.warn(
             `Search index change for ${ids.length} ${entity}(s) is waiting for Redis`,
           );
       })
-      .catch((err: Error) => this.logger.error(`Search index notify: ${describeError(err)}`))
       .finally(() => clearTimeout(timer));
   }
 

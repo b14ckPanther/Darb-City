@@ -2,18 +2,31 @@
 import { afterEach, expect, it, vi } from "vitest";
 import robots, { dynamic } from "./robots";
 
-afterEach(() => vi.unstubAllEnvs());
+let host = "darb.co.il";
+vi.mock("next/headers", () => ({ headers: async () => new Headers({ host }) }));
 
-it("blocks everything off production", () => {
-  vi.stubEnv("VERCEL_ENV", "preview");
-  vi.stubEnv("VERCEL_URL", "x.vercel.app");
-  expect(robots().rules).toEqual([{ userAgent: "*", disallow: "/" }]);
+afterEach(() => {
+  vi.unstubAllEnvs();
+  host = "darb.co.il";
 });
 
-it("opens production except admin, api and search, and lists the sitemaps", () => {
+it("blocks everything off production", async () => {
+  vi.stubEnv("VERCEL_ENV", "preview");
+  vi.stubEnv("VERCEL_URL", "x.vercel.app");
+  expect((await robots()).rules).toEqual([{ userAgent: "*", disallow: "/" }]);
+});
+
+it("blocks production's *.vercel.app host", async () => {
   vi.stubEnv("VERCEL_ENV", "production");
   vi.stubEnv("SITE_URL", "https://darb.co.il");
-  const r = robots();
+  host = "darb-city.vercel.app";
+  expect((await robots()).rules).toEqual([{ userAgent: "*", disallow: "/" }]);
+});
+
+it("opens production except admin, api and search, and lists the sitemaps", async () => {
+  vi.stubEnv("VERCEL_ENV", "production");
+  vi.stubEnv("SITE_URL", "https://darb.co.il");
+  const r = await robots();
   expect(r.rules).toEqual([
     {
       userAgent: "*",

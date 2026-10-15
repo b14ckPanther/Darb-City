@@ -10,11 +10,11 @@ import { tilesOrigin } from "./stage/vendor";
 const DEV = process.env.NODE_ENV !== "production";
 const PUBLIC_CSP = publicCsp({ tilesOrigin: tilesOrigin(), dev: DEV });
 
-function withHeaders(res: NextResponse): NextResponse {
+function withHeaders(res: NextResponse, host: string): NextResponse {
   res.headers.set("content-security-policy", PUBLIC_CSP);
   for (const [k, v] of Object.entries(securityHeaders())) res.headers.set(k, v);
   // Previews, staging and local runs stay out of search engines (Task 22).
-  if (!indexable()) res.headers.set("x-robots-tag", "noindex, nofollow");
+  if (!indexable(process.env, host)) res.headers.set("x-robots-tag", "noindex, nofollow");
   return res;
 }
 
@@ -64,11 +64,13 @@ export async function proxy(
     return adminResponse(request);
   }
   const route = routeLocale(request.nextUrl.pathname);
-  if (route.action === "next") return withHeaders(NextResponse.next());
+  const host = request.nextUrl.host;
+  if (route.action === "next") return withHeaders(NextResponse.next(), host);
   const url = request.nextUrl.clone();
   url.pathname = route.pathname;
   return withHeaders(
     route.action === "redirect" ? NextResponse.redirect(url, 308) : NextResponse.rewrite(url),
+    host,
   );
 }
 

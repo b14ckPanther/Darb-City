@@ -1,6 +1,6 @@
 import type { INestApplication } from "@nestjs/common";
 import request from "supertest";
-import { afterAll, beforeAll, expect, it } from "vitest";
+import { afterAll, beforeAll, expect, it, vi } from "vitest";
 import { createTestApp } from "../../test/app.js";
 import { resetDatabase } from "../../test/db.js";
 import { seedFixtures } from "../../test/fixtures.js";
@@ -27,6 +27,9 @@ afterAll(async () => {
 });
 
 it("limits direct suggest callers and never the web server", async () => {
+  // The limit counts per minute; pin the clock so the four calls cannot straddle a window.
+  vi.useFakeTimers({ toFake: ["Date"] });
+  vi.setSystemTime(Math.ceil(Date.now() / 60_000) * 60_000 + 1_000);
   const http = request(app.getHttpServer());
   // The test app trusts no proxy, so every direct call counts against the loopback address.
   const direct = () => http.get("/search/suggest?q=abu");
@@ -35,4 +38,5 @@ it("limits direct suggest callers and never the web server", async () => {
   expect((await direct()).status).toBe(429);
   const viaWeb = await http.get("/search/suggest?q=abu").set("x-darb-proxy-key", "k".repeat(32));
   expect(viaWeb.status).toBe(200);
+  vi.useRealTimers();
 });

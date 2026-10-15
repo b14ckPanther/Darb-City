@@ -14,6 +14,7 @@ import type { Kind, Prisma } from "../generated/prisma/client.js";
 import { PrismaService } from "../prisma/prisma.service.js";
 import { AdminWriter } from "./admin-writer.js";
 import { json } from "./json.js";
+import { LIST_CAP } from "./list-cap.js";
 import { conflict, invalid, notFound, outcome } from "./outcome.js";
 import { webTags } from "./tags.js";
 import { nameOrSlugFilters } from "./text-search.js";
@@ -64,6 +65,7 @@ export class KindsAdmin {
       where,
       include: withCount,
       orderBy: [{ sectorId: "asc" }, { order: "asc" }],
+      take: LIST_CAP,
     });
     return rows.map(toAdminKind);
   }

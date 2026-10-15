@@ -133,3 +133,12 @@ it("gives up after four retries", async () => {
   await expect(voyage.embed(["a"], "document")).rejects.toThrow(/429/);
   expect(sleeps).toEqual([1000, 2000, 4000, 8000]);
 });
+
+it("stops waiting for a retry when the caller aborts", async () => {
+  const fetchImpl = (async () => new Response("", { status: 429 })) as typeof fetch;
+  const voyage = new VoyageEmbeddingProvider("k", "m", fetchImpl);
+  const ctl = new AbortController();
+  const pending = voyage.embed(["a"], "document", ctl.signal);
+  setTimeout(() => ctl.abort(new Error("stopped")), 20);
+  await expect(pending).rejects.toThrow(/stopped/);
+});

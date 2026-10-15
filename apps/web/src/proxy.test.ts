@@ -24,8 +24,12 @@ it("keeps every non-production deployment out of search engines", async () => {
   const preview = await proxy(new NextRequest("http://localhost:3000/sakhnin"));
   expect(preview.headers.get("x-robots-tag")).toBe("noindex, nofollow");
   vi.stubEnv("VERCEL_ENV", "production");
-  const live = await proxy(new NextRequest("http://localhost:3000/sakhnin"));
+  vi.stubEnv("SITE_URL", "https://darb.co.il");
+  const live = await proxy(new NextRequest("https://darb.co.il/sakhnin"));
   expect(live.headers.get("x-robots-tag")).toBeNull();
+  // Production also answers on its *.vercel.app host, which stays out of search engines.
+  const alias = await proxy(new NextRequest("https://darb-city.vercel.app/sakhnin"));
+  expect(alias.headers.get("x-robots-tag")).toBe("noindex, nofollow");
 });
 it("rewrites admin URLs with a nonce CSP, noindex and no-store", async () => {
   const req = new NextRequest("http://localhost:3000/ar/admin/places");

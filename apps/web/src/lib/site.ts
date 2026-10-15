@@ -19,8 +19,13 @@ export function isLocalSite(env: Env = process.env): boolean {
   return host === "localhost" || host === "127.0.0.1";
 }
 
-/** Only the production deployment is indexed; previews and staging are noindex (Task 22). */
-export function indexable(env: Env = process.env): boolean {
-  if (env.VERCEL_ENV) return env.VERCEL_ENV === "production";
-  return env.SITE_INDEXABLE === "1";
+/**
+ * Only the production deployment is indexed; previews and staging are noindex (Task 22). With a
+ * request host, only the public origin is: production also answers on `*.vercel.app`.
+ */
+export function indexable(env: Env = process.env, host?: string | null): boolean {
+  const on = env.VERCEL_ENV ? env.VERCEL_ENV === "production" : env.SITE_INDEXABLE === "1";
+  if (!on || host == null) return on;
+  const site = env.SITE_URL?.trim();
+  return !!site && new URL(site).host === host.toLowerCase();
 }

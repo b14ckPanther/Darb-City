@@ -8,7 +8,11 @@ export function createLimiter(limit: number, windowMs = 60_000) {
     const window = Math.floor(now / windowMs);
     const entry = hits.get(key);
     if (!entry || entry.window !== window) {
-      if (hits.size > 50_000) hits.clear();
+      if (hits.size > 50_000) {
+        // Drop finished windows first; clear everything only if one window alone is that big.
+        for (const [k, e] of hits) if (e.window !== window) hits.delete(k);
+        if (hits.size > 50_000) hits.clear();
+      }
       hits.set(key, { window, count: 1 });
       return true;
     }

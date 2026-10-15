@@ -40,7 +40,7 @@ it("records answers, marks failures loudly and never touches blocked cases", asy
     kase("throws", intent("barbershops")),
     kase("bars", intent("bars"), true),
   ];
-  const out = await recordCases(cases, provider, lane1, "model-x");
+  const out = await recordCases(cases, provider, lane1, "model-x", []);
   expect(out).toEqual({ changed: 1, failed: ['en "silent"', 'en "throws"'] });
   expect(cases.map((c) => c.source)).toEqual([
     "model-x",

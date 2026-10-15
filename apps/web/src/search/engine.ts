@@ -28,8 +28,10 @@ async function fetchFirst(urls: readonly string[]): Promise<InstantIndex> {
   for (const url of urls) {
     try {
       const res = await fetch(url);
-      if (res.ok) return (await res.json()) as InstantIndex;
-      last = new Error(String(res.status));
+      // A proxy error page can answer 2xx: only a real index stops the fallback.
+      const body = res.ok ? ((await res.json().catch(() => null)) as InstantIndex | null) : null;
+      if (body?.v === 1 && Array.isArray(body.places) && Array.isArray(body.kinds)) return body;
+      last = new Error(res.ok ? "Not a search index" : String(res.status));
     } catch (error) {
       last = error;
     }
