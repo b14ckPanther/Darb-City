@@ -4,6 +4,15 @@ import { ipBucket } from "./ip-bucket.js";
 it("keeps IPv4 as it is and unwraps IPv4-mapped IPv6", () => {
   expect(ipBucket("203.0.113.9")).toBe("203.0.113.9");
   expect(ipBucket("::ffff:203.0.113.9")).toBe("203.0.113.9");
+  expect(ipBucket("0:0:0:0:0:ffff:203.0.113.9")).toBe("203.0.113.9");
+  expect(ipBucket("::ffff:cb00:7109")).toBe("203.0.113.9");
+  expect(ipBucket("::203.0.113.9")).toBe("203.0.113.9");
+});
+
+it("drops a port", () => {
+  expect(ipBucket("203.0.113.9:80")).toBe("203.0.113.9");
+  expect(ipBucket("[2001:db8:1:2::7]:443")).toBe("2001:db8:1:2::/64");
+  expect(ipBucket("[::ffff:203.0.113.9]:443")).toBe("203.0.113.9");
 });
 
 it("groups IPv6 by /64", () => {

@@ -13,8 +13,14 @@ export class VoyageEmbeddingProvider implements EmbeddingProvider {
     private readonly apiKey: string,
     readonly name: string,
     private readonly fetchImpl: typeof fetch = fetch,
-    private readonly sleep: (ms: number) => Promise<void> = (ms) =>
-      new Promise((resolve) => setTimeout(resolve, ms)),
+    private readonly sleep: (ms: number, signal?: AbortSignal) => Promise<void> = (ms, signal) =>
+      new Promise((resolve, reject) => {
+        if (signal?.aborted) return reject(signal.reason);
+        const timer = setTimeout(resolve, ms);
+        signal?.addEventListener("abort", () => (clearTimeout(timer), reject(signal.reason)), {
+          once: true,
+        });
+      }),
   ) {}
 
   async embed(texts: string[], purpose: EmbedPurpose, signal?: AbortSignal): Promise<number[][]> {
@@ -34,7 +40,9 @@ export class VoyageEmbeddingProvider implements EmbeddingProvider {
       // A query has an 800 ms deadline: it fails fast and search ranks without the vector.
       if (!res.ok && retryable(res.status) && purpose === "document" && attempt < RETRIES) {
         const after = Number(res.headers.get("retry-after"));
-        await this.sleep(after > 0 ? Math.min(after * 1000, 60_000) : 1000 * 2 ** attempt);
+        // Unread bodies hold the connection open until garbage collection.
+        await res.body?.cancel();
+        await this.sleep(after > 0 ? Math.min(after * 1000, 60_000) : 1000 * 2 ** attempt, signal);
         continue;
       }
       if (!res.ok) throw new Error(`Voyage embeddings failed: ${res.status}`);

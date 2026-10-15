@@ -20,7 +20,9 @@ export default function GlobalNotFound() {
         }}
       >
         <main style={{ textAlign: "center", padding: 24 }}>
-          <h1 style={{ fontSize: 28, margin: 0 }}>הדף לא נמצא · الصفحة غير موجودة</h1>
+          <h1 style={{ fontSize: 28, margin: 0 }}>
+            הדף לא נמצא · <span lang="ar">الصفحة غير موجودة</span>
+          </h1>
           <p lang="en" dir="ltr">
             This page does not exist.
           </p>
@@ -28,7 +30,7 @@ export default function GlobalNotFound() {
             {/* A full document load on purpose: this page sits outside the [locale] root layout. */}
             {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
             <a href="/" style={{ color: colors.gold }}>
-              דרב · درب · Darb
+              דרב · <span lang="ar">درب</span> · <span lang="en">Darb</span>
             </a>
           </p>
         </main>

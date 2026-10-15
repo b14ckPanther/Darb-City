@@ -20,13 +20,20 @@ function hextets(ip: string): string[] {
  * so per-address limits would be free to dodge).
  */
 export function ipBucket(ip: string): string {
-  const raw = ip
-    .trim()
-    .replace(/^\[|\]$/g, "")
-    .split("%")[0]!;
-  const mapped = /^::ffff:(\d+\.\d+\.\d+\.\d+)$/i.exec(raw);
-  if (mapped) return mapped[1]!;
+  let raw = ip.trim();
+  // A port is not part of who is asking: "[2001:db8::1]:443" and "1.2.3.4:80" drop it.
+  const bracketed = /^\[(.*)\](?::\d+)?$/.exec(raw);
+  if (bracketed) raw = bracketed[1]!;
+  else raw = raw.replace(/^(\d+\.\d+\.\d+\.\d+):\d+$/, "$1");
+  raw = raw.split("%")[0]!;
   if (isIPv4(raw)) return raw;
   if (!isIPv6(raw)) return raw.slice(0, 64);
-  return `${hextets(raw).slice(0, 4).join(":")}::/64`;
+  const h = hextets(raw);
+  // IPv4-mapped (::ffff:a.b.c.d, in any spelling) and IPv4-compatible (::a.b.c.d) are IPv4.
+  const zeros = h.slice(0, 5).every((x) => x === "0");
+  if (zeros && (h[5] === "ffff" || (h[5] === "0" && raw.includes(".")))) {
+    const [hi, lo] = [parseInt(h[6]!, 16), parseInt(h[7]!, 16)];
+    return [hi >> 8, hi & 255, lo >> 8, lo & 255].join(".");
+  }
+  return `${h.slice(0, 4).join(":")}::/64`;
 }

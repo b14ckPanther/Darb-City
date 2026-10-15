@@ -15,7 +15,7 @@ export async function recordCases(
   provider: IntentProvider,
   match: (q: string) => Promise<InstantResult>,
   model: string,
-  activeKinds: readonly string[] = [],
+  activeKinds: readonly string[],
 ): Promise<{ changed: number; failed: string[] }> {
   let changed = 0;
   const failed: string[] = [];

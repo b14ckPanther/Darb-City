@@ -12,6 +12,7 @@ import type { Sector } from "../generated/prisma/client.js";
 import { PrismaService } from "../prisma/prisma.service.js";
 import { AdminWriter } from "./admin-writer.js";
 import { json } from "./json.js";
+import { LIST_CAP } from "./list-cap.js";
 import { conflict, invalid, notFound } from "./outcome.js";
 import { webTags } from "./tags.js";
 import { seedSource } from "./seed-source.js";
@@ -35,7 +36,9 @@ export class SectorsAdmin {
   ) {}
 
   async list() {
-    return (await this.prisma.sector.findMany({ orderBy: { order: "asc" } })).map(toAdminSector);
+    return (await this.prisma.sector.findMany({ orderBy: { order: "asc" }, take: LIST_CAP })).map(
+      toAdminSector,
+    );
   }
 
   async create(actor: AdminActor, dto: AdminSectorCreateDto) {

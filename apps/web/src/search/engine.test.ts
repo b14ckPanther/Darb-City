@@ -123,3 +123,17 @@ it("falls back to the next index URL", async () => {
   expect(fetchMock.mock.calls.map((c) => c[0])).toEqual(["/a", "/b"]);
   vi.unstubAllGlobals();
 });
+
+it("falls back when a 2xx answer is not an index", async () => {
+  const { loadPrepared, resetPreparedForTests } = await import("./engine");
+  resetPreparedForTests();
+  const fetchMock = vi.fn(async (url: string) =>
+    url === "/a"
+      ? new Response("<html>proxy</html>", { status: 200 })
+      : Response.json({ v: 1, places: [], kinds: [] }),
+  );
+  vi.stubGlobal("fetch", fetchMock);
+  await expect(loadPrepared(["/a", "/b"])).resolves.toBeDefined();
+  expect(fetchMock.mock.calls.map((c) => c[0])).toEqual(["/a", "/b"]);
+  vi.unstubAllGlobals();
+});

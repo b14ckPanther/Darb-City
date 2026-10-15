@@ -28,3 +28,14 @@ it("knows local sites and indexable deployments", () => {
   expect(indexable({ SITE_INDEXABLE: "1" })).toBe(true);
   expect(indexable({})).toBe(false);
 });
+
+it("indexes production only on its public host", () => {
+  const prod = { VERCEL_ENV: "production", SITE_URL: "https://darb.co.il" };
+  expect(indexable(prod, "darb.co.il")).toBe(true);
+  expect(indexable(prod, "DARB.co.il")).toBe(true);
+  expect(indexable(prod, "darb-city.vercel.app")).toBe(false);
+  expect(indexable({ VERCEL_ENV: "production" }, "darb.co.il")).toBe(false);
+  expect(indexable({ VERCEL_ENV: "preview", SITE_URL: "https://darb.co.il" }, "darb.co.il")).toBe(
+    false,
+  );
+});
