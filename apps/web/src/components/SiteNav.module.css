@@ -23,24 +23,29 @@
 }
 
 /*
- * The pill under the current tab. It is 1 px wide and scaled to the tab's width, then moved to its
- * position, so it glides between tabs with transform alone. A thin gold road runs along its foot.
+ * The pill under the current tab. It takes the tab's width and slides there with transform, so
+ * moving between tabs reads as one motion. A short gold road sits at its foot.
  */
 .rail > .pill {
   position: absolute;
   inset-block: 4px;
   inset-inline-start: 0;
   z-index: 0;
-  inline-size: 1px;
+  inline-size: var(--w);
   border-radius: var(--radius-pill);
   background: rgb(217 165 76 / 0.14);
-  box-shadow: inset 0 -2px 0 var(--gold);
-  transform-origin: 0 0;
-  transform: translateX(var(--x)) scaleX(var(--w));
+  box-shadow: inset 0 0 0 1px rgb(217 165 76 / 0.22);
+  transform: translateX(var(--x));
 }
 
-:global([dir="rtl"]) .rail > .pill {
-  transform-origin: 100% 0;
+.rail > .pill::after {
+  content: "";
+  position: absolute;
+  inset-block-end: 5px;
+  inset-inline: 35%;
+  block-size: 2px;
+  border-radius: 2px;
+  background: var(--gold);
 }
 
 .rail > .pill[data-settled] {

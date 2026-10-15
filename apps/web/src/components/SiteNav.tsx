@@ -52,12 +52,12 @@ export function SiteNav({
   useLayoutEffect(() => {
     const place = () => {
       const current = rail.current?.querySelector<HTMLElement>('[aria-current="page"]');
-      const box = rail.current?.getBoundingClientRect();
-      if (!current || !box) return setMark(null);
-      const r = current.getBoundingClientRect();
+      const tab = current?.parentElement; // the <li>, which sits directly in the rail
+      if (!rail.current || !tab) return setMark(null);
       // Measured from the rail's start edge (the right one in Hebrew and Arabic).
-      const rtl = getComputedStyle(rail.current!).direction === "rtl";
-      setMark({ x: rtl ? r.right - box.right : r.left - box.left, w: r.width });
+      const rtl = getComputedStyle(rail.current).direction === "rtl";
+      const end = rail.current.clientWidth - tab.offsetLeft - tab.offsetWidth;
+      setMark({ x: rtl ? -end : tab.offsetLeft, w: tab.offsetWidth });
     };
     place();
     const watch = new ResizeObserver(place);
@@ -100,7 +100,7 @@ export function SiteNav({
             aria-hidden="true"
             className={styles.pill}
             data-settled={settled ? "" : undefined}
-            style={{ "--x": `${mark.x}px`, "--w": `${mark.w}` } as CSSProperties}
+            style={{ "--x": `${mark.x}px`, "--w": `${mark.w}px` } as CSSProperties}
           />
         ) : null}
         {tabs.map((tab) => (
