@@ -48,3 +48,18 @@ it("explains in one line when location is denied", async () => {
   await waitFor(() => expect(screen.getByText(labels.denied)).toBeTruthy());
   expect(push).not.toHaveBeenCalled();
 });
+
+it("names the place it found and remembers it on this device", async () => {
+  stubLocation("granted");
+  localStorage.clear();
+  vi.stubGlobal(
+    "fetch",
+    vi.fn().mockResolvedValue(Response.json({ href: "/haifa", name: "חיפה" })),
+  );
+  const { unmount } = render(<NearMe locale="he" homeHref="/" labels={labels} />);
+  fireEvent.click(screen.getByRole("button", { name: "Near me" }));
+  await waitFor(() => expect(screen.getByRole("button", { name: "Near me: חיפה" })).toBeTruthy());
+  unmount();
+  render(<NearMe locale="he" homeHref="/" labels={labels} />);
+  await waitFor(() => expect(screen.getByText("חיפה")).toBeTruthy());
+});

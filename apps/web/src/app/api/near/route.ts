@@ -1,4 +1,5 @@
 import { SlugSchema } from "@darb/contracts";
+import { pickText } from "@darb/core";
 import { z } from "zod";
 import {
   ApiUnavailableError,
@@ -32,11 +33,17 @@ export async function POST(request: Request): Promise<Response> {
       if (!k || !sector) return Response.json({ message: "Unknown kind" }, { status: 404 });
       const [place] = (await getNearestPlacesWithKind(k.slug, lat, lng, 1, "no-store")) ?? [];
       if (!place) return Response.json({ message: "None yet" }, { status: 404 });
-      return Response.json({ href: href(locale, paths.kind(place.slug, sector.slug, k.slug)) });
+      return Response.json({
+        href: href(locale, paths.kind(place.slug, sector.slug, k.slug)),
+        name: pickText(place.name, locale),
+      });
     }
     const place = await getNearestPlace(lat, lng, "no-store");
     if (!place) return Response.json({ message: "No live place" }, { status: 404 });
-    return Response.json({ href: href(locale, paths.place(place.slug)) });
+    return Response.json({
+      href: href(locale, paths.place(place.slug)),
+      name: pickText(place.name, locale),
+    });
   } catch (error) {
     if (error instanceof ApiUnavailableError)
       return Response.json({ message: "Unavailable" }, { status: 503 });
