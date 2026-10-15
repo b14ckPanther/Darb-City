@@ -29,8 +29,12 @@ export interface SeedCounts {
 
 const validateScreen = new Ajv({ allErrors: true }).compile(SCREEN_SCHEMA);
 
-/** Interactive transactions default to a 5 s timeout; a group of seed writes can take longer. */
-const TX = { maxWait: 10_000, timeout: 120_000 };
+/**
+ * Interactive transactions default to a 5 s timeout; a group of seed writes can take longer. The
+ * workflow runs on GitHub's US runners against Frankfurt, so each write is a long round trip: the
+ * 1,138 places alone took just over 2 minutes in production.
+ */
+const TX = { maxWait: 10_000, timeout: 900_000 };
 /** Businesses per transaction: big enough to save round trips, small enough to keep locks short. */
 const BUSINESS_CHUNK = 1000;
 const EDITED = { editedAt: { not: null } } as const;
