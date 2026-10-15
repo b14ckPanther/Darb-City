@@ -162,14 +162,15 @@ export function Footer({
         <ul className={styles.languages} aria-label={copy.languages}>
           {LOCALES.map((l) => (
             <li key={l}>
-              <Link
+              {/* A full load: another language is another root layout. */}
+              <a
                 href={href(l, segments)}
                 lang={l}
                 hrefLang={l}
                 aria-current={l === locale ? "true" : undefined}
               >
                 {LANGUAGE_NAMES[l]}
-              </Link>
+              </a>
             </li>
           ))}
         </ul>
