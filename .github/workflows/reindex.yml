@@ -1,6 +1,11 @@
 name: Seed and reindex
 
 on:
+  # GitHub only lists this workflow once an event has run it; a push that edits the file
+  # records a skipped run and makes the manual button appear.
+  push:
+    branches: [main]
+    paths: [.github/workflows/reindex.yml]
   workflow_dispatch:
     inputs:
       environment:
@@ -22,6 +27,7 @@ concurrency:
 
 jobs:
   run:
+    if: ${{ github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     # The GitHub Environment holds the secrets and requires the owner's approval for production.
