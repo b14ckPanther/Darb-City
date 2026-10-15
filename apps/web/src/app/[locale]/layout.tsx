@@ -6,6 +6,7 @@ import type { Locale } from "@darb/core";
 import { dir, t } from "@darb/i18n";
 import { colors } from "@darb/tokens";
 import { isLocale } from "@/lib/locale";
+import { fontStack } from "@/lib/font-stack";
 import { siteUrl } from "@/lib/site";
 import { tokensCss } from "@/lib/tokens-css";
 import { DoorDefs } from "@/components/Door";
@@ -33,14 +34,7 @@ const cairo = Cairo({
   preload: false,
 });
 
-/**
- * next/font gives each family a size-adjusted "… Fallback" face that is local Arial with no
- * unicode-range, so `Ubuntu, Ubuntu Fallback, Heebo, …` stops at Arial for Hebrew and Arabic.
- * Turbopack emits that face even with `adjustFontFallback: false`, so the body stack is built from
- * the real families only: each script falls through to the one family that covers it.
- */
-const firstFamily = (stack: string) => stack.split(",", 1)[0]?.trim() ?? stack;
-const fontStack = `${[ubuntu, heebo, cairo].map((f) => firstFamily(f.style.fontFamily)).join(", ")}, system-ui, sans-serif`;
+const bodyFont = fontStack(ubuntu, heebo, cairo);
 
 export const viewport: Viewport = { themeColor: colors.night, colorScheme: "dark" };
 
@@ -91,7 +85,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
       lang={locale}
       dir={dir(locale)}
       className={[ubuntu.variable, heebo.variable, cairo.variable].join(" ")}
-      style={{ "--font-body": fontStack } as CSSProperties}
+      style={{ "--font-body": bodyFont } as CSSProperties}
       suppressHydrationWarning
     >
       <head>

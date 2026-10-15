@@ -3,7 +3,7 @@
   min-height: 100dvh;
   background: var(--forest-950);
   color: var(--ivory);
-  font-family: var(--font-latin), var(--font-hebrew), var(--font-arabic), system-ui, sans-serif;
+  font-family: var(--font-body);
   line-height: 1.5;
 }
 /* Plain text links only: styled links (buttons, tiles, nav) keep their own colours. */
