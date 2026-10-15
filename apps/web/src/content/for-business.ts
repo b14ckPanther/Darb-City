@@ -31,7 +31,7 @@ export const forBusiness: Record<Locale, ForBusinessCopy> = {
     points: [
       {
         title: "Any kind of business",
-        body: "Restaurants, salons, garages, clinics, shops, mosques and two hundred more. Every door in this city shows what we build.",
+        body: "Restaurants, salons, garages, clinics, shops, mosques and two hundred more. Every business here shows what we build.",
       },
       {
         title: "A web app",
@@ -54,7 +54,7 @@ export const forBusiness: Record<Locale, ForBusinessCopy> = {
     points: [
       {
         title: "כל סוג של עסק",
-        body: "מסעדות, מספרות, מוסכים, מרפאות, חנויות, מסגדים ועוד מאתיים סוגים. כל דלת בעיר הזו מראה מה אנחנו בונים.",
+        body: "מסעדות, מספרות, מוסכים, מרפאות, חנויות, מסגדים ועוד מאתיים סוגים. כל עסק כאן מראה מה אנחנו בונים.",
       },
       {
         title: "אפליקציית ווב",
@@ -83,7 +83,7 @@ export const forBusiness: Record<Locale, ForBusinessCopy> = {
     points: [
       {
         title: "أي نوع من المصالح",
-        body: "مطاعم، صالونات، كراجات، عيادات، محلات، مساجد ومئتا نوع آخر. كل باب في هذه المدينة يُريك ما نبنيه.",
+        body: "مطاعم، صالونات، كراجات، عيادات، محلات، مساجد ومئتا نوع آخر. كل مصلحة هنا تُريك ما نبنيه.",
       },
       {
         title: "تطبيق ويب",

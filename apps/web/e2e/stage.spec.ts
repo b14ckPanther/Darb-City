@@ -76,7 +76,7 @@ test.describe("desktop", () => {
     const doors = await hrefs("[data-door]");
     expect(doors).toHaveLength(18);
     expect(await hrefs("[data-plaza-door]")).toEqual(doors);
-    await expect(page.getByRole("navigation", { name: /: רחובות ודלתות$/ })).toBeVisible();
+    await expect(page.getByRole("navigation", { name: /: קטגוריות$/ })).toBeVisible();
   });
 
   for (const [locale, rtl] of [

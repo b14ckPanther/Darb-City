@@ -44,7 +44,7 @@ test.describe("admin", () => {
     await page.goto("/en/admin/places?q=sakhnin");
     await expect(page.getByRole("link", { name: "Sakhnin", exact: true })).toBeVisible();
     await page.goto("/en/admin/kinds?q=barber&status=active");
-    await expect(page.getByRole("link", { name: "Barbershops" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Barbers" })).toBeVisible();
   });
 
   test("create, publish, edit and suspend a business; the public city follows at once", async ({

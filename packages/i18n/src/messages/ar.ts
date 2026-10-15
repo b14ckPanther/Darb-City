@@ -84,7 +84,7 @@ export const ar: Messages = {
   unreachable: "لا يمكن الوصول إلى درب الآن.",
   retry: "حاول مرة أخرى",
   mapLabel: "خريطة الأماكن الفعّالة في درب",
-  plazaLabel: "{place}: الشوارع والأبواب",
+  plazaLabel: "{place}: الفئات",
   showMap: "خريطة",
   showList: "قائمة",
   mapData: "بيانات الخريطة",

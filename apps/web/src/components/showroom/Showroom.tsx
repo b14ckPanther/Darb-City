@@ -42,7 +42,12 @@ function Screen({
     return () => fit.disconnect();
   }, [device]);
 
-  useEffect(() => setLoaded(false), [client.id]);
+  // A new client starts unloaded (reset during render when the client changes).
+  const [loadedFor, setLoadedFor] = useState(client.id);
+  if (loadedFor !== client.id) {
+    setLoadedFor(client.id);
+    setLoaded(false);
+  }
 
   const { w, h } = NATIVE[device];
   return (

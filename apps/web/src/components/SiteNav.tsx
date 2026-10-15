@@ -71,7 +71,12 @@ export function SiteNav({
     return () => cancelAnimationFrame(id);
   }, [mark, settled]);
 
-  useEffect(() => setOpen(false), [path]);
+  // Close the menu when the page changes (adjusting state during render, not in an effect).
+  const [openedOn, setOpenedOn] = useState(path);
+  if (openedOn !== path) {
+    setOpenedOn(path);
+    setOpen(false);
+  }
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
