@@ -84,7 +84,7 @@ export const he: Messages = {
   unreachable: "אין חיבור לדרב כרגע.",
   retry: "לנסות שוב",
   mapLabel: "מפת המקומות הפעילים בדרב",
-  plazaLabel: "{place}: רחובות ודלתות",
+  plazaLabel: "{place}: קטגוריות",
   showMap: "מפה",
   showList: "רשימה",
   mapData: "נתוני מפה",

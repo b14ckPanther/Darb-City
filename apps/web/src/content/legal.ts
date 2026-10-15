@@ -78,7 +78,7 @@ const accessibility: Record<Locale, LegalDoc> = {
               "לתמונות ולסמלים שמעבירים מידע יש חלופה טקסטואלית, סמלים קישוטיים מוסתרים מקוראי מסך, ולכפתורים ולפקדים יש שמות נגישים.",
               "צבעי הטקסט עומדים בניגודיות ברמת AA. בתצוגות האפליקציות של עסקים, אם צבע של עסק חלש מדי, הטקסט עובר אוטומטית לצבע קריא.",
               "האתר לא חוסם הגדלה בדפדפן, והפריסה מתאימה את עצמה למסכים צרים ולטלפונים.",
-              "למפה ולרחבת הדלתות של העסקים יש שמות נגישים. תצוגת הרשימה מציגה את אותם עסקים כקישורים רגילים, והיא חלופה מלאה למפה החזותית. בטלפון, כפתור אחד עובר בין מפה לרשימה.",
+              "למפה ולרשת הקטגוריות והעסקים יש שמות נגישים. תצוגת הרשימה מציגה את אותם עסקים כקישורים רגילים, והיא חלופה מלאה למפה החזותית. בטלפון, כפתור אחד עובר בין מפה לרשימה.",
               "כל שינוי באתר עובר בדיקת נגישות אוטומטית (axe) בעמודים המרכזיים בשלוש השפות לפני שהוא נכנס לאתר.",
             ],
           },
@@ -166,7 +166,7 @@ const accessibility: Record<Locale, LegalDoc> = {
               "للصور والرموز التي تحمل معلومات بديل نصي، والرموز الزخرفية مخفية عن قارئ الشاشة، وللأزرار وعناصر التحكم أسماء قابلة للقراءة.",
               "ألوان النصوص تحقق التباين بمستوى AA. وفي عروض تطبيقات المصالح، إذا كان لون المصلحة باهتًا جدًا، يتحول النص تلقائيًا إلى لون مقروء.",
               "الموقع لا يمنع التكبير في المتصفح، والتصميم يتكيف مع الشاشات الضيقة والهواتف.",
-              "للخريطة ولساحة أبواب المصالح أسماء قابلة للقراءة. وعرض القائمة يُظهر المصالح نفسها كروابط عادية، وهو بديل كامل للخريطة المرئية. وعلى الهاتف، زر واحد ينقل بين الخريطة والقائمة.",
+              "للخريطة ولشبكة الفئات والمصالح أسماء قابلة للقراءة. وعرض القائمة يُظهر المصالح نفسها كروابط عادية، وهو بديل كامل للخريطة المرئية. وعلى الهاتف، زر واحد ينقل بين الخريطة والقائمة.",
               "كل تغيير في الموقع يمر بفحص إتاحة آلي (axe) للصفحات الرئيسية باللغات الثلاث قبل أن يُنشر.",
             ],
           },
@@ -254,7 +254,7 @@ const accessibility: Record<Locale, LegalDoc> = {
               "Images and icons that carry information have a text alternative, decorative ones are hidden from screen readers, and buttons and controls have accessible names.",
               "Text colours meet AA contrast. In the previews of business apps, if a business's colour would be too faint, the text switches to a readable colour on its own.",
               "The site does not block browser zoom, and the layout adapts to narrow screens and phones.",
-              "The map and the plaza of business doors have accessible names. The list view shows the same businesses as ordinary links and is a full alternative to the visual map. On a phone, one button switches between map and list.",
+              "The map and the grid of categories and businesses have accessible names. The list view shows the same businesses as ordinary links and is a full alternative to the visual map. On a phone, one button switches between map and list.",
               "Every change to the site runs an automated accessibility check (axe) on the main pages in all three languages before it goes live.",
             ],
           },
@@ -773,7 +773,7 @@ const terms: Record<Locale, LegalDoc> = {
         id: "service",
         title: "השירות",
         blocks: [
-          "דרב הוא מדריך עסקים בכל רחבי ישראל, בעברית, בערבית ובאנגלית. הוא כולל חיפוש חכם שמבין מה שאתם מקלידים, מפה ורחבה של דלתות עסקים, ותצוגה של אפליקציות לדוגמה ושל עבודות ללקוחות, שמראה מה דרב בונה לעסקים. השימוש במדריך חינם ולא דורש חשבון.",
+          "דרב הוא מדריך עסקים בכל רחבי ישראל, בעברית, בערבית ובאנגלית. הוא כולל חיפוש חכם שמבין מה שאתם מקלידים, מפה ורשת של קטגוריות ועסקים, ותצוגה של אפליקציות לדוגמה ושל עבודות ללקוחות, שמראה מה דרב בונה לעסקים. השימוש במדריך חינם ולא דורש חשבון.",
         ],
       },
       {
@@ -867,7 +867,7 @@ const terms: Record<Locale, LegalDoc> = {
         id: "service",
         title: "الخدمة",
         blocks: [
-          "درب دليل للمصالح في جميع أنحاء إسرائيل، بالعربية والعبرية والإنجليزية. يتضمن بحثًا ذكيًا يفهم ما تكتبونه، وخريطة وساحة لأبواب المصالح، ومعرضًا لتطبيقات نموذجية ولأعمال لزبائننا يُظهر ما يبنيه درب للمصالح. استخدام الدليل مجاني ولا يحتاج إلى حساب.",
+          "درب دليل للمصالح في جميع أنحاء إسرائيل، بالعربية والعبرية والإنجليزية. يتضمن بحثًا ذكيًا يفهم ما تكتبونه، وخريطة وشبكة للفئات والمصالح، ومعرضًا لتطبيقات نموذجية ولأعمال لزبائننا يُظهر ما يبنيه درب للمصالح. استخدام الدليل مجاني ولا يحتاج إلى حساب.",
         ],
       },
       {
@@ -963,7 +963,7 @@ const terms: Record<Locale, LegalDoc> = {
         id: "service",
         title: "The service",
         blocks: [
-          "Darb is a directory of businesses across Israel, in Hebrew, Arabic and English. It includes a smart search that understands what you type, a map and a plaza of business doors, and a showroom of example apps and client work that shows what Darb builds for businesses. Using the directory is free and needs no account.",
+          "Darb is a directory of businesses across Israel, in Hebrew, Arabic and English. It includes a smart search that understands what you type, a map and a grid of categories and businesses, and a showroom of example apps and client work that shows what Darb builds for businesses. Using the directory is free and needs no account.",
         ],
       },
       {

@@ -64,7 +64,7 @@ test("closing a directly loaded sheet also lands on its row", async ({ page }) =
 test("a neighbourhood's row opens over the city's list and closes back to it", async ({ page }) => {
   await page.goto(HAIFA.kind);
   const heading = page.locator("#main-heading");
-  await expect(heading).toHaveText("Barbershops in Haifa");
+  await expect(heading).toHaveText("Barbers in Haifa");
   const row = page.locator(`[data-business-link="${HAIFA.subPlaceKey}"]`);
   await row.focus();
   await page.keyboard.press("Enter");
@@ -74,11 +74,11 @@ test("a neighbourhood's row opens over the city's list and closes back to it", a
   expect(new URL(page.url()).pathname.startsWith("/en/haifa/")).toBe(true);
   // The Kiryat Haim business itself, over Haifa's list (not Haifa's twin, not Kiryat Haim's list).
   await expect(dialog).toContainText("· Kiryat Haim");
-  await expect(heading).toHaveText("Barbershops in Haifa");
+  await expect(heading).toHaveText("Barbers in Haifa");
   await dialog.locator("[data-sheet-close]").click();
   await expect(page).toHaveURL(HAIFA.kind);
   await expect(dialog).toHaveCount(0);
-  await expect(heading).toHaveText("Barbershops in Haifa");
+  await expect(heading).toHaveText("Barbers in Haifa");
   await expect(row).toBeFocused();
 });
 

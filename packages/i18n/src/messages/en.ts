@@ -83,7 +83,7 @@ export const en = {
   unreachable: "Darb can't be reached right now.",
   retry: "Try again",
   mapLabel: "Map of Darb's live places",
-  plazaLabel: "{place}: streets and doors",
+  plazaLabel: "{place}: categories",
   showMap: "Map",
   showList: "List",
   mapData: "Map data",

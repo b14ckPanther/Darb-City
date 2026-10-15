@@ -2,14 +2,14 @@
   {
     "slug": "food",
     "name": {
-      "he": "רובע הטעמים",
-      "ar": "حي النكهات",
-      "en": "The Tasting Quarter"
+      "he": "אוכל ומסעדות",
+      "ar": "مطاعم وأكل",
+      "en": "Food & restaurants"
     },
     "tagline": {
-      "he": "מנות, קפה ומתוקים, ישר מהטלפון",
-      "ar": "أطباق وقهوة وحلويات، مباشرة من الهاتف",
-      "en": "Plates, coffee and sweets, straight from the phone"
+      "he": "מסעדות, בתי קפה, מאפיות וקינוחים",
+      "ar": "مطاعم، كافيهات، مخابز وحلويات",
+      "en": "Restaurants, cafés, bakeries and sweets"
     },
     "accent": "#d6a473",
     "order": 1
@@ -17,14 +17,14 @@
   {
     "slug": "beauty",
     "name": {
-      "he": "שדרת היופי",
-      "ar": "شارع الجمال",
-      "en": "Beauty Row"
+      "he": "יופי וטיפוח",
+      "ar": "تجميل وعناية",
+      "en": "Beauty & care"
     },
     "tagline": {
-      "he": "תורים, טיפולים ורגעים קטנים של פינוק",
-      "ar": "مواعيد وعلاجات ولحظات دلال صغيرة",
-      "en": "Appointments, treatments and small luxuries"
+      "he": "מספרות, ציפורניים, איפור וקוסמטיקה",
+      "ar": "حلاقين، صالونات، أظافر ومكياج",
+      "en": "Barbers, hair salons, nails and makeup"
     },
     "accent": "#d9aaa2",
     "order": 2
@@ -32,14 +32,14 @@
   {
     "slug": "health",
     "name": {
-      "he": "גבעת הבריאות",
-      "ar": "تلّة العافية",
-      "en": "Wellness Hill"
+      "he": "בריאות",
+      "ar": "صحة",
+      "en": "Health"
     },
     "tagline": {
-      "he": "גוף ונפש, בקביעת תור אחת",
-      "ar": "الجسم والنفس، بحجز موعد واحد",
-      "en": "Body and mind, one booking away"
+      "he": "רופאי שיניים, בתי מרקחת, פיזיותרפיה ווטרינרים",
+      "ar": "أطباء أسنان، صيدليات، علاج طبيعي وبياطرة",
+      "en": "Dentists, pharmacies, physio and vets"
     },
     "accent": "#a7c2b1",
     "order": 3
@@ -47,14 +47,14 @@
   {
     "slug": "sports",
     "name": {
-      "he": "זירת הספורט",
-      "ar": "ساحة الرياضة",
-      "en": "The Sports Ground"
+      "he": "ספורט וכושר",
+      "ar": "رياضة ولياقة",
+      "en": "Sport & fitness"
     },
     "tagline": {
-      "he": "אימונים, מגרשים ושבילים בטבע",
-      "ar": "تمارين وملاعب ومسارات بالطبيعة",
-      "en": "Training, courts and trails outdoors"
+      "he": "חדרי כושר, מאמנים, מועדונים ומגרשים",
+      "ar": "جيمات، مدربين، نوادي وملاعب",
+      "en": "Gyms, trainers, clubs and courts"
     },
     "accent": "#d39c87",
     "order": 4
@@ -62,14 +62,14 @@
   {
     "slug": "kids",
     "name": {
-      "he": "חצר המשפחה",
-      "ar": "حوش العيلة",
-      "en": "The Family Yard"
+      "he": "ילדים ותינוקות",
+      "ar": "أطفال وبيبي",
+      "en": "Kids & babies"
     },
     "tagline": {
-      "he": "גן, משחק ויום הולדת, הכול להורים",
-      "ar": "حضانة ولعب وأعياد ميلاد، كل شي للأهل",
-      "en": "Nursery, play and birthdays, all for parents"
+      "he": "מעונות, גנים, רופאי ילדים, צעצועים וימי הולדת",
+      "ar": "حضانات، روضات، أطباء أطفال، ألعاب وأعياد ميلاد",
+      "en": "Daycare, kindergartens, pediatricians, toys and birthdays"
     },
     "accent": "#e6c58f",
     "order": 5
@@ -77,14 +77,14 @@
   {
     "slug": "education",
     "name": {
-      "he": "כיכר הלמידה",
-      "ar": "ساحة العلم",
-      "en": "Learning Square"
+      "he": "לימודים וחוגים",
+      "ar": "تعليم ودورات",
+      "en": "Education & classes"
     },
     "tagline": {
-      "he": "שיעורים, חוגים והצעד הבא",
-      "ar": "دروس ودورات والخطوة الجاية",
-      "en": "Lessons, classes and the next step"
+      "he": "מורים פרטיים, חוגים, קורסים ושיעורי נהיגה",
+      "ar": "دروس خصوصية، دورات، لغات وتعليم سواقة",
+      "en": "Tutors, classes, courses and driving lessons"
     },
     "accent": "#adbccf",
     "order": 6
@@ -92,14 +92,14 @@
   {
     "slug": "tech",
     "name": {
-      "he": "עמק הדיגיטל",
-      "ar": "وادي الديجيتال",
-      "en": "Digital Valley"
+      "he": "הייטק ודיגיטל",
+      "ar": "هايتك وديجيتال",
+      "en": "Tech & digital"
     },
     "tagline": {
-      "he": "תוכנה, אבטחה ושיווק שמביאים לקוחות",
-      "ar": "برمجة وحماية وتسويق بتجيب زباين",
-      "en": "Software, security and marketing that bring customers"
+      "he": "פיתוח תוכנה ואפליקציות, טכנאי מחשבים ושיווק דיגיטלי",
+      "ar": "برمجة وتطبيقات، فنيين كمبيوتر وتسويق ديجيتال",
+      "en": "Software and apps, IT support and digital marketing"
     },
     "accent": "#93c1b3",
     "order": 7
@@ -107,14 +107,14 @@
   {
     "slug": "services",
     "name": {
-      "he": "רחוב בעלי המקצוע",
-      "ar": "شارع أصحاب المهن",
-      "en": "The Trades Street"
+      "he": "שירותים ובעלי מקצוע",
+      "ar": "خدمات ومهنيين",
+      "en": "Services & trades"
     },
     "tagline": {
-      "he": "הצעת מחיר, פגישה ושקט נפשי",
-      "ar": "عرض سعر، موعد وراحة بال",
-      "en": "A quote, a meeting and peace of mind"
+      "he": "עורכי דין, רואי חשבון, חשמלאים, שיפוצים והובלות",
+      "ar": "محامين، محاسبين، كهربائيين، ترميمات ونقليات",
+      "en": "Lawyers, accountants, electricians, renovations and movers"
     },
     "accent": "#c2b796",
     "order": 8
@@ -122,14 +122,14 @@
   {
     "slug": "home",
     "name": {
-      "he": "סמטת הבית",
-      "ar": "زقاق البيت",
-      "en": "Home and Living Lane"
+      "he": "בית וגינה",
+      "ar": "البيت والجنينة",
+      "en": "Home & garden"
     },
     "tagline": {
-      "he": "רהיטים, גינות וכל מה שהבית צריך",
-      "ar": "أثاث وجنينة وكل شي بيحتاجه البيت",
-      "en": "Furniture, gardens and everything a home needs"
+      "he": "רהיטים, מטבחים, גננים, מנעולנים והדברה",
+      "ar": "أثاث، مطابخ، جنايني، أقفالجية ورش حشرات",
+      "en": "Furniture, kitchens, gardeners, locksmiths and pest control"
     },
     "accent": "#b9a9c8",
     "order": 9
@@ -137,14 +137,14 @@
   {
     "slug": "industry",
     "name": {
-      "he": "אזור התעשייה",
-      "ar": "المنطقة الصناعية",
-      "en": "The Industrial Zone"
+      "he": "תעשייה וסיטונאות",
+      "ar": "صناعة وجملة",
+      "en": "Industry & wholesale"
     },
     "tagline": {
-      "he": "מפעלים, סיטונאים ומשלוחים לעסקים",
-      "ar": "مصانع وتجار جملة وتوصيل للمصالح",
-      "en": "Factories, wholesalers and deliveries for business"
+      "he": "מפעלים, סיטונאים, משלוחים, מחסנים ונגריות",
+      "ar": "مصانع، تجار جملة، شحن، مخازن ومنجرات",
+      "en": "Factories, wholesalers, shipping, warehouses and workshops"
     },
     "accent": "#bfa48a",
     "order": 10
@@ -152,14 +152,14 @@
   {
     "slug": "auto",
     "name": {
-      "he": "דרך הגלגלים",
-      "ar": "درب العجلات",
-      "en": "Wheels Way"
+      "he": "רכב",
+      "ar": "سيارات",
+      "en": "Cars"
     },
     "tagline": {
-      "he": "רכבים, טיפולים ודרך פתוחה",
-      "ar": "سيارات وصيانة وطريق مفتوح",
-      "en": "Cars, care and the open road"
+      "he": "מוסכים, פנצ'ריות, שטיפת רכב, השכרה וחלקי חילוף",
+      "ar": "كراجات، بنشرجية، غسيل سيارات، تأجير وقطع غيار",
+      "en": "Garages, tyres, car wash, rental and parts"
     },
     "accent": "#94b8bd",
     "order": 11
@@ -167,14 +167,14 @@
   {
     "slug": "agriculture",
     "name": {
-      "he": "שבילי החווה",
-      "ar": "دروب المزرعة",
-      "en": "Farm Lanes"
+      "he": "חקלאות",
+      "ar": "زراعة",
+      "en": "Farming"
     },
     "tagline": {
-      "he": "ישר מהשדה, מהכוורת ומהרפת",
-      "ar": "من الحقل والقفير والزريبة، على طول",
-      "en": "Straight from the field, the hive and the barn"
+      "he": "תוצרת חקלאית, דבש, שמן זית, שתילים וציוד חקלאי",
+      "ar": "منتجات بلدية، عسل، زيت زيتون، أشتال ومعدات زراعية",
+      "en": "Farm produce, honey, olive oil, seedlings and equipment"
     },
     "accent": "#b8bf86",
     "order": 12
@@ -182,14 +182,14 @@
   {
     "slug": "events",
     "name": {
-      "he": "רחבת החגיגות",
-      "ar": "ساحة الأفراح",
-      "en": "Celebration Plaza"
+      "he": "אירועים וחתונות",
+      "ar": "أفراح ومناسبات",
+      "en": "Weddings & events"
     },
     "tagline": {
-      "he": "ימים שזוכרים, מההזמנה ועד האורח האחרון",
-      "ar": "أيام ما بتنتسى، من العزومة لآخر ضيف",
-      "en": "Days to remember, from the invite to the last guest"
+      "he": "אולמות, צלמים, חינה, פרחים ועיצוב אירועים",
+      "ar": "قاعات، مصورين، حنة، ورد وتزيين",
+      "en": "Venues, photographers, henna, flowers and decor"
     },
     "accent": "#e3be8c",
     "order": 13
@@ -197,14 +197,14 @@
   {
     "slug": "travel",
     "name": {
-      "he": "שער המסעות",
-      "ar": "بوابة السفر",
-      "en": "Journeys Gate"
+      "he": "נסיעות ותיירות",
+      "ar": "سفر وسياحة",
+      "en": "Travel"
     },
     "tagline": {
-      "he": "מעומרה ועד חופשה משפחתית",
-      "ar": "من العمرة لعطلة العيلة",
-      "en": "From Umrah to the family holiday"
+      "he": "סוכנויות נסיעות, עומרה, מלונות, צימרים וצ'יינג'",
+      "ar": "مكاتب سفريات، عمرة، فنادق، شاليهات وصرافة",
+      "en": "Travel agents, Umrah, hotels, guesthouses and currency exchange"
     },
     "accent": "#c8a5c0",
     "order": 14
@@ -212,14 +212,14 @@
   {
     "slug": "retail",
     "name": {
-      "he": "שוק המותגים",
-      "ar": "سوق الماركات",
-      "en": "The Brand Market"
+      "he": "חנויות",
+      "ar": "محلات",
+      "en": "Shops"
     },
     "tagline": {
-      "he": "חנויות ויוצרים עם עולם משלהם",
-      "ar": "محلات ومبدعين إلهم عالمهم الخاص",
-      "en": "Shops and makers with a world of their own"
+      "he": "בגדים, זהב, בשמים, סלולר ומתנות",
+      "ar": "ملابس، ذهب، عطور، تلفونات وهدايا",
+      "en": "Clothing, gold, perfume, phones and gifts"
     },
     "accent": "#cc9f84",
     "order": 15
@@ -227,14 +227,14 @@
   {
     "slug": "faith",
     "name": {
-      "he": "רובע האמונה והמשפחה",
-      "ar": "حي الإيمان والعيلة",
-      "en": "Faith and Family Quarter"
+      "he": "מסגדים ושירותי דת",
+      "ar": "جوامع وخدمات دينية",
+      "en": "Mosques & religious services"
     },
     "tagline": {
-      "he": "מסגד, משפחה ומעשים טובים",
-      "ar": "جامع وعيلة وأعمال خير",
-      "en": "Mosque, family and good deeds"
+      "he": "מסגדים, לימוד קוראן, אטליזים, עבאיות ומאזון",
+      "ar": "جوامع، تحفيظ قرآن، ملاحم، عبايات ومأذونين",
+      "en": "Mosques, Quran classes, butchers, abayas and marriage contracts"
     },
     "accent": "#a0b98e",
     "order": 16
@@ -242,14 +242,14 @@
   {
     "slug": "civic",
     "name": {
-      "he": "כיכר העירייה",
-      "ar": "ساحة البلدية",
-      "en": "Civic Square"
+      "he": "עירייה ושירותים ציבוריים",
+      "ar": "بلدية وخدمات عامة",
+      "en": "Council & public services"
     },
     "tagline": {
-      "he": "טפסים, תורים ותשלומים בלי לעמוד בתור",
-      "ar": "معاملات ومواعيد ودفعات بدون ما توقف بالدور",
-      "en": "Forms, appointments and payments without the queue"
+      "he": "עירייה, טיפת חלב, דואר, תחבורה ציבורית וחניה",
+      "ar": "بلدية، عيادات، بريد، مواصلات ومواقف",
+      "en": "Council, clinics, post office, buses and parking"
     },
     "accent": "#a8b4cc",
     "order": 17
@@ -257,14 +257,14 @@
   {
     "slug": "community",
     "name": {
-      "he": "לב השכונה",
-      "ar": "قلب الحارة",
-      "en": "The Neighbourhood Heart"
+      "he": "קהילה ועמותות",
+      "ar": "مجتمع وجمعيات",
+      "en": "Community & charities"
     },
     "tagline": {
-      "he": "מועדונים, קהילות ומי שעושים טוב",
-      "ar": "نوادي وجمعيات وناس بتعمل الخير",
-      "en": "Clubs, communities and people doing good"
+      "he": "עמותות, מתנ\"סים, מועדוני נוער, צופים והתנדבות",
+      "ar": "جمعيات، مراكز جماهيرية، نوادي شبيبة، كشافة وتطوع",
+      "en": "Charities, community centres, youth clubs, scouts and volunteering"
     },
     "accent": "#c6b886",
     "order": 18

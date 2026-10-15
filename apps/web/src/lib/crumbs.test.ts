@@ -21,7 +21,7 @@ const kiryatHaim: PlaceDetailDto = {
   ],
   children: [],
 };
-const beauty = { id: "s1", slug: "beauty", name: { en: "Beauty Row" } } as SectorDto;
+const beauty = { id: "s1", slug: "beauty", name: { en: "Beauty & care" } } as SectorDto;
 const barbers = { id: "k1", slug: "barbershops", name: { en: "Barbershops" } } as KindDto;
 
 describe("crumbsFor", () => {
@@ -30,7 +30,7 @@ describe("crumbsFor", () => {
       { label: "Israel", href: "/en/israel" },
       { label: "Haifa", href: "/en/haifa" },
       { label: "Kiryat Haim", href: "/en/kiryat-haim" },
-      { label: "Beauty Row", href: "/en/kiryat-haim/beauty" },
+      { label: "Beauty & care", href: "/en/kiryat-haim/beauty" },
       { label: "Barbershops", href: "/en/kiryat-haim/beauty/barbershops" },
     ]);
   });

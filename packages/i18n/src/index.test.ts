@@ -57,9 +57,9 @@ it("fills the web city messages", () => {
 describe("stage copy", () => {
   it("names the map, the plaza and the Map/List switch in every language", () => {
     expect(t("en", "mapLabel")).toBe("Map of Darb's live places");
-    expect(t("en", "plazaLabel", { place: "Sakhnin" })).toBe("Sakhnin: streets and doors");
-    expect(t("he", "plazaLabel", { place: "סח'נין" })).toBe("סח'נין: רחובות ודלתות");
-    expect(t("ar", "plazaLabel", { place: "سخنين" })).toBe("سخنين: الشوارع والأبواب");
+    expect(t("en", "plazaLabel", { place: "Sakhnin" })).toBe("Sakhnin: categories");
+    expect(t("he", "plazaLabel", { place: "סח'נין" })).toBe("סח'נין: קטגוריות");
+    expect(t("ar", "plazaLabel", { place: "سخنين" })).toBe("سخنين: الفئات");
     expect([t("he", "showMap"), t("ar", "showMap"), t("en", "showMap")]).toEqual([
       "מפה",
       "خريطة",
