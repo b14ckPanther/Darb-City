@@ -28,6 +28,8 @@ const row = (key: string) => ({
   distance: null,
   glutenFree: false,
   byAppointment: false,
+  accent: "#d6a473",
+  logoUrl: null,
 });
 const view: SearchView = {
   status: "ok",

@@ -1,5 +1,6 @@
 import { isByAppointment, pickText, type Hours, type Locale, type Localized } from "@darb/core";
 import type { BusinessSummaryDto, PlaceDetailDto, PlaceDto } from "@darb/contracts";
+import { MEDIA_ORIGIN } from "./csp";
 import { href, paths } from "./routes";
 import type { TaxonomyIndex } from "./taxonomy";
 
@@ -23,6 +24,9 @@ export interface BusinessRowData {
   glutenFree: boolean;
   /** Visits by appointment only (Task 28): "By appointment" instead of open or closed. */
   byAppointment: boolean;
+  /** The card's look, lightly: the owner's accent (else the sector's) and logo (a bucket URL). */
+  accent: string;
+  logoUrl: string | null;
 }
 
 export interface RowContext {
@@ -71,6 +75,8 @@ export function toBusinessRow(b: BusinessSummaryDto, ctx: RowContext): BusinessR
     distance: b.distanceKm !== undefined && ctx.kmLabel ? ctx.kmLabel(b.distanceKm) : null,
     glutenFree: b.dietary.includes("gluten_free"),
     byAppointment: isByAppointment(b.hours),
+    accent: b.cardStyle?.accent ?? sector.accent,
+    logoUrl: b.logo ? `${MEDIA_ORIGIN}/${b.logo.key}` : null,
   };
 }
 

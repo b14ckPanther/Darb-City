@@ -69,7 +69,23 @@ describe("business rows", () => {
       distance: null,
       glutenFree: false,
       byAppointment: false,
+      accent: "#aa7744",
+      logoUrl: null,
     });
+  });
+  it("wears the owner's accent and logo when they chose them", () => {
+    const row = toBusinessRow(
+      {
+        ...business("samers", "haifa"),
+        logo: { key: "pending/0b3c6b1e-6f0e-4d36-9b0e-2f7f8c1d2a10.webp" },
+        cardStyle: { accent: "#5fb3a8" },
+      },
+      ctx,
+    );
+    expect([row?.accent, row?.logoUrl]).toEqual([
+      "#5fb3a8",
+      "https://media.darb.co.il/pending/0b3c6b1e-6f0e-4d36-9b0e-2f7f8c1d2a10.webp",
+    ]);
   });
   it("marks a by-appointment business, which has no open-now state (Task 28)", () => {
     const row = toBusinessRow(

@@ -22,6 +22,8 @@ const row = (key: string, extra: object = {}) => ({
   distance: null,
   glutenFree: false,
   byAppointment: false,
+  accent: "#d6a473",
+  logoUrl: null,
   ...extra,
 });
 const labels = {
