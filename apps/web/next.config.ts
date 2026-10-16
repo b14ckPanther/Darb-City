@@ -14,6 +14,14 @@ const config: NextConfig = {
   env: { NEXT_PUBLIC_SEARCH_INDEX_URL: searchIndex.url },
   // app/global-not-found.tsx: URLs that match no route at all (the root layout is [locale]).
   experimental: { globalNotFound: true },
+  // Business logos and photos come from the media bucket (MEDIA_ORIGIN in src/lib/csp.ts), resized
+  // here so a list's 40 px logo or a card's photo strip never pulls the full upload. WebP only:
+  // uploads are WebP already, and one format halves what the image cache keeps.
+  images: {
+    remotePatterns: [{ protocol: "https", hostname: "media.darb.co.il", pathname: "/**" }],
+    formats: ["image/webp"],
+    minimumCacheTTL: 60 * 60 * 24 * 30,
+  },
   // /map/vendor paths carry the MapLibre version and /search-index files their content hash, so
   // they never change; glyphs change rarely.
   headers: async () => [

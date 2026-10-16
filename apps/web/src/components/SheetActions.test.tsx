@@ -1,36 +1,37 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, expect, it, vi } from "vitest";
+import { Icon } from "./icons/Icon";
 import { SheetActions, type SheetActionsProps } from "./SheetActions";
 
 afterEach(() => vi.unstubAllGlobals());
 
+const DIRECTIONS = "https://www.google.com/maps/dir/?api=1&destination=1,2";
 const base: SheetActionsProps = {
   primary: { kind: "example" },
   ctaLabel: "Book a chair",
-  secondary: {
-    call: null,
-    whatsapp: null,
-    directions: "https://www.google.com/maps/dir/?api=1&destination=1,2",
-    website: null,
-    apps: [],
-  },
+  actions: [{ key: "maps", icon: "maps", label: "Maps", href: DIRECTIONS }],
   share: { url: "https://darb.co.il/sakhnin", title: "Samer's" },
+  glyphs: { primary: null, actions: [<Icon key="maps" name="maps" />], share: null },
   labels: {
-    call: "Call",
-    whatsapp: "WhatsApp",
-    directions: "Directions",
     share: "Share",
-    website: "Website",
+    contactWays: "Ways to reach them",
     exampleNotice: "This is an example. This is what your customers would see",
     linkCopied: "Link copied",
     linkCopyFailed: "Couldn't copy the link",
   },
 };
 
-it("explains an example instead of contacting anyone", () => {
-  render(<SheetActions {...base} />);
-  fireEvent.click(screen.getByRole("button", { name: "Book a chair" }));
-  expect(screen.getByRole("status").textContent).toBe(base.labels.exampleNotice);
+it("explains an example instead of contacting anyone, with no code to run", () => {
+  const { container } = render(<SheetActions {...base} />);
+  const main = container.querySelector("[data-primary-action]")!;
+  expect([main.tagName, main.textContent]).toEqual(["SUMMARY", "Book a chair"]);
+  const details = main.closest("details")!;
+  expect(details.open).toBe(false);
+  fireEvent.click(main);
+  expect(details.open).toBe(true);
+  expect(container.querySelector("[data-sheet-status]")?.textContent).toBe(
+    base.labels.exampleNotice,
+  );
 });
 
 it("opens WhatsApp in a new tab for a real business", () => {
@@ -46,11 +47,41 @@ it("opens WhatsApp in a new tab for a real business", () => {
   expect(link.getAttribute("rel")).toBe("noopener noreferrer");
 });
 
-it("shows only the secondary actions that exist", () => {
-  render(<SheetActions {...base} secondary={{ ...base.secondary, call: "tel:+97246012345" }} />);
-  expect(screen.getByRole("link", { name: "Call" }).getAttribute("href")).toBe("tel:+97246012345");
+it("shows each action as a round icon named by its word; only a call stays in the tab", () => {
+  render(
+    <SheetActions
+      {...base}
+      actions={[
+        { key: "call", icon: "phone", label: "Call", href: "tel:+97246012345" },
+        ...base.actions,
+      ]}
+      glyphs={{
+        ...base.glyphs,
+        actions: [<Icon key="call" name="phone" variant="solid" />, ...base.glyphs.actions],
+      }}
+    />,
+  );
+  const call = screen.getByRole("link", { name: "Call" });
+  expect(call.getAttribute("href")).toBe("tel:+97246012345");
+  expect(call.getAttribute("target")).toBeNull();
+  expect(screen.getByRole("link", { name: "Maps" }).getAttribute("target")).toBe("_blank");
   expect(screen.queryByRole("link", { name: "WhatsApp" })).toBeNull();
-  expect(screen.getByRole("link", { name: "Directions" })).toBeTruthy();
+  const icon = call.querySelector("svg")!;
+  expect([icon.getAttribute("data-icon"), icon.getAttribute("aria-hidden")]).toEqual([
+    "phone",
+    "true",
+  ]);
+  // Solid icons: the outline filled, its inner strokes cut out.
+  expect(icon.querySelector("mask")).toBeTruthy();
+});
+
+it("draws pictures of buttons in the /join preview: nothing to press or follow", () => {
+  render(
+    <SheetActions {...base} primary={{ kind: "whatsapp", href: "https://wa.me/1" }} preview />,
+  );
+  expect(screen.queryAllByRole("link")).toHaveLength(0);
+  expect(screen.queryAllByRole("button")).toHaveLength(0);
+  expect(screen.getByRole("list", { name: "Ways to reach them" }).textContent).toBe("MapsShare");
 });
 
 it("copies the link when the device cannot share", async () => {
@@ -58,7 +89,11 @@ it("copies the link when the device cannot share", async () => {
   vi.stubGlobal("navigator", { clipboard: { writeText } });
   render(<SheetActions {...base} />);
   fireEvent.click(screen.getByRole("button", { name: "Share" }));
-  await waitFor(() => expect(screen.getByRole("status").textContent).toBe("Link copied"));
+  await waitFor(() =>
+    expect(document.querySelector("[data-share-status]")?.textContent).toBe("Link copied"),
+  );
+  // The word under the icon says it too.
+  expect(screen.getByRole("button", { name: "Link copied" })).toBeTruthy();
   expect(writeText).toHaveBeenCalledWith("https://darb.co.il/sakhnin");
 });
 
@@ -68,7 +103,9 @@ it("says the copy failed when the clipboard rejects", async () => {
   render(<SheetActions {...base} />);
   fireEvent.click(screen.getByRole("button", { name: "Share" }));
   await waitFor(() =>
-    expect(screen.getByRole("status").textContent).toBe("Couldn't copy the link"),
+    expect(document.querySelector("[data-share-status]")?.textContent).toBe(
+      "Couldn't copy the link",
+    ),
   );
 });
 
@@ -77,7 +114,9 @@ it("never claims a copy when there is no clipboard", async () => {
   render(<SheetActions {...base} />);
   fireEvent.click(screen.getByRole("button", { name: "Share" }));
   await waitFor(() =>
-    expect(screen.getByRole("status").textContent).toBe("Couldn't copy the link"),
+    expect(document.querySelector("[data-share-status]")?.textContent).toBe(
+      "Couldn't copy the link",
+    ),
   );
 });
 
@@ -92,12 +131,8 @@ it("opens an app or directions as the primary link, in a new tab (Task 28)", () 
   ]);
   unmount();
   render(
-    <SheetActions
-      {...base}
-      primary={{ kind: "directions", href: base.secondary.directions! }}
-      secondary={{ ...base.secondary, directions: null }}
-    />,
+    <SheetActions {...base} primary={{ kind: "directions", href: DIRECTIONS }} actions={[]} />,
   );
   expect(screen.getByRole("link", { name: "Book a chair" }).getAttribute("target")).toBe("_blank");
-  expect(screen.queryByRole("link", { name: "Directions" })).toBeNull();
+  expect(screen.queryByRole("link", { name: "Maps" })).toBeNull();
 });

@@ -56,6 +56,7 @@ export function BusinessLevelView({ level }: { level: BusinessLevel }) {
           business={business}
           kind={primaryKind}
           placeName={pickText(home.name, locale)}
+          sectorAccent={level.index.sectorById.get(primaryKind.sectorId)?.accent ?? sector.accent}
           segments={segments}
           shareUrl={`${siteUrl()}${href(locale, canonical)}`}
         />

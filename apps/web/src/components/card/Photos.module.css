@@ -1,0 +1,116 @@
+/* The card's photos (PhotoStrip): its own small module, so the browser gets only these names. */
+.photos {
+  min-inline-size: 0;
+}
+
+.strip {
+  display: flex;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0 0 var(--space-1);
+  list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.strip li {
+  flex: none;
+  scroll-snap-align: start;
+}
+
+.thumb {
+  position: relative;
+  display: block;
+  inline-size: 148px;
+  block-size: 112px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-m);
+  background: var(--surface-2);
+  overflow: hidden;
+  cursor: zoom-in;
+}
+
+.lightbox {
+  inline-size: 100vw;
+  max-inline-size: 100vw;
+  block-size: 100dvh;
+  max-block-size: 100dvh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: rgb(3 10 7 / 0.96);
+  color: var(--text);
+}
+
+.lightbox::backdrop {
+  background: rgb(3 10 7 / 0.8);
+}
+
+.slides {
+  display: flex;
+  block-size: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.slide {
+  position: relative;
+  flex: none;
+  inline-size: 100%;
+  block-size: 100%;
+  margin: 0;
+  scroll-snap-align: center;
+}
+
+.counter {
+  position: absolute;
+  inset-block-start: var(--space-4);
+  inset-inline-start: var(--space-4);
+  margin: 0;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  background: rgb(0 0 0 / 0.5);
+  font-size: var(--step--1);
+}
+
+.lightboxClose,
+.prev,
+.next {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  inline-size: 48px;
+  block-size: 48px;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(0 0 0 / 0.55);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.lightboxClose {
+  inset-block-start: var(--space-3);
+  inset-inline-end: var(--space-3);
+}
+
+.prev,
+.next {
+  inset-block-start: calc(50% - 24px);
+}
+
+.prev {
+  inset-inline-start: var(--space-3);
+}
+
+.next {
+  inset-inline-end: var(--space-3);
+}
+
+/* The "previous" chevron: the "next" one turned round (it still mirrors in right-to-left). */
+.back {
+  scale: -1 1;
+}

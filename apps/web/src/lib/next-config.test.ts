@@ -42,3 +42,11 @@ it("points the browser at the hashed instant index", async () => {
     /^\/search-index\/instant\.[0-9a-f]{12}\.json$/,
   );
 });
+
+it("resizes images from the media bucket only", async () => {
+  const { default: config } = await import("../../next.config");
+  const { MEDIA_ORIGIN } = await import("./csp");
+  expect(config.images?.remotePatterns).toEqual([
+    { protocol: "https", hostname: new URL(MEDIA_ORIGIN).hostname, pathname: "/**" },
+  ]);
+});
