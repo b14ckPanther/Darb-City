@@ -58,7 +58,12 @@ test.describe("join", () => {
 
     await fillCard(page);
     await expect(card.getByText("Upholstery · Abu Snan")).toBeVisible();
-    await expect(card.getByRole("listitem")).toHaveText(["Call", "WhatsApp", "Waze", "Instagram"]);
+    // The public card itself, in preview: WhatsApp leads (the phone is on WhatsApp), each way once.
+    await expect(card.locator("[data-primary-action]")).toHaveText("WhatsApp");
+    await expect(
+      card.getByRole("list", { name: "Ways to reach them" }).getByRole("listitem"),
+    ).toHaveText(["Call", "Waze", "Maps"]);
+    await expect(card.getByRole("list", { name: "On social media" })).toHaveText("Instagram");
     await page.getByRole("button", { name: "Send for review" }).click();
     await expect(page.getByRole("heading", { name: "Thanks! We got it." })).toBeFocused();
 
@@ -69,7 +74,11 @@ test.describe("join", () => {
     await page.goto("/en/admin/join-requests?status=pending");
     await page.getByRole("link", { name }).click();
     await expect(page.getByRole("heading", { name })).toBeVisible();
-    await expect(page.getByText("050-000-0000")).toBeVisible();
+    // Scoped to the request: the list just left may still be in the page, hidden, with every
+    // pending request's phone (and earlier runs leave requests from this same phone).
+    await expect(
+      page.getByRole("region", { name: "Owner" }).getByRole("link", { name: "050-000-0000" }),
+    ).toBeVisible();
     await expect(page.getByLabel("Instagram", { exact: true })).toHaveValue(
       "https://www.instagram.com/e2e.upholstery/",
     );
