@@ -33,6 +33,11 @@ Values never live in the repo. "secret" means a random value of at least 32 char
 | `RESEND_API_KEY` | Resend key | Resend key or unset | contact form mail; unset, messages reach the admin inbox only |
 | `MAIL_FROM` | Darb <hello@darb.co.il> | same | sender on the Resend-verified domain |
 | `MAIL_TO` | founder@darb.co.il | founder@darb.co.il | |
+| `R2_ACCOUNT_ID` | Cloudflare account id | same | /join photo uploads; unset (any of the three), the form hides its photo step |
+| `R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY` | R2 API token, Object Read & Write on `darb-media` only | a token for a staging bucket, or unset | |
+| `R2_MEDIA_BUCKET` | darb-media | e.g. darb-media-staging | |
+| `MEDIA_URL` | https://media.darb.co.il | the staging bucket's public URL | the bucket's custom domain; also in the web's CSP |
+| `JOIN_LOOKUPS_PER_DAY` | 300 | 30 | /join lookups that may use the model each day (web search); 0 turns the smart lookup off |
 
 **The staging web origin** is one stable URL: the Vercel branch URL of the `staging` branch (`https://darb-city-git-staging-<team>.vercel.app`), or a custom domain such as `https://staging.darb.co.il` if one is assigned. Use it for `WEB_ORIGIN` and `REVALIDATE_URL`, and list it in `CLERK_AUTHORIZED_PARTIES` (comma-separated, if staging admin is reached on more than one origin).
 
@@ -90,6 +95,18 @@ Required in production (startup fails without them): `DATABASE_URL`; `SEARCH_PRO
 | `MAIL_TO` | `founder@darb.co.il` | Where contact mail goes. |
 | `INQUIRY_RATE_LIMIT` | 5 | Contact messages per visitor per window. |
 | `INQUIRY_RATE_WINDOW_SECONDS` | 600 | 60 to 86400. |
+| `JOIN_AI` | `anthropic` when `ANTHROPIC_API_KEY` is set | `anthropic` or `off`. The /join lookup's web search through the model. |
+| `JOIN_MODEL` | `claude-sonnet-5-5` | Needs a model with the `web_search_20260209` tool. |
+| `JOIN_TIMEOUT_MS` | 45000 | 1000 to 120000. One lookup's model call. |
+| `JOIN_LOOKUPS_PER_DAY` | 300 | Model lookups a day across all visitors (cost guard; counted in Redis, none when Redis fails). |
+| `JOIN_LOOKUP_RATE_LIMIT` | 6 | Lookups per visitor per hour. |
+| `JOIN_RATE_LIMIT` | 3 | /join forms per visitor per hour. |
+| `JOIN_UPLOAD_RATE_LIMIT` | 30 | Photo uploads per visitor per hour (the admin uploads through the same route). |
+| `JOIN_GEOCODER` | `nominatim` | `nominatim` or `off` (tests and e2e). OpenStreetMap addresses for the /join lookup. |
+| `NOMINATIM_URL` | `https://nominatim.openstreetmap.org` | One request a second per process, User-Agent `Darb/1.0 (founder@darb.co.il)`. |
+| `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY` | unset | Optional secrets. All three turn /join photo uploads on (S3 API at `https://<account>.r2.cloudflarestorage.com`). |
+| `R2_MEDIA_BUCKET` | `darb-media` | Uploads land under `pending/<uuid>.webp` and keep that key once approved. |
+| `MEDIA_URL` | `https://media.darb.co.il` | Public base URL of the bucket. |
 | `NODE_ENV` | unset | `production` switches on the checks above. |
 | `MIGRATE_DATABASE_URL` | unset | Direct Neon URL, read by the pre-deploy migration and the `Seed and reindex` workflow, not by the app. |
 | `SEARCH_RECORDINGS` | `test/search-quality/cases.json` | Tests and CI only (recorded intent). Never set in production. |
