@@ -54,7 +54,7 @@ export function HoursEditor({
                     )
                   }
                 />
-                <span aria-hidden="true">–</span>
+                <span aria-hidden="true">-</span>
                 <input
                   type="time"
                   dir="ltr"

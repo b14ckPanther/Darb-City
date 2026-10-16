@@ -1,5 +1,13 @@
 import { describe, expect, it } from "vitest";
-import { directionsHref, primaryAction, safeHttpUrl, telHref, whatsappHref } from "./links";
+import {
+  businessWaze,
+  directionsHref,
+  primaryAction,
+  safeHttpUrl,
+  telHref,
+  wazeHref,
+  whatsappHref,
+} from "./links";
 
 describe("safeHttpUrl", () => {
   it("keeps http and https", () => {
@@ -116,5 +124,27 @@ describe("primaryAction for Darb clients (Task 28)", () => {
         "he",
       ).kind,
     ).toBe("call");
+  });
+});
+
+describe("Waze", () => {
+  it("navigates to the pin", () => {
+    expect(wazeHref(32.86, 35.3)).toBe("https://waze.com/ul?ll=32.86,35.3&navigate=yes");
+    expect(businessWaze({ lat: 32.86, lng: 35.3 })).toBe(wazeHref(32.86, 35.3));
+  });
+  it("prefers the owner's own Waze link, and only a Waze one", () => {
+    const own = "https://www.waze.com/live-map/directions?to=place.abc";
+    expect(businessWaze({ lat: 1, lng: 2, links: { waze: own } })).toBe(own);
+    expect(
+      businessWaze({ lat: 1, lng: 2, links: { waze: "https://evil.example/waze.com/" } }),
+    ).toBe(wazeHref(1, 2));
+    expect(businessWaze({ lat: 1, lng: 2, links: { waze: "javascript:alert(1)" } })).toBe(
+      wazeHref(1, 2),
+    );
+  });
+  it("never navigates to a home business", () => {
+    const home = { lat: 1, lng: 2, attributes: { addressHidden: true } };
+    expect(businessWaze(home)).toBeNull();
+    expect(businessWaze({ ...home, links: { waze: "https://waze.com/ul?ll=1,2" } })).toBeNull();
   });
 });

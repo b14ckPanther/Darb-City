@@ -1,0 +1,101 @@
+/* The card's buttons (SheetActions): its own small module, so the browser gets only these names. */
+.actions {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-block-size: 52px;
+  padding-inline: var(--space-5);
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--card-accent);
+  color: var(--card-ink);
+  font: inherit;
+  font-weight: 700;
+  font-size: var(--step-1);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.example summary {
+  list-style: none;
+}
+
+.example summary::-webkit-details-marker {
+  display: none;
+}
+
+.status {
+  margin: 0;
+  min-block-size: 1.5em;
+  color: var(--gold-300);
+}
+
+.example .status {
+  margin-block-start: var(--space-2);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.action {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  inline-size: 100%;
+  min-block-size: var(--tap);
+  padding: var(--space-1) 0;
+  border: 0;
+  background: none;
+  color: var(--text-soft);
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.bubble {
+  display: grid;
+  place-items: center;
+  inline-size: 52px;
+  block-size: 52px;
+  border-radius: 50%;
+  border: 1.5px solid var(--card-accent);
+  color: var(--card-accent);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+[data-icons="solid"] .bubble {
+  background: var(--card-accent);
+  color: var(--card-ink);
+}
+
+.action:hover .bubble {
+  transform: translateY(-2px);
+}
+
+.action:active .bubble {
+  transform: scale(0.94);
+}
+
+.actionLabel {
+  font-size: 0.8125rem;
+  line-height: 1.2;
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bubble {
+    transition: none;
+  }
+}

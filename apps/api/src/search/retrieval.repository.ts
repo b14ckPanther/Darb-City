@@ -34,6 +34,8 @@ export interface Candidate {
     photos: unknown;
     hours: unknown;
     dietary: Dietary[];
+    logo?: unknown;
+    cardStyle?: unknown;
   };
   text: number;
   vector: number;
@@ -113,7 +115,7 @@ export class RetrievalRepository {
              -- A business that keeps its street private shows its place's centre, never its pin.
              CASE WHEN ${ADDRESS_HIDDEN_SQL} THEN p.lat ELSE b.lat END AS lat,
              CASE WHEN ${ADDRESS_HIDDEN_SQL} THEN p.lng ELSE b.lng END AS lng,
-             b.photos, b.hours, b.dietary::text[] AS dietary, d.completeness,
+             b.photos, b.hours, b.dietary::text[] AS dietary, b.logo, b."cardStyle", d.completeness,
              ${textScore} AS text_score, ${vectorScore} AS vector_score, ${km} AS km
       FROM "SearchDocument" d
       JOIN "Business" b ON b.id = d."entityId"

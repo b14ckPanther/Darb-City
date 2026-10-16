@@ -45,13 +45,18 @@
   }
 }
 
+/* A row wears its card's look, lightly: the accent along its edge and the logo (or a letter). */
 .rowLink {
+  --row-accent: var(--gold);
   display: grid;
-  gap: var(--space-1);
+  grid-template-columns: 40px minmax(0, 1fr);
+  align-items: start;
+  gap: var(--space-3);
   min-block-size: 72px;
   padding: var(--space-3) var(--space-4);
   border-radius: var(--radius-m);
   border: 1px solid var(--line-soft);
+  border-inline-start: 3px solid var(--row-accent);
   background: var(--surface-1);
   color: var(--text);
   text-decoration: none;
@@ -59,6 +64,33 @@
 
 .rowLink:hover {
   border-color: var(--line);
+  border-inline-start-color: var(--row-accent);
+}
+
+.rowLogo {
+  display: grid;
+  place-items: center;
+  inline-size: 40px;
+  block-size: 40px;
+  border-radius: var(--radius-s);
+  background: var(--night);
+  color: var(--row-accent);
+  font-weight: 800;
+  font-size: 1.125rem;
+  overflow: hidden;
+}
+
+.rowLogo img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: contain;
+  background: var(--ivory, #fbf7ec);
+}
+
+.rowText {
+  display: grid;
+  gap: var(--space-1);
+  min-inline-size: 0;
 }
 
 .rowName {
@@ -81,6 +113,22 @@
 .rowPlace {
   color: var(--text-muted);
   font-size: var(--step--1);
+}
+
+/* The card icons' pin (components/icons), as a mask: no markup and no JS in long lists. */
+.pinned {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.pinned::before {
+  content: "";
+  inline-size: 14px;
+  block-size: 14px;
+  background: currentColor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11ZM9.7 10a2.3 2.3 0 1 0 4.6 0a2.3 2.3 0 1 0-4.6 0Z'/%3E%3C/svg%3E")
+    center / contain no-repeat;
 }
 
 .more {

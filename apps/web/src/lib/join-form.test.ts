@@ -124,7 +124,8 @@ describe("the page's words", () => {
   });
 
   it("speaks everyday Arabic and never names languages", () => {
-    expect(all).not.toMatch(/هلأ/);
+    expect(all).not.toMatch(/هلأ|هلقيت/);
+    expect(join.ar.find.here).toBe("أنا موجود بالمصلحة");
     expect(all).not.toMatch(/Hebrew|Arabic|English|עברית|ערבית|אנגלית|العربية|العبرية/);
   });
 

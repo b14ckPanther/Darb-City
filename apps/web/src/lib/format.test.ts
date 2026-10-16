@@ -38,12 +38,12 @@ describe("hours", () => {
     expect(rows).toHaveLength(7);
     expect(rows[0]).toMatchObject({
       name: "Sunday",
-      text: "09:00–19:00",
+      text: "09:00-19:00",
       closed: false,
       today: false,
     });
     expect(rows[1]).toMatchObject({ text: "Closed", closed: true });
-    expect(rows[5]).toMatchObject({ text: "09:00–14:00", today: true });
+    expect(rows[5]).toMatchObject({ text: "09:00-14:00", today: true });
   });
   it("knows when there are no hours at all", () => {
     expect(hasHours({ weekly: {} })).toBe(false);

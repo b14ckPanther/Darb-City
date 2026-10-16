@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import { useState } from "react";
-import { describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { join } from "@/content/join";
 import { emptyWeek, presetWeek, type Week } from "@/lib/week-hours";
 import { CardPreview, type CardPreviewProps } from "./CardPreview";
@@ -8,6 +8,7 @@ import { WeekHours } from "./WeekHours";
 import { foldText } from "@/lib/fold-text";
 
 const base: CardPreviewProps = {
+  locale: "en",
   copy: join.en.preview,
   name: "Abu Samir",
   kindName: "Barbershops",
@@ -16,7 +17,7 @@ const base: CardPreviewProps = {
   accent: "#5fb3a8",
   icons: "solid",
   logoUrl: null,
-  photoUrl: null,
+  photoUrls: [],
   phone: "04-674-1234",
   whatsapp: "",
   point: { lat: 32.86, lng: 35.3 },
@@ -30,18 +31,34 @@ const base: CardPreviewProps = {
 };
 
 describe("the card preview", () => {
-  it("shows the name, kind and town, open now, and only the buttons there are", () => {
+  // The card's today follows the browser's clock once mounted.
+  beforeEach(() => vi.useFakeTimers({ toFake: ["Date"], now: base.now }));
+  afterEach(() => vi.useRealTimers());
+  it("draws the public card: name, kind and town, today, and only the buttons there are", async () => {
     render(<CardPreview {...base} />);
     const card = screen.getByRole("figure", { name: "How it will look" });
+    expect(card.querySelector("[data-business-card]")?.getAttribute("data-business-card")).toBe(
+      "preview",
+    );
     expect(within(card).getByText("Abu Samir")).toBeTruthy();
     expect(within(card).getByText("Barbershops · Sakhnin")).toBeTruthy();
-    expect(within(card).getByText("Open now")).toBeTruthy();
-    const buttons = within(card)
-      .getAllByRole("listitem")
-      .map((li) => li.textContent);
-    expect(buttons).toEqual(["Call", "Waze", "Instagram"]);
-    expect(card.getAttribute("data-icons")).toBe("solid");
-    expect(card.getAttribute("style")).toContain("#5fb3a8");
+    expect(await within(card).findByText("Open until 18:00")).toBeTruthy();
+    // No WhatsApp: the call is the main button, so the row starts with the way there.
+    expect(card.querySelector("[data-primary-action]")?.textContent).toBe("Call");
+    const row = within(card).getByRole("list", { name: "Ways to reach them" });
+    expect(
+      within(row)
+        .getAllByRole("listitem")
+        .map((li) => li.textContent),
+    ).toEqual(["Waze", "Maps"]);
+    expect(within(card).getByRole("list", { name: "On social media" }).textContent).toBe(
+      "Instagram",
+    );
+    // Pictures of buttons: nothing in the preview leaves the form.
+    expect(within(card).queryAllByRole("link")).toHaveLength(0);
+    const look = card.querySelector<HTMLElement>("[data-business-card]")!;
+    expect(look.getAttribute("data-icons")).toBe("solid");
+    expect(look.style.getPropertyValue("--card-accent")).toBe("#5fb3a8");
   });
 
   it("stands in a placeholder name and says nothing about hours it does not have", () => {
@@ -49,8 +66,9 @@ describe("the card preview", () => {
       <CardPreview {...base} name=" " week={emptyWeek()} point={null} phone="" instagram="" />,
     );
     expect(screen.getByText("Your business")).toBeTruthy();
-    expect(screen.queryByText(/now$/)).toBeNull();
-    expect(screen.queryByRole("list")).toBeNull();
+    expect(document.querySelector("[data-today-state]")).toBeNull();
+    expect(screen.queryByRole("table")).toBeNull();
+    expect(screen.queryByRole("listitem")).toBeNull();
   });
 });
 

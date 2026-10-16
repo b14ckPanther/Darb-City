@@ -1,0 +1,80 @@
+/* The card's today (TodayState): its own small module, so the browser gets only these names. */
+.today {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: 0;
+}
+
+/* The 24 hour dial: a ring (track, then today's spans as a conic gradient) and a hand. */
+.dial {
+  position: relative;
+  flex: none;
+  inline-size: 56px;
+  block-size: 56px;
+  border-radius: 50%;
+}
+
+.dial::before,
+.dial::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+}
+
+.dial::before {
+  background: var(--ring), var(--line-soft);
+  mask: radial-gradient(farthest-side, transparent calc(100% - 6px), #000 calc(100% - 5.5px));
+  opacity: 0.6;
+}
+
+.today[data-open="true"] .dial::before {
+  opacity: 1;
+}
+
+/* Midnight, 6, noon and 18: four short ticks inside the ring. */
+.dial::after {
+  inset: 8px;
+  background: repeating-conic-gradient(var(--text-muted) 0 2deg, transparent 2deg 90deg);
+  rotate: -1deg;
+  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2.5px));
+}
+
+.hand {
+  position: absolute;
+  inset: 0;
+  transform: rotate(var(--now));
+}
+
+.hand::before {
+  content: "";
+  position: absolute;
+  inset-block-start: -1.5px;
+  inset-inline-start: calc(50% - 4.5px);
+  inline-size: 9px;
+  block-size: 9px;
+  border-radius: 50%;
+  background: var(--text);
+  box-shadow: 0 0 0 2px var(--surface-1);
+}
+
+.todayText {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+}
+
+.todayWords {
+  font-size: var(--step-1);
+  color: var(--text-soft);
+}
+
+.today[data-open="true"] .todayWords {
+  color: #8fd6a4;
+}
+
+.todaySpans {
+  color: var(--text-muted);
+  font-size: var(--step--1);
+}

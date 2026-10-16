@@ -484,6 +484,7 @@ export function CheckStep({
             {copy.preview.title}
           </p>
           <CardPreview
+            locale={locale}
             copy={copy.preview}
             name={f.name[locale] || Object.values(f.name).find((v) => v.trim()) || ""}
             kindName={kind?.label ?? null}
@@ -492,7 +493,7 @@ export function CheckStep({
             accent={f.accent}
             icons={f.icons}
             logoUrl={f.logo?.url ?? null}
-            photoUrl={f.photos[0]?.url ?? null}
+            photoUrls={f.photos.map((p) => p.url)}
             phone={f.phone}
             whatsapp={f.whatsappSame ? f.phone : f.whatsapp}
             point={f.point}

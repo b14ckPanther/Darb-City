@@ -1,0 +1,4 @@
+/* Icons that point a way (a "next" chevron) turn with the page; brand marks never do. */
+[dir="rtl"] .mirror {
+  transform: scaleX(-1);
+}

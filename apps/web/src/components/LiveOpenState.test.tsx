@@ -4,7 +4,7 @@ import { LiveOpenState } from "./LiveOpenState";
 
 afterEach(() => vi.useRealTimers());
 const labels = { open: "Open", closed: "Closed" };
-// Tuesday (2), 09:00–19:00 Asia/Jerusalem.
+// Tuesday (2), 09:00-19:00 Asia/Jerusalem.
 const hours = { weekly: { "2": [{ open: "09:00", close: "19:00" }] }, exceptions: [] };
 
 it("corrects a stale cached Open to Closed in the browser and keeps ticking", async () => {
