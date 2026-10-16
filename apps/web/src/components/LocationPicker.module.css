@@ -1,0 +1,157 @@
+/* The admin does not load globals.css, so every token here carries its fallback. */
+.picker {
+  display: grid;
+  gap: 8px;
+  margin-block-end: 14px;
+  min-inline-size: 0;
+}
+.frame {
+  position: relative;
+  block-size: 320px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--forest-600);
+  background:
+    radial-gradient(80% 60% at 50% 40%, var(--forest-900) 0%, transparent 70%), var(--night);
+}
+@media (min-width: 640px) {
+  .frame {
+    block-size: 420px;
+  }
+}
+.map {
+  position: absolute;
+  inset: 0;
+}
+.attribution {
+  position: absolute;
+  inset-block-end: 6px;
+  inset-inline-start: 8px;
+  margin: 0;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: rgb(3 17 12 / 0.75);
+  color: var(--ivory-200);
+  font-size: 0.75rem;
+}
+.attribution a {
+  color: var(--ivory-200);
+}
+
+/* The pin: a 44 px target holding a gold drop whose tip is the point (anchor: bottom). */
+.pin {
+  inline-size: var(--tap, 44px);
+  block-size: var(--tap, 44px);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: grab;
+  touch-action: none;
+}
+.pin::before {
+  content: "";
+  position: absolute;
+  inset-block-end: 6px;
+  inset-inline: 0;
+  margin-inline: auto;
+  inline-size: 26px;
+  block-size: 26px;
+  border-radius: 50% 50% 50% 0;
+  background: var(--gold);
+  border: 2px solid var(--ink);
+  box-sizing: border-box;
+  transform: rotate(-45deg);
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.45);
+}
+.pin::after {
+  content: "";
+  position: absolute;
+  inset-block-end: 19px;
+  inset-inline: 0;
+  margin-inline: auto;
+  inline-size: 8px;
+  block-size: 8px;
+  border-radius: 50%;
+  background: var(--ink);
+}
+.pin:active {
+  cursor: grabbing;
+}
+.pin:focus-visible {
+  outline: 2px solid var(--gold-300);
+  outline-offset: 2px;
+  border-radius: 12px;
+}
+
+.note {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--ivory-200);
+}
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.tool {
+  font: inherit;
+  min-block-size: var(--tap, 44px);
+  padding-inline: 14px;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--ivory);
+  border: 1px solid var(--forest-600);
+  cursor: pointer;
+}
+.tool:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.at {
+  margin-inline-start: auto;
+  font-size: 0.8125rem;
+  color: var(--ivory-200);
+  font-variant-numeric: tabular-nums;
+  unicode-bidi: isolate;
+}
+.message {
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #3a2a0e;
+  border-inline-start: 4px solid var(--gold);
+}
+.details > summary {
+  display: flex;
+  align-items: center;
+  min-block-size: var(--tap, 44px);
+  cursor: pointer;
+  color: var(--gold-300);
+  inline-size: fit-content;
+}
+.numbers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+.number {
+  display: grid;
+  gap: 6px;
+  min-inline-size: 0;
+}
+.number > span {
+  font-size: 0.875rem;
+  color: var(--ivory-200);
+}
+.number input {
+  font: inherit;
+  color: var(--ivory);
+  background: var(--night);
+  border: 1px solid var(--forest-600);
+  border-radius: 10px;
+  padding: 10px 12px;
+  min-block-size: var(--tap, 44px);
+  box-sizing: border-box;
+  inline-size: 100%;
+}
