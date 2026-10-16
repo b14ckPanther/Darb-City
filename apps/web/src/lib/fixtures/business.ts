@@ -1,0 +1,33 @@
+import type { BusinessDetailDto } from "@darb/contracts";
+
+/** A business detail for tests: Caramel in Akko, a Darb client, open Sundays 09:00 to 17:30. */
+export const detail = (over: Partial<BusinessDetailDto> = {}): BusinessDetailDto => ({
+  id: "b1",
+  slug: "caramel",
+  name: { en: "Caramel", he: "קרמל" },
+  tagline: { en: "A celiac's paradise" },
+  tier: "darb",
+  primaryKindId: "k1",
+  placeId: "p1",
+  placeSlug: "akko",
+  lat: 32.92,
+  lng: 35.07,
+  photo: null,
+  openNow: true,
+  hours: { weekly: { "0": [{ open: "09:00", close: "17:30" }] }, exceptions: [] },
+  dietary: [],
+  kindIds: ["k1"],
+  address: { en: "Akko" },
+  phone: "+972 52-438-2229",
+  whatsapp: null,
+  website: null,
+  photos: [],
+  logo: null,
+  links: {},
+  cardStyle: {},
+  attributes: {},
+  experience: {},
+  apps: {},
+  brandId: null,
+  ...over,
+});
