@@ -1,5 +1,6 @@
 import type { AdminBusinessDto, AdminKindDto } from "@darb/contracts";
-import { pickText, TIERS, type Locale } from "@darb/core";
+import { CARD_ACCENTS, pickText, TIERS, type Locale } from "@darb/core";
+import { MEDIA_ORIGIN } from "@/lib/csp";
 import { ActionForm } from "./ActionForm";
 import { saveBusiness } from "./business-actions";
 import { BusinessLocation } from "./BusinessLocation";
@@ -8,16 +9,20 @@ import { at } from "./copy";
 import { LocalizedFields, SelectField, TextArea, TextField } from "./fields";
 import { exceptionsToText } from "./hours-form";
 import { HoursEditor } from "./HoursEditor";
+import { MediaField } from "./MediaField";
 import styles from "./admin.module.css";
 
 export function BusinessForm({
   locale,
   kinds,
   business,
+  uploads = false,
 }: {
   locale: Locale;
   kinds: AdminKindDto[];
   business?: AdminBusinessDto;
+  /** Photo uploads are on (R2 set up on the API). */
+  uploads?: boolean;
 }) {
   const b = business;
   const kindSlug = new Map(kinds.map((k) => [k.id, k.slug]));
@@ -167,6 +172,62 @@ export function BusinessForm({
           type="url"
           defaultValue={b?.apps.android}
           dir="ltr"
+        />
+      </fieldset>
+      <fieldset className={styles.row} style={{ border: 0, padding: 0, margin: 0 }}>
+        <legend className={styles.hint}>{at(locale, "fieldLinks")}</legend>
+        {(
+          [
+            ["instagram", "fieldInstagram"],
+            ["facebook", "fieldFacebook"],
+            ["tiktok", "fieldTiktok"],
+            ["waze", "fieldWaze"],
+          ] as const
+        ).map(([key, label]) => (
+          <TextField
+            key={key}
+            label={at(locale, label)}
+            name={`links.${key}`}
+            defaultValue={b?.links[key]}
+            dir="ltr"
+          />
+        ))}
+      </fieldset>
+      <MediaField
+        mediaUrl={MEDIA_ORIGIN}
+        uploads={uploads}
+        logo={b?.logo?.key ?? null}
+        photos={b?.photos ?? []}
+        labels={{
+          logo: at(locale, "fieldLogo"),
+          photos: at(locale, "fieldPhotos"),
+          add: at(locale, "addImage"),
+          uploading: at(locale, "uploading"),
+          off: at(locale, "uploadOff"),
+          failed: at(locale, "uploadFailed"),
+          remove: at(locale, "remove"),
+          moveFirst: at(locale, "moveFirst"),
+        }}
+      />
+      <fieldset className={styles.row} style={{ border: 0, padding: 0, margin: 0 }}>
+        <legend className={styles.hint}>{at(locale, "fieldCardStyle")}</legend>
+        <SelectField
+          label={at(locale, "fieldAccent")}
+          name="cardStyle.accent"
+          defaultValue={b?.cardStyle.accent ?? ""}
+          options={[
+            ["", at(locale, "accentDefault")],
+            ...CARD_ACCENTS.map((a): [string, string] => [a, a]),
+          ]}
+        />
+        <SelectField
+          label={at(locale, "fieldIcons")}
+          name="cardStyle.icons"
+          defaultValue={b?.cardStyle.icons ?? "line"}
+          options={[
+            ["line", at(locale, "iconsLine")],
+            ["solid", at(locale, "iconsSolid")],
+          ]}
         />
       </fieldset>
       <h2 className={styles.h2}>{at(locale, "fieldHours")}</h2>

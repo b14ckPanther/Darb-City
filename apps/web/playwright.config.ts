@@ -95,6 +95,12 @@ export default defineConfig({
         ADMIN_EMAILS: "e2e-admin@darb.test",
         REVALIDATE_URL: `${WEB}/api/revalidate`,
         REVALIDATE_SECRET,
+        // The join lookup never reaches the model, OpenStreetMap or R2 (photos are off).
+        JOIN_AI: "off",
+        JOIN_GEOCODER: "off",
+        R2_ACCOUNT_ID: "",
+        JOIN_RATE_LIMIT: "1000",
+        JOIN_LOOKUP_RATE_LIMIT: "1000",
       },
     },
     {

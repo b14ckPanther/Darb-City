@@ -1,97 +1,1335 @@
 [
-  {"query":"barber in haifa","locale":"en","expect":{"kind":"barbershops","place":"haifa"},"recorded":{"kinds":["barbershops"],"place":"haifa","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"barbr haifa","locale":"en","expect":{"kind":"barbershops","place":"haifa"},"recorded":{"kinds":["barbershops"],"place":"haifa","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"knafeh in akko","locale":"en","expect":{"kind":"sweets","place":"akko"},"recorded":{"kinds":["sweets"],"place":"akko","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"kunafa acre","locale":"en","expect":{"kind":"sweets","place":"akko"},"recorded":{"kinds":["sweets"],"place":"akko","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"hummus sakhnin","locale":"en","expect":{"kind":"hummus","place":"sakhnin"},"recorded":{"kinds":["hummus"],"place":"sakhnin","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"where can I get falafel in nazareth?","locale":"en","expect":{"kind":"hummus","place":"nazareth"},"recorded":{"kinds":["hummus"],"place":"nazareth","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"coffee in kiryat yam","locale":"en","expect":{"kind":"cafes","place":"kiryat-yam"},"recorded":{"kinds":["cafes"],"place":"kiryat-yam","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"a place for a good espresso in kiryat yam open now","locale":"en","expect":{"kind":"cafes","place":"kiryat-yam"},"recorded":{"kinds":["cafes"],"place":"kiryat-yam","nearMe":false,"openNow":true,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"pharmacy tamra","locale":"en","expect":{"kind":"pharmacies","place":"tamra"},"recorded":{"kinds":["pharmacies"],"place":"tamra","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"I need a mechanic in nahf, my car is making noise","locale":"en","expect":{"kind":"garages","place":"nahf"},"recorded":{"kinds":["garages"],"place":"nahf","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":"car making noise"},"source":"authored"},
-  {"query":"dentist in kiryat ata","locale":"en","expect":{"kind":"dental","place":"kiryat-ata"},"recorded":{"kinds":["dental"],"place":"kiryat-ata","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"teeth whitening kiryat motzkin","locale":"en","expect":{"kind":"dental","place":"kiryat-motzkin"},"recorded":{"kinds":["dental"],"place":"kiryat-motzkin","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":"whitening"},"source":"authored"},
-  {"query":"gym in kiryat bialik","locale":"en","expect":{"kind":"gyms","place":"kiryat-bialik"},"recorded":{"kinds":["gyms"],"place":"kiryat-bialik","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"shawarma in haifa","locale":"en","expect":{"kind":"grill","place":"haifa"},"recorded":{"kinds":["grill"],"place":"haifa","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"my phone screen is cracked, who can fix it in akko","locale":"en","expect":{"kind":"device-repair","place":"akko"},"recorded":{"kinds":["device-repair"],"place":"akko","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":"cracked phone screen"},"source":"authored"},
-  {"query":"electrician maalot","locale":"en","expect":{"kind":"technicians","place":"maalot-tarshiha"},"recorded":{"kinds":["technicians"],"place":"maalot-tarshiha","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"vet for my cat in judeida makr","locale":"en","expect":{"kind":"vets","place":"judeida-makr"},"recorded":{"kinds":["vets"],"place":"judeida-makr","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":"cat"},"source":"authored"},
-  {"query":"driving lessons tamra","locale":"en","expect":{"kind":"driving","place":"tamra"},"recorded":{"kinds":["driving"],"place":"tamra","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"manicure in kiryat ata","locale":"en","expect":{"kind":"nails","place":"kiryat-ata"},"recorded":{"kinds":["nails"],"place":"kiryat-ata","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"ice cream in nahf","locale":"en","expect":{"kind":"ice-cream","place":"nahf"},"recorded":{"kinds":["ice-cream"],"place":"nahf","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"barber near me","locale":"en","expect":{"kind":"barbershops","place":"sakhnin"},"recorded":{"kinds":["barbershops"],"place":null,"nearMe":true,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored","near":{"lat":32.864,"lng":35.303}},
-  {"query":"lawyer in haifa who speaks arabic","locale":"en","expect":{"kind":"lawyers","place":"haifa"},"recorded":{"kinds":["lawyers"],"place":"haifa","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":"speaks arabic"},"source":"authored"},
-  {"query":"מספרה בחיפה","locale":"he","expect":{"kind":"barbershops","place":"haifa"},"recorded":{"kinds":["barbershops"],"place":"haifa","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"ספר בסחנין","locale":"he","expect":{"kind":"barbershops","place":"sakhnin"},"recorded":{"kinds":["barbershops"],"place":"sakhnin","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"כנאפה בעכו","locale":"he","expect":{"kind":"sweets","place":"akko"},"recorded":{"kinds":["sweets"],"place":"akko","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"חומוס בסכנין","locale":"he","expect":{"kind":"hummus","place":"sakhnin"},"recorded":{"kinds":["hummus"],"place":"sakhnin","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"פלאפל בנצרת","locale":"he","expect":{"kind":"hummus","place":"nazareth"},"recorded":{"kinds":["hummus"],"place":"nazareth","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"בית קפה בקריית ים","locale":"he","expect":{"kind":"cafes","place":"kiryat-yam"},"recorded":{"kinds":["cafes"],"place":"kiryat-yam","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"בית מרקחת בטמרה","locale":"he","expect":{"kind":"pharmacies","place":"tamra"},"recorded":{"kinds":["pharmacies"],"place":"tamra","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"מוסך בנחף","locale":"he","expect":{"kind":"garages","place":"nahf"},"recorded":{"kinds":["garages"],"place":"nahf","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"רופא שיניים בקרית אתא","locale":"he","expect":{"kind":"dental","place":"kiryat-ata"},"recorded":{"kinds":["dental"],"place":"kiryat-ata","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"חדר כושר בקרית ביאליק","locale":"he","expect":{"kind":"gyms","place":"kiryat-bialik"},"recorded":{"kinds":["gyms"],"place":"kiryat-bialik","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"שווארמה בחיפה","locale":"he","expect":{"kind":"grill","place":"haifa"},"recorded":{"kinds":["grill"],"place":"haifa","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"מישהו שיתקן לי את המסך של הטלפון בעכו","locale":"he","expect":{"kind":"device-repair","place":"akko"},"recorded":{"kinds":["device-repair"],"place":"akko","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":"מסך טלפון"},"source":"authored"},
-  {"query":"חשמלאי במעלות","locale":"he","expect":{"kind":"technicians","place":"maalot-tarshiha"},"recorded":{"kinds":["technicians"],"place":"maalot-tarshiha","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"וטרינר בג'דיידה מכר","locale":"he","expect":{"kind":"vets","place":"judeida-makr"},"recorded":{"kinds":["vets"],"place":"judeida-makr","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"שיעורי נהיגה בטמרה","locale":"he","expect":{"kind":"driving","place":"tamra"},"recorded":{"kinds":["driving"],"place":"tamra","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"מניקור בקרית אתא","locale":"he","expect":{"kind":"nails","place":"kiryat-ata"},"recorded":{"kinds":["nails"],"place":"kiryat-ata","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"גלידה בנחף","locale":"he","expect":{"kind":"ice-cream","place":"nahf"},"recorded":{"kinds":["ice-cream"],"place":"nahf","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"עורך דין בחיפה","locale":"he","expect":{"kind":"lawyers","place":"haifa"},"recorded":{"kinds":["lawyers"],"place":"haifa","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"איפה אפשר לאכול ארוחת ערב טובה בחיפה הערב?","locale":"he","expect":{"kind":"restaurants","place":"haifa"},"recorded":{"kinds":["restaurants"],"place":"haifa","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":"ארוחת ערב"},"source":"authored"},
-  {"query":"קצב בטמרה","locale":"he","expect":{"kind":"butchers","place":"tamra"},"recorded":{"kinds":["butchers"],"place":"tamra","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"גן ילדים בקרית מוצקין","locale":"he","expect":{"kind":"kindergartens","place":"kiryat-motzkin"},"recorded":{"kinds":["kindergartens"],"place":"kiryat-motzkin","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"משקפיים בקריית חיים","locale":"he","expect":{"kind":"optics","place":"kiryat-haim"},"recorded":{"kinds":["optics"],"place":"kiryat-haim","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"حلاق في حيفا","locale":"ar","expect":{"kind":"barbershops","place":"haifa"},"recorded":{"kinds":["barbershops"],"place":"haifa","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"7allaq sakhnin","locale":"ar","expect":{"kind":"barbershops","place":"sakhnin"},"recorded":{"kinds":["barbershops"],"place":"sakhnin","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"كنافة في عكا","locale":"ar","expect":{"kind":"sweets","place":"akko"},"recorded":{"kinds":["sweets"],"place":"akko","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"حمص بسخنين","locale":"ar","expect":{"kind":"hummus","place":"sakhnin"},"recorded":{"kinds":["hummus"],"place":"sakhnin","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"فلافل في الناصرة","locale":"ar","expect":{"kind":"hummus","place":"nazareth"},"recorded":{"kinds":["hummus"],"place":"nazareth","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"قهوة في كريات يام","locale":"ar","expect":{"kind":"cafes","place":"kiryat-yam"},"recorded":{"kinds":["cafes"],"place":"kiryat-yam","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"صيدلية في طمرة","locale":"ar","expect":{"kind":"pharmacies","place":"tamra"},"recorded":{"kinds":["pharmacies"],"place":"tamra","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"ميكانيكي بنحف","locale":"ar","expect":{"kind":"garages","place":"nahf"},"recorded":{"kinds":["garages"],"place":"nahf","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"دكتور أسنان في كريات آتا","locale":"ar","expect":{"kind":"dental","place":"kiryat-ata"},"recorded":{"kinds":["dental"],"place":"kiryat-ata","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"جيم في كريات بياليك","locale":"ar","expect":{"kind":"gyms","place":"kiryat-bialik"},"recorded":{"kinds":["gyms"],"place":"kiryat-bialik","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"شاورما في حيفا","locale":"ar","expect":{"kind":"grill","place":"haifa"},"recorded":{"kinds":["grill"],"place":"haifa","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"بدي حدا يصلحلي شاشة التلفون بعكا","locale":"ar","expect":{"kind":"device-repair","place":"akko"},"recorded":{"kinds":["device-repair"],"place":"akko","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":"شاشة التلفون"},"source":"authored"},
-  {"query":"كهربجي في معالوت","locale":"ar","expect":{"kind":"technicians","place":"maalot-tarshiha"},"recorded":{"kinds":["technicians"],"place":"maalot-tarshiha","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"بيطري في الجديدة المكر","locale":"ar","expect":{"kind":"vets","place":"judeida-makr"},"recorded":{"kinds":["vets"],"place":"judeida-makr","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"معلم سواقة في طمرة","locale":"ar","expect":{"kind":"driving","place":"tamra"},"recorded":{"kinds":["driving"],"place":"tamra","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"مناكير في كريات آتا","locale":"ar","expect":{"kind":"nails","place":"kiryat-ata"},"recorded":{"kinds":["nails"],"place":"kiryat-ata","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"بوظة في نحف","locale":"ar","expect":{"kind":"ice-cream","place":"nahf"},"recorded":{"kinds":["ice-cream"],"place":"nahf","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"محامي في حيفا","locale":"ar","expect":{"kind":"lawyers","place":"haifa"},"recorded":{"kinds":["lawyers"],"place":"haifa","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"وين في مطعم منيح بحيفا مفتوح هلأ؟","locale":"ar","expect":{"kind":"restaurants","place":"haifa"},"recorded":{"kinds":["restaurants"],"place":"haifa","nearMe":false,"openNow":true,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"ملحمة في طمرة","locale":"ar","expect":{"kind":"butchers","place":"tamra"},"recorded":{"kinds":["butchers"],"place":"tamra","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"روضة في كريات موتسكين","locale":"ar","expect":{"kind":"kindergartens","place":"kiryat-motzkin"},"recorded":{"kinds":["kindergartens"],"place":"kiryat-motzkin","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"مخبز في عرابة","locale":"ar","expect":{"kind":"bakeries","place":"arraba"},"recorded":{"kinds":["bakeries"],"place":"arraba","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"my car makes a weird noise in haifa","locale":"en","expect":{"kind":"garages","place":"haifa","modelOnly":true},"recorded":{"kinds":["garages"],"place":"haifa","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"someone to fix the cracked screen on my mobile in nazareth","locale":"en","expect":{"kind":"device-repair","place":"nazareth","modelOnly":true},"recorded":{"kinds":["device-repair"],"place":"nazareth","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"مين بصلّح مكيف بسخنين","locale":"ar","expect":{"kind":"technicians","place":"sakhnin","modelOnly":true},"recorded":{"kinds":["technicians"],"place":"sakhnin","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"سيارتي بتعمل صوت غريب في عكا","locale":"ar","expect":{"kind":"garages","place":"akko","modelOnly":true},"recorded":{"kinds":["garages"],"place":"akko","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"צריך מישהו לתקן לי את המזגן בטמרה","locale":"he","expect":{"kind":"technicians","place":"tamra","modelOnly":true},"recorded":{"kinds":["technicians"],"place":"tamra","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"האוטו שלי עושה רעש מוזר בחיפה","locale":"he","expect":{"kind":"garages","place":"haifa","modelOnly":true},"recorded":{"kinds":["garages"],"place":"haifa","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"המסך של הטלפון שלי נשבר, מי מתקן בנצרת","locale":"he","expect":{"kind":"device-repair","place":"nazareth","modelOnly":true},"recorded":{"kinds":["device-repair"],"place":"nazareth","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"מספרה בחפה","locale":"he","expect":{"kind":"barbershops","place":"haifa"},"recorded":{"kinds":["barbershops"],"place":"haifa","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"חומס בסכנין","locale":"he","expect":{"kind":"hummus","place":"sakhnin"},"recorded":{"kinds":["hummus"],"place":"sakhnin","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"בית מרקחט בטמרה","locale":"he","expect":{"kind":"pharmacies","place":"tamra"},"recorded":{"kinds":["pharmacies"],"place":"tamra","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"صيدليه في طمره","locale":"ar","expect":{"kind":"pharmacies","place":"tamra"},"recorded":{"kinds":["pharmacies"],"place":"tamra","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"كنافه في عكا","locale":"ar","expect":{"kind":"sweets","place":"akko"},"recorded":{"kinds":["sweets"],"place":"akko","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"ميكانيكى في نحف","locale":"ar","expect":{"kind":"garages","place":"nahf"},"recorded":{"kinds":["garages"],"place":"nahf","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"صيدلبة في طمرة","locale":"ar","expect":{"kind":"pharmacies","place":"tamra"},"recorded":{"kinds":["pharmacies"],"place":"tamra","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"ميكانكي بنحف","locale":"ar","expect":{"kind":"garages","place":"nahf"},"recorded":{"kinds":["garages"],"place":"nahf","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"7allaq sa7nin","locale":"ar","expect":{"kind":"barbershops","place":"sakhnin"},"recorded":{"kinds":["barbershops"],"place":"sakhnin","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"kunafe 3akka","locale":"ar","expect":{"kind":"sweets","place":"akko"},"recorded":{"kinds":["sweets"],"place":"akko","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"ma6'3am 7aifa","locale":"ar","expect":{"kind":"restaurants","place":"haifa"},"recorded":{"kinds":["restaurants"],"place":"haifa","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"מספרה haifa","locale":"he","expect":{"kind":"barbershops","place":"haifa"},"recorded":{"kinds":["barbershops"],"place":"haifa","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"حلاق Haifa","locale":"ar","expect":{"kind":"barbershops","place":"haifa"},"recorded":{"kinds":["barbershops"],"place":"haifa","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"barber סח'נין","locale":"en","expect":{"kind":"barbershops","place":"sakhnin"},"recorded":{"kinds":["barbershops"],"place":"sakhnin","nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"מספרה לידי","locale":"he","expect":{"kind":"barbershops","place":"sakhnin"},"recorded":{"kinds":["barbershops"],"place":null,"nearMe":true,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored","near":{"lat":32.864,"lng":35.303}},
-  {"query":"حلاق قريب مني","locale":"ar","expect":{"kind":"barbershops","place":"sakhnin"},"recorded":{"kinds":["barbershops"],"place":null,"nearMe":true,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored","near":{"lat":32.864,"lng":35.303}},
-  {"query":"bars in haifa","locale":"en","expect":{"kind":null,"place":null,"blocked":true},"recorded":{"kinds":[],"place":null,"nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"casino near me","locale":"en","expect":{"kind":null,"place":null,"blocked":true},"recorded":{"kinds":[],"place":null,"nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"בר בחיפה","locale":"he","expect":{"kind":null,"place":null,"blocked":true},"recorded":{"kinds":[],"place":null,"nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"חזיר","locale":"he","expect":{"kind":null,"place":null,"blocked":true},"recorded":{"kinds":[],"place":null,"nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"خمور في حيفا","locale":"ar","expect":{"kind":null,"place":null,"blocked":true},"recorded":{"kinds":[],"place":null,"nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"},
-  {"query":"كازينو","locale":"ar","expect":{"kind":null,"place":null,"blocked":true},"recorded":{"kinds":[],"place":null,"nearMe":false,"openNow":false,"attributes":{"delivers":false},"freeText":""},"source":"authored"}
+  {
+    "query": "barber in haifa",
+    "locale": "en",
+    "expect": { "kind": "barbershops", "place": "haifa" },
+    "recorded": {
+      "kinds": ["barbershops"],
+      "place": "haifa",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "barbr haifa",
+    "locale": "en",
+    "expect": { "kind": "barbershops", "place": "haifa" },
+    "recorded": {
+      "kinds": ["barbershops"],
+      "place": "haifa",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "knafeh in akko",
+    "locale": "en",
+    "expect": { "kind": "sweets", "place": "akko" },
+    "recorded": {
+      "kinds": ["sweets"],
+      "place": "akko",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "kunafa acre",
+    "locale": "en",
+    "expect": { "kind": "sweets", "place": "akko" },
+    "recorded": {
+      "kinds": ["sweets"],
+      "place": "akko",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "hummus sakhnin",
+    "locale": "en",
+    "expect": { "kind": "hummus", "place": "sakhnin" },
+    "recorded": {
+      "kinds": ["hummus"],
+      "place": "sakhnin",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "where can I get falafel in nazareth?",
+    "locale": "en",
+    "expect": { "kind": "hummus", "place": "nazareth" },
+    "recorded": {
+      "kinds": ["hummus"],
+      "place": "nazareth",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "coffee in kiryat yam",
+    "locale": "en",
+    "expect": { "kind": "cafes", "place": "kiryat-yam" },
+    "recorded": {
+      "kinds": ["cafes"],
+      "place": "kiryat-yam",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "a place for a good espresso in kiryat yam open now",
+    "locale": "en",
+    "expect": { "kind": "cafes", "place": "kiryat-yam" },
+    "recorded": {
+      "kinds": ["cafes"],
+      "place": "kiryat-yam",
+      "nearMe": false,
+      "openNow": true,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "pharmacy tamra",
+    "locale": "en",
+    "expect": { "kind": "pharmacies", "place": "tamra" },
+    "recorded": {
+      "kinds": ["pharmacies"],
+      "place": "tamra",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "I need a mechanic in nahf, my car is making noise",
+    "locale": "en",
+    "expect": { "kind": "garages", "place": "nahf" },
+    "recorded": {
+      "kinds": ["garages"],
+      "place": "nahf",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": "car making noise"
+    },
+    "source": "authored"
+  },
+  {
+    "query": "dentist in kiryat ata",
+    "locale": "en",
+    "expect": { "kind": "dental", "place": "kiryat-ata" },
+    "recorded": {
+      "kinds": ["dental"],
+      "place": "kiryat-ata",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "teeth whitening kiryat motzkin",
+    "locale": "en",
+    "expect": { "kind": "dental", "place": "kiryat-motzkin" },
+    "recorded": {
+      "kinds": ["dental"],
+      "place": "kiryat-motzkin",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": "whitening"
+    },
+    "source": "authored"
+  },
+  {
+    "query": "gym in kiryat bialik",
+    "locale": "en",
+    "expect": { "kind": "gyms", "place": "kiryat-bialik" },
+    "recorded": {
+      "kinds": ["gyms"],
+      "place": "kiryat-bialik",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "shawarma in haifa",
+    "locale": "en",
+    "expect": { "kind": "grill", "place": "haifa" },
+    "recorded": {
+      "kinds": ["grill"],
+      "place": "haifa",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "my phone screen is cracked, who can fix it in akko",
+    "locale": "en",
+    "expect": { "kind": "device-repair", "place": "akko" },
+    "recorded": {
+      "kinds": ["device-repair"],
+      "place": "akko",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": "cracked phone screen"
+    },
+    "source": "authored"
+  },
+  {
+    "query": "electrician maalot",
+    "locale": "en",
+    "expect": { "kind": "technicians", "place": "maalot-tarshiha" },
+    "recorded": {
+      "kinds": ["technicians"],
+      "place": "maalot-tarshiha",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "vet for my cat in judeida makr",
+    "locale": "en",
+    "expect": { "kind": "vets", "place": "judeida-makr" },
+    "recorded": {
+      "kinds": ["vets"],
+      "place": "judeida-makr",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": "cat"
+    },
+    "source": "authored"
+  },
+  {
+    "query": "driving lessons tamra",
+    "locale": "en",
+    "expect": { "kind": "driving", "place": "tamra" },
+    "recorded": {
+      "kinds": ["driving"],
+      "place": "tamra",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "manicure in kiryat ata",
+    "locale": "en",
+    "expect": { "kind": "nails", "place": "kiryat-ata" },
+    "recorded": {
+      "kinds": ["nails"],
+      "place": "kiryat-ata",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "ice cream in nahf",
+    "locale": "en",
+    "expect": { "kind": "ice-cream", "place": "nahf" },
+    "recorded": {
+      "kinds": ["ice-cream"],
+      "place": "nahf",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "barber near me",
+    "locale": "en",
+    "expect": { "kind": "barbershops", "place": "sakhnin" },
+    "recorded": {
+      "kinds": ["barbershops"],
+      "place": null,
+      "nearMe": true,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored",
+    "near": { "lat": 32.864, "lng": 35.303 }
+  },
+  {
+    "query": "lawyer in haifa who speaks arabic",
+    "locale": "en",
+    "expect": { "kind": "lawyers", "place": "haifa" },
+    "recorded": {
+      "kinds": ["lawyers"],
+      "place": "haifa",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": "speaks arabic"
+    },
+    "source": "authored"
+  },
+  {
+    "query": "מספרה בחיפה",
+    "locale": "he",
+    "expect": { "kind": "barbershops", "place": "haifa" },
+    "recorded": {
+      "kinds": ["barbershops"],
+      "place": "haifa",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "ספר בסחנין",
+    "locale": "he",
+    "expect": { "kind": "barbershops", "place": "sakhnin" },
+    "recorded": {
+      "kinds": ["barbershops"],
+      "place": "sakhnin",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "כנאפה בעכו",
+    "locale": "he",
+    "expect": { "kind": "sweets", "place": "akko" },
+    "recorded": {
+      "kinds": ["sweets"],
+      "place": "akko",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "חומוס בסכנין",
+    "locale": "he",
+    "expect": { "kind": "hummus", "place": "sakhnin" },
+    "recorded": {
+      "kinds": ["hummus"],
+      "place": "sakhnin",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "פלאפל בנצרת",
+    "locale": "he",
+    "expect": { "kind": "hummus", "place": "nazareth" },
+    "recorded": {
+      "kinds": ["hummus"],
+      "place": "nazareth",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "בית קפה בקריית ים",
+    "locale": "he",
+    "expect": { "kind": "cafes", "place": "kiryat-yam" },
+    "recorded": {
+      "kinds": ["cafes"],
+      "place": "kiryat-yam",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "בית מרקחת בטמרה",
+    "locale": "he",
+    "expect": { "kind": "pharmacies", "place": "tamra" },
+    "recorded": {
+      "kinds": ["pharmacies"],
+      "place": "tamra",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "מוסך בנחף",
+    "locale": "he",
+    "expect": { "kind": "garages", "place": "nahf" },
+    "recorded": {
+      "kinds": ["garages"],
+      "place": "nahf",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "רופא שיניים בקרית אתא",
+    "locale": "he",
+    "expect": { "kind": "dental", "place": "kiryat-ata" },
+    "recorded": {
+      "kinds": ["dental"],
+      "place": "kiryat-ata",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "חדר כושר בקרית ביאליק",
+    "locale": "he",
+    "expect": { "kind": "gyms", "place": "kiryat-bialik" },
+    "recorded": {
+      "kinds": ["gyms"],
+      "place": "kiryat-bialik",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "שווארמה בחיפה",
+    "locale": "he",
+    "expect": { "kind": "grill", "place": "haifa" },
+    "recorded": {
+      "kinds": ["grill"],
+      "place": "haifa",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "מישהו שיתקן לי את המסך של הטלפון בעכו",
+    "locale": "he",
+    "expect": { "kind": "device-repair", "place": "akko" },
+    "recorded": {
+      "kinds": ["device-repair"],
+      "place": "akko",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": "מסך טלפון"
+    },
+    "source": "authored"
+  },
+  {
+    "query": "חשמלאי במעלות",
+    "locale": "he",
+    "expect": { "kind": "technicians", "place": "maalot-tarshiha" },
+    "recorded": {
+      "kinds": ["technicians"],
+      "place": "maalot-tarshiha",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "וטרינר בג'דיידה מכר",
+    "locale": "he",
+    "expect": { "kind": "vets", "place": "judeida-makr" },
+    "recorded": {
+      "kinds": ["vets"],
+      "place": "judeida-makr",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "שיעורי נהיגה בטמרה",
+    "locale": "he",
+    "expect": { "kind": "driving", "place": "tamra" },
+    "recorded": {
+      "kinds": ["driving"],
+      "place": "tamra",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "מניקור בקרית אתא",
+    "locale": "he",
+    "expect": { "kind": "nails", "place": "kiryat-ata" },
+    "recorded": {
+      "kinds": ["nails"],
+      "place": "kiryat-ata",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "גלידה בנחף",
+    "locale": "he",
+    "expect": { "kind": "ice-cream", "place": "nahf" },
+    "recorded": {
+      "kinds": ["ice-cream"],
+      "place": "nahf",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "עורך דין בחיפה",
+    "locale": "he",
+    "expect": { "kind": "lawyers", "place": "haifa" },
+    "recorded": {
+      "kinds": ["lawyers"],
+      "place": "haifa",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "איפה אפשר לאכול ארוחת ערב טובה בחיפה הערב?",
+    "locale": "he",
+    "expect": { "kind": "restaurants", "place": "haifa" },
+    "recorded": {
+      "kinds": ["restaurants"],
+      "place": "haifa",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": "ארוחת ערב"
+    },
+    "source": "authored"
+  },
+  {
+    "query": "קצב בטמרה",
+    "locale": "he",
+    "expect": { "kind": "butchers", "place": "tamra" },
+    "recorded": {
+      "kinds": ["butchers"],
+      "place": "tamra",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "גן ילדים בקרית מוצקין",
+    "locale": "he",
+    "expect": { "kind": "kindergartens", "place": "kiryat-motzkin" },
+    "recorded": {
+      "kinds": ["kindergartens"],
+      "place": "kiryat-motzkin",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "משקפיים בקריית חיים",
+    "locale": "he",
+    "expect": { "kind": "optics", "place": "kiryat-haim" },
+    "recorded": {
+      "kinds": ["optics"],
+      "place": "kiryat-haim",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "حلاق في حيفا",
+    "locale": "ar",
+    "expect": { "kind": "barbershops", "place": "haifa" },
+    "recorded": {
+      "kinds": ["barbershops"],
+      "place": "haifa",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "7allaq sakhnin",
+    "locale": "ar",
+    "expect": { "kind": "barbershops", "place": "sakhnin" },
+    "recorded": {
+      "kinds": ["barbershops"],
+      "place": "sakhnin",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "كنافة في عكا",
+    "locale": "ar",
+    "expect": { "kind": "sweets", "place": "akko" },
+    "recorded": {
+      "kinds": ["sweets"],
+      "place": "akko",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "حمص بسخنين",
+    "locale": "ar",
+    "expect": { "kind": "hummus", "place": "sakhnin" },
+    "recorded": {
+      "kinds": ["hummus"],
+      "place": "sakhnin",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "فلافل في الناصرة",
+    "locale": "ar",
+    "expect": { "kind": "hummus", "place": "nazareth" },
+    "recorded": {
+      "kinds": ["hummus"],
+      "place": "nazareth",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "قهوة في كريات يام",
+    "locale": "ar",
+    "expect": { "kind": "cafes", "place": "kiryat-yam" },
+    "recorded": {
+      "kinds": ["cafes"],
+      "place": "kiryat-yam",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "صيدلية في طمرة",
+    "locale": "ar",
+    "expect": { "kind": "pharmacies", "place": "tamra" },
+    "recorded": {
+      "kinds": ["pharmacies"],
+      "place": "tamra",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "ميكانيكي بنحف",
+    "locale": "ar",
+    "expect": { "kind": "garages", "place": "nahf" },
+    "recorded": {
+      "kinds": ["garages"],
+      "place": "nahf",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "دكتور أسنان في كريات آتا",
+    "locale": "ar",
+    "expect": { "kind": "dental", "place": "kiryat-ata" },
+    "recorded": {
+      "kinds": ["dental"],
+      "place": "kiryat-ata",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "جيم في كريات بياليك",
+    "locale": "ar",
+    "expect": { "kind": "gyms", "place": "kiryat-bialik" },
+    "recorded": {
+      "kinds": ["gyms"],
+      "place": "kiryat-bialik",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "شاورما في حيفا",
+    "locale": "ar",
+    "expect": { "kind": "grill", "place": "haifa" },
+    "recorded": {
+      "kinds": ["grill"],
+      "place": "haifa",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "بدي حدا يصلحلي شاشة التلفون بعكا",
+    "locale": "ar",
+    "expect": { "kind": "device-repair", "place": "akko" },
+    "recorded": {
+      "kinds": ["device-repair"],
+      "place": "akko",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": "شاشة التلفون"
+    },
+    "source": "authored"
+  },
+  {
+    "query": "كهربجي في معالوت",
+    "locale": "ar",
+    "expect": { "kind": "technicians", "place": "maalot-tarshiha" },
+    "recorded": {
+      "kinds": ["technicians"],
+      "place": "maalot-tarshiha",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "بيطري في الجديدة المكر",
+    "locale": "ar",
+    "expect": { "kind": "vets", "place": "judeida-makr" },
+    "recorded": {
+      "kinds": ["vets"],
+      "place": "judeida-makr",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "معلم سواقة في طمرة",
+    "locale": "ar",
+    "expect": { "kind": "driving", "place": "tamra" },
+    "recorded": {
+      "kinds": ["driving"],
+      "place": "tamra",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "مناكير في كريات آتا",
+    "locale": "ar",
+    "expect": { "kind": "nails", "place": "kiryat-ata" },
+    "recorded": {
+      "kinds": ["nails"],
+      "place": "kiryat-ata",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "بوظة في نحف",
+    "locale": "ar",
+    "expect": { "kind": "ice-cream", "place": "nahf" },
+    "recorded": {
+      "kinds": ["ice-cream"],
+      "place": "nahf",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "محامي في حيفا",
+    "locale": "ar",
+    "expect": { "kind": "lawyers", "place": "haifa" },
+    "recorded": {
+      "kinds": ["lawyers"],
+      "place": "haifa",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "وين في مطعم منيح بحيفا مفتوح هلأ؟",
+    "locale": "ar",
+    "expect": { "kind": "restaurants", "place": "haifa" },
+    "recorded": {
+      "kinds": ["restaurants"],
+      "place": "haifa",
+      "nearMe": false,
+      "openNow": true,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "ملحمة في طمرة",
+    "locale": "ar",
+    "expect": { "kind": "butchers", "place": "tamra" },
+    "recorded": {
+      "kinds": ["butchers"],
+      "place": "tamra",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "روضة في كريات موتسكين",
+    "locale": "ar",
+    "expect": { "kind": "kindergartens", "place": "kiryat-motzkin" },
+    "recorded": {
+      "kinds": ["kindergartens"],
+      "place": "kiryat-motzkin",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "مخبز في عرابة",
+    "locale": "ar",
+    "expect": { "kind": "bakeries", "place": "arraba" },
+    "recorded": {
+      "kinds": ["bakeries"],
+      "place": "arraba",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "my car makes a weird noise in haifa",
+    "locale": "en",
+    "expect": { "kind": "garages", "place": "haifa", "modelOnly": true },
+    "recorded": {
+      "kinds": ["garages"],
+      "place": "haifa",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "someone to fix the cracked screen on my mobile in nazareth",
+    "locale": "en",
+    "expect": { "kind": "device-repair", "place": "nazareth", "modelOnly": true },
+    "recorded": {
+      "kinds": ["device-repair"],
+      "place": "nazareth",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "مين بصلّح مكيف بسخنين",
+    "locale": "ar",
+    "expect": { "kind": "technicians", "place": "sakhnin", "modelOnly": true },
+    "recorded": {
+      "kinds": ["technicians"],
+      "place": "sakhnin",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "سيارتي بتعمل صوت غريب في عكا",
+    "locale": "ar",
+    "expect": { "kind": "garages", "place": "akko", "modelOnly": true },
+    "recorded": {
+      "kinds": ["garages"],
+      "place": "akko",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "צריך מישהו לתקן לי את המזגן בטמרה",
+    "locale": "he",
+    "expect": { "kind": "technicians", "place": "tamra", "modelOnly": true },
+    "recorded": {
+      "kinds": ["technicians"],
+      "place": "tamra",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "האוטו שלי עושה רעש מוזר בחיפה",
+    "locale": "he",
+    "expect": { "kind": "garages", "place": "haifa", "modelOnly": true },
+    "recorded": {
+      "kinds": ["garages"],
+      "place": "haifa",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "המסך של הטלפון שלי נשבר, מי מתקן בנצרת",
+    "locale": "he",
+    "expect": { "kind": "device-repair", "place": "nazareth", "modelOnly": true },
+    "recorded": {
+      "kinds": ["device-repair"],
+      "place": "nazareth",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "מספרה בחפה",
+    "locale": "he",
+    "expect": { "kind": "barbershops", "place": "haifa" },
+    "recorded": {
+      "kinds": ["barbershops"],
+      "place": "haifa",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "חומס בסכנין",
+    "locale": "he",
+    "expect": { "kind": "hummus", "place": "sakhnin" },
+    "recorded": {
+      "kinds": ["hummus"],
+      "place": "sakhnin",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "בית מרקחט בטמרה",
+    "locale": "he",
+    "expect": { "kind": "pharmacies", "place": "tamra" },
+    "recorded": {
+      "kinds": ["pharmacies"],
+      "place": "tamra",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "صيدليه في طمره",
+    "locale": "ar",
+    "expect": { "kind": "pharmacies", "place": "tamra" },
+    "recorded": {
+      "kinds": ["pharmacies"],
+      "place": "tamra",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "كنافه في عكا",
+    "locale": "ar",
+    "expect": { "kind": "sweets", "place": "akko" },
+    "recorded": {
+      "kinds": ["sweets"],
+      "place": "akko",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "ميكانيكى في نحف",
+    "locale": "ar",
+    "expect": { "kind": "garages", "place": "nahf" },
+    "recorded": {
+      "kinds": ["garages"],
+      "place": "nahf",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "صيدلبة في طمرة",
+    "locale": "ar",
+    "expect": { "kind": "pharmacies", "place": "tamra" },
+    "recorded": {
+      "kinds": ["pharmacies"],
+      "place": "tamra",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "ميكانكي بنحف",
+    "locale": "ar",
+    "expect": { "kind": "garages", "place": "nahf" },
+    "recorded": {
+      "kinds": ["garages"],
+      "place": "nahf",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "7allaq sa7nin",
+    "locale": "ar",
+    "expect": { "kind": "barbershops", "place": "sakhnin" },
+    "recorded": {
+      "kinds": ["barbershops"],
+      "place": "sakhnin",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "kunafe 3akka",
+    "locale": "ar",
+    "expect": { "kind": "sweets", "place": "akko" },
+    "recorded": {
+      "kinds": ["sweets"],
+      "place": "akko",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "ma6'3am 7aifa",
+    "locale": "ar",
+    "expect": { "kind": "restaurants", "place": "haifa" },
+    "recorded": {
+      "kinds": ["restaurants"],
+      "place": "haifa",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "מספרה haifa",
+    "locale": "he",
+    "expect": { "kind": "barbershops", "place": "haifa" },
+    "recorded": {
+      "kinds": ["barbershops"],
+      "place": "haifa",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "حلاق Haifa",
+    "locale": "ar",
+    "expect": { "kind": "barbershops", "place": "haifa" },
+    "recorded": {
+      "kinds": ["barbershops"],
+      "place": "haifa",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "barber סח'נין",
+    "locale": "en",
+    "expect": { "kind": "barbershops", "place": "sakhnin" },
+    "recorded": {
+      "kinds": ["barbershops"],
+      "place": "sakhnin",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "מספרה לידי",
+    "locale": "he",
+    "expect": { "kind": "barbershops", "place": "sakhnin" },
+    "recorded": {
+      "kinds": ["barbershops"],
+      "place": null,
+      "nearMe": true,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored",
+    "near": { "lat": 32.864, "lng": 35.303 }
+  },
+  {
+    "query": "حلاق قريب مني",
+    "locale": "ar",
+    "expect": { "kind": "barbershops", "place": "sakhnin" },
+    "recorded": {
+      "kinds": ["barbershops"],
+      "place": null,
+      "nearMe": true,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored",
+    "near": { "lat": 32.864, "lng": 35.303 }
+  },
+  {
+    "query": "bars in haifa",
+    "locale": "en",
+    "expect": { "kind": null, "place": null, "blocked": true },
+    "recorded": {
+      "kinds": [],
+      "place": null,
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "casino near me",
+    "locale": "en",
+    "expect": { "kind": null, "place": null, "blocked": true },
+    "recorded": {
+      "kinds": [],
+      "place": null,
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "בר בחיפה",
+    "locale": "he",
+    "expect": { "kind": null, "place": null, "blocked": true },
+    "recorded": {
+      "kinds": [],
+      "place": null,
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "חזיר",
+    "locale": "he",
+    "expect": { "kind": null, "place": null, "blocked": true },
+    "recorded": {
+      "kinds": [],
+      "place": null,
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "خمور في حيفا",
+    "locale": "ar",
+    "expect": { "kind": null, "place": null, "blocked": true },
+    "recorded": {
+      "kinds": [],
+      "place": null,
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "كازينو",
+    "locale": "ar",
+    "expect": { "kind": null, "place": null, "blocked": true },
+    "recorded": {
+      "kinds": [],
+      "place": null,
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  }
 ]

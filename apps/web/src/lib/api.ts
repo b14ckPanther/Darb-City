@@ -5,6 +5,11 @@ import {
   type BusinessPageDto,
   type DensityDto,
   type InquiryCreateDto,
+  type JoinCreateDto,
+  type JoinLookupRequestDto,
+  type JoinPhotoDto,
+  type JoinStatusDto,
+  type JoinSuggestionDto,
   type InstantIndexDto,
   type KindCountsDto,
   type NearestPlaceDto,
@@ -353,6 +358,77 @@ export async function postInquiry(body: InquiryCreateDto, ip: string): Promise<I
   if (res.status === 201) return { status: 201 };
   if (res.status === 429) return { status: 429, retryAfter: res.body.retryAfter };
   return { status: 400 };
+}
+
+/** What the /join form can offer: photo uploads and the smart lookup. Never cached for long. */
+export async function getJoinStatus(): Promise<JoinStatusDto> {
+  try {
+    const res = await call(() =>
+      client().join.status({ fetchOptions: { next: { revalidate: 60 } } }),
+    );
+    if (res.status === 200) return res.body;
+  } catch {
+    // The form works without both: a plain form, no photos.
+  }
+  return { uploads: false, lookup: false };
+}
+
+export type LookupCall =
+  { status: 200; body: JoinSuggestionDto } | { status: 429; retryAfter: number } | { status: 400 };
+
+/** "Find my business". The API limits each visitor, so this server vouches for the visitor's IP. */
+export async function postJoinLookup(body: JoinLookupRequestDto, ip: string): Promise<LookupCall> {
+  const res = await call(() =>
+    client().join.lookup({
+      body,
+      extraHeaders: proxyHeaders(ip),
+      fetchOptions: { cache: "no-store" },
+    }),
+  );
+  if (res.status === 200) return { status: 200, body: res.body };
+  if (res.status === 429) return { status: 429, retryAfter: res.body.retryAfter };
+  return { status: 400 };
+}
+
+/** The /join form, as a draft for the admin's queue. */
+export async function postJoin(body: JoinCreateDto, ip: string): Promise<InquiryCall> {
+  const res = await call(() =>
+    client().join.create({
+      body,
+      extraHeaders: proxyHeaders(ip),
+      fetchOptions: { cache: "no-store" },
+    }),
+  );
+  if (res.status === 201) return { status: 201 };
+  if (res.status === 429) return { status: 429, retryAfter: res.body.retryAfter };
+  return { status: 400 };
+}
+
+export type PhotoCall =
+  { status: 201; body: JoinPhotoDto } | { status: 400 | 413 | 429 | 503; reason?: string };
+
+/** One image's bytes to the API, which checks, shrinks and stores it (it is not in the contract). */
+export async function postJoinPhoto(
+  bytes: ArrayBuffer,
+  variant: "photo" | "logo",
+  ip: string,
+): Promise<PhotoCall> {
+  const res = await call(() =>
+    fetch(`${apiBaseUrl()}/join/photos${variant === "logo" ? "?variant=logo" : ""}`, {
+      method: "POST",
+      headers: { ...proxyHeaders(ip), "content-type": "application/octet-stream" },
+      body: bytes,
+      cache: "no-store",
+    }),
+  );
+  const body = (await res.json().catch(() => ({}))) as Record<string, unknown>;
+  if (res.status === 201) return { status: 201, body: body as JoinPhotoDto };
+  if (res.status === 400 || res.status === 413 || res.status === 429 || res.status === 503)
+    return {
+      status: res.status,
+      ...(typeof body["reason"] === "string" ? { reason: body["reason"] } : {}),
+    };
+  throw new ApiUnavailableError(res.status);
 }
 
 /** The live lane-1 index; refreshed when an admin write revalidates places or taxonomy. */

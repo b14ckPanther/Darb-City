@@ -30,6 +30,13 @@ import {
 } from "./search.js";
 import { adminContract } from "./admin.js";
 import { InquiryAcceptedSchema, InquiryCreateSchema } from "./inquiry.js";
+import {
+  JoinAcceptedSchema,
+  JoinCreateSchema,
+  JoinLookupRequestSchema,
+  JoinStatusSchema,
+  JoinSuggestionSchema,
+} from "./join.js";
 import { PricingSchema } from "./pricing.js";
 
 const c = initContract();
@@ -193,6 +200,26 @@ export const contract = c.router({
       path: "/inquiries",
       body: InquiryCreateSchema,
       responses: { 201: InquiryAcceptedSchema, 400: BadRequestSchema, 429: TooManySchema },
+    },
+  },
+  join: {
+    status: { method: "GET", path: "/join/status", responses: { 200: JoinStatusSchema } },
+    /**
+     * Finds the business from a link, a point or its name: map links are read here, addresses
+     * come from OpenStreetMap, the rest from a web search by the model. Never stores anything.
+     */
+    lookup: {
+      method: "POST",
+      path: "/join/lookup",
+      body: JoinLookupRequestSchema,
+      responses: { 200: JoinSuggestionSchema, 400: BadRequestSchema, 429: TooManySchema },
+    },
+    /** A draft business and its request for the admin queue. Photos go to /join/photos first. */
+    create: {
+      method: "POST",
+      path: "/join",
+      body: JoinCreateSchema,
+      responses: { 201: JoinAcceptedSchema, 400: BadRequestSchema, 429: TooManySchema },
     },
   },
   sitemap: {

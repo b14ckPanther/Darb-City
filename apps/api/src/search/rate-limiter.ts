@@ -8,8 +8,12 @@ import { ipBucket } from "./ip-bucket.js";
 export const ipHash = (salt: string, ip: string) =>
   createHash("sha256").update(`${salt}:${ip}`).digest("hex").slice(0, 32);
 
-/** "report" counts wrong report keys only; "inquiry" counts /contact messages. */
-type Bucket = "search" | "results" | "click" | "report" | "suggest" | "inquiry";
+/**
+ * "report" counts wrong report keys only; "inquiry" counts /contact messages; "lookup", "join" and
+ * "upload" count the /join form's lookups, forms and photos.
+ */
+type Bucket =
+  "search" | "results" | "click" | "report" | "suggest" | "inquiry" | "lookup" | "join" | "upload";
 
 @Injectable()
 export class RateLimiter {

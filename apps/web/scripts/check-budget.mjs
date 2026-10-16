@@ -35,6 +35,8 @@ const ROUTES = [
   "/[locale]/k/[kind]/page",
   // Keeps the stage since Plan 3 (M7), so it is held to the level budget too.
   "/[locale]/search/page",
+  // The join form is a phone's first Darb page for many owners: the card form loads after it.
+  "/[locale]/join/page",
 ];
 
 const build = JSON.parse(readFileSync(join(NEXT, "build-manifest.json"), "utf8"));

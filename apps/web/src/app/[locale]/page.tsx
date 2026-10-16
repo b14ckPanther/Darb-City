@@ -216,8 +216,8 @@ export default async function LandingPage({ params }: Props) {
               <Link href={href(locale, paths.pricing())} className={styles.primary}>
                 {copy.join.pricing}
               </Link>
-              <Link href={href(locale, paths.contact())} className={styles.secondary}>
-                {copy.join.talk}
+              <Link href={href(locale, paths.join())} className={styles.secondary}>
+                {copy.join.list}
               </Link>
             </div>
           </Reveal>

@@ -12,6 +12,8 @@ it("public pages: workers from self, tiles from R2, nothing framed or embedded",
   expect(directive(csp, "object-src")).toBe("object-src 'none'");
   expect(directive(csp, "script-src")).toBe("script-src 'self' 'unsafe-inline'");
   expect(csp).not.toContain("nonce-");
+  // Business photos and logos come from the media bucket; uploads go through /api/join/photos.
+  expect(directive(csp, "img-src")).toBe("img-src 'self' data: https://media.darb.co.il");
 });
 
 it("development adds eval and the HMR socket only", () => {
@@ -33,7 +35,9 @@ it("admin pages: a nonce with strict-dynamic, and Clerk's origin", () => {
   );
   expect(directive(csp, "connect-src")).toBe("connect-src 'self' https://clerk.darb.co.il");
   expect(directive(csp, "frame-src")).toBe("frame-src https://challenges.cloudflare.com");
-  expect(directive(csp, "img-src")).toBe("img-src 'self' data: https://img.clerk.com");
+  expect(directive(csp, "img-src")).toBe(
+    "img-src 'self' data: https://img.clerk.com https://media.darb.co.il",
+  );
 });
 
 it("admin pages read the map tiles from R2 for the location picker, workers from self and blob:", () => {

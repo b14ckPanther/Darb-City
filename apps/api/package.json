@@ -33,11 +33,13 @@
     "@ts-rest/core": "catalog:",
     "@ts-rest/nest": "catalog:",
     "ajv": "catalog:",
+    "aws4fetch": "catalog:",
     "bullmq": "catalog:",
     "dotenv": "catalog:",
     "ioredis": "catalog:",
     "reflect-metadata": "catalog:",
     "rxjs": "catalog:",
+    "sharp": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {

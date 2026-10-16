@@ -6,6 +6,8 @@ import { ReportRepository } from "../search/report.repository.js";
 import { AdminBusinessesController, BusinessesAdmin } from "./businesses.admin.js";
 import { ExperienceValidator } from "./experience.js";
 import { AdminInquiriesController, InquiriesAdmin } from "./inquiries.admin.js";
+import { AdminJoinController, JoinAdmin } from "./join.admin.js";
+import { MediaModule } from "../media/media.js";
 import { AdminMiscController, MiscAdmin } from "./misc.admin.js";
 import { AdminKindsController, KindsAdmin } from "./kinds.admin.js";
 import { AdminPlacesController, PlacesAdmin } from "./places.admin.js";
@@ -16,7 +18,7 @@ import { AdminTextsController, TextsAdmin } from "./texts.admin.js";
 
 /** Spec §6.2 Admin: guarded by Clerk and the admin flag. */
 @Module({
-  imports: [AuthModule, SearchIndexModule],
+  imports: [AuthModule, SearchIndexModule, MediaModule],
   controllers: [
     AdminPlacesController,
     AdminSectorsController,
@@ -26,6 +28,7 @@ import { AdminTextsController, TextsAdmin } from "./texts.admin.js";
     AdminPlansController,
     AdminTextsController,
     AdminInquiriesController,
+    AdminJoinController,
   ],
   providers: [
     AdminWriter,
@@ -39,6 +42,7 @@ import { AdminTextsController, TextsAdmin } from "./texts.admin.js";
     PlansAdmin,
     TextsAdmin,
     InquiriesAdmin,
+    JoinAdmin,
     ReportRepository,
   ],
   exports: [AdminWriter, WebRevalidator],

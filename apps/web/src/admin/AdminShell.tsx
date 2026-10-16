@@ -16,25 +16,29 @@ const NAV: [string, AdminKey][] = [
   ["/businesses", "navBusinesses"],
   ["/plans", "navPlans"],
   ["/inquiries", "navInquiries"],
+  ["/join-requests", "navJoin"],
   ["/report", "navReport"],
 ];
 const LOCALE_NAMES: Record<Locale, string> = { he: "עברית", ar: "العربية", en: "English" };
 
 /**
  * `path` is the admin path after the locale ("/places/…"), for active links and the locale switch.
- * `newInquiries` puts a count on the Messages link while any are waiting.
+ * `newInquiries` puts a count on the Messages link while any are waiting; `pendingJoins` on Join
+ * requests.
  */
 export function AdminShell({
   locale,
   path,
   mode,
   newInquiries = 0,
+  pendingJoins = 0,
   children,
 }: {
   locale: Locale;
   path: string;
   mode: AdminAuthMode;
   newInquiries?: number;
+  pendingJoins?: number;
   children: ReactNode;
 }) {
   return (
@@ -46,6 +50,9 @@ export function AdminShell({
         <nav aria-label={at(locale, "title")} className={styles.nav}>
           {NAV.map(([href, key]) => {
             const active = href === "" ? path === "" : path.startsWith(href);
+            const count =
+              href === "/inquiries" ? newInquiries : href === "/join-requests" ? pendingJoins : 0;
+            const countLabel = href === "/inquiries" ? "inquiryNewCount" : "joinPendingCount";
             return (
               <Link
                 key={href}
@@ -54,13 +61,13 @@ export function AdminShell({
                 className={styles.navLink}
               >
                 {at(locale, key)}
-                {href === "/inquiries" && newInquiries > 0 ? (
+                {count > 0 ? (
                   <>
                     <span className={styles.count} aria-hidden="true">
-                      {newInquiries}
+                      {count}
                     </span>
                     <span className={styles.srOnly}>
-                      {`, ${at(locale, "inquiryNewCount", { count: newInquiries })}`}
+                      {`, ${at(locale, countLabel, { count })}`}
                     </span>
                   </>
                 ) : null}

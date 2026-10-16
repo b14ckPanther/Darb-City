@@ -1,9 +1,9 @@
 /**
  * Pages that are not part of the city show no stage: the landing page, the showroom, pricing,
- * for-business, contact and the legal pages. /search keeps it: results pin the map (M7).
+ * for-business, contact, join and the legal pages. /search keeps it: results pin the map (M7).
  */
 export const STAGE_EXCLUDED =
-  /^(?:\/(?:ar|en))?(?:\/?$|\/(?:for-business|showroom|pricing|contact|accessibility|terms|privacy)(?:\/|$))/;
+  /^(?:\/(?:ar|en))?(?:\/?$|\/(?:for-business|showroom|pricing|contact|join|accessibility|terms|privacy)(?:\/|$))/;
 
 export function stageAllowed(pathname: string): boolean {
   return !STAGE_EXCLUDED.test(pathname);

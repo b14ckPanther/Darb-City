@@ -1,4 +1,17 @@
-import { DIETARY, isSlug, PLACE_STATUSES, PLACE_TYPES, TEMPLATES, TIERS } from "@darb/core";
+import {
+  CARD_ACCENTS,
+  CARD_ICON_STYLES,
+  DIETARY,
+  facebookUrl,
+  instagramUrl,
+  isSlug,
+  PLACE_STATUSES,
+  PLACE_TYPES,
+  TEMPLATES,
+  tiktokUrl,
+  TIERS,
+  wazeUrl,
+} from "@darb/core";
 import { z } from "zod";
 
 const text = z.string().optional();
@@ -20,6 +33,63 @@ export const HoursSchema = z.object({
   /** Visits by arrangement only: never open now, shown as "By appointment" (Task 28). */
   byAppointment: z.boolean().optional(),
 });
+
+/** A phone number as people type it: digits, spaces, dashes, brackets and an optional +. */
+export const PhoneSchema = z
+  .string()
+  .trim()
+  .regex(/^\+?[0-9][0-9 ()-]{5,19}$/, { message: "Use digits, spaces, dashes and an optional +" });
+
+/**
+ * An uploaded image in the media bucket. Photos sent to /join wait under pending/ (kept there
+ * once approved); `b/` is free for a later move. Always WebP, named by a random UUID.
+ */
+export const MediaKeySchema = z
+  .string()
+  .regex(/^(?:pending|b\/[0-9a-f-]{36})\/[0-9a-f-]{36}\.webp$/, { message: "Unknown image" });
+export const PhotoSchema = z.object({ key: MediaKeySchema, alt: LocalizedSchema });
+export const LogoSchema = z.object({ key: MediaKeySchema });
+
+/** The card's look: one of the palette's accents, and line or solid icons. */
+export const CardStyleSchema = z
+  .object({
+    accent: z.enum(CARD_ACCENTS).optional(),
+    icons: z.enum(CARD_ICON_STYLES).optional(),
+  })
+  .strict();
+export type CardStyleDto = z.infer<typeof CardStyleSchema>;
+
+/** Stored links: full https URLs, each on its own network. */
+export const LinksSchema = z.object({
+  instagram: z.string().url().optional(),
+  facebook: z.string().url().optional(),
+  tiktok: z.string().url().optional(),
+  waze: z.string().url().optional(),
+});
+export type LinksDto = z.infer<typeof LinksSchema>;
+
+const linkInput = (normalize: (raw: string) => string | null, what: string) =>
+  z
+    .string()
+    .trim()
+    .max(300)
+    .transform((raw, ctx) => {
+      const url = normalize(raw);
+      if (!url) {
+        ctx.addIssue({ code: z.ZodIssueCode.custom, message: `Not ${what} link or name` });
+        return z.NEVER;
+      }
+      return url;
+    });
+/** Links as people type them ("@name", "instagram.com/name"), normalised to full https URLs. */
+export const LinksInputSchema = z
+  .object({
+    instagram: linkInput(instagramUrl, "an Instagram").optional(),
+    facebook: linkInput(facebookUrl, "a Facebook").optional(),
+    tiktok: linkInput(tiktokUrl, "a TikTok").optional(),
+    waze: linkInput(wazeUrl, "a Waze").optional(),
+  })
+  .strict();
 
 /** Whole-business dietary facts (core DIETARY); gluten_free means the entire kitchen is. */
 export const DietarySchema = z.enum(DIETARY);
@@ -101,6 +171,11 @@ export const BusinessDetailSchema = BusinessSummarySchema.extend({
   whatsapp: z.string().nullable(),
   website: z.string().nullable(),
   photos: z.array(z.object({ key: z.string(), alt: LocalizedSchema })),
+  /** The owner's logo, when there is one. Keys are paths in the media bucket (MEDIA_URL). */
+  logo: LogoSchema.nullable().default(null),
+  /** Instagram, Facebook, TikTok and an own Waze link; the website stays in `website`. */
+  links: LinksSchema.default({}),
+  cardStyle: CardStyleSchema.default({}),
   hours: HoursSchema,
   attributes: z.record(z.string(), z.union([z.boolean(), z.string(), z.number()])),
   experience: z.record(z.string(), z.unknown()),

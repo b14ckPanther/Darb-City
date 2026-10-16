@@ -8,7 +8,18 @@ import {
   TIERS,
 } from "@darb/core";
 import { z } from "zod";
-import { DietarySchema, HoursSchema, LocalizedSchema, SlugSchema } from "./schemas.js";
+import {
+  CardStyleSchema,
+  DietarySchema,
+  HoursSchema,
+  LinksInputSchema,
+  LinksSchema,
+  LocalizedSchema,
+  LogoSchema,
+  PhoneSchema,
+  PhotoSchema,
+  SlugSchema,
+} from "./schemas.js";
 import {
   CtaHrefSchema,
   LocalizedListSchema,
@@ -18,6 +29,7 @@ import {
   SiteTextKeySchema,
 } from "./pricing.js";
 import { INQUIRY_STATUSES, INQUIRY_TOPICS } from "./inquiry.js";
+import { JOIN_SOURCES, JOIN_STATUSES, JoinSuggestionSchema } from "./join.js";
 import { LocaleSchema, MissingReportSchema, ReportQuerySchema } from "./search.js";
 
 const c = initContract();
@@ -39,10 +51,7 @@ const httpUrl = z
   .url()
   .max(500)
   .refine((u) => /^https?:\/\//i.test(u), { message: "Links must start with http:// or https://" });
-const phone = z
-  .string()
-  .trim()
-  .regex(/^\+?[0-9][0-9 ()-]{5,19}$/, { message: "Use digits, spaces, dashes and an optional +" });
+const phone = PhoneSchema;
 const accent = z
   .string()
   .regex(/^#[0-9a-f]{6}$/, { message: "Use a lower-case hex colour like #d9a54c" });
@@ -221,12 +230,21 @@ const businessFields = z.object({
   experience: z.record(z.string(), z.unknown()),
   tier: z.enum(TIERS),
   apps: AppsSchema,
+  links: LinksInputSchema,
+  logo: LogoSchema.nullable(),
+  photos: z.array(PhotoSchema).max(12),
+  cardStyle: CardStyleSchema,
 });
 export const AdminBusinessSchema = AdminBusinessRowSchema.extend(businessFields.shape).extend({
+  links: LinksSchema,
   brandId: id.nullable(),
 });
 export const AdminBusinessCreateSchema = businessFields.extend({
   dietary: businessFields.shape.dietary.default([]),
+  links: businessFields.shape.links.default({}),
+  logo: businessFields.shape.logo.default(null),
+  photos: businessFields.shape.photos.default([]),
+  cardStyle: businessFields.shape.cardStyle.default({}),
   slug: NewSlugSchema,
   placeId: id,
   status: z.enum(["draft", "published"]).default("draft"),
@@ -309,6 +327,41 @@ export const AdminInquiryPageSchema = z.object({
 });
 export const AdminInquiryStatusSchema = z.object({ status: z.enum(INQUIRY_STATUSES) }).strict();
 
+// Join requests (the /join form's queue)
+export const AdminJoinRequestSchema = z.object({
+  id,
+  status: z.enum(JOIN_STATUSES),
+  source: z.enum(JOIN_SOURCES),
+  ownerName: z.string(),
+  ownerPhone: z.string(),
+  ownerEmail: z.string().nullable(),
+  note: z.string().nullable(),
+  locale: LocaleSchema,
+  /** The business's name as sent, kept after a rejected draft is deleted. */
+  businessName: LocalizedSchema,
+  /** The draft (then published) business; null once a rejection deleted it. */
+  businessId: id.nullable(),
+  placeSlug: SlugSchema.nullable(),
+  lookup: JoinSuggestionSchema.nullable(),
+  rejectReason: z.string().nullable(),
+  createdAt: z.string(),
+  decidedAt: stamp,
+});
+export const AdminJoinListQuerySchema = z.object({
+  status: z.enum(JOIN_STATUSES).optional(),
+  cursor: z.string().max(200).optional(),
+  limit: z.coerce.number().int().min(1).max(100).default(50),
+});
+/** Pending first, then newest; `newCount` is every pending request (the nav's badge). */
+export const AdminJoinPageSchema = z.object({
+  items: z.array(AdminJoinRequestSchema),
+  nextCursor: z.string().nullable(),
+  newCount: z.number().int().nonnegative(),
+});
+export const AdminJoinRejectSchema = z
+  .object({ reason: z.string().trim().min(2).max(500) })
+  .strict();
+
 // Audit and identity
 export const AuditRowSchema = z.object({
   id,
@@ -346,6 +399,9 @@ export type AdminTextPatchDto = z.infer<typeof AdminTextPatchSchema>;
 export type AdminInquiryDto = z.infer<typeof AdminInquirySchema>;
 export type AdminInquiryListQueryDto = z.infer<typeof AdminInquiryListQuerySchema>;
 export type AdminInquiryPageDto = z.infer<typeof AdminInquiryPageSchema>;
+export type AdminJoinRequestDto = z.infer<typeof AdminJoinRequestSchema>;
+export type AdminJoinListQueryDto = z.infer<typeof AdminJoinListQuerySchema>;
+export type AdminJoinPageDto = z.infer<typeof AdminJoinPageSchema>;
 export type AuditRowDto = z.infer<typeof AuditRowSchema>;
 export type AdminErrorDto = z.infer<typeof AdminErrorSchema>;
 
@@ -550,6 +606,36 @@ export const adminContract = c.router({
       pathParams: byId,
       body: AdminTextPatchSchema,
       responses: { 200: AdminTextSchema, ...writeErrors },
+    },
+  }),
+  joinRequests: c.router({
+    list: {
+      method: "GET",
+      path: "/admin/join-requests",
+      query: AdminJoinListQuerySchema,
+      responses: { 200: AdminJoinPageSchema, ...guarded },
+    },
+    get: {
+      method: "GET",
+      path: "/admin/join-requests/:id",
+      pathParams: byId,
+      responses: { 200: AdminJoinRequestSchema, 404: AdminErrorSchema, ...guarded },
+    },
+    /** Publishes the draft as it now stands (edit it first in the business form), audited. */
+    approve: {
+      method: "POST",
+      path: "/admin/join-requests/:id/approve",
+      pathParams: byId,
+      body: empty,
+      responses: { 200: AdminJoinRequestSchema.extend(revalidated), ...writeErrors },
+    },
+    /** Deletes the draft and its photos; the request stays, with the reason. */
+    reject: {
+      method: "POST",
+      path: "/admin/join-requests/:id/reject",
+      pathParams: byId,
+      body: AdminJoinRejectSchema,
+      responses: { 200: AdminJoinRequestSchema, ...writeErrors },
     },
   }),
   inquiries: c.router({
