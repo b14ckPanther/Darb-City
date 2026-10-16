@@ -25,6 +25,7 @@ function adminResponse(request: NextRequest): NextResponse {
   const csp = adminCsp({
     nonce,
     clerkOrigin: clerkOrigin(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY),
+    tilesOrigin: tilesOrigin(),
     dev: DEV,
   });
   const headers = new Headers(request.headers);

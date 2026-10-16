@@ -2,6 +2,7 @@ import type { AdminBusinessDto, AdminKindDto } from "@darb/contracts";
 import { pickText, TIERS, type Locale } from "@darb/core";
 import { ActionForm } from "./ActionForm";
 import { saveBusiness } from "./business-actions";
+import { BusinessLocation } from "./BusinessLocation";
 import { EMPTY_EXPERIENCE } from "./business-form";
 import { at } from "./copy";
 import { LocalizedFields, SelectField, TextArea, TextField } from "./fields";
@@ -79,25 +80,33 @@ export function BusinessForm({
             .map((id) => kindSlug.get(id) ?? "")
             .join("\n")}
         />
-        <TextField
-          label={at(locale, "fieldLat")}
-          name="lat"
-          type="number"
-          step="any"
-          defaultValue={b?.lat}
-          dir="ltr"
-          required
-        />
-        <TextField
-          label={at(locale, "fieldLng")}
-          name="lng"
-          type="number"
-          step="any"
-          defaultValue={b?.lng}
-          dir="ltr"
-          required
-        />
       </div>
+      <BusinessLocation
+        locale={locale}
+        legend={at(locale, "fieldLocation")}
+        value={b ? { lat: b.lat, lng: b.lng } : null}
+        followPlace={!b}
+        labels={{
+          map: at(locale, "pinMap"),
+          pin: at(locale, "pinPin"),
+          hint: at(locale, "pinHint"),
+          centre: at(locale, "pinCentre"),
+          locate: at(locale, "pinLocate"),
+          locating: at(locale, "pinLocating"),
+          noLocation: at(locale, "pinNoLocation"),
+          outside: at(locale, "pinOutside"),
+          editNumbers: at(locale, "pinEditNumbers"),
+          lat: at(locale, "fieldLat"),
+          lng: at(locale, "fieldLng"),
+          noMap: at(locale, "pinNoMap"),
+          mapData: at(locale, "pinMapData"),
+          gestures: {
+            windows: at(locale, "pinGestureWindows"),
+            mac: at(locale, "pinGestureMac"),
+            mobile: at(locale, "pinGestureMobile"),
+          },
+        }}
+      />
       <div className={styles.row}>
         <TextField
           label={at(locale, "fieldPhone")}

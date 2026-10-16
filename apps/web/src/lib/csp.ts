@@ -40,14 +40,19 @@ export function publicCsp({
   });
 }
 
-/** /admin renders per request, so it gets a real nonce (Clerk's script loads under strict-dynamic). */
+/**
+ * /admin renders per request, so it gets a real nonce (Clerk's script loads under strict-dynamic).
+ * The business location picker reads the same tiles as the city, from R2 in production.
+ */
 export function adminCsp({
   nonce,
   clerkOrigin,
+  tilesOrigin,
   dev,
 }: {
   nonce: string;
   clerkOrigin: string | null;
+  tilesOrigin: string | null;
   dev: boolean;
 }): string {
   const clerk = clerkOrigin ? [clerkOrigin] : [];
@@ -61,7 +66,12 @@ export function adminCsp({
       "https://challenges.cloudflare.com",
       ...(dev ? ["'unsafe-eval'"] : []),
     ],
-    "connect-src": ["'self'", ...clerk, ...(dev ? ["ws:"] : [])],
+    "connect-src": [
+      "'self'",
+      ...clerk,
+      ...(tilesOrigin ? [tilesOrigin] : []),
+      ...(dev ? ["ws:"] : []),
+    ],
     "img-src": ["'self'", "data:", "https://img.clerk.com"],
     "frame-src": ["https://challenges.cloudflare.com"],
     "worker-src": ["'self'", "blob:"],

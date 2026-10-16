@@ -22,13 +22,31 @@ it("development adds eval and the HMR socket only", () => {
 });
 
 it("admin pages: a nonce with strict-dynamic, and Clerk's origin", () => {
-  const csp = adminCsp({ nonce: "abc", clerkOrigin: "https://clerk.darb.co.il", dev: false });
+  const csp = adminCsp({
+    nonce: "abc",
+    clerkOrigin: "https://clerk.darb.co.il",
+    tilesOrigin: null,
+    dev: false,
+  });
   expect(directive(csp, "script-src")).toBe(
     "script-src 'self' 'nonce-abc' 'strict-dynamic' https://clerk.darb.co.il https://challenges.cloudflare.com",
   );
   expect(directive(csp, "connect-src")).toBe("connect-src 'self' https://clerk.darb.co.il");
   expect(directive(csp, "frame-src")).toBe("frame-src https://challenges.cloudflare.com");
   expect(directive(csp, "img-src")).toBe("img-src 'self' data: https://img.clerk.com");
+});
+
+it("admin pages read the map tiles from R2 for the location picker, workers from self and blob:", () => {
+  const csp = adminCsp({
+    nonce: "abc",
+    clerkOrigin: "https://clerk.darb.co.il",
+    tilesOrigin: "https://tiles.darb.co.il",
+    dev: false,
+  });
+  expect(directive(csp, "connect-src")).toBe(
+    "connect-src 'self' https://clerk.darb.co.il https://tiles.darb.co.il",
+  );
+  expect(directive(csp, "worker-src")).toBe("worker-src 'self' blob:");
 });
 
 it("sends the standard hardening headers, geolocation for this site only", () => {
