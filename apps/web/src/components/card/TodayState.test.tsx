@@ -39,7 +39,7 @@ it("says until when it is open, and draws today's shifts on the dial", () => {
     "conic-gradient(transparent 0 135deg, var(--card-accent) 0 195deg,transparent 0 240deg, var(--card-accent) 0 360deg, transparent 0)",
   );
   expect(dial.style.getPropertyValue("--now")).toBe("150deg");
-  expect(screen.getByText("09:00–13:00, 16:00–00:00")).toBeTruthy();
+  expect(screen.getByText("09:00-13:00, 16:00-00:00")).toBeTruthy();
 });
 
 it("says when it opens between shifts, and a midnight close as 00:00", async () => {

@@ -31,7 +31,7 @@ type WeeklyHours = { weekly: Partial<Record<string, { open: string; close: strin
 export interface HoursRow {
   day: number;
   name: string;
-  /** "09:00–19:00, 20:00–23:00" (render inside dir="ltr") or the localized "Closed". */
+  /** "09:00-19:00, 20:00-23:00" (render inside dir="ltr") or the localized "Closed". */
   text: string;
   closed: boolean;
   today: boolean;
@@ -61,7 +61,7 @@ export function hoursRows(hours: WeeklyHours, locale: Locale, at: Date = new Dat
       name,
       closed,
       today: day === today,
-      text: closed ? t(locale, "closed") : intervals.map((i) => `${i.open}–${i.close}`).join(", "),
+      text: closed ? t(locale, "closed") : intervals.map((i) => `${i.open}-${i.close}`).join(", "),
     };
   });
 }

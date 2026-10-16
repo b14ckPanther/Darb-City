@@ -43,7 +43,7 @@ describe("the visual week", () => {
     expect(rows[2]!.hasAttribute("data-closed")).toBe(true);
     expect(rows[2]!.textContent).toContain("Closed");
     const sunday = [...rows[0]!.querySelectorAll("[dir=ltr]")].map((s) => s.textContent);
-    expect(sunday).toEqual(["09:00–13:00", "16:00–22:00"]);
+    expect(sunday).toEqual(["09:00-13:00", "16:00-22:00"]);
     expect(rows[0]!.querySelectorAll("[style]")).toHaveLength(2);
   });
 

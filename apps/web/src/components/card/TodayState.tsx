@@ -84,7 +84,7 @@ export function TodayState({
         {plan.spans.length && !allDay ? (
           <span className={styles.todaySpans}>
             {labels.today}{" "}
-            <span dir="ltr">{plan.spans.map(([s, e]) => `${hhmm(s)}–${hhmm(e)}`).join(", ")}</span>
+            <span dir="ltr">{plan.spans.map(([s, e]) => `${hhmm(s)}-${hhmm(e)}`).join(", ")}</span>
           </span>
         ) : null}
       </p>
