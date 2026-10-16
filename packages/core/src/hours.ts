@@ -96,63 +96,20 @@ function nextDate(date: string): string {
   return new Date(Date.UTC(y, m - 1, d + 1)).toISOString().slice(0, 10);
 }
 
-const DAY = 24 * 60;
-
-/** What a business card says about today: open until when, or when it opens next. */
-export interface DayPlan {
-  open: boolean;
-  /** Minutes since local midnight, Israel time. */
-  minutes: number;
-  /** Today's open spans in minutes (0 to 1440), last night's overnight tail included. */
-  spans: [number, number][];
-  /** While open: the closing time ("HH:MM"); null when today is open around the clock. */
-  closesAt: string | null;
-  /** While closed: the next opening, later today or tomorrow; null when neither has one. */
-  opensAt: { time: string; day: "today" | "tomorrow" } | null;
-}
-
-/** Today at a glance, from the same weekly hours and exceptions as isOpenAt. */
-export function dayPlan(hours: Hours, at: Date): DayPlan {
+/**
+ * The intervals around a moment, Israel time, exceptions applied: yesterday's (for a shift past
+ * midnight), today's and tomorrow's, with the minutes since midnight. What a card needs to say
+ * "Open until 22:00" or "Opens tomorrow at 09:00".
+ */
+export function daysAround(
+  hours: Hours,
+  at: Date,
+): { minutes: number; yesterday: Interval[]; today: Interval[]; tomorrow: Interval[] } {
   const now = local(at);
-  const yesterday = ((now.weekday + 6) % 7) as Weekday;
-  const today = intervalsFor(hours, now.date, now.weekday);
-  const spans: [number, number][] = [];
-  let closesAt: string | null = null;
-  for (const { close, open } of intervalsFor(hours, previousDate(now.date), yesterday)) {
-    const c = toMinutes(close);
-    if (c <= toMinutes(open) && c > 0) {
-      spans.push([0, c]);
-      if (now.minutes < c) closesAt = close;
-    }
-  }
-  for (const { open, close } of today) {
-    const o = toMinutes(open);
-    const c = toMinutes(close);
-    const end = c > o ? c : DAY;
-    spans.push([o, end]);
-    if (now.minutes >= o && now.minutes < end) closesAt = close;
-  }
-  spans.sort((a, b) => a[0] - b[0]);
-  const open = !isByAppointment(hours) && isOpenAt(hours, at);
-  // Spans that touch from midnight to midnight: nothing closes today.
-  let reach = 0;
-  for (const [s, e] of spans) if (s <= reach) reach = Math.max(reach, e);
-  if (open && reach >= DAY) closesAt = null;
-  let opensAt: DayPlan["opensAt"] = null;
-  if (!open) {
-    const later = today
-      .map((i) => i.open)
-      .filter((o) => toMinutes(o) > now.minutes)
-      .sort()[0];
-    const tomorrow = ((now.weekday + 1) % 7) as Weekday;
-    const first = intervalsFor(hours, nextDate(now.date), tomorrow)
-      .map((i) => i.open)
-      .sort()[0];
-    opensAt = later
-      ? { time: later, day: "today" }
-      : first
-        ? { time: first, day: "tomorrow" }
-        : null;
-  }
-  return { open, minutes: now.minutes, spans, closesAt: open ? closesAt : null, opensAt };
+  return {
+    minutes: now.minutes,
+    yesterday: intervalsFor(hours, previousDate(now.date), ((now.weekday + 6) % 7) as Weekday),
+    today: intervalsFor(hours, now.date, now.weekday),
+    tomorrow: intervalsFor(hours, nextDate(now.date), ((now.weekday + 1) % 7) as Weekday),
+  };
 }
