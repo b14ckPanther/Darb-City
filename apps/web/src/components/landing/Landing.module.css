@@ -807,3 +807,125 @@
     transform: none;
   }
 }
+
+/* ---- The hero's name: Darb in its three scripts, one lit at a time, on a short gold road ---- */
+
+.names {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 6px var(--space-3) 6px 6px;
+  border: 1px solid rgb(217 165 76 / 0.28);
+  border-radius: var(--radius-pill);
+  background: linear-gradient(90deg, rgb(217 165 76 / 0.12), rgb(217 165 76 / 0.02));
+  font-size: var(--step--1);
+  font-weight: 700;
+  line-height: 1;
+}
+
+:global([dir="rtl"]) .names {
+  padding: 6px 6px 6px var(--space-3);
+}
+
+/* A small road that winds into the names, the same gold as the page's road. */
+.namesRoad {
+  flex: none;
+  display: grid;
+  place-items: center;
+  inline-size: 26px;
+  block-size: 26px;
+  border-radius: 50%;
+  background: rgb(217 165 76 / 0.16);
+  color: var(--gold-300);
+}
+
+.namesRoad svg {
+  inline-size: 16px;
+  block-size: 16px;
+}
+
+.namesList {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.namesList > * {
+  color: var(--accent-bright);
+  opacity: 0.45;
+  animation: lit 6s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 2s);
+}
+
+.namesList > * + *::before {
+  content: "";
+  display: inline-block;
+  inline-size: 4px;
+  block-size: 4px;
+  margin-inline-end: var(--space-2);
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0.6;
+  vertical-align: middle;
+}
+
+@keyframes lit {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  12%,
+  28% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0.45;
+  }
+}
+
+/*
+ * Phones: the mark leads, small, above the copy, so it is the first thing seen and never sits under
+ * the docked search bar; the hero ends above the bar and the iPhone home indicator. (Last in the
+ * file, so it wins over the base rules above.)
+ */
+@media (max-width: 899px) {
+  .heroStage {
+    min-block-size: 0;
+    grid-template-rows: auto auto;
+    align-content: start;
+    gap: var(--space-2);
+    padding-block: var(--space-4)
+      calc(var(--dock-size) + var(--space-5) + env(safe-area-inset-bottom));
+  }
+
+  .heroVisual {
+    order: -1;
+    block-size: auto;
+  }
+
+  .markWrap {
+    block-size: clamp(96px, 15svh, 150px);
+  }
+
+  .heroTitle {
+    margin-block: var(--space-3);
+  }
+
+  .actions {
+    flex-wrap: nowrap;
+    margin-block-start: var(--space-4);
+  }
+
+  .actions > * {
+    flex: 1 1 0;
+    min-inline-size: 0;
+    padding-inline: var(--space-3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .namesList > * {
+    animation: none;
+    opacity: 1;
+  }
+}

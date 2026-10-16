@@ -211,7 +211,7 @@ function Viewer({
 
 /**
  * The showroom: one section per project, each a laptop and a phone showing its real screens.
- * Screenshots keep scrolling light; "Try it live" opens the real site in a viewer, one at a time.
+ * Screenshots keep scrolling light; "Live" opens the real site in a viewer, one at a time.
  * /showroom#caramel lands on that project.
  */
 export function Showroom({
