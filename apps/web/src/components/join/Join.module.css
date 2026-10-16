@@ -611,6 +611,625 @@
   text-transform: uppercase;
 }
 
+/* The card itself, as the public sheet draws it, on a panel like the sheet's. */
+.card {
+  margin: 0;
+  padding: var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-l);
+  background: var(--surface-1);
+  box-shadow: 0 24px 60px -30px rgb(0 0 0 / 0.8);
+}
+
+.done {
+  max-inline-size: 1120px;
+  margin: 0 auto var(--space-8);
+  min-inline-size: 0;
+}
+
+.find {
+  max-inline-size: 720px;
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-6) var(--space-5);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-l);
+  background:
+    linear-gradient(180deg, rgb(251 247 236 / 0.035), transparent 40%),
+    linear-gradient(180deg, var(--surface-2), var(--surface-1));
+}
+
+.findForm {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.findLabel {
+  font-size: var(--step-1);
+  font-weight: 700;
+}
+
+.findRow {
+  display: grid;
+  gap: var(--space-3);
+}
+
+@media (min-width: 560px) {
+  .findRow {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+}
+
+.findMore {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* 16px or more, so phones never zoom into a field. */
+.find input,
+.field input,
+.field select,
+.field textarea,
+.group textarea,
+.times input {
+  box-sizing: border-box;
+  inline-size: 100%;
+  min-block-size: var(--tap);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  background: var(--night);
+  color: var(--text);
+  font: inherit;
+  font-size: max(1rem, var(--step-0));
+}
+
+.find input {
+  min-block-size: 56px;
+  font-size: max(1.125rem, var(--step-1));
+}
+
+.find input:hover,
+.field input:hover,
+.field textarea:hover,
+.group textarea:hover {
+  border-color: var(--gold);
+}
+
+.field [aria-invalid="true"],
+.times [aria-invalid="true"] {
+  border-color: #f0a08a;
+}
+
+.hint,
+.sources {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: var(--step--1);
+}
+
+.sources a {
+  color: var(--gold-300);
+}
+
+.notice {
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-m);
+  border: 1px solid var(--line);
+  background: rgb(217 165 76 / 0.08);
+}
+
+.progress {
+  position: relative;
+  display: grid;
+  gap: var(--space-2);
+  min-block-size: 1.5em;
+  margin: 0;
+  color: var(--gold-300);
+  font-weight: 700;
+}
+
+/* A thin gold light running along the bar while the lookup works. */
+.progressBar {
+  display: block;
+  block-size: 3px;
+  border-radius: var(--radius-pill);
+  background: rgb(217 165 76 / 0.15);
+  overflow: hidden;
+}
+
+.progressBar::after {
+  content: "";
+  display: block;
+  inline-size: 40%;
+  block-size: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  animation: run 700ms linear infinite;
+}
+
+@keyframes run {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(250%);
+  }
+}
+
+[dir="rtl"] .progressBar::after {
+  animation-direction: reverse;
+}
+
+.alert {
+  margin: 0;
+  padding: var(--space-4);
+  border-radius: var(--radius-m);
+  border: 1px solid rgb(240 160 138 / 0.4);
+  background: rgb(58 20 16 / 0.6);
+}
+
+.alert p {
+  margin: 0;
+}
+
+.primary,
+.secondary,
+.linkButton,
+.chip,
+.copyAll,
+.thumbButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: var(--tap);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.primary,
+.secondary {
+  padding-inline: var(--space-6);
+  border-radius: var(--radius-pill);
+}
+
+.primary {
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, var(--gold-300), var(--gold) 60%);
+  color: var(--night);
+}
+
+.primary:hover {
+  background: linear-gradient(135deg, var(--gold-100), var(--gold-300) 60%);
+}
+
+.primary:disabled,
+.secondary:disabled,
+.linkButton:disabled {
+  cursor: progress;
+  opacity: 0.7;
+}
+
+.secondary {
+  border: 1px solid var(--line);
+  background: rgb(251 247 236 / 0.03);
+  color: var(--gold-300);
+}
+
+.secondary:hover {
+  border-color: var(--gold);
+  background: rgb(217 165 76 / 0.1);
+}
+
+.linkButton {
+  padding-inline: var(--space-2);
+  border: 0;
+  background: none;
+  color: var(--text-soft);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.check {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.checkHead {
+  display: grid;
+  gap: var(--space-2);
+  justify-items: start;
+}
+
+.stepTitle {
+  margin: 0;
+  font-size: var(--step-3);
+}
+
+.stepTitle:focus-visible {
+  box-shadow: none;
+}
+
+.checkLayout {
+  display: grid;
+  gap: var(--space-5);
+  min-inline-size: 0;
+}
+
+@media (min-width: 960px) {
+  .checkLayout {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    align-items: start;
+  }
+
+  .previewAside {
+    position: sticky;
+    inset-block-start: var(--space-5);
+  }
+}
+
+/* Phones: the card first, small, so the owner sees what they are building. */
+@media (max-width: 959px) {
+  .previewAside {
+    order: -1;
+  }
+}
+
+.form {
+  display: grid;
+  gap: var(--space-5);
+  min-inline-size: 0;
+}
+
+.group {
+  display: grid;
+  gap: var(--space-4);
+  min-inline-size: 0;
+  margin: 0;
+  padding: var(--space-5) var(--space-4);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-l);
+  background: var(--surface-1);
+}
+
+.group legend {
+  padding-inline: var(--space-2);
+  color: var(--gold-300);
+  font-weight: 700;
+}
+
+.private {
+  border-style: dashed;
+}
+
+.row {
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.field {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+  min-inline-size: 0;
+}
+
+.field > label {
+  color: var(--text-soft);
+  font-weight: 700;
+  font-size: var(--step--1);
+}
+
+.optional {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.fieldError {
+  margin: 0;
+  color: #f0a08a;
+  font-size: var(--step--1);
+}
+
+.more summary {
+  display: flex;
+  align-items: center;
+  min-block-size: var(--tap);
+  color: var(--text-soft);
+  cursor: pointer;
+}
+
+.more[open] {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.check2 {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-block-size: var(--tap);
+  color: var(--text-soft);
+}
+
+.check2 input,
+.dayName input {
+  inline-size: 24px;
+  block-size: 24px;
+  accent-color: var(--gold);
+}
+
+@media (min-width: 640px) {
+  .row .check2 {
+    margin-block-start: calc(1.5em + var(--space-2));
+  }
+}
+
+.options {
+  position: absolute;
+  inset-block-start: 100%;
+  inset-inline: 0;
+  z-index: 5;
+  margin: var(--space-1) 0 0;
+  padding: var(--space-1);
+  list-style: none;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  background: var(--surface-2);
+  box-shadow: 0 16px 40px -12px rgb(0 0 0 / 0.6);
+}
+
+.option,
+.noMatch {
+  display: flex;
+  align-items: center;
+  min-block-size: var(--tap);
+  padding-inline: var(--space-3);
+  border-radius: var(--radius-s, 8px);
+}
+
+.option {
+  cursor: pointer;
+}
+
+.option[aria-selected="true"],
+.option:hover {
+  background: rgb(217 165 76 / 0.14);
+}
+
+.noMatch {
+  color: var(--text-muted);
+}
+
+.week {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.presets,
+.swatches,
+.segmented {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.chip {
+  padding-inline: var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: rgb(251 247 236 / 0.03);
+  color: var(--text-soft);
+  font-weight: 400;
+}
+
+.chip:hover {
+  border-color: var(--gold);
+}
+
+.days {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.day {
+  display: grid;
+  gap: var(--space-2);
+  padding-block: var(--space-2);
+  border-block-end: 1px solid var(--line-soft);
+}
+
+@media (min-width: 640px) {
+  .day {
+    grid-template-columns: 9rem minmax(0, 1fr);
+    align-items: center;
+  }
+}
+
+.dayName {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-block-size: var(--tap);
+  font-weight: 700;
+}
+
+.times {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.times input {
+  inline-size: 8.5rem;
+}
+
+.copyAll {
+  padding-inline: var(--space-3);
+  border: 0;
+  background: none;
+  color: var(--gold-300);
+  font-weight: 400;
+  font-size: var(--step--1);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.photos {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.thumbs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+  gap: var(--space-3);
+}
+
+.thumb {
+  position: relative;
+  display: grid;
+  align-content: end;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  background: var(--night);
+}
+
+.thumb img {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+.thumb[data-logo] img {
+  object-fit: contain;
+  padding: var(--space-3);
+  box-sizing: border-box;
+}
+
+.thumbTools {
+  position: relative;
+  display: grid;
+}
+
+.thumbButton {
+  position: relative;
+  border: 0;
+  background: rgb(3 17 12 / 0.8);
+  color: var(--ivory-200, #f4ecd8);
+  font-weight: 400;
+  font-size: var(--step--1);
+}
+
+.add {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  min-block-size: var(--tap);
+  inline-size: 100%;
+  block-size: 100%;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-m);
+  color: var(--gold-300);
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+}
+
+.add:focus-within {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.swatch {
+  position: relative;
+  inline-size: var(--tap);
+  block-size: var(--tap);
+  border-radius: var(--radius-pill);
+  border: 3px solid transparent;
+  cursor: pointer;
+}
+
+.swatch:has(input:checked) {
+  border-color: var(--text);
+  box-shadow: 0 0 0 2px var(--night) inset;
+}
+
+.swatch:has(input:focus-visible) {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.segment {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-block-size: var(--tap);
+  padding-inline: var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+}
+
+.segment:has(input:checked) {
+  border-color: var(--gold);
+  background: rgb(217 165 76 / 0.12);
+}
+
+.segment input {
+  accent-color: var(--gold);
+}
+
+/* Off the page for people and screen readers; bots still find and fill it. */
+.trap {
+  position: absolute;
+  inset-inline-start: -10000px;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+}
+
+.srOnly {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.previewTitle {
+  margin: 0 0 var(--space-2);
+  color: var(--text-muted);
+  font-size: var(--step--1);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 /* The card itself: the owner's accent leads, Darb's night stays behind it. */
 .card {
   --accent: var(--gold);

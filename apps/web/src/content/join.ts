@@ -1,4 +1,5 @@
 import type { Locale } from "@darb/core";
+import { card, type CardCopy } from "./card";
 
 /** Everything the /join form says: passed to the client component as it is. */
 export interface JoinCopy {
@@ -88,16 +89,9 @@ export interface JoinCopy {
   };
   preview: {
     title: string;
-    openNow: string;
-    closedNow: string;
-    call: string;
-    whatsapp: string;
-    waze: string;
-    website: string;
-    instagram: string;
-    facebook: string;
-    tiktok: string;
     yourName: string;
+    /** The card's own words: the preview draws the public card. */
+    card: CardCopy;
   };
   done: { title: string; body: string; home: string };
   errors: {
@@ -227,16 +221,8 @@ export const join: Record<Locale, JoinCopy> = {
     },
     preview: {
       title: "ככה זה ייראה",
-      openNow: "פתוח עכשיו",
-      closedNow: "סגור עכשיו",
-      call: "התקשרות",
-      whatsapp: "וואטסאפ",
-      waze: "ווייז",
-      website: "אתר",
-      instagram: "אינסטגרם",
-      facebook: "פייסבוק",
-      tiktok: "טיקטוק",
       yourName: "שם העסק",
+      card: card.he,
     },
     done: {
       title: "תודה! קיבלנו.",
@@ -293,13 +279,13 @@ export const join: Record<Locale, JoinCopy> = {
       label: "اسم المصلحة والبلد، أو رابط",
       hint: "فيك تلزق رابط من خرائط جوجل، ويز، إنستغرام أو فيسبوك.",
       search: "دوّر",
-      here: "أنا بالمصلحة هلقيت",
+      here: "أنا موجود بالمصلحة",
       manual: "بعبّي لحالي",
       progress: ["عم نطلع عالخريطة...", "عم نقرا صفحتك...", "عم نكتب الكرت..."],
       locating: "عم نلاقي وينك...",
       noLocation: "ما قدرنا ناخد الموقع. فيك تدوّر بالاسم أو تعبّي لحالك.",
       none: "ما لقينا المصلحة. عبّي التفاصيل، بتاخد دقيقتين.",
-      off: "البحث الذكي مش شغال هلقيت. عبّي التفاصيل، بتاخد دقيقتين.",
+      off: "البحث الذكي واقف شوي. عبّي التفاصيل بإيدك، بتاخد دقيقتين.",
       excluded: "درب ما بعرض مصالح من هالنوع.",
       tooMany: "دوّرت كم مرة. عبّي لحالك، أو جرّب كمان ساعة.",
       failed: "البحث ما زبط. جرّب كمان مرة أو عبّي لحالك.",
@@ -372,16 +358,8 @@ export const join: Record<Locale, JoinCopy> = {
     },
     preview: {
       title: "هيك رح يبيّن",
-      openNow: "فاتح هلقيت",
-      closedNow: "مسكّر هلقيت",
-      call: "اتصال",
-      whatsapp: "واتساب",
-      waze: "ويز",
-      website: "موقع",
-      instagram: "إنستغرام",
-      facebook: "فيسبوك",
-      tiktok: "تيك توك",
       yourName: "اسم المصلحة",
+      card: card.ar,
     },
     done: {
       title: "شكرًا! وصلتنا.",
@@ -517,16 +495,8 @@ export const join: Record<Locale, JoinCopy> = {
     },
     preview: {
       title: "How it will look",
-      openNow: "Open now",
-      closedNow: "Closed now",
-      call: "Call",
-      whatsapp: "WhatsApp",
-      waze: "Waze",
-      website: "Website",
-      instagram: "Instagram",
-      facebook: "Facebook",
-      tiktok: "TikTok",
       yourName: "Your business",
+      card: card.en,
     },
     done: {
       title: "Thanks! We got it.",
