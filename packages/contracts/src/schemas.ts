@@ -161,6 +161,9 @@ export const BusinessSummarySchema = z.object({
   dietary: z.array(DietarySchema).default([]),
   /** Kilometres from the point a list was sorted by; absent otherwise. */
   distanceKm: z.number().nonnegative().optional(),
+  /** The owner's logo and accent, so list rows wear the card's look; absent from older caches. */
+  logo: LogoSchema.nullable().optional(),
+  cardStyle: CardStyleSchema.optional(),
 });
 export type BusinessSummaryDto = z.infer<typeof BusinessSummarySchema>;
 

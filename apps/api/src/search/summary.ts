@@ -21,6 +21,8 @@ export function candidateSummary(c: Ranked, now: Date): BusinessSummaryDto {
     openNow: openNow(row.hours as Hours, now),
     hours: row.hours as BusinessSummaryDto["hours"],
     dietary: row.dietary ?? [],
+    logo: (row.logo as BusinessSummaryDto["logo"]) ?? null,
+    cardStyle: (row.cardStyle ?? {}) as BusinessSummaryDto["cardStyle"],
     ...(c.km === null ? {} : { distanceKm: c.km }),
   };
 }

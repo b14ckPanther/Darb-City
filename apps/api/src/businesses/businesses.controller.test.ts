@@ -52,6 +52,21 @@ describe("GET /places/:placeSlug/businesses", () => {
     expect(abu.hours).toMatchObject({ weekly: expect.any(Object), exceptions: [] });
     expect(Object.keys(abu.hours.weekly).length).toBeGreaterThan(0);
   });
+  it("carries the owner's logo and accent, so list rows wear the card's look", async () => {
+    const prisma = app.get(PrismaService);
+    const key = "pending/0b3c6b1e-6f0e-4d36-9b0e-2f7f8c1d2a10.webp";
+    await prisma.business.updateMany({
+      where: { slug: "little-cuts" },
+      data: { logo: { key }, cardStyle: { accent: "#5fb3a8", icons: "solid" } },
+    });
+    const res = await get("/places/sakhnin/businesses?kind=barbershops");
+    const bySlug = (slug: string) => res.body.items.find((b: { slug: string }) => b.slug === slug);
+    expect(bySlug("little-cuts")).toMatchObject({
+      logo: { key },
+      cardStyle: { accent: "#5fb3a8", icons: "solid" },
+    });
+    expect(bySlug("abu-salim")).toMatchObject({ logo: null, cardStyle: {} });
+  });
   it("filters to open businesses", async () => {
     const res = await get("/places/sakhnin/businesses?kind=barbershops&openNow=true");
     expect(slugs(res.body.items)).toEqual(["abu-salim"]);

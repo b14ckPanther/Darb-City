@@ -33,6 +33,8 @@ export function toBusinessSummary(row: Business, place: PlaceRef, now: Date): Bu
     openNow: openNow(row.hours as unknown as Hours, now),
     hours: row.hours as unknown as BusinessSummaryDto["hours"],
     dietary: row.dietary,
+    logo: (row.logo as BusinessSummaryDto["logo"]) ?? null,
+    cardStyle: (row.cardStyle ?? {}) as BusinessSummaryDto["cardStyle"],
   };
 }
 
