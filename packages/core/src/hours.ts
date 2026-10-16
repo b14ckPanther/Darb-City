@@ -44,13 +44,13 @@ const formatter = new Intl.DateTimeFormat("en-US", {
   hourCycle: "h23",
 });
 
-interface LocalMoment {
+export interface LocalMoment {
   date: string;
   weekday: Weekday;
   minutes: number;
 }
 
-function local(at: Date): LocalMoment {
+export function local(at: Date): LocalMoment {
   const parts = Object.fromEntries(formatter.formatToParts(at).map((p) => [p.type, p.value]));
   return {
     date: `${parts.year}-${parts.month}-${parts.day}`,
@@ -59,7 +59,7 @@ function local(at: Date): LocalMoment {
   };
 }
 
-function previousDate(date: string): string {
+export function previousDate(date: string): string {
   const [y, m, d] = date.split("-").map(Number) as [number, number, number];
   return new Date(Date.UTC(y, m - 1, d - 1)).toISOString().slice(0, 10);
 }
@@ -69,7 +69,7 @@ function toMinutes(time: string): number {
   return h * 60 + m;
 }
 
-function intervalsFor(hours: Hours, date: string, weekday: Weekday): Interval[] {
+export function intervalsFor(hours: Hours, date: string, weekday: Weekday): Interval[] {
   const exception = hours.exceptions.find((e) => e.date === date);
   return exception ? exception.intervals : (hours.weekly[weekday] ?? []);
 }
@@ -89,27 +89,4 @@ export function isOpenAt(hours: Hours, at: Date): boolean {
     if (c <= o && now.minutes < c) return true;
   }
   return false;
-}
-
-function nextDate(date: string): string {
-  const [y, m, d] = date.split("-").map(Number) as [number, number, number];
-  return new Date(Date.UTC(y, m - 1, d + 1)).toISOString().slice(0, 10);
-}
-
-/**
- * The intervals around a moment, Israel time, exceptions applied: yesterday's (for a shift past
- * midnight), today's and tomorrow's, with the minutes since midnight. What a card needs to say
- * "Open until 22:00" or "Opens tomorrow at 09:00".
- */
-export function daysAround(
-  hours: Hours,
-  at: Date,
-): { minutes: number; yesterday: Interval[]; today: Interval[]; tomorrow: Interval[] } {
-  const now = local(at);
-  return {
-    minutes: now.minutes,
-    yesterday: intervalsFor(hours, previousDate(now.date), ((now.weekday + 6) % 7) as Weekday),
-    today: intervalsFor(hours, now.date, now.weekday),
-    tomorrow: intervalsFor(hours, nextDate(now.date), ((now.weekday + 1) % 7) as Weekday),
-  };
 }

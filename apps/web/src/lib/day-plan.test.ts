@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { Hours } from "@darb/core";
-import { dayPlan } from "./day-plan";
+import { dayPlan, daysAround } from "./day-plan";
 
 const at = (iso: string) => new Date(iso);
 
@@ -54,5 +54,24 @@ describe("dayPlan", () => {
   it("is never open by appointment", () => {
     const plan = dayPlan({ ...split, byAppointment: true }, at("2026-10-12T07:00:00Z"));
     expect(plan.open).toBe(false);
+  });
+});
+
+describe("daysAround", () => {
+  it("gives yesterday's, today's and tomorrow's intervals, exceptions applied", () => {
+    const hours: Hours = {
+      weekly: {
+        0: [{ open: "20:00", close: "02:00" }],
+        1: [{ open: "09:00", close: "17:00" }],
+        2: [{ open: "08:00", close: "12:00" }],
+      },
+      exceptions: [{ date: "2026-10-13", intervals: [] }],
+    };
+    expect(daysAround(hours, at("2026-10-12T07:00:00Z"))).toEqual({
+      minutes: 600, // Mon 10:00
+      yesterday: [{ open: "20:00", close: "02:00" }],
+      today: [{ open: "09:00", close: "17:00" }],
+      tomorrow: [],
+    });
   });
 });

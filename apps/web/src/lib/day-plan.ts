@@ -1,10 +1,40 @@
-import { daysAround, isOpenAt, type Hours } from "@darb/core";
+import {
+  intervalsFor,
+  isOpenAt,
+  local,
+  previousDate,
+  type Hours,
+  type Interval,
+  type Weekday,
+} from "@darb/core";
 
 const DAY = 24 * 60;
 const toMinutes = (time: string) => {
   const [h, m] = time.split(":").map(Number) as [number, number];
   return h * 60 + m;
 };
+
+function nextDate(date: string): string {
+  const [y, m, d] = date.split("-").map(Number) as [number, number, number];
+  return new Date(Date.UTC(y, m - 1, d + 1)).toISOString().slice(0, 10);
+}
+
+/**
+ * The intervals around a moment, Israel time, exceptions applied: yesterday's (for a shift past
+ * midnight), today's and tomorrow's, with the minutes since midnight.
+ */
+export function daysAround(
+  hours: Hours,
+  at: Date,
+): { minutes: number; yesterday: Interval[]; today: Interval[]; tomorrow: Interval[] } {
+  const now = local(at);
+  return {
+    minutes: now.minutes,
+    yesterday: intervalsFor(hours, previousDate(now.date), ((now.weekday + 6) % 7) as Weekday),
+    today: intervalsFor(hours, now.date, now.weekday),
+    tomorrow: intervalsFor(hours, nextDate(now.date), ((now.weekday + 1) % 7) as Weekday),
+  };
+}
 
 /** What a business card says about today: open until when, or when it opens next. */
 export interface DayPlan {
