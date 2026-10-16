@@ -34,6 +34,28 @@ export function directionsHref(lat: number, lng: number): string {
   return `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
 }
 
+/** Driving there in Waze, the app most drivers here use; Google Maps stays the second way. */
+export function wazeHref(lat: number, lng: number): string {
+  return `https://waze.com/ul?ll=${lat},${lng}&navigate=yes`;
+}
+
+/**
+ * Waze for a business: the owner's own Waze link when they gave one, else the pin. Null for a home
+ * business, whose street stays private (its pin is only the town).
+ */
+export function businessWaze(business: {
+  lat: number;
+  lng: number;
+  links?: { waze?: string };
+  attributes?: Record<string, unknown>;
+}): string | null {
+  if (addressHidden(business.attributes)) return null;
+  const own = safeHttpUrl(business.links?.waze);
+  return own && /^https:\/\/(?:[\w-]+\.)*waze\.com\//.test(own)
+    ? own
+    : wazeHref(business.lat, business.lng);
+}
+
 export type PrimaryAction =
   | { kind: "app"; href: string }
   | { kind: "directions"; href: string }
