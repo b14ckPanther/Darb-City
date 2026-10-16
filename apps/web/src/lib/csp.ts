@@ -1,5 +1,8 @@
 type Directives = Record<string, string[]>;
 
+/** The media bucket's public domain (R2, darb-media): business photos and logos. */
+export const MEDIA_ORIGIN = "https://media.darb.co.il";
+
 const serialize = (d: Directives) =>
   Object.entries(d)
     .map(([k, v]) => (v.length ? `${k} ${v.join(" ")}` : k))
@@ -8,7 +11,7 @@ const serialize = (d: Directives) =>
 const base = (dev: boolean): Directives => ({
   "default-src": ["'self'"],
   "style-src": ["'self'", "'unsafe-inline'"],
-  "img-src": ["'self'", "data:"],
+  "img-src": ["'self'", "data:", MEDIA_ORIGIN],
   "font-src": ["'self'"],
   "worker-src": ["'self'"],
   "manifest-src": ["'self'"],
@@ -72,7 +75,7 @@ export function adminCsp({
       ...(tilesOrigin ? [tilesOrigin] : []),
       ...(dev ? ["ws:"] : []),
     ],
-    "img-src": ["'self'", "data:", "https://img.clerk.com"],
+    "img-src": ["'self'", "data:", "https://img.clerk.com", MEDIA_ORIGIN],
     "frame-src": ["https://challenges.cloudflare.com"],
     "worker-src": ["'self'", "blob:"],
   });

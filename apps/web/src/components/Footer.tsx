@@ -102,7 +102,7 @@ export function Footer({
             </span>
           </Link>
           <p className={styles.motto}>{copy.motto}</p>
-          <Link className={styles.cta} href={href(locale, paths.contact())}>
+          <Link className={styles.cta} href={href(locale, paths.join())}>
             {copy.cta}
           </Link>
         </div>

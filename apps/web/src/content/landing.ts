@@ -32,7 +32,7 @@ export interface LandingCopy {
     open: string;
     clients: { name: string; kind: string; url: string }[];
   };
-  join: { title: string; body: string; pricing: string; talk: string };
+  join: { title: string; body: string; pricing: string; list: string };
 }
 
 const CLIENT_URLS = {
@@ -108,7 +108,7 @@ export const landing: Record<Locale, LandingCopy> = {
       title: "רוצים אפליקציה שאין לאף אחד אחר?",
       body: "ספרו לנו על העסק. נבנה לו דרך משלו.",
       pricing: "לראות את התוכניות",
-      talk: "לדבר איתנו",
+      list: "להוסיף את העסק שלי",
     },
   },
   ar: {
@@ -174,7 +174,7 @@ export const landing: Record<Locale, LandingCopy> = {
       title: "بدك تطبيق ما حدا عنده متله؟",
       body: "احكيلنا عن مصلحتك. منعملها درب خاص فيها.",
       pricing: "شوف الخطط",
-      talk: "احكي معنا",
+      list: "ضيف مصلحتي",
     },
   },
   en: {
@@ -253,7 +253,7 @@ export const landing: Record<Locale, LandingCopy> = {
       title: "Want an app nobody else has?",
       body: "Tell us about your business. We'll build it a path of its own.",
       pricing: "See the plans",
-      talk: "Talk to us",
+      list: "Add my business",
     },
   },
 };

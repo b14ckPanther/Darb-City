@@ -37,7 +37,7 @@ it("sends every plan's button to the contact page, never a mail pop-up", () => {
   for (const p of plans) {
     expect(p.ctaHref, p.slug).not.toMatch(/^mailto:/);
     expect(p.ctaHref, p.slug).toBe(
-      p.monthly === 0 ? "/contact?topic=join" : `/contact?plan=${p.slug}`,
+      p.monthly === 0 ? "/join" : `/contact?plan=${p.slug}`,
     );
   }
 });

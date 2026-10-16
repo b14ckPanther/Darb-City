@@ -18,7 +18,7 @@ function isActive(tab: NavTab, path: string): boolean {
   if (tab.match === "home") return path === "/";
   if (tab.match === "city") {
     // Any city page: not one of the site's own pages.
-    return !/^\/(?:$|showroom|pricing|contact|for-business|accessibility|terms|privacy|search)(?:\/|$)/.test(
+    return !/^\/(?:$|showroom|pricing|contact|join|for-business|accessibility|terms|privacy|search)(?:\/|$)/.test(
       path,
     );
   }

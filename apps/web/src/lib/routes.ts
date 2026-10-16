@@ -31,6 +31,7 @@ export const paths = {
   showroom: () => ["showroom"],
   pricing: () => ["pricing"],
   contact: () => ["contact"],
+  join: () => ["join"],
   accessibility: () => ["accessibility"],
   terms: () => ["terms"],
   privacy: () => ["privacy"],

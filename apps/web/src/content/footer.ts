@@ -60,7 +60,7 @@ export interface FooterCopy {
 export const footer: Record<Locale, FooterCopy> = {
   he: {
     motto: "כל סוג של עסק. כל עיר וכל כפר. דרך אחת.",
-    cta: "יש לכם עסק? בואו נדבר",
+    cta: "יש לכם עסק? הוסיפו אותו לדרב",
     exploreTitle: "לגלות",
     darbTitle: "דרב",
     founderTitle: "האנשים מאחורי דרב",
@@ -72,7 +72,7 @@ export const footer: Record<Locale, FooterCopy> = {
   },
   ar: {
     motto: "كل أنواع المصالح. كل بلد وكل قرية. درب واحد.",
-    cta: "عندك مصلحة؟ يلا نحكي",
+    cta: "عندك مصلحة؟ ضيفها على درب",
     exploreTitle: "اكتشف",
     darbTitle: "درب",
     founderTitle: "الناس ورا درب",
@@ -88,7 +88,7 @@ export const footer: Record<Locale, FooterCopy> = {
   },
   en: {
     motto: "Every kind of business. Every town and village. One path.",
-    cta: "Own a business? Let's talk",
+    cta: "Own a business? Put it on Darb",
     exploreTitle: "Explore",
     darbTitle: "Darb",
     founderTitle: "The people behind Darb",
