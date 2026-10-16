@@ -1,5 +1,4 @@
-import type { GeoJSONSource, Map as MapLibreMap, StyleSpecification } from "maplibre-gl";
-import { Protocol } from "pmtiles";
+import type { GeoJSONSource, Map as MapLibreMap } from "maplibre-gl";
 import type { Locale } from "@darb/core";
 import {
   cityCollection,
@@ -13,15 +12,12 @@ import {
 import { moveCamera } from "./camera-move";
 import { loadMapLibre } from "./load-maplibre";
 import { CITY_GLOW, CITY_SOURCE, darbLayers, PIN_SOURCE } from "./map-layers";
-import { prepareStyle, PROTOMAPS_SOURCE } from "./map-style";
+import { fetchDarbStyle, whenReady } from "./map-boot";
 import { pickAt } from "./pick";
+import { ensurePmtiles } from "./protocol";
 import type { StageMap } from "./types";
-import { styleUrl, TILES_URL } from "./vendor";
 
-const READY_TIMEOUT = 15_000;
 const PADDING = 48;
-
-let protocol: Protocol | null = null;
 
 export interface CityMapOptions {
   container: HTMLElement;
@@ -47,16 +43,8 @@ export class CityMap implements StageMap {
 
   static async create(options: CityMapOptions): Promise<CityMap> {
     const maplibre = await loadMapLibre();
-    if (!protocol) {
-      protocol = new Protocol();
-      maplibre.addProtocol("pmtiles", protocol.tile);
-    }
-    const res = await fetch(styleUrl(options.locale));
-    if (!res.ok) throw new Error(`Map style: ${res.status}`);
-    const style = prepareStyle((await res.json()) as StyleSpecification, {
-      origin: window.location.origin,
-      tilesUrl: TILES_URL ?? "",
-    });
+    ensurePmtiles(maplibre);
+    const style = await fetchDarbStyle(options.locale);
     // Places within ~60 px merge into one bubble whose count is the sum of their businesses.
     style.sources[CITY_SOURCE] = {
       type: "geojson",
@@ -85,37 +73,13 @@ export class CityMap implements StageMap {
     });
     const city = new CityMap(map, options.dir);
     try {
-      await city.ready();
+      await whenReady(map);
     } catch (error) {
       map.remove();
       throw error;
     }
     city.wire(options);
     return city;
-  }
-
-  /** The first idle frame; fails if the tiles cannot be read (a 404 archive, a bad URL). */
-  private ready(): Promise<void> {
-    return new Promise((resolve, reject) => {
-      let settled = false;
-      const finish = (error?: unknown) => {
-        if (settled) return;
-        settled = true;
-        window.clearTimeout(timer);
-        this.map.off("error", onError);
-        if (error) reject(error);
-        else resolve();
-      };
-      const onError = (event: { error: { message: string } }) => {
-        if ((event as { sourceId?: string }).sourceId === PROTOMAPS_SOURCE) finish(event.error);
-      };
-      const timer = window.setTimeout(
-        () => finish(new Error("The map took too long")),
-        READY_TIMEOUT,
-      );
-      this.map.on("error", onError);
-      this.map.once("idle", () => finish());
-    });
   }
 
   private wire(options: CityMapOptions): void {
