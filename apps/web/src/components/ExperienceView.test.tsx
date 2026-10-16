@@ -132,3 +132,18 @@ describe("Darb clients (Task 28)", () => {
     expect(container.innerHTML).not.toMatch(/paz\.darb\.co\.il/);
   });
 });
+
+it("links the owner's social pages, and only real web links", () => {
+  view(
+    detail({
+      links: {
+        instagram: "https://www.instagram.com/caramel/",
+        facebook: "javascript:alert(1)",
+      },
+    }),
+  );
+  expect(screen.getByRole("link", { name: "Instagram" }).getAttribute("href")).toBe(
+    "https://www.instagram.com/caramel/",
+  );
+  expect(screen.queryByRole("link", { name: "Facebook" })).toBeNull();
+});

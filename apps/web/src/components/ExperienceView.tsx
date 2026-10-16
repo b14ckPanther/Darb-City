@@ -16,6 +16,7 @@ import { AppointmentBadge, ExampleBadge, GlutenFreeBadge } from "./Badges";
 import { LiveOpenState } from "./LiveOpenState";
 import { LocaleSwitch } from "./CityBar";
 import { HoursTable } from "./HoursTable";
+import { JoinIcon } from "./join/JoinIcons";
 import { SheetActions } from "./SheetActions";
 import { parseScreen } from "./templates";
 import { ScreenView } from "./templates/ScreenView";
@@ -53,6 +54,17 @@ export function ExperienceView({
           .map((url) => ({ label: t(locale, "openTheApp"), href: url }))
       : [];
   const website = safeHttpUrl(business.website);
+  // The owner's own pages (set through /join or the admin), each only when it is a web link.
+  const social = (
+    [
+      ["instagram", "Instagram"],
+      ["facebook", "Facebook"],
+      ["tiktok", "TikTok"],
+    ] as const
+  ).flatMap(([key, label]) => {
+    const url = safeHttpUrl(business.links?.[key] ?? null);
+    return url ? [{ key, label, url }] : [];
+  });
   const directions = directionsHref(business.lat, business.lng);
   const appointment = isByAppointment(business.hours);
   const greeting = t(locale, "whatsappGreeting", { name });
@@ -111,6 +123,17 @@ export function ExperienceView({
           linkCopyFailed: t(locale, "linkCopyFailed"),
         }}
       />
+      {social.length ? (
+        <ul className={styles.social}>
+          {social.map((s) => (
+            <li key={s.key}>
+              <a href={s.url} target="_blank" rel="noopener noreferrer" aria-label={s.label}>
+                <JoinIcon name={s.key} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : null}
       <HoursTable locale={locale} hours={business.hours} />
       {business.tier === "darb" ? (
         // Every Darb client's listing invites other business owners (Task 28).
