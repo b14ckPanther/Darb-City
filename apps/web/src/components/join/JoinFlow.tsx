@@ -68,7 +68,7 @@ export function JoinFlow({
   }, [find.phase]);
 
   useEffect(() => {
-    if (step !== "find") heading.current?.focus();
+    if (step === "done") heading.current?.focus();
   }, [step]);
   useEffect(() => {
     if (find.phase === "message") alert.current?.focus();

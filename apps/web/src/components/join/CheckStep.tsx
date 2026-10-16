@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useRef, useState, type FormEvent, type RefObject } from "react";
+import { useEffect, useId, useRef, useState, type FormEvent, type RefObject } from "react";
 import type { JoinSuggestionDto } from "@darb/contracts";
 import { CARD_ACCENTS, CARD_ICON_STYLES, LOCALES, type Locale } from "@darb/core";
 import { LocationPicker } from "@/components/LocationPicker";
@@ -59,6 +59,8 @@ export function CheckStep({
   const [phase, setPhase] = useState<Phase>("editing");
   const form = useRef<HTMLFormElement>(null);
   const alertRef = useRef<HTMLDivElement>(null);
+  // This step loads on demand, so it takes the focus itself once it is there.
+  useEffect(() => headingRef.current?.focus(), [headingRef]);
 
   const set = <K extends keyof JoinFields>(key: K, value: JoinFields[K]) => {
     setF((prev) => {

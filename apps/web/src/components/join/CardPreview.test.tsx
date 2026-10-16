@@ -5,7 +5,7 @@ import { join } from "@/content/join";
 import { emptyWeek, presetWeek, type Week } from "@/lib/week-hours";
 import { CardPreview, type CardPreviewProps } from "./CardPreview";
 import { WeekHours } from "./WeekHours";
-import { foldText } from "./SearchPicker";
+import { foldText } from "@/lib/fold-text";
 
 const base: CardPreviewProps = {
   copy: join.en.preview,

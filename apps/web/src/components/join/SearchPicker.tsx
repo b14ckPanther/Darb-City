@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useMemo, useRef, useState } from "react";
+import { foldText } from "@/lib/fold-text";
 import styles from "./Join.module.css";
 
 export interface PickerOption {
@@ -9,18 +10,6 @@ export interface PickerOption {
   /** Every name and spelling, folded (foldText), to match what people type. */
   search: string;
 }
-
-/** Lower case, no accents or Hebrew and Arabic marks, one Arabic alef: for matching only. */
-export const foldText = (s: string) =>
-  s
-    .normalize("NFKD")
-    .replace(/[̀-֑ͯ-ׇً-ٰٟ]/g, "")
-    .replace(/[أإآ]/g, "ا")
-    .replace(/ة/g, "ه")
-    .replace(/ى/g, "ي")
-    .toLowerCase()
-    .replace(/\s+/g, " ")
-    .trim();
 
 const SHOWN = 8;
 

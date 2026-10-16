@@ -119,3 +119,31 @@ it("compares by appointment and a private address the way the form reads them", 
     hours: { weekly: {}, exceptions: [] },
   });
 });
+
+it("reads links, photos named after the business, the logo and the card look", () => {
+  const key = (n: number) => `pending/0190a000-0000-4000-8000-00000000000${n}.webp`;
+  const { data } = businessFromForm(
+    form({
+      "links.instagram": "@caramel",
+      "links.tiktok": "",
+      logo: key(1),
+      photos: JSON.stringify([
+        { key: key(2), alt: { en: "The bar" } },
+        { key: key(3), alt: {} },
+      ]),
+      "cardStyle.accent": "#5fb3a8",
+      "cardStyle.icons": "line",
+    }),
+  );
+  expect(data).toMatchObject({
+    links: { instagram: "@caramel" },
+    logo: { key: key(1) },
+    photos: [
+      { key: key(2), alt: { en: "The bar" } },
+      { key: key(3), alt: { ar: "كراميل" } },
+    ],
+    cardStyle: { accent: "#5fb3a8" },
+  });
+  const none = businessFromForm(form({ logo: "", "cardStyle.accent": "#123456" })).data;
+  expect([none.logo, none.cardStyle, none.photos]).toEqual([null, {}, []]);
+});
