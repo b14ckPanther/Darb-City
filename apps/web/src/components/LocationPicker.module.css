@@ -23,6 +23,10 @@
   position: absolute;
   inset: 0;
 }
+.canvas {
+  inline-size: 100%;
+  block-size: 100%;
+}
 .attribution {
   position: absolute;
   inset-block-end: 6px;

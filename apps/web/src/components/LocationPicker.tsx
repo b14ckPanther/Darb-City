@@ -205,8 +205,10 @@ export function LocationPicker({
       <input type="hidden" name={names.lng} value={value ? String(value.lng) : ""} />
       {mode === "numbers" ? null : (
         <div ref={host} className={styles.frame}>
-          {/* MapLibre makes its container position: relative, so it fills the frame. */}
-          <div ref={box} className={styles.map} />
+          {/* MapLibre makes its container position: relative, so it fills an absolute frame. */}
+          <div className={styles.map}>
+            <div ref={box} className={styles.canvas} />
+          </div>
           <p className={styles.attribution}>
             {labels.mapData}:{" "}
             <bdi>
