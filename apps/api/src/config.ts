@@ -52,6 +52,28 @@ export interface InquiryConfig {
   mailTo: string;
 }
 
+/** The /join form: its limits, the lookup's helpers (model, OpenStreetMap) and photo storage. */
+export interface JoinConfig {
+  /** Lookups one visitor may run per hour. */
+  lookupRateLimit: number;
+  /** Lookups that may use the model each day, across every visitor (cost guard). */
+  lookupsPerDay: number;
+  /** Forms one visitor may send per hour. */
+  rateLimit: number;
+  /** Photo uploads one visitor may send per hour. */
+  uploadRateLimit: number;
+  /** "anthropic" with a key unless JOIN_AI=off; tests and e2e run with it off. */
+  ai: "anthropic" | "off";
+  model: string;
+  timeoutMs: number;
+  /** Nominatim's base URL; null turns geocoding off (tests and e2e). */
+  geocoderUrl: string | null;
+  /** Cloudflare R2 (S3 API); uploads are off unless all three are set. */
+  r2: { accountId: string; accessKeyId: string; secretAccessKey: string } | null;
+  bucket: string;
+  mediaUrl: string;
+}
+
 export interface AppConfig {
   databaseUrl: string;
   port: number;
@@ -60,6 +82,7 @@ export interface AppConfig {
   auth: AuthConfig;
   admin: AdminConfig;
   inquiry: InquiryConfig;
+  join: JoinConfig;
   production: boolean;
 }
 
@@ -115,6 +138,28 @@ const schema = z.object({
   RESEND_API_KEY: optional,
   MAIL_FROM: z.string().min(3).default("Darb <hello@darb.co.il>"),
   MAIL_TO: z.string().email().default("founder@darb.co.il"),
+  JOIN_LOOKUP_RATE_LIMIT: z.coerce.number().int().positive().default(6),
+  JOIN_LOOKUPS_PER_DAY: z.coerce.number().int().min(0).default(300),
+  JOIN_RATE_LIMIT: z.coerce.number().int().positive().default(3),
+  JOIN_UPLOAD_RATE_LIMIT: z.coerce.number().int().positive().default(30),
+  JOIN_AI: z.enum(["anthropic", "off"]).optional(),
+  JOIN_MODEL: z.string().min(1).default("claude-sonnet-5-5"),
+  JOIN_TIMEOUT_MS: z.coerce.number().int().min(1000).max(120_000).default(45_000),
+  NOMINATIM_URL: z
+    .string()
+    .url()
+    .refine((v) => /^https?:\/\//i.test(v), "must be an http(s) URL")
+    .optional(),
+  JOIN_GEOCODER: z.enum(["nominatim", "off"]).optional(),
+  R2_ACCOUNT_ID: optional,
+  R2_ACCESS_KEY_ID: optional,
+  R2_SECRET_ACCESS_KEY: optional,
+  R2_MEDIA_BUCKET: z.string().min(3).default("darb-media"),
+  MEDIA_URL: z
+    .string()
+    .url()
+    .default("https://media.darb.co.il")
+    .transform((v) => v.replace(/\/+$/, "")),
   NODE_ENV: z.string().optional(),
 });
 
@@ -197,6 +242,29 @@ export function loadConfig(env: NodeJS.ProcessEnv): AppConfig {
       resendApiKey: e.RESEND_API_KEY,
       mailFrom: e.MAIL_FROM,
       mailTo: e.MAIL_TO,
+    },
+    join: {
+      lookupRateLimit: e.JOIN_LOOKUP_RATE_LIMIT,
+      lookupsPerDay: e.JOIN_LOOKUPS_PER_DAY,
+      rateLimit: e.JOIN_RATE_LIMIT,
+      uploadRateLimit: e.JOIN_UPLOAD_RATE_LIMIT,
+      ai: (e.JOIN_AI ?? "anthropic") === "anthropic" && e.ANTHROPIC_API_KEY ? "anthropic" : "off",
+      model: e.JOIN_MODEL,
+      timeoutMs: e.JOIN_TIMEOUT_MS,
+      geocoderUrl:
+        e.JOIN_GEOCODER === "off"
+          ? null
+          : (e.NOMINATIM_URL ?? "https://nominatim.openstreetmap.org").replace(/\/+$/, ""),
+      r2:
+        e.R2_ACCOUNT_ID && e.R2_ACCESS_KEY_ID && e.R2_SECRET_ACCESS_KEY
+          ? {
+              accountId: e.R2_ACCOUNT_ID,
+              accessKeyId: e.R2_ACCESS_KEY_ID,
+              secretAccessKey: e.R2_SECRET_ACCESS_KEY,
+            }
+          : null,
+      bucket: e.R2_MEDIA_BUCKET,
+      mediaUrl: e.MEDIA_URL,
     },
     search: {
       redisUrl: e.REDIS_URL,

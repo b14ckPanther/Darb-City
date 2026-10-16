@@ -193,6 +193,12 @@ model Business {
   whatsapp       String?
   website        String?
   photos         Json                                  @default("[]")
+  /// { key } of the owner's logo in the media bucket; null when there is none.
+  logo           Json?
+  /// { instagram?, facebook?, tiktok?, waze? }: full https URLs (website keeps its own column).
+  links          Json                                  @default("{}")
+  /// { accent?, icons? }: the card's look, from core CARD_ACCENTS and CARD_ICON_STYLES.
+  cardStyle      Json                                  @default("{}")
   hours          Json
   attributes     Json                                  @default("{}")
   dietary        Dietary[]                             @default([])
@@ -208,6 +214,7 @@ model Business {
   organizationId String?                               @db.Uuid
   organization   Organization?                         @relation(fields: [organizationId], references: [id])
   claims         Claim[]
+  joinRequests   JoinRequest[]
   createdAt      DateTime                              @default(now())
   updatedAt      DateTime                              @updatedAt
 
@@ -393,6 +400,47 @@ model Inquiry {
   createdAt    DateTime      @default(now())
 
   @@index([status, createdAt])
+}
+
+enum JoinSource {
+  lookup
+  manual
+}
+
+enum JoinStatus {
+  pending
+  approved
+  rejected
+}
+
+/**
+ * A business owner's /join form: the business itself waits as a draft (source self) until the
+ * admin approves it. A rejection deletes the draft; the request stays, with its reason.
+ */
+model JoinRequest {
+  id           String     @id @default(uuid(7)) @db.Uuid
+  /// Null once a rejection deleted the draft.
+  businessId   String?    @db.Uuid
+  business     Business?  @relation(fields: [businessId], references: [id], onDelete: SetNull)
+  /// The business's name as sent, so a rejected request still says what it was.
+  businessName Json
+  ownerName    String
+  ownerPhone   String
+  ownerEmail   String?
+  note         String?
+  locale       String
+  source       JoinSource
+  /// What the lookup suggested (no page content, only the fields and their source URLs).
+  lookup       Json?
+  status       JoinStatus @default(pending)
+  rejectReason String?
+  /// Salted hash of the sender's IP bucket (as the rate limiter keys it), never the IP itself.
+  ipHash       String?
+  createdAt    DateTime   @default(now())
+  decidedAt    DateTime?
+
+  @@index([status, createdAt])
+  @@index([businessId])
 }
 
 enum AuditAction {
