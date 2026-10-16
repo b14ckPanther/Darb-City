@@ -12,7 +12,7 @@ import type { Hours, Localized } from "@darb/core";
 import { TsRestHandler, tsRestHandler } from "@ts-rest/nest";
 import { AdminGuard, type AdminActor, type AdminRequest } from "../auth/admin.guard.js";
 import { decodeCursor, encodeCursor } from "../businesses/cursor.js";
-import type { Business, Prisma } from "../generated/prisma/client.js";
+import { Prisma, type Business } from "../generated/prisma/client.js";
 import { PrismaService } from "../prisma/prisma.service.js";
 import { AdminWriter } from "./admin-writer.js";
 import { ExperienceValidator } from "./experience.js";
@@ -56,6 +56,10 @@ export const toAdminBusiness = (b: Row): AdminBusinessDto => ({
   experience: b.experience as AdminBusinessDto["experience"],
   tier: b.tier,
   apps: b.apps as AdminBusinessDto["apps"],
+  links: b.links as AdminBusinessDto["links"],
+  logo: (b.logo as AdminBusinessDto["logo"]) ?? null,
+  photos: b.photos as AdminBusinessDto["photos"],
+  cardStyle: b.cardStyle as AdminBusinessDto["cardStyle"],
   brandId: b.brandId,
 });
 
@@ -172,6 +176,10 @@ export class BusinessesAdmin {
           attributes: json(dto.attributes),
           experience: json(dto.experience),
           apps: json(dto.apps),
+          links: json(dto.links),
+          logo: dto.logo ? json(dto.logo) : Prisma.DbNull,
+          photos: json(dto.photos),
+          cardStyle: json(dto.cardStyle),
           source: "admin",
           editedAt: new Date(),
           kinds: { create: kindIds.map((kindId) => ({ kindId })) },
@@ -215,12 +223,16 @@ export class BusinessesAdmin {
       "attributes",
       "experience",
       "apps",
+      "links",
+      "photos",
+      "cardStyle",
     ] as const;
     const data: Prisma.BusinessUpdateInput = {
       ...(rest as Prisma.BusinessUpdateInput),
       editedAt: new Date(),
     };
     for (const k of jsonFields) if (rest[k] !== undefined) data[k] = json(rest[k]);
+    if (rest.logo !== undefined) data.logo = rest.logo ? json(rest.logo) : Prisma.DbNull;
     if (patch.primaryKindId) {
       delete (data as Record<string, unknown>)["primaryKindId"];
       data.primaryKind = { connect: { id: patch.primaryKindId } };
