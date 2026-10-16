@@ -13,15 +13,7 @@ export const ipHash = (salt: string, ip: string) =>
  * "upload" count the /join form's lookups, forms and photos.
  */
 type Bucket =
-  | "search"
-  | "results"
-  | "click"
-  | "report"
-  | "suggest"
-  | "inquiry"
-  | "lookup"
-  | "join"
-  | "upload";
+  "search" | "results" | "click" | "report" | "suggest" | "inquiry" | "lookup" | "join" | "upload";
 
 @Injectable()
 export class RateLimiter {

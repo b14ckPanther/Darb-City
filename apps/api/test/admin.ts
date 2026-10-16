@@ -1,4 +1,5 @@
 import type { INestApplication } from "@nestjs/common";
+import type { TestingModuleBuilder } from "@nestjs/testing";
 import { vi, type Mock } from "vitest";
 import { WebRevalidator } from "../src/admin/revalidator.js";
 import type { PrismaService } from "../src/prisma/prisma.service.js";
@@ -17,11 +18,13 @@ export interface AdminTestApp {
   revalidate: Mock;
 }
 
-export async function createAdminTestApp(): Promise<AdminTestApp> {
+export async function createAdminTestApp(
+  configure: (b: TestingModuleBuilder) => TestingModuleBuilder = (b) => b,
+): Promise<AdminTestApp> {
   const notify = vi.fn();
   const revalidate = vi.fn(async (_tags: string[], _options?: { immediate?: boolean }) => true);
   const created = await createTestApp((b) =>
-    b
+    configure(b)
       .overrideProvider(SearchEvents)
       .useValue({ notify, changed: vi.fn(async () => []), onModuleDestroy: async () => undefined })
       .overrideProvider(WebRevalidator)

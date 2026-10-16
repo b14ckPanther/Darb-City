@@ -34,6 +34,7 @@ import {
   JoinAcceptedSchema,
   JoinCreateSchema,
   JoinLookupRequestSchema,
+  JoinStatusSchema,
   JoinSuggestionSchema,
 } from "./join.js";
 import { PricingSchema } from "./pricing.js";
@@ -202,6 +203,7 @@ export const contract = c.router({
     },
   },
   join: {
+    status: { method: "GET", path: "/join/status", responses: { 200: JoinStatusSchema } },
     /**
      * Finds the business from a link, a point or its name: map links are read here, addresses
      * come from OpenStreetMap, the rest from a web search by the model. Never stores anything.

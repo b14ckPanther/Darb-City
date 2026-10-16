@@ -122,3 +122,7 @@ export const JoinAcceptedSchema = z.object({ ok: z.literal(true) });
 /** POST /join/photos answers with the key to send back and where the image can be seen. */
 export const JoinPhotoSchema = z.object({ key: MediaKeySchema, url: z.string().url() });
 export type JoinPhotoDto = z.infer<typeof JoinPhotoSchema>;
+
+/** What the form can offer right now: photo uploads (R2 set) and the smart lookup (model on). */
+export const JoinStatusSchema = z.object({ uploads: z.boolean(), lookup: z.boolean() });
+export type JoinStatusDto = z.infer<typeof JoinStatusSchema>;
