@@ -41,6 +41,7 @@ describe("reserved slugs", () => {
         "for-business",
         "pricing",
         "contact",
+        "join",
         "search",
         "login",
         "register",
@@ -52,12 +53,20 @@ describe("reserved slugs", () => {
       ].sort(),
     );
   });
-  it.each(["ar", "he", "k", "admin", "for-business", "pricing", "contact", "_next", "brand"])(
-    "%s is reserved",
-    (value) => {
-      expect(isReservedSlug(value)).toBe(true);
-    },
-  );
+  it.each([
+    "ar",
+    "he",
+    "k",
+    "admin",
+    "for-business",
+    "pricing",
+    "contact",
+    "join",
+    "_next",
+    "brand",
+  ])("%s is reserved", (value) => {
+    expect(isReservedSlug(value)).toBe(true);
+  });
   it.each(["haifa", "barbershops", "beauty", "arraba", "kiryat-haim", "AR"])(
     "%s is not reserved",
     (value) => {
