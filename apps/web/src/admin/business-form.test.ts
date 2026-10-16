@@ -48,6 +48,15 @@ it("reports bad JSON and unreadable special days instead of throwing", () => {
   expect(errors).toEqual(["experience: not valid JSON", "hours: cannot read “someday”"]);
 });
 
+it("asks for the pin when the map picker has no point yet", () => {
+  const { errors } = businessFromForm(form({ lat: "", lng: "" }));
+  expect(errors).toEqual(["location: put the pin on the map"]);
+  expect(businessFromForm(form({ lat: "32.858123", lng: "35.181456" })).data).toMatchObject({
+    lat: 32.858123,
+    lng: 35.181456,
+  });
+});
+
 it("an unchecked delivers box removes the attribute", () => {
   const f = form();
   f.delete("delivers");

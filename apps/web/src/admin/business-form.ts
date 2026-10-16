@@ -74,6 +74,9 @@ export function businessFromForm(fd: FormData): {
   const experience = json(text(fd, "experience"));
   if (experience === undefined || typeof experience !== "object" || experience === null)
     errors.push("experience: not valid JSON");
+  // The map picker leaves both empty until the pin is placed: say so, not "lat: too small".
+  if (text(fd, "lat") === "" || text(fd, "lng") === "")
+    errors.push("location: put the pin on the map");
   const weekly = json(text(fd, "hours.weekly") || "{}");
   const ex = parseExceptions(text(fd, "hours.exceptions"));
   if (!ex.ok) errors.push(`hours: cannot read “${ex.line}”`);

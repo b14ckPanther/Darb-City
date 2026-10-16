@@ -12,7 +12,7 @@ import { revalidatePath } from "next/cache";
 import { notFound, redirect } from "next/navigation";
 import { isLocale } from "@/lib/locale";
 import type { ActionState } from "./action-state";
-import { adminApi } from "./api";
+import { adminApi, type AdminClient } from "./api";
 import { actionFailed, answered, apiError } from "./admin-errors";
 import { businessFromForm, comparable } from "./business-form";
 import { at } from "./copy";
@@ -28,6 +28,13 @@ const fail = (locale: Locale, errors: string[], message?: string): ActionState =
   message: message ?? at(locale, "errorGeneric"),
   errors,
 });
+
+async function findPlace(api: AdminClient, slug: string): Promise<AdminPlaceDto | undefined> {
+  const found = await api.places.list({ query: { q: slug, limit: 100 } });
+  return found.status === 200
+    ? found.body.items.find((p: AdminPlaceDto) => p.slug === slug)
+    : undefined;
+}
 
 export async function saveBusiness(_prev: ActionState, fd: FormData): Promise<ActionState> {
   const locale = localeOf(fd);
@@ -65,12 +72,7 @@ export async function saveBusiness(_prev: ActionState, fd: FormData): Promise<Ac
     if (!parsed.success) return fail(locale, zodErrors(parsed.error));
     res = await api.businesses.update({ params: { id }, body: parsed.data });
   } else {
-    const placeSlug = text(fd, "place");
-    const found = await api.places.list({ query: { q: placeSlug, limit: 100 } });
-    const place =
-      found.status === 200
-        ? found.body.items.find((p: AdminPlaceDto) => p.slug === placeSlug)
-        : undefined;
+    const place = await findPlace(api, text(fd, "place"));
     const parsed = AdminBusinessCreateSchema.safeParse({
       ...data,
       kindIds,
@@ -88,6 +90,19 @@ export async function saveBusiness(_prev: ActionState, fd: FormData): Promise<Ac
   }
   if (res.status === 401) redirect(adminHref(locale, "/sign-in"));
   return apiError(locale, res, id ? {} : { conflict: "errAlreadyExists" });
+}
+
+/** A place's own point by its address (slug), so a new business's map opens over it. */
+export async function placePoint(slug: string): Promise<{ lat: number; lng: number } | null> {
+  const wanted = slug.trim();
+  if (!wanted || wanted.length > 80) return null;
+  try {
+    const place = await findPlace(await adminApi(), wanted);
+    return place ? { lat: place.lat, lng: place.lng } : null;
+  } catch {
+    // Only a starting view: without it the map opens over the north.
+    return null;
+  }
 }
 
 export async function setBusinessStatus(_prev: ActionState, fd: FormData): Promise<ActionState> {

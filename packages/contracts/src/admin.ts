@@ -1,5 +1,12 @@
 import { initContract } from "@ts-rest/core";
-import { isReservedSlug, PLACE_STATUSES, PLACE_TYPES, TEMPLATES, TIERS } from "@darb/core";
+import {
+  isReservedSlug,
+  ISRAEL_BOX,
+  PLACE_STATUSES,
+  PLACE_TYPES,
+  TEMPLATES,
+  TIERS,
+} from "@darb/core";
 import { z } from "zod";
 import { DietarySchema, HoursSchema, LocalizedSchema, SlugSchema } from "./schemas.js";
 import {
@@ -39,9 +46,8 @@ const phone = z
 const accent = z
   .string()
   .regex(/^#[0-9a-f]{6}$/, { message: "Use a lower-case hex colour like #d9a54c" });
-/** Israel, generously: v1 has no other country (spec §13). */
-const lat = z.number().min(29).max(33.6);
-const lng = z.number().min(34).max(36);
+const lat = z.number().min(ISRAEL_BOX.lat[0]).max(ISRAEL_BOX.lat[1]);
+const lng = z.number().min(ISRAEL_BOX.lng[0]).max(ISRAEL_BOX.lng[1]);
 
 export const SynonymsSchema = z.object({
   he: z.array(z.string().trim().min(1).max(80)).max(80),

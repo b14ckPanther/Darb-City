@@ -1,8 +1,18 @@
-import { expect, test, type BrowserContext } from "@playwright/test";
+import { expect, test, type BrowserContext, type Page } from "@playwright/test";
 
 const ADMIN = "fake.user_e2e.e2e-admin@darb.test";
 const signInAs = (context: BrowserContext, baseURL: string, value: string) =>
   context.addCookies([{ name: "darb_admin_fake", value, url: baseURL }]);
+
+/** The location picker's map, once it has drawn (it falls back to the numbers if it cannot). */
+async function pickerMap(page: Page) {
+  // It loads as it scrolls into view, as a person would reach it.
+  await page.locator("[data-location-picker]").scrollIntoViewIfNeeded();
+  await expect(page.locator('[data-location-picker="map"]')).toBeVisible({ timeout: 20_000 });
+  return page.locator('[data-location-picker="map"] canvas');
+}
+const pinField = (page: Page, name: "lat" | "lng") =>
+  page.locator(`input[type="hidden"][name="${name}"]`);
 
 /** amqa and upholstery appear in no other spec, so this business never disturbs their pages. */
 const PLACE = "amqa";
@@ -39,6 +49,30 @@ test.describe("admin", () => {
     expect(res?.headers()["content-security-policy"]).toMatch(/'nonce-[^']+' 'strict-dynamic'/);
   });
 
+  test("the location map draws under the admin CSP, and the arrow keys move the pin", async ({
+    page,
+    context,
+    baseURL,
+  }) => {
+    await signInAs(context, baseURL!, ADMIN);
+    const refused: string[] = [];
+    page.on("console", (m) => {
+      if (/Content Security Policy|Refused to/i.test(m.text())) refused.push(m.text());
+    });
+    await page.goto("/en/admin/businesses/new");
+    const canvas = await pickerMap(page);
+    await canvas.scrollIntoViewIfNeeded();
+    await canvas.click();
+    const lat = Number(await pinField(page, "lat").inputValue());
+    await page.getByRole("button", { name: "Business pin. The arrow keys move it." }).focus();
+    await page.keyboard.press("ArrowUp");
+    await expect
+      .poll(async () => Number(await pinField(page, "lat").inputValue()))
+      .toBeGreaterThan(lat);
+    await expect(page.getByText(/^3\d\.\d{6}, 3\d\.\d{6}$/)).toBeVisible();
+    expect(refused).toEqual([]);
+  });
+
   test("lists search places and kinds", async ({ page, context, baseURL }) => {
     await signInAs(context, baseURL!, ADMIN);
     await page.goto("/en/admin/places?q=sakhnin");
@@ -67,8 +101,13 @@ test.describe("admin", () => {
       .locator('select[name="primaryKindId"] option', { hasText: "(upholstery)" })
       .getAttribute("value");
     await page.getByLabel("Kind", { exact: true }).selectOption(kindId!);
-    await page.getByLabel("Latitude").fill("32.858");
-    await page.getByLabel("Longitude").fill("35.181");
+    // No numbers typed: the map opens over amqa (the place typed above) and a tap places the pin.
+    const canvas = await pickerMap(page);
+    await expect(pinField(page, "lat")).toHaveValue("");
+    await canvas.scrollIntoViewIfNeeded();
+    await canvas.click();
+    await expect(pinField(page, "lat")).toHaveValue(/^3[23]\.\d+$/);
+    await expect(pinField(page, "lng")).toHaveValue(/^35\.\d+$/);
     await page.getByRole("button", { name: "Create" }).click();
     await expect(page).toHaveURL(/\/en\/admin\/businesses\/[0-9a-f-]{36}$/);
 
@@ -79,8 +118,25 @@ test.describe("admin", () => {
       .toBe(200);
 
     await page.getByLabel("Tagline · English").fill("Sofas and chairs made new");
+    // Drag the pin a little; the saved point is where it was dropped.
+    await pickerMap(page);
+    const before = Number(await pinField(page, "lat").inputValue());
+    const pin = page.getByRole("button", { name: "Business pin. The arrow keys move it." });
+    await pin.scrollIntoViewIfNeeded();
+    const box = (await pin.boundingBox())!;
+    await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+    await page.mouse.down();
+    await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2 - 30, { steps: 6 });
+    await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2 - 60, { steps: 6 });
+    await page.mouse.up();
+    await expect
+      .poll(async () => Number(await pinField(page, "lat").inputValue()))
+      .toBeGreaterThan(before);
+    const dropped = await pinField(page, "lat").inputValue();
     await page.getByRole("button", { name: "Save" }).click();
     await expect(page.locator('form [role="alert"]')).toHaveText(/Saved/);
+    await page.reload();
+    await expect(pinField(page, "lat")).toHaveValue(dropped);
 
     await page.getByRole("button", { name: "Suspend now" }).click();
     await expect(page.getByText("Suspended").first()).toBeVisible();
@@ -107,8 +163,12 @@ test.describe("admin", () => {
     await page.getByLabel("Name · English").fill("Bad");
     await page.getByLabel("Tagline · English").fill("x");
     await page.getByLabel("Street address · English").fill("x");
+    // The numbers, one disclosure under the map, still work for a keyboard or an exact point.
+    await pickerMap(page);
+    await page.getByText("Edit numbers").click();
     await page.getByLabel("Latitude").fill("32.858");
     await page.getByLabel("Longitude").fill("35.181");
+    await expect(pinField(page, "lat")).toHaveValue("32.858");
     await page.getByLabel("Experience content (JSON)").fill('{"items": []}');
     await page.getByRole("button", { name: "Create" }).click();
     await expect(page.locator('form [role="alert"]')).toContainText("experience");
