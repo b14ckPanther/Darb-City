@@ -3,6 +3,7 @@ import type { AdminKindDto } from "@darb/contracts";
 import { adminApi, okOr } from "@/admin/api";
 import { BusinessForm } from "@/admin/BusinessForm";
 import { at } from "@/admin/copy";
+import { getJoinStatus } from "@/lib/api";
 import { isLocale } from "@/lib/locale";
 import styles from "@/admin/admin.module.css";
 
@@ -16,7 +17,7 @@ export default async function NewBusiness({ params }: { params: Promise<{ locale
   return (
     <>
       <h1 className={styles.h1}>{at(locale, "newBusiness")}</h1>
-      <BusinessForm locale={locale} kinds={kinds} />
+      <BusinessForm locale={locale} kinds={kinds} uploads={(await getJoinStatus()).uploads} />
     </>
   );
 }

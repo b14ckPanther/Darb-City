@@ -29,13 +29,14 @@ export default async function AdminAppLayout({
         </p>
       </main>
     );
-  // The Messages badge: a failed count only hides the badge, never the admin.
-  const inbox = await (
-    await adminApi()
-  ).inquiries
-    .list({ query: { status: "new", limit: 1 } })
-    .catch(() => null);
+  // The Messages and Join requests badges: a failed count only hides a badge, never the admin.
+  const api = await adminApi();
+  const [inbox, joins] = await Promise.all([
+    api.inquiries.list({ query: { status: "new", limit: 1 } }).catch(() => null),
+    api.joinRequests.list({ query: { status: "pending", limit: 1 } }).catch(() => null),
+  ]);
   const newInquiries = inbox?.status === 200 ? inbox.body.newCount : 0;
+  const pendingJoins = joins?.status === 200 ? joins.body.newCount : 0;
   // The proxy rewrote /ar/admin/x to /admin/ar/x; the original path is in next-url when present.
   const original = (await headers()).get("x-darb-admin-path") ?? "";
   return (
@@ -44,6 +45,7 @@ export default async function AdminAppLayout({
       path={adminRoute(original)?.rest ?? ""}
       mode={adminAuthMode()}
       newInquiries={newInquiries}
+      pendingJoins={pendingJoins}
     >
       {children}
     </AdminShell>

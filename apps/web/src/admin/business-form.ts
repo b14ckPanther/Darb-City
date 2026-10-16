@@ -1,4 +1,5 @@
 import type { AdminBusinessPatchDto } from "@darb/contracts";
+import { CARD_ACCENTS, type CardAccent, type Localized } from "@darb/core";
 import { lines, localized, text } from "./form-data";
 import { parseExceptions } from "./hours-form";
 
@@ -90,11 +91,21 @@ export function businessFromForm(fd: FormData): {
       return v ? [[k, v]] : [];
     }),
   );
+  const name = localized(fd, "name");
+  const links = Object.fromEntries(
+    (["instagram", "facebook", "tiktok", "waze"] as const).flatMap((k) => {
+      const v = text(fd, `links.${k}`);
+      return v ? [[k, v]] : [];
+    }),
+  );
+  const photos = json(text(fd, "photos") || "[]");
+  const accent = text(fd, "cardStyle.accent");
+  const logo = text(fd, "logo");
   return {
     errors,
     kindSlugs: lines(fd, "kinds"),
     data: {
-      name: localized(fd, "name"),
+      name,
       tagline: localized(fd, "tagline"),
       address: localized(fd, "address"),
       primaryKindId: text(fd, "primaryKindId"),
@@ -117,6 +128,17 @@ export function businessFromForm(fd: FormData): {
       experience: (experience ?? {}) as Record<string, unknown>,
       tier: text(fd, "tier") as BusinessFormData["tier"],
       apps,
+      links,
+      logo: logo ? { key: logo } : null,
+      // A new photo is named after the business, like the join form's.
+      photos: (Array.isArray(photos) ? (photos as { key: string; alt: Localized }[]) : []).map(
+        (p) => ({ key: p.key, alt: Object.values(p.alt ?? {}).some(Boolean) ? p.alt : name }),
+      ),
+      // "line" is the default: left out, so an untouched card never reads as an edit.
+      cardStyle: {
+        ...(CARD_ACCENTS.includes(accent as CardAccent) ? { accent: accent as CardAccent } : {}),
+        ...(text(fd, "cardStyle.icons") === "solid" ? { icons: "solid" as const } : {}),
+      },
     },
   };
 }
