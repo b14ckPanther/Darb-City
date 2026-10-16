@@ -1,7 +1,7 @@
 import type { CardAccent, CardIconStyle, LatLng } from "@darb/core";
 import type { JoinCopy } from "@/content/join";
 import { openNow, type Week } from "@/lib/week-hours";
-import { JoinIcon, type JoinIconName } from "./JoinIcons";
+import { Icon as JoinIcon, type IconName as JoinIconName } from "../icons/Icon";
 import styles from "./Join.module.css";
 
 export interface CardPreviewProps {

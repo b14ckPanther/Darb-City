@@ -16,7 +16,7 @@ import { AppointmentBadge, ExampleBadge, GlutenFreeBadge } from "./Badges";
 import { LiveOpenState } from "./LiveOpenState";
 import { LocaleSwitch } from "./CityBar";
 import { HoursTable } from "./HoursTable";
-import { JoinIcon } from "./join/JoinIcons";
+import { Icon } from "./icons/Icon";
 import { SheetActions } from "./SheetActions";
 import { parseScreen } from "./templates";
 import { ScreenView } from "./templates/ScreenView";
@@ -128,7 +128,7 @@ export function ExperienceView({
           {social.map((s) => (
             <li key={s.key}>
               <a href={s.url} target="_blank" rel="noopener noreferrer" aria-label={s.label}>
-                <JoinIcon name={s.key} />
+                <Icon name={s.key} />
               </a>
             </li>
           ))}
