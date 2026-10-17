@@ -63,6 +63,15 @@ describe("tokenScore", () => {
 });
 
 describe("matchInstant", () => {
+  it("returns the content words, normalized and as typed, without cues or stopwords", () => {
+    const r = matchInstant(prepared, "שווארמה ללא גלוטן בחיפה!");
+    expect(r.cues.glutenFree).toBe(true);
+    expect(r.content).toEqual(["שווארמה", "בחיפה"]);
+    expect(r.typed).toEqual(["שווארמה", "בחיפה"]);
+    const en = matchInstant(prepared, "Car Wash, in Haifa");
+    expect(en.content).toEqual(["car", "wash", "haifa"]);
+    expect(en.typed).toEqual(["Car", "Wash", "Haifa"]);
+  });
   it("finds kind and place in each script", () => {
     expect(top("barber in haifa")).toMatchObject({ kind: "barbershops", place: "haifa" });
     expect(top("מספרה בחיפה")).toMatchObject({ kind: "barbershops", place: "haifa" });

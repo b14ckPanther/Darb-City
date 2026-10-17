@@ -4,7 +4,7 @@ import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from "vites
 import { resetDatabase, testPrisma } from "../../test/db.js";
 import { seedFixtures } from "../../test/fixtures.js";
 import { AnthropicIntentProvider } from "../ai/anthropic-intent.provider.js";
-import type { IntentProvider, RawIntent } from "../ai/intent.js";
+import type { IntentProvider, RawIntentInput } from "../ai/intent.js";
 import { loadConfig } from "../config.js";
 import { createRedis } from "../redis/redis.module.js";
 import { InstantService } from "./instant.service.js";
@@ -16,7 +16,7 @@ const config = loadConfig({ ...process.env, INTENT_TIMEOUT_MS: "100" });
 let redis: Redis;
 const open = { take: async () => true } as unknown as ModelBudget;
 const instant = new InstantService(prisma);
-const answer: RawIntent = {
+const answer: RawIntentInput = {
   kinds: ["barbershops"],
   place: "sakhnin",
   nearMe: false,
@@ -77,7 +77,7 @@ describe("IntentService", () => {
     expect(provider.extract).not.toHaveBeenCalled();
   });
   for (const [name, extract] of [
-    ["a timeout", () => new Promise<RawIntent | null>(() => undefined)],
+    ["a timeout", () => new Promise<RawIntentInput | null>(() => undefined)],
     [
       "an error",
       async () => {
@@ -207,7 +207,7 @@ describe("budget and negative cache", () => {
   });
 
   it("remembers an unhelpful answer and does not ask again", async () => {
-    const empty: RawIntent = { ...answer, kinds: [], place: null, nearMe: false };
+    const empty: RawIntentInput = { ...answer, kinds: [], place: null, nearMe: false };
     const { svc, provider } = service(async () => empty);
     const q = "something lane one cannot explain at all";
     await svc.resolve(q, "en");

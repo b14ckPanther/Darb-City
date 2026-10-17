@@ -5,7 +5,7 @@ import type { Locale } from "@darb/core";
 import { EMPTY_INTENT, IntentSchema, type IntentDto } from "@darb/contracts";
 import type { InstantResult } from "@darb/search-text";
 import type { Redis } from "ioredis";
-import { INTENT_PROVIDER, type IntentProvider, type RawIntent } from "../ai/intent.js";
+import { INTENT_PROVIDER, type IntentProvider, type RawIntentInput } from "../ai/intent.js";
 import { APP_CONFIG, type AppConfig } from "../config.js";
 import { REDIS } from "../redis/redis.module.js";
 import {
@@ -18,9 +18,9 @@ import { InstantService } from "./instant.service.js";
 import { ModelBudget } from "./model-budget.js";
 
 export const INTENT_CACHE_SECONDS = 604_800;
-/** Keyed by the active kind set only: a cached answer is re-validated against the world on read. */
+/** v3: intents carry items (deep search). Keyed by the active kind set only: a cached answer is re-validated against the world on read. */
 export const intentCacheKey = (locale: Locale, normalized: string, kindsVersion: string) =>
-  `darb:intent:v2:${kindsVersion}:${locale}:${createHash("sha256").update(normalized).digest("hex")}`;
+  `darb:intent:v3:${kindsVersion}:${locale}:${createHash("sha256").update(normalized).digest("hex")}`;
 
 export interface Resolved {
   intent: IntentDto;
@@ -127,7 +127,7 @@ export class IntentService {
     locale: Locale,
     instant: InstantResult,
     activeKinds: readonly string[],
-  ): Promise<RawIntent | null> {
+  ): Promise<RawIntentInput | null> {
     const controller = new AbortController();
     let timer: NodeJS.Timeout | undefined;
     const timeout = new Promise<null>((resolve) => {
