@@ -128,7 +128,7 @@ export function toMarkdown(a, date) {
   if (a.stats) {
     lines.push("", "## OpenStreetMap features with no Darb kind", "");
     lines.push(
-      "Named features in the north the importer saw but no kind takes (food, garages, fuel and banks are other importers'). The big ones are candidates for new kinds.",
+      "Named features in the import's bbox (the north and its edges, before the place check) that no kind takes; food, garages, fuel and banks are other importers'. The big ones are candidates for new kinds.",
       "",
       "| OSM tag | Named features |",
       "| --- | ---: |",
