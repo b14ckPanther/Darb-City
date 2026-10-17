@@ -114,18 +114,22 @@ async function fetchLandmarks() {
   node["highway"~"traffic_signals|motorway_junction"]["name"];
   nwr["name"~"^(צומת|מחלף) "];
 );
-out tags center bb;`;
+out tags bb;`;
   const elements = await overpassQuery("landmarks", query);
   const out = [];
   for (const el of elements) {
     const tg = el.tags ?? {};
-    const p = el.lat !== undefined ? el : el.center;
+    // Overpass gives one geometry per element: a node its point, a way or relation its bounds.
+    const b = el.bounds;
+    const p =
+      el.lat !== undefined
+        ? el
+        : b && { lat: (b.minlat + b.maxlat) / 2, lon: (b.minlon + b.maxlon) / 2 };
     if (!p) continue;
     const names = [tg.name, tg["name:he"], tg.alt_name, tg.old_name, tg.official_name].filter(
       Boolean,
     );
     const industrial = tg.landuse === "industrial" || /תעשי|תעסוק/.test(tg.name ?? "");
-    const b = el.bounds;
     const size = b
       ? Math.max(
           km({ lat: b.minlat, lng: b.minlon }, { lat: b.maxlat, lng: b.minlon }),
@@ -135,6 +139,43 @@ out tags center bb;`;
     out.push([industrial ? "industrial" : "junction", names, round6(p.lat), round6(p.lon), size]);
   }
   return out;
+}
+
+/**
+ * Municipal boundaries in the north (admin_level 8: cities, local councils, regional councils):
+ * [names[], segments[[[lat, lng], ...]]]. Every member way is kept; a ray crossing count over all
+ * of them (even-odd) says inside or out without assembling rings.
+ */
+async function fetchBoundaries() {
+  const query = `[out:json][timeout:300][bbox:${NORTH_BBOX}];
+relation["boundary"="administrative"]["admin_level"="8"];
+out geom;`;
+  const elements = await overpassQuery("boundaries", query);
+  return elements.map((el) => {
+    const tg = el.tags ?? {};
+    const names = [tg["name:he"], tg.name, tg["name:ar"], tg["name:en"], tg.alt_name].filter(
+      Boolean,
+    );
+    const segments = (el.members ?? [])
+      .filter((m) => m.type === "way" && m.geometry?.length)
+      .map((m) => m.geometry.map((g) => [round6(g.lat), round6(g.lon)]));
+    return [names, segments];
+  });
+}
+
+/** Whether a point is inside a boundary's segments (even-odd over every segment). */
+export function inside(point, segments) {
+  let odd = false;
+  for (const seg of segments)
+    for (let i = 1; i < seg.length; i++) {
+      const [ay, ax] = seg[i - 1];
+      const [by, bx] = seg[i];
+      if (ay > point.lat !== by > point.lat) {
+        const x = ax + ((point.lat - ay) / (by - ay)) * (bx - ax);
+        if (point.lng < x) odd = !odd;
+      }
+    }
+  return odd;
 }
 
 /** Every address, street and landmark in the north, cached as `geo-*.json` under .cache/. */
@@ -147,7 +188,8 @@ export async function loadOsmAddresses() {
     streets.push(...data.streets);
   }
   const landmarks = await cached("geo-landmarks.json", fetchLandmarks);
-  return { addresses, streets, landmarks };
+  const boundaries = await cached("geo-boundaries.json", fetchBoundaries);
+  return { addresses, streets, landmarks, boundaries };
 }
 
 // --- Normalisation -------------------------------------------------------------------------
@@ -266,7 +308,8 @@ export function parseAddress(raw, town = "") {
     const m = piece.match(/([א-ת"'][א-ת"'.\s]*?)\s+(\d+)\s*([א-ת](?=\s|$))?/);
     if (m) {
       const cand = cleanStreet(m[1]);
-      if (cand) {
+      // Five digits after a name is a postcode or a box, not a house ("מעליא 25140").
+      if (cand && Number(m[2]) < 2000) {
         street = cand;
         number = Number(m[2]);
         break;
@@ -365,8 +408,36 @@ function spanM(segments) {
  * street belongs to a Darb place: its addr:city when that names one near it, else the nearest
  * settlement within the town's radius.
  */
-export function createGeocoder({ addresses, streets, landmarks = [] }, matcher) {
+export function createGeocoder({ addresses, streets, landmarks = [], boundaries = [] }, matcher) {
+  // Boundaries that are a Darb place's own (a regional council names no place: its villages are
+  // found by distance), each with its bounding box for a quick first test.
+  const areas = [];
+  for (const [names, segments] of boundaries) {
+    const pts = segments.flat();
+    if (!pts.length) continue;
+    const lats = pts.map((p) => p[0]);
+    const lngs = pts.map((p) => p[1]);
+    const box = {
+      s: Math.min(...lats),
+      n: Math.max(...lats),
+      w: Math.min(...lngs),
+      e: Math.max(...lngs),
+    };
+    const centre = { lat: (box.s + box.n) / 2, lng: (box.w + box.e) / 2 };
+    const m = names
+      .map((n) => matcher.match({ town: n, lat: centre.lat, lng: centre.lng }))
+      .find((x) => x?.place && x.how === "name");
+    if (m) areas.push({ slug: m.place.slug, box, segments });
+  }
+  const areaOf = (lat, lng) => {
+    for (const a of areas)
+      if (lat >= a.box.s && lat <= a.box.n && lng >= a.box.w && lng <= a.box.e)
+        if (inside({ lat, lng }, a.segments)) return a.slug;
+    return null;
+  };
   const townOf = (lat, lng, city) => {
+    const area = areaOf(lat, lng);
+    if (area) return area;
     if (city) {
       const m = matcher.match({ town: city, lat, lng });
       if (m?.place && m.how === "name") return m.place.slug;
@@ -398,13 +469,17 @@ export function createGeocoder({ addresses, streets, landmarks = [] }, matcher) 
   const ways = new Map();
   for (const [name, nameHe, geom] of streets) {
     if (!geom?.length) continue;
-    const mid = geom[Math.floor(geom.length / 2)];
-    const town = townOf(mid[0], mid[1], "");
-    if (!town) continue;
-    for (const n of new Set([nameHe, name].filter((x) => /[א-ת]/.test(x)))) {
-      const key = streetKey(n);
-      if (key) add(ways, town, key, geom);
-    }
+    // A way may cross a town line: it belongs to every town its ends or middle stand in.
+    const towns = new Set(
+      [geom[0], geom[Math.floor(geom.length / 2)], geom.at(-1)]
+        .map(([lat, lng]) => townOf(lat, lng, ""))
+        .filter(Boolean),
+    );
+    for (const town of towns)
+      for (const n of new Set([nameHe, name].filter((x) => /[א-ת]/.test(x)))) {
+        const key = streetKey(n);
+        if (key) add(ways, town, key, geom);
+      }
   }
   /** Landmarks with their town. */
   const marks = landmarks.map(([kind, names, lat, lng, size]) => ({

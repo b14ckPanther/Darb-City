@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import {
   createGeocoder,
   houseNumber,
+  inside,
   looseStreetKey,
   parseAddress,
   streetKey,
@@ -56,6 +57,7 @@ describe("street names and numbers", () => {
     expect(parseAddress("גוש 18530 חלקה 31 ת.ד 425").street).toBeNull();
     expect(parseAddress("רח' היוצרים25").number).toBe(25);
     expect(parseAddress("שדרות אבא חושי").street).toBe("שדרות אבא חושי");
+    expect(parseAddress("ת.ד.487 מעליא 25140").number).toBeNull();
   });
 });
 
@@ -84,6 +86,11 @@ describe("resolving an address", () => {
     expect(at("haifa", "עמרם אברהם 10")).toMatchObject({ precision: "exact", lat: 32.826 });
     expect(at("haifa", "פרילנדר 12 ת ד 5676")).toMatchObject({ precision: "exact", lat: 32.825 });
     expect(at("haifa", "א.תעשייה ישן פרידלנדר 12").precision).toBe("exact");
+  });
+  it("puts an address in the town whose OSM boundary holds it, wherever its centre is", () => {
+    expect(at("haifa", "חלוצי התעשיה 38")).toMatchObject({ precision: "exact", lng: 35.065 });
+    expect(inside({ lat: 32.8, lng: 35 }, fixture.boundaries[0][1])).toBe(true);
+    expect(inside({ lat: 32.9, lng: 35 }, fixture.boundaries[0][1])).toBe(false);
   });
   it("skips a number that stands in two places", () => {
     expect(at("haifa", "הרצל 3").skip).toBeDefined();
