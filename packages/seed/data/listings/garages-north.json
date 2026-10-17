@@ -1,0 +1,1591 @@
+{
+  "source": {
+    "name": "משרד התחבורה, מוסכים ומכוני רישוי (data.gov.il)",
+    "url": "https://data.gov.il/dataset/musachim",
+    "resource": "bb68386a-a331-4bbc-b668-bba2766d517d",
+    "licence": "Creative Commons Attribution (CC BY), Ministry of Transport",
+    "region": "northern-district, haifa-district",
+    "fetched": "2026-10-17",
+    "points": "© OpenStreetMap contributors (ODbL), openstreetmap.org/copyright: the register has no coordinates, so a garage is listed only where OSM has it in its town under the same Hebrew name or phone",
+    "hours": "none: the register gives no hours",
+    "counts": {
+      "fetchedRows": 13948,
+      "fetched": 5483,
+      "outsideNorth": 3314,
+      "townUnknown": 186,
+      "inNorth": 1983,
+      "noConfidentPoint": 1966,
+      "matchedByName": 14,
+      "matchedByPhone": 3,
+      "sharedOsm": 5,
+      "deduped": 0,
+      "emitted": 17
+    }
+  },
+  "businesses": [
+    {
+      "slug": "garage-aro-yafan-garage",
+      "place": "hadera",
+      "brand": null,
+      "primaryKind": "garages",
+      "kinds": [
+        "garages",
+        "body-shops"
+      ],
+      "name": {
+        "he": "מוסך ארו - יפן",
+        "ar": "كراج ارو يفن",
+        "en": "Aro Yafan Garage"
+      },
+      "tagline": {
+        "he": "מוסך מורשה בחדרה",
+        "ar": "كراج مرخّص في الخضيرة",
+        "en": "Licensed garage in Hadera"
+      },
+      "address": {
+        "he": "החרש 11 ת.ד.3551",
+        "ar": "الخضيرة",
+        "en": "Hadera"
+      },
+      "lat": 32.447666,
+      "lng": 34.9130547,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "motGarageId": 60141
+      },
+      "tier": "basic",
+      "phone": "+972 4-624-8484",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מוסך ארו - יפן",
+          "ar": "كراج ارو يفن",
+          "en": "Aro Yafan Garage"
+        },
+        "title": {
+          "he": "מוסך מורשה",
+          "ar": "كراج مرخّص",
+          "en": "Licensed garage"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכונאות בנזין",
+              "ar": "ميكانيك بنزين",
+              "en": "Petrol engines"
+            }
+          },
+          {
+            "label": {
+              "he": "מכונאות דיזל",
+              "ar": "ميكانيك ديزل",
+              "en": "Diesel engines"
+            }
+          },
+          {
+            "label": {
+              "he": "רכב חשמלי והיברידי",
+              "ar": "سيارات كهربائية وهايبرد",
+              "en": "Electric and hybrid cars"
+            }
+          },
+          {
+            "label": {
+              "he": "פחחות וצבע",
+              "ar": "سمكرة ودهان",
+              "en": "Bodywork and paint"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למוסך",
+          "ar": "خذني للكراج",
+          "en": "Navigate to the garage"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "garage-m-m-express-hadera-garage",
+      "place": "hadera",
+      "brand": null,
+      "primaryKind": "garages",
+      "kinds": [
+        "garages",
+        "body-shops"
+      ],
+      "name": {
+        "he": "מ.מ מוסך אקספרס חדרה",
+        "ar": "م.م كراج إكسبرس الخضيرة",
+        "en": "M.m Express Hadera Garage"
+      },
+      "tagline": {
+        "he": "מוסך מורשה בחדרה",
+        "ar": "كراج مرخّص في الخضيرة",
+        "en": "Licensed garage in Hadera"
+      },
+      "address": {
+        "he": "יוסף מייזר 8 א.תעשיה",
+        "ar": "الخضيرة",
+        "en": "Hadera"
+      },
+      "lat": 32.453277,
+      "lng": 34.9091892,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "motGarageId": 6708
+      },
+      "tier": "basic",
+      "phone": "+972 4-633-3716",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מ.מ מוסך אקספרס חדרה",
+          "ar": "م.م كراج إكسبرس الخضيرة",
+          "en": "M.m Express Hadera Garage"
+        },
+        "title": {
+          "he": "מוסך מורשה",
+          "ar": "كراج مرخّص",
+          "en": "Licensed garage"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "פחחות",
+              "ar": "سمكرة",
+              "en": "Bodywork"
+            }
+          },
+          {
+            "label": {
+              "he": "צבע רכב",
+              "ar": "دهان سيارات",
+              "en": "Paintwork"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למוסך",
+          "ar": "خذني للكراج",
+          "en": "Navigate to the garage"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "garage-mishal-garage",
+      "place": "haifa",
+      "brand": null,
+      "primaryKind": "garages",
+      "kinds": [
+        "garages",
+        "body-shops"
+      ],
+      "name": {
+        "he": "מוסך מישל",
+        "ar": "كراج ميشل",
+        "en": "Mishal Garage"
+      },
+      "tagline": {
+        "he": "מוסך מורשה בחיפה",
+        "ar": "كراج مرخّص في حيفا",
+        "en": "Licensed garage in Haifa"
+      },
+      "address": {
+        "he": "ת.ד.25010 מקלף 16 צ'ק פוסט",
+        "ar": "حيفا",
+        "en": "Haifa"
+      },
+      "lat": 32.7878329,
+      "lng": 35.0302219,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "motGarageId": 6637
+      },
+      "tier": "basic",
+      "phone": "+972 4-841-9613",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מוסך מישל",
+          "ar": "كراج ميشل",
+          "en": "Mishal Garage"
+        },
+        "title": {
+          "he": "מוסך מורשה",
+          "ar": "كراج مرخّص",
+          "en": "Licensed garage"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכונאות בנזין",
+              "ar": "ميكانيك بنزين",
+              "en": "Petrol engines"
+            }
+          },
+          {
+            "label": {
+              "he": "מכונאות דיזל",
+              "ar": "ميكانيك ديزل",
+              "en": "Diesel engines"
+            }
+          },
+          {
+            "label": {
+              "he": "רכב חשמלי והיברידי",
+              "ar": "سيارات كهربائية وهايبرد",
+              "en": "Electric and hybrid cars"
+            }
+          },
+          {
+            "label": {
+              "he": "חשמל רכב",
+              "ar": "كهرباء سيارات",
+              "en": "Auto electrics"
+            }
+          },
+          {
+            "label": {
+              "he": "פחחות",
+              "ar": "سمكرة",
+              "en": "Bodywork"
+            }
+          },
+          {
+            "label": {
+              "he": "צבע רכב",
+              "ar": "دهان سيارات",
+              "en": "Paintwork"
+            }
+          },
+          {
+            "label": {
+              "he": "מלגזות",
+              "ar": "رافعات شوكية",
+              "en": "Forklifts"
+            }
+          },
+          {
+            "label": {
+              "he": "מזגנים לרכב",
+              "ar": "مكيفات سيارات",
+              "en": "Car air conditioning"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למוסך",
+          "ar": "خذني للكراج",
+          "en": "Navigate to the garage"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "garage-mtza-hashamal-vmizog-oir-tyres",
+      "place": "haifa",
+      "brand": null,
+      "primaryKind": "garages",
+      "kinds": [
+        "garages",
+        "tyres"
+      ],
+      "name": {
+        "he": "צמיגי מצה חשמל ומיזוג אויר",
+        "ar": "كاوتشوك متسا حشمل وميزوج اوير",
+        "en": "Mtza Hashamal Vmizog Oir Tyres"
+      },
+      "tagline": {
+        "he": "מוסך מורשה בחיפה",
+        "ar": "كراج مرخّص في حيفا",
+        "en": "Licensed garage in Haifa"
+      },
+      "address": {
+        "he": "כביש רופין תחנת מצה",
+        "ar": "حيفا",
+        "en": "Haifa"
+      },
+      "lat": 32.7884517,
+      "lng": 35.0025789,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "motGarageId": 5965
+      },
+      "tier": "basic",
+      "phone": "+972 4-824-7199",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "צמיגי מצה חשמל ומיזוג אויר",
+          "ar": "كاوتشوك متسا حشمل وميزوج اوير",
+          "en": "Mtza Hashamal Vmizog Oir Tyres"
+        },
+        "title": {
+          "he": "מוסך מורשה",
+          "ar": "كراج مرخّص",
+          "en": "Licensed garage"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חשמל רכב",
+              "ar": "كهرباء سيارات",
+              "en": "Auto electrics"
+            }
+          },
+          {
+            "label": {
+              "he": "צמיגים",
+              "ar": "كاوتشوك",
+              "en": "Tyres"
+            }
+          },
+          {
+            "label": {
+              "he": "מזגנים לרכב",
+              "ar": "مكيفات سيارات",
+              "en": "Car air conditioning"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למוסך",
+          "ar": "خذني للكراج",
+          "en": "Navigate to the garage"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "garage-lav-galilee-garage",
+      "place": "hatzor-haglilit",
+      "brand": null,
+      "primaryKind": "garages",
+      "kinds": [
+        "garages",
+        "body-shops"
+      ],
+      "name": {
+        "he": "מוסך לב הגליל",
+        "ar": "كراج لب الجليل",
+        "en": "Lav Galilee Garage"
+      },
+      "tagline": {
+        "he": "מוסך מורשה בחצור הגלילית",
+        "ar": "كراج مرخّص في حتسور هجليليت",
+        "en": "Licensed garage in Hatzor HaGlilit"
+      },
+      "address": {
+        "he": "א.תעשיה ת.ד. 50",
+        "ar": "حتسور هجليليت",
+        "en": "Hatzor HaGlilit"
+      },
+      "lat": 32.9826998,
+      "lng": 35.550704,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "motGarageId": 60650
+      },
+      "tier": "basic",
+      "phone": "+972 4-693-1440",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מוסך לב הגליל",
+          "ar": "كراج لب الجليل",
+          "en": "Lav Galilee Garage"
+        },
+        "title": {
+          "he": "מוסך מורשה",
+          "ar": "كراج مرخّص",
+          "en": "Licensed garage"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "אוטוטק",
+              "ar": "أوتوتك",
+              "en": "Autotech"
+            }
+          },
+          {
+            "label": {
+              "he": "פחחות",
+              "ar": "سمكرة",
+              "en": "Bodywork"
+            }
+          },
+          {
+            "label": {
+              "he": "צבע רכב",
+              "ar": "دهان سيارات",
+              "en": "Paintwork"
+            }
+          },
+          {
+            "label": {
+              "he": "מתלים וכיוון",
+              "ar": "تعليق وميزان",
+              "en": "Suspension and alignment"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למוסך",
+          "ar": "خذني للكراج",
+          "en": "Navigate to the garage"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "garage-paldi-boaz-garage",
+      "place": "hayogev",
+      "brand": null,
+      "primaryKind": "garages",
+      "kinds": [
+        "garages"
+      ],
+      "name": {
+        "he": "פלדי בועז - מוסך",
+        "ar": "بلدي بوعز كراج",
+        "en": "Paldi Boaz Garage"
+      },
+      "tagline": {
+        "he": "מוסך מורשה בהיוגב",
+        "ar": "كراج مرخّص في هيوچيف",
+        "en": "Licensed garage in HaYogev"
+      },
+      "address": {
+        "he": "מושב היוגב",
+        "ar": "هيوچيف",
+        "en": "HaYogev"
+      },
+      "lat": 32.6116047,
+      "lng": 35.2030551,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "motGarageId": 7080
+      },
+      "tier": "basic",
+      "phone": "+972 4-989-1542",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "פלדי בועז - מוסך",
+          "ar": "بلدي بوعز كراج",
+          "en": "Paldi Boaz Garage"
+        },
+        "title": {
+          "he": "מוסך מורשה",
+          "ar": "كراج مرخّص",
+          "en": "Licensed garage"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכונאות בנזין",
+              "ar": "ميكانيك بنزين",
+              "en": "Petrol engines"
+            }
+          },
+          {
+            "label": {
+              "he": "מכונאות דיזל",
+              "ar": "ميكانيك ديزل",
+              "en": "Diesel engines"
+            }
+          },
+          {
+            "label": {
+              "he": "טרקטורים",
+              "ar": "تراكتورات",
+              "en": "Tractors"
+            }
+          },
+          {
+            "label": {
+              "he": "טרקטורונים",
+              "ar": "تراكترونات",
+              "en": "Quads"
+            }
+          },
+          {
+            "label": {
+              "he": "מלגזות",
+              "ar": "رافعات شوكية",
+              "en": "Forklifts"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למוסך",
+          "ar": "خذني للكراج",
+          "en": "Navigate to the garage"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "garage-asaraf-yotam-hashamlayat-barak",
+      "place": "kiryat-shmona",
+      "brand": null,
+      "primaryKind": "garages",
+      "kinds": [
+        "garages"
+      ],
+      "name": {
+        "he": "אסרף יותם חשמליית ברק",
+        "ar": "اسرف يوتم حشمليت براك",
+        "en": "Asaraf Yotam Hashamlayat Barak"
+      },
+      "tagline": {
+        "he": "מוסך מורשה בקרית שמונה",
+        "ar": "كراج مرخّص في كريات شمونة",
+        "en": "Licensed garage in Kiryat Shmona"
+      },
+      "address": {
+        "he": "א.ת. דרומי סמטת החושן",
+        "ar": "كريات شمونة",
+        "en": "Kiryat Shmona"
+      },
+      "lat": 33.196974,
+      "lng": 35.5748433,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "motGarageId": 90633
+      },
+      "tier": "basic",
+      "phone": "+972 50-575-2462",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אסרף יותם חשמליית ברק",
+          "ar": "اسرف يوتم حشمليت براك",
+          "en": "Asaraf Yotam Hashamlayat Barak"
+        },
+        "title": {
+          "he": "מוסך מורשה",
+          "ar": "كراج مرخّص",
+          "en": "Licensed garage"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "אוטוטק",
+              "ar": "أوتوتك",
+              "en": "Autotech"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למוסך",
+          "ar": "خذني للكراج",
+          "en": "Navigate to the garage"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "garage-car-center-kiryat-shmona",
+      "place": "kiryat-shmona",
+      "brand": null,
+      "primaryKind": "garages",
+      "kinds": [
+        "garages",
+        "body-shops"
+      ],
+      "name": {
+        "he": "קאר סנטר קרית שמונה",
+        "ar": "كار سنتر كريات شمونة",
+        "en": "Car Center Kiryat Shmona"
+      },
+      "tagline": {
+        "he": "מוסך מורשה בקרית שמונה",
+        "ar": "كراج مرخّص في كريات شمونة",
+        "en": "Licensed garage in Kiryat Shmona"
+      },
+      "address": {
+        "he": "א.תעשיה דרומי ת.ד. 5726",
+        "ar": "كريات شمونة",
+        "en": "Kiryat Shmona"
+      },
+      "lat": 33.1970157,
+      "lng": 35.5734319,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "motGarageId": 90343
+      },
+      "tier": "basic",
+      "phone": "+972 4-699-7577",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "קאר סנטר קרית שמונה",
+          "ar": "كار سنتر كريات شمونة",
+          "en": "Car Center Kiryat Shmona"
+        },
+        "title": {
+          "he": "מוסך מורשה",
+          "ar": "كراج مرخّص",
+          "en": "Licensed garage"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חשמל רכב",
+              "ar": "كهرباء سيارات",
+              "en": "Auto electrics"
+            }
+          },
+          {
+            "label": {
+              "he": "פחחות",
+              "ar": "سمكرة",
+              "en": "Bodywork"
+            }
+          },
+          {
+            "label": {
+              "he": "צבע רכב",
+              "ar": "دهان سيارات",
+              "en": "Paintwork"
+            }
+          },
+          {
+            "label": {
+              "he": "מזגנים לרכב",
+              "ar": "مكيفات سيارات",
+              "en": "Car air conditioning"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למוסך",
+          "ar": "خذني للكراج",
+          "en": "Navigate to the garage"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "garage-kahan-natanal-service-kahan-centre-garage",
+      "place": "kiryat-shmona",
+      "brand": null,
+      "primaryKind": "garages",
+      "kinds": [
+        "garages"
+      ],
+      "name": {
+        "he": "כהן נתנאל מרכז שירות מוסך כהן",
+        "ar": "كهن نتنال مركز خدمة كراج كهن",
+        "en": "Kahan Natanal Service Kahan Centre Garage"
+      },
+      "tagline": {
+        "he": "מוסך מורשה בקרית שמונה",
+        "ar": "كراج مرخّص في كريات شمونة",
+        "en": "Licensed garage in Kiryat Shmona"
+      },
+      "address": {
+        "he": "א.תעשיה דרומי .",
+        "ar": "كريات شمونة",
+        "en": "Kiryat Shmona"
+      },
+      "lat": 33.1966472,
+      "lng": 35.5727616,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "motGarageId": 90803
+      },
+      "tier": "basic",
+      "phone": "+972 4-672-2398",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "כהן נתנאל מרכז שירות מוסך כהן",
+          "ar": "كهن نتنال مركز خدمة كراج كهن",
+          "en": "Kahan Natanal Service Kahan Centre Garage"
+        },
+        "title": {
+          "he": "מוסך מורשה",
+          "ar": "كراج مرخّص",
+          "en": "Licensed garage"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכונאות בנזין",
+              "ar": "ميكانيك بنزين",
+              "en": "Petrol engines"
+            }
+          },
+          {
+            "label": {
+              "he": "מכונאות דיזל",
+              "ar": "ميكانيك ديزل",
+              "en": "Diesel engines"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למוסך",
+          "ar": "خذني للكراج",
+          "en": "Navigate to the garage"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "garage-karasanti-amir-karasanti-tyres",
+      "place": "kiryat-shmona",
+      "brand": null,
+      "primaryKind": "garages",
+      "kinds": [
+        "garages",
+        "tyres"
+      ],
+      "name": {
+        "he": "כרסנטי אמיר צמיגי כרסנטי",
+        "ar": "كرسنطي امير كاوتشوك كرسنطي",
+        "en": "Karasanti Amir Karasanti Tyres"
+      },
+      "tagline": {
+        "he": "מוסך מורשה בקרית שמונה",
+        "ar": "كراج مرخّص في كريات شمونة",
+        "en": "Licensed garage in Kiryat Shmona"
+      },
+      "address": {
+        "he": "ת.ד. 5741",
+        "ar": "كريات شمونة",
+        "en": "Kiryat Shmona"
+      },
+      "lat": 33.1964588,
+      "lng": 35.57426,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "motGarageId": 5526
+      },
+      "tier": "basic",
+      "phone": "+972 4-695-0053",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "כרסנטי אמיר צמיגי כרסנטי",
+          "ar": "كرسنطي امير كاوتشوك كرسنطي",
+          "en": "Karasanti Amir Karasanti Tyres"
+        },
+        "title": {
+          "he": "מוסך מורשה",
+          "ar": "كراج مرخّص",
+          "en": "Licensed garage"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "רדיאטורים",
+              "ar": "رادياتيرات",
+              "en": "Radiators"
+            }
+          },
+          {
+            "label": {
+              "he": "אגזוזים",
+              "ar": "إكزوزات",
+              "en": "Exhausts"
+            }
+          },
+          {
+            "label": {
+              "he": "צמיגים",
+              "ar": "كاوتشوك",
+              "en": "Tyres"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למוסך",
+          "ar": "خذني للكراج",
+          "en": "Navigate to the garage"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "garage-motznik-services-rakhav",
+      "place": "kiryat-shmona",
+      "brand": null,
+      "primaryKind": "garages",
+      "kinds": [
+        "garages"
+      ],
+      "name": {
+        "he": "מוצניק שירותי רכב",
+        "ar": "موتسنيك خدمات ركب",
+        "en": "Motznik Services Rakhav"
+      },
+      "tagline": {
+        "he": "מוסך מורשה בקרית שמונה",
+        "ar": "كراج مرخّص في كريات شمونة",
+        "en": "Licensed garage in Kiryat Shmona"
+      },
+      "address": {
+        "he": "רח' יוסף יגר ת.ד. 999",
+        "ar": "كريات شمونة",
+        "en": "Kiryat Shmona"
+      },
+      "lat": 33.2039525,
+      "lng": 35.568791,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "motGarageId": 6843
+      },
+      "tier": "basic",
+      "phone": "+972 4-693-0940",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מוצניק שירותי רכב",
+          "ar": "موتسنيك خدمات ركب",
+          "en": "Motznik Services Rakhav"
+        },
+        "title": {
+          "he": "מוסך מורשה",
+          "ar": "كراج مرخّص",
+          "en": "Licensed garage"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "בדיקה לפני קנייה",
+              "ar": "فحص قبل الشرا",
+              "en": "Pre-purchase check"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למוסך",
+          "ar": "خذني للكراج",
+          "en": "Navigate to the garage"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "garage-or-hatzfon",
+      "place": "kiryat-shmona",
+      "brand": null,
+      "primaryKind": "garages",
+      "kinds": [
+        "garages"
+      ],
+      "name": {
+        "he": "אור הצפון",
+        "ar": "اور هتسفون",
+        "en": "Or Hatzfon"
+      },
+      "tagline": {
+        "he": "מוסך מורשה בקרית שמונה",
+        "ar": "كراج مرخّص في كريات شمونة",
+        "en": "Licensed garage in Kiryat Shmona"
+      },
+      "address": {
+        "he": "ת.ד 249",
+        "ar": "كريات شمونة",
+        "en": "Kiryat Shmona"
+      },
+      "lat": 33.1966282,
+      "lng": 35.5729554,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "motGarageId": 5081
+      },
+      "tier": "basic",
+      "phone": "+972 4-694-1823",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אור הצפון",
+          "ar": "اور هتسفون",
+          "en": "Or Hatzfon"
+        },
+        "title": {
+          "he": "מוסך מורשה",
+          "ar": "كراج مرخّص",
+          "en": "Licensed garage"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חשמל רכב",
+              "ar": "كهرباء سيارات",
+              "en": "Auto electrics"
+            }
+          },
+          {
+            "label": {
+              "he": "מזגנים לרכב",
+              "ar": "مكيفات سيارات",
+              "en": "Car air conditioning"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למוסך",
+          "ar": "خذني للكراج",
+          "en": "Navigate to the garage"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "garage-shroni-motors",
+      "place": "kiryat-shmona",
+      "brand": null,
+      "primaryKind": "garages",
+      "kinds": [
+        "garages"
+      ],
+      "name": {
+        "he": "שרוני מוטורס",
+        "ar": "شروني موتورز",
+        "en": "Shroni Motors"
+      },
+      "tagline": {
+        "he": "מוסך מורשה בקרית שמונה",
+        "ar": "كراج مرخّص في كريات شمونة",
+        "en": "Licensed garage in Kiryat Shmona"
+      },
+      "address": {
+        "he": "א.ת.צפוני ק.שמונה ת.ד.1063",
+        "ar": "كريات شمونة",
+        "en": "Kiryat Shmona"
+      },
+      "lat": 33.2150274,
+      "lng": 35.5881175,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "motGarageId": 90415
+      },
+      "tier": "basic",
+      "phone": "+972 4-681-7444",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "שרוני מוטורס",
+          "ar": "شروني موتورز",
+          "en": "Shroni Motors"
+        },
+        "title": {
+          "he": "מוסך מורשה",
+          "ar": "كراج مرخّص",
+          "en": "Licensed garage"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכונאות בנזין",
+              "ar": "ميكانيك بنزين",
+              "en": "Petrol engines"
+            }
+          },
+          {
+            "label": {
+              "he": "מכונאות דיזל",
+              "ar": "ميكانيك ديزل",
+              "en": "Diesel engines"
+            }
+          },
+          {
+            "label": {
+              "he": "רכב חשמלי והיברידי",
+              "ar": "سيارات كهربائية وهايبرد",
+              "en": "Electric and hybrid cars"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למוסך",
+          "ar": "خذني للكراج",
+          "en": "Navigate to the garage"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "garage-abu-dahash-fuad-hamayan-garage",
+      "place": "maayan-tzvi",
+      "brand": null,
+      "primaryKind": "garages",
+      "kinds": [
+        "garages"
+      ],
+      "name": {
+        "he": "אבו דאהש פואד מוסך המעיין",
+        "ar": "أبو داهش فؤاد كراج همعين",
+        "en": "Abu Dahash Fuad Hamayan Garage"
+      },
+      "tagline": {
+        "he": "מוסך מורשה במעין צבי",
+        "ar": "كراج مرخّص في معيان تسڤي",
+        "en": "Licensed garage in Ma'ayan Tzvi"
+      },
+      "address": {
+        "he": "א.תעשיה מעיין צבי",
+        "ar": "معيان تسڤي",
+        "en": "Ma'ayan Tzvi"
+      },
+      "lat": 32.5751801,
+      "lng": 34.9372019,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "motGarageId": 90537
+      },
+      "tier": "basic",
+      "phone": "+972 52-680-4496",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אבו דאהש פואד מוסך המעיין",
+          "ar": "أبو داهش فؤاد كراج همعين",
+          "en": "Abu Dahash Fuad Hamayan Garage"
+        },
+        "title": {
+          "he": "מוסך מורשה",
+          "ar": "كراج مرخّص",
+          "en": "Licensed garage"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכונאות בנזין",
+              "ar": "ميكانيك بنزين",
+              "en": "Petrol engines"
+            }
+          },
+          {
+            "label": {
+              "he": "מכונאות דיזל",
+              "ar": "ميكانيك ديزل",
+              "en": "Diesel engines"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למוסך",
+          "ar": "خذني للكراج",
+          "en": "Navigate to the garage"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "testing-han-testing",
+      "place": "pardes-hana-karkur",
+      "brand": null,
+      "primaryKind": "vehicle-testing",
+      "kinds": [
+        "vehicle-testing",
+        "garages"
+      ],
+      "name": {
+        "he": "מכון רישוי חן",
+        "ar": "تست حن",
+        "en": "Han Testing"
+      },
+      "tagline": {
+        "he": "מכון רישוי בפרדס חנה-כרכור",
+        "ar": "مكان فحص سيارات (تست) في برديس حنا-كركور",
+        "en": "Vehicle testing station in Pardes Hana - Karkur"
+      },
+      "address": {
+        "he": "ת.ד.615 א.תעשיה",
+        "ar": "برديس حنا-كركور",
+        "en": "Pardes Hana - Karkur"
+      },
+      "lat": 32.4865683,
+      "lng": 34.9709835,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "motGarageId": 5611
+      },
+      "tier": "basic",
+      "phone": "+972 4-637-6415",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מכון רישוי חן",
+          "ar": "تست حن",
+          "en": "Han Testing"
+        },
+        "title": {
+          "he": "מכון רישוי",
+          "ar": "مكان فحص سيارات (تست)",
+          "en": "Vehicle testing station"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "בדיקת עשן לדיזל",
+              "ar": "فحص دخان للديزل",
+              "en": "Diesel smoke test"
+            }
+          },
+          {
+            "label": {
+              "he": "בדיקה לפני קנייה",
+              "ar": "فحص قبل الشرا",
+              "en": "Pre-purchase check"
+            }
+          },
+          {
+            "label": {
+              "he": "טסט שנתי",
+              "ar": "تست سنوي",
+              "en": "Annual vehicle test"
+            }
+          },
+          {
+            "label": {
+              "he": "מתלים וכיוון",
+              "ar": "تعليق وميزان",
+              "en": "Suspension and alignment"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למכון",
+          "ar": "خذني للتست",
+          "en": "Navigate to the testing station"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "garage-akiva-tyres",
+      "place": "zikhron-yaakov",
+      "brand": null,
+      "primaryKind": "garages",
+      "kinds": [
+        "garages",
+        "tyres"
+      ],
+      "name": {
+        "he": "צמיגי עקיבא",
+        "ar": "كاوتشوك عكيبا",
+        "en": "Akiva Tyres"
+      },
+      "tagline": {
+        "he": "מוסך מורשה בזכרון יעקב",
+        "ar": "كراج مرخّص في زخرون يعكوف",
+        "en": "Licensed garage in Zikhron Yaakov"
+      },
+      "address": {
+        "he": "שד נילי 4 ת.דלק",
+        "ar": "زخرون يعكوف",
+        "en": "Zikhron Yaakov"
+      },
+      "lat": 32.5713638,
+      "lng": 34.9382671,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "motGarageId": 6472
+      },
+      "tier": "basic",
+      "phone": "+972 4-639-1019",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "צמיגי עקיבא",
+          "ar": "كاوتشوك عكيبا",
+          "en": "Akiva Tyres"
+        },
+        "title": {
+          "he": "מוסך מורשה",
+          "ar": "كراج مرخّص",
+          "en": "Licensed garage"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "צמיגים",
+              "ar": "كاوتشوك",
+              "en": "Tyres"
+            }
+          },
+          {
+            "label": {
+              "he": "מתלים וכיוון",
+              "ar": "تعليق وميزان",
+              "en": "Suspension and alignment"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למוסך",
+          "ar": "خذني للكراج",
+          "en": "Navigate to the garage"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "garage-amarni-adi-car",
+      "place": "zikhron-yaakov",
+      "brand": null,
+      "primaryKind": "garages",
+      "kinds": [
+        "garages",
+        "body-shops"
+      ],
+      "name": {
+        "he": "עמרני עדי קאר",
+        "ar": "عمرني عدي كار",
+        "en": "Amarni Adi Car"
+      },
+      "tagline": {
+        "he": "מוסך מורשה בזכרון יעקב",
+        "ar": "كراج مرخّص في زخرون يعكوف",
+        "en": "Licensed garage in Zikhron Yaakov"
+      },
+      "address": {
+        "he": "ת.ד.210 רח היין",
+        "ar": "زخرون يعكوف",
+        "en": "Zikhron Yaakov"
+      },
+      "lat": 32.5745637,
+      "lng": 34.9577465,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "motGarageId": 6286
+      },
+      "tier": "basic",
+      "phone": "+972 4-639-9213",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "עמרני עדי קאר",
+          "ar": "عمرني عدي كار",
+          "en": "Amarni Adi Car"
+        },
+        "title": {
+          "he": "מוסך מורשה",
+          "ar": "كراج مرخّص",
+          "en": "Licensed garage"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "פחחות",
+              "ar": "سمكرة",
+              "en": "Bodywork"
+            }
+          },
+          {
+            "label": {
+              "he": "צבע רכב",
+              "ar": "دهان سيارات",
+              "en": "Paintwork"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למוסך",
+          "ar": "خذني للكراج",
+          "en": "Navigate to the garage"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    }
+  ]
+}
