@@ -32,6 +32,8 @@ export const paths = {
   pricing: () => ["pricing"],
   contact: () => ["contact"],
   join: () => ["join"],
+  /** Businesses around the visitor's own position, kept only in their browser. */
+  near: () => ["near"],
   accessibility: () => ["accessibility"],
   terms: () => ["terms"],
   privacy: () => ["privacy"],
