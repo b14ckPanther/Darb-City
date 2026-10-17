@@ -1,0 +1,99 @@
+{
+  "rows": [
+    {
+      "mispar_mosah": 101,
+      "shem_mosah": "הטסט בירכא בע מ",
+      "cod_sug_mosah": 1,
+      "sug_mosah": "מכון רישוי",
+      "ktovet": "אזור תעשיה ירכא תד' 784",
+      "yishuv": "ירכא",
+      "telephone": "04-9967777",
+      "cod_miktzoa": 181,
+      "miktzoa": "מכון רישוי-פתוח לשרות הציבור"
+    },
+    {
+      "mispar_mosah": 102,
+      "shem_mosah": "בחן מכון ומוסך לרכב בע מ",
+      "cod_sug_mosah": 1,
+      "sug_mosah": "מכון רישוי",
+      "ktovet": "רח אדיסון 11",
+      "yishuv": "חיפה",
+      "telephone": "04-8411111",
+      "cod_miktzoa": 181,
+      "miktzoa": "מכון רישוי-פתוח לשרות הציבור"
+    },
+    {
+      "mispar_mosah": 103,
+      "shem_mosah": "מוסך אבו חסן",
+      "cod_sug_mosah": 6,
+      "sug_mosah": "מוסך מורשה",
+      "ktovet": "אדיסון 15 מפרץ חיפה",
+      "yishuv": "חיפה",
+      "telephone": "050-1234567",
+      "cod_miktzoa": 30,
+      "miktzoa": "חשמלאות רכב"
+    },
+    {
+      "mispar_mosah": 103,
+      "shem_mosah": "מוסך אבו חסן",
+      "cod_sug_mosah": 6,
+      "sug_mosah": "מוסך מורשה",
+      "ktovet": "אדיסון 15 מפרץ חיפה",
+      "yishuv": "חיפה",
+      "telephone": "050-1234567",
+      "cod_miktzoa": 70,
+      "miktzoa": "תיקון מרכבי רכב"
+    },
+    {
+      "mispar_mosah": 104,
+      "shem_mosah": "טסט קאר בע מ",
+      "cod_sug_mosah": 1,
+      "sug_mosah": "מכון רישוי",
+      "ktovet": "ת.ד.342 אזור תעשיה נשר",
+      "yishuv": "נשר",
+      "telephone": "04-8200000",
+      "cod_miktzoa": 181,
+      "miktzoa": "מכון רישוי-פתוח לשרות הציבור"
+    },
+    {
+      "mispar_mosah": 105,
+      "shem_mosah": "טרקטורי הצפון",
+      "cod_sug_mosah": 3,
+      "sug_mosah": "מוסך רישוי לציוד חקלאי",
+      "ktovet": "ת.ד. 2318",
+      "yishuv": "חיפה",
+      "telephone": "04-8222222",
+      "cod_miktzoa": 190,
+      "miktzoa": "טרקטורים ומכונות ניידות"
+    },
+    {
+      "mispar_mosah": 106,
+      "shem_mosah": "בחן מכון ומוסך לרכב בע מ",
+      "cod_sug_mosah": 6,
+      "sug_mosah": "מוסך מורשה",
+      "ktovet": "רח אדיסון 11",
+      "yishuv": "חיפה",
+      "telephone": "04-8411111",
+      "cod_miktzoa": 10,
+      "miktzoa": "מכונאות רכב בנזין"
+    },
+    {
+      "mispar_mosah": 107,
+      "shem_mosah": "צמיגי הדרום",
+      "cod_sug_mosah": 6,
+      "sug_mosah": "מוסך מורשה",
+      "ktovet": "השיש 1",
+      "yishuv": "באר שבע",
+      "telephone": "08-6200000",
+      "cod_miktzoa": 130,
+      "miktzoa": "תיקון והחלפת צמיגים"
+    }
+  ],
+  "osm": [],
+  "addresses": [
+    [32.8065, 35.051, "אדיסון", "11", "חיפה"],
+    [32.8075, 35.051, "אדיסון", "19", "חיפה"]
+  ],
+  "streets": [],
+  "landmarks": [["industrial", ["אזור התעשייה ירכא"], 32.96, 35.215, 900]]
+}

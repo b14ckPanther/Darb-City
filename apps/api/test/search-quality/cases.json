@@ -997,7 +997,7 @@
   {
     "query": "האוטו שלי עושה רעש מוזר בחיפה",
     "locale": "he",
-    "expect": { "kind": "garages", "place": "haifa", "modelOnly": true },
+    "expect": { "kind": "garages", "place": "haifa" },
     "recorded": {
       "kinds": ["garages"],
       "place": "haifa",

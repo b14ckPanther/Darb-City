@@ -1,6 +1,8 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { buildGarages, nameWords } from "./garages.mjs";
+import { createGeocoder } from "./geocode.mjs";
+import { createPlaceMatcher } from "./places.mjs";
 
 const fixture = JSON.parse(
   readFileSync(new URL("./fixtures/garages.json", import.meta.url), "utf8"),
@@ -45,5 +47,48 @@ describe("garages importer over a fixture", () => {
   it("never matches on generic words or a town's name", () => {
     expect(nameWords("מוסך כרמיאל")).toEqual([expect.any(String)]);
     expect(nameWords("מוסך שירותי רכב")).toEqual([]);
+  });
+});
+
+describe("garages importer with the address geocoder", () => {
+  const geo = JSON.parse(
+    readFileSync(new URL("./fixtures/garages-geo.json", import.meta.url), "utf8"),
+  );
+  const matcher = createPlaceMatcher();
+  const geocoder = createGeocoder(geo, matcher);
+  const { businesses, counts, coverage, skipped } = buildGarages({ ...geo, geocoder, matcher });
+  const by = (id) => businesses.find((b) => b.attributes.motGarageId === id);
+
+  it("pins testing stations by address and says how precisely", () => {
+    expect(by(102)).toMatchObject({
+      place: "haifa",
+      primaryKind: "vehicle-testing",
+      lat: 32.8065,
+      attributes: { geoPrecision: "exact", sourceAddress: "רח אדיסון 11", motGarageIds: "102,106" },
+    });
+    expect(by(101)).toMatchObject({ place: "yirka", attributes: { geoPrecision: "area" } });
+  });
+  it("groups a garage's trade rows and maps trades to kinds and items", () => {
+    const g = by(103);
+    expect(g.attributes.geoPrecision).toBe("near");
+    expect(g.lat).toBeCloseTo(32.807, 4);
+    expect(g.kinds).toEqual(["garages", "body-shops"]);
+    expect(g.experience.items.map((i) => i.label.en)).toEqual(["Auto electric", "Body work"]);
+    expect(g.name.ar).toContain("كراج");
+    expect(g.name.en).toMatch(/Garage$/);
+  });
+  it("counts and explains every northern record it could not pin", () => {
+    expect(counts).toMatchObject({ inNorth: 6, outsideNorth: 1, exact: 1, near: 1, area: 1 });
+    expect(coverage.testing).toMatchObject({ inNorth: 3, exact: 1, area: 1, skipped: 1 });
+    expect(coverage.garage).toMatchObject({ inNorth: 2, near: 1, merged: 1 });
+    expect(coverage.agricultural).toMatchObject({ inNorth: 1, skipped: 1 });
+    const why = Object.fromEntries(skipped.map((s) => [s.id, s.why]));
+    expect(why[104]).toMatch(/industrial zone/);
+    expect(why[105]).toMatch(/PO box/);
+  });
+  it("writes no legal suffix, maqaf or long dash", () => {
+    for (const b of businesses)
+      for (const t of [...Object.values(b.name), ...Object.values(b.tagline)])
+        expect(t).not.toMatch(/בע מ|בע"מ|[־–—]/);
   });
 });

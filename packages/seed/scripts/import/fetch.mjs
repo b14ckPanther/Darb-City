@@ -11,7 +11,7 @@ const refresh = process.argv.includes("--refresh");
 /** Today as YYYY-MM-DD, for a source block's `fetched`. */
 export const today = () => new Date().toISOString().slice(0, 10);
 
-async function cached(name, load) {
+export async function cached(name, load) {
   const file = new URL(name, CACHE);
   if (!refresh && existsSync(file)) return JSON.parse(readFileSync(file, "utf8"));
   mkdirSync(CACHE, { recursive: true });
@@ -20,7 +20,7 @@ async function cached(name, load) {
   return data;
 }
 
-async function withRetry(what, run, tries = 5) {
+async function withRetry(what, run, tries = 6) {
   for (let attempt = 1; ; attempt++) {
     try {
       return await run();
@@ -59,17 +59,48 @@ export const NORTH_BBOX = "32.3,34.85,33.35,35.9";
  * comes back ("geom" for boundaries).
  */
 export function overpass(name, body, { prelude = "", out = "center tags" } = {}) {
-  const query = `[out:json][timeout:180][bbox:${NORTH_BBOX}];\n${prelude}\n(${body});\nout ${out};`;
-  return cached(`overpass-${name}.json`, () =>
-    withRetry(`overpass ${name}`, async () => {
-      const res = await fetch("https://overpass-api.de/api/interpreter", {
-        method: "POST",
-        headers: { "User-Agent": UA, "Content-Type": "application/x-www-form-urlencoded" },
-        body: `data=${encodeURIComponent(query)}`,
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return (await res.json()).elements;
-    }),
+  const query = `[out:json][timeout:180][bbox:${NORTH_BBOX}];
+${prelude}
+(${body});
+out ${out};`;
+  return cached(`overpass-${name}.json`, () => overpassQuery(name, query));
+}
+
+/** Overpass servers, tried in turn: the main one, then a public mirror when it is overloaded. */
+const OVERPASS = [
+  "https://overpass-api.de/api/interpreter",
+  "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
+];
+
+/** A whole Overpass QL query, uncached, with retries; resolves to its elements. */
+export function overpassQuery(what, query, tries = 6) {
+  let attempt = 0;
+  return withRetry(
+    `overpass ${what}`,
+    async () => {
+      const server = OVERPASS[attempt++ % OVERPASS.length];
+      for (let busy = 0; ; busy++) {
+        const res = await fetch(server, {
+          method: "POST",
+          headers: { "User-Agent": UA, "Content-Type": "application/x-www-form-urlencoded" },
+          body: `data=${encodeURIComponent(query)}`,
+        });
+        // Too many requests: wait our turn rather than count it as a failure.
+        if (res.status === 429 && busy < 8) {
+          await sleep(15000 * (busy + 1));
+          continue;
+        }
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const json = await res.json();
+        // Overpass answers a timed-out query with 200 and a remark instead of elements.
+        if (json.remark && /runtime error|timed out|out of memory/i.test(json.remark))
+          throw new Error(json.remark);
+        // A pause between queries, so a long run stays polite to a shared server.
+        await sleep(2000);
+        return json.elements;
+      }
+    },
+    tries,
   );
 }
 

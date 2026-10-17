@@ -1,0 +1,710 @@
+// A local address geocoder for the north over OpenStreetMap's own address data: house numbers,
+// named streets, named industrial zones and junctions, fetched once from Overpass (in tiles,
+// cached) and searched offline. Never Google, never a geocoding service, never a town centre.
+// Data © OpenStreetMap contributors, ODbL.
+//
+// resolve({ town, address }) → { lat, lng, precision: "exact" | "near" | "street" | "area", ... }
+// or { skip: why }. See the README for the rules.
+import { cached, NORTH_BBOX, overpassQuery } from "./fetch.mjs";
+import { dice } from "./dedupe.mjs";
+import { km, normalize as placeNormalize } from "./places.mjs";
+
+/** Tile edge in degrees: a whole-north query for every address is too big for Overpass. */
+const TILE = 0.25;
+/** "near": the nearest known number on the street may be this far from where we put the pin. */
+export const NEAR_M = 200;
+/** "street": a street's midpoint is used only when the whole named street is shorter. */
+export const STREET_MAX_M = 700;
+/** "area": a named industrial zone is used only when it is this small (its longest side). */
+export const AREA_MAX_M = 1500;
+/** How far from its town's centre an address may stand when OSM names no city for it. */
+const TOWN_RADIUS_KM = { city: 6, town: 4, village: 2.5, neighbourhood: 2 };
+
+/** The north's tiles, south-west corner first: [s, w, n, e]. */
+export function tiles(bbox = NORTH_BBOX, size = TILE) {
+  const [s, w, n, e] = bbox.split(",").map(Number);
+  const out = [];
+  for (let lat = s; lat < n - 1e-9; lat += size)
+    for (let lng = w; lng < e - 1e-9; lng += size)
+      out.push([lat, lng, Math.min(lat + size, n), Math.min(lng + size, e)].map(round6));
+  return out;
+}
+const round6 = (n) => Math.round(n * 1e6) / 1e6;
+
+/**
+ * Compact address and street records for one tile, from Overpass:
+ *   addresses: [lat, lng, street, housenumber, city]
+ *   streets:   [name, nameHe, [[lat, lng], ...] per segment]
+ */
+async function fetchTile(t) {
+  try {
+    return await fetchTileOnce(t);
+  } catch (error) {
+    // Too much for the server at once: the tile's four quarters, each on its own.
+    if (t[2] - t[0] < 0.06) throw error;
+    console.warn(`tile ${t.join(",")} split in four (${error.message})`);
+    const [s, w, n, e] = t;
+    const mlat = round6((s + n) / 2);
+    const mlng = round6((w + e) / 2);
+    const out = { addresses: [], streets: [] };
+    for (const q of [
+      [s, w, mlat, mlng],
+      [s, mlng, mlat, e],
+      [mlat, w, n, mlng],
+      [mlat, mlng, n, e],
+    ]) {
+      const part = await fetchTile(q);
+      out.addresses.push(...part.addresses);
+      out.streets.push(...part.streets);
+    }
+    return out;
+  }
+}
+
+async function fetchTileOnce(t) {
+  const box = t.join(",");
+  const head = `[out:json][timeout:120][bbox:${box}];`;
+  const elements = [
+    ...(await overpassQuery(
+      `addresses ${box}`,
+      `${head}\nnwr["addr:housenumber"];\nout center tags;`,
+      3,
+    )),
+    ...(await overpassQuery(
+      `streets ${box}`,
+      `${head}\n(way["highway"]["name"];way["highway"]["name:he"];);\nout tags geom;`,
+      3,
+    )),
+  ];
+  const addresses = [];
+  const streets = [];
+  for (const el of elements) {
+    const tg = el.tags ?? {};
+    if (tg["addr:housenumber"]) {
+      const p = el.lat !== undefined ? el : el.center;
+      if (!p) continue;
+      const street = tg["addr:street:he"] ?? tg["addr:street"] ?? tg["addr:place"] ?? "";
+      if (!street) continue;
+      addresses.push([
+        round6(p.lat),
+        round6(p.lon),
+        street,
+        tg["addr:housenumber"],
+        tg["addr:city:he"] ?? tg["addr:city"] ?? "",
+      ]);
+    } else if (el.type === "way" && el.geometry && (tg.name || tg["name:he"])) {
+      streets.push([
+        tg.name ?? "",
+        tg["name:he"] ?? "",
+        el.geometry.map((g) => [round6(g.lat), round6(g.lon)]),
+      ]);
+    }
+  }
+  return { addresses, streets };
+}
+
+/** Industrial zones (named or not) and named junctions in the north: [kind, names[], lat, lng, sizeM]. */
+async function fetchLandmarks() {
+  const query = `[out:json][timeout:300][bbox:${NORTH_BBOX}];
+(
+  nwr["landuse"="industrial"];
+  nwr["place"]["name"~"תעשי|תעסוק"];
+  node["junction"]["name"];
+  node["highway"~"traffic_signals|motorway_junction"]["name"];
+  nwr["name"~"^(צומת|מחלף) "];
+);
+out tags bb;`;
+  const elements = await overpassQuery("landmarks", query);
+  const out = [];
+  for (const el of elements) {
+    const tg = el.tags ?? {};
+    // Overpass gives one geometry per element: a node its point, a way or relation its bounds.
+    const b = el.bounds;
+    const p =
+      el.lat !== undefined
+        ? el
+        : b && { lat: (b.minlat + b.maxlat) / 2, lon: (b.minlon + b.maxlon) / 2 };
+    if (!p) continue;
+    const names = [tg.name, tg["name:he"], tg.alt_name, tg.old_name, tg.official_name].filter(
+      Boolean,
+    );
+    const industrial = tg.landuse === "industrial" || /תעשי|תעסוק/.test(tg.name ?? "");
+    const size = b
+      ? Math.max(
+          km({ lat: b.minlat, lng: b.minlon }, { lat: b.maxlat, lng: b.minlon }),
+          km({ lat: b.minlat, lng: b.minlon }, { lat: b.minlat, lng: b.maxlon }),
+        ) * 1000
+      : 0;
+    out.push([industrial ? "industrial" : "junction", names, round6(p.lat), round6(p.lon), size]);
+  }
+  return out;
+}
+
+/**
+ * Municipal boundaries in the north (admin_level 8: cities, local councils, regional councils):
+ * [names[], segments[[[lat, lng], ...]]]. Every member way is kept; a ray crossing count over all
+ * of them (even-odd) says inside or out without assembling rings.
+ */
+async function fetchBoundaries() {
+  const query = `[out:json][timeout:300][bbox:${NORTH_BBOX}];
+relation["boundary"="administrative"]["admin_level"="8"];
+out geom;`;
+  const elements = await overpassQuery("boundaries", query);
+  return elements.map((el) => {
+    const tg = el.tags ?? {};
+    const names = [tg["name:he"], tg.name, tg["name:ar"], tg["name:en"], tg.alt_name].filter(
+      Boolean,
+    );
+    const segments = (el.members ?? [])
+      .filter((m) => m.type === "way" && m.geometry?.length)
+      .map((m) => m.geometry.map((g) => [round6(g.lat), round6(g.lon)]));
+    return [names, segments];
+  });
+}
+
+/** Whether a point is inside a boundary's segments (even-odd over every segment). */
+export function inside(point, segments) {
+  let odd = false;
+  for (const seg of segments)
+    for (let i = 1; i < seg.length; i++) {
+      const [ay, ax] = seg[i - 1];
+      const [by, bx] = seg[i];
+      if (ay > point.lat !== by > point.lat) {
+        const x = ax + ((point.lat - ay) / (by - ay)) * (bx - ax);
+        if (point.lng < x) odd = !odd;
+      }
+    }
+  return odd;
+}
+
+/** Every address, street and landmark in the north, cached as `geo-*.json` under .cache/. */
+export async function loadOsmAddresses() {
+  const addresses = [];
+  const streets = [];
+  for (const t of tiles()) {
+    const data = await cached(`geo-tile-${t.join("_")}.json`, () => fetchTile(t));
+    addresses.push(...data.addresses);
+    streets.push(...data.streets);
+  }
+  const landmarks = await cached("geo-landmarks.json", fetchLandmarks);
+  const boundaries = await cached("geo-boundaries.json", fetchBoundaries);
+  return { addresses, streets, landmarks, boundaries };
+}
+
+// --- Normalisation -------------------------------------------------------------------------
+
+/** Words before a street's name that say it is a street ("שדרות" before "שד", longest first). */
+const STREET_PREFIX = /^(רחוב|רח|שדרות|שדרת|שד|דרך|סמטת|סמ|כיכר|ככר|משעול|שביל|שכונת|שכ)(?:\s|$)/;
+const FINALS = { ך: "כ", ם: "מ", ן: "נ", ף: "פ", ץ: "צ" };
+
+/**
+ * A street name's comparison key: no prefix (רחוב / רח' / שד' / שדרות / דרך / סמטת), no quotes
+ * or gershayim, dots, hyphens and maqaf as spaces, ק as כ, ט as ת, doubled vav and yod as one,
+ * final letters as their normal form. "רח' יהודה הלוי" and "יהודה הלוי" meet.
+ */
+export function streetKey(name) {
+  let s = String(name ?? "")
+    .normalize("NFKD")
+    .replace(/[֑-ׇ]/g, "")
+    .replace(/[׳״'"`’]/g, "")
+    .replace(/[.,]/g, " ")
+    .replace(/[-־‐-―_/]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  // "דרך" alone before one word is the name ("דרך הים" stays "דרך הים" only via the loose key).
+  for (let i = 0; i < 2; i++) {
+    const m = s.match(STREET_PREFIX);
+    if (!m || s.length === m[0].length) break;
+    s = s.slice(m[0].length).trim();
+  }
+  return (
+    s
+      // An acronym the register writes with a space for its gershayim: "צה ל" is צה"ל.
+      .replace(/(^|\s)(\S{1,3}) (\S)(?=\s|$)/g, "$1$2$3")
+      .replace(/[ךםןףץ]/g, (c) => FINALS[c])
+      .replace(/ק/g, "כ")
+      .replace(/ט/g, "ת")
+      .replace(/יי+/g, "י")
+      .replace(/וו+/g, "ו")
+      .toLowerCase()
+  );
+}
+
+/**
+ * Looser still, for a second try when the exact key finds nothing: no article ה on a long
+ * word, no vowel letters (א ו י) inside a word. "השיש" and "שיש", "הלוי" and "הלווי" meet.
+ */
+export function looseStreetKey(name) {
+  return streetKey(name)
+    .split(" ")
+    .map((w) => (w.length > 3 && w.startsWith("ה") ? w.slice(1) : w))
+    .map((w) => w[0] + w.slice(1).replace(/[אוי]/g, ""))
+    .join(" ");
+}
+
+/** "12א" → 12, "12-14" → 12, "12/3" → 12; none → null. */
+export function houseNumber(raw) {
+  const m = String(raw ?? "").match(/\d+/);
+  return m ? Number(m[0]) : null;
+}
+
+/** The ways the register writes "industrial zone", each replaced by one marker. */
+const INDUSTRIAL =
+  /(פארק\s+(?:ה)?תעשי(?:י)?(?:ה|ות)|קרי(?:י)?ת\s+(?:ה)?תעשי(?:י)?ה|אזור\s+(?:ה)?תעשי(?:י)?ה|אזה"?\s*ת|א\.?\s*תעשי(?:י)?ה|א\s*"\s*ת|א\.\s*ת\.?|(?<![א-ת])א\s+ת(?![א-ת]))/g;
+const MARK = " § ";
+/** Words that are not a street ("בית פרטי", "כביש ראשי", "חלקה", "מבנה"). */
+const NOT_STREET =
+  /^(כביש|ת|ד|ש|רח|רחוב|שד|דרך|בית פרטי|בית|חלקה|מבנה|ביתן|גוש|ליד|מול|כניסה|כניסה ראשית|מרכז|כביש ראשי)$/;
+
+/**
+ * What the register's free-text `ktovet` holds: { street, number, industrial, areaName,
+ * junction }. PO boxes ("ת.ד. 524"), private bags ("ד.נ. גליל תחתון"), plots ("גוש 18764 חלקה
+ * 31") and the town's own name are noise.
+ */
+export function parseAddress(raw, town = "") {
+  let s = ` ${String(raw ?? "")} `
+    .replace(/[־‐-―]/g, "-")
+    .replace(/[׳`’]/g, "'")
+    .replace(/״/g, '"')
+    .replace(/\\/g, "/");
+  s = s
+    .replace(/(^|[\s,.])(ת\s*\.?\s*ד\s*'?\s*\.?|ת"ד|תד'?)\s*'?\.?\s*\d+/g, " ")
+    .replace(/(^|[\s,.])(ת\s*\.?\s*ד\s*\.?)(?=\s|$)/g, " ")
+    .replace(/(^|[\s,.])(ד\s*\.?\s*נ\s*\.?|ד"נ)\s*[^\d,]*/g, " ")
+    .replace(/(^|\s)דאר\s+\S+/g, " ")
+    .replace(/(^|\s)גוש\s*\d+/g, " ")
+    .replace(/(^|\s)(חלקה|ח')\s*[\d/]+/g, " ")
+    .replace(/(^|\s)מיקוד\s*\d+/g, " ")
+    .replace(/(^|\s)(מבנה|ביתן)\s*\d+/g, " ")
+    .replace(/([א-ת])(\d)/g, "$1 $2")
+    .replace(/\*/g, " ");
+  // A junction is often named for the town itself ("צומת ירכא"): read it before the town goes.
+  const junction = s.match(/צומת\s+([^\d,]+)/);
+  if (town) {
+    const t = town.replace(/\*/g, "").trim();
+    if (t.length >= 3) s = s.split(t).join(" ");
+  }
+  const industrial = INDUSTRIAL.test(s);
+  INDUSTRIAL.lastIndex = 0;
+  s = s.replace(INDUSTRIAL, MARK);
+  // The zone's own name or side: what follows the marker up to a number, a comma or "ליד".
+  let areaName = null;
+  const after = s.match(/§\s*([^§\d,]*)/);
+  if (after) {
+    const words = after[1]
+      .replace(/(ליד|על יד|מול|פינת)\s.*$/, "")
+      .replace(/[.'"]/g, " ")
+      .split(/\s+/)
+      .filter((w) => w && !/^(רח|רחוב|ת|ד)$/.test(w));
+    // Only a side ("דרומי", "ג'", "ישן") or a short proper name; a street after it is a street.
+    if (words.length && words.length <= 3 && !/^(רח|רחוב)/.test(after[1].trim()))
+      areaName = words.join(" ");
+  }
+  let street = null;
+  let number = null;
+  // Each piece between markers and commas: "רח' העוצמה 11", "השיש 18", "דרך י. סימון 52".
+  for (const piece of s.split(/[§,]/)) {
+    const m = piece.match(/([א-ת"'][א-ת"'.\s]*?)\s+(\d+)\s*([א-ת](?=\s|$))?/);
+    if (m) {
+      const cand = cleanStreet(m[1]);
+      // Five digits after a name is a postcode or a box, not a house ("מעליא 25140").
+      if (cand && Number(m[2]) < 2000) {
+        street = cand;
+        number = Number(m[2]);
+        break;
+      }
+    }
+  }
+  if (!street) {
+    for (const piece of s.split(/[§,]/)) {
+      // A street without a number ("רח יהודה הלוי", "רחוב אלמדינה", "שדרות אבא חושי").
+      const n = piece.match(/(?:^|\s)(רחוב|רח'?\.?|שדרות|שד'?\.?|סמטת|דרך)\s*([א-ת"'][א-ת"'\s.]+)/);
+      if (n) {
+        const cand = cleanStreet(`${n[1]} ${n[2]}`);
+        if (cand) {
+          street = cand;
+          break;
+        }
+      }
+    }
+  }
+  return {
+    street,
+    number,
+    industrial,
+    areaName: areaName && areaName !== "ה" ? areaName : null,
+    junction: junction?.[1].trim() || null,
+  };
+}
+
+function cleanStreet(raw) {
+  // "עילית רח' פניקס צבי": a street prefix inside the text starts the street.
+  // A side of the industrial zone before the street ("ישן האומן" after "א.תעשייה").
+  raw = raw.replace(/^\s*(ה?ישן|ה?חדש|ה?צפוני|ה?דרומי|ה?מזרחי|ה?מערבי|[א-ד]')\s+(?=\S)/, "");
+  const inner = raw.match(/\s(רחוב|רח'|רח|שדרות|שד')\s/);
+  if (inner) raw = raw.slice(inner.index + 1);
+  const s = raw
+    .replace(/\s+(ליד|על יד|מול|פינת|תחנת|ת\.?\s*דלק)(\s.*)?$/, "")
+    .replace(/^[\s.,'-]+|[\s.,'-]+$/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  const key = streetKey(s);
+  if (!key || key.length < 2 || NOT_STREET.test(key) || /^צומת/.test(key)) return null;
+  return s;
+}
+
+// --- The index -----------------------------------------------------------------------------
+
+const metres = (a, b) => km(a, b) * 1000;
+
+/** Total length of a street's segments (several ways under one name), in metres. */
+function lengthM(segments) {
+  let total = 0;
+  for (const seg of segments)
+    for (let i = 1; i < seg.length; i++)
+      total += metres(
+        { lat: seg[i - 1][0], lng: seg[i - 1][1] },
+        { lat: seg[i][0], lng: seg[i][1] },
+      );
+  return total;
+}
+
+/** The point halfway along a street's longest connected piece. */
+function midpoint(segments) {
+  const seg = [...segments].sort((a, b) => lengthM([b]) - lengthM([a]))[0];
+  const half = lengthM([seg]) / 2;
+  let walked = 0;
+  for (let i = 1; i < seg.length; i++) {
+    const a = { lat: seg[i - 1][0], lng: seg[i - 1][1] };
+    const b = { lat: seg[i][0], lng: seg[i][1] };
+    const d = metres(a, b);
+    if (walked + d >= half) {
+      const f = d ? (half - walked) / d : 0;
+      return { lat: a.lat + (b.lat - a.lat) * f, lng: a.lng + (b.lng - a.lng) * f };
+    }
+    walked += d;
+  }
+  return { lat: seg[0][0], lng: seg[0][1] };
+}
+
+/** Bounding size of a set of segments (longest side), metres: two far-apart streets of one name. */
+function spanM(segments) {
+  const pts = segments.flat();
+  const lats = pts.map((p) => p[0]);
+  const lngs = pts.map((p) => p[1]);
+  const s = Math.min(...lats);
+  const n = Math.max(...lats);
+  const w = Math.min(...lngs);
+  const e = Math.max(...lngs);
+  return Math.max(
+    metres({ lat: s, lng: w }, { lat: n, lng: w }),
+    metres({ lat: s, lng: w }, { lat: s, lng: e }),
+  );
+}
+
+/**
+ * Builds the geocoder over compact OSM data and a place matcher (places.mjs). Each address and
+ * street belongs to a Darb place: its addr:city when that names one near it, else the nearest
+ * settlement within the town's radius.
+ */
+export function createGeocoder({ addresses, streets, landmarks = [], boundaries = [] }, matcher) {
+  // Boundaries that are a Darb place's own (a regional council names no place: its villages are
+  // found by distance), each with its bounding box for a quick first test.
+  const areas = [];
+  for (const [names, segments] of boundaries) {
+    const pts = segments.flat();
+    if (!pts.length) continue;
+    const lats = pts.map((p) => p[0]);
+    const lngs = pts.map((p) => p[1]);
+    const box = {
+      s: Math.min(...lats),
+      n: Math.max(...lats),
+      w: Math.min(...lngs),
+      e: Math.max(...lngs),
+    };
+    const centre = { lat: (box.s + box.n) / 2, lng: (box.w + box.e) / 2 };
+    const m = names
+      .map((n) => matcher.match({ town: n, lat: centre.lat, lng: centre.lng }))
+      .find((x) => x?.place && x.how === "name");
+    if (m) areas.push({ slug: m.place.slug, box, segments });
+  }
+  const areaOf = (lat, lng) => {
+    for (const a of areas)
+      if (lat >= a.box.s && lat <= a.box.n && lng >= a.box.w && lng <= a.box.e)
+        if (inside({ lat, lng }, a.segments)) return a.slug;
+    return null;
+  };
+  const townOf = (lat, lng, city) => {
+    const area = areaOf(lat, lng);
+    if (area) return area;
+    if (city) {
+      const m = matcher.match({ town: city, lat, lng });
+      if (m?.place && m.how === "name") return m.place.slug;
+    }
+    const near = matcher.nearest({ lat, lng }, TOWN_RADIUS_KM.city);
+    if (!near) return null;
+    const r = TOWN_RADIUS_KM[near.place.type] ?? 2;
+    return near.km <= r ? near.place.slug : null;
+  };
+  /** town → streetKey → [{ lat, lng, n, raw, named }] */
+  const points = new Map();
+  /** streetKey → points OSM gives no city to, for a town whose centre is near (see unnamedNear). */
+  const unnamed = new Map();
+  const add = (map, town, key, value) => {
+    const byStreet = map.get(town) ?? new Map();
+    byStreet.set(key, [...(byStreet.get(key) ?? []), value]);
+    map.set(town, byStreet);
+  };
+  for (const [lat, lng, street, num, city] of addresses) {
+    const key = streetKey(street);
+    const n = houseNumber(num);
+    if (!key || n === null) continue;
+    const point = { lat, lng, n, raw: num, named: Boolean(city) };
+    if (!city) unnamed.set(key, [...(unnamed.get(key) ?? []), point]);
+    const town = townOf(lat, lng, city);
+    if (town) add(points, town, key, point);
+  }
+  /** town → streetKey → segments */
+  const ways = new Map();
+  for (const [name, nameHe, geom] of streets) {
+    if (!geom?.length) continue;
+    // A way may cross a town line: it belongs to every town its ends or middle stand in.
+    const towns = new Set(
+      [geom[0], geom[Math.floor(geom.length / 2)], geom.at(-1)]
+        .map(([lat, lng]) => townOf(lat, lng, ""))
+        .filter(Boolean),
+    );
+    for (const town of towns)
+      for (const n of new Set([nameHe, name].filter((x) => /[א-ת]/.test(x)))) {
+        const key = streetKey(n);
+        if (key) add(ways, town, key, geom);
+      }
+  }
+  /** Landmarks with their town. */
+  const marks = landmarks.map(([kind, names, lat, lng, size]) => ({
+    kind,
+    keys: names.map((n) => landmarkKey(n)).filter(Boolean),
+    lat,
+    lng,
+    size,
+    town: townOf(lat, lng, ""),
+    // Only a municipal boundary is sure enough for a zone OSM gives no name.
+    bounded: areaOf(lat, lng),
+  }));
+
+  /** Each town's loose keys: loose key → the exact keys it stands for. */
+  const looseOf = new Map();
+  const looseIndex = (map, town) => {
+    const id = `${map === points ? "p" : "w"}|${town}`;
+    if (!looseOf.has(id)) {
+      const idx = new Map();
+      for (const key of map.get(town)?.keys() ?? []) {
+        const l = looseStreetKey(key);
+        idx.set(l, [...(idx.get(l) ?? []), key]);
+      }
+      looseOf.set(id, idx);
+    }
+    return looseOf.get(id);
+  };
+
+  /** A street's entries in a town: its exact key, else the one street its loose key names. */
+  function streetIn(map, town, key) {
+    const byStreet = map.get(town);
+    if (!byStreet) return null;
+    if (byStreet.has(key)) return byStreet.get(key);
+    const keys = looseIndex(map, town).get(looseStreetKey(key)) ?? [];
+    if (keys.length === 1) return byStreet.get(keys[0]);
+    if (keys.length > 1) return null;
+    // "מייזר" for "יוסף מייזר", "עמרם אברהם" for "אברהם עמרם": the words of one are all in the
+    // other, and only one street in the town answers.
+    const want = new Set(looseStreetKey(key).split(" "));
+    if (![...want].some((w) => w.length >= 3)) return null;
+    const found = [];
+    for (const [l, ks] of looseIndex(map, town)) {
+      const have = new Set(l.split(" "));
+      const inside = (a, b) => [...a].every((w) => b.has(w));
+      if (inside(want, have) || (have.size > 1 && inside(have, want))) found.push(...ks);
+    }
+    if (found.length === 1) return byStreet.get(found[0]);
+    if (found.length > 1) return null;
+    // A typing slip ("פרילנדר", "פרינדלר" for "פרידלנדר"): letters that mostly agree, with one
+    // street in the town clearly closest.
+    const flat = looseStreetKey(key).replace(/ /g, "");
+    if (flat.length < 4) return null;
+    const scored = [...looseIndex(map, town)]
+      .map(([l, ks]) => ({ ks, d: dice(flat, l.replace(/ /g, "")) }))
+      .sort((a, b) => b.d - a.d);
+    const [best, next] = scored;
+    if (best && best.d >= 0.7 && best.ks.length === 1 && (!next || next.d < best.d - 0.15))
+      return byStreet.get(best.ks[0]);
+    return null;
+  }
+
+  /**
+   * Addresses OSM gives no city to, on this street, near the town's centre: a Haifa garage's
+   * number may stand closer to Nesher's centre than to Haifa's. Used only when they all stand
+   * together (one street, not two of one name).
+   */
+  function unnamedNear(slug, key) {
+    const p = matcher.bySlug.get(slug);
+    if (!p) return null;
+    const r = TOWN_RADIUS_KM[p.type] ?? 2;
+    let list = unnamed.get(key);
+    if (!list) {
+      const l = looseStreetKey(key);
+      const keys = [...unnamed.keys()].filter((k) => looseStreetKey(k) === l);
+      list = keys.length === 1 ? unnamed.get(keys[0]) : null;
+    }
+    const near = (list ?? []).filter((x) => km(p, x) <= r);
+    if (!near.length) return null;
+    const c = centroid(near);
+    return near.every((x) => metres(x, c) <= 1500) ? near : null;
+  }
+
+  function atNumber(list, number) {
+    const exact = list.filter((x) => x.n === number);
+    if (exact.length) {
+      // One building can carry its number on several nodes: they must stand together.
+      const c = centroid(exact);
+      if (exact.every((x) => metres(x, c) <= 60))
+        return { ...c, precision: "exact", matched: exact[0].raw };
+      // The number stands in two places: two streets of one name, not a confident pin.
+      return null;
+    }
+    // Same parity first (Israeli streets number one side odd, the other even).
+    const below = list.filter((x) => x.n < number).sort((a, b) => b.n - a.n);
+    const above = list.filter((x) => x.n > number).sort((a, b) => a.n - b.n);
+    const side = (arr) => arr.find((x) => x.n % 2 === number % 2) ?? arr[0];
+    const lo = side(below);
+    const hi = side(above);
+    if (lo && hi && metres(lo, hi) <= 2 * NEAR_M) {
+      const f = (number - lo.n) / (hi.n - lo.n);
+      return {
+        lat: round6(lo.lat + (hi.lat - lo.lat) * f),
+        lng: round6(lo.lng + (hi.lng - lo.lng) * f),
+        precision: "near",
+        matched: `${lo.raw}-${hi.raw}`,
+      };
+    }
+    // One side known: the nearest number, when it is close in numbering (a few houses away).
+    const one = [lo, hi]
+      .filter(Boolean)
+      .sort((a, b) => Math.abs(a.n - number) - Math.abs(b.n - number))[0];
+    if (one && Math.abs(one.n - number) <= 10) {
+      // Its distance to the rest of the street says how far apart numbers stand here.
+      return { lat: one.lat, lng: one.lng, precision: "near", matched: String(one.raw) };
+    }
+    return null;
+  }
+
+  function onStreet(town, street, number) {
+    const key = streetKey(street);
+    if (!key) return { skip: "no street in the address" };
+    const list = streetIn(points, town, key);
+    if (number !== null) {
+      for (const l of [list, unnamedNear(town, key)]) {
+        const hit = l && atNumber(l, number);
+        if (hit) return hit;
+      }
+    }
+    const segs = streetIn(ways, town, key);
+    if (segs) {
+      const len = lengthM(segs);
+      if (len < STREET_MAX_M && spanM(segs) < STREET_MAX_M) {
+        const mid = midpoint(segs);
+        return { lat: round6(mid.lat), lng: round6(mid.lng), precision: "street", matched: street };
+      }
+      return { skip: `street longer than ${STREET_MAX_M} m and its number not on the map` };
+    }
+    if (list) return { skip: "number not on the map and the street has no geometry" };
+    return { skip: "street not on the map in this town" };
+  }
+
+  function atLandmark(town, kind, name) {
+    const what = kind === "industrial" ? "industrial zone" : "junction";
+    const key = name ? landmarkKey(name) : "";
+    const named = marks.filter((m) => m.kind === kind && m.town === town && m.keys.length);
+    // A one-letter side ("א.ת. ג'") names nothing OSM would.
+    if (key.length >= 2) {
+      const found = named.filter((m) => m.keys.some((k) => k.includes(key) || key.includes(k)));
+      if (found.length === 1) return zone(found[0]);
+      if (found.length > 1) return { skip: `${found.length} ${what}s answer its name` };
+      // "א.ת. דרומי" when OSM has no southern zone: the town's main zone may be another one.
+      if (kind === "industrial") return { skip: `the ${what} it names is not on the map` };
+    }
+    if (kind === "junction") return { skip: "junction not on the map in this town" };
+    // No name, or one OSM does not have: the town's one main industrial zone, named or not,
+    // inside its municipal boundary, when every other industrial patch there is much smaller.
+    const all = marks
+      .filter((m) => m.kind === "industrial" && m.bounded === town)
+      .sort((a, b) => b.size - a.size);
+    const pool = all.length ? all : named;
+    if (!pool.length) return { skip: "no industrial zone on the map" };
+    const [main, next] = pool;
+    if (next && next.size * 3 > main.size)
+      return {
+        skip: `${pool.filter((m) => m.size * 3 > main.size).length} industrial zones in town`,
+      };
+    if (main.size < 250 && !main.keys.length) return { skip: "no industrial zone on the map" };
+    return zone(main);
+  }
+
+  function zone(m) {
+    if (m.kind === "industrial" && m.size > AREA_MAX_M)
+      return { skip: `industrial zone larger than ${AREA_MAX_M} m` };
+    return { lat: m.lat, lng: m.lng, precision: "area", matched: m.keys[0] ?? "industrial" };
+  }
+
+  /**
+   * One register address in its town. Tries the street (exact, near, street), then a named
+   * industrial zone or junction. Never a town centre.
+   */
+  function resolve({ town, address, townName = "" }) {
+    const slug = typeof town === "string" ? town : town?.slug;
+    if (!slug) return { skip: "town not a Darb place" };
+    const a = parseAddress(address, townName || matcher.bySlug.get(slug)?.name?.he || "");
+    let streetMiss = null;
+    if (a.street) {
+      const hit = onStreet(slug, a.street, a.number);
+      if (!hit.skip) return { ...hit, parsed: a };
+      streetMiss = hit;
+    }
+    if (a.junction) {
+      const hit = atLandmark(slug, "junction", a.junction);
+      if (!hit.skip) return { ...hit, parsed: a };
+    }
+    if (a.industrial) {
+      const hit = atLandmark(slug, "industrial", a.areaName);
+      if (!hit.skip) return { ...hit, parsed: a };
+      if (!streetMiss) return { ...hit, parsed: a };
+    }
+    if (streetMiss) return { ...streetMiss, parsed: a };
+    if (a.junction) return { skip: "junction not on the map in this town", parsed: a };
+    return {
+      skip: String(address ?? "").trim()
+        ? "address is only a PO box, private bag or plot number"
+        : "no address in the register",
+      parsed: a,
+    };
+  }
+
+  return { resolve, parseAddress, stats: { towns: points.size, streetTowns: ways.size } };
+}
+
+/** A landmark name's key: no "צומת"/"אזור תעשייה" words, loose letters. */
+export function landmarkKey(name) {
+  return placeNormalize(
+    String(name ?? "")
+      .replace(/(צומת|מחלף|אזור|פארק|קרית|קריית|ה?תעשי[יה]+|ה?תעסוקה|א\.?ת\.?)/g, " ")
+      .replace(/\s+/g, " "),
+  )
+    .replace(/[אוי\s]/g, "")
+    .trim();
+}
+
+function centroid(list) {
+  return {
+    lat: round6(list.reduce((s, x) => s + x.lat, 0) / list.length),
+    lng: round6(list.reduce((s, x) => s + x.lng, 0) / list.length),
+  };
+}
