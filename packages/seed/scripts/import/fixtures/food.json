@@ -31,7 +31,10 @@
     {
       "type": "way",
       "id": 3,
-      "center": { "lat": 32.8195, "lon": 34.9988 },
+      "center": {
+        "lat": 32.8195,
+        "lon": 34.9988
+      },
       "tags": {
         "amenity": "cafe",
         "name": "Café Masada",
@@ -50,7 +53,11 @@
       "id": 4,
       "lat": 32.7068,
       "lon": 35.3052,
-      "tags": { "amenity": "restaurant", "name": "فلافل وحمص الشرق", "addr:city": "الناصرة" }
+      "tags": {
+        "amenity": "restaurant",
+        "name": "فلافل وحمص الشرق",
+        "addr:city": "الناصرة"
+      }
     },
     {
       "type": "node",
@@ -69,14 +76,22 @@
       "id": 6,
       "lat": 32.9162,
       "lon": 35.2938,
-      "tags": { "shop": "bakery", "name": "מאפיית הכרמל", "diet:gluten_free": "yes" }
+      "tags": {
+        "shop": "bakery",
+        "name": "מאפיית הכרמל",
+        "diet:gluten_free": "yes"
+      }
     },
     {
       "type": "node",
       "id": 7,
       "lat": 32.7069,
       "lon": 35.3049,
-      "tags": { "shop": "pastry", "name": "حلويات كنافة السلطان", "cuisine": "knafeh;baklava" }
+      "tags": {
+        "shop": "pastry",
+        "name": "حلويات كنافة السلطان",
+        "cuisine": "knafeh;baklava"
+      }
     },
     {
       "type": "node",
@@ -95,78 +110,146 @@
       "id": 20,
       "lat": 32.8192,
       "lon": 34.9985,
-      "tags": { "amenity": "bar", "name": "Haifa Bar" }
+      "tags": {
+        "amenity": "bar",
+        "name": "Haifa Bar"
+      }
     },
     {
       "type": "node",
       "id": 21,
       "lat": 32.8193,
       "lon": 34.999,
-      "tags": { "amenity": "pub", "name": "The Pub" }
+      "tags": {
+        "amenity": "pub",
+        "name": "The Pub"
+      }
     },
     {
       "type": "node",
       "id": 22,
       "lat": 32.8194,
       "lon": 34.9991,
-      "tags": { "amenity": "restaurant", "name": "Pork & Co", "cuisine": "pork" }
+      "tags": {
+        "amenity": "restaurant",
+        "name": "Pork & Co",
+        "cuisine": "pork"
+      }
     },
     {
       "type": "node",
       "id": 23,
       "lat": 32.8195,
       "lon": 34.9992,
-      "tags": { "amenity": "restaurant", "name": "מסעדת הים", "description": "בשר חזיר על הגריל" }
+      "tags": {
+        "amenity": "restaurant",
+        "name": "מסעדת הים",
+        "description": "בשר חזיר על הגריל"
+      }
     },
     {
       "type": "node",
       "id": 24,
       "lat": 32.8196,
       "lon": 34.9993,
-      "tags": { "shop": "lottery", "name": "לוטו חיפה" }
+      "tags": {
+        "shop": "lottery",
+        "name": "לוטו חיפה"
+      }
     },
     {
       "type": "node",
       "id": 25,
       "lat": 32.9,
       "lon": 35.29,
-      "tags": { "craft": "winery", "name": "יקב הגליל" }
+      "tags": {
+        "craft": "winery",
+        "name": "יקב הגליל"
+      }
     },
     {
       "type": "node",
       "id": 26,
       "lat": 32.8197,
       "lon": 34.9994,
-      "tags": { "shop": "alcohol", "name": "משקאות חיפה" }
+      "tags": {
+        "shop": "alcohol",
+        "name": "משקאות חיפה"
+      }
     },
     {
       "type": "node",
       "id": 27,
       "lat": 32.8198,
       "lon": 34.9995,
-      "tags": { "amenity": "nightclub", "name": "Club 9" }
+      "tags": {
+        "amenity": "nightclub",
+        "name": "Club 9"
+      }
     },
     {
       "type": "node",
       "id": 28,
       "lat": 32.8199,
       "lon": 34.9996,
-      "tags": { "amenity": "restaurant", "name": "בירה ופיצה", "cuisine": "pizza" }
+      "tags": {
+        "amenity": "restaurant",
+        "name": "בירה ופיצה",
+        "cuisine": "pizza"
+      }
     },
-    { "type": "node", "id": 30, "lat": 32.82, "lon": 34.9997, "tags": { "amenity": "restaurant" } },
+    {
+      "type": "node",
+      "id": 30,
+      "lat": 32.82,
+      "lon": 34.9997,
+      "tags": {
+        "amenity": "restaurant"
+      }
+    },
     {
       "type": "node",
       "id": 31,
       "lat": 32.08,
       "lon": 34.78,
-      "tags": { "amenity": "cafe", "name": "Tel Aviv Café" }
+      "tags": {
+        "amenity": "cafe",
+        "name": "Tel Aviv Café"
+      }
     },
     {
       "type": "node",
       "id": 32,
       "lat": 32.8201,
       "lon": 34.9998,
-      "tags": { "amenity": "restaurant", "name": "Juice Bar Haifa", "cuisine": "juice" }
+      "tags": {
+        "amenity": "restaurant",
+        "name": "Juice Bar Haifa",
+        "cuisine": "juice"
+      }
+    },
+    {
+      "type": "node",
+      "id": 40,
+      "lat": 32.8202,
+      "lon": 35.0001,
+      "tags": {
+        "amenity": "restaurant",
+        "name": "Havana",
+        "phone": "04-8501234"
+      }
+    },
+    {
+      "type": "way",
+      "id": 41,
+      "center": {
+        "lat": 32.8204,
+        "lon": 35.0002
+      },
+      "tags": {
+        "amenity": "cafe",
+        "name": "Havana"
+      }
     }
   ],
   "existing": [
@@ -175,7 +258,11 @@
       "place": "akko",
       "brand": "caramel",
       "kinds": ["restaurants", "sweets"],
-      "name": { "he": "קרמל", "ar": "كراميل", "en": "Caramel" },
+      "name": {
+        "he": "קרמל",
+        "ar": "كراميل",
+        "en": "Caramel"
+      },
       "lat": 32.9204758,
       "lng": 35.0695751,
       "attributes": {}

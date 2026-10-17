@@ -433,12 +433,17 @@ export function buildFood({ osm, boundaries = [], existing = [], taken = [], bra
     });
     records.push(b);
   }
-  const { kept, dropped } = dedupe(records, {
+  const first = dedupe(records, {
     existing,
     idKeys: ["osmId"],
     idsDecide: false,
     metres: SAME_FOOD_M,
   });
+  // Within OSM, one name at one spot is one place even when its two points read as two kinds
+  // (a restaurant node and a café building).
+  const second = dedupe(first.kept, { metres: SAME_FOOD_M, kindsMustMeet: false });
+  const kept = second.kept;
+  const dropped = [...first.dropped, ...second.dropped];
   assignSlugs(kept, taken);
   counts.duplicates = dropped.filter((d) => d.why === "duplicate").length;
   counts.alreadyListed = dropped.filter((d) => d.why === "existing").length;

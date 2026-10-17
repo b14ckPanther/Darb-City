@@ -32,13 +32,17 @@ describe("food importer over a fixture", () => {
       ).toBe(false);
   });
   it("skips unnamed places, places outside the north and what Darb already lists", () => {
-    expect(counts).toMatchObject({ unnamed: 1, outsideNorth: 1, alreadyListed: 1, duplicates: 1 });
+    expect(counts).toMatchObject({ unnamed: 1, outsideNorth: 1, alreadyListed: 1, duplicates: 2 });
     expect(businesses.some((b) => b.name.en === "Caramel")).toBe(false);
   });
   it("makes one card of two points with one name 50 m apart, keeping the richer", () => {
     const shawarma = businesses.filter((b) => b.name.he === "שווארמה אבו סאלח");
     expect(shawarma).toHaveLength(1);
     expect(shawarma[0].attributes.osmId).toBe("node/1");
+    // One name 25 m apart is one place even as a restaurant and a café.
+    const havana = businesses.filter((b) => b.name.en === "Havana");
+    expect(havana).toHaveLength(1);
+    expect(havana[0].phone).toBe("+972 4-850-1234");
   });
   it("gives a shawarma place its kinds, dishes, phone, hours, links and services", () => {
     const b = businesses.find((x) => x.attributes.osmId === "node/1");
