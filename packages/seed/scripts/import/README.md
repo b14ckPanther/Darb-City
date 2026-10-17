@@ -81,12 +81,14 @@ Paz (`data/listings/paz-north.json`) was made by hand before this toolkit and is
   private bags and plot numbers are noise), then: the house number in that town (`exact`); else
   the nearest number on the street, interpolated on the same side when both neighbours stand
   within 200 m (`near`); else the midpoint of the named street when the whole street is shorter
-  than 700 m (`street`); else a named industrial zone smaller than 1.5 km or a named junction,
-  when exactly one in the town answers (`area`); else nothing. Street names meet without their
+  than 700 m (`street`); else the industrial zone or junction the address names, when exactly
+  one in the town answers, or (an address that names no zone) the town's one main industrial
+  zone inside its OSM municipal boundary, named or not, when every other industrial patch
+  there is under a third of its size; never one larger than 1.5 km (`area`); else nothing. Street names meet without their
   prefix (רחוב / רח' / שד' / שדרות / דרך / סמטת), quotes, dashes or doubled vav and yod, then
   loosely (no vowel letters, no article), by their words (a surname alone, words reversed), or by
-  a near spelling when one street is clearly closest. A town's addresses are those whose
-  `addr:city` names it, else those nearest its centre within its radius. Never a town centre.
+  a near spelling when one street is clearly closest. A town's addresses are those inside its OSM municipal boundary, else those whose `addr:city`
+  names it, else those nearest its centre within its radius. Never a town centre.
   `garages.mjs` records the outcome as `attributes.geoPrecision` (`osm`, `exact`, `near`,
   `street`, `area`) with `attributes.sourceAddress`, and writes per-type coverage (and every
   skipped garage with why) to `.superpowers/garages-coverage.json`.

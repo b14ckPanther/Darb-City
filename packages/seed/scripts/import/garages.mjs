@@ -598,7 +598,7 @@ async function main() {
       licence: "Creative Commons Attribution (CC BY), Ministry of Transport",
       region: "northern-district, haifa-district",
       fetched: today(),
-      points: `${OSM_ATTRIBUTION}: the register has no coordinates. A pin is the garage itself on OSM (same town, same name or phone), else its register address on OSM's own address data (attributes.geoPrecision: exact house number, near = the nearest or interpolated number within 200 m, street = the midpoint of a named street shorter than 700 m, area = a small named industrial zone or junction in the town). Never a town centre`,
+      points: `${OSM_ATTRIBUTION}: the register has no coordinates. A pin is the garage itself on OSM (same town, same name or phone), else its register address on OSM's own address data (attributes.geoPrecision: exact house number, near = the nearest or interpolated number within 200 m, street = the midpoint of a named street shorter than 700 m, area = the industrial zone or junction the address names, or the town's one main industrial zone inside its OSM municipal boundary, never larger than 1.5 km). Never a town centre`,
       hours: "none: the register gives no hours",
       counts,
     },
