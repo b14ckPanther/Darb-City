@@ -10,7 +10,7 @@
     "left_out": "features with no name, food (the food importer's), garages, tyres, testing, fuel, banks and EV charging (official lists), bars, alcohol, pork, gambling and lottery, adult shops, tobacco, vape and cannabis, tattoo and weapons shops, private places, sights with no hours or contact",
     "hours": "from OSM opening_hours where it reads for certain; otherwise none",
     "counts": {
-      "emitted": 122
+      "emitted": 123
     }
   },
   "businesses": [
@@ -5468,7 +5468,7 @@
       }
     },
     {
-      "slug": "mafroshat-vasataar-al-post-office",
+      "slug": "mafroshat-vasataar-al-doar",
       "place": "katzir",
       "brand": null,
       "primaryKind": "furniture",
@@ -5478,7 +5478,7 @@
       "name": {
         "he": "מפרושאת וסתאאר אל-דואר",
         "ar": "مفروشات وستائر الدوار",
-        "en": "Mafroshat Vasataar al Post Office"
+        "en": "Mafroshat Vasataar al Doar"
       },
       "tagline": {
         "he": "חנות רהיטים בקציר",
@@ -5509,7 +5509,7 @@
         "brand": {
           "he": "מפרושאת וסתאאר אל-דואר",
           "ar": "مفروشات وستائر الدوار",
-          "en": "Mafroshat Vasataar al Post Office"
+          "en": "Mafroshat Vasataar al Doar"
         },
         "title": {
           "he": "חנות רהיטים",
@@ -7862,6 +7862,170 @@
       }
     },
     {
+      "slug": "tnoirat-al-hilal",
+      "place": "katzir",
+      "brand": null,
+      "primaryKind": "decor",
+      "kinds": [
+        "decor"
+      ],
+      "name": {
+        "he": "תנויראת אל-הלאל",
+        "ar": "تنويرات الهلال",
+        "en": "Tnoirat al Hilal"
+      },
+      "tagline": {
+        "he": "עיצוב ואביזרים לבית בקציר",
+        "ar": "ديكور وإكسسوارات للبيت في كتسير",
+        "en": "Home decor in Katzir"
+      },
+      "address": {
+        "he": "קציר",
+        "ar": "كتسير",
+        "en": "Katzir"
+      },
+      "lat": 32.4742825,
+      "lng": 35.0903766,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9927439748"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "תנויראת אל-הלאל",
+          "ar": "تنويرات الهلال",
+          "en": "Tnoirat al Hilal"
+        },
+        "title": {
+          "he": "עיצוב ואביזרים לבית",
+          "ar": "ديكور وإكسسوارات للبيت",
+          "en": "Home decor"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "עיצוב ואביזרים לבית",
+              "ar": "ديكور وإكسسوارات للبيت",
+              "en": "Home decor"
+            },
+            "meta": {
+              "he": "תאורה",
+              "ar": "إضاءة",
+              "en": "Lighting"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#A99BD6"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#a99bd6",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "tnoirat-al-hilal-2",
+      "place": "katzir",
+      "brand": null,
+      "primaryKind": "decor",
+      "kinds": [
+        "decor"
+      ],
+      "name": {
+        "he": "תנויראת אל-הלאל",
+        "ar": "تنويرات الهلال",
+        "en": "Tnoirat al Hilal"
+      },
+      "tagline": {
+        "he": "עיצוב ואביזרים לבית בקציר",
+        "ar": "ديكور وإكسسوارات للبيت في كتسير",
+        "en": "Home decor in Katzir"
+      },
+      "address": {
+        "he": "קציר",
+        "ar": "كتسير",
+        "en": "Katzir"
+      },
+      "lat": 32.4744634,
+      "lng": 35.0919094,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9932060453"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "תנויראת אל-הלאל",
+          "ar": "تنويرات الهلال",
+          "en": "Tnoirat al Hilal"
+        },
+        "title": {
+          "he": "עיצוב ואביזרים לבית",
+          "ar": "ديكور وإكسسوارات للبيت",
+          "en": "Home decor"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "עיצוב ואביזרים לבית",
+              "ar": "ديكور وإكسسوارات للبيت",
+              "en": "Home decor"
+            },
+            "meta": {
+              "he": "תאורה",
+              "ar": "إضاءة",
+              "en": "Lighting"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#A99BD6"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#a99bd6",
+        "icons": "solid"
+      }
+    },
+    {
       "slug": "yhia-dikhor-sataar",
       "place": "katzir",
       "brand": null,
@@ -8162,88 +8326,6 @@
               "he": "וילונות",
               "ar": "برادي",
               "en": "Curtains"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#A99BD6"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#a99bd6",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "furniture-4502808790",
-      "place": "kefar-bialik",
-      "brand": null,
-      "primaryKind": "furniture",
-      "kinds": [
-        "furniture"
-      ],
-      "name": {
-        "he": "Одеяло",
-        "ar": "Одеяло",
-        "en": "Одеяло"
-      },
-      "tagline": {
-        "he": "חנות רהיטים בכפר ביאליק",
-        "ar": "محل أثاث في كفار بيالك",
-        "en": "Furniture shop in Kefar Bialik"
-      },
-      "address": {
-        "he": "כפר ביאליק",
-        "ar": "كفار بيالك",
-        "en": "Kefar Bialik"
-      },
-      "lat": 32.8085909,
-      "lng": 35.0539991,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/4502808790"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "Одеяло",
-          "ar": "Одеяло",
-          "en": "Одеяло"
-        },
-        "title": {
-          "he": "חנות רהיטים",
-          "ar": "محل أثاث",
-          "en": "Furniture shop"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "חנות רהיטים",
-              "ar": "محل أثاث",
-              "en": "Furniture shop"
-            },
-            "meta": {
-              "he": "רהיטים",
-              "ar": "أثاث",
-              "en": "Furniture"
             }
           }
         ],

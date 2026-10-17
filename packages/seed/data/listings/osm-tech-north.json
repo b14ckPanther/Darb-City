@@ -10,93 +10,10 @@
     "left_out": "features with no name, food (the food importer's), garages, tyres, testing, fuel, banks and EV charging (official lists), bars, alcohol, pork, gambling and lottery, adult shops, tobacco, vape and cannabis, tattoo and weapons shops, private places, sights with no hours or contact",
     "hours": "from OSM opening_hours where it reads for certain; otherwise none",
     "counts": {
-      "emitted": 46
+      "emitted": 45
     }
   },
   "businesses": [
-    {
-      "slug": "internet-cafe",
-      "place": "baqa-al-gharbiyye",
-      "brand": null,
-      "primaryKind": "it-support",
-      "kinds": [
-        "it-support",
-        "electronics"
-      ],
-      "name": {
-        "he": "אנתרנת כאפיה",
-        "ar": "انترنت كافيه",
-        "en": "Internet Cafe"
-      },
-      "tagline": {
-        "he": "מחשבים ותמיכה טכנית בבאקה אל-גרביה",
-        "ar": "كمبيوترات ودعم فني في باقة الغربية",
-        "en": "Computers and IT support in Baqa al-Gharbiyye"
-      },
-      "address": {
-        "he": "באקה אל-גרביה",
-        "ar": "باقة الغربية",
-        "en": "Baqa al-Gharbiyye"
-      },
-      "lat": 32.4102372,
-      "lng": 35.0710601,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/432415897"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "אנתרנת כאפיה",
-          "ar": "انترنت كافيه",
-          "en": "Internet Cafe"
-        },
-        "title": {
-          "he": "מחשבים ותמיכה טכנית",
-          "ar": "كمبيوترات ودعم فني",
-          "en": "Computers and IT support"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "מחשבים ותמיכה טכנית",
-              "ar": "كمبيوترات ودعم فني",
-              "en": "Computers and IT support"
-            },
-            "meta": {
-              "he": "מחשבים",
-              "ar": "كمبيوترات",
-              "en": "Computers"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#5FB3A8"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#5fb3a8",
-        "icons": "solid"
-      }
-    },
     {
       "slug": "janim-for-computer",
       "place": "baqa-al-gharbiyye",

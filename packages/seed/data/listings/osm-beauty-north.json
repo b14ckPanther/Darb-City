@@ -10,18 +10,19 @@
     "left_out": "features with no name, food (the food importer's), garages, tyres, testing, fuel, banks and EV charging (official lists), bars, alcohol, pork, gambling and lottery, adult shops, tobacco, vape and cannabis, tattoo and weapons shops, private places, sights with no hours or contact",
     "hours": "from OSM opening_hours where it reads for certain; otherwise none",
     "counts": {
-      "emitted": 5144,
+      "emitted": 5091,
       "fetched": 15433,
       "excluded": 228,
-      "unmapped": 6075,
+      "unmapped": 6104,
       "noName": 0,
-      "attractionNoContact": 106,
+      "otherScript": 30,
+      "attractionNoContact": 104,
       "privateAccess": 4,
-      "outsideNorth": 3716,
+      "outsideNorth": 3715,
       "pointFarFromTown": 0,
-      "halalWord": 4,
-      "classified": 5300,
-      "duplicates": 117,
+      "halalWord": 0,
+      "classified": 5248,
+      "duplicates": 118,
       "alreadyListed": 39
     }
   },
@@ -86,83 +87,6 @@
               "he": "תספורות",
               "ar": "قص شعر",
               "en": "Haircuts"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#D9AAA2"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#d9aaa2",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "mkva-nshim",
-      "place": "alonei-habashan",
-      "brand": null,
-      "primaryKind": "spas",
-      "kinds": [
-        "spas"
-      ],
-      "name": {
-        "he": "מקווה נשים",
-        "ar": "مكفا نشيم",
-        "en": "Mkva Nshim"
-      },
-      "tagline": {
-        "he": "ספא ועיסוי באלוני הבשן",
-        "ar": "سبا ومساج في ألوني هباشان",
-        "en": "Spa and massage in Alonei HaBashan"
-      },
-      "address": {
-        "he": "אלוני הבשן",
-        "ar": "ألوني هباشان",
-        "en": "Alonei HaBashan"
-      },
-      "lat": 33.0424315,
-      "lng": 35.838026,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "way/802113505"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "מקווה נשים",
-          "ar": "مكفا نشيم",
-          "en": "Mkva Nshim"
-        },
-        "title": {
-          "he": "ספא ועיסוי",
-          "ar": "سبا ومساج",
-          "en": "Spa and massage"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "ספא ועיסוי",
-              "ar": "سبا ومساج",
-              "en": "Spa and massage"
             }
           }
         ],
@@ -440,83 +364,6 @@
               "he": "קוסמטיקה",
               "ar": "مستحضرات تجميل",
               "en": "Cosmetics"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#D9AAA2"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#d9aaa2",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "mkva",
-      "place": "beit-yosef",
-      "brand": null,
-      "primaryKind": "spas",
-      "kinds": [
-        "spas"
-      ],
-      "name": {
-        "he": "מקווה",
-        "ar": "مكفا",
-        "en": "Mkva"
-      },
-      "tagline": {
-        "he": "ספא ועיסוי בבית יוסף",
-        "ar": "سبا ومساج في بيت يوسف",
-        "en": "Spa and massage in Beit Yosef"
-      },
-      "address": {
-        "he": "בית יוסף",
-        "ar": "بيت يوسف",
-        "en": "Beit Yosef"
-      },
-      "lat": 32.5584485,
-      "lng": 35.5507002,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "way/1056629893"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "מקווה",
-          "ar": "مكفا",
-          "en": "Mkva"
-        },
-        "title": {
-          "he": "ספא ועיסוי",
-          "ar": "سبا ومساج",
-          "en": "Spa and massage"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "ספא ועיסוי",
-              "ar": "سبا ومساج",
-              "en": "Spa and massage"
             }
           }
         ],
@@ -6507,83 +6354,6 @@
               "he": "קוסמטיקה",
               "ar": "مستحضرات تجميل",
               "en": "Cosmetics"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#D9AAA2"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#d9aaa2",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "mkva",
-      "place": "kefar-hasidim",
-      "brand": null,
-      "primaryKind": "spas",
-      "kinds": [
-        "spas"
-      ],
-      "name": {
-        "he": "מקווה",
-        "ar": "مكفا",
-        "en": "Mkva"
-      },
-      "tagline": {
-        "he": "ספא ועיסוי בכפר חסידים א'",
-        "ar": "سبا ومساج في كفار حسيديم ألف",
-        "en": "Spa and massage in Kefar Hasidim"
-      },
-      "address": {
-        "he": "כפר חסידים א'",
-        "ar": "كفار حسيديم ألف",
-        "en": "Kefar Hasidim"
-      },
-      "lat": 32.7515109,
-      "lng": 35.0932672,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/5468367713"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "מקווה",
-          "ar": "مكفا",
-          "en": "Mkva"
-        },
-        "title": {
-          "he": "ספא ועיסוי",
-          "ar": "سبا ومساج",
-          "en": "Spa and massage"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "ספא ועיסוי",
-              "ar": "سبا ومساج",
-              "en": "Spa and massage"
             }
           }
         ],

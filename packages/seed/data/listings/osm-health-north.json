@@ -10,7 +10,7 @@
     "left_out": "features with no name, food (the food importer's), garages, tyres, testing, fuel, banks and EV charging (official lists), bars, alcohol, pork, gambling and lottery, adult shops, tobacco, vape and cannabis, tattoo and weapons shops, private places, sights with no hours or contact",
     "hours": "from OSM opening_hours where it reads for certain; otherwise none",
     "counts": {
-      "emitted": 223
+      "emitted": 221
     }
   },
   "businesses": [
@@ -4858,83 +4858,6 @@
       }
     },
     {
-      "slug": "pharmacies-13807699901",
-      "place": "haifa",
-      "brand": null,
-      "primaryKind": "pharmacies",
-      "kinds": [
-        "pharmacies"
-      ],
-      "name": {
-        "he": "Гомеопатическая аптека",
-        "ar": "Гомеопатическая аптека",
-        "en": "Гомеопатическая аптека"
-      },
-      "tagline": {
-        "he": "בית מרקחת בחיפה",
-        "ar": "صيدلية في حيفا",
-        "en": "Pharmacy in Haifa"
-      },
-      "address": {
-        "he": "הרצל 2",
-        "ar": "حيفا",
-        "en": "Haifa"
-      },
-      "lat": 32.8126654,
-      "lng": 34.9953328,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/13807699901"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "Гомеопатическая аптека",
-          "ar": "Гомеопатическая аптека",
-          "en": "Гомеопатическая аптека"
-        },
-        "title": {
-          "he": "בית מרקחת",
-          "ar": "صيدلية",
-          "en": "Pharmacy"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "בית מרקחת",
-              "ar": "صيدلية",
-              "en": "Pharmacy"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#5FB3A8"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#5fb3a8",
-        "icons": "solid"
-      }
-    },
-    {
       "slug": "super-pharm",
       "place": "haifa",
       "brand": "super-pharm",
@@ -5229,83 +5152,6 @@
               "he": "מרשמים",
               "ar": "وصفات طبية",
               "en": "Prescriptions"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#5FB3A8"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#5fb3a8",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "therapy-13798466103",
-      "place": "haifa",
-      "brand": null,
-      "primaryKind": "therapy",
-      "kinds": [
-        "therapy"
-      ],
-      "name": {
-        "he": "Молодежный психиатрический хостель",
-        "ar": "Молодежный психиатрический хостель",
-        "en": "Молодежный психиатрический хостель"
-      },
-      "tagline": {
-        "he": "טיפול ופסיכולוגיה בחיפה",
-        "ar": "علاج نفسي في حيفا",
-        "en": "Therapy and psychology in Haifa"
-      },
-      "address": {
-        "he": "חיפה",
-        "ar": "حيفا",
-        "en": "Haifa"
-      },
-      "lat": 32.8170958,
-      "lng": 34.9914354,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/13798466103"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "Молодежный психиатрический хостель",
-          "ar": "Молодежный психиатрический хостель",
-          "en": "Молодежный психиатрический хостель"
-        },
-        "title": {
-          "he": "טיפול ופסיכולוגיה",
-          "ar": "علاج نفسي",
-          "en": "Therapy and psychology"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "טיפול ופסיכולוגיה",
-              "ar": "علاج نفسي",
-              "en": "Therapy and psychology"
             }
           }
         ],
@@ -11362,6 +11208,83 @@
       }
     },
     {
+      "slug": "d-mahamad-abu-salama-clinic",
+      "place": "maale-gilboa",
+      "brand": null,
+      "primaryKind": "dental",
+      "kinds": [
+        "dental"
+      ],
+      "name": {
+        "he": "מרפאת ד.מחמד אבו סלאמה",
+        "ar": "عيادة د.محمد ابو سلامة",
+        "en": "D.mahamad Abu Salama Clinic"
+      },
+      "tagline": {
+        "he": "מרפאת שיניים במעלה גלבוע",
+        "ar": "عيادة أسنان في معاليه چلبوع",
+        "en": "Dental clinic in Maale Gilboa"
+      },
+      "address": {
+        "he": "شارع الشهيد فواز ابو سالم",
+        "ar": "معاليه چلبوع",
+        "en": "Maale Gilboa"
+      },
+      "lat": 32.4890736,
+      "lng": 35.4007689,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/5102657821"
+      },
+      "tier": "basic",
+      "phone": "+972 56-997-0097",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מרפאת ד.מחמד אבו סלאמה",
+          "ar": "عيادة د.محمد ابو سلامة",
+          "en": "D.mahamad Abu Salama Clinic"
+        },
+        "title": {
+          "he": "מרפאת שיניים",
+          "ar": "عيادة أسنان",
+          "en": "Dental clinic"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מרפאת שיניים",
+              "ar": "عيادة أسنان",
+              "en": "Dental clinic"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
       "slug": "dental-clinic",
       "place": "maale-gilboa",
       "brand": null,
@@ -11404,83 +11327,6 @@
           "he": "מרפאת טב אסנאן",
           "ar": "عيادة طب اسنان",
           "en": "Dental clinic"
-        },
-        "title": {
-          "he": "מרפאת שיניים",
-          "ar": "عيادة أسنان",
-          "en": "Dental clinic"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "מרפאת שיניים",
-              "ar": "عيادة أسنان",
-              "en": "Dental clinic"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#5FB3A8"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#5fb3a8",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "dr-mohammed-abusalameh",
-      "place": "maale-gilboa",
-      "brand": null,
-      "primaryKind": "dental",
-      "kinds": [
-        "dental"
-      ],
-      "name": {
-        "he": "מרפאת ד.מחמד אבו סלאמה",
-        "ar": "عيادة د.محمد ابو سلامة",
-        "en": "Dr.mohammed abusalamehشارع الش"
-      },
-      "tagline": {
-        "he": "מרפאת שיניים במעלה גלבוע",
-        "ar": "عيادة أسنان في معاليه چلبوع",
-        "en": "Dental clinic in Maale Gilboa"
-      },
-      "address": {
-        "he": "شارع الشهيد فواز ابو سالم",
-        "ar": "معاليه چلبوع",
-        "en": "Maale Gilboa"
-      },
-      "lat": 32.4890736,
-      "lng": 35.4007689,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/5102657821"
-      },
-      "tier": "basic",
-      "phone": "+972 56-997-0097",
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "מרפאת ד.מחמד אבו סלאמה",
-          "ar": "عيادة د.محمد ابو سلامة",
-          "en": "Dr.mohammed abusalamehشارع الش"
         },
         "title": {
           "he": "מרפאת שיניים",

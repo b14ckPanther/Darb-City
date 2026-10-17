@@ -10,12 +10,12 @@
     "left_out": "features with no name, food (the food importer's), garages, tyres, testing, fuel, banks and EV charging (official lists), bars, alcohol, pork, gambling and lottery, adult shops, tobacco, vape and cannabis, tattoo and weapons shops, private places, sights with no hours or contact",
     "hours": "from OSM opening_hours where it reads for certain; otherwise none",
     "counts": {
-      "emitted": 580
+      "emitted": 576
     }
   },
   "businesses": [
     {
-      "slug": "abirim-car-park",
+      "slug": "abirim-campsite",
       "place": "abirim",
       "brand": null,
       "primaryKind": "camping",
@@ -24,8 +24,8 @@
       ],
       "name": {
         "he": "חניון אבירים",
-        "ar": "موقف سيارات أبيريم",
-        "en": "Abirim Car Park"
+        "ar": "مخيم أبيريم",
+        "en": "Abirim Campsite"
       },
       "tagline": {
         "he": "קמפינג באבירים",
@@ -55,8 +55,8 @@
       "experience": {
         "brand": {
           "he": "חניון אבירים",
-          "ar": "موقف سيارات أبيريم",
-          "en": "Abirim Car Park"
+          "ar": "مخيم أبيريم",
+          "en": "Abirim Campsite"
         },
         "title": {
           "he": "קמפינג",
@@ -3026,83 +3026,6 @@
       }
     },
     {
-      "slug": "lila-yhodia-car-park",
-      "place": "aniam",
-      "brand": null,
-      "primaryKind": "camping",
-      "kinds": [
-        "camping"
-      ],
-      "name": {
-        "he": "חניון לילה יהודיה",
-        "ar": "موقف سيارات ليلا يهوديا",
-        "en": "Lila Yhodia Car Park"
-      },
-      "tagline": {
-        "he": "קמפינג באניעם",
-        "ar": "تخييم في أنياع",
-        "en": "Camping in Aniam"
-      },
-      "address": {
-        "he": "אניעם",
-        "ar": "أنياع",
-        "en": "Aniam"
-      },
-      "lat": 32.9427024,
-      "lng": 35.7017299,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/12846530902"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": "https://www.parks.org.il/camping/חניון-לילה-שמורת-טבע-יהודיה/",
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "חניון לילה יהודיה",
-          "ar": "موقف سيارات ليلا يهوديا",
-          "en": "Lila Yhodia Car Park"
-        },
-        "title": {
-          "he": "קמפינג",
-          "ar": "تخييم",
-          "en": "Camping"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "קמפינג",
-              "ar": "تخييم",
-              "en": "Camping"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#A99BD6"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#a99bd6",
-        "icons": "solid"
-      }
-    },
-    {
       "slug": "two-snales",
       "place": "aniam",
       "brand": null,
@@ -3234,6 +3157,83 @@
               "he": "סיורים ואטרקציות",
               "ar": "جولات ومعالم",
               "en": "Tours and attractions"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#A99BD6"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#a99bd6",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "yhodia-campsite",
+      "place": "aniam",
+      "brand": null,
+      "primaryKind": "camping",
+      "kinds": [
+        "camping"
+      ],
+      "name": {
+        "he": "חניון לילה יהודיה",
+        "ar": "مخيم يهوديا",
+        "en": "Yhodia Campsite"
+      },
+      "tagline": {
+        "he": "קמפינג באניעם",
+        "ar": "تخييم في أنياع",
+        "en": "Camping in Aniam"
+      },
+      "address": {
+        "he": "אניעם",
+        "ar": "أنياع",
+        "en": "Aniam"
+      },
+      "lat": 32.9427024,
+      "lng": 35.7017299,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/12846530902"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": "https://www.parks.org.il/camping/חניון-לילה-שמורת-טבע-יהודיה/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "חניון לילה יהודיה",
+          "ar": "مخيم يهوديا",
+          "en": "Yhodia Campsite"
+        },
+        "title": {
+          "he": "קמפינג",
+          "ar": "تخييم",
+          "en": "Camping"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "קמפינג",
+              "ar": "تخييم",
+              "en": "Camping"
             }
           }
         ],
@@ -4146,7 +4146,7 @@
       ],
       "name": {
         "he": "חניון לאה ויצחק רבין",
-        "ar": "موقف سيارات لاا ويتسحك ربين",
+        "ar": "مخيم لاا ويتسحك ربين",
         "en": "Lea and Itzhak Rabin Overnight Camping Site"
       },
       "tagline": {
@@ -4177,7 +4177,7 @@
       "experience": {
         "brand": {
           "he": "חניון לאה ויצחק רבין",
-          "ar": "موقف سيارات لاا ويتسحك ربين",
+          "ar": "مخيم لاا ويتسحك ربين",
           "en": "Lea and Itzhak Rabin Overnight Camping Site"
         },
         "title": {
@@ -4740,7 +4740,7 @@
       ],
       "name": {
         "he": "חניון לילה האגם",
-        "ar": "موقف سيارات ليلا هاجم",
+        "ar": "مخيم هاجم",
         "en": "Chenyon Ha'Agam Campsite"
       },
       "tagline": {
@@ -4771,7 +4771,7 @@
       "experience": {
         "brand": {
           "he": "חניון לילה האגם",
-          "ar": "موقف سيارات ليلا هاجم",
+          "ar": "مخيم هاجم",
           "en": "Chenyon Ha'Agam Campsite"
         },
         "title": {
@@ -4971,7 +4971,7 @@
       ],
       "name": {
         "he": "חניון לילה פיתולים",
-        "ar": "موقف سيارات ليلا بيتوليم",
+        "ar": "مخيم بيتوليم",
         "en": "Pitulim Campsite"
       },
       "tagline": {
@@ -5002,7 +5002,7 @@
       "experience": {
         "brand": {
           "he": "חניון לילה פיתולים",
-          "ar": "موقف سيارات ليلا بيتوليم",
+          "ar": "مخيم بيتوليم",
           "en": "Pitulim Campsite"
         },
         "title": {
@@ -5048,7 +5048,7 @@
       ],
       "name": {
         "he": "חניון לילה רקית",
-        "ar": "موقف سيارات ليلا ركيت",
+        "ar": "مخيم ركيت",
         "en": "Rakit Campsite"
       },
       "tagline": {
@@ -5079,7 +5079,7 @@
       "experience": {
         "brand": {
           "he": "חניון לילה רקית",
-          "ar": "موقف سيارات ليلا ركيت",
+          "ar": "مخيم ركيت",
           "en": "Rakit Campsite"
         },
         "title": {
@@ -7221,7 +7221,7 @@
       ],
       "name": {
         "he": "חניון לילה הר דבורה",
-        "ar": "موقف سيارات ليلا جبل دفورا",
+        "ar": "مخيم جبل دفورا",
         "en": "Har Dvora Overnight Camping Site"
       },
       "tagline": {
@@ -7252,7 +7252,7 @@
       "experience": {
         "brand": {
           "he": "חניון לילה הר דבורה",
-          "ar": "موقف سيارات ليلا جبل دفورا",
+          "ar": "مخيم جبل دفورا",
           "en": "Har Dvora Overnight Camping Site"
         },
         "title": {
@@ -8005,7 +8005,7 @@
       ],
       "name": {
         "he": "חניון לילה אורן הסלע",
-        "ar": "موقف سيارات ليلا اورن هسلع",
+        "ar": "مخيم اورن هسلع",
         "en": "Oren Ha-Sela Campsite"
       },
       "tagline": {
@@ -8036,7 +8036,7 @@
       "experience": {
         "brand": {
           "he": "חניון לילה אורן הסלע",
-          "ar": "موقف سيارات ليلا اورن هسلع",
+          "ar": "مخيم اورن هسلع",
           "en": "Oren Ha-Sela Campsite"
         },
         "title": {
@@ -9563,7 +9563,7 @@
       ],
       "name": {
         "he": "חניון לילה נחל אורן",
-        "ar": "موقف سيارات ليلا نحل اورن",
+        "ar": "مخيم نحل اورن",
         "en": "Nahal Oren Campsite"
       },
       "tagline": {
@@ -9594,7 +9594,7 @@
       "experience": {
         "brand": {
           "he": "חניון לילה נחל אורן",
-          "ar": "موقف سيارات ليلا نحل اورن",
+          "ar": "مخيم نحل اورن",
           "en": "Nahal Oren Campsite"
         },
         "title": {
@@ -9794,7 +9794,7 @@
       ],
       "name": {
         "he": "חניון לילה עין זיוון",
-        "ar": "موقف سيارات ليلا عين زيوان",
+        "ar": "مخيم عين زيوان",
         "en": "Ein Zivan Overnight"
       },
       "tagline": {
@@ -9825,7 +9825,7 @@
       "experience": {
         "brand": {
           "he": "חניון לילה עין זיוון",
-          "ar": "موقف سيارات ليلا عين زيوان",
+          "ar": "مخيم عين زيوان",
           "en": "Ein Zivan Overnight"
         },
         "title": {
@@ -9871,7 +9871,7 @@
       ],
       "name": {
         "he": "חניון פלס\"ר 7",
-        "ar": "موقف سيارات بلسر 7",
+        "ar": "مخيم بلسر 7",
         "en": "Palsar 7 Campground"
       },
       "tagline": {
@@ -9902,7 +9902,7 @@
       "experience": {
         "brand": {
           "he": "חניון פלס\"ר 7",
-          "ar": "موقف سيارات بلسر 7",
+          "ar": "مخيم بلسر 7",
           "en": "Palsar 7 Campground"
         },
         "title": {
@@ -10016,7 +10016,7 @@
       }
     },
     {
-      "slug": "lila-elqosh-car-park-bridge",
+      "slug": "elqosh-campsite-bridge",
       "place": "elqosh",
       "brand": null,
       "primaryKind": "camping",
@@ -10025,8 +10025,8 @@
       ],
       "name": {
         "he": "חניון לילה גשר אלקוש",
-        "ar": "موقف سيارات ليلا جسر القوش",
-        "en": "Lila Elqosh Car Park Bridge"
+        "ar": "مخيم جسر القوش",
+        "en": "Elqosh Campsite Bridge"
       },
       "tagline": {
         "he": "קמפינג באלקוש",
@@ -10056,8 +10056,8 @@
       "experience": {
         "brand": {
           "he": "חניון לילה גשר אלקוש",
-          "ar": "موقف سيارات ليلا جسر القوش",
-          "en": "Lila Elqosh Car Park Bridge"
+          "ar": "مخيم جسر القوش",
+          "en": "Elqosh Campsite Bridge"
         },
         "title": {
           "he": "קמפינג",
@@ -10592,7 +10592,7 @@
       }
     },
     {
-      "slug": "lila-yar-even-yizhaq-car-park",
+      "slug": "yar-even-yizhaq-campsite",
       "place": "even-yizhaq-galed",
       "brand": null,
       "primaryKind": "camping",
@@ -10601,8 +10601,8 @@
       ],
       "name": {
         "he": "חניון לילה יער גלעד",
-        "ar": "موقف سيارات ليلا يعر جلعاد",
-        "en": "Lila Yar Even Yizhaq Car Park"
+        "ar": "مخيم يعر جلعاد",
+        "en": "Yar Even Yizhaq Campsite"
       },
       "tagline": {
         "he": "קמפינג בגלעד",
@@ -10632,8 +10632,8 @@
       "experience": {
         "brand": {
           "he": "חניון לילה יער גלעד",
-          "ar": "موقف سيارات ليلا يعر جلعاد",
-          "en": "Lila Yar Even Yizhaq Car Park"
+          "ar": "مخيم يعر جلعاد",
+          "en": "Yar Even Yizhaq Campsite"
         },
         "title": {
           "he": "קמפינג",
@@ -10921,7 +10921,7 @@
       ],
       "name": {
         "he": "חניון לילה גן לאומי חוף אכזיב",
-        "ar": "موقف سيارات ليلا جن لاومي شاطئ اكزيب",
+        "ar": "مخيم جن لاومي شاطئ اكزيب",
         "en": "Akhziv Campsite"
       },
       "tagline": {
@@ -10952,7 +10952,7 @@
       "experience": {
         "brand": {
           "he": "חניון לילה גן לאומי חוף אכזיב",
-          "ar": "موقف سيارات ليلا جن لاومي شاطئ اكزيب",
+          "ar": "مخيم جن لاومي شاطئ اكزيب",
           "en": "Akhziv Campsite"
         },
         "title": {
@@ -13219,7 +13219,7 @@
       ],
       "name": {
         "he": "חניון ירוק בית הילל",
-        "ar": "موقف سيارات يروك بيت هيلل",
+        "ar": "مخيم يروك بيت هيلل",
         "en": "Camping Green"
       },
       "tagline": {
@@ -13250,7 +13250,7 @@
       "experience": {
         "brand": {
           "he": "חניון ירוק בית הילל",
-          "ar": "موقف سيارات يروك بيت هيلل",
+          "ar": "مخيم يروك بيت هيلل",
           "en": "Camping Green"
         },
         "title": {
@@ -13373,7 +13373,7 @@
       ],
       "name": {
         "he": "חניון לילה גן לאומי חורשת טל",
-        "ar": "موقف سيارات ليلا جن لاومي حورشت طل",
+        "ar": "مخيم جن لاومي حورشت طل",
         "en": "Horshat Tal Campsite"
       },
       "tagline": {
@@ -13404,7 +13404,7 @@
       "experience": {
         "brand": {
           "he": "חניון לילה גן לאומי חורשת טל",
-          "ar": "موقف سيارات ليلا جن لاومي حورشت طل",
+          "ar": "مخيم جن لاومي حورشت طل",
           "en": "Horshat Tal Campsite"
         },
         "title": {
@@ -15082,83 +15082,6 @@
       }
     },
     {
-      "slug": "gmt",
-      "place": "haifa",
-      "brand": null,
-      "primaryKind": "currency-exchange",
-      "kinds": [
-        "currency-exchange"
-      ],
-      "name": {
-        "he": "GMT - денежные переводы и обмен валют",
-        "ar": "GMT - денежные переводы и обмен валют",
-        "en": "GMT - денежные переводы и обмен валют"
-      },
-      "tagline": {
-        "he": "המרת כסף בחיפה",
-        "ar": "صرافة في حيفا",
-        "en": "Currency exchange in Haifa"
-      },
-      "address": {
-        "he": "חיפה",
-        "ar": "حيفا",
-        "en": "Haifa"
-      },
-      "lat": 32.8099724,
-      "lng": 34.998065,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/13798458502"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "GMT - денежные переводы и обмен валют",
-          "ar": "GMT - денежные переводы и обмен валют",
-          "en": "GMT - денежные переводы и обмен валют"
-        },
-        "title": {
-          "he": "המרת כסף",
-          "ar": "صرافة",
-          "en": "Currency exchange"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "המרת כסף",
-              "ar": "صرافة",
-              "en": "Currency exchange"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#A99BD6"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#a99bd6",
-        "icons": "solid"
-      }
-    },
-    {
       "slug": "golden-crown-haifa",
       "place": "haifa",
       "brand": null,
@@ -16788,83 +16711,6 @@
       }
     },
     {
-      "slug": "travel-agencies-13798466104",
-      "place": "haifa",
-      "brand": null,
-      "primaryKind": "travel-agencies",
-      "kinds": [
-        "travel-agencies"
-      ],
-      "name": {
-        "he": "Туристическое агентство",
-        "ar": "Туристическое агентство",
-        "en": "Туристическое агентство"
-      },
-      "tagline": {
-        "he": "סוכנות נסיעות בחיפה",
-        "ar": "مكتب سفريات في حيفا",
-        "en": "Travel agency in Haifa"
-      },
-      "address": {
-        "he": "חיפה",
-        "ar": "حيفا",
-        "en": "Haifa"
-      },
-      "lat": 32.8080231,
-      "lng": 34.9995094,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/13798466104"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "Туристическое агентство",
-          "ar": "Туристическое агентство",
-          "en": "Туристическое агентство"
-        },
-        "title": {
-          "he": "סוכנות נסיעות",
-          "ar": "مكتب سفريات",
-          "en": "Travel agency"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "סוכנות נסיעות",
-              "ar": "مكتب سفريات",
-              "en": "Travel agency"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#A99BD6"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#a99bd6",
-        "icons": "solid"
-      }
-    },
-    {
       "slug": "villa-carmel",
       "place": "haifa",
       "brand": null,
@@ -17798,7 +17644,7 @@
       ],
       "name": {
         "he": "חניון אלת הטל",
-        "ar": "موقف سيارات الت هطل",
+        "ar": "مخيم الت هطل",
         "en": "Elat Hatal campsite"
       },
       "tagline": {
@@ -17829,7 +17675,7 @@
       "experience": {
         "brand": {
           "he": "חניון אלת הטל",
-          "ar": "موقف سيارات الت هطل",
+          "ar": "مخيم الت هطل",
           "en": "Elat Hatal campsite"
         },
         "title": {
@@ -17875,7 +17721,7 @@
       ],
       "name": {
         "he": "חניון לילה הר גחר",
-        "ar": "موقف سيارات ليلا جبل جحر",
+        "ar": "مخيم جبل جحر",
         "en": "Har Gahar campsite"
       },
       "tagline": {
@@ -17906,7 +17752,7 @@
       "experience": {
         "brand": {
           "he": "חניון לילה הר גחר",
-          "ar": "موقف سيارات ليلا جبل جحر",
+          "ar": "مخيم جبل جحر",
           "en": "Har Gahar campsite"
         },
         "title": {
@@ -18349,7 +18195,7 @@
       ],
       "name": {
         "he": "חניון לילה בית השומר",
-        "ar": "موقف سيارات ليلا بيت هشومر",
+        "ar": "مخيم بيت هشومر",
         "en": "Beit HaShomer Campsite"
       },
       "tagline": {
@@ -18380,7 +18226,7 @@
       "experience": {
         "brand": {
           "he": "חניון לילה בית השומר",
-          "ar": "موقف سيارات ليلا بيت هشومر",
+          "ar": "مخيم بيت هشومر",
           "en": "Beit HaShomer Campsite"
         },
         "title": {
@@ -18426,7 +18272,7 @@
       ],
       "name": {
         "he": "חניון לילה הר אלון",
-        "ar": "موقف سيارات ليلا جبل الون",
+        "ar": "مخيم جبل الون",
         "en": "Har Alon Campsite"
       },
       "tagline": {
@@ -18457,7 +18303,7 @@
       "experience": {
         "brand": {
           "he": "חניון לילה הר אלון",
-          "ar": "موقف سيارات ليلا جبل الون",
+          "ar": "مخيم جبل الون",
           "en": "Har Alon Campsite"
         },
         "title": {
@@ -19001,7 +18847,7 @@
       }
     },
     {
-      "slug": "lila-nahal-amod-tahton-car-park",
+      "slug": "nahal-amod-tahton-campsite",
       "place": "kaddarim",
       "brand": null,
       "primaryKind": "camping",
@@ -19010,8 +18856,8 @@
       ],
       "name": {
         "he": "חניון לילה נחל עמוד תחתון",
-        "ar": "موقف سيارات ليلا نحل عمود تحتون",
-        "en": "Lila Nahal Amod Tahton Car Park"
+        "ar": "مخيم نحل عمود تحتون",
+        "en": "Nahal Amod Tahton Campsite"
       },
       "tagline": {
         "he": "קמפינג בקדרים",
@@ -19041,8 +18887,8 @@
       "experience": {
         "brand": {
           "he": "חניון לילה נחל עמוד תחתון",
-          "ar": "موقف سيارات ليلا نحل عمود تحتون",
-          "en": "Lila Nahal Amod Tahton Car Park"
+          "ar": "مخيم نحل عمود تحتون",
+          "en": "Nahal Amod Tahton Campsite"
         },
         "title": {
           "he": "קמפינג",
@@ -19155,7 +19001,7 @@
       }
     },
     {
-      "slug": "camping-5698580521",
+      "slug": "abu-paras-al-dahamsha",
       "place": "kafr-kanna",
       "brand": null,
       "primaryKind": "camping",
@@ -19165,7 +19011,7 @@
       "name": {
         "he": "אבו פראס אל-דהאמשה",
         "ar": "ابو فراس الدهامشه",
-        "en": "كفر كنا"
+        "en": "Abu Paras al Dahamsha"
       },
       "tagline": {
         "he": "קמפינג בכפר כנא",
@@ -19196,7 +19042,7 @@
         "brand": {
           "he": "אבו פראס אל-דהאמשה",
           "ar": "ابو فراس الدهامشه",
-          "en": "كفر كنا"
+          "en": "Abu Paras al Dahamsha"
         },
         "title": {
           "he": "קמפינג",
@@ -19309,7 +19155,7 @@
       }
     },
     {
-      "slug": "lila-tzalmon-car-park-bridge",
+      "slug": "tzalmon-campsite-bridge",
       "place": "kalanit",
       "brand": null,
       "primaryKind": "camping",
@@ -19318,8 +19164,8 @@
       ],
       "name": {
         "he": "חניון לילה גשר צלמון",
-        "ar": "موقف سيارات ليلا جسر تسلمون",
-        "en": "Lila Tzalmon Car Park Bridge"
+        "ar": "مخيم جسر تسلمون",
+        "en": "Tzalmon Campsite Bridge"
       },
       "tagline": {
         "he": "קמפינג בכלנית",
@@ -19349,8 +19195,8 @@
       "experience": {
         "brand": {
           "he": "חניון לילה גשר צלמון",
-          "ar": "موقف سيارات ليلا جسر تسلمون",
-          "en": "Lila Tzalmon Car Park Bridge"
+          "ar": "مخيم جسر تسلمون",
+          "en": "Tzalmon Campsite Bridge"
         },
         "title": {
           "he": "קמפינג",
@@ -21196,7 +21042,7 @@
       ],
       "name": {
         "he": "חניון לילה תנועות הנוער",
-        "ar": "موقف سيارات ليلا تنوعوت هنوعر",
+        "ar": "مخيم تنوعوت هنوعر",
         "en": "Youth Movements' Camp"
       },
       "tagline": {
@@ -21227,7 +21073,7 @@
       "experience": {
         "brand": {
           "he": "חניון לילה תנועות הנוער",
-          "ar": "موقف سيارات ليلا تنوعوت هنوعر",
+          "ar": "مخيم تنوعوت هنوعر",
           "en": "Youth Movements' Camp"
         },
         "title": {
@@ -23869,7 +23715,7 @@
       ],
       "name": {
         "he": "חניון נופש גשר להבות",
-        "ar": "موقف سيارات نوفش جسر لهبوت",
+        "ar": "مخيم نوفش جسر لهبوت",
         "en": "Lehavot Bridge Recreation Area"
       },
       "tagline": {
@@ -23900,7 +23746,7 @@
       "experience": {
         "brand": {
           "he": "חניון נופש גשר להבות",
-          "ar": "موقف سيارات نوفش جسر لهبوت",
+          "ar": "مخيم نوفش جسر لهبوت",
           "en": "Lehavot Bridge Recreation Area"
         },
         "title": {
@@ -24641,7 +24487,7 @@
       ],
       "name": {
         "he": "חניון לילה לא רשמי",
-        "ar": "موقف سيارات ليلا لا رشمي",
+        "ar": "مخيم لا رشمي",
         "en": "Unofficial Overnight Campground"
       },
       "tagline": {
@@ -24672,7 +24518,7 @@
       "experience": {
         "brand": {
           "he": "חניון לילה לא רשמי",
-          "ar": "موقف سيارات ليلا لا رشمي",
+          "ar": "مخيم لا رشمي",
           "en": "Unofficial Overnight Campground"
         },
         "title": {
@@ -26649,7 +26495,7 @@
       ],
       "name": {
         "he": "חניון לילה פיתול מירון",
-        "ar": "موقف سيارات ليلا بيتول ميرون",
+        "ar": "مخيم بيتول ميرون",
         "en": "Pitul Meron Campsite"
       },
       "tagline": {
@@ -26680,7 +26526,7 @@
       "experience": {
         "brand": {
           "he": "חניון לילה פיתול מירון",
-          "ar": "موقف سيارات ليلا بيتول ميرون",
+          "ar": "مخيم بيتول ميرون",
           "en": "Pitul Meron Campsite"
         },
         "title": {
@@ -26726,7 +26572,7 @@
       ],
       "name": {
         "he": "חניון הקנטרה",
-        "ar": "موقف سيارات هكنطرا",
+        "ar": "مخيم هكنطرا",
         "en": "Qantara Picnic Area"
       },
       "tagline": {
@@ -26757,7 +26603,7 @@
       "experience": {
         "brand": {
           "he": "חניון הקנטרה",
-          "ar": "موقف سيارات هكنطرا",
+          "ar": "مخيم هكنطرا",
           "en": "Qantara Picnic Area"
         },
         "title": {
@@ -27577,83 +27423,6 @@
       }
     },
     {
-      "slug": "hotels-6176076186",
-      "place": "miilya",
-      "brand": null,
-      "primaryKind": "hotels",
-      "kinds": [
-        "hotels"
-      ],
-      "name": {
-        "he": "Вилла",
-        "ar": "Вилла",
-        "en": "Вилла"
-      },
-      "tagline": {
-        "he": "מלון וצימרים במעיליא",
-        "ar": "فندق وبيوت ضيافة في معليا",
-        "en": "Hotel and guesthouse in Miilya"
-      },
-      "address": {
-        "he": "מעיליא",
-        "ar": "معليا",
-        "en": "Miilya"
-      },
-      "lat": 33.0257063,
-      "lng": 35.2517219,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/6176076186"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "Вилла",
-          "ar": "Вилла",
-          "en": "Вилла"
-        },
-        "title": {
-          "he": "מלון וצימרים",
-          "ar": "فندق وبيوت ضيافة",
-          "en": "Hotel and guesthouse"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "מלון וצימרים",
-              "ar": "فندق وبيوت ضيافة",
-              "en": "Hotel and guesthouse"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#A99BD6"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#a99bd6",
-        "icons": "solid"
-      }
-    },
-    {
       "slug": "gal-baderech",
       "place": "misgav-am",
       "brand": null,
@@ -27858,7 +27627,7 @@
       }
     },
     {
-      "slug": "lila-givat-kat-car-park",
+      "slug": "givat-kat-campsite",
       "place": "mishmar-haemek",
       "brand": null,
       "primaryKind": "camping",
@@ -27867,8 +27636,8 @@
       ],
       "name": {
         "he": "חניון לילה גבעת קאת",
-        "ar": "موقف سيارات ليلا جفعات كات",
-        "en": "Lila Givat Kat Car Park"
+        "ar": "مخيم جفعات كات",
+        "en": "Givat Kat Campsite"
       },
       "tagline": {
         "he": "קמפינג במשמר העמק",
@@ -27898,8 +27667,8 @@
       "experience": {
         "brand": {
           "he": "חניון לילה גבעת קאת",
-          "ar": "موقف سيارات ليلا جفعات كات",
-          "en": "Lila Givat Kat Car Park"
+          "ar": "مخيم جفعات كات",
+          "en": "Givat Kat Campsite"
         },
         "title": {
           "he": "קמפינג",
@@ -28021,7 +27790,7 @@
       ],
       "name": {
         "he": "חניון הזיתים",
-        "ar": "موقف سيارات هزيتيم",
+        "ar": "مخيم هزيتيم",
         "en": "HaZeitim Parking Lot"
       },
       "tagline": {
@@ -28052,7 +27821,7 @@
       "experience": {
         "brand": {
           "he": "חניון הזיתים",
-          "ar": "موقف سيارات هزيتيم",
+          "ar": "مخيم هزيتيم",
           "en": "HaZeitim Parking Lot"
         },
         "title": {
@@ -28528,83 +28297,6 @@
               "he": "מלון וצימרים",
               "ar": "فندق وبيوت ضيافة",
               "en": "Hotel and guesthouse"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#A99BD6"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#a99bd6",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "alqsoor-wedding-hall",
-      "place": "muqeible",
-      "brand": null,
-      "primaryKind": "tours",
-      "kinds": [
-        "tours"
-      ],
-      "name": {
-        "he": "אולם אל-קצור ללאפראח",
-        "ar": "قاعة القصور للأفراح",
-        "en": "Alqsoor wedding hall"
-      },
-      "tagline": {
-        "he": "סיורים ואטרקציות במוקייבלה",
-        "ar": "جولات ومعالم في مقيبلة",
-        "en": "Tours and attractions in Muqeible"
-      },
-      "address": {
-        "he": "شارع الناصرة 042435190",
-        "ar": "مقيبلة",
-        "en": "Muqeible"
-      },
-      "lat": 32.4808549,
-      "lng": 35.2989489,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/5912308586"
-      },
-      "tier": "basic",
-      "phone": "+972 4-243-5190",
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "אולם אל-קצור ללאפראח",
-          "ar": "قاعة القصور للأفراح",
-          "en": "Alqsoor wedding hall"
-        },
-        "title": {
-          "he": "סיורים ואטרקציות",
-          "ar": "جولات ومعالم",
-          "en": "Tours and attractions"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "סיורים ואטרקציות",
-              "ar": "جولات ومعالم",
-              "en": "Tours and attractions"
             }
           }
         ],
@@ -29289,8 +28981,8 @@
         "hotels"
       ],
       "name": {
-        "he": "north gate",
-        "ar": "north gate",
+        "he": "North Gate",
+        "ar": "North Gate",
         "en": "North Gate"
       },
       "tagline": {
@@ -29320,8 +29012,8 @@
       "apps": {},
       "experience": {
         "brand": {
-          "he": "north gate",
-          "ar": "north gate",
+          "he": "North Gate",
+          "ar": "North Gate",
           "en": "North Gate"
         },
         "title": {
@@ -30380,7 +30072,7 @@
       ],
       "name": {
         "he": "חניון דליות",
-        "ar": "موقف سيارات دليوت",
+        "ar": "مخيم دليوت",
         "en": "Daliot campsite"
       },
       "tagline": {
@@ -30411,7 +30103,7 @@
       "experience": {
         "brand": {
           "he": "חניון דליות",
-          "ar": "موقف سيارات دليوت",
+          "ar": "مخيم دليوت",
           "en": "Daliot campsite"
         },
         "title": {
@@ -32342,7 +32034,7 @@
       ],
       "name": {
         "he": "חניון לילה גבעת ההגנה",
-        "ar": "موقف سيارات ليلا جفعات ههجنا",
+        "ar": "مخيم جفعات ههجنا",
         "en": "Giv'at HaHagana Campsite"
       },
       "tagline": {
@@ -32373,8 +32065,85 @@
       "experience": {
         "brand": {
           "he": "חניון לילה גבעת ההגנה",
-          "ar": "موقف سيارات ليلا جفعات ههجنا",
+          "ar": "مخيم جفعات ههجنا",
           "en": "Giv'at HaHagana Campsite"
+        },
+        "title": {
+          "he": "קמפינג",
+          "ar": "تخييم",
+          "en": "Camping"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "קמפינג",
+              "ar": "تخييم",
+              "en": "Camping"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#A99BD6"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#a99bd6",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "hakhalniot-campsite",
+      "place": "nesher",
+      "brand": null,
+      "primaryKind": "camping",
+      "kinds": [
+        "camping"
+      ],
+      "name": {
+        "he": "חניון לילה הכלניות",
+        "ar": "مخيم هكلنيوت",
+        "en": "Hakhalniot Campsite"
+      },
+      "tagline": {
+        "he": "קמפינג בנשר",
+        "ar": "تخييم في نيشر",
+        "en": "Camping in Nesher"
+      },
+      "address": {
+        "he": "נשר",
+        "ar": "نيشر",
+        "en": "Nesher"
+      },
+      "lat": 32.7574959,
+      "lng": 35.0208682,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/12862019937"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": "https://www.parks.org.il/free_camping/כלניות/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "חניון לילה הכלניות",
+          "ar": "مخيم هكلنيوت",
+          "en": "Hakhalniot Campsite"
         },
         "title": {
           "he": "קמפינג",
@@ -32419,7 +32188,7 @@
       ],
       "name": {
         "he": "חניון לילה הרקפות",
-        "ar": "موقف سيارات ليلا هركفوت",
+        "ar": "مخيم هركفوت",
         "en": "Harakafot Campsite"
       },
       "tagline": {
@@ -32450,7 +32219,7 @@
       "experience": {
         "brand": {
           "he": "חניון לילה הרקפות",
-          "ar": "موقف سيارات ليلا هركفوت",
+          "ar": "مخيم هركفوت",
           "en": "Harakafot Campsite"
         },
         "title": {
@@ -32541,6 +32310,83 @@
               "he": "סיורים ואטרקציות",
               "ar": "جولات ومعالم",
               "en": "Tours and attractions"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#A99BD6"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#a99bd6",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "horashat-haravaim-campsite",
+      "place": "nesher",
+      "brand": null,
+      "primaryKind": "camping",
+      "kinds": [
+        "camping"
+      ],
+      "name": {
+        "he": "חניון לילה חורשת הארבעים",
+        "ar": "مخيم حورشت هاربعيم",
+        "en": "Horashat Haravaim Campsite"
+      },
+      "tagline": {
+        "he": "קמפינג בנשר",
+        "ar": "تخييم في نيشر",
+        "en": "Camping in Nesher"
+      },
+      "address": {
+        "he": "נשר",
+        "ar": "نيشر",
+        "en": "Nesher"
+      },
+      "lat": 32.7550259,
+      "lng": 35.0272706,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/12862019936"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": "https://www.parks.org.il/free_camping/חורשת-הארבעים/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "חניון לילה חורשת הארבעים",
+          "ar": "مخيم حورشت هاربعيم",
+          "en": "Horashat Haravaim Campsite"
+        },
+        "title": {
+          "he": "קמפינג",
+          "ar": "تخييم",
+          "en": "Camping"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "קמפינג",
+              "ar": "تخييم",
+              "en": "Camping"
             }
           }
         ],
@@ -32718,314 +32564,6 @@
       }
     },
     {
-      "slug": "lila-hakhalniot-car-park",
-      "place": "nesher",
-      "brand": null,
-      "primaryKind": "camping",
-      "kinds": [
-        "camping"
-      ],
-      "name": {
-        "he": "חניון לילה הכלניות",
-        "ar": "موقف سيارات ليلا هكلنيوت",
-        "en": "Lila Hakhalniot Car Park"
-      },
-      "tagline": {
-        "he": "קמפינג בנשר",
-        "ar": "تخييم في نيشر",
-        "en": "Camping in Nesher"
-      },
-      "address": {
-        "he": "נשר",
-        "ar": "نيشر",
-        "en": "Nesher"
-      },
-      "lat": 32.7574959,
-      "lng": 35.0208682,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/12862019937"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": "https://www.parks.org.il/free_camping/כלניות/",
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "חניון לילה הכלניות",
-          "ar": "موقف سيارات ليلا هكلنيوت",
-          "en": "Lila Hakhalniot Car Park"
-        },
-        "title": {
-          "he": "קמפינג",
-          "ar": "تخييم",
-          "en": "Camping"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "קמפינג",
-              "ar": "تخييم",
-              "en": "Camping"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#A99BD6"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#a99bd6",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "lila-horashat-haravaim-car-park",
-      "place": "nesher",
-      "brand": null,
-      "primaryKind": "camping",
-      "kinds": [
-        "camping"
-      ],
-      "name": {
-        "he": "חניון לילה חורשת הארבעים",
-        "ar": "موقف سيارات ليلا حورشت هاربعيم",
-        "en": "Lila Horashat Haravaim Car Park"
-      },
-      "tagline": {
-        "he": "קמפינג בנשר",
-        "ar": "تخييم في نيشر",
-        "en": "Camping in Nesher"
-      },
-      "address": {
-        "he": "נשר",
-        "ar": "نيشر",
-        "en": "Nesher"
-      },
-      "lat": 32.7550259,
-      "lng": 35.0272706,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/12862019936"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": "https://www.parks.org.il/free_camping/חורשת-הארבעים/",
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "חניון לילה חורשת הארבעים",
-          "ar": "موقف سيارات ليلا حورشت هاربعيم",
-          "en": "Lila Horashat Haravaim Car Park"
-        },
-        "title": {
-          "he": "קמפינג",
-          "ar": "تخييم",
-          "en": "Camping"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "קמפינג",
-              "ar": "تخييم",
-              "en": "Camping"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#A99BD6"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#a99bd6",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "lila-tlallim-car-park",
-      "place": "nesher",
-      "brand": null,
-      "primaryKind": "camping",
-      "kinds": [
-        "camping"
-      ],
-      "name": {
-        "he": "חניון לילה טללים",
-        "ar": "موقف سيارات ليلا طلليم",
-        "en": "Lila Tlallim Car Park"
-      },
-      "tagline": {
-        "he": "קמפינג בנשר",
-        "ar": "تخييم في نيشر",
-        "en": "Camping in Nesher"
-      },
-      "address": {
-        "he": "נשר",
-        "ar": "نيشر",
-        "en": "Nesher"
-      },
-      "lat": 32.7624396,
-      "lng": 35.0137668,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "way/1548651612"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": "https://www.parks.org.il/free_camping/טללים/",
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "חניון לילה טללים",
-          "ar": "موقف سيارات ليلا طلليم",
-          "en": "Lila Tlallim Car Park"
-        },
-        "title": {
-          "he": "קמפינג",
-          "ar": "تخييم",
-          "en": "Camping"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "קמפינג",
-              "ar": "تخييم",
-              "en": "Camping"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#A99BD6"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#a99bd6",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "lila-yar-hiarnim-car-park",
-      "place": "nesher",
-      "brand": null,
-      "primaryKind": "camping",
-      "kinds": [
-        "camping"
-      ],
-      "name": {
-        "he": "חניון לילה יער היערנים",
-        "ar": "موقف سيارات ليلا يعر هيعرنيم",
-        "en": "Lila Yar Hiarnim Car Park"
-      },
-      "tagline": {
-        "he": "קמפינג בנשר",
-        "ar": "تخييم في نيشر",
-        "en": "Camping in Nesher"
-      },
-      "address": {
-        "he": "נשר",
-        "ar": "نيشر",
-        "en": "Nesher"
-      },
-      "lat": 32.7511866,
-      "lng": 35.0479692,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/12862019938"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": "https://www.parks.org.il/free_camping/יער-היערנים/",
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "חניון לילה יער היערנים",
-          "ar": "موقف سيارات ليلا يعر هيعرنيم",
-          "en": "Lila Yar Hiarnim Car Park"
-        },
-        "title": {
-          "he": "קמפינג",
-          "ar": "تخييم",
-          "en": "Camping"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "קמפינג",
-              "ar": "تخييم",
-              "en": "Camping"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#A99BD6"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#a99bd6",
-        "icons": "solid"
-      }
-    },
-    {
       "slug": "superbus-information-office",
       "place": "nesher",
       "brand": null,
@@ -33080,6 +32618,160 @@
               "he": "סיורים ואטרקציות",
               "ar": "جولات ومعالم",
               "en": "Tours and attractions"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#A99BD6"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#a99bd6",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "tlallim-campsite",
+      "place": "nesher",
+      "brand": null,
+      "primaryKind": "camping",
+      "kinds": [
+        "camping"
+      ],
+      "name": {
+        "he": "חניון לילה טללים",
+        "ar": "مخيم طلليم",
+        "en": "Tlallim Campsite"
+      },
+      "tagline": {
+        "he": "קמפינג בנשר",
+        "ar": "تخييم في نيشر",
+        "en": "Camping in Nesher"
+      },
+      "address": {
+        "he": "נשר",
+        "ar": "نيشر",
+        "en": "Nesher"
+      },
+      "lat": 32.7624396,
+      "lng": 35.0137668,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1548651612"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": "https://www.parks.org.il/free_camping/טללים/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "חניון לילה טללים",
+          "ar": "مخيم طلليم",
+          "en": "Tlallim Campsite"
+        },
+        "title": {
+          "he": "קמפינג",
+          "ar": "تخييم",
+          "en": "Camping"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "קמפינג",
+              "ar": "تخييم",
+              "en": "Camping"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#A99BD6"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#a99bd6",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "yar-hiarnim-campsite",
+      "place": "nesher",
+      "brand": null,
+      "primaryKind": "camping",
+      "kinds": [
+        "camping"
+      ],
+      "name": {
+        "he": "חניון לילה יער היערנים",
+        "ar": "مخيم يعر هيعرنيم",
+        "en": "Yar Hiarnim Campsite"
+      },
+      "tagline": {
+        "he": "קמפינג בנשר",
+        "ar": "تخييم في نيشر",
+        "en": "Camping in Nesher"
+      },
+      "address": {
+        "he": "נשר",
+        "ar": "نيشر",
+        "en": "Nesher"
+      },
+      "lat": 32.7511866,
+      "lng": 35.0479692,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/12862019938"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": "https://www.parks.org.il/free_camping/יער-היערנים/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "חניון לילה יער היערנים",
+          "ar": "مخيم يعر هيعرنيم",
+          "en": "Yar Hiarnim Campsite"
+        },
+        "title": {
+          "he": "קמפינג",
+          "ar": "تخييم",
+          "en": "Camping"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "קמפינג",
+              "ar": "تخييم",
+              "en": "Camping"
             }
           }
         ],
@@ -33334,7 +33026,7 @@
       }
     },
     {
-      "slug": "lila-neve-ativ-car-park",
+      "slug": "neve-ativ-campsite",
       "place": "neve-ativ",
       "brand": null,
       "primaryKind": "camping",
@@ -33343,8 +33035,8 @@
       ],
       "name": {
         "he": "חניון לילה נווה אטי\"ב",
-        "ar": "موقف سيارات ليلا نيفي أطيف",
-        "en": "Lila Neve Ativ Car Park"
+        "ar": "مخيم نيفي أطيف",
+        "en": "Neve Ativ Campsite"
       },
       "tagline": {
         "he": "קמפינג בנווה אטי\"ב",
@@ -33374,8 +33066,8 @@
       "experience": {
         "brand": {
           "he": "חניון לילה נווה אטי\"ב",
-          "ar": "موقف سيارات ليلا نيفي أطيف",
-          "en": "Lila Neve Ativ Car Park"
+          "ar": "مخيم نيفي أطيف",
+          "en": "Neve Ativ Campsite"
         },
         "title": {
           "he": "קמפינג",
@@ -33565,7 +33257,7 @@
       }
     },
     {
-      "slug": "kokhav-hiradan-car-park",
+      "slug": "kokhav-hiradan-campsite",
       "place": "neve-ur",
       "brand": null,
       "primaryKind": "camping",
@@ -33574,8 +33266,8 @@
       ],
       "name": {
         "he": "חניון כוכב הירדן",
-        "ar": "موقف سيارات كوكب هيردن",
-        "en": "Kokhav Hiradan Car Park"
+        "ar": "مخيم كوكب هيردن",
+        "en": "Kokhav Hiradan Campsite"
       },
       "tagline": {
         "he": "קמפינג בנווה אור",
@@ -33605,8 +33297,8 @@
       "experience": {
         "brand": {
           "he": "חניון כוכב הירדן",
-          "ar": "موقف سيارات كوكب هيردن",
-          "en": "Kokhav Hiradan Car Park"
+          "ar": "مخيم كوكب هيردن",
+          "en": "Kokhav Hiradan Campsite"
         },
         "title": {
           "he": "קמפינג",
@@ -34181,7 +33873,7 @@
       }
     },
     {
-      "slug": "nahal-kivotzim-car-park",
+      "slug": "nahal-kivotzim-campsite",
       "place": "nir-dawid-tel-amal",
       "brand": null,
       "primaryKind": "camping",
@@ -34190,8 +33882,8 @@
       ],
       "name": {
         "he": "חניון נחל קיבוצים",
-        "ar": "موقف سيارات نحل كيبوتسيم",
-        "en": "Nahal Kivotzim Car Park"
+        "ar": "مخيم نحل كيبوتسيم",
+        "en": "Nahal Kivotzim Campsite"
       },
       "tagline": {
         "he": "קמפינג בניר דוד",
@@ -34221,8 +33913,8 @@
       "experience": {
         "brand": {
           "he": "חניון נחל קיבוצים",
-          "ar": "موقف سيارات نحل كيبوتسيم",
-          "en": "Nahal Kivotzim Car Park"
+          "ar": "مخيم نحل كيبوتسيم",
+          "en": "Nahal Kivotzim Campsite"
         },
         "title": {
           "he": "קמפינג",
@@ -37259,7 +36951,7 @@
       ],
       "name": {
         "he": "חניון האלה",
-        "ar": "موقف سيارات هالا",
+        "ar": "مخيم هالا",
         "en": "HaEla Camping Site"
       },
       "tagline": {
@@ -37290,7 +36982,7 @@
       "experience": {
         "brand": {
           "he": "חניון האלה",
-          "ar": "موقف سيارات هالا",
+          "ar": "مخيم هالا",
           "en": "HaEla Camping Site"
         },
         "title": {
@@ -38155,7 +37847,7 @@
       }
     },
     {
-      "slug": "kravanim-hadakal-car-park",
+      "slug": "kravanim-hadakal-campsite",
       "place": "saar",
       "brand": null,
       "primaryKind": "camping",
@@ -38164,8 +37856,8 @@
       ],
       "name": {
         "he": "חניון קרוואנים הדקל",
-        "ar": "موقف سيارات كرفانيم هدكل",
-        "en": "Kravanim Hadakal Car Park"
+        "ar": "مخيم كرفانيم هدكل",
+        "en": "Kravanim Hadakal Campsite"
       },
       "tagline": {
         "he": "קמפינג בסער",
@@ -38195,8 +37887,8 @@
       "experience": {
         "brand": {
           "he": "חניון קרוואנים הדקל",
-          "ar": "موقف سيارات كرفانيم هدكل",
-          "en": "Kravanim Hadakal Car Park"
+          "ar": "مخيم كرفانيم هدكل",
+          "en": "Kravanim Hadakal Campsite"
         },
         "title": {
           "he": "קמפינג",
@@ -38857,7 +38549,7 @@
       ],
       "name": {
         "he": "חניון לילה חורבת חממה",
-        "ar": "موقف سيارات ليلا حوربت حمما",
+        "ar": "مخيم حوربت حمما",
         "en": "Khurbat Khammama Campsite"
       },
       "tagline": {
@@ -38888,7 +38580,7 @@
       "experience": {
         "brand": {
           "he": "חניון לילה חורבת חממה",
-          "ar": "موقف سيارات ليلا حوربت حمما",
+          "ar": "مخيم حوربت حمما",
           "en": "Khurbat Khammama Campsite"
         },
         "title": {
@@ -40036,7 +39728,7 @@
       ],
       "name": {
         "he": "חניון יער שפר",
-        "ar": "موقف سيارات يعر شفر",
+        "ar": "مخيم يعر شفر",
         "en": "Shefer forest camp site"
       },
       "tagline": {
@@ -40067,7 +39759,7 @@
       "experience": {
         "brand": {
           "he": "חניון יער שפר",
-          "ar": "موقف سيارات يعر شفر",
+          "ar": "مخيم يعر شفر",
           "en": "Shefer forest camp site"
         },
         "title": {
@@ -43379,7 +43071,7 @@
       ],
       "name": {
         "he": "חניון לילה יער שווייץ",
-        "ar": "موقف سيارات ليلا يعر شفيتس",
+        "ar": "مخيم يعر شفيتس",
         "en": "Swiss Forest Camping Site"
       },
       "tagline": {
@@ -43410,7 +43102,7 @@
       "experience": {
         "brand": {
           "he": "חניון לילה יער שווייץ",
-          "ar": "موقف سيارات ليلا يعر شفيتس",
+          "ar": "مخيم يعر شفيتس",
           "en": "Swiss Forest Camping Site"
         },
         "title": {
@@ -44149,7 +43841,7 @@
       ],
       "name": {
         "he": "חניון לילה בית היערן",
-        "ar": "موقف سيارات ليلا بيت هيعرن",
+        "ar": "مخيم بيت هيعرن",
         "en": "Forester's House Campsite"
       },
       "tagline": {
@@ -44180,7 +43872,7 @@
       "experience": {
         "brand": {
           "he": "חניון לילה בית היערן",
-          "ar": "موقف سيارات ليلا بيت هيعرن",
+          "ar": "مخيم بيت هيعرن",
           "en": "Forester's House Campsite"
         },
         "title": {
@@ -44226,7 +43918,7 @@
       ],
       "name": {
         "he": "חניון לילה שביל ישראל",
-        "ar": "موقف سيارات ليلا شبيل يشرال",
+        "ar": "مخيم شبيل يشرال",
         "en": "Israel Trail Campsite"
       },
       "tagline": {
@@ -44257,7 +43949,7 @@
       "experience": {
         "brand": {
           "he": "חניון לילה שביל ישראל",
-          "ar": "موقف سيارات ليلا شبيل يشرال",
+          "ar": "مخيم شبيل يشرال",
           "en": "Israel Trail Campsite"
         },
         "title": {
@@ -44777,7 +44469,7 @@
       ],
       "name": {
         "he": "חניון נחל קדש (תחתון)",
-        "ar": "موقف سيارات نحل كدش تحتون",
+        "ar": "مخيم نحل كدش تحتون",
         "en": "Lower Kadesh Campsite"
       },
       "tagline": {
@@ -44808,7 +44500,7 @@
       "experience": {
         "brand": {
           "he": "חניון נחל קדש (תחתון)",
-          "ar": "موقف سيارات نحل كدش تحتون",
+          "ar": "مخيم نحل كدش تحتون",
           "en": "Lower Kadesh Campsite"
         },
         "title": {

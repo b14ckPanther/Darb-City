@@ -10,7 +10,7 @@
     "left_out": "features with no name, food (the food importer's), garages, tyres, testing, fuel, banks and EV charging (official lists), bars, alcohol, pork, gambling and lottery, adult shops, tobacco, vape and cannabis, tattoo and weapons shops, private places, sights with no hours or contact",
     "hours": "from OSM opening_hours where it reads for certain; otherwise none",
     "counts": {
-      "emitted": 93
+      "emitted": 101
     }
   },
   "businesses": [
@@ -3097,6 +3097,83 @@
       }
     },
     {
+      "slug": "al-wadi-hall-for-wedding-party",
+      "place": "jatt",
+      "brand": null,
+      "primaryKind": "venues",
+      "kinds": [
+        "venues"
+      ],
+      "name": {
+        "he": "צאלאת אל-ואדי ללאפראח",
+        "ar": "صالات الوادي للافراح",
+        "en": "Al Wadi Hall For Wedding Party"
+      },
+      "tagline": {
+        "he": "אולם אירועים בג'ת",
+        "ar": "قاعة أفراح ومناسبات في جت",
+        "en": "Event hall in Jatt"
+      },
+      "address": {
+        "he": "ג'ת",
+        "ar": "جت",
+        "en": "Jatt"
+      },
+      "lat": 32.4013912,
+      "lng": 35.067134,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/432391804"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "צאלאת אל-ואדי ללאפראח",
+          "ar": "صالات الوادي للافراح",
+          "en": "Al Wadi Hall For Wedding Party"
+        },
+        "title": {
+          "he": "אולם אירועים",
+          "ar": "قاعة أفراح ومناسبات",
+          "en": "Event hall"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "אולם אירועים",
+              "ar": "قاعة أفراح ومناسبات",
+              "en": "Event hall"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D9A54C"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
+      }
+    },
+    {
       "slug": "buket",
       "place": "karmiel",
       "brand": null,
@@ -3649,6 +3726,88 @@
               "he": "בגדים",
               "ar": "ملابس",
               "en": "Clothes"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D9A54C"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "mahalat-hasan-nazal-lloazam-al-afarah",
+      "place": "katzir",
+      "brand": null,
+      "primaryKind": "venues",
+      "kinds": [
+        "venues"
+      ],
+      "name": {
+        "he": "מחלאת חסאן נזאל ללואזם אל-אפראח",
+        "ar": "محلات حسان نزال للوازم الافراح",
+        "en": "Mahalat Hasan Nazal Lloazam al Afarah"
+      },
+      "tagline": {
+        "he": "אולם אירועים בקציר",
+        "ar": "قاعة أفراح ومناسبات في كتسير",
+        "en": "Event hall in Katzir"
+      },
+      "address": {
+        "he": "קציר",
+        "ar": "كتسير",
+        "en": "Katzir"
+      },
+      "lat": 32.4739841,
+      "lng": 35.090483,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9929259079"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מחלאת חסאן נזאל ללואזם אל-אפראח",
+          "ar": "محلات حسان نزال للوازم الافراح",
+          "en": "Mahalat Hasan Nazal Lloazam al Afarah"
+        },
+        "title": {
+          "he": "אולם אירועים",
+          "ar": "قاعة أفراح ومناسبات",
+          "en": "Event hall"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "אולם אירועים",
+              "ar": "قاعة أفراح ومناسبات",
+              "en": "Event hall"
+            },
+            "meta": {
+              "he": "כלי בית",
+              "ar": "أدوات منزلية",
+              "en": "Housewares"
             }
           }
         ],
@@ -4668,6 +4827,83 @@
       }
     },
     {
+      "slug": "aletalia-town-hall",
+      "place": "maale-gilboa",
+      "brand": null,
+      "primaryKind": "venues",
+      "kinds": [
+        "venues"
+      ],
+      "name": {
+        "he": "אל-צאלה אל-איטאליה ללאפראח",
+        "ar": "الصالة الايطالية للافراح",
+        "en": "Aletalia Town Hall"
+      },
+      "tagline": {
+        "he": "אולם אירועים במעלה גלבוע",
+        "ar": "قاعة أفراح ومناسبات في معاليه چلبوع",
+        "en": "Event hall in Maale Gilboa"
+      },
+      "address": {
+        "he": "מעלה גלבוע",
+        "ar": "معاليه چلبوع",
+        "en": "Maale Gilboa"
+      },
+      "lat": 32.4919819,
+      "lng": 35.3980859,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/432544829"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אל-צאלה אל-איטאליה ללאפראח",
+          "ar": "الصالة الايطالية للافراح",
+          "en": "Aletalia Town Hall"
+        },
+        "title": {
+          "he": "אולם אירועים",
+          "ar": "قاعة أفراح ومناسبات",
+          "en": "Event hall"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "אולם אירועים",
+              "ar": "قاعة أفراح ومناسبات",
+              "en": "Event hall"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D9A54C"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
+      }
+    },
+    {
       "slug": "friends-studio",
       "place": "maale-gilboa",
       "brand": null,
@@ -5426,7 +5662,7 @@
       }
     },
     {
-      "slug": "al-ameer-wedding-hall",
+      "slug": "adam-hall-for-weddings",
       "place": "muqeible",
       "brand": null,
       "primaryKind": "venues",
@@ -5434,9 +5670,86 @@
         "venues"
       ],
       "name": {
-        "he": "צאלה אל-אמיר ללאפראח",
-        "ar": "صالة الامير للأفراح",
-        "en": "Al Ameer Wedding Hall"
+        "he": "אולם אדם ללאפראח",
+        "ar": "قاعة ادم للافراح",
+        "en": "Adam hall for weddings"
+      },
+      "tagline": {
+        "he": "אולם אירועים במוקייבלה",
+        "ar": "قاعة أفراح ومناسبات في مقيبلة",
+        "en": "Event hall in Muqeible"
+      },
+      "address": {
+        "he": "Wadi Burqin",
+        "ar": "مقيبلة",
+        "en": "Muqeible"
+      },
+      "lat": 32.465293,
+      "lng": 35.2777868,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/7954323897"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אולם אדם ללאפראח",
+          "ar": "قاعة ادم للافراح",
+          "en": "Adam hall for weddings"
+        },
+        "title": {
+          "he": "אולם אירועים",
+          "ar": "قاعة أفراح ومناسبات",
+          "en": "Event hall"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "אולם אירועים",
+              "ar": "قاعة أفراح ومناسبات",
+              "en": "Event hall"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D9A54C"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "al-ameer-town-hall",
+      "place": "muqeible",
+      "brand": null,
+      "primaryKind": "venues",
+      "kinds": [
+        "venues"
+      ],
+      "name": {
+        "he": "צאלאת אל-אמיר ללאפראח",
+        "ar": "صالات الامير للافراح",
+        "en": "Al-Ameer Town Hall"
       },
       "tagline": {
         "he": "אולם אירועים במוקייבלה",
@@ -5448,15 +5761,15 @@
         "ar": "مقيبلة",
         "en": "Muqeible"
       },
-      "lat": 32.4676812,
-      "lng": 35.3005757,
+      "lat": 32.4672234,
+      "lng": 35.300053,
       "hours": {
         "weekly": {},
         "exceptions": []
       },
       "attributes": {
         "primaryAction": "directions",
-        "osmId": "node/5048951921"
+        "osmId": "node/432545134"
       },
       "tier": "basic",
       "phone": null,
@@ -5465,9 +5778,163 @@
       "apps": {},
       "experience": {
         "brand": {
-          "he": "צאלה אל-אמיר ללאפראח",
-          "ar": "صالة الامير للأفراح",
-          "en": "Al Ameer Wedding Hall"
+          "he": "צאלאת אל-אמיר ללאפראח",
+          "ar": "صالات الامير للافراح",
+          "en": "Al-Ameer Town Hall"
+        },
+        "title": {
+          "he": "אולם אירועים",
+          "ar": "قاعة أفراح ومناسبات",
+          "en": "Event hall"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "אולם אירועים",
+              "ar": "قاعة أفراح ومناسبات",
+              "en": "Event hall"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D9A54C"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "al-noor-wedding-hall",
+      "place": "muqeible",
+      "brand": null,
+      "primaryKind": "venues",
+      "kinds": [
+        "venues"
+      ],
+      "name": {
+        "he": "אולם אל-נור ללאפראח",
+        "ar": "قاعة النور للافراح",
+        "en": "Al-Noor Wedding Hall"
+      },
+      "tagline": {
+        "he": "אולם אירועים במוקייבלה",
+        "ar": "قاعة أفراح ومناسبات في مقيبلة",
+        "en": "Event hall in Muqeible"
+      },
+      "address": {
+        "he": "מוקייבלה",
+        "ar": "مقيبلة",
+        "en": "Muqeible"
+      },
+      "lat": 32.4695304,
+      "lng": 35.3092018,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/431776920"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אולם אל-נור ללאפראח",
+          "ar": "قاعة النور للافراح",
+          "en": "Al-Noor Wedding Hall"
+        },
+        "title": {
+          "he": "אולם אירועים",
+          "ar": "قاعة أفراح ومناسبات",
+          "en": "Event hall"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "אולם אירועים",
+              "ar": "قاعة أفراح ومناسبات",
+              "en": "Event hall"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D9A54C"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "alqsoor-wedding-hall",
+      "place": "muqeible",
+      "brand": null,
+      "primaryKind": "venues",
+      "kinds": [
+        "venues"
+      ],
+      "name": {
+        "he": "אולם אל-קצור ללאפראח",
+        "ar": "قاعة القصور للأفراح",
+        "en": "Alqsoor wedding hall"
+      },
+      "tagline": {
+        "he": "אולם אירועים במוקייבלה",
+        "ar": "قاعة أفراح ومناسبات في مقيبلة",
+        "en": "Event hall in Muqeible"
+      },
+      "address": {
+        "he": "شارع الناصرة 042435190",
+        "ar": "مقيبلة",
+        "en": "Muqeible"
+      },
+      "lat": 32.4808549,
+      "lng": 35.2989489,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/5912308586"
+      },
+      "tier": "basic",
+      "phone": "+972 4-243-5190",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אולם אל-קצור ללאפראח",
+          "ar": "قاعة القصور للأفراح",
+          "en": "Alqsoor wedding hall"
         },
         "title": {
           "he": "אולם אירועים",
@@ -5851,83 +6318,6 @@
               "he": "פרחים",
               "ar": "ورد",
               "en": "Flowers"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#D9A54C"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#d9a54c",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "venues-5519274829",
-      "place": "muqeible",
-      "brand": null,
-      "primaryKind": "venues",
-      "kinds": [
-        "venues"
-      ],
-      "name": {
-        "he": "אולם אל-אמיר",
-        "ar": "قاعة الامير",
-        "en": "صالة الامير"
-      },
-      "tagline": {
-        "he": "אולם אירועים במוקייבלה",
-        "ar": "قاعة أفراح ومناسبات في مقيبلة",
-        "en": "Event hall in Muqeible"
-      },
-      "address": {
-        "he": "מוקייבלה",
-        "ar": "مقيبلة",
-        "en": "Muqeible"
-      },
-      "lat": 32.4671417,
-      "lng": 35.3001955,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/5519274829"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "אולם אל-אמיר",
-          "ar": "قاعة الامير",
-          "en": "صالة الامير"
-        },
-        "title": {
-          "he": "אולם אירועים",
-          "ar": "قاعة أفراح ومناسبات",
-          "en": "Event hall"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "אולם אירועים",
-              "ar": "قاعة أفراح ومناسبات",
-              "en": "Event hall"
             }
           }
         ],
@@ -6669,6 +7059,237 @@
           "he": "פארק אוסטרליה",
           "ar": "بارك اوسطرليا",
           "en": "Osatarlia Park"
+        },
+        "title": {
+          "he": "אולם אירועים",
+          "ar": "قاعة أفراح ومناسبات",
+          "en": "Event hall"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "אולם אירועים",
+              "ar": "قاعة أفراح ومناسبات",
+              "en": "Event hall"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D9A54C"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "al-balad-hall-for-parties",
+      "place": "ram-on",
+      "brand": null,
+      "primaryKind": "venues",
+      "kinds": [
+        "venues"
+      ],
+      "name": {
+        "he": "אולם אל-בלד ללאפראח",
+        "ar": "قاعة البلد للافراح",
+        "en": "Al Balad Hall For Parties"
+      },
+      "tagline": {
+        "he": "אולם אירועים ברם-און",
+        "ar": "قاعة أفراح ومناسبات في رام أون",
+        "en": "Event hall in Ram On"
+      },
+      "address": {
+        "he": "רם-און",
+        "ar": "رام أون",
+        "en": "Ram On"
+      },
+      "lat": 32.513076,
+      "lng": 35.229055,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/431779281"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אולם אל-בלד ללאפראח",
+          "ar": "قاعة البلد للافراح",
+          "en": "Al Balad Hall For Parties"
+        },
+        "title": {
+          "he": "אולם אירועים",
+          "ar": "قاعة أفراح ومناسبات",
+          "en": "Event hall"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "אולם אירועים",
+              "ar": "قاعة أفراح ومناسبات",
+              "en": "Event hall"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D9A54C"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "al-loloa-hall-for-parties",
+      "place": "ram-on",
+      "brand": null,
+      "primaryKind": "venues",
+      "kinds": [
+        "venues"
+      ],
+      "name": {
+        "he": "אולם אל-לולוה ללאפראח",
+        "ar": "قاعة اللؤلؤه للأفراح",
+        "en": "Al Lo'lo'a Hall For Parties"
+      },
+      "tagline": {
+        "he": "אולם אירועים ברם-און",
+        "ar": "قاعة أفراح ومناسبات في رام أون",
+        "en": "Event hall in Ram On"
+      },
+      "address": {
+        "he": "רם-און",
+        "ar": "رام أون",
+        "en": "Ram On"
+      },
+      "lat": 32.5130363,
+      "lng": 35.2307562,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/431713585"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אולם אל-לולוה ללאפראח",
+          "ar": "قاعة اللؤلؤه للأفراح",
+          "en": "Al Lo'lo'a Hall For Parties"
+        },
+        "title": {
+          "he": "אולם אירועים",
+          "ar": "قاعة أفراح ومناسبات",
+          "en": "Event hall"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "אולם אירועים",
+              "ar": "قاعة أفراح ومناسبات",
+              "en": "Event hall"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D9A54C"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "al-tzala-al-malkiya-lalafarah",
+      "place": "ram-on",
+      "brand": null,
+      "primaryKind": "venues",
+      "kinds": [
+        "venues"
+      ],
+      "name": {
+        "he": "אל-צאלה אל-מלכיה ללאפראח",
+        "ar": "الصالة الملكية للافراح",
+        "en": "al Tzala al Malkiya Lalafarah"
+      },
+      "tagline": {
+        "he": "אולם אירועים ברם-און",
+        "ar": "قاعة أفراح ومناسبات في رام أون",
+        "en": "Event hall in Ram On"
+      },
+      "address": {
+        "he": "רם-און",
+        "ar": "رام أون",
+        "en": "Ram On"
+      },
+      "lat": 32.4902109,
+      "lng": 35.237913,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/5349011223"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אל-צאלה אל-מלכיה ללאפראח",
+          "ar": "الصالة الملكية للافراح",
+          "en": "al Tzala al Malkiya Lalafarah"
         },
         "title": {
           "he": "אולם אירועים",

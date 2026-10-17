@@ -3260,85 +3260,6 @@
       }
     },
     {
-      "slug": "auto-parts-9922086685",
-      "place": "katzir",
-      "brand": null,
-      "primaryKind": "auto-parts",
-      "kinds": [
-        "auto-parts"
-      ],
-      "name": {
-        "he": "חלקי חילוף האומנים",
-        "ar": "قطع غيار الحرفيون",
-        "en": "قطع غيار الحرفيون"
-      },
-      "tagline": {
-        "he": "חלקי חילוף לרכב בקציר",
-        "ar": "قطع غيار سيارات في كتسير",
-        "en": "Car parts in Katzir"
-      },
-      "address": {
-        "he": "קציר",
-        "ar": "كتسير",
-        "en": "Katzir"
-      },
-      "lat": 32.4794441,
-      "lng": 35.0862732,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/9922086685"
-      },
-      "tier": "basic",
-      "phone": "+972 50-631-8421",
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "חלקי חילוף האומנים",
-          "ar": "قطع غيار الحرفيون",
-          "en": "قطع غيار الحرفيون"
-        },
-        "title": {
-          "he": "חלקי חילוף לרכב",
-          "ar": "قطع غيار سيارات",
-          "en": "Car parts"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "חלקי חילוף לרכב",
-              "ar": "قطع غيار سيارات",
-              "en": "Car parts"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {
-        "facebook": "https://www.facebook.com/%D7%97%D7%9C%D7%A7%D7%99-%D7%97%D7%99%D7%9C%D7%95%D7%A3-%D7%94%D7%90%D7%95%D7%9E%D7%A0%D7%99%D7%9D-109118380671598"
-      },
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
       "slug": "avizri-rakhav",
       "place": "katzir",
       "brand": null,
@@ -3488,6 +3409,85 @@
       },
       "links": {
         "facebook": "https://www.facebook.com/%D7%A4%D7%99%D7%A8%D7%A1%D7%98-%D7%A7%D7%90%D7%A8-%D7%99%D7%91%D7%95%D7%90-%D7%95%D7%A9%D7%95%D7%95%D7%A7-%D7%90%D7%91%D7%96%D7%A8%D7%99-%D7%92%D7%A4%D7%99%D7%9D-44-833259763542779/"
+      },
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "haomnim-auto-parts",
+      "place": "katzir",
+      "brand": null,
+      "primaryKind": "auto-parts",
+      "kinds": [
+        "auto-parts"
+      ],
+      "name": {
+        "he": "חלקי חילוף האומנים",
+        "ar": "قطع غيار الحرفيون",
+        "en": "Haomnim Auto Parts"
+      },
+      "tagline": {
+        "he": "חלקי חילוף לרכב בקציר",
+        "ar": "قطع غيار سيارات في كتسير",
+        "en": "Car parts in Katzir"
+      },
+      "address": {
+        "he": "קציר",
+        "ar": "كتسير",
+        "en": "Katzir"
+      },
+      "lat": 32.4794441,
+      "lng": 35.0862732,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9922086685"
+      },
+      "tier": "basic",
+      "phone": "+972 50-631-8421",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "חלקי חילוף האומנים",
+          "ar": "قطع غيار الحرفيون",
+          "en": "Haomnim Auto Parts"
+        },
+        "title": {
+          "he": "חלקי חילוף לרכב",
+          "ar": "قطع غيار سيارات",
+          "en": "Car parts"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חלקי חילוף לרכב",
+              "ar": "قطع غيار سيارات",
+              "en": "Car parts"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/%D7%97%D7%9C%D7%A7%D7%99-%D7%97%D7%99%D7%9C%D7%95%D7%A3-%D7%94%D7%90%D7%95%D7%9E%D7%A0%D7%99%D7%9D-109118380671598"
       },
       "cardStyle": {
         "accent": "#6fa8dc",

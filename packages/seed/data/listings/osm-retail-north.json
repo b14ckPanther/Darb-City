@@ -10,7 +10,7 @@
     "left_out": "features with no name, food (the food importer's), garages, tyres, testing, fuel, banks and EV charging (official lists), bars, alcohol, pork, gambling and lottery, adult shops, tobacco, vape and cannabis, tattoo and weapons shops, private places, sights with no hours or contact",
     "hours": "from OSM opening_hours where it reads for certain; otherwise none",
     "counts": {
-      "emitted": 1512
+      "emitted": 1505
     }
   },
   "businesses": [
@@ -6477,7 +6477,7 @@
       "name": {
         "he": "בקאלה",
         "ar": "بقالة",
-        "en": "Supermarket عمر"
+        "en": "Supermarket"
       },
       "tagline": {
         "he": "סופרמרקט בבאקה אל-גרביה",
@@ -6508,7 +6508,7 @@
         "brand": {
           "he": "בקאלה",
           "ar": "بقالة",
-          "en": "Supermarket عمر"
+          "en": "Supermarket"
         },
         "title": {
           "he": "סופרמרקט",
@@ -22389,83 +22389,6 @@
       }
     },
     {
-      "slug": "abandoned-mall",
-      "place": "dovrat",
-      "brand": null,
-      "primaryKind": "shops",
-      "kinds": [
-        "shops"
-      ],
-      "name": {
-        "he": "Abandoned mall",
-        "ar": "Abandoned mall",
-        "en": "Abandoned mall"
-      },
-      "tagline": {
-        "he": "קניון בדברת",
-        "ar": "مول في دوفرات",
-        "en": "Mall in Dovrat"
-      },
-      "address": {
-        "he": "דברת",
-        "ar": "دوفرات",
-        "en": "Dovrat"
-      },
-      "lat": 32.6437843,
-      "lng": 35.3497611,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "way/808259305"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "Abandoned mall",
-          "ar": "Abandoned mall",
-          "en": "Abandoned mall"
-        },
-        "title": {
-          "he": "קניון",
-          "ar": "مول",
-          "en": "Mall"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "קניון",
-              "ar": "مول",
-              "en": "Mall"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#E08A6D"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#e08a6d",
-        "icons": "solid"
-      }
-    },
-    {
       "slug": "alaraoi-library",
       "place": "eilabun",
       "brand": null,
@@ -32215,83 +32138,6 @@
       }
     },
     {
-      "slug": "artists-13798447802",
-      "place": "haifa",
-      "brand": null,
-      "primaryKind": "artists",
-      "kinds": [
-        "artists"
-      ],
-      "name": {
-        "he": "Изготовление картин и рам",
-        "ar": "Изготовление картин и рам",
-        "en": "Изготовление картин и рам"
-      },
-      "tagline": {
-        "he": "אמנות ועבודות יד בחיפה",
-        "ar": "فن وأشغال يدوية في حيفا",
-        "en": "Art and handmade in Haifa"
-      },
-      "address": {
-        "he": "נורדאו 27,29",
-        "ar": "حيفا",
-        "en": "Haifa"
-      },
-      "lat": 32.808212,
-      "lng": 34.99953,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/13798447802"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "Изготовление картин и рам",
-          "ar": "Изготовление картин и рам",
-          "en": "Изготовление картин и рам"
-        },
-        "title": {
-          "he": "אמנות ועבודות יד",
-          "ar": "فن وأشغال يدوية",
-          "en": "Art and handmade"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "אמנות ועבודות יד",
-              "ar": "فن وأشغال يدوية",
-              "en": "Art and handmade"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#E08A6D"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#e08a6d",
-        "icons": "solid"
-      }
-    },
-    {
       "slug": "auditorium-shopping-center",
       "place": "haifa",
       "brand": null,
@@ -32428,170 +32274,6 @@
               "he": "בגדים",
               "ar": "ملابس",
               "en": "Clothes"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#E08A6D"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#e08a6d",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "bookshops-13798444101",
-      "place": "haifa",
-      "brand": null,
-      "primaryKind": "bookshops",
-      "kinds": [
-        "bookshops"
-      ],
-      "name": {
-        "he": "Москва - магазин сувениров",
-        "ar": "Москва - магазин сувениров",
-        "en": "Москва - магазин сувениров"
-      },
-      "tagline": {
-        "he": "ספרים, מתנות וכלי כתיבה בחיפה",
-        "ar": "كتب وهدايا وقرطاسية في حيفا",
-        "en": "Books, gifts and stationery in Haifa"
-      },
-      "address": {
-        "he": "חיפה",
-        "ar": "حيفا",
-        "en": "Haifa"
-      },
-      "lat": 32.8106148,
-      "lng": 34.9978605,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/13798444101"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "Москва - магазин сувениров",
-          "ar": "Москва - магазин сувениров",
-          "en": "Москва - магазин сувениров"
-        },
-        "title": {
-          "he": "ספרים, מתנות וכלי כתיבה",
-          "ar": "كتب وهدايا وقرطاسية",
-          "en": "Books, gifts and stationery"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "ספרים, מתנות וכלי כתיבה",
-              "ar": "كتب وهدايا وقرطاسية",
-              "en": "Books, gifts and stationery"
-            },
-            "meta": {
-              "he": "מתנות",
-              "ar": "هدايا",
-              "en": "Gifts"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#E08A6D"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#e08a6d",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "bookshops-13798485001",
-      "place": "haifa",
-      "brand": null,
-      "primaryKind": "bookshops",
-      "kinds": [
-        "bookshops"
-      ],
-      "name": {
-        "he": "Магазин сувениров",
-        "ar": "Магазин сувениров",
-        "en": "Магазин сувениров"
-      },
-      "tagline": {
-        "he": "ספרים, מתנות וכלי כתיבה בחיפה",
-        "ar": "كتب وهدايا وقرطاسية في حيفا",
-        "en": "Books, gifts and stationery in Haifa"
-      },
-      "address": {
-        "he": "הרצל 44",
-        "ar": "حيفا",
-        "en": "Haifa"
-      },
-      "lat": 32.8085638,
-      "lng": 34.9997933,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/13798485001"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "Магазин сувениров",
-          "ar": "Магазин сувениров",
-          "en": "Магазин сувениров"
-        },
-        "title": {
-          "he": "ספרים, מתנות וכלי כתיבה",
-          "ar": "كتب وهدايا وقرطاسية",
-          "en": "Books, gifts and stationery"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "ספרים, מתנות וכלי כתיבה",
-              "ar": "كتب وهدايا وقرطاسية",
-              "en": "Books, gifts and stationery"
-            },
-            "meta": {
-              "he": "מתנות",
-              "ar": "هدايا",
-              "en": "Gifts"
             }
           }
         ],
@@ -33476,88 +33158,6 @@
               "he": "ספרים",
               "ar": "كتب",
               "en": "Books"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#E08A6D"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#e08a6d",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "gold-13798454003",
-      "place": "haifa",
-      "brand": null,
-      "primaryKind": "gold",
-      "kinds": [
-        "gold"
-      ],
-      "name": {
-        "he": "Ювелир",
-        "ar": "Ювелир",
-        "en": "Ювелир"
-      },
-      "tagline": {
-        "he": "תכשיטים וזהב בחיפה",
-        "ar": "ذهب ومجوهرات في حيفا",
-        "en": "Gold and jewellery in Haifa"
-      },
-      "address": {
-        "he": "חיפה",
-        "ar": "حيفا",
-        "en": "Haifa"
-      },
-      "lat": 32.8085299,
-      "lng": 34.9994785,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/13798454003"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "Ювелир",
-          "ar": "Ювелир",
-          "en": "Ювелир"
-        },
-        "title": {
-          "he": "תכשיטים וזהב",
-          "ar": "ذهب ومجوهرات",
-          "en": "Gold and jewellery"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "תכשיטים וזהב",
-              "ar": "ذهب ومجوهرات",
-              "en": "Gold and jewellery"
-            },
-            "meta": {
-              "he": "תכשיטים",
-              "ar": "مجوهرات",
-              "en": "Jewellery"
             }
           }
         ],
@@ -43350,6 +42950,88 @@
               "he": "נגיש לכיסא גלגלים",
               "ar": "مناسب للكراسي المتحركة",
               "en": "Wheelchair accessible"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#E08A6D"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#e08a6d",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "alm-digital",
+      "place": "karmiel",
+      "brand": null,
+      "primaryKind": "electronics",
+      "kinds": [
+        "electronics"
+      ],
+      "name": {
+        "he": "א.ל.מ דיגיטל",
+        "ar": "ا.ل.م ديجيطل",
+        "en": "ALM Digital"
+      },
+      "tagline": {
+        "he": "סלולר ומוצרי חשמל בכרמיאל",
+        "ar": "خلويات وكهربائيات في كرميئيل",
+        "en": "Phones and electronics in Karmiel"
+      },
+      "address": {
+        "he": "מעלה כמון 2",
+        "ar": "كرميئيل",
+        "en": "Karmiel"
+      },
+      "lat": 32.9273861,
+      "lng": 35.3210354,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/14046803654"
+      },
+      "tier": "basic",
+      "phone": "+972 4-988-2283",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "א.ל.מ דיגיטל",
+          "ar": "ا.ل.م ديجيطل",
+          "en": "ALM Digital"
+        },
+        "title": {
+          "he": "סלולר ומוצרי חשמל",
+          "ar": "خلويات وكهربائيات",
+          "en": "Phones and electronics"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "סלולר ומוצרי חשמל",
+              "ar": "خلويات وكهربائيات",
+              "en": "Phones and electronics"
+            },
+            "meta": {
+              "he": "מוצרי חשמל",
+              "ar": "كهربائيات",
+              "en": "Electronics"
             }
           }
         ],
@@ -57324,83 +57006,6 @@
       }
     },
     {
-      "slug": "mahalat-hasan-nazal-lloazam-al-afarah",
-      "place": "katzir",
-      "brand": null,
-      "primaryKind": "kitchenware",
-      "kinds": [
-        "kitchenware"
-      ],
-      "name": {
-        "he": "מחלאת חסאן נזאל ללואזם אל-אפראח",
-        "ar": "محلات حسان نزال للوازم الافراح",
-        "en": "Mahalat Hasan Nazal Lloazam al Afarah"
-      },
-      "tagline": {
-        "he": "כלי בית בקציר",
-        "ar": "أدوات منزلية في كتسير",
-        "en": "Housewares in Katzir"
-      },
-      "address": {
-        "he": "קציר",
-        "ar": "كتسير",
-        "en": "Katzir"
-      },
-      "lat": 32.4739841,
-      "lng": 35.090483,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/9929259079"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "מחלאת חסאן נזאל ללואזם אל-אפראח",
-          "ar": "محلات حسان نزال للوازم الافراح",
-          "en": "Mahalat Hasan Nazal Lloazam al Afarah"
-        },
-        "title": {
-          "he": "כלי בית",
-          "ar": "أدوات منزلية",
-          "en": "Housewares"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "כלי בית",
-              "ar": "أدوات منزلية",
-              "en": "Housewares"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#E08A6D"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#e08a6d",
-        "icons": "solid"
-      }
-    },
-    {
       "slug": "mahalat-mahmod-tfiha-vaolada",
       "place": "katzir",
       "brand": null,
@@ -69786,83 +69391,6 @@
       }
     },
     {
-      "slug": "shops-4294056389",
-      "place": "kiryat-motzkin",
-      "brand": null,
-      "primaryKind": "shops",
-      "kinds": [
-        "shops"
-      ],
-      "name": {
-        "he": "махсаней лаав",
-        "ar": "махсаней лаав",
-        "en": "махсаней лаав"
-      },
-      "tagline": {
-        "he": "סופרמרקט בקרית מוצקין",
-        "ar": "سوبرماركت في كريات موتسكين",
-        "en": "Supermarket in Kiryat Motzkin"
-      },
-      "address": {
-        "he": "ברזילי 1",
-        "ar": "كريات موتسكين",
-        "en": "Kiryat Motzkin"
-      },
-      "lat": 32.8383688,
-      "lng": 35.0597486,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/4294056389"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "махсаней лаав",
-          "ar": "махсаней лаав",
-          "en": "махсаней лаав"
-        },
-        "title": {
-          "he": "סופרמרקט",
-          "ar": "سوبرماركت",
-          "en": "Supermarket"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "סופרמרקט",
-              "ar": "سوبرماركت",
-              "en": "Supermarket"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#E08A6D"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#e08a6d",
-        "icons": "solid"
-      }
-    },
-    {
       "slug": "shufersal-sheli",
       "place": "kiryat-motzkin",
       "brand": "shufersal",
@@ -72126,6 +71654,127 @@
       "links": {
         "instagram": "https://www.instagram.com/DELTAOFFICIAL/",
         "facebook": "https://www.facebook.com/delta.il"
+      },
+      "cardStyle": {
+        "accent": "#e08a6d",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "digital-center",
+      "place": "kiryat-shmona",
+      "brand": null,
+      "primaryKind": "electronics",
+      "kinds": [
+        "electronics"
+      ],
+      "name": {
+        "he": "דיגיטל סנטר",
+        "ar": "ديجيطل سنتر",
+        "en": "Digital Center"
+      },
+      "tagline": {
+        "he": "סלולר ומוצרי חשמל בקרית שמונה",
+        "ar": "خلويات وكهربائيات في كريات شمونة",
+        "en": "Phones and electronics in Kiryat Shmona"
+      },
+      "address": {
+        "he": "טשרניחובסקי 4",
+        "ar": "كريات شمونة",
+        "en": "Kiryat Shmona"
+      },
+      "lat": 33.2111412,
+      "lng": 35.568706,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "09:00",
+              "close": "21:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "09:00",
+              "close": "21:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "09:00",
+              "close": "21:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "09:00",
+              "close": "21:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "09:00",
+              "close": "21:00"
+            }
+          ],
+          "5": [
+            {
+              "open": "10:00",
+              "close": "14:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/5560381584"
+      },
+      "tier": "basic",
+      "phone": "+972 4-888-0122",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "דיגיטל סנטר",
+          "ar": "ديجيطل سنتر",
+          "en": "Digital Center"
+        },
+        "title": {
+          "he": "סלולר ומוצרי חשמל",
+          "ar": "خلويات وكهربائيات",
+          "en": "Phones and electronics"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "סלולר ומוצרי חשמל",
+              "ar": "خلويات وكهربائيات",
+              "en": "Phones and electronics"
+            },
+            "meta": {
+              "he": "מוצרי חשמל",
+              "ar": "كهربائيات",
+              "en": "Electronics"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#E08A6D"
+        },
+        "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/digitalcenterqs/"
       },
       "cardStyle": {
         "accent": "#e08a6d",
@@ -99460,125 +99109,6 @@
       }
     },
     {
-      "slug": "electronics-5269918321",
-      "place": "muqeible",
-      "brand": null,
-      "primaryKind": "electronics",
-      "kinds": [
-        "electronics"
-      ],
-      "name": {
-        "he": "سهيل موبايل",
-        "ar": "سهيل موبايل",
-        "en": "سهيل موبايل"
-      },
-      "tagline": {
-        "he": "סלולר ומוצרי חשמל במוקייבלה",
-        "ar": "خلويات وكهربائيات في مقيبلة",
-        "en": "Phones and electronics in Muqeible"
-      },
-      "address": {
-        "he": "Abu Baker Street",
-        "ar": "مقيبلة",
-        "en": "Muqeible"
-      },
-      "lat": 32.4620616,
-      "lng": 35.2973227,
-      "hours": {
-        "weekly": {
-          "0": [
-            {
-              "open": "09:00",
-              "close": "23:00"
-            }
-          ],
-          "1": [
-            {
-              "open": "09:00",
-              "close": "23:00"
-            }
-          ],
-          "2": [
-            {
-              "open": "09:00",
-              "close": "23:00"
-            }
-          ],
-          "3": [
-            {
-              "open": "09:00",
-              "close": "23:00"
-            }
-          ],
-          "4": [
-            {
-              "open": "09:00",
-              "close": "23:00"
-            }
-          ],
-          "6": [
-            {
-              "open": "09:00",
-              "close": "23:00"
-            }
-          ]
-        },
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/5269918321"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "سهيل موبايل",
-          "ar": "سهيل موبايل",
-          "en": "سهيل موبايل"
-        },
-        "title": {
-          "he": "סלולר ומוצרי חשמל",
-          "ar": "خلويات وكهربائيات",
-          "en": "Phones and electronics"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "סלולר ומוצרי חשמל",
-              "ar": "خلويات وكهربائيات",
-              "en": "Phones and electronics"
-            },
-            "meta": {
-              "he": "טלפונים ניידים",
-              "ar": "خلويات",
-              "en": "Mobile phones"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#E08A6D"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#e08a6d",
-        "icons": "solid"
-      }
-    },
-    {
       "slug": "family-stores",
       "place": "muqeible",
       "brand": null,
@@ -99633,213 +99163,6 @@
               "he": "סופרמרקט",
               "ar": "سوبرماركت",
               "en": "Supermarket"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#E08A6D"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#e08a6d",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "fashion-5028810922",
-      "place": "muqeible",
-      "brand": null,
-      "primaryKind": "fashion",
-      "kinds": [
-        "fashion"
-      ],
-      "name": {
-        "he": "מנתצר אל-יאסין",
-        "ar": "منتصر الياسين",
-        "en": "منتصر الياسين"
-      },
-      "tagline": {
-        "he": "בגדים ואופנה במוקייבלה",
-        "ar": "ملابس وأزياء في مقيبلة",
-        "en": "Clothing and fashion in Muqeible"
-      },
-      "address": {
-        "he": "מוקייבלה",
-        "ar": "مقيبلة",
-        "en": "Muqeible"
-      },
-      "lat": 32.4625277,
-      "lng": 35.299595,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/5028810922"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "מנתצר אל-יאסין",
-          "ar": "منتصر الياسين",
-          "en": "منتصر الياسين"
-        },
-        "title": {
-          "he": "בגדים ואופנה",
-          "ar": "ملابس وأزياء",
-          "en": "Clothing and fashion"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "בגדים ואופנה",
-              "ar": "ملابس وأزياء",
-              "en": "Clothing and fashion"
-            },
-            "meta": {
-              "he": "בגדים",
-              "ar": "ملابس",
-              "en": "Clothes"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#E08A6D"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#e08a6d",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "gold-6322817786",
-      "place": "muqeible",
-      "brand": null,
-      "primaryKind": "gold",
-      "kinds": [
-        "gold"
-      ],
-      "name": {
-        "he": "מג'והראת סאמר אל-צאנוי",
-        "ar": "مجوهرات سامر الصانوي",
-        "en": "العربيه"
-      },
-      "tagline": {
-        "he": "תכשיטים וזהב במוקייבלה",
-        "ar": "ذهب ومجوهرات في مقيبلة",
-        "en": "Gold and jewellery in Muqeible"
-      },
-      "address": {
-        "he": "Yahia Ayyash Street 042502184",
-        "ar": "مقيبلة",
-        "en": "Muqeible"
-      },
-      "lat": 32.4628174,
-      "lng": 35.2970108,
-      "hours": {
-        "weekly": {
-          "0": [
-            {
-              "open": "09:00",
-              "close": "18:00"
-            }
-          ],
-          "1": [
-            {
-              "open": "09:00",
-              "close": "18:00"
-            }
-          ],
-          "2": [
-            {
-              "open": "09:00",
-              "close": "18:00"
-            }
-          ],
-          "3": [
-            {
-              "open": "09:00",
-              "close": "18:00"
-            }
-          ],
-          "4": [
-            {
-              "open": "09:00",
-              "close": "18:00"
-            }
-          ],
-          "5": [
-            {
-              "open": "00:00",
-              "close": "24:00"
-            }
-          ],
-          "6": [
-            {
-              "open": "09:00",
-              "close": "18:00"
-            }
-          ]
-        },
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/6322817786"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "מג'והראת סאמר אל-צאנוי",
-          "ar": "مجوهرات سامر الصانوي",
-          "en": "العربيه"
-        },
-        "title": {
-          "he": "תכשיטים וזהב",
-          "ar": "ذهب ومجوهرات",
-          "en": "Gold and jewellery"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "תכשיטים וזהב",
-              "ar": "ذهب ومجوهرات",
-              "en": "Gold and jewellery"
-            },
-            "meta": {
-              "he": "תכשיטים",
-              "ar": "مجوهرات",
-              "en": "Jewellery"
             }
           }
         ],
@@ -100652,6 +99975,83 @@
       }
     },
     {
+      "slug": "majama-al-nafaa",
+      "place": "muqeible",
+      "brand": null,
+      "primaryKind": "shops",
+      "kinds": [
+        "shops"
+      ],
+      "name": {
+        "he": "מג'מע אל-נפאע",
+        "ar": "مجمع النفاع",
+        "en": "Majama al Nafaa"
+      },
+      "tagline": {
+        "he": "סופרמרקט במוקייבלה",
+        "ar": "سوبرماركت في مقيبلة",
+        "en": "Supermarket in Muqeible"
+      },
+      "address": {
+        "he": "מוקייבלה",
+        "ar": "مقيبلة",
+        "en": "Muqeible"
+      },
+      "lat": 32.4627184,
+      "lng": 35.2995268,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/5028811121"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מג'מע אל-נפאע",
+          "ar": "مجمع النفاع",
+          "en": "Majama al Nafaa"
+        },
+        "title": {
+          "he": "סופרמרקט",
+          "ar": "سوبرماركت",
+          "en": "Supermarket"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "סופרמרקט",
+              "ar": "سوبرماركت",
+              "en": "Supermarket"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#E08A6D"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#e08a6d",
+        "icons": "solid"
+      }
+    },
+    {
       "slug": "majama-riach-al-tahar",
       "place": "muqeible",
       "brand": null,
@@ -100706,6 +100106,131 @@
               "he": "כלבו",
               "ar": "محل متعدد الأقسام",
               "en": "Department store"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#E08A6D"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#e08a6d",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "majoharat-samar-al-tzanoi",
+      "place": "muqeible",
+      "brand": null,
+      "primaryKind": "gold",
+      "kinds": [
+        "gold"
+      ],
+      "name": {
+        "he": "מג'והראת סאמר אל-צאנוי",
+        "ar": "مجوهرات سامر الصانوي",
+        "en": "Majoharat Samar al Tzanoi"
+      },
+      "tagline": {
+        "he": "תכשיטים וזהב במוקייבלה",
+        "ar": "ذهب ومجوهرات في مقيبلة",
+        "en": "Gold and jewellery in Muqeible"
+      },
+      "address": {
+        "he": "Yahia Ayyash Street 042502184",
+        "ar": "مقيبلة",
+        "en": "Muqeible"
+      },
+      "lat": 32.4628174,
+      "lng": 35.2970108,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "09:00",
+              "close": "18:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "09:00",
+              "close": "18:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "09:00",
+              "close": "18:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "09:00",
+              "close": "18:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "09:00",
+              "close": "18:00"
+            }
+          ],
+          "5": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "6": [
+            {
+              "open": "09:00",
+              "close": "18:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/6322817786"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מג'והראת סאמר אל-צאנוי",
+          "ar": "مجوهرات سامر الصانوي",
+          "en": "Majoharat Samar al Tzanoi"
+        },
+        "title": {
+          "he": "תכשיטים וזהב",
+          "ar": "ذهب ومجوهرات",
+          "en": "Gold and jewellery"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "תכשיטים וזהב",
+              "ar": "ذهب ومجوهرات",
+              "en": "Gold and jewellery"
+            },
+            "meta": {
+              "he": "תכשיטים",
+              "ar": "مجوهرات",
+              "en": "Jewellery"
             }
           }
         ],
@@ -100865,6 +100390,88 @@
               "he": "סופרמרקט",
               "ar": "سوبرماركت",
               "en": "Supermarket"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#E08A6D"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#e08a6d",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "manatatzar-al-yasin",
+      "place": "muqeible",
+      "brand": null,
+      "primaryKind": "fashion",
+      "kinds": [
+        "fashion"
+      ],
+      "name": {
+        "he": "מנתצר אל-יאסין",
+        "ar": "منتصر الياسين",
+        "en": "Manatatzar al Yasin"
+      },
+      "tagline": {
+        "he": "בגדים ואופנה במוקייבלה",
+        "ar": "ملابس وأزياء في مقيبلة",
+        "en": "Clothing and fashion in Muqeible"
+      },
+      "address": {
+        "he": "מוקייבלה",
+        "ar": "مقيبلة",
+        "en": "Muqeible"
+      },
+      "lat": 32.4625277,
+      "lng": 35.299595,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/5028810922"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מנתצר אל-יאסין",
+          "ar": "منتصر الياسين",
+          "en": "Manatatzar al Yasin"
+        },
+        "title": {
+          "he": "בגדים ואופנה",
+          "ar": "ملابس وأزياء",
+          "en": "Clothing and fashion"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "בגדים ואופנה",
+              "ar": "ملابس وأزياء",
+              "en": "Clothing and fashion"
+            },
+            "meta": {
+              "he": "בגדים",
+              "ar": "ملابس",
+              "en": "Clothes"
             }
           }
         ],
@@ -101905,83 +101512,6 @@
       }
     },
     {
-      "slug": "shops-5028811121",
-      "place": "muqeible",
-      "brand": null,
-      "primaryKind": "shops",
-      "kinds": [
-        "shops"
-      ],
-      "name": {
-        "he": "מג'מע אל-נפאע",
-        "ar": "مجمع النفاع",
-        "en": "مجمع النفاع"
-      },
-      "tagline": {
-        "he": "סופרמרקט במוקייבלה",
-        "ar": "سوبرماركت في مقيبلة",
-        "en": "Supermarket in Muqeible"
-      },
-      "address": {
-        "he": "מוקייבלה",
-        "ar": "مقيبلة",
-        "en": "Muqeible"
-      },
-      "lat": 32.4627184,
-      "lng": 35.2995268,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/5028811121"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "מג'מע אל-נפאע",
-          "ar": "مجمع النفاع",
-          "en": "مجمع النفاع"
-        },
-        "title": {
-          "he": "סופרמרקט",
-          "ar": "سوبرماركت",
-          "en": "Supermarket"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "סופרמרקט",
-              "ar": "سوبرماركت",
-              "en": "Supermarket"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#E08A6D"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#e08a6d",
-        "icons": "solid"
-      }
-    },
-    {
       "slug": "sif-said",
       "place": "muqeible",
       "brand": null,
@@ -102699,6 +102229,133 @@
               "he": "סופרמרקט",
               "ar": "سوبرماركت",
               "en": "Supermarket"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#E08A6D"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#e08a6d",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "sovar-marakhat-al-hilal",
+      "place": "muqeible",
+      "brand": null,
+      "primaryKind": "shops",
+      "kinds": [
+        "shops"
+      ],
+      "name": {
+        "he": "סובר מארכת אל-הלאל",
+        "ar": "سوبر ماركت الهلال",
+        "en": "Sovar Marakhat al Hilal"
+      },
+      "tagline": {
+        "he": "סופרמרקט במוקייבלה",
+        "ar": "سوبرماركت في مقيبلة",
+        "en": "Supermarket in Muqeible"
+      },
+      "address": {
+        "he": "Fatima Khatoon",
+        "ar": "مقيبلة",
+        "en": "Muqeible"
+      },
+      "lat": 32.4641049,
+      "lng": 35.2975639,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "5": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "6": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/10206960691"
+      },
+      "tier": "basic",
+      "phone": "+972 59-577-9210",
+      "whatsapp": null,
+      "website": "https://alhelalmarkt.com/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "סובר מארכת אל-הלאל",
+          "ar": "سوبر ماركت الهلال",
+          "en": "Sovar Marakhat al Hilal"
+        },
+        "title": {
+          "he": "סופרמרקט",
+          "ar": "سوبرماركت",
+          "en": "Supermarket"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "סופרמרקט",
+              "ar": "سوبرماركت",
+              "en": "Supermarket"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -103802,6 +103459,125 @@
       }
     },
     {
+      "slug": "suhail-mobile-2",
+      "place": "muqeible",
+      "brand": null,
+      "primaryKind": "electronics",
+      "kinds": [
+        "electronics"
+      ],
+      "name": {
+        "he": "Suhail Mobile",
+        "ar": "Suhail Mobile",
+        "en": "Suhail Mobile"
+      },
+      "tagline": {
+        "he": "סלולר ומוצרי חשמל במוקייבלה",
+        "ar": "خلويات وكهربائيات في مقيبلة",
+        "en": "Phones and electronics in Muqeible"
+      },
+      "address": {
+        "he": "Abu Baker Street",
+        "ar": "مقيبلة",
+        "en": "Muqeible"
+      },
+      "lat": 32.4620616,
+      "lng": 35.2973227,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "09:00",
+              "close": "23:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "09:00",
+              "close": "23:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "09:00",
+              "close": "23:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "09:00",
+              "close": "23:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "09:00",
+              "close": "23:00"
+            }
+          ],
+          "6": [
+            {
+              "open": "09:00",
+              "close": "23:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/5269918321"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "Suhail Mobile",
+          "ar": "Suhail Mobile",
+          "en": "Suhail Mobile"
+        },
+        "title": {
+          "he": "סלולר ומוצרי חשמל",
+          "ar": "خلويات وكهربائيات",
+          "en": "Phones and electronics"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "סלולר ומוצרי חשמל",
+              "ar": "خلويات وكهربائيات",
+              "en": "Phones and electronics"
+            },
+            "meta": {
+              "he": "טלפונים ניידים",
+              "ar": "خلويات",
+              "en": "Mobile phones"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#E08A6D"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#e08a6d",
+        "icons": "solid"
+      }
+    },
+    {
       "slug": "sukar",
       "place": "muqeible",
       "brand": null,
@@ -104775,114 +104551,6 @@
               "he": "כלי בית",
               "ar": "أدوات منزلية",
               "en": "Housewares"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#E08A6D"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#e08a6d",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "shops-8443184022",
-      "place": "nahariya",
-      "brand": null,
-      "primaryKind": "shops",
-      "kinds": [
-        "shops"
-      ],
-      "name": {
-        "he": "Минимаркет \"У Аси\"",
-        "ar": "Минимаркет \"У Аси\"",
-        "en": "Минимаркет \"У Аси\""
-      },
-      "tagline": {
-        "he": "סופרמרקט בנהריה",
-        "ar": "سوبرماركت في نهاريا",
-        "en": "Supermarket in Nahariya"
-      },
-      "address": {
-        "he": "נהריה",
-        "ar": "نهاريا",
-        "en": "Nahariya"
-      },
-      "lat": 33.0157697,
-      "lng": 35.096485,
-      "hours": {
-        "weekly": {
-          "0": [
-            {
-              "open": "09:00",
-              "close": "21:00"
-            }
-          ],
-          "1": [
-            {
-              "open": "09:00",
-              "close": "21:00"
-            }
-          ],
-          "2": [
-            {
-              "open": "09:00",
-              "close": "21:00"
-            }
-          ],
-          "3": [
-            {
-              "open": "09:00",
-              "close": "21:00"
-            }
-          ],
-          "4": [
-            {
-              "open": "09:00",
-              "close": "21:00"
-            }
-          ]
-        },
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/8443184022"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "Минимаркет \"У Аси\"",
-          "ar": "Минимаркет \"У Аси\"",
-          "en": "Минимаркет \"У Аси\""
-        },
-        "title": {
-          "he": "סופרמרקט",
-          "ar": "سوبرماركت",
-          "en": "Supermarket"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "סופרמרקט",
-              "ar": "سوبرماركت",
-              "en": "Supermarket"
             }
           }
         ],
@@ -110904,83 +110572,6 @@
               "he": "מוצרי חשמל",
               "ar": "كهربائيات",
               "en": "Electronics"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#E08A6D"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#e08a6d",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "shops-5894747648",
-      "place": "nof-hagalil",
-      "brand": null,
-      "primaryKind": "shops",
-      "kinds": [
-        "shops"
-      ],
-      "name": {
-        "he": "Ноф-ха-галиль медцентр",
-        "ar": "Ноф-ха-галиль медцентр",
-        "en": "Ноф-ха-галиль медцентр"
-      },
-      "tagline": {
-        "he": "קניון בנוף הגליל",
-        "ar": "مول في نوف هجليل",
-        "en": "Mall in Nof HaGalil"
-      },
-      "address": {
-        "he": "נוף הגליל",
-        "ar": "نوف هجليل",
-        "en": "Nof HaGalil"
-      },
-      "lat": 32.7024973,
-      "lng": 35.3216741,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/5894747648"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "Ноф-ха-галиль медцентр",
-          "ar": "Ноф-ха-галиль медцентр",
-          "en": "Ноф-ха-галиль медцентр"
-        },
-        "title": {
-          "he": "קניון",
-          "ar": "مول",
-          "en": "Mall"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "קניון",
-              "ar": "مول",
-              "en": "Mall"
             }
           }
         ],
@@ -119229,6 +118820,83 @@
       }
     },
     {
+      "slug": "digital",
+      "place": "safed",
+      "brand": null,
+      "primaryKind": "shops",
+      "kinds": [
+        "shops"
+      ],
+      "name": {
+        "he": "דיגיטלי",
+        "ar": "ديجيطلي",
+        "en": "Digital"
+      },
+      "tagline": {
+        "he": "חנות בצפת",
+        "ar": "محل في صفد",
+        "en": "Shop in Safed"
+      },
+      "address": {
+        "he": "צפת",
+        "ar": "صفد",
+        "en": "Safed"
+      },
+      "lat": 32.9660889,
+      "lng": 35.4955876,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/4942436798"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "דיגיטלי",
+          "ar": "ديجيطلي",
+          "en": "Digital"
+        },
+        "title": {
+          "he": "חנות",
+          "ar": "محل",
+          "en": "Shop"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חנות",
+              "ar": "محل",
+              "en": "Shop"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#E08A6D"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#e08a6d",
+        "icons": "solid"
+      }
+    },
+    {
       "slug": "dni-grocery",
       "place": "safed",
       "brand": null,
@@ -119950,83 +119618,6 @@
               "he": "קניון",
               "ar": "مول",
               "en": "Mall"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#E08A6D"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#e08a6d",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "mistik-pitza",
-      "place": "safed",
-      "brand": null,
-      "primaryKind": "shops",
-      "kinds": [
-        "shops"
-      ],
-      "name": {
-        "he": "מיסטיק פיצה",
-        "ar": "ميسطيك بيتسا",
-        "en": "Mistik Pitza"
-      },
-      "tagline": {
-        "he": "חנות בצפת",
-        "ar": "محل في صفد",
-        "en": "Shop in Safed"
-      },
-      "address": {
-        "he": "צפת",
-        "ar": "صفد",
-        "en": "Safed"
-      },
-      "lat": 32.967044,
-      "lng": 35.5021392,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/5624722286"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "מיסטיק פיצה",
-          "ar": "ميسطيك بيتسا",
-          "en": "Mistik Pitza"
-        },
-        "title": {
-          "he": "חנות",
-          "ar": "محل",
-          "en": "Shop"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "חנות",
-              "ar": "محل",
-              "en": "Shop"
             }
           }
         ],
@@ -128662,83 +128253,6 @@
               "he": "מתנות",
               "ar": "هدايا",
               "en": "Gifts"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#E08A6D"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#e08a6d",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "cafe-bakikar",
-      "place": "zikhron-yaakov",
-      "brand": null,
-      "primaryKind": "shops",
-      "kinds": [
-        "shops"
-      ],
-      "name": {
-        "he": "קפה בכיכר",
-        "ar": "كفا بكيكر",
-        "en": "Cafe Bakikar"
-      },
-      "tagline": {
-        "he": "מכולת בזכרון יעקב",
-        "ar": "دكانة في زخرون يعكوف",
-        "en": "Convenience store in Zikhron Yaakov"
-      },
-      "address": {
-        "he": "זכרון יעקב",
-        "ar": "زخرون يعكوف",
-        "en": "Zikhron Yaakov"
-      },
-      "lat": 32.5683313,
-      "lng": 34.9547463,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/4584142162"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "קפה בכיכר",
-          "ar": "كفا بكيكر",
-          "en": "Cafe Bakikar"
-        },
-        "title": {
-          "he": "מכולת",
-          "ar": "دكانة",
-          "en": "Convenience store"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "מכולת",
-              "ar": "دكانة",
-              "en": "Convenience store"
             }
           }
         ],

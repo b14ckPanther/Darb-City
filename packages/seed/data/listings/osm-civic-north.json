@@ -10,7 +10,7 @@
     "left_out": "features with no name, food (the food importer's), garages, tyres, testing, fuel, banks and EV charging (official lists), bars, alcohol, pork, gambling and lottery, adult shops, tobacco, vape and cannabis, tattoo and weapons shops, private places, sights with no hours or contact",
     "hours": "from OSM opening_hours where it reads for certain; otherwise none",
     "counts": {
-      "emitted": 660
+      "emitted": 636
     }
   },
   "businesses": [
@@ -4918,6 +4918,83 @@
       }
     },
     {
+      "slug": "doar",
+      "place": "bnay-yehuda",
+      "brand": null,
+      "primaryKind": "post-offices",
+      "kinds": [
+        "post-offices"
+      ],
+      "name": {
+        "he": "דואר",
+        "ar": "دوار",
+        "en": "Doar"
+      },
+      "tagline": {
+        "he": "סניף דואר בבני יהודה",
+        "ar": "بريد في بني يهودا",
+        "en": "Post office in Bnay Yehuda"
+      },
+      "address": {
+        "he": "בני יהודה",
+        "ar": "بني يهودا",
+        "en": "Bnay Yehuda"
+      },
+      "lat": 32.7980857,
+      "lng": 35.6877941,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/1733332085"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "דואר",
+          "ar": "دوار",
+          "en": "Doar"
+        },
+        "title": {
+          "he": "סניף דואר",
+          "ar": "بريد",
+          "en": "Post office"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "סניף דואר",
+              "ar": "بريد",
+              "en": "Post office"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
       "slug": "kupat-holim-clalit",
       "place": "bnay-yehuda",
       "brand": null,
@@ -5163,83 +5240,6 @@
               "he": "עירייה ומועצה",
               "ar": "بلدية ومجلس",
               "en": "Council offices"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "post-office",
-      "place": "bnay-yehuda",
-      "brand": null,
-      "primaryKind": "post-offices",
-      "kinds": [
-        "post-offices"
-      ],
-      "name": {
-        "he": "דואר",
-        "ar": "بريد",
-        "en": "Post Office"
-      },
-      "tagline": {
-        "he": "סניף דואר בבני יהודה",
-        "ar": "بريد في بني يهودا",
-        "en": "Post office in Bnay Yehuda"
-      },
-      "address": {
-        "he": "בני יהודה",
-        "ar": "بني يهودا",
-        "en": "Bnay Yehuda"
-      },
-      "lat": 32.7980857,
-      "lng": 35.6877941,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/1733332085"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "דואר",
-          "ar": "بريد",
-          "en": "Post Office"
-        },
-        "title": {
-          "he": "סניף דואר",
-          "ar": "بريد",
-          "en": "Post office"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "סניף דואר",
-              "ar": "بريد",
-              "en": "Post office"
             }
           }
         ],
@@ -16195,314 +16195,6 @@
       }
     },
     {
-      "slug": "public-clinics-13798483401",
-      "place": "haifa",
-      "brand": null,
-      "primaryKind": "public-clinics",
-      "kinds": [
-        "public-clinics"
-      ],
-      "name": {
-        "he": "Поликлиника - Маккаби, Меюхедет - доктор Висам Абу Шкара",
-        "ar": "Поликлиника - Маккаби, Меюхедет - доктор Висам Абу Шкара",
-        "en": "Поликлиника - Маккаби, Меюхедет - доктор Висам Абу Шкара"
-      },
-      "tagline": {
-        "he": "קופת חולים ומרפאה בחיפה",
-        "ar": "عيادة وصندوق مرضى في حيفا",
-        "en": "Health fund clinic in Haifa"
-      },
-      "address": {
-        "he": "חיפה",
-        "ar": "حيفا",
-        "en": "Haifa"
-      },
-      "lat": 32.8170968,
-      "lng": 34.9949107,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/13798483401"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "Поликлиника - Маккаби, Меюхедет - доктор Висам Абу Шкара",
-          "ar": "Поликлиника - Маккаби, Меюхедет - доктор Висам Абу Шкара",
-          "en": "Поликлиника - Маккаби, Меюхедет - доктор Висам Абу Шкара"
-        },
-        "title": {
-          "he": "קופת חולים ומרפאה",
-          "ar": "عيادة وصندوق مرضى",
-          "en": "Health fund clinic"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "קופת חולים ומרפאה",
-              "ar": "عيادة وصندوق مرضى",
-              "en": "Health fund clinic"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "public-clinics-13798483402",
-      "place": "haifa",
-      "brand": null,
-      "primaryKind": "public-clinics",
-      "kinds": [
-        "public-clinics"
-      ],
-      "name": {
-        "he": "Поликлиника - Клалит",
-        "ar": "Поликлиника - Клалит",
-        "en": "Поликлиника - Клалит"
-      },
-      "tagline": {
-        "he": "קופת חולים ומרפאה בחיפה",
-        "ar": "عيادة وصندوق مرضى في حيفا",
-        "en": "Health fund clinic in Haifa"
-      },
-      "address": {
-        "he": "חיפה",
-        "ar": "حيفا",
-        "en": "Haifa"
-      },
-      "lat": 32.8078977,
-      "lng": 34.999633,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/13798483402"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "Поликлиника - Клалит",
-          "ar": "Поликлиника - Клалит",
-          "en": "Поликлиника - Клалит"
-        },
-        "title": {
-          "he": "קופת חולים ומרפאה",
-          "ar": "عيادة وصندوق مرضى",
-          "en": "Health fund clinic"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "קופת חולים ומרפאה",
-              "ar": "عيادة وصندوق مرضى",
-              "en": "Health fund clinic"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "public-clinics-13801008101",
-      "place": "haifa",
-      "brand": null,
-      "primaryKind": "public-clinics",
-      "kinds": [
-        "public-clinics"
-      ],
-      "name": {
-        "he": "Поликлиника Макаби",
-        "ar": "Поликлиника Макаби",
-        "en": "Поликлиника Макаби"
-      },
-      "tagline": {
-        "he": "קופת חולים ומרפאה בחיפה",
-        "ar": "عيادة وصندوق مرضى في حيفا",
-        "en": "Health fund clinic in Haifa"
-      },
-      "address": {
-        "he": "נורדאו 19",
-        "ar": "حيفا",
-        "en": "Haifa"
-      },
-      "lat": 32.8088449,
-      "lng": 34.9988925,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/13801008101"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "Поликлиника Макаби",
-          "ar": "Поликлиника Макаби",
-          "en": "Поликлиника Макаби"
-        },
-        "title": {
-          "he": "קופת חולים ומרפאה",
-          "ar": "عيادة وصندوق مرضى",
-          "en": "Health fund clinic"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "קופת חולים ומרפאה",
-              "ar": "عيادة وصندوق مرضى",
-              "en": "Health fund clinic"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "public-clinics-13807700001",
-      "place": "haifa",
-      "brand": null,
-      "primaryKind": "public-clinics",
-      "kinds": [
-        "public-clinics"
-      ],
-      "name": {
-        "he": "Поликлиника Меюхедет.",
-        "ar": "Поликлиника Меюхедет.",
-        "en": "Поликлиника Меюхедет."
-      },
-      "tagline": {
-        "he": "קופת חולים ומרפאה בחיפה",
-        "ar": "عيادة وصندوق مرضى في حيفا",
-        "en": "Health fund clinic in Haifa"
-      },
-      "address": {
-        "he": "חיפה",
-        "ar": "حيفا",
-        "en": "Haifa"
-      },
-      "lat": 32.8141709,
-      "lng": 34.9984905,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/13807700001"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "Поликлиника Меюхедет.",
-          "ar": "Поликлиника Меюхедет.",
-          "en": "Поликлиника Меюхедет."
-        },
-        "title": {
-          "he": "קופת חולים ומרפאה",
-          "ar": "عيادة وصندوق مرضى",
-          "en": "Health fund clinic"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "קופת חולים ומרפאה",
-              "ar": "عيادة وصندوق مرضى",
-              "en": "Health fund clinic"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
       "slug": "rambam-health-care-campus",
       "place": "haifa",
       "brand": null,
@@ -18852,83 +18544,6 @@
               "he": "שירותי חירום",
               "ar": "خدمات طوارئ",
               "en": "Emergency services"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "al-wadi-hall-for-wedding-party",
-      "place": "jatt",
-      "brand": null,
-      "primaryKind": "municipal",
-      "kinds": [
-        "municipal"
-      ],
-      "name": {
-        "he": "צאלאת אל-ואדי ללאפראח",
-        "ar": "صالات الوادي للافراح",
-        "en": "Al Wadi Hall For Wedding Party"
-      },
-      "tagline": {
-        "he": "עירייה ומועצה בג'ת",
-        "ar": "بلدية ومجلس في جت",
-        "en": "Council offices in Jatt"
-      },
-      "address": {
-        "he": "ג'ת",
-        "ar": "جت",
-        "en": "Jatt"
-      },
-      "lat": 32.4013912,
-      "lng": 35.067134,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/432391804"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "צאלאת אל-ואדי ללאפראח",
-          "ar": "صالات الوادي للافراح",
-          "en": "Al Wadi Hall For Wedding Party"
-        },
-        "title": {
-          "he": "עירייה ומועצה",
-          "ar": "بلدية ومجلس",
-          "en": "Council offices"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "עירייה ומועצה",
-              "ar": "بلدية ومجلس",
-              "en": "Council offices"
             }
           }
         ],
@@ -28564,7 +28179,7 @@
       }
     },
     {
-      "slug": "yhidat-zvolon-post-office",
+      "slug": "yhidat-doar-zvolon",
       "place": "kiryat-tivon",
       "brand": null,
       "primaryKind": "post-offices",
@@ -28573,8 +28188,8 @@
       ],
       "name": {
         "he": "יחידת דואר זבולון",
-        "ar": "يحيدت بريد زبولون",
-        "en": "Yhidat Zvolon Post Office"
+        "ar": "يحيدت دوار زبولون",
+        "en": "Yhidat Doar Zvolon"
       },
       "tagline": {
         "he": "סניף דואר בקרית טבעון",
@@ -28604,8 +28219,8 @@
       "experience": {
         "brand": {
           "he": "יחידת דואר זבולון",
-          "ar": "يحيدت بريد زبولون",
-          "en": "Yhidat Zvolon Post Office"
+          "ar": "يحيدت دوار زبولون",
+          "en": "Yhidat Doar Zvolon"
         },
         "title": {
           "he": "סניף דואר",
@@ -29555,83 +29170,6 @@
       }
     },
     {
-      "slug": "aletalia-town-hall",
-      "place": "maale-gilboa",
-      "brand": null,
-      "primaryKind": "municipal",
-      "kinds": [
-        "municipal"
-      ],
-      "name": {
-        "he": "אל-צאלה אל-איטאליה ללאפראח",
-        "ar": "الصالة الايطالية للافراح",
-        "en": "Aletalia Town Hall"
-      },
-      "tagline": {
-        "he": "עירייה ומועצה במעלה גלבוע",
-        "ar": "بلدية ومجلس في معاليه چلبوع",
-        "en": "Council offices in Maale Gilboa"
-      },
-      "address": {
-        "he": "מעלה גלבוע",
-        "ar": "معاليه چلبوع",
-        "en": "Maale Gilboa"
-      },
-      "lat": 32.4919819,
-      "lng": 35.3980859,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/432544829"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "אל-צאלה אל-איטאליה ללאפראח",
-          "ar": "الصالة الايطالية للافراح",
-          "en": "Aletalia Town Hall"
-        },
-        "title": {
-          "he": "עירייה ומועצה",
-          "ar": "بلدية ومجلس",
-          "en": "Council offices"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "עירייה ומועצה",
-              "ar": "بلدية ومجلس",
-              "en": "Council offices"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
       "slug": "faqqua-parking",
       "place": "maale-gilboa",
       "brand": null,
@@ -30192,7 +29730,7 @@
       ],
       "name": {
         "he": "סוכנות דואר השמורה",
-        "ar": "سوكنوت بريد هشمورا",
+        "ar": "سوكنوت دوار هشمورا",
         "en": "Hashmura post office"
       },
       "tagline": {
@@ -30224,7 +29762,7 @@
       "experience": {
         "brand": {
           "he": "סוכנות דואר השמורה",
-          "ar": "سوكنوت بريد هشمورا",
+          "ar": "سوكنوت دوار هشمورا",
           "en": "Hashmura post office"
         },
         "title": {
@@ -35193,83 +34731,6 @@
       }
     },
     {
-      "slug": "al-ameer-town-hall",
-      "place": "muqeible",
-      "brand": null,
-      "primaryKind": "municipal",
-      "kinds": [
-        "municipal"
-      ],
-      "name": {
-        "he": "צאלאת אל-אמיר ללאפראח",
-        "ar": "صالات الامير للافراح",
-        "en": "Al-Ameer Town Hall"
-      },
-      "tagline": {
-        "he": "עירייה ומועצה במוקייבלה",
-        "ar": "بلدية ومجلس في مقيبلة",
-        "en": "Council offices in Muqeible"
-      },
-      "address": {
-        "he": "מוקייבלה",
-        "ar": "مقيبلة",
-        "en": "Muqeible"
-      },
-      "lat": 32.4672234,
-      "lng": 35.300053,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/432545134"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "צאלאת אל-אמיר ללאפראח",
-          "ar": "صالات الامير للافراح",
-          "en": "Al-Ameer Town Hall"
-        },
-        "title": {
-          "he": "עירייה ומועצה",
-          "ar": "بلدية ومجلس",
-          "en": "Council offices"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "עירייה ומועצה",
-              "ar": "بلدية ومجلس",
-              "en": "Council offices"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
       "slug": "al-arfa-al-tajaria-valatzanaaia",
       "place": "muqeible",
       "brand": null,
@@ -35510,83 +34971,6 @@
               "he": "סניף דואר",
               "ar": "بريد",
               "en": "Post office"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "al-noor-wedding-hall",
-      "place": "muqeible",
-      "brand": null,
-      "primaryKind": "municipal",
-      "kinds": [
-        "municipal"
-      ],
-      "name": {
-        "he": "אולם אל-נור ללאפראח",
-        "ar": "قاعة النور للافراح",
-        "en": "Al-Noor Wedding Hall"
-      },
-      "tagline": {
-        "he": "עירייה ומועצה במוקייבלה",
-        "ar": "بلدية ومجلس في مقيبلة",
-        "en": "Council offices in Muqeible"
-      },
-      "address": {
-        "he": "מוקייבלה",
-        "ar": "مقيبلة",
-        "en": "Muqeible"
-      },
-      "lat": 32.4695304,
-      "lng": 35.3092018,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/431776920"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "אולם אל-נור ללאפראח",
-          "ar": "قاعة النور للافراح",
-          "en": "Al-Noor Wedding Hall"
-        },
-        "title": {
-          "he": "עירייה ומועצה",
-          "ar": "بلدية ومجلس",
-          "en": "Council offices"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "עירייה ומועצה",
-              "ar": "بلدية ومجلس",
-              "en": "Council offices"
             }
           }
         ],
@@ -37530,126 +36914,6 @@
       }
     },
     {
-      "slug": "libraries-5785990156",
-      "place": "muqeible",
-      "brand": null,
-      "primaryKind": "libraries",
-      "kinds": [
-        "libraries"
-      ],
-      "name": {
-        "he": "מטבעה אל-עודה - כרתאת אעראס",
-        "ar": "مطبعة العودة - كرتات أعراس",
-        "en": "جنين"
-      },
-      "tagline": {
-        "he": "ספרייה במוקייבלה",
-        "ar": "مكتبة عامة في مقيبلة",
-        "en": "Library in Muqeible"
-      },
-      "address": {
-        "he": "מוקייבלה",
-        "ar": "مقيبلة",
-        "en": "Muqeible"
-      },
-      "lat": 32.4632927,
-      "lng": 35.3001305,
-      "hours": {
-        "weekly": {
-          "0": [
-            {
-              "open": "08:00",
-              "close": "18:00"
-            }
-          ],
-          "1": [
-            {
-              "open": "08:00",
-              "close": "18:00"
-            }
-          ],
-          "2": [
-            {
-              "open": "08:00",
-              "close": "18:00"
-            }
-          ],
-          "3": [
-            {
-              "open": "08:00",
-              "close": "18:00"
-            }
-          ],
-          "4": [
-            {
-              "open": "08:00",
-              "close": "18:00"
-            }
-          ],
-          "5": [
-            {
-              "open": "08:00",
-              "close": "18:00"
-            }
-          ],
-          "6": [
-            {
-              "open": "08:00",
-              "close": "18:00"
-            }
-          ]
-        },
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/5785990156"
-      },
-      "tier": "basic",
-      "phone": "+972 56-966-5866",
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "מטבעה אל-עודה - כרתאת אעראס",
-          "ar": "مطبعة العودة - كرتات أعراس",
-          "en": "جنين"
-        },
-        "title": {
-          "he": "ספרייה",
-          "ar": "مكتبة عامة",
-          "en": "Library"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "ספרייה",
-              "ar": "مكتبة عامة",
-              "en": "Library"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
       "slug": "mahakhma-jnin-al-sharaia",
       "place": "muqeible",
       "brand": null,
@@ -37859,6 +37123,126 @@
               "he": "קופת חולים ומרפאה",
               "ar": "عيادة وصندوق مرضى",
               "en": "Health fund clinic"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "matavaa-al-oda-karatat-aaras",
+      "place": "muqeible",
+      "brand": null,
+      "primaryKind": "libraries",
+      "kinds": [
+        "libraries"
+      ],
+      "name": {
+        "he": "מטבעה אל-עודה - כרתאת אעראס",
+        "ar": "مطبعة العودة - كرتات أعراس",
+        "en": "Matavaa al Oda Karatat Aaras"
+      },
+      "tagline": {
+        "he": "ספרייה במוקייבלה",
+        "ar": "مكتبة عامة في مقيبلة",
+        "en": "Library in Muqeible"
+      },
+      "address": {
+        "he": "מוקייבלה",
+        "ar": "مقيبلة",
+        "en": "Muqeible"
+      },
+      "lat": 32.4632927,
+      "lng": 35.3001305,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "08:00",
+              "close": "18:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "08:00",
+              "close": "18:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "08:00",
+              "close": "18:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "08:00",
+              "close": "18:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "08:00",
+              "close": "18:00"
+            }
+          ],
+          "5": [
+            {
+              "open": "08:00",
+              "close": "18:00"
+            }
+          ],
+          "6": [
+            {
+              "open": "08:00",
+              "close": "18:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/5785990156"
+      },
+      "tier": "basic",
+      "phone": "+972 56-966-5866",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מטבעה אל-עודה - כרתאת אעראס",
+          "ar": "مطبعة العودة - كرتات أعراس",
+          "en": "Matavaa al Oda Karatat Aaras"
+        },
+        "title": {
+          "he": "ספרייה",
+          "ar": "مكتبة عامة",
+          "en": "Library"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "ספרייה",
+              "ar": "مكتبة عامة",
+              "en": "Library"
             }
           }
         ],
@@ -40348,1084 +39732,6 @@
               "he": "מכבי שירותי בריאות",
               "ar": "مكابي",
               "en": "Maccabi Healthcare"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "platform-1",
-      "place": "nesher",
-      "brand": null,
-      "primaryKind": "buses",
-      "kinds": [
-        "buses"
-      ],
-      "name": {
-        "he": "רציף 1",
-        "ar": "رتسيف 1",
-        "en": "Platform 1"
-      },
-      "tagline": {
-        "he": "תחנה מרכזית ורכבת בנשר",
-        "ar": "محطة باصات وقطار في نيشر",
-        "en": "Bus and train station in Nesher"
-      },
-      "address": {
-        "he": "נשר",
-        "ar": "نيشر",
-        "en": "Nesher"
-      },
-      "lat": 32.7932547,
-      "lng": 35.034721,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/14127293729"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "רציף 1",
-          "ar": "رتسيف 1",
-          "en": "Platform 1"
-        },
-        "title": {
-          "he": "תחנה מרכזית ורכבת",
-          "ar": "محطة باصات وقطار",
-          "en": "Bus and train station"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "תחנה מרכזית ורכבת",
-              "ar": "محطة باصات وقطار",
-              "en": "Bus and train station"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "platform-10",
-      "place": "nesher",
-      "brand": null,
-      "primaryKind": "buses",
-      "kinds": [
-        "buses"
-      ],
-      "name": {
-        "he": "רציף 10",
-        "ar": "رتسيف 10",
-        "en": "Platform 10"
-      },
-      "tagline": {
-        "he": "תחנה מרכזית ורכבת בנשר",
-        "ar": "محطة باصات وقطار في نيشر",
-        "en": "Bus and train station in Nesher"
-      },
-      "address": {
-        "he": "נשר",
-        "ar": "نيشر",
-        "en": "Nesher"
-      },
-      "lat": 32.7931977,
-      "lng": 35.033931,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/14127293720"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "רציף 10",
-          "ar": "رتسيف 10",
-          "en": "Platform 10"
-        },
-        "title": {
-          "he": "תחנה מרכזית ורכבת",
-          "ar": "محطة باصات وقطار",
-          "en": "Bus and train station"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "תחנה מרכזית ורכבת",
-              "ar": "محطة باصات وقطار",
-              "en": "Bus and train station"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "platform-11",
-      "place": "nesher",
-      "brand": null,
-      "primaryKind": "buses",
-      "kinds": [
-        "buses"
-      ],
-      "name": {
-        "he": "רציף 11",
-        "ar": "رتسيف 11",
-        "en": "Platform 11"
-      },
-      "tagline": {
-        "he": "תחנה מרכזית ורכבת בנשר",
-        "ar": "محطة باصات وقطار في نيشر",
-        "en": "Bus and train station in Nesher"
-      },
-      "address": {
-        "he": "נשר",
-        "ar": "نيشر",
-        "en": "Nesher"
-      },
-      "lat": 32.7931932,
-      "lng": 35.033859,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/14127293719"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "רציף 11",
-          "ar": "رتسيف 11",
-          "en": "Platform 11"
-        },
-        "title": {
-          "he": "תחנה מרכזית ורכבת",
-          "ar": "محطة باصات وقطار",
-          "en": "Bus and train station"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "תחנה מרכזית ורכבת",
-              "ar": "محطة باصات وقطار",
-              "en": "Bus and train station"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "platform-12",
-      "place": "nesher",
-      "brand": null,
-      "primaryKind": "buses",
-      "kinds": [
-        "buses"
-      ],
-      "name": {
-        "he": "רציף 12",
-        "ar": "رتسيف 12",
-        "en": "Platform 12"
-      },
-      "tagline": {
-        "he": "תחנה מרכזית ורכבת בנשר",
-        "ar": "محطة باصات وقطار في نيشر",
-        "en": "Bus and train station in Nesher"
-      },
-      "address": {
-        "he": "נשר",
-        "ar": "نيشر",
-        "en": "Nesher"
-      },
-      "lat": 32.7931868,
-      "lng": 35.0337839,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/14127293718"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "רציף 12",
-          "ar": "رتسيف 12",
-          "en": "Platform 12"
-        },
-        "title": {
-          "he": "תחנה מרכזית ורכבת",
-          "ar": "محطة باصات وقطار",
-          "en": "Bus and train station"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "תחנה מרכזית ורכבת",
-              "ar": "محطة باصات وقطار",
-              "en": "Bus and train station"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "platform-13",
-      "place": "nesher",
-      "brand": null,
-      "primaryKind": "buses",
-      "kinds": [
-        "buses"
-      ],
-      "name": {
-        "he": "רציף 13",
-        "ar": "رتسيف 13",
-        "en": "Platform 13"
-      },
-      "tagline": {
-        "he": "תחנה מרכזית ורכבת בנשר",
-        "ar": "محطة باصات وقطار في نيشر",
-        "en": "Bus and train station in Nesher"
-      },
-      "address": {
-        "he": "נשר",
-        "ar": "نيشر",
-        "en": "Nesher"
-      },
-      "lat": 32.793181,
-      "lng": 35.0337177,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/14127293717"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "רציף 13",
-          "ar": "رتسيف 13",
-          "en": "Platform 13"
-        },
-        "title": {
-          "he": "תחנה מרכזית ורכבת",
-          "ar": "محطة باصات وقطار",
-          "en": "Bus and train station"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "תחנה מרכזית ורכבת",
-              "ar": "محطة باصات وقطار",
-              "en": "Bus and train station"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "platform-14",
-      "place": "nesher",
-      "brand": null,
-      "primaryKind": "buses",
-      "kinds": [
-        "buses"
-      ],
-      "name": {
-        "he": "רציף 14",
-        "ar": "رتسيف 14",
-        "en": "Platform 14"
-      },
-      "tagline": {
-        "he": "תחנה מרכזית ורכבת בנשר",
-        "ar": "محطة باصات وقطار في نيشر",
-        "en": "Bus and train station in Nesher"
-      },
-      "address": {
-        "he": "נשר",
-        "ar": "نيشر",
-        "en": "Nesher"
-      },
-      "lat": 32.7931769,
-      "lng": 35.033649,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/14127293716"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "רציף 14",
-          "ar": "رتسيف 14",
-          "en": "Platform 14"
-        },
-        "title": {
-          "he": "תחנה מרכזית ורכבת",
-          "ar": "محطة باصات وقطار",
-          "en": "Bus and train station"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "תחנה מרכזית ורכבת",
-              "ar": "محطة باصات وقطار",
-              "en": "Bus and train station"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "platform-2",
-      "place": "nesher",
-      "brand": null,
-      "primaryKind": "buses",
-      "kinds": [
-        "buses"
-      ],
-      "name": {
-        "he": "רציף 2",
-        "ar": "رتسيف 2",
-        "en": "Platform 2"
-      },
-      "tagline": {
-        "he": "תחנה מרכזית ורכבת בנשר",
-        "ar": "محطة باصات وقطار في نيشر",
-        "en": "Bus and train station in Nesher"
-      },
-      "address": {
-        "he": "נשר",
-        "ar": "نيشر",
-        "en": "Nesher"
-      },
-      "lat": 32.7932482,
-      "lng": 35.0346304,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/14127293728"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "רציף 2",
-          "ar": "رتسيف 2",
-          "en": "Platform 2"
-        },
-        "title": {
-          "he": "תחנה מרכזית ורכבת",
-          "ar": "محطة باصات وقطار",
-          "en": "Bus and train station"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "תחנה מרכזית ורכבת",
-              "ar": "محطة باصات وقطار",
-              "en": "Bus and train station"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "platform-3",
-      "place": "nesher",
-      "brand": null,
-      "primaryKind": "buses",
-      "kinds": [
-        "buses"
-      ],
-      "name": {
-        "he": "רציף 3",
-        "ar": "رتسيف 3",
-        "en": "Platform 3"
-      },
-      "tagline": {
-        "he": "תחנה מרכזית ורכבת בנשר",
-        "ar": "محطة باصات وقطار في نيشر",
-        "en": "Bus and train station in Nesher"
-      },
-      "address": {
-        "he": "נשר",
-        "ar": "نيشر",
-        "en": "Nesher"
-      },
-      "lat": 32.7932426,
-      "lng": 35.0345541,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/14127293727"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "רציף 3",
-          "ar": "رتسيف 3",
-          "en": "Platform 3"
-        },
-        "title": {
-          "he": "תחנה מרכזית ורכבת",
-          "ar": "محطة باصات وقطار",
-          "en": "Bus and train station"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "תחנה מרכזית ורכבת",
-              "ar": "محطة باصات وقطار",
-              "en": "Bus and train station"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "platform-4",
-      "place": "nesher",
-      "brand": null,
-      "primaryKind": "buses",
-      "kinds": [
-        "buses"
-      ],
-      "name": {
-        "he": "רציף 4",
-        "ar": "رتسيف 4",
-        "en": "Platform 4"
-      },
-      "tagline": {
-        "he": "תחנה מרכזית ורכבת בנשר",
-        "ar": "محطة باصات وقطار في نيشر",
-        "en": "Bus and train station in Nesher"
-      },
-      "address": {
-        "he": "נשר",
-        "ar": "نيشر",
-        "en": "Nesher"
-      },
-      "lat": 32.7932386,
-      "lng": 35.0344813,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/14127293726"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "רציף 4",
-          "ar": "رتسيف 4",
-          "en": "Platform 4"
-        },
-        "title": {
-          "he": "תחנה מרכזית ורכבת",
-          "ar": "محطة باصات وقطار",
-          "en": "Bus and train station"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "תחנה מרכזית ורכבת",
-              "ar": "محطة باصات وقطار",
-              "en": "Bus and train station"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "platform-5",
-      "place": "nesher",
-      "brand": null,
-      "primaryKind": "buses",
-      "kinds": [
-        "buses"
-      ],
-      "name": {
-        "he": "רציף 5",
-        "ar": "رتسيف 5",
-        "en": "Platform 5"
-      },
-      "tagline": {
-        "he": "תחנה מרכזית ורכבת בנשר",
-        "ar": "محطة باصات وقطار في نيشر",
-        "en": "Bus and train station in Nesher"
-      },
-      "address": {
-        "he": "נשר",
-        "ar": "نيشر",
-        "en": "Nesher"
-      },
-      "lat": 32.7932314,
-      "lng": 35.0343991,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/14127293725"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "רציף 5",
-          "ar": "رتسيف 5",
-          "en": "Platform 5"
-        },
-        "title": {
-          "he": "תחנה מרכזית ורכבת",
-          "ar": "محطة باصات وقطار",
-          "en": "Bus and train station"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "תחנה מרכזית ורכבת",
-              "ar": "محطة باصات وقطار",
-              "en": "Bus and train station"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "platform-6",
-      "place": "nesher",
-      "brand": null,
-      "primaryKind": "buses",
-      "kinds": [
-        "buses"
-      ],
-      "name": {
-        "he": "רציף 6",
-        "ar": "رتسيف 6",
-        "en": "Platform 6"
-      },
-      "tagline": {
-        "he": "תחנה מרכזית ורכבת בנשר",
-        "ar": "محطة باصات وقطار في نيشر",
-        "en": "Bus and train station in Nesher"
-      },
-      "address": {
-        "he": "נשר",
-        "ar": "نيشر",
-        "en": "Nesher"
-      },
-      "lat": 32.7932238,
-      "lng": 35.0342947,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/14127293724"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "רציף 6",
-          "ar": "رتسيف 6",
-          "en": "Platform 6"
-        },
-        "title": {
-          "he": "תחנה מרכזית ורכבת",
-          "ar": "محطة باصات وقطار",
-          "en": "Bus and train station"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "תחנה מרכזית ורכבת",
-              "ar": "محطة باصات وقطار",
-              "en": "Bus and train station"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "platform-7",
-      "place": "nesher",
-      "brand": null,
-      "primaryKind": "buses",
-      "kinds": [
-        "buses"
-      ],
-      "name": {
-        "he": "רציף 7",
-        "ar": "رتسيف 7",
-        "en": "Platform 7"
-      },
-      "tagline": {
-        "he": "תחנה מרכזית ורכבת בנשר",
-        "ar": "محطة باصات وقطار في نيشر",
-        "en": "Bus and train station in Nesher"
-      },
-      "address": {
-        "he": "נשר",
-        "ar": "نيشر",
-        "en": "Nesher"
-      },
-      "lat": 32.7932185,
-      "lng": 35.0342096,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/14127293723"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "רציף 7",
-          "ar": "رتسيف 7",
-          "en": "Platform 7"
-        },
-        "title": {
-          "he": "תחנה מרכזית ורכבת",
-          "ar": "محطة باصات وقطار",
-          "en": "Bus and train station"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "תחנה מרכזית ורכבת",
-              "ar": "محطة باصات وقطار",
-              "en": "Bus and train station"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "platform-8",
-      "place": "nesher",
-      "brand": null,
-      "primaryKind": "buses",
-      "kinds": [
-        "buses"
-      ],
-      "name": {
-        "he": "רציף 8",
-        "ar": "رتسيف 8",
-        "en": "Platform 8"
-      },
-      "tagline": {
-        "he": "תחנה מרכזית ורכבת בנשר",
-        "ar": "محطة باصات وقطار في نيشر",
-        "en": "Bus and train station in Nesher"
-      },
-      "address": {
-        "he": "נשר",
-        "ar": "نيشر",
-        "en": "Nesher"
-      },
-      "lat": 32.7932128,
-      "lng": 35.0341305,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/14127293722"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "רציף 8",
-          "ar": "رتسيف 8",
-          "en": "Platform 8"
-        },
-        "title": {
-          "he": "תחנה מרכזית ורכבת",
-          "ar": "محطة باصات وقطار",
-          "en": "Bus and train station"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "תחנה מרכזית ורכבת",
-              "ar": "محطة باصات وقطار",
-              "en": "Bus and train station"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "platform-9",
-      "place": "nesher",
-      "brand": null,
-      "primaryKind": "buses",
-      "kinds": [
-        "buses"
-      ],
-      "name": {
-        "he": "רציף 9",
-        "ar": "رتسيف 9",
-        "en": "Platform 9"
-      },
-      "tagline": {
-        "he": "תחנה מרכזית ורכבת בנשר",
-        "ar": "محطة باصات وقطار في نيشر",
-        "en": "Bus and train station in Nesher"
-      },
-      "address": {
-        "he": "נשר",
-        "ar": "نيشر",
-        "en": "Nesher"
-      },
-      "lat": 32.793204,
-      "lng": 35.0340305,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/14127293721"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "רציף 9",
-          "ar": "رتسيف 9",
-          "en": "Platform 9"
-        },
-        "title": {
-          "he": "תחנה מרכזית ורכבת",
-          "ar": "محطة باصات وقطار",
-          "en": "Bus and train station"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "תחנה מרכזית ורכבת",
-              "ar": "محطة باصات وقطار",
-              "en": "Bus and train station"
             }
           }
         ],
@@ -44207,83 +42513,6 @@
       }
     },
     {
-      "slug": "al-balad-hall-for-parties",
-      "place": "ram-on",
-      "brand": null,
-      "primaryKind": "municipal",
-      "kinds": [
-        "municipal"
-      ],
-      "name": {
-        "he": "אולם אל-בלד ללאפראח",
-        "ar": "قاعة البلد للافراح",
-        "en": "Al Balad Hall For Parties"
-      },
-      "tagline": {
-        "he": "עירייה ומועצה ברם-און",
-        "ar": "بلدية ومجلس في رام أون",
-        "en": "Council offices in Ram On"
-      },
-      "address": {
-        "he": "רם-און",
-        "ar": "رام أون",
-        "en": "Ram On"
-      },
-      "lat": 32.513076,
-      "lng": 35.229055,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/431779281"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "אולם אל-בלד ללאפראח",
-          "ar": "قاعة البلد للافراح",
-          "en": "Al Balad Hall For Parties"
-        },
-        "title": {
-          "he": "עירייה ומועצה",
-          "ar": "بلدية ومجلس",
-          "en": "Council offices"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "עירייה ומועצה",
-              "ar": "بلدية ومجلس",
-              "en": "Council offices"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
       "slug": "al-frehat-dewan",
       "place": "ram-on",
       "brand": null,
@@ -44326,83 +42555,6 @@
           "he": "דיואן אל פריחאת",
           "ar": "ديوان ال فريحات",
           "en": "Al-Frehat Dewan"
-        },
-        "title": {
-          "he": "עירייה ומועצה",
-          "ar": "بلدية ومجلس",
-          "en": "Council offices"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "עירייה ומועצה",
-              "ar": "بلدية ومجلس",
-              "en": "Council offices"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "al-loloa-hall-for-parties",
-      "place": "ram-on",
-      "brand": null,
-      "primaryKind": "municipal",
-      "kinds": [
-        "municipal"
-      ],
-      "name": {
-        "he": "אולם אל-לולוה ללאפראח",
-        "ar": "قاعة اللؤلؤه للأفراح",
-        "en": "Al Lo'lo'a Hall For Parties"
-      },
-      "tagline": {
-        "he": "עירייה ומועצה ברם-און",
-        "ar": "بلدية ومجلس في رام أون",
-        "en": "Council offices in Ram On"
-      },
-      "address": {
-        "he": "רם-און",
-        "ar": "رام أون",
-        "en": "Ram On"
-      },
-      "lat": 32.5130363,
-      "lng": 35.2307562,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/431713585"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "אולם אל-לולוה ללאפראח",
-          "ar": "قاعة اللؤلؤه للأفراح",
-          "en": "Al Lo'lo'a Hall For Parties"
         },
         "title": {
           "he": "עירייה ומועצה",
@@ -51207,7 +49359,7 @@
       }
     },
     {
-      "slug": "post-office",
+      "slug": "doar",
       "place": "yagur",
       "brand": null,
       "primaryKind": "post-offices",
@@ -51216,8 +49368,8 @@
       ],
       "name": {
         "he": "דואר",
-        "ar": "بريد",
-        "en": "Post Office"
+        "ar": "دوار",
+        "en": "Doar"
       },
       "tagline": {
         "he": "סניף דואר ביגור",
@@ -51247,8 +49399,8 @@
       "experience": {
         "brand": {
           "he": "דואר",
-          "ar": "بريد",
-          "en": "Post Office"
+          "ar": "دوار",
+          "en": "Doar"
         },
         "title": {
           "he": "סניף דואר",

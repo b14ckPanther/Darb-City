@@ -10,7 +10,7 @@
     "left_out": "features with no name, food (the food importer's), garages, tyres, testing, fuel, banks and EV charging (official lists), bars, alcohol, pork, gambling and lottery, adult shops, tobacco, vape and cannabis, tattoo and weapons shops, private places, sights with no hours or contact",
     "hours": "from OSM opening_hours where it reads for certain; otherwise none",
     "counts": {
-      "emitted": 47
+      "emitted": 46
     }
   },
   "businesses": [
@@ -3370,83 +3370,6 @@
           "he": "פלרם",
           "ar": "بلرم",
           "en": "Palaram"
-        },
-        "title": {
-          "he": "מפעל",
-          "ar": "مصنع",
-          "en": "Factory"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "מפעל",
-              "ar": "مصنع",
-              "en": "Factory"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#D6A473"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#d6a473",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "nas-kfa",
-      "place": "safed",
-      "brand": null,
-      "primaryKind": "factories",
-      "kinds": [
-        "factories"
-      ],
-      "name": {
-        "he": "נס קפה",
-        "ar": "نس كفا",
-        "en": "Nas Kfa"
-      },
-      "tagline": {
-        "he": "מפעל בצפת",
-        "ar": "مصنع في صفد",
-        "en": "Factory in Safed"
-      },
-      "address": {
-        "he": "צפת",
-        "ar": "صفد",
-        "en": "Safed"
-      },
-      "lat": 32.9597463,
-      "lng": 35.4981853,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "way/498244732"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "נס קפה",
-          "ar": "نس كفا",
-          "en": "Nas Kfa"
         },
         "title": {
           "he": "מפעל",

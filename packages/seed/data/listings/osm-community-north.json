@@ -10,7 +10,7 @@
     "left_out": "features with no name, food (the food importer's), garages, tyres, testing, fuel, banks and EV charging (official lists), bars, alcohol, pork, gambling and lottery, adult shops, tobacco, vape and cannabis, tattoo and weapons shops, private places, sights with no hours or contact",
     "hours": "from OSM opening_hours where it reads for certain; otherwise none",
     "counts": {
-      "emitted": 204
+      "emitted": 200
     }
   },
   "businesses": [
@@ -223,90 +223,6 @@
               "he": "מתנ\"ס ומרכז קהילתי",
               "ar": "مركز جماهيري",
               "en": "Community centre"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#D9A54C"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#d9a54c",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "nonprofits-13734370294",
-      "place": "afula",
-      "brand": null,
-      "primaryKind": "nonprofits",
-      "kinds": [
-        "nonprofits"
-      ],
-      "name": {
-        "he": "Общественная приёмная Израильского Мемориала",
-        "ar": "Общественная приёмная Израильского Мемориала",
-        "en": "Общественная приёмная Израильского Мемориала"
-      },
-      "tagline": {
-        "he": "עמותה בעפולה",
-        "ar": "جمعية في العفولة",
-        "en": "Nonprofit in Afula"
-      },
-      "address": {
-        "he": "עפולה",
-        "ar": "العفولة",
-        "en": "Afula"
-      },
-      "lat": 32.6100052,
-      "lng": 35.2898633,
-      "hours": {
-        "weekly": {
-          "4": [
-            {
-              "open": "10:00",
-              "close": "12:00"
-            }
-          ]
-        },
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/13734370294"
-      },
-      "tier": "basic",
-      "phone": "+972 53-716-0136",
-      "whatsapp": null,
-      "website": "https://www.facebook.com/israelmemorial.soc/",
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "Общественная приёмная Израильского Мемориала",
-          "ar": "Общественная приёмная Израильского Мемориала",
-          "en": "Общественная приёмная Израильского Мемориала"
-        },
-        "title": {
-          "he": "עמותה",
-          "ar": "جمعية",
-          "en": "Nonprofit"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "עמותה",
-              "ar": "جمعية",
-              "en": "Nonprofit"
             }
           }
         ],
@@ -5174,6 +5090,83 @@
       }
     },
     {
+      "slug": "bit-hagafan",
+      "place": "haifa",
+      "brand": null,
+      "primaryKind": "community-centres",
+      "kinds": [
+        "community-centres"
+      ],
+      "name": {
+        "he": "בית הגפן",
+        "ar": "بيت الكرامة",
+        "en": "Bit Hagafan"
+      },
+      "tagline": {
+        "he": "מתנ\"ס ומרכז קהילתי בחיפה",
+        "ar": "مركز جماهيري في حيفا",
+        "en": "Community centre in Haifa"
+      },
+      "address": {
+        "he": "33",
+        "ar": "حيفا",
+        "en": "Haifa"
+      },
+      "lat": 32.8159287,
+      "lng": 34.9926261,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/190304539"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": "https://www.beit-hagefen.com/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "בית הגפן",
+          "ar": "بيت الكرامة",
+          "en": "Bit Hagafan"
+        },
+        "title": {
+          "he": "מתנ\"ס ומרכז קהילתי",
+          "ar": "مركز جماهيري",
+          "en": "Community centre"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מתנ\"ס ומרכז קהילתי",
+              "ar": "مركز جماهيري",
+              "en": "Community centre"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D9A54C"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
+      }
+    },
+    {
       "slug": "bit-hakhilot",
       "place": "haifa",
       "brand": null,
@@ -5382,83 +5375,6 @@
               "he": "מרכז לגיל השלישי",
               "ar": "مركز مسنين",
               "en": "Senior centre"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#D9A54C"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#d9a54c",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "community-centres-190304539",
-      "place": "haifa",
-      "brand": null,
-      "primaryKind": "community-centres",
-      "kinds": [
-        "community-centres"
-      ],
-      "name": {
-        "he": "בית הגפן",
-        "ar": "بيت الكرامة",
-        "en": "אנגלית"
-      },
-      "tagline": {
-        "he": "מתנ\"ס ומרכז קהילתי בחיפה",
-        "ar": "مركز جماهيري في حيفا",
-        "en": "Community centre in Haifa"
-      },
-      "address": {
-        "he": "33",
-        "ar": "حيفا",
-        "en": "Haifa"
-      },
-      "lat": 32.8159287,
-      "lng": 34.9926261,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "way/190304539"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": "https://www.beit-hagefen.com/",
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "בית הגפן",
-          "ar": "بيت الكرامة",
-          "en": "אנגלית"
-        },
-        "title": {
-          "he": "מתנ\"ס ומרכז קהילתי",
-          "ar": "مركز جماهيري",
-          "en": "Community centre"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "מתנ\"ס ומרכז קהילתי",
-              "ar": "مركز جماهيري",
-              "en": "Community centre"
             }
           }
         ],
@@ -6152,83 +6068,6 @@
               "he": "מרכז לגיל השלישי",
               "ar": "مركز مسنين",
               "en": "Senior centre"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#D9A54C"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#d9a54c",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "nonprofits-13798483302",
-      "place": "haifa",
-      "brand": null,
-      "primaryKind": "nonprofits",
-      "kinds": [
-        "nonprofits"
-      ],
-      "name": {
-        "he": "Агенство по найму иностранных сиделок.",
-        "ar": "Агенство по найму иностранных сиделок.",
-        "en": "Агенство по найму иностранных сиделок."
-      },
-      "tagline": {
-        "he": "עמותה בחיפה",
-        "ar": "جمعية في حيفا",
-        "en": "Nonprofit in Haifa"
-      },
-      "address": {
-        "he": "חיפה",
-        "ar": "حيفا",
-        "en": "Haifa"
-      },
-      "lat": 32.8083591,
-      "lng": 34.9995075,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/13798483302"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "Агенство по найму иностранных сиделок.",
-          "ar": "Агенство по найму иностранных сиделок.",
-          "en": "Агенство по найму иностранных сиделок."
-        },
-        "title": {
-          "he": "עמותה",
-          "ar": "جمعية",
-          "en": "Nonprofit"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "עמותה",
-              "ar": "جمعية",
-              "en": "Nonprofit"
             }
           }
         ],
@@ -10566,83 +10405,6 @@
       }
     },
     {
-      "slug": "adam-hall-for-weddings",
-      "place": "muqeible",
-      "brand": null,
-      "primaryKind": "community-centres",
-      "kinds": [
-        "community-centres"
-      ],
-      "name": {
-        "he": "אולם אדם ללאפראח",
-        "ar": "قاعة ادم للافراح",
-        "en": "Adam hall for weddings"
-      },
-      "tagline": {
-        "he": "מתנ\"ס ומרכז קהילתי במוקייבלה",
-        "ar": "مركز جماهيري في مقيبلة",
-        "en": "Community centre in Muqeible"
-      },
-      "address": {
-        "he": "Wadi Burqin",
-        "ar": "مقيبلة",
-        "en": "Muqeible"
-      },
-      "lat": 32.465293,
-      "lng": 35.2777868,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/7954323897"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "אולם אדם ללאפראח",
-          "ar": "قاعة ادم للافراح",
-          "en": "Adam hall for weddings"
-        },
-        "title": {
-          "he": "מתנ\"ס ומרכז קהילתי",
-          "ar": "مركز جماهيري",
-          "en": "Community centre"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "מתנ\"ס ומרכז קהילתי",
-              "ar": "مركز جماهيري",
-              "en": "Community centre"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#D9A54C"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#d9a54c",
-        "icons": "solid"
-      }
-    },
-    {
       "slug": "icrc",
       "place": "muqeible",
       "brand": null,
@@ -13880,83 +13642,6 @@
               "he": "מתנ\"ס ומרכז קהילתי",
               "ar": "مركز جماهيري",
               "en": "Community centre"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#D9A54C"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#d9a54c",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "mkva-trisak",
-      "place": "safed",
-      "brand": null,
-      "primaryKind": "nonprofits",
-      "kinds": [
-        "nonprofits"
-      ],
-      "name": {
-        "he": "מקווה טריסק",
-        "ar": "مكفا طريسك",
-        "en": "Mkva Trisak"
-      },
-      "tagline": {
-        "he": "עמותה בצפת",
-        "ar": "جمعية في صفد",
-        "en": "Nonprofit in Safed"
-      },
-      "address": {
-        "he": "צפת",
-        "ar": "صفد",
-        "en": "Safed"
-      },
-      "lat": 32.9690813,
-      "lng": 35.4925636,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "way/929238001"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "מקווה טריסק",
-          "ar": "مكفا طريسك",
-          "en": "Mkva Trisak"
-        },
-        "title": {
-          "he": "עמותה",
-          "ar": "جمعية",
-          "en": "Nonprofit"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "עמותה",
-              "ar": "جمعية",
-              "en": "Nonprofit"
             }
           }
         ],
