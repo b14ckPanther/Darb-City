@@ -1,17 +1,17 @@
 .body {
   margin: 0;
   min-height: 100dvh;
-  background: var(--forest-950);
-  color: var(--ivory);
+  background: var(--bg);
+  color: var(--text);
   font-family: var(--font-body);
   line-height: 1.5;
 }
 /* Plain text links only: styled links (buttons, tiles, nav) keep their own colours. */
 .body a:not([class]) {
-  color: var(--gold-300);
+  color: var(--accent-text);
 }
 .body :focus-visible {
-  outline: 2px solid var(--gold-300);
+  outline: 2px solid var(--focus);
   outline-offset: 2px;
 }
 .shell {
@@ -26,8 +26,9 @@
   gap: 12px 24px;
   padding-block: 12px;
   padding-inline: 24px;
-  background: var(--night);
-  border-block-end: 1px solid var(--forest-800);
+  background: var(--bg-raised);
+  border-block-end: 1px solid var(--line);
+  box-shadow: var(--shadow-1);
   position: sticky;
   inset-block-start: 0;
   z-index: 2;
@@ -35,7 +36,7 @@
 .brand {
   font-weight: 700;
   font-size: 1.125rem;
-  color: var(--gold);
+  color: var(--accent-text);
   text-decoration: none;
 }
 .nav {
@@ -49,12 +50,12 @@
   min-block-size: 44px;
   padding-inline: 12px;
   border-radius: 10px;
-  color: var(--ivory-200);
+  color: var(--text-soft);
   text-decoration: none;
 }
 .navLink[aria-current="page"] {
-  background: var(--forest-800);
-  color: var(--ivory);
+  background: var(--surface-3);
+  color: var(--text);
 }
 .tools {
   display: flex;
@@ -96,9 +97,9 @@
   place-items: center;
   min-block-size: 96px;
   border-radius: 16px;
-  background: var(--forest-900);
-  border: 1px solid var(--forest-800);
-  color: var(--ivory) !important;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  color: var(--text) !important;
   text-decoration: none;
   font-weight: 500;
   /* Brand motion: transform only, 400 ms; the border colour changes at once. */
@@ -106,33 +107,33 @@
 }
 .tile:hover {
   transform: translateY(-2px);
-  border-color: var(--gold-600);
+  border-color: var(--accent);
 }
 .card {
-  background: var(--forest-900);
-  border: 1px solid var(--forest-800);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: 16px;
   padding: 20px;
   margin-block-end: 16px;
 }
 .notice {
-  background: var(--forest-900);
-  border-inline-start: 4px solid var(--gold);
+  background: var(--surface-2);
+  border-inline-start: 4px solid var(--accent);
   padding: 12px 16px;
   border-radius: 8px;
   max-inline-size: 60ch;
 }
 .warning {
-  background: #3a2a0e;
-  border-inline-start: 4px solid var(--gold);
+  background: var(--tint);
+  border-inline-start: 4px solid var(--accent);
   padding: 12px 16px;
   border-radius: 8px;
   margin-block-end: 16px;
   max-inline-size: 70ch;
 }
 .error {
-  background: #3a1410;
-  border-inline-start: 4px solid #f0a08a;
+  background: var(--danger-bg);
+  border-inline-start: 4px solid var(--danger);
   padding: 12px 16px;
   border-radius: 8px;
 }
@@ -152,15 +153,15 @@
 }
 .field > span {
   font-size: 0.875rem;
-  color: var(--ivory-200);
+  color: var(--text-soft);
 }
 .field input,
 .field select,
 .field textarea {
   font: inherit;
-  color: var(--ivory);
-  background: var(--night);
-  border: 1px solid var(--forest-600);
+  color: var(--text);
+  background: var(--field);
+  border: 1px solid var(--field-line);
   border-radius: 10px;
   padding: 10px 12px;
   min-block-size: 44px;
@@ -173,7 +174,7 @@
 }
 .hint {
   font-size: 0.8125rem;
-  color: var(--ivory-200);
+  color: var(--text-soft);
 }
 .row {
   display: grid;
@@ -200,20 +201,20 @@
   text-decoration: none;
 }
 .primary {
-  background: var(--gold);
-  color: var(--ink);
+  background: var(--accent);
+  color: var(--on-accent);
   border: 0;
   font-weight: 700;
 }
 .ghost {
   background: transparent;
-  color: var(--ivory) !important;
-  border: 1px solid var(--forest-600);
+  color: var(--text) !important;
+  border: 1px solid var(--line-strong);
 }
 .danger {
   background: transparent;
-  color: #f6b8a8;
-  border: 1px solid #a24a36;
+  color: var(--danger);
+  border: 1px solid color-mix(in srgb, var(--danger) 55%, transparent);
 }
 .table {
   inline-size: 100%;
@@ -223,12 +224,12 @@
 .table td {
   text-align: start;
   padding: 10px 8px;
-  border-block-end: 1px solid var(--forest-800);
+  border-block-end: 1px solid var(--line);
   vertical-align: top;
 }
 .table th {
   font-size: 0.8125rem;
-  color: var(--ivory-200);
+  color: var(--text-soft);
   font-weight: 500;
 }
 .badge {
@@ -236,12 +237,12 @@
   padding: 2px 10px;
   border-radius: 999px;
   font-size: 0.8125rem;
-  background: var(--forest-800);
-  color: var(--ivory);
+  background: var(--surface-3);
+  color: var(--text);
 }
 .badgeGold {
-  background: var(--gold-900);
-  color: var(--gold-100);
+  background: var(--tint-strong);
+  color: var(--accent-text);
 }
 .toolbar {
   display: flex;
@@ -264,7 +265,7 @@
   .table tr {
     display: grid;
     padding-block: 8px;
-    border-block-end: 1px solid var(--forest-800);
+    border-block-end: 1px solid var(--line);
   }
   .table td {
     border: 0;
@@ -281,10 +282,10 @@
 }
 /* The contact inbox: a new message has a gold edge until it is handled. */
 .inquiry {
-  border-inline-start: 4px solid var(--gold);
+  border-inline-start: 4px solid var(--accent);
 }
 .inquiryNew {
-  background: linear-gradient(180deg, rgb(217 165 76 / 0.06), transparent 50%), var(--forest-900);
+  background: linear-gradient(180deg, var(--tint), transparent 50%), var(--surface-2);
 }
 .inquiryHead {
   display: flex;
@@ -302,7 +303,7 @@
   margin-block: 12px;
 }
 .facts dt {
-  color: var(--ivory-200);
+  color: var(--text-soft);
   font-size: 0.875rem;
 }
 .facts dd {
@@ -310,7 +311,7 @@
   overflow-wrap: anywhere;
 }
 .facts a {
-  color: var(--gold-300);
+  color: var(--accent-text);
 }
 .message {
   white-space: pre-wrap;
@@ -318,7 +319,7 @@
   max-inline-size: 70ch;
 }
 .ghost[aria-current="page"] {
-  background: var(--forest-800);
+  background: var(--surface-3);
 }
 .count {
   display: inline-grid;
@@ -328,8 +329,8 @@
   margin-inline-start: 6px;
   padding-inline: 6px;
   border-radius: 999px;
-  background: var(--gold);
-  color: var(--ink);
+  background: var(--accent);
+  color: var(--on-accent);
   font-size: 0.75rem;
   font-weight: 700;
 }

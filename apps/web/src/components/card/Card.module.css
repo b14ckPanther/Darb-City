@@ -1,9 +1,9 @@
 /*
  * The business card. --card-accent is the owner's colour (or the sector's) and --card-ink the black
- * or white that reads on it; Darb's night stays behind everything else.
+ * or white that reads on it; Darb's paper (or night) stays behind everything else.
  */
 .card {
-  --card-accent: var(--gold);
+  --card-accent: var(--accent);
   --card-ink: #000;
   --card-glow: rgb(255 255 255 / 0.22);
   display: grid;
@@ -48,7 +48,7 @@
   inline-size: 64px;
   block-size: 64px;
   border-radius: var(--radius-m);
-  background: var(--ivory, #fbf7ec);
+  background: var(--ivory);
   box-shadow:
     0 0 0 2px rgb(255 255 255 / 0.35),
     0 10px 24px -12px rgb(0 0 0 / 0.55);
@@ -60,7 +60,8 @@
   place-items: center;
   inline-size: 100%;
   block-size: 100%;
-  background: var(--night);
+  /* A deep forest tile by day and by night: the owner's colour reads on it in both. */
+  background: var(--forest-900);
   color: var(--card-accent);
   font-size: 2rem;
   font-weight: 800;

@@ -18,8 +18,8 @@
 }
 
 .toggle[aria-pressed="true"] {
-  border-color: var(--gold-300);
-  color: var(--gold-300);
+  border-color: var(--accent);
+  color: var(--accent-text);
 }
 
 .empty {

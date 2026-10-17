@@ -73,14 +73,14 @@
 
 /* One highlight: the active option (aria-activedescendant). */
 .option[aria-selected="true"] {
-  border-inline-start-color: var(--gold-300);
+  border-inline-start-color: var(--accent);
   background: var(--surface-2);
 }
 
 /* A pointer only tints a row, never mimics the active one; touch never leaves a tint behind. */
 @media (hover: hover) {
   .option:hover:not([aria-selected="true"]) {
-    background: rgb(251 247 236 / 0.04);
+    background: var(--wash);
   }
 }
 

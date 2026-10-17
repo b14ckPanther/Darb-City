@@ -129,6 +129,7 @@ function Viewer({
   };
   return (
     <dialog
+      data-scheme="night"
       ref={dialog}
       className={styles.viewer}
       aria-label={labels.frameTitle.replace("{name}", client.name)}

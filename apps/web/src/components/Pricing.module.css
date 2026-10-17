@@ -14,7 +14,7 @@
   inset-block-start: -40px;
   inset-inline: 0;
   block-size: 320px;
-  background: radial-gradient(50% 60% at 50% 30%, rgb(217 165 76 / 0.16), transparent 70%);
+  background: radial-gradient(50% 60% at 50% 30%, var(--tint), transparent 70%);
   pointer-events: none;
   z-index: -1;
 }
@@ -24,7 +24,7 @@
   align-items: center;
   gap: var(--space-3);
   margin: 0;
-  color: var(--gold-300);
+  color: var(--accent-text);
   font-size: var(--step--1);
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -36,7 +36,7 @@
   content: "";
   inline-size: 28px;
   block-size: 1px;
-  background: var(--gold);
+  background: var(--accent);
   opacity: 0.7;
 }
 
@@ -161,9 +161,9 @@
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-l);
   background:
-    linear-gradient(180deg, rgb(251 247 236 / 0.035), transparent 40%),
+    linear-gradient(180deg, var(--wash), transparent 40%),
     linear-gradient(180deg, var(--surface-2), var(--surface-1));
-  box-shadow: inset 0 1px 0 rgb(251 231 189 / 0.05);
+  box-shadow: var(--shadow-1);
   transition: transform var(--dur) var(--ease-out);
 }
 
@@ -171,9 +171,7 @@
   .card:hover {
     transform: translateY(-4px);
     border-color: var(--line);
-    box-shadow:
-      inset 0 1px 0 rgb(251 231 189 / 0.08),
-      0 24px 48px -24px rgb(0 0 0 / 0.6);
+    box-shadow: 0 24px 48px -24px rgb(var(--shadow) / calc(var(--shadow-k) * 0.2));
   }
 }
 
@@ -187,7 +185,7 @@
   background:
     linear-gradient(180deg, rgb(240 199 122 / 0.06), transparent 45%),
     linear-gradient(180deg, var(--surface-3), var(--surface-1));
-  box-shadow: 0 32px 80px -36px rgb(217 165 76 / 0.45);
+  box-shadow: 0 32px 80px -36px var(--line-strong);
 }
 
 @media (hover: hover) {
@@ -222,12 +220,12 @@
   aspect-ratio: 1;
   translate: -50% -50%;
   background: conic-gradient(
-    rgb(217 165 76 / 0.25),
-    var(--gold-300) 10%,
-    rgb(217 165 76 / 0.25) 24%,
-    rgb(217 165 76 / 0.25) 60%,
-    var(--gold) 74%,
-    rgb(217 165 76 / 0.25)
+    var(--tint-strong),
+    var(--accent-bright) 10%,
+    var(--tint-strong) 24%,
+    var(--tint-strong) 60%,
+    var(--accent) 74%,
+    var(--tint-strong)
   );
   animation: spin 9s linear infinite;
 }
@@ -247,17 +245,17 @@
   margin: 0;
   padding: var(--space-1) var(--space-3);
   border-radius: var(--radius-pill);
-  background: linear-gradient(135deg, var(--gold-100), var(--gold) 55%, var(--gold-600));
-  color: var(--night);
+  background: linear-gradient(135deg, var(--gold-100), var(--accent) 55%, var(--gold-600));
+  color: var(--on-accent);
   font-size: var(--step--1);
   font-weight: 700;
   letter-spacing: 0.02em;
-  box-shadow: 0 6px 20px -6px rgb(217 165 76 / 0.6);
+  box-shadow: 0 6px 20px -6px var(--line-strong);
 }
 
 .name {
   font-size: var(--step-2);
-  color: var(--gold-300);
+  color: var(--accent-text);
 }
 
 .tagline {
@@ -288,7 +286,7 @@
 .currency {
   font-size: 0.55em;
   font-weight: 500;
-  color: var(--gold-300);
+  color: var(--accent-text);
   vertical-align: 0.6em;
   margin-inline: 0.08em;
 }
@@ -307,27 +305,27 @@
   padding-inline: var(--space-5);
   border-radius: var(--radius-pill);
   border: 1px solid var(--line);
-  background: rgb(251 247 236 / 0.03);
-  color: var(--gold-300);
+  background: var(--wash);
+  color: var(--accent-text);
   font-weight: 700;
   text-align: center;
   text-decoration: none;
 }
 
 .cta:hover {
-  border-color: var(--gold);
-  background: rgb(217 165 76 / 0.1);
+  border-color: var(--accent);
+  background: var(--tint);
 }
 
 .ctaPrimary {
   border-color: transparent;
-  background: linear-gradient(135deg, var(--gold-300), var(--gold) 60%);
-  color: var(--night);
+  background: linear-gradient(135deg, var(--accent-bright), var(--accent) 60%);
+  color: var(--on-accent);
 }
 
 .ctaPrimary:hover {
   border-color: transparent;
-  background: linear-gradient(135deg, var(--gold-100), var(--gold-300) 60%);
+  background: linear-gradient(135deg, var(--gold-100), var(--accent-bright) 60%);
 }
 
 .features {
@@ -351,8 +349,8 @@
   inline-size: 20px;
   block-size: 20px;
   margin-block-start: 0.15em;
-  fill: rgb(217 165 76 / 0.14);
-  stroke: var(--gold-300);
+  fill: var(--tint);
+  stroke: var(--accent-text);
   stroke-width: 1.6;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -406,7 +404,7 @@
 
 .termList li::before {
   content: counter(term, decimal-leading-zero);
-  color: var(--gold);
+  color: var(--accent-text);
   font-weight: 700;
   font-size: var(--step--1);
   font-variant-numeric: tabular-nums;
@@ -443,7 +441,7 @@
   block-size: 28px;
   border-radius: var(--radius-pill);
   border: 1px solid var(--line);
-  color: var(--gold-300);
+  color: var(--accent-text);
   font-weight: 500;
   line-height: 1;
   transition: transform var(--dur-fast) var(--ease-out);
@@ -463,8 +461,7 @@
   padding: var(--space-6) var(--space-5);
   border: 1px solid var(--line);
   border-radius: var(--radius-l);
-  background:
-    radial-gradient(80% 120% at 50% 0%, rgb(217 165 76 / 0.1), transparent 60%), var(--surface-1);
+  background: radial-gradient(80% 120% at 50% 0%, var(--tint), transparent 60%), var(--surface-1);
   text-align: center;
 }
 

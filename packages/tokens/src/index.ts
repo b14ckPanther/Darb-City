@@ -17,6 +17,102 @@ export const colors = {
   inkMuted: "#4c5f56",
 } as const;
 
+/**
+ * The page roles, by day and by night. Every surface, text and line on the site reads these (as
+ * `--bg`, `--text-soft`, …); components never pick a brand colour for a role themselves.
+ * `day` is the default: warm ivory paper, forest ink, gold for highlights. `night` is the
+ * original forest-at-night look, used when the visitor prefers a dark scheme (or picks it) and for
+ * the few places that stay night on purpose (the landing hero, the footer, device frames).
+ */
+export const themes = {
+  day: {
+    /** The page: warm ivory paper, never white. */
+    bg: "#f7f1e4",
+    bgRaised: "#fbf8f0",
+    /** Cards and panels: warm white and white, lifted by soft shadows. */
+    surface1: "#fffdf8",
+    surface2: "#ffffff",
+    /** A sunken or pressed surface: a deeper sand. */
+    surface3: "#f1e8d5",
+    text: "#14281f",
+    textSoft: "#3d5247",
+    textMuted: "#5a6a60",
+    /** Gold as a fill (the road, chips, active states). */
+    accent: "#d9a54c",
+    accentBright: "#f0c77a",
+    /** Gold as text on paper: deepened until it reads (WCAG AA). */
+    accentText: "#80571a",
+    /** Text on a gold fill. */
+    onAccent: "#14281f",
+    /** Primary actions: deep forest with ivory text. */
+    primary: "#173a2c",
+    primaryHover: "#1f4a39",
+    onPrimary: "#fbf7ec",
+    link: "#173a2c",
+    line: "#e9dfca",
+    lineSoft: "#efe7d6",
+    lineStrong: "#d8c7a3",
+    /** Gold washes behind chips and active items. */
+    tint: "#f6ead1",
+    tintStrong: "#f0dcb2",
+    /** Forest-on-paper washes for hover and quiet fills. */
+    wash: "#f4eee1",
+    washStrong: "#ebe3d1",
+    open: "#1a7040",
+    closed: "#5a6a60",
+    danger: "#a8321f",
+    dangerBg: "#fbe9e4",
+    focus: "#80571a",
+    /** Form fields: white on paper with a sand edge, so a field reads as a place to write. */
+    field: "#ffffff",
+    fieldLine: "#d3c09a",
+    headerBg: "rgb(251 248 240 / 0.84)",
+    scrim: "rgb(20 40 31 / 0.32)",
+    /** r g b of the soft shadows (warm, never black on paper). */
+    shadow: "60 52 30",
+  },
+  night: {
+    bg: "#03110c",
+    bgRaised: "#051811",
+    surface1: "#051811",
+    surface2: "#08241a",
+    surface3: "#0e3527",
+    text: "#fbf7ec",
+    textSoft: "#efe8d6",
+    textMuted: "#a9b8ad",
+    accent: "#d9a54c",
+    accentBright: "#f0c77a",
+    accentText: "#f0c77a",
+    onAccent: "#03110c",
+    primary: "#d9a54c",
+    primaryHover: "#f0c77a",
+    onPrimary: "#03110c",
+    link: "#f0c77a",
+    line: "rgb(217 165 76 / 0.24)",
+    lineSoft: "rgb(251 247 236 / 0.08)",
+    lineStrong: "rgb(217 165 76 / 0.45)",
+    tint: "rgb(217 165 76 / 0.12)",
+    tintStrong: "rgb(217 165 76 / 0.22)",
+    wash: "rgb(251 247 236 / 0.035)",
+    washStrong: "rgb(251 247 236 / 0.08)",
+    open: "#8fd6a4",
+    closed: "#a9b8ad",
+    danger: "#f0a08a",
+    dangerBg: "rgb(58 20 16 / 0.6)",
+    focus: "#f0c77a",
+    field: "#03110c",
+    fieldLine: "rgb(217 165 76 / 0.24)",
+    headerBg: "rgb(3 17 12 / 0.82)",
+    scrim: "rgb(0 0 0 / 0.6)",
+    shadow: "0 0 0",
+  },
+} as const;
+
+export type ThemeName = keyof typeof themes;
+
+/** The browser chrome colour per scheme (`<meta name="theme-color">`). */
+export const themeColor = { day: themes.day.bg, night: colors.night } as const;
+
 export const motion = {
   easeOut: "cubic-bezier(0.22, 1, 0.36, 1)",
   easeInOut: "cubic-bezier(0.65, 0, 0.35, 1)",

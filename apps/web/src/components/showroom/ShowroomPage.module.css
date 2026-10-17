@@ -32,7 +32,8 @@
   border-radius: 32px;
   background:
     radial-gradient(70% 90% at 50% 120%, rgb(217 165 76 / 0.28), transparent 70%),
-    linear-gradient(180deg, var(--forest-900), var(--forest-950));
+    linear-gradient(180deg, var(--surface-2), var(--surface-1));
+  box-shadow: 0 30px 60px -24px rgb(20 40 31 / 0.4);
   text-align: center;
 }
 

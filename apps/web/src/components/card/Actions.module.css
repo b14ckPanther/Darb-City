@@ -33,7 +33,7 @@
 .status {
   margin: 0;
   min-block-size: 1.5em;
-  color: var(--gold-300);
+  color: var(--accent-text);
 }
 
 .example .status {

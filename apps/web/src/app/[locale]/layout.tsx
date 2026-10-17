@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import type { CSSProperties, ReactNode } from "react";
 import type { Locale } from "@darb/core";
 import { dir, t } from "@darb/i18n";
-import { colors } from "@darb/tokens";
+import { themeColor } from "@darb/tokens";
 import { isLocale } from "@/lib/locale";
 import { fontStack } from "@/lib/font-stack";
 import { siteUrl } from "@/lib/site";
@@ -15,6 +15,7 @@ import { NearMe } from "@/components/NearMe";
 import { href, paths } from "@/lib/routes";
 import { StageMount } from "@/components/StageMount";
 import { stageBootScript } from "@/lib/stage-boot";
+import { themeBootScript } from "@/lib/theme";
 import { TILES_URL } from "@/stage/vendor";
 import type { StageLabels } from "@/stage/types";
 import "../globals.css";
@@ -36,7 +37,14 @@ const cairo = Cairo({
 
 const bodyFont = fontStack(ubuntu, heebo, cairo);
 
-export const viewport: Viewport = { themeColor: colors.night, colorScheme: "dark" };
+/** Day first; the device's dark scheme (or the visitor's pick) shows the night theme. */
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: themeColor.day },
+    { media: "(prefers-color-scheme: dark)", color: themeColor.night },
+  ],
+  colorScheme: "light dark",
+};
 
 /** Every page renders on first request and is then cached (ISR); the build never calls the API. */
 export function generateStaticParams() {
@@ -90,6 +98,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
     >
       <head>
         <style id="darb-tokens" dangerouslySetInnerHTML={{ __html: tokensCss() }} />
+        <script id="darb-theme-boot" dangerouslySetInnerHTML={{ __html: themeBootScript() }} />
         {stage ? (
           <script id="darb-stage-boot" dangerouslySetInnerHTML={{ __html: stageBootScript() }} />
         ) : null}

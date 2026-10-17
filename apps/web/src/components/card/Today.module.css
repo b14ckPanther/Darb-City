@@ -71,7 +71,7 @@
 }
 
 .today[data-open="true"] .todayWords {
-  color: #8fd6a4;
+  color: var(--open);
 }
 
 .todaySpans {

@@ -8,7 +8,7 @@
 .scrim {
   position: absolute;
   inset: 0;
-  background: rgb(3 17 12 / 0.55);
+  background: var(--scrim);
   pointer-events: auto;
   transition: opacity var(--dur) var(--ease-out);
 }
@@ -90,7 +90,7 @@
   inline-size: 40px;
   block-size: 4px;
   border-radius: 2px;
-  background: var(--ivory-200);
+  background: var(--line-strong);
 }
 
 .close {

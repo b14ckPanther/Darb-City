@@ -10,9 +10,8 @@
   block-size: 320px;
   border-radius: 16px;
   overflow: hidden;
-  border: 1px solid var(--forest-600);
-  background:
-    radial-gradient(80% 60% at 50% 40%, var(--forest-900) 0%, transparent 70%), var(--night);
+  border: 1px solid var(--line-strong);
+  background: radial-gradient(80% 60% at 50% 40%, var(--surface-2) 0%, transparent 70%), var(--bg);
 }
 @media (min-width: 640px) {
   .frame {
@@ -34,7 +33,7 @@
   margin: 0;
   padding: 2px 10px;
   border-radius: 999px;
-  background: rgb(251 247 236 / 0.82);
+  background: var(--wash-strong);
   box-shadow: 0 1px 2px rgb(3 17 12 / 0.12);
   color: #3d5247;
   font-size: 0.75rem;
@@ -62,7 +61,7 @@
   inline-size: 26px;
   block-size: 26px;
   border-radius: 50% 50% 50% 0;
-  background: var(--gold);
+  background: var(--accent);
   border: 2px solid var(--ink);
   box-sizing: border-box;
   box-shadow: 0 3px 8px rgb(3 17 12 / 0.35);
@@ -84,7 +83,7 @@
   cursor: grabbing;
 }
 .pin:focus-visible {
-  outline: 2px solid var(--gold-300);
+  outline: 2px solid var(--focus);
   outline-offset: 2px;
   border-radius: 12px;
 }
@@ -92,7 +91,7 @@
 .note {
   margin: 0;
   font-size: 0.8125rem;
-  color: var(--ivory-200);
+  color: var(--text-soft);
 }
 .tools {
   display: flex;
@@ -106,8 +105,8 @@
   padding-inline: 14px;
   border-radius: 12px;
   background: transparent;
-  color: var(--ivory);
-  border: 1px solid var(--forest-600);
+  color: var(--text);
+  border: 1px solid var(--line-strong);
   cursor: pointer;
 }
 .tool:disabled {
@@ -117,7 +116,7 @@
 .at {
   margin-inline-start: auto;
   font-size: 0.8125rem;
-  color: var(--ivory-200);
+  color: var(--text-soft);
   font-variant-numeric: tabular-nums;
   unicode-bidi: isolate;
 }
@@ -125,15 +124,15 @@
   margin: 0;
   padding: 8px 12px;
   border-radius: 8px;
-  background: #3a2a0e;
-  border-inline-start: 4px solid var(--gold);
+  background: var(--tint);
+  border-inline-start: 4px solid var(--accent);
 }
 .details > summary {
   display: flex;
   align-items: center;
   min-block-size: var(--tap, 44px);
   cursor: pointer;
-  color: var(--gold-300);
+  color: var(--accent-text);
   inline-size: fit-content;
 }
 .numbers {
@@ -148,13 +147,13 @@
 }
 .number > span {
   font-size: 0.875rem;
-  color: var(--ivory-200);
+  color: var(--text-soft);
 }
 .number input {
   font: inherit;
-  color: var(--ivory);
-  background: var(--night);
-  border: 1px solid var(--forest-600);
+  color: var(--text);
+  background: var(--field);
+  border: 1px solid var(--field-line);
   border-radius: 10px;
   padding: 10px 12px;
   min-block-size: var(--tap, 44px);
