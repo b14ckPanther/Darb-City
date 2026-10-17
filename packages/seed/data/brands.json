@@ -560,6 +560,14 @@
     }
   },
   {
+    "slug": "bridge-school",
+    "name": {
+      "he": "בית ספר הגשר",
+      "ar": "مدرسة الجسر",
+      "en": "Bridge School"
+    }
+  },
+  {
     "slug": "karma-studio",
     "name": {
       "he": "סטודיו כרמה",

@@ -283,6 +283,10 @@ export const KIND_INFO = {
   },
   "cooking-schools": { one: K("סדנאות בישול", "ورشات طبخ", "Cooking classes") },
   sewing: { one: K("תפירה וחומרי תפירה", "خياطة ولوازمها", "Sewing") },
+  schools: {
+    one: K("בית ספר", "مدرسة", "School"),
+    note: "the Education Ministry's list holds every school with a point (edu.mjs), so OpenStreetMap's schools are not imported",
+  },
   // tech
   "software-studios": { one: K("פיתוח תוכנה", "تطوير برمجيات", "Software house") },
   "it-support": { one: K("מחשבים ותמיכה טכנית", "كمبيوترات ودعم فني", "Computers and IT support") },
@@ -440,7 +444,7 @@ export const KIND_INFO = {
   municipal: { one: K("עירייה ומועצה", "بلدية ومجلس", "Council offices") },
   "school-registration": {
     one: K("רישום לבתי ספר", "تسجيل للمدارس", "School registration"),
-    note: "a council desk; schools themselves have no Darb kind",
+    note: "a council desk; schools themselves are the schools kind",
   },
   "public-clinics": { one: K("קופת חולים ומרפאה", "عيادة وصندوق مرضى", "Health fund clinic") },
   libraries: { one: K("ספרייה", "مكتبة عامة", "Library") },
