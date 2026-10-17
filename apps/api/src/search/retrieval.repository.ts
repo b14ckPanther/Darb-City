@@ -120,7 +120,14 @@ export class RetrievalRepository {
     const o = RANKING.offerings;
     // Deep search: the best offering on the card (items, tags, tagline, kinds), or the business's
     // own name when that is what was asked ("Samer"). Its place's name is never a match.
-    const nameScore = (t: string) => Prisma.sql`word_similarity(${t}, d."nameText")`;
+    // When kinds are asked, a business of another kind answers only by what its card offers
+    // (items, their parts, tags), never by what it is: its name, tagline and kind ("ספר", a
+    // barber, is not "בית ספר", a school).
+    const ofAskedKind = f.kindIds ? Prisma.sql`d."kindIds" && ${f.kindIds}::uuid[]` : null;
+    const nameScore = (t: string) =>
+      ofAskedKind
+        ? Prisma.sql`CASE WHEN ${ofAskedKind} THEN word_similarity(${t}, d."nameText") ELSE 0 END`
+        : Prisma.sql`word_similarity(${t}, d."nameText")`;
     const textScore = deep
       ? Prisma.sql`GREATEST(COALESCE(h.score, 0), ${Prisma.join(items.map(nameScore))})`
       : documentScore;
@@ -207,6 +214,9 @@ export class RetrievalRepository {
     const offeringFilters = [
       ...placeFilter("o"),
       ...radiusFilter("o"),
+      ...(deep && f.kindIds
+        ? [Prisma.sql`(o.source IN ('item', 'part', 'tag') OR o."kindIds" && ${f.kindIds}::uuid[])`]
+        : []),
       ...(f.dietary.length > 0 ? [Prisma.sql`o.dietary @> ${f.dietary}::"Dietary"[]`] : []),
     ];
     const offeringWhere =

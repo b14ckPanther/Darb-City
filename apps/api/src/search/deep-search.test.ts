@@ -224,6 +224,16 @@ describe("retrieval by offerings", () => {
     const rows = await deep(["grill house"]);
     expect(rows[0]?.row.slug).toBe("grill-house");
   });
+  it("when a kind is asked, never lets another kind answer by what it is", async () => {
+    // "grill" names the grill house and its kind; asked for a car wash, it is no answer.
+    const rows = await deep(["grill"], { kindIds: [kinds.carWash!], placePath: SAKHNIN });
+    const grill = rows.find((r) => r.row.slug === "grill-house");
+    expect(grill?.matched ?? null).toBeNull();
+    expect(grill?.text ?? 0).toBe(0);
+    // Unasked, its name and kind still find it.
+    const free = await deep(["grill"], { placePath: SAKHNIN });
+    expect(free[0]?.row.slug).toBe("grill-house");
+  });
 });
 
 describe("smart search never ends at nothing", () => {
