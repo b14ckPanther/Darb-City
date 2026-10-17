@@ -1249,6 +1249,140 @@
     "near": { "lat": 32.864, "lng": 35.303 }
   },
   {
+    "query": "שווארמה ללא גלוטן",
+    "locale": "he",
+    "expect": { "kind": "restaurants", "place": "akko", "first": "akko/caramel", "firstHas": "gluten_free" },
+    "recorded": {
+      "kinds": ["grill"],
+      "place": null,
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": "",
+      "items": ["שווארמה", "shawarma"],
+      "niceToHave": []
+    },
+    "source": "authored"
+  },
+  {
+    "query": "شاورما بدون غلوتين",
+    "locale": "ar",
+    "expect": { "kind": "restaurants", "place": "akko", "first": "akko/caramel", "firstHas": "gluten_free" },
+    "recorded": {
+      "kinds": ["grill"],
+      "place": null,
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": "",
+      "items": ["شاورما", "shawarma"],
+      "niceToHave": []
+    },
+    "source": "authored"
+  },
+  {
+    "query": "gluten free shawarma",
+    "locale": "en",
+    "expect": {
+      "kind": "restaurants",
+      "place": "akko",
+      "first": "akko/caramel",
+      "firstHas": "gluten_free",
+      "matched": "shawarma"
+    },
+    "recorded": {
+      "kinds": ["grill"],
+      "place": null,
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": "",
+      "items": ["shawarma"],
+      "niceToHave": []
+    },
+    "source": "authored"
+  },
+  {
+    "query": "כנאפה ללא גלוטן",
+    "locale": "he",
+    "expect": { "kind": "restaurants", "place": "akko", "first": "akko/caramel", "firstHas": "gluten_free" },
+    "recorded": {
+      "kinds": ["sweets"],
+      "place": null,
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": "",
+      "items": ["כנאפה", "knafeh"],
+      "niceToHave": []
+    },
+    "source": "authored"
+  },
+  {
+    "query": "שווארמה ללא גלוטן בחיפה",
+    "locale": "he",
+    "expect": { "kind": "restaurants", "place": "akko", "first": "akko/caramel", "firstHas": "gluten_free" },
+    "recorded": {
+      "kinds": ["grill"],
+      "place": "haifa",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": "",
+      "items": ["שווארמה", "shawarma"],
+      "niceToHave": []
+    },
+    "source": "authored"
+  },
+  {
+    "query": "טעינת רכב חשמלי",
+    "locale": "he",
+    "expect": { "kind": "stations", "place": "israel" },
+    "recorded": {
+      "kinds": ["ev-charging"],
+      "place": null,
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": "",
+      "items": ["טעינת רכב חשמלי", "EV charging"],
+      "niceToHave": []
+    },
+    "source": "authored"
+  },
+  {
+    "query": "שטיפת רכב בחיפה",
+    "locale": "he",
+    "expect": { "kind": "stations", "place": "haifa" },
+    "recorded": {
+      "kinds": ["car-wash"],
+      "place": "haifa",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": "",
+      "items": ["שטיפת רכב", "car wash"],
+      "niceToHave": []
+    },
+    "source": "authored"
+  },
+  {
+    "query": "car wash in haifa",
+    "locale": "en",
+    "expect": { "kind": "stations", "place": "haifa" },
+    "recorded": {
+      "kinds": ["car-wash"],
+      "place": "haifa",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": "",
+      "items": ["car wash"],
+      "niceToHave": []
+    },
+    "source": "authored"
+  },
+  {
     "query": "bars in haifa",
     "locale": "en",
     "expect": { "kind": null, "place": null, "blocked": true },

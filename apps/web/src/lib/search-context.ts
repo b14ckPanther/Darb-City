@@ -1,6 +1,7 @@
 import { pickText, type Locale } from "@darb/core";
 import type { IntentDto } from "@darb/contracts";
 import { t } from "@darb/i18n";
+import { deepSearch } from "@/content/deep-search";
 import { getPlace, getPlaces, getTaxonomy } from "./api";
 import { formatKm } from "./format";
 import { placeNames } from "./rows";
@@ -29,6 +30,10 @@ export async function viewContext(locale: Locale, intent: IntentDto): Promise<Vi
       nearMe: t(locale, "nearMe"),
       kindInPlace: t(locale, "kindInPlace"),
       kindNationwide: t(locale, "kindNationwide"),
+      thingGlutenFree: deepSearch[locale].thingGlutenFree,
+      searchWider: deepSearch[locale].searchWider,
+      searchWiderNear: deepSearch[locale].searchWiderNear,
+      searchRelated: deepSearch[locale].searchRelated,
     },
     kmLabel: (km) => formatKm(km, locale),
   };

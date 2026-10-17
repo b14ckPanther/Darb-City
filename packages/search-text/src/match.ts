@@ -29,6 +29,13 @@ export interface InstantResult {
   places: InstantMatch[];
   kinds: InstantMatch[];
   unmatched: string[];
+  /**
+   * The query's content words (cues and stopwords left out), normalized; match tokens index
+   * into it. `typed` holds each as the person typed it ("שווארמה", not the folded form), for
+   * showing it back.
+   */
+  content: string[];
+  typed: string[];
 }
 
 export const STRONG = 0.75;
@@ -120,6 +127,17 @@ function rank(entries: PreparedEntry[], words: Word[], limit: number): InstantMa
   return out.sort((a, b) => b.score - a.score || (a.entry.s < b.entry.s ? -1 : 1)).slice(0, limit);
 }
 
+/** Each normalized word of a query, as typed: punctuation trimmed, final letters kept. */
+function typedForms(query: string): Map<string, string> {
+  const out = new Map<string, string>();
+  for (const raw of query.split(/\s+/u)) {
+    const words = normalize(raw).split(" ");
+    const shown = raw.replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, "");
+    if (words.length === 1 && words[0] && shown && !out.has(words[0])) out.set(words[0], shown);
+  }
+  return out;
+}
+
 /** Lane 1 (spec §5.2): places and kinds for a query, in the browser or on the server. */
 export function matchInstant(
   prepared: Prepared,
@@ -136,6 +154,7 @@ export function matchInstant(
   });
   const places = words.length ? rank(prepared.places, words, limits.places ?? 8) : [];
   const kinds = words.length ? rank(prepared.kinds, words, limits.kinds ?? 12) : [];
+  const typed = typedForms(query);
   const used = new Set<number>();
   // Only a place strong enough to count claims its words; a weak look-alike ("يافه" for the
   // "نافه" in "كنافه") must not keep a strong kind on the same word out of the intent.
@@ -153,5 +172,7 @@ export function matchInstant(
     places,
     kinds,
     unmatched: content.filter((_, i) => !used.has(i)),
+    content,
+    typed: content.map((t) => typed.get(t) ?? t),
   };
 }

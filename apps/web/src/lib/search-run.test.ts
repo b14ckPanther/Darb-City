@@ -28,6 +28,8 @@ const body = (i = intent): SearchResponseDto => ({
   needsLocation: false,
   items: [],
   nearest: [],
+  fallback: null,
+  searched: null,
 });
 
 it("runs the full search for a fresh query", async () => {

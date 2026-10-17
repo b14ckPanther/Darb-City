@@ -1,12 +1,20 @@
 import { EMPTY_INTENT } from "@darb/contracts";
 import type { InstantResult } from "@darb/search-text";
 import { expect, it } from "vitest";
-import type { IntentProvider, RawIntent } from "./intent.js";
+import type { IntentProvider, RawIntentInput } from "./intent.js";
 import type { RecordedCase } from "./recorded-intent.provider.js";
 import { FAILED_SOURCE, recordCases } from "./record-cases.js";
 
-const intent = (kind: string): RawIntent => ({ ...EMPTY_INTENT, kinds: [kind] });
-const kase = (query: string, recorded: RawIntent, blocked = false): RecordedCase => ({
+const { place, nearMe, openNow, attributes, freeText } = EMPTY_INTENT;
+const intent = (kind: string): RawIntentInput => ({
+  kinds: [kind],
+  place,
+  nearMe,
+  openNow,
+  attributes,
+  freeText,
+});
+const kase = (query: string, recorded: RawIntentInput, blocked = false): RecordedCase => ({
   query,
   locale: "en",
   expect: { kind: blocked ? null : "barbershops", place: null, ...(blocked ? { blocked } : {}) },
@@ -22,6 +30,8 @@ const lane1 = async (q: string) =>
     places: [],
     kinds: [],
     unmatched: [],
+    content: [],
+    typed: [],
   }) as InstantResult;
 
 it("records answers, marks failures loudly and never touches blocked cases", async () => {

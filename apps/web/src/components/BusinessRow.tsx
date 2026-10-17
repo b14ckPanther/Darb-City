@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getImageProps } from "next/image";
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import type { BusinessRowData } from "@/lib/rows";
 import { AppointmentBadge, ExampleBadge, GlutenFreeBadge } from "./Badges";
 import { LiveDistance } from "./LiveDistance";
@@ -26,11 +26,14 @@ export function BusinessRow({
   row,
   labels,
   onOpen,
+  note,
 }: {
   row: BusinessRowData;
   labels: RowLabels;
   /** Client lists only (search results report the click); server lists never pass a function. */
   onOpen?: () => void;
+  /** Search only: the matched thing, above the tagline (kept out of every other list's JS). */
+  note?: ReactNode;
 }) {
   // A list can be long: the logo is 40 px from a resized source (48 or 96 px wide), loaded lazily.
   const logo = row.logoUrl
@@ -70,6 +73,7 @@ export function BusinessRow({
               />
             )}
           </span>
+          {note}
           {row.tagline ? <span className={styles.rowTagline}>{row.tagline}</span> : null}
           <span className={styles.rowMeta}>
             {row.distance ? (
@@ -91,7 +95,9 @@ export function BusinessRow({
               </span>
             ) : null}
             {row.example ? <ExampleBadge label={labels.example} /> : null}
-            {row.glutenFree ? <GlutenFreeBadge label={labels.glutenFree} /> : null}
+            {row.glutenFree ? (
+              <GlutenFreeBadge label={labels.glutenFree} strict={row.strictGlutenFree} />
+            ) : null}
           </span>
         </span>
       </Link>

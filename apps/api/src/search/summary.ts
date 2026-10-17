@@ -1,9 +1,20 @@
 import type { Hours } from "@darb/core";
-import type { BusinessSummaryDto } from "@darb/contracts";
+import type { BusinessSummaryDto, SearchItemDto } from "@darb/contracts";
 import { openNow } from "../businesses/business.mapper.js";
+import { RANKING } from "./ranking.config.js";
 import type { Ranked } from "./ranking.js";
 
-export function candidateSummary(c: Ranked, now: Date): BusinessSummaryDto {
+/**
+ * The thing on the card that answered the search, when it answered well. A kind's own name is
+ * never shown as one: the row already says what the business is.
+ */
+function matchedOf(c: Ranked): SearchItemDto["matched"] {
+  const m = c.matched;
+  if (!m || m.source === "kind" || m.score < RANKING.offerings.showMatch) return undefined;
+  return m.context ? { label: m.label, context: m.context } : { label: m.label };
+}
+
+export function candidateSummary(c: Ranked, now: Date): SearchItemDto {
   const { row } = c;
   const photos = (row.photos ?? []) as { key: string }[];
   return {
@@ -24,5 +35,6 @@ export function candidateSummary(c: Ranked, now: Date): BusinessSummaryDto {
     logo: (row.logo as BusinessSummaryDto["logo"]) ?? null,
     cardStyle: (row.cardStyle ?? {}) as BusinessSummaryDto["cardStyle"],
     ...(c.km === null ? {} : { distanceKm: c.km }),
-  };
+    ...(matchedOf(c) ? { matched: matchedOf(c) } : {}),
+  } satisfies BusinessSummaryDto;
 }

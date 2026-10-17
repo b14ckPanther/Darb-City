@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { contract } from "./contract.js";
 import {
   ClickRequestSchema,
+  conditionsOf,
   EMPTY_INTENT,
   IntentSchema,
   SearchRequestSchema,
@@ -26,6 +27,46 @@ describe("search schemas", () => {
     expect(IntentSchema.parse(EMPTY_INTENT)).toEqual(EMPTY_INTENT);
     expect(() => IntentSchema.parse({ ...EMPTY_INTENT, kinds: ["../admin"] })).toThrow();
     expect(() => IntentSchema.parse({ ...EMPTY_INTENT, place: "Haifa City" })).toThrow();
+  });
+  it("read an intent without items or conditions (older caches and links) as empty ones", () => {
+    const { items: _i, mustHave: _m, niceToHave: _n, ...old } = EMPTY_INTENT;
+    expect(IntentSchema.parse(old)).toEqual(EMPTY_INTENT);
+    expect(IntentSchema.parse({ ...EMPTY_INTENT, items: [" shawarma "] }).items).toEqual([
+      "shawarma",
+    ]);
+    expect(() => IntentSchema.parse({ ...EMPTY_INTENT, items: ["x".repeat(61)] })).toThrow();
+    expect(() =>
+      IntentSchema.parse({ ...EMPTY_INTENT, items: ["a", "b", "c", "d", "e", "f"] }),
+    ).toThrow();
+    expect(() => IntentSchema.parse({ ...EMPTY_INTENT, mustHave: ["halal"] })).toThrow();
+  });
+  it("make every stated condition a must, unless said as a wish; gluten free is always a must", () => {
+    const intent = {
+      ...EMPTY_INTENT,
+      openNow: true,
+      attributes: { delivers: true },
+      dietary: ["gluten_free" as const],
+      niceToHave: ["openNow" as const, "gluten_free" as const],
+    };
+    expect(conditionsOf(intent)).toEqual({
+      mustHave: ["delivers", "gluten_free"],
+      niceToHave: ["openNow"],
+    });
+    expect(conditionsOf(EMPTY_INTENT)).toEqual({ mustHave: [], niceToHave: [] });
+  });
+  it("carry the matched thing per item and an honest fallback", () => {
+    const base = {
+      status: "ok",
+      lane: "smart",
+      queryId: null,
+      intent: EMPTY_INTENT,
+      needsLocation: false,
+      items: [],
+      nearest: [],
+    };
+    expect(SearchResponseSchema.parse(base).fallback).toBeNull();
+    expect(SearchResponseSchema.parse({ ...base, fallback: "wider" }).fallback).toBe("wider");
+    expect(() => SearchResponseSchema.parse({ ...base, fallback: "anything" })).toThrow();
   });
   it("give a query id that POST /search/click accepts, or null", () => {
     const response = {

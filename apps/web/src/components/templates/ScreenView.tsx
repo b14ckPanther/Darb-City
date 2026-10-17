@@ -3,6 +3,7 @@ import type { Locale, Template } from "@darb/core";
 import type { ScreenDto } from "@darb/contracts";
 import { contrastRatio, readableOn } from "@/lib/contrast";
 import { TEMPLATE_BODIES } from "./index";
+import { MatchHighlight } from "./MatchHighlight";
 import { text } from "./shared";
 import styles from "./templates.module.css";
 
@@ -49,6 +50,7 @@ export function ScreenView({
         </div>
       )}
       <Body screen={screen} locale={locale} />
+      <MatchHighlight />
     </section>
   );
 }

@@ -4,6 +4,7 @@ import {
   explainedByInstant,
   intentCandidates,
   intentFromInstant,
+  searchedWords,
   validateIntent,
 } from "./filters.js";
 
@@ -67,6 +68,24 @@ describe("intent from lane 1", () => {
       attributes: { delivers: false },
       dietary: [],
       freeText: "pistachio",
+      items: [],
+      mustHave: ["openNow"],
+      niceToHave: [],
+    });
+  });
+  it("searches inside the cards for the words that named the kind, as typed, or every word but the place", () => {
+    expect(searchedWords(m("Knafeh, in Haifa!"))).toEqual({ words: ["Knafeh"], kind: "sweets" });
+    expect(searchedWords(m("knafeh in haifa open now with pistachio")).words).toEqual(["knafeh"]);
+    expect(searchedWords(m("keratin treatment haifa"))).toEqual({
+      words: ["keratin treatment"],
+      kind: null,
+    });
+    expect(searchedWords(m("haifa")).words).toEqual([]);
+    expect(searchedWords(m("gluten free")).words).toEqual([]);
+    // Lane 1 never puts them in the intent: the kind chip already says them.
+    expect(intentFromInstant(m("gluten free knafeh"))).toMatchObject({
+      items: [],
+      mustHave: ["gluten_free"],
     });
   });
   it("turns gluten-free words into the dietary filter, explained without the model (Task 27b)", () => {
@@ -122,7 +141,44 @@ describe("validating the model's answer", () => {
       attributes: { delivers: true },
       dietary: [],
       freeText: "pistachio",
+      items: [],
+      mustHave: ["delivers"],
+      niceToHave: [],
     });
+  });
+  it("cleans the model's items: no diet words, each once, at most five", () => {
+    const out = validateIntent(
+      {
+        kinds: [],
+        place: null,
+        nearMe: false,
+        openNow: true,
+        attributes: { delivers: false },
+        freeText: "",
+        items: ["gluten free shawarma", "Shawarma", " ", "kebab", "a", "b", "c", "d"],
+        niceToHave: ["openNow"],
+      },
+      allowed,
+      cues,
+    );
+    expect(out.items).toEqual(["shawarma", "kebab", "a", "b", "c"]);
+    // Said as a wish, open now lifts results instead of filtering them.
+    expect(out).toMatchObject({ openNow: true, mustHave: [], niceToHave: ["openNow"] });
+  });
+  it("reads an answer recorded before deep search (no items, no wishes) as none", () => {
+    const out = validateIntent(
+      {
+        kinds: ["sweets"],
+        place: null,
+        nearMe: false,
+        openNow: false,
+        attributes: { delivers: false },
+        freeText: "",
+      },
+      allowed,
+      cues,
+    );
+    expect(out).toMatchObject({ items: [], niceToHave: [], mustHave: [] });
   });
   it("keeps lane-1 cues the model missed and caps kinds at three", () => {
     const out = validateIntent(

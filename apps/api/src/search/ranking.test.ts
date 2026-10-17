@@ -80,4 +80,21 @@ describe("ranking ties", () => {
       ),
     ).toEqual(["id-1", "id-2", "id-0"]);
   });
+  it("in deep search, lifts an asked kind without letting it outrank a better match", () => {
+    // Same match: the asked kind comes first.
+    expect(order([c("other", { text: 0.8, kind: 0 }), c("kind", { text: 0.8, kind: 1 })])[0]).toBe(
+      "kind",
+    );
+    // A real business that names the thing beats a showroom example of the kind.
+    expect(
+      order([
+        c("example", { text: 0.45, kind: 1 }),
+        c("station", { text: 0.7, kind: 0 }, "basic"),
+      ])[0],
+    ).toBe("station");
+  });
+  it("lifts a result that meets a wish, a little", () => {
+    expect(order([c("a", { text: 0.5 }), c("b", { text: 0.5, nice: 1 })])[0]).toBe("b");
+    expect(order([c("a", { text: 0.9 }), c("b", { text: 0.5, nice: 1 })])[0]).toBe("a");
+  });
 });

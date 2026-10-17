@@ -24,7 +24,21 @@ export interface ResultsLabels {
   unreachable: string;
   nearestPlaces: string;
   nothingOpen: string;
+  /** Said (unseen) before a row's matched thing: "Has shawarma". */
+  matchedOn: string;
   rows: RowLabels;
+}
+
+/** The thing on the card that answered the search, gold-marked, with what it belongs to. */
+function Matched({ label, context, on }: { label: string; context: string | null; on: string }) {
+  return (
+    <span className={list.rowMatch} data-matched="">
+      <span className={list.matchMark} aria-hidden="true" />
+      <span className="visually-hidden">{on} </span>
+      <span className={list.matchLabel}>{label}</span>
+      {context ? <span className={list.matchContext}> · {context}</span> : null}
+    </span>
+  );
 }
 
 /** A function replacement, so "$&" or "$1" in a query or name stays as typed. */
@@ -163,6 +177,12 @@ export function SearchResults({
           </button>
         </p>
       ) : null}
+      {view.fallback && view.rows.length > 0 ? (
+        // Honest: what came instead of an exact match, said once above the list.
+        <p className={styles.fallback} data-search-fallback-line={view.fallback.type}>
+          {view.fallback.line}
+        </p>
+      ) : null}
       {state === "denied" ? <p role="status">{labels.locationDenied}</p> : null}
       {state === "error" ? <p role="status">{labels.unreachable}</p> : null}
       {view.rows.length > 0 ? (
@@ -173,6 +193,7 @@ export function SearchResults({
               row={row}
               labels={labels.rows}
               onOpen={() => clicked(row.key)}
+              note={row.matched ? <Matched {...row.matched} on={labels.matchedOn} /> : null}
             />
           ))}
         </ul>

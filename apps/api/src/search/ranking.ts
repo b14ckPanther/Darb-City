@@ -14,11 +14,14 @@ export function rank(candidates: Candidate[], config = RANKING): Ranked[] {
   const hasText = candidates.some((c) => c.text > 0);
   const hasVector = candidates.some((c) => c.vector > 0);
   const hasDistance = candidates.some((c) => c.km !== null);
+  // Deep search only: kinds lift rather than filter, so kind match is one more feature.
+  const hasKind = candidates.some((c) => c.kind !== undefined);
   const total =
     (hasText ? w.text : 0) +
     (hasVector ? w.vector : 0) +
     (hasDistance ? w.distance : 0) +
-    w.completeness;
+    w.completeness +
+    (hasKind ? config.kindWeight : 0);
   return (
     candidates
       .map((c) => {
@@ -27,10 +30,16 @@ export function rank(candidates: Candidate[], config = RANKING): Ranked[] {
           (hasText ? w.text * c.text : 0) +
           (hasVector ? w.vector * c.vector : 0) +
           (hasDistance ? w.distance * distance : 0) +
-          w.completeness * c.completeness;
+          w.completeness * c.completeness +
+          (hasKind ? config.kindWeight * (c.kind ?? 0) : 0);
         const relevance = sum / total;
         const boost = Math.min(config.tierBoost[c.row.tier] ?? 0, config.tierCap);
-        return { ...c, relevance, score: relevance + boost };
+        const demo = hasKind && c.row.tier === "example" ? config.examplePenalty : 0;
+        return {
+          ...c,
+          relevance,
+          score: relevance + boost - demo + config.niceBoost * (c.nice ?? 0),
+        };
       })
       // Slugs repeat across places (one chain, many towns), so the id breaks the last tie.
       .sort((a, b) => b.score - a.score || cmp(a.row.slug, b.row.slug) || cmp(a.row.id, b.row.id))

@@ -9,6 +9,10 @@ import {
 
 export const LocaleSchema = z.enum(["he", "ar", "en"]);
 
+/** A condition a search can state: open now, delivers, or a whole gluten-free kitchen. */
+export const ConditionSchema = z.enum(["openNow", "delivers", "gluten_free"]);
+export type Condition = z.infer<typeof ConditionSchema>;
+
 /** A person's position: sent only after "Near me", used once, never stored (spec §5.4). */
 export const PointSchema = z.object({
   lat: z.number().min(-90).max(90),
@@ -25,6 +29,15 @@ export const IntentSchema = z.object({
   /** Whole-business dietary facts asked for ("gluten free", "ללא גלוטן"); lane 1 finds them. */
   dietary: z.array(DietarySchema).max(4).default([]),
   freeText: z.string().max(120),
+  /**
+   * The specific things asked for ("shawarma", "car wash", "EV charging"), searched inside every
+   * business's card: its items, services and tags. Empty: a kind or a place is the whole ask.
+   */
+  items: z.array(z.string().trim().min(1).max(60)).max(5).default([]),
+  /** Stated conditions every result must meet (the server derives it from the flags above). */
+  mustHave: z.array(ConditionSchema).max(3).default([]),
+  /** Conditions said as a wish ("ideally open now"): they lift results instead of filtering. */
+  niceToHave: z.array(ConditionSchema).max(3).default([]),
 });
 export type IntentDto = z.infer<typeof IntentSchema>;
 
@@ -36,7 +49,24 @@ export const EMPTY_INTENT: IntentDto = {
   attributes: { delivers: false },
   dietary: [],
   freeText: "",
+  items: [],
+  mustHave: [],
+  niceToHave: [],
 };
+
+/** Gluten free is a safety fact, never only a wish: it is always a must. */
+export function conditionsOf(intent: IntentDto): {
+  mustHave: Condition[];
+  niceToHave: Condition[];
+} {
+  const stated: Condition[] = [
+    ...(intent.openNow ? (["openNow"] as const) : []),
+    ...(intent.attributes.delivers ? (["delivers"] as const) : []),
+    ...(intent.dietary.includes("gluten_free") ? (["gluten_free"] as const) : []),
+  ];
+  const nice = stated.filter((c) => c !== "gluten_free" && intent.niceToHave.includes(c));
+  return { mustHave: stated.filter((c) => !nice.includes(c)), niceToHave: nice };
+}
 
 export const SearchRequestSchema = z.object({
   q: z.string().trim().min(1).max(200),
@@ -54,6 +84,18 @@ export const ResultsRequestSchema = z.object({
 });
 export type ResultsRequestDto = z.infer<typeof ResultsRequestSchema>;
 
+/** The thing inside a business's card that answered the search ("Shawarma" in "Sandwiches"). */
+export const MatchedSchema = z.object({
+  label: LocalizedSchema,
+  context: LocalizedSchema.optional(),
+});
+export type MatchedDto = z.infer<typeof MatchedSchema>;
+
+export const SearchItemSchema = BusinessSummarySchema.extend({
+  matched: MatchedSchema.optional(),
+});
+export type SearchItemDto = z.infer<typeof SearchItemSchema>;
+
 export const SearchResponseSchema = z.object({
   status: z.enum(["ok", "blocked"]),
   lane: z.enum(["smart", "instant"]),
@@ -62,9 +104,16 @@ export const SearchResponseSchema = z.object({
   intent: IntentSchema,
   /** The intent asks for "near me" and no point was sent: the page offers the Near me button. */
   needsLocation: z.boolean(),
-  items: z.array(BusinessSummarySchema),
+  items: z.array(SearchItemSchema),
   /** When nothing matched a kind: the nearest live places that have it (spec §7). */
   nearest: z.array(NearestPlaceSchema),
+  /**
+   * Nothing matched where the search asked, so the items come from further away ("wider", each
+   * with its distance) or are related businesses without the asked thing ("related").
+   */
+  fallback: z.enum(["wider", "related"]).nullable().default(null),
+  /** The thing looked for inside the cards, in the query's words ("shawarma"); null if none. */
+  searched: z.string().max(60).nullable().default(null),
 });
 export type SearchResponseDto = z.infer<typeof SearchResponseSchema>;
 

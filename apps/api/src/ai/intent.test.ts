@@ -6,7 +6,7 @@ import {
   systemPrompt,
   userMessage,
   type IntentRequest,
-  type RawIntent,
+  type RawIntentInput,
 } from "./intent.js";
 import { OffIntentProvider, RecordedIntentProvider } from "./recorded-intent.provider.js";
 
@@ -16,13 +16,15 @@ const request: IntentRequest = {
   candidates: { kinds: [{ slug: "sweets", name: "Knafeh and Arabic sweets" }], places: [] },
   activeKinds: [],
 };
-const intent: RawIntent = {
+const intent: RawIntentInput = {
   kinds: ["sweets"],
   place: null,
   nearMe: true,
   openNow: true,
   attributes: { delivers: false },
   freeText: "",
+  items: [],
+  niceToHave: [],
 };
 
 function fakeClient(message: Partial<Anthropic.Message>) {
@@ -35,6 +37,17 @@ const toolUse = (input: unknown): Anthropic.ContentBlock =>
   ({ type: "tool_use", id: "t1", name: "record_intent", input }) as Anthropic.ContentBlock;
 
 describe("Anthropic intent provider", () => {
+  it("asks for the specific things wanted and for wishes, in the strict tool and the prompt", () => {
+    const props = (INTENT_TOOL.input_schema as { properties: Record<string, unknown> }).properties;
+    expect(Object.keys(props)).toEqual(expect.arrayContaining(["items", "niceToHave"]));
+    expect((INTENT_TOOL.input_schema as { required: string[] }).required).toEqual(
+      expect.arrayContaining(["items", "niceToHave"]),
+    );
+    const prompt = systemPrompt(["grill"]);
+    expect(prompt).toContain("items:");
+    expect(prompt).toContain("niceToHave:");
+    expect(prompt).toContain("English name");
+  });
   it("forces one strict tool call on the configured model, with a cached system prompt", async () => {
     const { client, create } = fakeClient({ content: [toolUse(intent)] });
     const provider = new AnthropicIntentProvider(client, "claude-haiku-5-5");

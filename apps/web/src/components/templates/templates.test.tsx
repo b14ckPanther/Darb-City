@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import { TEMPLATES } from "@darb/core";
 import type { ScreenDto } from "@darb/contracts";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { parseScreen, TEMPLATE_BODIES } from "./index";
 import { ScreenView } from "./ScreenView";
 
@@ -64,5 +64,43 @@ describe("palette guard", () => {
   it("swaps an unreadable ink for black or white", () => {
     expect(ink({ ...screen.palette, ink: "#d8cbb6" })).toBe("#000000");
     expect(ink({ ...screen.palette, bg: "#1a1a2e", ink: "#2b2b40" })).toBe("#ffffff");
+  });
+});
+
+describe("the item a search matched", () => {
+  const caramel: ScreenDto = {
+    ...screen,
+    items: [
+      {
+        label: { he: "ארוחות", en: "Meals" },
+        meta: { he: "כריכים: שניצל, שווארמה", en: "Sandwiches: schnitzel, shawarma" },
+      },
+      { label: { he: "שטיפת רכב", en: "Car wash" } },
+    ],
+  };
+  it.each(TEMPLATES)("%s: keys every item by its label and each listed thing", (template) => {
+    const { container } = render(<ScreenView screen={caramel} template={template} locale="he" />);
+    const keys = [...container.querySelectorAll("[data-item]")].map((el) =>
+      el.getAttribute("data-match-keys"),
+    );
+    expect(keys.some((k) => k?.split(" ").includes("שווארמה"))).toBe(true);
+    expect(keys.some((k) => k?.split(" ").includes("car-wash"))).toBe(true);
+  });
+  it("marks the item named in ?hl= when the screen opens, and nothing without it", () => {
+    // jsdom lays nothing out, so it has no scrollIntoView.
+    const scroll = vi.fn();
+    Element.prototype.scrollIntoView = scroll;
+    window.history.replaceState(null, "", "/akko/food/restaurants/caramel?hl=shawarma");
+    try {
+      const { container } = render(<ScreenView screen={caramel} template="menu" locale="en" />);
+      const marked = container.querySelectorAll("[data-highlight]");
+      expect(marked).toHaveLength(1);
+      expect(marked[0]?.textContent).toContain("Meals");
+      expect(scroll).toHaveBeenCalledWith({ block: "center" });
+    } finally {
+      window.history.replaceState(null, "", "/");
+    }
+    const { container } = render(<ScreenView screen={caramel} template="menu" locale="en" />);
+    expect(container.querySelectorAll("[data-highlight]")).toHaveLength(0);
   });
 });

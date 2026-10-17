@@ -23,6 +23,14 @@
   line-height: 1.4;
 }
 
+/* Asked for as a must: gold, so the condition the search kept reads at a glance. */
+.glutenFree[data-strict] {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: var(--night);
+  font-weight: 700;
+}
+
 /* The card icons' leaf (components/icons), as a mask: no markup and no JS in long lists. */
 .glutenFree::before {
   content: "";

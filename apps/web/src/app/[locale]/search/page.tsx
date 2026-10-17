@@ -8,6 +8,7 @@ import { CityBar } from "@/components/CityBar";
 import { SearchFallback } from "@/components/SearchFallback";
 import { SearchQuery } from "@/components/SearchQuery";
 import { SearchResults } from "@/components/SearchResults";
+import { deepSearch } from "@/content/deep-search";
 import { StageData } from "@/components/StageData";
 import { searchLabels } from "@/components/SearchBar";
 import { clientIpFrom } from "@/lib/client-ip";
@@ -25,6 +26,7 @@ type Props = {
     q?: string | string[];
     chips?: string | string[];
     text?: string | string[];
+    item?: string | string[];
   }>;
 };
 
@@ -58,7 +60,8 @@ export default async function SearchPage({ params, searchParams }: Props) {
   const locale = localeOrNotFound((await params).locale);
   const query = await searchParams;
   const q = queryOf(query.q);
-  const edited = intentFromUrl(first(query.chips), first(query.text));
+  const items = query.item === undefined ? [] : [query.item].flat();
+  const edited = intentFromUrl(first(query.chips), first(query.text), items);
   const crumbs = crumbsFor(locale, {
     page: { label: t(locale, "search"), href: href(locale, paths.search()) },
   });
@@ -96,6 +99,7 @@ export default async function SearchPage({ params, searchParams }: Props) {
           unreachable: t(locale, "unreachable"),
           nearestPlaces: t(locale, "nearestPlaces"),
           nothingOpen: t(locale, "nothingOpen"),
+          matchedOn: deepSearch[locale].matchedOn,
           rows: rowLabels(locale),
         }}
       />

@@ -47,6 +47,7 @@ const view: SearchView = {
   nearest: [],
   narrowest: null,
   withoutOpenNow: null,
+  fallback: null,
 };
 const labels = {
   removeChip: "Remove {chip}",
@@ -71,6 +72,7 @@ const labels = {
     distanceM: "{m} m",
     locale: "en",
   },
+  matchedOn: "Has",
 };
 
 describe("SearchResults", () => {
@@ -165,5 +167,46 @@ describe("SearchResults", () => {
       "/en/akko/food/sweets",
     );
     expect(screen.getByRole("link", { name: /Haifa/ })).toBeTruthy();
+  });
+});
+
+describe("deep search rows", () => {
+  it("shows the matched thing on the row, gold-marked, with the strict diet highlighted", () => {
+    const caramel = {
+      ...row("akko/caramel"),
+      href: "/en/akko/caramel?hl=shawarma",
+      glutenFree: true,
+      strictGlutenFree: true,
+      matched: { label: "gluten-free shawarma", context: "Challah and laffa sandwiches" },
+    };
+    render(<SearchResults locale="en" initial={{ ...view, rows: [caramel] }} labels={labels} />);
+    const matched = document.querySelector("[data-matched]")!;
+    expect(matched.textContent).toBe("Has gluten-free shawarma · Challah and laffa sandwiches");
+    expect(document.querySelector("[data-gluten-free]")?.hasAttribute("data-strict")).toBe(true);
+    expect(
+      document.querySelector('[data-business-link="akko/caramel"]')?.getAttribute("href"),
+    ).toBe("/en/akko/caramel?hl=shawarma");
+  });
+  it("says once, above the list, that the results come from further away", () => {
+    render(
+      <SearchResults
+        locale="en"
+        initial={{
+          ...view,
+          fallback: {
+            type: "wider",
+            line: "No gluten-free shawarma in Karmiel. Closest: Caramel, Akko, 24 km",
+          },
+        }}
+        labels={labels}
+      />,
+    );
+    const line = document.querySelector('[data-search-fallback-line="wider"]');
+    expect(line?.textContent).toBe(
+      "No gluten-free shawarma in Karmiel. Closest: Caramel, Akko, 24 km",
+    );
+    expect(document.querySelectorAll("[data-search-fallback-line]")).toHaveLength(1);
+    // A row without a match shows no mark and no strict badge.
+    expect(document.querySelector("[data-matched]")).toBeNull();
   });
 });
