@@ -188,6 +188,8 @@ export const BusinessDetailSchema = BusinessSummarySchema.extend({
     android: z.string().url().optional(),
   }),
   brandId: z.string().nullable(),
+  /** The chain it belongs to ("paz"), so a card can say what Darb built for that chain. */
+  brandSlug: z.string().nullable().default(null),
 });
 export type BusinessDetailDto = z.infer<typeof BusinessDetailSchema>;
 
