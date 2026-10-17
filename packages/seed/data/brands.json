@@ -1822,5 +1822,37 @@
       "ar": "بنك القدس",
       "en": "Bank of Jerusalem"
     }
+  },
+  {
+    "slug": "afcon-ev",
+    "name": {
+      "he": "אפקון EV",
+      "ar": "أفكون EV",
+      "en": "Afcon EV"
+    }
+  },
+  {
+    "slug": "greenspot",
+    "name": {
+      "he": "גרינספוט",
+      "ar": "جرينسبوت",
+      "en": "Greenspot"
+    }
+  },
+  {
+    "slug": "ev-edge",
+    "name": {
+      "he": "EV Edge",
+      "ar": "EV Edge",
+      "en": "EV Edge"
+    }
+  },
+  {
+    "slug": "tesla",
+    "name": {
+      "he": "טסלה",
+      "ar": "تسلا",
+      "en": "Tesla"
+    }
   }
 ]

@@ -1,0 +1,2134 @@
+{
+  "source": {
+    "name": "משרד התחבורה, עמדות טעינה לרכב חשמלי (data.gov.il)",
+    "url": "https://data.gov.il/dataset/agg_charge_stations",
+    "resource": "528482f2-d410-4d62-8b17-566ab23a1c52",
+    "licence": "Creative Commons Attribution (CC BY), Ministry of Transport",
+    "region": "northern-district, haifa-district",
+    "fetched": "2026-10-17",
+    "points": "© OpenStreetMap contributors (ODbL), openstreetmap.org/copyright: the list's SHP and KMZ files are refused (403) and its CSV has no coordinates, so a site is listed only where an OSM charging station in the north has the same name",
+    "at_fuel_stations": "chargers named for a chain's station are on that fuel station's card (fuel-north.json)",
+    "counts": {
+      "fetched": 2261,
+      "atFuelStation": 194,
+      "noOsmMatch": 2066,
+      "matched": 1,
+      "outsideNorth": 0,
+      "osmOnly": 17,
+      "deduped": 2,
+      "emitted": 16
+    }
+  },
+  "businesses": [
+    {
+      "slug": "tesla-afula",
+      "place": "afula",
+      "brand": "tesla",
+      "primaryKind": "ev-charging",
+      "kinds": [
+        "ev-charging"
+      ],
+      "name": {
+        "he": "טסלה עפולה",
+        "ar": "تسلا العفولة",
+        "en": "Tesla Afula"
+      },
+      "tagline": {
+        "he": "טעינה לרכב חשמלי, טסלה",
+        "ar": "شحن سيارات كهربائية، تسلا",
+        "en": "Tesla EV charging"
+      },
+      "address": {
+        "he": "עפולה",
+        "ar": "العفولة",
+        "en": "Afula"
+      },
+      "lat": 32.6056254,
+      "lng": 35.2930876,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "5": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "6": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9117081868",
+        "motChargerIds": ""
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "טסלה עפולה",
+          "ar": "تسلا العفولة",
+          "en": "Tesla Afula"
+        },
+        "title": {
+          "he": "עמדות טעינה לרכב חשמלי",
+          "ar": "شحن سيارات كهربائية",
+          "en": "EV charging"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "עמדות",
+              "ar": "شواحن",
+              "en": "Chargers"
+            },
+            "meta": {
+              "he": "6",
+              "ar": "6",
+              "en": "6"
+            }
+          },
+          {
+            "label": {
+              "he": "מפעיל",
+              "ar": "الشركة المشغّلة",
+              "en": "Operator"
+            },
+            "meta": {
+              "he": "טסלה",
+              "ar": "تسلا",
+              "en": "Tesla"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לעמדה",
+          "ar": "خذني للشاحن",
+          "en": "Navigate to the charger"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "tesla-hadera",
+      "place": "hadera",
+      "brand": "tesla",
+      "primaryKind": "ev-charging",
+      "kinds": [
+        "ev-charging"
+      ],
+      "name": {
+        "he": "טסלה חדרה",
+        "ar": "تسلا الخضيرة",
+        "en": "Tesla Hadera"
+      },
+      "tagline": {
+        "he": "טעינה לרכב חשמלי, טסלה",
+        "ar": "شحن سيارات كهربائية، تسلا",
+        "en": "Tesla EV charging"
+      },
+      "address": {
+        "he": "חדרה",
+        "ar": "الخضيرة",
+        "en": "Hadera"
+      },
+      "lat": 32.4416058,
+      "lng": 34.893893,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "5": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "6": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/11224593577",
+        "motChargerIds": ""
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "טסלה חדרה",
+          "ar": "تسلا الخضيرة",
+          "en": "Tesla Hadera"
+        },
+        "title": {
+          "he": "עמדות טעינה לרכב חשמלי",
+          "ar": "شحن سيارات كهربائية",
+          "en": "EV charging"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "עמדות",
+              "ar": "شواحن",
+              "en": "Chargers"
+            },
+            "meta": {
+              "he": "12",
+              "ar": "12",
+              "en": "12"
+            }
+          },
+          {
+            "label": {
+              "he": "מפעיל",
+              "ar": "الشركة المشغّلة",
+              "en": "Operator"
+            },
+            "meta": {
+              "he": "טסלה",
+              "ar": "تسلا",
+              "en": "Tesla"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לעמדה",
+          "ar": "خذني للشاحن",
+          "en": "Navigate to the charger"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "tesla-haifa",
+      "place": "haifa",
+      "brand": "tesla",
+      "primaryKind": "ev-charging",
+      "kinds": [
+        "ev-charging"
+      ],
+      "name": {
+        "he": "טסלה חיפה",
+        "ar": "تسلا حيفا",
+        "en": "Tesla Haifa"
+      },
+      "tagline": {
+        "he": "טעינה לרכב חשמלי, טסלה",
+        "ar": "شحن سيارات كهربائية، تسلا",
+        "en": "Tesla EV charging"
+      },
+      "address": {
+        "he": "חיפה",
+        "ar": "حيفا",
+        "en": "Haifa"
+      },
+      "lat": 32.7893647,
+      "lng": 34.964761,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "5": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "6": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9117081869",
+        "motChargerIds": ""
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "טסלה חיפה",
+          "ar": "تسلا حيفا",
+          "en": "Tesla Haifa"
+        },
+        "title": {
+          "he": "עמדות טעינה לרכב חשמלי",
+          "ar": "شحن سيارات كهربائية",
+          "en": "EV charging"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "עמדות",
+              "ar": "شواحن",
+              "en": "Chargers"
+            },
+            "meta": {
+              "he": "6",
+              "ar": "6",
+              "en": "6"
+            }
+          },
+          {
+            "label": {
+              "he": "מפעיל",
+              "ar": "الشركة المشغّلة",
+              "en": "Operator"
+            },
+            "meta": {
+              "he": "טסלה",
+              "ar": "تسلا",
+              "en": "Tesla"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לעמדה",
+          "ar": "خذني للشاحن",
+          "en": "Navigate to the charger"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "afcon-ev-karmiel",
+      "place": "karmiel",
+      "brand": "afcon-ev",
+      "primaryKind": "ev-charging",
+      "kinds": [
+        "ev-charging"
+      ],
+      "name": {
+        "he": "אפקון EV כרמיאל",
+        "ar": "أفكون EV كرميئيل",
+        "en": "Afcon EV Karmiel"
+      },
+      "tagline": {
+        "he": "טעינה לרכב חשמלי, אפקון EV",
+        "ar": "شحن سيارات كهربائية، أفكون EV",
+        "en": "Afcon EV EV charging"
+      },
+      "address": {
+        "he": "כרמיאל",
+        "ar": "كرميئيل",
+        "en": "Karmiel"
+      },
+      "lat": 32.9231083,
+      "lng": 35.3071193,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "5": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "6": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1428874009",
+        "motChargerIds": ""
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אפקון EV כרמיאל",
+          "ar": "أفكون EV كرميئيل",
+          "en": "Afcon EV Karmiel"
+        },
+        "title": {
+          "he": "עמדות טעינה לרכב חשמלי",
+          "ar": "شحن سيارات كهربائية",
+          "en": "EV charging"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "עמדות",
+              "ar": "شواحن",
+              "en": "Chargers"
+            },
+            "meta": {
+              "he": "4",
+              "ar": "4",
+              "en": "4"
+            }
+          },
+          {
+            "label": {
+              "he": "מפעיל",
+              "ar": "الشركة المشغّلة",
+              "en": "Operator"
+            },
+            "meta": {
+              "he": "אפקון EV",
+              "ar": "أفكون EV",
+              "en": "Afcon EV"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לעמדה",
+          "ar": "خذني للشاحن",
+          "en": "Navigate to the charger"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "afcon-ev-karmiel-2",
+      "place": "karmiel",
+      "brand": "afcon-ev",
+      "primaryKind": "ev-charging",
+      "kinds": [
+        "ev-charging"
+      ],
+      "name": {
+        "he": "אפקון EV כרמיאל",
+        "ar": "أفكون EV كرميئيل",
+        "en": "Afcon EV Karmiel"
+      },
+      "tagline": {
+        "he": "טעינה לרכב חשמלי, אפקון EV",
+        "ar": "شحن سيارات كهربائية، أفكون EV",
+        "en": "Afcon EV EV charging"
+      },
+      "address": {
+        "he": "כרמיאל",
+        "ar": "كرميئيل",
+        "en": "Karmiel"
+      },
+      "lat": 32.9218855,
+      "lng": 35.3071679,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "5": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "6": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1446720450",
+        "motChargerIds": ""
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אפקון EV כרמיאל",
+          "ar": "أفكون EV كرميئيل",
+          "en": "Afcon EV Karmiel"
+        },
+        "title": {
+          "he": "עמדות טעינה לרכב חשמלי",
+          "ar": "شحن سيارات كهربائية",
+          "en": "EV charging"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "עמדות",
+              "ar": "شواحن",
+              "en": "Chargers"
+            },
+            "meta": {
+              "he": "2",
+              "ar": "2",
+              "en": "2"
+            }
+          },
+          {
+            "label": {
+              "he": "מפעיל",
+              "ar": "الشركة المشغّلة",
+              "en": "Operator"
+            },
+            "meta": {
+              "he": "אפקון EV",
+              "ar": "أفكون EV",
+              "en": "Afcon EV"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לעמדה",
+          "ar": "خذني للشاحن",
+          "en": "Navigate to the charger"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "ev-edge-karmiel",
+      "place": "karmiel",
+      "brand": "ev-edge",
+      "primaryKind": "ev-charging",
+      "kinds": [
+        "ev-charging"
+      ],
+      "name": {
+        "he": "EV Edge כרמיאל",
+        "ar": "EV Edge كرميئيل",
+        "en": "EV Edge Karmiel"
+      },
+      "tagline": {
+        "he": "טעינה לרכב חשמלי, EV Edge",
+        "ar": "شحن سيارات كهربائية، EV Edge",
+        "en": "EV Edge EV charging"
+      },
+      "address": {
+        "he": "כרמיאל",
+        "ar": "كرميئيل",
+        "en": "Karmiel"
+      },
+      "lat": 32.9051871,
+      "lng": 35.2817729,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "5": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "6": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1425612528",
+        "motChargerIds": ""
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "EV Edge כרמיאל",
+          "ar": "EV Edge كرميئيل",
+          "en": "EV Edge Karmiel"
+        },
+        "title": {
+          "he": "עמדות טעינה לרכב חשמלי",
+          "ar": "شحن سيارات كهربائية",
+          "en": "EV charging"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "עמדות",
+              "ar": "شواحن",
+              "en": "Chargers"
+            },
+            "meta": {
+              "he": "2",
+              "ar": "2",
+              "en": "2"
+            }
+          },
+          {
+            "label": {
+              "he": "מפעיל",
+              "ar": "الشركة المشغّلة",
+              "en": "Operator"
+            },
+            "meta": {
+              "he": "EV Edge",
+              "ar": "EV Edge",
+              "en": "EV Edge"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לעמדה",
+          "ar": "خذني للشاحن",
+          "en": "Navigate to the charger"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "ev-edge-karmiel-2",
+      "place": "karmiel",
+      "brand": "ev-edge",
+      "primaryKind": "ev-charging",
+      "kinds": [
+        "ev-charging"
+      ],
+      "name": {
+        "he": "EV Edge כרמיאל",
+        "ar": "EV Edge كرميئيل",
+        "en": "EV Edge Karmiel"
+      },
+      "tagline": {
+        "he": "טעינה לרכב חשמלי, EV Edge",
+        "ar": "شحن سيارات كهربائية، EV Edge",
+        "en": "EV Edge EV charging"
+      },
+      "address": {
+        "he": "כרמיאל",
+        "ar": "كرميئيل",
+        "en": "Karmiel"
+      },
+      "lat": 32.9112174,
+      "lng": 35.293552,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "5": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "6": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1485851910",
+        "motChargerIds": ""
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "EV Edge כרמיאל",
+          "ar": "EV Edge كرميئيل",
+          "en": "EV Edge Karmiel"
+        },
+        "title": {
+          "he": "עמדות טעינה לרכב חשמלי",
+          "ar": "شحن سيارات كهربائية",
+          "en": "EV charging"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "עמדות",
+              "ar": "شواحن",
+              "en": "Chargers"
+            },
+            "meta": {
+              "he": "6",
+              "ar": "6",
+              "en": "6"
+            }
+          },
+          {
+            "label": {
+              "he": "מפעיל",
+              "ar": "الشركة المشغّلة",
+              "en": "Operator"
+            },
+            "meta": {
+              "he": "EV Edge",
+              "ar": "EV Edge",
+              "en": "EV Edge"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לעמדה",
+          "ar": "خذني للشاحن",
+          "en": "Navigate to the charger"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "tesla-karmiel",
+      "place": "karmiel",
+      "brand": "tesla",
+      "primaryKind": "ev-charging",
+      "kinds": [
+        "ev-charging"
+      ],
+      "name": {
+        "he": "טסלה כרמיאל",
+        "ar": "تسلا كرميئيل",
+        "en": "Tesla Karmiel"
+      },
+      "tagline": {
+        "he": "טעינה לרכב חשמלי, טסלה",
+        "ar": "شحن سيارات كهربائية، تسلا",
+        "en": "Tesla EV charging"
+      },
+      "address": {
+        "he": "כרמיאל",
+        "ar": "كرميئيل",
+        "en": "Karmiel"
+      },
+      "lat": 32.9280654,
+      "lng": 35.3249611,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "5": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "6": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1391026958",
+        "motChargerIds": ""
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "טסלה כרמיאל",
+          "ar": "تسلا كرميئيل",
+          "en": "Tesla Karmiel"
+        },
+        "title": {
+          "he": "עמדות טעינה לרכב חשמלי",
+          "ar": "شحن سيارات كهربائية",
+          "en": "EV charging"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "עמדות",
+              "ar": "شواحن",
+              "en": "Chargers"
+            },
+            "meta": {
+              "he": "12",
+              "ar": "12",
+              "en": "12"
+            }
+          },
+          {
+            "label": {
+              "he": "מפעיל",
+              "ar": "الشركة المشغّلة",
+              "en": "Operator"
+            },
+            "meta": {
+              "he": "טסלה",
+              "ar": "تسلا",
+              "en": "Tesla"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לעמדה",
+          "ar": "خذني للشاحن",
+          "en": "Navigate to the charger"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "tesla-kiryat-ata",
+      "place": "kiryat-ata",
+      "brand": "tesla",
+      "primaryKind": "ev-charging",
+      "kinds": [
+        "ev-charging"
+      ],
+      "name": {
+        "he": "טסלה קרית אתא",
+        "ar": "تسلا كريات آتا",
+        "en": "Tesla Kiryat Ata"
+      },
+      "tagline": {
+        "he": "טעינה לרכב חשמלי, טסלה",
+        "ar": "شحن سيارات كهربائية، تسلا",
+        "en": "Tesla EV charging"
+      },
+      "address": {
+        "he": "קרית אתא",
+        "ar": "كريات آتا",
+        "en": "Kiryat Ata"
+      },
+      "lat": 32.8077323,
+      "lng": 35.0757674,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "5": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "6": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/10726388112",
+        "motChargerIds": ""
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "טסלה קרית אתא",
+          "ar": "تسلا كريات آتا",
+          "en": "Tesla Kiryat Ata"
+        },
+        "title": {
+          "he": "עמדות טעינה לרכב חשמלי",
+          "ar": "شحن سيارات كهربائية",
+          "en": "EV charging"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "עמדות",
+              "ar": "شواحن",
+              "en": "Chargers"
+            },
+            "meta": {
+              "he": "8",
+              "ar": "8",
+              "en": "8"
+            }
+          },
+          {
+            "label": {
+              "he": "מפעיל",
+              "ar": "الشركة المشغّلة",
+              "en": "Operator"
+            },
+            "meta": {
+              "he": "טסלה",
+              "ar": "تسلا",
+              "en": "Tesla"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לעמדה",
+          "ar": "خذني للشاحن",
+          "en": "Navigate to the charger"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "greenspot-kiryat-bialik",
+      "place": "kiryat-bialik",
+      "brand": "greenspot",
+      "primaryKind": "ev-charging",
+      "kinds": [
+        "ev-charging"
+      ],
+      "name": {
+        "he": "גרינספוט קרית ביאליק",
+        "ar": "جرينسبوت كريات بياليك",
+        "en": "Greenspot Kiryat Bialik"
+      },
+      "tagline": {
+        "he": "טעינה לרכב חשמלי, גרינספוט",
+        "ar": "شحن سيارات كهربائية، جرينسبوت",
+        "en": "Greenspot EV charging"
+      },
+      "address": {
+        "he": "קרית ביאליק",
+        "ar": "كريات بياليك",
+        "en": "Kiryat Bialik"
+      },
+      "lat": 32.8241193,
+      "lng": 35.0800385,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/8575646318",
+        "motChargerIds": ""
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "גרינספוט קרית ביאליק",
+          "ar": "جرينسبوت كريات بياليك",
+          "en": "Greenspot Kiryat Bialik"
+        },
+        "title": {
+          "he": "עמדות טעינה לרכב חשמלי",
+          "ar": "شحن سيارات كهربائية",
+          "en": "EV charging"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "עמדות",
+              "ar": "شواحن",
+              "en": "Chargers"
+            }
+          },
+          {
+            "label": {
+              "he": "מפעיל",
+              "ar": "الشركة المشغّلة",
+              "en": "Operator"
+            },
+            "meta": {
+              "he": "גרינספוט",
+              "ar": "جرينسبوت",
+              "en": "Greenspot"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לעמדה",
+          "ar": "خذني للشاحن",
+          "en": "Navigate to the charger"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "tesla-kiryat-shmona",
+      "place": "kiryat-shmona",
+      "brand": "tesla",
+      "primaryKind": "ev-charging",
+      "kinds": [
+        "ev-charging"
+      ],
+      "name": {
+        "he": "טסלה קרית שמונה",
+        "ar": "تسلا كريات شمونة",
+        "en": "Tesla Kiryat Shmona"
+      },
+      "tagline": {
+        "he": "טעינה לרכב חשמלי, טסלה",
+        "ar": "شحن سيارات كهربائية، تسلا",
+        "en": "Tesla EV charging"
+      },
+      "address": {
+        "he": "קרית שמונה",
+        "ar": "كريات شمونة",
+        "en": "Kiryat Shmona"
+      },
+      "lat": 33.1925896,
+      "lng": 35.5706594,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "5": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "6": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9739972864",
+        "motChargerIds": ""
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "טסלה קרית שמונה",
+          "ar": "تسلا كريات شمونة",
+          "en": "Tesla Kiryat Shmona"
+        },
+        "title": {
+          "he": "עמדות טעינה לרכב חשמלי",
+          "ar": "شحن سيارات كهربائية",
+          "en": "EV charging"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "עמדות",
+              "ar": "شواحن",
+              "en": "Chargers"
+            },
+            "meta": {
+              "he": "8",
+              "ar": "8",
+              "en": "8"
+            }
+          },
+          {
+            "label": {
+              "he": "מפעיל",
+              "ar": "الشركة المشغّلة",
+              "en": "Operator"
+            },
+            "meta": {
+              "he": "טסלה",
+              "ar": "تسلا",
+              "en": "Tesla"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לעמדה",
+          "ar": "خذني للشاحن",
+          "en": "Navigate to the charger"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "afcon-ev-ein-shra-nahariya-centre",
+      "place": "nahariya",
+      "brand": "afcon-ev",
+      "primaryKind": "ev-charging",
+      "kinds": [
+        "ev-charging"
+      ],
+      "name": {
+        "he": "אפקון EV מרכז עין שרה נהריה",
+        "ar": "أفكون EV مركز عين شرا نهاريا",
+        "en": "Afcon EV Ein Shra Nahariya Centre"
+      },
+      "tagline": {
+        "he": "טעינה לרכב חשמלי, אפקון EV",
+        "ar": "شحن سيارات كهربائية، أفكون EV",
+        "en": "Afcon EV EV charging"
+      },
+      "address": {
+        "he": "שדרות זלמן שזר 31",
+        "ar": "نهاريا",
+        "en": "Nahariya"
+      },
+      "lat": 32.9896841,
+      "lng": 35.0893995,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/10255208883",
+        "motChargerIds": "2134"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אפקון EV מרכז עין שרה נהריה",
+          "ar": "أفكون EV مركز عين شرا نهاريا",
+          "en": "Afcon EV Ein Shra Nahariya Centre"
+        },
+        "title": {
+          "he": "עמדות טעינה לרכב חשמלי",
+          "ar": "شحن سيارات كهربائية",
+          "en": "EV charging"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "עמדות",
+              "ar": "شواحن",
+              "en": "Chargers"
+            },
+            "meta": {
+              "he": "2 רגילות",
+              "ar": "2 عادية",
+              "en": "2 standard"
+            }
+          },
+          {
+            "label": {
+              "he": "מפעיל",
+              "ar": "الشركة المشغّلة",
+              "en": "Operator"
+            },
+            "meta": {
+              "he": "אפקון EV",
+              "ar": "أفكون EV",
+              "en": "Afcon EV"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לעמדה",
+          "ar": "خذني للشاحن",
+          "en": "Navigate to the charger"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "afcon-ev-nahf",
+      "place": "nahf",
+      "brand": "afcon-ev",
+      "primaryKind": "ev-charging",
+      "kinds": [
+        "ev-charging"
+      ],
+      "name": {
+        "he": "אפקון EV נחף",
+        "ar": "أفكون EV نحف",
+        "en": "Afcon EV Nahf"
+      },
+      "tagline": {
+        "he": "טעינה לרכב חשמלי, אפקון EV",
+        "ar": "شحن سيارات كهربائية، أفكون EV",
+        "en": "Afcon EV EV charging"
+      },
+      "address": {
+        "he": "נחף",
+        "ar": "نحف",
+        "en": "Nahf"
+      },
+      "lat": 32.9276902,
+      "lng": 35.3214145,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "5": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "6": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1543346252",
+        "motChargerIds": ""
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אפקון EV נחף",
+          "ar": "أفكون EV نحف",
+          "en": "Afcon EV Nahf"
+        },
+        "title": {
+          "he": "עמדות טעינה לרכב חשמלי",
+          "ar": "شحن سيارات كهربائية",
+          "en": "EV charging"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "עמדות",
+              "ar": "شواحن",
+              "en": "Chargers"
+            },
+            "meta": {
+              "he": "6",
+              "ar": "6",
+              "en": "6"
+            }
+          },
+          {
+            "label": {
+              "he": "מפעיל",
+              "ar": "الشركة المشغّلة",
+              "en": "Operator"
+            },
+            "meta": {
+              "he": "אפקון EV",
+              "ar": "أفكون EV",
+              "en": "Afcon EV"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לעמדה",
+          "ar": "خذني للشاحن",
+          "en": "Navigate to the charger"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "ev-edge-nahf",
+      "place": "nahf",
+      "brand": "ev-edge",
+      "primaryKind": "ev-charging",
+      "kinds": [
+        "ev-charging"
+      ],
+      "name": {
+        "he": "EV Edge נחף",
+        "ar": "EV Edge نحف",
+        "en": "EV Edge Nahf"
+      },
+      "tagline": {
+        "he": "טעינה לרכב חשמלי, EV Edge",
+        "ar": "شحن سيارات كهربائية، EV Edge",
+        "en": "EV Edge EV charging"
+      },
+      "address": {
+        "he": "נחף",
+        "ar": "نحف",
+        "en": "Nahf"
+      },
+      "lat": 32.9274996,
+      "lng": 35.3265435,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "5": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "6": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1543599986",
+        "motChargerIds": ""
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "EV Edge נחף",
+          "ar": "EV Edge نحف",
+          "en": "EV Edge Nahf"
+        },
+        "title": {
+          "he": "עמדות טעינה לרכב חשמלי",
+          "ar": "شحن سيارات كهربائية",
+          "en": "EV charging"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "עמדות",
+              "ar": "شواحن",
+              "en": "Chargers"
+            },
+            "meta": {
+              "he": "4",
+              "ar": "4",
+              "en": "4"
+            }
+          },
+          {
+            "label": {
+              "he": "מפעיל",
+              "ar": "الشركة المشغّلة",
+              "en": "Operator"
+            },
+            "meta": {
+              "he": "EV Edge",
+              "ar": "EV Edge",
+              "en": "EV Edge"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לעמדה",
+          "ar": "خذني للشاحن",
+          "en": "Navigate to the charger"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "tesla-nof-hagalil",
+      "place": "nof-hagalil",
+      "brand": "tesla",
+      "primaryKind": "ev-charging",
+      "kinds": [
+        "ev-charging"
+      ],
+      "name": {
+        "he": "טסלה נוף הגליל",
+        "ar": "تسلا نوف هجليل",
+        "en": "Tesla Nof HaGalil"
+      },
+      "tagline": {
+        "he": "טעינה לרכב חשמלי, טסלה",
+        "ar": "شحن سيارات كهربائية، تسلا",
+        "en": "Tesla EV charging"
+      },
+      "address": {
+        "he": "נוף הגליל",
+        "ar": "نوف هجليل",
+        "en": "Nof HaGalil"
+      },
+      "lat": 32.7026419,
+      "lng": 35.3116174,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/10031892984",
+        "motChargerIds": ""
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "טסלה נוף הגליל",
+          "ar": "تسلا نوف هجليل",
+          "en": "Tesla Nof HaGalil"
+        },
+        "title": {
+          "he": "עמדות טעינה לרכב חשמלי",
+          "ar": "شحن سيارات كهربائية",
+          "en": "EV charging"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "עמדות",
+              "ar": "شواحن",
+              "en": "Chargers"
+            }
+          },
+          {
+            "label": {
+              "he": "מפעיל",
+              "ar": "الشركة المشغّلة",
+              "en": "Operator"
+            },
+            "meta": {
+              "he": "טסלה",
+              "ar": "تسلا",
+              "en": "Tesla"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לעמדה",
+          "ar": "خذني للشاحن",
+          "en": "Navigate to the charger"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "afcon-ev-idb-tayalat-hashakad-1-2",
+      "place": "shavei-zion",
+      "brand": "afcon-ev",
+      "primaryKind": "ev-charging",
+      "kinds": [
+        "ev-charging"
+      ],
+      "name": {
+        "he": "אפקון EV IDB טיילת, השקד 1 &2",
+        "ar": "أفكون EV IDB طيلت هشكد 1 &2",
+        "en": "Afcon EV IDB Tayalat Hashakad 1 &2"
+      },
+      "tagline": {
+        "he": "טעינה לרכב חשמלי, אפקון EV",
+        "ar": "شحن سيارات كهربائية، أفكون EV",
+        "en": "Afcon EV EV charging"
+      },
+      "address": {
+        "he": "שבי ציון",
+        "ar": "شڤيه تسيون",
+        "en": "Shavei Zion"
+      },
+      "lat": 32.9900154,
+      "lng": 35.0836916,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/10255208884",
+        "motChargerIds": ""
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אפקון EV IDB טיילת, השקד 1 &2",
+          "ar": "أفكون EV IDB طيلت هشكد 1 &2",
+          "en": "Afcon EV IDB Tayalat Hashakad 1 &2"
+        },
+        "title": {
+          "he": "עמדות טעינה לרכב חשמלי",
+          "ar": "شحن سيارات كهربائية",
+          "en": "EV charging"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "עמדות",
+              "ar": "شواحن",
+              "en": "Chargers"
+            },
+            "meta": {
+              "he": "4",
+              "ar": "4",
+              "en": "4"
+            }
+          },
+          {
+            "label": {
+              "he": "מפעיל",
+              "ar": "الشركة المشغّلة",
+              "en": "Operator"
+            },
+            "meta": {
+              "he": "אפקון EV",
+              "ar": "أفكون EV",
+              "en": "Afcon EV"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לעמדה",
+          "ar": "خذني للشاحن",
+          "en": "Navigate to the charger"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    }
+  ]
+}
