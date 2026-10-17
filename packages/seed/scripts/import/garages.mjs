@@ -392,7 +392,7 @@ export function buildGarages({ rows, osm, existing = [], geocoder = null, matche
     let pin = null;
     if (g.twin) pin = { ...g.twin.point, precision: "osm", how: g.twin.how };
     else if (geocoder) {
-      const hit = geocoder.resolve({ town: g.place.slug, address: g.address });
+      const hit = geocoder.resolve({ town: g.place.slug, address: g.address, townName: g.town });
       if (hit.skip) g.why = hit.skip;
       else pin = hit;
     } else g.why = "no OSM twin by name or phone";

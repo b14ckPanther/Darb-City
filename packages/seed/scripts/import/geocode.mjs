@@ -232,6 +232,8 @@ export function parseAddress(raw, town = "") {
     .replace(/(^|\s)(מבנה|ביתן)\s*\d+/g, " ")
     .replace(/([א-ת])(\d)/g, "$1 $2")
     .replace(/\*/g, " ");
+  // A junction is often named for the town itself ("צומת ירכא"): read it before the town goes.
+  const junction = s.match(/צומת\s+([^\d,]+)/);
   if (town) {
     const t = town.replace(/\*/g, "").trim();
     if (t.length >= 3) s = s.split(t).join(" ");
@@ -252,7 +254,6 @@ export function parseAddress(raw, town = "") {
     if (words.length && words.length <= 3 && !/^(רח|רחוב)/.test(after[1].trim()))
       areaName = words.join(" ");
   }
-  const junction = s.match(/צומת\s+([^\d,§]+)/);
   let street = null;
   let number = null;
   // Each piece between markers and commas: "רח' העוצמה 11", "השיש 18", "דרך י. סימון 52".
@@ -285,7 +286,7 @@ export function parseAddress(raw, town = "") {
     number,
     industrial,
     areaName: areaName && areaName !== "ה" ? areaName : null,
-    junction: junction ? junction[1].trim() : null,
+    junction: junction?.[1].trim() || null,
   };
 }
 
@@ -368,20 +369,23 @@ export function createGeocoder({ addresses, streets, landmarks = [] }, matcher) 
     const r = TOWN_RADIUS_KM[near.place.type] ?? 2;
     return near.km <= r ? near.place.slug : null;
   };
-  /** town → streetKey → [{ lat, lng, n, named }] */
+  /** town → streetKey → [{ lat, lng, n, raw, named }] */
   const points = new Map();
-  /** streetKey → [{ lat, lng, n, town }] for addresses OSM gives no city to (town by distance). */
+  /** streetKey → points OSM gives no city to, for a town whose centre is near (see unnamedNear). */
+  const unnamed = new Map();
+  const add = (map, town, key, value) => {
+    const byStreet = map.get(town) ?? new Map();
+    byStreet.set(key, [...(byStreet.get(key) ?? []), value]);
+    map.set(town, byStreet);
+  };
   for (const [lat, lng, street, num, city] of addresses) {
-    const town = townOf(lat, lng, city);
-    if (!town) continue;
     const key = streetKey(street);
     const n = houseNumber(num);
     if (!key || n === null) continue;
-    const byStreet = points.get(town) ?? new Map();
-    const list = byStreet.get(key) ?? [];
-    list.push({ lat, lng, n, raw: num, named: Boolean(city) });
-    byStreet.set(key, list);
-    points.set(town, byStreet);
+    const point = { lat, lng, n, raw: num, named: Boolean(city) };
+    if (!city) unnamed.set(key, [...(unnamed.get(key) ?? []), point]);
+    const town = townOf(lat, lng, city);
+    if (town) add(points, town, key, point);
   }
   /** town → streetKey → segments */
   const ways = new Map();
@@ -392,35 +396,62 @@ export function createGeocoder({ addresses, streets, landmarks = [] }, matcher) 
     if (!town) continue;
     for (const n of new Set([nameHe, name].filter((x) => /[א-ת]/.test(x)))) {
       const key = streetKey(n);
-      if (!key) continue;
-      const byStreet = ways.get(town) ?? new Map();
-      byStreet.set(key, [...(byStreet.get(key) ?? []), geom]);
-      ways.set(town, byStreet);
+      if (key) add(ways, town, key, geom);
     }
   }
   /** Landmarks with their town. */
   const marks = landmarks.map(([kind, names, lat, lng, size]) => ({
     kind,
-    keys: names.map((n) => landmarkKey(n)),
+    keys: names.map((n) => landmarkKey(n)).filter(Boolean),
     lat,
     lng,
     size,
     town: townOf(lat, lng, ""),
   }));
 
-  /** The street's entries in a town: an exact key, else one key that differs only by "ה". */
+  /** Each town's loose keys: loose key → the exact keys it stands for. */
+  const looseOf = new Map();
+  const looseIndex = (map, town) => {
+    const id = `${map === points ? "p" : "w"}|${town}`;
+    if (!looseOf.has(id)) {
+      const idx = new Map();
+      for (const key of map.get(town)?.keys() ?? []) {
+        const l = looseStreetKey(key);
+        idx.set(l, [...(idx.get(l) ?? []), key]);
+      }
+      looseOf.set(id, idx);
+    }
+    return looseOf.get(id);
+  };
+
+  /** A street's entries in a town: its exact key, else the one street its loose key names. */
   function streetIn(map, town, key) {
     const byStreet = map.get(town);
     if (!byStreet) return null;
     if (byStreet.has(key)) return byStreet.get(key);
-    return null;
+    const keys = looseIndex(map, town).get(looseStreetKey(key)) ?? [];
+    return keys.length === 1 ? byStreet.get(keys[0]) : null;
   }
 
-  /** Neighbours of the town (a Haifa garage's address may sit across the Nesher line). */
-  function townsFor(slug) {
+  /**
+   * Addresses OSM gives no city to, on this street, near the town's centre: a Haifa garage's
+   * number may stand closer to Nesher's centre than to Haifa's. Used only when they all stand
+   * together (one street, not two of one name).
+   */
+  function unnamedNear(slug, key) {
     const p = matcher.bySlug.get(slug);
-    if (!p) return [slug];
-    return [slug];
+    if (!p) return null;
+    const r = TOWN_RADIUS_KM[p.type] ?? 2;
+    let list = unnamed.get(key);
+    if (!list) {
+      const l = looseStreetKey(key);
+      const keys = [...unnamed.keys()].filter((k) => looseStreetKey(k) === l);
+      list = keys.length === 1 ? unnamed.get(keys[0]) : null;
+    }
+    const near = (list ?? []).filter((x) => km(p, x) <= r);
+    if (!near.length) return null;
+    const c = centroid(near);
+    return near.every((x) => metres(x, c) <= 1500) ? near : null;
   }
 
   function atNumber(list, number) {
@@ -430,6 +461,8 @@ export function createGeocoder({ addresses, streets, landmarks = [] }, matcher) 
       const c = centroid(exact);
       if (exact.every((x) => metres(x, c) <= 60))
         return { ...c, precision: "exact", matched: exact[0].raw };
+      // The number stands in two places: two streets of one name, not a confident pin.
+      return null;
     }
     // Same parity first (Israeli streets number one side odd, the other even).
     const below = list.filter((x) => x.n < number).sort((a, b) => b.n - a.n);
@@ -461,9 +494,11 @@ export function createGeocoder({ addresses, streets, landmarks = [] }, matcher) 
     const key = streetKey(street);
     if (!key) return { skip: "no street in the address" };
     const list = streetIn(points, town, key);
-    if (list && number !== null) {
-      const hit = atNumber(list, number);
-      if (hit) return hit;
+    if (number !== null) {
+      for (const l of [list, unnamedNear(town, key)]) {
+        const hit = l && atNumber(l, number);
+        if (hit) return hit;
+      }
     }
     const segs = streetIn(ways, town, key);
     if (segs) {
@@ -481,10 +516,10 @@ export function createGeocoder({ addresses, streets, landmarks = [] }, matcher) 
   function atLandmark(town, kind, name) {
     const inTown = marks.filter((m) => m.kind === kind && m.town === town);
     let found = inTown;
-    if (name) {
-      const key = landmarkKey(name);
-      found = inTown.filter((m) => m.keys.some((k) => k && (k.includes(key) || key.includes(k))));
-    }
+    const key = name ? landmarkKey(name) : "";
+    // A one-letter side ("א.ת. ג'") names nothing OSM would: the town's only zone, or none.
+    if (key.length >= 2)
+      found = inTown.filter((m) => m.keys.some((k) => k.includes(key) || key.includes(k)));
     if (found.length !== 1) {
       return {
         skip: found.length
@@ -502,17 +537,15 @@ export function createGeocoder({ addresses, streets, landmarks = [] }, matcher) 
    * One register address in its town. Tries the street (exact, near, street), then a named
    * industrial zone or junction. Never a town centre.
    */
-  function resolve({ town, address }) {
+  function resolve({ town, address, townName = "" }) {
     const slug = typeof town === "string" ? town : town?.slug;
     if (!slug) return { skip: "town not a Darb place" };
-    const a = parseAddress(address);
+    const a = parseAddress(address, townName || matcher.bySlug.get(slug)?.name?.he || "");
     let streetMiss = null;
     if (a.street) {
-      for (const t of townsFor(slug)) {
-        const hit = onStreet(t, a.street, a.number);
-        if (!hit.skip) return { ...hit, parsed: a };
-        streetMiss = streetMiss ?? hit;
-      }
+      const hit = onStreet(slug, a.street, a.number);
+      if (!hit.skip) return { ...hit, parsed: a };
+      streetMiss = hit;
     }
     if (a.junction) {
       const hit = atLandmark(slug, "junction", a.junction);
@@ -524,7 +557,13 @@ export function createGeocoder({ addresses, streets, landmarks = [] }, matcher) 
       if (!streetMiss) return { ...hit, parsed: a };
     }
     if (streetMiss) return { ...streetMiss, parsed: a };
-    return { skip: "no street, zone or junction in the address", parsed: a };
+    if (a.junction) return { skip: "junction not on the map in this town", parsed: a };
+    return {
+      skip: String(address ?? "").trim()
+        ? "address is only a PO box, private bag or plot number"
+        : "no address in the register",
+      parsed: a,
+    };
   }
 
   return { resolve, parseAddress, stats: { towns: points.size, streetTowns: ways.size } };
