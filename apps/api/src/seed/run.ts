@@ -26,6 +26,7 @@ const counts = await loadSeed(prisma, {
     all: loadBusinesses,
     real: loadReal,
   }),
+  dropExamples: process.env.SEED_SHOWROOM === "0",
 });
 console.log(`Seeded ${JSON.stringify(counts)} in ${((Date.now() - started) / 1000).toFixed(1)}s`);
 // Decision 8: the seed indexes directly (not through the queue), in batches of 128 embeddings.

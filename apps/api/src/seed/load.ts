@@ -29,6 +29,11 @@ export interface SeedData {
   /** The pricing page; the seed's own data when left out (src/seed/run.ts passes none). */
   plans?: SeedPlan[];
   texts?: SeedText[];
+  /**
+   * Real businesses only (SEED_SHOWROOM=0): the showroom examples are deleted outright instead of
+   * suspended, unless an admin edited one. They come back with a full seed.
+   */
+  dropExamples?: boolean;
 }
 export interface SeedCounts {
   places: number;
@@ -247,6 +252,12 @@ export async function loadSeed(prisma: PrismaService, data: SeedData): Promise<S
       await tx.businessKind.createMany({ data: links });
       businessIds.push(...ids);
     }, TX);
+  }
+  if (data.dropExamples) {
+    // An untouched example has nothing to keep: no owner, no claim, no edit.
+    await prisma.business.deleteMany({
+      where: { source: "seed", tier: "example", editedAt: null, id: { notIn: businessIds } },
+    });
   }
   // Seed businesses that left the data stay in place (claims may point at them) but go dark.
   await prisma.business.updateMany({

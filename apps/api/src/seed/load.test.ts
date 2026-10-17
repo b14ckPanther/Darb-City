@@ -226,6 +226,22 @@ it("suspends seeded businesses that are no longer in the data, and only those", 
   ]);
 });
 
+it("a real-only seed deletes untouched examples, keeps edited ones and every real business", async () => {
+  const real = { ...data.businesses[0]!, slug: "real-one", tier: "basic" as const, lat: 32.861 };
+  const edited = { ...data.businesses[0]!, slug: "edited-example", lat: 32.863 };
+  await loadSeed(prisma, { ...data, businesses: [...data.businesses, real, edited] });
+  await prisma.business.updateMany({
+    where: { slug: "edited-example" },
+    data: { editedAt: new Date() },
+  });
+  await loadSeed(prisma, { ...data, businesses: [real], dropExamples: true });
+  const rows = await prisma.business.findMany({ orderBy: { slug: "asc" } });
+  expect(rows.map((b) => [b.slug, b.status])).toEqual([
+    ["edited-example", "published"],
+    ["real-one", "published"],
+  ]);
+});
+
 it("republishes a suspended seeded business that comes back", async () => {
   await loadSeed(prisma, data);
   await loadSeed(prisma, { ...data, businesses: [] });

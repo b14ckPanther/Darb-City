@@ -86,6 +86,8 @@ export const AdminListQuerySchema = z.object({
 export const AdminBusinessListQuerySchema = AdminListQuerySchema.extend({
   place: SlugSchema.optional(),
   kind: SlugSchema.optional(),
+  /** Showroom examples are left out unless asked for ("1"). */
+  examples: z.enum(["0", "1"]).optional(),
 });
 export const AdminKindListQuerySchema = z.object({
   q: z.string().trim().max(80).optional(),

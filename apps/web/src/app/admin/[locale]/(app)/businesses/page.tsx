@@ -31,6 +31,8 @@ export default async function BusinessesPage({
     status: one(sp.status),
     place: one(sp.place),
     kind: one(sp.kind),
+    // Showroom examples only when asked for (?examples=1); the admin works on real businesses.
+    examples: one(sp.examples) === "1" ? ("1" as const) : undefined,
   };
   const page = okOr<Page>(
     await (await adminApi()).businesses.list({ query: { ...filters, cursor: one(sp.cursor) } }),

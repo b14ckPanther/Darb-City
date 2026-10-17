@@ -98,6 +98,8 @@ export class BusinessesAdmin {
     const where: Prisma.BusinessWhereInput = {
       ...(place ? { placeId: place.id } : {}),
       ...(kind ? { primaryKindId: kind.id } : {}),
+      // The admin works on real businesses; examples only when asked for.
+      ...(query.examples === "1" ? {} : { tier: { not: "example" as const } }),
       ...(query.status && STATUSES.has(query.status)
         ? { status: query.status as Business["status"] }
         : {}),
