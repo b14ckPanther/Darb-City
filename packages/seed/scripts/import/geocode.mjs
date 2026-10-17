@@ -6,6 +6,7 @@
 // resolve({ town, address }) → { lat, lng, precision: "exact" | "near" | "street" | "area", ... }
 // or { skip: why }. See the README for the rules.
 import { cached, NORTH_BBOX, overpassQuery } from "./fetch.mjs";
+import { dice } from "./dedupe.mjs";
 import { km, normalize as placeNormalize } from "./places.mjs";
 
 /** Tile edge in degrees: a whole-north query for every address is too big for Overpass. */
@@ -175,13 +176,17 @@ export function streetKey(name) {
     if (!m || s.length === m[0].length) break;
     s = s.slice(m[0].length).trim();
   }
-  return s
-    .replace(/[ךםןףץ]/g, (c) => FINALS[c])
-    .replace(/ק/g, "כ")
-    .replace(/ט/g, "ת")
-    .replace(/יי+/g, "י")
-    .replace(/וו+/g, "ו")
-    .toLowerCase();
+  return (
+    s
+      // An acronym the register writes with a space for its gershayim: "צה ל" is צה"ל.
+      .replace(/(^|\s)(\S{1,3}) (\S)(?=\s|$)/g, "$1$2$3")
+      .replace(/[ךםןףץ]/g, (c) => FINALS[c])
+      .replace(/ק/g, "כ")
+      .replace(/ט/g, "ת")
+      .replace(/יי+/g, "י")
+      .replace(/וו+/g, "ו")
+      .toLowerCase()
+  );
 }
 
 /**
@@ -292,10 +297,12 @@ export function parseAddress(raw, town = "") {
 
 function cleanStreet(raw) {
   // "עילית רח' פניקס צבי": a street prefix inside the text starts the street.
+  // A side of the industrial zone before the street ("ישן האומן" after "א.תעשייה").
+  raw = raw.replace(/^\s*(ה?ישן|ה?חדש|ה?צפוני|ה?דרומי|ה?מזרחי|ה?מערבי|[א-ד]')\s+(?=\S)/, "");
   const inner = raw.match(/\s(רחוב|רח'|רח|שדרות|שד')\s/);
   if (inner) raw = raw.slice(inner.index + 1);
   const s = raw
-    .replace(/\s+(ליד|על יד|מול|פינת)(\s.*)?$/, "")
+    .replace(/\s+(ליד|על יד|מול|פינת|תחנת|ת\.?\s*דלק)(\s.*)?$/, "")
     .replace(/^[\s.,'-]+|[\s.,'-]+$/g, "")
     .replace(/\s+/g, " ")
     .trim();
@@ -430,7 +437,31 @@ export function createGeocoder({ addresses, streets, landmarks = [] }, matcher) 
     if (!byStreet) return null;
     if (byStreet.has(key)) return byStreet.get(key);
     const keys = looseIndex(map, town).get(looseStreetKey(key)) ?? [];
-    return keys.length === 1 ? byStreet.get(keys[0]) : null;
+    if (keys.length === 1) return byStreet.get(keys[0]);
+    if (keys.length > 1) return null;
+    // "מייזר" for "יוסף מייזר", "עמרם אברהם" for "אברהם עמרם": the words of one are all in the
+    // other, and only one street in the town answers.
+    const want = new Set(looseStreetKey(key).split(" "));
+    if (![...want].some((w) => w.length >= 3)) return null;
+    const found = [];
+    for (const [l, ks] of looseIndex(map, town)) {
+      const have = new Set(l.split(" "));
+      const inside = (a, b) => [...a].every((w) => b.has(w));
+      if (inside(want, have) || (have.size > 1 && inside(have, want))) found.push(...ks);
+    }
+    if (found.length === 1) return byStreet.get(found[0]);
+    if (found.length > 1) return null;
+    // A typing slip ("פרילנדר", "פרינדלר" for "פרידלנדר"): letters that mostly agree, with one
+    // street in the town clearly closest.
+    const flat = looseStreetKey(key).replace(/ /g, "");
+    if (flat.length < 4) return null;
+    const scored = [...looseIndex(map, town)]
+      .map(([l, ks]) => ({ ks, d: dice(flat, l.replace(/ /g, "")) }))
+      .sort((a, b) => b.d - a.d);
+    const [best, next] = scored;
+    if (best && best.d >= 0.7 && best.ks.length === 1 && (!next || next.d < best.d - 0.15))
+      return byStreet.get(best.ks[0]);
+    return null;
   }
 
   /**

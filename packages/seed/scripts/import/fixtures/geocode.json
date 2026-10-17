@@ -3,7 +3,11 @@
     {
       "slug": "israel",
       "type": "country",
-      "name": { "he": "ישראל", "ar": "إسرائيل", "en": "Israel" },
+      "name": {
+        "he": "ישראל",
+        "ar": "إسرائيل",
+        "en": "Israel"
+      },
       "lat": 31.5,
       "lng": 35
     },
@@ -11,7 +15,11 @@
       "slug": "haifa-district",
       "type": "region",
       "parent": "israel",
-      "name": { "he": "מחוז חיפה", "ar": "لواء حيفا", "en": "Haifa District" },
+      "name": {
+        "he": "מחוז חיפה",
+        "ar": "لواء حيفا",
+        "en": "Haifa District"
+      },
       "lat": 32.8,
       "lng": 35
     },
@@ -19,7 +27,11 @@
       "slug": "northern-district",
       "type": "region",
       "parent": "israel",
-      "name": { "he": "מחוז הצפון", "ar": "لواء الشمال", "en": "Northern District" },
+      "name": {
+        "he": "מחוז הצפון",
+        "ar": "لواء الشمال",
+        "en": "Northern District"
+      },
       "lat": 32.9,
       "lng": 35.3
     },
@@ -27,7 +39,11 @@
       "slug": "haifa",
       "type": "city",
       "parent": "haifa-district",
-      "name": { "he": "חיפה", "ar": "حيفا", "en": "Haifa" },
+      "name": {
+        "he": "חיפה",
+        "ar": "حيفا",
+        "en": "Haifa"
+      },
       "lat": 32.8,
       "lng": 35.0
     },
@@ -35,7 +51,11 @@
       "slug": "nesher",
       "type": "city",
       "parent": "haifa-district",
-      "name": { "he": "נשר", "ar": "نيشر", "en": "Nesher" },
+      "name": {
+        "he": "נשר",
+        "ar": "نيشر",
+        "en": "Nesher"
+      },
       "lat": 32.77,
       "lng": 35.045
     },
@@ -43,7 +63,11 @@
       "slug": "yirka",
       "type": "town",
       "parent": "northern-district",
-      "name": { "he": "ירכא", "ar": "يركا", "en": "Yirka" },
+      "name": {
+        "he": "ירכא",
+        "ar": "يركا",
+        "en": "Yirka"
+      },
       "lat": 32.955,
       "lng": 35.21
     }
@@ -57,7 +81,10 @@
     [32.7905, 35.03, "דרך השלום", "5", "נשר"],
     [32.7906, 35.03, "דרך השלום", "7", "נשר"],
     [32.81, 35.005, "הרצל", "3", "חיפה"],
-    [32.83, 35.005, "הרצל", "3", "חיפה"]
+    [32.83, 35.005, "הרצל", "3", "חיפה"],
+    [32.82, 35.02, "יוסף מייזר", "8", "חיפה"],
+    [32.825, 35.02, "פרידלנדר", "12", "חיפה"],
+    [32.826, 35.021, "אברהם עמרם", "10", "חיפה"]
   ],
   "streets": [
     [

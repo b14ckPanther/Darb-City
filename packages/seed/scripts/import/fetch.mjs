@@ -79,17 +79,26 @@ export function overpassQuery(what, query, tries = 6) {
     `overpass ${what}`,
     async () => {
       const server = OVERPASS[attempt++ % OVERPASS.length];
-      const res = await fetch(server, {
-        method: "POST",
-        headers: { "User-Agent": UA, "Content-Type": "application/x-www-form-urlencoded" },
-        body: `data=${encodeURIComponent(query)}`,
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const json = await res.json();
-      // Overpass answers a timed-out query with 200 and a remark instead of elements.
-      if (json.remark && /runtime error|timed out|out of memory/i.test(json.remark))
-        throw new Error(json.remark);
-      return json.elements;
+      for (let busy = 0; ; busy++) {
+        const res = await fetch(server, {
+          method: "POST",
+          headers: { "User-Agent": UA, "Content-Type": "application/x-www-form-urlencoded" },
+          body: `data=${encodeURIComponent(query)}`,
+        });
+        // Too many requests: wait our turn rather than count it as a failure.
+        if (res.status === 429 && busy < 8) {
+          await sleep(15000 * (busy + 1));
+          continue;
+        }
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const json = await res.json();
+        // Overpass answers a timed-out query with 200 and a remark instead of elements.
+        if (json.remark && /runtime error|timed out|out of memory/i.test(json.remark))
+          throw new Error(json.remark);
+        // A pause between queries, so a long run stays polite to a shared server.
+        await sleep(2000);
+        return json.elements;
+      }
     },
     tries,
   );

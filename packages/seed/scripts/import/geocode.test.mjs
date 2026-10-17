@@ -24,6 +24,7 @@ describe("street names and numbers", () => {
     expect(streetKey("בן-גוריון")).toBe(streetKey("בן גוריון"));
     expect(streetKey("דרך י. סימון")).toBe(streetKey("י סימון"));
     expect(streetKey("קרן היסוד")).toBe(streetKey("כרן היסוד"));
+    expect(streetKey("צה ל")).toBe(streetKey('צה"ל'));
   });
   it("meets spelling variants loosely: vav, yod, the article", () => {
     expect(streetKey("הלוי")).toBe(streetKey("הלווי"));
@@ -77,6 +78,12 @@ describe("resolving an address", () => {
   it("pins a short street's midpoint, never a long one's", () => {
     expect(at("haifa", "רח' המלאכה 40")).toMatchObject({ precision: "street", lat: 32.806 });
     expect(at("haifa", "דרך ארוכה 3").skip).toMatch(/longer than 700/);
+  });
+  it("meets a street written by surname only, words reversed or mistyped", () => {
+    expect(at("haifa", "רחוב מייזר 8 א.תעשיה")).toMatchObject({ precision: "exact", lat: 32.82 });
+    expect(at("haifa", "עמרם אברהם 10")).toMatchObject({ precision: "exact", lat: 32.826 });
+    expect(at("haifa", "פרילנדר 12 ת ד 5676")).toMatchObject({ precision: "exact", lat: 32.825 });
+    expect(at("haifa", "א.תעשייה ישן פרידלנדר 12").precision).toBe("exact");
   });
   it("skips a number that stands in two places", () => {
     expect(at("haifa", "הרצל 3").skip).toBeDefined();
