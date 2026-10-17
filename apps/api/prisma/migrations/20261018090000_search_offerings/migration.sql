@@ -9,6 +9,7 @@ CREATE TABLE "SearchOffering" (
     "label" JSONB NOT NULL,
     "context" JSONB,
     "labelText" TEXT NOT NULL,
+    "labelForms" TEXT[],
     "text" TEXT NOT NULL,
     "tsv" tsvector GENERATED ALWAYS AS (to_tsvector('simple'::regconfig, "text")) STORED,
     "embedHash" TEXT,
@@ -39,7 +40,6 @@ CREATE UNIQUE INDEX "SearchOffering_businessId_ref_key" ON "SearchOffering"("bus
 CREATE INDEX "SearchOffering_placePath_idx" ON "SearchOffering"("placePath");
 CREATE INDEX "SearchOffering_embedHash_idx" ON "SearchOffering"("embedHash");
 CREATE INDEX "SearchOffering_text_trgm_idx" ON "SearchOffering" USING GIN ("text" gin_trgm_ops);
-CREATE INDEX "SearchOffering_labelText_trgm_idx" ON "SearchOffering" USING GIN ("labelText" gin_trgm_ops);
 CREATE INDEX "SearchOffering_tsv_idx" ON "SearchOffering" USING GIN ("tsv");
 CREATE INDEX "SearchOffering_kindIds_idx" ON "SearchOffering" USING GIN ("kindIds");
 CREATE INDEX "SearchOffering_dietary_idx" ON "SearchOffering" USING GIN ("dietary");

@@ -17,6 +17,8 @@ export interface Offering {
   context: Localized | null;
   /** The label, normalized, in every language. */
   labelText: string;
+  /** The label in each language on its own (and a kind's synonyms), normalized. */
+  labelForms: string[];
   /** The label, its context and (for a kind) its synonyms, normalized, in every language. */
   text: string;
   /** What is embedded: the same text for the same offering on any card (shared vectors). */
@@ -61,6 +63,19 @@ const LEAD_IN = /^(?:כולל|כולל גם|including|incl\.?|بما فيها|ب
 const SEGMENT = /\s*[·•|]\s*/u;
 /** A list inside a segment. */
 const LIST = /\s*[,،;]\s*/u;
+
+/** A meta line without its price, time or percentage segments; null when nothing is left. */
+function wordsOnly(meta: Localized): Localized | null {
+  const out: Localized = {};
+  for (const k of LOCALES) {
+    const kept = (meta[k] ?? "")
+      .split(SEGMENT)
+      .filter((segment) => WORDY.test(segment))
+      .join(" · ");
+    if (kept) out[k] = kept;
+  }
+  return clean(out);
+}
 
 interface Segment {
   head: string | null;
@@ -124,6 +139,8 @@ function make(
   label: Localized,
   context: Localized | null,
   extra: string[] = [],
+  /** Other names it goes by, as exact as its label (a kind's synonyms). */
+  aliases: string[] = [],
 ): Offering {
   const labels = values(label);
   const contexts = context ? values(context) : [];
@@ -133,6 +150,7 @@ function make(
     label,
     context,
     labelText: join(labels),
+    labelForms: [...new Set([...labels, ...aliases].map(normalize).filter(Boolean))],
     text: join([...labels, ...contexts, ...extra]),
     embedText: [labels.join(" / "), contexts.join(" / ")].filter(Boolean).join(" — "),
   };
@@ -148,8 +166,9 @@ export function extractOfferings(b: OfferingSourceData): Offering[] {
     const label = isLocalized(rawLabel) ? clean(rawLabel) : null;
     const meta = isLocalized(rawMeta) ? clean(rawMeta) : null;
     if (!label) return;
-    // The item itself, with its whole meta line as context ("Meals" with "sandwiches: ...").
-    out.push(make(`items.${i}`, "item", label, meta));
+    // The item itself, with its meta line as context ("Meals" with "sandwiches: ..."), minus
+    // what is not words ("₪45 · inside and out" is "inside and out").
+    out.push(make(`items.${i}`, "item", label, meta ? wordsOnly(meta) : null));
     if (!meta) return;
     metaParts(meta).forEach(({ label: part, head }, j) => {
       // "Shawarma" keeps "Challah and laffa sandwiches" when the line names them, else "Meals".
@@ -166,14 +185,8 @@ export function extractOfferings(b: OfferingSourceData): Offering[] {
   if (tagline) out.push(make("tagline", "tagline", tagline, null));
   for (const kind of b.kinds) {
     const name = clean(kind.name);
-    if (name)
-      out.push(
-        make(`kind:${kind.slug}`, "kind", name, null, [
-          ...kind.synonyms.he,
-          ...kind.synonyms.ar,
-          ...kind.synonyms.en,
-        ]),
-      );
+    const synonyms = [...kind.synonyms.he, ...kind.synonyms.ar, ...kind.synonyms.en];
+    if (name) out.push(make(`kind:${kind.slug}`, "kind", name, null, synonyms, synonyms));
   }
   // The same thing twice on one card ("Delivery" as a tag and an item) is one offering: the
   // first, which is the more specific (items come before tags, tags before the tagline).

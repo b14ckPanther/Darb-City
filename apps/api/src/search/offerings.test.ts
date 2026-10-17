@@ -87,6 +87,8 @@ describe("offerings", () => {
     expect(kind.source).toBe("kind");
     expect(kind.text).toContain("restaurant");
     expect(kind.text).toContain("מסעדה");
+    // A synonym names the kind as exactly as its name does.
+    expect(kind.labelForms).toEqual(expect.arrayContaining(["מסעדות", "restaurant", "food"]));
   });
 
   it("normalizes text in every language (finals folded, marks dropped)", () => {

@@ -369,6 +369,8 @@ model SearchOffering {
   context    Json?
   /// The label, normalized, in every language.
   labelText  String
+  /// The label in each language on its own, normalized: how exactly a query names it.
+  labelForms String[]
   /// The label, its context and (for a kind) its synonyms, normalized, in every language.
   text       String
   /// Generated from text in the migration.
@@ -389,7 +391,6 @@ model SearchOffering {
   @@unique([businessId, ref])
   @@index([embedHash])
   @@index([text(ops: raw("gin_trgm_ops"))], map: "SearchOffering_text_trgm_idx", type: Gin)
-  @@index([labelText(ops: raw("gin_trgm_ops"))], map: "SearchOffering_labelText_trgm_idx", type: Gin)
   @@index([tsv], type: Gin)
   @@index([kindIds], type: Gin)
   @@index([dietary], type: Gin)
