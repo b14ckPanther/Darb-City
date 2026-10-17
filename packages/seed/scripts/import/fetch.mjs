@@ -11,7 +11,7 @@ const refresh = process.argv.includes("--refresh");
 /** Today as YYYY-MM-DD, for a source block's `fetched`. */
 export const today = () => new Date().toISOString().slice(0, 10);
 
-async function cached(name, load) {
+export async function cached(name, load) {
   const file = new URL(name, CACHE);
   if (!refresh && existsSync(file)) return JSON.parse(readFileSync(file, "utf8"));
   mkdirSync(CACHE, { recursive: true });
@@ -59,18 +59,28 @@ export const NORTH_BBOX = "32.3,34.85,33.35,35.9";
  * comes back ("geom" for boundaries).
  */
 export function overpass(name, body, { prelude = "", out = "center tags" } = {}) {
-  const query = `[out:json][timeout:180][bbox:${NORTH_BBOX}];\n${prelude}\n(${body});\nout ${out};`;
-  return cached(`overpass-${name}.json`, () =>
-    withRetry(`overpass ${name}`, async () => {
-      const res = await fetch("https://overpass-api.de/api/interpreter", {
-        method: "POST",
-        headers: { "User-Agent": UA, "Content-Type": "application/x-www-form-urlencoded" },
-        body: `data=${encodeURIComponent(query)}`,
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return (await res.json()).elements;
-    }),
-  );
+  const query = `[out:json][timeout:180][bbox:${NORTH_BBOX}];
+${prelude}
+(${body});
+out ${out};`;
+  return cached(`overpass-${name}.json`, () => overpassQuery(name, query));
+}
+
+/** A whole Overpass QL query, uncached, with retries; resolves to its elements. */
+export function overpassQuery(what, query) {
+  return withRetry(`overpass ${what}`, async () => {
+    const res = await fetch("https://overpass-api.de/api/interpreter", {
+      method: "POST",
+      headers: { "User-Agent": UA, "Content-Type": "application/x-www-form-urlencoded" },
+      body: `data=${encodeURIComponent(query)}`,
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const json = await res.json();
+    // Overpass answers a timed-out query with 200 and a remark instead of elements.
+    if (json.remark && /runtime error|timed out|out of memory/i.test(json.remark))
+      throw new Error(json.remark);
+    return json.elements;
+  });
 }
 
 /** An OSM element's point (nodes have lat/lon, ways and relations a center). */
