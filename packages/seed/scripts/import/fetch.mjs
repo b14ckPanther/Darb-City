@@ -53,9 +53,13 @@ export function datastore(resourceId) {
 /** The north: every Darb place in the Northern and Haifa districts sits inside it. */
 export const NORTH_BBOX = "32.3,34.85,33.35,35.9";
 
-/** An Overpass QL body run over the north; `name` keys the cache. Elements come with `center`. */
-export function overpass(name, body) {
-  const query = `[out:json][timeout:180][bbox:${NORTH_BBOX}];\n(${body});\nout center tags;`;
+/**
+ * An Overpass QL body run over the north; `name` keys the cache. Elements come with `center`.
+ * `prelude` runs before the body's union (an area the body filters by, `->.il`); `out` is what
+ * comes back ("geom" for boundaries).
+ */
+export function overpass(name, body, { prelude = "", out = "center tags" } = {}) {
+  const query = `[out:json][timeout:180][bbox:${NORTH_BBOX}];\n${prelude}\n(${body});\nout ${out};`;
   return cached(`overpass-${name}.json`, () =>
     withRetry(`overpass ${name}`, async () => {
       const res = await fetch("https://overpass-api.de/api/interpreter", {

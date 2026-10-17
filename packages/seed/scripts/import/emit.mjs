@@ -70,7 +70,7 @@ const cleanItem = (item) => ({
 });
 
 /**
- * One basic listing. `screen` is { title, items, cta, accent }; the brand line of the screen is
+ * One basic listing. `screen` is { title, tags?, items, cta }; the brand line of the screen is
  * the business's own name, as on the Paz cards.
  */
 export function business({
@@ -86,7 +86,9 @@ export function business({
   hours = NO_HOURS,
   attributes = {},
   phone = null,
+  whatsapp = null,
   website = null,
+  dietary = [],
   links = {},
   screen,
   accent,
@@ -104,14 +106,16 @@ export function business({
     lng: Number(lng.toFixed(7)),
     hours,
     attributes: { primaryAction: "directions", ...attributes },
+    ...(dietary.length ? { dietary } : {}),
     tier: "basic",
     phone,
-    whatsapp: null,
+    whatsapp,
     website,
     apps: {},
     experience: {
       brand: clean(name),
       title: clean(screen.title),
+      ...(screen.tags?.length ? { tags: screen.tags.map(clean) } : {}),
       items: screen.items.map(cleanItem),
       cta: clean(screen.cta),
       palette: palette(accent),
