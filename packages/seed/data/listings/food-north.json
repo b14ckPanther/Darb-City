@@ -1073,6 +1073,83 @@
       }
     },
     {
+      "slug": "eatery-yosaf-morad",
+      "place": "afula",
+      "brand": null,
+      "primaryKind": "restaurants",
+      "kinds": [
+        "restaurants"
+      ],
+      "name": {
+        "he": "מזנון יוסף מורד",
+        "ar": "مطعم يوسف مورد",
+        "en": "Eatery Yosaf Morad"
+      },
+      "tagline": {
+        "he": "מסעדה",
+        "ar": "مطعم",
+        "en": "Restaurant"
+      },
+      "address": {
+        "he": "עפולה",
+        "ar": "العفولة",
+        "en": "Afula"
+      },
+      "lat": 32.6087119,
+      "lng": 35.2919911,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/5693153735"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מזנון יוסף מורד",
+          "ar": "مطعم يوسف مورد",
+          "en": "Eatery Yosaf Morad"
+        },
+        "title": {
+          "he": "מסעדה",
+          "ar": "مطعم",
+          "en": "Restaurant"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "ארוחות",
+              "ar": "وجبات",
+              "en": "Meals"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט",
+          "ar": "خذني لهناك",
+          "en": "Directions"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#E08A6D"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#e08a6d",
+        "icons": "solid"
+      }
+    },
+    {
       "slug": "eliyahu-hummus",
       "place": "afula",
       "brand": null,
@@ -1971,83 +2048,6 @@
       "links": {},
       "cardStyle": {
         "accent": "#d9aaa2",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "maznon-yosaf-morad",
-      "place": "afula",
-      "brand": null,
-      "primaryKind": "restaurants",
-      "kinds": [
-        "restaurants"
-      ],
-      "name": {
-        "he": "מזנון יוסף מורד",
-        "ar": "مزنون يوسف مورد",
-        "en": "Maznon Yosaf Morad"
-      },
-      "tagline": {
-        "he": "מסעדה",
-        "ar": "مطعم",
-        "en": "Restaurant"
-      },
-      "address": {
-        "he": "עפולה",
-        "ar": "العفولة",
-        "en": "Afula"
-      },
-      "lat": 32.6087119,
-      "lng": 35.2919911,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/5693153735"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "מזנון יוסף מורד",
-          "ar": "مزنون يوسف مورد",
-          "en": "Maznon Yosaf Morad"
-        },
-        "title": {
-          "he": "מסעדה",
-          "ar": "مطعم",
-          "en": "Restaurant"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "ארוחות",
-              "ar": "وجبات",
-              "en": "Meals"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט",
-          "ar": "خذني لهناك",
-          "en": "Directions"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#E08A6D"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#e08a6d",
         "icons": "solid"
       }
     },
@@ -25352,6 +25352,91 @@
       }
     },
     {
+      "slug": "eatery-ginosar",
+      "place": "ginosar",
+      "brand": null,
+      "primaryKind": "restaurants",
+      "kinds": [
+        "restaurants"
+      ],
+      "name": {
+        "he": "מזנון גינוסר",
+        "ar": "مطعم غينوسار",
+        "en": "Eatery Ginosar"
+      },
+      "tagline": {
+        "he": "מסעדה",
+        "ar": "مطعم",
+        "en": "Restaurant"
+      },
+      "address": {
+        "he": "גינוסר",
+        "ar": "غينوسار",
+        "en": "Ginosar"
+      },
+      "lat": 32.8437689,
+      "lng": 35.5239912,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1073805532",
+        "wheelchair": true
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מזנון גינוסר",
+          "ar": "مطعم غينوسار",
+          "en": "Eatery Ginosar"
+        },
+        "title": {
+          "he": "מסעדה",
+          "ar": "مطعم",
+          "en": "Restaurant"
+        },
+        "tags": [
+          {
+            "he": "נגיש לכיסא גלגלים",
+            "ar": "مناسب للكرسي المتحرك",
+            "en": "Wheelchair accessible"
+          }
+        ],
+        "items": [
+          {
+            "label": {
+              "he": "ארוחות",
+              "ar": "وجبات",
+              "en": "Meals"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט",
+          "ar": "خذني لهناك",
+          "en": "Directions"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#E08A6D"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#e08a6d",
+        "icons": "solid"
+      }
+    },
+    {
       "slug": "k-hanahal",
       "place": "ginosar",
       "brand": null,
@@ -25400,91 +25485,6 @@
           "ar": "مطعم",
           "en": "Restaurant"
         },
-        "items": [
-          {
-            "label": {
-              "he": "ארוחות",
-              "ar": "وجبات",
-              "en": "Meals"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט",
-          "ar": "خذني لهناك",
-          "en": "Directions"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#E08A6D"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#e08a6d",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "maznon-ginosar",
-      "place": "ginosar",
-      "brand": null,
-      "primaryKind": "restaurants",
-      "kinds": [
-        "restaurants"
-      ],
-      "name": {
-        "he": "מזנון גינוסר",
-        "ar": "مزنون غينوسار",
-        "en": "Maznon Ginosar"
-      },
-      "tagline": {
-        "he": "מסעדה",
-        "ar": "مطعم",
-        "en": "Restaurant"
-      },
-      "address": {
-        "he": "גינוסר",
-        "ar": "غينوسار",
-        "en": "Ginosar"
-      },
-      "lat": 32.8437689,
-      "lng": 35.5239912,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "way/1073805532",
-        "wheelchair": true
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "מזנון גינוסר",
-          "ar": "مزنون غينوسار",
-          "en": "Maznon Ginosar"
-        },
-        "title": {
-          "he": "מסעדה",
-          "ar": "مطعم",
-          "en": "Restaurant"
-        },
-        "tags": [
-          {
-            "he": "נגיש לכיסא גלגלים",
-            "ar": "مناسب للكرسي المتحرك",
-            "en": "Wheelchair accessible"
-          }
-        ],
         "items": [
           {
             "label": {
@@ -36691,6 +36691,83 @@
       }
     },
     {
+      "slug": "eatery-hahof-hashakat",
+      "place": "haifa",
+      "brand": null,
+      "primaryKind": "restaurants",
+      "kinds": [
+        "restaurants"
+      ],
+      "name": {
+        "he": "מזנון החוף השקט",
+        "ar": "مطعم هحوف هشكط",
+        "en": "Eatery Hahof Hashakat"
+      },
+      "tagline": {
+        "he": "מסעדה",
+        "ar": "مطعم",
+        "en": "Restaurant"
+      },
+      "address": {
+        "he": "חיפה",
+        "ar": "حيفا",
+        "en": "Haifa"
+      },
+      "lat": 32.8322981,
+      "lng": 34.9876926,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/2747114856"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מזנון החוף השקט",
+          "ar": "مطعم هحوف هشكط",
+          "en": "Eatery Hahof Hashakat"
+        },
+        "title": {
+          "he": "מסעדה",
+          "ar": "مطعم",
+          "en": "Restaurant"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "ארוחות",
+              "ar": "وجبات",
+              "en": "Meals"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט",
+          "ar": "خذني لهناك",
+          "en": "Directions"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#E08A6D"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#e08a6d",
+        "icons": "solid"
+      }
+    },
+    {
       "slug": "ein-el-wadi",
       "place": "haifa",
       "brand": null,
@@ -43556,83 +43633,6 @@
           "he": "Maxim",
           "ar": "Maxim",
           "en": "Maxim"
-        },
-        "title": {
-          "he": "מסעדה",
-          "ar": "مطعم",
-          "en": "Restaurant"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "ארוחות",
-              "ar": "وجبات",
-              "en": "Meals"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט",
-          "ar": "خذني لهناك",
-          "en": "Directions"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#E08A6D"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#e08a6d",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "maznon-hahof-hashakat",
-      "place": "haifa",
-      "brand": null,
-      "primaryKind": "restaurants",
-      "kinds": [
-        "restaurants"
-      ],
-      "name": {
-        "he": "מזנון החוף השקט",
-        "ar": "مزنون هحوف هشكط",
-        "en": "Maznon Hahof Hashakat"
-      },
-      "tagline": {
-        "he": "מסעדה",
-        "ar": "مطعم",
-        "en": "Restaurant"
-      },
-      "address": {
-        "he": "חיפה",
-        "ar": "حيفا",
-        "en": "Haifa"
-      },
-      "lat": 32.8322981,
-      "lng": 34.9876926,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/2747114856"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "מזנון החוף השקט",
-          "ar": "مزنون هحوف هشكط",
-          "en": "Maznon Hahof Hashakat"
         },
         "title": {
           "he": "מסעדה",
@@ -56431,7 +56431,7 @@
       }
     },
     {
-      "slug": "restaurant-shaf-bit-hatzayad",
+      "slug": "restaurant-chef-beit-hatzayad",
       "place": "jish-gush-halav",
       "brand": null,
       "primaryKind": "restaurants",
@@ -56440,8 +56440,8 @@
       ],
       "name": {
         "he": "מסעדת שף בית הצייד",
-        "ar": "مطعم شف بيت هتسيد",
-        "en": "Restaurant Shaf Bit Hatzayad"
+        "ar": "مطعم شيف بيت هتسيد",
+        "en": "Restaurant Chef Beit Hatzayad"
       },
       "tagline": {
         "he": "מסעדה",
@@ -56471,8 +56471,8 @@
       "experience": {
         "brand": {
           "he": "מסעדת שף בית הצייד",
-          "ar": "مطعم شف بيت هتسيد",
-          "en": "Restaurant Shaf Bit Hatzayad"
+          "ar": "مطعم شيف بيت هتسيد",
+          "en": "Restaurant Chef Beit Hatzayad"
         },
         "title": {
           "he": "מסעדה",
@@ -65774,7 +65774,7 @@
       }
     },
     {
-      "slug": "bit-havad-shal-mkora",
+      "slug": "beit-havad-shal-mkora",
       "place": "kerem-maharal",
       "brand": null,
       "primaryKind": "cafes",
@@ -65784,7 +65784,7 @@
       "name": {
         "he": "בית הבד של מקורה",
         "ar": "بيت هبد شل مكورا",
-        "en": "Bit Havad Shal Mkora"
+        "en": "Beit Havad Shal Mkora"
       },
       "tagline": {
         "he": "בית קפה",
@@ -65815,7 +65815,7 @@
         "brand": {
           "he": "בית הבד של מקורה",
           "ar": "بيت هبد شل مكورا",
-          "en": "Bit Havad Shal Mkora"
+          "en": "Beit Havad Shal Mkora"
         },
         "title": {
           "he": "בית קפה",
@@ -70623,7 +70623,7 @@
       ],
       "name": {
         "he": "מזנון חינם לחיילים",
-        "ar": "مزنون حينم لحيليم",
+        "ar": "مطعم حينم لحيليم",
         "en": "Free Food For Soliders"
       },
       "tagline": {
@@ -70673,7 +70673,7 @@
       "experience": {
         "brand": {
           "he": "מזנון חינם לחיילים",
-          "ar": "مزنون حينم لحيليم",
+          "ar": "مطعم حينم لحيليم",
           "en": "Free Food For Soliders"
         },
         "title": {
@@ -71919,7 +71919,7 @@
       ],
       "name": {
         "he": "מזנון מיטל",
-        "ar": "مزنون ميتال",
+        "ar": "مطعم ميتال",
         "en": "Meital Cantina"
       },
       "tagline": {
@@ -71950,7 +71950,7 @@
       "experience": {
         "brand": {
           "he": "מזנון מיטל",
-          "ar": "مزنون ميتال",
+          "ar": "مطعم ميتال",
           "en": "Meital Cantina"
         },
         "title": {
@@ -77688,6 +77688,83 @@
       }
     },
     {
+      "slug": "beit-hasamvosak",
+      "place": "masade",
+      "brand": null,
+      "primaryKind": "restaurants",
+      "kinds": [
+        "restaurants"
+      ],
+      "name": {
+        "he": "בית הסמבוסק",
+        "ar": "بيت هسمبوسك",
+        "en": "Beit Hasamvosak"
+      },
+      "tagline": {
+        "he": "מסעדה",
+        "ar": "مطعم",
+        "en": "Restaurant"
+      },
+      "address": {
+        "he": "מסעדה",
+        "ar": "مسعدة",
+        "en": "Mas'ade"
+      },
+      "lat": 33.2283048,
+      "lng": 35.756571,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/5390532136"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "בית הסמבוסק",
+          "ar": "بيت هسمبوسك",
+          "en": "Beit Hasamvosak"
+        },
+        "title": {
+          "he": "מסעדה",
+          "ar": "مطعم",
+          "en": "Restaurant"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "ארוחות",
+              "ar": "وجبات",
+              "en": "Meals"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט",
+          "ar": "خذني لهناك",
+          "en": "Directions"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#E08A6D"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#e08a6d",
+        "icons": "solid"
+      }
+    },
+    {
       "slug": "birkat-ram",
       "place": "masade",
       "brand": null,
@@ -77730,83 +77807,6 @@
           "he": "בחירה מסעדה",
           "ar": "بحيرة مسعدة",
           "en": "Birkat Ram"
-        },
-        "title": {
-          "he": "מסעדה",
-          "ar": "مطعم",
-          "en": "Restaurant"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "ארוחות",
-              "ar": "وجبات",
-              "en": "Meals"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט",
-          "ar": "خذني لهناك",
-          "en": "Directions"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#E08A6D"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#e08a6d",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "bit-hasamvosak",
-      "place": "masade",
-      "brand": null,
-      "primaryKind": "restaurants",
-      "kinds": [
-        "restaurants"
-      ],
-      "name": {
-        "he": "בית הסמבוסק",
-        "ar": "بيت هسمبوسك",
-        "en": "Bit Hasamvosak"
-      },
-      "tagline": {
-        "he": "מסעדה",
-        "ar": "مطعم",
-        "en": "Restaurant"
-      },
-      "address": {
-        "he": "מסעדה",
-        "ar": "مسعدة",
-        "en": "Mas'ade"
-      },
-      "lat": 33.2283048,
-      "lng": 35.756571,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/5390532136"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "בית הסמבוסק",
-          "ar": "بيت هسمبوسك",
-          "en": "Bit Hasamvosak"
         },
         "title": {
           "he": "מסעדה",
@@ -92597,7 +92597,7 @@
       }
     },
     {
-      "slug": "ahva-batam-biti",
+      "slug": "ahva-batam-home",
       "place": "pardes-hana-karkur",
       "brand": null,
       "primaryKind": "catering",
@@ -92607,7 +92607,7 @@
       "name": {
         "he": "אהבה בטעם ביתי",
         "ar": "اهبا بطعم بيتي",
-        "en": "Ahva Batam Biti"
+        "en": "Ahva Batam Home"
       },
       "tagline": {
         "he": "קייטרינג, מטבח מקומי ומטבח בינלאומי",
@@ -92678,7 +92678,7 @@
         "brand": {
           "he": "אהבה בטעם ביתי",
           "ar": "اهبا بطعم بيتي",
-          "en": "Ahva Batam Biti"
+          "en": "Ahva Batam Home"
         },
         "title": {
           "he": "קייטרינג",
