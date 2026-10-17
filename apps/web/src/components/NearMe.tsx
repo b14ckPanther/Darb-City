@@ -4,7 +4,9 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { Locale } from "@darb/core";
+import { hereFrom, keepHere, PRECISE } from "@/lib/here";
 import { positionGranted } from "@/lib/live-position";
+import { href, paths } from "@/lib/routes";
 import styles from "./NearMe.module.css";
 
 export interface NearMeProps {
@@ -43,6 +45,23 @@ function keep(locale: Locale, found: { name: string; href: string }) {
   }
 }
 
+/** POST: the position stays out of URLs, so out of every access log. */
+async function nearestPlace(payload: {
+  locale: Locale;
+  lat: number;
+  lng: number;
+  kind?: string;
+}): Promise<{ href: string; name?: string }> {
+  const res = await fetch("/api/near", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(payload),
+    signal: AbortSignal.timeout(10_000),
+  });
+  if (!res.ok) throw new Error(String(res.status));
+  return (await res.json()) as { href: string; name?: string };
+}
+
 export function NearMe({ locale, kind, homeHref, labels }: NearMeProps) {
   const router = useRouter();
   const pathname = usePathname();
@@ -57,6 +76,39 @@ export function NearMe({ locale, kind, homeHref, labels }: NearMeProps) {
     if (kept) setFound(kept.name);
   }, [kind, locale]);
 
+  /** The header button: a precise fix, kept in this tab only, then the businesses around it. */
+  function goNear(position: GeolocationPosition) {
+    const here = hereFrom(position);
+    positionGranted({ lat: here.lat, lng: here.lng });
+    keepHere(here);
+    const target = href(locale, paths.near());
+    if (target !== pathname) router.push(target);
+    setState("idle");
+    // The label only: the place the visitor is in. The page lists businesses on its own.
+    void nearestPlace({ locale, lat: here.lat, lng: here.lng })
+      .then(({ href: placeHref, name }) => {
+        if (!name) return;
+        setFound(name);
+        keep(locale, { name, href: placeHref });
+      })
+      .catch(() => {});
+  }
+
+  /** The in-page button on a national kind page: the nearest place that has the kind. */
+  async function goToKind(position: GeolocationPosition, slug: string) {
+    const { latitude: lat, longitude: lng } = position.coords;
+    // Granted: rows across the site may now show how far each business is.
+    positionGranted({ lat, lng });
+    try {
+      const { href: placeHref } = await nearestPlace({ locale, lat, lng, kind: slug });
+      // The button outlives the page, so it is reset once found.
+      if (placeHref !== pathname) router.push(placeHref);
+      setState("idle");
+    } catch {
+      setState("denied");
+    }
+  }
+
   function locate() {
     if (!("geolocation" in navigator)) {
       setState("denied");
@@ -64,38 +116,9 @@ export function NearMe({ locale, kind, homeHref, labels }: NearMeProps) {
     }
     setState("locating");
     navigator.geolocation.getCurrentPosition(
-      async ({ coords }) => {
-        // Granted: rows across the site may now show how far each business is.
-        positionGranted({ lat: coords.latitude, lng: coords.longitude });
-        const payload = {
-          locale,
-          lat: coords.latitude,
-          lng: coords.longitude,
-          ...(kind ? { kind } : {}),
-        };
-        try {
-          // POST: the position stays out of URLs, so out of every access log.
-          const res = await fetch("/api/near", {
-            method: "POST",
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify(payload),
-            signal: AbortSignal.timeout(10_000),
-          });
-          if (!res.ok) throw new Error(String(res.status));
-          const { href, name } = (await res.json()) as { href: string; name?: string };
-          if (!kind && name) {
-            setFound(name);
-            keep(locale, { name, href });
-          }
-          // The button lives in the header and outlives the page, so it is reset once found.
-          if (href !== pathname) router.push(href);
-          setState("idle");
-        } catch {
-          setState("denied");
-        }
-      },
+      (position) => (kind ? void goToKind(position, kind) : goNear(position)),
       () => setState("denied"),
-      { timeout: 10_000, maximumAge: 600_000 },
+      kind ? { timeout: 10_000, maximumAge: 600_000 } : PRECISE,
     );
   }
 
