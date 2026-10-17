@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { branchLabel, buildBanks } from "./banks.mjs";
+import { BANKS, branchLabel, buildBanks, withoutBankWords } from "./banks.mjs";
 
 const { rows } = JSON.parse(
   readFileSync(new URL("./fixtures/banks.json", import.meta.url), "utf8"),
@@ -44,5 +44,10 @@ describe("banks importer over a fixture", () => {
     expect(branchLabel("שלוחת סכנין - סניף כרמיאל")).toBe("סכנין");
     expect(branchLabel("שלוחת כפר יאסיף")).toBe("כפר יאסיף");
     expect(branchLabel("עסקים חדרה")).toBe("עסקים חדרה");
+  });
+  it("never repeats the bank's name in the branch's", () => {
+    expect(withoutBankWords('פאג"י חיפה', BANKS[52])).toBe("חיפה");
+    expect(withoutBankWords("פועלים Business חיפה", BANKS[12])).toBe("Business חיפה");
+    expect(withoutBankWords("לאומי", BANKS[10])).toBe("לאומי");
   });
 });

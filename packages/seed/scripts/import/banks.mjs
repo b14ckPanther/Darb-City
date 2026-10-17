@@ -14,7 +14,7 @@ import {
 import { datastore, today } from "./fetch.mjs";
 import { createNamer, plainDashes } from "./names.mjs";
 import { normalizePhone } from "./phones.mjs";
-import { createPlaceMatcher } from "./places.mjs";
+import { createPlaceMatcher, loose, normalize } from "./places.mjs";
 
 export const FILE = "banks-north.json";
 export const RESOURCE = "2202bada-4baf-45f5-aa61-8c5bad9646d3";
@@ -136,6 +136,20 @@ export function branchLabel(raw) {
     .trim();
 }
 
+/** A branch name without the bank's own words at its start ("פאגי חיפה" of Bank PAGI is Haifa). */
+export function withoutBankWords(label, bank) {
+  const own = new Set(
+    bank.name.he
+      .split(" ")
+      .filter((w) => w !== "בנק" && w !== "הבנק")
+      .map((w) => loose(normalize(w))),
+  );
+  own.add(loose(normalize("פועלים")));
+  const words = label.split(" ");
+  while (words.length > 1 && own.has(loose(normalize(words[0])))) words.shift();
+  return words.join(" ");
+}
+
 /** Pure, for fixtures: the branch rows to listings. */
 export function buildBanks({ rows, existing = [] }) {
   const matcher = createPlaceMatcher();
@@ -202,7 +216,7 @@ export function buildBanks({ rows, existing = [] }) {
     if (phone) counts.withPhone++;
     const extension = /(^|\s)שלוחת(\s|$)/.test(r.Branch_Name ?? "");
     // "פועלים Business חיפה": the bank's own word once is enough.
-    const label = branchLabel(r.Branch_Name).replace(/^פועלים\s+/, "");
+    const label = withoutBankWords(branchLabel(r.Branch_Name), bank);
     const branch = namer.name(label || m.place.name.he, m.place);
     const name = {
       he: `${bank.name.he} ${branch.he}`,
