@@ -18,6 +18,11 @@ describe("dedupe", () => {
     expect(similarNames({ he: "סונול חיפה" }, { he: "תחנת דלק סונול חיפה" })).toBe(true);
     expect(similarNames({ en: "Delek Karmiel" }, { en: "Delek Karmiel East" })).toBe(true);
     expect(similarNames({ he: "סונול חיפה" }, { he: "דלק עכו" })).toBe(false);
+    expect(similarNames({ he: "בנק לאומי חורב" }, { he: "בנק לאומי דניה" })).toBe(false);
+    expect(similarNames({ he: "בנק לאומי קרית ים" }, { he: "בנק לאומי קרית מוצקין" })).toBe(false);
+    expect(similarNames({ he: "בנק לאומי ראש פינה" }, { he: "בנק לאומי עסקים ראש פינה" })).toBe(
+      true,
+    );
   });
   it("is one business within 120 m under a similar name, or under one official id", () => {
     const a = rec({});
@@ -27,6 +32,12 @@ describe("dedupe", () => {
     const bank = rec({ kinds: ["banks"], name: { he: "בנק לאומי חיפה", en: "Bank Leumi Haifa" } });
     const fuel = rec({ name: { he: "דלק חיפה", en: "Delek Haifa" } });
     expect(sameBusiness(bank, fuel)).toBe(false);
+    const leumi = rec({ brand: "leumi", name: { he: "בנק לאומי עפולה" } });
+    const yahav = rec({ brand: "yahav", name: { he: "בנק יהב עפולה" } });
+    expect(sameBusiness(leumi, yahav)).toBe(false);
+    const twoNumbers = [rec({ attributes: { b: "31-1" } }), rec({ attributes: { b: "31-313" } })];
+    expect(sameBusiness(...twoNumbers, ["b"])).toBe(false);
+    expect(sameBusiness(...twoNumbers, ["b"], { idsDecide: false })).toBe(true);
     const ids = ["fuelAdminNo"];
     const far = rec({ lat: 33, attributes: { fuelAdminNo: 7 } });
     expect(sameBusiness(rec({ attributes: { fuelAdminNo: 7 } }), far, ids)).toBe(true);

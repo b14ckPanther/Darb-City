@@ -2,7 +2,7 @@
 // The list has each branch's coordinates, phone, closed day and accessibility; no hours.
 // Run: node packages/seed/scripts/import/banks.mjs [--refresh]
 import { pathToFileURL } from "node:url";
-import { dedupe, SAME_PLACE_M } from "./dedupe.mjs";
+import { dedupe } from "./dedupe.mjs";
 import {
   business,
   slugBase,
@@ -14,7 +14,7 @@ import {
 import { datastore, today } from "./fetch.mjs";
 import { createNamer, plainDashes } from "./names.mjs";
 import { normalizePhone } from "./phones.mjs";
-import { createPlaceMatcher, km } from "./places.mjs";
+import { createPlaceMatcher } from "./places.mjs";
 
 export const FILE = "banks-north.json";
 export const RESOURCE = "2202bada-4baf-45f5-aa61-8c5bad9646d3";
@@ -251,16 +251,12 @@ export function buildBanks({ rows, existing = [] }) {
       }),
     );
   }
-  const { kept: unique, dropped } = dedupe(businesses, { existing, idKeys: ["bankBranch"] });
-  // An extension standing at its own branch's door is that branch.
-  const base = (b) => String(b.attributes.bankBranch).split("@")[0];
-  const kept = unique.filter((b) => {
-    if (!String(b.attributes.bankBranch).includes("@")) return true;
-    const main = unique.find(
-      (o) => o !== b && base(o) === base(b) && km(o, b) * 1000 <= SAME_PLACE_M,
-    );
-    if (main) dropped.push({ record: b, keptAs: `${main.place}/${main.slug}`, why: "duplicate" });
-    return !main;
+  // One branch is sometimes listed under two numbers at one door; an extension at its branch's
+  // door is that branch. Distance and name decide, not the number.
+  const { kept, dropped } = dedupe(businesses, {
+    existing,
+    idKeys: ["bankBranch"],
+    idsDecide: false,
   });
   counts.inNorth = businesses.length;
   counts.deduped = dropped.length;
