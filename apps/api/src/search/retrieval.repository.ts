@@ -185,13 +185,15 @@ export class RetrievalRepository {
       ...(f.dietary.length > 0 ? [Prisma.sql`b.dietary @> ${f.dietary}::"Dietary"[]`] : []),
       ...(deep
         ? [
-            // Its card offers an item, its kind was asked for, or its own document matches.
+            // Its card offers an item, its kind was asked for, or (no kind asked) its name matches.
             Prisma.sql`(h."businessId" IS NOT NULL${
-              f.kindIds ? Prisma.sql` OR d."kindIds" && ${f.kindIds}::uuid[]` : Prisma.empty
-            } OR ${Prisma.join(
-              items.map((t) => Prisma.sql`${t} <% d."nameText"`),
-              " OR ",
-            )})`,
+              f.kindIds
+                ? Prisma.sql` OR d."kindIds" && ${f.kindIds}::uuid[]`
+                : Prisma.sql` OR ${Prisma.join(
+                    items.map((t) => Prisma.sql`${t} <% d."nameText"`),
+                    " OR ",
+                  )}`
+            })`,
           ]
         : !f.kindIds && f.text
           ? [
