@@ -11,8 +11,8 @@
     "counts": {
       "fetchedRows": 13948,
       "fetched": 5483,
-      "outsideNorth": 3314,
-      "townUnknown": 186,
+      "outsideNorth": 3304,
+      "townUnknown": 196,
       "inNorth": 1983,
       "noConfidentPoint": 1966,
       "matchedByName": 14,

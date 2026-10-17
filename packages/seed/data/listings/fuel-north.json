@@ -19,15 +19,19 @@
       "noPlace": 0,
       "noPoint": 1,
       "matchedByName": 401,
-      "matchedNearest": 41,
+      "matchedNearest": 40,
       "osmMatched": 290,
       "open247": 21,
-      "withPhone": 330,
+      "withPhone": 329,
       "evAttached": 39,
-      "inNorth": 442,
+      "pointFarFromTown": 1,
+      "inNorth": 441,
       "deduped": 0,
-      "emitted": 442
-    }
+      "emitted": 441
+    },
+    "point_far_from_town": [
+      "3029 ס.ע.ן אנרגיה בע\"מ (תמרה): 38.909 km away"
+    ]
   },
   "businesses": [
     {
@@ -2995,83 +2999,6 @@
       }
     },
     {
-      "slug": "fuel-s-a-n-energy",
-      "place": "arara",
-      "brand": null,
-      "primaryKind": "stations",
-      "kinds": [
-        "stations"
-      ],
-      "name": {
-        "he": "ס.ע.ן אנרגיה",
-        "ar": "س.ع.ن إنرجي",
-        "en": "S.a.n Energy"
-      },
-      "tagline": {
-        "he": "תחנת דלק",
-        "ar": "محطة وقود",
-        "en": "Fuel station"
-      },
-      "address": {
-        "he": "א.ת. תמרה",
-        "ar": "عرعرة",
-        "en": "Arara"
-      },
-      "lat": 32.511411,
-      "lng": 35.105967,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "fuelAdminNo": 3029
-      },
-      "tier": "basic",
-      "phone": "+972 52-637-3330",
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "ס.ע.ן אנרגיה",
-          "ar": "س.ع.ن إنرجي",
-          "en": "S.a.n Energy"
-        },
-        "title": {
-          "he": "תחנת דלק",
-          "ar": "محطة وقود",
-          "en": "Fuel station"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "דלק",
-              "ar": "وقود",
-              "en": "Fuel"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט לתחנה",
-          "ar": "خذني للمحطة",
-          "en": "Navigate to the station"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#D6A473"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#d6a473",
-        "icons": "solid"
-      }
-    },
-    {
       "slug": "sonol-arara",
       "place": "arara",
       "brand": "sonol",
@@ -5527,7 +5454,7 @@
       }
     },
     {
-      "slug": "dor-alon-bnimina-west",
+      "slug": "dor-alon-binyamina-west",
       "place": "binyamina-givat-ada",
       "brand": "dor-alon",
       "primaryKind": "stations",
@@ -5536,8 +5463,8 @@
       ],
       "name": {
         "he": "דור אלון בנימינה מערב",
-        "ar": "دور ألون بنيمينا الغربية",
-        "en": "Dor Alon Bnimina West"
+        "ar": "دور ألون بنيامينا الغربية",
+        "en": "Dor Alon Binyamina West"
       },
       "tagline": {
         "he": "תחנת דלק דור אלון",
@@ -5567,8 +5494,8 @@
       "experience": {
         "brand": {
           "he": "דור אלון בנימינה מערב",
-          "ar": "دور ألون بنيمينا الغربية",
-          "en": "Dor Alon Bnimina West"
+          "ar": "دور ألون بنيامينا الغربية",
+          "en": "Dor Alon Binyamina West"
         },
         "title": {
           "he": "תחנת דלק דור אלון",
@@ -5611,7 +5538,7 @@
       }
     },
     {
-      "slug": "dor-alon-gavat-ada",
+      "slug": "dor-alon-givat-ada",
       "place": "binyamina-givat-ada",
       "brand": "dor-alon",
       "primaryKind": "stations",
@@ -5620,8 +5547,8 @@
       ],
       "name": {
         "he": "דור אלון גבעת עדה",
-        "ar": "دور ألون جبعت عدا",
-        "en": "Dor Alon Gavat Ada"
+        "ar": "دور ألون جفعت عدا",
+        "en": "Dor Alon Givat Ada"
       },
       "tagline": {
         "he": "תחנת דלק דור אלון",
@@ -5651,8 +5578,8 @@
       "experience": {
         "brand": {
           "he": "דור אלון גבעת עדה",
-          "ar": "دور ألون جبعت عدا",
-          "en": "Dor Alon Gavat Ada"
+          "ar": "دور ألون جفعت عدا",
+          "en": "Dor Alon Givat Ada"
         },
         "title": {
           "he": "תחנת דלק דור אלון",
@@ -7386,7 +7313,7 @@
       }
     },
     {
-      "slug": "sonol-mafagash-makhar",
+      "slug": "sonol-mafagash-makr",
       "place": "ein-hamifratz",
       "brand": "sonol",
       "primaryKind": "stations",
@@ -7395,8 +7322,8 @@
       ],
       "name": {
         "he": "סונול מפגש מכר",
-        "ar": "سونول مفجش مكر",
-        "en": "Sonol Mafagash Makhar"
+        "ar": "سونول مفجش المكر",
+        "en": "Sonol Mafagash Makr"
       },
       "tagline": {
         "he": "תחנת דלק סונול",
@@ -7426,8 +7353,8 @@
       "experience": {
         "brand": {
           "he": "סונול מפגש מכר",
-          "ar": "سونول مفجش مكر",
-          "en": "Sonol Mafagash Makhar"
+          "ar": "سونول مفجش المكر",
+          "en": "Sonol Mafagash Makr"
         },
         "title": {
           "he": "תחנת דלק סונול",
@@ -16817,7 +16744,7 @@
       }
     },
     {
-      "slug": "yaad-yahav-makhar",
+      "slug": "yaad-yahav-makr",
       "place": "judeida-makr",
       "brand": "yaad",
       "primaryKind": "stations",
@@ -16826,8 +16753,8 @@
       ],
       "name": {
         "he": "יעד יהב מכר",
-        "ar": "يعاد يهب مكر",
-        "en": "Yaad Yahav Makhar"
+        "ar": "يعاد يهب المكر",
+        "en": "Yaad Yahav Makr"
       },
       "tagline": {
         "he": "תחנת דלק יעד",
@@ -16857,8 +16784,8 @@
       "experience": {
         "brand": {
           "he": "יעד יהב מכר",
-          "ar": "يعاد يهب مكر",
-          "en": "Yaad Yahav Makhar"
+          "ar": "يعاد يهب المكر",
+          "en": "Yaad Yahav Makr"
         },
         "title": {
           "he": "תחנת דלק יעד",
@@ -27767,7 +27694,7 @@
       }
     },
     {
-      "slug": "dor-alon-paradas-hna",
+      "slug": "dor-alon-pardes-hana",
       "place": "pardes-hana-karkur",
       "brand": "dor-alon",
       "primaryKind": "stations",
@@ -27776,8 +27703,8 @@
       ],
       "name": {
         "he": "דור אלון פרדס חנה",
-        "ar": "دور ألون بردس حنا",
-        "en": "Dor Alon Paradas Hna"
+        "ar": "دور ألون برديس حنا",
+        "en": "Dor Alon Pardes Hana"
       },
       "tagline": {
         "he": "תחנת דלק דור אלון",
@@ -27807,8 +27734,8 @@
       "experience": {
         "brand": {
           "he": "דור אלון פרדס חנה",
-          "ar": "دور ألون بردس حنا",
-          "en": "Dor Alon Paradas Hna"
+          "ar": "دور ألون برديس حنا",
+          "en": "Dor Alon Pardes Hana"
         },
         "title": {
           "he": "תחנת דלק דור אלון",
@@ -27844,7 +27771,7 @@
       }
     },
     {
-      "slug": "sonol-paradas-hna",
+      "slug": "sonol-pardes-hana",
       "place": "pardes-hana-karkur",
       "brand": "sonol",
       "primaryKind": "stations",
@@ -27854,8 +27781,8 @@
       ],
       "name": {
         "he": "סונול פרדס חנה",
-        "ar": "سونول بردس حنا",
-        "en": "Sonol Paradas Hna"
+        "ar": "سونول برديس حنا",
+        "en": "Sonol Pardes Hana"
       },
       "tagline": {
         "he": "תחנת דלק סונול",
@@ -27885,8 +27812,8 @@
       "experience": {
         "brand": {
           "he": "סונול פרדס חנה",
-          "ar": "سونول بردس حنا",
-          "en": "Sonol Paradas Hna"
+          "ar": "سونول برديس حنا",
+          "en": "Sonol Pardes Hana"
         },
         "title": {
           "he": "תחנת דלק סונול",
@@ -27934,7 +27861,7 @@
       }
     },
     {
-      "slug": "ten-paradas-hna",
+      "slug": "ten-pardes-hana",
       "place": "pardes-hana-karkur",
       "brand": "ten",
       "primaryKind": "stations",
@@ -27943,8 +27870,8 @@
       ],
       "name": {
         "he": "טן פרדס חנה",
-        "ar": "تن بردس حنا",
-        "en": "Ten Paradas Hna"
+        "ar": "تن برديس حنا",
+        "en": "Ten Pardes Hana"
       },
       "tagline": {
         "he": "תחנת דלק טן",
@@ -27974,8 +27901,8 @@
       "experience": {
         "brand": {
           "he": "טן פרדס חנה",
-          "ar": "تن بردس حنا",
-          "en": "Ten Paradas Hna"
+          "ar": "تن برديس حنا",
+          "en": "Ten Pardes Hana"
         },
         "title": {
           "he": "תחנת דלק טן",
