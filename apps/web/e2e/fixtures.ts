@@ -26,6 +26,7 @@ export const SITE_PAGES = [
   "/pricing",
   "/contact",
   "/join",
+  "/near",
   "/for-business",
   "/accessibility",
   "/terms",
