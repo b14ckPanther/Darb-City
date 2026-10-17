@@ -56,7 +56,7 @@ export default async function ShowroomPage({ params }: Props) {
             turn: copy.turn,
           }}
         />
-        <section className={styles.cta} aria-labelledby="showroom-cta">
+        <section className={styles.cta} aria-labelledby="showroom-cta" data-scheme="night">
           <h2 id="showroom-cta" className={landing.sectionTitle}>
             {copy.cta.title}
           </h2>

@@ -102,6 +102,19 @@
   pointer-events: none;
 }
 
+/* By night the page is already night: no dawn, the hero simply runs on. */
+:global(:root[data-theme="dark"]) .hero::after {
+  block-size: var(--space-7);
+  background: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :global(:root:not([data-theme="light"])) .hero::after {
+    block-size: var(--space-7);
+    background: none;
+  }
+}
+
 .heroStage {
   position: relative;
   min-block-size: calc(100svh - 68px);

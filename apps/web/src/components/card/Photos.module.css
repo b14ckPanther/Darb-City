@@ -42,7 +42,8 @@
   padding: 0;
   border: 0;
   background: rgb(3 10 7 / 0.96);
-  color: var(--text);
+  /* A dark lightbox in both themes: photos read best on black. */
+  color: var(--ivory);
 }
 
 .lightbox::backdrop {
@@ -88,7 +89,7 @@
   border: 0;
   border-radius: 50%;
   background: rgb(0 0 0 / 0.55);
-  color: var(--text);
+  color: var(--ivory);
   cursor: pointer;
 }
 
