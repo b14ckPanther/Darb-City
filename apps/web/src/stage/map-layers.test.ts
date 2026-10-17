@@ -1,5 +1,5 @@
 // @vitest-environment node
-import { colors } from "@darb/tokens";
+import { colors, mapColors } from "@darb/tokens";
 import { expect, it } from "vitest";
 import { MAP_FONT as STYLE_FONT } from "../../scripts/map/style.mjs";
 import {
@@ -27,8 +27,10 @@ it("draws a density surface, proportional points and ivory names, and business p
   expect(layers[4]).toMatchObject({ source: PIN_SOURCE });
   const json = JSON.stringify(layers);
   expect(json).not.toMatch(/icon-/);
-  for (const colour of [colors.gold, colors.gold300, colors.ivory, colors.night])
+  for (const colour of [colors.gold, colors.ivory, mapColors.bubble, mapColors.label])
     expect(json).toContain(colour);
+  // Made for the daylight map: no night fills or ivory text that would vanish on light land.
+  expect(json).not.toContain(colors.night);
   // Bubbles for merged places; single places never drawn when empty.
   expect(JSON.stringify(layers[0])).toContain("point_count");
   expect(JSON.stringify((layers[2] as { filter?: unknown }).filter)).toContain('["get","count"],0');

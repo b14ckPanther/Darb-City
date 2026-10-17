@@ -4,7 +4,7 @@ import type {
   LngLatBoundsLike,
   StyleSpecification,
 } from "maplibre-gl";
-import { colors } from "@darb/tokens";
+import { colors, mapColors } from "@darb/tokens";
 import { PROTOMAPS_SOURCE } from "./map-style";
 
 /** Written by scripts/copy-map.mjs (scripts/map/served-area.mjs): the land Darb serves. */
@@ -177,7 +177,7 @@ export function liftLayer(): LayerSpecification {
     id: SERVED_LIFT,
     type: "fill",
     source: SERVED_SOURCE,
-    paint: { "fill-color": colors.forest900, "fill-opacity": 0.55, "fill-antialias": false },
+    paint: { "fill-color": mapColors.halo, "fill-opacity": 0.45, "fill-antialias": false },
   };
 }
 
@@ -190,7 +190,7 @@ export function veilLayers(): LayerSpecification[] {
       source: SERVED_SOURCE,
       paint: {
         "line-color": colors.gold,
-        "line-opacity": 0.07,
+        "line-opacity": 0.14,
         "line-width": width(28, 44, 64),
         "line-blur": width(28, 44, 64),
         // Counter-clockwise rings: a negative offset moves the line inside.
@@ -201,16 +201,16 @@ export function veilLayers(): LayerSpecification[] {
       id: VEIL,
       type: "fill",
       source: VEIL_SOURCE,
-      paint: { "fill-color": colors.night, "fill-opacity": 0.86, "fill-antialias": false },
+      paint: { "fill-color": mapColors.mist, "fill-opacity": 0.82, "fill-antialias": false },
     },
     {
-      // Night drawn across the edge, so the land fades out instead of stopping at a line.
+      // Mist drawn across the edge, so the land fades out instead of stopping at a line.
       id: VEIL_EDGE,
       type: "line",
       source: SERVED_SOURCE,
       paint: {
-        "line-color": colors.night,
-        "line-opacity": 0.9,
+        "line-color": mapColors.mist,
+        "line-opacity": 0.85,
         "line-width": width(36, 56, 80),
         "line-blur": width(36, 56, 80),
       },

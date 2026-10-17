@@ -1,7 +1,7 @@
 // @vitest-environment node
 import { createRequire } from "node:module";
 import type { StyleSpecification, SymbolLayerSpecification } from "maplibre-gl";
-import { colors } from "@darb/tokens";
+import { mapColors } from "@darb/tokens";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { darbStyle } from "../../scripts/map/style.mjs";
 import { CITY_LABEL, darbLayers } from "./map-layers";
@@ -141,7 +141,8 @@ describe("withServedArea", () => {
     expect(ids.indexOf(SERVED_LIFT)).toBeLessThan(ids.indexOf("water"));
     expect(ids.indexOf(SERVED_LIFT)).toBeGreaterThan(ids.indexOf("earth"));
     const veil = style.layers.find((l) => l.id === VEIL)!;
-    expect(veil.paint).toMatchObject({ "fill-color": colors.night });
+    // A warm mist, never black: the land outside is quiet, not dark.
+    expect(veil.paint).toMatchObject({ "fill-color": mapColors.mist, "fill-opacity": 0.82 });
   });
   it("names only Darb's towns, and labels nothing outside the served land", () => {
     const labels = style.layers.filter(
