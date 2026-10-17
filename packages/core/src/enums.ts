@@ -10,6 +10,7 @@ export const TEMPLATES = [
   "tracker",
   "pass",
   "builder",
+  "station",
 ] as const;
 export type Template = (typeof TEMPLATES)[number];
 

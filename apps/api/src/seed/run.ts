@@ -2,9 +2,9 @@ import "dotenv/config";
 import {
   loadBrands,
   loadBusinesses,
-  loadClients,
   loadKinds,
   loadPlaces,
+  loadReal,
   loadSectors,
 } from "@darb/seed";
 import { embeddingProviderFor } from "../ai/embeddings.js";
@@ -24,7 +24,7 @@ const counts = await loadSeed(prisma, {
   brands: loadBrands(),
   businesses: pickBusinesses(process.env, {
     all: loadBusinesses,
-    real: () => loadClients().businesses,
+    real: loadReal,
   }),
 });
 console.log(`Seeded ${JSON.stringify(counts)} in ${((Date.now() - started) / 1000).toFixed(1)}s`);

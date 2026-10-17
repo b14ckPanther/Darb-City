@@ -459,10 +459,10 @@
           "en": "Navigate"
         },
         "palette": {
-          "bg": "#FFD100",
-          "surface": "#FFE566",
-          "ink": "#0B1630",
-          "accent": "#0033A0"
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D9A54C"
         },
         "font": "Heebo"
       },
@@ -607,10 +607,10 @@
           "en": "Navigate"
         },
         "palette": {
-          "bg": "#FFD100",
-          "surface": "#FFE566",
-          "ink": "#0B1630",
-          "accent": "#0033A0"
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D9A54C"
         },
         "font": "Heebo"
       },

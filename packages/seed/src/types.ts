@@ -66,6 +66,10 @@ export interface SeedBusiness {
   whatsapp?: string | null;
   website?: string | null;
   apps?: { web?: string; ios?: string; android?: string };
+  /** The business's own pages (Instagram, Facebook, TikTok, a Waze link). */
+  links?: Record<string, string>;
+  /** The card's look: one of CARD_ACCENTS, and line or solid icons. */
+  cardStyle?: { accent?: string; icons?: "line" | "solid" };
   /**
    * Ledger note, never written to the database: the pin is the town's centre because the exact
    * spot was not given yet. The owner moves it in /admin (Task 28).

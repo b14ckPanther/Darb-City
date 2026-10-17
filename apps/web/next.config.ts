@@ -8,9 +8,12 @@ const searchIndex = writeSearchIndex(path.resolve(process.cwd(), "public"));
 
 const config: NextConfig = {
   reactStrictMode: true,
-  // Dev only: the owner tries the site on a phone over the home network; without this Next 16
-  // refuses that origin its dev scripts and the page never hydrates.
-  allowedDevOrigins: ["10.0.0.23", "*.local"],
+  // Dev only: the owner tries the site on a phone over a home network or a phone hotspot (private
+  // address ranges); without this Next 16 refuses those origins its dev scripts and nothing reacts.
+  allowedDevOrigins: ["10.*.*.*", "172.*.*.*", "192.168.*.*", "*.local"],
+  // Dev only: Next's floating "N" button sits on the phone's near-me button, and tapping it on iOS
+  // throws inside Next's own devtools. Runtime errors still open the error overlay.
+  devIndicators: false,
   poweredByHeader: false,
   turbopack: { root: workspaceRoot },
   outputFileTracingRoot: workspaceRoot,

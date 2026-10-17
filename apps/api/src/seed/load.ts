@@ -228,6 +228,8 @@ export async function loadSeed(prisma: PrismaService, data: SeedData): Promise<S
           whatsapp: b.whatsapp ?? null,
           website: b.website ?? null,
           apps: json(b.apps ?? {}),
+          links: json(b.links ?? {}),
+          cardStyle: json(b.cardStyle ?? {}),
           source: "seed" as const,
           status: "published" as const,
           brandId: b.brand ? brandIds.get(b.brand)! : null,

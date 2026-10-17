@@ -1,0 +1,157 @@
+/* A fuel station's screen (templates/Station.tsx), in the station's own palette (--t-*). */
+
+.station {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-4) var(--space-5);
+}
+
+/* The forecourt sign: what it pumps, and that it never closes. */
+.forecourt {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.pumpIcon {
+  display: grid;
+  place-items: center;
+  inline-size: 44px;
+  block-size: 44px;
+  border-radius: 14px;
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--t-accent) 85%, white),
+    var(--t-accent)
+  );
+  color: var(--t-on-accent);
+}
+
+.fuelLabel {
+  margin: 0;
+  font-size: var(--step-1);
+  font-weight: 800;
+}
+
+.always {
+  margin: 0;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--t-accent) 14%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--t-accent) 45%, transparent);
+  color: var(--t-accent);
+  font-size: var(--step--1);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* The grades as pump faces: a big number on the station's surface, its nozzle colour on top. */
+.grades {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(84px, 1fr));
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.grades li {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-block-size: 92px;
+  padding: var(--space-4) var(--space-2) var(--space-3);
+  border-radius: 18px;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--t-ink) 6%, var(--t-surface)),
+    var(--t-surface)
+  );
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--t-accent) 28%, transparent),
+    0 12px 28px -18px rgb(0 0 0 / 0.6);
+  overflow: hidden;
+}
+
+.nozzle {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: 0;
+  block-size: 4px;
+  background: var(--tone);
+  box-shadow: 0 0 14px var(--tone);
+}
+
+.octane {
+  background: linear-gradient(
+    180deg,
+    var(--t-ink),
+    color-mix(in srgb, var(--t-accent) 55%, var(--t-ink))
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: clamp(2.2rem, 1.6rem + 3vw, 3rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.gradeWord {
+  font-size: var(--step-1);
+  font-weight: 800;
+  line-height: 1.1;
+  text-align: center;
+}
+
+/* Everything else as tiles: an icon in a round badge and a short word under it. */
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.services li {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-2);
+  border-radius: 16px;
+  background: var(--t-surface);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--t-ink) 8%, transparent);
+  text-align: center;
+}
+
+.badge {
+  display: grid;
+  place-items: center;
+  inline-size: 40px;
+  block-size: 40px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--t-accent) 16%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--t-accent) 40%, transparent);
+  color: var(--t-accent);
+}
+
+.glyph {
+  inline-size: 22px;
+  block-size: 22px;
+}
+
+.serviceName {
+  font-size: var(--step--1);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.serviceMeta {
+  font-size: var(--step--2, 0.75rem);
+  opacity: 0.75;
+}

@@ -1,7 +1,7 @@
 import { expect, it } from "vitest";
 import { DIETARY, PLACE_STATUSES, PLACE_TYPES, TEMPLATES, TIERS } from "./enums.js";
 
-it("lists the eleven experience templates from the spec", () => {
+it("lists the experience templates: the spec's eleven and the fuel station's own", () => {
   expect(TEMPLATES).toEqual([
     "menu",
     "booking",
@@ -14,6 +14,7 @@ it("lists the eleven experience templates from the spec", () => {
     "tracker",
     "pass",
     "builder",
+    "station",
   ]);
 });
 

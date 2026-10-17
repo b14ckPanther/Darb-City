@@ -12,6 +12,7 @@ import { Quote } from "./Quote";
 import { Schedule } from "./Schedule";
 import type { TemplateProps } from "./shared";
 import { Shop } from "./Shop";
+import { Station } from "./Station";
 import { Tracker } from "./Tracker";
 
 export const TEMPLATE_BODIES: Record<Template, (props: TemplateProps) => JSX.Element> = {
@@ -26,6 +27,7 @@ export const TEMPLATE_BODIES: Record<Template, (props: TemplateProps) => JSX.Ele
   tracker: Tracker,
   pass: Pass,
   builder: Builder,
+  station: Station,
 };
 
 export function parseScreen(experience: unknown): ScreenDto | null {
