@@ -131,7 +131,8 @@ function stationName(chain, rawName, place, namer) {
       en: `${chain.name.en} ${named.en}`,
     };
   }
-  if (!own) own = place.name.he;
+  // A name in Latin letters only ("way") says little: the station is named for its town.
+  if (!own || !/[\u05D0-\u05EA]/.test(own)) own = place.name.he;
   const named = namer.name(own, place);
   const justTown = namer.isPlace(own);
   return justTown

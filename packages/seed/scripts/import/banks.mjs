@@ -147,6 +147,7 @@ export function buildBanks({ rows, existing = [] }) {
       שלוחת: { ar: "فرع", en: "Branch", after: true },
       "מרכז שירות": { ar: "مركز خدمة", en: "Service Centre", after: true },
       "מרכז קופות": { ar: "مركز صناديق", en: "Cash Centre", after: true },
+      Business: { ar: "بزنس", en: "Business", after: true },
     },
   });
   const counts = {
@@ -200,7 +201,9 @@ export function buildBanks({ rows, existing = [] }) {
     const phone = normalizePhone(r.Telephone);
     if (phone) counts.withPhone++;
     const extension = /(^|\s)שלוחת(\s|$)/.test(r.Branch_Name ?? "");
-    const branch = namer.name(branchLabel(r.Branch_Name) || m.place.name.he, m.place);
+    // "פועלים Business חיפה": the bank's own word once is enough.
+    const label = branchLabel(r.Branch_Name).replace(/^פועלים\s+/, "");
+    const branch = namer.name(label || m.place.name.he, m.place);
     const name = {
       he: `${bank.name.he} ${branch.he}`,
       ar: `${bank.name.ar} ${branch.ar}`,
