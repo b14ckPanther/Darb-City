@@ -1,4 +1,4 @@
-import { Tags, text, type TemplateProps } from "./shared";
+import { itemKeys, Tags, text, type TemplateProps } from "./shared";
 import styles from "./templates.module.css";
 
 export function Quote({ screen, locale }: TemplateProps) {
@@ -6,7 +6,7 @@ export function Quote({ screen, locale }: TemplateProps) {
     <div className={styles.body}>
       <ol className={styles.steps}>
         {screen.items.map((item, i) => (
-          <li key={i} data-item="">
+          <li key={i} data-item="" data-match-keys={itemKeys(item)}>
             <span className={styles.number} aria-hidden="true">
               {i + 1}
             </span>

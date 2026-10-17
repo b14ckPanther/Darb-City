@@ -1,5 +1,5 @@
 import type { CSSProperties, ReactNode } from "react";
-import { Tags, text, type TemplateProps } from "./shared";
+import { itemKeys, Tags, text, type TemplateProps } from "./shared";
 import styles from "./Station.module.css";
 
 /**
@@ -93,7 +93,10 @@ export function Station({ screen, locale }: TemplateProps) {
   const rest = items.filter((i) => i.kind !== "fuel" && i.kind !== "open");
   return (
     <div className={styles.station}>
-      <div className={styles.forecourt} {...(fuel ? { "data-item": "" } : {})}>
+      <div
+        className={styles.forecourt}
+        {...(fuel ? { "data-item": "", "data-match-keys": itemKeys(fuel.item) } : {})}
+      >
         <span className={styles.pumpIcon}>
           <Glyph name="fuel" />
         </span>
@@ -101,7 +104,7 @@ export function Station({ screen, locale }: TemplateProps) {
           {fuel ? text(fuel.item.label, locale) : text(screen.title, locale)}
         </p>
         {open ? (
-          <p className={styles.always} data-item="">
+          <p className={styles.always} data-item="" data-match-keys={itemKeys(open.item)}>
             {text(open.item.label, locale)}
           </p>
         ) : null}
@@ -121,7 +124,7 @@ export function Station({ screen, locale }: TemplateProps) {
       {rest.length > 0 ? (
         <ul className={styles.services}>
           {rest.map(({ item, kind }, i) => (
-            <li key={i} data-item="">
+            <li key={i} data-item="" data-match-keys={itemKeys(item)}>
               <span className={styles.badge}>
                 <Glyph name={kind ?? "dot"} />
               </span>

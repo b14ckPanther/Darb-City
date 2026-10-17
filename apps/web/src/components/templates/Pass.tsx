@@ -1,4 +1,4 @@
-import { Tags, text, type TemplateProps } from "./shared";
+import { itemKeys, Tags, text, type TemplateProps } from "./shared";
 import styles from "./templates.module.css";
 
 /** A decorative code pattern, the same for the same brand. */
@@ -14,7 +14,7 @@ export function Pass({ screen, locale }: TemplateProps) {
       <div className={styles.pass}>
         <dl className={styles.fields}>
           {screen.items.map((item, i) => (
-            <div key={i} data-item="">
+            <div key={i} data-item="" data-match-keys={itemKeys(item)}>
               <dt>{text(item.label, locale)}</dt>
               <dd>{text(item.meta, locale)}</dd>
             </div>

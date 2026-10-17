@@ -1,4 +1,4 @@
-import { Tags, text, type TemplateProps } from "./shared";
+import { itemKeys, Tags, text, type TemplateProps } from "./shared";
 import styles from "./templates.module.css";
 
 export function Builder({ screen, locale }: TemplateProps) {
@@ -7,7 +7,7 @@ export function Builder({ screen, locale }: TemplateProps) {
       <Tags screen={screen} locale={locale} />
       <ul className={styles.options}>
         {screen.items.map((item, i) => (
-          <li key={i} data-item="">
+          <li key={i} data-item="" data-match-keys={itemKeys(item)}>
             <span
               className={styles.check}
               aria-hidden="true"

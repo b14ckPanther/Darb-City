@@ -66,3 +66,37 @@ describe("palette guard", () => {
     expect(ink({ ...screen.palette, bg: "#1a1a2e", ink: "#2b2b40" })).toBe("#ffffff");
   });
 });
+
+describe("the item a search matched", () => {
+  const caramel: ScreenDto = {
+    ...screen,
+    items: [
+      {
+        label: { he: "ארוחות", en: "Meals" },
+        meta: { he: "כריכים: שניצל, שווארמה", en: "Sandwiches: schnitzel, shawarma" },
+      },
+      { label: { he: "שטיפת רכב", en: "Car wash" } },
+    ],
+  };
+  it.each(TEMPLATES)("%s: keys every item by its label and each listed thing", (template) => {
+    const { container } = render(<ScreenView screen={caramel} template={template} locale="he" />);
+    const keys = [...container.querySelectorAll("[data-item]")].map((el) =>
+      el.getAttribute("data-match-keys"),
+    );
+    expect(keys.some((k) => k?.split(" ").includes("שווארמה"))).toBe(true);
+    expect(keys.some((k) => k?.split(" ").includes("car-wash"))).toBe(true);
+  });
+  it("marks the item named in ?hl= when the screen opens, and nothing without it", () => {
+    window.history.replaceState(null, "", "/akko/food/restaurants/caramel?hl=shawarma");
+    try {
+      const { container } = render(<ScreenView screen={caramel} template="menu" locale="en" />);
+      const marked = container.querySelectorAll("[data-highlight]");
+      expect(marked).toHaveLength(1);
+      expect(marked[0]?.textContent).toContain("Meals");
+    } finally {
+      window.history.replaceState(null, "", "/");
+    }
+    const { container } = render(<ScreenView screen={caramel} template="menu" locale="en" />);
+    expect(container.querySelectorAll("[data-highlight]")).toHaveLength(0);
+  });
+});

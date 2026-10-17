@@ -262,3 +262,37 @@
 .check[data-checked] {
   background: var(--t-accent);
 }
+
+/* Opened from a search: the matched item wears the screen's accent, with a soft fade in. */
+.screen [data-highlight] {
+  position: relative;
+  outline: 2px solid var(--t-accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.screen [data-highlight]::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 6px;
+  background: var(--t-accent);
+  opacity: 0.14;
+  pointer-events: none;
+  animation: match-in 600ms ease-out both;
+}
+
+@keyframes match-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.14;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .screen [data-highlight]::after {
+    animation: none;
+  }
+}
