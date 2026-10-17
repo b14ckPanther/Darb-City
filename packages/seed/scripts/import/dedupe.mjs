@@ -80,7 +80,12 @@ export function richness(b) {
  * licensed fuel stations side by side are two); otherwise (a bank listing one branch under two
  * numbers) the distance and the names decide.
  */
-export function sameBusiness(a, b, idKeys = [], { idsDecide = true } = {}) {
+export function sameBusiness(
+  a,
+  b,
+  idKeys = [],
+  { idsDecide = true, metres = SAME_PLACE_M, kindsMustMeet = true } = {},
+) {
   for (const key of idKeys) {
     const x = a.attributes?.[key];
     const y = b.attributes?.[key];
@@ -93,24 +98,34 @@ export function sameBusiness(a, b, idKeys = [], { idsDecide = true } = {}) {
   if (a.brand && b.brand && a.brand !== b.brand) return false;
   // A bank beside a fuel station in one town is two businesses, however alike their names.
   const kinds = new Set(a.kinds ?? []);
-  if (a.kinds && b.kinds && !b.kinds.some((k) => kinds.has(k))) return false;
-  return km(a, b) * 1000 <= SAME_PLACE_M && similarNames(a.name, b.name);
+  if (kindsMustMeet && a.kinds && b.kinds && !b.kinds.some((k) => kinds.has(k))) return false;
+  return km(a, b) * 1000 <= metres && similarNames(a.name, b.name);
 }
 
 /**
  * Removes duplicates within `records`, and every record that duplicates one in `existing`
  * (already published, kept as it is). Returns { kept, dropped: [{ record, keptAs, why }] }.
  */
-export function dedupe(records, { existing = [], idKeys = [], idsDecide = true } = {}) {
+export function dedupe(
+  records,
+  {
+    existing = [],
+    idKeys = [],
+    idsDecide = true,
+    metres = SAME_PLACE_M,
+    kindsMustMeet = true,
+  } = {},
+) {
+  const opts = { idsDecide, metres, kindsMustMeet };
   const dropped = [];
   const fresh = records.filter((r) => {
-    const twin = existing.find((e) => sameBusiness(r, e, idKeys, { idsDecide }));
+    const twin = existing.find((e) => sameBusiness(r, e, idKeys, opts));
     if (twin) dropped.push({ record: r, keptAs: `${twin.place}/${twin.slug}`, why: "existing" });
     return !twin;
   });
   const kept = [];
   for (const r of fresh) {
-    const i = kept.findIndex((k) => sameBusiness(r, k, idKeys, { idsDecide }));
+    const i = kept.findIndex((k) => sameBusiness(r, k, idKeys, opts));
     if (i === -1) {
       kept.push(r);
       continue;

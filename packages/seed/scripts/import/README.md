@@ -20,6 +20,7 @@ node packages/seed/scripts/import/fuel.mjs      # data/listings/fuel-north.json
 node packages/seed/scripts/import/garages.mjs   # data/listings/garages-north.json
 node packages/seed/scripts/import/banks.mjs     # data/listings/banks-north.json
 node packages/seed/scripts/import/ev.mjs        # data/listings/ev-north.json
+node packages/seed/scripts/import/food.mjs      # data/listings/food-north.json
 ```
 
 Raw responses are cached in `scripts/import/.cache/` (gitignored); a re-run reads the cache. Add
@@ -36,6 +37,7 @@ Then check: `pnpm --filter @darb/seed test` (validates every business) and seed 
 | `garages.mjs` | Ministry of Transport, garages and testing stations (`bb68386a…`)                            | none in the register: only where OSM has it by name or phone |
 | `banks.mjs`   | Bank of Israel, physical branches (`2202bada…`)                                              | official coordinates                                         |
 | `ev.mjs`      | Ministry of Transport, EV charging (`528482f2…`); OSM charging stations                      | OSM only (the ministry's SHP/KMZ are refused, 403)           |
+| `food.mjs`    | OSM: every named restaurant, café, fast food, bakery, sweets, ice cream, juice, butcher...   | OSM's own; place from OSM municipal boundaries               |
 
 Paz (`data/listings/paz-north.json`) was made by hand before this toolkit and is kept as it is;
 `fuel.mjs` skips company `פז`.
@@ -56,6 +58,14 @@ Paz (`data/listings/paz-north.json`) was made by hand before this toolkit and is
 - `emit.mjs`: the `SeedBusiness` record, slugs (prefix + latin name, unique per place, given
   after duplicates go), brands and the listing file.
 - `osm.mjs`, `ev-match.mjs`: station services from OSM; chargers named for a chain's station.
+- `boundaries.mjs`: the municipality or regional council a point stands in (OSM admin_level 8),
+  so a café in Haifa is Haifa's even where a village's centre is nearer.
+- `opening-hours.mjs`: OSM `opening_hours` into Darb hours; sunset, open ends, "unknown" and
+  months give no hours rather than wrong ones.
+- `food-kinds.mjs`: what is never listed (bars, pubs, nightclubs, alcohol, pork, gambling,
+  wineries), the food kinds and the dishes a card lists, from tags, cuisine and name words.
+- `arabic-names.mjs`: Arabic-only names in Hebrew and Latin letters, food words said
+  ("حمص" is Hummus).
 
 Tests (`*.test.mjs`, fixtures in `fixtures/`) run with the seed package's tests.
 

@@ -1854,5 +1854,205 @@
       "ar": "تسلا",
       "en": "Tesla"
     }
+  },
+  {
+    "slug": "mcdonalds",
+    "name": {
+      "he": "מקדונלד'ס",
+      "ar": "مكدونلذس",
+      "en": "McDonald's"
+    }
+  },
+  {
+    "slug": "dominos",
+    "name": {
+      "he": "Domino's",
+      "ar": "Domino's",
+      "en": "Domino's"
+    }
+  },
+  {
+    "slug": "aroma-espresso-bar",
+    "name": {
+      "he": "ארומה",
+      "ar": "اروما",
+      "en": "Aroma Espresso Bar"
+    }
+  },
+  {
+    "slug": "si-cafe",
+    "name": {
+      "he": "סי קפה",
+      "ar": "سي كافيه",
+      "en": "Si Cafe"
+    }
+  },
+  {
+    "slug": "cafe-cafe",
+    "name": {
+      "he": "קפה קפה",
+      "ar": "كافيه كافيه",
+      "en": "Cafe Cafe"
+    }
+  },
+  {
+    "slug": "pizza-hut",
+    "name": {
+      "he": "Pizza Hut",
+      "ar": "Pizza Hut",
+      "en": "Pizza Hut"
+    }
+  },
+  {
+    "slug": "landwer-coffee",
+    "name": {
+      "he": "קפה לנדוור",
+      "ar": "كافيه لندفر",
+      "en": "Landwer Coffee"
+    }
+  },
+  {
+    "slug": "greg-cafe",
+    "name": {
+      "he": "קפה גרג",
+      "ar": "كافيه جرج",
+      "en": "Greg Cafe"
+    }
+  },
+  {
+    "slug": "burgus-burger-bar",
+    "name": {
+      "he": "Burgus Burger Bar",
+      "ar": "Burgus Burger Bar",
+      "en": "Burgus Burger Bar"
+    }
+  },
+  {
+    "slug": "cofix",
+    "name": {
+      "he": "קפויקס",
+      "ar": "كفويكس",
+      "en": "Cofix"
+    }
+  },
+  {
+    "slug": "burgerim",
+    "name": {
+      "he": "בורגרים",
+      "ar": "بورجريم",
+      "en": "Burgerim"
+    }
+  },
+  {
+    "slug": "rebar",
+    "name": {
+      "he": "Rebar",
+      "ar": "Rebar",
+      "en": "Rebar"
+    }
+  },
+  {
+    "slug": "roladin",
+    "name": {
+      "he": "רולדין",
+      "ar": "رولدين",
+      "en": "Roladin"
+    }
+  },
+  {
+    "slug": "moses",
+    "name": {
+      "he": "מוזס",
+      "ar": "موسس",
+      "en": "Moses"
+    }
+  },
+  {
+    "slug": "kfc",
+    "name": {
+      "he": "KFC",
+      "ar": "KFC",
+      "en": "KFC"
+    }
+  },
+  {
+    "slug": "papa-johns",
+    "name": {
+      "he": "Papa John's",
+      "ar": "Papa John's",
+      "en": "Papa John's"
+    }
+  },
+  {
+    "slug": "pizza-shamash",
+    "name": {
+      "he": "פיצה שמש",
+      "ar": "بيتزا شمش",
+      "en": "Pizza Shamash"
+    }
+  },
+  {
+    "slug": "burger-king",
+    "name": {
+      "he": "Burger King",
+      "ar": "Burger King",
+      "en": "Burger King"
+    }
+  },
+  {
+    "slug": "golda",
+    "name": {
+      "he": "Golda",
+      "ar": "Golda",
+      "en": "Golda"
+    }
+  },
+  {
+    "slug": "max-brenner",
+    "name": {
+      "he": "Max Brenner",
+      "ar": "Max Brenner",
+      "en": "Max Brenner"
+    }
+  },
+  {
+    "slug": "legenda",
+    "name": {
+      "he": "Legenda",
+      "ar": "Legenda",
+      "en": "Legenda"
+    }
+  },
+  {
+    "slug": "hashnitzlia",
+    "name": {
+      "he": "השניצליה",
+      "ar": "هشنيتسليا",
+      "en": "Hashnitzlia"
+    }
+  },
+  {
+    "slug": "neeman-bakery",
+    "name": {
+      "he": "מאפה נאמן",
+      "ar": "معجنات نامن",
+      "en": "Neeman Bakery"
+    }
+  },
+  {
+    "slug": "burger-saloon",
+    "name": {
+      "he": "בורגר סאלון",
+      "ar": "برغر سالون",
+      "en": "Burger Saloon"
+    }
+  },
+  {
+    "slug": "japanika",
+    "name": {
+      "he": "Japanika",
+      "ar": "Japanika",
+      "en": "Japanika"
+    }
   }
 ]
