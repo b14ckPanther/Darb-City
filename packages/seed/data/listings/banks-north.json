@@ -7661,6 +7661,246 @@
       }
     },
     {
+      "slug": "hapoalim-bay-business",
+      "place": "haifa",
+      "brand": "hapoalim",
+      "primaryKind": "banks",
+      "kinds": [
+        "banks"
+      ],
+      "name": {
+        "he": "בנק הפועלים Business המפרץ",
+        "ar": "بنك هبوعليم بزنس الخليج",
+        "en": "Bank Hapoalim Bay Business"
+      },
+      "tagline": {
+        "he": "סניף בנק הפועלים",
+        "ar": "فرع بنك هبوعليم",
+        "en": "Bank Hapoalim branch"
+      },
+      "address": {
+        "he": "חלוצי התעשיה 3",
+        "ar": "حيفا",
+        "en": "Haifa"
+      },
+      "lat": 32.811039,
+      "lng": 35.067987,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "bankCode": 12,
+        "branchCode": 791,
+        "bankBranch": "12-791"
+      },
+      "tier": "basic",
+      "phone": "+972 4-847-1053",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "בנק הפועלים Business המפרץ",
+          "ar": "بنك هبوعليم بزنس الخليج",
+          "en": "Bank Hapoalim Bay Business"
+        },
+        "title": {
+          "he": "סניף בנק הפועלים",
+          "ar": "فرع بنك هبوعليم",
+          "en": "Bank Hapoalim branch"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מספר סניף",
+              "ar": "رقم الفرع",
+              "en": "Branch number"
+            },
+            "meta": {
+              "he": "791",
+              "ar": "791",
+              "en": "791"
+            }
+          },
+          {
+            "label": {
+              "he": "סוג סניף",
+              "ar": "نوع الفرع",
+              "en": "Branch type"
+            },
+            "meta": {
+              "he": "עסקים ובנקאות פרטית",
+              "ar": "مصالح وخدمات خاصة",
+              "en": "Business and private banking"
+            }
+          },
+          {
+            "label": {
+              "he": "יום סגור",
+              "ar": "يوم العطلة",
+              "en": "Closed on"
+            },
+            "meta": {
+              "he": "שישי",
+              "ar": "الجمعة",
+              "en": "Friday"
+            }
+          },
+          {
+            "label": {
+              "he": "נגישות",
+              "ar": "إمكانية الوصول",
+              "en": "Accessibility"
+            },
+            "meta": {
+              "he": "נגיש לכיסא גלגלים",
+              "ar": "مناسب للكراسي المتحركة",
+              "en": "Wheelchair accessible"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לסניף",
+          "ar": "خذني للفرع",
+          "en": "Navigate to the branch"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#E08A6D"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#e08a6d",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "hapoalim-haifa-business",
+      "place": "haifa",
+      "brand": "hapoalim",
+      "primaryKind": "banks",
+      "kinds": [
+        "banks"
+      ],
+      "name": {
+        "he": "בנק הפועלים Business חיפה",
+        "ar": "بنك هبوعليم بزنس حيفا",
+        "en": "Bank Hapoalim Haifa Business"
+      },
+      "tagline": {
+        "he": "סניף בנק הפועלים",
+        "ar": "فرع بنك هبوعليم",
+        "en": "Bank Hapoalim branch"
+      },
+      "address": {
+        "he": "פלי\"ם 2",
+        "ar": "حيفا",
+        "en": "Haifa"
+      },
+      "lat": 32.817106,
+      "lng": 35,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "bankCode": 12,
+        "branchCode": 736,
+        "bankBranch": "12-736"
+      },
+      "tier": "basic",
+      "phone": "+972 4-868-1407",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "בנק הפועלים Business חיפה",
+          "ar": "بنك هبوعليم بزنس حيفا",
+          "en": "Bank Hapoalim Haifa Business"
+        },
+        "title": {
+          "he": "סניף בנק הפועלים",
+          "ar": "فرع بنك هبوعليم",
+          "en": "Bank Hapoalim branch"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מספר סניף",
+              "ar": "رقم الفرع",
+              "en": "Branch number"
+            },
+            "meta": {
+              "he": "736",
+              "ar": "736",
+              "en": "736"
+            }
+          },
+          {
+            "label": {
+              "he": "סוג סניף",
+              "ar": "نوع الفرع",
+              "en": "Branch type"
+            },
+            "meta": {
+              "he": "עסקים ובנקאות פרטית",
+              "ar": "مصالح وخدمات خاصة",
+              "en": "Business and private banking"
+            }
+          },
+          {
+            "label": {
+              "he": "יום סגור",
+              "ar": "يوم العطلة",
+              "en": "Closed on"
+            },
+            "meta": {
+              "he": "שישי",
+              "ar": "الجمعة",
+              "en": "Friday"
+            }
+          },
+          {
+            "label": {
+              "he": "נגישות",
+              "ar": "إمكانية الوصول",
+              "en": "Accessibility"
+            },
+            "meta": {
+              "he": "נגיש לכיסא גלגלים",
+              "ar": "مناسب للكراسي المتحركة",
+              "en": "Wheelchair accessible"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לסניף",
+          "ar": "خذني للفرع",
+          "en": "Navigate to the branch"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#E08A6D"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#e08a6d",
+        "icons": "solid"
+      }
+    },
+    {
       "slug": "hapoalim-karamlim",
       "place": "haifa",
       "brand": "hapoalim",
@@ -8094,246 +8334,6 @@
               "he": "סניף רגיל",
               "ar": "فرع عادي",
               "en": "Everyday banking"
-            }
-          },
-          {
-            "label": {
-              "he": "יום סגור",
-              "ar": "يوم العطلة",
-              "en": "Closed on"
-            },
-            "meta": {
-              "he": "שישי",
-              "ar": "الجمعة",
-              "en": "Friday"
-            }
-          },
-          {
-            "label": {
-              "he": "נגישות",
-              "ar": "إمكانية الوصول",
-              "en": "Accessibility"
-            },
-            "meta": {
-              "he": "נגיש לכיסא גלגלים",
-              "ar": "مناسب للكراسي المتحركة",
-              "en": "Wheelchair accessible"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט לסניף",
-          "ar": "خذني للفرع",
-          "en": "Navigate to the branch"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#E08A6D"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#e08a6d",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "hapoalim-poalim-business-bay",
-      "place": "haifa",
-      "brand": "hapoalim",
-      "primaryKind": "banks",
-      "kinds": [
-        "banks"
-      ],
-      "name": {
-        "he": "בנק הפועלים פועלים Business המפרץ",
-        "ar": "بنك هبوعليم بوعليم Business الخليج",
-        "en": "Bank Hapoalim Poalim Business Bay"
-      },
-      "tagline": {
-        "he": "סניף בנק הפועלים",
-        "ar": "فرع بنك هبوعليم",
-        "en": "Bank Hapoalim branch"
-      },
-      "address": {
-        "he": "חלוצי התעשיה 3",
-        "ar": "حيفا",
-        "en": "Haifa"
-      },
-      "lat": 32.811039,
-      "lng": 35.067987,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "bankCode": 12,
-        "branchCode": 791,
-        "bankBranch": "12-791"
-      },
-      "tier": "basic",
-      "phone": "+972 4-847-1053",
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "בנק הפועלים פועלים Business המפרץ",
-          "ar": "بنك هبوعليم بوعليم Business الخليج",
-          "en": "Bank Hapoalim Poalim Business Bay"
-        },
-        "title": {
-          "he": "סניף בנק הפועלים",
-          "ar": "فرع بنك هبوعليم",
-          "en": "Bank Hapoalim branch"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "מספר סניף",
-              "ar": "رقم الفرع",
-              "en": "Branch number"
-            },
-            "meta": {
-              "he": "791",
-              "ar": "791",
-              "en": "791"
-            }
-          },
-          {
-            "label": {
-              "he": "סוג סניף",
-              "ar": "نوع الفرع",
-              "en": "Branch type"
-            },
-            "meta": {
-              "he": "עסקים ובנקאות פרטית",
-              "ar": "مصالح وخدمات خاصة",
-              "en": "Business and private banking"
-            }
-          },
-          {
-            "label": {
-              "he": "יום סגור",
-              "ar": "يوم العطلة",
-              "en": "Closed on"
-            },
-            "meta": {
-              "he": "שישי",
-              "ar": "الجمعة",
-              "en": "Friday"
-            }
-          },
-          {
-            "label": {
-              "he": "נגישות",
-              "ar": "إمكانية الوصول",
-              "en": "Accessibility"
-            },
-            "meta": {
-              "he": "נגיש לכיסא גלגלים",
-              "ar": "مناسب للكراسي المتحركة",
-              "en": "Wheelchair accessible"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט לסניף",
-          "ar": "خذني للفرع",
-          "en": "Navigate to the branch"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#E08A6D"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#e08a6d",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "hapoalim-poalim-business-haifa",
-      "place": "haifa",
-      "brand": "hapoalim",
-      "primaryKind": "banks",
-      "kinds": [
-        "banks"
-      ],
-      "name": {
-        "he": "בנק הפועלים פועלים Business חיפה",
-        "ar": "بنك هبوعليم بوعليم Business حيفا",
-        "en": "Bank Hapoalim Poalim Business Haifa"
-      },
-      "tagline": {
-        "he": "סניף בנק הפועלים",
-        "ar": "فرع بنك هبوعليم",
-        "en": "Bank Hapoalim branch"
-      },
-      "address": {
-        "he": "פלי\"ם 2",
-        "ar": "حيفا",
-        "en": "Haifa"
-      },
-      "lat": 32.817106,
-      "lng": 35,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "bankCode": 12,
-        "branchCode": 736,
-        "bankBranch": "12-736"
-      },
-      "tier": "basic",
-      "phone": "+972 4-868-1407",
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "בנק הפועלים פועלים Business חיפה",
-          "ar": "بنك هبوعليم بوعليم Business حيفا",
-          "en": "Bank Hapoalim Poalim Business Haifa"
-        },
-        "title": {
-          "he": "סניף בנק הפועלים",
-          "ar": "فرع بنك هبوعليم",
-          "en": "Bank Hapoalim branch"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "מספר סניף",
-              "ar": "رقم الفرع",
-              "en": "Branch number"
-            },
-            "meta": {
-              "he": "736",
-              "ar": "736",
-              "en": "736"
-            }
-          },
-          {
-            "label": {
-              "he": "סוג סניף",
-              "ar": "نوع الفرع",
-              "en": "Branch type"
-            },
-            "meta": {
-              "he": "עסקים ובנקאות פרטית",
-              "ar": "مصالح وخدمات خاصة",
-              "en": "Business and private banking"
             }
           },
           {
@@ -22505,7 +22505,7 @@
       }
     },
     {
-      "slug": "hapoalim-poalim-business-nazareth",
+      "slug": "hapoalim-nazareth-business",
       "place": "nazareth",
       "brand": "hapoalim",
       "primaryKind": "banks",
@@ -22513,9 +22513,9 @@
         "banks"
       ],
       "name": {
-        "he": "בנק הפועלים פועלים Business נצרת",
-        "ar": "بنك هبوعليم بوعليم Business الناصرة",
-        "en": "Bank Hapoalim Poalim Business Nazareth"
+        "he": "בנק הפועלים Business נצרת",
+        "ar": "بنك هبوعليم بزنس الناصرة",
+        "en": "Bank Hapoalim Nazareth Business"
       },
       "tagline": {
         "he": "סניף בנק הפועלים",
@@ -22546,9 +22546,9 @@
       "apps": {},
       "experience": {
         "brand": {
-          "he": "בנק הפועלים פועלים Business נצרת",
-          "ar": "بنك هبوعليم بوعليم Business الناصرة",
-          "en": "Bank Hapoalim Poalim Business Nazareth"
+          "he": "בנק הפועלים Business נצרת",
+          "ar": "بنك هبوعليم بزنس الناصرة",
+          "en": "Bank Hapoalim Nazareth Business"
         },
         "title": {
           "he": "סניף בנק הפועלים",
@@ -23693,7 +23693,7 @@
       }
     },
     {
-      "slug": "hapoalim-poalim-pro-nesher-2",
+      "slug": "hapoalim-pro-nesher-2",
       "place": "nesher",
       "brand": "hapoalim",
       "primaryKind": "banks",
@@ -23701,9 +23701,9 @@
         "banks"
       ],
       "name": {
-        "he": "בנק הפועלים פועלים PRO נשר - 2",
-        "ar": "بنك هبوعليم بوعليم PRO نيشر 2",
-        "en": "Bank Hapoalim Poalim PRO Nesher 2"
+        "he": "בנק הפועלים PRO נשר - 2",
+        "ar": "بنك هبوعليم PRO نيشر 2",
+        "en": "Bank Hapoalim PRO Nesher 2"
       },
       "tagline": {
         "he": "סניף בנק הפועלים",
@@ -23734,9 +23734,9 @@
       "apps": {},
       "experience": {
         "brand": {
-          "he": "בנק הפועלים פועלים PRO נשר - 2",
-          "ar": "بنك هبوعليم بوعليم PRO نيشر 2",
-          "en": "Bank Hapoalim Poalim PRO Nesher 2"
+          "he": "בנק הפועלים PRO נשר - 2",
+          "ar": "بنك هبوعليم PRO نيشر 2",
+          "en": "Bank Hapoalim PRO Nesher 2"
         },
         "title": {
           "he": "סניף בנק הפועלים",
@@ -23813,7 +23813,7 @@
       }
     },
     {
-      "slug": "hapoalim-poalim-pro-nesher-4",
+      "slug": "hapoalim-pro-nesher-4",
       "place": "nesher",
       "brand": "hapoalim",
       "primaryKind": "banks",
@@ -23821,9 +23821,9 @@
         "banks"
       ],
       "name": {
-        "he": "בנק הפועלים פועלים PRO נשר - 4",
-        "ar": "بنك هبوعليم بوعليم PRO نيشر 4",
-        "en": "Bank Hapoalim Poalim PRO Nesher 4"
+        "he": "בנק הפועלים PRO נשר - 4",
+        "ar": "بنك هبوعليم PRO نيشر 4",
+        "en": "Bank Hapoalim PRO Nesher 4"
       },
       "tagline": {
         "he": "סניף בנק הפועלים",
@@ -23854,9 +23854,9 @@
       "apps": {},
       "experience": {
         "brand": {
-          "he": "בנק הפועלים פועלים PRO נשר - 4",
-          "ar": "بنك هبوعليم بوعليم PRO نيشر 4",
-          "en": "Bank Hapoalim Poalim PRO Nesher 4"
+          "he": "בנק הפועלים PRO נשר - 4",
+          "ar": "بنك هبوعليم PRO نيشر 4",
+          "en": "Bank Hapoalim PRO Nesher 4"
         },
         "title": {
           "he": "סניף בנק הפועלים",

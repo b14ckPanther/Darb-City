@@ -5146,7 +5146,7 @@
       }
     },
     {
-      "slug": "fuel-tahanat-tadlok-altofik",
+      "slug": "fuel-altofik-fuel-station",
       "place": "bet-jan",
       "brand": null,
       "primaryKind": "stations",
@@ -5155,8 +5155,8 @@
       ],
       "name": {
         "he": "תחנת תדלוק אלתופיק",
-        "ar": "تحنت تدلوك التوفيك",
-        "en": "Tahanat Tadlok Altofik"
+        "ar": "محطة وقود التوفيك",
+        "en": "Altofik Fuel Station"
       },
       "tagline": {
         "he": "תחנת דלק",
@@ -5186,8 +5186,8 @@
       "experience": {
         "brand": {
           "he": "תחנת תדלוק אלתופיק",
-          "ar": "تحنت تدلوك التوفيك",
-          "en": "Tahanat Tadlok Altofik"
+          "ar": "محطة وقود التوفيك",
+          "en": "Altofik Fuel Station"
         },
         "title": {
           "he": "תחנת דלק",
@@ -12118,6 +12118,83 @@
       }
     },
     {
+      "slug": "fuel-bay-station",
+      "place": "haifa",
+      "brand": null,
+      "primaryKind": "stations",
+      "kinds": [
+        "stations"
+      ],
+      "name": {
+        "he": "תחנת המפרץ",
+        "ar": "محطة الخليج",
+        "en": "Bay Station"
+      },
+      "tagline": {
+        "he": "תחנת דלק",
+        "ar": "محطة وقود",
+        "en": "Fuel station"
+      },
+      "address": {
+        "he": "שדרות ההסתדרות 238 , מימין (ממזרח) לגשר בצומת קרית אתא, מפרץ חיפה",
+        "ar": "حيفا",
+        "en": "Haifa"
+      },
+      "lat": 32.80973,
+      "lng": 35.069097,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "fuelAdminNo": 2245
+      },
+      "tier": "basic",
+      "phone": "+972 4-872-5487",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "תחנת המפרץ",
+          "ar": "محطة الخليج",
+          "en": "Bay Station"
+        },
+        "title": {
+          "he": "תחנת דלק",
+          "ar": "محطة وقود",
+          "en": "Fuel station"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "דלק",
+              "ar": "وقود",
+              "en": "Fuel"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לתחנה",
+          "ar": "خذني للمحطة",
+          "en": "Navigate to the station"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
       "slug": "fuel-dan",
       "place": "haifa",
       "brand": null,
@@ -12306,6 +12383,83 @@
               "he": "פתוח 24/7",
               "ar": "فاتح 24/7",
               "en": "Open 24/7"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לתחנה",
+          "ar": "خذني للمحطة",
+          "en": "Navigate to the station"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "fuel-haifa-fuel-station",
+      "place": "haifa",
+      "brand": null,
+      "primaryKind": "stations",
+      "kinds": [
+        "stations"
+      ],
+      "name": {
+        "he": "תחנת דלק חיפה",
+        "ar": "محطة وقود حيفا",
+        "en": "Haifa Fuel Station"
+      },
+      "tagline": {
+        "he": "תחנת דלק",
+        "ar": "محطة وقود",
+        "en": "Fuel station"
+      },
+      "address": {
+        "he": "שדרות ההסתדרות 233, חיפה",
+        "ar": "حيفا",
+        "en": "Haifa"
+      },
+      "lat": 32.808427,
+      "lng": 35.064956,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "fuelAdminNo": 2185
+      },
+      "tier": "basic",
+      "phone": "+972 4-851-0656",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "תחנת דלק חיפה",
+          "ar": "محطة وقود حيفا",
+          "en": "Haifa Fuel Station"
+        },
+        "title": {
+          "he": "תחנת דלק",
+          "ar": "محطة وقود",
+          "en": "Fuel station"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "דלק",
+              "ar": "وقود",
+              "en": "Fuel"
             }
           }
         ],
@@ -12910,160 +13064,6 @@
           "he": "דלק שלי אנרגיה",
           "ar": "وقود شلي إنرجي",
           "en": "Fuel Shli Energy"
-        },
-        "title": {
-          "he": "תחנת דלק",
-          "ar": "محطة وقود",
-          "en": "Fuel station"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "דלק",
-              "ar": "وقود",
-              "en": "Fuel"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט לתחנה",
-          "ar": "خذني للمحطة",
-          "en": "Navigate to the station"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#D6A473"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#d6a473",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "fuel-tahanat-bay",
-      "place": "haifa",
-      "brand": null,
-      "primaryKind": "stations",
-      "kinds": [
-        "stations"
-      ],
-      "name": {
-        "he": "תחנת המפרץ",
-        "ar": "تحنت الخليج",
-        "en": "Tahanat Bay"
-      },
-      "tagline": {
-        "he": "תחנת דלק",
-        "ar": "محطة وقود",
-        "en": "Fuel station"
-      },
-      "address": {
-        "he": "שדרות ההסתדרות 238 , מימין (ממזרח) לגשר בצומת קרית אתא, מפרץ חיפה",
-        "ar": "حيفا",
-        "en": "Haifa"
-      },
-      "lat": 32.80973,
-      "lng": 35.069097,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "fuelAdminNo": 2245
-      },
-      "tier": "basic",
-      "phone": "+972 4-872-5487",
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "תחנת המפרץ",
-          "ar": "تحنت الخليج",
-          "en": "Tahanat Bay"
-        },
-        "title": {
-          "he": "תחנת דלק",
-          "ar": "محطة وقود",
-          "en": "Fuel station"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "דלק",
-              "ar": "وقود",
-              "en": "Fuel"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט לתחנה",
-          "ar": "خذني للمحطة",
-          "en": "Navigate to the station"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#D6A473"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#d6a473",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "fuel-way",
-      "place": "haifa",
-      "brand": null,
-      "primaryKind": "stations",
-      "kinds": [
-        "stations"
-      ],
-      "name": {
-        "he": "way",
-        "ar": "way",
-        "en": "way"
-      },
-      "tagline": {
-        "he": "תחנת דלק",
-        "ar": "محطة وقود",
-        "en": "Fuel station"
-      },
-      "address": {
-        "he": "שדרות ההסתדרות 233, חיפה",
-        "ar": "حيفا",
-        "en": "Haifa"
-      },
-      "lat": 32.808427,
-      "lng": 35.064956,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "fuelAdminNo": 2185
-      },
-      "tier": "basic",
-      "phone": "+972 4-851-0656",
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "way",
-          "ar": "way",
-          "en": "way"
         },
         "title": {
           "he": "תחנת דלק",
@@ -17996,7 +17996,7 @@
       }
     },
     {
-      "slug": "fuel-tahanat-fuel-kafr-yasif-bashara-hori",
+      "slug": "fuel-kafr-yasif-bashara-hori-fuel-station",
       "place": "kafr-yasif",
       "brand": null,
       "primaryKind": "stations",
@@ -18005,8 +18005,8 @@
       ],
       "name": {
         "he": "תחנת דלק כפר יאסיף - בשארה חורי",
-        "ar": "تحنت وقود كفر ياسيف بشارا حوري",
-        "en": "Tahanat Fuel Kafr Yasif Bashara Hori"
+        "ar": "محطة وقود كفر ياسيف بشارا حوري",
+        "en": "Kafr Yasif Bashara Hori Fuel Station"
       },
       "tagline": {
         "he": "תחנת דלק",
@@ -18036,8 +18036,8 @@
       "experience": {
         "brand": {
           "he": "תחנת דלק כפר יאסיף - בשארה חורי",
-          "ar": "تحنت وقود كفر ياسيف بشارا حوري",
-          "en": "Tahanat Fuel Kafr Yasif Bashara Hori"
+          "ar": "محطة وقود كفر ياسيف بشارا حوري",
+          "en": "Kafr Yasif Bashara Hori Fuel Station"
         },
         "title": {
           "he": "תחנת דלק",
@@ -19113,7 +19113,7 @@
       }
     },
     {
-      "slug": "fuel-tahanat-fuel-kaokhav",
+      "slug": "fuel-kaokhav-fuel-station",
       "place": "kaukab-abu-al-hija",
       "brand": null,
       "primaryKind": "stations",
@@ -19122,8 +19122,8 @@
       ],
       "name": {
         "he": "תחנת דלק כאוכב",
-        "ar": "تحنت وقود كاوكب",
-        "en": "Tahanat Fuel Kaokhav"
+        "ar": "محطة وقود كاوكب",
+        "en": "Kaokhav Fuel Station"
       },
       "tagline": {
         "he": "תחנת דלק",
@@ -19153,8 +19153,8 @@
       "experience": {
         "brand": {
           "he": "תחנת דלק כאוכב",
-          "ar": "تحنت وقود كاوكب",
-          "en": "Tahanat Fuel Kaokhav"
+          "ar": "محطة وقود كاوكب",
+          "en": "Kaokhav Fuel Station"
         },
         "title": {
           "he": "תחנת דלק",
@@ -34136,7 +34136,7 @@
       }
     },
     {
-      "slug": "fuel-tahanat-fuel-fuel-umm-al-fahm",
+      "slug": "fuel-umm-al-fahm-fuel-station",
       "place": "umm-al-fahm",
       "brand": null,
       "primaryKind": "stations",
@@ -34145,8 +34145,8 @@
       ],
       "name": {
         "he": "תחנת דלק FUEL אום אל פחם",
-        "ar": "تحنت وقود FUEL أم الفحم",
-        "en": "Tahanat Fuel FUEL Umm al-Fahm"
+        "ar": "محطة وقود FUEL أم الفحم",
+        "en": "FUEL Umm al-Fahm Fuel Station"
       },
       "tagline": {
         "he": "תחנת דלק",
@@ -34176,8 +34176,8 @@
       "experience": {
         "brand": {
           "he": "תחנת דלק FUEL אום אל פחם",
-          "ar": "تحنت وقود FUEL أم الفحم",
-          "en": "Tahanat Fuel FUEL Umm al-Fahm"
+          "ar": "محطة وقود FUEL أم الفحم",
+          "en": "FUEL Umm al-Fahm Fuel Station"
         },
         "title": {
           "he": "תחנת דלק",
