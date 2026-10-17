@@ -1734,5 +1734,93 @@
       "ar": "تبوز",
       "en": "Tapuz"
     }
+  },
+  {
+    "slug": "yahav",
+    "name": {
+      "he": "בנק יהב",
+      "ar": "بنك يهاف",
+      "en": "Bank Yahav"
+    }
+  },
+  {
+    "slug": "leumi",
+    "name": {
+      "he": "בנק לאומי",
+      "ar": "بنك لئومي",
+      "en": "Bank Leumi"
+    }
+  },
+  {
+    "slug": "discount",
+    "name": {
+      "he": "בנק דיסקונט",
+      "ar": "بنك ديسكونت",
+      "en": "Discount Bank"
+    }
+  },
+  {
+    "slug": "hapoalim",
+    "name": {
+      "he": "בנק הפועלים",
+      "ar": "بنك هبوعليم",
+      "en": "Bank Hapoalim"
+    }
+  },
+  {
+    "slug": "otsar-hahayal",
+    "name": {
+      "he": "בנק אוצר החייל",
+      "ar": "بنك أوتسار هحيال",
+      "en": "Bank Otsar Ha-Hayal"
+    }
+  },
+  {
+    "slug": "mercantile",
+    "name": {
+      "he": "בנק מרכנתיל",
+      "ar": "بنك مركنتيل",
+      "en": "Mercantile Bank"
+    }
+  },
+  {
+    "slug": "mizrahi-tefahot",
+    "name": {
+      "he": "בנק מזרחי טפחות",
+      "ar": "بنك مزراحي طفحوت",
+      "en": "Mizrahi Tefahot Bank"
+    }
+  },
+  {
+    "slug": "first-international",
+    "name": {
+      "he": "הבנק הבינלאומי",
+      "ar": "البنك الدولي",
+      "en": "First International Bank"
+    }
+  },
+  {
+    "slug": "massad",
+    "name": {
+      "he": "בנק מסד",
+      "ar": "بنك مساد",
+      "en": "Bank Massad"
+    }
+  },
+  {
+    "slug": "pagi",
+    "name": {
+      "he": "בנק פאג\"י",
+      "ar": "بنك باجي",
+      "en": "Bank PAGI"
+    }
+  },
+  {
+    "slug": "jerusalem",
+    "name": {
+      "he": "בנק ירושלים",
+      "ar": "بنك القدس",
+      "en": "Bank of Jerusalem"
+    }
   }
 ]
