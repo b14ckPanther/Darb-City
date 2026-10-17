@@ -26,9 +26,9 @@
       "noPlace": 0,
       "conflict": 0,
       "outsideNorth": 79,
-      "duplicates": 14,
+      "duplicates": 21,
       "alreadyListed": 0,
-      "emitted": 1355,
+      "emitted": 1348,
       "brandsAdded": 0
     }
   },
@@ -19022,83 +19022,6 @@
       "links": {},
       "cardStyle": {
         "accent": "#e08a6d",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "restaurant-hatavon",
-      "place": "daliyat-al-karmel",
-      "brand": null,
-      "primaryKind": "bakeries",
-      "kinds": [
-        "bakeries"
-      ],
-      "name": {
-        "he": "מסעדת הטאבון",
-        "ar": "مطعم هطابون",
-        "en": "Restaurant Hatavon"
-      },
-      "tagline": {
-        "he": "מאפייה",
-        "ar": "مخبز وفرن",
-        "en": "Bakery"
-      },
-      "address": {
-        "he": "דאלית אל-כרמל",
-        "ar": "دالية الكرمل",
-        "en": "Daliyat al-Karmel"
-      },
-      "lat": 32.6936545,
-      "lng": 35.0470252,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/750855518"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "מסעדת הטאבון",
-          "ar": "مطعم هطابون",
-          "en": "Restaurant Hatavon"
-        },
-        "title": {
-          "he": "מאפייה",
-          "ar": "مخبز وفرن",
-          "en": "Bakery"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "לחם ומאפים",
-              "ar": "خبز ومعجنات",
-              "en": "Bread and pastries"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט",
-          "ar": "خذني لهناك",
-          "en": "Directions"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#D9A54C"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#d9a54c",
         "icons": "solid"
       }
     },
@@ -40183,83 +40106,6 @@
       }
     },
     {
-      "slug": "havana-plus-2",
-      "place": "haifa",
-      "brand": null,
-      "primaryKind": "cafes",
-      "kinds": [
-        "cafes"
-      ],
-      "name": {
-        "he": "Havana Plus",
-        "ar": "Havana Plus",
-        "en": "Havana Plus"
-      },
-      "tagline": {
-        "he": "בית קפה",
-        "ar": "كافيه",
-        "en": "Café"
-      },
-      "address": {
-        "he": "חיפה",
-        "ar": "حيفا",
-        "en": "Haifa"
-      },
-      "lat": 32.8223635,
-      "lng": 34.991692,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/6939097486"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "Havana Plus",
-          "ar": "Havana Plus",
-          "en": "Havana Plus"
-        },
-        "title": {
-          "he": "בית קפה",
-          "ar": "كافيه",
-          "en": "Café"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "קפה",
-              "ar": "قهوة",
-              "en": "Coffee"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט",
-          "ar": "خذني لهناك",
-          "en": "Directions"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#D6A473"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#d6a473",
-        "icons": "solid"
-      }
-    },
-    {
       "slug": "havashar-kavavir-centre",
       "place": "haifa",
       "brand": null,
@@ -40659,83 +40505,6 @@
       "links": {},
       "cardStyle": {
         "accent": "#e08a6d",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "igloo",
-      "place": "haifa",
-      "brand": null,
-      "primaryKind": "sweets",
-      "kinds": [
-        "sweets"
-      ],
-      "name": {
-        "he": "Igloo",
-        "ar": "Igloo",
-        "en": "Igloo"
-      },
-      "tagline": {
-        "he": "ממתקים ועוגות",
-        "ar": "حلويات",
-        "en": "Sweets and cakes"
-      },
-      "address": {
-        "he": "חיפה",
-        "ar": "حيفا",
-        "en": "Haifa"
-      },
-      "lat": 32.819458,
-      "lng": 34.98999,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/6939590032"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "Igloo",
-          "ar": "Igloo",
-          "en": "Igloo"
-        },
-        "title": {
-          "he": "ממתקים ועוגות",
-          "ar": "حلويات",
-          "en": "Sweets and cakes"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "ממתקים ועוגות",
-              "ar": "حلويات",
-              "en": "Sweets and cakes"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט",
-          "ar": "خذني لهناك",
-          "en": "Directions"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#D9AAA2"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#d9aaa2",
         "icons": "solid"
       }
     },
@@ -42277,161 +42046,7 @@
       }
     },
     {
-      "slug": "legenda",
-      "place": "haifa",
-      "brand": null,
-      "primaryKind": "ice-cream",
-      "kinds": [
-        "ice-cream"
-      ],
-      "name": {
-        "he": "לגנדה",
-        "ar": "لجندا",
-        "en": "Legenda"
-      },
-      "tagline": {
-        "he": "גלידריה",
-        "ar": "بوظة",
-        "en": "Ice cream"
-      },
-      "address": {
-        "he": "חיפה",
-        "ar": "حيفا",
-        "en": "Haifa"
-      },
-      "lat": 32.8035447,
-      "lng": 34.9871318,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/1387686020"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "לגנדה",
-          "ar": "لجندا",
-          "en": "Legenda"
-        },
-        "title": {
-          "he": "גלידריה",
-          "ar": "بوظة",
-          "en": "Ice cream"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "גלידה",
-              "ar": "بوظة",
-              "en": "Ice cream"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט",
-          "ar": "خذني لهناك",
-          "en": "Directions"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
       "slug": "leggenda",
-      "place": "haifa",
-      "brand": null,
-      "primaryKind": "ice-cream",
-      "kinds": [
-        "ice-cream"
-      ],
-      "name": {
-        "he": "לג'נדה",
-        "ar": "لجندا",
-        "en": "LEGGENDA"
-      },
-      "tagline": {
-        "he": "גלידריה",
-        "ar": "بوظة",
-        "en": "Ice cream"
-      },
-      "address": {
-        "he": "חיפה",
-        "ar": "حيفا",
-        "en": "Haifa"
-      },
-      "lat": 32.810023,
-      "lng": 35.0729643,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/9221965541"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "לג'נדה",
-          "ar": "لجندا",
-          "en": "LEGGENDA"
-        },
-        "title": {
-          "he": "גלידריה",
-          "ar": "بوظة",
-          "en": "Ice cream"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "גלידה",
-              "ar": "بوظة",
-              "en": "Ice cream"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט",
-          "ar": "خذني لهناك",
-          "en": "Directions"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "leggenda-2",
       "place": "haifa",
       "brand": null,
       "primaryKind": "cafes",
@@ -42518,6 +42133,83 @@
       "links": {},
       "cardStyle": {
         "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "leggenda-2",
+      "place": "haifa",
+      "brand": null,
+      "primaryKind": "ice-cream",
+      "kinds": [
+        "ice-cream"
+      ],
+      "name": {
+        "he": "לג'נדה",
+        "ar": "لجندا",
+        "en": "LEGGENDA"
+      },
+      "tagline": {
+        "he": "גלידריה",
+        "ar": "بوظة",
+        "en": "Ice cream"
+      },
+      "address": {
+        "he": "חיפה",
+        "ar": "حيفا",
+        "en": "Haifa"
+      },
+      "lat": 32.810023,
+      "lng": 35.0729643,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9221965541"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "לג'נדה",
+          "ar": "لجندا",
+          "en": "LEGGENDA"
+        },
+        "title": {
+          "he": "גלידריה",
+          "ar": "بوظة",
+          "en": "Ice cream"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "גלידה",
+              "ar": "بوظة",
+              "en": "Ice cream"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט",
+          "ar": "خذني لهناك",
+          "en": "Directions"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
         "icons": "solid"
       }
     },
@@ -43157,83 +42849,6 @@
       "links": {},
       "cardStyle": {
         "accent": "#e08a6d",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "marsel-brothers",
-      "place": "haifa",
-      "brand": null,
-      "primaryKind": "meal-prep",
-      "kinds": [
-        "meal-prep"
-      ],
-      "name": {
-        "he": "אחים מרסל",
-        "ar": "احيم مرسل",
-        "en": "Marsel Brothers"
-      },
-      "tagline": {
-        "he": "אוכל ביתי מוכן",
-        "ar": "أكل بيتي جاهز",
-        "en": "Ready home meals"
-      },
-      "address": {
-        "he": "חיפה",
-        "ar": "حيفا",
-        "en": "Haifa"
-      },
-      "lat": 32.8184017,
-      "lng": 34.9986014,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/12973579987"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "אחים מרסל",
-          "ar": "احيم مرسل",
-          "en": "Marsel Brothers"
-        },
-        "title": {
-          "he": "אוכל ביתי מוכן",
-          "ar": "أكل بيتي جاهز",
-          "en": "Ready home meals"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "אוכל ביתי",
-              "ar": "أكل بيتي",
-              "en": "Home cooking"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט",
-          "ar": "خذني لهناك",
-          "en": "Directions"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#5FB3A8"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#5fb3a8",
         "icons": "solid"
       }
     },
@@ -53733,83 +53348,6 @@
       "links": {},
       "cardStyle": {
         "accent": "#d6a473",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "portioly-pizza",
-      "place": "hatzor-haglilit",
-      "brand": null,
-      "primaryKind": "restaurants",
-      "kinds": [
-        "restaurants"
-      ],
-      "name": {
-        "he": "פיצה פורטיולי",
-        "ar": "بيتزا بورطيولي",
-        "en": "Portioly Pizza"
-      },
-      "tagline": {
-        "he": "מסעדה, פיצה",
-        "ar": "مطعم، بيتزا",
-        "en": "Restaurant, pizza"
-      },
-      "address": {
-        "he": "חצור הגלילית",
-        "ar": "حتسور هجليليت",
-        "en": "Hatzor HaGlilit"
-      },
-      "lat": 32.9807189,
-      "lng": 35.5562352,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/2078991148"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "פיצה פורטיולי",
-          "ar": "بيتزا بورطيولي",
-          "en": "Portioly Pizza"
-        },
-        "title": {
-          "he": "מסעדה",
-          "ar": "مطعم",
-          "en": "Restaurant"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "פיצה",
-              "ar": "بيتزا",
-              "en": "Pizza"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט",
-          "ar": "خذني لهناك",
-          "en": "Directions"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#E08A6D"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#e08a6d",
         "icons": "solid"
       }
     },
@@ -66052,126 +65590,6 @@
       "links": {},
       "cardStyle": {
         "accent": "#e08a6d",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "ein-kamonim-2",
-      "place": "kfar-hananya",
-      "brand": null,
-      "primaryKind": "meal-prep",
-      "kinds": [
-        "meal-prep"
-      ],
-      "name": {
-        "he": "עין כמונים",
-        "ar": "عين كمونيم",
-        "en": "Ein Kamonim"
-      },
-      "tagline": {
-        "he": "אוכל ביתי מוכן",
-        "ar": "أكل بيتي جاهز",
-        "en": "Ready home meals"
-      },
-      "address": {
-        "he": "כפר חנניה",
-        "ar": "كفار حننيا",
-        "en": "Kfar Hananya"
-      },
-      "lat": 32.9194871,
-      "lng": 35.4302973,
-      "hours": {
-        "weekly": {
-          "0": [
-            {
-              "open": "09:30",
-              "close": "20:00"
-            }
-          ],
-          "1": [
-            {
-              "open": "09:30",
-              "close": "20:00"
-            }
-          ],
-          "2": [
-            {
-              "open": "09:30",
-              "close": "20:00"
-            }
-          ],
-          "3": [
-            {
-              "open": "09:30",
-              "close": "20:00"
-            }
-          ],
-          "4": [
-            {
-              "open": "09:30",
-              "close": "20:00"
-            }
-          ],
-          "5": [
-            {
-              "open": "09:30",
-              "close": "22:00"
-            }
-          ],
-          "6": [
-            {
-              "open": "09:30",
-              "close": "20:00"
-            }
-          ]
-        },
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "node/3622389981"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "עין כמונים",
-          "ar": "عين كمونيم",
-          "en": "Ein Kamonim"
-        },
-        "title": {
-          "he": "אוכל ביתי מוכן",
-          "ar": "أكل بيتي جاهز",
-          "en": "Ready home meals"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "אוכל ביתי",
-              "ar": "أكل بيتي",
-              "en": "Home cooking"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט",
-          "ar": "خذني لهناك",
-          "en": "Directions"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#5FB3A8"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#5fb3a8",
         "icons": "solid"
       }
     },
