@@ -1,4 +1,4 @@
-import { expect, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import {
   colors,
   DOOR_CLIP_PATH,
@@ -7,6 +7,8 @@ import {
   mapColors,
   MARK_ASPECT,
   motion,
+  themeColor,
+  themes,
 } from "./index.js";
 
 it("keeps the Darb palette exactly", () => {
@@ -61,4 +63,61 @@ it("keeps the daylight map palette light, with dark labels", () => {
   }
   expect(contrast(mapColors.waterLabel, mapColors.water)).toBeGreaterThan(4.5);
   expect(contrast(colors.ivory, mapColors.bubble)).toBeGreaterThan(4.5);
+});
+
+describe("the day and night themes", () => {
+  const channel = (c: number) => {
+    const v = c / 255;
+    return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4;
+  };
+  const rgb = (hex: string) => [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
+  const luminance = (hex: string) => {
+    const [r, g, b] = rgb(hex).map(channel);
+    return 0.2126 * r! + 0.7152 * g! + 0.0722 * b!;
+  };
+  const contrast = (a: string, b: string) => {
+    const [hi, lo] = [luminance(a), luminance(b)].sort((x, y) => y - x);
+    return (hi! + 0.05) / (lo! + 0.05);
+  };
+
+  it("define the same roles", () => {
+    expect(Object.keys(themes.night).sort()).toEqual(Object.keys(themes.day).sort());
+  });
+
+  it("keep the day page warm paper, never white", () => {
+    expect(themes.day.bg).not.toBe("#ffffff");
+    expect(luminance(themes.day.bg)).toBeGreaterThan(0.8);
+    expect(themeColor).toEqual({ day: themes.day.bg, night: colors.night });
+  });
+
+  for (const name of ["day", "night"] as const) {
+    const t = themes[name];
+    const grounds = [t.bg, t.bgRaised, t.surface1, t.surface2, t.surface3].filter((c) =>
+      c.startsWith("#"),
+    );
+
+    it(`${name}: body text, soft and muted text and gold text read on every surface (AA)`, () => {
+      for (const ground of grounds) {
+        for (const text of [t.text, t.textSoft, t.textMuted, t.accentText, t.link, t.open])
+          expect(contrast(text, ground), `${text} on ${ground}`).toBeGreaterThanOrEqual(4.5);
+      }
+    });
+
+    it(`${name}: buttons, gold fills and the focus ring read`, () => {
+      expect(contrast(t.onPrimary, t.primary)).toBeGreaterThanOrEqual(4.5);
+      expect(contrast(t.onAccent, t.accent)).toBeGreaterThanOrEqual(4.5);
+      // Non-text contrast (WCAG 1.4.11): the focus ring against the page.
+      expect(contrast(t.focus, t.bg)).toBeGreaterThanOrEqual(3);
+    });
+
+    if (name === "day") {
+      it("day: the closed state and danger text read on paper and on their own wash", () => {
+        for (const ground of [...grounds, t.tint, t.wash])
+          expect(contrast(t.closed, ground), ground).toBeGreaterThanOrEqual(4.5);
+        expect(contrast(t.danger, t.dangerBg)).toBeGreaterThanOrEqual(4.5);
+        expect(contrast(t.accentText, t.tint)).toBeGreaterThanOrEqual(4.5);
+        expect(contrast(t.accentText, t.tintStrong)).toBeGreaterThanOrEqual(4.5);
+      });
+    }
+  }
 });
