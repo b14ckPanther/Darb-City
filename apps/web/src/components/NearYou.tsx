@@ -143,11 +143,23 @@ export function NearYou({ locale, placesHref, labels }: NearYouProps) {
   }, [load]);
 
   // Walking on: once the browser already shares the location, a move of 300 m re-sorts the list.
+  // The live watch is coarse (it saves battery), so it only hints at a move: a precise fix, which
+  // no longer prompts once granted, decides. A hint is checked once until the next 300 m.
   const live = useSyncExternalStore(subscribe, snapshot, serverSnapshot);
+  const checked = useRef<{ lat: number; lng: number } | null>(null);
   useEffect(() => {
     if (!live || !here || status === "loading") return;
     if (kmBetween(live, here) <= MOVED_KM) return;
-    keepHere({ lat: live.lat, lng: live.lng, at: Date.now() });
+    if (checked.current && kmBetween(live, checked.current) <= MOVED_KM) return;
+    checked.current = live;
+    navigator.geolocation?.getCurrentPosition(
+      (position) => {
+        const at = hereFrom(position);
+        if (kmBetween(at, here) > MOVED_KM) keepHere(at);
+      },
+      () => {},
+      PRECISE,
+    );
   }, [live, here, status]);
 
   function locate() {
