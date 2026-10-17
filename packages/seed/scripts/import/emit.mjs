@@ -30,21 +30,36 @@ export function readListings({ except } = {}) {
   return out;
 }
 
+/** prefix + latinised name ("sonol" + "Sonol Akko North" is "sonol-akko-north"). */
+export function slugBase(prefix, en) {
+  const prefixSlug = prefix ? toSlug(prefix) : "";
+  let rest = toSlug(en || "branch");
+  if (prefixSlug && (rest === prefixSlug || rest.startsWith(`${prefixSlug}-`)))
+    rest = rest.slice(prefixSlug.length + 1);
+  return [prefixSlug, rest].filter(Boolean).join("-");
+}
+
 /** Slugs taken per place: `${place}/${slug}`. */
 export function createSlugger(taken = []) {
   const used = new Set(taken);
   /** prefix + latinised name, unique in its place ("sonol-karmiel", "sonol-karmiel-2"). */
   return function slugFor(place, prefix, en) {
-    const prefixSlug = prefix ? toSlug(prefix) : "";
-    let rest = toSlug(en || "branch");
-    if (prefixSlug && (rest === prefixSlug || rest.startsWith(`${prefixSlug}-`)))
-      rest = rest.slice(prefixSlug.length + 1);
-    const base = [prefixSlug, rest].filter(Boolean).join("-");
+    const base = slugBase(prefix, en);
     let slug = base;
     for (let n = 2; used.has(`${place}/${slug}`); n++) slug = `${base}-${n}`;
     used.add(`${place}/${slug}`);
     return slug;
   };
+}
+
+/**
+ * Makes the kept records' slugs unique in their place, after duplicates are gone, so a dropped
+ * twin never leaves its partner as "-2". Each record's `slug` holds its base until then.
+ */
+export function assignSlugs(businesses, existing = []) {
+  const slugFor = createSlugger(existing.map((b) => `${b.place}/${b.slug}`));
+  for (const b of businesses) b.slug = slugFor(b.place, "", b.slug);
+  return businesses;
 }
 
 const clean = (localized) =>

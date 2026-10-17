@@ -5,7 +5,7 @@
 // Run: node packages/seed/scripts/import/garages.mjs [--refresh]
 import { pathToFileURL } from "node:url";
 import { dedupe } from "./dedupe.mjs";
-import { business, createSlugger, readListings, writeListing } from "./emit.mjs";
+import { business, slugBase, assignSlugs, readListings, writeListing } from "./emit.mjs";
 import { datastore, overpass, pointOf, today } from "./fetch.mjs";
 import { createNamer, plainDashes, tradeName } from "./names.mjs";
 import { OSM_ATTRIBUTION } from "./osm.mjs";
@@ -182,7 +182,6 @@ export function buildGarages({ rows, osm, existing = [] }) {
     matchedByName: 0,
     matchedByPhone: 0,
   };
-  const slugFor = createSlugger(existing.map((b) => `${b.place}/${b.slug}`));
   const isPlaceName = (words) => Boolean(matcher.match({ town: words })) || namer.isPlace(words);
   // First pass: which register entries claim each OSM garage. Entries under one name (one
   // business holding several licences) merge into one card; different names share nothing.
@@ -257,7 +256,7 @@ export function buildGarages({ rows, osm, existing = [] }) {
     const name = namer.name(own, m.place);
     businesses.push(
       business({
-        slug: slugFor(m.place.slug, testing ? "testing" : "garage", name.en),
+        slug: slugBase(testing ? "testing" : "garage", name.en),
         place: m.place.slug,
         kinds,
         name,
@@ -285,6 +284,7 @@ export function buildGarages({ rows, osm, existing = [] }) {
   }
   const { kept, dropped } = dedupe(businesses, { existing, idKeys: ["motGarageId"] });
   counts.deduped = dropped.length;
+  assignSlugs(kept, existing);
   counts.emitted = kept.length;
   return { businesses: kept, dropped, skipped, counts };
 }

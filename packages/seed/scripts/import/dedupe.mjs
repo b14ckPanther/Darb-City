@@ -69,6 +69,9 @@ export function sameBusiness(a, b, idKeys = []) {
     const y = b.attributes?.[key];
     if (x !== undefined && y !== undefined) return x === y;
   }
+  // A bank beside a fuel station in one town is two businesses, however alike their names.
+  const kinds = new Set(a.kinds ?? []);
+  if (a.kinds && b.kinds && !b.kinds.some((k) => kinds.has(k))) return false;
   return km(a, b) * 1000 <= SAME_PLACE_M && similarNames(a.name, b.name);
 }
 

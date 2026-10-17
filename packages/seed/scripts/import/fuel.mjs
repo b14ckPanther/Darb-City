@@ -7,7 +7,8 @@ import {
   ALWAYS_OPEN,
   NO_HOURS,
   business,
-  createSlugger,
+  slugBase,
+  assignSlugs,
   ensureBrands,
   readListings,
   writeListing,
@@ -164,7 +165,6 @@ export function buildFuel({ stations, phones, osmFuel, osmServices, ev = [], exi
     withPhone: 0,
     evAttached: 0,
   };
-  const slugFor = createSlugger(existing.map((b) => `${b.place}/${b.slug}`));
   const records = [];
   const conflicts = [];
   for (const s of stations) {
@@ -270,7 +270,7 @@ export function buildFuel({ stations, phones, osmFuel, osmServices, ev = [], exi
     ];
     const line = tagline(chain, sv.open247);
     return business({
-      slug: slugFor(r.place.slug, chain?.slug ?? "fuel", stripChain(r.name.en, chain)),
+      slug: slugBase(chain?.slug ?? "fuel", stripChain(r.name.en, chain)),
       place: r.place.slug,
       brand: chain?.slug ?? null,
       kinds: ["stations", ...(sv.wash ? ["car-wash"] : []), ...(hasEv ? ["ev-charging"] : [])],
@@ -291,6 +291,7 @@ export function buildFuel({ stations, phones, osmFuel, osmServices, ev = [], exi
   const { kept, dropped } = dedupe(businesses, { existing, idKeys: ["fuelAdminNo"] });
   counts.inNorth = records.length;
   counts.deduped = dropped.length;
+  assignSlugs(kept, existing);
   counts.emitted = kept.length;
   return { businesses: kept, dropped, counts, conflicts };
 }

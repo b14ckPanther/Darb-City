@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { buildBanks } from "./banks.mjs";
+import { branchLabel, buildBanks } from "./banks.mjs";
 
 const { rows } = JSON.parse(
   readFileSync(new URL("./fixtures/banks.json", import.meta.url), "utf8"),
@@ -37,5 +37,12 @@ describe("banks importer over a fixture", () => {
     const labels = leumi.experience.items.map((i) => i.label.en);
     expect(labels.slice(0, 2)).toEqual(["Branch number", "Branch type"]);
     expect(leumi.experience.items[0].meta.en).toBe(String(leumi.attributes.branchCode));
+  });
+  it("names an extension for where it stands", () => {
+    expect(branchLabel("מגדל העמק- שלוחת סניף עפולה")).toBe("מגדל העמק");
+    expect(branchLabel("פל ים שלוחת מרכז הכרמל")).toBe("פל ים");
+    expect(branchLabel("שלוחת סכנין - סניף כרמיאל")).toBe("סכנין");
+    expect(branchLabel("שלוחת כפר יאסיף")).toBe("כפר יאסיף");
+    expect(branchLabel("עסקים חדרה")).toBe("עסקים חדרה");
   });
 });

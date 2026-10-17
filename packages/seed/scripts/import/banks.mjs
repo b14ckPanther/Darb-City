@@ -2,12 +2,19 @@
 // The list has each branch's coordinates, phone, closed day and accessibility; no hours.
 // Run: node packages/seed/scripts/import/banks.mjs [--refresh]
 import { pathToFileURL } from "node:url";
-import { dedupe } from "./dedupe.mjs";
-import { business, createSlugger, ensureBrands, readListings, writeListing } from "./emit.mjs";
+import { dedupe, SAME_PLACE_M } from "./dedupe.mjs";
+import {
+  business,
+  slugBase,
+  assignSlugs,
+  ensureBrands,
+  readListings,
+  writeListing,
+} from "./emit.mjs";
 import { datastore, today } from "./fetch.mjs";
 import { createNamer, plainDashes } from "./names.mjs";
 import { normalizePhone } from "./phones.mjs";
-import { createPlaceMatcher } from "./places.mjs";
+import { createPlaceMatcher, km } from "./places.mjs";
 
 export const FILE = "banks-north.json";
 export const RESOURCE = "2202bada-4baf-45f5-aa61-8c5bad9646d3";
@@ -107,8 +114,27 @@ const L = {
     en: "Business and private banking",
   },
   regular: { he: "סניף רגיל", ar: "فرع عادي", en: "Everyday banking" },
+  extension: { he: "שלוחה של סניף", ar: "فرع تابع", en: "Branch extension" },
   cta: { he: "ניווט לסניף", ar: "خذني للفرع", en: "Navigate to the branch" },
 };
+
+/**
+ * The place part of a branch's name. An extension ("שלוחה") is named for where it stands:
+ * "מגדל העמק- שלוחת סניף עפולה" is Migdal HaEmek, "שלוחת סכנין - סניף כרמיאל" is Sakhnin.
+ */
+export function branchLabel(raw) {
+  const name = plainDashes(raw ?? "")
+    .trim()
+    .replace(/^סניף\s+/, "");
+  const m = name.match(/^(.*?)\s*-?\s*(?:^|\s)שלוחת\s+(.*)$/);
+  if (!m) return name;
+  const before = m[1].replace(/[\s-]+$/, "").trim();
+  if (before) return before;
+  return m[2]
+    .split(/\s+-\s+|\s+סניף\s+/)[0]
+    .replace(/^סניף\s+/, "")
+    .trim();
+}
 
 /** Pure, for fixtures: the branch rows to listings. */
 export function buildBanks({ rows, existing = [] }) {
@@ -134,7 +160,6 @@ export function buildBanks({ rows, existing = [] }) {
     matchedNearest: 0,
     withPhone: 0,
   };
-  const slugFor = createSlugger(existing.map((b) => `${b.place}/${b.slug}`));
   const businesses = [];
   const conflicts = [];
   for (const r of rows) {
@@ -174,7 +199,8 @@ export function buildBanks({ rows, existing = [] }) {
     counts[m.how === "name" ? "matchedByName" : "matchedNearest"]++;
     const phone = normalizePhone(r.Telephone);
     if (phone) counts.withPhone++;
-    const branch = namer.name(plainDashes(r.Branch_Name || m.place.name.he).trim(), m.place);
+    const extension = /(^|\s)שלוחת(\s|$)/.test(r.Branch_Name ?? "");
+    const branch = namer.name(branchLabel(r.Branch_Name) || m.place.name.he, m.place);
     const name = {
       he: `${bank.name.he} ${branch.he}`,
       ar: `${bank.name.ar} ${branch.ar}`,
@@ -187,7 +213,7 @@ export function buildBanks({ rows, existing = [] }) {
         label: L.number,
         meta: { he: `${r.Branch_Code}`, ar: `${r.Branch_Code}`, en: `${r.Branch_Code}` },
       },
-      { label: L.type, meta: special ? L.special : L.regular },
+      { label: L.type, meta: special ? L.special : extension ? L.extension : L.regular },
       ...(day ? [{ label: L.closed, meta: day }] : []),
       ...(r.Handicap_Access === "כן" ? [{ label: L.access, meta: L.accessYes }] : []),
     ];
@@ -198,7 +224,7 @@ export function buildBanks({ rows, existing = [] }) {
     };
     businesses.push(
       business({
-        slug: slugFor(m.place.slug, bank.slug, branch.en),
+        slug: slugBase(bank.slug, branch.en),
         place: m.place.slug,
         brand: bank.slug,
         kinds: ["banks"],
@@ -214,7 +240,10 @@ export function buildBanks({ rows, existing = [] }) {
         attributes: {
           bankCode: code,
           branchCode: Number(r.Branch_Code),
-          bankBranch: `${code}-${r.Branch_Code}`,
+          // An extension (שלוחה) shares its branch's number but is its own place to walk into.
+          bankBranch: extension
+            ? `${code}-${r.Branch_Code}@${m.place.slug}`
+            : `${code}-${r.Branch_Code}`,
         },
         phone,
         screen: { title: tagline, items, cta: L.cta },
@@ -222,17 +251,28 @@ export function buildBanks({ rows, existing = [] }) {
       }),
     );
   }
-  const { kept, dropped } = dedupe(businesses, { existing, idKeys: ["bankBranch"] });
+  const { kept: unique, dropped } = dedupe(businesses, { existing, idKeys: ["bankBranch"] });
+  // An extension standing at its own branch's door is that branch.
+  const base = (b) => String(b.attributes.bankBranch).split("@")[0];
+  const kept = unique.filter((b) => {
+    if (!String(b.attributes.bankBranch).includes("@")) return true;
+    const main = unique.find(
+      (o) => o !== b && base(o) === base(b) && km(o, b) * 1000 <= SAME_PLACE_M,
+    );
+    if (main) dropped.push({ record: b, keptAs: `${main.place}/${main.slug}`, why: "duplicate" });
+    return !main;
+  });
   counts.inNorth = businesses.length;
   counts.deduped = dropped.length;
+  assignSlugs(kept, existing);
   counts.emitted = kept.length;
-  return { businesses: kept, counts, conflicts };
+  return { businesses: kept, counts, conflicts, dropped };
 }
 
 async function main() {
   const rows = await datastore(RESOURCE);
   const existing = readListings({ except: FILE });
-  const { businesses, counts, conflicts } = buildBanks({ rows, existing });
+  const { businesses, counts, conflicts, dropped } = buildBanks({ rows, existing });
   ensureBrands(Object.values(BANKS).filter((b) => businesses.some((x) => x.brand === b.slug)));
   writeListing(
     FILE,
@@ -248,6 +288,9 @@ async function main() {
       hours: "none: the list gives only the day each branch is closed",
       counts,
       point_far_from_town: conflicts,
+      deduped: dropped.map(
+        (d) => `${d.record.attributes.bankBranch} ${d.record.name.he} (kept ${d.keptAs})`,
+      ),
     },
     businesses,
   );

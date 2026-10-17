@@ -24,6 +24,9 @@ describe("dedupe", () => {
     expect(sameBusiness(a, rec({ lat: 32.8008 }))).toBe(true); // ~90 m
     expect(sameBusiness(a, rec({ lat: 32.802 }))).toBe(false); // ~220 m
     expect(sameBusiness(a, rec({ name: { he: "דלק עכו", en: "Delek Akko" } }))).toBe(false);
+    const bank = rec({ kinds: ["banks"], name: { he: "בנק לאומי חיפה", en: "Bank Leumi Haifa" } });
+    const fuel = rec({ name: { he: "דלק חיפה", en: "Delek Haifa" } });
+    expect(sameBusiness(bank, fuel)).toBe(false);
     const ids = ["fuelAdminNo"];
     const far = rec({ lat: 33, attributes: { fuelAdminNo: 7 } });
     expect(sameBusiness(rec({ attributes: { fuelAdminNo: 7 } }), far, ids)).toBe(true);
