@@ -171,8 +171,7 @@
   .card:hover {
     transform: translateY(-4px);
     border-color: var(--line);
-    box-shadow:
-      0 24px 48px -24px rgb(var(--shadow) / calc(var(--shadow-k) * 0.2));
+    box-shadow: 0 24px 48px -24px rgb(var(--shadow) / calc(var(--shadow-k) * 0.2));
   }
 }
 
@@ -462,8 +461,7 @@
   padding: var(--space-6) var(--space-5);
   border: 1px solid var(--line);
   border-radius: var(--radius-l);
-  background:
-    radial-gradient(80% 120% at 50% 0%, var(--tint), transparent 60%), var(--surface-1);
+  background: radial-gradient(80% 120% at 50% 0%, var(--tint), transparent 60%), var(--surface-1);
   text-align: center;
 }
 

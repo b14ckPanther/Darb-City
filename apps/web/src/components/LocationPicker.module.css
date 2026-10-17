@@ -11,8 +11,7 @@
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid var(--line-strong);
-  background:
-    radial-gradient(80% 60% at 50% 40%, var(--surface-2) 0%, transparent 70%), var(--bg);
+  background: radial-gradient(80% 60% at 50% 40%, var(--surface-2) 0%, transparent 70%), var(--bg);
 }
 @media (min-width: 640px) {
   .frame {

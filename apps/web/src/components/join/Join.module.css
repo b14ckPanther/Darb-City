@@ -1252,7 +1252,11 @@
       color-mix(in srgb, var(--accent) 45%, transparent),
       transparent 70%
     ),
-    linear-gradient(135deg, color-mix(in srgb, var(--accent) 30%, var(--surface-3)), var(--surface-3));
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--accent) 30%, var(--surface-3)),
+      var(--surface-3)
+    );
 }
 
 .cardHead {

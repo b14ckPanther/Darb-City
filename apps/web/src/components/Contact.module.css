@@ -277,8 +277,7 @@
   padding: var(--space-5);
   border: 1px solid var(--line);
   border-radius: var(--radius-l);
-  background:
-    radial-gradient(80% 120% at 50% 0%, var(--tint), transparent 60%), var(--surface-1);
+  background: radial-gradient(80% 120% at 50% 0%, var(--tint), transparent 60%), var(--surface-1);
 }
 
 .aside p {

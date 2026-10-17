@@ -148,8 +148,7 @@
   display: grid;
   align-content: start;
   padding: var(--space-6) var(--gutter);
-  background:
-    radial-gradient(80% 60% at 50% 100%, var(--tint-strong), transparent 70%), var(--bg);
+  background: radial-gradient(80% 60% at 50% 100%, var(--tint-strong), transparent 70%), var(--bg);
   overflow-y: auto;
 }
 

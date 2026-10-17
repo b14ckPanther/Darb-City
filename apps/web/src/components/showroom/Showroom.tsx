@@ -128,7 +128,8 @@ function Viewer({
     if (d === "phone") leaveLandscape();
   };
   return (
-    <dialog data-scheme="night"
+    <dialog
+      data-scheme="night"
       ref={dialog}
       className={styles.viewer}
       aria-label={labels.frameTitle.replace("{name}", client.name)}
