@@ -177,13 +177,20 @@ describe("edit and status", () => {
   });
 
   it("finds English names whatever the case", async () => {
-    const res = await as(http().get("/admin/businesses?q=LITTLE%20cuts"));
+    const res = await as(http().get("/admin/businesses?q=LITTLE%20cuts&examples=1"));
     expect(res.body.items.map((b: { slug: string }) => b.slug)).toEqual(["little-cuts"]);
   });
 
   it("lists by place and text, newest first", async () => {
-    const res = await as(http().get("/admin/businesses?place=sakhnin&q=little"));
+    const res = await as(http().get("/admin/businesses?place=sakhnin&q=little&examples=1"));
     expect(res.body.items.map((b: { slug: string }) => b.slug)).toEqual(["little-cuts"]);
+  });
+
+  it("leaves showroom examples out unless asked for", async () => {
+    const real = await as(http().get("/admin/businesses?q=little"));
+    expect(real.body.items).toEqual([]);
+    const all = await as(http().get("/admin/businesses?q=little&examples=1"));
+    expect(all.body.items).toHaveLength(1);
   });
 });
 
