@@ -13,8 +13,7 @@ export const VEIL_SOURCE = "darb-veil";
 export const SERVED_SOURCE = "darb-served";
 export const VEIL = "darb-veil";
 export const VEIL_EDGE = "darb-veil-edge";
-export const SERVED_GLOW = "darb-served-glow";
-export const SERVED_LIFT = "darb-served-lift";
+export const WATER_ABOVE = "darb-water-above";
 /** A town label is Darb's when one of its places is this close (OSM and the seed share points). */
 export const TOWN_LABEL_M = 800;
 /** Basemap town names: shown only for Darb's own towns. */
@@ -127,9 +126,10 @@ function fromList(op: "all" | "any", args: unknown[]): unknown {
 }
 
 /**
- * The Darb style with only the served land alive: everything outside fades into a warm mist (a veil
- * over the basemap, below its labels and Darb's own layers, with a soft edge) and the basemap's
- * labels outside it are hidden. A style without an area is returned as it was.
+ * The Darb style with only the served land alive. Outside it the land stays land and the sea stays
+ * sea, but nothing made by people is drawn: a plain land mask covers roads, buildings and land use
+ * (over them, under the labels), the water is drawn again above it so the whole sea keeps its
+ * colour, and basemap labels outside are hidden. A style without an area is returned as it was.
  */
 export function withServedArea(
   style: StyleSpecification,
@@ -145,12 +145,15 @@ export function withServedArea(
       : ["within", area.geometry];
     return { ...layer, filter: ["all", filter, where] as unknown as FilterSpecification };
   });
+  const earth = style.layers.find((l) => l.id === "earth");
+  const land =
+    (earth?.type === "fill" && typeof earth.paint?.["fill-color"] === "string"
+      ? earth.paint["fill-color"]
+      : null) ?? mapColors.land;
+  const water = style.layers.find((l) => l.id === "water");
+  const above = water?.type === "fill" ? [{ ...water, id: WATER_ABOVE } as LayerSpecification] : [];
   const firstLabel = layers.findIndex((l) => l.type === "symbol");
-  layers.splice(firstLabel < 0 ? layers.length : firstLabel, 0, ...veilLayers());
-  // The served land a touch brighter, sunlit: over the land and its cover, under the water
-  // (the sea keeps its colour) and the roads.
-  const water = layers.findIndex((l) => l.id === "water");
-  if (water >= 0) layers.splice(water, 0, liftLayer());
+  layers.splice(firstLabel < 0 ? layers.length : firstLabel, 0, ...veilLayers(land), ...above);
   return {
     ...style,
     sources: {
@@ -172,47 +175,25 @@ export function withServedArea(
 const width = (z5: number, z9: number, z14: number) =>
   ["interpolate", ["linear"], ["zoom"], 5, z5, 9, z9, 14, z14] as never;
 
-export function liftLayer(): LayerSpecification {
-  return {
-    id: SERVED_LIFT,
-    type: "fill",
-    source: SERVED_SOURCE,
-    paint: { "fill-color": mapColors.halo, "fill-opacity": 0.45, "fill-antialias": false },
-  };
-}
-
-export function veilLayers(): LayerSpecification[] {
+export function veilLayers(land: string): LayerSpecification[] {
   return [
     {
-      // A warm, faint light just inside the edge: the land Darb serves, lit.
-      id: SERVED_GLOW,
-      type: "line",
-      source: SERVED_SOURCE,
-      paint: {
-        "line-color": colors.gold,
-        "line-opacity": 0.14,
-        "line-width": width(28, 44, 64),
-        "line-blur": width(28, 44, 64),
-        // Counter-clockwise rings: a negative offset moves the line inside.
-        "line-offset": width(-14, -22, -32),
-      },
-    },
-    {
+      // Plain land outside: no roads, no buildings, no towns.
       id: VEIL,
       type: "fill",
       source: VEIL_SOURCE,
-      paint: { "fill-color": mapColors.mist, "fill-opacity": 0.82, "fill-antialias": false },
+      paint: { "fill-color": land, "fill-opacity": 1, "fill-antialias": false },
     },
     {
-      // Mist drawn across the edge, so the land fades out instead of stopping at a line.
+      // The same land drawn across the edge, so roads fade out instead of stopping at a line.
       id: VEIL_EDGE,
       type: "line",
       source: SERVED_SOURCE,
       paint: {
-        "line-color": mapColors.mist,
-        "line-opacity": 0.85,
-        "line-width": width(36, 56, 80),
-        "line-blur": width(36, 56, 80),
+        "line-color": land,
+        "line-opacity": 0.9,
+        "line-width": width(10, 18, 34),
+        "line-blur": width(10, 18, 34),
       },
     },
   ];
