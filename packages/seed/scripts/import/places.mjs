@@ -185,6 +185,28 @@ export function createPlaceMatcher(places = loadDarbPlaces()) {
     return null;
   }
 
+  /**
+   * A place near the point whose own name stands as whole words inside one of the texts
+   * ("מרכז עין שרה נהריה" is in Nahariya); the longest such name wins.
+   */
+  function namedInside(texts, point) {
+    let best = null;
+    for (const text of texts) {
+      const hay = ` ${normalize(text)} `;
+      for (const p of settlements) {
+        for (const name of [p.name.he, p.name.en]) {
+          const own = normalize(String(name ?? "").replace(/\([^)]*\)/g, " "));
+          // Three-letter names ("יעד") are also common words and chain names.
+          if (own.length < 4 || !hay.includes(` ${own} `)) continue;
+          const d = km(p, point);
+          if (d > NEAREST_KM) continue;
+          if (!best || own.length > best.len) best = { place: p, km: d, len: own.length };
+        }
+      }
+    }
+    return best;
+  }
+
   /** Every place a name could mean, exactly or loosely. */
   function namedBy(name) {
     const out = new Set();
@@ -195,14 +217,17 @@ export function createPlaceMatcher(places = loadDarbPlaces()) {
     return [...out];
   }
 
+  /** The settlement whose centre is nearest the point. */
   function nearest(point, maxKm = NEAREST_KM) {
     let best = null;
     for (const p of settlements) {
       if (p.type === "neighbourhood") continue;
       const d = km(p, point);
-      if (d <= maxKm && (!best || d < best.km)) best = { place: p, km: d };
+      if (d > maxKm) continue;
+      const score = d;
+      if (!best || score < best.score) best = { place: p, km: d, score };
     }
-    return best;
+    return best && { place: best.place, km: best.km };
   }
 
   /**
@@ -226,6 +251,8 @@ export function createPlaceMatcher(places = loadDarbPlaces()) {
     const named = byName(tried, point);
     if (named) return { place: named.place, how: "name", km: round(named.km) };
     if (!point) return null;
+    const inText = namedInside(tried, point);
+    if (inText) return { place: inText.place, how: "name", km: round(inText.km) };
     const near = nearest(point);
     return near ? { place: near.place, how: "nearest", km: round(near.km) } : null;
   }

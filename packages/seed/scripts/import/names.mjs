@@ -40,6 +40,7 @@ export const WORDS = {
   חרמון: { ar: "حرمون", en: "Hermon" },
   החרמון: { ar: "حرمون", en: "Hermon" },
   כפר: { ar: "كفر", en: "Kfar" },
+  עין: { ar: "عين", en: "Ein" },
   קיבוץ: { ar: "كيبوتس", en: "Kibbutz" },
   // Common words in business names, Hebrew-spelt from Arabic or English.
   אבו: { ar: "أبو", en: "Abu" },
