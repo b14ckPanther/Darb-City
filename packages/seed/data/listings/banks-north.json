@@ -20,8 +20,8 @@
       "withPhone": 290,
       "pointFarFromTown": 5,
       "inNorth": 298,
-      "deduped": 14,
-      "emitted": 284
+      "deduped": 3,
+      "emitted": 295
     },
     "point_far_from_town": [
       "4-44 הלל יפה חדרה (חדרה): 43.153 km away",
@@ -29,9 +29,134 @@
       "12-747 כרמיאל (כרמיאל): 129.317 km away",
       "12-746 הקריון (קריית ביאליק): 22.837 km away",
       "20-442 שלומי (שלומי): 32.272 km away"
+    ],
+    "deduped": [
+      "12-202@kafr-yasif בנק הפועלים כפר יאסיף (kept kafr-yasif/hapoalim-kafr-yasif)",
+      "46-904@sakhnin בנק מסד סכנין (kept sakhnin/massad-sakhnin)",
+      "12-202@kafr-yasif בנק הפועלים כפר יאסיף (kept kafr-yasif/hapoalim-kafr-yasif)"
     ]
   },
   "businesses": [
+    {
+      "slug": "discount-afula",
+      "place": "afula",
+      "brand": "discount",
+      "primaryKind": "banks",
+      "kinds": [
+        "banks"
+      ],
+      "name": {
+        "he": "בנק דיסקונט עפולה",
+        "ar": "بنك ديسكونت العفولة",
+        "en": "Discount Bank Afula"
+      },
+      "tagline": {
+        "he": "סניף בנק דיסקונט",
+        "ar": "فرع بنك ديسكونت",
+        "en": "Discount Bank branch"
+      },
+      "address": {
+        "he": "שדרות מנחם בגין 72",
+        "ar": "العفولة",
+        "en": "Afula"
+      },
+      "lat": 32.602542,
+      "lng": 35.29874,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "bankCode": 11,
+        "branchCode": 2,
+        "bankBranch": "11-2"
+      },
+      "tier": "basic",
+      "phone": "+972 76-805-2170",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "בנק דיסקונט עפולה",
+          "ar": "بنك ديسكونت العفولة",
+          "en": "Discount Bank Afula"
+        },
+        "title": {
+          "he": "סניף בנק דיסקונט",
+          "ar": "فرع بنك ديسكونت",
+          "en": "Discount Bank branch"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מספר סניף",
+              "ar": "رقم الفرع",
+              "en": "Branch number"
+            },
+            "meta": {
+              "he": "2",
+              "ar": "2",
+              "en": "2"
+            }
+          },
+          {
+            "label": {
+              "he": "סוג סניף",
+              "ar": "نوع الفرع",
+              "en": "Branch type"
+            },
+            "meta": {
+              "he": "סניף רגיל",
+              "ar": "فرع عادي",
+              "en": "Everyday banking"
+            }
+          },
+          {
+            "label": {
+              "he": "יום סגור",
+              "ar": "يوم العطلة",
+              "en": "Closed on"
+            },
+            "meta": {
+              "he": "שישי",
+              "ar": "الجمعة",
+              "en": "Friday"
+            }
+          },
+          {
+            "label": {
+              "he": "נגישות",
+              "ar": "إمكانية الوصول",
+              "en": "Accessibility"
+            },
+            "meta": {
+              "he": "נגיש לכיסא גלגלים",
+              "ar": "مناسب للكراسي المتحركة",
+              "en": "Wheelchair accessible"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לסניף",
+          "ar": "خذني للفرع",
+          "en": "Navigate to the branch"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
     {
       "slug": "first-international-afula",
       "place": "afula",
@@ -1581,7 +1706,7 @@
       }
     },
     {
-      "slug": "massad-akko-branch",
+      "slug": "massad-akko",
       "place": "akko",
       "brand": "massad",
       "primaryKind": "banks",
@@ -1589,9 +1714,9 @@
         "banks"
       ],
       "name": {
-        "he": "בנק מסד שלוחת עכו",
-        "ar": "بنك مساد فرع عكا",
-        "en": "Bank Massad Akko Branch"
+        "he": "בנק מסד עכו",
+        "ar": "بنك مساد عكا",
+        "en": "Bank Massad Akko"
       },
       "tagline": {
         "he": "סניף בנק מסד",
@@ -1613,7 +1738,7 @@
         "primaryAction": "directions",
         "bankCode": 46,
         "branchCode": 510,
-        "bankBranch": "46-510"
+        "bankBranch": "46-510@akko"
       },
       "tier": "basic",
       "phone": "+972 3-526-7630",
@@ -1622,9 +1747,9 @@
       "apps": {},
       "experience": {
         "brand": {
-          "he": "בנק מסד שלוחת עכו",
-          "ar": "بنك مساد فرع عكا",
-          "en": "Bank Massad Akko Branch"
+          "he": "בנק מסד עכו",
+          "ar": "بنك مساد عكا",
+          "en": "Bank Massad Akko"
         },
         "title": {
           "he": "סניף בנק מסד",
@@ -1651,9 +1776,9 @@
               "en": "Branch type"
             },
             "meta": {
-              "he": "סניף רגיל",
-              "ar": "فرع عادي",
-              "en": "Everyday banking"
+              "he": "שלוחה של סניף",
+              "ar": "فرع تابع",
+              "en": "Branch extension"
             }
           },
           {
@@ -2529,6 +2654,126 @@
       }
     },
     {
+      "slug": "leumi-baqa-al-gharbiyye",
+      "place": "baqa-al-gharbiyye",
+      "brand": "leumi",
+      "primaryKind": "banks",
+      "kinds": [
+        "banks"
+      ],
+      "name": {
+        "he": "בנק לאומי באקה אל גרביה",
+        "ar": "بنك لئومي باقة الغربية",
+        "en": "Bank Leumi Baqa al-Gharbiyye"
+      },
+      "tagline": {
+        "he": "סניף בנק לאומי",
+        "ar": "فرع بنك لئومي",
+        "en": "Bank Leumi branch"
+      },
+      "address": {
+        "he": "מתחם WE CENTER 0 מתחם ווי סנטר בכניסה ליישוב קומה 1 WE CENTER",
+        "ar": "باقة الغربية",
+        "en": "Baqa al-Gharbiyye"
+      },
+      "lat": 32.41353,
+      "lng": 35.02914,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "bankCode": 10,
+        "branchCode": 983,
+        "bankBranch": "10-983"
+      },
+      "tier": "basic",
+      "phone": "+972 3-954-5522",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "בנק לאומי באקה אל גרביה",
+          "ar": "بنك لئومي باقة الغربية",
+          "en": "Bank Leumi Baqa al-Gharbiyye"
+        },
+        "title": {
+          "he": "סניף בנק לאומי",
+          "ar": "فرع بنك لئومي",
+          "en": "Bank Leumi branch"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מספר סניף",
+              "ar": "رقم الفرع",
+              "en": "Branch number"
+            },
+            "meta": {
+              "he": "983",
+              "ar": "983",
+              "en": "983"
+            }
+          },
+          {
+            "label": {
+              "he": "סוג סניף",
+              "ar": "نوع الفرع",
+              "en": "Branch type"
+            },
+            "meta": {
+              "he": "סניף רגיל",
+              "ar": "فرع عادي",
+              "en": "Everyday banking"
+            }
+          },
+          {
+            "label": {
+              "he": "יום סגור",
+              "ar": "يوم العطلة",
+              "en": "Closed on"
+            },
+            "meta": {
+              "he": "שישי",
+              "ar": "الجمعة",
+              "en": "Friday"
+            }
+          },
+          {
+            "label": {
+              "he": "נגישות",
+              "ar": "إمكانية الوصول",
+              "en": "Accessibility"
+            },
+            "meta": {
+              "he": "נגיש לכיסא גלגלים",
+              "ar": "مناسب للكراسي المتحركة",
+              "en": "Wheelchair accessible"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לסניף",
+          "ar": "خذني للفرع",
+          "en": "Navigate to the branch"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
       "slug": "mizrahi-tefahot-baqa-al-gharbiyye",
       "place": "baqa-al-gharbiyye",
       "brand": "mizrahi-tefahot",
@@ -2765,6 +3010,126 @@
       "links": {},
       "cardStyle": {
         "accent": "#e08a6d",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "leumi-beit-shean",
+      "place": "beit-shean",
+      "brand": "leumi",
+      "primaryKind": "banks",
+      "kinds": [
+        "banks"
+      ],
+      "name": {
+        "he": "בנק לאומי בית שאן",
+        "ar": "بنك لئومي بيت شيئان",
+        "en": "Bank Leumi Beit Shean"
+      },
+      "tagline": {
+        "he": "סניף בנק לאומי",
+        "ar": "فرع بنك لئومي",
+        "en": "Bank Leumi branch"
+      },
+      "address": {
+        "he": "שאול המלך 81 ללא",
+        "ar": "بيت شيئان",
+        "en": "Beit Shean"
+      },
+      "lat": 32.499104,
+      "lng": 35.498321,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "bankCode": 10,
+        "branchCode": 966,
+        "bankBranch": "10-966"
+      },
+      "tier": "basic",
+      "phone": "+972 3-954-5522",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "בנק לאומי בית שאן",
+          "ar": "بنك لئومي بيت شيئان",
+          "en": "Bank Leumi Beit Shean"
+        },
+        "title": {
+          "he": "סניף בנק לאומי",
+          "ar": "فرع بنك لئومي",
+          "en": "Bank Leumi branch"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מספר סניף",
+              "ar": "رقم الفرع",
+              "en": "Branch number"
+            },
+            "meta": {
+              "he": "966",
+              "ar": "966",
+              "en": "966"
+            }
+          },
+          {
+            "label": {
+              "he": "סוג סניף",
+              "ar": "نوع الفرع",
+              "en": "Branch type"
+            },
+            "meta": {
+              "he": "סניף רגיל",
+              "ar": "فرع عادي",
+              "en": "Everyday banking"
+            }
+          },
+          {
+            "label": {
+              "he": "יום סגור",
+              "ar": "يوم العطلة",
+              "en": "Closed on"
+            },
+            "meta": {
+              "he": "שישי",
+              "ar": "الجمعة",
+              "en": "Friday"
+            }
+          },
+          {
+            "label": {
+              "he": "נגישות",
+              "ar": "إمكانية الوصول",
+              "en": "Accessibility"
+            },
+            "meta": {
+              "he": "נגיש לכיסא גלגלים",
+              "ar": "مناسب للكراسي المتحركة",
+              "en": "Wheelchair accessible"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לסניף",
+          "ar": "خذني للفرع",
+          "en": "Navigate to the branch"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
         "icons": "solid"
       }
     },
@@ -5985,7 +6350,7 @@
       }
     },
     {
-      "slug": "discount-pal-yam-carmel-branch-centre",
+      "slug": "discount-carmel-centre",
       "place": "haifa",
       "brand": "discount",
       "primaryKind": "banks",
@@ -5993,9 +6358,117 @@
         "banks"
       ],
       "name": {
-        "he": "בנק דיסקונט פל ים שלוחת מרכז הכרמל",
-        "ar": "بنك ديسكونت بل يم فرع مركز الكرمل",
-        "en": "Discount Bank Pal Yam Carmel Branch Centre"
+        "he": "בנק דיסקונט מרכז הכרמל",
+        "ar": "بنك ديسكونت مركز الكرمل",
+        "en": "Discount Bank Carmel Centre"
+      },
+      "tagline": {
+        "he": "סניף בנק דיסקונט",
+        "ar": "فرع بنك ديسكونت",
+        "en": "Discount Bank branch"
+      },
+      "address": {
+        "he": "שדרות הנשיא 124",
+        "ar": "حيفا",
+        "en": "Haifa"
+      },
+      "lat": 32.8045,
+      "lng": 34.9873,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "bankCode": 11,
+        "branchCode": 76,
+        "bankBranch": "11-76"
+      },
+      "tier": "basic",
+      "phone": "+972 76-805-2350",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "בנק דיסקונט מרכז הכרמל",
+          "ar": "بنك ديسكونت مركز الكرمل",
+          "en": "Discount Bank Carmel Centre"
+        },
+        "title": {
+          "he": "סניף בנק דיסקונט",
+          "ar": "فرع بنك ديسكونت",
+          "en": "Discount Bank branch"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מספר סניף",
+              "ar": "رقم الفرع",
+              "en": "Branch number"
+            },
+            "meta": {
+              "he": "76",
+              "ar": "76",
+              "en": "76"
+            }
+          },
+          {
+            "label": {
+              "he": "סוג סניף",
+              "ar": "نوع الفرع",
+              "en": "Branch type"
+            },
+            "meta": {
+              "he": "סניף רגיל",
+              "ar": "فرع عادي",
+              "en": "Everyday banking"
+            }
+          },
+          {
+            "label": {
+              "he": "יום סגור",
+              "ar": "يوم العطلة",
+              "en": "Closed on"
+            },
+            "meta": {
+              "he": "שישי",
+              "ar": "الجمعة",
+              "en": "Friday"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לסניף",
+          "ar": "خذني للفرع",
+          "en": "Navigate to the branch"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "discount-pal-yam",
+      "place": "haifa",
+      "brand": "discount",
+      "primaryKind": "banks",
+      "kinds": [
+        "banks"
+      ],
+      "name": {
+        "he": "בנק דיסקונט פל ים",
+        "ar": "بنك ديسكونت بل يم",
+        "en": "Discount Bank Pal Yam"
       },
       "tagline": {
         "he": "סניף בנק דיסקונט",
@@ -6017,7 +6490,7 @@
         "primaryAction": "directions",
         "bankCode": 11,
         "branchCode": 76,
-        "bankBranch": "11-76"
+        "bankBranch": "11-76@haifa"
       },
       "tier": "basic",
       "phone": "+972 76-805-1380",
@@ -6026,9 +6499,9 @@
       "apps": {},
       "experience": {
         "brand": {
-          "he": "בנק דיסקונט פל ים שלוחת מרכז הכרמל",
-          "ar": "بنك ديسكونت بل يم فرع مركز الكرمل",
-          "en": "Discount Bank Pal Yam Carmel Branch Centre"
+          "he": "בנק דיסקונט פל ים",
+          "ar": "بنك ديسكونت بل يم",
+          "en": "Discount Bank Pal Yam"
         },
         "title": {
           "he": "סניף בנק דיסקונט",
@@ -7533,7 +8006,7 @@
       }
     },
     {
-      "slug": "hapoalim-karamlim-branch",
+      "slug": "hapoalim-karamlim",
       "place": "haifa",
       "brand": "hapoalim",
       "primaryKind": "banks",
@@ -7541,9 +8014,9 @@
         "banks"
       ],
       "name": {
-        "he": "בנק הפועלים שלוחת כרמלים",
-        "ar": "بنك هبوعليم فرع كرمليم",
-        "en": "Bank Hapoalim Karamlim Branch"
+        "he": "בנק הפועלים כרמלים",
+        "ar": "بنك هبوعليم كرمليم",
+        "en": "Bank Hapoalim Karamlim"
       },
       "tagline": {
         "he": "סניף בנק הפועלים",
@@ -7565,7 +8038,7 @@
         "primaryAction": "directions",
         "bankCode": 12,
         "branchCode": 987,
-        "bankBranch": "12-987"
+        "bankBranch": "12-987@haifa"
       },
       "tier": "basic",
       "phone": null,
@@ -7574,9 +8047,9 @@
       "apps": {},
       "experience": {
         "brand": {
-          "he": "בנק הפועלים שלוחת כרמלים",
-          "ar": "بنك هبوعليم فرع كرمليم",
-          "en": "Bank Hapoalim Karamlim Branch"
+          "he": "בנק הפועלים כרמלים",
+          "ar": "بنك هبوعليم كرمليم",
+          "en": "Bank Hapoalim Karamlim"
         },
         "title": {
           "he": "סניף בנק הפועלים",
@@ -7603,9 +8076,9 @@
               "en": "Branch type"
             },
             "meta": {
-              "he": "סניף רגיל",
-              "ar": "فرع عادي",
-              "en": "Everyday banking"
+              "he": "שלוחה של סניף",
+              "ar": "فرع تابع",
+              "en": "Branch extension"
             }
           },
           {
@@ -7653,7 +8126,7 @@
       }
     },
     {
-      "slug": "hapoalim-karamlim-branch-2",
+      "slug": "hapoalim-karamlim-2",
       "place": "haifa",
       "brand": "hapoalim",
       "primaryKind": "banks",
@@ -7661,9 +8134,9 @@
         "banks"
       ],
       "name": {
-        "he": "בנק הפועלים שלוחת כרמלים",
-        "ar": "بنك هبوعليم فرع كرمليم",
-        "en": "Bank Hapoalim Karamlim Branch"
+        "he": "בנק הפועלים כרמלים",
+        "ar": "بنك هبوعليم كرمليم",
+        "en": "Bank Hapoalim Karamlim"
       },
       "tagline": {
         "he": "סניף בנק הפועלים",
@@ -7685,7 +8158,7 @@
         "primaryAction": "directions",
         "bankCode": 12,
         "branchCode": 708,
-        "bankBranch": "12-708"
+        "bankBranch": "12-708@haifa"
       },
       "tier": "basic",
       "phone": null,
@@ -7694,9 +8167,9 @@
       "apps": {},
       "experience": {
         "brand": {
-          "he": "בנק הפועלים שלוחת כרמלים",
-          "ar": "بنك هبوعليم فرع كرمليم",
-          "en": "Bank Hapoalim Karamlim Branch"
+          "he": "בנק הפועלים כרמלים",
+          "ar": "بنك هبوعليم كرمليم",
+          "en": "Bank Hapoalim Karamlim"
         },
         "title": {
           "he": "סניף בנק הפועלים",
@@ -7723,9 +8196,9 @@
               "en": "Branch type"
             },
             "meta": {
-              "he": "סניף רגיל",
-              "ar": "فرع عادي",
-              "en": "Everyday banking"
+              "he": "שלוחה של סניף",
+              "ar": "فرع تابع",
+              "en": "Branch extension"
             }
           },
           {
@@ -8373,7 +8846,7 @@
       }
     },
     {
-      "slug": "hapoalim-yazaraalia-branch",
+      "slug": "hapoalim-yazaraalia",
       "place": "haifa",
       "brand": "hapoalim",
       "primaryKind": "banks",
@@ -8381,9 +8854,9 @@
         "banks"
       ],
       "name": {
-        "he": "בנק הפועלים שלוחת יזרעאליה",
-        "ar": "بنك هبوعليم فرع يزرعاليا",
-        "en": "Bank Hapoalim Yazaraalia Branch"
+        "he": "בנק הפועלים יזרעאליה",
+        "ar": "بنك هبوعليم يزرعاليا",
+        "en": "Bank Hapoalim Yazaraalia"
       },
       "tagline": {
         "he": "סניף בנק הפועלים",
@@ -8405,7 +8878,7 @@
         "primaryAction": "directions",
         "bankCode": 12,
         "branchCode": 755,
-        "bankBranch": "12-755"
+        "bankBranch": "12-755@haifa"
       },
       "tier": "basic",
       "phone": null,
@@ -8414,9 +8887,9 @@
       "apps": {},
       "experience": {
         "brand": {
-          "he": "בנק הפועלים שלוחת יזרעאליה",
-          "ar": "بنك هبوعليم فرع يزرعاليا",
-          "en": "Bank Hapoalim Yazaraalia Branch"
+          "he": "בנק הפועלים יזרעאליה",
+          "ar": "بنك هبوعليم يزرعاليا",
+          "en": "Bank Hapoalim Yazaraalia"
         },
         "title": {
           "he": "סניף בנק הפועלים",
@@ -8443,9 +8916,9 @@
               "en": "Branch type"
             },
             "meta": {
-              "he": "סניף רגיל",
-              "ar": "فرع عادي",
-              "en": "Everyday banking"
+              "he": "שלוחה של סניף",
+              "ar": "فرع تابع",
+              "en": "Branch extension"
             }
           },
           {
@@ -8493,7 +8966,7 @@
       }
     },
     {
-      "slug": "hapoalim-yazaraalia-branch-2",
+      "slug": "hapoalim-yazaraalia-2",
       "place": "haifa",
       "brand": "hapoalim",
       "primaryKind": "banks",
@@ -8501,9 +8974,9 @@
         "banks"
       ],
       "name": {
-        "he": "בנק הפועלים שלוחת יזרעאליה",
-        "ar": "بنك هبوعليم فرع يزرعاليا",
-        "en": "Bank Hapoalim Yazaraalia Branch"
+        "he": "בנק הפועלים יזרעאליה",
+        "ar": "بنك هبوعليم يزرعاليا",
+        "en": "Bank Hapoalim Yazaraalia"
       },
       "tagline": {
         "he": "סניף בנק הפועלים",
@@ -8525,7 +8998,7 @@
         "primaryAction": "directions",
         "bankCode": 12,
         "branchCode": 988,
-        "bankBranch": "12-988"
+        "bankBranch": "12-988@haifa"
       },
       "tier": "basic",
       "phone": null,
@@ -8534,9 +9007,9 @@
       "apps": {},
       "experience": {
         "brand": {
-          "he": "בנק הפועלים שלוחת יזרעאליה",
-          "ar": "بنك هبوعليم فرع يزرعاليا",
-          "en": "Bank Hapoalim Yazaraalia Branch"
+          "he": "בנק הפועלים יזרעאליה",
+          "ar": "بنك هبوعليم يزرعاليا",
+          "en": "Bank Hapoalim Yazaraalia"
         },
         "title": {
           "he": "סניף בנק הפועלים",
@@ -8563,9 +9036,9 @@
               "en": "Branch type"
             },
             "meta": {
-              "he": "סניף רגיל",
-              "ar": "فرع عادي",
-              "en": "Everyday banking"
+              "he": "שלוחה של סניף",
+              "ar": "فرع تابع",
+              "en": "Branch extension"
             }
           },
           {
@@ -11733,6 +12206,126 @@
       }
     },
     {
+      "slug": "leumi-harish",
+      "place": "harish",
+      "brand": "leumi",
+      "primaryKind": "banks",
+      "kinds": [
+        "banks"
+      ],
+      "name": {
+        "he": "בנק לאומי חריש",
+        "ar": "بنك لئومي حريش",
+        "en": "Bank Leumi Harish"
+      },
+      "tagline": {
+        "he": "סניף בנק לאומי",
+        "ar": "فرع بنك لئومي",
+        "en": "Bank Leumi branch"
+      },
+      "address": {
+        "he": "דרך ארץ 46 ללא",
+        "ar": "حريش",
+        "en": "Harish"
+      },
+      "lat": 32.462527,
+      "lng": 35.043893,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "bankCode": 10,
+        "branchCode": 953,
+        "bankBranch": "10-953@harish"
+      },
+      "tier": "basic",
+      "phone": "+972 3-954-5522",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "בנק לאומי חריש",
+          "ar": "بنك لئومي حريش",
+          "en": "Bank Leumi Harish"
+        },
+        "title": {
+          "he": "סניף בנק לאומי",
+          "ar": "فرع بنك لئومي",
+          "en": "Bank Leumi branch"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מספר סניף",
+              "ar": "رقم الفرع",
+              "en": "Branch number"
+            },
+            "meta": {
+              "he": "953",
+              "ar": "953",
+              "en": "953"
+            }
+          },
+          {
+            "label": {
+              "he": "סוג סניף",
+              "ar": "نوع الفرع",
+              "en": "Branch type"
+            },
+            "meta": {
+              "he": "שלוחה של סניף",
+              "ar": "فرع تابع",
+              "en": "Branch extension"
+            }
+          },
+          {
+            "label": {
+              "he": "יום סגור",
+              "ar": "يوم العطلة",
+              "en": "Closed on"
+            },
+            "meta": {
+              "he": "שישי",
+              "ar": "الجمعة",
+              "en": "Friday"
+            }
+          },
+          {
+            "label": {
+              "he": "נגישות",
+              "ar": "إمكانية الوصول",
+              "en": "Accessibility"
+            },
+            "meta": {
+              "he": "נגיש לכיסא גלגלים",
+              "ar": "مناسب للكراسي المتحركة",
+              "en": "Wheelchair accessible"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לסניף",
+          "ar": "خذني للفرع",
+          "en": "Navigate to the branch"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
       "slug": "mizrahi-tefahot-harish",
       "place": "harish",
       "brand": "mizrahi-tefahot",
@@ -12453,7 +13046,7 @@
       }
     },
     {
-      "slug": "hapoalim-iksal-branch",
+      "slug": "hapoalim-iksal",
       "place": "iksal",
       "brand": "hapoalim",
       "primaryKind": "banks",
@@ -12461,9 +13054,9 @@
         "banks"
       ],
       "name": {
-        "he": "בנק הפועלים שלוחת אכסאל",
-        "ar": "بنك هبوعليم فرع إكسال",
-        "en": "Bank Hapoalim Iksal Branch"
+        "he": "בנק הפועלים אכסאל",
+        "ar": "بنك هبوعليم إكسال",
+        "en": "Bank Hapoalim Iksal"
       },
       "tagline": {
         "he": "סניף בנק הפועלים",
@@ -12485,7 +13078,7 @@
         "primaryAction": "directions",
         "bankCode": 12,
         "branchCode": 215,
-        "bankBranch": "12-215"
+        "bankBranch": "12-215@iksal"
       },
       "tier": "basic",
       "phone": null,
@@ -12494,9 +13087,9 @@
       "apps": {},
       "experience": {
         "brand": {
-          "he": "בנק הפועלים שלוחת אכסאל",
-          "ar": "بنك هبوعليم فرع إكسال",
-          "en": "Bank Hapoalim Iksal Branch"
+          "he": "בנק הפועלים אכסאל",
+          "ar": "بنك هبوعليم إكسال",
+          "en": "Bank Hapoalim Iksal"
         },
         "title": {
           "he": "סניף בנק הפועלים",
@@ -12523,9 +13116,9 @@
               "en": "Branch type"
             },
             "meta": {
-              "he": "סניף רגיל",
-              "ar": "فرع عادي",
-              "en": "Everyday banking"
+              "he": "שלוחה של סניף",
+              "ar": "فرع تابع",
+              "en": "Branch extension"
             }
           },
           {
@@ -12573,7 +13166,7 @@
       }
     },
     {
-      "slug": "hapoalim-iksal-branch-2",
+      "slug": "hapoalim-iksal-2",
       "place": "iksal",
       "brand": "hapoalim",
       "primaryKind": "banks",
@@ -12581,9 +13174,9 @@
         "banks"
       ],
       "name": {
-        "he": "בנק הפועלים שלוחת אכסאל",
-        "ar": "بنك هبوعليم فرع إكسال",
-        "en": "Bank Hapoalim Iksal Branch"
+        "he": "בנק הפועלים אכסאל",
+        "ar": "بنك هبوعليم إكسال",
+        "en": "Bank Hapoalim Iksal"
       },
       "tagline": {
         "he": "סניף בנק הפועלים",
@@ -12605,7 +13198,7 @@
         "primaryAction": "directions",
         "bankCode": 12,
         "branchCode": 982,
-        "bankBranch": "12-982"
+        "bankBranch": "12-982@iksal"
       },
       "tier": "basic",
       "phone": null,
@@ -12614,9 +13207,9 @@
       "apps": {},
       "experience": {
         "brand": {
-          "he": "בנק הפועלים שלוחת אכסאל",
-          "ar": "بنك هبوعليم فرع إكسال",
-          "en": "Bank Hapoalim Iksal Branch"
+          "he": "בנק הפועלים אכסאל",
+          "ar": "بنك هبوعليم إكسال",
+          "en": "Bank Hapoalim Iksal"
         },
         "title": {
           "he": "סניף בנק הפועלים",
@@ -12643,9 +13236,9 @@
               "en": "Branch type"
             },
             "meta": {
-              "he": "סניף רגיל",
-              "ar": "فرع عادي",
-              "en": "Everyday banking"
+              "he": "שלוחה של סניף",
+              "ar": "فرع تابع",
+              "en": "Branch extension"
             }
           },
           {
@@ -14013,7 +14606,7 @@
       }
     },
     {
-      "slug": "hapoalim-kafr-yasif-branch",
+      "slug": "hapoalim-kafr-yasif",
       "place": "kafr-yasif",
       "brand": "hapoalim",
       "primaryKind": "banks",
@@ -14021,9 +14614,9 @@
         "banks"
       ],
       "name": {
-        "he": "בנק הפועלים שלוחת כפר יאסיף",
-        "ar": "بنك هبوعليم فرع كفر ياسيف",
-        "en": "Bank Hapoalim Kafr Yasif Branch"
+        "he": "בנק הפועלים כפר יאסיף",
+        "ar": "بنك هبوعليم كفر ياسيف",
+        "en": "Bank Hapoalim Kafr Yasif"
       },
       "tagline": {
         "he": "סניף בנק הפועלים",
@@ -14054,9 +14647,9 @@
       "apps": {},
       "experience": {
         "brand": {
-          "he": "בנק הפועלים שלוחת כפר יאסיף",
-          "ar": "بنك هبوعليم فرع كفر ياسيف",
-          "en": "Bank Hapoalim Kafr Yasif Branch"
+          "he": "בנק הפועלים כפר יאסיף",
+          "ar": "بنك هبوعليم كفر ياسيف",
+          "en": "Bank Hapoalim Kafr Yasif"
         },
         "title": {
           "he": "סניף בנק הפועלים",
@@ -16169,6 +16762,126 @@
       "links": {},
       "cardStyle": {
         "accent": "#a99bd6",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "discount-bay",
+      "place": "kiryat-ata",
+      "brand": "discount",
+      "primaryKind": "banks",
+      "kinds": [
+        "banks"
+      ],
+      "name": {
+        "he": "בנק דיסקונט המפרץ",
+        "ar": "بنك ديسكونت الخليج",
+        "en": "Discount Bank Bay"
+      },
+      "tagline": {
+        "he": "סניף בנק דיסקונט",
+        "ar": "فرع بنك ديسكونت",
+        "en": "Discount Bank branch"
+      },
+      "address": {
+        "he": "דרך חיפה 30 קניון שער הצפון",
+        "ar": "كريات آتا",
+        "en": "Kiryat Ata"
+      },
+      "lat": 32.8106,
+      "lng": 35.0684,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "bankCode": 11,
+        "branchCode": 176,
+        "bankBranch": "11-176"
+      },
+      "tier": "basic",
+      "phone": "+972 76-805-2508",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "בנק דיסקונט המפרץ",
+          "ar": "بنك ديسكونت الخليج",
+          "en": "Discount Bank Bay"
+        },
+        "title": {
+          "he": "סניף בנק דיסקונט",
+          "ar": "فرع بنك ديسكونت",
+          "en": "Discount Bank branch"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מספר סניף",
+              "ar": "رقم الفرع",
+              "en": "Branch number"
+            },
+            "meta": {
+              "he": "176",
+              "ar": "176",
+              "en": "176"
+            }
+          },
+          {
+            "label": {
+              "he": "סוג סניף",
+              "ar": "نوع الفرع",
+              "en": "Branch type"
+            },
+            "meta": {
+              "he": "עסקים ובנקאות פרטית",
+              "ar": "مصالح وخدمات خاصة",
+              "en": "Business and private banking"
+            }
+          },
+          {
+            "label": {
+              "he": "יום סגור",
+              "ar": "يوم العطلة",
+              "en": "Closed on"
+            },
+            "meta": {
+              "he": "שישי",
+              "ar": "الجمعة",
+              "en": "Friday"
+            }
+          },
+          {
+            "label": {
+              "he": "נגישות",
+              "ar": "إمكانية الوصول",
+              "en": "Accessibility"
+            },
+            "meta": {
+              "he": "נגיש לכיסא גלגלים",
+              "ar": "مناسب للكراسي المتحركة",
+              "en": "Wheelchair accessible"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לסניף",
+          "ar": "خذني للفرع",
+          "en": "Navigate to the branch"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
         "icons": "solid"
       }
     },
@@ -18561,6 +19274,246 @@
       }
     },
     {
+      "slug": "first-international-kiryat-shmona",
+      "place": "kiryat-shmona",
+      "brand": "first-international",
+      "primaryKind": "banks",
+      "kinds": [
+        "banks"
+      ],
+      "name": {
+        "he": "הבנק הבינלאומי קרית שמונה",
+        "ar": "البنك الدولي كريات شمونة",
+        "en": "First International Bank Kiryat Shmona"
+      },
+      "tagline": {
+        "he": "סניף הבנק הבינלאומי",
+        "ar": "فرع البنك الدولي",
+        "en": "First International Bank branch"
+      },
+      "address": {
+        "he": "שד' תל חי 83",
+        "ar": "كريات شمونة",
+        "en": "Kiryat Shmona"
+      },
+      "lat": 33.205803,
+      "lng": 35.56893,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "bankCode": 31,
+        "branchCode": 50,
+        "bankBranch": "31-50"
+      },
+      "tier": "basic",
+      "phone": "+972 4-683-6200",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "הבנק הבינלאומי קרית שמונה",
+          "ar": "البنك الدولي كريات شمونة",
+          "en": "First International Bank Kiryat Shmona"
+        },
+        "title": {
+          "he": "סניף הבנק הבינלאומי",
+          "ar": "فرع البنك الدولي",
+          "en": "First International Bank branch"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מספר סניף",
+              "ar": "رقم الفرع",
+              "en": "Branch number"
+            },
+            "meta": {
+              "he": "50",
+              "ar": "50",
+              "en": "50"
+            }
+          },
+          {
+            "label": {
+              "he": "סוג סניף",
+              "ar": "نوع الفرع",
+              "en": "Branch type"
+            },
+            "meta": {
+              "he": "סניף רגיל",
+              "ar": "فرع عادي",
+              "en": "Everyday banking"
+            }
+          },
+          {
+            "label": {
+              "he": "יום סגור",
+              "ar": "يوم العطلة",
+              "en": "Closed on"
+            },
+            "meta": {
+              "he": "שישי",
+              "ar": "الجمعة",
+              "en": "Friday"
+            }
+          },
+          {
+            "label": {
+              "he": "נגישות",
+              "ar": "إمكانية الوصول",
+              "en": "Accessibility"
+            },
+            "meta": {
+              "he": "נגיש לכיסא גלגלים",
+              "ar": "مناسب للكراسي المتحركة",
+              "en": "Wheelchair accessible"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לסניף",
+          "ar": "خذني للفرع",
+          "en": "Navigate to the branch"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#A99BD6"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#a99bd6",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "first-international-kiryat-shmona-otzar-hahayal",
+      "place": "kiryat-shmona",
+      "brand": "first-international",
+      "primaryKind": "banks",
+      "kinds": [
+        "banks"
+      ],
+      "name": {
+        "he": "הבנק הבינלאומי קרית שמונה אוצר החייל",
+        "ar": "البنك الدولي كريات شمونة اوتسر هحيل",
+        "en": "First International Bank Kiryat Shmona Otzar Hahayal"
+      },
+      "tagline": {
+        "he": "סניף הבנק הבינלאומי",
+        "ar": "فرع البنك الدولي",
+        "en": "First International Bank branch"
+      },
+      "address": {
+        "he": "שד' תל חי 83",
+        "ar": "كريات شمونة",
+        "en": "Kiryat Shmona"
+      },
+      "lat": 33.205803,
+      "lng": 35.56893,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "bankCode": 31,
+        "branchCode": 360,
+        "bankBranch": "31-360"
+      },
+      "tier": "basic",
+      "phone": "+972 4-683-6200",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "הבנק הבינלאומי קרית שמונה אוצר החייל",
+          "ar": "البنك الدولي كريات شمونة اوتسر هحيل",
+          "en": "First International Bank Kiryat Shmona Otzar Hahayal"
+        },
+        "title": {
+          "he": "סניף הבנק הבינלאומי",
+          "ar": "فرع البنك الدولي",
+          "en": "First International Bank branch"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מספר סניף",
+              "ar": "رقم الفرع",
+              "en": "Branch number"
+            },
+            "meta": {
+              "he": "360",
+              "ar": "360",
+              "en": "360"
+            }
+          },
+          {
+            "label": {
+              "he": "סוג סניף",
+              "ar": "نوع الفرع",
+              "en": "Branch type"
+            },
+            "meta": {
+              "he": "סניף רגיל",
+              "ar": "فرع عادي",
+              "en": "Everyday banking"
+            }
+          },
+          {
+            "label": {
+              "he": "יום סגור",
+              "ar": "يوم العطلة",
+              "en": "Closed on"
+            },
+            "meta": {
+              "he": "שישי",
+              "ar": "الجمعة",
+              "en": "Friday"
+            }
+          },
+          {
+            "label": {
+              "he": "נגישות",
+              "ar": "إمكانية الوصول",
+              "en": "Accessibility"
+            },
+            "meta": {
+              "he": "נגיש לכיסא גלגלים",
+              "ar": "مناسب للكراسي المتحركة",
+              "en": "Wheelchair accessible"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לסניף",
+          "ar": "خذني للفرع",
+          "en": "Navigate to the branch"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#A99BD6"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#a99bd6",
+        "icons": "solid"
+      }
+    },
+    {
       "slug": "hapoalim-kiryat-shmona",
       "place": "kiryat-shmona",
       "brand": "hapoalim",
@@ -18681,6 +19634,126 @@
       }
     },
     {
+      "slug": "leumi-kiryat-shmona",
+      "place": "kiryat-shmona",
+      "brand": "leumi",
+      "primaryKind": "banks",
+      "kinds": [
+        "banks"
+      ],
+      "name": {
+        "he": "בנק לאומי קרית שמונה",
+        "ar": "بنك لئومي كريات شمونة",
+        "en": "Bank Leumi Kiryat Shmona"
+      },
+      "tagline": {
+        "he": "סניף בנק לאומי",
+        "ar": "فرع بنك لئومي",
+        "en": "Bank Leumi branch"
+      },
+      "address": {
+        "he": "ככר צה\"ל 0 המרכז המסחרי",
+        "ar": "كريات شمونة",
+        "en": "Kiryat Shmona"
+      },
+      "lat": 33.207047,
+      "lng": 35.569532,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "bankCode": 10,
+        "branchCode": 976,
+        "bankBranch": "10-976"
+      },
+      "tier": "basic",
+      "phone": "+972 3-954-5522",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "בנק לאומי קרית שמונה",
+          "ar": "بنك لئومي كريات شمونة",
+          "en": "Bank Leumi Kiryat Shmona"
+        },
+        "title": {
+          "he": "סניף בנק לאומי",
+          "ar": "فرع بنك لئومي",
+          "en": "Bank Leumi branch"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מספר סניף",
+              "ar": "رقم الفرع",
+              "en": "Branch number"
+            },
+            "meta": {
+              "he": "976",
+              "ar": "976",
+              "en": "976"
+            }
+          },
+          {
+            "label": {
+              "he": "סוג סניף",
+              "ar": "نوع الفرع",
+              "en": "Branch type"
+            },
+            "meta": {
+              "he": "סניף רגיל",
+              "ar": "فرع عادي",
+              "en": "Everyday banking"
+            }
+          },
+          {
+            "label": {
+              "he": "יום סגור",
+              "ar": "يوم العطلة",
+              "en": "Closed on"
+            },
+            "meta": {
+              "he": "שישי",
+              "ar": "الجمعة",
+              "en": "Friday"
+            }
+          },
+          {
+            "label": {
+              "he": "נגישות",
+              "ar": "إمكانية الوصول",
+              "en": "Accessibility"
+            },
+            "meta": {
+              "he": "נגיש לכיסא גלגלים",
+              "ar": "مناسب للكراسي المتحركة",
+              "en": "Wheelchair accessible"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לסניף",
+          "ar": "خذني للفرع",
+          "en": "Navigate to the branch"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
       "slug": "mizrahi-tefahot-kiryat-shmona",
       "place": "kiryat-shmona",
       "brand": "mizrahi-tefahot",
@@ -18797,6 +19870,126 @@
       "links": {},
       "cardStyle": {
         "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "otsar-hahayal-kiryat-shmona-otzar-hahayal",
+      "place": "kiryat-shmona",
+      "brand": "otsar-hahayal",
+      "primaryKind": "banks",
+      "kinds": [
+        "banks"
+      ],
+      "name": {
+        "he": "בנק אוצר החייל קרית שמונה אוצר החייל",
+        "ar": "بنك أوتسار هحيال كريات شمونة اوتسر هحيل",
+        "en": "Bank Otsar Ha-Hayal Kiryat Shmona Otzar Hahayal"
+      },
+      "tagline": {
+        "he": "סניף בנק אוצר החייל",
+        "ar": "فرع بنك أوتسار هحيال",
+        "en": "Bank Otsar Ha-Hayal branch"
+      },
+      "address": {
+        "he": "שד' תל חי 83",
+        "ar": "كريات شمونة",
+        "en": "Kiryat Shmona"
+      },
+      "lat": 33.205803,
+      "lng": 35.56893,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "bankCode": 14,
+        "branchCode": 360,
+        "bankBranch": "14-360"
+      },
+      "tier": "basic",
+      "phone": "+972 4-683-6200",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "בנק אוצר החייל קרית שמונה אוצר החייל",
+          "ar": "بنك أوتسار هحيال كريات شمونة اوتسر هحيل",
+          "en": "Bank Otsar Ha-Hayal Kiryat Shmona Otzar Hahayal"
+        },
+        "title": {
+          "he": "סניף בנק אוצר החייל",
+          "ar": "فرع بنك أوتسار هحيال",
+          "en": "Bank Otsar Ha-Hayal branch"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מספר סניף",
+              "ar": "رقم الفرع",
+              "en": "Branch number"
+            },
+            "meta": {
+              "he": "360",
+              "ar": "360",
+              "en": "360"
+            }
+          },
+          {
+            "label": {
+              "he": "סוג סניף",
+              "ar": "نوع الفرع",
+              "en": "Branch type"
+            },
+            "meta": {
+              "he": "סניף רגיל",
+              "ar": "فرع عادي",
+              "en": "Everyday banking"
+            }
+          },
+          {
+            "label": {
+              "he": "יום סגור",
+              "ar": "يوم العطلة",
+              "en": "Closed on"
+            },
+            "meta": {
+              "he": "שישי",
+              "ar": "الجمعة",
+              "en": "Friday"
+            }
+          },
+          {
+            "label": {
+              "he": "נגישות",
+              "ar": "إمكانية الوصول",
+              "en": "Accessibility"
+            },
+            "meta": {
+              "he": "נגיש לכיסא גלגלים",
+              "ar": "مناسب للكراسي المتحركة",
+              "en": "Wheelchair accessible"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לסניף",
+          "ar": "خذني للفرع",
+          "en": "Navigate to the branch"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#A99BD6"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#a99bd6",
         "icons": "solid"
       }
     },
@@ -20241,7 +21434,7 @@
       }
     },
     {
-      "slug": "discount-migdal-haemek-snif-afula-branch",
+      "slug": "discount-migdal-haemek",
       "place": "migdal-haemek",
       "brand": "discount",
       "primaryKind": "banks",
@@ -20249,9 +21442,9 @@
         "banks"
       ],
       "name": {
-        "he": "בנק דיסקונט מגדל העמק- שלוחת סניף עפולה",
-        "ar": "بنك ديسكونت مجدال هعيمق فرع سنيف العفولة",
-        "en": "Discount Bank Migdal HaEmek Snif Afula Branch"
+        "he": "בנק דיסקונט מגדל העמק",
+        "ar": "بنك ديسكونت مجدال هعيمق",
+        "en": "Discount Bank Migdal HaEmek"
       },
       "tagline": {
         "he": "סניף בנק דיסקונט",
@@ -20273,7 +21466,7 @@
         "primaryAction": "directions",
         "bankCode": 11,
         "branchCode": 2,
-        "bankBranch": "11-2"
+        "bankBranch": "11-2@migdal-haemek"
       },
       "tier": "basic",
       "phone": "+972 76-805-2398",
@@ -20282,9 +21475,9 @@
       "apps": {},
       "experience": {
         "brand": {
-          "he": "בנק דיסקונט מגדל העמק- שלוחת סניף עפולה",
-          "ar": "بنك ديسكونت مجدال هعيمق فرع سنيف العفولة",
-          "en": "Discount Bank Migdal HaEmek Snif Afula Branch"
+          "he": "בנק דיסקונט מגדל העמק",
+          "ar": "بنك ديسكونت مجدال هعيمق",
+          "en": "Discount Bank Migdal HaEmek"
         },
         "title": {
           "he": "סניף בנק דיסקונט",
@@ -28113,7 +29306,7 @@
       }
     },
     {
-      "slug": "massad-sakhnin-snif-karmiel-branch",
+      "slug": "massad-sakhnin",
       "place": "sakhnin",
       "brand": "massad",
       "primaryKind": "banks",
@@ -28121,9 +29314,9 @@
         "banks"
       ],
       "name": {
-        "he": "בנק מסד שלוחת סכנין - סניף כרמיאל",
-        "ar": "بنك مساد فرع سكنين سنيف كرميئيل",
-        "en": "Bank Massad Sakhnin Snif Karmiel Branch"
+        "he": "בנק מסד סכנין",
+        "ar": "بنك مساد سكنين",
+        "en": "Bank Massad Sakhnin"
       },
       "tagline": {
         "he": "סניף בנק מסד",
@@ -28145,7 +29338,7 @@
         "primaryAction": "directions",
         "bankCode": 46,
         "branchCode": 904,
-        "bankBranch": "46-904"
+        "bankBranch": "46-904@sakhnin"
       },
       "tier": "basic",
       "phone": "+972 3-513-2745",
@@ -28154,9 +29347,9 @@
       "apps": {},
       "experience": {
         "brand": {
-          "he": "בנק מסד שלוחת סכנין - סניף כרמיאל",
-          "ar": "بنك مساد فرع سكنين سنيف كرميئيل",
-          "en": "Bank Massad Sakhnin Snif Karmiel Branch"
+          "he": "בנק מסד סכנין",
+          "ar": "بنك مساد سكنين",
+          "en": "Bank Massad Sakhnin"
         },
         "title": {
           "he": "סניף בנק מסד",
@@ -28183,9 +29376,9 @@
               "en": "Branch type"
             },
             "meta": {
-              "he": "סניף רגיל",
-              "ar": "فرع عادي",
-              "en": "Everyday banking"
+              "he": "שלוחה של סניף",
+              "ar": "فرع تابع",
+              "en": "Branch extension"
             }
           },
           {
@@ -30393,7 +31586,7 @@
       }
     },
     {
-      "slug": "yahav-snif-tiberias",
+      "slug": "yahav-tiberias",
       "place": "tiberias",
       "brand": "yahav",
       "primaryKind": "banks",
@@ -30401,9 +31594,9 @@
         "banks"
       ],
       "name": {
-        "he": "בנק יהב סניף טבריה",
-        "ar": "بنك يهاف سنيف طبريا",
-        "en": "Bank Yahav Snif Tiberias"
+        "he": "בנק יהב טבריה",
+        "ar": "بنك يهاف طبريا",
+        "en": "Bank Yahav Tiberias"
       },
       "tagline": {
         "he": "סניף בנק יהב",
@@ -30434,9 +31627,9 @@
       "apps": {},
       "experience": {
         "brand": {
-          "he": "בנק יהב סניף טבריה",
-          "ar": "بنك يهاف سنيف طبريا",
-          "en": "Bank Yahav Snif Tiberias"
+          "he": "בנק יהב טבריה",
+          "ar": "بنك يهاف طبريا",
+          "en": "Bank Yahav Tiberias"
         },
         "title": {
           "he": "סניף בנק יהב",
@@ -31349,6 +32542,126 @@
       "links": {},
       "cardStyle": {
         "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "hapoalim-umm-al-fahm",
+      "place": "umm-al-fahm",
+      "brand": "hapoalim",
+      "primaryKind": "banks",
+      "kinds": [
+        "banks"
+      ],
+      "name": {
+        "he": "בנק הפועלים אום אל פחם",
+        "ar": "بنك هبوعليم أم الفحم",
+        "en": "Bank Hapoalim Umm al-Fahm"
+      },
+      "tagline": {
+        "he": "סניף בנק הפועלים",
+        "ar": "فرع بنك هبوعليم",
+        "en": "Bank Hapoalim branch"
+      },
+      "address": {
+        "he": "רחוב ראשי - כניסה ראשית 1",
+        "ar": "أم الفحم",
+        "en": "Umm al-Fahm"
+      },
+      "lat": 32.528602,
+      "lng": 35.154137,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "bankCode": 12,
+        "branchCode": 548,
+        "bankBranch": "12-548"
+      },
+      "tier": "basic",
+      "phone": "+972 4-611-9245",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "בנק הפועלים אום אל פחם",
+          "ar": "بنك هبوعليم أم الفحم",
+          "en": "Bank Hapoalim Umm al-Fahm"
+        },
+        "title": {
+          "he": "סניף בנק הפועלים",
+          "ar": "فرع بنك هبوعليم",
+          "en": "Bank Hapoalim branch"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מספר סניף",
+              "ar": "رقم الفرع",
+              "en": "Branch number"
+            },
+            "meta": {
+              "he": "548",
+              "ar": "548",
+              "en": "548"
+            }
+          },
+          {
+            "label": {
+              "he": "סוג סניף",
+              "ar": "نوع الفرع",
+              "en": "Branch type"
+            },
+            "meta": {
+              "he": "סניף רגיל",
+              "ar": "فرع عادي",
+              "en": "Everyday banking"
+            }
+          },
+          {
+            "label": {
+              "he": "יום סגור",
+              "ar": "يوم العطلة",
+              "en": "Closed on"
+            },
+            "meta": {
+              "he": "שישי",
+              "ar": "الجمعة",
+              "en": "Friday"
+            }
+          },
+          {
+            "label": {
+              "he": "נגישות",
+              "ar": "إمكانية الوصول",
+              "en": "Accessibility"
+            },
+            "meta": {
+              "he": "נגיש לכיסא גלגלים",
+              "ar": "مناسب للكراسي المتحركة",
+              "en": "Wheelchair accessible"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לסניף",
+          "ar": "خذني للفرع",
+          "en": "Navigate to the branch"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#E08A6D"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#e08a6d",
         "icons": "solid"
       }
     },
