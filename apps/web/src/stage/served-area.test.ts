@@ -189,6 +189,9 @@ describe("loadServedArea after a failure", () => {
     expect(await load()).toBeNull();
     expect(await load()).toBeNull();
     expect(fetch).toHaveBeenCalledTimes(2);
+    // Anything but an outline (a proxy's HTML, another JSON) is no outline either.
+    vi.stubGlobal("fetch", async () => Response.json({ version: 8, layers: [] }));
+    expect(await load()).toBeNull();
     vi.unstubAllGlobals();
   });
 });

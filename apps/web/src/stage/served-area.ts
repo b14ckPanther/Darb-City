@@ -35,13 +35,24 @@ let loading: Promise<ServedArea | null> | null = null;
 /** The served outline, fetched once per page; null (no veil, the map still works) on a failure. */
 export function loadServedArea(): Promise<ServedArea | null> {
   loading ??= fetch(SERVED_URL)
-    .then((res) => (res.ok ? (res.json() as Promise<ServedArea>) : null))
+    .then((res) => (res.ok ? (res.json() as Promise<unknown>) : null))
     .catch(() => null)
-    .then((area) => {
+    .then((body) => {
+      const area = isServedArea(body) ? body : null;
       if (!area) loading = null;
       return area;
     });
   return loading;
+}
+
+function isServedArea(body: unknown): body is ServedArea {
+  const area = body as Partial<ServedArea> | null;
+  return (
+    area?.geometry?.type === "MultiPolygon" &&
+    area.places?.type === "MultiPoint" &&
+    Array.isArray(area.bbox) &&
+    area.bbox.length === 4
+  );
 }
 
 /** The whole world with the served land cut out of it: outer ring counter-clockwise, holes clockwise. */
