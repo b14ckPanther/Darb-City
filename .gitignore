@@ -21,3 +21,6 @@ apps/web/CLAUDE.md
 apps/web/public/map/
 apps/web/.tiles/
 apps/web/public/search-index/
+
+# Raw responses the open-data importers fetched (packages/seed/scripts/import).
+packages/seed/scripts/import/.cache/

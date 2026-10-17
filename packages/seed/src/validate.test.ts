@@ -1,3 +1,4 @@
+import { readdirSync, readFileSync } from "node:fs";
 import {
   DIETARY,
   hasText,
@@ -266,11 +267,11 @@ describe("showroom businesses", () => {
   it("give each of the 12 flagships one business per active kind", () => {
     expect(flagships.size).toBe(12);
     const active = loadKinds().filter((k) => k.status === "active");
-    expect(active).toHaveLength(205);
+    expect(active).toHaveLength(210);
     for (const slug of flagships) {
       const here = businesses.filter((b) => b.place === slug);
-      expect(here, slug).toHaveLength(205);
-      expect(kindsIn(slug).size, slug).toBe(205);
+      expect(here, slug).toHaveLength(210);
+      expect(kindsIn(slug).size, slug).toBe(210);
     }
   });
   it("give every other live settlement exactly the common kinds", () => {
@@ -491,5 +492,24 @@ describe("every showroom screen", () => {
         if (!(text.ar ?? "").trim()) missing.push(`${slug}.${where}`);
     }
     expect(missing).toEqual([]);
+  });
+});
+
+describe("the word halal", () => {
+  // Whole words: the village Nahalal (נהלל, نهلال) is not the word.
+  it("is never in a kind, a sector, a screen or a listing", () => {
+    const listings = readdirSync(new URL("../data/listings/", import.meta.url)).map(
+      (f) => `listings/${f}`,
+    );
+    for (const file of [
+      "kinds.json",
+      "sectors.json",
+      "screens.json",
+      "extra-screens.json",
+      ...listings,
+    ])
+      expect(readFileSync(new URL(`../data/${file}`, import.meta.url), "utf8"), file).not.toMatch(
+        /(?<![\p{L}])(halal|حلال|חלאל)(?![\p{L}])/iu,
+      );
   });
 });

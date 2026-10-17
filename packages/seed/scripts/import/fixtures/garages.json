@@ -1,0 +1,100 @@
+{
+  "rows": [
+    {
+      "mispar_mosah": 1,
+      "shem_mosah": "יחיא יצחק - מוסך אלמוג",
+      "cod_sug_mosah": 6,
+      "sug_mosah": "מוסך מורשה",
+      "ktovet": "החרושת 5",
+      "yishuv": "כרמיאל",
+      "telephone": "04-9881234",
+      "cod_miktzoa": 10,
+      "miktzoa": "מכונאות רכב בנזין"
+    },
+    {
+      "mispar_mosah": 1,
+      "shem_mosah": "יחיא יצחק - מוסך אלמוג",
+      "cod_sug_mosah": 6,
+      "sug_mosah": "מוסך מורשה",
+      "ktovet": "החרושת 5",
+      "yishuv": "כרמיאל",
+      "telephone": "04-9881234",
+      "cod_miktzoa": 130,
+      "miktzoa": "תיקון והחלפת צמיגים"
+    },
+    {
+      "mispar_mosah": 2,
+      "shem_mosah": "מכון רישוי חן בע מ",
+      "cod_sug_mosah": 1,
+      "sug_mosah": "מכון רישוי",
+      "ktovet": "דרך הים 1",
+      "yishuv": "פרדס חנה-כרכור*",
+      "telephone": "04-6371111",
+      "cod_miktzoa": 181,
+      "miktzoa": "מכון רישוי-פתוח לשרות הציבור"
+    },
+    {
+      "mispar_mosah": 3,
+      "shem_mosah": "מוסך בלי מפה",
+      "cod_sug_mosah": 6,
+      "sug_mosah": "מוסך מורשה",
+      "ktovet": "",
+      "yishuv": "כרמיאל",
+      "telephone": "04-9887777",
+      "cod_miktzoa": 10,
+      "miktzoa": "מכונאות רכב בנזין"
+    },
+    {
+      "mispar_mosah": 4,
+      "shem_mosah": "מוסך הדרום",
+      "cod_sug_mosah": 6,
+      "sug_mosah": "מוסך מורשה",
+      "ktovet": "",
+      "yishuv": "באר שבע",
+      "telephone": "08-6200000",
+      "cod_miktzoa": 10,
+      "miktzoa": "מכונאות רכב בנזין"
+    },
+    {
+      "mispar_mosah": 5,
+      "shem_mosah": "מוסך טלפון",
+      "cod_sug_mosah": 6,
+      "sug_mosah": "מוסך מורשה",
+      "ktovet": "",
+      "yishuv": "כרמיאל",
+      "telephone": "052-3334444",
+      "cod_miktzoa": 70,
+      "miktzoa": "תיקון מרכבי רכב"
+    }
+  ],
+  "osm": [
+    {
+      "type": "node",
+      "id": 11,
+      "lat": 32.918,
+      "lon": 35.295,
+      "tags": { "shop": "car_repair", "name": "מוסך אלמוג" }
+    },
+    {
+      "type": "node",
+      "id": 12,
+      "lat": 32.472,
+      "lon": 34.976,
+      "tags": { "shop": "car_repair", "name": "מכון רישוי חן" }
+    },
+    {
+      "type": "node",
+      "id": 13,
+      "lat": 32.915,
+      "lon": 35.3,
+      "tags": { "shop": "car_repair", "name": "Some garage", "phone": "+972 52-333-4444" }
+    },
+    {
+      "type": "node",
+      "id": 14,
+      "lat": 32.91,
+      "lon": 35.29,
+      "tags": { "shop": "car_repair", "name": "מוסך כרמיאל" }
+    }
+  ]
+}

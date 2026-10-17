@@ -3495,6 +3495,41 @@
     "status": "active"
   },
   {
+    "slug": "banks",
+    "sector": "services",
+    "parent": null,
+    "name": {
+      "he": "בנקים",
+      "ar": "بنوك",
+      "en": "Banks"
+    },
+    "synonyms": {
+      "he": [
+        "בנק",
+        "סניף בנק",
+        "סניף",
+        "בנקאות"
+      ],
+      "ar": [
+        "بنك",
+        "فرع بنك",
+        "فرع",
+        "بنوك"
+      ],
+      "en": [
+        "bank",
+        "bank branch",
+        "branch",
+        "banking"
+      ]
+    },
+    "template": "listing",
+    "attributes": [],
+    "icon": null,
+    "order": 13,
+    "status": "active"
+  },
+  {
     "slug": "architects",
     "sector": "home",
     "parent": null,
@@ -4689,6 +4724,41 @@
     "attributes": [],
     "icon": null,
     "order": 11,
+    "status": "active"
+  },
+  {
+    "slug": "vehicle-testing",
+    "sector": "auto",
+    "parent": null,
+    "name": {
+      "he": "מכוני רישוי (טסט)",
+      "ar": "تست سيارات",
+      "en": "Vehicle testing"
+    },
+    "synonyms": {
+      "he": [
+        "טסט",
+        "מכון רישוי",
+        "טסט שנתי",
+        "רישוי רכב"
+      ],
+      "ar": [
+        "تست",
+        "فحص سيارة",
+        "ترخيص سيارة",
+        "تست سيارة"
+      ],
+      "en": [
+        "vehicle test",
+        "annual test",
+        "MOT",
+        "testing station"
+      ]
+    },
+    "template": "listing",
+    "attributes": [],
+    "icon": null,
+    "order": 12,
     "status": "active"
   },
   {
@@ -6442,6 +6512,108 @@
     "status": "active"
   },
   {
+    "slug": "churches",
+    "sector": "faith",
+    "parent": null,
+    "name": {
+      "he": "כנסיות",
+      "ar": "كنائس",
+      "en": "Churches"
+    },
+    "synonyms": {
+      "he": [
+        "כנסייה",
+        "כנסיה",
+        "מיסה",
+        "תפילה"
+      ],
+      "ar": [
+        "كنيسة",
+        "قداس",
+        "صلاة",
+        "كنايس"
+      ],
+      "en": [
+        "church",
+        "mass",
+        "service",
+        "parish"
+      ]
+    },
+    "template": "schedule",
+    "attributes": [],
+    "icon": null,
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "slug": "synagogues",
+    "sector": "faith",
+    "parent": null,
+    "name": {
+      "he": "בתי כנסת",
+      "ar": "كنس",
+      "en": "Synagogues"
+    },
+    "synonyms": {
+      "he": [
+        "בית כנסת",
+        "תפילה",
+        "מניין",
+        "שחרית"
+      ],
+      "ar": [
+        "كنيس",
+        "صلاة"
+      ],
+      "en": [
+        "synagogue",
+        "shul",
+        "prayer",
+        "minyan"
+      ]
+    },
+    "template": "schedule",
+    "attributes": [],
+    "icon": null,
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "slug": "druze-prayer-houses",
+    "sector": "faith",
+    "parent": null,
+    "name": {
+      "he": "חילוות",
+      "ar": "خلوات",
+      "en": "Druze prayer houses"
+    },
+    "synonyms": {
+      "he": [
+        "חילווה",
+        "חלווה",
+        "ח'לווה",
+        "בית תפילה דרוזי"
+      ],
+      "ar": [
+        "خلوة",
+        "مجلس",
+        "بيت صلاة"
+      ],
+      "en": [
+        "khalwa",
+        "khilwa",
+        "druze prayer house",
+        "majlis"
+      ]
+    },
+    "template": "schedule",
+    "attributes": [],
+    "icon": null,
+    "order": 4,
+    "status": "active"
+  },
+  {
     "slug": "quran-schools",
     "sector": "faith",
     "parent": null,
@@ -6474,12 +6646,12 @@
     "template": "tracker",
     "attributes": [],
     "icon": null,
-    "order": 2,
+    "order": 5,
     "status": "active"
   },
   {
     "slug": "butchers",
-    "sector": "faith",
+    "sector": "food",
     "parent": null,
     "name": {
       "he": "אטליזים",
@@ -6490,33 +6662,31 @@
       "he": [
         "אטליז",
         "קצב",
-        "בשר חלאל",
-        "בשר טרי"
+        "בשר טרי",
+        "בשר"
       ],
       "ar": [
         "ملحمة",
         "لحام",
-        "لحمة حلال",
         "لحم",
         "قصاب",
         "لحّام"
       ],
       "en": [
-        "halal butcher",
         "butcher",
-        "halal meat",
-        "meat"
+        "meat",
+        "meat shop"
       ]
     },
     "template": "builder",
     "attributes": [],
     "icon": null,
-    "order": 3,
+    "order": 13,
     "status": "active"
   },
   {
     "slug": "modest-fashion",
-    "sector": "faith",
+    "sector": "retail",
     "parent": null,
     "name": {
       "he": "עבאיות וחיג'אבים",
@@ -6551,7 +6721,7 @@
       "delivers"
     ],
     "icon": null,
-    "order": 4,
+    "order": 13,
     "status": "active"
   },
   {
@@ -6588,7 +6758,7 @@
     "template": "quote",
     "attributes": [],
     "icon": null,
-    "order": 5,
+    "order": 6,
     "status": "active"
   },
   {
@@ -6596,30 +6766,36 @@
     "sector": "faith",
     "parent": null,
     "name": {
-      "he": "ספרים ומתנות אסלאמיים",
-      "ar": "كتب وهدايا إسلامية",
-      "en": "Islamic books & gifts"
+      "he": "ספרי קודש ומתנות",
+      "ar": "كتب دينية وهدايا",
+      "en": "Religious books & gifts"
     },
     "synonyms": {
       "he": [
         "ספרים אסלאמיים",
         "קוראן",
         "מתנות",
-        "מחרוזת"
+        "מחרוזת",
+        "ספרי קודש",
+        "תשמישי קדושה"
       ],
       "ar": [
         "كتب إسلامية",
         "مصحف",
         "مسبحة",
         "سجادة صلاة",
-        "هدايا"
+        "هدايا",
+        "كتب دينية",
+        "إنجيل"
       ],
       "en": [
         "islamic books",
         "quran",
         "prayer mat",
         "tasbih",
-        "gifts"
+        "gifts",
+        "religious books",
+        "bible"
       ]
     },
     "template": "shop",
@@ -6627,7 +6803,7 @@
       "delivers"
     ],
     "icon": null,
-    "order": 6,
+    "order": 7,
     "status": "active"
   },
   {
@@ -6662,7 +6838,7 @@
     "template": "booking",
     "attributes": [],
     "icon": null,
-    "order": 7,
+    "order": 8,
     "status": "active"
   },
   {
@@ -6697,7 +6873,7 @@
     "template": "pass",
     "attributes": [],
     "icon": null,
-    "order": 8,
+    "order": 9,
     "status": "active"
   },
   {
@@ -6732,7 +6908,7 @@
     "template": "donate",
     "attributes": [],
     "icon": null,
-    "order": 9,
+    "order": 10,
     "status": "active"
   },
   {
@@ -6769,7 +6945,7 @@
     "template": "booking",
     "attributes": [],
     "icon": null,
-    "order": 10,
+    "order": 11,
     "status": "active"
   },
   {
@@ -6809,7 +6985,7 @@
       "delivers"
     ],
     "icon": null,
-    "order": 11,
+    "order": 12,
     "status": "active"
   },
   {
@@ -6847,7 +7023,7 @@
     "template": "tracker",
     "attributes": [],
     "icon": null,
-    "order": 12,
+    "order": 13,
     "status": "active"
   },
   {
