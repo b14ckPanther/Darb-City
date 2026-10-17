@@ -848,7 +848,7 @@ export const RULES = [
   R("spas", "shop=beauty&beauty~spa|massage"),
   R("spas", "shop=massage"),
   R("spas", "leisure=spa|sauna"),
-  R("spas", "amenity=spa|public_bath"),
+  R("spas", "amenity=spa|public_bath&!bath:type=mikveh"),
   R(
     "spas",
     "shop=beauty",
@@ -1022,7 +1022,7 @@ export const RULES = [
   R("bikes", "shop=bicycle"),
   R("bikes", "amenity=bicycle_rental&!network=*"),
   R("fishing", "shop=fishing"),
-  R("fishing", "shop=*", words("דיג", "fishing", "صيد السمك", "معدات صيد")),
+  R("fishing", "shop=*", words("דיג$", "fishing", "صيد السمك", "معدات صيد")),
 
   // ---- kids
   R("daycare", "amenity=childcare"),
@@ -1929,7 +1929,6 @@ export const RULES = [
       "horse riding",
       "horseback",
       "equestrian",
-      "ranch",
       "חוות רכיבה",
       "اسطبل",
       "إسطبل",
@@ -1946,6 +1945,27 @@ export const RULES = [
 
   // ---- events
   R("venues", "amenity=events_venue|conference_centre|exhibition_centre|wedding_hall"),
+  // A wedding hall is often mapped as an attraction or a council building: its name says it.
+  R(
+    "venues",
+    null,
+    words(
+      "ללאפראח",
+      "للأفراح",
+      "للافراح",
+      "أفراح",
+      "افراح",
+      "אולם אירועים",
+      "אולמי אירועים",
+      "גן אירועים",
+      "wedding hall",
+      "event hall",
+      "events hall",
+      "قاعة أفراح",
+      "قاعة افراح",
+    ),
+    { gate: true, gateAll: true, first: true },
+  ),
   R(
     "venues",
     null,
@@ -2333,6 +2353,44 @@ const FOOD = tagTest(
   "amenity=restaurant|cafe|fast_food|food_court|ice_cream|biergarten|shop=bakery|butcher|pastry|confectionery|ice_cream|coffee|tea|deli|seafood|spices|nuts|beverages|water|juice|food|frozen_food|health_food|chocolate_and_sweets|cake|catering",
 );
 
+/** Food chains sometimes mapped without a food tag. */
+const FOOD_NAMES = words(
+  "burger ranch",
+  "בורגראנץ",
+  "בורגר ראנץ",
+  "מקדונלד",
+  "mcdonald",
+  "דומינו",
+  "domino",
+  "פיצה",
+  "pizza",
+  "שווארמה",
+  "shawarma",
+  "פלאפל",
+  "falafel",
+  "קפה ",
+  "cafe",
+  "café",
+  "גלידה",
+  "מאפיית",
+  "מאפה",
+);
+
+/** Not a business to list: ritual baths, bus platforms, abandoned or closed places. */
+const NOT_A_PLACE = words(
+  "מקווה",
+  "mikveh",
+  "mikvah",
+  "רציף",
+  "platform",
+  "abandoned",
+  "disused",
+  "נטוש",
+  "closed$",
+  "סגור$",
+  "مهجور",
+);
+
 /** Garages, tyres, testing, fuel, charging and banks: other importers' official lists. */
 const ELSEWHERE = tagTest(
   "shop=tyres|car_repair|car_body|car_painting|truck_repair|fuel|craft=car_repair|amenity=vehicle_inspection|fuel|charging_station|bank|atm",
@@ -2345,7 +2403,8 @@ const ELSEWHERE = tagTest(
 export function classify(tags, { kinds: active } = {}) {
   const why = excluded(tags);
   if (why) return { excluded: why };
-  if (FOOD(tags) || ELSEWHERE(tags)) return null;
+  if (FOOD(tags) || ELSEWHERE(tags) || FOOD_NAMES.test(nameText(tags))) return null;
+  if (tags["bath:type"] === "mikveh" || NOT_A_PLACE.test(nameText(tags))) return null;
   const text = nameText(tags);
   for (const pass of PASSES)
     for (const rule of pass) {

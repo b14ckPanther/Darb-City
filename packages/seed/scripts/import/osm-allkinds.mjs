@@ -98,7 +98,7 @@ export const BUSINESS_WORDS = {
   'מתנ"ס': { ar: "مركز جماهيري", en: "Community Centre", after: true },
   "מרכז קהילתי": { ar: "مركز جماهيري", en: "Community Centre", after: true },
   "סניף דואר": { ar: "بريد", en: "Post Office", after: true },
-  דואר: { ar: "بريد", en: "Post Office", after: true },
+  "דואר ישראל": { ar: "البريد", en: "Israel Post", after: true },
   "בית דואר": { ar: "بريد", en: "Post Office", after: true },
   משטרה: { ar: "شرطة", en: "Police", after: true },
   משטרת: { ar: "شرطة", en: "Police", after: true },
@@ -177,6 +177,7 @@ export const BUSINESS_WORDS = {
   נוי: { ar: "نوي", en: "Noy" },
   // Letter by letter הלל would read as a word Darb never writes.
   הלל: { ar: "هليل", en: "Hillel" },
+  הלאל: { ar: "هلال", en: "Hilal" },
   גלריה: { ar: "جاليري", en: "Gallery", after: true },
   גלריית: { ar: "جاليري", en: "Gallery", after: true },
   סטודיו: { ar: "ستوديو", en: "Studio", after: true },
@@ -350,11 +351,16 @@ const SHOP_WORDS = {
 };
 
 /** A name in three languages from OSM's name tags, transliterating what is missing. */
+const LATIN_ONLY = /^[\p{Script=Latin}\p{N}\p{P}\p{S}\s]+$/u;
 export function namesFor(tags, namer, place) {
   const base = plainDashes(tags.name ?? "");
-  let he = tags["name:he"] ?? (hasHebrew(base) ? base : null);
-  let ar = tags["name:ar"] ?? (!hasHebrew(base) && hasArabic(base) ? base : null);
-  let en = tags["name:en"] ?? (!hasHebrew(base) && !hasArabic(base) && base ? base : null);
+  // A language tag holding another script ("name:en": "אנגלית") is a mapping slip, not a name.
+  const own = (l, ok) => (tags[`name:${l}`] && ok(tags[`name:${l}`]) ? tags[`name:${l}`] : null);
+  let he = own("he", hasHebrew) ?? (hasHebrew(base) ? base : null);
+  let ar = own("ar", hasArabic) ?? (!hasHebrew(base) && hasArabic(base) ? base : null);
+  let en =
+    own("en", (v) => LATIN_ONLY.test(v)) ??
+    (!hasHebrew(base) && !hasArabic(base) && LATIN_ONLY.test(base) && base ? base : null);
   if (!he && ar) he = fromArabic(ar).he;
   if (!he) he = en;
   if (!he) return null;
@@ -450,11 +456,20 @@ export function buildAllKinds({ elements, existing = [], taken = [], kinds, sect
   );
   const matcher = createPlaceMatcher();
   const namer = createNamer(undefined, { extraWords: BUSINESS_WORDS });
+  // At a campsite "חניון" is the campsite, not a car park.
+  const campNamer = createNamer(undefined, {
+    extraWords: {
+      ...BUSINESS_WORDS,
+      חניון: { ar: "مخيم", en: "Campsite", after: true },
+      "חניון לילה": { ar: "مخيم", en: "Campsite", after: true },
+    },
+  });
   const counts = {
     fetched: elements.length,
     excluded: 0,
     unmapped: 0,
     noName: 0,
+    otherScript: 0,
     attractionNoContact: 0,
     privateAccess: 0,
     outsideNorth: 0,
@@ -517,9 +532,19 @@ export function buildAllKinds({ elements, existing = [], taken = [], kinds, sect
       continue;
     }
     const place = m.place;
-    const name = namesFor(tags, namer, place);
+    const chainFirst = chainOf(tags, c.kinds);
+    const name =
+      namesFor(tags, c.kinds[0] === "camping" ? campNamer : namer, place) ??
+      // A chain's branch named in another script ("Поликлиника Макаби") reads as the chain's.
+      (chainFirst
+        ? {
+            he: `${chainFirst.name.he} ${place.name.he}`,
+            ar: chainFirst.name.ar,
+            en: chainFirst.name.en,
+          }
+        : null);
     if (!name) {
-      counts.noName++;
+      counts.otherScript++;
       continue;
     }
     const primary = c.kinds[0];
