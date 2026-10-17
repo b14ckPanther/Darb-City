@@ -20,9 +20,12 @@ export interface RecordedCase {
    * cannot answer: the quality run checks they fail with the model off and pass with it on.
    * Deep search cases name the business that must come first (`first`, "place/slug"), a dietary
    * fact the first result must have (`firstHas`), and words its matched thing must show (`matched`).
+   * `orKinds` are other kinds that answer the query as well (Hebrew "מספרה" is a men's barber or
+   * a women's salon).
    */
   expect: {
     kind: string | null;
+    orKinds?: string[];
     place: string | null;
     blocked?: boolean;
     modelOnly?: boolean;

@@ -6,6 +6,15 @@ const { name } = createNamer();
 const { bySlug } = createPlaceMatcher();
 
 describe("names", () => {
+  it("read an Arabic name spelt in Hebrew back in Arabic letters, when asked", () => {
+    const arabic = { arabic: true };
+    expect(name("אלנהדה", null, arabic)).toMatchObject({ ar: "النهدة", en: "Al-Nahada" });
+    expect(name("אל-פארוק", null, arabic)).toMatchObject({ ar: "الفاروق", en: "Al-Faroq" });
+    expect(name("אלהלאל", null, arabic)).toMatchObject({ ar: "الهلال", en: "Al-Hilal" });
+    // Hebrew words in the same name stay as Hebrew reads them.
+    expect(name("מופת", null, arabic).ar).toBe(arabicWord("מופת"));
+    expect(name("אלנהדה").ar).toBe("النهدا");
+  });
   it("use a place's own names", () => {
     expect(name("צפת")).toMatchObject({ ar: "صفد", en: "Safed" });
     expect(name("קריית שמונה")).toMatchObject({ ar: "كريات شمونة", en: "Kiryat Shmona" });

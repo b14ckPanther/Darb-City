@@ -311,7 +311,7 @@
   {
     "query": "מספרה בחיפה",
     "locale": "he",
-    "expect": { "kind": "barbershops", "place": "haifa" },
+    "expect": { "kind": "barbershops", "orKinds": ["salons"], "place": "haifa" },
     "recorded": {
       "kinds": ["barbershops"],
       "place": "haifa",
@@ -1025,7 +1025,7 @@
   {
     "query": "מספרה בחפה",
     "locale": "he",
-    "expect": { "kind": "barbershops", "place": "haifa" },
+    "expect": { "kind": "barbershops", "orKinds": ["salons"], "place": "haifa" },
     "recorded": {
       "kinds": ["barbershops"],
       "place": "haifa",
@@ -1179,7 +1179,7 @@
   {
     "query": "מספרה haifa",
     "locale": "he",
-    "expect": { "kind": "barbershops", "place": "haifa" },
+    "expect": { "kind": "barbershops", "orKinds": ["salons"], "place": "haifa" },
     "recorded": {
       "kinds": ["barbershops"],
       "place": "haifa",
@@ -1221,7 +1221,7 @@
   {
     "query": "מספרה לידי",
     "locale": "he",
-    "expect": { "kind": "barbershops", "place": "sakhnin" },
+    "expect": { "kind": "barbershops", "orKinds": ["salons"], "place": "sakhnin" },
     "recorded": {
       "kinds": ["barbershops"],
       "place": null,

@@ -2644,6 +2644,56 @@
     "status": "active"
   },
   {
+    "slug": "schools",
+    "sector": "education",
+    "parent": null,
+    "name": {
+      "he": "בתי ספר",
+      "ar": "مدارس",
+      "en": "Schools"
+    },
+    "synonyms": {
+      "he": [
+        "בית ספר",
+        "בית ספר יסודי",
+        "יסודי",
+        "חטיבת ביניים",
+        "חט\"ב",
+        "תיכון",
+        "מקיף",
+        "חינוך מיוחד",
+        "אולפנה",
+        "ישיבה תיכונית",
+        "תלמוד תורה"
+      ],
+      "ar": [
+        "مدرسة",
+        "مدرسة ابتدائية",
+        "ابتدائية",
+        "إعدادية",
+        "اعدادية",
+        "ثانوية",
+        "مدرسة ثانوية",
+        "تربية خاصة"
+      ],
+      "en": [
+        "school",
+        "primary school",
+        "elementary school",
+        "middle school",
+        "junior high",
+        "high school",
+        "secondary school",
+        "special education"
+      ]
+    },
+    "template": "listing",
+    "attributes": [],
+    "icon": null,
+    "order": 12,
+    "status": "active"
+  },
+  {
     "slug": "software-studios",
     "sector": "tech",
     "parent": null,
@@ -6024,28 +6074,44 @@
     "sector": "retail",
     "parent": null,
     "name": {
-      "he": "חנויות אונליין",
-      "ar": "محلات أونلاين",
-      "en": "Online shops"
+      "he": "חנויות וסופרמרקטים",
+      "ar": "محلات وسوبرماركت",
+      "en": "Shops & supermarkets"
     },
     "synonyms": {
       "he": [
         "חנות אונליין",
         "קניות",
         "חנות",
-        "קניות ברשת"
+        "קניות ברשת",
+        "סופרמרקט",
+        "סופר",
+        "מכולת",
+        "מרכול",
+        "קניון",
+        "כלבו"
       ],
       "ar": [
         "متجر أونلاين",
         "تسوق",
         "محل",
-        "تسوق أونلاين"
+        "تسوق أونلاين",
+        "سوبرماركت",
+        "سوبر",
+        "دكانة",
+        "بقالة",
+        "مول"
       ],
       "en": [
         "online store",
         "shop",
         "marketplace",
-        "shopping"
+        "shopping",
+        "supermarket",
+        "grocery",
+        "convenience store",
+        "mall",
+        "department store"
       ]
     },
     "template": "shop",

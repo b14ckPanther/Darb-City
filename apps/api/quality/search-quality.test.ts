@@ -114,7 +114,9 @@ it("expects only kinds and places the seed has (an unknown place would match any
   const kinds = new Set(kindSlug.values());
   const unknown = CASES.filter((c) => !c.expect.blocked).flatMap((c) =>
     [
-      ...(c.expect.kind !== null && kinds.has(c.expect.kind) ? [] : [`kind ${c.expect.kind}`]),
+      ...[c.expect.kind, ...(c.expect.orKinds ?? [])].flatMap((k) =>
+        k !== null && kinds.has(k) ? [] : [`kind ${k}`],
+      ),
       ...(c.expect.place !== null && placePath.has(c.expect.place)
         ? []
         : [`place ${c.expect.place}`]),
@@ -152,14 +154,15 @@ async function check(on: INestApplication, c: RecordedCase): Promise<string | nu
     return `${said}: the first result is not ${c.expect.firstHas}`;
   if (c.expect.matched && !(first?.matched?.label[c.locale] ?? "").includes(c.expect.matched))
     return `${said}: the first result does not show "${c.expect.matched}" as its match`;
+  const wanted = [c.expect.kind, ...(c.expect.orKinds ?? [])];
   const hit = top.some(
     (b) =>
-      kindSlug.get(b.primaryKindId) === c.expect.kind &&
+      wanted.includes(kindSlug.get(b.primaryKindId) ?? "") &&
       (placePath.get(b.placeSlug) ?? "").startsWith(root),
   );
   return hit
     ? null
-    : `${c.locale} "${c.query}" (${res.body.lane}): wanted ${c.expect.kind} in ${c.expect.place}, got ` +
+    : `${c.locale} "${c.query}" (${res.body.lane}): wanted ${wanted.join(" or ")} in ${c.expect.place}, got ` +
         top.map((b) => `${kindSlug.get(b.primaryKindId)}@${b.placeSlug}`).join(", ");
 }
 

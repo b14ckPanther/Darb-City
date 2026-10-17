@@ -1,0 +1,3989 @@
+{
+  "source": {
+    "name": "OpenStreetMap, every named tech & digital business in the north",
+    "url": "https://www.openstreetmap.org",
+    "licence": "Open Database License (ODbL)",
+    "attribution": "© OpenStreetMap contributors (ODbL), openstreetmap.org/copyright",
+    "region": "northern-district, haifa-district",
+    "fetched": "2026-10-17",
+    "query": "named shop, office, craft, healthcare, tourism, club, amenity, leisure, emergency, works and industrial features, bbox 32.3,34.85,33.35,35.9 in 25 tiles",
+    "left_out": "features with no name, food (the food importer's), garages, tyres, testing, fuel, banks and EV charging (official lists), bars, alcohol, pork, gambling and lottery, adult shops, tobacco, vape and cannabis, tattoo and weapons shops, private places, sights with no hours or contact",
+    "hours": "from OSM opening_hours where it reads for certain; otherwise none",
+    "counts": {
+      "emitted": 45
+    }
+  },
+  "businesses": [
+    {
+      "slug": "janim-for-computer",
+      "place": "baqa-al-gharbiyye",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "ג'אנם ללכמביותר",
+        "ar": "جانم للكمبيوتر",
+        "en": "Janim For Computer"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית בבאקה אל-גרביה",
+        "ar": "كمبيوترات ودعم فني في باقة الغربية",
+        "en": "Computers and IT support in Baqa al-Gharbiyye"
+      },
+      "address": {
+        "he": "באקה אל-גרביה",
+        "ar": "باقة الغربية",
+        "en": "Baqa al-Gharbiyye"
+      },
+      "lat": 32.4083697,
+      "lng": 35.0722564,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/432400252"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "ג'אנם ללכמביותר",
+          "ar": "جانم للكمبيوتر",
+          "en": "Janim For Computer"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "mastermahashvim",
+      "place": "dahi",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "Masterמחשבים",
+        "ar": "Masterمحشبيم",
+        "en": "Mastermahashvim"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית בדחי",
+        "ar": "كمبيوترات ودعم فني في الدحي",
+        "en": "Computers and IT support in Dahi"
+      },
+      "address": {
+        "he": "דחי",
+        "ar": "الدحي",
+        "en": "Dahi"
+      },
+      "lat": 32.6239149,
+      "lng": 35.331362,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "17:00",
+              "close": "20:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "17:00",
+              "close": "20:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "17:00",
+              "close": "20:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "17:00",
+              "close": "20:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "17:00",
+              "close": "20:00"
+            }
+          ],
+          "5": [
+            {
+              "open": "17:00",
+              "close": "20:00"
+            }
+          ],
+          "6": [
+            {
+              "open": "17:00",
+              "close": "20:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/13904097203"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "Masterמחשבים",
+          "ar": "Masterمحشبيم",
+          "en": "Mastermahashvim"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "mohanad-computers",
+      "place": "daliyat-al-karmel",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "מוהנד מחשבים",
+        "ar": "مهند حواسيب",
+        "en": "Mohanad Computers"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית בדאלית אל-כרמל",
+        "ar": "كمبيوترات ودعم فني في دالية الكرمل",
+        "en": "Computers and IT support in Daliyat al-Karmel"
+      },
+      "address": {
+        "he": "דאלית אל-כרמל",
+        "ar": "دالية الكرمل",
+        "en": "Daliyat al-Karmel"
+      },
+      "lat": 32.6904061,
+      "lng": 35.0523263,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/3691499128"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מוהנד מחשבים",
+          "ar": "مهند حواسيب",
+          "en": "Mohanad Computers"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "paltiniom-inataranat-mahashvim-vaslolar",
+      "place": "daliyat-al-karmel",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "פלטיניום - אינטרנט, מחשבים וסלולר",
+        "ar": "بلطينيوم اينطرنط محشبيم وسلولر",
+        "en": "Paltiniom Inataranat Mahashvim Vaslolar"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית בדאלית אל-כרמל",
+        "ar": "كمبيوترات ودعم فني في دالية الكرمل",
+        "en": "Computers and IT support in Daliyat al-Karmel"
+      },
+      "address": {
+        "he": "דאלית אל-כרמל",
+        "ar": "دالية الكرمل",
+        "en": "Daliyat al-Karmel"
+      },
+      "lat": 32.6891918,
+      "lng": 35.0377159,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/5583034550"
+      },
+      "tier": "basic",
+      "phone": "+972 4-839-7901",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "פלטיניום - אינטרנט, מחשבים וסלולר",
+          "ar": "بلطينيوم اينطرنط محشبيم وسلولر",
+          "en": "Paltiniom Inataranat Mahashvim Vaslolar"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "shadie-computers",
+      "place": "daliyat-al-karmel",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "שאדי מחשבים",
+        "ar": "حواسيب شادي",
+        "en": "Shadie Computers"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית בדאלית אל-כרמל",
+        "ar": "كمبيوترات ودعم فني في دالية الكرمل",
+        "en": "Computers and IT support in Daliyat al-Karmel"
+      },
+      "address": {
+        "he": "דאלית אל-כרמל",
+        "ar": "دالية الكرمل",
+        "en": "Daliyat al-Karmel"
+      },
+      "lat": 32.6964826,
+      "lng": 35.0600536,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/1784841660"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "שאדי מחשבים",
+          "ar": "حواسيب شادي",
+          "en": "Shadie Computers"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "shatrodal",
+      "place": "daliyat-al-karmel",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "שטרודל",
+        "ar": "شطرودل",
+        "en": "Shatrodal"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית בדאלית אל-כרמל",
+        "ar": "كمبيوترات ودعم فني في دالية الكرمل",
+        "en": "Computers and IT support in Daliyat al-Karmel"
+      },
+      "address": {
+        "he": "דאלית אל-כרמל",
+        "ar": "دالية الكرمل",
+        "en": "Daliyat al-Karmel"
+      },
+      "lat": 32.6943618,
+      "lng": 35.0440377,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/4449120520"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "שטרודל",
+          "ar": "شطرودل",
+          "en": "Shatrodal"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "excellence-center",
+      "place": "eilabun",
+      "brand": null,
+      "primaryKind": "software-studios",
+      "kinds": [
+        "software-studios"
+      ],
+      "name": {
+        "he": "Excellence Center",
+        "ar": "Excellence Center",
+        "en": "Excellence Center"
+      },
+      "tagline": {
+        "he": "פיתוח תוכנה בעיילבון",
+        "ar": "تطوير برمجيات في عيلبون",
+        "en": "Software house in Eilabun"
+      },
+      "address": {
+        "he": "בלאל 23",
+        "ar": "عيلبون",
+        "en": "Eilabun"
+      },
+      "lat": 32.8380261,
+      "lng": 35.4060974,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/13581552489"
+      },
+      "tier": "basic",
+      "phone": "+972 52-450-6338",
+      "whatsapp": null,
+      "website": "https://www.facebook.com/excellence.tdt",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "Excellence Center",
+          "ar": "Excellence Center",
+          "en": "Excellence Center"
+        },
+        "title": {
+          "he": "פיתוח תוכנה",
+          "ar": "تطوير برمجيات",
+          "en": "Software house"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "פיתוח תוכנה",
+              "ar": "تطوير برمجيات",
+              "en": "Software house"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "ayvori-mahashvim-vaslolar",
+      "place": "ein-mahil",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support"
+      ],
+      "name": {
+        "he": "אייבורי מחשבים וסלולר",
+        "ar": "ايبوري محشبيم وسلولر",
+        "en": "Ayvori Mahashvim Vaslolar"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית בעין מאהל",
+        "ar": "كمبيوترات ودعم فني في عين ماهل",
+        "en": "Computers and IT support in Ein Mahil"
+      },
+      "address": {
+        "he": "עין מאהל",
+        "ar": "عين ماهل",
+        "en": "Ein Mahil"
+      },
+      "lat": 32.7168327,
+      "lng": 35.336169,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/5894802830"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אייבורי מחשבים וסלולר",
+          "ar": "ايبوري محشبيم وسلولر",
+          "en": "Ayvori Mahashvim Vaslolar"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "ksp-matam",
+      "place": "etgar",
+      "brand": "ksp",
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "KSP סניף מת\"מ",
+        "ar": "KSP إتچار",
+        "en": "KSP Matam"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית באתגר",
+        "ar": "كمبيوترات ودعم فني في إتچار",
+        "en": "Computers and IT support in Etgar"
+      },
+      "address": {
+        "he": "אתגר",
+        "ar": "إتچار",
+        "en": "Etgar"
+      },
+      "lat": 32.783537,
+      "lng": 34.9607512,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/3844242075"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "KSP סניף מת\"מ",
+          "ar": "KSP إتچار",
+          "en": "KSP Matam"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          },
+          {
+            "label": {
+              "he": "רשת",
+              "ar": "شبكة",
+              "en": "Chain"
+            },
+            "meta": {
+              "he": "KSP",
+              "ar": "KSP",
+              "en": "KSP"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "bug",
+      "place": "gan-shmuel",
+      "brand": "bug",
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "באג",
+        "ar": "باج غان شموئل",
+        "en": "Bug"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית בגן שמואל",
+        "ar": "كمبيوترات ودعم فني في غان شموئل",
+        "en": "Computers and IT support in Gan Shmuel"
+      },
+      "address": {
+        "he": "גן שמואל",
+        "ar": "غان شموئل",
+        "en": "Gan Shmuel"
+      },
+      "lat": 32.4481433,
+      "lng": 34.955326,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/3193202695"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "באג",
+          "ar": "باج غان شموئل",
+          "en": "Bug"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          },
+          {
+            "label": {
+              "he": "רשת",
+              "ar": "شبكة",
+              "en": "Chain"
+            },
+            "meta": {
+              "he": "באג",
+              "ar": "باج",
+              "en": "Bug"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "bug",
+      "place": "hadera",
+      "brand": "bug",
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "באג",
+        "ar": "باج الخضيرة",
+        "en": "Bug"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית בחדרה",
+        "ar": "كمبيوترات ودعم فني في الخضيرة",
+        "en": "Computers and IT support in Hadera"
+      },
+      "address": {
+        "he": "חדרה",
+        "ar": "الخضيرة",
+        "en": "Hadera"
+      },
+      "lat": 32.4377555,
+      "lng": 34.92173,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/5220296517"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "באג",
+          "ar": "باج الخضيرة",
+          "en": "Bug"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          },
+          {
+            "label": {
+              "he": "רשת",
+              "ar": "شبكة",
+              "en": "Chain"
+            },
+            "meta": {
+              "he": "באג",
+              "ar": "باج",
+              "en": "Bug"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "ksp",
+      "place": "hadera",
+      "brand": "ksp",
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "KSP",
+        "ar": "KSP الخضيرة",
+        "en": "KSP"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית בחדרה",
+        "ar": "كمبيوترات ودعم فني في الخضيرة",
+        "en": "Computers and IT support in Hadera"
+      },
+      "address": {
+        "he": "חדרה",
+        "ar": "الخضيرة",
+        "en": "Hadera"
+      },
+      "lat": 32.4382781,
+      "lng": 34.9100266,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/3402044731"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "KSP",
+          "ar": "KSP الخضيرة",
+          "en": "KSP"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          },
+          {
+            "label": {
+              "he": "רשת",
+              "ar": "شبكة",
+              "en": "Chain"
+            },
+            "meta": {
+              "he": "KSP",
+              "ar": "KSP",
+              "en": "KSP"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "mechkar-machshevim",
+      "place": "hadera",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "מחקר מחשבים",
+        "ar": "محكر محشبيم",
+        "en": "Mechkar Machshevim"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית בחדרה",
+        "ar": "كمبيوترات ودعم فني في الخضيرة",
+        "en": "Computers and IT support in Hadera"
+      },
+      "address": {
+        "he": "הנשיא 83",
+        "ar": "الخضيرة",
+        "en": "Hadera"
+      },
+      "lat": 32.4380888,
+      "lng": 34.9265579,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/3164430291"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מחקר מחשבים",
+          "ar": "محكر محشبيم",
+          "en": "Mechkar Machshevim"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "status-computers",
+      "place": "hadera",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "סטטוס מחשבים",
+        "ar": "سططوس محشبيم",
+        "en": "Status Computers"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית בחדרה",
+        "ar": "كمبيوترات ودعم فني في الخضيرة",
+        "en": "Computers and IT support in Hadera"
+      },
+      "address": {
+        "he": "חדרה",
+        "ar": "الخضيرة",
+        "en": "Hadera"
+      },
+      "lat": 32.4383629,
+      "lng": 34.9124605,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/4389544082"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "סטטוס מחשבים",
+          "ar": "سططوس محشبيم",
+          "en": "Status Computers"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "takshorat-office",
+      "place": "hagoshrim",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support"
+      ],
+      "name": {
+        "he": "משרד תקשורת",
+        "ar": "مكتب تكشورت",
+        "en": "Takshorat Office"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית בהגושרים",
+        "ar": "كمبيوترات ودعم فني في هچوشريم",
+        "en": "Computers and IT support in HaGoshrim"
+      },
+      "address": {
+        "he": "הגושרים",
+        "ar": "هچوشريم",
+        "en": "HaGoshrim"
+      },
+      "lat": 33.2192601,
+      "lng": 35.6243314,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/7692358286"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "משרד תקשורת",
+          "ar": "مكتب تكشورت",
+          "en": "Takshorat Office"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "dc-tech-computers",
+      "place": "haifa",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "DC Tech Computers",
+        "ar": "DC Tech Computers",
+        "en": "DC Tech Computers"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית בחיפה",
+        "ar": "كمبيوترات ودعم فني في حيفا",
+        "en": "Computers and IT support in Haifa"
+      },
+      "address": {
+        "he": "נורדאו 3",
+        "ar": "حيفا",
+        "en": "Haifa"
+      },
+      "lat": 32.8101539,
+      "lng": 34.9979418,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/13798458501"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "DC Tech Computers",
+          "ar": "DC Tech Computers",
+          "en": "DC Tech Computers"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "anan-computers",
+      "place": "isfiya",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "ענאן מחשבים",
+        "ar": "عنان محشبيم",
+        "en": "Anan Computers"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית בעספיא",
+        "ar": "كمبيوترات ودعم فني في عسفيا",
+        "en": "Computers and IT support in Isfiya"
+      },
+      "address": {
+        "he": "עספיא",
+        "ar": "عسفيا",
+        "en": "Isfiya"
+      },
+      "lat": 32.7218471,
+      "lng": 35.0607808,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/12883303482"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "ענאן מחשבים",
+          "ar": "عنان محشبيم",
+          "en": "Anan Computers"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "brand-computers",
+      "place": "karmiel",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "Brand Computers",
+        "ar": "Brand Computers",
+        "en": "Brand Computers"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית בכרמיאל",
+        "ar": "كمبيوترات ودعم فني في كرميئيل",
+        "en": "Computers and IT support in Karmiel"
+      },
+      "address": {
+        "he": "הגליל 35",
+        "ar": "كرميئيل",
+        "en": "Karmiel"
+      },
+      "lat": 32.9174866,
+      "lng": 35.3043844,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/8729872805"
+      },
+      "tier": "basic",
+      "phone": "+972 54-457-1301",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "Brand Computers",
+          "ar": "Brand Computers",
+          "en": "Brand Computers"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "shay-computers",
+      "place": "karmiel",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "שי מחשבים",
+        "ar": "شي محشبيم",
+        "en": "Shay Computers"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית בכרמיאל",
+        "ar": "كمبيوترات ودعم فني في كرميئيل",
+        "en": "Computers and IT support in Karmiel"
+      },
+      "address": {
+        "he": "הפלמ\"ח 10/5",
+        "ar": "كرميئيل",
+        "en": "Karmiel"
+      },
+      "lat": 32.9053189,
+      "lng": 35.2806516,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "15:45",
+              "close": "19:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "15:45",
+              "close": "19:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "15:45",
+              "close": "19:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "15:45",
+              "close": "19:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "15:45",
+              "close": "19:00"
+            }
+          ],
+          "5": [
+            {
+              "open": "09:00",
+              "close": "14:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/13128898464",
+        "wheelchair": true
+      },
+      "tier": "basic",
+      "phone": "+972 4-998-4481",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "שי מחשבים",
+          "ar": "شي محشبيم",
+          "en": "Shay Computers"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          },
+          {
+            "label": {
+              "he": "נגיש לכיסא גלגלים",
+              "ar": "مناسب للكراسي المتحركة",
+              "en": "Wheelchair accessible"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/p/%D7%A9%D7%99-%D7%9E%D7%97%D7%A9%D7%91%D7%99%D7%9D-%D7%9B%D7%A8%D7%9E%D7%99%D7%90%D7%9C-100057420430891"
+      },
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "al-amir-lalatatzalat-valakhamviotar",
+      "place": "katzir",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "אל-אמיר ללאתצאלאת ואלכמביותר",
+        "ar": "الامير للاتصالات والكمبيوتر",
+        "en": "al Amir Lalatatzalat Valakhamviotar"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית בקציר",
+        "ar": "كمبيوترات ودعم فني في كتسير",
+        "en": "Computers and IT support in Katzir"
+      },
+      "address": {
+        "he": "קציר",
+        "ar": "كتسير",
+        "en": "Katzir"
+      },
+      "lat": 32.4721579,
+      "lng": 35.0921412,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9932115281"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אל-אמיר ללאתצאלאת ואלכמביותר",
+          "ar": "الامير للاتصالات والكمبيوتر",
+          "en": "al Amir Lalatatzalat Valakhamviotar"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "al-road-al-thakafi-lalakhamviotar-centre",
+      "place": "katzir",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "מרכז אל-רואד אל-ת'קאפי ללכמביותר",
+        "ar": "مركز الرواد الثقافي للكمبيوتر",
+        "en": "al Road al Thakafi Lalakhamviotar Centre"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית בקציר",
+        "ar": "كمبيوترات ودعم فني في كتسير",
+        "en": "Computers and IT support in Katzir"
+      },
+      "address": {
+        "he": "קציר",
+        "ar": "كتسير",
+        "en": "Katzir"
+      },
+      "lat": 32.4746012,
+      "lng": 35.090862,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9922558956"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מרכז אל-רואד אל-ת'קאפי ללכמביותר",
+          "ar": "مركز الرواد الثقافي للكمبيوتر",
+          "en": "al Road al Thakafi Lalakhamviotar Centre"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "kamviotar-al-hada",
+      "place": "katzir",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "כמביותר אל-הדא",
+        "ar": "كمبيوتر الهدى",
+        "en": "Kamviotar al Hada"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית בקציר",
+        "ar": "كمبيوترات ودعم فني في كتسير",
+        "en": "Computers and IT support in Katzir"
+      },
+      "address": {
+        "he": "קציר",
+        "ar": "كتسير",
+        "en": "Katzir"
+      },
+      "lat": 32.4742649,
+      "lng": 35.0921931,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9927579217"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "כמביותר אל-הדא",
+          "ar": "كمبيوتر الهدى",
+          "en": "Kamviotar al Hada"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "kamviotar-barataa",
+      "place": "katzir",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "כמביותר ברטעה",
+        "ar": "كمبيوتر برطعة",
+        "en": "Kamviotar Barataa"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית בקציר",
+        "ar": "كمبيوترات ودعم فني في كتسير",
+        "en": "Computers and IT support in Katzir"
+      },
+      "address": {
+        "he": "קציר",
+        "ar": "كتسير",
+        "en": "Katzir"
+      },
+      "lat": 32.4737563,
+      "lng": 35.0925263,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9920473584"
+      },
+      "tier": "basic",
+      "phone": "+972 50-534-0576",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "כמביותר ברטעה",
+          "ar": "كمبيوتر برطعة",
+          "en": "Kamviotar Barataa"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/BartaaComputer/"
+      },
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "royal-tech",
+      "place": "katzir",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "רויאל תך",
+        "ar": "رويال تك",
+        "en": "Royal Tech"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית בקציר",
+        "ar": "كمبيوترات ودعم فني في كتسير",
+        "en": "Computers and IT support in Katzir"
+      },
+      "address": {
+        "he": "קציר",
+        "ar": "كتسير",
+        "en": "Katzir"
+      },
+      "lat": 32.4758826,
+      "lng": 35.0895122,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9919518034"
+      },
+      "tier": "basic",
+      "phone": "+972 72-276-4363",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "רויאל תך",
+          "ar": "رويال تك",
+          "en": "Royal Tech"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/royaltech.cellular"
+      },
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "gilad-computers",
+      "place": "katzrin",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "גלעד מחשבים",
+        "ar": "جلعاد محشبيم",
+        "en": "Gilad Computers"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית בקצרין",
+        "ar": "كمبيوترات ودعم فني في كتسرين",
+        "en": "Computers and IT support in Katzrin"
+      },
+      "address": {
+        "he": "טיילת נווה",
+        "ar": "كتسرين",
+        "en": "Katzrin"
+      },
+      "lat": 32.9902691,
+      "lng": 35.6908091,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "09:00",
+              "close": "19:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "09:00",
+              "close": "19:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "09:00",
+              "close": "19:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "09:00",
+              "close": "19:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "09:00",
+              "close": "19:00"
+            }
+          ],
+          "5": [
+            {
+              "open": "09:00",
+              "close": "14:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/4129860474"
+      },
+      "tier": "basic",
+      "phone": "+972 4-689-5300",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "גלעד מחשבים",
+          "ar": "جلعاد محشبيم",
+          "en": "Gilad Computers"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/giladcomp/"
+      },
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "ivory",
+      "place": "kefar-bialik",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "אייבורי הקריות",
+        "ar": "ايبوري هكريوت",
+        "en": "Ivory"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית בכפר ביאליק",
+        "ar": "كمبيوترات ودعم فني في كفار بيالك",
+        "en": "Computers and IT support in Kefar Bialik"
+      },
+      "address": {
+        "he": "החרושת",
+        "ar": "كفار بيالك",
+        "en": "Kefar Bialik"
+      },
+      "lat": 32.8078396,
+      "lng": 35.0534825,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/3202897257"
+      },
+      "tier": "basic",
+      "phone": "+972 4-842-2444",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אייבורי הקריות",
+          "ar": "ايبوري هكريوت",
+          "en": "Ivory"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "mdia-mahashvim",
+      "place": "kefar-bialik",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "מדיה מחשבים",
+        "ar": "مديا محشبيم",
+        "en": "Mdia Mahashvim"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית בכפר ביאליק",
+        "ar": "كمبيوترات ودعم فني في كفار بيالك",
+        "en": "Computers and IT support in Kefar Bialik"
+      },
+      "address": {
+        "he": "כפר ביאליק",
+        "ar": "كفار بيالك",
+        "en": "Kefar Bialik"
+      },
+      "lat": 32.8079766,
+      "lng": 35.0657093,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/4966260772"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מדיה מחשבים",
+          "ar": "مديا محشبيم",
+          "en": "Mdia Mahashvim"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "arad-computers",
+      "place": "kfar-vradim",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "ארד מחשבים",
+        "ar": "ارد محشبيم",
+        "en": "Arad computers"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית בכפר ורדים",
+        "ar": "كمبيوترات ودعم فني في كفر فراديم",
+        "en": "Computers and IT support in Kfar Vradim"
+      },
+      "address": {
+        "he": "זמיר 7",
+        "ar": "كفر فراديم",
+        "en": "Kfar Vradim"
+      },
+      "lat": 32.9965677,
+      "lng": 35.2660452,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/13311083201"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "ארד מחשבים",
+          "ar": "ارد محشبيم",
+          "en": "Arad computers"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "fixit",
+      "place": "kiryat-shmona",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "FixIt",
+        "ar": "FixIt",
+        "en": "FixIt"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית בקרית שמונה",
+        "ar": "كمبيوترات ودعم فني في كريات شمونة",
+        "en": "Computers and IT support in Kiryat Shmona"
+      },
+      "address": {
+        "he": "רמב\"ם 19",
+        "ar": "كريات شمونة",
+        "en": "Kiryat Shmona"
+      },
+      "lat": 33.213878,
+      "lng": 35.5750334,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/5165060490"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": "https://www.fixit-israel.org/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "FixIt",
+          "ar": "FixIt",
+          "en": "FixIt"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/fixitisrael/"
+      },
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "migal-galilee-technological-center",
+      "place": "kiryat-shmona",
+      "brand": null,
+      "primaryKind": "saas",
+      "kinds": [
+        "saas"
+      ],
+      "name": {
+        "he": "מרכז ידע גליל עליון (מיג\"ל)",
+        "ar": "مركز يدع الجليل عليون ميجل",
+        "en": "Migal Galilee Technological Center"
+      },
+      "tagline": {
+        "he": "חברת הייטק בקרית שמונה",
+        "ar": "شركة هايتك في كريات شمونة",
+        "en": "Tech company in Kiryat Shmona"
+      },
+      "address": {
+        "he": "תרשיש 2",
+        "ar": "كريات شمونة",
+        "en": "Kiryat Shmona"
+      },
+      "lat": 33.1957972,
+      "lng": 35.5757431,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/4408244054"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מרכז ידע גליל עליון (מיג\"ל)",
+          "ar": "مركز يدع الجليل عليون ميجل",
+          "en": "Migal Galilee Technological Center"
+        },
+        "title": {
+          "he": "חברת הייטק",
+          "ar": "شركة هايتك",
+          "en": "Tech company"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חברת הייטק",
+              "ar": "شركة هايتك",
+              "en": "Tech company"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "tms",
+      "place": "kiryat-shmona",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "TMS",
+        "ar": "TMS",
+        "en": "TMS"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית בקרית שמונה",
+        "ar": "كمبيوترات ودعم فني في كريات شمونة",
+        "en": "Computers and IT support in Kiryat Shmona"
+      },
+      "address": {
+        "he": "קרית שמונה",
+        "ar": "كريات شمونة",
+        "en": "Kiryat Shmona"
+      },
+      "lat": 33.217924,
+      "lng": 35.5871892,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/6512861284"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "TMS",
+          "ar": "TMS",
+          "en": "TMS"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "bug",
+      "place": "maayan-tzvi",
+      "brand": "bug",
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "באג",
+        "ar": "باج معيان تسڤي",
+        "en": "Bug"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית במעין צבי",
+        "ar": "كمبيوترات ودعم فني في معيان تسڤي",
+        "en": "Computers and IT support in Ma'ayan Tzvi"
+      },
+      "address": {
+        "he": "מעין צבי",
+        "ar": "معيان تسڤي",
+        "en": "Ma'ayan Tzvi"
+      },
+      "lat": 32.5694279,
+      "lng": 34.9336737,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "09:00",
+              "close": "21:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "09:00",
+              "close": "21:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "09:00",
+              "close": "21:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "09:00",
+              "close": "21:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "09:00",
+              "close": "21:00"
+            }
+          ],
+          "5": [
+            {
+              "open": "09:00",
+              "close": "14:30"
+            }
+          ],
+          "6": [
+            {
+              "open": "12:00",
+              "close": "21:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/3071435057",
+        "wheelchair": true
+      },
+      "tier": "basic",
+      "phone": "+972 4-870-2612",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "באג",
+          "ar": "باج معيان تسڤي",
+          "en": "Bug"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          },
+          {
+            "label": {
+              "he": "רשת",
+              "ar": "شبكة",
+              "en": "Chain"
+            },
+            "meta": {
+              "he": "באג",
+              "ar": "باج",
+              "en": "Bug"
+            }
+          },
+          {
+            "label": {
+              "he": "נגיש לכיסא גלגלים",
+              "ar": "مناسب للكراسي المتحركة",
+              "en": "Wheelchair accessible"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "xbox-blur",
+      "place": "magal",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "אכס בוכס בלור",
+        "ar": "اكس بوكس بلور",
+        "en": "XBOX BLUR"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית במגל",
+        "ar": "كمبيوترات ودعم فني في ماغل",
+        "en": "Computers and IT support in Magal"
+      },
+      "address": {
+        "he": "מגל",
+        "ar": "ماغل",
+        "en": "Magal"
+      },
+      "lat": 32.3733157,
+      "lng": 35.0717744,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/5853592886"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אכס בוכס בלור",
+          "ar": "اكس بوكس بلور",
+          "en": "XBOX BLUR"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "tower-semiconductor",
+      "place": "migdal-haemek",
+      "brand": null,
+      "primaryKind": "saas",
+      "kinds": [
+        "saas"
+      ],
+      "name": {
+        "he": "Tower Semiconductor",
+        "ar": "Tower Semiconductor",
+        "en": "Tower Semiconductor"
+      },
+      "tagline": {
+        "he": "חברת הייטק במגדל העמק",
+        "ar": "شركة هايتك في مجدال هعيمق",
+        "en": "Tech company in Migdal HaEmek"
+      },
+      "address": {
+        "he": "מגדל העמק",
+        "ar": "مجدال هعيمق",
+        "en": "Migdal HaEmek"
+      },
+      "lat": 32.6881652,
+      "lng": 35.249202,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/14122507096"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "Tower Semiconductor",
+          "ar": "Tower Semiconductor",
+          "en": "Tower Semiconductor"
+        },
+        "title": {
+          "he": "חברת הייטק",
+          "ar": "شركة هايتك",
+          "en": "Tech company"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חברת הייטק",
+              "ar": "شركة هايتك",
+              "en": "Tech company"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "badar",
+      "place": "muqeible",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support"
+      ],
+      "name": {
+        "he": "בדר",
+        "ar": "بدر",
+        "en": "Badar"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית במוקייבלה",
+        "ar": "كمبيوترات ودعم فني في مقيبلة",
+        "en": "Computers and IT support in Muqeible"
+      },
+      "address": {
+        "he": "מוקייבלה",
+        "ar": "مقيبلة",
+        "en": "Muqeible"
+      },
+      "lat": 32.4630918,
+      "lng": 35.2988578,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/5028811221"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "בדר",
+          "ar": "بدر",
+          "en": "Badar"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "miditech",
+      "place": "muqeible",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "מידי תך ללכמביותר",
+        "ar": "ميدي تك للكمبيوتر",
+        "en": "miditech"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית במוקייבלה",
+        "ar": "كمبيوترات ودعم فني في مقيبلة",
+        "en": "Computers and IT support in Muqeible"
+      },
+      "address": {
+        "he": "מוקייבלה",
+        "ar": "مقيبلة",
+        "en": "Muqeible"
+      },
+      "lat": 32.4625047,
+      "lng": 35.2978078,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/6109643437"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מידי תך ללכמביותר",
+          "ar": "ميدي تك للكمبيوتر",
+          "en": "miditech"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "suhail-mobile",
+      "place": "muqeible",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support"
+      ],
+      "name": {
+        "he": "סהיל מובאיל",
+        "ar": "سهيل موبايل",
+        "en": "Suhail Mobile"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית במוקייבלה",
+        "ar": "كمبيوترات ودعم فني في مقيبلة",
+        "en": "Computers and IT support in Muqeible"
+      },
+      "address": {
+        "he": "Abu Baker Street",
+        "ar": "مقيبلة",
+        "en": "Muqeible"
+      },
+      "lat": 32.4619155,
+      "lng": 35.2972752,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/4267021192"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "סהיל מובאיל",
+          "ar": "سهيل موبايل",
+          "en": "Suhail Mobile"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "borisovs-it-hub",
+      "place": "nahariya",
+      "brand": null,
+      "primaryKind": "coworking",
+      "kinds": [
+        "coworking"
+      ],
+      "name": {
+        "he": "Borisov's IT hub",
+        "ar": "Borisov's IT hub",
+        "en": "Borisov's IT hub"
+      },
+      "tagline": {
+        "he": "חלל עבודה משותף בנהריה",
+        "ar": "مساحة عمل مشتركة في نهاريا",
+        "en": "Coworking space in Nahariya"
+      },
+      "address": {
+        "he": "פינסקר",
+        "ar": "نهاريا",
+        "en": "Nahariya"
+      },
+      "lat": 33.0082243,
+      "lng": 35.0919697,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "10:00",
+              "close": "18:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "10:00",
+              "close": "18:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "10:00",
+              "close": "18:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "10:00",
+              "close": "18:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "10:00",
+              "close": "18:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/12600761044"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "Borisov's IT hub",
+          "ar": "Borisov's IT hub",
+          "en": "Borisov's IT hub"
+        },
+        "title": {
+          "he": "חלל עבודה משותף",
+          "ar": "مساحة عمل مشتركة",
+          "en": "Coworking space"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חלל עבודה משותף",
+              "ar": "مساحة عمل مشتركة",
+              "en": "Coworking space"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "ibm-haifa-r-d-labs",
+      "place": "nesher",
+      "brand": null,
+      "primaryKind": "saas",
+      "kinds": [
+        "saas"
+      ],
+      "name": {
+        "he": "מעבדות מו\"פ יבמ בחיפה",
+        "ar": "معبدوت موف يبم بحيفا",
+        "en": "IBM Haifa R&D Labs"
+      },
+      "tagline": {
+        "he": "חברת הייטק בנשר",
+        "ar": "شركة هايتك في نيشر",
+        "en": "Tech company in Nesher"
+      },
+      "address": {
+        "he": "נשר",
+        "ar": "نيشر",
+        "en": "Nesher"
+      },
+      "lat": 32.764814,
+      "lng": 35.0159345,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/69717186"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מעבדות מו\"פ יבמ בחיפה",
+          "ar": "معبدوت موف يبم بحيفا",
+          "en": "IBM Haifa R&D Labs"
+        },
+        "title": {
+          "he": "חברת הייטק",
+          "ar": "شركة هايتك",
+          "en": "Tech company"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חברת הייטק",
+              "ar": "شركة هايتك",
+              "en": "Tech company"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "afarsek-computers",
+      "place": "newe-avot",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "אפרסק מחשבים",
+        "ar": "افرسك محشبيم",
+        "en": "Afarsek computers"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית בנווה אבות",
+        "ar": "كمبيوترات ودعم فني في نڤيه أڤوت",
+        "en": "Computers and IT support in Newe Avot"
+      },
+      "address": {
+        "he": "נווה אבות",
+        "ar": "نڤيه أڤوت",
+        "en": "Newe Avot"
+      },
+      "lat": 32.5474008,
+      "lng": 34.9573722,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/4674727999"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": "https://afarsek.co.il/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אפרסק מחשבים",
+          "ar": "افرسك محشبيم",
+          "en": "Afarsek computers"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "ksp-computers-and-cellular",
+      "place": "nof-hagalil",
+      "brand": "ksp",
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support",
+        "electronics"
+      ],
+      "name": {
+        "he": "KSP computers and cellular",
+        "ar": "KSP نوف هجليل",
+        "en": "KSP computers and cellular"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית בנוף הגליל",
+        "ar": "كمبيوترات ودعم فني في نوف هجليل",
+        "en": "Computers and IT support in Nof HaGalil"
+      },
+      "address": {
+        "he": "נוף הגליל",
+        "ar": "نوف هجليل",
+        "en": "Nof HaGalil"
+      },
+      "lat": 32.7007911,
+      "lng": 35.3203575,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/5894747645"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "KSP computers and cellular",
+          "ar": "KSP نوف هجليل",
+          "en": "KSP computers and cellular"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            },
+            "meta": {
+              "he": "מחשבים",
+              "ar": "كمبيوترات",
+              "en": "Computers"
+            }
+          },
+          {
+            "label": {
+              "he": "רשת",
+              "ar": "شبكة",
+              "en": "Chain"
+            },
+            "meta": {
+              "he": "KSP",
+              "ar": "KSP",
+              "en": "KSP"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "telcomunication-service-center",
+      "place": "ram-on",
+      "brand": null,
+      "primaryKind": "it-support",
+      "kinds": [
+        "it-support"
+      ],
+      "name": {
+        "he": "מרכז ח'דמאת אל-אתצאלאת",
+        "ar": "مركز خدمات الاتصالات",
+        "en": "Telcomunication Service Center"
+      },
+      "tagline": {
+        "he": "מחשבים ותמיכה טכנית ברם-און",
+        "ar": "كمبيوترات ودعم فني في رام أون",
+        "en": "Computers and IT support in Ram On"
+      },
+      "address": {
+        "he": "רם-און",
+        "ar": "رام أون",
+        "en": "Ram On"
+      },
+      "lat": 32.5138017,
+      "lng": 35.231753,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/431745981"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מרכז ח'דמאת אל-אתצאלאת",
+          "ar": "مركز خدمات الاتصالات",
+          "en": "Telcomunication Service Center"
+        },
+        "title": {
+          "he": "מחשבים ותמיכה טכנית",
+          "ar": "كمبيوترات ودعم فني",
+          "en": "Computers and IT support"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחשבים ותמיכה טכנית",
+              "ar": "كمبيوترات ودعم فني",
+              "en": "Computers and IT support"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "avi-ban-gad-shivak-bam",
+      "place": "yokneam-ilit",
+      "brand": null,
+      "primaryKind": "marketing-agencies",
+      "kinds": [
+        "marketing-agencies"
+      ],
+      "name": {
+        "he": "אבי בן גד שיווק בע\"מ",
+        "ar": "ابي بن جد شيفك بعم",
+        "en": "Avi Ban Gad Shivak Bam"
+      },
+      "tagline": {
+        "he": "שיווק ופרסום ביקנעם עילית",
+        "ar": "تسويق وإعلان في يوكنعام عيليت",
+        "en": "Marketing and advertising in Yokneam Ilit"
+      },
+      "address": {
+        "he": "הקידמה 27",
+        "ar": "يوكنعام عيليت",
+        "en": "Yokneam Ilit"
+      },
+      "lat": 32.6648937,
+      "lng": 35.1057593,
+      "hours": {
+        "weekly": {
+          "1": [
+            {
+              "open": "08:00",
+              "close": "17:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "08:00",
+              "close": "17:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "08:00",
+              "close": "17:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "08:00",
+              "close": "16:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/11488932180"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אבי בן גד שיווק בע\"מ",
+          "ar": "ابي بن جد شيفك بعم",
+          "en": "Avi Ban Gad Shivak Bam"
+        },
+        "title": {
+          "he": "שיווק ופרסום",
+          "ar": "تسويق وإعلان",
+          "en": "Marketing and advertising"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "שיווק ופרסום",
+              "ar": "تسويق وإعلان",
+              "en": "Marketing and advertising"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "nvidia-technologies-ltd",
+      "place": "yoqneam-moshava",
+      "brand": null,
+      "primaryKind": "saas",
+      "kinds": [
+        "saas"
+      ],
+      "name": {
+        "he": "אנוידיה",
+        "ar": "انويديا",
+        "en": "Nvidia Technologies, Ltd."
+      },
+      "tagline": {
+        "he": "חברת הייטק ביקנעם",
+        "ar": "شركة هايتك في يوكنعام",
+        "en": "Tech company in Yoqne'am"
+      },
+      "address": {
+        "he": "יקנעם (מושבה)",
+        "ar": "يوكنعام (مستوطنة)",
+        "en": "Yoqne'am (Moshava)"
+      },
+      "lat": 32.6650515,
+      "lng": 35.105181,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/11595927569"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": "https://www.nvidia.com",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אנוידיה",
+          "ar": "انويديا",
+          "en": "Nvidia Technologies, Ltd."
+        },
+        "title": {
+          "he": "חברת הייטק",
+          "ar": "شركة هايتك",
+          "en": "Tech company"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חברת הייטק",
+              "ar": "شركة هايتك",
+              "en": "Tech company"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "bet-rabban",
+      "place": "yuvalim",
+      "brand": null,
+      "primaryKind": "software-studios",
+      "kinds": [
+        "software-studios"
+      ],
+      "name": {
+        "he": "בית רבין",
+        "ar": "بيت ربان",
+        "en": "Bet Rabban"
+      },
+      "tagline": {
+        "he": "פיתוח תוכנה ביובלים",
+        "ar": "تطوير برمجيات في يوفاليم",
+        "en": "Software house in Yuvalim"
+      },
+      "address": {
+        "he": "כתום 7",
+        "ar": "يوفاليم",
+        "en": "Yuvalim"
+      },
+      "lat": 32.8692951,
+      "lng": 35.2748474,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/90971989"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "בית רבין",
+          "ar": "بيت ربان",
+          "en": "Bet Rabban"
+        },
+        "title": {
+          "he": "פיתוח תוכנה",
+          "ar": "تطوير برمجيات",
+          "en": "Software house"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "פיתוח תוכנה",
+              "ar": "تطوير برمجيات",
+              "en": "Software house"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#5FB3A8"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#5fb3a8",
+        "icons": "solid"
+      }
+    }
+  ]
+}

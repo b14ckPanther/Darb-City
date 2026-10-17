@@ -6518,6 +6518,107 @@
     },
     "font": "Noto Serif Hebrew"
   },
+  "schools": {
+    "brand": {
+      "he": "בית ספר הגשר",
+      "ar": "مدرسة الجسر",
+      "en": "Bridge School"
+    },
+    "title": {
+      "he": "ההרשמה לכיתה א' פתוחה",
+      "ar": "التسجيل للصف الأول مفتوح",
+      "en": "Grade 1 registration is open"
+    },
+    "subtitle": {
+      "he": "יסודי וחטיבת ביניים · 18 כיתות",
+      "ar": "ابتدائي وإعدادي · 18 صف",
+      "en": "Primary and middle school · 18 classes"
+    },
+    "tags": [
+      {
+        "he": "הכול",
+        "ar": "الكل",
+        "en": "All"
+      },
+      {
+        "he": "יסודי",
+        "ar": "ابتدائي",
+        "en": "Primary"
+      },
+      {
+        "he": "חטיבה",
+        "ar": "إعدادي",
+        "en": "Middle"
+      },
+      {
+        "he": "אחרי הצהריים",
+        "ar": "بعد الدوام",
+        "en": "After school"
+      }
+    ],
+    "items": [
+      {
+        "label": {
+          "he": "יסודי, כיתות א'-ו'",
+          "ar": "ابتدائي، صفوف 1-6",
+          "en": "Primary, grades 1-6"
+        },
+        "meta": {
+          "he": "08:00-13:30 · 26 בכיתה",
+          "ar": "08:00-13:30 · 26 بالصف",
+          "en": "08:00-13:30 · 26 a class"
+        }
+      },
+      {
+        "label": {
+          "he": "חטיבת ביניים, כיתות ז'-ט'",
+          "ar": "إعدادي، صفوف 7-9",
+          "en": "Middle school, grades 7-9"
+        },
+        "meta": {
+          "he": "מגמת מדעים ורובוטיקה",
+          "ar": "تخصص علوم وروبوتات",
+          "en": "Science and robotics track"
+        }
+      },
+      {
+        "label": {
+          "he": "צהרון ועזרה בשיעורי בית",
+          "ar": "برنامج بعد الدوام ومساعدة بالوظائف",
+          "en": "After-school club and homework help"
+        },
+        "meta": {
+          "he": "עד 16:00",
+          "ar": "لحد الساعة 4",
+          "en": "until 16:00"
+        }
+      },
+      {
+        "label": {
+          "he": "הסעות",
+          "ar": "باص المدرسة",
+          "en": "School bus"
+        },
+        "meta": {
+          "he": "מכל השכונות",
+          "ar": "من كل الحارات",
+          "en": "from every neighbourhood"
+        }
+      }
+    ],
+    "cta": {
+      "he": "הרשמה לכיתה א'",
+      "ar": "سجّل للصف الأول",
+      "en": "Register for grade 1"
+    },
+    "palette": {
+      "bg": "#eef3f8",
+      "surface": "#ffffff",
+      "ink": "#1c2b3a",
+      "accent": "#2f6fb0"
+    },
+    "font": "Assistant"
+  },
   "vocational": {
     "brand": {
       "he": "מכללת אל מוסתקבל",

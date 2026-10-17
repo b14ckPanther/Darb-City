@@ -1,0 +1,3562 @@
+{
+  "source": {
+    "name": "OpenStreetMap, every named industry & wholesale business in the north",
+    "url": "https://www.openstreetmap.org",
+    "licence": "Open Database License (ODbL)",
+    "attribution": "© OpenStreetMap contributors (ODbL), openstreetmap.org/copyright",
+    "region": "northern-district, haifa-district",
+    "fetched": "2026-10-17",
+    "query": "named shop, office, craft, healthcare, tourism, club, amenity, leisure, emergency, works and industrial features, bbox 32.3,34.85,33.35,35.9 in 25 tiles",
+    "left_out": "features with no name, food (the food importer's), garages, tyres, testing, fuel, banks and EV charging (official lists), bars, alcohol, pork, gambling and lottery, adult shops, tobacco, vape and cannabis, tattoo and weapons shops, private places, sights with no hours or contact",
+    "hours": "from OSM opening_hours where it reads for certain; otherwise none",
+    "counts": {
+      "emitted": 46
+    }
+  },
+  "businesses": [
+    {
+      "slug": "water-pump-station",
+      "place": "baqa-al-gharbiyye",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "מחטה מצ'ח'ה מיאה",
+        "ar": "محطة مضخة مياة",
+        "en": "Water Pump Station"
+      },
+      "tagline": {
+        "he": "מפעל בבאקה אל-גרביה",
+        "ar": "مصنع في باقة الغربية",
+        "en": "Factory in Baqa al-Gharbiyye"
+      },
+      "address": {
+        "he": "באקה אל-גרביה",
+        "ar": "باقة الغربية",
+        "en": "Baqa al-Gharbiyye"
+      },
+      "lat": 32.4121571,
+      "lng": 35.0615308,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/432399899"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מחטה מצ'ח'ה מיאה",
+          "ar": "محطة مضخة مياة",
+          "en": "Water Pump Station"
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "hanson",
+      "place": "beit-shean",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "הנסון",
+        "ar": "هنسون",
+        "en": "Hanson"
+      },
+      "tagline": {
+        "he": "מפעל בבית שאן",
+        "ar": "مصنع في بيت شيئان",
+        "en": "Factory in Beit Shean"
+      },
+      "address": {
+        "he": "בית שאן",
+        "ar": "بيت شيئان",
+        "en": "Beit Shean"
+      },
+      "lat": 32.5116228,
+      "lng": 35.5036739,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/630339746"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "הנסון",
+          "ar": "هنسون",
+          "en": "Hanson"
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "vitamad-industries",
+      "place": "binyamina-givat-ada",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "ויטאמד תעשיות",
+        "ar": "ويطامد صناعات",
+        "en": "Vitamad Industries"
+      },
+      "tagline": {
+        "he": "מפעל בבנימינה-גבעת עדה",
+        "ar": "مصنع في بنيامينا-جفعت عدا",
+        "en": "Factory in Binyamina - Givat Ada"
+      },
+      "address": {
+        "he": "בנימינה-גבעת עדה",
+        "ar": "بنيامينا-جفعت عدا",
+        "en": "Binyamina - Givat Ada"
+      },
+      "lat": 32.5159664,
+      "lng": 34.9477271,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1483241373"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "ויטאמד תעשיות",
+          "ar": "ويطامد صناعات",
+          "en": "Vitamad Industries"
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "poral-hadan",
+      "place": "dan",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "פורל הדן",
+        "ar": "بورل هدن",
+        "en": "Poral Hadan"
+      },
+      "tagline": {
+        "he": "מפעל בדן",
+        "ar": "مصنع في دان",
+        "en": "Factory in Dan"
+      },
+      "address": {
+        "he": "דן",
+        "ar": "دان",
+        "en": "Dan"
+      },
+      "lat": 33.2441975,
+      "lng": 35.647427,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1504407663"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "פורל הדן",
+          "ar": "بورل هدن",
+          "en": "Poral Hadan"
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "thinat-hansikh-factory",
+      "place": "eilabun",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "מפעל טחינת הנסיך",
+        "ar": "مصنع طحينت هنسيك",
+        "en": "Thinat Hansikh Factory"
+      },
+      "tagline": {
+        "he": "מפעל בעיילבון",
+        "ar": "مصنع في عيلبون",
+        "en": "Factory in Eilabun"
+      },
+      "address": {
+        "he": "עיילבון",
+        "ar": "عيلبون",
+        "en": "Eilabun"
+      },
+      "lat": 32.8326152,
+      "lng": 35.4057191,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/913325809"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מפעל טחינת הנסיך",
+          "ar": "مصنع طحينت هنسيك",
+          "en": "Thinat Hansikh Factory"
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "gavasol-paldot",
+      "place": "ein-harod-meuhad",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "גבעסול פלדות",
+        "ar": "جبعسول بلدوت",
+        "en": "Gavasol Paldot"
+      },
+      "tagline": {
+        "he": "מפעל בעין חרוד",
+        "ar": "مصنع في عين حرود",
+        "en": "Factory in Ein Harod Meuhad"
+      },
+      "address": {
+        "he": "עין חרוד (מאוחד)",
+        "ar": "عين حرود (مئوحاد)",
+        "en": "Ein Harod Meuhad"
+      },
+      "lat": 32.5567814,
+      "lng": 35.3922317,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1469436781"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": "https://www.pladot.co.il/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "גבעסול פלדות",
+          "ar": "جبعسول بلدوت",
+          "en": "Gavasol Paldot"
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "lolim-farm",
+      "place": "gaaton",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "חוות לולים",
+        "ar": "مزرعة لوليم",
+        "en": "Lolim Farm"
+      },
+      "tagline": {
+        "he": "מפעל בגעתון",
+        "ar": "مصنع في غعتون",
+        "en": "Factory in Gaaton"
+      },
+      "address": {
+        "he": "געתון",
+        "ar": "غعتون",
+        "en": "Gaaton"
+      },
+      "lat": 33.0147334,
+      "lng": 35.2165751,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/447728005"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "חוות לולים",
+          "ar": "مزرعة لوليم",
+          "en": "Lolim Farm"
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "plasgad",
+      "place": "gadot",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "פלסגד",
+        "ar": "بلسجد",
+        "en": "Plasgad"
+      },
+      "tagline": {
+        "he": "מפעל בגדות",
+        "ar": "مصنع في كعوش الجديدة",
+        "en": "Factory in Gadot"
+      },
+      "address": {
+        "he": "גדות",
+        "ar": "كعوش الجديدة",
+        "en": "Gadot"
+      },
+      "lat": 33.0181615,
+      "lng": 35.6162174,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/165377578"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "פלסגד",
+          "ar": "بلسجد",
+          "en": "Plasgad"
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "carpentry",
+      "place": "ginnegar",
+      "brand": null,
+      "primaryKind": "carpentry",
+      "kinds": [
+        "carpentry"
+      ],
+      "name": {
+        "he": "נגרייה",
+        "ar": "منجرة",
+        "en": "Carpentry"
+      },
+      "tagline": {
+        "he": "נגרייה בגיניגר",
+        "ar": "نجارة في چينيچار",
+        "en": "Carpentry in Ginnegar"
+      },
+      "address": {
+        "he": "גיניגר",
+        "ar": "چينيچار",
+        "en": "Ginnegar"
+      },
+      "lat": 32.6624367,
+      "lng": 35.2580756,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/628553603"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "נגרייה",
+          "ar": "منجرة",
+          "en": "Carpentry"
+        },
+        "title": {
+          "he": "נגרייה",
+          "ar": "نجارة",
+          "en": "Carpentry"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "נגרייה",
+              "ar": "نجارة",
+              "en": "Carpentry"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "mafali-matakhat-barak",
+      "place": "hadera",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "מפעלי מתכת ברק",
+        "ar": "مفعلي متكت براك",
+        "en": "Mafali Matakhat Barak"
+      },
+      "tagline": {
+        "he": "מפעל בחדרה",
+        "ar": "مصنع في الخضيرة",
+        "en": "Factory in Hadera"
+      },
+      "address": {
+        "he": "חדרה",
+        "ar": "الخضيرة",
+        "en": "Hadera"
+      },
+      "lat": 32.4363446,
+      "lng": 34.9050627,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/587761722"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מפעלי מתכת ברק",
+          "ar": "مفعلي متكت براك",
+          "en": "Mafali Matakhat Barak"
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "redimix",
+      "place": "hamadya",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "רדימיקס",
+        "ar": "رديميكس",
+        "en": "Redimix"
+      },
+      "tagline": {
+        "he": "מפעל בחמדיה",
+        "ar": "مصنع في حمدية",
+        "en": "Factory in Hamadya"
+      },
+      "address": {
+        "he": "חמדיה",
+        "ar": "حمدية",
+        "en": "Hamadya"
+      },
+      "lat": 32.5115629,
+      "lng": 35.5044948,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1130674014"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "רדימיקס",
+          "ar": "رديميكس",
+          "en": "Redimix"
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "mekorot",
+      "place": "hatzor-haglilit",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "מקורות",
+        "ar": "مكوروت",
+        "en": "Mekorot"
+      },
+      "tagline": {
+        "he": "מפעל בחצור הגלילית",
+        "ar": "مصنع في حتسور هجليليت",
+        "en": "Factory in Hatzor HaGlilit"
+      },
+      "address": {
+        "he": "חצור הגלילית",
+        "ar": "حتسور هجليليت",
+        "en": "Hatzor HaGlilit"
+      },
+      "lat": 32.9781898,
+      "lng": 35.5329636,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/165482722"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מקורות",
+          "ar": "مكوروت",
+          "en": "Mekorot"
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "shorashim",
+      "place": "isfiya",
+      "brand": null,
+      "primaryKind": "carpentry",
+      "kinds": [
+        "carpentry"
+      ],
+      "name": {
+        "he": "שורשים",
+        "ar": "شوراشيم",
+        "en": "Shorashim"
+      },
+      "tagline": {
+        "he": "נגרייה בעספיא",
+        "ar": "نجارة في عسفيا",
+        "en": "Carpentry in Isfiya"
+      },
+      "address": {
+        "he": "עספיא",
+        "ar": "عسفيا",
+        "en": "Isfiya"
+      },
+      "lat": 32.7060117,
+      "lng": 35.0655223,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/2308416000"
+      },
+      "tier": "basic",
+      "phone": "+972 52-396-6011",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "שורשים",
+          "ar": "شوراشيم",
+          "en": "Shorashim"
+        },
+        "title": {
+          "he": "נגרייה",
+          "ar": "نجارة",
+          "en": "Carpentry"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "נגרייה",
+              "ar": "نجارة",
+              "en": "Carpentry"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "concrete-plant-readymix",
+      "place": "karmiel",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "מפעל בטון רדימיקס",
+        "ar": "مصنع بطون رديميكس",
+        "en": "Concrete Plant Readymix"
+      },
+      "tagline": {
+        "he": "מפעל בכרמיאל",
+        "ar": "مصنع في كرميئيل",
+        "en": "Factory in Karmiel"
+      },
+      "address": {
+        "he": "החרושת 70",
+        "ar": "كرميئيل",
+        "en": "Karmiel"
+      },
+      "lat": 32.9253371,
+      "lng": 35.3250108,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1131257474"
+      },
+      "tier": "basic",
+      "phone": "+972 4-998-7967",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מפעל בטון רדימיקס",
+          "ar": "مصنع بطون رديميكس",
+          "en": "Concrete Plant Readymix"
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "delta-factory",
+      "place": "karmiel",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "מפעל דלתא",
+        "ar": "مصنع دلتا",
+        "en": "Delta Factory"
+      },
+      "tagline": {
+        "he": "מפעל בכרמיאל",
+        "ar": "مصنع في كرميئيل",
+        "en": "Factory in Karmiel"
+      },
+      "address": {
+        "he": "היוצרים 4",
+        "ar": "كرميئيل",
+        "en": "Karmiel"
+      },
+      "lat": 32.9226245,
+      "lng": 35.3078115,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1556737412"
+      },
+      "tier": "basic",
+      "phone": "+972 4-904-3130",
+      "whatsapp": null,
+      "website": "https://www.deltagalil.com/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מפעל דלתא",
+          "ar": "مصنع دلتا",
+          "en": "Delta Factory"
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "asoak-al-aaala",
+      "place": "katzir",
+      "brand": null,
+      "primaryKind": "wholesalers",
+      "kinds": [
+        "wholesalers"
+      ],
+      "name": {
+        "he": "אסואק אל-עאאלה",
+        "ar": "اسواق العائلة",
+        "en": "Asoak al Aaala"
+      },
+      "tagline": {
+        "he": "סיטונאות והפצה בקציר",
+        "ar": "بيع بالجملة في كتسير",
+        "en": "Wholesale in Katzir"
+      },
+      "address": {
+        "he": "קציר",
+        "ar": "كتسير",
+        "en": "Katzir"
+      },
+      "lat": 32.4723534,
+      "lng": 35.0896204,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9919497190"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אסואק אל-עאאלה",
+          "ar": "اسواق العائلة",
+          "en": "Asoak al Aaala"
+        },
+        "title": {
+          "he": "סיטונאות והפצה",
+          "ar": "بيع بالجملة",
+          "en": "Wholesale"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "סיטונאות והפצה",
+              "ar": "بيع بالجملة",
+              "en": "Wholesale"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "mahadda-abu-al-rav",
+      "place": "katzir",
+      "brand": null,
+      "primaryKind": "metalworks",
+      "kinds": [
+        "metalworks"
+      ],
+      "name": {
+        "he": "מחדדה אבו אל-רב",
+        "ar": "محددة ابو الرب",
+        "en": "Mahadda Abu al Rav"
+      },
+      "tagline": {
+        "he": "מסגרייה בקציר",
+        "ar": "حدادة في كتسير",
+        "en": "Metalwork in Katzir"
+      },
+      "address": {
+        "he": "קציר",
+        "ar": "كتسير",
+        "en": "Katzir"
+      },
+      "lat": 32.4681163,
+      "lng": 35.0940323,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9922559132"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מחדדה אבו אל-רב",
+          "ar": "محددة ابو الرب",
+          "en": "Mahadda Abu al Rav"
+        },
+        "title": {
+          "he": "מסגרייה",
+          "ar": "حدادة",
+          "en": "Metalwork"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מסגרייה",
+              "ar": "حدادة",
+              "en": "Metalwork"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "manajra-al-rvia",
+      "place": "katzir",
+      "brand": null,
+      "primaryKind": "carpentry",
+      "kinds": [
+        "carpentry"
+      ],
+      "name": {
+        "he": "מנג'רה אל-רביע",
+        "ar": "منجرة الربيع",
+        "en": "Manajra al Rvia"
+      },
+      "tagline": {
+        "he": "נגרייה בקציר",
+        "ar": "نجارة في كتسير",
+        "en": "Carpentry in Katzir"
+      },
+      "address": {
+        "he": "קציר",
+        "ar": "كتسير",
+        "en": "Katzir"
+      },
+      "lat": 32.4753182,
+      "lng": 35.0929078,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9943195712"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מנג'רה אל-רביע",
+          "ar": "منجرة الربيع",
+          "en": "Manajra al Rvia"
+        },
+        "title": {
+          "he": "נגרייה",
+          "ar": "نجارة",
+          "en": "Carpentry"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "נגרייה",
+              "ar": "نجارة",
+              "en": "Carpentry"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "ay-nas-kah-adam-bam",
+      "place": "kiryat-shmona",
+      "brand": null,
+      "primaryKind": "recruiting",
+      "kinds": [
+        "recruiting"
+      ],
+      "name": {
+        "he": "איי נס כח אדם בע\"מ",
+        "ar": "اي نس كح ادم بعم",
+        "en": "Ay Nas Kah Adam Bam"
+      },
+      "tagline": {
+        "he": "כוח אדם והשמה בקרית שמונה",
+        "ar": "توظيف وقوى عاملة في كريات شمونة",
+        "en": "Recruitment in Kiryat Shmona"
+      },
+      "address": {
+        "he": "יוסף ייגר 4",
+        "ar": "كريات شمونة",
+        "en": "Kiryat Shmona"
+      },
+      "lat": 33.204477,
+      "lng": 35.5686741,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/5115168627"
+      },
+      "tier": "basic",
+      "phone": "+972 4-959-4942",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "איי נס כח אדם בע\"מ",
+          "ar": "اي نس كح ادم بعم",
+          "en": "Ay Nas Kah Adam Bam"
+        },
+        "title": {
+          "he": "כוח אדם והשמה",
+          "ar": "توظيف وقوى عاملة",
+          "en": "Recruitment"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "כוח אדם והשמה",
+              "ar": "توظيف وقوى عاملة",
+              "en": "Recruitment"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "etedler",
+      "place": "kiryat-shmona",
+      "brand": null,
+      "primaryKind": "carpentry",
+      "kinds": [
+        "carpentry"
+      ],
+      "name": {
+        "he": "אטדלר נגרות אומן בע\"מ",
+        "ar": "اطدلر نجروت أومن بعم",
+        "en": "Etedler"
+      },
+      "tagline": {
+        "he": "נגרייה בקרית שמונה",
+        "ar": "نجارة في كريات شمونة",
+        "en": "Carpentry in Kiryat Shmona"
+      },
+      "address": {
+        "he": "קרית שמונה",
+        "ar": "كريات شمونة",
+        "en": "Kiryat Shmona"
+      },
+      "lat": 33.1982104,
+      "lng": 35.5756376,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/5221361634"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אטדלר נגרות אומן בע\"מ",
+          "ar": "اطدلر نجروت أومن بعم",
+          "en": "Etedler"
+        },
+        "title": {
+          "he": "נגרייה",
+          "ar": "نجارة",
+          "en": "Carpentry"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "נגרייה",
+              "ar": "نجارة",
+              "en": "Carpentry"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "yogurt-factory",
+      "place": "magal",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "מצנע אל-באן",
+        "ar": "مصنع البان",
+        "en": "Yogurt Factory"
+      },
+      "tagline": {
+        "he": "מפעל במגל",
+        "ar": "مصنع في ماغل",
+        "en": "Factory in Magal"
+      },
+      "address": {
+        "he": "מגל",
+        "ar": "ماغل",
+        "en": "Magal"
+      },
+      "lat": 32.3848983,
+      "lng": 35.0502981,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/432417685"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מצנע אל-באן",
+          "ar": "مصنع البان",
+          "en": "Yogurt Factory"
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "zita-pump-station-and-filter",
+      "place": "magal",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "מחטה זיתא ללתנקיה",
+        "ar": "محطة زيتا للتنقية",
+        "en": "Zita Pump Station And Filter"
+      },
+      "tagline": {
+        "he": "מפעל במגל",
+        "ar": "مصنع في ماغل",
+        "en": "Factory in Magal"
+      },
+      "address": {
+        "he": "מגל",
+        "ar": "ماغل",
+        "en": "Magal"
+      },
+      "lat": 32.3818171,
+      "lng": 35.0464122,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/432422275"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מחטה זיתא ללתנקיה",
+          "ar": "محطة زيتا للتنقية",
+          "en": "Zita Pump Station And Filter"
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "barashit-pirot-hagolan",
+      "place": "merom-golan",
+      "brand": null,
+      "primaryKind": "warehouses",
+      "kinds": [
+        "warehouses"
+      ],
+      "name": {
+        "he": "בראשית - פירות הגולן",
+        "ar": "براشيت بيروت هجولن",
+        "en": "Barashit Pirot Hagolan"
+      },
+      "tagline": {
+        "he": "מחסנים ואחסון במרום גולן",
+        "ar": "مخازن وتخزين في ماروم ها جولان",
+        "en": "Warehouses and storage in Merom Golan"
+      },
+      "address": {
+        "he": "מרום גולן",
+        "ar": "ماروم ها جولان",
+        "en": "Merom Golan"
+      },
+      "lat": 33.1385819,
+      "lng": 35.7665064,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/164425044"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "בראשית - פירות הגולן",
+          "ar": "براشيت بيروت هجولن",
+          "en": "Barashit Pirot Hagolan"
+        },
+        "title": {
+          "he": "מחסנים ואחסון",
+          "ar": "مخازن وتخزين",
+          "en": "Warehouses and storage"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחסנים ואחסון",
+              "ar": "مخازن وتخزين",
+              "en": "Warehouses and storage"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "amicotube",
+      "place": "migdal-haemek",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "אמיקוטיוב",
+        "ar": "اميكوطيوب",
+        "en": "Amicotube"
+      },
+      "tagline": {
+        "he": "מפעל במגדל העמק",
+        "ar": "مصنع في مجدال هعيمق",
+        "en": "Factory in Migdal HaEmek"
+      },
+      "address": {
+        "he": "מגדל העמק",
+        "ar": "مجدال هعيمق",
+        "en": "Migdal HaEmek"
+      },
+      "lat": 32.6635557,
+      "lng": 35.2612126,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/628551598"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": "https://www.amicotube.com/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אמיקוטיוב",
+          "ar": "اميكوطيوب",
+          "en": "Amicotube"
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "ci-systems-israel-ltd",
+      "place": "migdal-haemek",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "CI Systems (Israel) Ltd",
+        "ar": "CI Systems (Israel) Ltd",
+        "en": "CI Systems (Israel) Ltd"
+      },
+      "tagline": {
+        "he": "מפעל במגדל העמק",
+        "ar": "مصنع في مجدال هعيمق",
+        "en": "Factory in Migdal HaEmek"
+      },
+      "address": {
+        "he": "המחקר 6",
+        "ar": "مجدال هعيمق",
+        "en": "Migdal HaEmek"
+      },
+      "lat": 32.6855539,
+      "lng": 35.2435595,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/192239807"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "CI Systems (Israel) Ltd",
+          "ar": "CI Systems (Israel) Ltd",
+          "en": "CI Systems (Israel) Ltd"
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "ginegar-plastic-products-ltd",
+      "place": "migdal-haemek",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "גניגר מפעלי פלסטיקה",
+        "ar": "جنيجر مفعلي بلسطيكا",
+        "en": "Ginegar Plastic Products Ltd."
+      },
+      "tagline": {
+        "he": "מפעל במגדל העמק",
+        "ar": "مصنع في مجدال هعيمق",
+        "en": "Factory in Migdal HaEmek"
+      },
+      "address": {
+        "he": "מגדל העמק",
+        "ar": "مجدال هعيمق",
+        "en": "Migdal HaEmek"
+      },
+      "lat": 32.6626425,
+      "lng": 35.261581,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/628553602"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": "https://ginegar.com/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "גניגר מפעלי פלסטיקה",
+          "ar": "جنيجر مفعلي بلسطيكا",
+          "en": "Ginegar Plastic Products Ltd."
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "jordan-valley",
+      "place": "migdal-haemek",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "ג'ורדן וואלי",
+        "ar": "جوردن فالي",
+        "en": "Jordan Valley"
+      },
+      "tagline": {
+        "he": "מפעל במגדל העמק",
+        "ar": "مصنع في مجدال هعيمق",
+        "en": "Factory in Migdal HaEmek"
+      },
+      "address": {
+        "he": "מגדל העמק",
+        "ar": "مجدال هعيمق",
+        "en": "Migdal HaEmek"
+      },
+      "lat": 32.6849295,
+      "lng": 35.2437399,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/192239813"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "ג'ורדן וואלי",
+          "ar": "جوردن فالي",
+          "en": "Jordan Valley"
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "loreal",
+      "place": "migdal-haemek",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "לוריאל",
+        "ar": "لوريال",
+        "en": "L'oreal"
+      },
+      "tagline": {
+        "he": "מפעל במגדל העמק",
+        "ar": "مصنع في مجدال هعيمق",
+        "en": "Factory in Migdal HaEmek"
+      },
+      "address": {
+        "he": "מגדל העמק",
+        "ar": "مجدال هعيمق",
+        "en": "Migdal HaEmek"
+      },
+      "lat": 32.6728649,
+      "lng": 35.2501453,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/545632895"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "לוריאל",
+          "ar": "لوريال",
+          "en": "L'oreal"
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "vishay",
+      "place": "migdal-haemek",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "וישיי",
+        "ar": "ويشي",
+        "en": "Vishay"
+      },
+      "tagline": {
+        "he": "מפעל במגדל העמק",
+        "ar": "مصنع في مجدال هعيمق",
+        "en": "Factory in Migdal HaEmek"
+      },
+      "address": {
+        "he": "מגדל העמק",
+        "ar": "مجدال هعيمق",
+        "en": "Migdal HaEmek"
+      },
+      "lat": 32.683203,
+      "lng": 35.2471542,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/545725413"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "וישיי",
+          "ar": "ويشي",
+          "en": "Vishay"
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "alghadeer-manufacturer-of-pots-planter",
+      "place": "mitzpe-ilan",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "מצנע אל-ע'דיר ללקואויר ואלתחף",
+        "ar": "مصنع الغدير للقواوير والتحف",
+        "en": "alghadeer manufacturer of pots & planter"
+      },
+      "tagline": {
+        "he": "מפעל במצפה אילן",
+        "ar": "مصنع في متسبي ايلان",
+        "en": "Factory in Mitzpe Ilan"
+      },
+      "address": {
+        "he": "מצפה אילן",
+        "ar": "متسبي ايلان",
+        "en": "Mitzpe Ilan"
+      },
+      "lat": 32.4667528,
+      "lng": 35.0912373,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9919258135"
+      },
+      "tier": "basic",
+      "phone": "+972 53-578-8274",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מצנע אל-ע'דיר ללקואויר ואלתחף",
+          "ar": "مصنع الغدير للقواوير والتحف",
+          "en": "alghadeer manufacturer of pots & planter"
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/%D9%85%D8%B5%D9%86%D8%B9-%D8%A7%D9%84%D8%BA%D8%AF%D9%8A%D8%B1-%D9%84%D9%84%D9%82%D9%88%D8%A7%D9%88%D9%8A%D8%B1-%D9%88%D8%A7%D9%84%D8%AA%D8%AD%D9%81-%D7%9E%D7%A4%D7%A2%D7%9C-%D7%90%D7%9C%D7%92%D7%93%D7%99%D7%A8-%D7%99%D7%A6%D7%95%D"
+      },
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "caravan-plus",
+      "place": "mitzpe-ilan",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "Caravan Plus",
+        "ar": "Caravan Plus",
+        "en": "Caravan Plus"
+      },
+      "tagline": {
+        "he": "מפעל במצפה אילן",
+        "ar": "مصنع في متسبي ايلان",
+        "en": "Factory in Mitzpe Ilan"
+      },
+      "address": {
+        "he": "מצפה אילן",
+        "ar": "متسبي ايلان",
+        "en": "Mitzpe Ilan"
+      },
+      "lat": 32.4398443,
+      "lng": 35.0890539,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/13571510752"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "Caravan Plus",
+          "ar": "Caravan Plus",
+          "en": "Caravan Plus"
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "mahadda-al-jalvoni",
+      "place": "mitzpe-ilan",
+      "brand": null,
+      "primaryKind": "metalworks",
+      "kinds": [
+        "metalworks"
+      ],
+      "name": {
+        "he": "מחדדה אל-ג'לבוני",
+        "ar": "محددة الجلبوني",
+        "en": "Mahadda al Jalvoni"
+      },
+      "tagline": {
+        "he": "מסגרייה במצפה אילן",
+        "ar": "حدادة في متسبي ايلان",
+        "en": "Metalwork in Mitzpe Ilan"
+      },
+      "address": {
+        "he": "מצפה אילן",
+        "ar": "متسبي ايلان",
+        "en": "Mitzpe Ilan"
+      },
+      "lat": 32.4671072,
+      "lng": 35.0925215,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9927517117"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מחדדה אל-ג'לבוני",
+          "ar": "محددة الجلبوني",
+          "en": "Mahadda al Jalvoni"
+        },
+        "title": {
+          "he": "מסגרייה",
+          "ar": "حدادة",
+          "en": "Metalwork"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מסגרייה",
+              "ar": "حدادة",
+              "en": "Metalwork"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "mahadda-al-nahacha",
+      "place": "mitzpe-ilan",
+      "brand": null,
+      "primaryKind": "metalworks",
+      "kinds": [
+        "metalworks"
+      ],
+      "name": {
+        "he": "מחדדה אל-נהצ'ה",
+        "ar": "محددة النهضة",
+        "en": "Mahadda al Nahacha"
+      },
+      "tagline": {
+        "he": "מסגרייה במצפה אילן",
+        "ar": "حدادة في متسبي ايلان",
+        "en": "Metalwork in Mitzpe Ilan"
+      },
+      "address": {
+        "he": "מצפה אילן",
+        "ar": "متسبي ايلان",
+        "en": "Mitzpe Ilan"
+      },
+      "lat": 32.4674558,
+      "lng": 35.0901439,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9927511538"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מחדדה אל-נהצ'ה",
+          "ar": "محددة النهضة",
+          "en": "Mahadda al Nahacha"
+        },
+        "title": {
+          "he": "מסגרייה",
+          "ar": "حدادة",
+          "en": "Metalwork"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מסגרייה",
+              "ar": "حدادة",
+              "en": "Metalwork"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "mahadda-asatanvol",
+      "place": "mitzpe-ilan",
+      "brand": null,
+      "primaryKind": "metalworks",
+      "kinds": [
+        "metalworks"
+      ],
+      "name": {
+        "he": "מחדדה אסטנבול",
+        "ar": "محددة اسطنبول",
+        "en": "Mahadda Asatanvol"
+      },
+      "tagline": {
+        "he": "מסגרייה במצפה אילן",
+        "ar": "حدادة في متسبي ايلان",
+        "en": "Metalwork in Mitzpe Ilan"
+      },
+      "address": {
+        "he": "מצפה אילן",
+        "ar": "متسبي ايلان",
+        "en": "Mitzpe Ilan"
+      },
+      "lat": 32.4699014,
+      "lng": 35.0905014,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9927486002"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מחדדה אסטנבול",
+          "ar": "محددة اسطنبول",
+          "en": "Mahadda Asatanvol"
+        },
+        "title": {
+          "he": "מסגרייה",
+          "ar": "حدادة",
+          "en": "Metalwork"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מסגרייה",
+              "ar": "حدادة",
+              "en": "Metalwork"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "manajra-al-masatakaval",
+      "place": "mitzpe-ilan",
+      "brand": null,
+      "primaryKind": "carpentry",
+      "kinds": [
+        "carpentry"
+      ],
+      "name": {
+        "he": "מנג'רה אל-מסתקבל",
+        "ar": "منجرة المستقبل",
+        "en": "Manajra al Masatakaval"
+      },
+      "tagline": {
+        "he": "נגרייה במצפה אילן",
+        "ar": "نجارة في متسبي ايلان",
+        "en": "Carpentry in Mitzpe Ilan"
+      },
+      "address": {
+        "he": "מצפה אילן",
+        "ar": "متسبي ايلان",
+        "en": "Mitzpe Ilan"
+      },
+      "lat": 32.4679358,
+      "lng": 35.0890834,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9954824802"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מנג'רה אל-מסתקבל",
+          "ar": "منجرة المستقبل",
+          "en": "Manajra al Masatakaval"
+        },
+        "title": {
+          "he": "נגרייה",
+          "ar": "نجارة",
+          "en": "Carpentry"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "נגרייה",
+              "ar": "نجارة",
+              "en": "Carpentry"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "matzana-al-dahvor-lmoad-al-tanatif",
+      "place": "mitzpe-ilan",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "מצנע אל-דחבור למואד אל-תנט'יף",
+        "ar": "مصنع الدحبور لمواد التنظيف",
+        "en": "Matzana al Dahvor Lmoad al Tanatif"
+      },
+      "tagline": {
+        "he": "מפעל במצפה אילן",
+        "ar": "مصنع في متسبي ايلان",
+        "en": "Factory in Mitzpe Ilan"
+      },
+      "address": {
+        "he": "מצפה אילן",
+        "ar": "متسبي ايلان",
+        "en": "Mitzpe Ilan"
+      },
+      "lat": 32.4651485,
+      "lng": 35.0927881,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9929969703"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מצנע אל-דחבור למואד אל-תנט'יף",
+          "ar": "مصنع الدحبور لمواد التنظيف",
+          "en": "Matzana al Dahvor Lmoad al Tanatif"
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "aafaq-wooden-manuf-and-kitchens",
+      "place": "muqeible",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "Aafaq Wooden Manuf and Kitchens",
+        "ar": "Aafaq Wooden Manuf and Kitchens",
+        "en": "Aafaq Wooden Manuf and Kitchens"
+      },
+      "tagline": {
+        "he": "מפעל במוקייבלה",
+        "ar": "مصنع في مقيبلة",
+        "en": "Factory in Muqeible"
+      },
+      "address": {
+        "he": "Inustrial zone",
+        "ar": "مقيبلة",
+        "en": "Muqeible"
+      },
+      "lat": 32.4694396,
+      "lng": 35.3104806,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/6638732669"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "Aafaq Wooden Manuf and Kitchens",
+          "ar": "Aafaq Wooden Manuf and Kitchens",
+          "en": "Aafaq Wooden Manuf and Kitchens"
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "feed-plant",
+      "place": "muqeible",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "מצנע אעלאף",
+        "ar": "مصنع اعلاف",
+        "en": "Feed Plant"
+      },
+      "tagline": {
+        "he": "מפעל במוקייבלה",
+        "ar": "مصنع في مقيبلة",
+        "en": "Factory in Muqeible"
+      },
+      "address": {
+        "he": "מוקייבלה",
+        "ar": "مقيبلة",
+        "en": "Muqeible"
+      },
+      "lat": 32.4657803,
+      "lng": 35.3170348,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/431712230"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מצנע אעלאף",
+          "ar": "مصنع اعلاف",
+          "en": "Feed Plant"
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "matzana-matzana-al-tov",
+      "place": "muqeible",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "מצנע מצאנע אל-טוב",
+        "ar": "مصنع مصانع الطوب",
+        "en": "Matzana Matzana al Tov"
+      },
+      "tagline": {
+        "he": "מפעל במוקייבלה",
+        "ar": "مصنع في مقيبلة",
+        "en": "Factory in Muqeible"
+      },
+      "address": {
+        "he": "מוקייבלה",
+        "ar": "مقيبلة",
+        "en": "Muqeible"
+      },
+      "lat": 32.4674432,
+      "lng": 35.3071245,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/4996770421"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מצנע מצאנע אל-טוב",
+          "ar": "مصنع مصانع الطوب",
+          "en": "Matzana Matzana al Tov"
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "carpentry-shop",
+      "place": "nir-dawid-tel-amal",
+      "brand": null,
+      "primaryKind": "carpentry",
+      "kinds": [
+        "carpentry"
+      ],
+      "name": {
+        "he": "חנות מפעל רהיטים",
+        "ar": "محل مصنع أثاث",
+        "en": "Carpentry Shop"
+      },
+      "tagline": {
+        "he": "נגרייה בניר דוד",
+        "ar": "نجارة في نير داڤيد",
+        "en": "Carpentry in Nir Dawid"
+      },
+      "address": {
+        "he": "ניר דוד (תל עמל)",
+        "ar": "نير داڤيد (تل عمال)",
+        "en": "Nir Dawid (Tel Amal)"
+      },
+      "lat": 32.5055905,
+      "lng": 35.4577902,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/4381482493"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "חנות מפעל רהיטים",
+          "ar": "محل مصنع أثاث",
+          "en": "Carpentry Shop"
+        },
+        "title": {
+          "he": "נגרייה",
+          "ar": "نجارة",
+          "en": "Carpentry"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "נגרייה",
+              "ar": "نجارة",
+              "en": "Carpentry"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "awada-marble-and-granite-ltd",
+      "place": "nof-hagalil",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "שיש וגרניט עואוודה בע\"מ",
+        "ar": "شيش وجرنيط عوافدا بعم",
+        "en": "Awada Marble and Granite Ltd."
+      },
+      "tagline": {
+        "he": "מפעל בנוף הגליל",
+        "ar": "مصنع في نوف هجليل",
+        "en": "Factory in Nof HaGalil"
+      },
+      "address": {
+        "he": "HaMaoz, Tsiporit industrial zone",
+        "ar": "نوف هجليل",
+        "en": "Nof HaGalil"
+      },
+      "lat": 32.7583984,
+      "lng": 35.3170463,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1022877919"
+      },
+      "tier": "basic",
+      "phone": "+972 4-641-9075",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "שיש וגרניט עואוודה בע\"מ",
+          "ar": "شيش وجرنيط عوافدا بعم",
+          "en": "Awada Marble and Granite Ltd."
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "strauss",
+      "place": "nof-hagalil",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "שטראוס",
+        "ar": "شطراوس",
+        "en": "Strauss"
+      },
+      "tagline": {
+        "he": "מפעל בנוף הגליל",
+        "ar": "مصنع في نوف هجليل",
+        "en": "Factory in Nof HaGalil"
+      },
+      "address": {
+        "he": "נוף הגליל",
+        "ar": "نوف هجليل",
+        "en": "Nof HaGalil"
+      },
+      "lat": 32.7019233,
+      "lng": 35.3150339,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/622009059"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "שטראוס",
+          "ar": "شطراوس",
+          "en": "Strauss"
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "barby-carpentry",
+      "place": "or-akiva",
+      "brand": null,
+      "primaryKind": "carpentry",
+      "kinds": [
+        "carpentry"
+      ],
+      "name": {
+        "he": "נגריית ברבי",
+        "ar": "منجرة بربي",
+        "en": "Barby carpentry"
+      },
+      "tagline": {
+        "he": "נגרייה באור עקיבא",
+        "ar": "نجارة في أور عقيفا",
+        "en": "Carpentry in Or Akiva"
+      },
+      "address": {
+        "he": "אור עקיבא",
+        "ar": "أور عقيفا",
+        "en": "Or Akiva"
+      },
+      "lat": 32.5055605,
+      "lng": 34.9255001,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/3162494935"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "נגריית ברבי",
+          "ar": "منجرة بربي",
+          "en": "Barby carpentry"
+        },
+        "title": {
+          "he": "נגרייה",
+          "ar": "نجارة",
+          "en": "Carpentry"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "נגרייה",
+              "ar": "نجارة",
+              "en": "Carpentry"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "palaram",
+      "place": "ramat-yohanan",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "פלרם",
+        "ar": "بلرم",
+        "en": "Palaram"
+      },
+      "tagline": {
+        "he": "מפעל ברמת יוחנן",
+        "ar": "مصنع في رمات يوحنان",
+        "en": "Factory in Ramat Yohanan"
+      },
+      "address": {
+        "he": "רמת יוחנן",
+        "ar": "رمات يوحنان",
+        "en": "Ramat Yohanan"
+      },
+      "lat": 32.7901871,
+      "lng": 35.1194249,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1525362799"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": "https://www.palram.com/il/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "פלרם",
+          "ar": "بلرم",
+          "en": "Palaram"
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "arfa-al-haras",
+      "place": "shaar-hagolan",
+      "brand": null,
+      "primaryKind": "security",
+      "kinds": [
+        "security"
+      ],
+      "name": {
+        "he": "ע'רפה אל-חארס",
+        "ar": "غرفة الحارس",
+        "en": "Arfa al Haras"
+      },
+      "tagline": {
+        "he": "אבטחה ושמירה בשער הגולן",
+        "ar": "حراسة وأمن في شعار هچولان",
+        "en": "Security in Shaar HaGolan"
+      },
+      "address": {
+        "he": "שער הגולן",
+        "ar": "شعار هچولان",
+        "en": "Shaar HaGolan"
+      },
+      "lat": 32.6685131,
+      "lng": 35.6417038,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1184459905"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "ע'רפה אל-חארס",
+          "ar": "غرفة الحارس",
+          "en": "Arfa al Haras"
+        },
+        "title": {
+          "he": "אבטחה ושמירה",
+          "ar": "حراسة وأمن",
+          "en": "Security"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "אבטחה ושמירה",
+              "ar": "حراسة وأمن",
+              "en": "Security"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "iscar",
+      "place": "yanoah-jatt",
+      "brand": null,
+      "primaryKind": "factories",
+      "kinds": [
+        "factories"
+      ],
+      "name": {
+        "he": "ישכר",
+        "ar": "يشكر",
+        "en": "Iscar"
+      },
+      "tagline": {
+        "he": "מפעל ביאנוח-ג'ת",
+        "ar": "مصنع في يانوح جت",
+        "en": "Factory in Yanoah - Jatt"
+      },
+      "address": {
+        "he": "יאנוח-ג'ת",
+        "ar": "يانوح جت",
+        "en": "Yanoah - Jatt"
+      },
+      "lat": 32.9800889,
+      "lng": 35.2708769,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/372240729"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "ישכר",
+          "ar": "يشكر",
+          "en": "Iscar"
+        },
+        "title": {
+          "he": "מפעל",
+          "ar": "مصنع",
+          "en": "Factory"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מפעל",
+              "ar": "مصنع",
+              "en": "Factory"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    }
+  ]
+}

@@ -1,0 +1,7179 @@
+{
+  "source": {
+    "name": "OpenStreetMap, every named education & classes business in the north",
+    "url": "https://www.openstreetmap.org",
+    "licence": "Open Database License (ODbL)",
+    "attribution": "© OpenStreetMap contributors (ODbL), openstreetmap.org/copyright",
+    "region": "northern-district, haifa-district",
+    "fetched": "2026-10-17",
+    "query": "named shop, office, craft, healthcare, tourism, club, amenity, leisure, emergency, works and industrial features, bbox 32.3,34.85,33.35,35.9 in 25 tiles",
+    "left_out": "features with no name, food (the food importer's), garages, tyres, testing, fuel, banks and EV charging (official lists), bars, alcohol, pork, gambling and lottery, adult shops, tobacco, vape and cannabis, tattoo and weapons shops, private places, sights with no hours or contact",
+    "hours": "from OSM opening_hours where it reads for certain; otherwise none",
+    "counts": {
+      "emitted": 89
+    }
+  },
+  "businesses": [
+    {
+      "slug": "druze-space-center",
+      "place": "abu-snan",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "מרכז החלל הדרוזי ע\"ש אילן רמון",
+        "ar": "المركز الدرزي لعلم الفضاء",
+        "en": "Druze Space Center"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית באבו סנאן",
+        "ar": "كلية وتأهيل مهني في أبو سنان",
+        "en": "College and vocational training in Abu Snan"
+      },
+      "address": {
+        "he": "אבו סנאן",
+        "ar": "أبو سنان",
+        "en": "Abu Snan"
+      },
+      "lat": 32.9530626,
+      "lng": 35.1849334,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/525366971"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": "http://www.druzesc.co.il/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מרכז החלל הדרוזי ע\"ש אילן רמון",
+          "ar": "المركز الدرزي لعلم الفضاء",
+          "en": "Druze Space Center"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "pasaga-centre",
+      "place": "afula",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "מרכז פסג\"ה",
+        "ar": "مركز بسجا",
+        "en": "Pasaga Centre"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בעפולה",
+        "ar": "كلية وتأهيل مهني في العفولة",
+        "en": "College and vocational training in Afula"
+      },
+      "address": {
+        "he": "עפולה",
+        "ar": "العفولة",
+        "en": "Afula"
+      },
+      "lat": 32.6095827,
+      "lng": 35.2976215,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/527378231"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מרכז פסג\"ה",
+          "ar": "مركز بسجا",
+          "en": "Pasaga Centre"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "akko-hesder-yeshiva",
+      "place": "akko",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "ישיבת ההסדר עכו",
+        "ar": "يشيفات ههسدر عكا",
+        "en": "Akko Hesder Yeshiva"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בעכו",
+        "ar": "كلية وتأهيل مهني في عكا",
+        "en": "College and vocational training in Akko"
+      },
+      "address": {
+        "he": "עכו",
+        "ar": "عكا",
+        "en": "Akko"
+      },
+      "lat": 32.9317391,
+      "lng": 35.088473,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/12618539033"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": "https://yakko.co.il",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "ישיבת ההסדר עכו",
+          "ar": "يشيفات ههسدر عكا",
+          "en": "Akko Hesder Yeshiva"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "building-conservation-laboratory",
+      "place": "akko",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "מעבדת שימור",
+        "ar": "معبدت شيمور",
+        "en": "Building Conservation Laboratory"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בעכו",
+        "ar": "كلية وتأهيل مهني في عكا",
+        "en": "College and vocational training in Akko"
+      },
+      "address": {
+        "he": "עכו",
+        "ar": "عكا",
+        "en": "Akko"
+      },
+      "lat": 32.9357413,
+      "lng": 35.0871363,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/6662493686"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מעבדת שימור",
+          "ar": "معبدت شيمور",
+          "en": "Building Conservation Laboratory"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "madaim",
+      "place": "akko",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "מדעים",
+        "ar": "مدعيم",
+        "en": "Madaim"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בעכו",
+        "ar": "كلية وتأهيل مهني في عكا",
+        "en": "College and vocational training in Akko"
+      },
+      "address": {
+        "he": "עכו",
+        "ar": "عكا",
+        "en": "Akko"
+      },
+      "lat": 32.9375461,
+      "lng": 35.086786,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/196534963"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מדעים",
+          "ar": "مدعيم",
+          "en": "Madaim"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "naval-officers-college",
+      "place": "akko",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "ביה\"ס לקציני ים - כ\"ג יורדי הסירה",
+        "ar": "بيهس لكتسيني يم كج يوردي هسيرا",
+        "en": "Naval officers college"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בעכו",
+        "ar": "كلية وتأهيل مهني في عكا",
+        "en": "College and vocational training in Akko"
+      },
+      "address": {
+        "he": "עכו",
+        "ar": "عكا",
+        "en": "Akko"
+      },
+      "lat": 32.9222639,
+      "lng": 35.0759353,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/609543991"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "ביה\"ס לקציני ים - כ\"ג יורדי הסירה",
+          "ar": "بيهس لكتسيني يم كج يوردي هسيرا",
+          "en": "Naval officers college"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "west-galilee-college",
+      "place": "akko",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "המכללה האקדמית גליל מערבי",
+        "ar": "همكللا هاكدميت الجليل معربي",
+        "en": "West Galilee college"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בעכו",
+        "ar": "كلية وتأهيل مهني في عكا",
+        "en": "College and vocational training in Akko"
+      },
+      "address": {
+        "he": "עכו",
+        "ar": "عكا",
+        "en": "Akko"
+      },
+      "lat": 32.9368863,
+      "lng": 35.0864477,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/304476124"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "המכללה האקדמית גליל מערבי",
+          "ar": "همكللا هاكدميت الجليل معربي",
+          "en": "West Galilee college"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "yeshivat-akko",
+      "place": "akko",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "ישיבת עכו",
+        "ar": "يشيفات عكا",
+        "en": "Yeshivat Akko"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בעכו",
+        "ar": "كلية وتأهيل مهني في عكا",
+        "en": "College and vocational training in Akko"
+      },
+      "address": {
+        "he": "עכו",
+        "ar": "عكا",
+        "en": "Akko"
+      },
+      "lat": 32.9302988,
+      "lng": 35.0795063,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/196668889"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "ישיבת עכו",
+          "ar": "يشيفات عكا",
+          "en": "Yeshivat Akko"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "bit-hamosika",
+      "place": "allonay-yizhaq",
+      "brand": null,
+      "primaryKind": "art-schools",
+      "kinds": [
+        "art-schools"
+      ],
+      "name": {
+        "he": "בית המוסיקה",
+        "ar": "بيت هموسيكا",
+        "en": "Bit Hamosika"
+      },
+      "tagline": {
+        "he": "חוגי מוזיקה ואמנות באלוני יצחק",
+        "ar": "دورات موسيقى وفن في ألوني يتسحاك",
+        "en": "Music and art classes in Allonay Yizhaq"
+      },
+      "address": {
+        "he": "אלוני יצחק",
+        "ar": "ألوني يتسحاك",
+        "en": "Allonay Yizhaq"
+      },
+      "lat": 32.5097491,
+      "lng": 35.0031131,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1301243372"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "בית המוסיקה",
+          "ar": "بيت هموسيكا",
+          "en": "Bit Hamosika"
+        },
+        "title": {
+          "he": "חוגי מוזיקה ואמנות",
+          "ar": "دورات موسيقى وفن",
+          "en": "Music and art classes"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוגי מוזיקה ואמנות",
+              "ar": "دورات موسيقى وفن",
+              "en": "Music and art classes"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "al-qasemi",
+      "place": "baqa-al-gharbiyye",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "אלקאסמי",
+        "ar": "القاسمي",
+        "en": "Al-Qasemi"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בבאקה אל-גרביה",
+        "ar": "كلية وتأهيل مهني في باقة الغربية",
+        "en": "College and vocational training in Baqa al-Gharbiyye"
+      },
+      "address": {
+        "he": "באקה אל-גרביה",
+        "ar": "باقة الغربية",
+        "en": "Baqa al-Gharbiyye"
+      },
+      "lat": 32.4215456,
+      "lng": 35.0339929,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/195060718"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אלקאסמי",
+          "ar": "القاسمي",
+          "en": "Al-Qasemi"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "alon",
+      "place": "beit-shean",
+      "brand": null,
+      "primaryKind": "driving",
+      "kinds": [
+        "driving"
+      ],
+      "name": {
+        "he": "אלון",
+        "ar": "الون",
+        "en": "Alon"
+      },
+      "tagline": {
+        "he": "בית ספר לנהיגה בבית שאן",
+        "ar": "مدرسة سياقة في بيت شيئان",
+        "en": "Driving school in Beit Shean"
+      },
+      "address": {
+        "he": "בית שאן",
+        "ar": "بيت شيئان",
+        "en": "Beit Shean"
+      },
+      "lat": 32.5103545,
+      "lng": 35.5010523,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/12404789249"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אלון",
+          "ar": "الون",
+          "en": "Alon"
+        },
+        "title": {
+          "he": "בית ספר לנהיגה",
+          "ar": "مدرسة سياقة",
+          "en": "Driving school"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "בית ספר לנהיגה",
+              "ar": "مدرسة سياقة",
+              "en": "Driving school"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "kimaron-hall",
+      "place": "beit-shean",
+      "brand": null,
+      "primaryKind": "art-schools",
+      "kinds": [
+        "art-schools"
+      ],
+      "name": {
+        "he": "Kimaron Hall",
+        "ar": "Kimaron Hall",
+        "en": "Kimaron Hall"
+      },
+      "tagline": {
+        "he": "חוגי מוזיקה ואמנות בבית שאן",
+        "ar": "دورات موسيقى وفن في بيت شيئان",
+        "en": "Music and art classes in Beit Shean"
+      },
+      "address": {
+        "he": "בית שאן",
+        "ar": "بيت شيئان",
+        "en": "Beit Shean"
+      },
+      "lat": 32.4950393,
+      "lng": 35.5147094,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1340806165"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "Kimaron Hall",
+          "ar": "Kimaron Hall",
+          "en": "Kimaron Hall"
+        },
+        "title": {
+          "he": "חוגי מוזיקה ואמנות",
+          "ar": "دورات موسيقى وفن",
+          "en": "Music and art classes"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוגי מוזיקה ואמנות",
+              "ar": "دورات موسيقى وفن",
+              "en": "Music and art classes"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "artists-of-the-future",
+      "place": "daliyat-al-karmel",
+      "brand": null,
+      "primaryKind": "art-schools",
+      "kinds": [
+        "art-schools"
+      ],
+      "name": {
+        "he": "מרכז אומני העתיד",
+        "ar": "مركز اومني هعتيد",
+        "en": "Artists Of The Future"
+      },
+      "tagline": {
+        "he": "חוגי מוזיקה ואמנות בדאלית אל-כרמל",
+        "ar": "دورات موسيقى وفن في دالية الكرمل",
+        "en": "Music and art classes in Daliyat al-Karmel"
+      },
+      "address": {
+        "he": "דאלית אל-כרמל",
+        "ar": "دالية الكرمل",
+        "en": "Daliyat al-Karmel"
+      },
+      "lat": 32.6951764,
+      "lng": 35.0628855,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/3691498182"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מרכז אומני העתיד",
+          "ar": "مركز اومني هعتيد",
+          "en": "Artists Of The Future"
+        },
+        "title": {
+          "he": "חוגי מוזיקה ואמנות",
+          "ar": "دورات موسيقى وفن",
+          "en": "Music and art classes"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוגי מוזיקה ואמנות",
+              "ar": "دورات موسيقى وفن",
+              "en": "Music and art classes"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "enigma-psychometric",
+      "place": "daliyat-al-karmel",
+      "brand": null,
+      "primaryKind": "tutors",
+      "kinds": [
+        "tutors"
+      ],
+      "name": {
+        "he": "אניגמה פסיכומטרי",
+        "ar": "انيجما بسيخومتري",
+        "en": "Enigma Psychometric"
+      },
+      "tagline": {
+        "he": "שיעורים פרטיים בדאלית אל-כרמל",
+        "ar": "دروس خصوصية في دالية الكرمل",
+        "en": "Tutoring in Daliyat al-Karmel"
+      },
+      "address": {
+        "he": "דאלית אל-כרמל",
+        "ar": "دالية الكرمل",
+        "en": "Daliyat al-Karmel"
+      },
+      "lat": 32.6882971,
+      "lng": 35.0645166,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/12707525930"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אניגמה פסיכומטרי",
+          "ar": "انيجما بسيخومتري",
+          "en": "Enigma Psychometric"
+        },
+        "title": {
+          "he": "שיעורים פרטיים",
+          "ar": "دروس خصوصية",
+          "en": "Tutoring"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "שיעורים פרטיים",
+              "ar": "دروس خصوصية",
+              "en": "Tutoring"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "gavan-anad-lavan",
+      "place": "daliyat-al-karmel",
+      "brand": null,
+      "primaryKind": "sewing",
+      "kinds": [
+        "sewing"
+      ],
+      "name": {
+        "he": "גוון אנד לבן",
+        "ar": "جفن اند لبن",
+        "en": "Gavan Anad Lavan"
+      },
+      "tagline": {
+        "he": "תפירה וחומרי תפירה בדאלית אל-כרמל",
+        "ar": "خياطة ولوازمها في دالية الكرمل",
+        "en": "Sewing in Daliyat al-Karmel"
+      },
+      "address": {
+        "he": "דאלית אל-כרמל",
+        "ar": "دالية الكرمل",
+        "en": "Daliyat al-Karmel"
+      },
+      "lat": 32.6968848,
+      "lng": 35.0545894,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/3691499177"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "גוון אנד לבן",
+          "ar": "جفن اند لبن",
+          "en": "Gavan Anad Lavan"
+        },
+        "title": {
+          "he": "תפירה וחומרי תפירה",
+          "ar": "خياطة ولوازمها",
+          "en": "Sewing"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "תפירה וחומרי תפירה",
+              "ar": "خياطة ولوازمها",
+              "en": "Sewing"
+            },
+            "meta": {
+              "he": "בדים",
+              "ar": "أقمشة",
+              "en": "Fabrics"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "mahalakat-noar-hamahalka-lhinokh-balti-poramli",
+      "place": "daliyat-al-karmel",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "מחלקת נוער - המחלקה לחינוך בלתי פורמלי",
+        "ar": "وحدة الشبيبة - قسم التعليم الامنهجي",
+        "en": "Mahalakat Noar Hamahalka Lhinokh Balti Poramli"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בדאלית אל-כרמל",
+        "ar": "كلية وتأهيل مهني في دالية الكرمل",
+        "en": "College and vocational training in Daliyat al-Karmel"
+      },
+      "address": {
+        "he": "דאלית אל-כרמל",
+        "ar": "دالية الكرمل",
+        "en": "Daliyat al-Karmel"
+      },
+      "lat": 32.6930918,
+      "lng": 35.0579008,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/4931871371"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מחלקת נוער - המחלקה לחינוך בלתי פורמלי",
+          "ar": "وحدة الشبيبة - قسم التعليم الامنهجي",
+          "en": "Mahalakat Noar Hamahalka Lhinokh Balti Poramli"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "mahar-centre",
+      "place": "daliyat-al-karmel",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "מרכז מח\"ר",
+        "ar": "مركز الغد",
+        "en": "Mahar Centre"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בדאלית אל-כרמל",
+        "ar": "كلية وتأهيل مهني في دالية الكرمل",
+        "en": "College and vocational training in Daliyat al-Karmel"
+      },
+      "address": {
+        "he": "דאלית אל-כרמל",
+        "ar": "دالية الكرمل",
+        "en": "Daliyat al-Karmel"
+      },
+      "lat": 32.6874613,
+      "lng": 35.0597508,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/3691499190"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מרכז מח\"ר",
+          "ar": "مركز الغد",
+          "en": "Mahar Centre"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "vatar",
+      "place": "daliyat-al-karmel",
+      "brand": null,
+      "primaryKind": "art-schools",
+      "kinds": [
+        "art-schools"
+      ],
+      "name": {
+        "he": "ותר",
+        "ar": "وتر",
+        "en": "Vatar"
+      },
+      "tagline": {
+        "he": "חוגי מוזיקה ואמנות בדאלית אל-כרמל",
+        "ar": "دورات موسيقى وفن في دالية الكرمل",
+        "en": "Music and art classes in Daliyat al-Karmel"
+      },
+      "address": {
+        "he": "דאלית אל-כרמל",
+        "ar": "دالية الكرمل",
+        "en": "Daliyat al-Karmel"
+      },
+      "lat": 32.6975233,
+      "lng": 35.0548294,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/4784939774"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "ותר",
+          "ar": "وتر",
+          "en": "Vatar"
+        },
+        "title": {
+          "he": "חוגי מוזיקה ואמנות",
+          "ar": "دورات موسيقى وفن",
+          "en": "Music and art classes"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוגי מוזיקה ואמנות",
+              "ar": "دورات موسيقى وفن",
+              "en": "Music and art classes"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "words-world",
+      "place": "daliyat-al-karmel",
+      "brand": null,
+      "primaryKind": "language-schools",
+      "kinds": [
+        "language-schools"
+      ],
+      "name": {
+        "he": "Words' World",
+        "ar": "Words' World",
+        "en": "Words' World"
+      },
+      "tagline": {
+        "he": "לימוד שפות בדאלית אל-כרמל",
+        "ar": "تعليم لغات في دالية الكرمل",
+        "en": "Language school in Daliyat al-Karmel"
+      },
+      "address": {
+        "he": "דאלית אל-כרמל",
+        "ar": "دالية الكرمل",
+        "en": "Daliyat al-Karmel"
+      },
+      "lat": 32.6950951,
+      "lng": 35.0584339,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/12691282414"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "Words' World",
+          "ar": "Words' World",
+          "en": "Words' World"
+        },
+        "title": {
+          "he": "לימוד שפות",
+          "ar": "تعليم لغات",
+          "en": "Language school"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "לימוד שפות",
+              "ar": "تعليم لغات",
+              "en": "Language school"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "holy-spirit-university-of-kaslik-in-rmeich",
+      "place": "dovev",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "Holy Spirit University of Kaslik in Rmeich",
+        "ar": "Holy Spirit University of Kaslik in Rmeich",
+        "en": "Holy Spirit University of Kaslik in Rmeich"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בדוב\"ב",
+        "ar": "كلية وتأهيل مهني في دوڤيڤ",
+        "en": "College and vocational training in Dovev"
+      },
+      "address": {
+        "he": "דוב\"ב",
+        "ar": "دوڤيڤ",
+        "en": "Dovev"
+      },
+      "lat": 33.0892234,
+      "lng": 35.3788641,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1188713385"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "Holy Spirit University of Kaslik in Rmeich",
+          "ar": "Holy Spirit University of Kaslik in Rmeich",
+          "en": "Holy Spirit University of Kaslik in Rmeich"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "tarvot-megiddo-hall",
+      "place": "ein-hashofet",
+      "brand": null,
+      "primaryKind": "art-schools",
+      "kinds": [
+        "art-schools"
+      ],
+      "name": {
+        "he": "אולם תרבות מגידו",
+        "ar": "قاعة تربوت مجدو",
+        "en": "Tarvot Megiddo Hall"
+      },
+      "tagline": {
+        "he": "חוגי מוזיקה ואמנות בעין השופט",
+        "ar": "دورات موسيقى وفن في عين هشوفط",
+        "en": "Music and art classes in Ein HaShofet"
+      },
+      "address": {
+        "he": "עין השופט",
+        "ar": "عين هشوفط",
+        "en": "Ein HaShofet"
+      },
+      "lat": 32.5986514,
+      "lng": 35.0992111,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/636500654"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אולם תרבות מגידו",
+          "ar": "قاعة تربوت مجدو",
+          "en": "Tarvot Megiddo Hall"
+        },
+        "title": {
+          "he": "חוגי מוזיקה ואמנות",
+          "ar": "دورات موسيقى وفن",
+          "en": "Music and art classes"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוגי מוזיקה ואמנות",
+              "ar": "دورات موسيقى وفن",
+              "en": "Music and art classes"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "ulpan",
+      "place": "ein-hashofet",
+      "brand": null,
+      "primaryKind": "language-schools",
+      "kinds": [
+        "language-schools"
+      ],
+      "name": {
+        "he": "אולפן",
+        "ar": "اولفن",
+        "en": "Ulpan"
+      },
+      "tagline": {
+        "he": "לימוד שפות בעין השופט",
+        "ar": "تعليم لغات في عين هشوفط",
+        "en": "Language school in Ein HaShofet"
+      },
+      "address": {
+        "he": "עין השופט",
+        "ar": "عين هشوفط",
+        "en": "Ein HaShofet"
+      },
+      "lat": 32.5931431,
+      "lng": 35.1022823,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/878631618"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אולפן",
+          "ar": "اولفن",
+          "en": "Ulpan"
+        },
+        "title": {
+          "he": "לימוד שפות",
+          "ar": "تعليم لغات",
+          "en": "Language school"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "לימוד שפות",
+              "ar": "تعليم لغات",
+              "en": "Language school"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "carmel-ntiv-aliazar",
+      "place": "etgar",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "כרמל נתיב אליעזר",
+        "ar": "الكرمل نتيب اليعزر",
+        "en": "Carmel Ntiv Aliazar"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית באתגר",
+        "ar": "كلية وتأهيل مهني في إتچار",
+        "en": "College and vocational training in Etgar"
+      },
+      "address": {
+        "he": "אתגר",
+        "ar": "إتچار",
+        "en": "Etgar"
+      },
+      "lat": 32.7888111,
+      "lng": 34.9905703,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/14247192489"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "כרמל נתיב אליעזר",
+          "ar": "الكرمل نتيب اليعزر",
+          "en": "Carmel Ntiv Aliazar"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "alternative-medical-college",
+      "place": "gan-hashomron",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "המכללה לרפואה משלימה",
+        "ar": "همكللا لرفواا مشليما",
+        "en": "Alternative medical college"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בגן השומרון",
+        "ar": "كلية وتأهيل مهني في چان هشومرون",
+        "en": "College and vocational training in Gan HaShomron"
+      },
+      "address": {
+        "he": "גן השומרון",
+        "ar": "چان هشومرون",
+        "en": "Gan HaShomron"
+      },
+      "lat": 32.4728902,
+      "lng": 34.9933475,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/234892070"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "המכללה לרפואה משלימה",
+          "ar": "همكللا لرفواا مشليما",
+          "en": "Alternative medical college"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "ulpan-hadera",
+      "place": "hadera",
+      "brand": null,
+      "primaryKind": "language-schools",
+      "kinds": [
+        "language-schools"
+      ],
+      "name": {
+        "he": "Ulpan Hadera",
+        "ar": "Ulpan Hadera",
+        "en": "Ulpan Hadera"
+      },
+      "tagline": {
+        "he": "לימוד שפות בחדרה",
+        "ar": "تعليم لغات في الخضيرة",
+        "en": "Language school in Hadera"
+      },
+      "address": {
+        "he": "ז'בוטינסקי 10",
+        "ar": "الخضيرة",
+        "en": "Hadera"
+      },
+      "lat": 32.4331236,
+      "lng": 34.9176277,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "08:30",
+              "close": "13:00"
+            },
+            {
+              "open": "18:00",
+              "close": "20:30"
+            }
+          ],
+          "1": [
+            {
+              "open": "08:30",
+              "close": "13:00"
+            },
+            {
+              "open": "18:00",
+              "close": "20:30"
+            }
+          ],
+          "2": [
+            {
+              "open": "08:30",
+              "close": "13:00"
+            },
+            {
+              "open": "18:00",
+              "close": "20:30"
+            }
+          ],
+          "3": [
+            {
+              "open": "08:30",
+              "close": "13:00"
+            },
+            {
+              "open": "18:00",
+              "close": "20:30"
+            }
+          ],
+          "4": [
+            {
+              "open": "08:30",
+              "close": "13:00"
+            },
+            {
+              "open": "18:00",
+              "close": "20:30"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1208280192"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "Ulpan Hadera",
+          "ar": "Ulpan Hadera",
+          "en": "Ulpan Hadera"
+        },
+        "title": {
+          "he": "לימוד שפות",
+          "ar": "تعليم لغات",
+          "en": "Language school"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "לימוד שפות",
+              "ar": "تعليم لغات",
+              "en": "Language school"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "alef-academy",
+      "place": "haifa",
+      "brand": null,
+      "primaryKind": "language-schools",
+      "kinds": [
+        "language-schools"
+      ],
+      "name": {
+        "he": "אקדמיה אלף ללימודי עברית",
+        "ar": "أكاديمية ألف",
+        "en": "Alef Academy"
+      },
+      "tagline": {
+        "he": "לימוד שפות בחיפה",
+        "ar": "تعليم لغات في حيفا",
+        "en": "Language school in Haifa"
+      },
+      "address": {
+        "he": "הנמל 33",
+        "ar": "حيفا",
+        "en": "Haifa"
+      },
+      "lat": 32.8188897,
+      "lng": 35.0005265,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "09:00",
+              "close": "17:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "09:00",
+              "close": "17:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "09:00",
+              "close": "17:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "09:00",
+              "close": "17:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "09:00",
+              "close": "17:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/13915369170"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": "https://www.alefacademai.com/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אקדמיה אלף ללימודי עברית",
+          "ar": "أكاديمية ألف",
+          "en": "Alef Academy"
+        },
+        "title": {
+          "he": "לימוד שפות",
+          "ar": "تعليم لغات",
+          "en": "Language school"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "לימוד שפות",
+              "ar": "تعليم لغات",
+              "en": "Language school"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {
+        "instagram": "https://www.instagram.com/alef_schooll?igsh=MThtZnRtanRsZHFteA%3D%3D",
+        "facebook": "https://www.facebook.com/people/Alef-Academy/100079574082752/"
+      },
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "gordon-college-of-education",
+      "place": "haifa",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "האקדמית גורדון",
+        "ar": "هاكدميت جوردون",
+        "en": "Gordon College of Education"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בחיפה",
+        "ar": "كلية وتأهيل مهني في حيفا",
+        "en": "College and vocational training in Haifa"
+      },
+      "address": {
+        "he": "טשרניחובסקי 73",
+        "ar": "حيفا",
+        "en": "Haifa"
+      },
+      "lat": 32.825126,
+      "lng": 34.9692592,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1494336012"
+      },
+      "tier": "basic",
+      "phone": "+972 4-859-0111",
+      "whatsapp": null,
+      "website": "https://www.gordon.ac.il/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "האקדמית גורדון",
+          "ar": "هاكدميت جوردون",
+          "en": "Gordon College of Education"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "hadarion-building-technion",
+      "place": "haifa",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "בניין ההדריון (טכניון)",
+        "ar": "بنين ههدريون طكنيون",
+        "en": "Hadarion Building (Technion)"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בחיפה",
+        "ar": "كلية وتأهيل مهني في حيفا",
+        "en": "College and vocational training in Haifa"
+      },
+      "address": {
+        "he": "חיפה",
+        "ar": "حيفا",
+        "en": "Haifa"
+      },
+      "lat": 32.8086787,
+      "lng": 34.9953612,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1119263838"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "בניין ההדריון (טכניון)",
+          "ar": "بنين ههدريون طكنيون",
+          "en": "Hadarion Building (Technion)"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "haifa-auditorium",
+      "place": "haifa",
+      "brand": null,
+      "primaryKind": "art-schools",
+      "kinds": [
+        "art-schools"
+      ],
+      "name": {
+        "he": "אודיטוריום חיפה",
+        "ar": "اوديطوريوم حيفا",
+        "en": "Haifa Auditorium"
+      },
+      "tagline": {
+        "he": "חוגי מוזיקה ואמנות בחיפה",
+        "ar": "دورات موسيقى وفن في حيفا",
+        "en": "Music and art classes in Haifa"
+      },
+      "address": {
+        "he": "חיפה",
+        "ar": "حيفا",
+        "en": "Haifa"
+      },
+      "lat": 32.8035188,
+      "lng": 34.985017,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/124774194"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אודיטוריום חיפה",
+          "ar": "اوديطوريوم حيفا",
+          "en": "Haifa Auditorium"
+        },
+        "title": {
+          "he": "חוגי מוזיקה ואמנות",
+          "ar": "دورات موسيقى وفن",
+          "en": "Music and art classes"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוגי מוזיקה ואמנות",
+              "ar": "دورات موسيقى وفن",
+              "en": "Music and art classes"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "ulpan-etzion-carmel",
+      "place": "haifa",
+      "brand": null,
+      "primaryKind": "language-schools",
+      "kinds": [
+        "language-schools"
+      ],
+      "name": {
+        "he": "אולפן עציון חיפה",
+        "ar": "اولفن عتسيون حيفا",
+        "en": "Ulpan Etzion Carmel"
+      },
+      "tagline": {
+        "he": "לימוד שפות בחיפה",
+        "ar": "تعليم لغات في حيفا",
+        "en": "Language school in Haifa"
+      },
+      "address": {
+        "he": "הנמל 65",
+        "ar": "حيفا",
+        "en": "Haifa"
+      },
+      "lat": 32.820822,
+      "lng": 34.9980895,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/5525764822"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אולפן עציון חיפה",
+          "ar": "اولفن عتسيون حيفا",
+          "en": "Ulpan Etzion Carmel"
+        },
+        "title": {
+          "he": "לימוד שפות",
+          "ar": "تعليم لغات",
+          "en": "Language school"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "לימוד שפות",
+              "ar": "تعليم لغات",
+              "en": "Language school"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "yasharal-college",
+      "place": "haifa",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "מכללת ישראל",
+        "ar": "كلية يشرال",
+        "en": "Yasharal College"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בחיפה",
+        "ar": "كلية وتأهيل مهني في حيفا",
+        "en": "College and vocational training in Haifa"
+      },
+      "address": {
+        "he": "חיפה",
+        "ar": "حيفا",
+        "en": "Haifa"
+      },
+      "lat": 32.8179527,
+      "lng": 34.959481,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1067842849"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מכללת ישראל",
+          "ar": "كلية يشرال",
+          "en": "Yasharal College"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "klia-mar-alias",
+      "place": "ibilin",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "כליה מאר אליאס",
+        "ar": "كلية مار إلياس",
+        "en": "Klia Mar Alias"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית באעבלין",
+        "ar": "كلية وتأهيل مهني في إعبلين",
+        "en": "College and vocational training in Ibilin"
+      },
+      "address": {
+        "he": "אעבלין",
+        "ar": "إعبلين",
+        "en": "Ibilin"
+      },
+      "lat": 32.8168777,
+      "lng": 35.1924482,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/5402605738"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "כליה מאר אליאס",
+          "ar": "كلية مار إلياس",
+          "en": "Klia Mar Alias"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "carmel-college",
+      "place": "isfiya",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "מכללת הכרמל",
+        "ar": "كلية الكرمل",
+        "en": "Carmel College"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בעספיא",
+        "ar": "كلية وتأهيل مهني في عسفيا",
+        "en": "College and vocational training in Isfiya"
+      },
+      "address": {
+        "he": "עספיא",
+        "ar": "عسفيا",
+        "en": "Isfiya"
+      },
+      "lat": 32.7061822,
+      "lng": 35.0585736,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/486837925"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מכללת הכרמל",
+          "ar": "كلية الكرمل",
+          "en": "Carmel College"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "gottesman-etching-center",
+      "place": "kabri",
+      "brand": null,
+      "primaryKind": "art-schools",
+      "kinds": [
+        "art-schools"
+      ],
+      "name": {
+        "he": "מרכז גוטסמן לתחריט",
+        "ar": "مركز جوطسمن لتحريط",
+        "en": "Gottesman Etching Center"
+      },
+      "tagline": {
+        "he": "חוגי מוזיקה ואמנות בכברי",
+        "ar": "دورات موسيقى وفن في كابري",
+        "en": "Music and art classes in Kabri"
+      },
+      "address": {
+        "he": "כברי",
+        "ar": "كابري",
+        "en": "Kabri"
+      },
+      "lat": 33.0179102,
+      "lng": 35.1469341,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/1511914435"
+      },
+      "tier": "basic",
+      "phone": "+972 4-995-2713",
+      "whatsapp": null,
+      "website": "http://www.cabriprints.com",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מרכז גוטסמן לתחריט",
+          "ar": "مركز جوطسمن لتحريط",
+          "en": "Gottesman Etching Center"
+        },
+        "title": {
+          "he": "חוגי מוזיקה ואמנות",
+          "ar": "دورات موسيقى وفن",
+          "en": "Music and art classes"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוגי מוזיקה ואמנות",
+              "ar": "دورات موسيقى وفن",
+              "en": "Music and art classes"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "karmiel-music-conservatory",
+      "place": "karmiel",
+      "brand": null,
+      "primaryKind": "art-schools",
+      "kinds": [
+        "art-schools"
+      ],
+      "name": {
+        "he": "קונסרבטוריון כרמיאל",
+        "ar": "كونسربطوريون كرميئيل",
+        "en": "Karmiel Music Conservatory"
+      },
+      "tagline": {
+        "he": "חוגי מוזיקה ואמנות בכרמיאל",
+        "ar": "دورات موسيقى وفن في كرميئيل",
+        "en": "Music and art classes in Karmiel"
+      },
+      "address": {
+        "he": "נרקיס 7",
+        "ar": "كرميئيل",
+        "en": "Karmiel"
+      },
+      "lat": 32.9134991,
+      "lng": 35.3028319,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "10:30",
+              "close": "13:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "10:30",
+              "close": "13:00"
+            },
+            {
+              "open": "16:30",
+              "close": "18:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "10:30",
+              "close": "13:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "10:30",
+              "close": "13:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "10:30",
+              "close": "13:00"
+            },
+            {
+              "open": "16:30",
+              "close": "18:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/330781620"
+      },
+      "tier": "basic",
+      "phone": "+972 4-958-0442",
+      "whatsapp": null,
+      "website": "http://conskarmiel.net",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "קונסרבטוריון כרמיאל",
+          "ar": "كونسربطوريون كرميئيل",
+          "en": "Karmiel Music Conservatory"
+        },
+        "title": {
+          "he": "חוגי מוזיקה ואמנות",
+          "ar": "دورات موسيقى وفن",
+          "en": "Music and art classes"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוגי מוזיקה ואמנות",
+              "ar": "دورات موسيقى وفن",
+              "en": "Music and art classes"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/karmielcons"
+      },
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "ort-braude-college",
+      "place": "karmiel",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "מכללת אורט בראודה",
+        "ar": "كلية اورط براودا",
+        "en": "Ort Braude College"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בכרמיאל",
+        "ar": "كلية وتأهيل مهني في كرميئيل",
+        "en": "College and vocational training in Karmiel"
+      },
+      "address": {
+        "he": "כרמיאל",
+        "ar": "كرميئيل",
+        "en": "Karmiel"
+      },
+      "lat": 32.9142549,
+      "lng": 35.2830035,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/129120247"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": "https://w3.braude.ac.il/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מכללת אורט בראודה",
+          "ar": "كلية اورط براودا",
+          "en": "Ort Braude College"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "pasaga-karmiel-centre",
+      "place": "karmiel",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "מרכז פסג\"ה כרמיאל",
+        "ar": "مركز بسجا كرميئيل",
+        "en": "Pasaga Karmiel Centre"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בכרמיאל",
+        "ar": "كلية وتأهيل مهني في كرميئيل",
+        "en": "College and vocational training in Karmiel"
+      },
+      "address": {
+        "he": "כרמיאל",
+        "ar": "كرميئيل",
+        "en": "Karmiel"
+      },
+      "lat": 32.9167287,
+      "lng": 35.2942076,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/619479248"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מרכז פסג\"ה כרמיאל",
+          "ar": "مركز بسجا كرميئيل",
+          "en": "Pasaga Karmiel Centre"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "al-matzri-loazam-khiatin",
+      "place": "katzir",
+      "brand": null,
+      "primaryKind": "sewing",
+      "kinds": [
+        "sewing"
+      ],
+      "name": {
+        "he": "אל-מצרי לואזם ח'יאטין",
+        "ar": "المصري لوازم خياطين",
+        "en": "al Matzri Loazam Khiatin"
+      },
+      "tagline": {
+        "he": "תפירה וחומרי תפירה בקציר",
+        "ar": "خياطة ولوازمها في كتسير",
+        "en": "Sewing in Katzir"
+      },
+      "address": {
+        "he": "קציר",
+        "ar": "كتسير",
+        "en": "Katzir"
+      },
+      "lat": 32.47557,
+      "lng": 35.0915082,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9922001246"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אל-מצרי לואזם ח'יאטין",
+          "ar": "المصري لوازم خياطين",
+          "en": "al Matzri Loazam Khiatin"
+        },
+        "title": {
+          "he": "תפירה וחומרי תפירה",
+          "ar": "خياطة ولوازمها",
+          "en": "Sewing"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "תפירה וחומרי תפירה",
+              "ar": "خياطة ولوازمها",
+              "en": "Sewing"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "al-zhor-lalakamsha",
+      "place": "katzir",
+      "brand": null,
+      "primaryKind": "sewing",
+      "kinds": [
+        "sewing"
+      ],
+      "name": {
+        "he": "אל-זהור ללאקמשה",
+        "ar": "الزهور للاقمشة",
+        "en": "al Zhor Lalakamsha"
+      },
+      "tagline": {
+        "he": "תפירה וחומרי תפירה בקציר",
+        "ar": "خياطة ولوازمها في كتسير",
+        "en": "Sewing in Katzir"
+      },
+      "address": {
+        "he": "קציר",
+        "ar": "كتسير",
+        "en": "Katzir"
+      },
+      "lat": 32.4751293,
+      "lng": 35.090523,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9937871890"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אל-זהור ללאקמשה",
+          "ar": "الزهور للاقمشة",
+          "en": "al Zhor Lalakamsha"
+        },
+        "title": {
+          "he": "תפירה וחומרי תפירה",
+          "ar": "خياطة ولوازمها",
+          "en": "Sewing"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "תפירה וחומרי תפירה",
+              "ar": "خياطة ولوازمها",
+              "en": "Sewing"
+            },
+            "meta": {
+              "he": "בדים",
+              "ar": "أقمشة",
+              "en": "Fabrics"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "barataa-al-avatadaaia-al-rasmia-school",
+      "place": "katzir",
+      "brand": null,
+      "primaryKind": "islamic-schools",
+      "kinds": [
+        "islamic-schools"
+      ],
+      "name": {
+        "he": "בית ספר ברטעה אל-אבתדאאיה אל-רסמיה",
+        "ar": "مدرسة برطعة الابتدائية الرسمية",
+        "en": "Barataa al Avatadaaia al Rasmia School"
+      },
+      "tagline": {
+        "he": "בית ספר אסלאמי בקציר",
+        "ar": "مدرسة إسلامية في كتسير",
+        "en": "Islamic school in Katzir"
+      },
+      "address": {
+        "he": "קציר",
+        "ar": "كتسير",
+        "en": "Katzir"
+      },
+      "lat": 32.4755362,
+      "lng": 35.0872701,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9929272078"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "בית ספר ברטעה אל-אבתדאאיה אל-רסמיה",
+          "ar": "مدرسة برطعة الابتدائية الرسمية",
+          "en": "Barataa al Avatadaaia al Rasmia School"
+        },
+        "title": {
+          "he": "בית ספר אסלאמי",
+          "ar": "مدرسة إسلامية",
+          "en": "Islamic school"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "בית ספר אסלאמי",
+              "ar": "مدرسة إسلامية",
+              "en": "Islamic school"
+            }
+          },
+          {
+            "label": {
+              "he": "זרם",
+              "ar": "طائفة",
+              "en": "Denomination"
+            },
+            "meta": {
+              "he": "סונית",
+              "ar": "سنة",
+              "en": "Sunni"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "rkhoa-arav-lalakamsha",
+      "place": "katzir",
+      "brand": null,
+      "primaryKind": "sewing",
+      "kinds": [
+        "sewing"
+      ],
+      "name": {
+        "he": "רכוה ערב ללאקמשה",
+        "ar": "ركوة عرب للاقمشة",
+        "en": "Rkhoa Arav Lalakamsha"
+      },
+      "tagline": {
+        "he": "תפירה וחומרי תפירה בקציר",
+        "ar": "خياطة ولوازمها في كتسير",
+        "en": "Sewing in Katzir"
+      },
+      "address": {
+        "he": "קציר",
+        "ar": "كتسير",
+        "en": "Katzir"
+      },
+      "lat": 32.4752042,
+      "lng": 35.0896168,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9920989864"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "רכוה ערב ללאקמשה",
+          "ar": "ركوة عرب للاقمشة",
+          "en": "Rkhoa Arav Lalakamsha"
+        },
+        "title": {
+          "he": "תפירה וחומרי תפירה",
+          "ar": "خياطة ولوازمها",
+          "en": "Sewing"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "תפירה וחומרי תפירה",
+              "ar": "خياطة ولوازمها",
+              "en": "Sewing"
+            },
+            "meta": {
+              "he": "בדים",
+              "ar": "أقمشة",
+              "en": "Fabrics"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "eitan-military-prep-school",
+      "place": "katzrin",
+      "brand": null,
+      "primaryKind": "psychometric",
+      "kinds": [
+        "psychometric"
+      ],
+      "name": {
+        "he": "מכינה קדם צבאית \"איתן\"",
+        "ar": "مكينا كدم تسبايت إيتان",
+        "en": "Eitan military prep school"
+      },
+      "tagline": {
+        "he": "הכנה לפסיכומטרי בקצרין",
+        "ar": "تحضير للبسيخومتري في كتسرين",
+        "en": "Psychometric prep in Katzrin"
+      },
+      "address": {
+        "he": "קצרין",
+        "ar": "كتسرين",
+        "en": "Katzrin"
+      },
+      "lat": 32.9862357,
+      "lng": 35.6974508,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/363362923"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מכינה קדם צבאית \"איתן\"",
+          "ar": "مكينا كدم تسبايت إيتان",
+          "en": "Eitan military prep school"
+        },
+        "title": {
+          "he": "הכנה לפסיכומטרי",
+          "ar": "تحضير للبسيخومتري",
+          "en": "Psychometric prep"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "הכנה לפסיכומטרי",
+              "ar": "تحضير للبسيخومتري",
+              "en": "Psychometric prep"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "technical-school-of-the-air-force",
+      "place": "kefar-bialik",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "המכללה הטכנולוגית של חיל האוויר חיפה",
+        "ar": "همكللا هطكنولوجيت شل حيل هافير حيفا",
+        "en": "Technical School of the Air Force"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בכפר ביאליק",
+        "ar": "كلية وتأهيل مهني في كفار بيالك",
+        "en": "College and vocational training in Kefar Bialik"
+      },
+      "address": {
+        "he": "כפר ביאליק",
+        "ar": "كفار بيالك",
+        "en": "Kefar Bialik"
+      },
+      "lat": 32.809445,
+      "lng": 35.0488339,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/300893449"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "המכללה הטכנולוגית של חיל האוויר חיפה",
+          "ar": "همكللا هطكنولوجيت شل حيل هافير حيفا",
+          "en": "Technical School of the Air Force"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "tel-chai-college-eastern-campus",
+      "place": "kfar-giladi",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "אוניברסיטת קריית שמונה בגליל קמפוס רודברג מזרחי",
+        "ar": "جامعة كريات شمونة بجليل كمفوس رودبرج مزرحي",
+        "en": "Tel Chai College, Eastern Campus"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בכפר גלעדי",
+        "ar": "كلية وتأهيل مهني في كفار جلعادي",
+        "en": "College and vocational training in Kfar Giladi"
+      },
+      "address": {
+        "he": "כפר גלעדי",
+        "ar": "كفار جلعادي",
+        "en": "Kfar Giladi"
+      },
+      "lat": 33.2306877,
+      "lng": 35.5825267,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/581401408",
+        "wheelchair": true
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אוניברסיטת קריית שמונה בגליל קמפוס רודברג מזרחי",
+          "ar": "جامعة كريات شمونة بجليل كمفوس رودبرج مزرحي",
+          "en": "Tel Chai College, Eastern Campus"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          },
+          {
+            "label": {
+              "he": "נגיש לכיסא גלגלים",
+              "ar": "مناسب للكراسي المتحركة",
+              "en": "Wheelchair accessible"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "tel-hai",
+      "place": "kfar-giladi",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "אוניברסיטת קריית שמונה בגליל קמפוס מערבי",
+        "ar": "جامعة كريات شمونة بجليل كمفوس معربي",
+        "en": "Tel Hai"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בכפר גלעדי",
+        "ar": "كلية وتأهيل مهني في كفار جلعادي",
+        "en": "College and vocational training in Kfar Giladi"
+      },
+      "address": {
+        "he": "כפר גלעדי",
+        "ar": "كفار جلعادي",
+        "en": "Kfar Giladi"
+      },
+      "lat": 33.236002,
+      "lng": 35.5783338,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/93442365"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אוניברסיטת קריית שמונה בגליל קמפוס מערבי",
+          "ar": "جامعة كريات شمونة بجليل كمفوس معربي",
+          "en": "Tel Hai"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "keshet-school",
+      "place": "kfar-vradim",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "בית ספר קשת",
+        "ar": "مدرسة كيشيت",
+        "en": "Keshet School"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בכפר ורדים",
+        "ar": "كلية وتأهيل مهني في كفر فراديم",
+        "en": "College and vocational training in Kfar Vradim"
+      },
+      "address": {
+        "he": "אשחר",
+        "ar": "كفر فراديم",
+        "en": "Kfar Vradim"
+      },
+      "lat": 32.9963105,
+      "lng": 35.2778552,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/502712703"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "בית ספר קשת",
+          "ar": "مدرسة كيشيت",
+          "en": "Keshet School"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "conservatory",
+      "place": "kiryat-bialik",
+      "brand": null,
+      "primaryKind": "art-schools",
+      "kinds": [
+        "art-schools"
+      ],
+      "name": {
+        "he": "קונסרבטוריון",
+        "ar": "كونسربطوريون",
+        "en": "Conservatory"
+      },
+      "tagline": {
+        "he": "חוגי מוזיקה ואמנות בקרית ביאליק",
+        "ar": "دورات موسيقى وفن في كريات بياليك",
+        "en": "Music and art classes in Kiryat Bialik"
+      },
+      "address": {
+        "he": "קרית ביאליק",
+        "ar": "كريات بياليك",
+        "en": "Kiryat Bialik"
+      },
+      "lat": 32.8334089,
+      "lng": 35.0897724,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/229477751"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "קונסרבטוריון",
+          "ar": "كونسربطوريون",
+          "en": "Conservatory"
+        },
+        "title": {
+          "he": "חוגי מוזיקה ואמנות",
+          "ar": "دورات موسيقى وفن",
+          "en": "Music and art classes"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוגי מוזיקה ואמנות",
+              "ar": "دورات موسيقى وفن",
+              "en": "Music and art classes"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "kiryat-haim-technological-college",
+      "place": "kiryat-motzkin",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "המכללה הטכנולוגית קרית חיים",
+        "ar": "همكللا هطكنولوجيت كريات حاييم",
+        "en": "Kiryat Haim Technological College"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בקרית מוצקין",
+        "ar": "كلية وتأهيل مهني في كريات موتسكين",
+        "en": "College and vocational training in Kiryat Motzkin"
+      },
+      "address": {
+        "he": "קרית מוצקין",
+        "ar": "كريات موتسكين",
+        "en": "Kiryat Motzkin"
+      },
+      "lat": 32.8198915,
+      "lng": 35.0627257,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/122100670"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "המכללה הטכנולוגית קרית חיים",
+          "ar": "همكللا هطكنولوجيت كريات حاييم",
+          "en": "Kiryat Haim Technological College"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "arts-center",
+      "place": "kiryat-shmona",
+      "brand": null,
+      "primaryKind": "art-schools",
+      "kinds": [
+        "art-schools"
+      ],
+      "name": {
+        "he": "היכל התרבות",
+        "ar": "هيكل هتربوت",
+        "en": "Arts center"
+      },
+      "tagline": {
+        "he": "חוגי מוזיקה ואמנות בקרית שמונה",
+        "ar": "دورات موسيقى وفن في كريات شمونة",
+        "en": "Music and art classes in Kiryat Shmona"
+      },
+      "address": {
+        "he": "קרית שמונה",
+        "ar": "كريات شمونة",
+        "en": "Kiryat Shmona"
+      },
+      "lat": 33.206382,
+      "lng": 35.5692027,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/583552676"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "היכל התרבות",
+          "ar": "هيكل هتربوت",
+          "en": "Arts center"
+        },
+        "title": {
+          "he": "חוגי מוזיקה ואמנות",
+          "ar": "دورات موسيقى وفن",
+          "en": "Music and art classes"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוגי מוזיקה ואמנות",
+              "ar": "دورات موسيقى وفن",
+              "en": "Music and art classes"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "kinneret-college",
+      "place": "maagan",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "המכללה האקדמית כנרת בעמק הירדן",
+        "ar": "همكللا هاكدميت كنيرت الطيبة الزعبية هيردن",
+        "en": "Kinneret college"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית במעגן",
+        "ar": "كلية وتأهيل مهني في معغان",
+        "en": "College and vocational training in Maagan"
+      },
+      "address": {
+        "he": "מעגן",
+        "ar": "معغان",
+        "en": "Maagan"
+      },
+      "lat": 32.7054179,
+      "lng": 35.5918267,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/914243776"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": "https://kinneret.ac.il/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "המכללה האקדמית כנרת בעמק הירדן",
+          "ar": "همكللا هاكدميت كنيرت الطيبة الزعبية هيردن",
+          "en": "Kinneret college"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "maalle-gilboa-religious-school",
+      "place": "maale-gilboa",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "ישיבת מעלה גלבוע",
+        "ar": "يشيفات معاليه جلبوع",
+        "en": "Ma'alle Gilboa religious school"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית במעלה גלבוע",
+        "ar": "كلية وتأهيل مهني في معاليه چلبوع",
+        "en": "College and vocational training in Maale Gilboa"
+      },
+      "address": {
+        "he": "מעלה גלבוע",
+        "ar": "معاليه چلبوع",
+        "en": "Maale Gilboa"
+      },
+      "lat": 32.4783828,
+      "lng": 35.4183766,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/232350759"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "ישיבת מעלה גלבוע",
+          "ar": "يشيفات معاليه جلبوع",
+          "en": "Ma'alle Gilboa religious school"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "after-brar-arts-center",
+      "place": "maalot-tarshiha",
+      "brand": null,
+      "primaryKind": "art-schools",
+      "kinds": [
+        "art-schools"
+      ],
+      "name": {
+        "he": "מרכז אומנויות ע\"ש אפטר-ברר",
+        "ar": "مركز اومنويوت عش افطر برر",
+        "en": "After-Brar arts center"
+      },
+      "tagline": {
+        "he": "חוגי מוזיקה ואמנות במעלות-תרשיחא",
+        "ar": "دورات موسيقى وفن في معالوت ترشيحا",
+        "en": "Music and art classes in Ma'alot-Tarshiha"
+      },
+      "address": {
+        "he": "מעלות-תרשיחא",
+        "ar": "معالوت ترشيحا",
+        "en": "Ma'alot-Tarshiha"
+      },
+      "lat": 33.0137543,
+      "lng": 35.2867768,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/1512521780"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מרכז אומנויות ע\"ש אפטר-ברר",
+          "ar": "مركز اومنويوت عش افطر برر",
+          "en": "After-Brar arts center"
+        },
+        "title": {
+          "he": "חוגי מוזיקה ואמנות",
+          "ar": "دورات موسيقى وفن",
+          "en": "Music and art classes"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוגי מוזיקה ואמנות",
+              "ar": "دورات موسيقى وفن",
+              "en": "Music and art classes"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "givat-haviva",
+      "place": "maanit",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "גבעת חביבה",
+        "ar": "جفعات حبيبا",
+        "en": "Givat Haviva"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית במענית",
+        "ar": "كلية وتأهيل مهني في معانيت",
+        "en": "College and vocational training in Maanit"
+      },
+      "address": {
+        "he": "מענית",
+        "ar": "معانيت",
+        "en": "Maanit"
+      },
+      "lat": 32.4578064,
+      "lng": 35.0220407,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/278471676"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "גבעת חביבה",
+          "ar": "جفعات حبيبا",
+          "en": "Givat Haviva"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "volcani-center-newe-yaar",
+      "place": "manshiyyet-zabda",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "מכון וולקני - נוה יער",
+        "ar": "مكون فلكني نفي يعر",
+        "en": "Volcani Center - Newe Ya'ar"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית במנשית זבדה",
+        "ar": "كلية وتأهيل مهني في منشية الزبدة",
+        "en": "College and vocational training in Manshiyyet Zabda"
+      },
+      "address": {
+        "he": "מנשית זבדה",
+        "ar": "منشية الزبدة",
+        "en": "Manshiyyet Zabda"
+      },
+      "lat": 32.7075217,
+      "lng": 35.1798062,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/828022281"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מכון וולקני - נוה יער",
+          "ar": "مكون فلكني نفي يعر",
+          "en": "Volcani Center - Newe Ya'ar"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "mkhina-kadatz-mashardim",
+      "place": "mayan-barukh",
+      "brand": null,
+      "primaryKind": "psychometric",
+      "kinds": [
+        "psychometric"
+      ],
+      "name": {
+        "he": "מכינה קד\"צ משרדים",
+        "ar": "مكينا كدتس مشرديم",
+        "en": "Mkhina Kadatz Mashardim"
+      },
+      "tagline": {
+        "he": "הכנה לפסיכומטרי במעין ברוך",
+        "ar": "تحضير للبسيخومتري في معيان باروخ",
+        "en": "Psychometric prep in Ma'yan Barukh"
+      },
+      "address": {
+        "he": "מעין ברוך",
+        "ar": "معيان باروخ",
+        "en": "Ma'yan Barukh"
+      },
+      "lat": 33.2411541,
+      "lng": 35.6085036,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/5933762351"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מכינה קד\"צ משרדים",
+          "ar": "مكينا كدتس مشرديم",
+          "en": "Mkhina Kadatz Mashardim"
+        },
+        "title": {
+          "he": "הכנה לפסיכומטרי",
+          "ar": "تحضير للبسيخومتري",
+          "en": "Psychometric prep"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "הכנה לפסיכומטרי",
+              "ar": "تحضير للبسيخومتري",
+              "en": "Psychometric prep"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "al-mair-al-thanoia-lalavnin-school",
+      "place": "metal",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "בית ספר אל-מע'יר אל-ת'אנויה ללבנין",
+        "ar": "مدرسة المغير الثانوية للبنين",
+        "en": "al Mair al Thanoia Lalavnin School"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית במיטל",
+        "ar": "كلية وتأهيل مهني في ميتال",
+        "en": "College and vocational training in Metal"
+      },
+      "address": {
+        "he": "al Moghair area",
+        "ar": "ميتال",
+        "en": "Metal"
+      },
+      "lat": 32.4160728,
+      "lng": 35.3879541,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1462501674"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "בית ספר אל-מע'יר אל-ת'אנויה ללבנין",
+          "ar": "مدرسة المغير الثانوية للبنين",
+          "en": "al Mair al Thanoia Lalavnin School"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "element-dance-school",
+      "place": "mishmarot",
+      "brand": null,
+      "primaryKind": "art-schools",
+      "kinds": [
+        "art-schools"
+      ],
+      "name": {
+        "he": "אלמנט בית ספר למחול",
+        "ar": "المنط مدرسة لمحول",
+        "en": "Element Dance School"
+      },
+      "tagline": {
+        "he": "חוגי מוזיקה ואמנות במשמרות",
+        "ar": "دورات موسيقى وفن في مشمروت",
+        "en": "Music and art classes in Mishmarot"
+      },
+      "address": {
+        "he": "משמרות",
+        "ar": "مشمروت",
+        "en": "Mishmarot"
+      },
+      "lat": 32.4808462,
+      "lng": 34.9877629,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/12435680584"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אלמנט בית ספר למחול",
+          "ar": "المنط مدرسة لمحول",
+          "en": "Element Dance School"
+        },
+        "title": {
+          "he": "חוגי מוזיקה ואמנות",
+          "ar": "دورات موسيقى وفن",
+          "en": "Music and art classes"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוגי מוזיקה ואמנות",
+              "ar": "دورات موسيقى وفن",
+              "en": "Music and art classes"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "emek-israel-college",
+      "place": "mizra",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "מכללת עמק יזרעאל",
+        "ar": "كلية عيمك يزراعيل",
+        "en": "Emek Israel college"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית במזרע",
+        "ar": "كلية وتأهيل مهني في ميزراع",
+        "en": "College and vocational training in Mizra"
+      },
+      "address": {
+        "he": "מזרע",
+        "ar": "ميزراع",
+        "en": "Mizra"
+      },
+      "lat": 32.6521125,
+      "lng": 35.2933181,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/141054257"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מכללת עמק יזרעאל",
+          "ar": "كلية عيمك يزراعيل",
+          "en": "Emek Israel college"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "abu-feras-driving-school",
+      "place": "muqeible",
+      "brand": null,
+      "primaryKind": "driving",
+      "kinds": [
+        "driving"
+      ],
+      "name": {
+        "he": "בית ספר אבו פראס לתעלים אל-סיאקה",
+        "ar": "مدرسة أبو فراس لتعليم السياقة",
+        "en": "Abu Feras Driving School"
+      },
+      "tagline": {
+        "he": "בית ספר לנהיגה במוקייבלה",
+        "ar": "مدرسة سياقة في مقيبلة",
+        "en": "Driving school in Muqeible"
+      },
+      "address": {
+        "he": "Almahata street",
+        "ar": "مقيبلة",
+        "en": "Muqeible"
+      },
+      "lat": 32.461721,
+      "lng": 35.2950224,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/5341552423"
+      },
+      "tier": "basic",
+      "phone": "+972 59-973-2494",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "בית ספר אבו פראס לתעלים אל-סיאקה",
+          "ar": "مدرسة أبو فراس لتعليم السياقة",
+          "en": "Abu Feras Driving School"
+        },
+        "title": {
+          "he": "בית ספר לנהיגה",
+          "ar": "مدرسة سياقة",
+          "en": "Driving school"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "בית ספר לנהיגה",
+              "ar": "مدرسة سياقة",
+              "en": "Driving school"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "al-asmar-driving-school",
+      "place": "muqeible",
+      "brand": null,
+      "primaryKind": "driving",
+      "kinds": [
+        "driving"
+      ],
+      "name": {
+        "he": "בית ספר אל-אסמר לתעלים אל-סיאקה",
+        "ar": "مدرسة الأسمر لتعليم السياقة",
+        "en": "Al asmar driving school"
+      },
+      "tagline": {
+        "he": "בית ספר לנהיגה במוקייבלה",
+        "ar": "مدرسة سياقة في مقيبلة",
+        "en": "Driving school in Muqeible"
+      },
+      "address": {
+        "he": "Haifa Street",
+        "ar": "مقيبلة",
+        "en": "Muqeible"
+      },
+      "lat": 32.4650906,
+      "lng": 35.2933425,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/5866418687"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "בית ספר אל-אסמר לתעלים אל-סיאקה",
+          "ar": "مدرسة الأسمر لتعليم السياقة",
+          "en": "Al asmar driving school"
+        },
+        "title": {
+          "he": "בית ספר לנהיגה",
+          "ar": "مدرسة سياقة",
+          "en": "Driving school"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "בית ספר לנהיגה",
+              "ar": "مدرسة سياقة",
+              "en": "Driving school"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "avra-vakhit",
+      "place": "muqeible",
+      "brand": null,
+      "primaryKind": "sewing",
+      "kinds": [
+        "sewing"
+      ],
+      "name": {
+        "he": "אברה וח'יט",
+        "ar": "ابرة وخيط",
+        "en": "Avra Vakhit"
+      },
+      "tagline": {
+        "he": "תפירה וחומרי תפירה במוקייבלה",
+        "ar": "خياطة ولوازمها في مقيبلة",
+        "en": "Sewing in Muqeible"
+      },
+      "address": {
+        "he": "Abu Baker Street +970597011002",
+        "ar": "مقيبلة",
+        "en": "Muqeible"
+      },
+      "lat": 32.4626539,
+      "lng": 35.2973958,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/2398201156"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אברה וח'יט",
+          "ar": "ابرة وخيط",
+          "en": "Avra Vakhit"
+        },
+        "title": {
+          "he": "תפירה וחומרי תפירה",
+          "ar": "خياطة ولوازمها",
+          "en": "Sewing"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "תפירה וחומרי תפירה",
+              "ar": "خياطة ولوازمها",
+              "en": "Sewing"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/ibrawkhait"
+      },
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "avra-vakhit-2",
+      "place": "muqeible",
+      "brand": null,
+      "primaryKind": "sewing",
+      "kinds": [
+        "sewing"
+      ],
+      "name": {
+        "he": "אברה וח'יט 2",
+        "ar": "ابرة وخيط 2",
+        "en": "Avra Vakhit 2"
+      },
+      "tagline": {
+        "he": "תפירה וחומרי תפירה במוקייבלה",
+        "ar": "خياطة ولوازمها في مقيبلة",
+        "en": "Sewing in Muqeible"
+      },
+      "address": {
+        "he": "شارع أبو جهاد +972597011002",
+        "ar": "مقيبلة",
+        "en": "Muqeible"
+      },
+      "lat": 32.4645505,
+      "lng": 35.3007135,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "5": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "6": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/2398203288"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": "https://www.facebook.com/ibrawkhait",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אברה וח'יט 2",
+          "ar": "ابرة وخيط 2",
+          "en": "Avra Vakhit 2"
+        },
+        "title": {
+          "he": "תפירה וחומרי תפירה",
+          "ar": "خياطة ولوازمها",
+          "en": "Sewing"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "תפירה וחומרי תפירה",
+              "ar": "خياطة ولوازمها",
+              "en": "Sewing"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {
+        "instagram": "https://www.instagram.com/ibrawkhait.jenin/"
+      },
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "avra-vakhit-3",
+      "place": "muqeible",
+      "brand": null,
+      "primaryKind": "sewing",
+      "kinds": [
+        "sewing"
+      ],
+      "name": {
+        "he": "אברה וח'יט 3",
+        "ar": "ابرة وخيط 3",
+        "en": "Avra Vakhit 3"
+      },
+      "tagline": {
+        "he": "תפירה וחומרי תפירה במוקייבלה",
+        "ar": "خياطة ولوازمها في مقيبلة",
+        "en": "Sewing in Muqeible"
+      },
+      "address": {
+        "he": "Abu Baker Street",
+        "ar": "مقيبلة",
+        "en": "Muqeible"
+      },
+      "lat": 32.4619019,
+      "lng": 35.2991569,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/7562248770"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": "https://www.facebook.com/ibrawkhait",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אברה וח'יט 3",
+          "ar": "ابرة وخيط 3",
+          "en": "Avra Vakhit 3"
+        },
+        "title": {
+          "he": "תפירה וחומרי תפירה",
+          "ar": "خياطة ولوازمها",
+          "en": "Sewing"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "תפירה וחומרי תפירה",
+              "ar": "خياطة ولوازمها",
+              "en": "Sewing"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "islamic-schools",
+      "place": "muqeible",
+      "brand": null,
+      "primaryKind": "islamic-schools",
+      "kinds": [
+        "islamic-schools"
+      ],
+      "name": {
+        "he": "אל-מדארס אל-אסלאמיה",
+        "ar": "المدارس الاسلامية",
+        "en": "Islamic Schools"
+      },
+      "tagline": {
+        "he": "בית ספר אסלאמי במוקייבלה",
+        "ar": "مدرسة إسلامية في مقيبلة",
+        "en": "Islamic school in Muqeible"
+      },
+      "address": {
+        "he": "מוקייבלה",
+        "ar": "مقيبلة",
+        "en": "Muqeible"
+      },
+      "lat": 32.4648048,
+      "lng": 35.3122419,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/432545083"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אל-מדארס אל-אסלאמיה",
+          "ar": "المدارس الاسلامية",
+          "en": "Islamic Schools"
+        },
+        "title": {
+          "he": "בית ספר אסלאמי",
+          "ar": "مدرسة إسلامية",
+          "en": "Islamic school"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "בית ספר אסלאמי",
+              "ar": "مدرسة إسلامية",
+              "en": "Islamic school"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "islamic-secondary-school",
+      "place": "muqeible",
+      "brand": null,
+      "primaryKind": "islamic-schools",
+      "kinds": [
+        "islamic-schools"
+      ],
+      "name": {
+        "he": "אל-מדארס אל-אסלאמיה אל-ת'אנויה",
+        "ar": "المدارس الاسلامية الثانوية",
+        "en": "Islamic Secondary School"
+      },
+      "tagline": {
+        "he": "בית ספר אסלאמי במוקייבלה",
+        "ar": "مدرسة إسلامية في مقيبلة",
+        "en": "Islamic school in Muqeible"
+      },
+      "address": {
+        "he": "מוקייבלה",
+        "ar": "مقيبلة",
+        "en": "Muqeible"
+      },
+      "lat": 32.4639888,
+      "lng": 35.3119784,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/432545093"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אל-מדארס אל-אסלאמיה אל-ת'אנויה",
+          "ar": "المدارس الاسلامية الثانوية",
+          "en": "Islamic Secondary School"
+        },
+        "title": {
+          "he": "בית ספר אסלאמי",
+          "ar": "مدرسة إسلامية",
+          "en": "Islamic school"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "בית ספר אסלאמי",
+              "ar": "مدرسة إسلامية",
+              "en": "Islamic school"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "hamakhalla-lminahal-haifa",
+      "place": "nesher",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "המכללה למינהל חיפה",
+        "ar": "همكللا لمينهل حيفا",
+        "en": "Hamakhalla Lminahal Haifa"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בנשר",
+        "ar": "كلية وتأهيل مهني في نيشر",
+        "en": "College and vocational training in Nesher"
+      },
+      "address": {
+        "he": "נשר",
+        "ar": "نيشر",
+        "en": "Nesher"
+      },
+      "lat": 32.7910257,
+      "lng": 35.0366825,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/194003799"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "המכללה למינהל חיפה",
+          "ar": "همكللا لمينهل حيفا",
+          "en": "Hamakhalla Lminahal Haifa"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "hashra-parah-takhnion-centre",
+      "place": "nesher",
+      "brand": null,
+      "primaryKind": "art-schools",
+      "kinds": [
+        "art-schools"
+      ],
+      "name": {
+        "he": "מרכז העשרה פר\"ח טכניון",
+        "ar": "مركز هعشرا برح طكنيون",
+        "en": "Hashra Parah Takhnion Centre"
+      },
+      "tagline": {
+        "he": "חוגי מוזיקה ואמנות בנשר",
+        "ar": "دورات موسيقى وفن في نيشر",
+        "en": "Music and art classes in Nesher"
+      },
+      "address": {
+        "he": "נשר",
+        "ar": "نيشر",
+        "en": "Nesher"
+      },
+      "lat": 32.7742335,
+      "lng": 35.0264195,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "14:00",
+              "close": "19:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "14:00",
+              "close": "19:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "14:00",
+              "close": "19:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "14:00",
+              "close": "19:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "14:00",
+              "close": "19:00"
+            }
+          ],
+          "5": [
+            {
+              "open": "14:00",
+              "close": "19:00"
+            }
+          ],
+          "6": [
+            {
+              "open": "14:00",
+              "close": "19:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/193564918"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מרכז העשרה פר\"ח טכניון",
+          "ar": "مركز هعشرا برح طكنيون",
+          "en": "Hashra Parah Takhnion Centre"
+        },
+        "title": {
+          "he": "חוגי מוזיקה ואמנות",
+          "ar": "دورات موسيقى وفن",
+          "en": "Music and art classes"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוגי מוזיקה ואמנות",
+              "ar": "دورات موسيقى وفن",
+              "en": "Music and art classes"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "technion-israel-institute-of-technology",
+      "place": "nesher",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "הטכניון - מכון טכנולוגי לישראל",
+        "ar": "‏التخنيون‎",
+        "en": "Technion - Israel Institute of Technology"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בנשר",
+        "ar": "كلية وتأهيل مهني في نيشر",
+        "en": "College and vocational training in Nesher"
+      },
+      "address": {
+        "he": "נשר",
+        "ar": "نيشر",
+        "en": "Nesher"
+      },
+      "lat": 32.7765694,
+      "lng": 35.0224915,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/66098525"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "הטכניון - מכון טכנולוגי לישראל",
+          "ar": "‏التخنيون‎",
+          "en": "Technion - Israel Institute of Technology"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "tel-ran",
+      "place": "nesher",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "תל רן",
+        "ar": "تل رن",
+        "en": "Tel Ran"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בנשר",
+        "ar": "كلية وتأهيل مهني في نيشر",
+        "en": "College and vocational training in Nesher"
+      },
+      "address": {
+        "he": "נשר",
+        "ar": "نيشر",
+        "en": "Nesher"
+      },
+      "lat": 32.7908804,
+      "lng": 35.0324637,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/5703134023"
+      },
+      "tier": "basic",
+      "phone": "+972 8-947-9977",
+      "whatsapp": null,
+      "website": "http://www.tel-ran.co.il/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "תל רן",
+          "ar": "تل رن",
+          "en": "Tel Ran"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "university-of-haifa",
+      "place": "nesher",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "אוניברסיטת חיפה",
+        "ar": "جامعة",
+        "en": "University of Haifa"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בנשר",
+        "ar": "كلية وتأهيل مهني في نيشر",
+        "en": "College and vocational training in Nesher"
+      },
+      "address": {
+        "he": "נשר",
+        "ar": "نيشر",
+        "en": "Nesher"
+      },
+      "lat": 32.7610825,
+      "lng": 35.0202675,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/55001924"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אוניברסיטת חיפה",
+          "ar": "جامعة",
+          "en": "University of Haifa"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "natzrat-ilit-college",
+      "place": "nof-hagalil",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "מכללת נצרת עילית",
+        "ar": "كلية الناصرة العليا",
+        "en": "Natzrat Ilit college"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בנוף הגליל",
+        "ar": "كلية وتأهيل مهني في نوف هجليل",
+        "en": "College and vocational training in Nof HaGalil"
+      },
+      "address": {
+        "he": "נוף הגליל",
+        "ar": "نوف هجليل",
+        "en": "Nof HaGalil"
+      },
+      "lat": 32.6999311,
+      "lng": 35.3142213,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/622341446"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מכללת נצרת עילית",
+          "ar": "كلية الناصرة العليا",
+          "en": "Natzrat Ilit college"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "rappaport-music-center",
+      "place": "or-akiva",
+      "brand": null,
+      "primaryKind": "art-schools",
+      "kinds": [
+        "art-schools"
+      ],
+      "name": {
+        "he": "מרכז רפפורט למוסיקה",
+        "ar": "مركز رففورط لموسيكا",
+        "en": "Rappaport music center"
+      },
+      "tagline": {
+        "he": "חוגי מוזיקה ואמנות באור עקיבא",
+        "ar": "دورات موسيقى وفن في أور عقيفا",
+        "en": "Music and art classes in Or Akiva"
+      },
+      "address": {
+        "he": "אור עקיבא",
+        "ar": "أور عقيفا",
+        "en": "Or Akiva"
+      },
+      "lat": 32.5037491,
+      "lng": 34.9205736,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/277762945"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מרכז רפפורט למוסיקה",
+          "ar": "مركز رففورط لموسيكا",
+          "en": "Rappaport music center"
+        },
+        "title": {
+          "he": "חוגי מוזיקה ואמנות",
+          "ar": "دورات موسيقى وفن",
+          "en": "Music and art classes"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוגי מוזיקה ואמנות",
+              "ar": "دورات موسيقى وفن",
+              "en": "Music and art classes"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "rappaport-music-center-2",
+      "place": "or-akiva",
+      "brand": null,
+      "primaryKind": "art-schools",
+      "kinds": [
+        "art-schools"
+      ],
+      "name": {
+        "he": "מרכז רפפורט למוסיקה",
+        "ar": "مركز رففورط لموسيكا",
+        "en": "Rappaport music center"
+      },
+      "tagline": {
+        "he": "חוגי מוזיקה ואמנות באור עקיבא",
+        "ar": "دورات موسيقى وفن في أور عقيفا",
+        "en": "Music and art classes in Or Akiva"
+      },
+      "address": {
+        "he": "אור עקיבא",
+        "ar": "أور عقيفا",
+        "en": "Or Akiva"
+      },
+      "lat": 32.5045184,
+      "lng": 34.9206449,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/529267585"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מרכז רפפורט למוסיקה",
+          "ar": "مركز رففورط لموسيكا",
+          "en": "Rappaport music center"
+        },
+        "title": {
+          "he": "חוגי מוזיקה ואמנות",
+          "ar": "دورات موسيقى وفن",
+          "en": "Music and art classes"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוגי מוזיקה ואמנות",
+              "ar": "دورات موسيقى وفن",
+              "en": "Music and art classes"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "oranim",
+      "place": "oranim",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "אורנים",
+        "ar": "أورانيم",
+        "en": "Oranim"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית באורנים",
+        "ar": "كلية وتأهيل مهني في أورانيم",
+        "en": "College and vocational training in Oranim"
+      },
+      "address": {
+        "he": "אורנים",
+        "ar": "أورانيم",
+        "en": "Oranim"
+      },
+      "lat": 32.7116768,
+      "lng": 35.1079584,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/278476457"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אורנים",
+          "ar": "أورانيم",
+          "en": "Oranim"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "oranim-2",
+      "place": "oranim",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "אורנים",
+        "ar": "أورانيم",
+        "en": "Oranim"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית באורנים",
+        "ar": "كلية وتأهيل مهني في أورانيم",
+        "en": "College and vocational training in Oranim"
+      },
+      "address": {
+        "he": "אורנים",
+        "ar": "أورانيم",
+        "en": "Oranim"
+      },
+      "lat": 32.7121345,
+      "lng": 35.1088123,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/91373745"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אורנים",
+          "ar": "أورانيم",
+          "en": "Oranim"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "forsight-robotics",
+      "place": "pardes-hana-karkur",
+      "brand": null,
+      "primaryKind": "coding",
+      "kinds": [
+        "coding"
+      ],
+      "name": {
+        "he": "Forsight Robotics",
+        "ar": "Forsight Robotics",
+        "en": "Forsight Robotics"
+      },
+      "tagline": {
+        "he": "חוגי תכנות ורובוטיקה בפרדס חנה-כרכור",
+        "ar": "دورات برمجة وروبوتيكا في برديس حنا-كركور",
+        "en": "Coding and robotics in Pardes Hana - Karkur"
+      },
+      "address": {
+        "he": "תרשיש פארק התעשיה",
+        "ar": "برديس حنا-كركور",
+        "en": "Pardes Hana - Karkur"
+      },
+      "lat": 32.4850735,
+      "lng": 34.9532294,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/13674635701"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": "https://www.forsightrobotics.com/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "Forsight Robotics",
+          "ar": "Forsight Robotics",
+          "en": "Forsight Robotics"
+        },
+        "title": {
+          "he": "חוגי תכנות ורובוטיקה",
+          "ar": "دورات برمجة وروبوتيكا",
+          "en": "Coding and robotics"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוגי תכנות ורובוטיקה",
+              "ar": "دورات برمجة وروبوتيكا",
+              "en": "Coding and robotics"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "mazor-robotics",
+      "place": "pardes-hana-karkur",
+      "brand": null,
+      "primaryKind": "coding",
+      "kinds": [
+        "coding"
+      ],
+      "name": {
+        "he": "מזור רובוטיק",
+        "ar": "مازور روبوطيك",
+        "en": "Mazor robotics"
+      },
+      "tagline": {
+        "he": "חוגי תכנות ורובוטיקה בפרדס חנה-כרכור",
+        "ar": "دورات برمجة وروبوتيكا في برديس حنا-كركور",
+        "en": "Coding and robotics in Pardes Hana - Karkur"
+      },
+      "address": {
+        "he": "פרדס חנה-כרכור",
+        "ar": "برديس حنا-كركور",
+        "en": "Pardes Hana - Karkur"
+      },
+      "lat": 32.4820734,
+      "lng": 34.9438711,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/6291515889"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מזור רובוטיק",
+          "ar": "مازور روبوطيك",
+          "en": "Mazor robotics"
+        },
+        "title": {
+          "he": "חוגי תכנות ורובוטיקה",
+          "ar": "دورات برمجة وروبوتيكا",
+          "en": "Coding and robotics"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוגי תכנות ורובוטיקה",
+              "ar": "دورات برمجة وروبوتيكا",
+              "en": "Coding and robotics"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "moshe-meir-arts-center",
+      "place": "pardes-hana-karkur",
+      "brand": null,
+      "primaryKind": "art-schools",
+      "kinds": [
+        "art-schools"
+      ],
+      "name": {
+        "he": "מרכז אומנויות משה מאיר",
+        "ar": "مركز اومنويوت مشا ماير",
+        "en": "Moshe Meir Arts Center"
+      },
+      "tagline": {
+        "he": "חוגי מוזיקה ואמנות בפרדס חנה-כרכור",
+        "ar": "دورات موسيقى وفن في برديس حنا-كركور",
+        "en": "Music and art classes in Pardes Hana - Karkur"
+      },
+      "address": {
+        "he": "פרדס חנה-כרכור",
+        "ar": "برديس حنا-كركور",
+        "en": "Pardes Hana - Karkur"
+      },
+      "lat": 32.4724132,
+      "lng": 34.9699344,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/677283008"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מרכז אומנויות משה מאיר",
+          "ar": "مركز اومنويوت مشا ماير",
+          "en": "Moshe Meir Arts Center"
+        },
+        "title": {
+          "he": "חוגי מוזיקה ואמנות",
+          "ar": "دورات موسيقى وفن",
+          "en": "Music and art classes"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוגי מוזיקה ואמנות",
+              "ar": "دورات موسيقى وفن",
+              "en": "Music and art classes"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "al-mayar-driving-school",
+      "place": "ram-on",
+      "brand": null,
+      "primaryKind": "driving",
+      "kinds": [
+        "driving"
+      ],
+      "name": {
+        "he": "בית ספר אל-מיאר לתעלים אל-סיאקה",
+        "ar": "مدرسة الميار لتعليم السياقة",
+        "en": "Al-Mayar Driving school"
+      },
+      "tagline": {
+        "he": "בית ספר לנהיגה ברם-און",
+        "ar": "مدرسة سياقة في رام أون",
+        "en": "Driving school in Ram On"
+      },
+      "address": {
+        "he": "רם-און",
+        "ar": "رام أون",
+        "en": "Ram On"
+      },
+      "lat": 32.4813485,
+      "lng": 35.2374517,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "5": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "6": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/5121854221"
+      },
+      "tier": "basic",
+      "phone": "+972 59-935-3530",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "בית ספר אל-מיאר לתעלים אל-סיאקה",
+          "ar": "مدرسة الميار لتعليم السياقة",
+          "en": "Al-Mayar Driving school"
+        },
+        "title": {
+          "he": "בית ספר לנהיגה",
+          "ar": "مدرسة سياقة",
+          "en": "Driving school"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "בית ספר לנהיגה",
+              "ar": "مدرسة سياقة",
+              "en": "Driving school"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "selet-al-hartheyeh-cultural-center",
+      "place": "ram-on",
+      "brand": null,
+      "primaryKind": "art-schools",
+      "kinds": [
+        "art-schools"
+      ],
+      "name": {
+        "he": "מרכז סילה אל-חארת'יה אל-ת'קאפי",
+        "ar": "مركز سيلة الحارثية الثقافي",
+        "en": "Selet Al Hartheyeh Cultural Center"
+      },
+      "tagline": {
+        "he": "חוגי מוזיקה ואמנות ברם-און",
+        "ar": "دورات موسيقى وفن في رام أون",
+        "en": "Music and art classes in Ram On"
+      },
+      "address": {
+        "he": "רם-און",
+        "ar": "رام أون",
+        "en": "Ram On"
+      },
+      "lat": 32.5087645,
+      "lng": 35.2287454,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/431793408"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מרכז סילה אל-חארת'יה אל-ת'קאפי",
+          "ar": "مركز سيلة الحارثية الثقافي",
+          "en": "Selet Al Hartheyeh Cultural Center"
+        },
+        "title": {
+          "he": "חוגי מוזיקה ואמנות",
+          "ar": "دورات موسيقى وفن",
+          "en": "Music and art classes"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוגי מוזיקה ואמנות",
+              "ar": "دورات موسيقى وفن",
+              "en": "Music and art classes"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "olafan-hakaltot",
+      "place": "ramot-menashe",
+      "brand": null,
+      "primaryKind": "language-schools",
+      "kinds": [
+        "language-schools"
+      ],
+      "name": {
+        "he": "אולפן הקלטות",
+        "ar": "اولفن هكلطوت",
+        "en": "Olafan Hakaltot"
+      },
+      "tagline": {
+        "he": "לימוד שפות ברמות מנשה",
+        "ar": "تعليم لغات في رموت منشيه",
+        "en": "Language school in Ramot Menashe"
+      },
+      "address": {
+        "he": "רמות מנשה",
+        "ar": "رموت منشيه",
+        "en": "Ramot Menashe"
+      },
+      "lat": 32.5979449,
+      "lng": 35.0539082,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1396568213"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אולפן הקלטות",
+          "ar": "اولفن هكلطوت",
+          "en": "Olafan Hakaltot"
+        },
+        "title": {
+          "he": "לימוד שפות",
+          "ar": "تعليم لغات",
+          "en": "Language school"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "לימוד שפות",
+              "ar": "تعليم لغات",
+              "en": "Language school"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "faculty-of-medicine-in-the-galilee",
+      "place": "safed",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "הפקולטה לרפואה בגליל",
+        "ar": "هفكولطا لرفواا بجليل",
+        "en": "Faculty of Medicine in the Galilee"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בצפת",
+        "ar": "كلية وتأهيل مهني في صفد",
+        "en": "College and vocational training in Safed"
+      },
+      "address": {
+        "he": "הנרייטה סולד 8",
+        "ar": "صفد",
+        "en": "Safed"
+      },
+      "lat": 32.961949,
+      "lng": 35.4978535,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/647667139"
+      },
+      "tier": "basic",
+      "phone": "+972 72-264-4999",
+      "whatsapp": null,
+      "website": "https://medicine.biu.ac.il/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "הפקולטה לרפואה בגליל",
+          "ar": "هفكولطا لرفواا بجليل",
+          "en": "Faculty of Medicine in the Galilee"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "safed-college",
+      "place": "safed",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "מכללת צפת",
+        "ar": "كلية صفد",
+        "en": "Safed college"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בצפת",
+        "ar": "كلية وتأهيل مهني في صفد",
+        "en": "College and vocational training in Safed"
+      },
+      "address": {
+        "he": "צפת",
+        "ar": "صفد",
+        "en": "Safed"
+      },
+      "lat": 32.9686009,
+      "lng": 35.493646,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/6071704869"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מכללת צפת",
+          "ar": "كلية صفد",
+          "en": "Safed college"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "hamakhalla-harvit",
+      "place": "sakhnin",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "המכללה הערבית",
+        "ar": "الكلية العربية",
+        "en": "Hamakhalla Harvit"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בסח'נין",
+        "ar": "كلية وتأهيل مهني في سخنين",
+        "en": "College and vocational training in Sakhnin"
+      },
+      "address": {
+        "he": "طريق الجليل",
+        "ar": "سخنين",
+        "en": "Sakhnin"
+      },
+      "lat": 32.8608307,
+      "lng": 35.308168,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/5397187946"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "המכללה הערבית",
+          "ar": "الكلية العربية",
+          "en": "Hamakhalla Harvit"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "hamakhalla-hatakhnologit",
+      "place": "sakhnin",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "המכללה הטכנולוגית",
+        "ar": "الكلية التكنولوجية",
+        "en": "Hamakhalla Hatakhnologit"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בסח'נין",
+        "ar": "كلية وتأهيل مهني في سخنين",
+        "en": "College and vocational training in Sakhnin"
+      },
+      "address": {
+        "he": "طريق الجليل",
+        "ar": "سخنين",
+        "en": "Sakhnin"
+      },
+      "lat": 32.8609794,
+      "lng": 35.3074733,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/5397187945"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "המכללה הטכנולוגית",
+          "ar": "الكلية التكنولوجية",
+          "en": "Hamakhalla Hatakhnologit"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "sakhnin-lahakhasharat-ovdi-horaa-college",
+      "place": "sakhnin",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "מכללת סכנין להכשרת עובדי הוראה",
+        "ar": "كلية سخنين لتأهيل المعلمين",
+        "en": "Sakhnin Lahakhasharat Ovdi Horaa College"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בסח'נין",
+        "ar": "كلية وتأهيل مهني في سخنين",
+        "en": "College and vocational training in Sakhnin"
+      },
+      "address": {
+        "he": "סח'נין",
+        "ar": "سخنين",
+        "en": "Sakhnin"
+      },
+      "lat": 32.8598936,
+      "lng": 35.3103858,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/5351699140"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מכללת סכנין להכשרת עובדי הוראה",
+          "ar": "كلية سخنين لتأهيل المعلمين",
+          "en": "Sakhnin Lahakhasharat Ovdi Horaa College"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "conservatorium",
+      "place": "yokneam-ilit",
+      "brand": null,
+      "primaryKind": "art-schools",
+      "kinds": [
+        "art-schools"
+      ],
+      "name": {
+        "he": "קונסרבטוריון",
+        "ar": "كونسربطوريون",
+        "en": "Conservatorium"
+      },
+      "tagline": {
+        "he": "חוגי מוזיקה ואמנות ביקנעם עילית",
+        "ar": "دورات موسيقى وفن في يوكنعام عيليت",
+        "en": "Music and art classes in Yokneam Ilit"
+      },
+      "address": {
+        "he": "יקנעם עילית",
+        "ar": "يوكنعام عيليت",
+        "en": "Yokneam Ilit"
+      },
+      "lat": 32.654783,
+      "lng": 35.1065276,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/635812028"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "קונסרבטוריון",
+          "ar": "كونسربطوريون",
+          "en": "Conservatorium"
+        },
+        "title": {
+          "he": "חוגי מוזיקה ואמנות",
+          "ar": "دورات موسيقى وفن",
+          "en": "Music and art classes"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוגי מוזיקה ואמנות",
+              "ar": "دورات موسيقى وفن",
+              "en": "Music and art classes"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "elma-arts-complex",
+      "place": "zikhron-yaakov",
+      "brand": null,
+      "primaryKind": "art-schools",
+      "kinds": [
+        "art-schools"
+      ],
+      "name": {
+        "he": "מרכז אומנויות אלמא",
+        "ar": "مركز اومنويوت الما",
+        "en": "Elma Arts Complex"
+      },
+      "tagline": {
+        "he": "חוגי מוזיקה ואמנות בזכרון יעקב",
+        "ar": "دورات موسيقى وفن في زخرون يعكوف",
+        "en": "Music and art classes in Zikhron Yaakov"
+      },
+      "address": {
+        "he": "יאיר 1",
+        "ar": "زخرون يعكوف",
+        "en": "Zikhron Yaakov"
+      },
+      "lat": 32.5782869,
+      "lng": 34.9455585,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/184020774"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": "https://www.elma-hotel.com/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מרכז אומנויות אלמא",
+          "ar": "مركز اومنويوت الما",
+          "en": "Elma Arts Complex"
+        },
+        "title": {
+          "he": "חוגי מוזיקה ואמנות",
+          "ar": "دورات موسيقى وفن",
+          "en": "Music and art classes"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוגי מוזיקה ואמנות",
+              "ar": "دورات موسيقى وفن",
+              "en": "Music and art classes"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "raz",
+      "place": "zikhron-yaakov",
+      "brand": null,
+      "primaryKind": "vocational",
+      "kinds": [
+        "vocational"
+      ],
+      "name": {
+        "he": "רז",
+        "ar": "رز",
+        "en": "Raz"
+      },
+      "tagline": {
+        "he": "מכללה והכשרה מקצועית בזכרון יעקב",
+        "ar": "كلية وتأهيل مهني في زخرون يعكوف",
+        "en": "College and vocational training in Zikhron Yaakov"
+      },
+      "address": {
+        "he": "זכרון יעקב",
+        "ar": "زخرون يعكوف",
+        "en": "Zikhron Yaakov"
+      },
+      "lat": 32.5731694,
+      "lng": 34.951976,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/4755995668"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "רז",
+          "ar": "رز",
+          "en": "Raz"
+        },
+        "title": {
+          "he": "מכללה והכשרה מקצועית",
+          "ar": "كلية وتأهيل مهني",
+          "en": "College and vocational training"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מכללה והכשרה מקצועית",
+              "ar": "كلية وتأهيل مهني",
+              "en": "College and vocational training"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    }
+  ]
+}

@@ -6,6 +6,11 @@ import type { Tier } from "@darb/core";
  */
 export const RANKING = {
   weights: { text: 0.35, vector: 0.3, distance: 0.2, completeness: 0.15 },
+  /**
+   * Near me (the person's point is known): distance leads, so a fuller card in the next town never
+   * outranks one around the corner (a Karmiel salon over a Sakhnin barber for someone in Sakhnin).
+   */
+  nearWeights: { text: 0.25, vector: 0.2, distance: 0.4, completeness: 0.15 },
   /** Distance score = 1 / (1 + km / scale): 1 at the door, 0.5 at 3 km. */
   distanceScaleKm: 3,
   tierBoost: { example: 0, basic: 0.01, verified: 0.02, darb: 0.03 } as Record<Tier, number>,
@@ -22,6 +27,11 @@ export const RANKING = {
    * business that offers the asked thing on its own card by kind alone.
    */
   examplePenalty: 0.12,
+  /**
+   * Near me: the example penalty only reorders results this close in distance. It never drops an
+   * example below a real business that is more than this much farther from the person.
+   */
+  exampleBandKm: 2,
   /** Per stated wish ("ideally open now") a result meets: a small lift, never a filter. */
   niceBoost: 0.03,
   offerings: {

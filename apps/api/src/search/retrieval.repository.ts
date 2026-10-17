@@ -120,7 +120,14 @@ export class RetrievalRepository {
     const o = RANKING.offerings;
     // Deep search: the best offering on the card (items, tags, tagline, kinds), or the business's
     // own name when that is what was asked ("Samer"). Its place's name is never a match.
-    const nameScore = (t: string) => Prisma.sql`word_similarity(${t}, d."nameText")`;
+    // When kinds are asked, a business of another kind answers only by what its card offers
+    // (items, their parts, tags), never by what it is: its name, tagline and kind ("ספר", a
+    // barber, is not "בית ספר", a school).
+    const ofAskedKind = f.kindIds ? Prisma.sql`d."kindIds" && ${f.kindIds}::uuid[]` : null;
+    const nameScore = (t: string) =>
+      ofAskedKind
+        ? Prisma.sql`CASE WHEN ${ofAskedKind} THEN word_similarity(${t}, d."nameText") ELSE 0 END`
+        : Prisma.sql`word_similarity(${t}, d."nameText")`;
     const textScore = deep
       ? Prisma.sql`GREATEST(COALESCE(h.score, 0), ${Prisma.join(items.map(nameScore))})`
       : documentScore;
@@ -144,7 +151,7 @@ export class RetrievalRepository {
     })`;
     // The pre-cut approximates rank()'s full blend (same weights, same normalization, same tier
     // boost), so a near-me search with many matches keeps the nearest and most complete rows.
-    const w = RANKING.weights;
+    const w = here ? RANKING.nearWeights : RANKING.weights;
     const kindWeight = deep && f.kindIds ? RANKING.kindWeight : 0;
     const total =
       (docTexts.length || deep ? w.text : 0) +
@@ -157,7 +164,9 @@ export class RetrievalRepository {
       : Prisma.sql`0`;
     const boost = (tier: string) => Math.min(RANKING.tierBoost[tier as Tier] ?? 0, RANKING.tierCap);
     const tierBoost = Prisma.sql`CASE b.tier WHEN 'darb' THEN ${boost("darb")}::float8 WHEN 'verified' THEN ${boost("verified")}::float8 WHEN 'basic' THEN ${boost("basic")}::float8 ELSE ${boost("example")}::float8 END`;
-    const demo = Prisma.sql`CASE WHEN b.tier = 'example' THEN ${deep && f.kindIds ? RANKING.examplePenalty : 0}::float8 ELSE 0 END`;
+    // Near me, rank() decides how much the example penalty applies (only within a distance band),
+    // so the pre-cut never drops a showroom example around the corner.
+    const demo = Prisma.sql`CASE WHEN b.tier = 'example' THEN ${deep && f.kindIds && !here ? RANKING.examplePenalty : 0}::float8 ELSE 0 END`;
     const preScore = Prisma.sql`(- ${demo} + (${w.text}::float8 * ${textScore} + ${w.vector}::float8 * ${vectorScore} + ${w.distance}::float8 * ${distanceScore} + ${w.completeness}::float8 * d.completeness + ${kindWeight}::float8 * ${kindMatch}) / ${total}::float8 + ${tierBoost} + ${RANKING.niceBoost}::float8 * ${niceScore})`;
     const placeFilter = (alias: string) =>
       f.placePath ? [Prisma.sql`${Prisma.raw(alias)}."placePath" LIKE ${`${f.placePath}%`}`] : [];
@@ -176,13 +185,15 @@ export class RetrievalRepository {
       ...(f.dietary.length > 0 ? [Prisma.sql`b.dietary @> ${f.dietary}::"Dietary"[]`] : []),
       ...(deep
         ? [
-            // Its card offers an item, its kind was asked for, or its own document matches.
+            // Its card offers an item, its kind was asked for, or (no kind asked) its name matches.
             Prisma.sql`(h."businessId" IS NOT NULL${
-              f.kindIds ? Prisma.sql` OR d."kindIds" && ${f.kindIds}::uuid[]` : Prisma.empty
-            } OR ${Prisma.join(
-              items.map((t) => Prisma.sql`${t} <% d."nameText"`),
-              " OR ",
-            )})`,
+              f.kindIds
+                ? Prisma.sql` OR d."kindIds" && ${f.kindIds}::uuid[]`
+                : Prisma.sql` OR ${Prisma.join(
+                    items.map((t) => Prisma.sql`${t} <% d."nameText"`),
+                    " OR ",
+                  )}`
+            })`,
           ]
         : !f.kindIds && f.text
           ? [
@@ -205,6 +216,9 @@ export class RetrievalRepository {
     const offeringFilters = [
       ...placeFilter("o"),
       ...radiusFilter("o"),
+      ...(deep && f.kindIds
+        ? [Prisma.sql`(o.source IN ('item', 'part', 'tag') OR o."kindIds" && ${f.kindIds}::uuid[])`]
+        : []),
       ...(f.dietary.length > 0 ? [Prisma.sql`o.dietary @> ${f.dietary}::"Dietary"[]`] : []),
     ];
     const offeringWhere =
