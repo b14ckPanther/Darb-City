@@ -1,5 +1,5 @@
 import type { Locale, Localized } from "@darb/core";
-import { normalize } from "@darb/search-text";
+import { normalize, splitList, wordySegments } from "@darb/search-text";
 
 /**
  * Deep search: the things a business offers, read from everything on its card (a full Darb app
@@ -55,50 +55,14 @@ const clean = (l: Localized): Localized | null => {
   return Object.keys(out).length > 0 ? out : null;
 };
 
-/** A part worth searching has a word in it: "₪68", "100%" and "20:05" are not things. */
-const WORDY = /\p{L}{2}/u;
-/** "Including gluten-free knafeh": the lead-in is not part of the thing's name. */
-const LEAD_IN = /^(?:כולל|כולל גם|including|incl\.?|بما فيها|بما فيه|بما في ذلك|منها)\s+/iu;
-/** Segments of a meta line ("₪68 · chicken, sumac, onion"). */
-const SEGMENT = /\s*[·•|]\s*/u;
-/** A list inside a segment. */
-const LIST = /\s*[,،;]\s*/u;
-
 /** A meta line without its price, time or percentage segments; null when nothing is left. */
 function wordsOnly(meta: Localized): Localized | null {
   const out: Localized = {};
   for (const k of LOCALES) {
-    const kept = (meta[k] ?? "")
-      .split(SEGMENT)
-      .filter((segment) => WORDY.test(segment))
-      .join(" · ");
+    const kept = wordySegments(meta[k] ?? "");
     if (kept) out[k] = kept;
   }
   return clean(out);
-}
-
-interface Segment {
-  head: string | null;
-  parts: string[];
-}
-
-/** "Challah and laffa sandwiches: schnitzel, kebab, shawarma" → head and three parts. */
-function segments(text: string): Segment[] {
-  return text
-    .split(SEGMENT)
-    .filter(Boolean)
-    .map((segment) => {
-      const colon = segment.indexOf(":");
-      const head = colon > 0 ? segment.slice(0, colon).trim() : null;
-      const list = colon > 0 ? segment.slice(colon + 1) : segment;
-      return {
-        head: head && WORDY.test(head) ? head : null,
-        parts: list
-          .split(LIST)
-          .map((p) => p.replace(LEAD_IN, "").trim())
-          .filter((p) => WORDY.test(p)),
-      };
-    });
 }
 
 /**
@@ -110,7 +74,7 @@ function metaParts(meta: Localized): { label: Localized; head: Localized | null 
   const byLocale = LOCALES.flatMap((locale) => {
     const text = meta[locale]?.trim();
     if (!text) return [];
-    const flat = segments(text).flatMap((s) => s.parts.map((part) => ({ part, head: s.head })));
+    const flat = splitList(text).flatMap((s) => s.parts.map((part) => ({ part, head: s.head })));
     return [{ locale, flat }];
   });
   if (byLocale.length === 0) return [];
