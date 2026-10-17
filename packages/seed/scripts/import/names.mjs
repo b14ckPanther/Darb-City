@@ -1,6 +1,7 @@
 // Hebrew names into Arabic and English, deterministic and offline: a place's own names for town
 // parts, a small word list for what stations and branches are called ("צומת", "מרכז", "צפון"),
 // and plain letter maps for everything else. Never a translation service.
+import { fromArabic } from "./names-ar.mjs";
 import { loadDarbPlaces, loose, normalize, variants } from "./places.mjs";
 
 /**
@@ -225,6 +226,28 @@ export function arabicWord(word) {
   return out;
 }
 
+/** A word that reads as Arabic in Hebrew letters: its article, a geresh letter, or a long "aa". */
+const ARABIC_SPELT = /^אל[א-ת]{2}|[גזצחתדעט]['׳]|אא$/;
+
+/**
+ * An Arabic name written in Hebrew letters ("אלנהדה"), back in Arabic letters: פ is always ف and a
+ * final ה is the ة it stands for ("النهدة", not "النهدا"), and Arabic has no p.
+ */
+export function arabicNameWord(word) {
+  const letters = [...word];
+  let out = "";
+  for (let i = 0; i < letters.length; i++) {
+    const c = letters[i];
+    const last = i === letters.length - 1 || !/[א-ת]/.test(letters[i + 1] ?? "");
+    if (c === "ה" && last && i > 1) out += "ة";
+    else if (c === "פ" || c === "ף") out += "ف";
+    else if (c === "ק") out += "ق";
+    else out += arabicWord(c + (GERESH.test(letters[i + 1] ?? "") ? letters[i + 1] : ""));
+    if (GERESH.test(letters[i + 1] ?? "")) i++;
+  }
+  return out;
+}
+
 /**
  * A registered business name without its legal tail: no בע"מ, no company number, no
  * parentheses that only hold them ("בי-זול (זכיין הפעלה - בי זול בע"מ - ח.פ. 516690195)").
@@ -339,10 +362,16 @@ export function createNamer(places = loadDarbPlaces(), { extraWords = {} } = {})
     en: plainDashes(en),
   });
 
-  /** `near`, the record's own Darb place, wins when the name is that place's name. */
-  function name(source, near) {
+  /**
+   * `near`, the record's own Darb place, wins when the name is that place's name. `arabic`: the
+   * name may be Arabic spelt in Hebrew, so its words that read as Arabic go back to Arabic letters
+   * and their English follows the Arabic ("אלרשיד" is "الرشيد", Al-Rasheed).
+   */
+  function name(source, near, { arabic = false } = {}) {
     let he = plainDashes(source);
     for (const [re, to] of EXPAND) he = he.replace(re, to);
+    // "אל-פארוק" is one Arabic word with its article.
+    if (arabic) he = he.replace(/(^|\s)אל[-\s]+(?=[א-ת])/g, "$1אל");
     he = he.replace(/\s+/g, " ").trim();
     if (near?.name?.he && ownVariants(near.name.he).some((v) => loose(v) === loose(he)))
       return done(plainDashes(source), noParens(near.name.ar), noParens(near.name.en));
@@ -360,9 +389,11 @@ export function createNamer(places = loadDarbPlaces(), { extraWords = {} } = {})
       }
       if (!hit) {
         const t = tokens[i];
-        hit = /[\u05D0-\u05EA]/.test(t)
-          ? { n: 1, kind: "text", ar: arabicWord(t), en: latinWord(t) }
-          : { n: 1, kind: "text", ar: t, en: t };
+        if (!/[\u05D0-\u05EA]/.test(t)) hit = { n: 1, kind: "text", ar: t, en: t };
+        else if (arabic && ARABIC_SPELT.test(t)) {
+          const ar = arabicNameWord(t);
+          hit = { n: 1, kind: "text", ar, en: fromArabic(ar).en };
+        } else hit = { n: 1, kind: "text", ar: arabicWord(t), en: latinWord(t) };
       }
       parts.push(hit);
       i += hit.n;

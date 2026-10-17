@@ -110,6 +110,11 @@ const WORDS = {
   مجلس: ["מועצת", "Council"],
   محلي: ["מקומית", "Local"],
   عبد: ["עבד", "Abd"],
+  ابن: ["אבן", "Ibn"],
+  // The crescent, never the other word its letters could be read as.
+  هلال: ["הלאל", "Hilal"],
+  الهلال: ["אל-הלאל", "Al-Hilal"],
+  بن: ["בן", "bin"],
   الله: ["אללה", "Allah"],
   و: ["ו", "and"],
 };
