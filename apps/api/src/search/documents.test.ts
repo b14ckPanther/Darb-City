@@ -24,6 +24,7 @@ const business = {
   kinds: [
     {
       id: "k1",
+      slug: "hummus",
       name: { en: "Hummus and falafel" },
       synonyms: { he: ["חומוס"], ar: ["حمص"], en: ["falafel"] },
     },

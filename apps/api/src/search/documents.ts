@@ -1,6 +1,7 @@
 import type { Hours, Localized, Tier } from "@darb/core";
 import { normalize } from "@darb/search-text";
 import { publicPoint } from "../businesses/public-point.js";
+import { extractOfferings, offeringsEmbedText, offeringsText } from "./offerings.js";
 
 export type SearchEntityName = "place" | "kind" | "business";
 
@@ -56,7 +57,7 @@ export interface BusinessSource {
   placeName: Localized;
   /** The place's centre, used instead of the pin when the street is kept private. */
   placePoint: { lat: number; lng: number };
-  kinds: { id: string; name: Localized; synonyms: Synonyms }[];
+  kinds: { id: string; slug: string; name: Localized; synonyms: Synonyms }[];
 }
 
 const values = (l: Localized) =>
@@ -122,6 +123,8 @@ export function kindDocument(k: KindSource): DocumentRow {
 
 export function businessDocument(b: BusinessSource): DocumentRow {
   const kindWords = b.kinds.flatMap((k) => [...values(k.name), ...synonyms(k.synonyms)]);
+  // What is inside the card (items, their lists, tags) counts for the business itself too.
+  const offerings = extractOfferings(b);
   return {
     entityType: "business",
     entityId: b.id,
@@ -133,12 +136,19 @@ export function businessDocument(b: BusinessSource): DocumentRow {
     // Distances and radius filters use this point: never a private street's pin.
     ...publicPoint(b, b.placePoint),
     nameText: join(values(b.name)),
-    text: join([...values(b.name), ...values(b.tagline), ...kindWords, ...values(b.placeName)]),
+    text: join([
+      ...values(b.name),
+      ...values(b.tagline),
+      ...kindWords,
+      ...values(b.placeName),
+      offeringsText(offerings),
+    ]),
     embedText: [
       values(b.name).join(" / "),
       values(b.tagline).join(" / "),
       b.kinds.map((k) => values(k.name).join(" / ")).join("; "),
       values(b.placeName).join(" / "),
+      offeringsEmbedText(offerings),
     ]
       .filter(Boolean)
       .join(" — "),
