@@ -10,9 +10,9 @@
     "left_out": "features with no name, food (the food importer's), garages, tyres, testing, fuel, banks and EV charging (official lists), bars, alcohol, pork, gambling and lottery, adult shops, tobacco, vape and cannabis, tattoo and weapons shops, private places, sights with no hours or contact",
     "hours": "from OSM opening_hours where it reads for certain; otherwise none",
     "counts": {
-      "emitted": 5091,
+      "emitted": 5086,
       "fetched": 15433,
-      "excluded": 228,
+      "excluded": 233,
       "unmapped": 6104,
       "noName": 0,
       "otherScript": 30,
@@ -21,7 +21,7 @@
       "outsideNorth": 3715,
       "pointFarFromTown": 0,
       "halalWord": 0,
-      "classified": 5248,
+      "classified": 5243,
       "duplicates": 118,
       "alreadyListed": 39
     }
