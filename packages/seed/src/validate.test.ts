@@ -1,3 +1,4 @@
+import { readdirSync, readFileSync } from "node:fs";
 import {
   DIETARY,
   hasText,
@@ -491,5 +492,24 @@ describe("every showroom screen", () => {
         if (!(text.ar ?? "").trim()) missing.push(`${slug}.${where}`);
     }
     expect(missing).toEqual([]);
+  });
+});
+
+describe("the word halal", () => {
+  // Whole words: the village Nahalal (נהלל, نهلال) is not the word.
+  it("is never in a kind, a sector, a screen or a listing", () => {
+    const listings = readdirSync(new URL("../data/listings/", import.meta.url)).map(
+      (f) => `listings/${f}`,
+    );
+    for (const file of [
+      "kinds.json",
+      "sectors.json",
+      "screens.json",
+      "extra-screens.json",
+      ...listings,
+    ])
+      expect(readFileSync(new URL(`../data/${file}`, import.meta.url), "utf8"), file).not.toMatch(
+        /(?<![\p{L}])(halal|حلال|חלאל)(?![\p{L}])/iu,
+      );
   });
 });
