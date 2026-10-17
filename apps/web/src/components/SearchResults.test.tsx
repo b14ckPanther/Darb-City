@@ -71,8 +71,8 @@ const labels = {
     distanceKm: "{km} km",
     distanceM: "{m} m",
     locale: "en",
-    matchedOn: "Has",
   },
+  matchedOn: "Has",
 };
 
 describe("SearchResults", () => {

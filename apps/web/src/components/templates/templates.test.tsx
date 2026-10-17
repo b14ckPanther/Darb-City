@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import { TEMPLATES } from "@darb/core";
 import type { ScreenDto } from "@darb/contracts";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { parseScreen, TEMPLATE_BODIES } from "./index";
 import { ScreenView } from "./ScreenView";
 
@@ -87,12 +87,16 @@ describe("the item a search matched", () => {
     expect(keys.some((k) => k?.split(" ").includes("car-wash"))).toBe(true);
   });
   it("marks the item named in ?hl= when the screen opens, and nothing without it", () => {
+    // jsdom lays nothing out, so it has no scrollIntoView.
+    const scroll = vi.fn();
+    Element.prototype.scrollIntoView = scroll;
     window.history.replaceState(null, "", "/akko/food/restaurants/caramel?hl=shawarma");
     try {
       const { container } = render(<ScreenView screen={caramel} template="menu" locale="en" />);
       const marked = container.querySelectorAll("[data-highlight]");
       expect(marked).toHaveLength(1);
       expect(marked[0]?.textContent).toContain("Meals");
+      expect(scroll).toHaveBeenCalledWith({ block: "center" });
     } finally {
       window.history.replaceState(null, "", "/");
     }

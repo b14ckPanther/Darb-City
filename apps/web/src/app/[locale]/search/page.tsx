@@ -8,6 +8,7 @@ import { CityBar } from "@/components/CityBar";
 import { SearchFallback } from "@/components/SearchFallback";
 import { SearchQuery } from "@/components/SearchQuery";
 import { SearchResults } from "@/components/SearchResults";
+import { deepSearch } from "@/content/deep-search";
 import { StageData } from "@/components/StageData";
 import { searchLabels } from "@/components/SearchBar";
 import { clientIpFrom } from "@/lib/client-ip";
@@ -98,6 +99,7 @@ export default async function SearchPage({ params, searchParams }: Props) {
           unreachable: t(locale, "unreachable"),
           nearestPlaces: t(locale, "nearestPlaces"),
           nothingOpen: t(locale, "nothingOpen"),
+          matchedOn: deepSearch[locale].matchedOn,
           rows: rowLabels(locale),
         }}
       />

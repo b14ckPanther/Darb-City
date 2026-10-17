@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getImageProps } from "next/image";
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import type { BusinessRowData } from "@/lib/rows";
 import { AppointmentBadge, ExampleBadge, GlutenFreeBadge } from "./Badges";
 import { LiveDistance } from "./LiveDistance";
@@ -19,8 +19,6 @@ export interface RowLabels {
   distanceM: string;
   /** The page language, for number formatting. */
   locale: string;
-  /** Search only: said (unseen) before the matched thing, "Has shawarma". */
-  matchedOn?: string;
 }
 
 /** Pure: rendered by the server list and by ShowMore on the client. */
@@ -28,11 +26,14 @@ export function BusinessRow({
   row,
   labels,
   onOpen,
+  note,
 }: {
   row: BusinessRowData;
   labels: RowLabels;
   /** Client lists only (search results report the click); server lists never pass a function. */
   onOpen?: () => void;
+  /** Search only: the matched thing, above the tagline (kept out of every other list's JS). */
+  note?: ReactNode;
 }) {
   // A list can be long: the logo is 40 px from a resized source (48 or 96 px wide), loaded lazily.
   const logo = row.logoUrl
@@ -72,19 +73,7 @@ export function BusinessRow({
               />
             )}
           </span>
-          {row.matched ? (
-            // The thing on the card that answered the search, above the tagline.
-            <span className={styles.rowMatch} data-matched="">
-              <span className={styles.matchMark} aria-hidden="true" />
-              {labels.matchedOn ? (
-                <span className="visually-hidden">{labels.matchedOn} </span>
-              ) : null}
-              <span className={styles.matchLabel}>{row.matched.label}</span>
-              {row.matched.context ? (
-                <span className={styles.matchContext}> · {row.matched.context}</span>
-              ) : null}
-            </span>
-          ) : null}
+          {note}
           {row.tagline ? <span className={styles.rowTagline}>{row.tagline}</span> : null}
           <span className={styles.rowMeta}>
             {row.distance ? (

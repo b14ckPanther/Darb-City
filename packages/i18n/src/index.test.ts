@@ -92,28 +92,6 @@ describe("search copy", () => {
     expect(t("he", "nationwide")).toBe(t("he", "kindNationwide", { kind: "" }).trim());
     expect(t("he", "searchUnavailable")).toMatch(/במקום זאת\.$/);
   });
-  it("says honestly when the asked thing came from further away or is not there", () => {
-    const vars = {
-      thing: "gluten-free shawarma",
-      place: "Karmiel",
-      name: "Caramel",
-      where: "Akko",
-      distance: "24 km",
-    };
-    expect(t("en", "searchWider", vars)).toBe(
-      "No gluten-free shawarma in Karmiel. Closest: Caramel, Akko, 24 km",
-    );
-    expect(t("he", "thingGlutenFree", { thing: "שווארמה" })).toBe("שווארמה ללא גלוטן");
-    expect(t("ar", "searchRelated", { thing: "سوشي" })).toBe(
-      "لسا ما لقينا سوشي. يمكن هدول يناسبوك:",
-    );
-    // Colloquial Arabic, no dashes, and no word for how the search works.
-    for (const key of ["searchWider", "searchWiderNear", "searchRelated", "matchedOn"] as const)
-      for (const locale of LOCALES) {
-        expect(t(locale, key)).not.toMatch(/[\u2013\u2014\u05BE]|\bAI\b|ذكاء|בינה/);
-        expect(t(locale, key)).not.toMatch(/هلأ|هلقيت/);
-      }
-  });
   it("fills the chip and query placeholders", () => {
     expect(t("en", "removeChip", { chip: "Open now" })).toBe("Remove Open now");
     expect(t("ar", "searchFor", { q: "حلاق" })).toContain("حلاق");

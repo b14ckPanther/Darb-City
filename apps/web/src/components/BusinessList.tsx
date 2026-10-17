@@ -16,7 +16,6 @@ export function rowLabels(locale: Locale): RowLabels {
     distanceKm: t(locale, "distanceKm"),
     distanceM: t(locale, "distanceM"),
     locale: INTL_TAG[locale],
-    matchedOn: t(locale, "matchedOn"),
   };
 }
 
