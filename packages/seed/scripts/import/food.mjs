@@ -191,7 +191,10 @@ export function namesOf(t, namer, place) {
     en: clean(t["name:en"]) || (LATIN.test(raw) && !HE.test(raw) && !AR.test(raw) ? raw : ""),
   };
   // A chain's own names when the place is called just by the chain ("ארומה" is Aroma).
-  if (t.brand && [raw, own.he, own.en].includes(clean(t.brand))) {
+  const brandNames = [t.brand, t["brand:he"], t["brand:en"], t["brand:ar"]]
+    .filter(Boolean)
+    .map(clean);
+  if (brandNames.some((b) => [raw, own.he, own.en, own.ar].includes(b))) {
     own.he ||= clean(t["brand:he"]);
     own.ar ||= clean(t["brand:ar"]);
     own.en ||= clean(t["brand:en"]);
