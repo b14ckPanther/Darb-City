@@ -10,7 +10,8 @@
     "phones": "משרד האנרגיה, מאגר תחנות הדלק (data.gov.il resource ff3b653c-d268-4eb7-a86b-6de69e77043a)",
     "services": "© OpenStreetMap contributors (ODbL), fuel types, services and nearby Yellow stores and car washes",
     "links": "paz.co.il (website) and facebook.com/YellowPaz, both linked from paz.co.il",
-    "left_out": "2696 Paz Bik'at Tur'an: the ministry's coordinates repeat 2132 Mitzpe Turan's (3 m apart) though the addresses differ; left out until its real spot is known"
+    "left_out": "2696 Paz Bik'at Tur'an: the ministry's coordinates repeat 2132 Mitzpe Turan's (3 m apart) though the addresses differ; left out until its real spot is known",
+    "ev": "Ministry of Transport, EV charging stations (data.gov.il resource 528482f2-d410-4d62-8b17-566ab23a1c52) and OpenStreetMap"
   },
   "businesses": [
     {
@@ -1464,7 +1465,8 @@
       "brand": "paz",
       "primaryKind": "stations",
       "kinds": [
-        "stations"
+        "stations",
+        "car-wash"
       ],
       "name": {
         "he": "פז קייט ונופש",
@@ -3420,7 +3422,8 @@
       "brand": "paz",
       "primaryKind": "stations",
       "kinds": [
-        "stations"
+        "stations",
+        "car-wash"
       ],
       "name": {
         "he": "פז כרמיאל",
@@ -3847,7 +3850,8 @@
       "brand": "paz",
       "primaryKind": "stations",
       "kinds": [
-        "stations"
+        "stations",
+        "car-wash"
       ],
       "name": {
         "he": "פז טבעון",
@@ -4370,7 +4374,8 @@
       "brand": "paz",
       "primaryKind": "stations",
       "kinds": [
-        "stations"
+        "stations",
+        "ev-charging"
       ],
       "name": {
         "he": "פז טבריה עילית",
@@ -4647,7 +4652,8 @@
       "brand": "paz",
       "primaryKind": "stations",
       "kinds": [
-        "stations"
+        "stations",
+        "ev-charging"
       ],
       "name": {
         "he": "פז מגדל העמק",
@@ -4746,6 +4752,13 @@
               "he": "שירות עצמי",
               "ar": "خدمة ذاتية",
               "en": "Self-service"
+            }
+          },
+          {
+            "label": {
+              "he": "טעינה לרכב חשמלי",
+              "ar": "شحن سيارات كهربائية",
+              "en": "EV charging"
             }
           },
           {
@@ -5984,7 +5997,8 @@
       "brand": "paz",
       "primaryKind": "stations",
       "kinds": [
-        "stations"
+        "stations",
+        "car-wash"
       ],
       "name": {
         "he": "פז יזרעאליה",
@@ -8198,7 +8212,8 @@
       "brand": "paz",
       "primaryKind": "stations",
       "kinds": [
-        "stations"
+        "stations",
+        "car-wash"
       ],
       "name": {
         "he": "פז רוממה",
@@ -9378,7 +9393,8 @@
       "brand": "paz",
       "primaryKind": "stations",
       "kinds": [
-        "stations"
+        "stations",
+        "car-wash"
       ],
       "name": {
         "he": "פז דרור כרמיאל",
@@ -10600,7 +10616,9 @@
       "brand": "paz",
       "primaryKind": "stations",
       "kinds": [
-        "stations"
+        "stations",
+        "car-wash",
+        "ev-charging"
       ],
       "name": {
         "he": "פז צומת כח",
@@ -10711,6 +10729,13 @@
               "he": "שטיפת רכב",
               "ar": "غسيل سيارات",
               "en": "Car wash"
+            }
+          },
+          {
+            "label": {
+              "he": "טעינה לרכב חשמלי",
+              "ar": "شحن سيارات كهربائية",
+              "en": "EV charging"
             }
           },
           {
