@@ -123,7 +123,6 @@ export const GARAGE_WORDS = {
   צבע: { ar: "دهان", en: "Paint", after: true },
   צמיגי: { ar: "كاوتشوك", en: "Tyres", after: true },
   צמיגים: { ar: "كاوتشوك", en: "Tyres", after: true },
-  פנצריה: { ar: "بنشرجي", en: "Tyre repair", after: true },
   מכונאות: { ar: "ميكانيك", en: "Mechanics", after: true },
   רכב: { ar: "سيارات", en: "Cars", after: true },
   הרכב: { ar: "السيارات", en: "Cars", after: true },
