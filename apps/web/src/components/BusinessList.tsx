@@ -1,5 +1,6 @@
 import type { Locale } from "@darb/core";
 import { t } from "@darb/i18n";
+import { INTL_TAG } from "@/lib/locale";
 import type { BusinessRowData } from "@/lib/rows";
 import { BusinessRow, type RowLabels } from "./BusinessRow";
 import styles from "./List.module.css";
@@ -12,6 +13,9 @@ export function rowLabels(locale: Locale): RowLabels {
     closed: t(locale, "closed"),
     glutenFree: t(locale, "glutenFree"),
     byAppointment: t(locale, "byAppointment"),
+    distanceKm: t(locale, "distanceKm"),
+    distanceM: t(locale, "distanceM"),
+    locale: INTL_TAG[locale],
   };
 }
 

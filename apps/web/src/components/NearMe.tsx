@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { Locale } from "@darb/core";
+import { positionGranted } from "@/lib/live-position";
 import styles from "./NearMe.module.css";
 
 export interface NearMeProps {
@@ -64,6 +65,8 @@ export function NearMe({ locale, kind, homeHref, labels }: NearMeProps) {
     setState("locating");
     navigator.geolocation.getCurrentPosition(
       async ({ coords }) => {
+        // Granted: rows across the site may now show how far each business is.
+        positionGranted({ lat: coords.latitude, lng: coords.longitude });
         const payload = {
           locale,
           lat: coords.latitude,

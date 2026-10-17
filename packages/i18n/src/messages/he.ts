@@ -64,6 +64,7 @@ export const he: Messages = {
   placeSoon: "דרב מגיעה ל{place} בקרוב",
   nearestLive: "המקום הפעיל הקרוב: {place}",
   distanceKm: "{km} ק״מ",
+  distanceM: "{m} מ׳",
   hours: "שעות פתיחה",
   hoursUnknown: "שעות הפתיחה לא צוינו",
   close: "סגירה",

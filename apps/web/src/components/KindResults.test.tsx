@@ -46,6 +46,9 @@ const labels = {
     closed: "Closed",
     glutenFree: "Gluten-free",
     byAppointment: "By appointment",
+    distanceKm: "{km} km",
+    distanceM: "{m} m",
+    locale: "en",
   },
 };
 const props = {

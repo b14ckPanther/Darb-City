@@ -3,6 +3,7 @@ import { getImageProps } from "next/image";
 import type { CSSProperties } from "react";
 import type { BusinessRowData } from "@/lib/rows";
 import { AppointmentBadge, ExampleBadge, GlutenFreeBadge } from "./Badges";
+import { LiveDistance } from "./LiveDistance";
 import { LiveOpenState } from "./LiveOpenState";
 import styles from "./List.module.css";
 
@@ -12,6 +13,12 @@ export interface RowLabels {
   closed: string;
   glutenFree: string;
   byAppointment: string;
+  /** "{km} km" for the live distance from the visitor. */
+  distanceKm: string;
+  /** "{m} m" for the live distance under a kilometre. */
+  distanceM: string;
+  /** The page language, for number formatting. */
+  locale: string;
 }
 
 /** Pure: rendered by the server list and by ShowMore on the client. */
@@ -60,7 +67,15 @@ export function BusinessRow({
               <span className={`${styles.rowPlace} ${styles.pinned}`} data-distance="">
                 {row.distance}
               </span>
-            ) : null}
+            ) : (
+              <LiveDistance
+                lat={row.lat}
+                lng={row.lng}
+                template={labels.distanceKm}
+                metres={labels.distanceM}
+                locale={labels.locale}
+              />
+            )}
             {row.example ? <ExampleBadge label={labels.example} /> : null}
             {row.glutenFree ? <GlutenFreeBadge label={labels.glutenFree} /> : null}
             {row.byAppointment ? (

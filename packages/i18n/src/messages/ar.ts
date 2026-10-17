@@ -64,6 +64,7 @@ export const ar: Messages = {
   placeSoon: "درب تصل إلى {place} قريبًا",
   nearestLive: "أقرب مكان متاح: {place}",
   distanceKm: "{km} كم",
+  distanceM: "{m} م",
   hours: "ساعات العمل",
   hoursUnknown: "ساعات العمل غير مذكورة",
   close: "إغلاق",
