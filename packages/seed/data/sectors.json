@@ -227,14 +227,14 @@
   {
     "slug": "faith",
     "name": {
-      "he": "מסגדים ושירותי דת",
-      "ar": "جوامع وخدمات دينية",
-      "en": "Mosques & religious services"
+      "he": "דת וקהילה",
+      "ar": "دين ومجتمع",
+      "en": "Religion & community"
     },
     "tagline": {
-      "he": "מסגדים, לימוד קוראן, אטליזים, עבאיות ומאזון",
-      "ar": "جوامع، تحفيظ قرآن، ملاحم، عبايات ومأذونين",
-      "en": "Mosques, Quran classes, butchers, abayas and marriage contracts"
+      "he": "מסגדים, כנסיות, בתי כנסת, חילוות ושירותי דת",
+      "ar": "جوامع، كنائس، كنس، خلوات وخدمات دينية",
+      "en": "Mosques, churches, synagogues, khalwas and religious services"
     },
     "accent": "#a0b98e",
     "order": 16

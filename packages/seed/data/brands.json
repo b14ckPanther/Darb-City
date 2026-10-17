@@ -744,6 +744,14 @@
     }
   },
   {
+    "slug": "galil-bank",
+    "name": {
+      "he": "בנק הגליל",
+      "en": "Galil Bank",
+      "ar": "بنك الجليل"
+    }
+  },
+  {
     "slug": "shahar-architecture",
     "name": {
       "he": "שחר אדריכלות",
@@ -1005,6 +1013,14 @@
       "he": "פחחות אל פארס",
       "en": "Al Fares Body Shop",
       "ar": "سمكرة الفارس"
+    }
+  },
+  {
+    "slug": "north-test-centre",
+    "name": {
+      "he": "טסט הצפון",
+      "en": "North Test Centre",
+      "ar": "تست الشمال"
     }
   },
   {
@@ -1389,6 +1405,30 @@
       "he": "מסגד אל נור",
       "en": "Al Noor Mosque",
       "ar": "مسجد النور"
+    }
+  },
+  {
+    "slug": "good-tidings-church",
+    "name": {
+      "he": "כנסיית הבשורה הטובה",
+      "en": "Good Tidings Church",
+      "ar": "كنيسة البشارة السارّة"
+    }
+  },
+  {
+    "slug": "ohel-shalom-synagogue",
+    "name": {
+      "he": "בית הכנסת אוהל שלום",
+      "en": "Ohel Shalom Synagogue",
+      "ar": "كنيس أوهيل شالوم"
+    }
+  },
+  {
+    "slug": "al-jabal-khalwa",
+    "name": {
+      "he": "חילוות אל-ג'בל",
+      "en": "Al-Jabal Khalwa",
+      "ar": "خلوة الجبل"
     }
   },
   {

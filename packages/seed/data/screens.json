@@ -20203,5 +20203,452 @@
       "accent": "#2e7d74"
     },
     "font": "Fredoka"
+  },
+  "churches": {
+    "brand": {
+      "he": "כנסיית הבשורה הטובה",
+      "en": "Good Tidings Church",
+      "ar": "كنيسة البشارة السارّة"
+    },
+    "title": {
+      "he": "תפילות השבוע",
+      "en": "This week's services",
+      "ar": "صلوات هالأسبوع"
+    },
+    "subtitle": {
+      "he": "מקהלה ביום ראשון · פתוח לכולם",
+      "en": "Choir on Sunday · all welcome",
+      "ar": "جوقة يوم الأحد · الكل مدعو"
+    },
+    "tags": [
+      {
+        "he": "א'",
+        "en": "Sun",
+        "ar": "أحد"
+      },
+      {
+        "he": "ד'",
+        "en": "Wed",
+        "ar": "أربعاء"
+      },
+      {
+        "he": "ו'",
+        "en": "Fri",
+        "ar": "جمعة"
+      },
+      {
+        "he": "ש'",
+        "en": "Sat",
+        "ar": "سبت"
+      }
+    ],
+    "items": [
+      {
+        "label": {
+          "he": "מיסה של בוקר",
+          "en": "Morning mass",
+          "ar": "قداس الصبح"
+        },
+        "meta": {
+          "he": "א' · 09:00",
+          "en": "Sun · 09:00",
+          "ar": "أحد · 09:00"
+        }
+      },
+      {
+        "label": {
+          "he": "מיסה של ערב",
+          "en": "Evening mass",
+          "ar": "قداس المسا"
+        },
+        "meta": {
+          "he": "א' · 18:00",
+          "en": "Sun · 18:00",
+          "ar": "أحد · 18:00"
+        }
+      },
+      {
+        "label": {
+          "he": "מקהלת ילדים",
+          "en": "Children's choir",
+          "ar": "جوقة الأولاد"
+        },
+        "meta": {
+          "he": "ד' · 17:00",
+          "en": "Wed · 17:00",
+          "ar": "أربعاء · 17:00"
+        }
+      },
+      {
+        "label": {
+          "he": "מפגש קהילה",
+          "en": "Community evening",
+          "ar": "سهرة الرعية"
+        },
+        "meta": {
+          "he": "ו' · 19:30",
+          "en": "Fri · 19:30",
+          "ar": "جمعة · 19:30"
+        }
+      }
+    ],
+    "cta": {
+      "he": "לוח התפילות המלא",
+      "en": "Full service times",
+      "ar": "كل مواعيد الصلوات"
+    },
+    "palette": {
+      "bg": "#1d1a2b",
+      "surface": "#28243a",
+      "ink": "#f3eee4",
+      "accent": "#c9a55a"
+    },
+    "font": "Frank Ruhl Libre"
+  },
+  "synagogues": {
+    "brand": {
+      "he": "בית הכנסת אוהל שלום",
+      "en": "Ohel Shalom Synagogue",
+      "ar": "كنيس أوهيل شالوم"
+    },
+    "title": {
+      "he": "זמני התפילה היום",
+      "en": "Prayer times today",
+      "ar": "أوقات الصلاة اليوم"
+    },
+    "subtitle": {
+      "he": "שיעור ערב אחרי ערבית · פתוח לכולם",
+      "en": "Evening class after Maariv · all welcome",
+      "ar": "درس مسائي بعد صلاة المسا · الكل مدعو"
+    },
+    "tags": [
+      {
+        "he": "א'",
+        "en": "Sun",
+        "ar": "أحد"
+      },
+      {
+        "he": "ב'",
+        "en": "Mon",
+        "ar": "اثنين"
+      },
+      {
+        "he": "ג'",
+        "en": "Tue",
+        "ar": "ثلاثاء"
+      },
+      {
+        "he": "ד'",
+        "en": "Wed",
+        "ar": "أربعاء"
+      },
+      {
+        "he": "ה'",
+        "en": "Thu",
+        "ar": "خميس"
+      },
+      {
+        "he": "ו'",
+        "en": "Fri",
+        "ar": "جمعة"
+      }
+    ],
+    "items": [
+      {
+        "label": {
+          "he": "שחרית",
+          "en": "Shacharit",
+          "ar": "صلاة الصبح"
+        },
+        "meta": {
+          "he": "06:30",
+          "en": "06:30",
+          "ar": "06:30"
+        }
+      },
+      {
+        "label": {
+          "he": "מנחה",
+          "en": "Mincha",
+          "ar": "صلاة الظهر"
+        },
+        "meta": {
+          "he": "13:15",
+          "en": "13:15",
+          "ar": "13:15"
+        }
+      },
+      {
+        "label": {
+          "he": "ערבית",
+          "en": "Maariv",
+          "ar": "صلاة المسا"
+        },
+        "meta": {
+          "he": "19:40 · ואחריה שיעור",
+          "en": "19:40 · class after",
+          "ar": "19:40 · بعدها درس"
+        }
+      }
+    ],
+    "cta": {
+      "he": "לוח הזמנים המלא",
+      "en": "Full prayer times",
+      "ar": "كل مواعيد الصلاة"
+    },
+    "palette": {
+      "bg": "#13233a",
+      "surface": "#1b304d",
+      "ink": "#eef2f7",
+      "accent": "#d4b064"
+    },
+    "font": "Frank Ruhl Libre"
+  },
+  "druze-prayer-houses": {
+    "brand": {
+      "he": "חילוות אל-ג'בל",
+      "en": "Al-Jabal Khalwa",
+      "ar": "خلوة الجبل"
+    },
+    "title": {
+      "he": "מפגשי השבוע",
+      "en": "This week's gatherings",
+      "ar": "اجتماعات هالأسبوع"
+    },
+    "subtitle": {
+      "he": "פתוח למאמינים בזמני המפגשים",
+      "en": "Open to believers at gathering times",
+      "ar": "مفتوحة للمؤمنين بأوقات الاجتماع"
+    },
+    "tags": [
+      {
+        "he": "ב'",
+        "en": "Mon",
+        "ar": "اثنين"
+      },
+      {
+        "he": "ה'",
+        "en": "Thu",
+        "ar": "خميس"
+      }
+    ],
+    "items": [
+      {
+        "label": {
+          "he": "מפגשי ערב",
+          "en": "Evening gatherings",
+          "ar": "اجتماعات المسا"
+        },
+        "meta": {
+          "he": "ב' וה' · 19:00",
+          "en": "Mon and Thu · 19:00",
+          "ar": "اثنين وخميس · 19:00"
+        }
+      },
+      {
+        "label": {
+          "he": "ביקורים",
+          "en": "Visits",
+          "ar": "زيارات"
+        },
+        "meta": {
+          "he": "בתיאום מראש",
+          "en": "by arrangement",
+          "ar": "بتنسيق مسبق"
+        }
+      }
+    ],
+    "cta": {
+      "he": "לתאם ביקור",
+      "en": "Arrange a visit",
+      "ar": "نسّق زيارة"
+    },
+    "palette": {
+      "bg": "#14261c",
+      "surface": "#1d3428",
+      "ink": "#f1efe3",
+      "accent": "#c8b46a"
+    },
+    "font": "Frank Ruhl Libre"
+  },
+  "banks": {
+    "brand": {
+      "he": "בנק הגליל",
+      "en": "Galil Bank",
+      "ar": "بنك الجليل"
+    },
+    "title": {
+      "he": "הסניף שלכם",
+      "en": "Your branch",
+      "ar": "فرعك"
+    },
+    "subtitle": {
+      "he": "קבלת קהל בתיאום מראש",
+      "en": "Appointments by arrangement",
+      "ar": "استقبال جمهور بموعد مسبق"
+    },
+    "tags": [
+      {
+        "he": "פרטיים",
+        "en": "Personal",
+        "ar": "أفراد"
+      },
+      {
+        "he": "עסקים",
+        "en": "Business",
+        "ar": "مصالح"
+      },
+      {
+        "he": "משכנתאות",
+        "en": "Mortgages",
+        "ar": "قروض سكن"
+      }
+    ],
+    "items": [
+      {
+        "label": {
+          "he": "מספר סניף",
+          "en": "Branch number",
+          "ar": "رقم الفرع"
+        },
+        "meta": {
+          "he": "712",
+          "en": "712",
+          "ar": "712"
+        }
+      },
+      {
+        "label": {
+          "he": "שעות קבלת קהל",
+          "en": "Opening hours",
+          "ar": "ساعات الاستقبال"
+        },
+        "meta": {
+          "he": "א'-ה' · 08:30-13:00",
+          "en": "Sun-Thu · 08:30-13:00",
+          "ar": "أحد-خميس · 08:30-13:00"
+        }
+      },
+      {
+        "label": {
+          "he": "נגישות",
+          "en": "Accessibility",
+          "ar": "إمكانية الوصول"
+        },
+        "meta": {
+          "he": "כניסה נגישה",
+          "en": "Step-free entrance",
+          "ar": "مدخل بدون درج"
+        }
+      },
+      {
+        "label": {
+          "he": "מכשירים בכניסה",
+          "en": "Self-service machines",
+          "ar": "ماكينات خدمة ذاتية"
+        },
+        "meta": {
+          "he": "24/7",
+          "en": "24/7",
+          "ar": "24/7"
+        }
+      }
+    ],
+    "cta": {
+      "he": "לקבוע פגישה",
+      "en": "Book an appointment",
+      "ar": "احجز موعد"
+    },
+    "palette": {
+      "bg": "#10202e",
+      "surface": "#182d40",
+      "ink": "#eef3f8",
+      "accent": "#6fa8dc"
+    },
+    "font": "Heebo"
+  },
+  "vehicle-testing": {
+    "brand": {
+      "he": "טסט הצפון",
+      "en": "North Test Centre",
+      "ar": "تست الشمال"
+    },
+    "title": {
+      "he": "הטסט השנתי",
+      "en": "The annual test",
+      "ar": "التست السنوي"
+    },
+    "subtitle": {
+      "he": "בלי תור מראש · תוצאה באותו יום",
+      "en": "No booking needed · same-day result",
+      "ar": "بدون دور مسبق · النتيجة بنفس اليوم"
+    },
+    "tags": [
+      {
+        "he": "פרטי",
+        "en": "Private car",
+        "ar": "خصوصي"
+      },
+      {
+        "he": "מסחרי",
+        "en": "Commercial",
+        "ar": "تجاري"
+      },
+      {
+        "he": "אופנוע",
+        "en": "Motorbike",
+        "ar": "موتور"
+      }
+    ],
+    "items": [
+      {
+        "label": {
+          "he": "טסט שנתי",
+          "en": "Annual test",
+          "ar": "تست سنوي"
+        },
+        "meta": {
+          "he": "כ-30 דק'",
+          "en": "about 30 min",
+          "ar": "حوالي 30 دقيقة"
+        }
+      },
+      {
+        "label": {
+          "he": "בדיקת עשן",
+          "en": "Smoke test",
+          "ar": "فحص دخان"
+        },
+        "meta": {
+          "he": "לרכבי דיזל",
+          "en": "for diesel cars",
+          "ar": "لسيارات الديزل"
+        }
+      },
+      {
+        "label": {
+          "he": "בדיקה אחרי תאונה",
+          "en": "Post-accident check",
+          "ar": "فحص بعد حادث"
+        },
+        "meta": {
+          "he": "בתיאום",
+          "en": "by appointment",
+          "ar": "بموعد"
+        }
+      }
+    ],
+    "cta": {
+      "he": "ניווט למכון",
+      "en": "Navigate to the test centre",
+      "ar": "خذني للتست"
+    },
+    "palette": {
+      "bg": "#102622",
+      "surface": "#183631",
+      "ink": "#eef4ef",
+      "accent": "#5fb3a8"
+    },
+    "font": "Heebo"
   }
 }

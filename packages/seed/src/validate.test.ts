@@ -266,11 +266,11 @@ describe("showroom businesses", () => {
   it("give each of the 12 flagships one business per active kind", () => {
     expect(flagships.size).toBe(12);
     const active = loadKinds().filter((k) => k.status === "active");
-    expect(active).toHaveLength(205);
+    expect(active).toHaveLength(210);
     for (const slug of flagships) {
       const here = businesses.filter((b) => b.place === slug);
-      expect(here, slug).toHaveLength(205);
-      expect(kindsIn(slug).size, slug).toBe(205);
+      expect(here, slug).toHaveLength(210);
+      expect(kindsIn(slug).size, slug).toBe(210);
     }
   });
   it("give every other live settlement exactly the common kinds", () => {
