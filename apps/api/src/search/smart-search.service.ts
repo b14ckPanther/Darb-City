@@ -12,7 +12,7 @@ import { CLOCK, type Clock } from "../businesses/businesses.controller.js";
 import { BusinessesRepository } from "../businesses/businesses.repository.js";
 import { toPlaceDto } from "../places/place.mapper.js";
 import { TaxonomyRepository } from "../taxonomy/taxonomy.repository.js";
-import { cleanItems, intentFromInstant } from "./filters.js";
+import { cleanItems, searchedWords } from "./filters.js";
 import { InstantService, type World } from "./instant.service.js";
 import { IntentService } from "./intent.service.js";
 import { RANKING } from "./ranking.config.js";
@@ -39,6 +39,7 @@ const blockedResponse = (intent: IntentDto): SearchResponseDto => ({
   items: [],
   nearest: [],
   fallback: null,
+  searched: null,
 });
 
 @Injectable()
@@ -126,10 +127,22 @@ export class SmartSearchService {
     const items = cleanItems(intent.items).map(normalize).filter(Boolean);
     const probe = filters.text ? [filters.text] : [];
     let fallback: "wider" | "related" | null = null;
-    // The words searched, for looking inside the cards when the intent named no item.
-    const words = items.length
-      ? items
-      : intentFromInstant(lane1).items.map(normalize).filter(Boolean);
+    // What is looked for inside the cards: the intent's items, else the query's own words for
+    // its kind (kinds then lift rather than filter), else, only when a kind has nothing, every
+    // word but the place's.
+    const own = searchedWords(lane1);
+    const typed = cleanItems(
+      intent.items.length
+        ? intent.items
+        : own.kind === null || intent.kinds.includes(own.kind)
+          ? own.words
+          : [],
+    );
+    const words = typed.map(normalize).filter(Boolean);
+    // The query's words for a kind count only for a kind the intent kept (the model may read a
+    // sentence better than lane 1 did).
+    const ofKind = own.kind !== null && intent.kinds.includes(own.kind);
+    const deepFirst = items.length > 0 || (ofKind && words.length > 0);
     const origin = this.origin(intent, near, world);
     const bounded = !!(filters.placePath || filters.radiusKm);
     // Deep search keeps a business of an asked kind that lacks the asked thing; it answers only
@@ -143,15 +156,11 @@ export class SmartSearchService {
     // The asked things embedded on their own (once, only when looked for).
     let itemEmbedding: Promise<number[] | null> | null = null;
     const embedWords = () => (itemEmbedding ??= this.embed(words.join(" / ")));
-    let found = await this.ranked({
-      ...filters,
-      items,
-      probe,
-      itemEmbedding: items.length ? await embedWords() : null,
-    });
-    if (items.length) found = answering(found);
     const deep = async () => ({ ...filters, items: words, itemEmbedding: await embedWords() });
-    if (found.length === 0 && items.length === 0 && filters.kindIds && words.length)
+    let found = deepFirst
+      ? answering(await this.ranked(await deep()))
+      : await this.ranked({ ...filters, probe });
+    if (found.length === 0 && !deepFirst && filters.kindIds && words.length)
       found = answering(await this.ranked(await deep()));
     if (found.length === 0 && words.length && origin && bounded) {
       found = answering(await this.wider(await deep(), origin));
@@ -176,6 +185,7 @@ export class SmartSearchService {
       items: results,
       nearest,
       fallback,
+      searched: typed[0] ?? null,
     };
   }
 

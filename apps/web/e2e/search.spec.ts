@@ -143,3 +143,42 @@ test("the open combobox has no WCAG A/AA violations", async ({ page }) => {
     .analyze();
   expect(violations.map((v) => v.id)).toEqual([]);
 });
+
+test.describe("deep search: the thing inside the card", () => {
+  test("finds gluten-free shawarma on Caramel's menu and highlights it on the card", async ({
+    page,
+  }) => {
+    await page.goto("/en/search?q=gluten+free+shawarma");
+    const first = page.locator("[data-business-list] li").first();
+    await expect(first).toHaveAttribute("data-business", "akko/caramel");
+    await expect(first.locator("[data-matched]")).toContainText("gluten-free shawarma");
+    await expect(first.locator("[data-matched]")).toContainText("Challah and laffa sandwiches");
+    // The asked diet is a must: its badge is the highlighted one, on every row.
+    const rows = page.locator("[data-business-list] li");
+    await expect(rows.locator("[data-gluten-free][data-strict]")).toHaveCount(await rows.count());
+    await first.locator("[data-business-link]").click();
+    await expect(page).toHaveURL(/\/en\/akko\/food\/restaurants\/caramel\?hl=shawarma$/);
+    const marked = page.locator("[data-template] [data-highlight]");
+    await expect(marked).toHaveCount(1);
+    await expect(marked).toContainText("Meals");
+  });
+
+  test("says honestly when the closest match is in another town", async ({ page }) => {
+    await page.goto(`/search?q=${encodeURIComponent("שווארמה ללא גלוטן בכרמיאל")}`);
+    const line = page.locator('[data-search-fallback-line="wider"]');
+    await expect(line).toBeVisible();
+    await expect(line).toContainText("כרמיאל");
+    await expect(line).toContainText("קרמל");
+    await expect(page.locator("[data-business-list] li").first()).toHaveAttribute(
+      "data-business",
+      "akko/caramel",
+    );
+  });
+
+  test("finds a fuel station by the car wash on its card", async ({ page }) => {
+    await page.goto(`/search?q=${encodeURIComponent("שטיפת רכב בחיפה")}`);
+    const paz = page.locator('[data-business^="haifa/paz-"]').first();
+    await expect(paz).toBeVisible();
+    await expect(paz.locator("[data-matched]")).toContainText("שטיפת רכב");
+  });
+});

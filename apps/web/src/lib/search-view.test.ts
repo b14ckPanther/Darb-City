@@ -91,6 +91,7 @@ const response: SearchResponseDto = {
   items: [item],
   nearest: [],
   fallback: null,
+  searched: null,
 };
 
 describe("search view", () => {
@@ -332,6 +333,11 @@ describe("deep search (the thing inside the card)", () => {
         place: null,
       }).fallback?.line,
     ).toBe("No gluten-free shawarma nearby. Closest: Caramel, Akko, 24.0 km");
+    // The query's own words for the thing, when the intent named no item.
+    const own = { ...wider, intent: { ...wider.intent, items: [] }, searched: "שווארמה" };
+    expect(toSearchView(own, "x", haifa).fallback?.line).toContain(
+      "No gluten-free שווארמה in Haifa",
+    );
     const related = {
       ...found,
       items: [{ ...caramel, matched: undefined }],

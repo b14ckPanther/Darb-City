@@ -112,6 +112,8 @@ export const SearchResponseSchema = z.object({
    * with its distance) or are related businesses without the asked thing ("related").
    */
   fallback: z.enum(["wider", "related"]).nullable().default(null),
+  /** The thing looked for inside the cards, in the query's words ("shawarma"); null if none. */
+  searched: z.string().max(60).nullable().default(null),
 });
 export type SearchResponseDto = z.infer<typeof SearchResponseSchema>;
 

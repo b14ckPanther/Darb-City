@@ -11,22 +11,31 @@ export const dietaryFromCues = (cues: Cues): IntentDto["dietary"] =>
 
 export const MAX_ITEM = 60;
 
+/** Lane 1's strong place and kinds (a kind on the place's own words does not count). */
+function strongOf(r: InstantResult) {
+  const place = r.places[0] && r.places[0].score >= STRONG ? r.places[0] : null;
+  const kinds = r.kinds.filter(
+    (k) => k.score >= STRONG && !(place && k.tokens.some((t) => place.tokens.includes(t))),
+  );
+  return { place, kinds };
+}
+
 /**
- * Lane 1's item, as typed: the words that named a kind ("car wash" in "car wash in Haifa for my
- * jeep", "שווארמה" in "שווארמה ללא גלוטן"), else every content word but the place's. Searched
- * inside every card, so a word that is a kind ("shawarma") also finds the restaurant whose menu
- * lists it.
+ * What a query asks for in its own words, as typed: the words that named a kind ("car wash" in
+ * "car wash in Haifa for my jeep", "שווארמה" in "שווארמה ללא גלוטן"), else every content word
+ * but the place's ("keratin treatment"). Deep search looks for them inside every card, so a word
+ * that is a kind ("shawarma") also finds the restaurant whose menu lists it. Never part of the
+ * intent: the kind chip already says it.
  */
-export function itemsFromInstant(
-  r: InstantResult,
-  placeTokens: readonly number[],
-  kindTokens: readonly number[] | null = null,
-): string[] {
+export function searchedWords(r: InstantResult): { words: string[]; kind: string | null } {
+  const { place, kinds } = strongOf(r);
+  const kindTokens = kinds[0]?.tokens ?? null;
+  const placeTokens = place?.tokens ?? [];
   const words = r.typed.filter((_, i) =>
     kindTokens ? kindTokens.includes(i) : !placeTokens.includes(i),
   );
   const item = words.join(" ").slice(0, MAX_ITEM).trim();
-  return item ? [item] : [];
+  return { words: item ? [item] : [], kind: kinds[0]?.entry.s ?? null };
 }
 
 /**
@@ -49,10 +58,7 @@ export function cleanItems(items: readonly string[]): string[] {
 }
 
 export function intentFromInstant(r: InstantResult): IntentDto {
-  const place = r.places[0] && r.places[0].score >= STRONG ? r.places[0] : null;
-  const strong = r.kinds.filter(
-    (k) => k.score >= STRONG && !(place && k.tokens.some((t) => place.tokens.includes(t))),
-  );
+  const { place, kinds: strong } = strongOf(r);
   // Kinds tied on the same word ("روضة": daycare and kindergartens) all count, up to three.
   const top = strong[0]?.score ?? 0;
   const intent: IntentDto = {
@@ -67,7 +73,6 @@ export function intentFromInstant(r: InstantResult): IntentDto {
     attributes: { delivers: r.cues.delivers },
     dietary: dietaryFromCues(r.cues),
     freeText: r.unmatched.join(" ").slice(0, 120),
-    items: itemsFromInstant(r, place?.tokens ?? [], strong[0]?.tokens ?? null),
   };
   return { ...intent, ...conditionsOf(intent) };
 }

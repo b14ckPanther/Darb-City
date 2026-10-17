@@ -87,6 +87,7 @@ const ok: SearchResponseDto = {
   ],
   nearest: [],
   fallback: null,
+  searched: null,
 };
 const search = await import("./route");
 const suggest = await import("./suggest/route");

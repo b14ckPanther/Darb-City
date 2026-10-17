@@ -4,6 +4,7 @@ import {
   explainedByInstant,
   intentCandidates,
   intentFromInstant,
+  searchedWords,
   validateIntent,
 } from "./filters.js";
 
@@ -67,19 +68,25 @@ describe("intent from lane 1", () => {
       attributes: { delivers: false },
       dietary: [],
       freeText: "pistachio",
-      // Deep search: the words that named the kind are the thing searched inside every card.
-      items: ["knafeh"],
+      items: [],
       mustHave: ["openNow"],
       niceToHave: [],
     });
   });
-  it("searches for the asked thing as typed, and leaves a place or a diet alone without one", () => {
-    expect(intentFromInstant(m("Knafeh, in Haifa!")).items).toEqual(["Knafeh"]);
-    // Without a kind, every content word but the place is the thing searched.
-    expect(intentFromInstant(m("keratin treatment haifa")).items).toEqual(["keratin treatment"]);
-    expect(intentFromInstant(m("haifa")).items).toEqual([]);
-    expect(intentFromInstant(m("gluten free")).items).toEqual([]);
-    expect(intentFromInstant(m("gluten free knafeh")).mustHave).toEqual(["gluten_free"]);
+  it("searches inside the cards for the words that named the kind, as typed, or every word but the place", () => {
+    expect(searchedWords(m("Knafeh, in Haifa!"))).toEqual({ words: ["Knafeh"], kind: "sweets" });
+    expect(searchedWords(m("knafeh in haifa open now with pistachio")).words).toEqual(["knafeh"]);
+    expect(searchedWords(m("keratin treatment haifa"))).toEqual({
+      words: ["keratin treatment"],
+      kind: null,
+    });
+    expect(searchedWords(m("haifa")).words).toEqual([]);
+    expect(searchedWords(m("gluten free")).words).toEqual([]);
+    // Lane 1 never puts them in the intent: the kind chip already says them.
+    expect(intentFromInstant(m("gluten free knafeh"))).toMatchObject({
+      items: [],
+      mustHave: ["gluten_free"],
+    });
   });
   it("turns gluten-free words into the dietary filter, explained without the model (Task 27b)", () => {
     expect(intentFromInstant(m("gluten free knafeh in haifa"))).toMatchObject({

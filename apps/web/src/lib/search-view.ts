@@ -159,7 +159,11 @@ function fallbackLine(
   const intent = res.intent;
   const kind = intent.kinds[0] ? ctx.index.kindBySlug.get(intent.kinds[0]) : undefined;
   const asked =
-    intent.items[0] || intent.freeText || (kind ? pickText(kind.name, ctx.locale) : "") || "";
+    res.searched ||
+    intent.items[0] ||
+    intent.freeText ||
+    (kind ? pickText(kind.name, ctx.locale) : "") ||
+    "";
   if (!asked) return null;
   const thing = thingOf(asked, intent, ctx);
   if (res.fallback === "related")
