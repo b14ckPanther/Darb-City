@@ -104,6 +104,11 @@ describe("resolving an address", () => {
     expect(at("yirka", "ת.ד 5 צומת ירכא")).toMatchObject({ precision: "area", lng: 35.22 });
     expect(at("haifa", "א.ת. דרומי").skip).toMatch(/larger than/);
   });
+  it("takes a town's one main industrial zone, named or not, inside its boundary", () => {
+    expect(at("tamra", "ת.ד.1091 א.תעשיה")).toMatchObject({ precision: "area", lat: 32.86 });
+    expect(at("shefaram", "ת.ד. 7 א.תעשיה").skip).toMatch(/2 industrial zones/);
+    expect(at("tamra", "א.ת. צפוני").skip).toMatch(/names is not on the map/);
+  });
   it("never pins a PO box or a town centre", () => {
     expect(at("haifa", "ת.ד. 2318").skip).toMatch(/PO box/);
     expect(at("haifa", "").skip).toMatch(/no address/);

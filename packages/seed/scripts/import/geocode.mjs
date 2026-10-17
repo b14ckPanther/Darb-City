@@ -103,12 +103,11 @@ async function fetchTileOnce(t) {
   return { addresses, streets };
 }
 
-/** Named industrial zones and junctions in the north: [kind, names[], lat, lng, sizeM]. */
+/** Industrial zones (named or not) and named junctions in the north: [kind, names[], lat, lng, sizeM]. */
 async function fetchLandmarks() {
   const query = `[out:json][timeout:300][bbox:${NORTH_BBOX}];
 (
-  nwr["landuse"="industrial"]["name"];
-  nwr["landuse"="industrial"]["name:he"];
+  nwr["landuse"="industrial"];
   nwr["place"]["name"~"תעשי|תעסוק"];
   node["junction"]["name"];
   node["highway"~"traffic_signals|motorway_junction"]["name"];
@@ -489,6 +488,8 @@ export function createGeocoder({ addresses, streets, landmarks = [], boundaries 
     lng,
     size,
     town: townOf(lat, lng, ""),
+    // Only a municipal boundary is sure enough for a zone OSM gives no name.
+    bounded: areaOf(lat, lng),
   }));
 
   /** Each town's loose keys: loose key → the exact keys it stands for. */
@@ -620,23 +621,38 @@ export function createGeocoder({ addresses, streets, landmarks = [], boundaries 
   }
 
   function atLandmark(town, kind, name) {
-    const inTown = marks.filter((m) => m.kind === kind && m.town === town);
-    let found = inTown;
+    const what = kind === "industrial" ? "industrial zone" : "junction";
     const key = name ? landmarkKey(name) : "";
-    // A one-letter side ("א.ת. ג'") names nothing OSM would: the town's only zone, or none.
-    if (key.length >= 2)
-      found = inTown.filter((m) => m.keys.some((k) => k.includes(key) || key.includes(k)));
-    if (found.length !== 1) {
-      return {
-        skip: found.length
-          ? `${found.length} ${kind === "industrial" ? "industrial zones" : "junctions"} in town`
-          : `no ${kind === "industrial" ? "industrial zone" : "junction"} on the map`,
-      };
+    const named = marks.filter((m) => m.kind === kind && m.town === town && m.keys.length);
+    // A one-letter side ("א.ת. ג'") names nothing OSM would.
+    if (key.length >= 2) {
+      const found = named.filter((m) => m.keys.some((k) => k.includes(key) || key.includes(k)));
+      if (found.length === 1) return zone(found[0]);
+      if (found.length > 1) return { skip: `${found.length} ${what}s answer its name` };
+      // "א.ת. דרומי" when OSM has no southern zone: the town's main zone may be another one.
+      if (kind === "industrial") return { skip: `the ${what} it names is not on the map` };
     }
-    const [m] = found;
-    if (kind === "industrial" && m.size > AREA_MAX_M)
+    if (kind === "junction") return { skip: "junction not on the map in this town" };
+    // No name, or one OSM does not have: the town's one main industrial zone, named or not,
+    // inside its municipal boundary, when every other industrial patch there is much smaller.
+    const all = marks
+      .filter((m) => m.kind === "industrial" && m.bounded === town)
+      .sort((a, b) => b.size - a.size);
+    const pool = all.length ? all : named;
+    if (!pool.length) return { skip: "no industrial zone on the map" };
+    const [main, next] = pool;
+    if (next && next.size * 3 > main.size)
+      return {
+        skip: `${pool.filter((m) => m.size * 3 > main.size).length} industrial zones in town`,
+      };
+    if (main.size < 250 && !main.keys.length) return { skip: "no industrial zone on the map" };
+    return zone(main);
+  }
+
+  function zone(m) {
+    if (m.kind === "industrial" && m.size > AREA_MAX_M)
       return { skip: `industrial zone larger than ${AREA_MAX_M} m` };
-    return { lat: m.lat, lng: m.lng, precision: "area", matched: m.keys[0] };
+    return { lat: m.lat, lng: m.lng, precision: "area", matched: m.keys[0] ?? "industrial" };
   }
 
   /**
