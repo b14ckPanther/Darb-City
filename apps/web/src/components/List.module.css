@@ -19,9 +19,9 @@
 }
 
 .chip[aria-current="page"] {
-  background: var(--gold);
-  border-color: var(--gold);
-  color: var(--night);
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
   font-weight: 700;
 }
 
@@ -47,7 +47,7 @@
 
 /* A row wears its card's look, lightly: the accent along its edge and the logo (or a letter). */
 .rowLink {
-  --row-accent: var(--gold);
+  --row-accent: var(--accent);
   display: grid;
   grid-template-columns: 40px minmax(0, 1fr);
   align-items: start;
@@ -75,7 +75,7 @@
   inline-size: 40px;
   block-size: 40px;
   border-radius: var(--radius-s);
-  background: var(--night);
+  background: var(--bg);
   color: var(--row-accent);
   font-weight: 800;
   font-size: 1.125rem;
@@ -122,13 +122,13 @@
   block-size: 8px;
   margin-inline-end: var(--space-2);
   border-radius: 50%;
-  background: var(--gold);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 25%, transparent);
+  background: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent);
   vertical-align: middle;
 }
 
 .matchLabel {
-  color: var(--gold-300);
+  color: var(--accent-text);
 }
 
 .matchContext {
@@ -190,9 +190,9 @@
   gap: 6px;
   padding: 2px 10px;
   border-radius: var(--radius-pill);
-  background: rgb(217 165 76 / 0.12);
-  box-shadow: inset 0 0 0 1px rgb(217 165 76 / 0.3);
-  color: var(--gold-300);
+  background: var(--tint);
+  box-shadow: inset 0 0 0 1px var(--line);
+  color: var(--accent-text);
   font-size: var(--step--1);
   font-weight: 700;
   font-variant-numeric: tabular-nums;
@@ -262,7 +262,7 @@
 }
 
 .distance {
-  color: var(--gold-300);
+  color: var(--accent-text);
   font-variant-numeric: tabular-nums;
 }
 
@@ -272,8 +272,8 @@
   inline-size: 6px;
   block-size: 6px;
   border-radius: 50%;
-  background: var(--gold);
-  box-shadow: 0 0 0 0 rgb(217 165 76 / 0.5);
+  background: var(--accent);
+  box-shadow: 0 0 0 0 var(--line-strong);
   animation: breathe 2.4s ease-out infinite;
 }
 

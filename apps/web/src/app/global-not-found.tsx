@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { colors } from "@darb/tokens";
+import { tokensCss } from "@/lib/tokens-css";
 import "./globals.css";
 
 export const metadata: Metadata = { title: "404 · Darb", robots: { index: false } };
@@ -8,10 +8,11 @@ export const metadata: Metadata = { title: "404 · Darb", robots: { index: false
 export default function GlobalNotFound() {
   return (
     <html lang="he" dir="rtl">
+      <head>
+        <style dangerouslySetInnerHTML={{ __html: tokensCss() }} />
+      </head>
       <body
         style={{
-          background: colors.night,
-          color: colors.ivory,
           fontFamily: "system-ui, sans-serif",
           display: "grid",
           placeItems: "center",
@@ -29,7 +30,7 @@ export default function GlobalNotFound() {
           <p>
             {/* A full document load on purpose: this page sits outside the [locale] root layout. */}
             {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-            <a href="/" style={{ color: colors.gold }}>
+            <a href="/" className="text-link">
               דרב · <span lang="ar">درب</span> · <span lang="en">Darb</span>
             </a>
           </p>

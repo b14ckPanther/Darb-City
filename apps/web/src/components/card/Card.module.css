@@ -3,7 +3,7 @@
  * or white that reads on it; Darb's night stays behind everything else.
  */
 .card {
-  --card-accent: var(--gold);
+  --card-accent: var(--accent);
   --card-ink: #000;
   --card-glow: rgb(255 255 255 / 0.22);
   display: grid;
@@ -60,7 +60,7 @@
   place-items: center;
   inline-size: 100%;
   block-size: 100%;
-  background: var(--night);
+  background: var(--bg);
   color: var(--card-accent);
   font-size: 2rem;
   font-weight: 800;

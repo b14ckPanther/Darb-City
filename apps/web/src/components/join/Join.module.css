@@ -16,7 +16,7 @@
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-l);
   background:
-    linear-gradient(180deg, rgb(251 247 236 / 0.035), transparent 40%),
+    linear-gradient(180deg, var(--wash), transparent 40%),
     linear-gradient(180deg, var(--surface-2), var(--surface-1));
 }
 
@@ -61,7 +61,7 @@
   padding: var(--space-2) var(--space-3);
   border: 1px solid var(--line);
   border-radius: var(--radius-m);
-  background: var(--night);
+  background: var(--bg);
   color: var(--text);
   font: inherit;
   font-size: max(1rem, var(--step-0));
@@ -76,7 +76,7 @@
 .field input:hover,
 .field textarea:hover,
 .group textarea:hover {
-  border-color: var(--gold);
+  border-color: var(--accent);
 }
 
 .field [aria-invalid="true"],
@@ -92,7 +92,7 @@
 }
 
 .sources a {
-  color: var(--gold-300);
+  color: var(--accent-text);
 }
 
 .notice {
@@ -100,7 +100,7 @@
   padding: var(--space-3) var(--space-4);
   border-radius: var(--radius-m);
   border: 1px solid var(--line);
-  background: rgb(217 165 76 / 0.08);
+  background: var(--tint);
 }
 
 .progress {
@@ -109,7 +109,7 @@
   gap: var(--space-2);
   min-block-size: 1.5em;
   margin: 0;
-  color: var(--gold-300);
+  color: var(--accent-text);
   font-weight: 700;
 }
 
@@ -118,7 +118,7 @@
   display: block;
   block-size: 3px;
   border-radius: var(--radius-pill);
-  background: rgb(217 165 76 / 0.15);
+  background: var(--tint);
   overflow: hidden;
 }
 
@@ -128,7 +128,7 @@
   inline-size: 40%;
   block-size: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
   animation: run 700ms linear infinite;
 }
 
@@ -181,12 +181,12 @@
 
 .primary {
   border: 1px solid transparent;
-  background: linear-gradient(135deg, var(--gold-300), var(--gold) 60%);
-  color: var(--night);
+  background: linear-gradient(135deg, var(--accent-bright), var(--accent) 60%);
+  color: var(--on-accent);
 }
 
 .primary:hover {
-  background: linear-gradient(135deg, var(--gold-100), var(--gold-300) 60%);
+  background: linear-gradient(135deg, var(--gold-100), var(--accent-bright) 60%);
 }
 
 .primary:disabled,
@@ -198,13 +198,13 @@
 
 .secondary {
   border: 1px solid var(--line);
-  background: rgb(251 247 236 / 0.03);
-  color: var(--gold-300);
+  background: var(--wash);
+  color: var(--accent-text);
 }
 
 .secondary:hover {
-  border-color: var(--gold);
-  background: rgb(217 165 76 / 0.1);
+  border-color: var(--accent);
+  background: var(--tint);
 }
 
 .linkButton {
@@ -280,7 +280,7 @@
 
 .group legend {
   padding-inline: var(--space-2);
-  color: var(--gold-300);
+  color: var(--accent-text);
   font-weight: 700;
 }
 
@@ -320,7 +320,7 @@
 
 .fieldError {
   margin: 0;
-  color: #f0a08a;
+  color: var(--danger);
   font-size: var(--step--1);
 }
 
@@ -349,7 +349,7 @@
 .dayName input {
   inline-size: 24px;
   block-size: 24px;
-  accent-color: var(--gold);
+  accent-color: var(--accent-text);
 }
 
 @media (min-width: 640px) {
@@ -387,7 +387,7 @@
 
 .option[aria-selected="true"],
 .option:hover {
-  background: rgb(217 165 76 / 0.14);
+  background: var(--tint);
 }
 
 .noMatch {
@@ -411,13 +411,13 @@
   padding-inline: var(--space-4);
   border: 1px solid var(--line);
   border-radius: var(--radius-pill);
-  background: rgb(251 247 236 / 0.03);
+  background: var(--wash);
   color: var(--text-soft);
   font-weight: 400;
 }
 
 .chip:hover {
-  border-color: var(--gold);
+  border-color: var(--accent);
 }
 
 .days {
@@ -465,7 +465,7 @@
   padding-inline: var(--space-3);
   border: 0;
   background: none;
-  color: var(--gold-300);
+  color: var(--accent-text);
   font-weight: 400;
   font-size: var(--step--1);
   text-decoration: underline;
@@ -491,7 +491,7 @@
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius-m);
-  background: var(--night);
+  background: var(--bg);
 }
 
 .thumb img {
@@ -531,14 +531,14 @@
   block-size: 100%;
   border: 1px dashed var(--line);
   border-radius: var(--radius-m);
-  color: var(--gold-300);
+  color: var(--accent-text);
   font-weight: 700;
   text-align: center;
   cursor: pointer;
 }
 
 .add:focus-within {
-  outline: 2px solid var(--gold);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
@@ -557,7 +557,7 @@
 }
 
 .swatch:has(input:focus-visible) {
-  outline: 2px solid var(--gold);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
@@ -573,12 +573,12 @@
 }
 
 .segment:has(input:checked) {
-  border-color: var(--gold);
-  background: rgb(217 165 76 / 0.12);
+  border-color: var(--accent);
+  background: var(--tint);
 }
 
 .segment input {
-  accent-color: var(--gold);
+  accent-color: var(--accent-text);
 }
 
 /* Off the page for people and screen readers; bots still find and fill it. */
@@ -635,7 +635,7 @@
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-l);
   background:
-    linear-gradient(180deg, rgb(251 247 236 / 0.035), transparent 40%),
+    linear-gradient(180deg, var(--wash), transparent 40%),
     linear-gradient(180deg, var(--surface-2), var(--surface-1));
 }
 
@@ -680,7 +680,7 @@
   padding: var(--space-2) var(--space-3);
   border: 1px solid var(--line);
   border-radius: var(--radius-m);
-  background: var(--night);
+  background: var(--bg);
   color: var(--text);
   font: inherit;
   font-size: max(1rem, var(--step-0));
@@ -695,7 +695,7 @@
 .field input:hover,
 .field textarea:hover,
 .group textarea:hover {
-  border-color: var(--gold);
+  border-color: var(--accent);
 }
 
 .field [aria-invalid="true"],
@@ -711,7 +711,7 @@
 }
 
 .sources a {
-  color: var(--gold-300);
+  color: var(--accent-text);
 }
 
 .notice {
@@ -719,7 +719,7 @@
   padding: var(--space-3) var(--space-4);
   border-radius: var(--radius-m);
   border: 1px solid var(--line);
-  background: rgb(217 165 76 / 0.08);
+  background: var(--tint);
 }
 
 .progress {
@@ -728,7 +728,7 @@
   gap: var(--space-2);
   min-block-size: 1.5em;
   margin: 0;
-  color: var(--gold-300);
+  color: var(--accent-text);
   font-weight: 700;
 }
 
@@ -737,7 +737,7 @@
   display: block;
   block-size: 3px;
   border-radius: var(--radius-pill);
-  background: rgb(217 165 76 / 0.15);
+  background: var(--tint);
   overflow: hidden;
 }
 
@@ -747,7 +747,7 @@
   inline-size: 40%;
   block-size: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
   animation: run 700ms linear infinite;
 }
 
@@ -800,12 +800,12 @@
 
 .primary {
   border: 1px solid transparent;
-  background: linear-gradient(135deg, var(--gold-300), var(--gold) 60%);
-  color: var(--night);
+  background: linear-gradient(135deg, var(--accent-bright), var(--accent) 60%);
+  color: var(--on-accent);
 }
 
 .primary:hover {
-  background: linear-gradient(135deg, var(--gold-100), var(--gold-300) 60%);
+  background: linear-gradient(135deg, var(--gold-100), var(--accent-bright) 60%);
 }
 
 .primary:disabled,
@@ -817,13 +817,13 @@
 
 .secondary {
   border: 1px solid var(--line);
-  background: rgb(251 247 236 / 0.03);
-  color: var(--gold-300);
+  background: var(--wash);
+  color: var(--accent-text);
 }
 
 .secondary:hover {
-  border-color: var(--gold);
-  background: rgb(217 165 76 / 0.1);
+  border-color: var(--accent);
+  background: var(--tint);
 }
 
 .linkButton {
@@ -899,7 +899,7 @@
 
 .group legend {
   padding-inline: var(--space-2);
-  color: var(--gold-300);
+  color: var(--accent-text);
   font-weight: 700;
 }
 
@@ -939,7 +939,7 @@
 
 .fieldError {
   margin: 0;
-  color: #f0a08a;
+  color: var(--danger);
   font-size: var(--step--1);
 }
 
@@ -968,7 +968,7 @@
 .dayName input {
   inline-size: 24px;
   block-size: 24px;
-  accent-color: var(--gold);
+  accent-color: var(--accent-text);
 }
 
 @media (min-width: 640px) {
@@ -1006,7 +1006,7 @@
 
 .option[aria-selected="true"],
 .option:hover {
-  background: rgb(217 165 76 / 0.14);
+  background: var(--tint);
 }
 
 .noMatch {
@@ -1030,13 +1030,13 @@
   padding-inline: var(--space-4);
   border: 1px solid var(--line);
   border-radius: var(--radius-pill);
-  background: rgb(251 247 236 / 0.03);
+  background: var(--wash);
   color: var(--text-soft);
   font-weight: 400;
 }
 
 .chip:hover {
-  border-color: var(--gold);
+  border-color: var(--accent);
 }
 
 .days {
@@ -1084,7 +1084,7 @@
   padding-inline: var(--space-3);
   border: 0;
   background: none;
-  color: var(--gold-300);
+  color: var(--accent-text);
   font-weight: 400;
   font-size: var(--step--1);
   text-decoration: underline;
@@ -1110,7 +1110,7 @@
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius-m);
-  background: var(--night);
+  background: var(--bg);
 }
 
 .thumb img {
@@ -1150,14 +1150,14 @@
   block-size: 100%;
   border: 1px dashed var(--line);
   border-radius: var(--radius-m);
-  color: var(--gold-300);
+  color: var(--accent-text);
   font-weight: 700;
   text-align: center;
   cursor: pointer;
 }
 
 .add:focus-within {
-  outline: 2px solid var(--gold);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
@@ -1176,7 +1176,7 @@
 }
 
 .swatch:has(input:focus-visible) {
-  outline: 2px solid var(--gold);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
@@ -1192,12 +1192,12 @@
 }
 
 .segment:has(input:checked) {
-  border-color: var(--gold);
-  background: rgb(217 165 76 / 0.12);
+  border-color: var(--accent);
+  background: var(--tint);
 }
 
 .segment input {
-  accent-color: var(--gold);
+  accent-color: var(--accent-text);
 }
 
 /* Off the page for people and screen readers; bots still find and fill it. */
@@ -1232,7 +1232,7 @@
 
 /* The card itself: the owner's accent leads, Darb's night stays behind it. */
 .card {
-  --accent: var(--gold);
+  --accent: var(--accent);
   margin: 0;
   overflow: hidden;
   border: 1px solid var(--line);
@@ -1272,7 +1272,7 @@
   border-radius: var(--radius-m);
   border: 3px solid var(--surface-2);
   background: var(--accent);
-  color: var(--night);
+  color: var(--on-accent);
   font-size: 1.75rem;
   font-weight: 800;
   object-fit: contain;
@@ -1310,7 +1310,7 @@ img.logo {
 }
 
 .stateOpen {
-  color: #8fd6a4;
+  color: var(--open);
 }
 
 .actionsRow {
@@ -1341,7 +1341,7 @@ img.logo {
 
 .card[data-icons="solid"] .actionIcon {
   background: var(--accent);
-  color: var(--night);
+  color: var(--on-accent);
 }
 
 .actionLabel {
@@ -1370,12 +1370,12 @@ img.logo {
   inline-size: 56px;
   block-size: 56px;
   border-radius: var(--radius-pill);
-  background: linear-gradient(135deg, var(--gold-300), var(--gold) 60%);
+  background: linear-gradient(135deg, var(--accent-bright), var(--accent) 60%);
 }
 
 .doneMark path {
   fill: none;
-  stroke: var(--night);
+  stroke: var(--on-accent);
   stroke-width: 2.4;
   stroke-linecap: round;
   stroke-linejoin: round;

@@ -1,0 +1,59 @@
+.toggle {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  inline-size: var(--tap);
+  block-size: var(--tap);
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface-1);
+  color: var(--accent-text);
+  box-shadow: var(--shadow-1);
+  cursor: pointer;
+}
+
+.toggle:hover {
+  background: var(--tint);
+}
+
+.icon {
+  inline-size: 20px;
+  block-size: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* By day the moon offers the night; by night the sun offers the day. */
+.sun,
+.moon {
+  transform-origin: 12px 12px;
+  transition:
+    opacity 400ms var(--ease-out),
+    transform 550ms var(--ease-out);
+}
+
+.sun {
+  opacity: 0;
+  transform: rotate(-60deg) scale(0.6);
+}
+
+.toggle[data-night] .sun {
+  opacity: 1;
+  transform: none;
+}
+
+.toggle[data-night] .moon {
+  opacity: 0;
+  transform: rotate(40deg) scale(0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sun,
+  .moon {
+    transition: none;
+  }
+}

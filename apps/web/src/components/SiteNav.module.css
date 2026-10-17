@@ -13,7 +13,7 @@
   padding: 4px;
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-pill);
-  background: rgb(251 247 236 / 0.03);
+  background: var(--wash);
   list-style: none;
 }
 
@@ -33,8 +33,8 @@
   z-index: 0;
   inline-size: var(--w);
   border-radius: var(--radius-pill);
-  background: rgb(217 165 76 / 0.14);
-  box-shadow: inset 0 0 0 1px rgb(217 165 76 / 0.22);
+  background: var(--tint);
+  box-shadow: inset 0 0 0 1px var(--line);
   transform: translateX(var(--x));
 }
 
@@ -45,7 +45,7 @@
   inset-inline: 35%;
   block-size: 2px;
   border-radius: 2px;
-  background: var(--gold);
+  background: var(--accent);
 }
 
 .rail > .pill[data-settled] {
@@ -85,7 +85,7 @@
   border: 1px solid var(--line);
   border-radius: 50%;
   background: transparent;
-  color: var(--gold-300);
+  color: var(--accent-text);
   cursor: pointer;
 }
 
@@ -149,7 +149,7 @@
   align-content: start;
   padding: var(--space-6) var(--gutter);
   background:
-    radial-gradient(80% 60% at 50% 100%, rgb(217 165 76 / 0.14), transparent 70%), var(--night);
+    radial-gradient(80% 60% at 50% 100%, var(--tint-strong), transparent 70%), var(--bg);
   overflow-y: auto;
 }
 

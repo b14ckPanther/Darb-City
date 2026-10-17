@@ -6,8 +6,8 @@
   overscroll-behavior: contain;
   touch-action: pan-y;
   background:
-    radial-gradient(90% 55% at 50% 12%, rgb(217 165 76 / 0.12) 0%, transparent 60%),
-    linear-gradient(180deg, var(--night) 0%, var(--forest-950) 100%);
+    radial-gradient(90% 55% at 50% 12%, var(--tint) 0%, transparent 60%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-raised) 100%);
 }
 
 .caption {
@@ -81,7 +81,7 @@
 
 .door:hover .label,
 .door:focus-visible .label {
-  color: var(--gold-300);
+  color: var(--accent-text);
 }
 
 .door[data-empty] .label {

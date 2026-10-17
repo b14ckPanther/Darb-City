@@ -29,7 +29,7 @@
 }
 
 /*
- * The sunlit map set into the night UI like a lit window: the night closes in on rounded corners,
+ * The sunlit map set into the page like a window: the page closes in on rounded corners,
  * a hairline of gold traces the edge and a faint shade settles around the inside. Above the map,
  * under its attribution; it never takes a tap.
  */
@@ -43,10 +43,10 @@
   border-end-start-radius: var(--radius-l);
   border-end-end-radius: var(--radius-l);
   box-shadow:
-    0 0 0 120px var(--night),
-    inset 0 0 0 1px rgb(217 165 76 / 0.28),
-    inset 0 0 56px rgb(3 17 12 / 0.2),
-    inset 0 10px 24px -12px rgb(3 17 12 / 0.45);
+    0 0 0 120px var(--bg),
+    inset 0 0 0 1px var(--line-strong),
+    inset 0 0 56px rgb(var(--shadow) / calc(var(--shadow-k) * 0.04)),
+    inset 0 10px 24px -12px rgb(var(--shadow) / calc(var(--shadow-k) * 0.09));
 }
 
 @media (min-width: 900px) {
@@ -100,7 +100,7 @@
   border-radius: var(--radius-pill);
   background: var(--surface-2);
   box-shadow: var(--shadow-panel);
-  color: var(--gold-300);
+  color: var(--link);
   font: inherit;
   font-weight: 700;
   cursor: pointer;

@@ -23,7 +23,7 @@
   block-size: var(--tap);
   border-radius: var(--radius-pill);
   border: 1px solid var(--line);
-  color: var(--gold-300);
+  color: var(--accent-text);
 }
 
 /* Long paths wrap onto a second line rather than scroll, so the current crumb is never cut off. */
@@ -68,7 +68,7 @@
 }
 
 .current {
-  color: var(--gold-300);
+  color: var(--accent-text);
   font-weight: 700;
 }
 
@@ -98,7 +98,7 @@
 }
 
 .locale[aria-current="true"] {
-  color: var(--night);
-  background: var(--gold);
+  color: var(--on-accent);
+  background: var(--accent);
   font-weight: 700;
 }
