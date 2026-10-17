@@ -214,7 +214,7 @@ export function tradeName(he) {
   return plainDashes(he)
     .replace(/\([^)]*(בע"מ|ח\.פ|\d{6,})[^)]*\)?/g, " ")
     .replace(/\(\s*\)/g, " ")
-    .replace(/(^|\s)בע"מ(?=\s|$)/g, " ")
+    .replace(/(^|\s)(בע"מ|בע״מ|בע מ|בעמ)(?=\s|$)/g, " ")
     .replace(/ח\.פ\.?\s*\d+/g, " ")
     .replace(/\s+/g, " ")
     .replace(/^[\s-]+|[\s-]+$/g, "")

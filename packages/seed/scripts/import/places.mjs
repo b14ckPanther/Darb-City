@@ -9,6 +9,7 @@ const SETTLEMENTS = new Set(["city", "town", "village", "neighbourhood"]);
 export const NEAREST_KM = 6;
 /** A name match farther than this from the record's point is not trusted. */
 const NAME_MAX_KM = 15;
+const TYPE_RANK = { city: 0, town: 1, village: 2, neighbourhood: 3 };
 
 /**
  * Town names the sources use that are not a Darb place's name: junctions, old names and
@@ -111,40 +112,67 @@ export function createPlaceMatcher(places = loadDarbPlaces()) {
   const settlements = places.filter((p) => SETTLEMENTS.has(p.type));
   const exact = new Map();
   const looseIndex = new Map();
-  const index = (key, p, map) => {
+  // Each key lists its places with how strongly the key names them: a place's own name (2)
+  // over one part of a hyphenated name (1).
+  const index = (key, p, map, strength) => {
     if (!key) return;
     const list = map.get(key) ?? [];
-    if (!list.includes(p)) list.push(p);
+    const had = list.find((x) => x.place === p);
+    if (had) had.strength = Math.max(had.strength, strength);
+    else list.push({ place: p, strength });
     map.set(key, list);
   };
   for (const p of settlements) {
     const names = [p.name.he, p.name.en, ...(p.aliases ?? [])].filter(Boolean);
     // "בנימינה-גבעת עדה" is also written "בנימינה": each hyphenated part names the place too.
     const parts = names.flatMap((n) => (/[-\u05BE]/.test(n) ? n.split(/\s*[-\u05BE]\s*/) : []));
-    for (const name of [...names, ...parts])
-      for (const v of variants(name)) {
-        index(v, p, exact);
-        index(loose(v), p, looseIndex);
-      }
+    for (const [list, strength] of [
+      [names, 2],
+      [parts, 1],
+    ])
+      for (const name of list)
+        for (const v of variants(name)) {
+          index(v, p, exact, strength);
+          index(loose(v), p, looseIndex, strength);
+        }
   }
   for (const [alias, slug] of Object.entries(TOWN_ALIASES)) {
     const p = bySlug.get(slug);
-    if (p) exact.set(normalize(alias), [p]);
+    if (p) exact.set(normalize(alias), [{ place: p, strength: 3 }]);
   }
 
   const district = (slug) => districtOf(slug, bySlug);
   const inNorth = (slug) => NORTH.has(district(slug));
 
+  /**
+   * Without a point, a name is trusted when one place answers it most strongly: its own name over
+   * a part of another's, then a city or town over a village ("טמרה" is the city, not the village
+   * "טמרה (יזרעאל)").
+   */
+  function pick(found) {
+    const top = Math.max(...found.map((x) => x.strength));
+    let best = found.filter((x) => x.strength === top);
+    if (best.length > 1) {
+      const rank = Math.min(...best.map((x) => TYPE_RANK[x.place.type] ?? 9));
+      best = best.filter((x) => (TYPE_RANK[x.place.type] ?? 9) === rank);
+    }
+    return best.length === 1 ? best[0].place : null;
+  }
+
   function byName(names, point) {
     for (const map of [exact, looseIndex]) {
       const key = map === exact ? (v) => v : loose;
       for (const name of names) {
-        for (const v of variants(name)) {
+        for (const v of variants(String(name).replace(/\*/g, ""))) {
           const found = map.get(key(v));
           if (!found?.length) continue;
-          if (!point) return found.length === 1 ? { place: found[0], km: null } : null;
+          if (!point) {
+            const place = pick(found);
+            if (place) return { place, km: null };
+            continue;
+          }
           const best = found
-            .map((p) => ({ place: p, km: km(p, point) }))
+            .map(({ place }) => ({ place, km: km(place, point) }))
             .sort((a, b) => a.km - b.km)[0];
           if (best.km <= NAME_MAX_KM) return best;
         }
