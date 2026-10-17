@@ -18,8 +18,8 @@
       "outsideNorth": 550,
       "noPlace": 0,
       "noPoint": 1,
-      "matchedByName": 401,
-      "matchedNearest": 40,
+      "matchedByName": 408,
+      "matchedNearest": 33,
       "osmMatched": 290,
       "open247": 21,
       "withPhone": 329,
@@ -5937,6 +5937,83 @@
       }
     },
     {
+      "slug": "fuel-daburiya",
+      "place": "daburiya",
+      "brand": null,
+      "primaryKind": "stations",
+      "kinds": [
+        "stations"
+      ],
+      "name": {
+        "he": "דלק דבוריה",
+        "ar": "وقود دبورية",
+        "en": "Fuel Daburiya"
+      },
+      "tagline": {
+        "he": "תחנת דלק",
+        "ar": "محطة وقود",
+        "en": "Fuel station"
+      },
+      "address": {
+        "he": "דבוריה",
+        "ar": "دبورية",
+        "en": "Daburiya"
+      },
+      "lat": 32.677,
+      "lng": 35.382144,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "fuelAdminNo": 2414
+      },
+      "tier": "basic",
+      "phone": "+972 50-322-2897",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "דלק דבוריה",
+          "ar": "وقود دبورية",
+          "en": "Fuel Daburiya"
+        },
+        "title": {
+          "he": "תחנת דלק",
+          "ar": "محطة وقود",
+          "en": "Fuel station"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "דלק",
+              "ar": "وقود",
+              "en": "Fuel"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לתחנה",
+          "ar": "خذني للمحطة",
+          "en": "Navigate to the station"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
       "slug": "fuel-daburiya-fuel-station",
       "place": "daburiya",
       "brand": null,
@@ -7463,6 +7540,83 @@
       "links": {},
       "cardStyle": {
         "accent": "#e08a6d",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "sonol-ein-harod-meuhad-gilboa",
+      "place": "en-harod-ihud",
+      "brand": "sonol",
+      "primaryKind": "stations",
+      "kinds": [
+        "stations"
+      ],
+      "name": {
+        "he": "סונול עין חרוד גלבוע",
+        "ar": "سونول عين حرود جلبوع",
+        "en": "Sonol Ein Harod Meuhad Gilboa"
+      },
+      "tagline": {
+        "he": "תחנת דלק סונול",
+        "ar": "محطة وقود سونول",
+        "en": "Sonol fuel station"
+      },
+      "address": {
+        "he": "כביש עפולה - בית שאן, עין חרוד (כביש 71)",
+        "ar": "عين حرود (إيحود)",
+        "en": "En Harod Ihud"
+      },
+      "lat": 32.5504324,
+      "lng": 35.3931018,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "fuelAdminNo": 2232
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": "https://www.sonol.co.il",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "סונול עין חרוד גלבוע",
+          "ar": "سونول عين حرود جلبوع",
+          "en": "Sonol Ein Harod Meuhad Gilboa"
+        },
+        "title": {
+          "he": "תחנת דלק סונול",
+          "ar": "محطة وقود سونول",
+          "en": "Sonol fuel station"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "דלק",
+              "ar": "وقود",
+              "en": "Fuel"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לתחנה",
+          "ar": "خذني للمحطة",
+          "en": "Navigate to the station"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
         "icons": "solid"
       }
     },
@@ -27443,6 +27597,97 @@
       }
     },
     {
+      "slug": "dor-alon-ofer-junction",
+      "place": "ofer",
+      "brand": "dor-alon",
+      "primaryKind": "stations",
+      "kinds": [
+        "stations"
+      ],
+      "name": {
+        "he": "דור אלון צומת עופר",
+        "ar": "دور ألون مفرق عوفر",
+        "en": "Dor Alon Ofer Junction"
+      },
+      "tagline": {
+        "he": "תחנת דלק דור אלון",
+        "ar": "محطة وقود دور ألون",
+        "en": "Dor Alon fuel station"
+      },
+      "address": {
+        "he": "צומת עופר, כניסה למושב כרם מהרל (עין איילה)",
+        "ar": "عوفر",
+        "en": "Ofer"
+      },
+      "lat": 32.6387057,
+      "lng": 34.9587123,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "fuelAdminNo": 2529
+      },
+      "tier": "basic",
+      "phone": "+972 4-984-1010",
+      "whatsapp": null,
+      "website": "https://www.doralon.co.il",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "דור אלון צומת עופר",
+          "ar": "دور ألون مفرق عوفر",
+          "en": "Dor Alon Ofer Junction"
+        },
+        "title": {
+          "he": "תחנת דלק דור אלון",
+          "ar": "محطة وقود دور ألون",
+          "en": "Dor Alon fuel station"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "דלק",
+              "ar": "وقود",
+              "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "חנות נוחות",
+              "ar": "دكانة",
+              "en": "Convenience store"
+            }
+          },
+          {
+            "label": {
+              "he": "שירותים",
+              "ar": "حمامات",
+              "en": "Toilets"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לתחנה",
+          "ar": "خذني للمحطة",
+          "en": "Navigate to the station"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D9AAA2"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d9aaa2",
+        "icons": "solid"
+      }
+    },
+    {
       "slug": "ten-or-akiva",
       "place": "or-akiva",
       "brand": "ten",
@@ -31485,83 +31730,6 @@
       }
     },
     {
-      "slug": "fuel-daburiya",
-      "place": "shibli-umm-al-ghanam",
-      "brand": null,
-      "primaryKind": "stations",
-      "kinds": [
-        "stations"
-      ],
-      "name": {
-        "he": "דלק דבוריה",
-        "ar": "وقود دبورية",
-        "en": "Fuel Daburiya"
-      },
-      "tagline": {
-        "he": "תחנת דלק",
-        "ar": "محطة وقود",
-        "en": "Fuel station"
-      },
-      "address": {
-        "he": "דבוריה",
-        "ar": "الشبلي - أم الغنم",
-        "en": "Shibli-Umm al-Ghanam"
-      },
-      "lat": 32.677,
-      "lng": 35.382144,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "fuelAdminNo": 2414
-      },
-      "tier": "basic",
-      "phone": "+972 50-322-2897",
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "דלק דבוריה",
-          "ar": "وقود دبورية",
-          "en": "Fuel Daburiya"
-        },
-        "title": {
-          "he": "תחנת דלק",
-          "ar": "محطة وقود",
-          "en": "Fuel station"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "דלק",
-              "ar": "وقود",
-              "en": "Fuel"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט לתחנה",
-          "ar": "خذني للمحطة",
-          "en": "Navigate to the station"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#D6A473"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#d6a473",
-        "icons": "solid"
-      }
-    },
-    {
       "slug": "fuel-shivli",
       "place": "shibli-umm-al-ghanam",
       "brand": null,
@@ -32220,83 +32388,6 @@
           "he": "סונול מבואות תמרה (אחים סמאר)",
           "ar": "سونول مداخل تمرا احيم سمار",
           "en": "Sonol Tamra Ahim Samar Gateway"
-        },
-        "title": {
-          "he": "תחנת דלק סונול",
-          "ar": "محطة وقود سونول",
-          "en": "Sonol fuel station"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "דלק",
-              "ar": "وقود",
-              "en": "Fuel"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט לתחנה",
-          "ar": "خذني للمحطة",
-          "en": "Navigate to the station"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "sonol-ein-harod-meuhad-gilboa",
-      "place": "tel-yosseph",
-      "brand": "sonol",
-      "primaryKind": "stations",
-      "kinds": [
-        "stations"
-      ],
-      "name": {
-        "he": "סונול עין חרוד גלבוע",
-        "ar": "سونول عين حرود جلبوع",
-        "en": "Sonol Ein Harod Meuhad Gilboa"
-      },
-      "tagline": {
-        "he": "תחנת דלק סונול",
-        "ar": "محطة وقود سونول",
-        "en": "Sonol fuel station"
-      },
-      "address": {
-        "he": "כביש עפולה - בית שאן, עין חרוד (כביש 71)",
-        "ar": "تل يوسف",
-        "en": "Tel Yosseph"
-      },
-      "lat": 32.5504324,
-      "lng": 35.3931018,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "fuelAdminNo": 2232
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": "https://www.sonol.co.il",
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "סונול עין חרוד גלבוע",
-          "ar": "سونول عين حرود جلبوع",
-          "en": "Sonol Ein Harod Meuhad Gilboa"
         },
         "title": {
           "he": "תחנת דלק סונול",
@@ -33810,97 +33901,6 @@
       "links": {},
       "cardStyle": {
         "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "dor-alon-ofer-junction",
-      "place": "tzrufa",
-      "brand": "dor-alon",
-      "primaryKind": "stations",
-      "kinds": [
-        "stations"
-      ],
-      "name": {
-        "he": "דור אלון צומת עופר",
-        "ar": "دور ألون مفرق عوفر",
-        "en": "Dor Alon Ofer Junction"
-      },
-      "tagline": {
-        "he": "תחנת דלק דור אלון",
-        "ar": "محطة وقود دور ألون",
-        "en": "Dor Alon fuel station"
-      },
-      "address": {
-        "he": "צומת עופר, כניסה למושב כרם מהרל (עין איילה)",
-        "ar": "تسروفا",
-        "en": "Tzrufa"
-      },
-      "lat": 32.6387057,
-      "lng": 34.9587123,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "fuelAdminNo": 2529
-      },
-      "tier": "basic",
-      "phone": "+972 4-984-1010",
-      "whatsapp": null,
-      "website": "https://www.doralon.co.il",
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "דור אלון צומת עופר",
-          "ar": "دور ألون مفرق عوفر",
-          "en": "Dor Alon Ofer Junction"
-        },
-        "title": {
-          "he": "תחנת דלק דור אלון",
-          "ar": "محطة وقود دور ألون",
-          "en": "Dor Alon fuel station"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "דלק",
-              "ar": "وقود",
-              "en": "Fuel"
-            }
-          },
-          {
-            "label": {
-              "he": "חנות נוחות",
-              "ar": "دكانة",
-              "en": "Convenience store"
-            }
-          },
-          {
-            "label": {
-              "he": "שירותים",
-              "ar": "حمامات",
-              "en": "Toilets"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט לתחנה",
-          "ar": "خذني للمحطة",
-          "en": "Navigate to the station"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#D9AAA2"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#d9aaa2",
         "icons": "solid"
       }
     },
