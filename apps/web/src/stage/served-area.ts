@@ -4,7 +4,7 @@ import type {
   LngLatBoundsLike,
   StyleSpecification,
 } from "maplibre-gl";
-import { colors, mapColors } from "@darb/tokens";
+import { mapColors } from "@darb/tokens";
 import { PROTOMAPS_SOURCE } from "./map-style";
 
 /** Written by scripts/copy-map.mjs (scripts/map/served-area.mjs): the land Darb serves. */
