@@ -884,27 +884,31 @@
 }
 
 /*
- * Phones: the mark leads, small, above the copy, so it is the first thing seen and never sits under
- * the docked search bar; the hero ends above the bar and the iPhone home indicator. (Last in the
- * file, so it wins over the base rules above.)
+ * Phones: the first screen is the hero alone: the copy, then the mark filling what is left down to
+ * the docked search bar (never under it); the story starts below the fold. (Last in the file, so it
+ * wins over the base rules above.)
  */
 @media (max-width: 899px) {
   .heroStage {
-    min-block-size: 0;
-    grid-template-rows: auto auto;
-    align-content: start;
-    gap: var(--space-2);
+    display: flex;
+    flex-direction: column;
+    min-block-size: calc(100svh - 68px);
+    gap: var(--space-3);
     padding-block: var(--space-4)
-      calc(var(--dock-size) + var(--space-5) + env(safe-area-inset-bottom));
+      calc(var(--dock-size) + var(--space-3) + env(safe-area-inset-bottom));
   }
 
+  /* The space left under the copy: the mark takes it, up to a size that still looks crafted. */
   .heroVisual {
-    order: -1;
+    flex: 1 1 0;
     block-size: auto;
+    min-block-size: 160px;
+    container-type: size;
   }
 
   .markWrap {
-    block-size: clamp(96px, 15svh, 150px);
+    block-size: min(100cqb, 340px);
+    max-inline-size: 100cqi;
   }
 
   .heroTitle {
@@ -914,6 +918,10 @@
   .actions {
     flex-wrap: nowrap;
     margin-block-start: var(--space-4);
+  }
+
+  .story {
+    padding-block-start: var(--space-6);
   }
 
   .actions > * {

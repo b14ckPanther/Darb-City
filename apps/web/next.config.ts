@@ -8,6 +8,9 @@ const searchIndex = writeSearchIndex(path.resolve(process.cwd(), "public"));
 
 const config: NextConfig = {
   reactStrictMode: true,
+  // Dev only: the owner tries the site on a phone over the home network; without this Next 16
+  // refuses that origin its dev scripts and the page never hydrates.
+  allowedDevOrigins: ["10.0.0.23", "*.local"],
   poweredByHeader: false,
   turbopack: { root: workspaceRoot },
   outputFileTracingRoot: workspaceRoot,
