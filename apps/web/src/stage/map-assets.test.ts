@@ -116,9 +116,13 @@ describe("neutral labels in the page language only", () => {
 });
 
 describe("buildMapAssets", () => {
-  it("writes the vendor modules, the glyphs and one style per locale", () => {
+  it("writes the vendor modules, the glyphs, one style per locale and the served area", () => {
     const target = mkdtempSync(join(tmpdir(), "darb-map-"));
-    const { styles } = buildMapAssets(target);
+    const { styles, served } = buildMapAssets(target);
+    expect(served.file).toBe(join(target, "served-area.json"));
+    const area = JSON.parse(readFileSync(served.file, "utf8"));
+    expect(area.geometry.type).toBe("MultiPolygon");
+    expect(area.bbox).toHaveLength(4);
     expect(styles.sort()).toEqual(
       ["ar", "en", "he"].map((l) => join(target, "style", `${l}.json`)),
     );
