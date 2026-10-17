@@ -166,6 +166,7 @@ export function buildFuel({ stations, phones, osmFuel, osmServices, ev = [], exi
   };
   const slugFor = createSlugger(existing.map((b) => `${b.place}/${b.slug}`));
   const records = [];
+  const conflicts = [];
   for (const s of stations) {
     const company = plainDashes(s["חברה"] ?? "").trim();
     if (company === "פז") {
@@ -186,6 +187,13 @@ export function buildFuel({ stations, phones, osmFuel, osmServices, ev = [], exi
       lat,
       lng,
     });
+    if (m?.how === "conflict") {
+      if (matcher.inNorth(m.town.slug)) {
+        counts.pointFarFromTown = (counts.pointFarFromTown ?? 0) + 1;
+        conflicts.push(`${no} ${s["שם_תחנה"]} (${s["רשות_מקומית"]}): ${m.km} km away`);
+      } else counts.outsideNorth++;
+      continue;
+    }
     if (!m) {
       // Far from any settlement: only a station outside the north can be that far.
       counts[lat > 32.3 && lat < 33.4 && lng > 34.8 && lng < 35.95 ? "noPlace" : "outsideNorth"]++;
@@ -284,7 +292,7 @@ export function buildFuel({ stations, phones, osmFuel, osmServices, ev = [], exi
   counts.inNorth = records.length;
   counts.deduped = dropped.length;
   counts.emitted = kept.length;
-  return { businesses: kept, dropped, counts };
+  return { businesses: kept, dropped, counts, conflicts };
 }
 
 const stripChain = (en, chain) =>
@@ -302,7 +310,7 @@ async function main() {
     ),
   ]);
   const existing = readListings({ except: FILE });
-  const { businesses, dropped, counts } = buildFuel({
+  const { businesses, dropped, counts, conflicts } = buildFuel({
     stations,
     phones,
     osmFuel,
@@ -328,6 +336,7 @@ async function main() {
       websites:
         "the chain's own site where checked (sonol.co.il, delek.co.il, doralon.co.il, sadash.co.il)",
       counts,
+      point_far_from_town: conflicts,
     },
     businesses,
   );

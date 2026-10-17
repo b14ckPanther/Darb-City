@@ -291,10 +291,22 @@ export function createNamer(places = loadDarbPlaces(), { extraWords = {} } = {})
   for (const p of settlements) {
     const parts = p.name.he.split(/\s*[-\u05BE]\s*/);
     if (parts.length < 2) continue;
-    for (const part of parts)
+    // A part takes the matching part of the place's own Arabic and English when they split
+    // the same way ("בנימינה-גבעת עדה", "بنيامينا-جفعت عدا", "Binyamina - Givat Ada").
+    const arParts = p.name.ar.split(/\s*-\s*/);
+    const enParts = p.name.en.split(/\s*-\s*/);
+    const aligned = arParts.length === parts.length && enParts.length === parts.length;
+    // "אל-" or "א-" alone is an article, not a part.
+    if (parts.some((part) => normalize(part).length < 3)) continue;
+    parts.forEach((part, i) => {
       for (const v of variants(part))
         if (v.length >= 3 && !placeNames.has(v))
-          placeNames.set(v, { ar: arabicPhrase(part), en: latinPhrase(part), part: true });
+          placeNames.set(v, {
+            ar: aligned ? arParts[i] : arabicPhrase(part),
+            en: aligned ? enParts[i] : latinPhrase(part),
+            part: true,
+          });
+    });
   }
   const looseCount = new Map();
   for (const p of settlements) {

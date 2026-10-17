@@ -19,6 +19,8 @@ export const TOWN_ALIASES = {
   כורדני: "kiryat-motzkin",
   "נצרת עילית": "nof-hagalil",
   "קרית חיים": "kiryat-haim",
+  // Too short for the loose match ("גש"), so written out.
+  "ג'יש": "jish-gush-halav",
 };
 
 export function loadDarbPlaces() {
@@ -164,6 +166,8 @@ export function createPlaceMatcher(places = loadDarbPlaces()) {
       const key = map === exact ? (v) => v : loose;
       for (const name of names) {
         for (const v of variants(String(name).replace(/\*/g, ""))) {
+          // A loose key of two letters ("עלי" is "על") names too many places to trust.
+          if (map === looseIndex && key(v).length < 3) continue;
           const found = map.get(key(v));
           if (!found?.length) continue;
           if (!point) {
@@ -181,6 +185,16 @@ export function createPlaceMatcher(places = loadDarbPlaces()) {
     return null;
   }
 
+  /** Every place a name could mean, exactly or loosely. */
+  function namedBy(name) {
+    const out = new Set();
+    for (const v of variants(String(name).replace(/\*/g, ""))) {
+      for (const x of exact.get(v) ?? []) out.add(x.place);
+      if (loose(v).length >= 3) for (const x of looseIndex.get(loose(v)) ?? []) out.add(x.place);
+    }
+    return [...out];
+  }
+
   function nearest(point, maxKm = NEAREST_KM) {
     let best = null;
     for (const p of settlements) {
@@ -191,9 +205,23 @@ export function createPlaceMatcher(places = loadDarbPlaces()) {
     return best;
   }
 
-  /** `town` and `names` are tried in order; `lat`/`lng` check the name and allow nearest. */
+  /**
+   * `town` and `names` are tried in order; `lat`/`lng` check the name and allow nearest. When the
+   * town alone names one place but the point is more than 15 km from it, the source contradicts
+   * itself: the result is { place: null, how: "conflict", town, km } and the record is skipped.
+   */
   function match({ town, names = [], lat, lng } = {}) {
     const point = Number.isFinite(lat) && Number.isFinite(lng) ? { lat, lng } : null;
+    if (point && town) {
+      const alone = byName([town], null);
+      if (alone && namedBy(town).every((p) => km(p, point) > NAME_MAX_KM))
+        return {
+          place: null,
+          how: "conflict",
+          town: alone.place,
+          km: round(km(alone.place, point)),
+        };
+    }
     const tried = [town, ...names].filter(Boolean);
     const named = byName(tried, point);
     if (named) return { place: named.place, how: "name", km: round(named.km) };
