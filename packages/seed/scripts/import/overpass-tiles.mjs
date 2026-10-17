@@ -39,7 +39,7 @@ async function run(query, what) {
         method: "POST",
         headers: { "User-Agent": UA, "Content-Type": "application/x-www-form-urlencoded" },
         body: `data=${encodeURIComponent(query)}`,
-        signal: AbortSignal.timeout(240_000),
+        signal: globalThis.AbortSignal.timeout(240_000),
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const body = await res.json();
