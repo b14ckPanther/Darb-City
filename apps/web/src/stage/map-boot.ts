@@ -1,18 +1,23 @@
 import type { Map as MapLibreMap, StyleSpecification } from "maplibre-gl";
 import type { Locale } from "@darb/core";
 import { prepareStyle, PROTOMAPS_SOURCE } from "./map-style";
+import { loadServedArea, withServedArea } from "./served-area";
 import { styleUrl, TILES_URL } from "./vendor";
 
 const READY_TIMEOUT = 15_000;
 
-/** The locale's Darb style, fetched and pointed at this origin's glyphs and the tiles archive. */
+/**
+ * The locale's Darb style, fetched and pointed at this origin's glyphs and the tiles archive, with
+ * the land outside what Darb serves faded into the night (served-area.ts).
+ */
 export async function fetchDarbStyle(locale: Locale): Promise<StyleSpecification> {
-  const res = await fetch(styleUrl(locale));
+  const [res, area] = await Promise.all([fetch(styleUrl(locale)), loadServedArea()]);
   if (!res.ok) throw new Error(`Map style: ${res.status}`);
-  return prepareStyle((await res.json()) as StyleSpecification, {
+  const style = prepareStyle((await res.json()) as StyleSpecification, {
     origin: window.location.origin,
     tilesUrl: TILES_URL ?? "",
   });
+  return withServedArea(style, area);
 }
 
 /** The first idle frame; fails if the tiles cannot be read (a 404 archive, a bad URL). */

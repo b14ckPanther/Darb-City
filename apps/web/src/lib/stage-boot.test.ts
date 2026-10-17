@@ -46,6 +46,8 @@ describe("stageAllowed", () => {
       "/ar/contact",
       "/join",
       "/en/join",
+      "/near",
+      "/ar/near",
     ])
       expect(stageAllowed(path), path).toBe(false);
   });

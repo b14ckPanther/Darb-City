@@ -29,46 +29,48 @@ export function ChainApp({
       data-chain-app={ours ? "ours" : "invite"}
       aria-labelledby="chain-app-title"
     >
-      <div className={styles.shots} aria-hidden="true">
-        <Image
-          className={styles.laptop}
-          src={`/showroom/${app.showroom}-laptop.jpg`}
-          alt=""
-          width={1440}
-          height={900}
-          sizes="220px"
-        />
-        <Image
-          className={styles.phone}
-          src={`/showroom/${app.showroom}-phone.jpg`}
-          alt=""
-          width={780}
-          height={1688}
-          sizes="70px"
-        />
-      </div>
-      <div className={styles.text}>
-        <p className={styles.mark}>
-          <span className={styles.dot} aria-hidden="true" />
-          Darb · <bdi>{app.name}</bdi>
-        </p>
-        <h3 id="chain-app-title" className={styles.title}>
-          {copy.title}
-        </h3>
-        <p className={styles.body}>{copy.body}</p>
-        <p className={styles.actions}>
-          <Link href={showroom} className={styles.primary}>
-            {copy.open}
-          </Link>
-          {join ? (
-            <Link
-              href={`${href(locale, paths.contact())}?plan=signature`}
-              className={styles.secondary}
-            >
-              {join}
+      <div className={styles.inner}>
+        <div className={styles.shots} aria-hidden="true">
+          <Image
+            className={styles.laptop}
+            src={`/showroom/${app.showroom}-laptop.jpg`}
+            alt=""
+            width={1440}
+            height={900}
+            sizes="220px"
+          />
+          <Image
+            className={styles.phone}
+            src={`/showroom/${app.showroom}-phone.jpg`}
+            alt=""
+            width={780}
+            height={1688}
+            sizes="70px"
+          />
+        </div>
+        <div className={styles.text}>
+          <p className={styles.mark}>
+            <span className={styles.dot} aria-hidden="true" />
+            <bdi>Darb · {app.name}</bdi>
+          </p>
+          <h3 id="chain-app-title" className={styles.title}>
+            {copy.title}
+          </h3>
+          <p className={styles.body}>{copy.body}</p>
+          <p className={styles.actions}>
+            <Link href={showroom} className={styles.primary}>
+              {copy.open}
             </Link>
-          ) : null}
-        </p>
+            {join ? (
+              <Link
+                href={`${href(locale, paths.contact())}?plan=signature`}
+                className={styles.secondary}
+              >
+                {join}
+              </Link>
+            ) : null}
+          </p>
+        </div>
       </div>
     </aside>
   );

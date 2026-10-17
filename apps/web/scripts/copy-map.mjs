@@ -1,11 +1,12 @@
-// Builds public/map (served at /map/*): the vendored MapLibre modules, the self-hosted glyphs and
-// one Darb style per locale. The lazy city stage imports MapLibre from here at runtime, so it never
+// Builds public/map (served at /map/*): the vendored MapLibre modules, the self-hosted glyphs,
+// one Darb style per locale and the outline of the land Darb serves (from @darb/seed places). The lazy city stage imports MapLibre from here at runtime, so it never
 // enters a route's first-load JavaScript. Run by `dev` and `build`; needs no network.
 import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { GLYPHS_DIR } from "./map/fetch-glyphs.mjs";
+import { writeServedArea } from "./map/served-area.mjs";
 import { darbStyle } from "./map/style.mjs";
 
 const require = createRequire(import.meta.url);
@@ -39,12 +40,15 @@ export function buildMapAssets(target) {
     writeFileSync(file, JSON.stringify(darbStyle(locale)));
     return file;
   });
-  return { vendor, glyphs, styles };
+  const served = writeServedArea(join(target, "served-area.json"));
+  return { vendor, glyphs, styles, served };
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  const { vendor, styles } = buildMapAssets(
+  const { vendor, styles, served } = buildMapAssets(
     fileURLToPath(new URL("../public/map", import.meta.url)),
   );
-  console.log(`map: vendor -> ${vendor}; glyphs; ${styles.length} styles`);
+  console.log(
+    `map: vendor -> ${vendor}; glyphs; ${styles.length} styles; served area ${served.bytes} bytes`,
+  );
 }

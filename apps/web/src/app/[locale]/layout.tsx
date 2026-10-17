@@ -12,7 +12,7 @@ import { tokensCss } from "@/lib/tokens-css";
 import { DoorDefs } from "@/components/Door";
 import { Header } from "@/components/Header";
 import { NearMe } from "@/components/NearMe";
-import { href } from "@/lib/routes";
+import { href, paths } from "@/lib/routes";
 import { StageMount } from "@/components/StageMount";
 import { stageBootScript } from "@/lib/stage-boot";
 import { TILES_URL } from "@/stage/vendor";
@@ -105,6 +105,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
             <NearMe
               locale={locale}
               homeHref={href(locale)}
+              nearHref={href(locale, paths.near())}
               labels={{
                 nearMe: t(locale, "nearMe"),
                 locating: t(locale, "locating"),

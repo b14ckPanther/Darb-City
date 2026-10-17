@@ -63,6 +63,7 @@ export const en = {
   placeSoon: "Darb reaches {place} soon",
   nearestLive: "Nearest live place: {place}",
   distanceKm: "{km} km",
+  distanceM: "{m} m",
   hours: "Opening hours",
   hoursUnknown: "Hours not listed",
   close: "Close",

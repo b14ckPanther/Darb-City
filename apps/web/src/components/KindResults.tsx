@@ -11,6 +11,7 @@ import { BusinessRow, type RowLabels } from "./BusinessRow";
 import list from "./List.module.css";
 import styles from "./KindResults.module.css";
 import { StageData } from "./StageData";
+import { positionGranted } from "@/lib/live-position";
 
 export interface KindResultsLabels {
   businesses: string;
@@ -165,8 +166,10 @@ export function KindResults(props: KindResultsProps) {
     setState("locating");
     navigator.geolocation.getCurrentPosition(
       // The filters as they are when the position arrives, not when the button was pressed.
-      ({ coords }) =>
-        apply({ ...current.current, near: { lat: coords.latitude, lng: coords.longitude } }),
+      ({ coords }) => {
+        positionGranted({ lat: coords.latitude, lng: coords.longitude });
+        apply({ ...current.current, near: { lat: coords.latitude, lng: coords.longitude } });
+      },
       () => setState("denied"),
       { timeout: 10_000, maximumAge: 600_000 },
     );

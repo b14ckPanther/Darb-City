@@ -42,6 +42,7 @@ describe("reserved slugs", () => {
         "pricing",
         "contact",
         "join",
+        "near",
         "search",
         "login",
         "register",
@@ -62,6 +63,7 @@ describe("reserved slugs", () => {
     "pricing",
     "contact",
     "join",
+    "near",
     "_next",
     "brand",
   ])("%s is reserved", (value) => {

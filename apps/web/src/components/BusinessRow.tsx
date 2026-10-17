@@ -3,6 +3,7 @@ import { getImageProps } from "next/image";
 import type { CSSProperties } from "react";
 import type { BusinessRowData } from "@/lib/rows";
 import { AppointmentBadge, ExampleBadge, GlutenFreeBadge } from "./Badges";
+import { LiveDistance } from "./LiveDistance";
 import { LiveOpenState } from "./LiveOpenState";
 import styles from "./List.module.css";
 
@@ -12,6 +13,12 @@ export interface RowLabels {
   closed: string;
   glutenFree: string;
   byAppointment: string;
+  /** "{km} km" for the live distance from the visitor. */
+  distanceKm: string;
+  /** "{m} m" for the live distance under a kilometre. */
+  distanceM: string;
+  /** The page language, for number formatting. */
+  locale: string;
 }
 
 /** Pure: rendered by the server list and by ShowMore on the client. */
@@ -48,21 +55,11 @@ export function BusinessRow({
           )}
         </span>
         <span className={styles.rowText}>
-          <span className={styles.rowName} data-business-name="">
-            {row.name}
-          </span>
-          {row.tagline ? <span className={styles.rowTagline}>{row.tagline}</span> : null}
-          <span className={styles.rowMeta}>
-            {row.placeName ? (
-              <span className={`${styles.rowPlace} ${styles.pinned}`}>{row.placeName}</span>
-            ) : null}
-            {row.distance ? (
-              <span className={`${styles.rowPlace} ${styles.pinned}`} data-distance="">
-                {row.distance}
-              </span>
-            ) : null}
-            {row.example ? <ExampleBadge label={labels.example} /> : null}
-            {row.glutenFree ? <GlutenFreeBadge label={labels.glutenFree} /> : null}
+          {/* The name with its open state at the end: the state never falls to a line of its own. */}
+          <span className={styles.rowHead}>
+            <span className={styles.rowName} data-business-name="">
+              {row.name}
+            </span>
             {row.byAppointment ? (
               <AppointmentBadge label={labels.byAppointment} />
             ) : (
@@ -72,6 +69,29 @@ export function BusinessRow({
                 labels={{ open: labels.openNow, closed: labels.closed }}
               />
             )}
+          </span>
+          {row.tagline ? <span className={styles.rowTagline}>{row.tagline}</span> : null}
+          <span className={styles.rowMeta}>
+            {row.distance ? (
+              <span className={styles.distance} data-distance="">
+                {row.distance}
+              </span>
+            ) : (
+              <LiveDistance
+                lat={row.lat}
+                lng={row.lng}
+                template={labels.distanceKm}
+                metres={labels.distanceM}
+                locale={labels.locale}
+              />
+            )}
+            {row.placeName ? (
+              <span className={`${styles.rowPlace} ${styles.pinned}`}>
+                <span className={styles.clip}>{row.placeName}</span>
+              </span>
+            ) : null}
+            {row.example ? <ExampleBadge label={labels.example} /> : null}
+            {row.glutenFree ? <GlutenFreeBadge label={labels.glutenFree} /> : null}
           </span>
         </span>
       </Link>

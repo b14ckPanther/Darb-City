@@ -1,0 +1,246 @@
+/* /near: the businesses around the visitor. Phones: the map on top, the list under it. */
+.near {
+  padding-block-end: var(--space-7);
+}
+
+.head {
+  margin-block-end: var(--space-5);
+}
+
+.title {
+  overflow-wrap: anywhere;
+}
+
+.lead {
+  margin-block-end: 0;
+}
+
+.starting {
+  min-block-size: 40svh;
+}
+
+/* Before a point: one calm card that asks once, on a tap. */
+.ask {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-5);
+  max-inline-size: 34rem;
+  margin-inline: auto;
+  margin-block-start: var(--space-6);
+  padding: var(--space-7) var(--space-5);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-l);
+  background:
+    radial-gradient(90% 70% at 50% 0%, var(--forest-900) 0%, transparent 70%), var(--surface-1);
+  box-shadow: var(--shadow-panel);
+  text-align: center;
+}
+
+.askText {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: var(--step-1);
+  max-inline-size: 32ch;
+}
+
+.askMark {
+  display: grid;
+  place-items: center;
+  inline-size: 96px;
+  block-size: 96px;
+  --ring: 96px;
+}
+
+.use {
+  min-inline-size: 12rem;
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--night);
+  font-weight: 700;
+}
+
+.use[aria-busy="true"] {
+  opacity: 0.8;
+}
+
+.layout {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.mapColumn {
+  display: grid;
+  gap: var(--space-2);
+  min-inline-size: 0;
+}
+
+.layout[data-map="off"] .mapColumn {
+  display: none;
+}
+
+.mapFrame {
+  position: relative;
+  block-size: 45svh;
+  min-block-size: 260px;
+  border-radius: var(--radius-l);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  background:
+    radial-gradient(80% 60% at 50% 40%, var(--forest-900) 0%, transparent 70%), var(--night);
+  box-shadow: var(--shadow-panel);
+}
+
+/* MapLibre makes its container position: relative, so the size comes from the frame. */
+.mapCanvas {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.attribution {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+.attribution a {
+  color: var(--text-soft);
+}
+
+.listColumn {
+  min-inline-size: 0;
+}
+
+/* One column beside the map, whatever the shared list does on wide screens. */
+.listColumn .list {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.placeholder {
+  block-size: 72px;
+  border-radius: var(--radius-m);
+  border: 1px solid var(--line-soft);
+  background: var(--surface-1);
+  animation: breathe var(--dur-slow) var(--ease-in-out) infinite alternate;
+}
+
+@keyframes breathe {
+  from {
+    opacity: 0.45;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 900px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    grid-template-areas: "list map";
+    align-items: start;
+    gap: var(--space-6);
+  }
+
+  .layout[data-map="off"] {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "list";
+  }
+
+  .mapColumn {
+    grid-area: map;
+    position: sticky;
+    inset-block-start: var(--space-5);
+  }
+
+  .listColumn {
+    grid-area: list;
+  }
+
+  .mapFrame {
+    block-size: min(640px, calc(100dvh - 200px));
+  }
+}
+
+/* "You are here": a gold dot breathing inside the ring of the fix's accuracy. */
+.here {
+  display: grid;
+  place-items: center;
+  inline-size: var(--tap);
+  block-size: var(--tap);
+  pointer-events: none;
+}
+
+.hereRing {
+  grid-area: 1 / 1;
+  inline-size: var(--ring, 0px);
+  block-size: var(--ring, 0px);
+  border-radius: 50%;
+  border: 1px solid rgb(240 199 122 / 0.55);
+  background: rgb(217 165 76 / 0.14);
+}
+
+.hereRing[hidden] {
+  display: none;
+}
+
+.hereDot {
+  grid-area: 1 / 1;
+  position: relative;
+  inline-size: 18px;
+  block-size: 18px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 3px solid var(--ivory);
+  box-shadow: 0 2px 10px rgb(0 0 0 / 0.5);
+}
+
+.hereDot::after {
+  content: "";
+  position: absolute;
+  inset: -9px;
+  border-radius: 50%;
+  background: rgb(217 165 76 / 0.45);
+  animation: pulse var(--dur-slow) var(--ease-in-out) infinite alternate;
+  z-index: -1;
+}
+
+@keyframes pulse {
+  from {
+    opacity: 0.85;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.6);
+  }
+}
+
+/* A business: a 44 px target around a small gold dot. */
+.pin {
+  display: grid;
+  place-items: center;
+  inline-size: var(--tap);
+  block-size: var(--tap);
+  cursor: pointer;
+}
+
+.pin::before {
+  content: "";
+  inline-size: 14px;
+  block-size: 14px;
+  border-radius: 50%;
+  background: var(--gold-300);
+  border: 2px solid var(--night);
+  box-shadow: 0 1px 6px rgb(0 0 0 / 0.55);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.pin:hover::before {
+  transform: scale(1.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hereDot::after,
+  .placeholder {
+    animation: none;
+  }
+}
