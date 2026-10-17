@@ -36,7 +36,7 @@ export default async function LandingPage({ params }: Props) {
     <div className={styles.page}>
       <main id="main" className={styles.main}>
         <Road startSelector="[data-road-start]" />
-        <section className={styles.hero} aria-labelledby="main-heading">
+        <section className={styles.hero} aria-labelledby="main-heading" data-scheme="night">
           <div className={styles.heroStage}>
             <div className={styles.heroGlow} aria-hidden="true" />
             <div className={styles.heroCopy}>
@@ -221,7 +221,12 @@ export default async function LandingPage({ params }: Props) {
           </ul>
         </section>
 
-        <section className={`frame ${styles.join}`} aria-labelledby="join-title" data-stop="">
+        <section
+          className={`frame ${styles.join}`}
+          aria-labelledby="join-title"
+          data-stop=""
+          data-scheme="night"
+        >
           <Reveal className={styles.joinCard}>
             <h2 id="join-title" className={styles.sectionTitle}>
               <Words text={copy.join.title} />

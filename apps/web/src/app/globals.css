@@ -234,3 +234,8 @@ h3 {
     scroll-behavior: auto !important;
   }
 }
+
+/* A band that keeps its own scheme (the landing hero, the footer): its own ink, not the page's. */
+[data-scheme] {
+  color: var(--text);
+}

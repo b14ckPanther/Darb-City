@@ -62,7 +62,7 @@
 }
 
 .number {
-  color: var(--accent-bright);
+  color: var(--accent-text);
   margin-inline-end: var(--space-1);
 }
 

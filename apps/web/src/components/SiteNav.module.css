@@ -190,7 +190,7 @@
 }
 
 .big[aria-current="page"] {
-  color: var(--accent-bright);
+  color: var(--accent-text);
 }
 
 .index {

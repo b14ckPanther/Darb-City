@@ -4,7 +4,8 @@
   inset: 0;
   inline-size: 100%;
   block-size: 100%;
-  z-index: 0;
+  /* Over the night hero (so it runs on across the dawn), under every section after it. */
+  z-index: 1;
   overflow: visible;
   pointer-events: none;
 }
@@ -17,12 +18,12 @@
 }
 
 .line {
-  stroke: var(--gold-300);
-  stroke-width: 1.5;
+  stroke: var(--accent);
+  stroke-width: 2;
 }
 
 .glow {
   stroke: var(--gold);
   stroke-width: 8;
-  opacity: 0.12;
+  opacity: 0.16;
 }

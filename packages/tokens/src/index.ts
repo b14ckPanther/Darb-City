@@ -39,7 +39,7 @@ export const themes = {
     textMuted: "#5a6a60",
     /** Gold as a fill (the road, chips, active states). */
     accent: "#d9a54c",
-    accentBright: "#c99435",
+    accentBright: "#f0c77a",
     /** Gold as text on paper: deepened until it reads (WCAG AA). */
     accentText: "#80571a",
     /** Text on a gold fill. */

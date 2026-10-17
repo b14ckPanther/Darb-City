@@ -112,7 +112,7 @@
 }
 
 .kind {
-  color: var(--accent-bright);
+  color: var(--accent-text);
   font-size: var(--step--1);
   font-weight: 700;
 }
@@ -176,7 +176,7 @@
   align-items: center;
   gap: 0.3em;
   min-block-size: var(--tap);
-  color: var(--accent-bright);
+  color: var(--accent-text);
   font-weight: 700;
 }
 
@@ -286,7 +286,7 @@
 }
 
 .ghost {
-  color: var(--accent-bright);
+  color: var(--accent-text);
   font-size: var(--step--1);
   font-weight: 700;
 }
