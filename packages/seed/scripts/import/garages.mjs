@@ -189,6 +189,31 @@ export const GARAGE_WORDS = {
   אחמד: { ar: "أحمد", en: "Ahmad" },
   אבו: { ar: "أبو", en: "Abu" },
   בן: { ar: "بن", en: "Ben" },
+  // "את" in a name is "and" ("אהרון את חסון"), never the industrial zone's short form.
+  את: { ar: "و", en: "and" },
+  מכון: { ar: "مركز", en: "Centre", after: true },
+  פנצריה: { ar: "بنشر", en: "Tyre repair", after: true },
+  פנצרייה: { ar: "بنشر", en: "Tyre repair", after: true },
+  פנצריית: { ar: "بنشر", en: "Tyre repair", after: true },
+  "פנצ'ריה": { ar: "بنشر", en: "Tyre repair", after: true },
+  "פנצ'ריית": { ar: "بنشر", en: "Tyre repair", after: true },
+  "פנצ'רית": { ar: "بنشر", en: "Tyre repair", after: true },
+  חלפים: { ar: "قطع غيار", en: "Spare parts", after: true },
+  וחלפים: { ar: "وقطع غيار", en: "and Spare parts", after: true },
+  גרר: { ar: "ونش", en: "Towing", after: true },
+  וגרר: { ar: "وونش", en: "and Towing", after: true },
+  "כיוון פרונט": { ar: "ميزان", en: "Wheel alignment", after: true },
+  למכונאות: { ar: "ميكانيك", en: "Mechanics", after: true },
+  "מכונאות כללית": { ar: "ميكانيك عام", en: "General mechanics", after: true },
+  לרכב: { ar: "سيارات", en: "Cars", after: true },
+  אופנועי: { ar: "موتورات", en: "Motorbikes", after: true },
+  אופנועים: { ar: "موتورات", en: "Motorbikes", after: true },
+  תיקון: { ar: "تصليح", en: "Repairs", after: true },
+  רדיאטורים: { ar: "رادياتيرات", en: "Radiators", after: true },
+  דיזל: { ar: "ديزل", en: "Diesel" },
+  וצבע: { ar: "ودهان", en: "and Paint", after: true },
+  לפחחות: { ar: "سمكرة", en: "Body work", after: true },
+  "לפחחות וצבע": { ar: "سمكرة ودهان", en: "Body work and paint", after: true },
 };
 
 /** Words in a garage's name that say what it is, not which one. */
@@ -275,6 +300,11 @@ export function findOsmTwin(garage, place, osm, isPlaceName = () => false) {
 export function cleanName(he) {
   return tradeName(
     plainDashes(he)
+      // ")ש.ר.95(" is "(ש.ר.95)" written backwards; "(2007)בע מ" lacks its spaces.
+      .replace(/\)([^()]*)\(/g, " ($1) ")
+      .replace(/\s*\(\s*(\d{4})\s*\)\s*/g, " ")
+      .replace(/([^\s(])\(/g, "$1 (")
+      .replace(/\)([^\s)])/g, ") $1")
       .replace(/(^|\s)בע\s*[מם](?=\s|$)/g, " ")
       .replace(/(^|\s)\(\d{4}\)(?=\s|$)/g, " ")
       .replace(/(^|\s)(ש\.?ת\.?פ|שותפות)(?=\s|$)/g, " "),
@@ -482,8 +512,12 @@ function card(g, list, namer) {
       : key === "agricultural"
         ? AGRI
         : GARAGE;
-  const own = cleanName(g.name) || g.name;
-  const name = namer.name(own, place);
+  // A name with no letters ("92133") says nothing: the card calls it what it is.
+  const cleaned = cleanName(g.name);
+  const own = /[\u05D0-\u05EAA-Za-z]/.test(cleaned) ? cleaned : `${label.he} ${place.name.he}`;
+  const named = namer.name(own, place);
+  // Arabic "و" (and) joins the next word.
+  const name = { ...named, ar: named.ar.replace(/(^|\s)و\s+/g, "$1و") };
   const ids = list.map((x) => x.id);
   const addressHe = g.address || place.name.he;
   return business({
