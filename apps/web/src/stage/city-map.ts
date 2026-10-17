@@ -15,9 +15,12 @@ import { CITY_GLOW, CITY_SOURCE, darbLayers, PIN_SOURCE } from "./map-layers";
 import { fetchDarbStyle, whenReady } from "./map-boot";
 import { pickAt } from "./pick";
 import { ensurePmtiles } from "./protocol";
+import { loadServedArea, servedBounds } from "./served-area";
 import type { StageMap } from "./types";
 
 const PADDING = 48;
+/** Wide enough that the whole country still fits a wide screen; far enough to stop a pan to Europe. */
+const PAN_MARGIN = 3;
 
 export interface CityMapOptions {
   container: HTMLElement;
@@ -45,6 +48,8 @@ export class CityMap implements StageMap {
     const maplibre = await loadMapLibre();
     ensurePmtiles(maplibre);
     const style = await fetchDarbStyle(options.locale);
+    // Cached by fetchDarbStyle: no second request.
+    const served = await loadServedArea();
     // Places within ~60 px merge into one bubble whose count is the sum of their businesses.
     style.sources[CITY_SOURCE] = {
       type: "geojson",
@@ -62,6 +67,7 @@ export class CityMap implements StageMap {
       style,
       bounds: "bounds" in ISRAEL_NORTH ? ISRAEL_NORTH.bounds : undefined,
       fitBoundsOptions: { padding: PADDING },
+      ...(served ? { maxBounds: servedBounds(served, PAN_MARGIN) } : {}),
       // Attribution is the stage's own always-visible line (no 24 px toggle under 44 px).
       attributionControl: false,
       // Pointer-only: keyboard users have the list (spec §8).
