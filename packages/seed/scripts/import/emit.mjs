@@ -119,3 +119,15 @@ export function writeListing(file, source, businesses) {
   );
   return sorted.length;
 }
+
+const BRANDS = new URL("../../data/brands.json", import.meta.url);
+/** Adds brands ({ slug, name }) data/brands.json does not have yet; never changes one it has. */
+export function ensureBrands(brands) {
+  const all = JSON.parse(readFileSync(BRANDS, "utf8"));
+  const have = new Set(all.map((b) => b.slug));
+  const added = brands
+    .filter((b) => !have.has(b.slug))
+    .map((b) => ({ slug: b.slug, name: b.name }));
+  if (added.length) writeFileSync(BRANDS, `${JSON.stringify([...all, ...added], null, 2)}\n`);
+  return added.length;
+}

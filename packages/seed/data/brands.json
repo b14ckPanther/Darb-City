@@ -1638,5 +1638,61 @@
       "en": "Al Birr Shop",
       "ar": "محل البِر"
     }
+  },
+  {
+    "slug": "sonol",
+    "name": {
+      "he": "סונול",
+      "ar": "سونول",
+      "en": "Sonol"
+    }
+  },
+  {
+    "slug": "delek",
+    "name": {
+      "he": "דלק",
+      "ar": "دلك",
+      "en": "Delek"
+    }
+  },
+  {
+    "slug": "dor-alon",
+    "name": {
+      "he": "דור אלון",
+      "ar": "دور ألون",
+      "en": "Dor Alon"
+    }
+  },
+  {
+    "slug": "ten",
+    "name": {
+      "he": "טן",
+      "ar": "تن",
+      "en": "Ten"
+    }
+  },
+  {
+    "slug": "sadash",
+    "name": {
+      "he": "סד\"ש",
+      "ar": "سادش",
+      "en": "Sadash"
+    }
+  },
+  {
+    "slug": "yaad",
+    "name": {
+      "he": "יעד",
+      "ar": "يعاد",
+      "en": "Yaad"
+    }
+  },
+  {
+    "slug": "tapuz",
+    "name": {
+      "he": "תפוז",
+      "ar": "تبوز",
+      "en": "Tapuz"
+    }
   }
 ]

@@ -33,7 +33,9 @@ export function km(a, b) {
 const FINALS = { ך: "כ", ם: "מ", ן: "נ", ף: "פ", ץ: "צ" };
 /** Words that only say what kind of settlement it is ("kibbutz Ifat", "Kafr Iksal"). */
 const SETTLEMENT_WORDS = new Set(
-  ["כפר", "קיבוץ", "מושב", "מושבה", "ישוב", "יישוב", "עיר"].map((w) => normalize(w)),
+  ["כפר", "קיבוץ", "מושב", "מושבה", "ישוב", "יישוב", "עיר", "שיתופי", "קהילתי", "כפרי"].map((w) =>
+    normalize(w),
+  ),
 );
 
 /**
@@ -81,7 +83,14 @@ export function variants(name) {
   };
   add(base);
   add(base.replace(/\([^)]*\)/g, " "));
-  for (const m of base.matchAll(/\(([^)]*)\)/g)) add(m[1]);
+  // "(קיבוץ)" only says what the place is; "(בוקייעה)" is another name for it.
+  for (const m of base.matchAll(/\(([^)]*)\)/g))
+    if (
+      !normalize(m[1])
+        .split(" ")
+        .every((w) => SETTLEMENT_WORDS.has(w))
+    )
+      add(m[1]);
   return [...out];
 }
 

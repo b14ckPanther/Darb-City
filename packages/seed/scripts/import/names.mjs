@@ -36,6 +36,14 @@ export const WORDS = {
   גלבוע: { ar: "جلبوع", en: "Gilboa" },
   הגלבוע: { ar: "جلبوع", en: "Gilboa" },
   מפרץ: { ar: "الخليج", en: "Bay" },
+  שער: { ar: "بوابة", en: "Gate", after: true },
+  חרמון: { ar: "حرمون", en: "Hermon" },
+  החרמון: { ar: "حرمون", en: "Hermon" },
+  כפר: { ar: "كفر", en: "Kfar" },
+  קיבוץ: { ar: "كيبوتس", en: "Kibbutz" },
+  מושב: { ar: "موشاف", en: "Moshav" },
+  גבעת: { ar: "جفعات", en: "Givat" },
+  פארק: { ar: "بارك", en: "Park", after: true },
   המפרץ: { ar: "الخليج", en: "Bay" },
   "מועצה אזורית": { ar: "مجلس إقليمي", en: "Regional Council", after: true },
   עמק: { ar: "مرج", en: "Valley", after: true },
@@ -198,6 +206,21 @@ export function arabicWord(word) {
   return out;
 }
 
+/**
+ * A registered business name without its legal tail: no בע"מ, no company number, no
+ * parentheses that only hold them ("בי-זול (זכיין הפעלה - בי זול בע"מ - ח.פ. 516690195)").
+ */
+export function tradeName(he) {
+  return plainDashes(he)
+    .replace(/\([^)]*(בע"מ|ח\.פ|\d{6,})[^)]*\)?/g, " ")
+    .replace(/\(\s*\)/g, " ")
+    .replace(/(^|\s)בע"מ(?=\s|$)/g, " ")
+    .replace(/ח\.פ\.?\s*\d+/g, " ")
+    .replace(/\s+/g, " ")
+    .replace(/^[\s-]+|[\s-]+$/g, "")
+    .trim();
+}
+
 /** No en or em dashes and no maqaf in anything Darb writes: a plain hyphen instead. */
 export const plainDashes = (s) =>
   String(s)
@@ -222,9 +245,12 @@ const EXPAND = [
 /** A place's own spellings: as is, without its parentheses, and what the parentheses hold. */
 const ownVariants = (he) => {
   const out = [normalize(he), normalize(he.replace(/\([^)]*\)/g, " "))];
-  for (const m of he.matchAll(/\(([^)]*)\)/g)) out.push(normalize(m[1]));
+  for (const m of he.matchAll(/\(([^)]*)\)/g))
+    if (!SETTLEMENT_KINDS.test(m[1].trim())) out.push(normalize(m[1]));
   return [...new Set(out.filter(Boolean))];
 };
+/** Parentheses that say what a place is ("(קיבוץ)", "(מושבה)"), not another name for it. */
+const SETTLEMENT_KINDS = /^(קיבוץ|מושב|מושבה|כפר|ישוב|יישוב|שבט|שיכון)(\s|$)/;
 const noParens = (s) => s.replace(/\s*\([^)]*\)\s*/g, " ").trim();
 /** Letters Arabic in the north never uses, from a few names in places.json. */
 const arabicLetters = (s) => s.replace(/پ/g, "ب").replace(/چ/g, "ج").replace(/ڤ/g, "ف");
@@ -235,7 +261,7 @@ const arabicLetters = (s) => s.replace(/پ/g, "ب").replace(/چ/g, "ج").replace
  * inside the text (longest first) take the place's names, known words are translated and the
  * rest is transliterated.
  */
-export function createNamer(places = loadDarbPlaces()) {
+export function createNamer(places = loadDarbPlaces(), { extraWords = {} } = {}) {
   const placeNames = new Map();
   const whole = new Map();
   const settlements = places.filter(
@@ -271,7 +297,9 @@ export function createNamer(places = loadDarbPlaces()) {
     const key = loose(he);
     return key.length >= 4 && looseCount.get(key) === 1 ? whole.get(key) : undefined;
   };
-  const words = new Map(Object.entries(WORDS).map(([he, w]) => [normalize(he), w]));
+  const words = new Map(
+    Object.entries({ ...WORDS, ...extraWords }).map(([he, w]) => [normalize(he), w]),
+  );
   const MAX_SPAN = 4;
   const done = (he, ar, en) => ({
     he,
@@ -315,7 +343,10 @@ export function createNamer(places = loadDarbPlaces()) {
     return done(plainDashes(source), ar, en);
   }
 
-  return { name };
+  /** Whether a text is just a Darb place's name. */
+  const isPlace = (he) => Boolean(wholePlace(plainDashes(he)));
+
+  return { name, isPlace };
 }
 
 /** A whole Hebrew phrase in Latin letters, word by word. */

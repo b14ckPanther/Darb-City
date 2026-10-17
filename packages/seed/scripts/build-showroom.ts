@@ -1,7 +1,8 @@
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { toSlug, type Hours, type Template } from "@darb/core";
 import {
   loadKinds,
+  loadListings,
   loadPlaces,
   loadScreens,
   loadWeekend,
@@ -73,6 +74,11 @@ const brands: SeedBrand[] = kinds.map((k) => {
   return { slug, name: screens[k.slug]!.brand };
 });
 const brandOf = new Map(kinds.map((k, i) => [k.slug, brands[i]!.slug]));
+// Real chains (data/listings/) keep their brands here; the open-data importers add them.
+const realBrandSlugs = new Set(loadListings().flatMap((b) => (b.brand ? [b.brand] : [])));
+const chainBrands = (
+  JSON.parse(readFileSync(new URL("../data/brands.json", import.meta.url), "utf8")) as SeedBrand[]
+).filter((b) => realBrandSlugs.has(b.slug) && !usedBrandSlugs.has(b.slug));
 
 const businesses: SeedBusinessRecord[] = [];
 for (const place of places) {
@@ -102,7 +108,7 @@ for (const place of places) {
 
 const out = (file: string, data: unknown) =>
   writeFileSync(new URL(`../data/${file}`, import.meta.url), `${JSON.stringify(data, null, 2)}\n`);
-out("brands.json", brands);
+out("brands.json", [...brands, ...chainBrands]);
 writeFileSync(
   new URL("../data/businesses.json", import.meta.url),
   `[\n${businesses.map((r) => JSON.stringify(r)).join(",\n")}\n]\n`,
