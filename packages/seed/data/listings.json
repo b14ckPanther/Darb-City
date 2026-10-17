@@ -6,7 +6,10 @@
     "company": "פז",
     "region": "northern-district, haifa-district",
     "fetched": "2026-10-17",
-    "hours": "24/7 for every station, set by the owner (like Paz Kiryat Ata and Paz Curdani)"
+    "hours": "24/7 for every station, set by the owner (like Paz Kiryat Ata and Paz Curdani)",
+    "phones": "משרד האנרגיה, מאגר תחנות הדלק (data.gov.il resource ff3b653c-d268-4eb7-a86b-6de69e77043a)",
+    "services": "© OpenStreetMap contributors (ODbL), fuel types, services and nearby Yellow stores and car washes",
+    "links": "paz.co.il (website) and facebook.com/YellowPaz, both linked from paz.co.il"
   },
   "businesses": [
     {
@@ -23,9 +26,9 @@
         "en": "Paz Binyamina"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "כביש בנימינה- חדרה, בנימינה",
@@ -86,9 +89,9 @@
         "fuelAdminNo": 908
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-636-0576",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -97,9 +100,9 @@
           "en": "Paz Binyamina"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -107,6 +110,18 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            },
+            "meta": {
+              "he": "95 · 98 · סולר",
+              "ar": "95 · 98 · سولار",
+              "en": "95 · 98 · Diesel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -122,6 +137,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -138,9 +160,9 @@
         "en": "Paz Caesarea"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "מחלף קיסריה ליד תחנת הכוח חדרה",
@@ -201,9 +223,9 @@
         "fuelAdminNo": 942
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-636-0947",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -212,9 +234,9 @@
           "en": "Paz Caesarea"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -222,6 +244,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -237,6 +266,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -253,9 +289,9 @@
         "en": "Paz Beit She'an"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "שאול המלך 304 בית שאן",
@@ -316,9 +352,9 @@
         "fuelAdminNo": 1550
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-658-8464",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -327,9 +363,9 @@
           "en": "Paz Beit She'an"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -337,6 +373,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -352,6 +395,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -368,9 +418,9 @@
         "en": "Paz Pardes Hanna"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "רח' הנדיב פרדס חנה",
@@ -431,9 +481,9 @@
         "fuelAdminNo": 1554
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-627-0397",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -442,9 +492,9 @@
           "en": "Paz Pardes Hanna"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -452,6 +502,20 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "אוויר לצמיגים",
+              "ar": "هوا للكاوتشوك",
+              "en": "Tyre air"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -467,6 +531,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -483,9 +554,9 @@
         "en": "Paz Ta'anakhim"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "כביש התענכים",
@@ -546,9 +617,9 @@
         "fuelAdminNo": 1573
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-659-7915",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -557,9 +628,9 @@
           "en": "Paz Ta'anakhim"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -567,6 +638,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -582,6 +660,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -598,9 +683,9 @@
         "en": "Paz Yif'at"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "בכניסה לקיבוץ יפעת",
@@ -661,9 +746,9 @@
         "fuelAdminNo": 1576
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 54-533-0829",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -672,9 +757,9 @@
           "en": "Paz Yif'at"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -682,6 +767,20 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "חנות Yellow",
+              "ar": "دكانة Yellow",
+              "en": "Yellow store"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -697,6 +796,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -713,9 +819,9 @@
         "en": "Paz Mitzpe Golan"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "מצפה גולן, טבריה עלית",
@@ -776,9 +882,9 @@
         "fuelAdminNo": 1589
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-679-7580",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -787,9 +893,9 @@
           "en": "Paz Mitzpe Golan"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -797,6 +903,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -812,6 +925,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -828,9 +948,9 @@
         "en": "Paz Granot HaGalil"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "כביש 899, בכניסה לגרנות הגליל",
@@ -891,9 +1011,9 @@
         "fuelAdminNo": 1616
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-980-6936",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -902,9 +1022,9 @@
           "en": "Paz Granot HaGalil"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -912,6 +1032,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -927,6 +1054,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -943,9 +1077,9 @@
         "en": "Paz Safed"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "כיכר העצמאות, ליד תחנת אגד צפת",
@@ -1006,9 +1140,9 @@
         "fuelAdminNo": 1631
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-699-9442",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -1017,9 +1151,9 @@
           "en": "Paz Safed"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -1027,6 +1161,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -1042,6 +1183,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -1058,9 +1206,9 @@
         "en": "Paz Rosh Pina"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "בכביש הישן ראש פינה - צפת",
@@ -1121,9 +1269,9 @@
         "fuelAdminNo": 1639
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-693-6160",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -1132,9 +1280,9 @@
           "en": "Paz Rosh Pina"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -1142,6 +1290,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -1157,6 +1312,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -1173,9 +1335,9 @@
         "en": "Paz Hof HaCarmel"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "כביש חיפה - תל אביב (ביציאה מחיפה)",
@@ -1236,9 +1398,9 @@
         "fuelAdminNo": 1657
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-855-4574",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -1247,9 +1409,9 @@
           "en": "Paz Hof HaCarmel"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -1257,6 +1419,20 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "חנות Yellow",
+              "ar": "دكانة Yellow",
+              "en": "Yellow store"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -1272,6 +1448,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -1288,9 +1471,9 @@
         "en": "Paz Kayit VeNofesh"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "קדושי יאסי 1 פינת רח' פלימן, מול קניון חיפה",
@@ -1351,9 +1534,9 @@
         "fuelAdminNo": 1673
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-855-0093",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -1362,9 +1545,9 @@
           "en": "Paz Kayit VeNofesh"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -1372,6 +1555,27 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "חנות Yellow",
+              "ar": "دكانة Yellow",
+              "en": "Yellow store"
+            }
+          },
+          {
+            "label": {
+              "he": "שטיפת רכב",
+              "ar": "غسيل سيارات",
+              "en": "Car wash"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -1387,6 +1591,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -1403,9 +1614,9 @@
         "en": "Paz Haifa East"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "חטיבת גולני 64 חיפה",
@@ -1466,9 +1677,9 @@
         "fuelAdminNo": 1677
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-866-6035",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -1477,9 +1688,9 @@
           "en": "Paz Haifa East"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -1487,6 +1698,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -1502,6 +1720,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -1518,9 +1743,9 @@
         "en": "Paz Stella Maris"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "רח' אליהו חכים 3 חיפה",
@@ -1581,9 +1806,9 @@
         "fuelAdminNo": 1681
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-833-6741",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -1592,9 +1817,9 @@
           "en": "Paz Stella Maris"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -1602,6 +1827,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -1617,6 +1849,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -1633,9 +1872,9 @@
         "en": "Paz Hadar HaCarmel"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "החלוץ 25 חיפה",
@@ -1696,9 +1935,9 @@
         "fuelAdminNo": 1686
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-864-0207",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -1707,9 +1946,9 @@
           "en": "Paz Hadar HaCarmel"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -1717,6 +1956,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -1732,6 +1978,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -1748,9 +2001,9 @@
         "en": "Paz Mount Carmel"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "שדרות הנשיא 132, חיפה",
@@ -1811,9 +2064,9 @@
         "fuelAdminNo": 1692
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-836-1011",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -1822,9 +2075,9 @@
           "en": "Paz Mount Carmel"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -1832,6 +2085,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -1847,6 +2107,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -1863,9 +2130,9 @@
         "en": "Paz HaDagan Kiryat Haim"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "האצטדיון 13 קרית חיים",
@@ -1926,9 +2193,9 @@
         "fuelAdminNo": 1696
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-841-3752",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -1937,9 +2204,9 @@
           "en": "Paz HaDagan Kiryat Haim"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -1947,6 +2214,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -1962,6 +2236,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -1978,9 +2259,9 @@
         "en": "Paz Sulam Tzur"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "כביש ראש הנקרה-נהריה, מושב לימן",
@@ -2041,9 +2322,9 @@
         "fuelAdminNo": 1748
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-982-3370",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -2052,9 +2333,9 @@
           "en": "Paz Sulam Tzur"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -2062,6 +2343,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -2077,6 +2365,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -2093,9 +2388,9 @@
         "en": "Paz Olive Tree"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "פאולוס ה-6 נצרת",
@@ -2156,9 +2451,9 @@
         "fuelAdminNo": 1757
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-656-5041",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -2167,9 +2462,9 @@
           "en": "Paz Olive Tree"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -2177,6 +2472,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -2192,6 +2494,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -2208,9 +2517,9 @@
         "en": "Paz Nazareth Bypass"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "כביש עוקף נצרת",
@@ -2271,9 +2580,9 @@
         "fuelAdminNo": 1758
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-657-4115",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -2282,9 +2591,9 @@
           "en": "Paz Nazareth Bypass"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -2292,6 +2601,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -2307,6 +2623,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -2323,9 +2646,9 @@
         "en": "Paz Tirat Carmel"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "כביש שפרעם- אחיהוד",
@@ -2386,9 +2709,9 @@
         "fuelAdminNo": 2055
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-857-4683",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -2397,9 +2720,9 @@
           "en": "Paz Tirat Carmel"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -2407,6 +2730,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -2422,6 +2752,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -2438,9 +2775,9 @@
         "en": "Paz Akko North"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "האירוסים 11, עכו (כביש ישן עכו-נהריה)",
@@ -2501,9 +2838,9 @@
         "fuelAdminNo": 2062
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-991-1150",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -2512,9 +2849,9 @@
           "en": "Paz Akko North"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -2522,6 +2859,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -2537,6 +2881,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -2553,9 +2904,9 @@
         "en": "Paz Shefa-Amr South"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "בכניסה לשפרעם",
@@ -2616,9 +2967,9 @@
         "fuelAdminNo": 2069
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-986-0066",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -2627,9 +2978,9 @@
           "en": "Paz Shefa-Amr South"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -2637,6 +2988,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -2652,6 +3010,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -2668,9 +3033,9 @@
         "en": "Paz Lev HaMifratz"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "בעלי המלאכה 8, מפרץ חיפה",
@@ -2731,9 +3096,9 @@
         "fuelAdminNo": 2070
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-840-4122",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -2742,9 +3107,9 @@
           "en": "Paz Lev HaMifratz"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -2752,6 +3117,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -2767,6 +3139,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -2783,9 +3162,9 @@
         "en": "Paz Makr"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "כביש עכו צפת , ליד כפר מכר",
@@ -2846,9 +3225,9 @@
         "fuelAdminNo": 2087
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-956-4962",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -2857,9 +3236,9 @@
           "en": "Paz Makr"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -2867,6 +3246,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -2882,6 +3268,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -2898,9 +3291,9 @@
         "en": "Paz Isfiya"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "כביש ראשי, עוספיא",
@@ -2961,9 +3354,9 @@
         "fuelAdminNo": 2092
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-839-1791",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -2972,9 +3365,9 @@
           "en": "Paz Isfiya"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -2982,6 +3375,20 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "אוויר לצמיגים",
+              "ar": "هوا للكاوتشوك",
+              "en": "Tyre air"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -2997,6 +3404,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -3013,9 +3427,9 @@
         "en": "Paz Karmiel"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "כביש יציאה מזרחי, כרמיאל",
@@ -3076,9 +3490,9 @@
         "fuelAdminNo": 2094
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-988-0350",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -3087,9 +3501,9 @@
           "en": "Paz Karmiel"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -3097,6 +3511,46 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            },
+            "meta": {
+              "he": "95 · 98 · סולר",
+              "ar": "95 · 98 · سولار",
+              "en": "95 · 98 · Diesel"
+            }
+          },
+          {
+            "label": {
+              "he": "שטיפת רכב",
+              "ar": "غسيل سيارات",
+              "en": "Car wash"
+            }
+          },
+          {
+            "label": {
+              "he": "אוויר לצמיגים",
+              "ar": "هوا للكاوتشوك",
+              "en": "Tyre air"
+            }
+          },
+          {
+            "label": {
+              "he": "שירות עצמי",
+              "ar": "خدمة ذاتية",
+              "en": "Self-service"
+            }
+          },
+          {
+            "label": {
+              "he": "שירותים",
+              "ar": "حمامات",
+              "en": "Toilets"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -3112,6 +3566,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -3128,9 +3589,9 @@
         "en": "Paz Tamra"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "כביש שפרעם - אחיהוד",
@@ -3191,9 +3652,9 @@
         "fuelAdminNo": 2095
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-986-0443",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -3202,9 +3663,9 @@
           "en": "Paz Tamra"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -3212,6 +3673,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -3227,6 +3695,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -3243,9 +3718,9 @@
         "en": "Paz Atlit"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "כביש ישן חיפה וחדרה צומת עתלית",
@@ -3306,9 +3781,9 @@
         "fuelAdminNo": 2106
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-984-0586",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -3317,9 +3792,9 @@
           "en": "Paz Atlit"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -3327,6 +3802,20 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "אוויר לצמיגים",
+              "ar": "هوا للكاوتشوك",
+              "en": "Tyre air"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -3342,6 +3831,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -3358,9 +3854,9 @@
         "en": "Paz Tivon"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "אלונים 2, קרית טבעון (בכניסה לקרית טבעון)",
@@ -3421,9 +3917,9 @@
         "fuelAdminNo": 2107
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-953-1098",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -3432,9 +3928,9 @@
           "en": "Paz Tivon"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -3442,6 +3938,20 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "שטיפת רכב",
+              "ar": "غسيل سيارات",
+              "en": "Car wash"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -3457,6 +3967,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -3473,9 +3990,9 @@
         "en": "Paz Kiryat Shmona"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "רח' ראשי קריית שמונה",
@@ -3536,9 +4053,9 @@
         "fuelAdminNo": 2109
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-694-2088",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -3547,9 +4064,9 @@
           "en": "Paz Kiryat Shmona"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -3557,6 +4074,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -3572,6 +4096,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -3588,9 +4119,9 @@
         "en": "Paz Orly"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "רח' עין דור 16 (רח' הבנקים) חיפה",
@@ -3651,9 +4182,9 @@
         "fuelAdminNo": 2110
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-852-4122",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -3662,9 +4193,9 @@
           "en": "Paz Orly"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -3672,6 +4203,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -3687,6 +4225,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -3703,9 +4248,9 @@
         "en": "Paz Akko City"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "דרך הארבעה 7 עכו (ליד התחנה המרכזית)",
@@ -3766,9 +4311,9 @@
         "fuelAdminNo": 2116
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-981-0969",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -3777,9 +4322,9 @@
           "en": "Paz Akko City"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -3787,6 +4332,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -3802,6 +4354,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -3818,9 +4377,9 @@
         "en": "Paz Upper Tiberias"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "אזור התעשייה טבריה עלית",
@@ -3881,9 +4440,9 @@
         "fuelAdminNo": 2117
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-673-1342",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -3892,9 +4451,9 @@
           "en": "Paz Upper Tiberias"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -3902,6 +4461,32 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            },
+            "meta": {
+              "he": "95 · סולר",
+              "ar": "95 · سولار",
+              "en": "95 · Diesel"
+            }
+          },
+          {
+            "label": {
+              "he": "טעינה לרכב חשמלי",
+              "ar": "شحن سيارات كهربائية",
+              "en": "EV charging"
+            }
+          },
+          {
+            "label": {
+              "he": "שירות עצמי",
+              "ar": "خدمة ذاتية",
+              "en": "Self-service"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -3917,6 +4502,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -3933,9 +4525,9 @@
         "en": "Paz On Afula"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "כביש 71 בדרך לבית שאן",
@@ -3996,9 +4588,9 @@
         "fuelAdminNo": 2118
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 54-459-3793",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -4007,9 +4599,9 @@
           "en": "Paz On Afula"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -4017,6 +4609,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -4032,6 +4631,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -4048,9 +4654,9 @@
         "en": "Paz Migdal HaEmek"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "שדרות המדע 22, מגדל העמק",
@@ -4111,9 +4717,9 @@
         "fuelAdminNo": 2126
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-644-0043",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -4122,9 +4728,9 @@
           "en": "Paz Migdal HaEmek"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -4132,6 +4738,20 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "שירות עצמי",
+              "ar": "خدمة ذاتية",
+              "en": "Self-service"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -4147,6 +4767,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -4163,9 +4790,9 @@
         "en": "Paz Mitzpe Turan"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "צומת גולני",
@@ -4226,9 +4853,9 @@
         "fuelAdminNo": 2132
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-677-9378",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -4237,9 +4864,9 @@
           "en": "Paz Mitzpe Turan"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -4247,6 +4874,39 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            },
+            "meta": {
+              "he": "95 · סולר",
+              "ar": "95 · سولار",
+              "en": "95 · Diesel"
+            }
+          },
+          {
+            "label": {
+              "he": "חנות Yellow",
+              "ar": "دكانة Yellow",
+              "en": "Yellow store"
+            }
+          },
+          {
+            "label": {
+              "he": "אוויר לצמיגים",
+              "ar": "هوا للكاوتشوك",
+              "en": "Tyre air"
+            }
+          },
+          {
+            "label": {
+              "he": "נגיש לכיסא גלגלים",
+              "ar": "مناسب للكراسي المتحركة",
+              "en": "Wheelchair accessible"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -4262,6 +4922,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -4278,9 +4945,9 @@
         "en": "Paz Nof HaGalil"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "רח' מעלה יצחק 25, נצרת עלית",
@@ -4341,9 +5008,9 @@
         "fuelAdminNo": 2133
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-600-1670",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -4352,9 +5019,9 @@
           "en": "Paz Nof HaGalil"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -4362,6 +5029,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -4377,6 +5051,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -4393,9 +5074,9 @@
         "en": "Paz Wadi Ara"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "כביש מגידו -חדרה, נחל עירון",
@@ -4456,9 +5137,9 @@
         "fuelAdminNo": 2136
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-635-1596",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -4467,9 +5148,9 @@
           "en": "Paz Wadi Ara"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -4477,6 +5158,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -4492,6 +5180,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -4508,9 +5203,9 @@
         "en": "Paz Hadera"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "ככר המשטרה כביש 4 חדרה",
@@ -4571,9 +5266,9 @@
         "fuelAdminNo": 2137
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-621-0272",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -4582,9 +5277,9 @@
           "en": "Paz Hadera"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -4592,6 +5287,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -4607,6 +5309,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -4623,9 +5332,9 @@
         "en": "Paz Netofa"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "צומת המוביל בדרך לטבריה, כביש 77",
@@ -4686,9 +5395,9 @@
         "fuelAdminNo": 2165
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-656-5525",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -4697,9 +5406,9 @@
           "en": "Paz Netofa"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -4707,6 +5416,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -4722,6 +5438,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -4738,9 +5461,9 @@
         "en": "Paz Orot"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "אור עקיבא, בקניון אורות",
@@ -4801,9 +5524,9 @@
         "fuelAdminNo": 2169
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-636-0307",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -4812,9 +5535,9 @@
           "en": "Paz Orot"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -4822,6 +5545,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -4837,6 +5567,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -4853,9 +5590,9 @@
         "en": "Paz Ma'alot"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "בכניסה המערבית למעלות",
@@ -4916,9 +5653,9 @@
         "fuelAdminNo": 2170
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-997-7789",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -4927,9 +5664,9 @@
           "en": "Paz Ma'alot"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -4937,6 +5674,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -4952,6 +5696,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -4968,9 +5719,9 @@
         "en": "Paz HaYogev"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "בכניסה למושב יוגב",
@@ -5031,9 +5782,9 @@
         "fuelAdminNo": 2171
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-993-7514",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -5042,9 +5793,9 @@
           "en": "Paz HaYogev"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -5052,6 +5803,20 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "חנות Yellow",
+              "ar": "دكانة Yellow",
+              "en": "Yellow store"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -5067,6 +5832,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -5083,9 +5855,9 @@
         "en": "Paz Bat Galim"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "רח' יפו 180, חיפה",
@@ -5146,9 +5918,9 @@
         "fuelAdminNo": 2172
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-852-3654",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -5157,9 +5929,9 @@
           "en": "Paz Bat Galim"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -5167,6 +5939,20 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "חנות Yellow",
+              "ar": "دكانة Yellow",
+              "en": "Yellow store"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -5182,6 +5968,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -5198,9 +5991,9 @@
         "en": "Paz Yizre'eliya"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "רח' שמחה גולן, חיפה",
@@ -5261,9 +6054,9 @@
         "fuelAdminNo": 2174
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-823-6197",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -5272,9 +6065,9 @@
           "en": "Paz Yizre'eliya"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -5282,6 +6075,20 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "שטיפת רכב",
+              "ar": "غسيل سيارات",
+              "en": "Car wash"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -5297,6 +6104,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -5313,9 +6127,9 @@
         "en": "Paz Kfar Tavor"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "בכניסה לכפר תבור",
@@ -5376,9 +6190,9 @@
         "fuelAdminNo": 2176
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-676-0942",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -5387,9 +6201,9 @@
           "en": "Paz Kfar Tavor"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -5397,6 +6211,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -5412,6 +6233,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -5428,9 +6256,9 @@
         "en": "Paz Kafr Yasif"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "כפר יאסיף",
@@ -5491,9 +6319,9 @@
         "fuelAdminNo": 2177
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-996-0896",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -5502,9 +6330,9 @@
           "en": "Paz Kafr Yasif"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -5512,6 +6340,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -5527,6 +6362,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -5543,9 +6385,9 @@
         "en": "Paz Beit HaKerem"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "כביש 85 עכו-צפת מג'דל כרום",
@@ -5606,9 +6448,9 @@
         "fuelAdminNo": 2179
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-958-0349",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -5617,9 +6459,9 @@
           "en": "Paz Beit HaKerem"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -5627,6 +6469,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -5642,6 +6491,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -5658,9 +6514,9 @@
         "en": "Paz Bi'ina"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "כביש עכו צפת",
@@ -5721,9 +6577,9 @@
         "fuelAdminNo": 2187
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-988-8085",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -5732,9 +6588,9 @@
           "en": "Paz Bi'ina"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -5742,6 +6598,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -5757,6 +6620,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -5773,9 +6643,9 @@
         "en": "Paz Afula City"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "חטיבה 9 פינת הולנד",
@@ -5836,9 +6706,9 @@
         "fuelAdminNo": 2201
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-659-0570",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -5847,9 +6717,9 @@
           "en": "Paz Afula City"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -5857,6 +6727,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -5872,6 +6749,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -5888,9 +6772,9 @@
         "en": "Paz Oz Tiberias"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "רח' הגליל 37 טבריה",
@@ -5951,9 +6835,9 @@
         "fuelAdminNo": 2239
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-672-6688",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -5962,9 +6846,9 @@
           "en": "Paz Oz Tiberias"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -5972,6 +6856,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -5987,6 +6878,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -6003,9 +6901,9 @@
         "en": "Paz Tzemah"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "צומת צמח, עמק הירדן",
@@ -6066,9 +6964,9 @@
         "fuelAdminNo": 2241
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-675-54767",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -6077,9 +6975,9 @@
           "en": "Paz Tzemah"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -6087,6 +6985,27 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "חנות Yellow",
+              "ar": "دكانة Yellow",
+              "en": "Yellow store"
+            }
+          },
+          {
+            "label": {
+              "he": "אוויר לצמיגים",
+              "ar": "هوا للكاوتشوك",
+              "en": "Tyre air"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -6102,6 +7021,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -6118,9 +7044,9 @@
         "en": "Paz Iksal"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "כפר איכסל",
@@ -6181,9 +7107,9 @@
         "fuelAdminNo": 2246
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-646-9125",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -6192,9 +7118,9 @@
           "en": "Paz Iksal"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -6202,6 +7128,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -6217,6 +7150,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -6233,9 +7173,9 @@
         "en": "Paz Mitzpe Aviv"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "בכביש 781, בין צומת מורשת לצומת אעבלין",
@@ -6296,9 +7236,9 @@
         "fuelAdminNo": 2248
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-950-4706",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -6307,9 +7247,9 @@
           "en": "Paz Mitzpe Aviv"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -6317,6 +7257,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -6332,6 +7279,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -6348,9 +7302,9 @@
         "en": "Paz Peki'in"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "בכניסה לפקיעין",
@@ -6411,9 +7365,9 @@
         "fuelAdminNo": 2249
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-997-3702",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -6422,9 +7376,9 @@
           "en": "Paz Peki'in"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -6432,6 +7386,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -6447,6 +7408,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -6463,9 +7431,9 @@
         "en": "Paz Tiberias City"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "רח' אלחדיף , טבריה",
@@ -6526,9 +7494,9 @@
         "fuelAdminNo": 2252
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-672-03756",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -6537,9 +7505,9 @@
           "en": "Paz Tiberias City"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -6547,6 +7515,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -6562,6 +7537,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -6578,9 +7560,9 @@
         "en": "Paz HaNesharim Junction"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "דרך בר יהודה 89, נשר",
@@ -6641,9 +7623,9 @@
         "fuelAdminNo": 2259
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-820-2696",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -6652,9 +7634,9 @@
           "en": "Paz HaNesharim Junction"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -6662,6 +7644,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -6677,6 +7666,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -6693,9 +7689,9 @@
         "en": "Paz Arbel"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "אחרי מגדל, כביש 807 (בין צומת צלפון לצומת מגדל)",
@@ -6756,9 +7752,9 @@
         "fuelAdminNo": 2307
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-671-5330",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -6767,9 +7763,9 @@
           "en": "Paz Arbel"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -6777,6 +7773,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -6792,6 +7795,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -6808,9 +7818,9 @@
         "en": "Paz Gush Halav"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "בכניסה לגוש חלב, כביש מעלות- צפת",
@@ -6871,9 +7881,9 @@
         "fuelAdminNo": 2343
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-698-0591",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -6882,9 +7892,9 @@
           "en": "Paz Gush Halav"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -6892,6 +7902,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -6907,6 +7924,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -6923,9 +7947,9 @@
         "en": "Paz Shefa-Amr City"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "בכניסה לשפרעם ממערב - שפרעם",
@@ -6986,9 +8010,9 @@
         "fuelAdminNo": 2347
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-950-4986",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -6997,9 +8021,9 @@
           "en": "Paz Shefa-Amr City"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -7007,6 +8031,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -7022,6 +8053,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -7038,9 +8076,9 @@
         "en": "Paz Majd al-Krum"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "כביש עכו - צפת לכוון עכו מג'דל כרום",
@@ -7103,7 +8141,7 @@
       "tier": "basic",
       "phone": null,
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -7112,9 +8150,9 @@
           "en": "Paz Majd al-Krum"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -7122,6 +8160,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -7137,6 +8182,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -7153,9 +8205,9 @@
         "en": "Paz Romema"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "דרך פיקא (מול היכל הספורט) חיפה",
@@ -7216,9 +8268,9 @@
         "fuelAdminNo": 2355
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-825-1286",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -7227,9 +8279,9 @@
           "en": "Paz Romema"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -7237,6 +8289,20 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "שטיפת רכב",
+              "ar": "غسيل سيارات",
+              "en": "Car wash"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -7252,6 +8318,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -7268,9 +8341,9 @@
         "en": "Paz Karkur"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "רח' המושב כרכור",
@@ -7331,9 +8404,9 @@
         "fuelAdminNo": 2363
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-637-7128",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -7342,9 +8415,9 @@
           "en": "Paz Karkur"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -7352,6 +8425,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -7367,6 +8447,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -7383,9 +8470,9 @@
         "en": "Paz Oz Bat Galim"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "כביש חיפה - תל אביב (אחרי אג\"ד) חיפה",
@@ -7446,9 +8533,9 @@
         "fuelAdminNo": 2371
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-851-745048521831",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -7457,9 +8544,9 @@
           "en": "Paz Oz Bat Galim"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -7467,6 +8554,20 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "חנות Yellow",
+              "ar": "دكانة Yellow",
+              "en": "Yellow store"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -7482,6 +8583,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -7498,9 +8606,9 @@
         "en": "Paz Nahariya"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "כביש עכו - נהריה (לפני הכניסה לנהריה)",
@@ -7561,9 +8669,9 @@
         "fuelAdminNo": 2372
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-982-8734",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -7572,9 +8680,9 @@
           "en": "Paz Nahariya"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -7582,6 +8690,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -7597,6 +8712,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -7613,9 +8735,9 @@
         "en": "Paz Kiryat Bialik"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "יוסף לוי 25 אזור התעשייה קרית ביאליק",
@@ -7676,9 +8798,9 @@
         "fuelAdminNo": 2376
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-876-1171",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -7687,9 +8809,9 @@
           "en": "Paz Kiryat Bialik"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -7697,6 +8819,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -7712,6 +8841,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -7728,9 +8864,9 @@
         "en": "Paz Hawassa"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "דרך בר יהודה ליד הצ'ק פוסט חיפה",
@@ -7791,9 +8927,9 @@
         "fuelAdminNo": 2566
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-820-1379",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -7802,9 +8938,9 @@
           "en": "Paz Hawassa"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -7812,6 +8948,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -7827,6 +8970,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -7843,9 +8993,9 @@
         "en": "Paz Judeida-Makr"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "מכר ג'דידה",
@@ -7906,9 +9056,9 @@
         "fuelAdminNo": 2568
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-996-3857",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -7917,9 +9067,9 @@
           "en": "Paz Judeida-Makr"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -7927,6 +9077,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -7942,6 +9099,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -7958,9 +9122,9 @@
         "en": "Paz Yasmin"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "רח' הטחנה, בנימינה",
@@ -8021,9 +9185,9 @@
         "fuelAdminNo": 2666
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-618-0912",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -8032,9 +9196,9 @@
           "en": "Paz Yasmin"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -8042,6 +9206,18 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            },
+            "meta": {
+              "he": "95 · 98 · סולר",
+              "ar": "95 · 98 · سولار",
+              "en": "95 · 98 · Diesel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -8057,6 +9233,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -8073,9 +9256,9 @@
         "en": "Paz Kafr Manda"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "כפר מנדא",
@@ -8136,9 +9319,9 @@
         "fuelAdminNo": 2667
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-656-3788",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -8147,9 +9330,9 @@
           "en": "Paz Kafr Manda"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -8157,6 +9340,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -8172,6 +9362,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -8188,9 +9385,9 @@
         "en": "Paz Dror Karmiel"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "שדרות קק\"ל 300",
@@ -8251,9 +9448,9 @@
         "fuelAdminNo": 2693
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 50-521-2556",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -8262,9 +9459,9 @@
           "en": "Paz Dror Karmiel"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -8272,6 +9469,53 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            },
+            "meta": {
+              "he": "95 · 98 · סולר",
+              "ar": "95 · 98 · سولار",
+              "en": "95 · 98 · Diesel"
+            }
+          },
+          {
+            "label": {
+              "he": "חנות Yellow",
+              "ar": "دكانة Yellow",
+              "en": "Yellow store"
+            }
+          },
+          {
+            "label": {
+              "he": "שטיפת רכב",
+              "ar": "غسيل سيارات",
+              "en": "Car wash"
+            }
+          },
+          {
+            "label": {
+              "he": "אוויר לצמיגים",
+              "ar": "هوا للكاوتشوك",
+              "en": "Tyre air"
+            }
+          },
+          {
+            "label": {
+              "he": "שירות עצמי",
+              "ar": "خدمة ذاتية",
+              "en": "Self-service"
+            }
+          },
+          {
+            "label": {
+              "he": "שירותים",
+              "ar": "حمامات",
+              "en": "Toilets"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -8287,6 +9531,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -8303,9 +9554,9 @@
         "en": "Paz Mevo Atlit"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "כביש 7110 סמוך לדרך מס' 11",
@@ -8368,7 +9619,7 @@
       "tier": "basic",
       "phone": null,
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -8377,9 +9628,9 @@
           "en": "Paz Mevo Atlit"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -8387,6 +9638,20 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "חנות Yellow",
+              "ar": "دكانة Yellow",
+              "en": "Yellow store"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -8402,6 +9667,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -8418,9 +9690,9 @@
         "en": "Paz Bik'at Tur'an"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "כניסה לטורעאן",
@@ -8481,9 +9753,9 @@
         "fuelAdminNo": 2696
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-641-2431",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -8492,9 +9764,9 @@
           "en": "Paz Bik'at Tur'an"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -8502,6 +9774,39 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            },
+            "meta": {
+              "he": "95 · סולר",
+              "ar": "95 · سولار",
+              "en": "95 · Diesel"
+            }
+          },
+          {
+            "label": {
+              "he": "חנות Yellow",
+              "ar": "دكانة Yellow",
+              "en": "Yellow store"
+            }
+          },
+          {
+            "label": {
+              "he": "אוויר לצמיגים",
+              "ar": "هوا للكاوتشوك",
+              "en": "Tyre air"
+            }
+          },
+          {
+            "label": {
+              "he": "נגיש לכיסא גלגלים",
+              "ar": "مناسب للكراسي المتحركة",
+              "en": "Wheelchair accessible"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -8517,6 +9822,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -8533,9 +9845,9 @@
         "en": "Paz Kafr Kanna"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "כביש 754 כפר כנא",
@@ -8596,9 +9908,9 @@
         "fuelAdminNo": 2714
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 9-863-1238",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -8607,9 +9919,9 @@
           "en": "Paz Kafr Kanna"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -8617,6 +9929,20 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "חנות Yellow",
+              "ar": "دكانة Yellow",
+              "en": "Yellow store"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -8632,6 +9958,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -8648,9 +9981,9 @@
         "en": "Paz Rosh HaNikra"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "קיבוץ ראש הנקרה ד.נ . גליל מערבי 22825",
@@ -8711,9 +10044,9 @@
         "fuelAdminNo": 2722
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-985-7512",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -8722,9 +10055,9 @@
           "en": "Paz Rosh HaNikra"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -8732,6 +10065,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -8747,6 +10087,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -8763,9 +10110,9 @@
         "en": "Paz Afek"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "כביש קריות - שפרעם, אחרי קיבוץ אפק",
@@ -8828,7 +10175,7 @@
       "tier": "basic",
       "phone": null,
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -8837,9 +10184,9 @@
           "en": "Paz Afek"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -8847,6 +10194,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -8862,6 +10216,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -8878,9 +10239,9 @@
         "en": "Paz Sakhnin East"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "כביש סכנין עראבה",
@@ -8941,9 +10302,9 @@
         "fuelAdminNo": 2754
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 4-674-9023",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -8952,9 +10313,9 @@
           "en": "Paz Sakhnin East"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -8962,6 +10323,20 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "חנות Yellow",
+              "ar": "دكانة Yellow",
+              "en": "Yellow store"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -8977,6 +10352,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -8993,9 +10375,9 @@
         "en": "Paz Nazareth Gateway"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "רח' 7000 שכונת ספאפרה א.ת. נצרת",
@@ -9058,7 +10440,7 @@
       "tier": "basic",
       "phone": null,
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -9067,9 +10449,9 @@
           "en": "Paz Nazareth Gateway"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -9077,6 +10459,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -9092,6 +10481,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -9108,9 +10504,9 @@
         "en": "Paz Bir al-Maksur"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "ביר אל מכסור",
@@ -9173,7 +10569,7 @@
       "tier": "basic",
       "phone": null,
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -9182,9 +10578,9 @@
           "en": "Paz Bir al-Maksur"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -9192,6 +10588,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -9207,6 +10610,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -9223,9 +10633,9 @@
         "en": "Paz Nahariya Lohamei HaGeta'ot"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "לוחמי הגטאות 37 נהריה",
@@ -9288,7 +10698,7 @@
       "tier": "basic",
       "phone": null,
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -9297,9 +10707,9 @@
           "en": "Paz Nahariya Lohamei HaGeta'ot"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -9307,6 +10717,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -9322,6 +10739,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -9338,9 +10762,9 @@
         "en": "Paz Koah Junction"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "אזור תעשייה מבואות חרמון, גליל עליון",
@@ -9403,7 +10827,7 @@
       "tier": "basic",
       "phone": null,
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -9412,9 +10836,9 @@
           "en": "Paz Koah Junction"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -9422,6 +10846,32 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            },
+            "meta": {
+              "he": "95 · סולר",
+              "ar": "95 · سولار",
+              "en": "95 · Diesel"
+            }
+          },
+          {
+            "label": {
+              "he": "חנות Yellow",
+              "ar": "دكانة Yellow",
+              "en": "Yellow store"
+            }
+          },
+          {
+            "label": {
+              "he": "שטיפת רכב",
+              "ar": "غسيل سيارات",
+              "en": "Car wash"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -9437,6 +10887,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -9453,9 +10910,9 @@
         "en": "Paz Katzrin"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "אזור תעשייה קצרין",
@@ -9518,7 +10975,7 @@
       "tier": "basic",
       "phone": null,
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -9527,9 +10984,9 @@
           "en": "Paz Katzrin"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -9537,6 +10994,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -9552,6 +11016,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -9568,9 +11039,9 @@
         "en": "Paz Maghar"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "כפר מג'אר כביש 807",
@@ -9633,7 +11104,7 @@
       "tier": "basic",
       "phone": null,
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -9642,9 +11113,9 @@
           "en": "Paz Maghar"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -9652,6 +11123,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -9667,6 +11145,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -9683,9 +11168,9 @@
         "en": "Paz Yarka"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "רח' 1 ירכא כביש ראשי ירכא מס' 8533",
@@ -9748,7 +11233,7 @@
       "tier": "basic",
       "phone": null,
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -9757,9 +11242,9 @@
           "en": "Paz Yarka"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -9767,6 +11252,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -9782,6 +11274,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -9798,9 +11297,9 @@
         "en": "Paz Baqa al-Gharbiyye"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "מחלף באקה יציאה לכביש 6",
@@ -9861,9 +11360,9 @@
         "fuelAdminNo": 3021
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 9-863-1105",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -9872,9 +11371,9 @@
           "en": "Paz Baqa al-Gharbiyye"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -9882,6 +11381,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -9897,6 +11403,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -9913,9 +11426,9 @@
         "en": "Paz Yokneam"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "רח' התעשיה 1 יקנעם עילית",
@@ -9976,9 +11489,9 @@
         "fuelAdminNo": 3082
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 9-863-1105",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -9987,9 +11500,9 @@
           "en": "Paz Yokneam"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -9997,6 +11510,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -10012,6 +11532,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     },
     {
@@ -10028,9 +11555,9 @@
         "en": "Paz Bir al-Amir"
       },
       "tagline": {
-        "he": "תחנת דלק פז",
-        "ar": "محطة وقود باز",
-        "en": "Paz fuel station"
+        "he": "תחנת דלק פז, פתוחה 24/7",
+        "ar": "محطة وقود باز، فاتحة 24/7",
+        "en": "Paz fuel station, open 24/7"
       },
       "address": {
         "he": "אל-פאחיורה פינת רחוב 1006",
@@ -10091,9 +11618,9 @@
         "fuelAdminNo": 3091
       },
       "tier": "basic",
-      "phone": null,
+      "phone": "+972 52-511-8923",
       "whatsapp": null,
-      "website": null,
+      "website": "https://www.paz.co.il",
       "apps": {},
       "experience": {
         "brand": {
@@ -10102,9 +11629,9 @@
           "en": "Paz Bir al-Amir"
         },
         "title": {
-          "he": "תחנת דלק פז",
-          "ar": "محطة وقود باز",
-          "en": "Paz fuel station"
+          "he": "תחנת דלק פז, פתוחה 24/7",
+          "ar": "محطة وقود باز، فاتحة 24/7",
+          "en": "Paz fuel station, open 24/7"
         },
         "items": [
           {
@@ -10112,6 +11639,13 @@
               "he": "דלק",
               "ar": "وقود",
               "en": "Fuel"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
             }
           }
         ],
@@ -10127,6 +11661,13 @@
           "accent": "#0033A0"
         },
         "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/YellowPaz"
+      },
+      "cardStyle": {
+        "accent": "#d9a54c",
+        "icons": "solid"
       }
     }
   ]
