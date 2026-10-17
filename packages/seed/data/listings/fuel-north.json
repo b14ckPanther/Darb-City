@@ -1611,7 +1611,7 @@
       }
     },
     {
-      "slug": "yaad-satar",
+      "slug": "yaad-star",
       "place": "afula",
       "brand": "yaad",
       "primaryKind": "stations",
@@ -1620,8 +1620,8 @@
       ],
       "name": {
         "he": "יעד סטאר",
-        "ar": "يعاد سطار",
-        "en": "Yaad Satar"
+        "ar": "يعاد ستار",
+        "en": "Yaad Star"
       },
       "tagline": {
         "he": "תחנת דלק יעד",
@@ -1651,8 +1651,8 @@
       "experience": {
         "brand": {
           "he": "יעד סטאר",
-          "ar": "يعاد سطار",
-          "en": "Yaad Satar"
+          "ar": "يعاد ستار",
+          "en": "Yaad Star"
         },
         "title": {
           "he": "תחנת דלק יעד",
@@ -2995,7 +2995,7 @@
       }
     },
     {
-      "slug": "fuel-s-a-n-anargia",
+      "slug": "fuel-s-a-n-energy",
       "place": "arara",
       "brand": null,
       "primaryKind": "stations",
@@ -3004,8 +3004,8 @@
       ],
       "name": {
         "he": "ס.ע.ן אנרגיה",
-        "ar": "س.ع.ن انرجيا",
-        "en": "S.a.n Anargia"
+        "ar": "س.ع.ن إنرجي",
+        "en": "S.a.n Energy"
       },
       "tagline": {
         "he": "תחנת דלק",
@@ -3035,8 +3035,8 @@
       "experience": {
         "brand": {
           "he": "ס.ע.ן אנרגיה",
-          "ar": "س.ع.ن انرجيا",
-          "en": "S.a.n Anargia"
+          "ar": "س.ع.ن إنرجي",
+          "en": "S.a.n Energy"
         },
         "title": {
           "he": "תחנת דלק",
@@ -6087,7 +6087,7 @@
       }
     },
     {
-      "slug": "fuel-satar-daburiya",
+      "slug": "fuel-star-daburiya",
       "place": "daburiya",
       "brand": null,
       "primaryKind": "stations",
@@ -6096,8 +6096,8 @@
       ],
       "name": {
         "he": "סטאר דבוריה",
-        "ar": "سطار دبورية",
-        "en": "Satar Daburiya"
+        "ar": "ستار دبورية",
+        "en": "Star Daburiya"
       },
       "tagline": {
         "he": "תחנת דלק",
@@ -6127,8 +6127,8 @@
       "experience": {
         "brand": {
           "he": "סטאר דבוריה",
-          "ar": "سطار دبورية",
-          "en": "Satar Daburiya"
+          "ar": "ستار دبورية",
+          "en": "Star Daburiya"
         },
         "title": {
           "he": "תחנת דלק",
@@ -6513,7 +6513,7 @@
       }
     },
     {
-      "slug": "fuel-balak-golad",
+      "slug": "fuel-balak-gold",
       "place": "deir-al-asad",
       "brand": null,
       "primaryKind": "stations",
@@ -6523,7 +6523,7 @@
       "name": {
         "he": "בלאק גולד",
         "ar": "بلاك جولد",
-        "en": "Balak Golad"
+        "en": "Balak Gold"
       },
       "tagline": {
         "he": "תחנת דלק",
@@ -6554,7 +6554,7 @@
         "brand": {
           "he": "בלאק גולד",
           "ar": "بلاك جولد",
-          "en": "Balak Golad"
+          "en": "Balak Gold"
         },
         "title": {
           "he": "תחנת דלק",
@@ -11970,7 +11970,7 @@
       "name": {
         "he": "אל אור התחנה",
         "ar": "ال اور هتحنا",
-        "en": "Al Or Hatahna"
+        "en": "al Or Hatahna"
       },
       "tagline": {
         "he": "תחנת דלק",
@@ -12001,7 +12001,7 @@
         "brand": {
           "he": "אל אור התחנה",
           "ar": "ال اور هتحنا",
-          "en": "Al Or Hatahna"
+          "en": "al Or Hatahna"
         },
         "title": {
           "he": "תחנת דלק",
@@ -12787,7 +12787,7 @@
       }
     },
     {
-      "slug": "fuel-shli-anargia",
+      "slug": "fuel-shli-energy",
       "place": "haifa",
       "brand": null,
       "primaryKind": "stations",
@@ -12796,8 +12796,8 @@
       ],
       "name": {
         "he": "דלק שלי אנרגיה",
-        "ar": "وقود شلي انرجيا",
-        "en": "Fuel Shli Anargia"
+        "ar": "وقود شلي إنرجي",
+        "en": "Fuel Shli Energy"
       },
       "tagline": {
         "he": "תחנת דלק",
@@ -12827,8 +12827,8 @@
       "experience": {
         "brand": {
           "he": "דלק שלי אנרגיה",
-          "ar": "وقود شلي انرجيا",
-          "en": "Fuel Shli Anargia"
+          "ar": "وقود شلي إنرجي",
+          "en": "Fuel Shli Energy"
         },
         "title": {
           "he": "תחנת דלק",
@@ -15816,83 +15816,6 @@
       }
     },
     {
-      "slug": "fuel-satar-aavlin",
-      "place": "ibilin",
-      "brand": null,
-      "primaryKind": "stations",
-      "kinds": [
-        "stations"
-      ],
-      "name": {
-        "he": "דלק סטאר עאבלין",
-        "ar": "وقود سطار عابلين",
-        "en": "Fuel Satar Aavlin"
-      },
-      "tagline": {
-        "he": "תחנת דלק",
-        "ar": "محطة وقود",
-        "en": "Fuel station"
-      },
-      "address": {
-        "he": "כניסה ראשית עאבלין 30012",
-        "ar": "إعبلين",
-        "en": "Ibilin"
-      },
-      "lat": 32.826192,
-      "lng": 35.174564,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "fuelAdminNo": 2933
-      },
-      "tier": "basic",
-      "phone": "+972 52-283-0868",
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "דלק סטאר עאבלין",
-          "ar": "وقود سطار عابلين",
-          "en": "Fuel Satar Aavlin"
-        },
-        "title": {
-          "he": "תחנת דלק",
-          "ar": "محطة وقود",
-          "en": "Fuel station"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "דלק",
-              "ar": "وقود",
-              "en": "Fuel"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט לתחנה",
-          "ar": "خذني للمحطة",
-          "en": "Navigate to the station"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#D6A473"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#d6a473",
-        "icons": "solid"
-      }
-    },
-    {
       "slug": "fuel-shefaram-ibilin",
       "place": "ibilin",
       "brand": null,
@@ -15935,6 +15858,83 @@
           "he": "שפרעם אעבלין",
           "ar": "شفا عمرو إعبلين",
           "en": "Shefaram Ibilin"
+        },
+        "title": {
+          "he": "תחנת דלק",
+          "ar": "محطة وقود",
+          "en": "Fuel station"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "דלק",
+              "ar": "وقود",
+              "en": "Fuel"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט לתחנה",
+          "ar": "خذني للمحطة",
+          "en": "Navigate to the station"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#D6A473"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#d6a473",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "fuel-star-aavlin",
+      "place": "ibilin",
+      "brand": null,
+      "primaryKind": "stations",
+      "kinds": [
+        "stations"
+      ],
+      "name": {
+        "he": "דלק סטאר עאבלין",
+        "ar": "وقود ستار عابلين",
+        "en": "Fuel Star Aavlin"
+      },
+      "tagline": {
+        "he": "תחנת דלק",
+        "ar": "محطة وقود",
+        "en": "Fuel station"
+      },
+      "address": {
+        "he": "כניסה ראשית עאבלין 30012",
+        "ar": "إعبلين",
+        "en": "Ibilin"
+      },
+      "lat": 32.826192,
+      "lng": 35.174564,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "fuelAdminNo": 2933
+      },
+      "tier": "basic",
+      "phone": "+972 52-283-0868",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "דלק סטאר עאבלין",
+          "ar": "وقود ستار عابلين",
+          "en": "Fuel Star Aavlin"
         },
         "title": {
           "he": "תחנת דלק",
@@ -21148,7 +21148,7 @@
       }
     },
     {
-      "slug": "fuel-bal-anargia",
+      "slug": "fuel-bal-energy",
       "place": "kiryat-shmona",
       "brand": null,
       "primaryKind": "stations",
@@ -21158,8 +21158,8 @@
       ],
       "name": {
         "he": "בל אנרגיה",
-        "ar": "بل انرجيا",
-        "en": "Bal Anargia"
+        "ar": "بل إنرجي",
+        "en": "Bal Energy"
       },
       "tagline": {
         "he": "תחנת דלק, פתוחה 24/7",
@@ -21232,8 +21232,8 @@
       "experience": {
         "brand": {
           "he": "בל אנרגיה",
-          "ar": "بل انرجيا",
-          "en": "Bal Anargia"
+          "ar": "بل إنرجي",
+          "en": "Bal Energy"
         },
         "title": {
           "he": "תחנת דלק, פתוחה 24/7",
@@ -22861,7 +22861,7 @@
       }
     },
     {
-      "slug": "yaad-golad-anargia",
+      "slug": "yaad-gold-energy",
       "place": "majd-el-kurum",
       "brand": "yaad",
       "primaryKind": "stations",
@@ -22870,8 +22870,8 @@
       ],
       "name": {
         "he": "יעד גולד אנרגיה",
-        "ar": "يعاد جولد انرجيا",
-        "en": "Yaad Golad Anargia"
+        "ar": "يعاد جولد إنرجي",
+        "en": "Yaad Gold Energy"
       },
       "tagline": {
         "he": "תחנת דלק יעד",
@@ -22901,8 +22901,8 @@
       "experience": {
         "brand": {
           "he": "יעד גולד אנרגיה",
-          "ar": "يعاد جولد انرجيا",
-          "en": "Yaad Golad Anargia"
+          "ar": "يعاد جولد إنرجي",
+          "en": "Yaad Gold Energy"
         },
         "title": {
           "he": "תחנת דלק יעד",
@@ -29279,7 +29279,7 @@
       "name": {
         "he": "טן רומת אל הייב",
         "ar": "تن رومت ال هيب",
-        "en": "Ten Romat Al Hayav"
+        "en": "Ten Romat al Hayav"
       },
       "tagline": {
         "he": "תחנת דלק טן",
@@ -29310,7 +29310,7 @@
         "brand": {
           "he": "טן רומת אל הייב",
           "ar": "تن رومت ال هيب",
-          "en": "Ten Romat Al Hayav"
+          "en": "Ten Romat al Hayav"
         },
         "title": {
           "he": "תחנת דלק טן",
@@ -31250,7 +31250,7 @@
       }
     },
     {
-      "slug": "fuel-sono-golad",
+      "slug": "fuel-sono-gold",
       "place": "shefaram",
       "brand": null,
       "primaryKind": "stations",
@@ -31260,7 +31260,7 @@
       "name": {
         "he": "סונו גולד",
         "ar": "سونو جولد",
-        "en": "Sono Golad"
+        "en": "Sono Gold"
       },
       "tagline": {
         "he": "תחנת דלק",
@@ -31291,7 +31291,7 @@
         "brand": {
           "he": "סונו גולד",
           "ar": "سونو جولد",
-          "en": "Sono Golad"
+          "en": "Sono Gold"
         },
         "title": {
           "he": "תחנת דלק",
@@ -34999,7 +34999,7 @@
       }
     },
     {
-      "slug": "sonol-golad-alumot",
+      "slug": "sonol-gold-alumot",
       "place": "yavneel",
       "brand": "sonol",
       "primaryKind": "stations",
@@ -35009,7 +35009,7 @@
       "name": {
         "he": "סונול גולד אלומות",
         "ar": "سونول جولد ألوموت",
-        "en": "Sonol Golad Alumot"
+        "en": "Sonol Gold Alumot"
       },
       "tagline": {
         "he": "תחנת דלק סונול",
@@ -35040,7 +35040,7 @@
         "brand": {
           "he": "סונול גולד אלומות",
           "ar": "سونول جولد ألوموت",
-          "en": "Sonol Golad Alumot"
+          "en": "Sonol Gold Alumot"
         },
         "title": {
           "he": "תחנת דלק סונול",
@@ -35314,7 +35314,7 @@
       }
     },
     {
-      "slug": "fuel-golad-yirka",
+      "slug": "fuel-gold-yirka",
       "place": "yirka",
       "brand": null,
       "primaryKind": "stations",
@@ -35324,7 +35324,7 @@
       "name": {
         "he": "גולד ירכא",
         "ar": "جولد يركا",
-        "en": "Golad Yirka"
+        "en": "Gold Yirka"
       },
       "tagline": {
         "he": "תחנת דלק",
@@ -35355,7 +35355,7 @@
         "brand": {
           "he": "גולד ירכא",
           "ar": "جولد يركا",
-          "en": "Golad Yirka"
+          "en": "Gold Yirka"
         },
         "title": {
           "he": "תחנת דלק",

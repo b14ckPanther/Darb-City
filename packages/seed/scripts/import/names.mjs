@@ -41,6 +41,21 @@ export const WORDS = {
   החרמון: { ar: "حرمون", en: "Hermon" },
   כפר: { ar: "كفر", en: "Kfar" },
   קיבוץ: { ar: "كيبوتس", en: "Kibbutz" },
+  // Common words in business names, Hebrew-spelt from Arabic or English.
+  אבו: { ar: "أبو", en: "Abu" },
+  אל: { ar: "ال", en: "al" },
+  פואד: { ar: "فؤاد", en: "Fuad" },
+  מוחמד: { ar: "محمد", en: "Mohammad" },
+  אחמד: { ar: "أحمد", en: "Ahmad" },
+  מוטורס: { ar: "موتورز", en: "Motors" },
+  סנטר: { ar: "سنتر", en: "Center" },
+  קאר: { ar: "كار", en: "Car" },
+  סטאר: { ar: "ستار", en: "Star" },
+  גולד: { ar: "جولد", en: "Gold" },
+  אנרגיה: { ar: "إنرجي", en: "Energy" },
+  אקספרס: { ar: "إكسبرس", en: "Express" },
+  שירות: { ar: "خدمة", en: "Service" },
+  שירותי: { ar: "خدمات", en: "Services" },
   מושב: { ar: "موشاف", en: "Moshav" },
   גבעת: { ar: "جفعات", en: "Givat" },
   פארק: { ar: "بارك", en: "Park", after: true },
@@ -216,6 +231,7 @@ export function tradeName(he) {
     .replace(/\(\s*\)/g, " ")
     .replace(/(^|\s)(בע"מ|בע״מ|בע מ|בעמ)(?=\s|$)/g, " ")
     .replace(/ח\.פ\.?\s*\d+/g, " ")
+    .replace(/(^|\s)מע(''|")מ(?=\s|$)/g, " ")
     .replace(/\s+/g, " ")
     .replace(/^[\s-]+|[\s-]+$/g, "")
     .trim();
