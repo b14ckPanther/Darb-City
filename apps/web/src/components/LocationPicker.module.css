@@ -32,14 +32,15 @@
   inset-block-end: 6px;
   inset-inline-start: 8px;
   margin: 0;
-  padding: 2px 8px;
-  border-radius: 6px;
-  background: rgb(3 17 12 / 0.75);
-  color: var(--ivory-200);
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: rgb(251 247 236 / 0.82);
+  box-shadow: 0 1px 2px rgb(3 17 12 / 0.12);
+  color: #3d5247;
   font-size: 0.75rem;
 }
 .attribution a {
-  color: var(--ivory-200);
+  color: #173326;
 }
 
 /* The pin: a 44 px target holding a gold drop whose tip is the point (anchor: bottom). */
@@ -64,6 +65,7 @@
   background: var(--gold);
   border: 2px solid var(--ink);
   box-sizing: border-box;
+  box-shadow: 0 3px 8px rgb(3 17 12 / 0.35);
   transform: rotate(-45deg);
   box-shadow: 0 2px 6px rgb(0 0 0 / 0.45);
 }
