@@ -19,6 +19,8 @@ export interface RowLabels {
   distanceM: string;
   /** The page language, for number formatting. */
   locale: string;
+  /** Search only: said (unseen) before the matched thing, "Has shawarma". */
+  matchedOn?: string;
 }
 
 /** Pure: rendered by the server list and by ShowMore on the client. */
@@ -70,6 +72,19 @@ export function BusinessRow({
               />
             )}
           </span>
+          {row.matched ? (
+            // The thing on the card that answered the search, above the tagline.
+            <span className={styles.rowMatch} data-matched="">
+              <span className={styles.matchMark} aria-hidden="true" />
+              {labels.matchedOn ? (
+                <span className="visually-hidden">{labels.matchedOn} </span>
+              ) : null}
+              <span className={styles.matchLabel}>{row.matched.label}</span>
+              {row.matched.context ? (
+                <span className={styles.matchContext}> · {row.matched.context}</span>
+              ) : null}
+            </span>
+          ) : null}
           {row.tagline ? <span className={styles.rowTagline}>{row.tagline}</span> : null}
           <span className={styles.rowMeta}>
             {row.distance ? (
@@ -91,7 +106,9 @@ export function BusinessRow({
               </span>
             ) : null}
             {row.example ? <ExampleBadge label={labels.example} /> : null}
-            {row.glutenFree ? <GlutenFreeBadge label={labels.glutenFree} /> : null}
+            {row.glutenFree ? (
+              <GlutenFreeBadge label={labels.glutenFree} strict={row.strictGlutenFree} />
+            ) : null}
           </span>
         </span>
       </Link>

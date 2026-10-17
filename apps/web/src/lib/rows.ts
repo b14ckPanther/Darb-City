@@ -27,6 +27,10 @@ export interface BusinessRowData {
   /** The card's look, lightly: the owner's accent (else the sector's) and logo (a bucket URL). */
   accent: string;
   logoUrl: string | null;
+  /** Search only: the thing on its card that answered ("Shawarma", "Challah sandwiches"). */
+  matched?: { label: string; context: string | null } | null;
+  /** Search only: the asked diet is a must, so its badge is highlighted. */
+  strictGlutenFree?: boolean;
 }
 
 export interface RowContext {

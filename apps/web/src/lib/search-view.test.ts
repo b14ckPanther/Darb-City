@@ -51,6 +51,10 @@ const ctx: ViewContext = {
     glutenFree: "Gluten-free",
     kindInPlace: "{kind} in {place}",
     kindNationwide: "{kind} across Israel",
+    thingGlutenFree: "gluten-free {thing}",
+    searchWider: "No {thing} in {place}. Closest: {name}, {where}, {distance}",
+    searchWiderNear: "No {thing} nearby. Closest: {name}, {where}, {distance}",
+    searchRelated: "No {thing} found yet. These may suit you:",
   },
   kmLabel: (km) => `${km.toFixed(1)} km`,
 };
@@ -86,6 +90,7 @@ const response: SearchResponseDto = {
   needsLocation: false,
   items: [item],
   nearest: [],
+  fallback: null,
 };
 
 describe("search view", () => {
@@ -252,5 +257,106 @@ describe("gluten-free chip (Task 27b)", () => {
     expect(href).toContain("chips=place:akko,kind:sweets,openNow,glutenFree");
     const url = new URL(href, "http://x");
     expect(intentFromUrl(url.searchParams.get("chips") ?? undefined, undefined)).toEqual(gf);
+  });
+});
+
+describe("deep search (the thing inside the card)", () => {
+  const shawarma = {
+    ...EMPTY_INTENT,
+    kinds: ["sweets"],
+    place: "akko",
+    dietary: ["gluten_free" as const],
+    items: ["shawarma"],
+    mustHave: ["gluten_free" as const],
+  };
+  const caramel = {
+    ...item,
+    slug: "caramel",
+    name: { en: "Caramel" },
+    dietary: ["gluten_free" as const],
+    matched: {
+      label: { he: "שווארמה", en: "shawarma" },
+      context: { en: "Challah and laffa sandwiches" },
+    },
+  };
+  const found: SearchResponseDto = { ...response, intent: shawarma, items: [caramel] };
+
+  it("draws the asked thing as its own chip, and removing it leaves the kind", () => {
+    expect(chipsFor(shawarma, ctx).map((c) => c.id)).toEqual([
+      "place:akko",
+      "kind:sweets",
+      "items",
+      "glutenFree",
+    ]);
+    expect(chipsFor(shawarma, ctx).find((c) => c.id === "items")?.label).toBe("“shawarma”");
+    expect(removeChip(shawarma, "items")).toEqual({ ...shawarma, items: [] });
+    // Free text the item already says is not a second chip.
+    expect(chipsFor({ ...shawarma, freeText: "shawarma" }, ctx).map((c) => c.id)).not.toContain(
+      "text",
+    );
+  });
+  it("shows the matched thing with the strict diet, and highlights it on the card", () => {
+    const [row] = toSearchView(found, "gluten free shawarma", ctx).rows;
+    expect(row?.matched).toEqual({
+      label: "gluten-free shawarma",
+      context: "Challah and laffa sandwiches",
+    });
+    expect(row?.strictGlutenFree).toBe(true);
+    expect(row?.href).toBe("/en/akko/food/sweets/caramel?hl=shawarma");
+    // Never the raw query in the link.
+    expect(row?.href).not.toContain("gluten");
+    // A label that says the diet itself is not said twice.
+    const knafeh = {
+      ...caramel,
+      matched: { label: { en: "Gluten-free knafeh" }, context: { en: "Desserts" } },
+    };
+    const [said] = toSearchView({ ...found, items: [knafeh] }, "x", ctx).rows;
+    expect(said?.matched?.label).toBe("Gluten-free knafeh");
+    expect(said?.href).toContain("hl=gluten-free-knafeh");
+  });
+  it("says honestly when the closest match is beyond the place", () => {
+    const wider = {
+      ...found,
+      intent: { ...shawarma, place: "haifa" },
+      items: [{ ...caramel, distanceKm: 24 }],
+      fallback: "wider" as const,
+    };
+    const haifa = { ...ctx, place: { slug: "haifa", name: "Haifa", lat: 32.8, lng: 35 } };
+    expect(toSearchView(wider, "x", haifa).fallback).toEqual({
+      type: "wider",
+      line: "No gluten-free shawarma in Haifa. Closest: Caramel, Akko, 24.0 km",
+    });
+    expect(
+      toSearchView({ ...wider, intent: { ...wider.intent, place: null } }, "x", {
+        ...ctx,
+        place: null,
+      }).fallback?.line,
+    ).toBe("No gluten-free shawarma nearby. Closest: Caramel, Akko, 24.0 km");
+    const related = {
+      ...found,
+      items: [{ ...caramel, matched: undefined }],
+      fallback: "related" as const,
+    };
+    expect(toSearchView(related, "x", ctx).fallback).toEqual({
+      type: "related",
+      line: "No gluten-free shawarma found yet. These may suit you:",
+    });
+    expect(toSearchView(found, "x", ctx).fallback).toBeNull();
+  });
+  it("keeps the asked things in the edited URL and reads them back", () => {
+    const href = editedHref("en", "q", shawarma);
+    expect(href).toContain("chips=place:akko,kind:sweets,items,glutenFree");
+    expect(href).toContain("&item=shawarma");
+    const url = new URL(href, "http://x");
+    expect(
+      intentFromUrl(
+        url.searchParams.get("chips") ?? undefined,
+        undefined,
+        url.searchParams.getAll("item"),
+      ),
+    ).toEqual({ ...shawarma, mustHave: [] });
+    expect(intentFromUrl("items", undefined, ["  ", "x".repeat(99)])?.items).toEqual([
+      "x".repeat(60),
+    ]);
   });
 });

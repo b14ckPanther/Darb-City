@@ -163,6 +163,12 @@ export function SearchResults({
           </button>
         </p>
       ) : null}
+      {view.fallback && view.rows.length > 0 ? (
+        // Honest: what came instead of an exact match, said once above the list.
+        <p className={styles.fallback} data-search-fallback-line={view.fallback.type}>
+          {view.fallback.line}
+        </p>
+      ) : null}
       {state === "denied" ? <p role="status">{labels.locationDenied}</p> : null}
       {state === "error" ? <p role="status">{labels.unreachable}</p> : null}
       {view.rows.length > 0 ? (

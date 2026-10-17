@@ -29,6 +29,10 @@ export async function viewContext(locale: Locale, intent: IntentDto): Promise<Vi
       nearMe: t(locale, "nearMe"),
       kindInPlace: t(locale, "kindInPlace"),
       kindNationwide: t(locale, "kindNationwide"),
+      thingGlutenFree: t(locale, "thingGlutenFree"),
+      searchWider: t(locale, "searchWider"),
+      searchWiderNear: t(locale, "searchWiderNear"),
+      searchRelated: t(locale, "searchRelated"),
     },
     kmLabel: (km) => formatKm(km, locale),
   };

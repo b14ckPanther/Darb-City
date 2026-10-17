@@ -51,6 +51,10 @@ const ctx: ViewContext = {
     glutenFree: "Gluten-free",
     kindInPlace: "{kind} in {place}",
     kindNationwide: "{kind} across Israel",
+    thingGlutenFree: "gluten-free {thing}",
+    searchWider: "No {thing} in {place}",
+    searchWiderNear: "No {thing} nearby",
+    searchRelated: "No {thing} yet",
   },
   kmLabel: (km) => `${km.toFixed(1)} km`,
 };
@@ -82,6 +86,7 @@ const ok: SearchResponseDto = {
     },
   ],
   nearest: [],
+  fallback: null,
 };
 const search = await import("./route");
 const suggest = await import("./suggest/route");
