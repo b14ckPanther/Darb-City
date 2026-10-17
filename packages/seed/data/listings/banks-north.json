@@ -10781,7 +10781,7 @@
       }
     },
     {
-      "slug": "otsar-hahayal-hil-him-haifa",
+      "slug": "otsar-hahayal-him-haifa",
       "place": "haifa",
       "brand": "otsar-hahayal",
       "primaryKind": "banks",
@@ -10789,9 +10789,9 @@
         "banks"
       ],
       "name": {
-        "he": "בנק אוצר החייל חיל הים - חיפה",
-        "ar": "بنك أوتسار هحيال حيل هيم حيفا",
-        "en": "Bank Otsar Ha-Hayal Hil Him Haifa"
+        "he": "בנק אוצר החייל הים - חיפה",
+        "ar": "بنك أوتسار هحيال هيم حيفا",
+        "en": "Bank Otsar Ha-Hayal Him Haifa"
       },
       "tagline": {
         "he": "סניף בנק אוצר החייל",
@@ -10822,9 +10822,9 @@
       "apps": {},
       "experience": {
         "brand": {
-          "he": "בנק אוצר החייל חיל הים - חיפה",
-          "ar": "بنك أوتسار هحيال حيل هيم حيفا",
-          "en": "Bank Otsar Ha-Hayal Hil Him Haifa"
+          "he": "בנק אוצר החייל הים - חיפה",
+          "ar": "بنك أوتسار هحيال هيم حيفا",
+          "en": "Bank Otsar Ha-Hayal Him Haifa"
         },
         "title": {
           "he": "סניף בנק אוצר החייל",
@@ -10909,9 +10909,9 @@
         "banks"
       ],
       "name": {
-        "he": "בנק פאג\"י פאגי חיפה",
-        "ar": "بنك باجي باجي حيفا",
-        "en": "Bank PAGI Pagi Haifa"
+        "he": "בנק פאג\"י חיפה",
+        "ar": "بنك باجي حيفا",
+        "en": "Bank PAGI Haifa"
       },
       "tagline": {
         "he": "סניף בנק פאג\"י",
@@ -10942,9 +10942,9 @@
       "apps": {},
       "experience": {
         "brand": {
-          "he": "בנק פאג\"י פאגי חיפה",
-          "ar": "بنك باجي باجي حيفا",
-          "en": "Bank PAGI Pagi Haifa"
+          "he": "בנק פאג\"י חיפה",
+          "ar": "بنك باجي حيفا",
+          "en": "Bank PAGI Haifa"
         },
         "title": {
           "he": "סניף בנק פאג\"י",
