@@ -43,10 +43,15 @@ export const loadShowroom = (): SeedBusiness[] => {
     return { ...b, experience };
   });
 };
-/** Showroom examples plus real clients. */
-export const loadBusinesses = (): SeedBusiness[] => [
-  ...loadShowroom(),
-  ...loadClients().businesses,
-];
+/**
+ * Real businesses from public open data (listings.json, its source recorded in the file): basic
+ * listings, never examples, so they load with or without the showroom.
+ */
+export const loadListings = (): SeedBusiness[] =>
+  read<{ businesses: SeedBusiness[] }>("listings.json").businesses;
+/** Every real business: Darb's clients and the open-data listings. */
+export const loadReal = (): SeedBusiness[] => [...loadClients().businesses, ...loadListings()];
+/** Showroom examples plus every real business. */
+export const loadBusinesses = (): SeedBusiness[] => [...loadShowroom(), ...loadReal()];
 export const loadWeekend = () => read<{ arabDruze: string[]; christian: string[] }>("weekend.json");
 export { toArabDruzeWeek, toChristianWeek } from "./showroom.js";
