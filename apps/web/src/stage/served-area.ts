@@ -127,7 +127,7 @@ function fromList(op: "all" | "any", args: unknown[]): unknown {
 }
 
 /**
- * The Darb style with only the served land alive: everything outside fades into the night (a veil
+ * The Darb style with only the served land alive: everything outside fades into a warm mist (a veil
  * over the basemap, below its labels and Darb's own layers, with a soft edge) and the basemap's
  * labels outside it are hidden. A style without an area is returned as it was.
  */
@@ -147,8 +147,8 @@ export function withServedArea(
   });
   const firstLabel = layers.findIndex((l) => l.type === "symbol");
   layers.splice(firstLabel < 0 ? layers.length : firstLabel, 0, ...veilLayers());
-  // The served land a shade lighter than the night: over the land and its cover, under the water
-  // (the sea stays night) and the roads.
+  // The served land a touch brighter, sunlit: over the land and its cover, under the water
+  // (the sea keeps its colour) and the roads.
   const water = layers.findIndex((l) => l.id === "water");
   if (water >= 0) layers.splice(water, 0, liftLayer());
   return {

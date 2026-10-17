@@ -8,7 +8,7 @@ const READY_TIMEOUT = 15_000;
 
 /**
  * The locale's Darb style, fetched and pointed at this origin's glyphs and the tiles archive, with
- * the land outside what Darb serves faded into the night (served-area.ts).
+ * the land outside what Darb serves faded into a warm mist (served-area.ts).
  */
 export async function fetchDarbStyle(locale: Locale): Promise<StyleSpecification> {
   const [res, area] = await Promise.all([fetch(styleUrl(locale)), loadServedArea()]);
