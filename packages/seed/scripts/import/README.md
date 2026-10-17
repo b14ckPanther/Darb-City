@@ -39,6 +39,13 @@ Then check: `pnpm --filter @darb/seed test` (validates every business) and seed 
 | `ev.mjs`      | Ministry of Transport, EV charging (`528482f2…`); OSM charging stations                      | OSM only (the ministry's SHP/KMZ are refused, 403)           |
 | `food.mjs`    | OSM: every named restaurant, café, fast food, bakery, sweets, ice cream, juice, butcher...   | OSM's own; place from OSM municipal boundaries               |
 
+| Importer      | Source                                                                                       | Points                                                         |
+| ------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| `fuel.mjs`    | Energy Ministry fuel stations (`5537a0ef…`), phones (`ff3b653c…`), EV chargers (`528482f2…`) | official coordinates; services from OSM within 150 m           |
+| `garages.mjs` | Ministry of Transport, garages and testing stations (`bb68386a…`)                            | none in the register: OSM by name or phone, else `geocode.mjs` |
+| `banks.mjs`   | Bank of Israel, physical branches (`2202bada…`)                                              | official coordinates                                           |
+| `ev.mjs`      | Ministry of Transport, EV charging (`528482f2…`); OSM charging stations                      | OSM only (the ministry's SHP/KMZ are refused, 403)             |
+
 Paz (`data/listings/paz-north.json`) was made by hand before this toolkit and is kept as it is;
 `fuel.mjs` skips company `פז`.
 
@@ -66,6 +73,23 @@ Paz (`data/listings/paz-north.json`) was made by hand before this toolkit and is
   wineries), the food kinds and the dishes a card lists, from tags, cuisine and name words.
 - `arabic-names.mjs`: Arabic-only names in Hebrew and Latin letters, food words said
   ("حمص" is Hummus).
+
+- `geocode.mjs`: a local address geocoder over OSM's own data for the north (every
+  `addr:housenumber`, every named highway, named industrial zones and junctions), fetched once
+  from Overpass in quarter-degree tiles (split in four when a tile is too big) and cached as
+  `.cache/geo-*.json`. `resolve({ town, address })` reads the register's free text (PO boxes,
+  private bags and plot numbers are noise), then: the house number in that town (`exact`); else
+  the nearest number on the street, interpolated on the same side when both neighbours stand
+  within 200 m (`near`); else the midpoint of the named street when the whole street is shorter
+  than 700 m (`street`); else a named industrial zone smaller than 1.5 km or a named junction,
+  when exactly one in the town answers (`area`); else nothing. Street names meet without their
+  prefix (רחוב / רח' / שד' / שדרות / דרך / סמטת), quotes, dashes or doubled vav and yod, then
+  loosely (no vowel letters, no article), by their words (a surname alone, words reversed), or by
+  a near spelling when one street is clearly closest. A town's addresses are those whose
+  `addr:city` names it, else those nearest its centre within its radius. Never a town centre.
+  `garages.mjs` records the outcome as `attributes.geoPrecision` (`osm`, `exact`, `near`,
+  `street`, `area`) with `attributes.sourceAddress`, and writes per-type coverage (and every
+  skipped garage with why) to `.superpowers/garages-coverage.json`.
 
 Tests (`*.test.mjs`, fixtures in `fixtures/`) run with the seed package's tests.
 
