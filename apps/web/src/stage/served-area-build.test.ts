@@ -1,4 +1,5 @@
 // @vitest-environment node
+import { gzipSync } from "node:zlib";
 import { loadPlaces } from "@darb/seed";
 import { describe, expect, it } from "vitest";
 import {
@@ -121,7 +122,9 @@ describe("servedArea", () => {
     expect(points.length).toBeGreaterThan(1000);
     const area = servedArea(points);
     const body = JSON.stringify(area);
-    expect(body.length).toBeLessThan(15 * 1024);
+    // The outline is ~8 KB; the places (for town labels) bring it to ~25 KB, ~7 KB gzipped.
+    expect(JSON.stringify(area.geometry).length).toBeLessThan(15 * 1024);
+    expect(gzipSync(body).length).toBeLessThan(10 * 1024);
     expect(JSON.stringify(servedArea(points))).toBe(body);
     const all = rings(area);
     for (const p of points)

@@ -246,7 +246,8 @@ const round = (n) => Number(n.toFixed(DECIMALS));
 
 /**
  * The served outline around [lng, lat] points: a GeoJSON Feature with a MultiPolygon of outer
- * rings only (counter-clockwise, holes filled) and its bbox. Deterministic for the same points.
+ * rings only (counter-clockwise, holes filled), its bbox, and the points themselves as a
+ * MultiPoint ("places", rounded to ~100 m). Deterministic for the same points.
  */
 export function servedArea(points, options = {}) {
   const { servedKm = SERVED_KM, closeKm = CLOSE_KM, tolerance = TOLERANCE } = options;
@@ -280,6 +281,14 @@ export function servedArea(points, options = {}) {
     bbox,
     properties: {},
     geometry: { type: "MultiPolygon", coordinates: rings.map((ring) => [ring]) },
+    // Every place itself, so the maps name only towns Darb lists (a foreign town can sit inside
+    // the outline, a few km from an Israeli one).
+    places: {
+      type: "MultiPoint",
+      coordinates: [...new Set(points.map(([lng, lat]) => `${round(lng)},${round(lat)}`))]
+        .sort()
+        .map((key) => key.split(",").map(Number)),
+    },
   };
 }
 
