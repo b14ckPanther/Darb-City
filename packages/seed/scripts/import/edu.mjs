@@ -132,13 +132,6 @@ const SUPERVISION = {
   "ממלכתי דתי": L("ממלכתי דתי", "رسمي ديني", "State religious"),
   חרדי: L("חרדי", "حريدي", "Haredi"),
 };
-const SECTOR_SAY = {
-  ערבי: L("ערבי", "عربي", "Arab"),
-  דרוזי: L("דרוזי", "درزي", "Druze"),
-  בדואי: L("בדואי", "بدوي", "Bedouin"),
-  צרקסי: L("צ'רקסי", "شركسي", "Circassian"),
-};
-
 /** "גן חרוב (מעיינות" is cut off in the list: its parenthesis is closed. */
 const closeParens = (s) =>
   (s.match(/\(/g)?.length ?? 0) > (s.match(/\)/g)?.length ?? 0) ? `${s})` : s;
@@ -324,7 +317,6 @@ export function buildEdu({ rows, existing = [], taken = [], osmSchools = [] }) {
       ...(SUPERVISION[r.TEUR_PIKOH1]
         ? [{ label: LABEL.supervision, meta: SUPERVISION[r.TEUR_PIKOH1] }]
         : []),
-      ...(SECTOR_SAY[r.TEUR_MIGZAR] ? [{ label: SECTOR_SAY[r.TEUR_MIGZAR] }] : []),
       ...(r.TEUR_SUG_CHINUCH === "מיוחד" ? [{ label: LABEL.special }] : []),
     ];
     businesses.push(

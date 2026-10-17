@@ -57,6 +57,11 @@ describe("education ministry importer over a fixture", () => {
       "Special education",
     ]);
   });
+  it("never says which community a kindergarten serves", () => {
+    expect(JSON.stringify(businesses)).not.toMatch(
+      /ערבי|דרוזי|בדואי|عربي|درزي|بدوي|\bArab\b|Druze|Bedouin/,
+    );
+  });
 });
 
 describe("schools from the ministry's list", () => {
