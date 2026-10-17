@@ -55,16 +55,25 @@ export function BusinessRow({
           )}
         </span>
         <span className={styles.rowText}>
-          <span className={styles.rowName} data-business-name="">
-            {row.name}
+          {/* The name with its open state at the end: the state never falls to a line of its own. */}
+          <span className={styles.rowHead}>
+            <span className={styles.rowName} data-business-name="">
+              {row.name}
+            </span>
+            {row.byAppointment ? (
+              <AppointmentBadge label={labels.byAppointment} />
+            ) : (
+              <LiveOpenState
+                openNow={row.openNow}
+                hours={row.hours}
+                labels={{ open: labels.openNow, closed: labels.closed }}
+              />
+            )}
           </span>
           {row.tagline ? <span className={styles.rowTagline}>{row.tagline}</span> : null}
           <span className={styles.rowMeta}>
-            {row.placeName ? (
-              <span className={`${styles.rowPlace} ${styles.pinned}`}>{row.placeName}</span>
-            ) : null}
             {row.distance ? (
-              <span className={`${styles.rowPlace} ${styles.pinned}`} data-distance="">
+              <span className={styles.distance} data-distance="">
                 {row.distance}
               </span>
             ) : (
@@ -76,17 +85,13 @@ export function BusinessRow({
                 locale={labels.locale}
               />
             )}
+            {row.placeName ? (
+              <span className={`${styles.rowPlace} ${styles.pinned}`}>
+                <span className={styles.clip}>{row.placeName}</span>
+              </span>
+            ) : null}
             {row.example ? <ExampleBadge label={labels.example} /> : null}
             {row.glutenFree ? <GlutenFreeBadge label={labels.glutenFree} /> : null}
-            {row.byAppointment ? (
-              <AppointmentBadge label={labels.byAppointment} />
-            ) : (
-              <LiveOpenState
-                openNow={row.openNow}
-                hours={row.hours}
-                labels={{ open: labels.openNow, closed: labels.closed }}
-              />
-            )}
           </span>
         </span>
       </Link>

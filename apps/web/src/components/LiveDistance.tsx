@@ -34,7 +34,7 @@ export function LiveDistance({
           new Intl.NumberFormat(locale, { maximumFractionDigits: km < 10 ? 1 : 0 }).format(km),
         );
   return (
-    <span className={`${styles.rowPlace} ${styles.live}`} data-live-distance="">
+    <span className={styles.live} data-live-distance="">
       <span className={styles.liveDot} aria-hidden="true" />
       <bdi>{value}</bdi>
     </span>

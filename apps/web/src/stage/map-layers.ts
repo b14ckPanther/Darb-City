@@ -13,6 +13,8 @@ export const MAP_FONT = "noto-sans-regular";
 
 /** Clustered points carry point_count; single places do not. */
 const CLUSTER = ["has", "point_count"];
+/** A bubble of places that all have no businesses yet says nothing worth drawing. */
+const BUBBLE = ["all", CLUSTER, [">", ["get", "count"], 0]];
 const SINGLE = ["all", ["!", CLUSTER], [">", ["get", "count"], 0]];
 
 /**
@@ -26,7 +28,7 @@ export function darbLayers(): LayerSpecification[] {
       id: CITY_GLOW,
       type: "circle",
       source: CITY_SOURCE,
-      filter: CLUSTER as never,
+      filter: BUBBLE as never,
       paint: {
         // Logarithmic, so a city of thousands never swallows its neighbours.
         "circle-radius": ["+", 12, ["*", 3.2, ["ln", ["+", 1, ["get", "count"]]]]],
@@ -40,7 +42,7 @@ export function darbLayers(): LayerSpecification[] {
       id: CLUSTER_COUNT,
       type: "symbol",
       source: CITY_SOURCE,
-      filter: CLUSTER as never,
+      filter: BUBBLE as never,
       layout: {
         "text-field": ["to-string", ["get", "count"]],
         "text-font": [MAP_FONT],
