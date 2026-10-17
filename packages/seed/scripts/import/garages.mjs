@@ -213,6 +213,9 @@ export const GARAGE_WORDS = {
   וצבע: { ar: "ودهان", en: "and Paint", after: true },
   לפחחות: { ar: "سمكرة", en: "Body work", after: true },
   "לפחחות וצבע": { ar: "سمكرة ودهان", en: "Body work and paint", after: true },
+  ומוסך: { ar: "وكراج", en: "and Garage", after: true },
+  סוכניות: { ar: "وكالات", en: "Agencies", after: true },
+  חן: { ar: "حين", en: "Chen" },
 };
 
 /** Words in a garage's name that say what it is, not which one. */
@@ -249,6 +252,14 @@ const GENERIC = new Set(
   ].map((w) => loose(w)),
 );
 
+/** OSM tags of a place that works on cars. */
+export const CAR_PLACE = (t) =>
+  /^(car_repair|tyres|car_parts|motorcycle|motorcycle_repair|car)$/.test(t.shop ?? "") ||
+  t.amenity === "vehicle_inspection" ||
+  /^(car_repair|mechanic|electrician)$/.test(t.craft ?? "") ||
+  t.service === "vehicle_inspection" ||
+  /מוסך|טסט|מכון רישוי|פנצ/.test(`${t.name ?? ""} ${t["name:he"] ?? ""}`);
+
 /** A name's distinctive Hebrew words, each in its loose form. */
 export function nameWords(he) {
   return normalize(tradeName(he))
@@ -278,6 +289,8 @@ export function findOsmTwin(garage, place, osm, isPlaceName = () => false) {
       candidates.push({ el, point, how: "phone" });
       continue;
     }
+    // Any place with the garage's phone is the garage; a name alone only on a car place.
+    if (!CAR_PLACE(t)) continue;
     for (const n of [t["name:he"], t.name].filter(isHebrew)) {
       const words = nameWords(n);
       if (words.length === 0 || isPlaceName(words.join(" "))) continue;
@@ -304,7 +317,8 @@ export function cleanName(he) {
       .replace(/\s*\(\s*(\d{4})\s*\)\s*/g, " ")
       .replace(/([^\s(])\(/g, "$1 (")
       .replace(/\)([^\s)])/g, ") $1")
-      .replace(/(^|\s)בע\s*[מם](?=\s|$)/g, " ")
+      .replace(/(^|[\s.])בע\s*[מם](?=\s|$)/g, "$1")
+      .replace(/(^|\s)בעמ(?=\s|$)/g, " ")
       .replace(/(^|\s)\(\d{4}\)(?=\s|$)/g, " ")
       .replace(/(^|\s)(ש\.?ת\.?פ|שותפות)(?=\s|$)/g, " "),
   )
@@ -560,8 +574,8 @@ async function main() {
   const [rows, osm, osmAddresses] = await Promise.all([
     datastore(RESOURCE),
     overpass(
-      "garages",
-      'nwr["shop"="car_repair"];nwr["shop"="tyres"];nwr["amenity"="vehicle_inspection"];',
+      "garages-and-phones",
+      'nwr["shop"~"^(car_repair|tyres|car_parts|motorcycle|motorcycle_repair|car)$"];nwr["amenity"="vehicle_inspection"];nwr["craft"~"^(car_repair|mechanic)$"];nwr["name"~"מוסך|טסט|מכון רישוי|פנצ"];nwr["phone"];nwr["contact:phone"];',
     ),
     loadOsmAddresses(),
   ]);
