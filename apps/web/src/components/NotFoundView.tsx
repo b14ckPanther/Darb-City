@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { t } from "@darb/i18n";
+import { FALLBACK_TEXT } from "@/content/fallback";
 import { isLocale } from "@/lib/locale";
 import { href } from "@/lib/routes";
 import { ClosestMatch } from "./ClosestMatch";
@@ -14,13 +14,13 @@ export function NotFoundView() {
   return (
     <main id="main" className="frame reveal" data-not-found="">
       <h1 id="main-heading" tabIndex={-1} className="page-title">
-        {t(locale, "notFoundTitle")}
+        {FALLBACK_TEXT[locale].notFoundTitle}
       </h1>
-      <p className="lede">{t(locale, "notFoundBody")}</p>
-      <ClosestMatch template={t(locale, "didYouMean", { name: "{name}" })} />
+      <p className="lede">{FALLBACK_TEXT[locale].notFoundBody}</p>
+      <ClosestMatch template={FALLBACK_TEXT[locale].didYouMean} />
       <p>
         <Link href={href(locale)} className="button-link" data-back-home="">
-          {t(locale, "backToCity")}
+          {FALLBACK_TEXT[locale].backToCity}
         </Link>
       </p>
     </main>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { t } from "@darb/i18n";
+import { FALLBACK_TEXT } from "@/content/fallback";
 import { isLocale } from "@/lib/locale";
 
 /**
@@ -14,13 +14,13 @@ export function ErrorView({ retry }: { retry?: () => void }) {
   return (
     <main id="main" className="frame">
       <div className="quiet" role="status" data-unreachable="">
-        <p>{t(locale, "unreachable")}</p>
+        <p>{FALLBACK_TEXT[locale].unreachable}</p>
         <button
           type="button"
           className="button"
           onClick={() => (retry ? retry() : window.location.reload())}
         >
-          {t(locale, "retry")}
+          {FALLBACK_TEXT[locale].retry}
         </button>
       </div>
     </main>
