@@ -1,0 +1,184 @@
+{
+  "osm": [
+    {
+      "type": "node",
+      "id": 1,
+      "lat": 32.8641,
+      "lon": 35.3019,
+      "tags": {
+        "amenity": "fast_food",
+        "name": "שווארמה אבו סאלח",
+        "name:ar": "شاورما أبو صالح",
+        "cuisine": "shawarma;falafel",
+        "phone": "04-6741234",
+        "opening_hours": "Sa-Th 10:00-23:00; Fr 13:00-23:00",
+        "takeaway": "yes",
+        "delivery": "yes",
+        "contact:instagram": "abusaleh_shawarma"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2,
+      "lat": 32.8641,
+      "lon": 35.3024,
+      "tags": {
+        "amenity": "fast_food",
+        "name": "שווארמה אבו סאלח",
+        "cuisine": "shawarma"
+      }
+    },
+    {
+      "type": "way",
+      "id": 3,
+      "center": { "lat": 32.8195, "lon": 34.9988 },
+      "tags": {
+        "amenity": "cafe",
+        "name": "Café Masada",
+        "name:he": "קפה מסדה",
+        "cuisine": "coffee_shop;breakfast",
+        "outdoor_seating": "yes",
+        "wheelchair": "yes",
+        "diet:vegan": "yes",
+        "website": "cafemasada.co.il",
+        "contact:facebook": "https://www.facebook.com/cafemasada",
+        "opening_hours": "Su-Th 07:00-22:00, Fr 07:00-15:00"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4,
+      "lat": 32.7068,
+      "lon": 35.3052,
+      "tags": { "amenity": "restaurant", "name": "فلافل وحمص الشرق", "addr:city": "الناصرة" }
+    },
+    {
+      "type": "node",
+      "id": 5,
+      "lat": 32.9161,
+      "lon": 35.2936,
+      "tags": {
+        "shop": "bakery",
+        "name": "מאפיית השקד",
+        "diet:gluten_free": "only",
+        "opening_hours": "Su-Th 06:00-19:00; Fr 06:00-14:00; Sa off"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6,
+      "lat": 32.9162,
+      "lon": 35.2938,
+      "tags": { "shop": "bakery", "name": "מאפיית הכרמל", "diet:gluten_free": "yes" }
+    },
+    {
+      "type": "node",
+      "id": 7,
+      "lat": 32.7069,
+      "lon": 35.3049,
+      "tags": { "shop": "pastry", "name": "حلويات كنافة السلطان", "cuisine": "knafeh;baklava" }
+    },
+    {
+      "type": "node",
+      "id": 8,
+      "lat": 32.9205,
+      "lon": 35.0696,
+      "tags": {
+        "amenity": "restaurant",
+        "name": "קרמל",
+        "name:en": "Caramel",
+        "cuisine": "dessert"
+      }
+    },
+    {
+      "type": "node",
+      "id": 20,
+      "lat": 32.8192,
+      "lon": 34.9985,
+      "tags": { "amenity": "bar", "name": "Haifa Bar" }
+    },
+    {
+      "type": "node",
+      "id": 21,
+      "lat": 32.8193,
+      "lon": 34.999,
+      "tags": { "amenity": "pub", "name": "The Pub" }
+    },
+    {
+      "type": "node",
+      "id": 22,
+      "lat": 32.8194,
+      "lon": 34.9991,
+      "tags": { "amenity": "restaurant", "name": "Pork & Co", "cuisine": "pork" }
+    },
+    {
+      "type": "node",
+      "id": 23,
+      "lat": 32.8195,
+      "lon": 34.9992,
+      "tags": { "amenity": "restaurant", "name": "מסעדת הים", "description": "בשר חזיר על הגריל" }
+    },
+    {
+      "type": "node",
+      "id": 24,
+      "lat": 32.8196,
+      "lon": 34.9993,
+      "tags": { "shop": "lottery", "name": "לוטו חיפה" }
+    },
+    {
+      "type": "node",
+      "id": 25,
+      "lat": 32.9,
+      "lon": 35.29,
+      "tags": { "craft": "winery", "name": "יקב הגליל" }
+    },
+    {
+      "type": "node",
+      "id": 26,
+      "lat": 32.8197,
+      "lon": 34.9994,
+      "tags": { "shop": "alcohol", "name": "משקאות חיפה" }
+    },
+    {
+      "type": "node",
+      "id": 27,
+      "lat": 32.8198,
+      "lon": 34.9995,
+      "tags": { "amenity": "nightclub", "name": "Club 9" }
+    },
+    {
+      "type": "node",
+      "id": 28,
+      "lat": 32.8199,
+      "lon": 34.9996,
+      "tags": { "amenity": "restaurant", "name": "בירה ופיצה", "cuisine": "pizza" }
+    },
+    { "type": "node", "id": 30, "lat": 32.82, "lon": 34.9997, "tags": { "amenity": "restaurant" } },
+    {
+      "type": "node",
+      "id": 31,
+      "lat": 32.08,
+      "lon": 34.78,
+      "tags": { "amenity": "cafe", "name": "Tel Aviv Café" }
+    },
+    {
+      "type": "node",
+      "id": 32,
+      "lat": 32.8201,
+      "lon": 34.9998,
+      "tags": { "amenity": "restaurant", "name": "Juice Bar Haifa", "cuisine": "juice" }
+    }
+  ],
+  "existing": [
+    {
+      "slug": "caramel",
+      "place": "akko",
+      "brand": "caramel",
+      "kinds": ["restaurants", "sweets"],
+      "name": { "he": "קרמל", "ar": "كراميل", "en": "Caramel" },
+      "lat": 32.9204758,
+      "lng": 35.0695751,
+      "attributes": {}
+    }
+  ]
+}
