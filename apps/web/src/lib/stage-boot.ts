@@ -1,6 +1,7 @@
 /**
  * Pages that are not part of the city show no stage: the landing page, the showroom, pricing,
- * for-business, contact, join, near (its own small map) and the legal pages. /search keeps it: results pin the map (M7).
+ * for-business, contact, join, near (it draws its own small map) and the legal pages. /search
+ * keeps it: results pin the map (M7).
  */
 export const STAGE_EXCLUDED =
   /^(?:\/(?:ar|en))?(?:\/?$|\/(?:for-business|showroom|pricing|contact|join|near|accessibility|terms|privacy)(?:\/|$))/;

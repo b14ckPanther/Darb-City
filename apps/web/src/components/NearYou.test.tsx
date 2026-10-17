@@ -123,7 +123,11 @@ it("says so plainly when location is denied, with a way to browse places", async
 it("lists the businesses around a kept point, names the place and pins them", async () => {
   keep();
   const fetchMock = stubList([
-    { rows: [row("sakhnin/samers", "1.3 km"), row("sakhnin/nour", "2 km")], nextCursor: "c2", place: "Arraba" },
+    {
+      rows: [row("sakhnin/samers", "1.3 km"), row("sakhnin/nour", "2 km")],
+      nextCursor: "c2",
+      place: "Arraba",
+    },
     { rows: [row("sakhnin/third", "4 km")], nextCursor: null },
   ]);
   show();
@@ -213,7 +217,9 @@ it("keeps the precise point when the coarse watch only drifts", async () => {
   const fetchMock = stubList([{ rows: [row("sakhnin/samers", "1 km")], nextCursor: null }]);
   // The precise fix says the visitor never left.
   getCurrentPosition.mockImplementation((ok: PositionCallback) =>
-    ok({ coords: { latitude: ARRABA.lat, longitude: ARRABA.lng, accuracy: 8 } } as GeolocationPosition),
+    ok({
+      coords: { latitude: ARRABA.lat, longitude: ARRABA.lng, accuracy: 8 },
+    } as GeolocationPosition),
   );
   show();
   expect(await screen.findByText("samers")).toBeTruthy();

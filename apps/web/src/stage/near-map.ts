@@ -44,7 +44,10 @@ export function metresToPx(metres: number, lat: number, zoom: number): number {
 }
 
 /** The visitor and the first FIT_COUNT pins, as [[west, south], [east, north]]. */
-export function fitBounds(here: LatLng, pins: readonly LatLng[]): [[number, number], [number, number]] {
+export function fitBounds(
+  here: LatLng,
+  pins: readonly LatLng[],
+): [[number, number], [number, number]] {
   const points = [here, ...pins.slice(0, FIT_COUNT)];
   const lngs = points.map((p) => p.lng);
   const lats = points.map((p) => p.lat);

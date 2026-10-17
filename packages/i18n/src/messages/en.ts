@@ -79,9 +79,11 @@ export const en = {
   nearYou: "Near you",
   nearYouAt: "Near you · {place}",
   nearYouLead: "Businesses around where you are standing, the closest first.",
-  nearYouAsk: "Share your location once and Darb shows the businesses closest to you. We never save it.",
+  nearYouAsk:
+    "Share your location once and Darb shows the businesses closest to you. We never save it.",
   useMyLocation: "Use my location",
-  nearYouDenied: "Location is off, so Darb can't see where you are. You can browse by place instead.",
+  nearYouDenied:
+    "Location is off, so Darb can't see where you are. You can browse by place instead.",
   browsePlaces: "Browse places",
   nearYouEmpty: "No businesses near you on Darb yet.",
   hereMarker: "You are here",
