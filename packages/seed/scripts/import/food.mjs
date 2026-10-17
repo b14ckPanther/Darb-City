@@ -183,7 +183,36 @@ const slugOf = (s) => {
 };
 
 /** A place's names in three languages: OSM's own first, then letters from another language. */
-export function namesOf(t, namer, place) {
+/**
+ * A chain's usual names, by its Wikidata id: the most common Hebrew, Arabic and English name its
+ * branches carry, so a branch OSM names only in Hebrew still reads "ماكدونالدز" in Arabic.
+ */
+export function chainNames(osm) {
+  const tally = new Map();
+  for (const el of osm) {
+    const t = el.tags ?? {};
+    const id = t["brand:wikidata"];
+    if (!id) continue;
+    const brand = [t.brand, t["brand:he"], t["brand:en"], t["brand:ar"]].filter(Boolean).map(clean);
+    const raw = clean(t.name);
+    if (!brand.includes(raw) && !brand.includes(clean(t["name:he"]))) continue;
+    const counts = tally.get(id) ?? { he: new Map(), ar: new Map(), en: new Map() };
+    const add = (l, v) => v && counts[l].set(v, (counts[l].get(v) ?? 0) + 1);
+    add("he", clean(t["name:he"]) || (HE.test(raw) ? raw : "") || clean(t["brand:he"]));
+    add("ar", clean(t["name:ar"]) || (AR.test(raw) ? raw : "") || clean(t["brand:ar"]));
+    add(
+      "en",
+      clean(t["name:en"]) || (LATIN.test(raw) && !HE.test(raw) ? raw : "") || clean(t["brand:en"]),
+    );
+    tally.set(id, counts);
+  }
+  const top = (m) => [...m.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] ?? "";
+  return new Map(
+    [...tally].map(([id, c]) => [id, { he: top(c.he), ar: top(c.ar), en: top(c.en) }]),
+  );
+}
+
+export function namesOf(t, namer, place, chains = new Map()) {
   const raw = clean(t.name);
   const own = {
     he: clean(t["name:he"]) || (HE.test(raw) ? raw : ""),
@@ -198,6 +227,12 @@ export function namesOf(t, namer, place) {
     own.he ||= clean(t["brand:he"]);
     own.ar ||= clean(t["brand:ar"]);
     own.en ||= clean(t["brand:en"]);
+    const chain = chains.get(t["brand:wikidata"]);
+    if (chain) {
+      own.he ||= chain.he;
+      own.ar ||= chain.ar;
+      own.en ||= chain.en;
+    }
   }
   if (own.he && !HE.test(own.he)) own.he = "";
   if (own.ar && !AR.test(own.ar)) own.ar = "";
@@ -319,6 +354,7 @@ export function buildFood({ osm, boundaries = [], existing = [], taken = [], bra
   const areas = createBoundaries(boundaries);
   const namer = createNamer(undefined, { extraWords: FOOD_WORDS });
   const knownBrands = new Map(brands.map((b) => [b.slug, b]));
+  const chains = chainNames(osm);
   const counts = {
     fetched: osm.length,
     unnamed: 0,
@@ -377,7 +413,7 @@ export function buildFood({ osm, boundaries = [], existing = [], taken = [], bra
     const place = m.place;
     const cls = classify(t);
     const primary = cls.kinds[0];
-    const name = namesOf(t, namer, place);
+    const name = namesOf(t, namer, place, chains);
     let brand = brandOf(t, namer);
     // A brand slug Darb already uses for something else is not this chain's.
     if (
