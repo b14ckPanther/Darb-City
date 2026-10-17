@@ -39,7 +39,7 @@ for (const locale of LOCALES) {
 }
 for (const [list, name] of [
   ["/admin/places?q=sakhnin", "place editor"],
-  ["/admin/businesses?q=samer", "business editor"],
+  ["/admin/businesses?q=samer&examples=1", "business editor"],
 ] as const) {
   test(`en ${name} has no WCAG A/AA violations`, async ({ page, context, baseURL }) => {
     await context.addCookies([
@@ -63,7 +63,7 @@ test("a takedown the web did not confirm warns accessibly, and Retry clears it",
   await context.addCookies([
     { name: "darb_admin_fake", value: "fake.user_e2e.e2e-admin@darb.test", url: baseURL! },
   ]);
-  await page.goto("/en/admin/businesses?q=samer");
+  await page.goto("/en/admin/businesses?q=samer&examples=1");
   await page.locator("table tbody tr a").first().click();
   await page.waitForLoadState("networkidle");
   // The flag the admin lands on when the API answers revalidated: false.
