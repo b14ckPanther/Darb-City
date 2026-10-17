@@ -6024,28 +6024,44 @@
     "sector": "retail",
     "parent": null,
     "name": {
-      "he": "חנויות אונליין",
-      "ar": "محلات أونلاين",
-      "en": "Online shops"
+      "he": "חנויות וסופרמרקטים",
+      "ar": "محلات وسوبرماركت",
+      "en": "Shops & supermarkets"
     },
     "synonyms": {
       "he": [
         "חנות אונליין",
         "קניות",
         "חנות",
-        "קניות ברשת"
+        "קניות ברשת",
+        "סופרמרקט",
+        "סופר",
+        "מכולת",
+        "מרכול",
+        "קניון",
+        "כלבו"
       ],
       "ar": [
         "متجر أونلاين",
         "تسوق",
         "محل",
-        "تسوق أونلاين"
+        "تسوق أونلاين",
+        "سوبرماركت",
+        "سوبر",
+        "دكانة",
+        "بقالة",
+        "مول"
       ],
       "en": [
         "online store",
         "shop",
         "marketplace",
-        "shopping"
+        "shopping",
+        "supermarket",
+        "grocery",
+        "convenience store",
+        "mall",
+        "department store"
       ]
     },
     "template": "shop",
