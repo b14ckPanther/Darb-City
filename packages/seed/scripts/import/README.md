@@ -109,13 +109,18 @@ node packages/seed/scripts/import/osm-allkinds.mjs  # data/listings/osm-<sector>
 node packages/seed/scripts/import/coverage.mjs      # .superpowers/coverage-north.md
 ```
 
-| Importer           | Source                                                                    | Points                                                          |
-| ------------------ | ------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| `edu.mjs`          | Education Ministry, institutions (`2055063b…`): kindergartens and daycare | the ministry's ITM X/Y (`itm.mjs`), only when placed by address |
-| `osm-allkinds.mjs` | OpenStreetMap, every named business in 25 tiles (`overpass-tiles.mjs`)    | OSM's own (node, or a way's centre)                             |
+| Importer           | Source                                                                             | Points                                                          |
+| ------------------ | ---------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| `edu.mjs`          | Education Ministry, institutions (`2055063b…`): kindergartens, daycare and schools | the ministry's ITM X/Y (`itm.mjs`), only when placed by address |
+| `osm-allkinds.mjs` | OpenStreetMap, every named business in 25 tiles (`overpass-tiles.mjs`)             | OSM's own (node, or a way's centre)                             |
 
 - `kind-map.mjs`: OSM tags and name words (he, ar, en) for every non-food kind, and the exclusions
   (bars, alcohol, pork, gambling and lottery, adult, tobacco, vape and cannabis, tattoo, weapons).
 - `chains.mjs`: chains as Darb brands; `oh.mjs`: OSM opening_hours to Darb hours; `names-ar.mjs`:
   Arabic-only names into Hebrew and Latin letters.
 - Run `edu.mjs` before `osm-allkinds.mjs`: an OSM kindergarten the ministry lists is the ministry's.
+- Schools come only from the ministry (every recognised school, with its levels, type, special
+  education and boys or girls; never the community it serves). `edu.mjs` reads OSM's schools
+  from `osm-allkinds.mjs`'s cached tiles: one within 150 m under a similar Hebrew name lends its
+  own Arabic and English names. An Arab, Druze, Bedouin or Circassian school's Hebrew name is read
+  as Arabic in Hebrew letters (`אלנהדה` is `النهدة`).
