@@ -175,6 +175,8 @@ export const BUSINESS_WORDS = {
   עמותת: { ar: "جمعية", en: "Association", after: true },
   "בית הספר לנהיגה": { ar: "مدرسة سياقة", en: "Driving School", after: true },
   נוי: { ar: "نوي", en: "Noy" },
+  // Letter by letter הלל would read as a word Darb never writes.
+  הלל: { ar: "هليل", en: "Hillel" },
   גלריה: { ar: "جاليري", en: "Gallery", after: true },
   גלריית: { ar: "جاليري", en: "Gallery", after: true },
   סטודיו: { ar: "ستوديو", en: "Studio", after: true },
@@ -438,10 +440,10 @@ export function taglineFor(kind, place, tags = {}) {
   return L(`${one.he} ב${town("he")}`, `${one.ar} في ${town("ar")}`, `${one.en} in ${town("en")}`);
 }
 
-const HALAL = /(?<![\p{L}])(halal|حلال|חלאל)(?![\p{L}])/iu;
+export const HALAL = /(?<![\p{L}])(halal|حلال|חלאל)(?![\p{L}])/iu;
 
 /** Pure, for fixtures: OSM elements to listings by sector. */
-export function buildAllKinds({ elements, existing = [], kinds, sectors }) {
+export function buildAllKinds({ elements, existing = [], taken = [], kinds, sectors }) {
   const kindBySlug = new Map(kinds.map((k) => [k.slug, k]));
   const active = new Set(
     kinds.filter((k) => k.status === "active" && k.sector !== "food").map((k) => k.slug),
@@ -588,7 +590,8 @@ export function buildAllKinds({ elements, existing = [], kinds, sectors }) {
   const { kept, dropped } = dedupeNear(businesses, existing);
   counts.duplicates = dropped.filter((d) => d.why === "duplicate").length;
   counts.alreadyListed = dropped.filter((d) => d.why === "existing").length;
-  assignSlugs(kept, existing);
+  // Slugs also step around the showroom's examples, which share places with real businesses.
+  assignSlugs(kept, [...existing, ...taken]);
   const bySector = {};
   const rules = {};
   for (const b of kept) {
@@ -682,6 +685,7 @@ async function main() {
   const { bySector, counts, excludedWhy, unmapped, rules } = buildAllKinds({
     elements,
     existing: existingOutside(mine),
+    taken: read("businesses.json"),
     kinds,
     sectors,
   });

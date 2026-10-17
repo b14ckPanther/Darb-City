@@ -4,6 +4,7 @@
 // very high); a point at a town's centre is not a kindergarten's door. Family daycares
 // (משפחתון) are homes, so they are left out.
 // Run: node packages/seed/scripts/import/edu.mjs [--refresh]
+import { readFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 import { dedupe } from "./dedupe.mjs";
 import { assignSlugs, business, readListings, slugBase, writeListing } from "./emit.mjs";
@@ -11,7 +12,7 @@ import { datastore, today } from "./fetch.mjs";
 import { itmToWgs84 } from "./itm.mjs";
 import { KIND_INFO } from "./kind-map.mjs";
 import { createNamer, plainDashes } from "./names.mjs";
-import { BUSINESS_WORDS, SECTOR_ACCENT, taglineFor } from "./osm-allkinds.mjs";
+import { BUSINESS_WORDS, HALAL, SECTOR_ACCENT, taglineFor } from "./osm-allkinds.mjs";
 import { createPlaceMatcher } from "./places.mjs";
 
 export const FILE = "edu-north.json";
@@ -45,7 +46,7 @@ const closeParens = (s) =>
   (s.match(/\(/g)?.length ?? 0) > (s.match(/\)/g)?.length ?? 0) ? `${s})` : s;
 
 /** Pure, for fixtures: ministry rows to listings. */
-export function buildEdu({ rows, existing = [] }) {
+export function buildEdu({ rows, existing = [], taken = [] }) {
   const matcher = createPlaceMatcher();
   const namer = createNamer(undefined, {
     extraWords: {
@@ -63,6 +64,7 @@ export function buildEdu({ rows, existing = [] }) {
     imprecise: 0,
     outsideNorth: 0,
     pointFarFromTown: 0,
+    halalWord: 0,
   };
   const businesses = [];
   for (const r of rows) {
@@ -97,6 +99,11 @@ export function buildEdu({ rows, existing = [] }) {
     const named = /^(גן|גני|מעון|פעוטון|תינוקי)/.test(plain);
     const he = named ? plain : `${kind === "kindergartens" ? "גן" : "מעון"} ${plain}`;
     const name = namer.name(he, place);
+    // Darb never writes the word (a transliterated name can land on it).
+    if (HALAL.test(JSON.stringify(name))) {
+      counts.halalWord++;
+      continue;
+    }
     const items = [
       { label: KIND_INFO[kind].one },
       { label: LABEL.symbol, meta: L(`${r.SEMEL_MOSAD}`, `${r.SEMEL_MOSAD}`, `${r.SEMEL_MOSAD}`) },
@@ -126,7 +133,8 @@ export function buildEdu({ rows, existing = [] }) {
   // Two kindergartens in one building are two (their symbols differ); a twin elsewhere is not.
   const { kept, dropped } = dedupe(businesses, { existing, idKeys: ["eduSymbol"] });
   counts.deduped = dropped.length;
-  assignSlugs(kept, existing);
+  // Slugs also step around the showroom's examples, which share places with real businesses.
+  assignSlugs(kept, [...existing, ...taken]);
   counts.emitted = kept.length;
   return { businesses: kept, counts, dropped };
 }
@@ -134,7 +142,10 @@ export function buildEdu({ rows, existing = [] }) {
 async function main() {
   const rows = await datastore(RESOURCE);
   const existing = readListings({ except: FILE });
-  const { businesses, counts } = buildEdu({ rows, existing });
+  const taken = JSON.parse(
+    readFileSync(new URL("../../data/businesses.json", import.meta.url), "utf8"),
+  );
+  const { businesses, counts } = buildEdu({ rows, existing, taken });
   writeListing(
     FILE,
     {
