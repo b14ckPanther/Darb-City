@@ -10,7 +10,7 @@
   block-size: 320px;
   border-radius: 16px;
   overflow: hidden;
-  border: 1px solid var(--forest-600);
+  border: 1px solid var(--line-strong);
   background:
     radial-gradient(80% 60% at 50% 40%, var(--surface-2) 0%, transparent 70%), var(--bg);
 }
@@ -84,7 +84,7 @@
   cursor: grabbing;
 }
 .pin:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--focus);
   outline-offset: 2px;
   border-radius: 12px;
 }
@@ -107,7 +107,7 @@
   border-radius: 12px;
   background: transparent;
   color: var(--text);
-  border: 1px solid var(--forest-600);
+  border: 1px solid var(--line-strong);
   cursor: pointer;
 }
 .tool:disabled {
@@ -125,7 +125,7 @@
   margin: 0;
   padding: 8px 12px;
   border-radius: 8px;
-  background: #3a2a0e;
+  background: var(--tint);
   border-inline-start: 4px solid var(--accent);
 }
 .details > summary {
@@ -153,8 +153,8 @@
 .number input {
   font: inherit;
   color: var(--text);
-  background: var(--bg);
-  border: 1px solid var(--forest-600);
+  background: var(--field);
+  border: 1px solid var(--field-line);
   border-radius: 10px;
   padding: 10px 12px;
   min-block-size: var(--tap, 44px);

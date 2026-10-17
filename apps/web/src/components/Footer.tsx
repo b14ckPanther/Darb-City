@@ -90,7 +90,7 @@ export function Footer({
     { label: t(locale, "forBusiness"), to: href(locale, paths.forBusiness()) },
   ];
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.footer} data-scheme="night">
       <div className={`frame ${styles.inner}`}>
         <div className={styles.brand}>
           <Link href={href(locale)} className={styles.logo} aria-label={t(locale, "appName")}>

@@ -1,7 +1,7 @@
 .body {
   margin: 0;
   min-height: 100dvh;
-  background: var(--surface-1);
+  background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
   line-height: 1.5;
@@ -11,7 +11,7 @@
   color: var(--accent-text);
 }
 .body :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--focus);
   outline-offset: 2px;
 }
 .shell {
@@ -26,8 +26,9 @@
   gap: 12px 24px;
   padding-block: 12px;
   padding-inline: 24px;
-  background: var(--bg);
-  border-block-end: 1px solid var(--forest-800);
+  background: var(--bg-raised);
+  border-block-end: 1px solid var(--line);
+  box-shadow: var(--shadow-1);
   position: sticky;
   inset-block-start: 0;
   z-index: 2;
@@ -97,7 +98,7 @@
   min-block-size: 96px;
   border-radius: 16px;
   background: var(--surface-2);
-  border: 1px solid var(--forest-800);
+  border: 1px solid var(--line);
   color: var(--text) !important;
   text-decoration: none;
   font-weight: 500;
@@ -106,11 +107,11 @@
 }
 .tile:hover {
   transform: translateY(-2px);
-  border-color: var(--gold-600);
+  border-color: var(--accent);
 }
 .card {
   background: var(--surface-2);
-  border: 1px solid var(--forest-800);
+  border: 1px solid var(--line);
   border-radius: 16px;
   padding: 20px;
   margin-block-end: 16px;
@@ -123,7 +124,7 @@
   max-inline-size: 60ch;
 }
 .warning {
-  background: #3a2a0e;
+  background: var(--tint);
   border-inline-start: 4px solid var(--accent);
   padding: 12px 16px;
   border-radius: 8px;
@@ -131,8 +132,8 @@
   max-inline-size: 70ch;
 }
 .error {
-  background: #3a1410;
-  border-inline-start: 4px solid #f0a08a;
+  background: var(--danger-bg);
+  border-inline-start: 4px solid var(--danger);
   padding: 12px 16px;
   border-radius: 8px;
 }
@@ -159,8 +160,8 @@
 .field textarea {
   font: inherit;
   color: var(--text);
-  background: var(--bg);
-  border: 1px solid var(--forest-600);
+  background: var(--field);
+  border: 1px solid var(--field-line);
   border-radius: 10px;
   padding: 10px 12px;
   min-block-size: 44px;
@@ -201,19 +202,19 @@
 }
 .primary {
   background: var(--accent);
-  color: var(--ink);
+  color: var(--on-accent);
   border: 0;
   font-weight: 700;
 }
 .ghost {
   background: transparent;
   color: var(--text) !important;
-  border: 1px solid var(--forest-600);
+  border: 1px solid var(--line-strong);
 }
 .danger {
   background: transparent;
-  color: #f6b8a8;
-  border: 1px solid #a24a36;
+  color: var(--danger);
+  border: 1px solid color-mix(in srgb, var(--danger) 55%, transparent);
 }
 .table {
   inline-size: 100%;
@@ -223,7 +224,7 @@
 .table td {
   text-align: start;
   padding: 10px 8px;
-  border-block-end: 1px solid var(--forest-800);
+  border-block-end: 1px solid var(--line);
   vertical-align: top;
 }
 .table th {
@@ -240,8 +241,8 @@
   color: var(--text);
 }
 .badgeGold {
-  background: var(--gold-900);
-  color: var(--gold-100);
+  background: var(--tint-strong);
+  color: var(--accent-text);
 }
 .toolbar {
   display: flex;
@@ -264,7 +265,7 @@
   .table tr {
     display: grid;
     padding-block: 8px;
-    border-block-end: 1px solid var(--forest-800);
+    border-block-end: 1px solid var(--line);
   }
   .table td {
     border: 0;
@@ -329,7 +330,7 @@
   padding-inline: 6px;
   border-radius: 999px;
   background: var(--accent);
-  color: var(--ink);
+  color: var(--on-accent);
   font-size: 0.75rem;
   font-weight: 700;
 }

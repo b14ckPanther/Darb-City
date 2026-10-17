@@ -4,7 +4,7 @@
   padding-block-start: var(--space-8);
   border-block-start: 1px solid var(--line-soft);
   background:
-    radial-gradient(80% 60% at 50% 100%, rgb(217 165 76 / 0.1), transparent 70%), var(--night);
+    radial-gradient(80% 60% at 50% 100%, rgb(217 165 76 / 0.1), transparent 70%), var(--bg);
   overflow: clip;
 }
 

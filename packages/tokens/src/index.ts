@@ -63,6 +63,9 @@ export const themes = {
     danger: "#a8321f",
     dangerBg: "#fbe9e4",
     focus: "#80571a",
+    /** Form fields: white on paper with a sand edge, so a field reads as a place to write. */
+    field: "#ffffff",
+    fieldLine: "#d3c09a",
     headerBg: "rgb(251 248 240 / 0.84)",
     scrim: "rgb(20 40 31 / 0.32)",
     /** r g b of the soft shadows (warm, never black on paper). */
@@ -97,6 +100,8 @@ export const themes = {
     danger: "#f0a08a",
     dangerBg: "rgb(58 20 16 / 0.6)",
     focus: "#f0c77a",
+    field: "#03110c",
+    fieldLine: "rgb(217 165 76 / 0.24)",
     headerBg: "rgb(3 17 12 / 0.82)",
     scrim: "rgb(0 0 0 / 0.6)",
     shadow: "0 0 0",

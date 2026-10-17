@@ -74,7 +74,7 @@
   background:
     linear-gradient(180deg, var(--wash), transparent 40%),
     linear-gradient(180deg, var(--surface-2), var(--surface-1));
-  box-shadow: inset 0 1px 0 rgb(251 231 189 / 0.05);
+  box-shadow: var(--shadow-1);
 }
 
 .form {
@@ -119,9 +119,9 @@
   inline-size: 100%;
   min-block-size: var(--tap);
   padding: var(--space-2) var(--space-3);
-  border: 1px solid var(--line);
+  border: 1px solid var(--field-line);
   border-radius: var(--radius-m);
-  background: var(--bg);
+  background: var(--field);
   color: var(--text);
   font: inherit;
   font-size: max(1rem, var(--step-0));
@@ -139,7 +139,7 @@
 }
 
 .field [aria-invalid="true"] {
-  border-color: #f0a08a;
+  border-color: var(--danger);
 }
 
 .hint,
@@ -174,8 +174,8 @@
   justify-items: start;
   padding: var(--space-4);
   border-radius: var(--radius-m);
-  border: 1px solid rgb(240 160 138 / 0.4);
-  background: rgb(58 20 16 / 0.6);
+  border: 1px solid color-mix(in srgb, var(--danger) 40%, transparent);
+  background: var(--danger-bg);
 }
 
 .alert p {

@@ -114,10 +114,15 @@
   margin-block-start: auto;
 }
 
+/* A long name takes a second line (then an ellipsis) rather than shrink to a few letters. */
 .rowName {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
   overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  overflow-wrap: anywhere;
+  line-height: 1.3;
 }
 
 .rowName {
@@ -191,7 +196,7 @@
 
 .rowHead {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: var(--space-3);
   min-inline-size: 0;
 }

@@ -42,7 +42,7 @@
 .door:hover,
 .door:focus-visible {
   border-color: color-mix(in srgb, var(--door-accent) 60%, transparent);
-  box-shadow: 0 12px 30px rgb(0 0 0 / 0.3);
+  box-shadow: var(--shadow-2);
   transform: translateY(-2px);
 }
 
