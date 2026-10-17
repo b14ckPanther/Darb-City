@@ -3070,7 +3070,7 @@
         "diesel"
       ]
     },
-    "template": "listing",
+    "template": "station",
     "attributes": [],
     "icon": null,
     "order": 1,

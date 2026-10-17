@@ -39,12 +39,15 @@ export function ScreenView({
       <div className={styles.appBar}>
         <span className={styles.brand}>{text(screen.brand, locale)}</span>
       </div>
-      <div className={styles.hero}>
-        <p className={styles.title}>{text(screen.title, locale)}</p>
-        {screen.subtitle ? (
-          <p className={styles.subtitle}>{text(screen.subtitle, locale)}</p>
-        ) : null}
-      </div>
+      {/* A station's forecourt sign says what the title would. */}
+      {template === "station" ? null : (
+        <div className={styles.hero}>
+          <p className={styles.title}>{text(screen.title, locale)}</p>
+          {screen.subtitle ? (
+            <p className={styles.subtitle}>{text(screen.subtitle, locale)}</p>
+          ) : null}
+        </div>
+      )}
       <Body screen={screen} locale={locale} />
     </section>
   );
