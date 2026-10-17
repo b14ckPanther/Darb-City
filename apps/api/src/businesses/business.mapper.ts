@@ -39,7 +39,7 @@ export function toBusinessSummary(row: Business, place: PlaceRef, now: Date): Bu
 }
 
 export function toBusinessDetail(
-  row: Business & { kinds: { kindId: string }[] },
+  row: Business & { kinds: { kindId: string }[]; brand?: { slug: string } | null },
   place: PlaceRef,
   now: Date,
 ): BusinessDetailDto {
@@ -59,5 +59,6 @@ export function toBusinessDetail(
     experience: row.experience as BusinessDetailDto["experience"],
     apps: row.apps as BusinessDetailDto["apps"],
     brandId: row.brandId,
+    brandSlug: row.brand?.slug ?? null,
   };
 }

@@ -114,6 +114,7 @@ export class BusinessesRepository {
       include: {
         kinds: { where: { kind: { is: { status: "active" } } }, select: { kindId: true } },
         place: { select: { slug: true, path: true, lat: true, lng: true } },
+        brand: { select: { slug: true } },
       },
     });
     return closestInSubtree(rows, placePath);

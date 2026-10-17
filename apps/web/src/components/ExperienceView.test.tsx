@@ -206,3 +206,17 @@ describe("the card (designed business cards)", () => {
     expect(screen.queryByRole("region", { name: "Photos" })).toBeNull();
   });
 });
+
+describe("the chain's app", () => {
+  it("credits Darb on a client of the chain, and invites the chain's other stations", () => {
+    const ours = view(detail({ tier: "darb", brandSlug: "paz" }));
+    expect(ours.container.querySelector('[data-chain-app="ours"]')).not.toBeNull();
+    expect(ours.container.querySelector('a[href*="paz.darb.co.il"]')).toBeNull();
+    ours.unmount();
+    const other = view(detail({ tier: "basic", brandSlug: "paz" }));
+    expect(other.container.querySelector('[data-chain-app="invite"]')).not.toBeNull();
+    other.unmount();
+    const none = view(detail({ brandSlug: null }));
+    expect(none.container.querySelector("[data-chain-app]")).toBeNull();
+  });
+});

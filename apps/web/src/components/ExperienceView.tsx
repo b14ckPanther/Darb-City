@@ -6,6 +6,7 @@ import { card as cardCopy } from "@/content/card";
 import { cardFromBusiness } from "@/lib/card";
 import { href, paths } from "@/lib/routes";
 import { BusinessCard } from "./card/BusinessCard";
+import { ChainApp } from "./ChainApp";
 import { LocaleSwitch } from "./CityBar";
 import { parseScreen } from "./templates";
 import { ScreenView } from "./templates/ScreenView";
@@ -54,6 +55,7 @@ export function ExperienceView({
       <LocaleSwitch locale={locale} segments={segments} />
       <BusinessCard locale={locale} copy={copy} card={card} renderedAt={now.getTime()} />
       {screen ? <ScreenView screen={screen} template={kind.template} locale={locale} /> : null}
+      <ChainApp locale={locale} brand={business.brandSlug} ours={business.tier === "darb"} />
       {business.tier === "darb" ? (
         // Every Darb client's listing invites other business owners (Task 28).
         <p className={styles.builtBy} data-built-by-darb="">
