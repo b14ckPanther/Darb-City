@@ -50,7 +50,8 @@
 }
 
 .open[data-open="true"] {
-  color: var(--text);
+  color: var(--open);
+  font-weight: 500;
 }
 
 .dot {
@@ -61,5 +62,6 @@
 }
 
 .open[data-open="true"] .dot {
-  background: #6fcf97;
+  background: var(--open);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--open) 22%, transparent);
 }

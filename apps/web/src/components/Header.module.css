@@ -8,8 +8,17 @@
   z-index: 2;
   border-block-end: 1px solid var(--line-soft);
   background: var(--header-bg);
-  -webkit-backdrop-filter: blur(16px) saturate(1.3);
-  backdrop-filter: blur(16px) saturate(1.3);
+}
+
+/*
+ * Ivory glass on wide screens. Never on a phone: a backdrop filter makes the header the containing
+ * block of the docked (fixed) search bar inside it, which would pull the dock up into the header.
+ */
+@media (min-width: 900px) {
+  .header {
+    -webkit-backdrop-filter: blur(16px) saturate(1.3);
+    backdrop-filter: blur(16px) saturate(1.3);
+  }
 }
 
 /*
