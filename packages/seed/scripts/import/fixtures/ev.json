@@ -1,0 +1,78 @@
+{
+  "records": [
+    {
+      "_id": 1,
+      "op": "AfconEv",
+      "name": "מרכז עין שרה נהריה",
+      "Address": "בן צבי",
+      "count": 2,
+      "cnt_fast": 0,
+      "cnt_slow": 2
+    },
+    {
+      "_id": 2,
+      "op": "SonolEvi",
+      "name": "סונול כרמיאל",
+      "Address": "",
+      "count": 2,
+      "cnt_fast": 2,
+      "cnt_slow": 0
+    },
+    {
+      "_id": 3,
+      "op": "Greenspot",
+      "name": "חניון משרדים",
+      "Address": "ספיר 7",
+      "count": 1,
+      "cnt_fast": 0,
+      "cnt_slow": 1
+    }
+  ],
+  "osm": [
+    {
+      "type": "node",
+      "id": 21,
+      "lat": 32.9896841,
+      "lon": 35.0893995,
+      "tags": {
+        "amenity": "charging_station",
+        "name": "מרכז עין שרה",
+        "operator": "Afcon EV",
+        "capacity": "2"
+      }
+    },
+    {
+      "type": "node",
+      "id": 22,
+      "lat": 32.6056254,
+      "lon": 35.2930876,
+      "tags": {
+        "amenity": "charging_station",
+        "name": "Afula Supercharger",
+        "operator": "Tesla",
+        "capacity": "6",
+        "opening_hours": "24/7"
+      }
+    },
+    {
+      "type": "node",
+      "id": 23,
+      "lat": 32.6056,
+      "lon": 35.29312,
+      "tags": {
+        "amenity": "charging_station",
+        "name": "Afula Supercharger",
+        "operator": "Tesla",
+        "capacity": "6",
+        "opening_hours": "24/7"
+      }
+    },
+    {
+      "type": "node",
+      "id": 24,
+      "lat": 32.48,
+      "lon": 35.23,
+      "tags": { "amenity": "charging_station", "operator": "JSC" }
+    }
+  ]
+}
