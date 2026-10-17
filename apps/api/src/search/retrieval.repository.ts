@@ -144,7 +144,7 @@ export class RetrievalRepository {
     })`;
     // The pre-cut approximates rank()'s full blend (same weights, same normalization, same tier
     // boost), so a near-me search with many matches keeps the nearest and most complete rows.
-    const w = RANKING.weights;
+    const w = here ? RANKING.nearWeights : RANKING.weights;
     const kindWeight = deep && f.kindIds ? RANKING.kindWeight : 0;
     const total =
       (docTexts.length || deep ? w.text : 0) +
@@ -157,7 +157,9 @@ export class RetrievalRepository {
       : Prisma.sql`0`;
     const boost = (tier: string) => Math.min(RANKING.tierBoost[tier as Tier] ?? 0, RANKING.tierCap);
     const tierBoost = Prisma.sql`CASE b.tier WHEN 'darb' THEN ${boost("darb")}::float8 WHEN 'verified' THEN ${boost("verified")}::float8 WHEN 'basic' THEN ${boost("basic")}::float8 ELSE ${boost("example")}::float8 END`;
-    const demo = Prisma.sql`CASE WHEN b.tier = 'example' THEN ${deep && f.kindIds ? RANKING.examplePenalty : 0}::float8 ELSE 0 END`;
+    // Near me, rank() decides how much the example penalty applies (only within a distance band),
+    // so the pre-cut never drops a showroom example around the corner.
+    const demo = Prisma.sql`CASE WHEN b.tier = 'example' THEN ${deep && f.kindIds && !here ? RANKING.examplePenalty : 0}::float8 ELSE 0 END`;
     const preScore = Prisma.sql`(- ${demo} + (${w.text}::float8 * ${textScore} + ${w.vector}::float8 * ${vectorScore} + ${w.distance}::float8 * ${distanceScore} + ${w.completeness}::float8 * d.completeness + ${kindWeight}::float8 * ${kindMatch}) / ${total}::float8 + ${tierBoost} + ${RANKING.niceBoost}::float8 * ${niceScore})`;
     const placeFilter = (alias: string) =>
       f.placePath ? [Prisma.sql`${Prisma.raw(alias)}."placePath" LIKE ${`${f.placePath}%`}`] : [];

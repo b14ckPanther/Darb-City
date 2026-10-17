@@ -34,8 +34,11 @@ const order = (cs: Candidate[]) => rank(cs).map((r) => r.row.slug);
 
 describe("ranking", () => {
   it("has weights that sum to 1 and a capped tier boost", () => {
-    const w = RANKING.weights;
-    expect(w.text + w.vector + w.distance + w.completeness).toBeCloseTo(1, 9);
+    for (const w of [RANKING.weights, RANKING.nearWeights]) {
+      expect(w.text + w.vector + w.distance + w.completeness).toBeCloseTo(1, 9);
+      expect(w.completeness).toBe(RANKING.weights.completeness);
+    }
+    expect(RANKING.nearWeights.distance).toBeGreaterThan(RANKING.weights.distance);
     expect(Math.max(...Object.values(RANKING.tierBoost))).toBeLessThanOrEqual(RANKING.tierCap);
   });
   it("orders by text, then vector similarity", () => {
@@ -92,6 +95,23 @@ describe("ranking ties", () => {
         c("station", { text: 0.7, kind: 0 }, "basic"),
       ])[0],
     ).toBe("station");
+  });
+  it("near me, never lets the example penalty put a farther real business above a near example", () => {
+    // The person is in Sakhnin: its example barber, a real one in Karmiel (5 km), one 20 km away.
+    const ranked = order([
+      c("karmiel", { text: 0.86, km: 4.9, kind: 1 }, "basic"),
+      c("motzkin", { text: 0.86, km: 20, kind: 1 }, "basic"),
+      c("sakhnin", { text: 0.86, km: 0.2, kind: 1 }),
+    ]);
+    expect(ranked).toEqual(["sakhnin", "karmiel", "motzkin"]);
+  });
+  it("near me, still puts a real business above an example about as near", () => {
+    expect(
+      order([
+        c("example", { text: 0.86, km: 0.3, kind: 1 }),
+        c("real", { text: 0.86, km: 1.2, kind: 1 }, "basic"),
+      ]),
+    ).toEqual(["real", "example"]);
   });
   it("lifts a result that meets a wish, a little", () => {
     expect(order([c("a", { text: 0.5 }), c("b", { text: 0.5, nice: 1 })])[0]).toBe("b");
