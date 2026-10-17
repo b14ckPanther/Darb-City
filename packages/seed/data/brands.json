@@ -2054,5 +2054,461 @@
       "ar": "Japanika",
       "en": "Japanika"
     }
+  },
+  {
+    "slug": "shufersal",
+    "name": {
+      "he": "שופרסל",
+      "ar": "شوفرسال",
+      "en": "Shufersal"
+    }
+  },
+  {
+    "slug": "rami-levy",
+    "name": {
+      "he": "רמי לוי",
+      "ar": "رامي ليفي",
+      "en": "Rami Levy"
+    }
+  },
+  {
+    "slug": "osher-ad",
+    "name": {
+      "he": "אושר עד",
+      "ar": "أوشر عاد",
+      "en": "Osher Ad"
+    }
+  },
+  {
+    "slug": "victory",
+    "name": {
+      "he": "ויקטורי",
+      "ar": "فيكتوري",
+      "en": "Victory"
+    }
+  },
+  {
+    "slug": "yochananof",
+    "name": {
+      "he": "יוחננוף",
+      "ar": "يوحنانوف",
+      "en": "Yochananof"
+    }
+  },
+  {
+    "slug": "carrefour",
+    "name": {
+      "he": "קרפור",
+      "ar": "كارفور",
+      "en": "Carrefour"
+    }
+  },
+  {
+    "slug": "mahsanei-hashuk",
+    "name": {
+      "he": "מחסני השוק",
+      "ar": "محسني هشوك",
+      "en": "Mahsanei Hashuk"
+    }
+  },
+  {
+    "slug": "max-stock",
+    "name": {
+      "he": "מקס סטוק",
+      "ar": "ماكس ستوك",
+      "en": "Max Stock"
+    }
+  },
+  {
+    "slug": "hamashbir",
+    "name": {
+      "he": "המשביר לצרכן",
+      "ar": "هماشبير",
+      "en": "Hamashbir"
+    }
+  },
+  {
+    "slug": "super-pharm",
+    "name": {
+      "he": "סופר-פארם",
+      "ar": "سوبر فارم",
+      "en": "Super-Pharm"
+    }
+  },
+  {
+    "slug": "be-pharm",
+    "name": {
+      "he": "BE",
+      "ar": "BE",
+      "en": "BE"
+    }
+  },
+  {
+    "slug": "new-pharm",
+    "name": {
+      "he": "ניו-פארם",
+      "ar": "نيو فارم",
+      "en": "New Pharm"
+    }
+  },
+  {
+    "slug": "clalit",
+    "name": {
+      "he": "כללית",
+      "ar": "كلاليت",
+      "en": "Clalit"
+    }
+  },
+  {
+    "slug": "maccabi-health",
+    "name": {
+      "he": "מכבי שירותי בריאות",
+      "ar": "مكابي",
+      "en": "Maccabi Healthcare"
+    }
+  },
+  {
+    "slug": "meuhedet",
+    "name": {
+      "he": "מאוחדת",
+      "ar": "مئوحيدت",
+      "en": "Meuhedet"
+    }
+  },
+  {
+    "slug": "leumit",
+    "name": {
+      "he": "לאומית",
+      "ar": "لئوميت",
+      "en": "Leumit"
+    }
+  },
+  {
+    "slug": "mda",
+    "name": {
+      "he": "מגן דוד אדום",
+      "ar": "نجمة داود الحمراء",
+      "en": "Magen David Adom"
+    }
+  },
+  {
+    "slug": "israel-post",
+    "name": {
+      "he": "דואר ישראל",
+      "ar": "البريد",
+      "en": "Israel Post"
+    }
+  },
+  {
+    "slug": "fox",
+    "name": {
+      "he": "פוקס",
+      "ar": "فوكس",
+      "en": "Fox"
+    }
+  },
+  {
+    "slug": "castro",
+    "name": {
+      "he": "קסטרו",
+      "ar": "كاسترو",
+      "en": "Castro"
+    }
+  },
+  {
+    "slug": "golf",
+    "name": {
+      "he": "גולף",
+      "ar": "جولف",
+      "en": "Golf"
+    }
+  },
+  {
+    "slug": "renuar",
+    "name": {
+      "he": "רנואר",
+      "ar": "رينوار",
+      "en": "Renuar"
+    }
+  },
+  {
+    "slug": "hm",
+    "name": {
+      "he": "H&M",
+      "ar": "H&M",
+      "en": "H&M"
+    }
+  },
+  {
+    "slug": "zara",
+    "name": {
+      "he": "זארה",
+      "ar": "زارا",
+      "en": "Zara"
+    }
+  },
+  {
+    "slug": "american-eagle",
+    "name": {
+      "he": "אמריקן איגל",
+      "ar": "أمريكان إيجل",
+      "en": "American Eagle"
+    }
+  },
+  {
+    "slug": "honigman",
+    "name": {
+      "he": "הוניגמן",
+      "ar": "هونيجمان",
+      "en": "Honigman"
+    }
+  },
+  {
+    "slug": "tamnoon",
+    "name": {
+      "he": "תמנון",
+      "ar": "تمنون",
+      "en": "Tamnoon"
+    }
+  },
+  {
+    "slug": "shilav",
+    "name": {
+      "he": "שילב",
+      "ar": "شيلاف",
+      "en": "Shilav"
+    }
+  },
+  {
+    "slug": "delta",
+    "name": {
+      "he": "דלתא",
+      "ar": "دلتا",
+      "en": "Delta"
+    }
+  },
+  {
+    "slug": "aldo",
+    "name": {
+      "he": "אלדו",
+      "ar": "ألدو",
+      "en": "Aldo"
+    }
+  },
+  {
+    "slug": "nike",
+    "name": {
+      "he": "נייקי",
+      "ar": "نايكي",
+      "en": "Nike"
+    }
+  },
+  {
+    "slug": "adidas",
+    "name": {
+      "he": "אדידס",
+      "ar": "أديداس",
+      "en": "Adidas"
+    }
+  },
+  {
+    "slug": "decathlon",
+    "name": {
+      "he": "דקטלון",
+      "ar": "ديكاتلون",
+      "en": "Decathlon"
+    }
+  },
+  {
+    "slug": "home-center",
+    "name": {
+      "he": "הום סנטר",
+      "ar": "هوم سنتر",
+      "en": "Home Center"
+    }
+  },
+  {
+    "slug": "ace",
+    "name": {
+      "he": "ACE",
+      "ar": "ACE",
+      "en": "ACE"
+    }
+  },
+  {
+    "slug": "ikea",
+    "name": {
+      "he": "איקאה",
+      "ar": "ايكيا",
+      "en": "IKEA"
+    }
+  },
+  {
+    "slug": "kravitz",
+    "name": {
+      "he": "קרביץ",
+      "ar": "كرافيتس",
+      "en": "Kravitz"
+    }
+  },
+  {
+    "slug": "office-depot",
+    "name": {
+      "he": "אופיס דיפו",
+      "ar": "أوفيس ديبو",
+      "en": "Office Depot"
+    }
+  },
+  {
+    "slug": "tzomet-sfarim",
+    "name": {
+      "he": "צומת ספרים",
+      "ar": "تسومت سفاريم",
+      "en": "Tzomet Sfarim"
+    }
+  },
+  {
+    "slug": "steimatzky",
+    "name": {
+      "he": "סטימצקי",
+      "ar": "ستيماتسكي",
+      "en": "Steimatzky"
+    }
+  },
+  {
+    "slug": "toys-r-us",
+    "name": {
+      "he": "טויס אר אס",
+      "ar": "تويز آر أص",
+      "en": "Toys R Us"
+    }
+  },
+  {
+    "slug": "kfar-hashaashuim",
+    "name": {
+      "he": "כפר השעשועים",
+      "ar": "كفر هشعشوعيم",
+      "en": "Kfar Hashaashuim"
+    }
+  },
+  {
+    "slug": "ksp",
+    "name": {
+      "he": "KSP",
+      "ar": "KSP",
+      "en": "KSP"
+    }
+  },
+  {
+    "slug": "bug",
+    "name": {
+      "he": "באג",
+      "ar": "باج",
+      "en": "Bug"
+    }
+  },
+  {
+    "slug": "mahsanei-hashmal",
+    "name": {
+      "he": "מחסני חשמל",
+      "ar": "محسني حشمال",
+      "en": "Mahsanei Hashmal"
+    }
+  },
+  {
+    "slug": "partner",
+    "name": {
+      "he": "פרטנר",
+      "ar": "بارتنر",
+      "en": "Partner"
+    }
+  },
+  {
+    "slug": "cellcom",
+    "name": {
+      "he": "סלקום",
+      "ar": "سيلكوم",
+      "en": "Cellcom"
+    }
+  },
+  {
+    "slug": "pelephone",
+    "name": {
+      "he": "פלאפון",
+      "ar": "بلفون",
+      "en": "Pelephone"
+    }
+  },
+  {
+    "slug": "hot",
+    "name": {
+      "he": "HOT",
+      "ar": "HOT",
+      "en": "HOT"
+    }
+  },
+  {
+    "slug": "opticana",
+    "name": {
+      "he": "אופטיקנה",
+      "ar": "أوبتيكانا",
+      "en": "Opticana"
+    }
+  },
+  {
+    "slug": "optica-halperin",
+    "name": {
+      "he": "אופטיקה הלפרין",
+      "ar": "أوبتيكا هالبرين",
+      "en": "Optica Halperin"
+    }
+  },
+  {
+    "slug": "carolina-lemke",
+    "name": {
+      "he": "קרולינה למקה",
+      "ar": "كارولينا ليمكي",
+      "en": "Carolina Lemke"
+    }
+  },
+  {
+    "slug": "eldan",
+    "name": {
+      "he": "אלדן",
+      "ar": "إلدان",
+      "en": "Eldan"
+    }
+  },
+  {
+    "slug": "hertz",
+    "name": {
+      "he": "הרץ",
+      "ar": "هيرتس",
+      "en": "Hertz"
+    }
+  },
+  {
+    "slug": "avis",
+    "name": {
+      "he": "אוויס",
+      "ar": "أفيس",
+      "en": "Avis"
+    }
+  },
+  {
+    "slug": "shlomo-sixt",
+    "name": {
+      "he": "שלמה סיקסט",
+      "ar": "شلومو سيكست",
+      "en": "Shlomo Sixt"
+    }
+  },
+  {
+    "slug": "albar",
+    "name": {
+      "he": "אלבר",
+      "ar": "ألبار",
+      "en": "Albar"
+    }
   }
 ]

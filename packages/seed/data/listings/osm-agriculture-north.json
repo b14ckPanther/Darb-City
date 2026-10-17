@@ -1,0 +1,5443 @@
+{
+  "source": {
+    "name": "OpenStreetMap, every named farming business in the north",
+    "url": "https://www.openstreetmap.org",
+    "licence": "Open Database License (ODbL)",
+    "attribution": "© OpenStreetMap contributors (ODbL), openstreetmap.org/copyright",
+    "region": "northern-district, haifa-district",
+    "fetched": "2026-10-17",
+    "query": "named shop, office, craft, healthcare, tourism, club, amenity, leisure, emergency, works and industrial features, bbox 32.3,34.85,33.35,35.9 in 25 tiles",
+    "left_out": "features with no name, food (the food importer's), garages, tyres, testing, fuel, banks and EV charging (official lists), bars, alcohol, pork, gambling and lottery, adult shops, tobacco, vape and cannabis, tattoo and weapons shops, private places, sights with no hours or contact",
+    "hours": "from OSM opening_hours where it reads for certain; otherwise none",
+    "counts": {
+      "emitted": 66
+    }
+  },
+  "businesses": [
+    {
+      "slug": "bikhori-adan",
+      "place": "afula",
+      "brand": null,
+      "primaryKind": "farm-shops",
+      "kinds": [
+        "farm-shops"
+      ],
+      "name": {
+        "he": "ביכורי עדן",
+        "ar": "بيكوري عدن",
+        "en": "Bikhori Adan"
+      },
+      "tagline": {
+        "he": "תוצרת חקלאית, פירות וירקות בעפולה",
+        "ar": "خضرة وفواكه من المزرعة في العفولة",
+        "en": "Farm produce in Afula"
+      },
+      "address": {
+        "he": "עפולה",
+        "ar": "العفولة",
+        "en": "Afula"
+      },
+      "lat": 32.6063722,
+      "lng": 35.293668,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/13578797359"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": "https://b-eden.shop/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "ביכורי עדן",
+          "ar": "بيكوري عدن",
+          "en": "Bikhori Adan"
+        },
+        "title": {
+          "he": "תוצרת חקלאית, פירות וירקות",
+          "ar": "خضرة وفواكه من المزرعة",
+          "en": "Farm produce"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "תוצרת חקלאית, פירות וירקות",
+              "ar": "خضرة وفواكه من المزرعة",
+              "en": "Farm produce"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "new-city-market",
+      "place": "afula",
+      "brand": null,
+      "primaryKind": "farmers-markets",
+      "kinds": [
+        "farmers-markets"
+      ],
+      "name": {
+        "he": "שוק עירוני חדש",
+        "ar": "سوق عيروني حدش",
+        "en": "New City Market"
+      },
+      "tagline": {
+        "he": "שוק בעפולה",
+        "ar": "سوق في العفولة",
+        "en": "Market in Afula"
+      },
+      "address": {
+        "he": "עפולה",
+        "ar": "العفولة",
+        "en": "Afula"
+      },
+      "lat": 32.5980536,
+      "lng": 35.2958695,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/124190296"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "שוק עירוני חדש",
+          "ar": "سوق عيروني حدش",
+          "en": "New City Market"
+        },
+        "title": {
+          "he": "שוק",
+          "ar": "سوق",
+          "en": "Market"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "שוק",
+              "ar": "سوق",
+              "en": "Market"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "old-city-market",
+      "place": "afula",
+      "brand": null,
+      "primaryKind": "farmers-markets",
+      "kinds": [
+        "farmers-markets"
+      ],
+      "name": {
+        "he": "שוק עירוני ישן",
+        "ar": "سوق عيروني يشن",
+        "en": "Old City Market"
+      },
+      "tagline": {
+        "he": "שוק בעפולה",
+        "ar": "سوق في العفولة",
+        "en": "Market in Afula"
+      },
+      "address": {
+        "he": "עפולה",
+        "ar": "العفولة",
+        "en": "Afula"
+      },
+      "lat": 32.606724,
+      "lng": 35.2934402,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/525909021"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "שוק עירוני ישן",
+          "ar": "سوق عيروني يشن",
+          "en": "Old City Market"
+        },
+        "title": {
+          "he": "שוק",
+          "ar": "سوق",
+          "en": "Market"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "שוק",
+              "ar": "سوق",
+              "en": "Market"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "market",
+      "place": "akko",
+      "brand": null,
+      "primaryKind": "farmers-markets",
+      "kinds": [
+        "farmers-markets"
+      ],
+      "name": {
+        "he": "שוק",
+        "ar": "سوق",
+        "en": "Market"
+      },
+      "tagline": {
+        "he": "שוק בעכו",
+        "ar": "سوق في عكا",
+        "en": "Market in Akko"
+      },
+      "address": {
+        "he": "עכו",
+        "ar": "عكا",
+        "en": "Akko"
+      },
+      "lat": 32.9267822,
+      "lng": 35.0820967,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/196669714"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "שוק",
+          "ar": "سوق",
+          "en": "Market"
+        },
+        "title": {
+          "he": "שוק",
+          "ar": "سوق",
+          "en": "Market"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "שוק",
+              "ar": "سوق",
+              "en": "Market"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "the-white-market",
+      "place": "akko",
+      "brand": null,
+      "primaryKind": "farmers-markets",
+      "kinds": [
+        "farmers-markets"
+      ],
+      "name": {
+        "he": "השוק הלבן",
+        "ar": "هشوك هلبن",
+        "en": "The white market"
+      },
+      "tagline": {
+        "he": "שוק בעכו",
+        "ar": "سوق في عكا",
+        "en": "Market in Akko"
+      },
+      "address": {
+        "he": "עכו",
+        "ar": "عكا",
+        "en": "Akko"
+      },
+      "lat": 32.9227759,
+      "lng": 35.0714407,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/816116638"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "השוק הלבן",
+          "ar": "هشوك هلبن",
+          "en": "The white market"
+        },
+        "title": {
+          "he": "שוק",
+          "ar": "سوق",
+          "en": "Market"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "שוק",
+              "ar": "سوق",
+              "en": "Market"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "golden-seed-ranch",
+      "place": "amikam",
+      "brand": null,
+      "primaryKind": "stables",
+      "kinds": [
+        "stables"
+      ],
+      "name": {
+        "he": "חוות גולדן סיד",
+        "ar": "مزرعة جولدن السيد",
+        "en": "Golden Seed Ranch"
+      },
+      "tagline": {
+        "he": "חוות סוסים בעמיקם",
+        "ar": "إسطبل خيل في عميكام",
+        "en": "Horse riding in Amikam"
+      },
+      "address": {
+        "he": "עמיקם",
+        "ar": "عميكام",
+        "en": "Amikam"
+      },
+      "lat": 32.5623765,
+      "lng": 35.025063,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/501242105"
+      },
+      "tier": "basic",
+      "phone": "+972 54-556-0334",
+      "whatsapp": null,
+      "website": "http://gsranch.co.il/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "חוות גולדן סיד",
+          "ar": "مزرعة جولدن السيد",
+          "en": "Golden Seed Ranch"
+        },
+        "title": {
+          "he": "חוות סוסים",
+          "ar": "إسطبل خيل",
+          "en": "Horse riding"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוות סוסים",
+              "ar": "إسطبل خيل",
+              "en": "Horse riding"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "bat-yaar-ranch",
+      "place": "amuka",
+      "brand": null,
+      "primaryKind": "stables",
+      "kinds": [
+        "stables"
+      ],
+      "name": {
+        "he": "חוות בת יער",
+        "ar": "مزرعة بت يعر",
+        "en": "Bat Ya'ar ranch"
+      },
+      "tagline": {
+        "he": "חוות סוסים בעמוקה",
+        "ar": "إسطبل خيل في عموقه",
+        "en": "Horse riding in Amuka"
+      },
+      "address": {
+        "he": "עמוקה",
+        "ar": "عموقه",
+        "en": "Amuka"
+      },
+      "lat": 32.9953332,
+      "lng": 35.5191423,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/237130161"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": "https://www.batyaar.co.il/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "חוות בת יער",
+          "ar": "مزرعة بت يعر",
+          "en": "Bat Ya'ar ranch"
+        },
+        "title": {
+          "he": "חוות סוסים",
+          "ar": "إسطبل خيل",
+          "en": "Horse riding"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוות סוסים",
+              "ar": "إسطبل خيل",
+              "en": "Horse riding"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "hashem-alnaser-farm",
+      "place": "ashdot-yaakov-ihud",
+      "brand": null,
+      "primaryKind": "tractors",
+      "kinds": [
+        "tractors"
+      ],
+      "name": {
+        "he": "Hashem Alnaser farm",
+        "ar": "Hashem Alnaser farm",
+        "en": "Hashem Alnaser farm"
+      },
+      "tagline": {
+        "he": "ציוד חקלאי באשדות יעקב",
+        "ar": "معدات زراعية في أشدوت يعقوب",
+        "en": "Farm equipment in Ashdot Yaakov Ihud"
+      },
+      "address": {
+        "he": "אשדות יעקב (איחוד)",
+        "ar": "أشدوت يعقوب (إيحود)",
+        "en": "Ashdot Yaakov Ihud"
+      },
+      "lat": 32.6309397,
+      "lng": 35.5958566,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "5": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ],
+          "6": [
+            {
+              "open": "00:00",
+              "close": "24:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/881559231"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "Hashem Alnaser farm",
+          "ar": "Hashem Alnaser farm",
+          "en": "Hashem Alnaser farm"
+        },
+        "title": {
+          "he": "ציוד חקלאי",
+          "ar": "معدات زراعية",
+          "en": "Farm equipment"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "ציוד חקלאי",
+              "ar": "معدات زراعية",
+              "en": "Farm equipment"
+            },
+            "meta": {
+              "he": "אספקה חקלאית",
+              "ar": "لوازم زراعية",
+              "en": "Farm supplies"
+            }
+          },
+          {
+            "label": {
+              "he": "פתוח 24/7",
+              "ar": "فاتح 24/7",
+              "en": "Open 24/7"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "penta-market",
+      "place": "atlit",
+      "brand": null,
+      "primaryKind": "farmers-markets",
+      "kinds": [
+        "farmers-markets"
+      ],
+      "name": {
+        "he": "פנתה מרקט",
+        "ar": "بنتا مركط",
+        "en": "Penta market"
+      },
+      "tagline": {
+        "he": "שוק בעתלית",
+        "ar": "سوق في عتليت",
+        "en": "Market in Atlit"
+      },
+      "address": {
+        "he": "עתלית",
+        "ar": "عتليت",
+        "en": "Atlit"
+      },
+      "lat": 32.6946843,
+      "lng": 34.9454766,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1017579104"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "פנתה מרקט",
+          "ar": "بنتا مركط",
+          "en": "Penta market"
+        },
+        "title": {
+          "he": "שוק",
+          "ar": "سوق",
+          "en": "Market"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "שוק",
+              "ar": "سوق",
+              "en": "Market"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "natzar-lalakhacharaoat",
+      "place": "baqa-al-gharbiyye",
+      "brand": null,
+      "primaryKind": "farm-shops",
+      "kinds": [
+        "farm-shops"
+      ],
+      "name": {
+        "he": "נאצר ללח'צ'ראואת",
+        "ar": "ناصر للخضراوات",
+        "en": "Natzar Lalakhacharaoat"
+      },
+      "tagline": {
+        "he": "תוצרת חקלאית, פירות וירקות בבאקה אל-גרביה",
+        "ar": "خضرة وفواكه من المزرعة في باقة الغربية",
+        "en": "Farm produce in Baqa al-Gharbiyye"
+      },
+      "address": {
+        "he": "באקה אל-גרביה",
+        "ar": "باقة الغربية",
+        "en": "Baqa al-Gharbiyye"
+      },
+      "lat": 32.415631,
+      "lng": 35.0539974,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "09:00",
+              "close": "21:30"
+            }
+          ],
+          "1": [
+            {
+              "open": "09:00",
+              "close": "21:30"
+            }
+          ],
+          "2": [
+            {
+              "open": "09:00",
+              "close": "21:30"
+            }
+          ],
+          "3": [
+            {
+              "open": "09:00",
+              "close": "21:30"
+            }
+          ],
+          "4": [
+            {
+              "open": "09:00",
+              "close": "21:30"
+            }
+          ],
+          "5": [
+            {
+              "open": "09:00",
+              "close": "21:30"
+            }
+          ],
+          "6": [
+            {
+              "open": "09:00",
+              "close": "21:30"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/4587738891"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "נאצר ללח'צ'ראואת",
+          "ar": "ناصر للخضراوات",
+          "en": "Natzar Lalakhacharaoat"
+        },
+        "title": {
+          "he": "תוצרת חקלאית, פירות וירקות",
+          "ar": "خضرة وفواكه من المزرعة",
+          "en": "Farm produce"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "תוצרת חקלאית, פירות וירקות",
+              "ar": "خضرة وفواكه من المزرعة",
+              "en": "Farm produce"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "olive-squeeze",
+      "place": "baqa-al-gharbiyye",
+      "brand": null,
+      "primaryKind": "olive-press",
+      "kinds": [
+        "olive-press"
+      ],
+      "name": {
+        "he": "מעצרה זיתון",
+        "ar": "معصرة زيتون",
+        "en": "Olive Squeeze"
+      },
+      "tagline": {
+        "he": "בית בד בבאקה אל-גרביה",
+        "ar": "معصرة زيتون في باقة الغربية",
+        "en": "Olive press in Baqa al-Gharbiyye"
+      },
+      "address": {
+        "he": "באקה אל-גרביה",
+        "ar": "باقة الغربية",
+        "en": "Baqa al-Gharbiyye"
+      },
+      "lat": 32.4115244,
+      "lng": 35.0704519,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/432379964"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מעצרה זיתון",
+          "ar": "معصرة زيتون",
+          "en": "Olive Squeeze"
+        },
+        "title": {
+          "he": "בית בד",
+          "ar": "معصرة زيتون",
+          "en": "Olive press"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "בית בד",
+              "ar": "معصرة زيتون",
+              "en": "Olive press"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "ziv-schwartzman-dairy",
+      "place": "bat-shlomo",
+      "brand": null,
+      "primaryKind": "dairy",
+      "kinds": [
+        "dairy"
+      ],
+      "name": {
+        "he": "מחלבת זיו שוורצמן",
+        "ar": "محلبت زيو شفرتسمن",
+        "en": "Ziv Schwartzman dairy"
+      },
+      "tagline": {
+        "he": "מחלבה בבת שלמה",
+        "ar": "ألبان في بات شلومو",
+        "en": "Dairy in Bat Shlomo"
+      },
+      "address": {
+        "he": "בת שלמה",
+        "ar": "بات شلومو",
+        "en": "Bat Shlomo"
+      },
+      "lat": 32.6002793,
+      "lng": 35.0042909,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/3140191135"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מחלבת זיו שוורצמן",
+          "ar": "محلبت زيو شفرتسمن",
+          "en": "Ziv Schwartzman dairy"
+        },
+        "title": {
+          "he": "מחלבה",
+          "ar": "ألبان",
+          "en": "Dairy"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחלבה",
+              "ar": "ألبان",
+              "en": "Dairy"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "artishok",
+      "place": "beit-alpha",
+      "brand": null,
+      "primaryKind": "farm-shops",
+      "kinds": [
+        "farm-shops"
+      ],
+      "name": {
+        "he": "ארטישוק",
+        "ar": "ارطيشوك",
+        "en": "Artishok"
+      },
+      "tagline": {
+        "he": "תוצרת חקלאית, פירות וירקות בבית אלפא",
+        "ar": "خضرة وفواكه من المزرعة في بيت ألفا",
+        "en": "Farm produce in Beit Alpha"
+      },
+      "address": {
+        "he": "בית אלפא",
+        "ar": "بيت ألفا",
+        "en": "Beit Alpha"
+      },
+      "lat": 32.5113825,
+      "lng": 35.4420555,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/7880477560"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "ארטישוק",
+          "ar": "ارطيشوك",
+          "en": "Artishok"
+        },
+        "title": {
+          "he": "תוצרת חקלאית, פירות וירקות",
+          "ar": "خضرة وفواكه من المزرعة",
+          "en": "Farm produce"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "תוצרת חקלאית, פירות וירקות",
+              "ar": "خضرة وفواكه من المزرعة",
+              "en": "Farm produce"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "havayat-harochvim",
+      "place": "beit-oren",
+      "brand": null,
+      "primaryKind": "stables",
+      "kinds": [
+        "stables"
+      ],
+      "name": {
+        "he": "חווית הרוכבים",
+        "ar": "حفيت هروكبيم",
+        "en": "Havayat HaRochvim"
+      },
+      "tagline": {
+        "he": "חוות סוסים בבית אורן",
+        "ar": "إسطبل خيل في بيت أورن",
+        "en": "Horse riding in Beit Oren"
+      },
+      "address": {
+        "he": "בית אורן",
+        "ar": "بيت أورن",
+        "en": "Beit Oren"
+      },
+      "lat": 32.7328377,
+      "lng": 35.0134659,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/860428895"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": "https://havayat-harochvim.org.il/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "חווית הרוכבים",
+          "ar": "حفيت هروكبيم",
+          "en": "Havayat HaRochvim"
+        },
+        "title": {
+          "he": "חוות סוסים",
+          "ar": "إسطبل خيل",
+          "en": "Horse riding"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוות סוסים",
+              "ar": "إسطبل خيل",
+              "en": "Horse riding"
+            }
+          },
+          {
+            "label": {
+              "he": "ענפים",
+              "ar": "رياضات",
+              "en": "Sports"
+            },
+            "meta": {
+              "he": "רכיבה על סוסים",
+              "ar": "ركوب خيل",
+              "en": "Horse riding"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "open-market",
+      "place": "beit-shean",
+      "brand": null,
+      "primaryKind": "farmers-markets",
+      "kinds": [
+        "farmers-markets"
+      ],
+      "name": {
+        "he": "שוק פתוח",
+        "ar": "سوق بتوح",
+        "en": "Open Market"
+      },
+      "tagline": {
+        "he": "שוק בבית שאן",
+        "ar": "سوق في بيت شيئان",
+        "en": "Market in Beit Shean"
+      },
+      "address": {
+        "he": "בית שאן",
+        "ar": "بيت شيئان",
+        "en": "Beit Shean"
+      },
+      "lat": 32.4950118,
+      "lng": 35.4963664,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/4181710637"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "שוק פתוח",
+          "ar": "سوق بتوح",
+          "en": "Open Market"
+        },
+        "title": {
+          "he": "שוק",
+          "ar": "سوق",
+          "en": "Market"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "שוק",
+              "ar": "سوق",
+              "en": "Market"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "nursery",
+      "place": "dafna",
+      "brand": null,
+      "primaryKind": "tractors",
+      "kinds": [
+        "tractors"
+      ],
+      "name": {
+        "he": "משתלה",
+        "ar": "مشتل",
+        "en": "Nursery"
+      },
+      "tagline": {
+        "he": "ציוד חקלאי בדפנה",
+        "ar": "معدات زراعية في دفنة",
+        "en": "Farm equipment in Dafna"
+      },
+      "address": {
+        "he": "דפנה",
+        "ar": "دفنة",
+        "en": "Dafna"
+      },
+      "lat": 33.229202,
+      "lng": 35.6411142,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/6835221261"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "משתלה",
+          "ar": "مشتل",
+          "en": "Nursery"
+        },
+        "title": {
+          "he": "ציוד חקלאי",
+          "ar": "معدات زراعية",
+          "en": "Farm equipment"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "ציוד חקלאי",
+              "ar": "معدات زراعية",
+              "en": "Farm equipment"
+            },
+            "meta": {
+              "he": "אספקה חקלאית",
+              "ar": "لوازم زراعية",
+              "en": "Farm supplies"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "sanad-ranch",
+      "place": "daliyat-al-karmel",
+      "brand": null,
+      "primaryKind": "stables",
+      "kinds": [
+        "stables"
+      ],
+      "name": {
+        "he": "חוות סנד",
+        "ar": "مزرعة سند",
+        "en": "Sanad ranch"
+      },
+      "tagline": {
+        "he": "חוות סוסים בדאלית אל-כרמל",
+        "ar": "إسطبل خيل في دالية الكرمل",
+        "en": "Horse riding in Daliyat al-Karmel"
+      },
+      "address": {
+        "he": "דאלית אל-כרמל",
+        "ar": "دالية الكرمل",
+        "en": "Daliyat al-Karmel"
+      },
+      "lat": 32.6855612,
+      "lng": 35.0698198,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/497390920"
+      },
+      "tier": "basic",
+      "phone": "+972 52-889-4751",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "חוות סנד",
+          "ar": "مزرعة سند",
+          "en": "Sanad ranch"
+        },
+        "title": {
+          "he": "חוות סוסים",
+          "ar": "إسطبل خيل",
+          "en": "Horse riding"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוות סוסים",
+              "ar": "إسطبل خيل",
+              "en": "Horse riding"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "saturday-market",
+      "place": "daliyat-al-karmel",
+      "brand": null,
+      "primaryKind": "farmers-markets",
+      "kinds": [
+        "farmers-markets"
+      ],
+      "name": {
+        "he": "שוק שבת",
+        "ar": "سوق السبت",
+        "en": "Saturday Market"
+      },
+      "tagline": {
+        "he": "שוק בדאלית אל-כרמל",
+        "ar": "سوق في دالية الكرمل",
+        "en": "Market in Daliyat al-Karmel"
+      },
+      "address": {
+        "he": "דאלית אל-כרמל",
+        "ar": "دالية الكرمل",
+        "en": "Daliyat al-Karmel"
+      },
+      "lat": 32.6860355,
+      "lng": 35.0673432,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/491119289"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "שוק שבת",
+          "ar": "سوق السبت",
+          "en": "Saturday Market"
+        },
+        "title": {
+          "he": "שוק",
+          "ar": "سوق",
+          "en": "Market"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "שוק",
+              "ar": "سوق",
+              "en": "Market"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "nekudat-chen",
+      "place": "ein-zivan",
+      "brand": null,
+      "primaryKind": "stables",
+      "kinds": [
+        "stables"
+      ],
+      "name": {
+        "he": "נקודת חן",
+        "ar": "نكودت حن",
+        "en": "Nekudat Chen"
+      },
+      "tagline": {
+        "he": "חוות סוסים בעין זיוון",
+        "ar": "إسطبل خيل في عين زيوان",
+        "en": "Horse riding in Ein Zivan"
+      },
+      "address": {
+        "he": "עין זיוון",
+        "ar": "عين زيوان",
+        "en": "Ein Zivan"
+      },
+      "lat": 33.095132,
+      "lng": 35.7961907,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/4269551447"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "נקודת חן",
+          "ar": "نكودت حن",
+          "en": "Nekudat Chen"
+        },
+        "title": {
+          "he": "חוות סוסים",
+          "ar": "إسطبل خيل",
+          "en": "Horse riding"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוות סוסים",
+              "ar": "إسطبل خيل",
+              "en": "Horse riding"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "ktif-atzmi-el-rom",
+      "place": "el-rom",
+      "brand": null,
+      "primaryKind": "farm-shops",
+      "kinds": [
+        "farm-shops"
+      ],
+      "name": {
+        "he": "קטיף עצמי אל-רום",
+        "ar": "كطيف عتسمي إل روم",
+        "en": "Ktif Atzmi El Rom"
+      },
+      "tagline": {
+        "he": "תוצרת חקלאית, פירות וירקות באל-רום",
+        "ar": "خضرة وفواكه من المزرعة في إل روم",
+        "en": "Farm produce in El Rom"
+      },
+      "address": {
+        "he": "אל-רום",
+        "ar": "إل روم",
+        "en": "El Rom"
+      },
+      "lat": 33.1738896,
+      "lng": 35.8042514,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1184249749"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": "https://www.katif-elrom.co.il/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "קטיף עצמי אל-רום",
+          "ar": "كطيف عتسمي إل روم",
+          "en": "Ktif Atzmi El Rom"
+        },
+        "title": {
+          "he": "תוצרת חקלאית, פירות וירקות",
+          "ar": "خضرة وفواكه من المزرعة",
+          "en": "Farm produce"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "תוצרת חקלאית, פירות וירקות",
+              "ar": "خضرة وفواكه من المزرعة",
+              "en": "Farm produce"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "hashook-sheli",
+      "place": "hadera",
+      "brand": null,
+      "primaryKind": "farmers-markets",
+      "kinds": [
+        "farmers-markets"
+      ],
+      "name": {
+        "he": "השוק שלי",
+        "ar": "هشوك شلي",
+        "en": "Hashook Sheli"
+      },
+      "tagline": {
+        "he": "שוק בחדרה",
+        "ar": "سوق في الخضيرة",
+        "en": "Market in Hadera"
+      },
+      "address": {
+        "he": "חדרה",
+        "ar": "الخضيرة",
+        "en": "Hadera"
+      },
+      "lat": 32.4373765,
+      "lng": 34.923328,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/3164416329"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "השוק שלי",
+          "ar": "هشوك شلي",
+          "en": "Hashook Sheli"
+        },
+        "title": {
+          "he": "שוק",
+          "ar": "سوق",
+          "en": "Market"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "שוק",
+              "ar": "سوق",
+              "en": "Market"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "municipal-market",
+      "place": "hadera",
+      "brand": null,
+      "primaryKind": "farmers-markets",
+      "kinds": [
+        "farmers-markets"
+      ],
+      "name": {
+        "he": "שוק עירוני",
+        "ar": "سوق عيروني",
+        "en": "Municipal market"
+      },
+      "tagline": {
+        "he": "שוק בחדרה",
+        "ar": "سوق في الخضيرة",
+        "en": "Market in Hadera"
+      },
+      "address": {
+        "he": "חדרה",
+        "ar": "الخضيرة",
+        "en": "Hadera"
+      },
+      "lat": 32.4356145,
+      "lng": 34.9208689,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/223512661"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "שוק עירוני",
+          "ar": "سوق عيروني",
+          "en": "Municipal market"
+        },
+        "title": {
+          "he": "שוק",
+          "ar": "سوق",
+          "en": "Market"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "שוק",
+              "ar": "سوق",
+              "en": "Market"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "flea-market",
+      "place": "haifa",
+      "brand": null,
+      "primaryKind": "farmers-markets",
+      "kinds": [
+        "farmers-markets"
+      ],
+      "name": {
+        "he": "שוק הפשפשים",
+        "ar": "سوق هفشفشيم",
+        "en": "Flea market"
+      },
+      "tagline": {
+        "he": "שוק בחיפה",
+        "ar": "سوق في حيفا",
+        "en": "Market in Haifa"
+      },
+      "address": {
+        "he": "חיפה",
+        "ar": "حيفا",
+        "en": "Haifa"
+      },
+      "lat": 32.8119363,
+      "lng": 35.0029344,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "relation/14340956"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "שוק הפשפשים",
+          "ar": "سوق هفشفشيم",
+          "en": "Flea market"
+        },
+        "title": {
+          "he": "שוק",
+          "ar": "سوق",
+          "en": "Market"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "שוק",
+              "ar": "سوق",
+              "en": "Market"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "loi-yona-vavnio-pirot-virkot",
+      "place": "haifa",
+      "brand": null,
+      "primaryKind": "farm-shops",
+      "kinds": [
+        "farm-shops"
+      ],
+      "name": {
+        "he": "לוי יונה ובניו פירות וירקות",
+        "ar": "لوي يونا وبنيو بيروت ويركوت",
+        "en": "Loi Yona Vavnio Pirot Virkot"
+      },
+      "tagline": {
+        "he": "תוצרת חקלאית, פירות וירקות בחיפה",
+        "ar": "خضرة وفواكه من المزرعة في حيفا",
+        "en": "Farm produce in Haifa"
+      },
+      "address": {
+        "he": "חיפה",
+        "ar": "حيفا",
+        "en": "Haifa"
+      },
+      "lat": 32.8006217,
+      "lng": 34.9822889,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/1814809502"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "לוי יונה ובניו פירות וירקות",
+          "ar": "لوي يونا وبنيو بيروت ويركوت",
+          "en": "Loi Yona Vavnio Pirot Virkot"
+        },
+        "title": {
+          "he": "תוצרת חקלאית, פירות וירקות",
+          "ar": "خضرة وفواكه من المزرعة",
+          "en": "Farm produce"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "תוצרת חקלאית, פירות וירקות",
+              "ar": "خضرة وفواكه من المزرعة",
+              "en": "Farm produce"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "talpiot-interior-market-historic-building",
+      "place": "haifa",
+      "brand": null,
+      "primaryKind": "farmers-markets",
+      "kinds": [
+        "farmers-markets"
+      ],
+      "name": {
+        "he": "שוק תלפיות - השוק המקורה",
+        "ar": "سوق تلفيوت هشوك همكورا",
+        "en": "Talpiot (interior) Market - historic building"
+      },
+      "tagline": {
+        "he": "שוק בחיפה",
+        "ar": "سوق في حيفا",
+        "en": "Market in Haifa"
+      },
+      "address": {
+        "he": "חיפה",
+        "ar": "حيفا",
+        "en": "Haifa"
+      },
+      "lat": 32.808757,
+      "lng": 35.0026822,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/188631535"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "שוק תלפיות - השוק המקורה",
+          "ar": "سوق تلفيوت هشوك همكورا",
+          "en": "Talpiot (interior) Market - historic building"
+        },
+        "title": {
+          "he": "שוק",
+          "ar": "سوق",
+          "en": "Market"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "שוק",
+              "ar": "سوق",
+              "en": "Market"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "carmelim",
+      "place": "hayogev",
+      "brand": null,
+      "primaryKind": "farm-shops",
+      "kinds": [
+        "farm-shops"
+      ],
+      "name": {
+        "he": "כרמלים",
+        "ar": "كرمليم",
+        "en": "Carmelim"
+      },
+      "tagline": {
+        "he": "תוצרת חקלאית, פירות וירקות בהיוגב",
+        "ar": "خضرة وفواكه من المزرعة في هيوچيف",
+        "en": "Farm produce in HaYogev"
+      },
+      "address": {
+        "he": "היוגב",
+        "ar": "هيوچيف",
+        "en": "HaYogev"
+      },
+      "lat": 32.6093382,
+      "lng": 35.196843,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "09:00",
+              "close": "18:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "09:00",
+              "close": "18:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "09:00",
+              "close": "18:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "09:00",
+              "close": "18:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "09:00",
+              "close": "18:00"
+            }
+          ],
+          "5": [
+            {
+              "open": "08:00",
+              "close": "14:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/6442699036"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": "https://www.carmels.co.il/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "כרמלים",
+          "ar": "كرمليم",
+          "en": "Carmelim"
+        },
+        "title": {
+          "he": "תוצרת חקלאית, פירות וירקות",
+          "ar": "خضرة وفواكه من المزرعة",
+          "en": "Farm produce"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "תוצרת חקלאית, פירות וירקות",
+              "ar": "خضرة وفواكه من المزرعة",
+              "en": "Farm produce"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "mule-riding",
+      "place": "ilaniya",
+      "brand": null,
+      "primaryKind": "stables",
+      "kinds": [
+        "stables"
+      ],
+      "name": {
+        "he": "טי-מיול טיולי מיולים",
+        "ar": "طي ميول طيولي ميوليم",
+        "en": "Mule riding"
+      },
+      "tagline": {
+        "he": "חוות סוסים באילניה",
+        "ar": "إسطبل خيل في إيلانيا",
+        "en": "Horse riding in Ilaniya"
+      },
+      "address": {
+        "he": "אילניה",
+        "ar": "إيلانيا",
+        "en": "Ilaniya"
+      },
+      "lat": 32.7605462,
+      "lng": 35.4095653,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/3702617346"
+      },
+      "tier": "basic",
+      "phone": "+972 52-462-5589",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "טי-מיול טיולי מיולים",
+          "ar": "طي ميول طيولي ميوليم",
+          "en": "Mule riding"
+        },
+        "title": {
+          "he": "חוות סוסים",
+          "ar": "إسطبل خيل",
+          "en": "Horse riding"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוות סוסים",
+              "ar": "إسطبل خيل",
+              "en": "Horse riding"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "hamarakhaz-lfirot-virkot",
+      "place": "isfiya",
+      "brand": null,
+      "primaryKind": "farm-shops",
+      "kinds": [
+        "farm-shops"
+      ],
+      "name": {
+        "he": "המרכז לפירות וירקות",
+        "ar": "همركز لفيروت ويركوت",
+        "en": "Hamarakhaz Lfirot Virkot"
+      },
+      "tagline": {
+        "he": "תוצרת חקלאית, פירות וירקות בעספיא",
+        "ar": "خضرة وفواكه من المزرعة في عسفيا",
+        "en": "Farm produce in Isfiya"
+      },
+      "address": {
+        "he": "עספיא",
+        "ar": "عسفيا",
+        "en": "Isfiya"
+      },
+      "lat": 32.7059167,
+      "lng": 35.0630204,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/4931871373"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "המרכז לפירות וירקות",
+          "ar": "همركز لفيروت ويركوت",
+          "en": "Hamarakhaz Lfirot Virkot"
+        },
+        "title": {
+          "he": "תוצרת חקלאית, פירות וירקות",
+          "ar": "خضرة وفواكه من المزرعة",
+          "en": "Farm produce"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "תוצרת חקלאית, פירות וירקות",
+              "ar": "خضرة وفواكه من المزرعة",
+              "en": "Farm produce"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "shuk-haachim",
+      "place": "karmiel",
+      "brand": null,
+      "primaryKind": "farm-shops",
+      "kinds": [
+        "farm-shops"
+      ],
+      "name": {
+        "he": "שוק האחים",
+        "ar": "سوق هاحيم",
+        "en": "Shuk HaAchim"
+      },
+      "tagline": {
+        "he": "תוצרת חקלאית, פירות וירקות בכרמיאל",
+        "ar": "خضرة وفواكه من المزرعة في كرميئيل",
+        "en": "Farm produce in Karmiel"
+      },
+      "address": {
+        "he": "ההגנה 4",
+        "ar": "كرميئيل",
+        "en": "Karmiel"
+      },
+      "lat": 32.9044301,
+      "lng": 35.2812342,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "08:00",
+              "close": "19:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "08:00",
+              "close": "19:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "08:00",
+              "close": "19:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "08:00",
+              "close": "19:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "08:00",
+              "close": "20:00"
+            }
+          ],
+          "5": [
+            {
+              "open": "08:00",
+              "close": "14:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/14162201218"
+      },
+      "tier": "basic",
+      "phone": "+972 54-977-9990",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "שוק האחים",
+          "ar": "سوق هاحيم",
+          "en": "Shuk HaAchim"
+        },
+        "title": {
+          "he": "תוצרת חקלאית, פירות וירקות",
+          "ar": "خضرة وفواكه من المزرعة",
+          "en": "Farm produce"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "תוצרת חקלאית, פירות וירקות",
+              "ar": "خضرة وفواكه من المزرعة",
+              "en": "Farm produce"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "aalaf-al-avarahimi-vakhoana",
+      "place": "katzir",
+      "brand": null,
+      "primaryKind": "tractors",
+      "kinds": [
+        "tractors"
+      ],
+      "name": {
+        "he": "אעלאף אל-אבראהימי ואח'ואנה",
+        "ar": "اعلاف الابراهيمي واخوانة",
+        "en": "Aalaf al Avarahimi Vakhoana"
+      },
+      "tagline": {
+        "he": "ציוד חקלאי בקציר",
+        "ar": "معدات زراعية في كتسير",
+        "en": "Farm equipment in Katzir"
+      },
+      "address": {
+        "he": "קציר",
+        "ar": "كتسير",
+        "en": "Katzir"
+      },
+      "lat": 32.4753307,
+      "lng": 35.0930889,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9921941935"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אעלאף אל-אבראהימי ואח'ואנה",
+          "ar": "اعلاف الابراهيمي واخوانة",
+          "en": "Aalaf al Avarahimi Vakhoana"
+        },
+        "title": {
+          "he": "ציוד חקלאי",
+          "ar": "معدات زراعية",
+          "en": "Farm equipment"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "ציוד חקלאי",
+              "ar": "معدات زراعية",
+              "en": "Farm equipment"
+            },
+            "meta": {
+              "he": "אספקה חקלאית",
+              "ar": "لوازم زراعية",
+              "en": "Farm supplies"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "abu-ammar-lalmoad-al-zaraaia",
+      "place": "katzir",
+      "brand": null,
+      "primaryKind": "tractors",
+      "kinds": [
+        "tractors"
+      ],
+      "name": {
+        "he": "אבו עמאר ללמואד אל-זראעיה",
+        "ar": "ابو عمار للمواد الزراعية",
+        "en": "Abu Ammar Lalmoad al Zaraaia"
+      },
+      "tagline": {
+        "he": "ציוד חקלאי בקציר",
+        "ar": "معدات زراعية في كتسير",
+        "en": "Farm equipment in Katzir"
+      },
+      "address": {
+        "he": "קציר",
+        "ar": "كتسير",
+        "en": "Katzir"
+      },
+      "lat": 32.474708,
+      "lng": 35.0914073,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9922911199"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אבו עמאר ללמואד אל-זראעיה",
+          "ar": "ابو عمار للمواد الزراعية",
+          "en": "Abu Ammar Lalmoad al Zaraaia"
+        },
+        "title": {
+          "he": "ציוד חקלאי",
+          "ar": "معدات زراعية",
+          "en": "Farm equipment"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "ציוד חקלאי",
+              "ar": "معدات زراعية",
+              "en": "Farm equipment"
+            },
+            "meta": {
+              "he": "אספקה חקלאית",
+              "ar": "لوازم زراعية",
+              "en": "Farm supplies"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "adoat-vmoad-zaraaia",
+      "place": "katzir",
+      "brand": null,
+      "primaryKind": "tractors",
+      "kinds": [
+        "tractors"
+      ],
+      "name": {
+        "he": "אדואת ומואד זראעיה",
+        "ar": "ادوات ومواد زراعية",
+        "en": "Adoat Vmoad Zaraaia"
+      },
+      "tagline": {
+        "he": "ציוד חקלאי בקציר",
+        "ar": "معدات زراعية في كتسير",
+        "en": "Farm equipment in Katzir"
+      },
+      "address": {
+        "he": "קציר",
+        "ar": "كتسير",
+        "en": "Katzir"
+      },
+      "lat": 32.4764189,
+      "lng": 35.0889963,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9920570188"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אדואת ומואד זראעיה",
+          "ar": "ادوات ومواد زراعية",
+          "en": "Adoat Vmoad Zaraaia"
+        },
+        "title": {
+          "he": "ציוד חקלאי",
+          "ar": "معدات زراعية",
+          "en": "Farm equipment"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "ציוד חקלאי",
+              "ar": "معدات زراعية",
+              "en": "Farm equipment"
+            },
+            "meta": {
+              "he": "אספקה חקלאית",
+              "ar": "لوازم زراعية",
+              "en": "Farm supplies"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "khachar-vfoakha-abu-al-saraj",
+      "place": "katzir",
+      "brand": null,
+      "primaryKind": "farm-shops",
+      "kinds": [
+        "farm-shops"
+      ],
+      "name": {
+        "he": "ח'צ'אר ופואכה אבו אל-סראג'",
+        "ar": "خضار وفواكة ابو السراج",
+        "en": "Khachar Vfoakha Abu al Saraj"
+      },
+      "tagline": {
+        "he": "תוצרת חקלאית, פירות וירקות בקציר",
+        "ar": "خضرة وفواكه من المزرعة في كتسير",
+        "en": "Farm produce in Katzir"
+      },
+      "address": {
+        "he": "קציר",
+        "ar": "كتسير",
+        "en": "Katzir"
+      },
+      "lat": 32.4727512,
+      "lng": 35.0929271,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9922137001"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "ח'צ'אר ופואכה אבו אל-סראג'",
+          "ar": "خضار وفواكة ابو السراج",
+          "en": "Khachar Vfoakha Abu al Saraj"
+        },
+        "title": {
+          "he": "תוצרת חקלאית, פירות וירקות",
+          "ar": "خضرة وفواكه من المزرعة",
+          "en": "Farm produce"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "תוצרת חקלאית, פירות וירקות",
+              "ar": "خضرة وفواكه من المزرعة",
+              "en": "Farm produce"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "khachar-vfoakha-al-jalamaoi",
+      "place": "katzir",
+      "brand": null,
+      "primaryKind": "farm-shops",
+      "kinds": [
+        "farm-shops"
+      ],
+      "name": {
+        "he": "ח'צ'אר ופואכה אל-ג'למאוי",
+        "ar": "خضار وفواكة الجلماوي",
+        "en": "Khachar Vfoakha al Jalamaoi"
+      },
+      "tagline": {
+        "he": "תוצרת חקלאית, פירות וירקות בקציר",
+        "ar": "خضرة وفواكه من المزرعة في كتسير",
+        "en": "Farm produce in Katzir"
+      },
+      "address": {
+        "he": "קציר",
+        "ar": "كتسير",
+        "en": "Katzir"
+      },
+      "lat": 32.4756695,
+      "lng": 35.0896295,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9919452455"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "ח'צ'אר ופואכה אל-ג'למאוי",
+          "ar": "خضار وفواكة الجلماوي",
+          "en": "Khachar Vfoakha al Jalamaoi"
+        },
+        "title": {
+          "he": "תוצרת חקלאית, פירות וירקות",
+          "ar": "خضرة وفواكه من المزرعة",
+          "en": "Farm produce"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "תוצרת חקלאית, פירות וירקות",
+              "ar": "خضرة وفواكه من المزرعة",
+              "en": "Farm produce"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/%D8%AE%D8%B6%D8%A7%D8%B1-%D9%88%D9%81%D9%88%D8%A7%D9%83%D8%A9-%D8%A7%D9%84%D8%AC%D9%84%D9%85%D8%A7%D9%88%D9%8A-2594998483845441/"
+      },
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "khachar-vfoakha-balal",
+      "place": "katzir",
+      "brand": null,
+      "primaryKind": "farm-shops",
+      "kinds": [
+        "farm-shops"
+      ],
+      "name": {
+        "he": "ח'צ'אר ופואכה בלאל",
+        "ar": "خضار وفواكه بلال",
+        "en": "Khachar Vfoakha Balal"
+      },
+      "tagline": {
+        "he": "תוצרת חקלאית, פירות וירקות בקציר",
+        "ar": "خضرة وفواكه من المزرعة في كتسير",
+        "en": "Farm produce in Katzir"
+      },
+      "address": {
+        "he": "קציר",
+        "ar": "كتسير",
+        "en": "Katzir"
+      },
+      "lat": 32.475295,
+      "lng": 35.0897684,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9919507362"
+      },
+      "tier": "basic",
+      "phone": "+972 55-889-0350",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "ח'צ'אר ופואכה בלאל",
+          "ar": "خضار وفواكه بلال",
+          "en": "Khachar Vfoakha Balal"
+        },
+        "title": {
+          "he": "תוצרת חקלאית, פירות וירקות",
+          "ar": "خضرة وفواكه من المزرعة",
+          "en": "Farm produce"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "תוצרת חקלאית, פירות וירקות",
+              "ar": "خضرة وفواكه من المزرعة",
+              "en": "Farm produce"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/%D8%AE%D8%B6%D8%A7%D8%B1-%D9%88%D9%81%D9%88%D8%A7%D9%83%D9%87-%D8%A8%D9%84%D8%A7%D9%84-112272697775973"
+      },
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "mahalat-abu-mois-laladoat-al-zaraaia",
+      "place": "katzir",
+      "brand": null,
+      "primaryKind": "tractors",
+      "kinds": [
+        "tractors"
+      ],
+      "name": {
+        "he": "מחלאת אבו מויס ללאדואת אל-זראעיה",
+        "ar": "محلات ابو مويس للادوات الزراعية",
+        "en": "Mahalat Abu Mois Laladoat al Zaraaia"
+      },
+      "tagline": {
+        "he": "ציוד חקלאי בקציר",
+        "ar": "معدات زراعية في كتسير",
+        "en": "Farm equipment in Katzir"
+      },
+      "address": {
+        "he": "קציר",
+        "ar": "كتسير",
+        "en": "Katzir"
+      },
+      "lat": 32.4720125,
+      "lng": 35.0916576,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9932110660"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מחלאת אבו מויס ללאדואת אל-זראעיה",
+          "ar": "محلات ابو مويس للادوات الزراعية",
+          "en": "Mahalat Abu Mois Laladoat al Zaraaia"
+        },
+        "title": {
+          "he": "ציוד חקלאי",
+          "ar": "معدات زراعية",
+          "en": "Farm equipment"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "ציוד חקלאי",
+              "ar": "معدات زراعية",
+              "en": "Farm equipment"
+            },
+            "meta": {
+              "he": "אספקה חקלאית",
+              "ar": "لوازم زراعية",
+              "en": "Farm supplies"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "mahalat-al-arraba-lalakhachar-valfoakha",
+      "place": "katzir",
+      "brand": null,
+      "primaryKind": "farm-shops",
+      "kinds": [
+        "farm-shops"
+      ],
+      "name": {
+        "he": "מחלאת אל-עראבה ללח'צ'אר ואלפואכה",
+        "ar": "محلات العرابة للخضار والفواكة",
+        "en": "Mahalat al Arraba Lalakhachar Valfoakha"
+      },
+      "tagline": {
+        "he": "תוצרת חקלאית, פירות וירקות בקציר",
+        "ar": "خضرة وفواكه من المزرعة في كتسير",
+        "en": "Farm produce in Katzir"
+      },
+      "address": {
+        "he": "קציר",
+        "ar": "كتسير",
+        "en": "Katzir"
+      },
+      "lat": 32.4746617,
+      "lng": 35.0915437,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9927576574"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מחלאת אל-עראבה ללח'צ'אר ואלפואכה",
+          "ar": "محلات العرابة للخضار والفواكة",
+          "en": "Mahalat al Arraba Lalakhachar Valfoakha"
+        },
+        "title": {
+          "he": "תוצרת חקלאית, פירות וירקות",
+          "ar": "خضرة وفواكه من المزرعة",
+          "en": "Farm produce"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "תוצרת חקלאית, פירות וירקות",
+              "ar": "خضرة وفواكه من المزرعة",
+              "en": "Farm produce"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "mahalat-al-yavadaoi-laltior-valaalaf",
+      "place": "katzir",
+      "brand": null,
+      "primaryKind": "tractors",
+      "kinds": [
+        "tractors"
+      ],
+      "name": {
+        "he": "מחלאת אל-יעבדאוי ללטיור ואלאעלאף",
+        "ar": "محلات اليعبداوي للطيور والاعلاف",
+        "en": "Mahalat al Yavadaoi Laltior Valaalaf"
+      },
+      "tagline": {
+        "he": "ציוד חקלאי בקציר",
+        "ar": "معدات زراعية في كتسير",
+        "en": "Farm equipment in Katzir"
+      },
+      "address": {
+        "he": "קציר",
+        "ar": "كتسير",
+        "en": "Katzir"
+      },
+      "lat": 32.473637,
+      "lng": 35.0903314,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9947843504"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מחלאת אל-יעבדאוי ללטיור ואלאעלאף",
+          "ar": "محلات اليعبداوي للطيور والاعلاف",
+          "en": "Mahalat al Yavadaoi Laltior Valaalaf"
+        },
+        "title": {
+          "he": "ציוד חקלאי",
+          "ar": "معدات زراعية",
+          "en": "Farm equipment"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "ציוד חקלאי",
+              "ar": "معدات زراعية",
+              "en": "Farm equipment"
+            },
+            "meta": {
+              "he": "אספקה חקלאית",
+              "ar": "لوازم زراعية",
+              "en": "Farm supplies"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "poakha-bav-al-hara",
+      "place": "katzir",
+      "brand": null,
+      "primaryKind": "farm-shops",
+      "kinds": [
+        "farm-shops"
+      ],
+      "name": {
+        "he": "פואכה באב אל-חארה",
+        "ar": "فواكة باب الحارة",
+        "en": "Poakha Bav al Hara"
+      },
+      "tagline": {
+        "he": "תוצרת חקלאית, פירות וירקות בקציר",
+        "ar": "خضرة وفواكه من المزرعة في كتسير",
+        "en": "Farm produce in Katzir"
+      },
+      "address": {
+        "he": "קציר",
+        "ar": "كتسير",
+        "en": "Katzir"
+      },
+      "lat": 32.4762042,
+      "lng": 35.088927,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9919828869"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "פואכה באב אל-חארה",
+          "ar": "فواكة باب الحارة",
+          "en": "Poakha Bav al Hara"
+        },
+        "title": {
+          "he": "תוצרת חקלאית, פירות וירקות",
+          "ar": "خضرة وفواكه من المزرعة",
+          "en": "Farm produce"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "תוצרת חקלאית, פירות וירקות",
+              "ar": "خضرة وفواكه من المزرعة",
+              "en": "Farm produce"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "poakha-vakhachar-al-balad",
+      "place": "katzir",
+      "brand": null,
+      "primaryKind": "farm-shops",
+      "kinds": [
+        "farm-shops"
+      ],
+      "name": {
+        "he": "פואכה וח'צ'אר אל-בלד",
+        "ar": "فواكة وخضار البلد",
+        "en": "Poakha Vakhachar al Balad"
+      },
+      "tagline": {
+        "he": "תוצרת חקלאית, פירות וירקות בקציר",
+        "ar": "خضرة وفواكه من المزرعة في كتسير",
+        "en": "Farm produce in Katzir"
+      },
+      "address": {
+        "he": "קציר",
+        "ar": "كتسير",
+        "en": "Katzir"
+      },
+      "lat": 32.4745757,
+      "lng": 35.0932934,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9922888938"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "פואכה וח'צ'אר אל-בלד",
+          "ar": "فواكة وخضار البلد",
+          "en": "Poakha Vakhachar al Balad"
+        },
+        "title": {
+          "he": "תוצרת חקלאית, פירות וירקות",
+          "ar": "خضرة وفواكه من المزرعة",
+          "en": "Farm produce"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "תוצרת חקלאית, פירות וירקות",
+              "ar": "خضرة وفواكه من المزرعة",
+              "en": "Farm produce"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "the-fruit-and-vegetable-center",
+      "place": "katzir",
+      "brand": null,
+      "primaryKind": "farm-shops",
+      "kinds": [
+        "farm-shops"
+      ],
+      "name": {
+        "he": "מרכז אל-ח'צ'אר ואלפואכה",
+        "ar": "مركز الخضار والفواكة",
+        "en": "The fruit and vegetable center"
+      },
+      "tagline": {
+        "he": "תוצרת חקלאית, פירות וירקות בקציר",
+        "ar": "خضرة وفواكه من المزرعة في كتسير",
+        "en": "Farm produce in Katzir"
+      },
+      "address": {
+        "he": "קציר",
+        "ar": "كتسير",
+        "en": "Katzir"
+      },
+      "lat": 32.4786376,
+      "lng": 35.0852667,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1082308029"
+      },
+      "tier": "basic",
+      "phone": "+972 54-603-8900",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מרכז אל-ח'צ'אר ואלפואכה",
+          "ar": "مركز الخضار والفواكة",
+          "en": "The fruit and vegetable center"
+        },
+        "title": {
+          "he": "תוצרת חקלאית, פירות וירקות",
+          "ar": "خضرة وفواكه من المزرعة",
+          "en": "Farm produce"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "תוצרת חקלאית, פירות וירקות",
+              "ar": "خضرة وفواكه من المزرعة",
+              "en": "Farm produce"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/%D9%85%D8%B1%D9%83%D8%B2-%D8%A7%D9%84%D8%AE%D8%B6%D8%A7%D8%B1-%D9%88%D8%A7%D9%84%D9%81%D9%88%D8%A7%D9%83%D8%A9-101236764718642"
+      },
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "burger-ranch",
+      "place": "kefar-bialik",
+      "brand": null,
+      "primaryKind": "stables",
+      "kinds": [
+        "stables"
+      ],
+      "name": {
+        "he": "בורגראנצ'",
+        "ar": "بورجرانتش",
+        "en": "Burger Ranch"
+      },
+      "tagline": {
+        "he": "חוות סוסים בכפר ביאליק",
+        "ar": "إسطبل خيل في كفار بيالك",
+        "en": "Horse riding in Kefar Bialik"
+      },
+      "address": {
+        "he": "כפר ביאליק",
+        "ar": "كفار بيالك",
+        "en": "Kefar Bialik"
+      },
+      "lat": 32.8112352,
+      "lng": 35.0710299,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9221782710"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "בורגראנצ'",
+          "ar": "بورجرانتش",
+          "en": "Burger Ranch"
+        },
+        "title": {
+          "he": "חוות סוסים",
+          "ar": "إسطبل خيل",
+          "en": "Horse riding"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוות סוסים",
+              "ar": "إسطبل خيل",
+              "en": "Horse riding"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "kiryat-ata-market",
+      "place": "kefar-bialik",
+      "brand": null,
+      "primaryKind": "farmers-markets",
+      "kinds": [
+        "farmers-markets"
+      ],
+      "name": {
+        "he": "שוק קרית אתא",
+        "ar": "سوق كريات آتا",
+        "en": "Kiryat Ata Market"
+      },
+      "tagline": {
+        "he": "שוק בכפר ביאליק",
+        "ar": "سوق في كفار بيالك",
+        "en": "Market in Kefar Bialik"
+      },
+      "address": {
+        "he": "כפר ביאליק",
+        "ar": "كفار بيالك",
+        "en": "Kefar Bialik"
+      },
+      "lat": 32.8050596,
+      "lng": 35.0813569,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/220402049"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "שוק קרית אתא",
+          "ar": "سوق كريات آتا",
+          "en": "Kiryat Ata Market"
+        },
+        "title": {
+          "he": "שוק",
+          "ar": "سوق",
+          "en": "Market"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "שוק",
+              "ar": "سوق",
+              "en": "Market"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "hva-shal-dna",
+      "place": "kefar-hittim",
+      "brand": null,
+      "primaryKind": "stables",
+      "kinds": [
+        "stables"
+      ],
+      "name": {
+        "he": "חווה של דנה",
+        "ar": "حفا شل دنا",
+        "en": "Hva Shal Dna"
+      },
+      "tagline": {
+        "he": "חוות סוסים בכפר חיטים",
+        "ar": "إسطبل خيل في كفار حيطيم",
+        "en": "Horse riding in Kefar Hittim"
+      },
+      "address": {
+        "he": "כפר חיטים",
+        "ar": "كفار حيطيم",
+        "en": "Kefar Hittim"
+      },
+      "lat": 32.7987836,
+      "lng": 35.5051127,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/942637277"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "חווה של דנה",
+          "ar": "حفا شل دنا",
+          "en": "Hva Shal Dna"
+        },
+        "title": {
+          "he": "חוות סוסים",
+          "ar": "إسطبل خيل",
+          "en": "Horse riding"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוות סוסים",
+              "ar": "إسطبل خيل",
+              "en": "Horse riding"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "kiryat-shmonne-municipal-market",
+      "place": "kiryat-shmona",
+      "brand": null,
+      "primaryKind": "farmers-markets",
+      "kinds": [
+        "farmers-markets"
+      ],
+      "name": {
+        "he": "שוק עירוני קרית שמונה",
+        "ar": "سوق عيروني كريات شمونة",
+        "en": "Kiryat Shmonne municipal market"
+      },
+      "tagline": {
+        "he": "שוק בקרית שמונה",
+        "ar": "سوق في كريات شمونة",
+        "en": "Market in Kiryat Shmona"
+      },
+      "address": {
+        "he": "קרית שמונה",
+        "ar": "كريات شمونة",
+        "en": "Kiryat Shmona"
+      },
+      "lat": 33.2133859,
+      "lng": 35.5701575,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/580998191"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "שוק עירוני קרית שמונה",
+          "ar": "سوق عيروني كريات شمونة",
+          "en": "Kiryat Shmonne municipal market"
+        },
+        "title": {
+          "he": "שוק",
+          "ar": "سوق",
+          "en": "Market"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "שוק",
+              "ar": "سوق",
+              "en": "Market"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "taraktoroni-hatzfon",
+      "place": "liman",
+      "brand": null,
+      "primaryKind": "tractors",
+      "kinds": [
+        "tractors"
+      ],
+      "name": {
+        "he": "טרקטורוני הצפון",
+        "ar": "طركطوروني هتسفون",
+        "en": "Taraktoroni Hatzfon"
+      },
+      "tagline": {
+        "he": "ציוד חקלאי בלימן",
+        "ar": "معدات زراعية في ليمان",
+        "en": "Farm equipment in Liman"
+      },
+      "address": {
+        "he": "לימן",
+        "ar": "ليمان",
+        "en": "Liman"
+      },
+      "lat": 33.0504698,
+      "lng": 35.1020574,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9321051356"
+      },
+      "tier": "basic",
+      "phone": "+972 53-247-2584",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "טרקטורוני הצפון",
+          "ar": "طركطوروني هتسفون",
+          "en": "Taraktoroni Hatzfon"
+        },
+        "title": {
+          "he": "ציוד חקלאי",
+          "ar": "معدات زراعية",
+          "en": "Farm equipment"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "ציוד חקלאי",
+              "ar": "معدات زراعية",
+              "en": "Farm equipment"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "rocket",
+      "place": "maayan-tzvi",
+      "brand": null,
+      "primaryKind": "dairy",
+      "kinds": [
+        "dairy"
+      ],
+      "name": {
+        "he": "רוקט",
+        "ar": "روكط",
+        "en": "Rocket"
+      },
+      "tagline": {
+        "he": "מחלבה במעין צבי",
+        "ar": "ألبان في معيان تسڤي",
+        "en": "Dairy in Ma'ayan Tzvi"
+      },
+      "address": {
+        "he": "מעין צבי",
+        "ar": "معيان تسڤي",
+        "en": "Ma'ayan Tzvi"
+      },
+      "lat": 32.5692455,
+      "lng": 34.9332431,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/2910323813"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "רוקט",
+          "ar": "روكط",
+          "en": "Rocket"
+        },
+        "title": {
+          "he": "מחלבה",
+          "ar": "ألبان",
+          "en": "Dairy"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחלבה",
+              "ar": "ألبان",
+              "en": "Dairy"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "burhan-amos-stores-for-agricultural-materials",
+      "place": "magal",
+      "brand": null,
+      "primaryKind": "farm-shops",
+      "kinds": [
+        "farm-shops"
+      ],
+      "name": {
+        "he": "מחלאת ברהאן עמוץ ללמואד אל-זראעיה",
+        "ar": "محلات برهان عموص للمواد الزراعيه",
+        "en": "Burhan Amos stores for agricultural materials"
+      },
+      "tagline": {
+        "he": "תוצרת חקלאית, פירות וירקות במגל",
+        "ar": "خضرة وفواكه من المزرعة في ماغل",
+        "en": "Farm produce in Magal"
+      },
+      "address": {
+        "he": "Attil - Deir Al Ghusun",
+        "ar": "ماغل",
+        "en": "Magal"
+      },
+      "lat": 32.3737075,
+      "lng": 35.0674345,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/7638783585"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מחלאת ברהאן עמוץ ללמואד אל-זראעיה",
+          "ar": "محلات برهان عموص للمواد الزراعيه",
+          "en": "Burhan Amos stores for agricultural materials"
+        },
+        "title": {
+          "he": "תוצרת חקלאית, פירות וירקות",
+          "ar": "خضرة وفواكه من المزرعة",
+          "en": "Farm produce"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "תוצרת חקלאית, פירות וירקות",
+              "ar": "خضرة وفواكه من المزرعة",
+              "en": "Farm produce"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "yafuri-market",
+      "place": "masade",
+      "brand": null,
+      "primaryKind": "farmers-markets",
+      "kinds": [
+        "farmers-markets"
+      ],
+      "name": {
+        "he": "שוק יעפורי",
+        "ar": "سوق يعفوري",
+        "en": "Yafuri Market"
+      },
+      "tagline": {
+        "he": "שוק במסעדה",
+        "ar": "سوق في مسعدة",
+        "en": "Market in Mas'ade"
+      },
+      "address": {
+        "he": "מסעדה",
+        "ar": "مسعدة",
+        "en": "Mas'ade"
+      },
+      "lat": 33.2409373,
+      "lng": 35.7687383,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9467858549"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "שוק יעפורי",
+          "ar": "سوق يعفوري",
+          "en": "Yafuri Market"
+        },
+        "title": {
+          "he": "שוק",
+          "ar": "سوق",
+          "en": "Market"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "שוק",
+              "ar": "سوق",
+              "en": "Market"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "migdal-haemeq-farmers-market",
+      "place": "migdal-haemek",
+      "brand": null,
+      "primaryKind": "farmers-markets",
+      "kinds": [
+        "farmers-markets"
+      ],
+      "name": {
+        "he": "שוק מגדל העמק",
+        "ar": "سوق مجدال هعيمق",
+        "en": "Migdal Haemeq Farmers Market"
+      },
+      "tagline": {
+        "he": "שוק במגדל העמק",
+        "ar": "سوق في مجدال هعيمق",
+        "en": "Market in Migdal HaEmek"
+      },
+      "address": {
+        "he": "מגדל העמק",
+        "ar": "مجدال هعيمق",
+        "en": "Migdal HaEmek"
+      },
+      "lat": 32.6797807,
+      "lng": 35.2377342,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/544390573"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "שוק מגדל העמק",
+          "ar": "سوق مجدال هعيمق",
+          "en": "Migdal Haemeq Farmers Market"
+        },
+        "title": {
+          "he": "שוק",
+          "ar": "سوق",
+          "en": "Market"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "שוק",
+              "ar": "سوق",
+              "en": "Market"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "nitzat-hadoovdevan",
+      "place": "mishmarot",
+      "brand": null,
+      "primaryKind": "farm-shops",
+      "kinds": [
+        "farm-shops"
+      ],
+      "name": {
+        "he": "ניצת הדובדבן",
+        "ar": "نيتست هدوبدبن",
+        "en": "Nitzat Hadoovdevan"
+      },
+      "tagline": {
+        "he": "תוצרת חקלאית, פירות וירקות במשמרות",
+        "ar": "خضرة وفواكه من المزرعة في مشمروت",
+        "en": "Farm produce in Mishmarot"
+      },
+      "address": {
+        "he": "משמרות",
+        "ar": "مشمروت",
+        "en": "Mishmarot"
+      },
+      "lat": 32.4891272,
+      "lng": 34.9700345,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/3320712895"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "ניצת הדובדבן",
+          "ar": "نيتست هدوبدبن",
+          "en": "Nitzat Hadoovdevan"
+        },
+        "title": {
+          "he": "תוצרת חקלאית, פירות וירקות",
+          "ar": "خضرة وفواكه من المزرعة",
+          "en": "Farm produce"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "תוצרת חקלאית, פירות וירקות",
+              "ar": "خضرة وفواكه من المزرعة",
+              "en": "Farm produce"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "mazara-jamal-sliman-al-hditha-lalvich",
+      "place": "mitzpe-ilan",
+      "brand": null,
+      "primaryKind": "farm-shops",
+      "kinds": [
+        "farm-shops"
+      ],
+      "name": {
+        "he": "מזארע ג'מאל סלימאן אל-חדית'ה ללביצ'",
+        "ar": "مزارع جمال سليمان الحديثة للبيض",
+        "en": "Mazara Jamal Sliman al Hditha Lalvich"
+      },
+      "tagline": {
+        "he": "תוצרת חקלאית, פירות וירקות במצפה אילן",
+        "ar": "خضرة وفواكه من المزرعة في متسبي ايلان",
+        "en": "Farm produce in Mitzpe Ilan"
+      },
+      "address": {
+        "he": "מצפה אילן",
+        "ar": "متسبي ايلان",
+        "en": "Mitzpe Ilan"
+      },
+      "lat": 32.4681354,
+      "lng": 35.0878678,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/9929292642"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מזארע ג'מאל סלימאן אל-חדית'ה ללביצ'",
+          "ar": "مزارع جمال سليمان الحديثة للبيض",
+          "en": "Mazara Jamal Sliman al Hditha Lalvich"
+        },
+        "title": {
+          "he": "תוצרת חקלאית, פירות וירקות",
+          "ar": "خضرة وفواكه من المزرعة",
+          "en": "Farm produce"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "תוצרת חקלאית, פירות וירקות",
+              "ar": "خضرة وفواكه من المزرعة",
+              "en": "Farm produce"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "neomi-farm",
+      "place": "nattoor",
+      "brand": null,
+      "primaryKind": "dairy",
+      "kinds": [
+        "dairy"
+      ],
+      "name": {
+        "he": "משק נעמי",
+        "ar": "مشك نعمي",
+        "en": "Ne'omi farm"
+      },
+      "tagline": {
+        "he": "מחלבה בנטור",
+        "ar": "ألبان في نطور",
+        "en": "Dairy in Nattoor"
+      },
+      "address": {
+        "he": "נטור",
+        "ar": "نطور",
+        "en": "Nattoor"
+      },
+      "lat": 32.8538811,
+      "lng": 35.7533415,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "07:00",
+              "close": "14:00"
+            },
+            {
+              "open": "16:00",
+              "close": "19:00"
+            }
+          ],
+          "1": [
+            {
+              "open": "07:00",
+              "close": "14:00"
+            },
+            {
+              "open": "16:00",
+              "close": "19:00"
+            }
+          ],
+          "2": [
+            {
+              "open": "07:00",
+              "close": "14:00"
+            },
+            {
+              "open": "16:00",
+              "close": "19:00"
+            }
+          ],
+          "3": [
+            {
+              "open": "07:00",
+              "close": "14:00"
+            },
+            {
+              "open": "16:00",
+              "close": "19:00"
+            }
+          ],
+          "4": [
+            {
+              "open": "07:00",
+              "close": "14:00"
+            },
+            {
+              "open": "16:00",
+              "close": "19:00"
+            }
+          ],
+          "5": [
+            {
+              "open": "07:00",
+              "close": "14:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/4244047175"
+      },
+      "tier": "basic",
+      "phone": "+972 50-302-0454",
+      "whatsapp": null,
+      "website": "http://www.mesheknomi.co.il/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "משק נעמי",
+          "ar": "مشك نعمي",
+          "en": "Ne'omi farm"
+        },
+        "title": {
+          "he": "מחלבה",
+          "ar": "ألبان",
+          "en": "Dairy"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחלבה",
+              "ar": "ألبان",
+              "en": "Dairy"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://www.facebook.com/mesheknaomi/"
+      },
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "matajar-toaval-al-bavor",
+      "place": "nazareth",
+      "brand": null,
+      "primaryKind": "tractors",
+      "kinds": [
+        "tractors"
+      ],
+      "name": {
+        "he": "מתג'ר תואבל אל-באבור",
+        "ar": "متجر توابل البابور",
+        "en": "Matajar Toaval al Bavor"
+      },
+      "tagline": {
+        "he": "ציוד חקלאי בנצרת",
+        "ar": "معدات زراعية في الناصرة",
+        "en": "Farm equipment in Nazareth"
+      },
+      "address": {
+        "he": "6101",
+        "ar": "الناصرة",
+        "en": "Nazareth"
+      },
+      "lat": 32.7045294,
+      "lng": 35.2997032,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/5351692096"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מתג'ר תואבל אל-באבור",
+          "ar": "متجر توابل البابور",
+          "en": "Matajar Toaval al Bavor"
+        },
+        "title": {
+          "he": "ציוד חקלאי",
+          "ar": "معدات زراعية",
+          "en": "Farm equipment"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "ציוד חקלאי",
+              "ar": "معدات زراعية",
+              "en": "Farm equipment"
+            },
+            "meta": {
+              "he": "אספקה חקלאית",
+              "ar": "لوازم زراعية",
+              "en": "Farm supplies"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "nof-hagalil-market",
+      "place": "nazareth",
+      "brand": null,
+      "primaryKind": "farmers-markets",
+      "kinds": [
+        "farmers-markets"
+      ],
+      "name": {
+        "he": "שוק נוף הגליל",
+        "ar": "سوق نوف هجليل",
+        "en": "Nof HaGalil Market"
+      },
+      "tagline": {
+        "he": "שוק בנצרת",
+        "ar": "سوق في الناصرة",
+        "en": "Market in Nazareth"
+      },
+      "address": {
+        "he": "נצרת",
+        "ar": "الناصرة",
+        "en": "Nazareth"
+      },
+      "lat": 32.6946635,
+      "lng": 35.3066757,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/622863905"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "שוק נוף הגליל",
+          "ar": "سوق نوف هجليل",
+          "en": "Nof HaGalil Market"
+        },
+        "title": {
+          "he": "שוק",
+          "ar": "سوق",
+          "en": "Market"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "שוק",
+              "ar": "سوق",
+              "en": "Market"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "yarkonit-hakhikhar",
+      "place": "nesher",
+      "brand": null,
+      "primaryKind": "farm-shops",
+      "kinds": [
+        "farm-shops"
+      ],
+      "name": {
+        "he": "ירקונית הכיכר",
+        "ar": "يركونيت هكيكر",
+        "en": "Yarkonit Hakhikhar"
+      },
+      "tagline": {
+        "he": "תוצרת חקלאית, פירות וירקות בנשר",
+        "ar": "خضرة وفواكه من المزرعة في نيشر",
+        "en": "Farm produce in Nesher"
+      },
+      "address": {
+        "he": "נשר",
+        "ar": "نيشر",
+        "en": "Nesher"
+      },
+      "lat": 32.7851136,
+      "lng": 35.0182646,
+      "hours": {
+        "weekly": {
+          "0": [
+            {
+              "open": "09:00",
+              "close": "18:30"
+            }
+          ],
+          "1": [
+            {
+              "open": "09:00",
+              "close": "18:30"
+            }
+          ],
+          "2": [
+            {
+              "open": "09:00",
+              "close": "18:30"
+            }
+          ],
+          "3": [
+            {
+              "open": "09:00",
+              "close": "18:30"
+            }
+          ],
+          "4": [
+            {
+              "open": "09:00",
+              "close": "18:30"
+            }
+          ],
+          "5": [
+            {
+              "open": "09:00",
+              "close": "18:30"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/13953450537",
+        "wheelchair": true
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "ירקונית הכיכר",
+          "ar": "يركونيت هكيكر",
+          "en": "Yarkonit Hakhikhar"
+        },
+        "title": {
+          "he": "תוצרת חקלאית, פירות וירקות",
+          "ar": "خضرة وفواكه من المزرعة",
+          "en": "Farm produce"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "תוצרת חקלאית, פירות וירקות",
+              "ar": "خضرة وفواكه من المزرعة",
+              "en": "Farm produce"
+            }
+          },
+          {
+            "label": {
+              "he": "נגיש לכיסא גלגלים",
+              "ar": "مناسب للكراسي المتحركة",
+              "en": "Wheelchair accessible"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "amir",
+      "place": "newe-avot",
+      "brand": null,
+      "primaryKind": "tractors",
+      "kinds": [
+        "tractors"
+      ],
+      "name": {
+        "he": "עמיר",
+        "ar": "عمير",
+        "en": "Amir"
+      },
+      "tagline": {
+        "he": "ציוד חקלאי בנווה אבות",
+        "ar": "معدات زراعية في نڤيه أڤوت",
+        "en": "Farm equipment in Newe Avot"
+      },
+      "address": {
+        "he": "נווה אבות",
+        "ar": "نڤيه أڤوت",
+        "en": "Newe Avot"
+      },
+      "lat": 32.5473257,
+      "lng": 34.9573268,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/4417182977"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "עמיר",
+          "ar": "عمير",
+          "en": "Amir"
+        },
+        "title": {
+          "he": "ציוד חקלאי",
+          "ar": "معدات زراعية",
+          "en": "Farm equipment"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "ציוד חקלאי",
+              "ar": "معدات زراعية",
+              "en": "Farm equipment"
+            },
+            "meta": {
+              "he": "אספקה חקלאית",
+              "ar": "لوازم زراعية",
+              "en": "Farm supplies"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "hashomron-dairy",
+      "place": "newe-avot",
+      "brand": null,
+      "primaryKind": "dairy",
+      "kinds": [
+        "dairy"
+      ],
+      "name": {
+        "he": "מחלבת השומרון",
+        "ar": "محلبت هشومرون",
+        "en": "Hashomron Dairy"
+      },
+      "tagline": {
+        "he": "מחלבה בנווה אבות",
+        "ar": "ألبان في نڤيه أڤوت",
+        "en": "Dairy in Newe Avot"
+      },
+      "address": {
+        "he": "נווה אבות",
+        "ar": "نڤيه أڤوت",
+        "en": "Newe Avot"
+      },
+      "lat": 32.52288,
+      "lng": 34.9524155,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/4375437918"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מחלבת השומרון",
+          "ar": "محلبت هشومرون",
+          "en": "Hashomron Dairy"
+        },
+        "title": {
+          "he": "מחלבה",
+          "ar": "ألبان",
+          "en": "Dairy"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחלבה",
+              "ar": "ألبان",
+              "en": "Dairy"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "nir-david-ranch",
+      "place": "nir-dawid-tel-amal",
+      "brand": null,
+      "primaryKind": "stables",
+      "kinds": [
+        "stables"
+      ],
+      "name": {
+        "he": "ביה\"ס לרכיבה ניר דוד",
+        "ar": "بيهس لركيبا نير دافيد",
+        "en": "Nir-David ranch"
+      },
+      "tagline": {
+        "he": "חוות סוסים בניר דוד",
+        "ar": "إسطبل خيل في نير داڤيد",
+        "en": "Horse riding in Nir Dawid"
+      },
+      "address": {
+        "he": "ניר דוד (תל עמל)",
+        "ar": "نير داڤيد (تل عمال)",
+        "en": "Nir Dawid (Tel Amal)"
+      },
+      "lat": 32.5029973,
+      "lng": 35.4593699,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/4380905536"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "ביה\"ס לרכיבה ניר דוד",
+          "ar": "بيهس لركيبا نير دافيد",
+          "en": "Nir-David ranch"
+        },
+        "title": {
+          "he": "חוות סוסים",
+          "ar": "إسطبل خيل",
+          "en": "Horse riding"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוות סוסים",
+              "ar": "إسطبل خيل",
+              "en": "Horse riding"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "dubis-ranch",
+      "place": "ramot-menashe",
+      "brand": null,
+      "primaryKind": "stables",
+      "kinds": [
+        "stables"
+      ],
+      "name": {
+        "he": "חוות דובי",
+        "ar": "مزرعة دوبي",
+        "en": "Dubi's ranch"
+      },
+      "tagline": {
+        "he": "חוות סוסים ברמות מנשה",
+        "ar": "إسطبل خيل في رموت منشيه",
+        "en": "Horse riding in Ramot Menashe"
+      },
+      "address": {
+        "he": "רמות מנשה",
+        "ar": "رموت منشيه",
+        "en": "Ramot Menashe"
+      },
+      "lat": 32.5958633,
+      "lng": 35.0584259,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/4466681520"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": "https://www.dubiranch.co.il/",
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "חוות דובי",
+          "ar": "مزرعة دوبي",
+          "en": "Dubi's ranch"
+        },
+        "title": {
+          "he": "חוות סוסים",
+          "ar": "إسطبل خيل",
+          "en": "Horse riding"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "חוות סוסים",
+              "ar": "إسطبل خيل",
+              "en": "Horse riding"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "shapso-cheese-gvinot-shavso",
+      "place": "reihania",
+      "brand": null,
+      "primaryKind": "dairy",
+      "kinds": [
+        "dairy"
+      ],
+      "name": {
+        "he": "Shapso Cheese (גבינות שבסו)",
+        "ar": "Shapso Cheese جبينوت شبسو",
+        "en": "Shapso Cheese Gvinot Shavso"
+      },
+      "tagline": {
+        "he": "מחלבה בריחאניה",
+        "ar": "ألبان في الريحانية",
+        "en": "Dairy in Reihania"
+      },
+      "address": {
+        "he": "ריחאניה",
+        "ar": "الريحانية",
+        "en": "Reihania"
+      },
+      "lat": 33.051867,
+      "lng": 35.4885606,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1358070128"
+      },
+      "tier": "basic",
+      "phone": "+972 50-426-8843",
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "Shapso Cheese (גבינות שבסו)",
+          "ar": "Shapso Cheese جبينوت شبسو",
+          "en": "Shapso Cheese Gvinot Shavso"
+        },
+        "title": {
+          "he": "מחלבה",
+          "ar": "ألبان",
+          "en": "Dairy"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחלבה",
+              "ar": "ألبان",
+              "en": "Dairy"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "kadosh-dairy",
+      "place": "safed",
+      "brand": null,
+      "primaryKind": "dairy",
+      "kinds": [
+        "dairy"
+      ],
+      "name": {
+        "he": "מחלבת קדוש",
+        "ar": "محلبت كدوش",
+        "en": "Kadosh Dairy"
+      },
+      "tagline": {
+        "he": "מחלבה בצפת",
+        "ar": "ألبان في صفد",
+        "en": "Dairy in Safed"
+      },
+      "address": {
+        "he": "צפת",
+        "ar": "صفد",
+        "en": "Safed"
+      },
+      "lat": 32.9691694,
+      "lng": 35.4905999,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/4122932140"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "מחלבת קדוש",
+          "ar": "محلبت كدوش",
+          "en": "Kadosh Dairy"
+        },
+        "title": {
+          "he": "מחלבה",
+          "ar": "ألبان",
+          "en": "Dairy"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "מחלבה",
+              "ar": "ألبان",
+              "en": "Dairy"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "municipal-market",
+      "place": "safed",
+      "brand": null,
+      "primaryKind": "farmers-markets",
+      "kinds": [
+        "farmers-markets"
+      ],
+      "name": {
+        "he": "שוק עירוני",
+        "ar": "سوق عيروني",
+        "en": "Municipal market"
+      },
+      "tagline": {
+        "he": "שוק בצפת",
+        "ar": "سوق في صفد",
+        "en": "Market in Safed"
+      },
+      "address": {
+        "he": "צפת",
+        "ar": "صفد",
+        "en": "Safed"
+      },
+      "lat": 32.9680517,
+      "lng": 35.4981879,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/4965640485"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "שוק עירוני",
+          "ar": "سوق عيروني",
+          "en": "Municipal market"
+        },
+        "title": {
+          "he": "שוק",
+          "ar": "سوق",
+          "en": "Market"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "שוק",
+              "ar": "سوق",
+              "en": "Market"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "food-market",
+      "place": "tiberias",
+      "brand": null,
+      "primaryKind": "farmers-markets",
+      "kinds": [
+        "farmers-markets"
+      ],
+      "name": {
+        "he": "Food market",
+        "ar": "Food market",
+        "en": "Food market"
+      },
+      "tagline": {
+        "he": "שוק בטבריה",
+        "ar": "سوق في طبريا",
+        "en": "Market in Tiberias"
+      },
+      "address": {
+        "he": "טבריה",
+        "ar": "طبريا",
+        "en": "Tiberias"
+      },
+      "lat": 32.7857471,
+      "lng": 35.5393049,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/1103886620"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "Food market",
+          "ar": "Food market",
+          "en": "Food market"
+        },
+        "title": {
+          "he": "שוק",
+          "ar": "سوق",
+          "en": "Market"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "שוק",
+              "ar": "سوق",
+              "en": "Market"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "haikhrim-market",
+      "place": "yesud-hamaala",
+      "brand": null,
+      "primaryKind": "farmers-markets",
+      "kinds": [
+        "farmers-markets"
+      ],
+      "name": {
+        "he": "שוק האיכרים",
+        "ar": "سوق هايكريم",
+        "en": "Haikhrim Market"
+      },
+      "tagline": {
+        "he": "שוק ביסוד המעלה",
+        "ar": "سوق في يسود حمعالا",
+        "en": "Market in Yesud HaMaala"
+      },
+      "address": {
+        "he": "התעשייה 2",
+        "ar": "يسود حمعالا",
+        "en": "Yesud HaMaala"
+      },
+      "lat": 33.0632089,
+      "lng": 35.6087628,
+      "hours": {
+        "weekly": {
+          "5": [
+            {
+              "open": "09:00",
+              "close": "15:00"
+            }
+          ]
+        },
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/6531659524"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "שוק האיכרים",
+          "ar": "سوق هايكريم",
+          "en": "Haikhrim Market"
+        },
+        "title": {
+          "he": "שוק",
+          "ar": "سوق",
+          "en": "Market"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "שוק",
+              "ar": "سوق",
+              "en": "Market"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {
+        "facebook": "https://m.facebook.com/pages/category/Local-Business/%D7%A9%D7%95%D7%A7-%D7%97%D7%A7%D7%9C%D7%90%D7%99-%D7%99%D7%A1%D7%95%D7%93-%D7%94%D7%9E%D7%A2%D7%9C%D7%94-448573328830812"
+      },
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "health-and-nature-store",
+      "place": "yokneam-ilit",
+      "brand": null,
+      "primaryKind": "farm-shops",
+      "kinds": [
+        "farm-shops"
+      ],
+      "name": {
+        "he": "בית הבריאות והטבע",
+        "ar": "بيت هبرياوت وهطبع",
+        "en": "Health and nature store"
+      },
+      "tagline": {
+        "he": "תוצרת חקלאית, פירות וירקות ביקנעם עילית",
+        "ar": "خضرة وفواكه من المزرعة في يوكنعام عيليت",
+        "en": "Farm produce in Yokneam Ilit"
+      },
+      "address": {
+        "he": "יקנעם עילית",
+        "ar": "يوكنعام عيليت",
+        "en": "Yokneam Ilit"
+      },
+      "lat": 32.6553406,
+      "lng": 35.1049131,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "node/1431830610"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "בית הבריאות והטבע",
+          "ar": "بيت هبرياوت وهطبع",
+          "en": "Health and nature store"
+        },
+        "title": {
+          "he": "תוצרת חקלאית, פירות וירקות",
+          "ar": "خضرة وفواكه من المزرعة",
+          "en": "Farm produce"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "תוצרת חקלאית, פירות וירקות",
+              "ar": "خضرة وفواكه من المزرعة",
+              "en": "Farm produce"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#9FB86A"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#9fb86a",
+        "icons": "solid"
+      }
+    }
+  ]
+}
