@@ -76,18 +76,6 @@ export const en = {
   sheetPeek: "small",
   sheetHalf: "half",
   sheetFull: "full",
-  nearYou: "Near you",
-  nearYouAt: "Near you · {place}",
-  nearYouLead: "Businesses around where you are standing, the closest first.",
-  nearYouAsk:
-    "Share your location once and Darb shows the businesses closest to you. We never save it.",
-  useMyLocation: "Use my location",
-  nearYouDenied:
-    "Location is off, so Darb can't see where you are. You can browse by place instead.",
-  browsePlaces: "Browse places",
-  nearYouEmpty: "No businesses near you on Darb yet.",
-  hereMarker: "You are here",
-  nearYouMap: "Map of businesses near you",
   locating: "Finding you…",
   locationDenied: "Location is off. Pick a place from the list instead.",
   notFoundTitle: "This path leads nowhere yet",

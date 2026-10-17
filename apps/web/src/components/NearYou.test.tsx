@@ -16,8 +16,8 @@ const { NearYou } = await import("./NearYou");
 const { positionGranted } = await import("@/lib/live-position");
 
 const labels = {
-  nearYou: "Near you",
-  nearYouAt: "Near you · {place}",
+  title: "Near you",
+  titleAt: "Near you · {place}",
   lead: "Businesses around where you are standing, the closest first.",
   ask: "Share your location once.",
   useMyLocation: "Use my location",

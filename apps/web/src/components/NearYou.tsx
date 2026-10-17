@@ -12,6 +12,7 @@ import {
   snapshot,
   subscribe,
 } from "@/lib/live-position";
+import type { NearCopy } from "@/content/near";
 import type { BusinessRowData } from "@/lib/rows";
 import { REDUCED_MOTION, useMedia } from "@/lib/use-media";
 import type { NearMap } from "@/stage/near-map";
@@ -19,23 +20,12 @@ import { BusinessRow, type RowLabels } from "./BusinessRow";
 import list from "./List.module.css";
 import styles from "./NearYou.module.css";
 
-export interface NearYouLabels {
-  nearYou: string;
-  /** "Near you · {place}". */
-  nearYouAt: string;
-  lead: string;
-  ask: string;
-  useMyLocation: string;
+export interface NearYouLabels extends NearCopy {
   locating: string;
-  denied: string;
-  browsePlaces: string;
-  empty: string;
   unreachable: string;
   retry: string;
   showMore: string;
   businesses: string;
-  hereMarker: string;
-  map: string;
   mapData: string;
   rows: RowLabels;
 }
@@ -247,7 +237,7 @@ export function NearYou({ locale, placesHref, labels }: NearYouProps) {
     }
   }, [rows, status, mapState]);
 
-  const title = place ? labels.nearYouAt.replace("{place}", place) : labels.nearYou;
+  const title = place ? labels.titleAt.replace("{place}", place) : labels.title;
   const listed = status === "ready" || (status === "loading" && rows.length > 0);
 
   return (

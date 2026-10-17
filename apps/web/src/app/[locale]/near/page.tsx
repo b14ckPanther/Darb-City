@@ -4,6 +4,7 @@ import { rowLabels } from "@/components/BusinessList";
 import { CityBar } from "@/components/CityBar";
 import { Footer } from "@/components/Footer";
 import { NearYou } from "@/components/NearYou";
+import { near } from "@/content/near";
 import { crumbsFor } from "@/lib/crumbs";
 import { localeOrNotFound } from "@/lib/levels";
 import { pageMetadata } from "@/lib/metadata";
@@ -21,8 +22,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ...pageMetadata({
       locale,
       segments: paths.near(),
-      title: t(locale, "nearYou"),
-      description: t(locale, "nearYouLead"),
+      title: near[locale].title,
+      description: near[locale].lead,
     }),
     // A different list for every visitor: nothing here for a search engine.
     robots: { index: false },
@@ -35,12 +36,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
  */
 export default async function NearPage({ params }: Props) {
   const locale = localeOrNotFound((await params).locale);
+  const copy = near[locale];
   return (
     <>
       <CityBar
         locale={locale}
         crumbs={crumbsFor(locale, {
-          page: { label: t(locale, "nearYou"), href: href(locale, paths.near()) },
+          page: { label: copy.title, href: href(locale, paths.near()) },
         })}
         segments={paths.near()}
       />
@@ -49,21 +51,12 @@ export default async function NearPage({ params }: Props) {
           locale={locale}
           placesHref={href(locale, paths.explore())}
           labels={{
-            nearYou: t(locale, "nearYou"),
-            nearYouAt: t(locale, "nearYouAt"),
-            lead: t(locale, "nearYouLead"),
-            ask: t(locale, "nearYouAsk"),
-            useMyLocation: t(locale, "useMyLocation"),
+            ...copy,
             locating: t(locale, "locating"),
-            denied: t(locale, "nearYouDenied"),
-            browsePlaces: t(locale, "browsePlaces"),
-            empty: t(locale, "nearYouEmpty"),
             unreachable: t(locale, "unreachable"),
             retry: t(locale, "retry"),
             showMore: t(locale, "showMore"),
             businesses: t(locale, "businesses"),
-            hereMarker: t(locale, "hereMarker"),
-            map: t(locale, "nearYouMap"),
             mapData: t(locale, "mapData"),
             rows: rowLabels(locale),
           }}

@@ -4,9 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { Locale } from "@darb/core";
-import { hereFrom, keepHere, PRECISE } from "@/lib/here";
 import { positionGranted } from "@/lib/live-position";
-import { href, paths } from "@/lib/routes";
 import styles from "./NearMe.module.css";
 
 export interface NearMeProps {
@@ -15,6 +13,8 @@ export interface NearMeProps {
   kind?: string;
   /** Where "pick a place" sends people when location is off. */
   homeHref: string;
+  /** The header button: the /near page in this locale (from the server, so no route code ships). */
+  nearHref?: string;
   labels: { nearMe: string; locating: string; denied: string };
 }
 
@@ -62,7 +62,7 @@ async function nearestPlace(payload: {
   return (await res.json()) as { href: string; name?: string };
 }
 
-export function NearMe({ locale, kind, homeHref, labels }: NearMeProps) {
+export function NearMe({ locale, kind, homeHref, nearHref, labels }: NearMeProps) {
   const router = useRouter();
   const pathname = usePathname();
   const [state, setState] = useState<"idle" | "locating" | "denied">("idle");
@@ -77,12 +77,13 @@ export function NearMe({ locale, kind, homeHref, labels }: NearMeProps) {
   }, [kind, locale]);
 
   /** The header button: a precise fix, kept in this tab only, then the businesses around it. */
-  function goNear(position: GeolocationPosition) {
+  async function goNear(position: GeolocationPosition) {
+    // Loaded on the tap: every page carries this button, few press it.
+    const { hereFrom, keepHere } = await import("@/lib/here");
     const here = hereFrom(position);
     positionGranted({ lat: here.lat, lng: here.lng });
     keepHere(here);
-    const target = href(locale, paths.near());
-    if (target !== pathname) router.push(target);
+    if (nearHref && nearHref !== pathname) router.push(nearHref);
     setState("idle");
     // The label only: the place the visitor is in. The page lists businesses on its own.
     void nearestPlace({ locale, lat: here.lat, lng: here.lng })
@@ -116,9 +117,12 @@ export function NearMe({ locale, kind, homeHref, labels }: NearMeProps) {
     }
     setState("locating");
     navigator.geolocation.getCurrentPosition(
-      (position) => (kind ? void goToKind(position, kind) : goNear(position)),
+      (position) => void (kind ? goToKind(position, kind) : goNear(position)),
       () => setState("denied"),
-      kind ? { timeout: 10_000, maximumAge: 600_000 } : PRECISE,
+      // The header button wants where the visitor stands now, not a cached town-level guess.
+      kind
+        ? { timeout: 10_000, maximumAge: 600_000 }
+        : { enableHighAccuracy: true, maximumAge: 15_000, timeout: 15_000 },
     );
   }
 

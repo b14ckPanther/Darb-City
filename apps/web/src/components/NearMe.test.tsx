@@ -37,7 +37,7 @@ beforeEach(() => {
 it("asks for a precise fix only when tapped, keeps it in this tab and opens /near", async () => {
   stubLocation("granted");
   vi.stubGlobal("fetch", vi.fn().mockResolvedValue(Response.json({ href: "/arraba" })));
-  render(<NearMe locale="ar" homeHref="/ar" labels={labels} />);
+  render(<NearMe locale="ar" homeHref="/ar" nearHref="/ar/near" labels={labels} />);
   expect(fetch).not.toHaveBeenCalled();
   expect(getCurrentPosition).not.toHaveBeenCalled();
   fireEvent.click(screen.getByRole("button", { name: "Near me" }));
@@ -67,7 +67,7 @@ it("asks for a precise fix only when tapped, keeps it in this tab and opens /nea
 it("still opens /near when the place name cannot be found", async () => {
   stubLocation("granted");
   vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(null, { status: 503 })));
-  render(<NearMe locale="he" homeHref="/" labels={labels} />);
+  render(<NearMe locale="he" homeHref="/" nearHref="/near" labels={labels} />);
   fireEvent.click(screen.getByRole("button", { name: "Near me" }));
   await waitFor(() => expect(push).toHaveBeenCalledWith("/near"));
   await waitFor(() => expect(fetch).toHaveBeenCalled());
@@ -104,11 +104,11 @@ it("names the place it found and remembers it on this device", async () => {
     "fetch",
     vi.fn().mockResolvedValue(Response.json({ href: "/haifa", name: "חיפה" })),
   );
-  const { unmount } = render(<NearMe locale="he" homeHref="/" labels={labels} />);
+  const { unmount } = render(<NearMe locale="he" homeHref="/" nearHref="/near" labels={labels} />);
   fireEvent.click(screen.getByRole("button", { name: "Near me" }));
   await waitFor(() => expect(screen.getByRole("button", { name: "Near me: חיפה" })).toBeTruthy());
   expect(push).toHaveBeenCalledWith("/near");
   unmount();
-  render(<NearMe locale="he" homeHref="/" labels={labels} />);
+  render(<NearMe locale="he" homeHref="/" nearHref="/near" labels={labels} />);
   await waitFor(() => expect(screen.getByText("חיפה")).toBeTruthy());
 });

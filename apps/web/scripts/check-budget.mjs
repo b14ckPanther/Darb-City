@@ -37,6 +37,8 @@ const ROUTES = [
   "/[locale]/search/page",
   // The join form is a phone's first Darb page for many owners: the card form loads after it.
   "/[locale]/join/page",
+  // The header's near me lands here; its map loads only once there is a point.
+  "/[locale]/near/page",
 ];
 
 const build = JSON.parse(readFileSync(join(NEXT, "build-manifest.json"), "utf8"));
