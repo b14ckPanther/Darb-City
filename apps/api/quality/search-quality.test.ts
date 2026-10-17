@@ -137,9 +137,21 @@ async function check(on: INestApplication, c: RecordedCase): Promise<string | nu
   const top = (res.body.items ?? []).slice(0, 3) as {
     primaryKindId: string;
     placeSlug: string;
+    slug: string;
+    dietary: string[];
+    matched?: { label: Record<string, string> };
   }[];
   const root = placePath.get(c.expect.place ?? "");
   if (!root || !c.expect.kind) throw new Error(`${c.locale} "${c.query}": unknown place or kind`);
+  // Deep search: the exact business first, safe for the diet asked, showing the asked thing.
+  const first = top[0];
+  const said = `${c.locale} "${c.query}" (${res.body.lane})`;
+  if (c.expect.first && `${first?.placeSlug}/${first?.slug}` !== c.expect.first)
+    return `${said}: wanted ${c.expect.first} first, got ${first ? `${first.placeSlug}/${first.slug}` : "nothing"}`;
+  if (c.expect.firstHas && !first?.dietary.includes(c.expect.firstHas))
+    return `${said}: the first result is not ${c.expect.firstHas}`;
+  if (c.expect.matched && !(first?.matched?.label[c.locale] ?? "").includes(c.expect.matched))
+    return `${said}: the first result does not show "${c.expect.matched}" as its match`;
   const hit = top.some(
     (b) =>
       kindSlug.get(b.primaryKindId) === c.expect.kind &&
@@ -150,6 +162,25 @@ async function check(on: INestApplication, c: RecordedCase): Promise<string | nu
     : `${c.locale} "${c.query}" (${res.body.lane}): wanted ${c.expect.kind} in ${c.expect.place}, got ` +
         top.map((b) => `${kindSlug.get(b.primaryKindId)}@${b.placeSlug}`).join(", ");
 }
+
+it("puts a gluten-free kitchen first for every gluten-free case, with the model on or off", async () => {
+  const cases = CASES.filter((c) => c.expect.firstHas === "gluten_free");
+  expect(cases.length).toBeGreaterThanOrEqual(4);
+  const failures: string[] = [];
+  for (const on of [app, offApp])
+    for (const c of cases) {
+      const res = await request(on.getHttpServer())
+        .post("/search")
+        .send({ q: c.query, locale: c.locale });
+      // Never a place that is not gluten free, anywhere in the list.
+      const unsafe = (res.body.items as { slug: string; dietary: string[] }[])
+        .filter((b) => !b.dietary.includes("gluten_free"))
+        .map((b) => b.slug);
+      if (res.body.items.length === 0) failures.push(`${c.query}: nothing`);
+      if (unsafe.length) failures.push(`${c.query}: ${unsafe.join(", ")}`);
+    }
+  expect(failures).toEqual([]);
+});
 
 it("has model-only cases that lane 1 alone cannot answer, in every language", async () => {
   const modelOnly = CASES.filter((c) => c.expect.modelOnly);
