@@ -28,22 +28,62 @@
   block-size: 100%;
 }
 
+/*
+ * The sunlit map set into the night UI like a lit window: the night closes in on rounded corners,
+ * a hairline of gold traces the edge and a faint shade settles around the inside. Above the map,
+ * under its attribution; it never takes a tap.
+ */
+.host::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  inset-block-start: var(--stage-top, 0px);
+  z-index: 2;
+  pointer-events: none;
+  border-end-start-radius: var(--radius-l);
+  border-end-end-radius: var(--radius-l);
+  box-shadow:
+    0 0 0 120px var(--night),
+    inset 0 0 0 1px rgb(217 165 76 / 0.28),
+    inset 0 0 56px rgb(3 17 12 / 0.2),
+    inset 0 10px 24px -12px rgb(3 17 12 / 0.45);
+}
+
+@media (min-width: 900px) {
+  .host::after {
+    inset-block-start: calc(var(--stage-top, 0px) + var(--space-2));
+    inset-inline-start: var(--space-3);
+    inset-inline-end: var(--space-3);
+    inset-block-end: var(--space-3);
+    border-radius: var(--radius-l);
+  }
+}
+
 .attribution {
   position: absolute;
-  inset-block-end: var(--space-2);
+  z-index: 3;
+  inset-block-end: var(--space-3);
   /* The stage's inline start, beside the list: the desktop sheet covers its inline end. */
-  inset-inline-start: var(--space-3);
+  inset-inline-start: var(--space-5);
   margin: 0;
-  padding: 2px var(--space-2);
-  border-radius: var(--radius-s);
-  background: rgb(3 17 12 / 0.75);
-  color: var(--text-muted);
+  padding: 2px var(--space-3);
+  border-radius: var(--radius-pill);
+  background: rgb(251 247 236 / 0.82);
+  box-shadow: 0 1px 2px rgb(3 17 12 / 0.12);
+  color: #3d5247;
   font-size: 0.75rem;
   line-height: 1.5;
 }
 
 .attribution a {
-  color: var(--text-soft);
+  color: #173326;
+}
+
+@media (min-width: 900px) {
+  .attribution {
+    inset-block-end: calc(var(--space-3) + var(--space-3));
+    inset-inline-start: calc(var(--space-3) + var(--space-4));
+  }
 }
 
 /* Phone only: Map ⇄ List, centred above the docked search bar (StageMount.module.css --stage-bottom). */

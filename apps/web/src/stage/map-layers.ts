@@ -1,5 +1,5 @@
 import type { LayerSpecification } from "maplibre-gl";
-import { colors } from "@darb/tokens";
+import { colors, mapColors } from "@darb/tokens";
 
 export const CITY_SOURCE = "darb-city";
 export const PIN_SOURCE = "darb-pins";
@@ -32,10 +32,11 @@ export function darbLayers(): LayerSpecification[] {
       paint: {
         // Logarithmic, so a city of thousands never swallows its neighbours.
         "circle-radius": ["+", 12, ["*", 3.2, ["ln", ["+", 1, ["get", "count"]]]]],
-        "circle-color": colors.forest900,
-        "circle-opacity": 0.92,
+        // Forest on the sunlit land, ringed in gold.
+        "circle-color": mapColors.bubble,
+        "circle-opacity": 0.95,
         "circle-stroke-color": colors.gold,
-        "circle-stroke-width": 1.5,
+        "circle-stroke-width": 2,
       },
     },
     {
@@ -49,7 +50,7 @@ export function darbLayers(): LayerSpecification[] {
         "text-size": 13,
         "text-allow-overlap": true,
       },
-      paint: { "text-color": colors.gold300 },
+      paint: { "text-color": colors.ivory },
     },
     {
       id: CITY_DOT,
@@ -58,8 +59,8 @@ export function darbLayers(): LayerSpecification[] {
       filter: SINGLE as never,
       paint: {
         "circle-radius": ["+", 4, ["*", 1.4, ["ln", ["+", 1, ["get", "count"]]]]],
-        "circle-color": colors.gold300,
-        "circle-stroke-color": colors.night,
+        "circle-color": colors.gold,
+        "circle-stroke-color": mapColors.bubble,
         "circle-stroke-width": 2,
       },
     },
@@ -79,9 +80,9 @@ export function darbLayers(): LayerSpecification[] {
         "symbol-sort-key": ["-", 0, ["get", "count"]],
       },
       paint: {
-        "text-color": colors.ivory,
-        "text-halo-color": colors.night,
-        "text-halo-width": 1.4,
+        "text-color": mapColors.label,
+        "text-halo-color": mapColors.halo,
+        "text-halo-width": 1.6,
       },
     },
     {
@@ -91,7 +92,7 @@ export function darbLayers(): LayerSpecification[] {
       paint: {
         "circle-radius": ["case", ["get", "active"], 11, 8],
         "circle-color": colors.gold,
-        "circle-stroke-color": colors.ivory,
+        "circle-stroke-color": mapColors.bubble,
         "circle-stroke-width": ["case", ["get", "active"], 3, 2],
       },
     },

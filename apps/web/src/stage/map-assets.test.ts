@@ -2,7 +2,7 @@
 import { existsSync, mkdtempSync, readFileSync, statSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { colors } from "@darb/tokens";
+import { mapColors } from "@darb/tokens";
 import { describe, expect, it } from "vitest";
 import { buildMapAssets } from "../../scripts/copy-map.mjs";
 import { FONT, GLYPHS_DIR, RANGES } from "../../scripts/map/fetch-glyphs.mjs";
@@ -76,12 +76,29 @@ describe("the Darb style", () => {
       }
     }
   });
-  it("paints night and forest land, gold roads and ivory labels", () => {
+  it("paints a daylight atlas: ivory land, green parks, teal sea, gold roads, forest labels", () => {
     const paint = (id: string) => layers.find((l) => l.id === id)?.paint as Record<string, unknown>;
-    expect(paint("background")["background-color"]).toBe(colors.night);
-    expect(paint("earth")["fill-color"]).toBe(colors.forest950);
-    expect(paint("roads_highway")["line-color"]).toBe(colors.gold600);
-    expect(paint("places_locality")["text-color"]).toBe(colors.ivory);
+    expect(paint("background")["background-color"]).toBe(mapColors.land);
+    expect(paint("earth")["fill-color"]).toBe(mapColors.land);
+    expect(JSON.stringify(paint("landuse_park")["fill-color"])).toContain(mapColors.wood);
+    // The sea deepens as the map pulls back to the whole country.
+    expect(paint("water")["fill-color"]).toEqual([
+      "interpolate",
+      ["linear"],
+      ["zoom"],
+      6,
+      mapColors.waterDeep,
+      12,
+      mapColors.water,
+    ]);
+    expect(paint("roads_highway")["line-color"]).toBe(mapColors.main);
+    expect(paint("roads_major")["line-color"]).toBe(mapColors.major);
+    expect(JSON.stringify(paint("roads_minor")["line-color"])).toContain(mapColors.road);
+    expect(paint("places_locality")["text-color"]).toBe(mapColors.label);
+    expect(paint("places_locality")["text-halo-color"]).toBe(mapColors.halo);
+    expect(paint("buildings")["fill-color"]).toBe(mapColors.building);
+    // Nothing of the night palette is left in the basemap.
+    for (const dark of ["#03110c", "#051811", "#08241a"]) expect(json).not.toContain(dark);
   });
   it("labels places in the page language", () => {
     expect(JSON.stringify(darbStyle("he"))).toContain('"name:he"');

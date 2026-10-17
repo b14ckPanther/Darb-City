@@ -2,7 +2,7 @@
 // every place becomes a disc of SERVED_KM, gaps up to ~2 × CLOSE_KM between discs are closed,
 // holes are filled, and the edge is traced, simplified and rounded. Not a political border: it is
 // only where Darb's places are. copy-map.mjs writes it to public/map/served-area.json, and the
-// maps fade everything outside it into the night (src/stage/served-area.ts).
+// maps fade everything outside it into a warm mist (src/stage/served-area.ts).
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";

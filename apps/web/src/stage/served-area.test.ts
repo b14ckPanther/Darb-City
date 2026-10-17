@@ -1,13 +1,11 @@
 // @vitest-environment node
 import { createRequire } from "node:module";
 import type { StyleSpecification, SymbolLayerSpecification } from "maplibre-gl";
-import { colors } from "@darb/tokens";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { darbStyle } from "../../scripts/map/style.mjs";
 import { CITY_LABEL, darbLayers } from "./map-layers";
 import {
   loadServedArea,
-  SERVED_LIFT,
   SERVED_SOURCE,
   servedBounds,
   toExpression,
@@ -15,6 +13,7 @@ import {
   VEIL,
   VEIL_EDGE,
   VEIL_SOURCE,
+  WATER_ABOVE,
   veilPolygon,
   withServedArea,
   type ServedArea,
@@ -129,7 +128,7 @@ describe("withServedArea", () => {
         spec.featureFilter(layer.filter, `layers[${k}].filter`);
     });
   });
-  it("adds the veil over the basemap, under its labels and Darb's own layers", () => {
+  it("draws plain land over everything people built outside, the whole sea above it, labels on top", () => {
     expect(style.sources[VEIL_SOURCE]).toMatchObject({ type: "geojson" });
     expect(style.sources[SERVED_SOURCE]).toMatchObject({ type: "geojson" });
     const firstLabel = ids.findIndex(
@@ -138,10 +137,17 @@ describe("withServedArea", () => {
     expect(ids.indexOf(VEIL)).toBeLessThan(firstLabel);
     expect(ids.indexOf(VEIL)).toBeGreaterThan(ids.indexOf("roads_highway"));
     expect(ids.indexOf(VEIL_EDGE)).toBeLessThan(ids.indexOf(CITY_LABEL));
-    expect(ids.indexOf(SERVED_LIFT)).toBeLessThan(ids.indexOf("water"));
-    expect(ids.indexOf(SERVED_LIFT)).toBeGreaterThan(ids.indexOf("earth"));
+    expect(ids.indexOf(VEIL)).toBeGreaterThan(ids.indexOf("buildings"));
+    // The sea is drawn again above the plain land, so it keeps its colour everywhere.
+    expect(ids.indexOf(WATER_ABOVE)).toBeGreaterThan(ids.indexOf(VEIL));
+    expect(ids.indexOf(WATER_ABOVE)).toBeLessThan(firstLabel);
+    // Plain land outside, in the land's own colour: no roads, no towns, never dark.
+    const earth = style.layers.find((l) => l.id === "earth")!;
     const veil = style.layers.find((l) => l.id === VEIL)!;
-    expect(veil.paint).toMatchObject({ "fill-color": colors.night });
+    expect(veil.paint).toMatchObject({
+      "fill-color": (earth.paint as Record<string, unknown>)["fill-color"],
+      "fill-opacity": 1,
+    });
   });
   it("names only Darb's towns, and labels nothing outside the served land", () => {
     const labels = style.layers.filter(

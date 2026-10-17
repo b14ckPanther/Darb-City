@@ -34,3 +34,44 @@ export const DOOR_CLIP_PATH =
 
 /** Height / width of the raster mark masters in `assets/brand`. */
 export const MARK_ASPECT = 769 / 660;
+
+/**
+ * The daylight map: a warm, sunlit atlas around Darb's forest and gold. Map paint only (style.mjs,
+ * the served-area veil and Darb's map layers); never page surfaces, which keep `colors`.
+ */
+export const mapColors = {
+  /** Land: warm ivory sand. */
+  land: "#f4eddc",
+  /** Towns and villages: a touch warmer than the open land. */
+  urban: "#efe4cd",
+  /** Buildings at street level: soft clay. */
+  building: "#e5d6bb",
+  buildingEdge: "#d6c3a0",
+  /** Nature, light to deep: meadow, park, wood. */
+  meadow: "#dde7c6",
+  park: "#cfe0b8",
+  wood: "#b9d39b",
+  farmland: "#ebe7cf",
+  sand: "#f3e3bf",
+  /** Water: Mediterranean teal, deeper over the whole country, light at street level. */
+  water: "#8fcfd8",
+  waterDeep: "#5fb3c4",
+  waterLabel: "#0f4d59",
+  /** Roads: white streets on sand; highways in Darb gold, main roads a paler gold, both cased darker. */
+  road: "#ffffff",
+  roadCasing: "#e2d4b6",
+  main: "#e2b45f",
+  mainCasing: "#c08f3c",
+  major: "#f1d597",
+  majorCasing: "#d9b56f",
+  tunnel: "#f1e9d8",
+  rail: "#c5b79c",
+  /** Labels: deep forest on an ivory halo; road names grey-forest. */
+  label: "#173326",
+  labelSoft: "#3d5247",
+  halo: "#fbf7ec",
+  /** Outside the land Darb serves: a soft warm mist. */
+  mist: "#efe6d2",
+  /** Darb's own marks on light land. */
+  bubble: "#14352a",
+} as const;
