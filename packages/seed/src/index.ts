@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import type {
   SeedBrand,
   SeedBusiness,
@@ -44,11 +44,14 @@ export const loadShowroom = (): SeedBusiness[] => {
   });
 };
 /**
- * Real businesses from public open data (listings.json, its source recorded in the file): basic
- * listings, never examples, so they load with or without the showroom.
+ * Real businesses from public open data: every file in data/listings/ (one per source, its source
+ * recorded in the file). Basic listings, never examples, so they load with or without the showroom.
  */
 export const loadListings = (): SeedBusiness[] =>
-  read<{ businesses: SeedBusiness[] }>("listings.json").businesses;
+  readdirSync(new URL("../data/listings/", import.meta.url))
+    .filter((file) => file.endsWith(".json"))
+    .sort()
+    .flatMap((file) => read<{ businesses: SeedBusiness[] }>(`listings/${file}`).businesses);
 /** Every real business: Darb's clients and the open-data listings. */
 export const loadReal = (): SeedBusiness[] => [...loadClients().businesses, ...loadListings()];
 /** Showroom examples plus every real business. */
