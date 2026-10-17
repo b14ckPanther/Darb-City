@@ -121,7 +121,9 @@ const EXCLUDED_WORDS = [
       "יינות",
       "יין$",
       "בירה$",
-      "beer",
+      "craft beer",
+      "beer garden",
+      "beer house",
       "brewery",
       "מבשלת",
       "liquor",
@@ -135,7 +137,7 @@ const EXCLUDED_WORDS = [
       "خمارة",
       "بيرة",
       "كحول",
-      "بار$",
+
       "حانة",
     ),
     "alcohol in the name",
@@ -147,7 +149,7 @@ const EXCLUDED_WORDS = [
       "קזינו",
       "كازينو",
       "lotto",
-      "לוטו",
+      "לוטו$",
       "טוטו$",
       "toto$",
       "ווינר$",
@@ -182,7 +184,7 @@ const EXCLUDED_WORDS = [
     "tobacco, vape or cannabis",
   ],
   [words("sex shop", "סקס", "erotic", "ארוטי", "צעצועי מין", "adult shop"), "adult shop"],
-  [words("tattoo", "קעקוע", "وشم", "تاتو", "טאטו"), "tattoo"],
+  [words("tattoo", "קעקוע", "تاتو$", "טאטו$"), "tattoo"],
 ];
 const excludedTagTests = EXCLUDED_TAGS.map(([spec, why]) => [tagTest(spec), why]);
 
@@ -1845,11 +1847,18 @@ export const RULES = [
       "olive press",
       "olive mill",
       "olive oil",
+      "olive factory",
+      "squeez",
+      "presser",
       "معصرة",
+      "معاصر",
       "زيت زيتون",
       "שמן זית",
+      "מעצרה",
+      "מעסרה",
     ),
-    { gate: true, gateAmenity: true },
+    // Olive presses are mapped as works, shops or halls: the name says what they are.
+    { gate: true, gateAmenity: true, gateTourism: true, first: true, gateAll: true },
   ),
   R("dairy", "shop=dairy|cheese"),
   R(
@@ -2302,6 +2311,7 @@ const BUSINESS_AMENITY = new Set([
 ]);
 /** Words-only rules: only for features with a business key. `gateAmenity` also lets sport and leisure in. */
 function gateOpen(tags, rule) {
+  if (rule.gateAll) return true;
   if (tags.shop || tags.office || tags.craft || tags.healthcare) return true;
   if (tags.amenity && BUSINESS_AMENITY.has(tags.amenity)) return true;
   if (rule.gateAmenity && (tags.leisure || tags.sport || tags.club || tags.amenity)) return true;
