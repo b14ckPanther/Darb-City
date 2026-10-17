@@ -20,7 +20,7 @@ export async function cached(name, load) {
   return data;
 }
 
-async function withRetry(what, run, tries = 5) {
+async function withRetry(what, run, tries = 6) {
   for (let attempt = 1; ; attempt++) {
     try {
       return await run();
@@ -66,21 +66,33 @@ out ${out};`;
   return cached(`overpass-${name}.json`, () => overpassQuery(name, query));
 }
 
+/** Overpass servers, tried in turn: the main one, then a public mirror when it is overloaded. */
+const OVERPASS = [
+  "https://overpass-api.de/api/interpreter",
+  "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
+];
+
 /** A whole Overpass QL query, uncached, with retries; resolves to its elements. */
-export function overpassQuery(what, query) {
-  return withRetry(`overpass ${what}`, async () => {
-    const res = await fetch("https://overpass-api.de/api/interpreter", {
-      method: "POST",
-      headers: { "User-Agent": UA, "Content-Type": "application/x-www-form-urlencoded" },
-      body: `data=${encodeURIComponent(query)}`,
-    });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const json = await res.json();
-    // Overpass answers a timed-out query with 200 and a remark instead of elements.
-    if (json.remark && /runtime error|timed out|out of memory/i.test(json.remark))
-      throw new Error(json.remark);
-    return json.elements;
-  });
+export function overpassQuery(what, query, tries = 6) {
+  let attempt = 0;
+  return withRetry(
+    `overpass ${what}`,
+    async () => {
+      const server = OVERPASS[attempt++ % OVERPASS.length];
+      const res = await fetch(server, {
+        method: "POST",
+        headers: { "User-Agent": UA, "Content-Type": "application/x-www-form-urlencoded" },
+        body: `data=${encodeURIComponent(query)}`,
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const json = await res.json();
+      // Overpass answers a timed-out query with 200 and a remark instead of elements.
+      if (json.remark && /runtime error|timed out|out of memory/i.test(json.remark))
+        throw new Error(json.remark);
+      return json.elements;
+    },
+    tries,
+  );
 }
 
 /** An OSM element's point (nodes have lat/lon, ways and relations a center). */
