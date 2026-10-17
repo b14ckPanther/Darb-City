@@ -171,6 +171,16 @@ describe("kind map", () => {
     ])
       expect(classify(tags), JSON.stringify(tags)).toBeNull();
   });
+  it("reads a hairdresser as a barber only on evidence, else as a salon", () => {
+    const kindsOf = (tags) => classify(tags)?.kinds ?? null;
+    expect(kindsOf({ shop: "hairdresser", name: "מספרת גברים אבי" })).toEqual(["barbershops"]);
+    expect(kindsOf({ shop: "hairdresser", hairdresser: "barber", name: "X" })).toEqual([
+      "barbershops",
+    ]);
+    expect(kindsOf({ shop: "hairdresser", hairdresser: "female", name: "X" })).toEqual(["salons"]);
+    expect(kindsOf({ shop: "hairdresser", name: "יעל עיצוב שיער" })).toEqual(["salons"]);
+    expect(kindsOf({ shop: "hairdresser", name: "אבי טל" })).toEqual(["salons"]);
+  });
   it("hands a kind only from the active kinds it is given", () => {
     expect(classify({ shop: "florist", name: "X" }, { kinds: new Set(["shops"]) })).toBeNull();
   });

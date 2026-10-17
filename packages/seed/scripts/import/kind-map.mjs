@@ -818,6 +818,8 @@ export const RULES = [
     "shop=hairdresser|beauty",
     words("השתלת שיער", "hair clinic", "زراعة شعر", "trichology"),
   ),
+  // Hebrew "מספרה" is any hairdresser, so search reads it as both kinds. A card is a barber only
+  // on evidence (above); every other hairdresser is a salon, as a barber search should not show it.
   R("salons", "shop=hairdresser"),
   R("nails", "shop=beauty&beauty~nails"),
   R("nails", "shop=nails"),
