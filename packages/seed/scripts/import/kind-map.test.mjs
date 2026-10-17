@@ -189,6 +189,8 @@ describe("exclusions", () => {
     [{ tourism: "attraction", name: "יקב רמת הגולן" }],
     [{ shop: "butcher", name: "Pork & Co" }],
     [{ shop: "deli", name: "חזיר" }],
+    [{ shop: "supermarket", name: "טיב טעם" }],
+    [{ shop: "supermarket", name: "Tiv Taam", brand: "Tiv Taam" }],
     [{ shop: "lottery", name: "X" }],
     [{ shop: "kiosk", name: "לוטו טוטו" }],
     [{ shop: "convenience", name: "Lotto Point" }],

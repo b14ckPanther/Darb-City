@@ -142,7 +142,8 @@ const EXCLUDED_WORDS = [
     ),
     "alcohol in the name",
   ],
-  [words("pork", "חזיר", "خنزير"), "pork"],
+  // Tiv Taam is the chain known for selling pork.
+  [words("pork", "חזיר", "خنزير", "טיב טעם", "tiv taam", "طيف طعام"), "pork"],
   [
     words(
       "casino",
