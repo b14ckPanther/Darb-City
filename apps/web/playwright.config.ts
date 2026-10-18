@@ -98,6 +98,8 @@ export default defineConfig({
         // The join lookup never reaches the model, OpenStreetMap or R2 (photos are off).
         JOIN_AI: "off",
         JOIN_GEOCODER: "off",
+        // Add from the street reads every sign the same way, without the network (street.spec).
+        FIELD_AI: "fake",
         R2_ACCOUNT_ID: "",
         JOIN_RATE_LIMIT: "1000",
         JOIN_LOOKUP_RATE_LIMIT: "1000",
