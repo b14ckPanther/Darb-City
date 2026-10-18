@@ -7,6 +7,11 @@ import { AdminBusinessesController, BusinessesAdmin } from "./businesses.admin.j
 import { ExperienceValidator } from "./experience.js";
 import { AdminInquiriesController, InquiriesAdmin } from "./inquiries.admin.js";
 import { AdminJoinController, JoinAdmin } from "./join.admin.js";
+import { AdminFieldController, AdminFieldUploadsController } from "../field/field.controller.js";
+import { FieldService } from "../field/field.service.js";
+import { SIGN_READER, signReaderFor } from "../field/sign-reader.js";
+import { APP_CONFIG, type AppConfig } from "../config.js";
+import { ModelBudget } from "../search/model-budget.js";
 import { MediaModule } from "../media/media.js";
 import { AdminMiscController, MiscAdmin } from "./misc.admin.js";
 import { AdminKindsController, KindsAdmin } from "./kinds.admin.js";
@@ -29,6 +34,8 @@ import { AdminTextsController, TextsAdmin } from "./texts.admin.js";
     AdminTextsController,
     AdminInquiriesController,
     AdminJoinController,
+    AdminFieldController,
+    AdminFieldUploadsController,
   ],
   providers: [
     AdminWriter,
@@ -44,6 +51,14 @@ import { AdminTextsController, TextsAdmin } from "./texts.admin.js";
     InquiriesAdmin,
     JoinAdmin,
     ReportRepository,
+    FieldService,
+    ModelBudget,
+    {
+      provide: SIGN_READER,
+      inject: [APP_CONFIG],
+      useFactory: (config: AppConfig) =>
+        signReaderFor({ ...config.field, apiKey: config.search.anthropicApiKey }),
+    },
   ],
   exports: [AdminWriter, WebRevalidator],
 })

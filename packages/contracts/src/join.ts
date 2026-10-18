@@ -74,7 +74,11 @@ export const JoinSuggestionSchema = z.object({
 });
 export type JoinSuggestionDto = z.infer<typeof JoinSuggestionSchema>;
 
-export const JOIN_SOURCES = ["lookup", "manual"] as const;
+/** How the owner filled the /join form. */
+export const JOIN_FORM_SOURCES = ["lookup", "manual"] as const;
+/** Every request in the queue: the form's two, and "field" (an admin added it from the street). */
+export const JOIN_SOURCES = [...JOIN_FORM_SOURCES, "field"] as const;
+export type JoinSource = (typeof JOIN_SOURCES)[number];
 export const JOIN_STATUSES = ["pending", "approved", "rejected"] as const;
 export type JoinStatus = (typeof JOIN_STATUSES)[number];
 export const JOIN_MAX_PHOTOS = 6;
@@ -108,7 +112,7 @@ export const JoinCreateSchema = z.object({
     })
     .strict(),
   note: z.string().trim().max(1000).optional(),
-  source: z.enum(JOIN_SOURCES),
+  source: z.enum(JOIN_FORM_SOURCES),
   /** What the lookup suggested, shown to the admin beside what the owner kept. */
   lookup: JoinSuggestionSchema.optional(),
   locale: LocaleSchema,
