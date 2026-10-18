@@ -1,8 +1,14 @@
 import type { MetadataRoute } from "next";
 import { headers } from "next/headers";
 import { getSitemapBusinesses } from "@/lib/api";
-import { sitemapIds } from "@/lib/sitemap-ids";
+import { BUSINESSES_PER_SITEMAP, sitemapIds } from "@/lib/sitemap-ids";
+
 import { indexable, siteUrl } from "@/lib/site";
+
+const businessCount = () =>
+  getSitemapBusinesses()
+    .then((b) => b.length)
+    .catch(() => 0);
 
 /** Read at request time, so a preview never serves the production rules a build baked in. */
 export const dynamic = "force-dynamic";
@@ -28,7 +34,8 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
         ],
       },
     ],
-    sitemap: sitemapIds((await getSitemapBusinesses()).length).map(
+    // Only the slices that hold businesses; an unreachable API lists the page sitemaps only.
+    sitemap: sitemapIds(Math.ceil((await businessCount()) / BUSINESSES_PER_SITEMAP)).map(
       (id) => `${site}/sitemap/${id}.xml`,
     ),
   };

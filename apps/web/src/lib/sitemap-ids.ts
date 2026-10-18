@@ -7,9 +7,13 @@ import { LOCALES, type Locale } from "@darb/core";
  * businesses, 100 Arabic pages and so on.
  */
 export const BUSINESSES_PER_SITEMAP = 2500;
+/**
+ * Slices per language, fixed so the build never needs the API: room for 60,000 businesses. A
+ * slice past the last business is an empty sitemap, which crawlers accept.
+ */
+export const BUSINESS_SLICES = 24;
 
-export function sitemapIds(businesses: number): number[] {
-  const slices = Math.ceil(businesses / BUSINESSES_PER_SITEMAP);
+export function sitemapIds(slices: number = BUSINESS_SLICES): number[] {
   return LOCALES.flatMap((_, l) => [
     l * 100,
     ...Array.from({ length: slices }, (_, s) => l * 100 + s + 1),

@@ -89,14 +89,11 @@ afterEach(() => vi.unstubAllEnvs());
 
 it("per locale: a sitemap of pages and slices of real businesses", async () => {
   vi.stubEnv("SITE_URL", "https://darb.co.il");
-  expect(await generateSitemaps()).toEqual([
-    { id: 0 },
-    { id: 1 },
-    { id: 100 },
-    { id: 101 },
-    { id: 200 },
-    { id: 201 },
-  ]);
+  const ids = (await generateSitemaps()).map((s) => s.id);
+  expect(ids.slice(0, 3)).toEqual([0, 1, 2]);
+  expect(ids).toContain(100);
+  expect(ids).toContain(224);
+  expect(await sitemap({ id: Promise.resolve("224") })).toEqual([]);
   const en = await sitemap({ id: Promise.resolve("200") });
   expect(en.map((e) => e.url)).toEqual([
     "https://darb.co.il/en",

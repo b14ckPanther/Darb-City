@@ -20,8 +20,9 @@ import { BUSINESSES_PER_SITEMAP, readSitemapId, sitemapIds } from "@/lib/sitemap
  */
 export const dynamic = "force-dynamic";
 
+/** A fixed list (lib/sitemap-ids): the build never calls the API. */
 export async function generateSitemaps() {
-  return sitemapIds((await getSitemapBusinesses()).length).map((id) => ({ id }));
+  return sitemapIds().map((id) => ({ id }));
 }
 
 /** At most `size` calls at a time: a sitemap for every place must not fan out hundreds at once. */
