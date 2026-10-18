@@ -1,0 +1,263 @@
+/* A cause you give to (templates/Donate.tsx): a heart, and the ripples spreading from it. */
+
+.give {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-4);
+  background: radial-gradient(
+    80% 45% at 50% 0%,
+    color-mix(in srgb, var(--t-accent) 16%, transparent),
+    transparent 75%
+  );
+}
+
+.head {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  text-align: center;
+}
+
+.heart {
+  position: relative;
+  display: grid;
+  place-items: center;
+  inline-size: 72px;
+  block-size: 72px;
+  margin-block: var(--space-3);
+  border-radius: 50%;
+  background: var(--t-accent);
+  color: var(--t-on-accent);
+  box-shadow: 0 10px 30px -8px color-mix(in srgb, var(--t-accent) 70%, transparent);
+}
+
+.heartGlyph {
+  position: relative;
+  inline-size: 34px;
+  block-size: 34px;
+  fill: currentColor;
+  fill-opacity: 0.18;
+}
+
+/* Rings spreading out, slowly: every gift goes further than itself. */
+.rings,
+.rings::before,
+.rings::after {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1.5px color-mix(in srgb, var(--t-accent) 60%, transparent);
+  animation: ripple 3.6s ease-out infinite;
+}
+
+.rings::before,
+.rings::after {
+  content: "";
+}
+
+.rings::before {
+  animation-delay: 1.2s;
+}
+
+.rings::after {
+  animation-delay: 2.4s;
+}
+
+@keyframes ripple {
+  from {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(2.3);
+  }
+}
+
+.title {
+  margin: 0;
+  font-size: var(--step-2);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  margin: 0;
+  max-inline-size: 32ch;
+  font-size: var(--step--1);
+  opacity: 0.8;
+}
+
+/* A real percentage, as a bar that fills when the screen opens. */
+.progress {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border-radius: 18px;
+  background: var(--t-surface);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--t-ink) 8%, transparent);
+}
+
+.progressName {
+  font-weight: 700;
+}
+
+.bar {
+  display: block;
+  block-size: 12px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--t-ink) 10%, transparent);
+  overflow: hidden;
+}
+
+.fill {
+  display: block;
+  inline-size: var(--p);
+  block-size: 100%;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--t-accent) 70%, white),
+    var(--t-accent)
+  );
+  transform-origin: left center;
+  animation: fill 700ms var(--ease-out) both 0.2s;
+}
+
+:global([dir="rtl"]) .fill {
+  transform-origin: right center;
+}
+
+@keyframes fill {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+.progressFacts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 6px;
+  font-size: var(--step--1);
+}
+
+.progressFacts [data-fact]:first-child {
+  color: var(--t-accent-ink);
+  font-size: var(--step-1);
+  font-weight: 900;
+}
+
+.progressFacts [data-fact] {
+  font-variant-numeric: tabular-nums;
+}
+
+.progressFacts [data-sep] {
+  opacity: 0.4;
+}
+
+/* Amounts as coins. */
+.coins {
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.coins li {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 0;
+  inline-size: 68px;
+  block-size: 68px;
+  padding: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 30%,
+    color-mix(in srgb, var(--t-accent) 70%, white),
+    var(--t-accent) 70%
+  );
+  box-shadow:
+    inset 0 0 0 4px color-mix(in srgb, var(--t-accent) 80%, black),
+    inset 0 0 0 5px color-mix(in srgb, var(--t-accent) 50%, white),
+    0 6px 14px -6px rgb(0 0 0 / 0.5);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.coins li svg {
+  display: none;
+}
+
+.ways {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ways li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border-radius: 16px;
+  background: var(--t-surface);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--t-ink) 8%, transparent);
+}
+
+.badge {
+  display: grid;
+  flex: none;
+  place-items: center;
+  inline-size: 40px;
+  block-size: 40px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--t-accent) 16%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--t-accent-ink) 38%, transparent);
+  color: var(--t-accent-ink);
+}
+
+.badgeGlyph {
+  inline-size: 20px;
+  block-size: 20px;
+}
+
+.what {
+  display: grid;
+  gap: 2px;
+  min-inline-size: 0;
+}
+
+.name {
+  font-weight: 700;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.note {
+  font-size: var(--step--1);
+  opacity: 0.8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rings,
+  .rings::before,
+  .rings::after {
+    animation: none;
+    opacity: 0.35;
+  }
+
+  .rings::before {
+    transform: scale(1.4);
+  }
+
+  .rings::after {
+    transform: scale(1.8);
+  }
+
+  .fill {
+    animation: none;
+  }
+}

@@ -1,0 +1,217 @@
+/* A place you go in to (templates/Pass.tsx): its ticket. */
+
+.wrap {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-4);
+}
+
+.ticket {
+  --notch: 11px;
+  --stub: 92px;
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--stub) minmax(0, 1fr);
+  border-radius: 18px;
+  /* Security print: fine rings from one corner. */
+  background:
+    repeating-radial-gradient(
+      circle at 100% 0%,
+      color-mix(in srgb, var(--t-accent) 9%, transparent) 0 1px,
+      transparent 1px 7px
+    ),
+    var(--t-surface);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--t-ink) 10%, transparent),
+    0 18px 34px -20px rgb(0 0 0 / 0.65);
+  animation: ticket-in 700ms var(--ease-out) both;
+}
+
+@keyframes ticket-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) rotate(-1.5deg);
+  }
+}
+
+/* The notches where the stub tears off, cut in the screen's own background. */
+.ticket::before,
+.ticket::after {
+  content: "";
+  position: absolute;
+  inset-inline-start: calc(var(--stub) - var(--notch));
+  inline-size: calc(var(--notch) * 2);
+  block-size: calc(var(--notch) * 2);
+  border-radius: 50%;
+  background: var(--t-bg);
+}
+
+.ticket::before {
+  inset-block-start: calc(-1 * var(--notch));
+  box-shadow: inset 0 -1px 0 color-mix(in srgb, var(--t-ink) 10%, transparent);
+}
+
+.ticket::after {
+  inset-block-end: calc(-1 * var(--notch));
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--t-ink) 10%, transparent);
+}
+
+/* The stub: the place's glyph, its code, and a foil edge. */
+.stub {
+  display: grid;
+  justify-items: center;
+  align-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-2);
+  border-start-start-radius: 18px;
+  border-end-start-radius: 18px;
+  border-inline-end: 2px dashed color-mix(in srgb, var(--t-ink) 22%, transparent);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--t-accent) 85%, white),
+    var(--t-accent) 60%,
+    color-mix(in srgb, var(--t-accent) 75%, black)
+  );
+  color: var(--t-on-accent);
+}
+
+.stubGlyph {
+  inline-size: 38px;
+  block-size: 38px;
+}
+
+.code {
+  display: grid;
+  grid-template-columns: repeat(7, 7px);
+  gap: 1.5px;
+  padding: 5px;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.code span {
+  block-size: 7px;
+  background: #fff;
+}
+
+.code span[data-on] {
+  background: #111;
+}
+
+.main {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+  min-inline-size: 0;
+  padding: var(--space-4) var(--space-4) var(--space-4) var(--space-5);
+  border-start-end-radius: 18px;
+  border-end-end-radius: 18px;
+  overflow: hidden;
+}
+
+/* The foil: a thin shimmering edge on the far side. */
+.main::after {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inset-inline-end: 0;
+  inline-size: 6px;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--t-accent) 70%, white),
+    #c9e4f5,
+    #f3d6f0,
+    color-mix(in srgb, var(--t-accent) 70%, white)
+  );
+  opacity: 0.8;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--step-1);
+  font-weight: 800;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: var(--step--1);
+  opacity: 0.8;
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3) var(--space-3);
+  margin: var(--space-2) 0 0;
+  padding: var(--space-3) 0 0;
+  border-block-start: 1px solid color-mix(in srgb, var(--t-ink) 12%, transparent);
+  list-style: none;
+}
+
+.fields li {
+  display: grid;
+  align-content: start;
+  gap: 2px;
+  min-inline-size: 0;
+}
+
+.fields li:only-child {
+  grid-column: 1 / -1;
+}
+
+.fieldLabel {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+/* A field with no value says what it is, large. */
+.fields li[data-bare] .fieldLabel {
+  font-size: 1rem;
+  letter-spacing: 0;
+  text-transform: none;
+  opacity: 1;
+}
+
+.fieldGlyph {
+  flex: none;
+  inline-size: 15px;
+  block-size: 15px;
+  color: var(--t-accent-ink);
+}
+
+.fields li[data-bare] .fieldGlyph {
+  inline-size: 20px;
+  block-size: 20px;
+}
+
+.fieldValue {
+  font-weight: 800;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 360px) {
+  .ticket {
+    --stub: 78px;
+  }
+
+  .fields {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticket {
+    animation: none;
+  }
+}

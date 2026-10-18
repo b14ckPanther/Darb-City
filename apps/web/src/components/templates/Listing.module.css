@@ -1,0 +1,201 @@
+/* A place you look up (templates/Listing.tsx): its fact sheet. */
+
+.sheet {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-4) var(--space-5);
+}
+
+.head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-3);
+  padding-block-end: var(--space-4);
+  border-block-end: 2px solid var(--t-ink);
+}
+
+.emblem {
+  display: grid;
+  place-items: center;
+  inline-size: 52px;
+  block-size: 52px;
+  border-radius: 14px;
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--t-accent) 85%, white),
+    var(--t-accent)
+  );
+  color: var(--t-on-accent);
+  box-shadow: 0 10px 20px -12px color-mix(in srgb, var(--t-accent) 80%, black);
+}
+
+.emblemGlyph {
+  inline-size: 26px;
+  block-size: 26px;
+}
+
+.headText {
+  display: grid;
+  gap: 2px;
+  min-inline-size: 0;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--step-2);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: var(--step--1);
+  opacity: 0.8;
+}
+
+/* What it is, as joined segments: one bar, one segment per level. */
+.levels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.levels li {
+  display: inline-flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-block-size: 46px;
+  padding: 8px 14px;
+  background: color-mix(in srgb, var(--t-accent) 14%, var(--t-bg));
+  box-shadow: inset 0 -3px 0 color-mix(in srgb, var(--t-accent) 70%, transparent);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.levels li:first-child {
+  border-start-start-radius: 14px;
+  border-end-start-radius: 14px;
+}
+
+.levels li:last-child {
+  border-start-end-radius: 14px;
+  border-end-end-radius: 14px;
+}
+
+.levelGlyph {
+  flex: none;
+  inline-size: 20px;
+  block-size: 20px;
+  color: var(--t-accent-ink);
+}
+
+/* The spec plate: label small, value large; a lone number like a registration plate. */
+.specs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2);
+  margin: 0;
+}
+
+.specs > div {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  min-inline-size: 0;
+  padding: var(--space-3);
+  border-radius: 14px;
+  background: var(--t-surface);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--t-ink) 8%, transparent);
+}
+
+.specs > div:only-child,
+.specs > div:nth-child(odd):last-child {
+  grid-column: 1 / -1;
+}
+
+.specs dt {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--step--1);
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+.specGlyph {
+  flex: none;
+  inline-size: 16px;
+  block-size: 16px;
+  color: var(--t-accent-ink);
+}
+
+.specs dd {
+  margin: 0;
+  min-inline-size: 0;
+}
+
+.value {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 6px;
+  font-weight: 800;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.value [data-sep] {
+  opacity: 0.4;
+}
+
+.value [data-fact="price"] {
+  color: var(--t-accent-ink);
+  font-size: var(--step-1);
+  font-variant-numeric: tabular-nums;
+}
+
+.value [data-fact="distance"],
+.value [data-fact="duration"],
+.value [data-fact="time"],
+.value [data-fact="number"] {
+  font-variant-numeric: tabular-nums;
+}
+
+.plate {
+  display: inline-flex;
+  align-items: stretch;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: inset 0 0 0 2px var(--t-ink);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: var(--step-1);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  font-variant-numeric: tabular-nums;
+  direction: ltr;
+}
+
+/* The plate's coloured band, like a real one's. */
+.plate::before {
+  content: "";
+  inline-size: 10px;
+  background: var(--t-accent);
+}
+
+.plate [data-fact] {
+  padding: 4px 10px 4px 8px;
+}
+
+@media (max-width: 359px) {
+  .specs {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

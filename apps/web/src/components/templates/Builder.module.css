@@ -1,0 +1,194 @@
+/* A business you build an order with (templates/Builder.tsx): layers and options. */
+
+.builder {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-4) var(--space-5);
+}
+
+.head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-4);
+}
+
+/* The order taking shape: a layer per option, stacked, the glyph on top. */
+.stack {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: end;
+  inline-size: 84px;
+  block-size: 84px;
+}
+
+.layer {
+  display: block;
+  inline-size: calc(84px - var(--l) * 10px);
+  block-size: 12px;
+  margin-block-start: -3px;
+  border-radius: 7px;
+  background: color-mix(in srgb, var(--t-accent) calc(45% + var(--l) * 18%), var(--t-bg));
+  box-shadow:
+    inset 0 2px 0 rgb(255 255 255 / 0.25),
+    0 3px 6px -3px rgb(0 0 0 / 0.45);
+  order: calc(-1 * var(--l));
+  animation: layer-in 600ms var(--ease-out) both;
+  animation-delay: calc(var(--l) * 0.11s);
+}
+
+@keyframes layer-in {
+  from {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+}
+
+.top {
+  display: grid;
+  order: -10;
+  place-items: center;
+  inline-size: 40px;
+  block-size: 40px;
+  margin-block-end: 2px;
+  border-radius: 50%;
+  background: var(--t-surface);
+  color: var(--t-accent-ink);
+  box-shadow:
+    inset 0 0 0 2px var(--t-accent),
+    0 6px 12px -6px rgb(0 0 0 / 0.5);
+  animation: layer-in 600ms var(--ease-out) both 0.45s;
+}
+
+.topGlyph {
+  inline-size: 22px;
+  block-size: 22px;
+}
+
+.headText {
+  display: grid;
+  gap: 2px;
+  min-inline-size: 0;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--step-2);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: var(--step--1);
+  opacity: 0.8;
+}
+
+/* Options: a card each, with its switch; the first one on. */
+.options {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.options li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border-radius: 16px;
+  background: var(--t-surface);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--t-ink) 8%, transparent);
+}
+
+.options li[data-on] {
+  box-shadow:
+    inset 0 0 0 2px var(--t-accent),
+    0 10px 20px -14px color-mix(in srgb, var(--t-accent) 80%, black);
+}
+
+.badge {
+  display: grid;
+  place-items: center;
+  inline-size: 40px;
+  block-size: 40px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--t-accent) 15%, transparent);
+  color: var(--t-accent-ink);
+}
+
+.options li[data-on] .badge {
+  background: var(--t-accent);
+  color: var(--t-on-accent);
+}
+
+.badgeGlyph {
+  inline-size: 22px;
+  block-size: 22px;
+}
+
+.what {
+  display: grid;
+  gap: 2px;
+  min-inline-size: 0;
+}
+
+.name {
+  font-weight: 700;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.note {
+  font-size: var(--step--1);
+  opacity: 0.8;
+}
+
+.price {
+  color: var(--t-accent-ink);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.switch {
+  position: relative;
+  inline-size: 38px;
+  block-size: 22px;
+  border-radius: 11px;
+  background: color-mix(in srgb, var(--t-ink) 16%, transparent);
+}
+
+.switch::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 3px;
+  inset-inline-start: 3px;
+  inline-size: 16px;
+  block-size: 16px;
+  border-radius: 50%;
+  background: var(--t-bg);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.35);
+}
+
+.options li[data-on] .switch {
+  background: var(--t-accent);
+}
+
+.options li[data-on] .switch::after {
+  inset-inline-start: 19px;
+  background: var(--t-on-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .layer,
+  .top {
+    animation: none;
+  }
+}
