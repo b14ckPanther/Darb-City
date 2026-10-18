@@ -90,6 +90,7 @@ export const en = {
   showList: "List",
   mapData: "Map data",
   backToList: "Back to the list",
+  pinsOf: "{shown} of {count}",
   openBusiness: "View",
   loadingPins: "Putting them on the map",
   showOnMap: "{kind} on the map",

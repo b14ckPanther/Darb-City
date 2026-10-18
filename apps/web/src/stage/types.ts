@@ -34,6 +34,8 @@ export interface StageLabels {
   businessCount: string;
   /** The phone map's way back to the list. */
   backToList: string;
+  /** A preview capped below the category's count: "{shown} of {count}". */
+  pinsOf: string;
   /** The pin card's button into the business. */
   openBusiness: string;
   close: string;

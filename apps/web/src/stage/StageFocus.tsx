@@ -146,3 +146,17 @@ export function PinCard({
     </div>
   );
 }
+
+/**
+ * A previewed category's count over the map. The preview stops at PREVIEW_CAP pins, so when fewer
+ * came back than the category holds it says "200 of 448" rather than promise all of them.
+ */
+export function previewCount(
+  shown: number | null,
+  count: number,
+  pinsOf: string,
+  numbers: Intl.NumberFormat,
+): string {
+  if (shown === null || shown >= count) return numbers.format(count);
+  return pinsOf.replace("{shown}", numbers.format(shown)).replace("{count}", numbers.format(count));
+}

@@ -20,7 +20,7 @@ import { CityMap } from "./city-map";
 import { Director } from "./director";
 import { fadeLayer, nextFrame } from "./fade";
 import { PlazaView } from "./PlazaView";
-import { MapCaption, PinCard } from "./StageFocus";
+import { MapCaption, PinCard, previewCount } from "./StageFocus";
 import type { StageProps } from "./types";
 import styles from "./stage.module.css";
 
@@ -313,7 +313,12 @@ export function Stage({ locale, labels, onFail }: StageProps) {
     focus && focusPins !== "error"
       ? {
           title: focus.title,
-          count: numbers.format(focus.count),
+          count: previewCount(
+            Array.isArray(focusPins) ? focusPins.length : null,
+            focus.count,
+            labels.pinsOf,
+            numbers,
+          ),
           loading: focusPins === undefined,
         }
       : !desktop && level.depth === 3 && level.title

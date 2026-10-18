@@ -76,6 +76,7 @@ const stageLabels = (locale: Locale): StageLabels => ({
   mapData: t(locale, "mapData"),
   businessCount: t(locale, "businessCount"),
   backToList: t(locale, "backToList"),
+  pinsOf: t(locale, "pinsOf"),
   openBusiness: t(locale, "openBusiness"),
   close: t(locale, "close"),
   openNow: t(locale, "openNow"),

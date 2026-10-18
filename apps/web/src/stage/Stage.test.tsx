@@ -19,6 +19,7 @@ const labels = {
   mapData: "Map data",
   businessCount: "Businesses: {count}",
   backToList: "Back to the list",
+  pinsOf: "{shown} of {count}",
   openBusiness: "View",
   close: "Close",
   openNow: "Open now",

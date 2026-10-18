@@ -91,6 +91,7 @@ export const ar: Messages = {
   showList: "قائمة",
   mapData: "بيانات الخريطة",
   backToList: "رجوع للقائمة",
+  pinsOf: "{shown} من {count}",
   openBusiness: "فتح",
   loadingPins: "عم نحطّهم عالخريطة",
   showOnMap: "{kind} عالخريطة",
