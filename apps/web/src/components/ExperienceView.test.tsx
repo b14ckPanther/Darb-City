@@ -65,12 +65,51 @@ describe("Darb clients (Task 28)", () => {
       "Open menu",
       "https://caramel.darb.co.il/",
     ]);
-    expect(container.querySelectorAll('a[href="https://caramel.darb.co.il/"]')).toHaveLength(1);
+    // Once on the card; the app's own preview below it opens it too.
+    const card = container.querySelector("[data-business-card]")!;
+    expect(card.querySelectorAll('a[href="https://caramel.darb.co.il/"]')).toHaveLength(1);
     const note = container.querySelector("[data-built-by-darb] a")!;
     expect([note.textContent, note.getAttribute("href")]).toEqual([
       "Built by Darb",
       "/en/for-business",
     ]);
+  });
+  it("previews the app Darb built in a phone, with its showroom screenshot and a way to open it", () => {
+    const { container } = view(caramel);
+    const preview = container.querySelector("[data-app-preview]")!;
+    expect(preview.getAttribute("aria-label")).toBe("Caramel's app");
+    expect(preview.querySelector("img")?.getAttribute("src")).toContain("caramel-phone.jpg");
+    const open = within(preview as HTMLElement).getByRole("link", { name: "Open the app" });
+    expect(open.getAttribute("href")).toBe("https://caramel.darb.co.il/");
+    expect(open.getAttribute("rel")).toBe("noopener");
+    expect(
+      within(preview as HTMLElement).getByRole("button", { name: "Try it here" }),
+    ).toBeTruthy();
+    // The live app loads only when asked.
+    expect(preview.querySelector("iframe")).toBeNull();
+    fireEvent.click(within(preview as HTMLElement).getByRole("button", { name: "Try it here" }));
+    expect(preview.querySelector("iframe")?.getAttribute("src")).toBe(
+      "https://caramel.darb.co.il/",
+    );
+    // A client is not asked whether the business is theirs.
+    expect(container.querySelector("[data-owner-line]")).toBeNull();
+  });
+  it("tells an ordinary listing's owner, once and quietly, that it could have its own app", () => {
+    const { container, unmount } = view(detail({ tier: "verified" }));
+    const line = container.querySelector("[data-owner-line]")!;
+    expect(line.textContent).toContain("Is this your business?");
+    expect(line.querySelector("a")?.getAttribute("href")).toBe("/en/for-business");
+    expect(container.querySelector("[data-app-preview]")).toBeNull();
+    unmount();
+    // Never on an example, never on a darb-tier listing without an app, never twice for a chain.
+    for (const b of [detail({ tier: "example" }), detail({ tier: "darb", apps: {} })]) {
+      const { container: c, unmount: u } = view(b);
+      expect(c.querySelector("[data-owner-line]")).toBeNull();
+      u();
+    }
+    const paz = view(detail({ tier: "verified", brandSlug: "paz" }));
+    expect(paz.container.querySelector("[data-chain-app]")).not.toBeNull();
+    expect(paz.container.querySelector("[data-owner-line]")).toBeNull();
   });
   it("puts the note on every darb-tier listing and never on others", () => {
     const { container, unmount } = view(detail({ tier: "verified" }));
