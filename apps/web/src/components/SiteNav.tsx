@@ -12,7 +12,8 @@ export interface NavTab {
   match: "home" | "city" | string;
 }
 
-const stripLocale = (path: string) => path.replace(/^\/(?:ar|en)(?=\/|$)/, "") || "/";
+// Hebrew pages are served from /he internally (the proxy rewrites them), so the server sees /he/... .
+const stripLocale = (path: string) => path.replace(/^\/(?:he|ar|en)(?=\/|$)/, "") || "/";
 
 function isActive(tab: NavTab, path: string): boolean {
   if (tab.match === "home") return path === "/";
