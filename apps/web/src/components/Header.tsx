@@ -4,8 +4,10 @@ import { nav } from "@/content/nav";
 import { href, paths } from "@/lib/routes";
 import { BrandMark } from "./BrandMark";
 import { SearchBar } from "./SearchBar";
+import { InstallHint } from "./InstallHint";
 import { SiteNav } from "./SiteNav";
 import { ThemeToggle } from "./ThemeToggle";
+import { pwaCopy } from "@/lib/pwa";
 import { themeCopy } from "@/lib/theme";
 import styles from "./Header.module.css";
 
@@ -22,6 +24,7 @@ export function Header({ locale, nearMe }: { locale: Locale; nearMe?: ReactNode 
             label={copy.label}
             menu={copy.menu}
             close={copy.close}
+            footer={<InstallHint copy={pwaCopy[locale].install} />}
             tabs={[
               { href: href(locale), label: copy.home, match: "home" },
               { href: href(locale, paths.explore()), label: copy.city, match: "city" },

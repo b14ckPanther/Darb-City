@@ -47,6 +47,26 @@
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  /* Taps show their own pressed states; the grey flash reads as a web page, not an app. */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/*
+ * Installed (home screen) Darb: the page is the app, so overscrolling past its edges never bounces
+ * the whole document away from the header, and the chrome is not text to select.
+ */
+@media (display-mode: standalone) {
+  html,
+  body {
+    overscroll-behavior-y: none;
+  }
+
+  [data-site-header] a,
+  [data-site-header] button {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
 }
 
 body {
@@ -94,7 +114,9 @@ h3 {
 .frame {
   inline-size: min(100%, var(--frame));
   margin-inline: auto;
-  padding-inline: var(--gutter);
+  /* viewport-fit=cover: a phone on its side keeps the notch out of the content. */
+  padding-inline: max(var(--gutter), env(safe-area-inset-left))
+    max(var(--gutter), env(safe-area-inset-right));
 }
 
 .visually-hidden {

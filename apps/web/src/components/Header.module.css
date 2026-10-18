@@ -8,6 +8,8 @@
   z-index: 2;
   border-block-end: 1px solid var(--line-soft);
   background: var(--header-bg);
+  /* Under a translucent status bar (viewport-fit=cover), the header starts below it. */
+  padding-block-start: env(safe-area-inset-top);
 }
 
 /*

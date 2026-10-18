@@ -42,6 +42,8 @@
     z-index: 36;
     max-inline-size: none;
     padding: var(--space-3) var(--gutter) max(var(--space-3), env(safe-area-inset-bottom));
+    padding-inline: max(var(--gutter), env(safe-area-inset-left))
+      max(var(--gutter), env(safe-area-inset-right));
     min-block-size: var(--dock-size);
     background: linear-gradient(180deg, transparent 0%, var(--bg) 35%);
   }

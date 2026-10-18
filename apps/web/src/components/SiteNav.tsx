@@ -2,7 +2,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useId, useLayoutEffect, useRef, useState, type CSSProperties } from "react";
+import {
+  useEffect,
+  useId,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from "react";
 import styles from "./SiteNav.module.css";
 
 export interface NavTab {
@@ -35,11 +43,14 @@ export function SiteNav({
   label,
   menu,
   close,
+  footer,
 }: {
   tabs: NavTab[];
   label: string;
   menu: string;
   close: string;
+  /** Shown under the tabs in the phone menu (the home screen hint). */
+  footer?: ReactNode;
 }) {
   const path = stripLocale(usePathname() ?? "/");
   const [open, setOpen] = useState(false);
@@ -145,6 +156,7 @@ export function SiteNav({
             </li>
           ))}
         </ol>
+        {footer}
       </div>
     </nav>
   );
