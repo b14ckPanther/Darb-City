@@ -46,9 +46,7 @@ async function mark(height) {
   const img = sharp(await markSource()).resize(width, height, { kernel: "lanczos3" });
   // Tab sizes lose the arch's edges to the resize; a light sharpen brings them back.
   if (height <= 48) img.sharpen({ sigma: 0.5 });
-  return img
-    .png()
-    .toBuffer({ resolveWithObject: true });
+  return img.png().toBuffer({ resolveWithObject: true });
 }
 
 /** A solid-coloured copy of an RGBA image's silhouette, at `opacity`, blurred by `sigma`. */
@@ -109,7 +107,9 @@ function grain(size, strength) {
     out[p * 4 + 2] = light ? 240 : 52;
     out[p * 4 + 3] = Math.round(Math.abs(v - 0.5) * 2 * strength * 255);
   }
-  return sharp(out, { raw: { width: size, height: size, channels: 4 } }).png().toBuffer();
+  return sharp(out, { raw: { width: size, height: size, channels: 4 } })
+    .png()
+    .toBuffer();
 }
 
 /** The tile behind the mark, as SVG: the gradient, the light it catches, the edge. */
@@ -117,8 +117,7 @@ function tileSvg(theme, size, { radius = 0 } = {}) {
   // A tab icon at night sits on dark browser chrome: its tile lifts a step so the edge still shows.
   const t = theme === "dark" && size <= 48 ? TAB_NIGHT : TILES[theme];
   const r = radius * size;
-  const shape = (attrs) =>
-    `<rect width="${size}" height="${size}" rx="${r}" ry="${r}" ${attrs}/>`;
+  const shape = (attrs) => `<rect width="${size}" height="${size}" rx="${r}" ry="${r}" ${attrs}/>`;
   const night = `
     <radialGradient id="glow" cx="0.56" cy="0.5" r="0.5">
       <stop offset="0" stop-color="${GOLD}" stop-opacity="0.26"/>
@@ -345,6 +344,7 @@ function ico(images) {
 
 /** Every icon, as { file name: bytes }. */
 export async function renderIcons() {
+  /** @type {Record<string, Buffer>} */
   const files = {};
   for (const theme of ["light", "dark"]) {
     for (const size of FAVICON_SIZES)

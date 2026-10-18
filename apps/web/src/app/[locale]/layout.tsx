@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import type { CSSProperties, ReactNode } from "react";
 import type { Locale } from "@darb/core";
 import { dir, t } from "@darb/i18n";
-import { themeColor } from "@darb/tokens";
 import { isLocale } from "@/lib/locale";
 import { fontStack } from "@/lib/font-stack";
 import { siteUrl } from "@/lib/site";
@@ -13,9 +12,11 @@ import { DoorDefs } from "@/components/Door";
 import { Header } from "@/components/Header";
 import { NearMe } from "@/components/NearMe";
 import { href, paths } from "@/lib/routes";
+import { appMetadata, themeColors } from "@/lib/pwa";
 import { StageMount } from "@/components/StageMount";
 import { stageBootScript } from "@/lib/stage-boot";
 import { themeBootScript } from "@/lib/theme";
+import { installBootScript } from "@/lib/install";
 import { TILES_URL } from "@/stage/vendor";
 import type { StageLabels } from "@/stage/types";
 import "../globals.css";
@@ -39,11 +40,11 @@ const bodyFont = fontStack(ubuntu, heebo, cairo);
 
 /** Day first; the device's dark scheme (or the visitor's pick) shows the night theme. */
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: themeColor.day },
-    { media: "(prefers-color-scheme: dark)", color: themeColor.night },
-  ],
+  themeColor: themeColors,
   colorScheme: "light dark",
+  // The page reaches under the home indicator (and the notch, on its side); the header, the frame
+  // and the docked search bar pad themselves by the safe-area insets.
+  viewportFit: "cover",
 };
 
 /** Every page renders on first request and is then cached (ISR); the build never calls the API. */
@@ -62,15 +63,8 @@ export async function generateMetadata({
   const l = isLocale(locale) ? locale : "he";
   return {
     metadataBase: new URL(siteUrl()),
-    applicationName: t(l, "appName"),
     description: t(l, "tagline"),
-    icons: {
-      icon: [
-        { url: "/brand/icon-32.png", sizes: "32x32", type: "image/png" },
-        { url: "/brand/icon-192.png", sizes: "192x192", type: "image/png" },
-      ],
-      apple: "/brand/apple-touch-icon.png",
-    },
+    ...appMetadata(l),
   };
 }
 
@@ -99,6 +93,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
       <head>
         <style id="darb-tokens" dangerouslySetInnerHTML={{ __html: tokensCss() }} />
         <script id="darb-theme-boot" dangerouslySetInnerHTML={{ __html: themeBootScript() }} />
+        <script id="darb-install-boot" dangerouslySetInnerHTML={{ __html: installBootScript() }} />
         {stage ? (
           <script id="darb-stage-boot" dangerouslySetInnerHTML={{ __html: stageBootScript() }} />
         ) : null}
