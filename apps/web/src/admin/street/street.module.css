@@ -1,0 +1,139 @@
+/* Add from the street: one column on a phone, the photo beside the form on a wide screen. */
+.layout {
+  display: grid;
+  gap: 16px;
+  max-inline-size: 1100px;
+  min-inline-size: 0;
+}
+@media (min-width: 900px) {
+  .layout {
+    grid-template-columns: minmax(280px, 380px) minmax(0, 1fr);
+    align-items: start;
+  }
+  .layout > :not(.capture):not(.form) {
+    grid-column: 1 / -1;
+  }
+  .capture {
+    position: sticky;
+    inset-block-start: 88px;
+  }
+}
+.capture,
+.form {
+  display: grid;
+  gap: 12px;
+  min-inline-size: 0;
+}
+.camera {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-block-size: 72px;
+  padding: 16px;
+  border-radius: 16px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 700;
+  font-size: 1.125rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-1);
+}
+.camera:focus-within {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+/* Visually hidden, still focusable and reachable by its label (and by setInputFiles in e2e). */
+.cameraInput {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  opacity: 0;
+  overflow: hidden;
+}
+.preview {
+  display: block;
+  inline-size: 100%;
+  max-block-size: 50dvh;
+  object-fit: contain;
+  border-radius: 12px;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+}
+.reading {
+  animation: breathe 1.4s ease-in-out infinite;
+}
+@keyframes breathe {
+  50% {
+    opacity: 0.6;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reading {
+    animation: none;
+  }
+}
+.group {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-inline-size: 0;
+  display: grid;
+  gap: 4px;
+}
+.legend {
+  font-weight: 700;
+  padding: 0;
+  margin-block-end: 8px;
+}
+.note {
+  min-block-size: 72px !important;
+}
+.dupTitle {
+  font-size: 1rem;
+  margin: 0 0 4px;
+}
+.dupList {
+  margin: 8px 0 0;
+  padding-inline-start: 20px;
+  display: grid;
+  gap: 6px;
+}
+.save {
+  justify-content: center;
+  inline-size: 100%;
+  min-block-size: 56px;
+  font-size: 1.0625rem;
+}
+.queue,
+.mine {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.queueItem,
+.mineItem {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+  padding-block: 8px;
+  border-block-end: 1px solid var(--line);
+  min-inline-size: 0;
+}
+.queueName {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.today {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent-text);
+}
+.label {
+  font-size: 0.875rem;
+  color: var(--text-soft);
+}

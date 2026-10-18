@@ -17,6 +17,7 @@ const NAV: [string, AdminKey][] = [
   ["/plans", "navPlans"],
   ["/inquiries", "navInquiries"],
   ["/join-requests", "navJoin"],
+  ["/field", "navStreet"],
   ["/report", "navReport"],
 ];
 const LOCALE_NAMES: Record<Locale, string> = { he: "עברית", ar: "العربية", en: "English" };
