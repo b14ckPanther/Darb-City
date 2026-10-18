@@ -12,6 +12,8 @@ const SCREENS = [
   "/places/new",
   "/kinds/new",
   "/report",
+  "/field",
+  "/join-requests",
   "/sign-in",
 ];
 const prefix = (l: string) => (l === "he" ? "" : `/${l}`);

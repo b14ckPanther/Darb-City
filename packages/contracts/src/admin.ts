@@ -29,6 +29,14 @@ import {
   SiteTextKeySchema,
 } from "./pricing.js";
 import { INQUIRY_STATUSES, INQUIRY_TOPICS } from "./inquiry.js";
+import {
+  FieldCaptureCreateSchema,
+  FieldCaptureSchema,
+  FieldCapturesSchema,
+  FieldDuplicateQuerySchema,
+  FieldDuplicatesSchema,
+  FieldStatusSchema,
+} from "./field.js";
 import { JOIN_SOURCES, JOIN_STATUSES, JoinSuggestionSchema } from "./join.js";
 import { LocaleSchema, MissingReportSchema, ReportQuerySchema } from "./search.js";
 
@@ -344,6 +352,8 @@ export const AdminJoinRequestSchema = z.object({
   /** The draft (then published) business; null once a rejection deleted it. */
   businessId: id.nullable(),
   placeSlug: SlugSchema.nullable(),
+  /** The draft's first photo (for a street capture, the photo of its sign); null without one. */
+  photo: z.string().nullable(),
   lookup: JoinSuggestionSchema.nullable(),
   rejectReason: z.string().nullable(),
   createdAt: z.string(),
@@ -638,6 +648,35 @@ export const adminContract = c.router({
       pathParams: byId,
       body: AdminJoinRejectSchema,
       responses: { 200: AdminJoinRequestSchema, ...writeErrors },
+    },
+  }),
+  /**
+   * Add from the street. The photo and the sign reading take the image itself as the request body,
+   * outside this contract: POST /admin/field/photo and POST /admin/field/read.
+   */
+  field: c.router({
+    status: {
+      method: "GET",
+      path: "/admin/field/status",
+      responses: { 200: FieldStatusSchema, ...guarded },
+    },
+    duplicates: {
+      method: "POST",
+      path: "/admin/field/duplicates",
+      body: FieldDuplicateQuerySchema,
+      responses: { 200: FieldDuplicatesSchema, 400: AdminErrorSchema, ...guarded },
+    },
+    /** A draft business and its request in the join queue; the same clientId answers the first. */
+    create: {
+      method: "POST",
+      path: "/admin/field/captures",
+      body: FieldCaptureCreateSchema,
+      responses: { 200: FieldCaptureSchema, 201: FieldCaptureSchema, ...writeErrors },
+    },
+    mine: {
+      method: "GET",
+      path: "/admin/field/captures",
+      responses: { 200: FieldCapturesSchema, ...guarded },
     },
   }),
   inquiries: c.router({

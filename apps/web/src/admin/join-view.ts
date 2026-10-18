@@ -1,4 +1,4 @@
-import type { JoinStatus } from "@darb/contracts";
+import type { JoinSource, JoinStatus } from "@darb/contracts";
 import type { Locale } from "@darb/core";
 import { INTL_TAG } from "@/lib/locale";
 import type { AdminKey } from "./copy";
@@ -19,3 +19,11 @@ export const receivedAt = (locale: Locale, iso: string) =>
 
 /** tel: keeps only what a dialler reads: digits and a leading +. */
 export const telHref = (phone: string) => `tel:${phone.replace(/[^\d+]/g, "")}`;
+
+/** How a request came in: the owner's form (with or without the lookup), or the street. */
+export const joinSourceKey = (source: JoinSource): AdminKey =>
+  source === "lookup"
+    ? "joinSourceLookup"
+    : source === "field"
+      ? "streetBadge"
+      : "joinSourceManual";

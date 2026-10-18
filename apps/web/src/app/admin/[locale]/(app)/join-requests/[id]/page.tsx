@@ -9,7 +9,8 @@ import { BusinessForm } from "@/admin/BusinessForm";
 import { at } from "@/admin/copy";
 import { TextArea } from "@/admin/fields";
 import { approveJoin, rejectJoin } from "@/admin/join-actions";
-import { JOIN_STATUS_KEY, receivedAt, telHref } from "@/admin/join-view";
+import { JOIN_STATUS_KEY, joinSourceKey, receivedAt, telHref } from "@/admin/join-view";
+import { mediaUrl } from "@/lib/card";
 import { adminHref } from "@/admin/routes";
 import { getJoinStatus } from "@/lib/api";
 import { isLocale } from "@/lib/locale";
@@ -39,6 +40,7 @@ export default async function JoinRequestPage({
   ]);
   const s = r.lookup;
   const waiting = r.status === "pending";
+  const street = r.source === "field";
   return (
     <>
       <p>
@@ -53,53 +55,87 @@ export default async function JoinRequestPage({
         <span className={waiting ? `${styles.badge} ${styles.badgeGold}` : styles.badge}>
           {at(locale, JOIN_STATUS_KEY[r.status])}
         </span>
+        {street ? <span className={styles.badge}>{at(locale, "streetBadge")}</span> : null}
       </div>
-      <section className={styles.card} aria-labelledby="join-owner">
-        <h2 id="join-owner" className={styles.h2}>
-          {at(locale, "joinOwner")}
-        </h2>
-        <dl className={styles.facts}>
-          <dt>{at(locale, "fieldName")}</dt>
-          <dd>
-            <bdi>{r.ownerName}</bdi>
-          </dd>
-          <dt>{at(locale, "joinOwnerPhone")}</dt>
-          <dd>
-            <a href={telHref(r.ownerPhone)} dir="ltr">
-              {r.ownerPhone}
+      {street ? (
+        <section className={styles.card} aria-labelledby="join-sign">
+          <h2 id="join-sign" className={styles.h2}>
+            {at(locale, "streetSign")}
+          </h2>
+          <p className={styles.hint}>{at(locale, "streetAddedBy")}</p>
+          {r.photo ? (
+            <a href={mediaUrl(r.photo)} target="_blank" rel="noopener noreferrer">
+              {/* eslint-disable-next-line @next/next/no-img-element -- the full photo from the bucket */}
+              <img
+                src={mediaUrl(r.photo)}
+                alt={at(locale, "streetPhotoAlt")}
+                className={styles.signPhoto}
+              />
             </a>
-          </dd>
-          {r.ownerEmail ? (
-            <>
-              <dt>{at(locale, "joinOwnerEmail")}</dt>
-              <dd>
-                <a href={`mailto:${r.ownerEmail}`} dir="ltr">
-                  {r.ownerEmail}
-                </a>
-              </dd>
-            </>
           ) : null}
-          <dt>{at(locale, "inquiryLocale")}</dt>
-          <dd dir="ltr">{r.locale}</dd>
-          <dt>{at(locale, "inquiryReceived")}</dt>
-          <dd>{receivedAt(locale, r.createdAt)}</dd>
-          <dt>{at(locale, "joinSource")}</dt>
-          <dd>{at(locale, r.source === "lookup" ? "joinSourceLookup" : "joinSourceManual")}</dd>
-        </dl>
-        {r.note ? (
-          <>
-            <h3 className={styles.hint}>{at(locale, "joinNote")}</h3>
+          <dl className={styles.facts}>
+            <dt>{at(locale, "inquiryReceived")}</dt>
+            <dd>{receivedAt(locale, r.createdAt)}</dd>
+          </dl>
+          {r.note ? (
             <p className={styles.message} dir="auto">
               {r.note}
             </p>
-          </>
-        ) : null}
-        {r.rejectReason ? (
-          <p className={styles.error}>
-            {at(locale, "joinRejectedBecause", { reason: r.rejectReason })}
-          </p>
-        ) : null}
-      </section>
+          ) : null}
+          {r.rejectReason ? (
+            <p className={styles.error}>
+              {at(locale, "joinRejectedBecause", { reason: r.rejectReason })}
+            </p>
+          ) : null}
+        </section>
+      ) : (
+        <section className={styles.card} aria-labelledby="join-owner">
+          <h2 id="join-owner" className={styles.h2}>
+            {at(locale, "joinOwner")}
+          </h2>
+          <dl className={styles.facts}>
+            <dt>{at(locale, "fieldName")}</dt>
+            <dd>
+              <bdi>{r.ownerName}</bdi>
+            </dd>
+            <dt>{at(locale, "joinOwnerPhone")}</dt>
+            <dd>
+              <a href={telHref(r.ownerPhone)} dir="ltr">
+                {r.ownerPhone}
+              </a>
+            </dd>
+            {r.ownerEmail ? (
+              <>
+                <dt>{at(locale, "joinOwnerEmail")}</dt>
+                <dd>
+                  <a href={`mailto:${r.ownerEmail}`} dir="ltr">
+                    {r.ownerEmail}
+                  </a>
+                </dd>
+              </>
+            ) : null}
+            <dt>{at(locale, "inquiryLocale")}</dt>
+            <dd dir="ltr">{r.locale}</dd>
+            <dt>{at(locale, "inquiryReceived")}</dt>
+            <dd>{receivedAt(locale, r.createdAt)}</dd>
+            <dt>{at(locale, "joinSource")}</dt>
+            <dd>{at(locale, joinSourceKey(r.source))}</dd>
+          </dl>
+          {r.note ? (
+            <>
+              <h3 className={styles.hint}>{at(locale, "joinNote")}</h3>
+              <p className={styles.message} dir="auto">
+                {r.note}
+              </p>
+            </>
+          ) : null}
+          {r.rejectReason ? (
+            <p className={styles.error}>
+              {at(locale, "joinRejectedBecause", { reason: r.rejectReason })}
+            </p>
+          ) : null}
+        </section>
+      )}
       {s ? (
         <section className={styles.card} aria-labelledby="join-lookup">
           <h2 id="join-lookup" className={styles.h2}>
