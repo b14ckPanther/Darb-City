@@ -40,22 +40,6 @@ export default async function LandingPage({ params }: Props) {
           <div className={styles.heroStage}>
             <div className={styles.heroGlow} aria-hidden="true" />
             <div className={styles.heroCopy}>
-              <div className={styles.names}>
-                <span className="visually-hidden">{copy.hero.eyebrow}</span>
-                <span className={styles.namesRoad} aria-hidden="true">
-                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8">
-                    <path d="M3 14c0-4 10-3 10-7 0-2.5-3-4-5-4" strokeLinecap="round" />
-                    <circle cx="8" cy="3" r="1.4" fill="currentColor" stroke="none" />
-                  </svg>
-                </span>
-                <span className={styles.namesList} aria-hidden="true">
-                  {copy.hero.eyebrow.split(" · ").map((name, i) => (
-                    <span key={name} style={{ "--i": i } as CSSProperties}>
-                      <bdi>{name}</bdi>
-                    </span>
-                  ))}
-                </span>
-              </div>
               <h1 id="main-heading" tabIndex={-1} className={styles.heroTitle}>
                 {copy.hero.title}
                 <span className={styles.heroAccent}>{copy.hero.accent}</span>
