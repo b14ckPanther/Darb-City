@@ -5,7 +5,7 @@ export const SOCIAL = {
   darbInstagram: { href: "https://www.instagram.com/darbco/", handle: "@darbco" },
   portfolio: { href: "https://zangeel.dev", handle: "zangeel.dev" },
   founderInstagram: { href: "https://www.instagram.com/noormosa.97/", handle: "@noormosa.97" },
-  linkedin: { href: "https://www.linkedin.com/in/nmprofessor/", handle: "LinkedIn" },
+  linkedin: { href: "https://www.linkedin.com/in/nouraldenmousa/", handle: "LinkedIn" },
   github: { href: "https://github.com/b14ckPanther", handle: "GitHub" },
 } as const;
 
@@ -20,7 +20,7 @@ export const PEOPLE = [
     links: [
       { icon: "web", label: "zangeel.dev", href: "https://zangeel.dev" },
       { icon: "instagram", label: "Instagram", href: "https://www.instagram.com/noormosa.97/" },
-      { icon: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/in/nmprofessor/" },
+      { icon: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/in/nouraldenmousa/" },
       { icon: "github", label: "GitHub", href: "https://github.com/b14ckPanther" },
     ],
   },
