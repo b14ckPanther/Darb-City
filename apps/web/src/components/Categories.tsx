@@ -90,7 +90,12 @@ export function KindRows({
       data-title={preview?.title(k.name)}
       data-count={k.count}
     >
-      <Link href={href(k.slug)} className={styles.row} data-door={doors ? k.slug : undefined}>
+      <Link
+        href={href(k.slug)}
+        className={styles.row}
+        data-door={doors ? k.slug : undefined}
+        data-count={doors ? k.count : undefined}
+      >
         <span className={styles.dot} aria-hidden="true" />
         <span className={styles.name}>{k.name}</span>
         <span className={styles.count} aria-hidden="true">
@@ -137,6 +142,7 @@ export interface SectorGroupProps {
   href: string;
   totalText: string;
   totalLabel: string;
+  total: number;
   children: ReactNode;
 }
 
@@ -149,6 +155,7 @@ export function SectorGroup({
   href,
   totalText,
   totalLabel,
+  total,
   children,
 }: SectorGroupProps) {
   return (
@@ -159,7 +166,7 @@ export function SectorGroup({
       data-sector-group={slug}
     >
       <h2 id={`sector-${slug}`} className={styles.heading}>
-        <Link href={href} className={styles.head} data-door={slug}>
+        <Link href={href} className={styles.head} data-door={slug} data-count={total}>
           <span className={styles.headDot} aria-hidden="true" />
           <span className={styles.headText}>
             <span className={styles.headName}>{name}</span>

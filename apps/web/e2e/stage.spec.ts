@@ -4,7 +4,11 @@ import { BUSINESS_KEY, HAIFA, isPhone, LEVELS, localePath, settleStage } from ".
 
 test.describe.configure({ timeout: 60_000 });
 
-type DarbStage = { pointOf(id: string): [number, number] | null; center(): [number, number] };
+type DarbStage = {
+  pointOf(id: string): [number, number] | null;
+  center(): [number, number];
+  pins(): string[];
+};
 const host = (page: Page) => page.locator("[data-stage-host]");
 const html = (page: Page) => page.locator("html");
 
@@ -29,27 +33,9 @@ async function pointOf(page: Page, id: string): Promise<[number, number]> {
   return point!;
 }
 
-/**
- * Picks a live place on the country map. Nearby places share a count bubble until the map is
- * close enough to split them, so the mouse wheel zooms in on the place until its own dot is there.
- */
-async function pickPlace(page: Page, slug: string) {
-  for (let attempt = 0; attempt < 8; attempt++) {
-    const [x, y] = await pointOf(page, slug);
-    await page.mouse.click(x, y);
-    if (
-      await page.waitForURL(`/${slug}`, { timeout: 1500 }).then(
-        () => true,
-        () => false,
-      )
-    )
-      return;
-    await page.mouse.move(x, y);
-    await page.mouse.wheel(0, -400);
-    await page.waitForTimeout(800);
-  }
-  throw new Error(`no dot for ${slug} on the map`);
-}
+/** The businesses on the map now, by key. */
+const pinsOnMap = (page: Page) =>
+  page.evaluate(() => (window as unknown as { darbStage: DarbStage }).darbStage.pins());
 
 const center = (page: Page) =>
   page.evaluate(() => (window as unknown as { darbStage: DarbStage }).darbStage.center());
@@ -126,9 +112,56 @@ test.describe("desktop", () => {
       expect((await page.locator("#stage").boundingBox())!.x < 10).toBe(rtl);
     });
 
+  test("the map shows no businesses until one is asked for: no count bubbles, no place dots", async ({
+    page,
+  }) => {
+    for (const path of [LEVELS.country, LEVELS.place, LEVELS.sector]) {
+      await stageAt(page, path);
+      expect(await pinsOnMap(page), path).toEqual([]);
+    }
+    // The country's warmth is drawn, never as something to click: a tap on a busy place is no link.
+    await stageAt(page, LEVELS.country);
+    await page.mouse.click(...(await pointOf(page, "sakhnin")));
+    await page.waitForTimeout(800);
+    await expect(page).toHaveURL(LEVELS.country);
+  });
+
+  test("hovering a category row previews only its businesses, and leaving hands the map back", async ({
+    page,
+  }) => {
+    await stageAt(page, LEVELS.place);
+    const row = page.locator('[data-kind-row="barbershops"]');
+    await row.hover();
+    await expect.poll(() => pinsOnMap(page)).toContain(BUSINESS_KEY);
+    await expect(row).toHaveAttribute("data-previewing", "");
+    const caption = page.locator("[data-stage-caption]");
+    await expect(caption).toContainText("מספרות בסח'נין");
+    // Every pin is a barbershop in Sakhnin.
+    for (const key of await pinsOnMap(page)) expect(key).toMatch(/^sakhnin\//);
+    // Off the list: the preview clears.
+    await page.mouse.move(5, 450);
+    await expect.poll(() => pinsOnMap(page)).toEqual([]);
+    await expect(caption).toHaveCount(0);
+    await expect(row).not.toHaveAttribute("data-previewing", "");
+  });
+
+  test("a kind's pins are numbered like its rows, and a row and its pin light up together", async ({
+    page,
+  }) => {
+    await stageAt(page, LEVELS.kind);
+    const keys = await page
+      .locator("[data-business]")
+      .evaluateAll((els) => els.map((el) => el.getAttribute("data-business")));
+    expect(await pinsOnMap(page)).toEqual(keys);
+    await expect(page.locator("[data-row-pin]").first()).toHaveText("1");
+    // Hovering a pin lifts its row.
+    await page.mouse.move(...(await pointOf(page, BUSINESS_KEY)));
+    await expect(page.locator(`[data-business="${BUSINESS_KEY}"]`)).toHaveAttribute("data-hot", "");
+  });
+
   test("the camera follows each level to the right URL", async ({ page }) => {
     await stageAt(page, LEVELS.country);
-    await pickPlace(page, "sakhnin");
+    await page.locator('#places a[href="/sakhnin"]').click();
     await expect(page).toHaveURL(LEVELS.place);
     await expect(host(page)).toHaveAttribute("data-stage-path", LEVELS.place);
     // Map to map: the camera flies, no layer crossfades.
@@ -149,18 +182,27 @@ test.describe("desktop", () => {
     await expect(page.getByRole("dialog")).toBeVisible();
   });
 
-  test("a click 15 px off a 5–12 px dot or pin still counts (44 px targets)", async ({ page }) => {
+  test("a click 15 px off a pin still counts (44 px targets)", async ({ page }) => {
     await stageAt(page, LEVELS.kind);
+    const keys = await pinsOnMap(page);
+    const points = await Promise.all(keys.map((k) => pointOf(page, k)));
     const [px, py] = await pointOf(page, BUSINESS_KEY);
-    const [dx, dy] = await pointOf(page, "sakhnin");
-    // 15 px from each, on the side away from the other.
-    const d = Math.hypot(px - dx, py - dy);
-    const [ux, uy] = [(px - dx) / d, (py - dy) / d];
-    await page.mouse.click(px + 15 * ux, py + 15 * uy);
+    // 15 px from the pin, on the side with the most room from every other pin.
+    const room = (dx: number, dy: number) =>
+      Math.min(
+        ...points
+          .filter(([x, y]) => x !== px || y !== py)
+          .map(([x, y]) => Math.hypot(px + dx - x, py + dy - y)),
+      );
+    const sides = [
+      [15, 0],
+      [-15, 0],
+      [0, 15],
+      [0, -15],
+    ] as const;
+    const [dx, dy] = [...sides].sort((a, b) => room(...b) - room(...a))[0]!;
+    await page.mouse.click(px + dx, py + dy);
     await expect(page).toHaveURL(LEVELS.business);
-    await stageAt(page, LEVELS.kind);
-    await page.mouse.click(dx - 15 * ux, dy - 15 * uy);
-    await expect(page).toHaveURL(LEVELS.place);
   });
 
   test("Back goes up a level, and the camera with it", async ({ page }) => {
@@ -439,7 +481,7 @@ test.describe("phone", () => {
     await expect(search).toHaveValue("barber");
   });
 
-  test("level 3 hands the phone back to the list", async ({ page }) => {
+  test("a new page closes the open map: the list is the page", async ({ page }) => {
     // From a kind's list up to its sector, open the map there, then Back to the kind.
     await page.goto(LEVELS.kind);
     await page.goto(LEVELS.sector);
@@ -447,8 +489,53 @@ test.describe("phone", () => {
     await page.goBack();
     await expect(page).toHaveURL(LEVELS.kind);
     await expect(html(page)).not.toHaveAttribute("data-stage-open", "");
-    await expect(page.locator("[data-stage-toggle]")).toHaveCount(0);
     await expect(page.locator(`[data-business-link="${BUSINESS_KEY}"]`)).toBeVisible();
+    // A kind's list offers its map too (its numbered pins); a business sheet does not.
+    await expect(page.locator("[data-stage-toggle]")).toHaveText("מפה");
+    await page.goto(LEVELS.business);
+    await expect(page.getByRole("dialog")).toBeVisible();
+    await expect(page.locator("[data-stage-toggle]")).toHaveCount(0);
+  });
+
+  test("a category's map button opens the map on only its businesses, under a header", async ({
+    page,
+  }) => {
+    await page.goto(LEVELS.sector);
+    const button = page.locator('[data-kind-preview="barbershops"]');
+    await expect(button).toBeVisible({ timeout: 30_000 });
+    const box = (await button.boundingBox())!;
+    expect(Math.min(box.width, box.height)).toBeGreaterThanOrEqual(44);
+    await button.click();
+    await expect(html(page)).toHaveAttribute("data-stage-open", "");
+    await expect(host(page)).toHaveAttribute("data-stage-state", "ready", { timeout: 30_000 });
+    await expect.poll(() => pinsOnMap(page)).toContain(BUSINESS_KEY);
+    const caption = page.locator("[data-stage-caption]");
+    await expect(caption).toContainText("מספרות בסח'נין");
+    // A pin opens a card, never the business by surprise.
+    await expect(host(page)).not.toHaveAttribute("data-stage-moving", "");
+    await page.mouse.click(...(await pointOf(page, BUSINESS_KEY)));
+    const card = page.locator(`[data-pin-card="${BUSINESS_KEY}"]`);
+    await expect(card).toBeVisible();
+    await expect(page).toHaveURL(LEVELS.sector);
+    // The card and the header sit inside the map, clear of the pill and the docked search bar.
+    const pill = (await page.locator("[data-stage-toggle]").boundingBox())!;
+    const cardBox = (await card.boundingBox())!;
+    expect(cardBox.y + cardBox.height).toBeLessThanOrEqual(pill.y);
+    // Back to the list: the map closes and the category is let go.
+    await page.locator("[data-stage-back]").click();
+    await expect(html(page)).not.toHaveAttribute("data-stage-open", "");
+    await expect(button).toHaveAttribute("aria-pressed", "false");
+  });
+
+  test("a pin's card opens its business", async ({ page }) => {
+    await openStage(page, LEVELS.kind);
+    await expect(page.locator("[data-stage-caption]")).toContainText("מספרות בסח'נין");
+    await expect(host(page)).not.toHaveAttribute("data-stage-moving", "");
+    await page.mouse.click(...(await pointOf(page, BUSINESS_KEY)));
+    await page.locator(`[data-pin-card="${BUSINESS_KEY}"] [data-pin-open]`).click();
+    await expect(page).toHaveURL(LEVELS.business);
+    await expect(page.getByRole("dialog")).toBeVisible();
+    await expect(html(page)).not.toHaveAttribute("data-stage-open", "");
   });
 
   test("the open stage has no WCAG A/AA violations", async ({ page }) => {

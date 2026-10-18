@@ -109,6 +109,7 @@ export default orUnavailable(async function PlacePage({ params }: Props) {
                 tagline={group.tagline}
                 accent={group.sector.accent}
                 href={sectorHref}
+                total={group.total}
                 totalText={totalText}
                 totalLabel={t(locale, "businessCount", { count: totalText })}
               >

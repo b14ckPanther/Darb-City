@@ -95,10 +95,10 @@ export function darbLayers(): LayerSpecification[] {
       type: "circle",
       source: HERE_SOURCE,
       paint: {
-        "circle-radius": ["interpolate", ["linear"], ["zoom"], 9, 22, 14, 64],
+        "circle-radius": ["interpolate", ["linear"], ["zoom"], 9, 28, 14, 84],
         "circle-color": colors.gold,
-        "circle-opacity": 0.16,
-        "circle-blur": 0.9,
+        "circle-opacity": 0.3,
+        "circle-blur": 0.85,
       },
     },
     {
@@ -106,10 +106,10 @@ export function darbLayers(): LayerSpecification[] {
       type: "circle",
       source: HERE_SOURCE,
       paint: {
-        "circle-radius": 5,
+        "circle-radius": 6,
         "circle-color": colors.gold,
         "circle-stroke-color": mapColors.halo,
-        "circle-stroke-width": 2.5,
+        "circle-stroke-width": 3,
       },
     },
     {
