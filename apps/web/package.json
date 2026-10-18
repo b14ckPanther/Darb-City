@@ -14,7 +14,8 @@
     "e2e": "rm -rf .next/cache/fetch-cache && playwright test",
     "budget": "node scripts/check-budget.mjs",
     "tiles:israel": "node scripts/tiles/extract-israel.mjs",
-    "tiles:test": "node scripts/tiles/make-test-tiles.mjs"
+    "tiles:test": "node scripts/tiles/make-test-tiles.mjs",
+    "icons": "node scripts/make-icons.mjs"
   },
   "dependencies": {
     "@clerk/localizations": "catalog:",
@@ -48,6 +49,7 @@
     "@types/react-dom": "catalog:",
     "@vitejs/plugin-react": "catalog:",
     "jsdom": "catalog:",
+    "sharp": "catalog:",
     "typescript": "catalog:",
     "vitest": "catalog:"
   }
