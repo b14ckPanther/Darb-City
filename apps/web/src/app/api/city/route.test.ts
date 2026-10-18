@@ -13,7 +13,7 @@ const { GET } = await import("./route");
 
 afterEach(() => vi.resetAllMocks());
 
-const get = (query: string) => GET(new Request(`http://web.test/api/city?${query}`));
+const get = () => GET();
 const sakhnin = {
   id: "p1",
   slug: "sakhnin",
@@ -25,29 +25,25 @@ const sakhnin = {
   parentId: "r1",
 };
 
-it("returns live places as localized dots with their density and level-1 href", async () => {
+it("returns live places as points with their business count, and nothing to read aloud", async () => {
   getPlaces.mockResolvedValue([sakhnin, { ...sakhnin, slug: "tamra", name: { he: "טמרה" } }]);
   getDensity.mockResolvedValue({ sakhnin: 7 });
-  const res = await get("locale=ar");
+  const res = await get();
   expect(res.status).toBe(200);
   expect(res.headers.get("cache-control")).toBe("public, max-age=300");
   expect(getPlaces).toHaveBeenCalledWith("live");
   expect(await res.json()).toEqual({
     dots: [
-      { slug: "sakhnin", name: "سخنين", lat: 32.86, lng: 35.3, count: 7, href: "/ar/sakhnin" },
-      { slug: "tamra", name: "טמרה", lat: 32.86, lng: 35.3, count: 0, href: "/ar/tamra" },
+      { slug: "sakhnin", lat: 32.86, lng: 35.3, count: 7 },
+      { slug: "tamra", lat: 32.86, lng: 35.3, count: 0 },
     ],
   });
-});
-
-it("answers 400 for an unknown locale", async () => {
-  expect((await get("locale=fr")).status).toBe(400);
 });
 
 it("answers 503 when the API is down", async () => {
   getPlaces.mockRejectedValue(new api.ApiUnavailableError("down"));
   getDensity.mockResolvedValue({});
-  expect((await get("locale=he")).status).toBe(503);
+  expect((await get()).status).toBe(503);
 });
 
 it("puts only settlements on the map: no country, region or neighbourhood dots", async () => {
@@ -60,6 +56,6 @@ it("puts only settlements on the map: no country, region or neighbourhood dots",
     { ...sakhnin, slug: "old-city", type: "neighbourhood" },
   ]);
   getDensity.mockResolvedValue({});
-  const { dots } = (await (await get("locale=en")).json()) as { dots: { slug: string }[] };
+  const { dots } = (await (await get()).json()) as { dots: { slug: string }[] };
   expect(dots.map((d) => d.slug)).toEqual(["sakhnin", "kfar-manda", "zarzir"]);
 });

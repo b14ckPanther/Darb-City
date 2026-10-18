@@ -1,34 +1,49 @@
 import { describe, expect, it } from "vitest";
-import { cityCollection, glowRadius, pinCollection } from "./density.js";
+import { heatCollection, hereCollection, pinCollection } from "./density.js";
 
-describe("density", () => {
-  it("glows nothing for an empty place and most for the busiest", () => {
-    expect(glowRadius(0, 50)).toBe(0);
-    expect(glowRadius(50, 50)).toBe(24);
-    expect(glowRadius(1, 100)).toBe(7.8);
-    expect(glowRadius(5, 0)).toBe(0);
-  });
-  it("turns live places into a GeoJSON collection with their glow", () => {
-    const fc = cityCollection([
-      { slug: "a", name: "A", lat: 32, lng: 35, count: 10, href: "/a" },
-      { slug: "b", name: "B", lat: 33, lng: 35.5, count: 0, href: "/b" },
+describe("map data", () => {
+  it("warms where businesses are, by the log of their count, never empty places", () => {
+    const fc = heatCollection([
+      { slug: "a", lat: 32, lng: 35, count: 1000 },
+      { slug: "b", lat: 33, lng: 35.5, count: 9 },
+      { slug: "c", lat: 33, lng: 35.6, count: 0 },
     ]);
     expect(fc.type).toBe("FeatureCollection");
+    expect(fc.features).toHaveLength(2);
     expect(fc.features[0]).toEqual({
       type: "Feature",
       geometry: { type: "Point", coordinates: [35, 32] },
-      properties: { slug: "a", name: "A", href: "/a", count: 10, glow: 24 },
+      properties: { weight: 1 },
     });
-    expect(fc.features[1]?.properties.glow).toBe(0);
+    // A village of 9 next to a city of 1,000 still reads at a third, not at 1 %.
+    expect(fc.features[1]?.properties.weight).toBe(0.33);
+    expect(JSON.stringify(fc)).not.toContain("count");
   });
-  it("marks the open business's pin", () => {
-    const fc = pinCollection(
-      [
-        { key: "s/a", href: "/s/k/a", name: "A", lat: 32, lng: 35 },
-        { key: "s/b", href: "/s/k/b", name: "B", lat: 32.1, lng: 35.1 },
+  it("marks the level's place, and nothing for the country or a nationwide search", () => {
+    expect(hereCollection({ slug: "haifa", name: "Haifa", lat: 32.79, lng: 34.99 })).toEqual({
+      type: "FeatureCollection",
+      features: [
+        {
+          type: "Feature",
+          geometry: { type: "Point", coordinates: [34.99, 32.79] },
+          properties: { name: "Haifa" },
+        },
       ],
-      "/s/k/b",
-    );
-    expect(fc.features.map((f) => f.properties.active)).toEqual([false, true]);
+    });
+    expect(hereCollection(null).features).toEqual([]);
+    expect(hereCollection({ slug: "", name: "", lat: 32, lng: 35 }).features).toEqual([]);
+  });
+  it("numbers pins in list order, and leaves a preview's pins unnumbered", () => {
+    const pins = [
+      { key: "s/a", href: "/s/k/a", name: "A", lat: 32, lng: 35 },
+      { key: "s/b", href: "/s/k/b", name: "B", lat: 32.1, lng: 35.1 },
+    ];
+    expect(pinCollection(pins).features.map((f) => f.properties)).toEqual([
+      { key: "s/a", name: "A", href: "/s/k/a", n: 1 },
+      { key: "s/b", name: "B", href: "/s/k/b", n: 2 },
+    ]);
+    expect(pinCollection(pins, { numbered: false }).features.map((f) => f.properties.n)).toEqual([
+      0, 0,
+    ]);
   });
 });

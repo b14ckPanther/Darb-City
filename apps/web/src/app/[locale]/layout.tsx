@@ -75,6 +75,16 @@ const stageLabels = (locale: Locale): StageLabels => ({
   showList: t(locale, "showList"),
   mapData: t(locale, "mapData"),
   businessCount: t(locale, "businessCount"),
+  backToList: t(locale, "backToList"),
+  pinsOf: t(locale, "pinsOf"),
+  openBusiness: t(locale, "openBusiness"),
+  close: t(locale, "close"),
+  openNow: t(locale, "openNow"),
+  closed: t(locale, "closed"),
+  byAppointment: t(locale, "byAppointment"),
+  distanceKm: t(locale, "distanceKm"),
+  distanceM: t(locale, "distanceM"),
+  loadingPins: t(locale, "loadingPins"),
 });
 
 export default async function RootLayout({ children, params }: LayoutProps) {

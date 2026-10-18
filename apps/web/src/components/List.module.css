@@ -53,6 +53,7 @@
 /* A row wears its card's look, lightly: the accent along its edge and the logo (or a letter). */
 .rowLink {
   --row-accent: var(--accent);
+  position: relative;
   display: grid;
   grid-template-columns: 44px minmax(0, 1fr);
   align-items: start;
@@ -77,6 +78,58 @@
   border-color: var(--line);
   border-inline-start-color: var(--row-accent);
   box-shadow: var(--shadow-2);
+}
+
+/*
+ * The row's number on the map: a small gold pin on the logo's corner, like the pin it matches.
+ * Only where the map is on; lifted with the row when either is hovered.
+ */
+.rowPin {
+  position: absolute;
+  z-index: 1;
+  inset-block-start: 6px;
+  inset-inline-start: 8px;
+  display: none;
+  place-items: center;
+  min-inline-size: 22px;
+  block-size: 22px;
+  padding-inline: 5px;
+  border: 2px solid var(--surface-1);
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  box-shadow: 0 1px 3px rgb(var(--shadow) / calc(var(--shadow-k) * 0.18));
+  color: #14352a;
+  font-size: 0.75rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+:global(html[data-stage="on"]) .rowPin {
+  display: grid;
+}
+
+/* The row whose pin is lifted (hovered here or on the map), and its number with it. */
+.row[data-hot] .rowLink {
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--line));
+  border-inline-start-color: var(--row-accent);
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent),
+    var(--shadow-2);
+}
+
+.row[data-hot] .rowPin {
+  background: #14352a;
+  border-color: var(--accent);
+  color: #fbe7bd;
+  transform: scale(1.18);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .row[data-hot] .rowPin {
+    transform: none;
+  }
 }
 
 .rowLogo {

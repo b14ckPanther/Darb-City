@@ -127,14 +127,16 @@ describe("search view", () => {
     expect(view.stage).toEqual({
       depth: 3,
       place: ctx.place,
+      title: "knafeh akko",
+      count: 1,
       pins: [
-        {
+        expect.objectContaining({
           key: "akko/abu-salem",
           href: "/en/akko/food/sweets/abu-salem",
           name: "Abu Salem",
           lat: 32.921,
           lng: 35.071,
-        },
+        }),
       ],
     });
   });

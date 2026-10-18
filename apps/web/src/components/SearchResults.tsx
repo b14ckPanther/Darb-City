@@ -8,6 +8,7 @@ import { editedHref, removeChip, type SearchView } from "@/lib/search-view";
 import { BusinessRow, type RowLabels } from "./BusinessRow";
 import { NoneYet } from "./NoneYet";
 import { StageData } from "./StageData";
+import { useMapRows } from "./useMapRows";
 import list from "./List.module.css";
 import styles from "./SearchResults.module.css";
 
@@ -58,6 +59,8 @@ export function SearchResults({
   const [view, setView] = useState(initial);
   const [state, setState] = useState<"idle" | "loading" | "locating" | "denied" | "error">("idle");
   const title = useRef<HTMLHeadingElement>(null);
+  const results = useRef<HTMLUListElement>(null);
+  useMapRows(results, view.rows.length > 0);
   const refocus = useRef(false);
 
   // After a re-run the pressed × is gone: focus lands on the results heading, never on <body>.
@@ -186,11 +189,12 @@ export function SearchResults({
       {state === "denied" ? <p role="status">{labels.locationDenied}</p> : null}
       {state === "error" ? <p role="status">{labels.unreachable}</p> : null}
       {view.rows.length > 0 ? (
-        <ul className={list.list} data-business-list="">
-          {view.rows.map((row) => (
+        <ul ref={results} className={list.list} data-business-list="">
+          {view.rows.map((row, i) => (
             <BusinessRow
               key={row.key}
               row={row}
+              n={i + 1}
               labels={labels.rows}
               onOpen={() => clicked(row.key)}
               note={row.matched ? <Matched {...row.matched} on={labels.matchedOn} /> : null}

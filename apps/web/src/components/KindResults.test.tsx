@@ -56,6 +56,7 @@ const props = {
   place: "sakhnin",
   kind: "restaurants",
   stagePlace: { slug: "sakhnin", name: "Sakhnin", lat: 32.86, lng: 35.3 },
+  title: "Barbershops in Sakhnin",
   initialRows: [row("a"), row("b")],
   initialCursor: "c1",
   deliversAvailable: true,

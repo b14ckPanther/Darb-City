@@ -22,11 +22,15 @@ export interface MovableMap {
   off(type: "moveend", listener: () => void): unknown;
 }
 
-/** Px of the map covered at its top (the site header) and at each side (the desktop sheet). */
+/**
+ * Px of the map covered at its top (the site header or the phone map's caption), at each side (the
+ * desktop sheet) and at its foot (a phone's pin card).
+ */
 export interface Inset {
   top: number;
   left: number;
   right: number;
+  bottom?: number;
 }
 
 /** Around a fitted area, inside the inset. */
@@ -52,7 +56,7 @@ export function moveCamera(
     map.setPadding({ top: 0, bottom: 0, left: 0, right: 0 });
     const padding = {
       top: FIT_PADDING + inset.top,
-      bottom: FIT_PADDING,
+      bottom: FIT_PADDING + (inset.bottom ?? 0),
       left: FIT_PADDING + inset.left,
       right: FIT_PADDING + inset.right,
     };
@@ -69,7 +73,12 @@ export function moveCamera(
       });
   } else {
     target = camera.zoom;
-    const padding = { top: inset.top, bottom: 0, left: inset.left, right: inset.right };
+    const padding = {
+      top: inset.top,
+      bottom: inset.bottom ?? 0,
+      left: inset.left,
+      right: inset.right,
+    };
     start = () =>
       duration > 0
         ? map.flyTo({

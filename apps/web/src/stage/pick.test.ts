@@ -1,6 +1,6 @@
 // @vitest-environment node
 import { describe, expect, it } from "vitest";
-import { CITY_DOT, CITY_LABEL, PIN_LAYER } from "./map-layers";
+import { CLUSTER_PIN, HOT_PIN, PIN_LAYER } from "./map-layers";
 import { HIT_BOX, pickAt, PICKABLE, type PickableMap } from "./pick";
 
 type Pixel = [number, number];
@@ -8,26 +8,23 @@ type Box = [Pixel, Pixel];
 
 interface FakeFeature {
   layer: string;
-  href: string;
+  properties: Record<string, unknown>;
   /** Where the feature's point is on screen (the fake map projects lng/lat as pixels). */
   at: [number, number];
-  /** What the feature covers on screen: a dot's disc, a label's text box. */
-  covers: { x0: number; y0: number; x1: number; y1: number };
+  r: number;
 }
 
-const dot = (layer: string, href: string, x: number, y: number, r = 4): FakeFeature => ({
+const pin = (key: string, x: number, y: number, layer = PIN_LAYER): FakeFeature => ({
   layer,
-  href,
+  properties: { key, href: `/sakhnin/beauty/barbershops/${key}`, n: 1 },
   at: [x, y],
-  covers: { x0: x - r, y0: y - r, x1: x + r, y1: y + r },
+  r: 11,
 });
-
-const label = (href: string, x: number, y: number): FakeFeature => ({
-  layer: CITY_LABEL,
-  href,
+const cluster = (id: number, x: number, y: number): FakeFeature => ({
+  layer: CLUSTER_PIN,
+  properties: { cluster_id: id, point_count: 4 },
   at: [x, y],
-  // Text under its dot (anchor "top"), 60 px wide.
-  covers: { x0: x - 30, y0: y + 8, x1: x + 30, y1: y + 24 },
+  r: 13,
 });
 
 const isBox = (geometry: Pixel | Box): geometry is Box => Array.isArray(geometry[0]);
@@ -42,12 +39,12 @@ function fakeMap(features: FakeFeature[]) {
       const layers = options.layers;
       return features
         .filter((f) => layers.includes(f.layer))
-        .filter((f) => f.covers.x0 <= x1 && f.covers.x1 >= x0)
-        .filter((f) => f.covers.y0 <= y1 && f.covers.y1 >= y0)
+        .filter((f) => f.at[0] - f.r <= x1 && f.at[0] + f.r >= x0)
+        .filter((f) => f.at[1] - f.r <= y1 && f.at[1] + f.r >= y0)
         .sort((a, b) => layers.indexOf(a.layer) - layers.indexOf(b.layer))
         .map((f) => ({
           layer: { id: f.layer },
-          properties: { href: f.href },
+          properties: f.properties,
           geometry: { type: "Point", coordinates: f.at },
         }));
     },
@@ -67,40 +64,37 @@ describe("pickAt", () => {
     ]);
   });
 
-  it("takes a place whose 8 px dot is 15 px from the tap", () => {
-    const { map } = fakeMap([dot(CITY_DOT, "/sakhnin", 100, 100)]);
-    expect(pickAt(map, { x: 115, y: 100 })).toEqual({ href: "/sakhnin", kind: "place" });
-  });
-
-  it("takes the dot nearest the tap, not the first one found", () => {
-    const { map } = fakeMap([
-      dot(CITY_DOT, "/arraba", 100, 100),
-      dot(CITY_DOT, "/sakhnin", 120, 100),
-    ]);
-    expect(pickAt(map, { x: 114, y: 100 })).toEqual({ href: "/sakhnin", kind: "place" });
-    expect(pickAt(map, { x: 106, y: 100 })).toEqual({ href: "/arraba", kind: "place" });
-  });
-
-  it("takes a place by its name", () => {
-    const { map } = fakeMap([label("/sakhnin", 100, 100), dot(CITY_DOT, "/arraba", 120, 125)]);
-    // On Sakhnin's name, 20 px under its dot: Arraba's dot is nearer, but the name is under the tap.
-    expect(pickAt(map, { x: 100, y: 120 })).toEqual({ href: "/sakhnin", kind: "place" });
-  });
-
-  it("reports a business pin as a business", () => {
-    const { map } = fakeMap([dot(PIN_LAYER, "/sakhnin/beauty/barbershops/samers", 50, 50, 8)]);
-    expect(pickAt(map, { x: 62, y: 58 })).toEqual({
+  it("takes a pin 15 px from the tap", () => {
+    const { map } = fakeMap([pin("samers", 100, 100)]);
+    expect(pickAt(map, { x: 115, y: 100 })).toEqual({
+      type: "pin",
+      key: "samers",
       href: "/sakhnin/beauty/barbershops/samers",
-      kind: "business",
     });
   });
 
+  it("takes the pin nearest the tap, not the first one found", () => {
+    const { map } = fakeMap([pin("a", 100, 100), pin("b", 120, 100)]);
+    expect(pickAt(map, { x: 114, y: 100 })).toMatchObject({ key: "b" });
+    expect(pickAt(map, { x: 106, y: 100 })).toMatchObject({ key: "a" });
+  });
+
+  it("prefers the lifted pin over the same pin beneath it", () => {
+    const { map } = fakeMap([pin("a", 100, 100), pin("a-hot", 100, 100, HOT_PIN)]);
+    expect(pickAt(map, { x: 100, y: 100 })).toMatchObject({ key: "a-hot" });
+  });
+
+  it("reports a merged pin as a cluster to zoom into", () => {
+    const { map } = fakeMap([cluster(7, 50, 50)]);
+    expect(pickAt(map, { x: 58, y: 54 })).toEqual({ type: "cluster", id: 7, at: [50, 50] });
+  });
+
   it("finds nothing on empty ground", () => {
-    const { map } = fakeMap([dot(CITY_DOT, "/sakhnin", 100, 100)]);
+    const { map } = fakeMap([pin("a", 100, 100)]);
     expect(pickAt(map, { x: 200, y: 200 })).toBeNull();
   });
 
-  it("can pick names, dots, glows and pins", () => {
-    expect([...PICKABLE].sort()).toEqual([CITY_DOT, CITY_LABEL, PIN_LAYER].sort());
+  it("picks only pins: places are chosen from the list, never from the map", () => {
+    expect(PICKABLE).toEqual([HOT_PIN, PIN_LAYER, CLUSTER_PIN]);
   });
 });

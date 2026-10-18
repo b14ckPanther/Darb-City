@@ -90,4 +90,10 @@ export const he: Messages = {
   showMap: "מפה",
   showList: "רשימה",
   mapData: "נתוני מפה",
+  backToList: "חזרה לרשימה",
+  pinsOf: "{shown} מתוך {count}",
+  openBusiness: "פתיחה",
+  loadingPins: "מסמנים על המפה",
+  showOnMap: "{kind} על המפה",
+  moreKinds: "כל {count} הסוגים",
 };

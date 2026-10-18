@@ -237,7 +237,7 @@ export function toSearchView(res: SearchResponseDto, q: string, ctx: ViewContext
     needsLocation: res.needsLocation,
     chips,
     rows,
-    stage: searchStage(ctx.place, rows),
+    stage: searchStage(ctx.place, rows, q),
     nearest:
       kind && sector
         ? // The searched place is the one that came up empty: never offer it as "nearest".

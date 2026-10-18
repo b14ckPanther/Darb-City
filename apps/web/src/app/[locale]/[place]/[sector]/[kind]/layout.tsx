@@ -7,7 +7,7 @@ import { KindResults } from "@/components/KindResults";
 import { NoneYet } from "@/components/NoneYet";
 import { StageData } from "@/components/StageData";
 import { SubPlaceChips } from "@/components/SubPlaceChips";
-import { getBusinesses, getNearestPlacesWithKind, getPlaceCounts } from "@/lib/api";
+import { getBusinesses, getKindCounts, getNearestPlacesWithKind, getPlaceCounts } from "@/lib/api";
 import { subPlaceChips } from "@/lib/crumbs";
 import { formatKm } from "@/lib/format";
 import { loadKindLevelInSector } from "@/lib/levels";
@@ -46,6 +46,8 @@ export default orUnavailable(async function KindLayout({ children, params }: Pro
       ? ((await getNearestPlacesWithKind(kind.slug, place.lat, place.lng, 5)) ?? [])
       : [];
   const chips = subPlaceChips(locale, place, [sector.slug, kind.slug], await getPlaceCounts());
+  // Cached for a day like the list: the phone map's header says how many there are in all.
+  const kindCounts = rows.length > 0 ? await getKindCounts(place.slug) : null;
   return (
     <>
       {children}
@@ -63,6 +65,11 @@ export default orUnavailable(async function KindLayout({ children, params }: Pro
               place={place.slug}
               kind={kind.slug}
               stagePlace={{ slug: place.slug, name: placeName, lat: place.lat, lng: place.lng }}
+              title={t(locale, "kindInPlace", {
+                kind: pickText(kind.name, locale),
+                place: placeName,
+              })}
+              total={kindCounts?.[kind.slug]}
               initialRows={rows}
               initialCursor={page.nextCursor}
               deliversAvailable={kind.attributes.includes("delivers")}

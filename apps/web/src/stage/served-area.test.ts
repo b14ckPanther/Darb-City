@@ -3,7 +3,7 @@ import { createRequire } from "node:module";
 import type { StyleSpecification, SymbolLayerSpecification } from "maplibre-gl";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { darbStyle } from "../../scripts/map/style.mjs";
-import { CITY_LABEL, darbLayers } from "./map-layers";
+import { darbLayers, darbSources, HERE_LABEL } from "./map-layers";
 import {
   loadServedArea,
   SERVED_SOURCE,
@@ -108,14 +108,7 @@ describe("the veil", () => {
 
 describe("withServedArea", () => {
   const base = darbStyle("he") as StyleSpecification;
-  base.sources["darb-city"] = {
-    type: "geojson",
-    data: { type: "FeatureCollection", features: [] },
-  };
-  base.sources["darb-pins"] = {
-    type: "geojson",
-    data: { type: "FeatureCollection", features: [] },
-  };
+  Object.assign(base.sources, darbSources());
   base.layers.push(...darbLayers());
   const style = withServedArea(base, area);
   const ids = style.layers.map((l) => l.id);
@@ -136,7 +129,7 @@ describe("withServedArea", () => {
     );
     expect(ids.indexOf(VEIL)).toBeLessThan(firstLabel);
     expect(ids.indexOf(VEIL)).toBeGreaterThan(ids.indexOf("roads_highway"));
-    expect(ids.indexOf(VEIL_EDGE)).toBeLessThan(ids.indexOf(CITY_LABEL));
+    expect(ids.indexOf(VEIL_EDGE)).toBeLessThan(ids.indexOf(HERE_LABEL));
     expect(ids.indexOf(VEIL)).toBeGreaterThan(ids.indexOf("buildings"));
     // The sea is drawn again above the plain land, so it keeps its colour everywhere.
     expect(ids.indexOf(WATER_ABOVE)).toBeGreaterThan(ids.indexOf(VEIL));
@@ -163,8 +156,8 @@ describe("withServedArea", () => {
       else expect(where, layer.id).toEqual(["within", area.geometry]);
     }
     // Darb's own labels are untouched.
-    expect(style.layers.find((l) => l.id === CITY_LABEL)).toEqual(
-      darbLayers().find((l) => l.id === CITY_LABEL),
+    expect(style.layers.find((l) => l.id === HERE_LABEL)).toEqual(
+      darbLayers().find((l) => l.id === HERE_LABEL),
     );
   });
   it("leaves the style alone without an area", () => {

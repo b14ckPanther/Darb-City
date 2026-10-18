@@ -37,14 +37,12 @@ export interface StagePin {
   lng: number;
 }
 
-/** A live place on the level 0 map, glowing by its business count. */
+/** A live place and its business count: the country map's faint warmth (never a number). */
 export interface CityDot {
   slug: string;
-  name: string;
   lat: number;
   lng: number;
   count: number;
-  href: string;
 }
 
 /**
@@ -56,7 +54,15 @@ export type StageLevel =
   | { depth: 0 }
   | { depth: 1; place: StagePlace; doors: StageDoor[] }
   | { depth: 2; place: StagePlace; sector: StageSector; doors: StageDoor[] }
-  | { depth: 3; place: StagePlace; pins: StagePin[] };
+  | {
+      depth: 3;
+      place: StagePlace;
+      pins: StagePin[];
+      /** What the pins are, for the phone map's header ("Garages in Haifa"). */
+      title?: string;
+      /** How many businesses the list holds in all (more than its pins while it pages). */
+      count?: number;
+    };
 
 export type PlazaLevel = Extract<StageLevel, { depth: 1 | 2 }>;
 

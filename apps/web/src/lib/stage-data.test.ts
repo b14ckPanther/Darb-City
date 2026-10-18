@@ -101,14 +101,26 @@ describe("stage levels", () => {
       ctx,
     );
     expect(level.depth === 3 && level.pins).toEqual([
-      { key: "haifa/a", href: "/en/haifa/beauty/barbershops/a", name: "a", lat: 32.8, lng: 35.01 },
       {
-        key: "kiryat-haim/b",
-        href: "/en/haifa/beauty/barbershops/kiryat-haim/b",
-        name: "b",
+        key: "haifa/a",
+        href: "/en/haifa/beauty/barbershops/a",
+        name: "a",
         lat: 32.8,
         lng: 35.01,
+        card: {
+          tagline: "",
+          openNow: null,
+          hours: null,
+          byAppointment: false,
+          placeName: null,
+          accent: "#d9aaa2",
+        },
       },
+      expect.objectContaining({
+        key: "kiryat-haim/b",
+        href: "/en/haifa/beauty/barbershops/kiryat-haim/b",
+        card: expect.objectContaining({ placeName: "Kiryat Haim" }),
+      }),
     ]);
   });
   it("shows a soon place as the map at that place", () => {
@@ -152,9 +164,10 @@ describe("search on the map", () => {
       maxZoom: 15,
     });
   });
-  it("keeps the searched place when there is one", () => {
+  it("keeps the searched place when there is one, and names the pins after the search", () => {
     const place = { slug: "akko", name: "Akko", lat: 32.92, lng: 35.07 };
-    const stage = searchStage(place, [row("akko/a", 32.92, 35.07)]);
-    expect(stage).toMatchObject({ depth: 3, place });
+    const stage = searchStage(place, [row("akko/a", 32.92, 35.07)], "garage in akko");
+    expect(stage).toMatchObject({ depth: 3, place, title: "garage in akko", count: 1 });
+    expect(searchStage(place, [])).not.toHaveProperty("title");
   });
 });

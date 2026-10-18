@@ -6,11 +6,12 @@ import type { Locale } from "@darb/core";
 import type { StageLevel, StagePlace } from "@darb/stage";
 import { roundPoint } from "@/lib/client-ip";
 import type { BusinessRowData } from "@/lib/rows";
-import { pinsFromRows } from "@/lib/stage-data";
+import { pinsFromRows } from "@/lib/map-pins";
 import { BusinessRow, type RowLabels } from "./BusinessRow";
 import list from "./List.module.css";
 import styles from "./KindResults.module.css";
 import { StageData } from "./StageData";
+import { useMapRows } from "./useMapRows";
 import { positionGranted } from "@/lib/live-position";
 
 export interface KindResultsLabels {
@@ -34,6 +35,10 @@ export interface KindResultsProps {
   place: string;
   kind: string;
   stagePlace: StagePlace;
+  /** "Garages in Haifa", for the phone map's header. */
+  title: string;
+  /** Businesses of this kind here in all (the list pages by 30). */
+  total?: number;
   initialRows: BusinessRowData[];
   initialCursor: string | null;
   deliversAvailable: boolean;
@@ -65,6 +70,7 @@ function writeUrl(f: Filters) {
 
 export function KindResults(props: KindResultsProps) {
   const { locale, place, kind, stagePlace, deliversAvailable, glutenFreeAvailable, labels } = props;
+  const { title, total } = props;
   const [filters, setFilters] = useState<Filters>({
     open: false,
     delivers: false,
@@ -75,6 +81,8 @@ export function KindResults(props: KindResultsProps) {
   const [cursor, setCursor] = useState(props.initialCursor);
   const [state, setState] = useState<"idle" | "loading" | "locating" | "denied" | "error">("idle");
   const listRef = useRef<HTMLUListElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  useMapRows(sectionRef);
   /** The latest request: an older answer that lands later never replaces a newer one. */
   const request = useRef(0);
   /** The filters right now, for callbacks that outlive a render (geolocation, navigation). */
@@ -91,10 +99,18 @@ export function KindResults(props: KindResultsProps) {
     writeUrl(current.current);
   }, [pathname]);
 
-  // M6: the map shows exactly the rows on the list.
+  // M6: the map shows exactly the rows on the list, numbered like them. Filtered, the count is
+  // the rows shown; unfiltered, every business of the kind here.
+  const filtered = active(filters);
   const level = useMemo<StageLevel>(
-    () => ({ depth: 3, place: stagePlace, pins: pinsFromRows(rows) }),
-    [stagePlace, rows],
+    () => ({
+      depth: 3,
+      place: stagePlace,
+      pins: pinsFromRows(rows),
+      title,
+      ...(filtered || total === undefined ? { count: rows.length } : { count: total }),
+    }),
+    [stagePlace, rows, title, total, filtered],
   );
 
   async function load(next: Filters, after: string | null) {
@@ -176,7 +192,7 @@ export function KindResults(props: KindResultsProps) {
   }
 
   return (
-    <section aria-labelledby="businesses-title" aria-busy={state === "loading"}>
+    <section ref={sectionRef} aria-labelledby="businesses-title" aria-busy={state === "loading"}>
       <StageData level={level} />
       <h2 id="businesses-title" className="visually-hidden">
         {labels.businesses}
@@ -228,8 +244,8 @@ export function KindResults(props: KindResultsProps) {
       {state === "error" ? <p role="status">{labels.unreachable}</p> : null}
       {rows.length > 0 ? (
         <ul ref={listRef} className={list.list} data-business-list="">
-          {rows.map((row) => (
-            <BusinessRow key={row.key} row={row} labels={labels.rows} />
+          {rows.map((row, i) => (
+            <BusinessRow key={row.key} row={row} labels={labels.rows} n={i + 1} />
           ))}
         </ul>
       ) : filters.open && !filters.delivers && !filters.glutenFree ? (
