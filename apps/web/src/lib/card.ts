@@ -1,5 +1,6 @@
 import {
   facebookUrl,
+  googleMapsUrl,
   instagramUrl,
   isByAppointment,
   pickText,
@@ -30,7 +31,7 @@ import {
 
 /** One round button under the main one: an icon, a short word, a place to go. */
 export interface CardAction {
-  key: "call" | "whatsapp" | "waze" | "maps" | "website" | "app";
+  key: "call" | "whatsapp" | "waze" | "maps" | "website" | "app" | "reviews";
   icon: IconName;
   label: string;
   href: string;
@@ -120,6 +121,8 @@ export function cardActions(
     maps: string | null;
     website: string | null;
     apps: string[];
+    /** The business's Google Maps page: a link out to its reviews, nothing read from it. */
+    reviews?: string | null;
   },
   primary: PrimaryAction,
 ): CardAction[] {
@@ -136,6 +139,7 @@ export function cardActions(
       label: copy.app,
       href,
     })),
+    { key: "reviews", icon: "star", label: copy.googleReviews, href: links.reviews ?? null },
   ];
   const seen = new Set(main ? [main] : []);
   return all.flatMap((a) => {
@@ -206,6 +210,8 @@ export function cardFromBusiness({
           ? null
           : safeHttpUrl(business.website),
         apps,
+        // A map page shows the street: a home business keeps it private here too.
+        reviews: !hidden && business.links?.google ? googleMapsUrl(business.links.google) : null,
       },
       primary,
     ),

@@ -1,5 +1,6 @@
 import {
   facebookUrl,
+  googleMapsUrl,
   inIsrael,
   instagramUrl,
   tiktokUrl,
@@ -33,7 +34,7 @@ const NUM = String.raw`(-?\d{1,3}(?:\.\d+)?)`;
 const PAIR = new RegExp(String.raw`^\s*${NUM}\s*,\s*${NUM}\s*$`);
 
 /** "32.86,35.30" (or with a space) to a point in Israel; anything else is undefined. */
-function pair(text: string | null | undefined): LatLng | undefined {
+export function pair(text: string | null | undefined): LatLng | undefined {
   const m = text ? PAIR.exec(text) : null;
   if (!m) return undefined;
   const p = { lat: Number(m[1]), lng: Number(m[2]) };
@@ -141,4 +142,16 @@ export async function resolveShortLink(
   return current && isGoogleMapsHost(current.hostname) && !isShortGoogle(current)
     ? current.href
     : null;
+}
+
+/**
+ * A Google Maps link as the business keeps it: a short link resolved to the long google.com/maps
+ * one when that works, else the short link as given. Null when it is no Google Maps link.
+ */
+export async function keptGoogleLink(raw: string, fetchImpl: typeof fetch): Promise<string | null> {
+  const given = googleMapsUrl(raw);
+  if (!given) return null;
+  if (!readLink(given)?.short) return given;
+  const long = await resolveShortLink(given, fetchImpl).catch(() => null);
+  return (long && googleMapsUrl(long)) || given;
 }

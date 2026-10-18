@@ -14,6 +14,8 @@ export interface CardCopy {
   today: string;
   waze: string;
   maps: string;
+  /** The round button to the business's Google Maps page (its reviews there). */
+  googleReviews: string;
   app: string;
   address: string;
   contactWays: string;
@@ -35,6 +37,7 @@ export const card: Record<Locale, CardCopy> = {
     today: "היום",
     waze: "ווייז",
     maps: "מפות",
+    googleReviews: "ביקורות בגוגל",
     app: "אפליקציה",
     address: "כתובת",
     contactWays: "דרכים ליצירת קשר",
@@ -54,6 +57,7 @@ export const card: Record<Locale, CardCopy> = {
     today: "اليوم",
     waze: "ويز",
     maps: "خرائط",
+    googleReviews: "تقييمات بجوجل",
     app: "التطبيق",
     address: "العنوان",
     contactWays: "كيف توصلهم",
@@ -73,6 +77,7 @@ export const card: Record<Locale, CardCopy> = {
     today: "Today",
     waze: "Waze",
     maps: "Maps",
+    googleReviews: "Google reviews",
     app: "App",
     address: "Address",
     contactWays: "Ways to reach them",

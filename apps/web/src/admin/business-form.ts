@@ -93,7 +93,7 @@ export function businessFromForm(fd: FormData): {
   );
   const name = localized(fd, "name");
   const links = Object.fromEntries(
-    (["instagram", "facebook", "tiktok", "waze"] as const).flatMap((k) => {
+    (["instagram", "facebook", "tiktok", "waze", "google"] as const).flatMap((k) => {
       const v = text(fd, `links.${k}`);
       return v ? [[k, v]] : [];
     }),

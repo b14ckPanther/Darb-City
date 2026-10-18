@@ -68,6 +68,22 @@ describe("cardFromBusiness", () => {
     expect(c.primary.kind).toBe("call");
     expect(c.actions).toEqual([]);
   });
+  it("adds Google reviews last, only with a Google Maps link, never for a private street", () => {
+    const google = "https://www.google.com/maps/place/Caramel/data=!3d32.92!4d35.07";
+    expect(card().actions.map((a) => a.key)).not.toContain("reviews");
+    const c = card({ links: { google } });
+    expect(c.actions.at(-1)).toEqual({
+      key: "reviews",
+      icon: "star",
+      label: "Google reviews",
+      href: google,
+    });
+    expect(
+      card({ links: { google: "https://evil.example/maps/place/x" } }).actions.map((a) => a.key),
+    ).not.toContain("reviews");
+    const home = card({ links: { google }, attributes: { addressHidden: true } });
+    expect(home.actions.map((a) => a.key)).not.toContain("reviews");
+  });
   it("links photos and the logo from the media bucket", () => {
     const key = "pending/0b3c6b1e-6f0e-4d36-9b0e-2f7f8c1d2a10.webp";
     const c = card({ logo: { key }, photos: [{ key, alt: { en: "The bar" } }] });

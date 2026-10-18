@@ -14,6 +14,7 @@ import { AdminGuard, type AdminActor, type AdminRequest } from "../auth/admin.gu
 import { decodeCursor, encodeCursor } from "../businesses/cursor.js";
 import { Prisma, type Business } from "../generated/prisma/client.js";
 import { PrismaService } from "../prisma/prisma.service.js";
+import { keptGoogleLink } from "../join/links.js";
 import { AdminWriter } from "./admin-writer.js";
 import { ExperienceValidator } from "./experience.js";
 import { json } from "./json.js";
@@ -79,6 +80,9 @@ const hasApps = (apps: AdminBusinessDto["apps"] | undefined) =>
 
 @Injectable()
 export class BusinessesAdmin {
+  /** Follows a short Google Maps link once, on save; replaced in tests. */
+  fetchImpl: typeof fetch = fetch;
+
   constructor(
     private readonly prisma: PrismaService,
     private readonly writer: AdminWriter,
@@ -153,7 +157,16 @@ export class BusinessesAdmin {
     return null;
   }
 
-  async create(actor: AdminActor, dto: AdminBusinessCreateDto) {
+  /** A short Google Maps link is kept as the long one it opens, when that resolves. */
+  private async keepGoogle<T extends { links?: { google?: string } }>(dto: T): Promise<T> {
+    const google = dto.links?.google;
+    if (!google) return dto;
+    const kept = (await keptGoogleLink(google, this.fetchImpl)) ?? google;
+    return kept === google ? dto : { ...dto, links: { ...dto.links, google: kept } };
+  }
+
+  async create(actor: AdminActor, given: AdminBusinessCreateDto) {
+    const dto = await this.keepGoogle(given);
     const place = await this.prisma.place.findUnique({ where: { id: dto.placeId } });
     if (!place) return notFound("place");
     if (dto.tier === "example") return exampleTierFixed();
@@ -199,7 +212,8 @@ export class BusinessesAdmin {
     return { status: 201 as const, body: toAdminBusiness(row) };
   }
 
-  async update(actor: AdminActor, id: string, patch: AdminBusinessPatchDto) {
+  async update(actor: AdminActor, id: string, given: AdminBusinessPatchDto) {
+    const patch = await this.keepGoogle(given);
     const before = await this.prisma.business.findUnique({ where: { id }, include });
     if (!before) return notFound("business");
     const fields = Object.keys(patch).sort();

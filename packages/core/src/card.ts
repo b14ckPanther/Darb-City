@@ -31,8 +31,10 @@ export interface BusinessLinks {
   tiktok?: string;
   /** Only when the owner's Waze link differs from the pin; normally derived from the point. */
   waze?: string;
+  /** The business's own Google Maps page: only a link out to its reviews, nothing is read from it. */
+  google?: string;
 }
-export const LINK_KEYS = ["instagram", "facebook", "tiktok", "waze"] as const;
+export const LINK_KEYS = ["instagram", "facebook", "tiktok", "waze", "google"] as const;
 
 /** The WHATWG URL every runtime Darb runs on has (Node 22, browsers); core's lib is ES only. */
 interface WebUrl {
@@ -112,6 +114,26 @@ export function wazeUrl(raw: string): string | null {
   return parsed && onHost(parsed, ["waze.com"]) ? parsed.toString() : null;
 }
 
+const GOOGLE_TLD = /^(?:www\.)?google\.(?:com|co\.il|[a-z]{2,3}|com\.[a-z]{2}|co\.[a-z]{2})$/;
+
+/**
+ * A Google Maps link as an https URL: google.com/maps…, maps.google.…, maps.app.goo.gl/… or
+ * goo.gl/maps/…. Anything else is null. The link is kept as given (no fetching here).
+ */
+export function googleMapsUrl(raw: string): string | null {
+  const u = websiteUrl(raw);
+  const parsed: WebUrl | null = u ? new URL(u) : null;
+  if (!parsed) return null;
+  const host = parsed.hostname.toLowerCase();
+  const path = parsed.pathname;
+  const ok =
+    (GOOGLE_TLD.test(host) && (path === "/maps" || path.startsWith("/maps/"))) ||
+    /^maps\.google\.(?:com|co\.il|[a-z]{2,3}|com\.[a-z]{2}|co\.[a-z]{2})$/.test(host) ||
+    (host === "maps.app.goo.gl" && path.length > 1) ||
+    (host === "goo.gl" && path.startsWith("/maps/"));
+  return ok ? parsed.toString() : null;
+}
+
 /** Driving directions to a point in Waze. */
 export const wazeDirections = (lat: number, lng: number): string =>
   `https://waze.com/ul?ll=${lat.toFixed(6)},${lng.toFixed(6)}&navigate=yes`;
@@ -119,7 +141,13 @@ export const wazeDirections = (lat: number, lng: number): string =>
 /** Each link through its own normaliser; what does not read as that link is dropped. */
 export function normalizeLinks(raw: Partial<Record<keyof BusinessLinks, string | null>>) {
   const out: BusinessLinks = {};
-  const fns = { instagram: instagramUrl, facebook: facebookUrl, tiktok: tiktokUrl, waze: wazeUrl };
+  const fns = {
+    instagram: instagramUrl,
+    facebook: facebookUrl,
+    tiktok: tiktokUrl,
+    waze: wazeUrl,
+    google: googleMapsUrl,
+  };
   for (const key of LINK_KEYS) {
     const v = raw[key];
     const n = v ? fns[key](v) : null;

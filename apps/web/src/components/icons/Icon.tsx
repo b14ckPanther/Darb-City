@@ -25,7 +25,8 @@ export type IconName =
   | "app"
   | "leaf"
   | "chevron"
-  | "close";
+  | "close"
+  | "star";
 
 interface Drawing {
   /** The outline: stroked in line, filled in solid. */
@@ -118,6 +119,9 @@ const DRAWINGS: Record<IconName, Drawing> = {
   },
   chevron: { lines: ["M9 5l7 7-7 7"], mirror: true },
   close: { lines: ["M6 6l12 12", "M18 6 6 18"] },
+  star: {
+    shape: "M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9Z",
+  },
 };
 
 const STROKE = {

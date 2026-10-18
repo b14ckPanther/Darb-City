@@ -68,6 +68,8 @@ export interface JoinConfig {
   timeoutMs: number;
   /** Nominatim's base URL; null turns geocoding off (tests and e2e). */
   geocoderUrl: string | null;
+  /** Overpass (OpenStreetMap's house numbers, for Find the place); null with the geocoder off. */
+  overpassUrl: string | null;
   /** Cloudflare R2 (S3 API); uploads are off unless all three are set. */
   r2: { accountId: string; accessKeyId: string; secretAccessKey: string } | null;
   bucket: string;
@@ -162,6 +164,11 @@ const schema = z.object({
     .refine((v) => /^https?:\/\//i.test(v), "must be an http(s) URL")
     .optional(),
   JOIN_GEOCODER: z.enum(["nominatim", "off"]).optional(),
+  OVERPASS_URL: z
+    .string()
+    .url()
+    .refine((v) => /^https?:\/\//i.test(v), "must be an http(s) URL")
+    .optional(),
   FIELD_AI: z.enum(["anthropic", "fake", "off"]).optional(),
   FIELD_MODEL: z.string().min(1).default("claude-sonnet-5-5"),
   FIELD_TIMEOUT_MS: z.coerce.number().int().min(1000).max(120_000).default(30_000),
@@ -271,6 +278,10 @@ export function loadConfig(env: NodeJS.ProcessEnv): AppConfig {
         e.JOIN_GEOCODER === "off"
           ? null
           : (e.NOMINATIM_URL ?? "https://nominatim.openstreetmap.org").replace(/\/+$/, ""),
+      overpassUrl:
+        e.JOIN_GEOCODER === "off"
+          ? null
+          : (e.OVERPASS_URL ?? "https://overpass-api.de/api/interpreter"),
       r2:
         e.R2_ACCOUNT_ID && e.R2_ACCESS_KEY_ID && e.R2_SECRET_ACCESS_KEY
           ? {

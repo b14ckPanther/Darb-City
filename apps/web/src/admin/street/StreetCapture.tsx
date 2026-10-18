@@ -6,6 +6,7 @@ import type { FieldMatchDto, FieldReadResultDto, FieldReadingDto } from "@darb/c
 import { pickText, type LatLng, type Locale } from "@darb/core";
 import { LocationPicker } from "@/components/LocationPicker";
 import { at, type AdminKey } from "../copy";
+import { PlaceFinder } from "../PlaceFinder";
 import { adminHref } from "../routes";
 import { downscale } from "./photo";
 import { flushQueue, openQueue, type QueueStore, type QueuedCapture } from "./queue";
@@ -92,6 +93,7 @@ export function StreetCapture({
   const [hours, setHours] = useState("");
   const [note, setNote] = useState("");
   const [point, setPoint] = useState<LatLng | null>(null);
+  const [flyTo, setFlyTo] = useState<{ point: LatLng; key: number } | null>(null);
   const [accuracy, setAccuracy] = useState<number | null>(null);
   const [locating, setLocating] = useState(false);
   const [noLocation, setNoLocation] = useState(false);
@@ -452,8 +454,17 @@ export function StreetCapture({
                   ? `${t("streetAccuracy", { metres: accuracy })}${rough ? `. ${t("streetAccuracyWeak")}` : ""}`
                   : ""}
           </p>
+          <PlaceFinder
+            locale={locale}
+            onFound={(p) => {
+              setPoint(p);
+              setAccuracy(null);
+              setFlyTo((f) => ({ point: p, key: (f?.key ?? 0) + 1 }));
+            }}
+          />
           <LocationPicker
             value={point}
+            flyTo={flyTo}
             onChange={(p) => {
               setPoint(p);
               setAccuracy(null);
