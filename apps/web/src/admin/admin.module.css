@@ -33,6 +33,12 @@
   inset-block-start: 0;
   z-index: 2;
 }
+/* On a phone the menu wraps to several rows: pinned, it would cover a third of the screen. */
+@media (max-width: 760px) {
+  .top {
+    position: static;
+  }
+}
 .brand {
   font-weight: 700;
   font-size: 1.125rem;
