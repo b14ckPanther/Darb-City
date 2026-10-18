@@ -18,6 +18,15 @@ const labels = {
   showList: "List",
   mapData: "Map data",
   businessCount: "Businesses: {count}",
+  backToList: "Back to the list",
+  openBusiness: "View",
+  close: "Close",
+  openNow: "Open now",
+  closed: "Closed",
+  byAppointment: "By appointment",
+  distanceKm: "{km} km",
+  distanceM: "{m} m",
+  loadingPins: "Putting them on the map",
 };
 
 it("the phone's Map/List pill says what it opens and whether it is open", () => {
@@ -58,14 +67,16 @@ it("the open phone stage puts the city and the header's top bar behind it, not t
     expect(inert(selector)).toBe(false);
 });
 
-it("offers the pill on search results, so a phone can see their pins, but not on a kind list", () => {
+it("offers the pill wherever pins are listed (a search, a kind), but not under a business sheet", () => {
   const place = { slug: "haifa", name: "Haifa", lat: 32.8, lng: 35 };
-  stageStore.set({ depth: 3, place, pins: [] });
+  const pin = { key: "haifa/a", href: "/haifa/food/bakeries/a", name: "A", lat: 32.8, lng: 35 };
+  stageStore.set({ depth: 3, place, pins: [pin] });
   try {
     for (const [path, pill] of [
       ["/en/search", 1],
       ["/search", 1],
-      ["/haifa/food/bakeries", 0],
+      ["/haifa/food/bakeries", 1],
+      ["/haifa/food/bakeries/a", 0],
     ] as const) {
       pathname = path;
       const { unmount } = render(<Stage locale="en" labels={labels} onFail={vi.fn()} />);

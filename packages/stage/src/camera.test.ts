@@ -4,6 +4,7 @@ import {
   ISRAEL_NORTH,
   MOTION,
   planTransition,
+  pinsCamera,
   PLACE_ZOOM,
   sceneKey,
   STREET_ZOOM,
@@ -35,8 +36,8 @@ const kind: StageLevel = {
   ],
 };
 const dots: CityDot[] = [
-  { slug: "sakhnin", name: "Sakhnin", lat: 32.86, lng: 35.3, count: 40, href: "/sakhnin" },
-  { slug: "haifa", name: "Haifa", lat: 32.79, lng: 34.99, count: 90, href: "/haifa" },
+  { slug: "sakhnin", lat: 32.86, lng: 35.3, count: 40 },
+  { slug: "haifa", lat: 32.79, lng: 34.99, count: 90 },
 ];
 const motionOff = { reducedMotion: false };
 
@@ -53,9 +54,27 @@ describe("views and cameras", () => {
     expect("bounds" in camera && camera.bounds[0][0]).toBeLessThan(34.99);
     expect("bounds" in camera && camera.bounds[1][1]).toBeGreaterThan(32.86);
   });
-  it("centres on the place, closer at street level", () => {
+  it("centres on the place, and on a lone business at street level", () => {
     expect(cameraFor(place)).toEqual({ center: [35.3023, 32.8638], zoom: PLACE_ZOOM });
-    expect(cameraFor(kind)).toEqual({ center: [35.3023, 32.8638], zoom: STREET_ZOOM });
+    expect(cameraFor(kind)).toEqual({ center: [35.3, 32.86], zoom: STREET_ZOOM });
+    expect(cameraFor({ ...kind, pins: [] })).toEqual({
+      center: [35.3023, 32.8638],
+      zoom: STREET_ZOOM,
+    });
+  });
+  it("frames previewed pins, or says there is nothing to frame", () => {
+    expect(pinsCamera([])).toBeNull();
+    expect(pinsCamera([{ lat: 32.8, lng: 35 }])).toEqual({ center: [35, 32.8], zoom: STREET_ZOOM });
+    const two = pinsCamera([
+      { lat: 32.8, lng: 35 },
+      { lat: 32.9, lng: 35.1 },
+    ]);
+    expect(two).toMatchObject({ maxZoom: 15 });
+    const [[w, s], [e, n]] = (two as { bounds: [number, number][] }).bounds as [
+      [number, number],
+      [number, number],
+    ];
+    expect([w, s, e, n].map((v) => Number(v.toFixed(2)))).toEqual([34.98, 32.78, 35.12, 32.92]);
   });
   it("frames the pins when there are several", () => {
     const two: StageLevel = {

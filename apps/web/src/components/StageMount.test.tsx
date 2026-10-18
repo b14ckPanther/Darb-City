@@ -36,6 +36,15 @@ const labels = {
   showList: "List",
   mapData: "Map data",
   businessCount: "Businesses: {count}",
+  backToList: "Back to the list",
+  openBusiness: "View",
+  close: "Close",
+  openNow: "Open now",
+  closed: "Closed",
+  byAppointment: "By appointment",
+  distanceKm: "{km} km",
+  distanceM: "{m} m",
+  loadingPins: "Putting them on the map",
 };
 const mount = () => render(<StageMount locale="en" labels={labels} />);
 const settle = () => new Promise((resolve) => setTimeout(resolve, 600));

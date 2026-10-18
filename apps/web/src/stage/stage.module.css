@@ -116,3 +116,10 @@
     display: none;
   }
 }
+
+/* Phone: the open map's header covers its top; cameras frame what is shown below it. */
+@media (max-width: 899px) {
+  .host[data-stage-captioned] {
+    --stage-focus: calc(76px + env(safe-area-inset-top));
+  }
+}

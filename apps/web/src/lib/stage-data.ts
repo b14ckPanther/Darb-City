@@ -1,6 +1,7 @@
 import { pickText, type Locale } from "@darb/core";
 import type { BusinessSummaryDto, PlaceDetailDto, SectorDto } from "@darb/contracts";
-import type { StageLevel, StagePin, StagePlace } from "@darb/stage";
+import type { StageLevel, StagePlace } from "@darb/stage";
+import { pinsFromRows } from "./map-pins";
 import { href, paths } from "./routes";
 import { toRows, type BusinessRowData, type RowContext } from "./rows";
 import type { TaxonomyIndex } from "./taxonomy";
@@ -68,16 +69,14 @@ export function kindStage(
   };
 }
 
-/** A pin per row, with the row's own href: the map and the list always open the same sheet. */
-export const pinsFromRows = (rows: readonly BusinessRowData[]): StagePin[] =>
-  rows.map((r) => ({ key: r.key, href: r.href, name: r.name, lat: r.lat, lng: r.lng }));
-
 /** Search results on the map (decision 6): at the searched place, else around the first result. */
 export function searchStage(
   place: StagePlace | null,
   rows: readonly BusinessRowData[],
+  title?: string,
 ): StageLevel {
-  if (place) return { depth: 3, place, pins: pinsFromRows(rows) };
+  const named = title ? { title, count: rows.length } : {};
+  if (place) return { depth: 3, place, pins: pinsFromRows(rows), ...named };
   if (rows.length === 0) return COUNTRY_STAGE;
   // Nationwide: no one city; the camera frames every pin (cameraFor fits their bounds).
   const mean = (pick: (r: BusinessRowData) => number) =>
@@ -86,6 +85,7 @@ export function searchStage(
     depth: 3,
     place: { slug: "", name: "", lat: mean((r) => r.lat), lng: mean((r) => r.lng) },
     pins: pinsFromRows(rows),
+    ...named,
   };
 }
 

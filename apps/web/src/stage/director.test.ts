@@ -35,8 +35,10 @@ function setup(options: { reduced?: boolean; gate?: Promise<void> } = {}) {
   const fades: { layer: string; from: Frame; to: Frame; duration: number }[] = [];
   const map: StageMap = {
     move: vi.fn(async () => {}),
-    setDots: vi.fn(),
+    setHeat: vi.fn(),
+    setHere: vi.fn(),
     setPins: vi.fn(),
+    setHot: vi.fn(),
     pointOf: () => null,
     destroy: vi.fn(),
   };
@@ -115,8 +117,10 @@ describe("Director", () => {
     await director.show(sector, "/sakhnin/beauty");
     fades.length = 0;
     await director.show(kind, pin.href);
-    expect(map.setPins).toHaveBeenLastCalledWith([pin], pin.href);
-    expect(map.move).toHaveBeenLastCalledWith({ center: [35.3023, 32.8638], zoom: 14 }, 550, 480);
+    // A business page: its pin alone, lifted with its list number, and the camera on it.
+    expect(map.setPins).toHaveBeenLastCalledWith([], true);
+    expect(map.setHot).toHaveBeenLastCalledWith(pin, 1);
+    expect(map.move).toHaveBeenLastCalledWith({ center: [35.3, 32.86], zoom: 14 }, 550, 480);
     expect(layers.map.hasAttribute("data-active")).toBe(true);
     expect(layers.plaza.hasAttribute("inert")).toBe(true);
     expect(fades.map((f) => `${f.layer} ${f.from.opacity}->${f.to.opacity}`).sort()).toEqual([
@@ -186,6 +190,93 @@ describe("Director", () => {
     const refreshed: StageLevel = { depth: 3, place: sakhnin, pins: [pin, b] };
     await director.show(refreshed, "/sakhnin/beauty/barbershops");
     expect(fades).toEqual([]);
-    expect(map.setPins).toHaveBeenLastCalledWith([pin, b], "/sakhnin/beauty/barbershops");
+    expect(map.setPins).toHaveBeenLastCalledWith([pin, b], true);
+  });
+});
+
+describe("focus", () => {
+  const b = { ...pin, key: "sakhnin/b", href: "/sakhnin/beauty/barbershops/b", lat: 32.87 };
+  const two: StageLevel = { depth: 3, place: sakhnin, pins: [pin, b] };
+
+  it("marks only the place on a place's map: no businesses until one is asked for", async () => {
+    const { map, director } = setup();
+    await director.show(place, "/sakhnin");
+    expect(map.setHere).toHaveBeenLastCalledWith(sakhnin);
+    expect(map.setPins).toHaveBeenLastCalledWith([], false);
+    await director.show({ depth: 0 }, "/israel");
+    expect(map.setHere).toHaveBeenLastCalledWith(null);
+  });
+
+  it("numbers a kind's pins like its list and lifts the hovered one with its number", async () => {
+    const { map, director } = setup();
+    await director.show(two, "/sakhnin/beauty/barbershops");
+    expect(map.setPins).toHaveBeenLastCalledWith([pin, b], true);
+    expect(map.setHere).toHaveBeenLastCalledWith(null);
+    director.lift("sakhnin/b");
+    expect(map.setHot).toHaveBeenLastCalledWith(b, 2);
+    expect(director.pinFor("sakhnin/b")).toEqual({ pin: b, n: 2 });
+    director.lift(null);
+    expect(map.setHot).toHaveBeenLastCalledWith(null, 0);
+    director.lift("nowhere");
+    expect(map.setHot).toHaveBeenLastCalledWith(null, 0);
+  });
+
+  it("keeps a business page's pin lifted whatever else is hovered", async () => {
+    const { map, director } = setup();
+    await director.show(two, b.href);
+    expect(map.setHot).toHaveBeenLastCalledWith(b, 2);
+    vi.mocked(map.setHot).mockClear();
+    director.lift("sakhnin/a");
+    expect(map.setHot).not.toHaveBeenCalled();
+  });
+
+  it("previews one category on a place's map, framed, then hands the map back", async () => {
+    const { map, director } = setup();
+    await director.show(sector, "/sakhnin/beauty");
+    await director.showPreview({ place: "sakhnin", kind: "barbershops", pins: [pin, b] });
+    expect(director.preview).toBe("barbershops");
+    expect(map.setPins).toHaveBeenLastCalledWith([pin, b], false);
+    expect(map.setHere).toHaveBeenLastCalledWith(null);
+    expect(map.move).toHaveBeenLastCalledWith(expect.objectContaining({ maxZoom: 15 }), 550, 0, 0);
+    // Unnumbered: a preview has no list beside it.
+    expect(director.pinFor("sakhnin/b")).toEqual({ pin: b, n: 0 });
+    await director.showPreview(null);
+    expect(director.preview).toBeNull();
+    expect(map.setPins).toHaveBeenLastCalledWith([], false);
+    expect(map.setHere).toHaveBeenLastCalledWith(sakhnin);
+    expect(map.move).toHaveBeenLastCalledWith(
+      { center: [35.3023, 32.8638], zoom: 13.5 },
+      550,
+      0,
+      0,
+    );
+  });
+
+  it("jumps to a preview under reduced motion, and keeps the phone card's strip clear", async () => {
+    const { map, director } = setup({ reduced: true });
+    await director.show(place, "/sakhnin");
+    await director.showPreview({ place: "sakhnin", kind: "barbershops", pins: [pin] }, 180);
+    expect(map.move).toHaveBeenLastCalledWith({ center: [35.3, 32.86], zoom: 14 }, 0, 0, 180);
+  });
+
+  it("ignores a preview for another place, or away from a place's map", async () => {
+    const { map, director } = setup();
+    await director.show(place, "/sakhnin");
+    vi.mocked(map.setPins).mockClear();
+    await director.showPreview({ place: "haifa", kind: "garages", pins: [pin] });
+    await director.showPreview(null);
+    await director.show(two, "/sakhnin/beauty/barbershops");
+    vi.mocked(map.setPins).mockClear();
+    await director.showPreview({ place: "sakhnin", kind: "barbershops", pins: [pin] });
+    expect(map.setPins).not.toHaveBeenCalled();
+    expect(director.preview).toBeNull();
+  });
+
+  it("drops a preview when the level changes", async () => {
+    const { director } = setup();
+    await director.show(place, "/sakhnin");
+    await director.showPreview({ place: "sakhnin", kind: "barbershops", pins: [pin] });
+    await director.show(sector, "/sakhnin/beauty");
+    expect(director.preview).toBeNull();
   });
 });

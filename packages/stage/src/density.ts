@@ -1,4 +1,4 @@
-import type { CityDot, StagePin } from "./types.js";
+import type { CityDot, StagePin, StagePlace } from "./types.js";
 
 export interface PointFeature<P> {
   type: "Feature";
@@ -10,44 +10,60 @@ export interface FeatureCollection<P> {
   features: PointFeature<P>[];
 }
 
-/** Glow radius in px at zoom 7: none for an empty place, 6–24 px by the square root of density. */
-export function glowRadius(count: number, max: number): number {
-  if (count <= 0 || max <= 0) return 0;
-  return Math.round((6 + 18 * Math.sqrt(Math.min(count, max) / max)) * 10) / 10;
-}
-
 const point = <P>(lng: number, lat: number, properties: P): PointFeature<P> => ({
   type: "Feature",
   geometry: { type: "Point", coordinates: [lng, lat] },
   properties,
 });
 
-export function cityCollection(dots: readonly CityDot[]) {
-  const max = Math.max(0, ...dots.map((d) => d.count));
-  return {
-    type: "FeatureCollection" as const,
-    features: dots.map((d) =>
+const collection = <P>(features: PointFeature<P>[]): FeatureCollection<P> => ({
+  type: "FeatureCollection",
+  features,
+});
+
+/**
+ * The country map's faint warmth where businesses are: one point per live place, weighted 0–1 by
+ * the log of its count, so a city of thousands never drowns its villages. Never a number; empty
+ * places are left out.
+ */
+export function heatCollection(dots: readonly CityDot[]): FeatureCollection<{ weight: number }> {
+  const live = dots.filter((d) => d.count > 0);
+  const top = Math.log1p(Math.max(0, ...live.map((d) => d.count)));
+  return collection(
+    live.map((d) =>
       point(d.lng, d.lat, {
-        slug: d.slug,
-        name: d.name,
-        href: d.href,
-        count: d.count,
-        glow: glowRadius(d.count, max),
+        weight: top > 0 ? Math.round((Math.log1p(d.count) / top) * 100) / 100 : 0,
       }),
     ),
-  };
+  );
 }
 
-export function pinCollection(pins: readonly StagePin[], activeHref: string | null) {
-  return {
-    type: "FeatureCollection" as const,
-    features: pins.map((p) =>
+/** The place a level is about, gently marked on its map: a halo, a dot and its one name. */
+export function hereCollection(place: StagePlace | null): FeatureCollection<{ name: string }> {
+  return collection(place && place.slug ? [point(place.lng, place.lat, { name: place.name })] : []);
+}
+
+export interface PinProperties {
+  key: string;
+  name: string;
+  href: string;
+  /** The pin's place on the list (1, 2, 3…); 0 for a preview, whose pins carry no number. */
+  n: number;
+}
+
+/** Businesses on the map, numbered in list order when the list is beside them. */
+export function pinCollection(
+  pins: readonly StagePin[],
+  options: { numbered: boolean } = { numbered: true },
+): FeatureCollection<PinProperties> {
+  return collection(
+    pins.map((p, i) =>
       point(p.lng, p.lat, {
         key: p.key,
         name: p.name,
         href: p.href,
-        active: p.href === activeHref,
+        n: options.numbered ? i + 1 : 0,
       }),
     ),
-  };
+  );
 }

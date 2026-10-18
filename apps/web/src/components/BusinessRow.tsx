@@ -27,8 +27,11 @@ export function BusinessRow({
   labels,
   onOpen,
   note,
+  n,
 }: {
   row: BusinessRowData;
+  /** Its number on the map (1, 2, 3…), shown when the map is on. */
+  n?: number;
   labels: RowLabels;
   /** Client lists only (search results report the click); server lists never pass a function. */
   onOpen?: () => void;
@@ -49,6 +52,11 @@ export function BusinessRow({
         data-business-link={row.key}
         onClick={onOpen}
       >
+        {n ? (
+          <span className={styles.rowPin} aria-hidden="true" data-row-pin={n}>
+            {n}
+          </span>
+        ) : null}
         <span className={styles.rowLogo} aria-hidden="true">
           {logo ? (
             // eslint-disable-next-line @next/next/no-img-element -- getImageProps gives the resized sources

@@ -90,4 +90,9 @@ export const ar: Messages = {
   showMap: "خريطة",
   showList: "قائمة",
   mapData: "بيانات الخريطة",
+  backToList: "رجوع للقائمة",
+  openBusiness: "فتح",
+  loadingPins: "عم نحطّهم عالخريطة",
+  showOnMap: "{kind} عالخريطة",
+  moreKinds: "كل الأنواع ({count})",
 };

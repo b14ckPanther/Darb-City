@@ -50,15 +50,21 @@ export function cameraFor(level: StageLevel, dots: readonly CityDot[] = []): Cam
       ) ?? ISRAEL_NORTH
     );
   const center: LngLat = [level.place.lng, level.place.lat];
-  if (level.depth === 3) {
-    if (level.pins.length > 1)
-      return boundsOf(
-        level.pins.map((p) => [p.lng, p.lat]),
-        15,
-      )!;
-    return { center, zoom: STREET_ZOOM };
-  }
+  if (level.depth === 3) return pinsCamera(level.pins) ?? { center, zoom: STREET_ZOOM };
   return { center, zoom: PLACE_ZOOM };
+}
+
+/**
+ * Where a set of pins is seen best: their bounds, or one pin at street level. Null for none. Used
+ * at street level and when a category is previewed on a place's map.
+ */
+export function pinsCamera(pins: readonly { lat: number; lng: number }[]): Camera | null {
+  const [only] = pins;
+  if (pins.length === 1 && only) return { center: [only.lng, only.lat], zoom: STREET_ZOOM };
+  return boundsOf(
+    pins.map((p) => [p.lng, p.lat]),
+    15,
+  );
 }
 
 /** The same level: same depth, place and sector, and at street level the same pins. */
