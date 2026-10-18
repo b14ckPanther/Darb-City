@@ -1,9 +1,10 @@
-import Link from "next/link";
-import type { CSSProperties, ReactNode } from "react";
-import { colors, DOOR_CLIP_PATH, DOOR_PATH } from "@darb/tokens";
+import { colors, DOOR_CLIP_PATH } from "@darb/tokens";
 import styles from "./Door.module.css";
 
-/** Hidden SVG definitions: `clip-path: url(#darb-door-clip)` and the gold rim gradient. Render once. */
+/**
+ * Hidden SVG definitions: `clip-path: url(#darb-door-clip)` and the gold rim gradient the plaza
+ * scenery strokes with. Render once. (Categories are rows now: Categories.tsx.)
+ */
 export function DoorDefs() {
   return (
     <svg width="0" height="0" aria-hidden="true" focusable="false" className={styles.defs}>
@@ -18,87 +19,5 @@ export function DoorDefs() {
         </linearGradient>
       </defs>
     </svg>
-  );
-}
-
-/** A thin gold rim tracing the doorway, scaled to its box. */
-export function DoorRim({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 100 150"
-      preserveAspectRatio="none"
-      aria-hidden="true"
-      focusable="false"
-    >
-      <path
-        d={DOOR_PATH}
-        fill="none"
-        stroke="url(#darb-gold-stroke)"
-        strokeWidth={1.25}
-        vectorEffect="non-scaling-stroke"
-      />
-    </svg>
-  );
-}
-
-export function DoorGrid({ label, children }: { label: string; children: ReactNode }) {
-  return (
-    <ul className={styles.grid} aria-label={label}>
-      {children}
-    </ul>
-  );
-}
-
-export interface DoorProps {
-  slug: string;
-  href: string;
-  label: string;
-  sublabel?: string;
-  count: number;
-  /** The count formatted for the locale. */
-  countText: string;
-  /** "Businesses: 3" for screen readers. */
-  countLabel: string;
-  /** A sector accent (warm, desaturated hex). */
-  accent?: string;
-}
-
-/**
- * A category card: an accent dot, the name, an optional line, and the count. (The doorway shape is
- * kept for the brand mark only; DoorDefs and DoorRim stay for the plaza scenery.)
- */
-export function Door({
-  slug,
-  href,
-  label,
-  sublabel,
-  count,
-  countText,
-  countLabel,
-  accent,
-}: DoorProps) {
-  const style = accent ? ({ "--door-accent": accent } as CSSProperties) : undefined;
-  return (
-    <li>
-      <Link
-        href={href}
-        className={styles.door}
-        style={style}
-        data-door={slug}
-        data-count={count}
-        data-empty={count === 0 ? "" : undefined}
-      >
-        <span className={styles.dot} aria-hidden="true" />
-        <span className={styles.text}>
-          <span className={styles.label}>{label}</span>
-          {sublabel ? <span className={styles.sublabel}>{sublabel}</span> : null}
-        </span>
-        <span className={styles.count} aria-hidden="true">
-          {countText}
-        </span>
-        <span className="visually-hidden">{countLabel}</span>
-      </Link>
-    </li>
   );
 }

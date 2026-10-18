@@ -8,6 +8,9 @@ import { getKindCounts, getPlaceCounts } from "@/lib/api";
 import { COUNTRY_SLUG } from "@/lib/levels";
 import type { TaxonomyIndex } from "@/lib/taxonomy";
 import { withBusinesses, withBusinessesTaxonomy } from "@/lib/visible";
+import { sectorGroups } from "@/lib/categories";
+import { formatNumber } from "@/lib/format";
+import { KindRows } from "./Categories";
 import styles from "./PlaceIndex.module.css";
 
 export interface RegionGroup {
@@ -84,31 +87,36 @@ export async function PlaceIndex({
   );
 }
 
-/** Lists only sectors and kinds that have businesses somewhere in the country. */
+/**
+ * Every kind with businesses somewhere in the country, by sector: the busiest sector first, and in
+ * each, one kind per row with its count, busiest first.
+ */
 export async function KindIndex({ locale, index: all }: { locale: Locale; index: TaxonomyIndex }) {
-  const index = withBusinessesTaxonomy(all, (await getKindCounts(COUNTRY_SLUG)) ?? {});
+  const counts = (await getKindCounts(COUNTRY_SLUG)) ?? {};
+  const groups = sectorGroups(locale, withBusinessesTaxonomy(all, counts), counts);
+  const count = (n: number) => formatNumber(n, locale);
   return (
     <section id="kinds" aria-labelledby="kinds-title" className={styles.section}>
       <h2 id="kinds-title" className={styles.heading}>
         {t(locale, "allKinds")}
       </h2>
-      {index.sectors.length === 0 ? <p className="lede">{t(locale, "nothingListedYet")}</p> : null}
+      {groups.length === 0 ? <p className="lede">{t(locale, "nothingListedYet")}</p> : null}
       <div className={styles.sectors}>
-        {index.sectors.map((sector) => (
-          <details key={sector.slug} className={styles.details}>
+        {groups.map((group) => (
+          <details key={group.sector.slug} className={styles.details}>
             <summary className={styles.summary}>
-              <span>{pickText(sector.name, locale)}</span>
-              <span className={styles.tagline}>{pickText(sector.tagline, locale)}</span>
+              <span>{group.name}</span>
+              <span className={styles.tagline}>{group.tagline}</span>
             </summary>
-            <ul className={styles.links}>
-              {(index.doorsBySector.get(sector.id) ?? []).map((kind) => (
-                <li key={kind.slug}>
-                  <Link href={href(locale, paths.nationalKind(kind.slug))} className={styles.link}>
-                    {pickText(kind.name, locale)}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <KindRows
+              kinds={group.kinds}
+              href={(kind) => href(locale, paths.nationalKind(kind))}
+              accent={group.sector.accent}
+              countText={count}
+              countLabel={(n) => t(locale, "businessCount", { count: count(n) })}
+              label={group.name}
+              card
+            />
           </details>
         ))}
       </div>
