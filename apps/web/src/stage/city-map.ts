@@ -94,10 +94,14 @@ export class CityMap implements StageMap {
     const city = new CityMap(map, options.dir);
     try {
       await whenReady(map);
+      // The style is loaded now, so its sources take data.
+      city.warmUp();
+      await whenReady(map);
     } catch (error) {
       map.remove();
       throw error;
     }
+    city.coolDown();
     city.wire(options);
     return city;
   }
@@ -139,6 +143,31 @@ export class CityMap implements StageMap {
     this.map.on("zoomend", (event) => {
       if (event.originalEvent && zoomedOut(this.target, this.map.getZoom())) options.onZoomOut();
     });
+  }
+
+  /**
+   * Draws every Darb layer once while the stage is still hidden, so WebGL compiles their programs
+   * now and not in the middle of the first flight into a place (a 100+ ms long task otherwise).
+   */
+  private warmUp(): void {
+    const { lng, lat } = this.map.getCenter();
+    const at = (dx: number): StagePin => ({
+      key: `warm-${dx}`,
+      href: "",
+      name: " ",
+      lat,
+      lng: lng + dx,
+    });
+    this.setHere({ slug: "warm", name: " ", lat, lng });
+    // Two at one spot merge into a "+N" pin; the third stands alone with its number.
+    this.setPins([at(0), at(0), at(0.4)], true);
+    this.setHot(at(-0.4), 1);
+  }
+
+  private coolDown(): void {
+    this.setHere(null);
+    this.setPins([], false);
+    this.setHot(null, 0);
   }
 
   move(camera: Camera, duration: number, insetEnd: number, insetBottom = 0): Promise<void> {

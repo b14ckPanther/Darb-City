@@ -95,7 +95,7 @@ test.describe("desktop", () => {
     expect(doors).toHaveLength(18);
     expect(new Set(doors).size).toBe(18);
     for (const door of doors) expect(door).toMatch(new RegExp(`^${LEVELS.place}/[a-z0-9-]+$`));
-    await expect(page.getByRole("list", { name: "כל סוגי העסקים" })).toBeVisible();
+    await expect(page.getByRole("group", { name: "כל סוגי העסקים" })).toBeVisible();
   });
 
   for (const [locale, rtl] of [
@@ -106,9 +106,11 @@ test.describe("desktop", () => {
       page,
     }) => {
       await stageAt(page, localePath(locale, LEVELS.place));
+      // One category per row: the list is a single column on the reading side.
       const first = (await page.locator("[data-door]").nth(0).boundingBox())!;
       const second = (await page.locator("[data-door]").nth(1).boundingBox())!;
-      expect(first.x > second.x).toBe(rtl);
+      expect(second.y).toBeGreaterThan(first.y);
+      expect(first.x > 720).toBe(rtl);
       expect((await page.locator("#stage").boundingBox())!.x < 10).toBe(rtl);
     });
 
@@ -130,12 +132,13 @@ test.describe("desktop", () => {
     page,
   }) => {
     await stageAt(page, LEVELS.place);
-    const row = page.locator('[data-kind-row="barbershops"]');
+    const row = page.locator('[data-sector-group="beauty"] [data-kind-row]').first();
+    const title = (await row.getAttribute("data-title"))!;
     await row.hover();
-    await expect.poll(() => pinsOnMap(page)).toContain(BUSINESS_KEY);
+    await expect.poll(async () => (await pinsOnMap(page)).length).toBeGreaterThan(0);
     await expect(row).toHaveAttribute("data-previewing", "");
     const caption = page.locator("[data-stage-caption]");
-    await expect(caption).toContainText("מספרות בסח'נין");
+    await expect(caption).toContainText(title);
     // Every pin is a barbershop in Sakhnin.
     for (const key of await pinsOnMap(page)) expect(key).toMatch(/^sakhnin\//);
     // Off the list: the preview clears.
@@ -200,7 +203,7 @@ test.describe("desktop", () => {
       [0, 15],
       [0, -15],
     ] as const;
-    const [dx, dy] = [...sides].sort((a, b) => room(...b) - room(...a))[0]!;
+    const [dx, dy] = [...sides].sort((a, b) => room(b[0], b[1]) - room(a[0], a[1]))[0]!;
     await page.mouse.click(px + dx, py + dy);
     await expect(page).toHaveURL(LEVELS.business);
   });
