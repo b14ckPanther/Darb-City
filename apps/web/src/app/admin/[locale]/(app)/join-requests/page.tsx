@@ -8,11 +8,13 @@ import { one, withParams, type SearchParams } from "@/admin/params";
 import { adminHref } from "@/admin/routes";
 import { Pager } from "@/admin/Toolbar";
 import { isLocale } from "@/lib/locale";
-import { JOIN_STATUS_KEY, receivedAt, telHref } from "@/admin/join-view";
+import { JOIN_STATUS_KEY, joinSourceKey, receivedAt, telHref } from "@/admin/join-view";
+import { mediaUrl } from "@/lib/card";
 import styles from "@/admin/admin.module.css";
 
 function Request({ locale, item }: { locale: Locale; item: AdminJoinRequestDto }) {
   const waiting = item.status === "pending";
+  const street = item.source === "field";
   return (
     <article
       className={waiting ? `${styles.card} ${styles.inquiry} ${styles.inquiryNew}` : styles.card}
@@ -27,29 +29,48 @@ function Request({ locale, item }: { locale: Locale; item: AdminJoinRequestDto }
         <span className={waiting ? `${styles.badge} ${styles.badgeGold}` : styles.badge}>
           {at(locale, JOIN_STATUS_KEY[item.status])}
         </span>
+        {street ? <span className={styles.badge}>{at(locale, "streetBadge")}</span> : null}
         <time dateTime={item.createdAt} className={styles.hint}>
           {at(locale, "inquiryReceived")}: {receivedAt(locale, item.createdAt)}
         </time>
       </header>
+      {street && item.photo ? (
+        // eslint-disable-next-line @next/next/no-img-element -- an admin thumbnail straight from the bucket
+        <img
+          src={mediaUrl(item.photo)}
+          alt={at(locale, "streetPhotoAlt")}
+          className={styles.thumb}
+          loading="lazy"
+        />
+      ) : null}
       <dl className={styles.facts}>
-        <dt>{at(locale, "joinOwner")}</dt>
-        <dd>
-          <bdi>{item.ownerName}</bdi>
-        </dd>
-        <dt>{at(locale, "joinOwnerPhone")}</dt>
-        <dd>
-          <a href={telHref(item.ownerPhone)} dir="ltr">
-            {item.ownerPhone}
-          </a>
-        </dd>
+        {street ? null : (
+          <>
+            <dt>{at(locale, "joinOwner")}</dt>
+            <dd>
+              <bdi>{item.ownerName}</bdi>
+            </dd>
+            <dt>{at(locale, "joinOwnerPhone")}</dt>
+            <dd>
+              <a href={telHref(item.ownerPhone)} dir="ltr">
+                {item.ownerPhone}
+              </a>
+            </dd>
+          </>
+        )}
         {item.placeSlug ? (
           <>
             <dt>{at(locale, "fieldPlace")}</dt>
             <dd dir="ltr">{item.placeSlug}</dd>
           </>
         ) : null}
-        <dt>{at(locale, "joinSource")}</dt>
-        <dd>{at(locale, item.source === "lookup" ? "joinSourceLookup" : "joinSourceManual")}</dd>
+        {/* A street capture says so in its badge. */}
+        {street ? null : (
+          <>
+            <dt>{at(locale, "joinSource")}</dt>
+            <dd>{at(locale, joinSourceKey(item.source))}</dd>
+          </>
+        )}
       </dl>
       <Link
         className={waiting ? styles.primary : styles.ghost}

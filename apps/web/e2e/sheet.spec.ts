@@ -109,11 +109,11 @@ test("phone: the bottom sheet moves between snap points", async ({ page }, info)
   test.skip(!isPhone(info), "phone only");
   await page.goto(LEVELS.business);
   const dialog = page.getByRole("dialog");
-  await expect(dialog).toHaveAttribute("data-snap", "half");
-  await page.locator("[data-sheet-handle]").focus();
-  await page.keyboard.press("ArrowUp");
+  // It opens full: the whole card, with its close button to back out.
   await expect(dialog).toHaveAttribute("data-snap", "full");
+  await page.locator("[data-sheet-handle]").focus();
   await page.keyboard.press("ArrowDown");
+  await expect(dialog).toHaveAttribute("data-snap", "half");
   await page.keyboard.press("ArrowDown");
   await expect(dialog).toHaveAttribute("data-snap", "peek");
 });

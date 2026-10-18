@@ -247,14 +247,16 @@ model Organization {
 }
 
 model User {
-  id          String       @id @default(uuid(7)) @db.Uuid
-  clerkUserId String       @unique
-  locale      String       @default("he")
-  isAdmin     Boolean      @default(false)
-  memberships Membership[]
-  claims      Claim[]      @relation("ClaimUser")
-  reviewed    Claim[]      @relation("ClaimReviewer")
-  audits      AuditLog[]
+  id            String        @id @default(uuid(7)) @db.Uuid
+  clerkUserId   String        @unique
+  locale        String        @default("he")
+  isAdmin       Boolean       @default(false)
+  memberships   Membership[]
+  claims        Claim[]       @relation("ClaimUser")
+  reviewed      Claim[]       @relation("ClaimReviewer")
+  audits        AuditLog[]
+  /// Businesses this admin added from the street (join requests with source field).
+  fieldCaptures JoinRequest[]
 }
 
 model Membership {
@@ -462,6 +464,8 @@ model Inquiry {
 enum JoinSource {
   lookup
   manual
+  /// Added by an admin from the street (photo of the sign, a pin), not by the owner.
+  field
 }
 
 enum JoinStatus {
@@ -493,11 +497,17 @@ model JoinRequest {
   rejectReason String?
   /// Salted hash of the sender's IP bucket (as the rate limiter keys it), never the IP itself.
   ipHash       String?
+  /// The admin who added it from the street; null for the /join form.
+  createdById  String?    @db.Uuid
+  createdBy    User?      @relation(fields: [createdById], references: [id], onDelete: SetNull)
+  /// The phone's own id for a street capture: a retried upload finds the first one, never a second.
+  clientId     String?    @unique
   createdAt    DateTime   @default(now())
   decidedAt    DateTime?
 
   @@index([status, createdAt])
   @@index([businessId])
+  @@index([createdById, createdAt])
 }
 
 enum AuditAction {

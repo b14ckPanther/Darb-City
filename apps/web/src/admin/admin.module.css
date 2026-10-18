@@ -33,6 +33,12 @@
   inset-block-start: 0;
   z-index: 2;
 }
+/* On a phone the menu wraps to several rows: pinned, it would cover a third of the screen. */
+@media (max-width: 760px) {
+  .top {
+    position: static;
+  }
+}
 .brand {
   font-weight: 700;
   font-size: 1.125rem;
@@ -345,4 +351,24 @@
   clip-path: inset(50%);
   white-space: nowrap;
   border: 0;
+}
+/* A street capture's sign: a thumbnail in the queue, the full photo on the request. */
+.thumb {
+  display: block;
+  inline-size: 120px;
+  block-size: 90px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  margin-block-end: 8px;
+}
+.signPhoto {
+  display: block;
+  inline-size: 100%;
+  max-inline-size: 520px;
+  max-block-size: 60dvh;
+  object-fit: contain;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  margin-block: 8px;
 }

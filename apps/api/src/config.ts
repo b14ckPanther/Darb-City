@@ -74,6 +74,16 @@ export interface JoinConfig {
   mediaUrl: string;
 }
 
+/** Add from the street: reading a shop's sign from the admin's photo. */
+export interface FieldConfig {
+  /** "anthropic" with a key unless FIELD_AI=off; "fake" answers a fixed reading (e2e only). */
+  ai: "anthropic" | "fake" | "off";
+  model: string;
+  timeoutMs: number;
+  /** Sign readings per day across every admin (cost guard), on top of MODEL_CALLS_PER_DAY. */
+  readsPerDay: number;
+}
+
 export interface AppConfig {
   databaseUrl: string;
   port: number;
@@ -83,6 +93,7 @@ export interface AppConfig {
   admin: AdminConfig;
   inquiry: InquiryConfig;
   join: JoinConfig;
+  field: FieldConfig;
   production: boolean;
 }
 
@@ -151,6 +162,10 @@ const schema = z.object({
     .refine((v) => /^https?:\/\//i.test(v), "must be an http(s) URL")
     .optional(),
   JOIN_GEOCODER: z.enum(["nominatim", "off"]).optional(),
+  FIELD_AI: z.enum(["anthropic", "fake", "off"]).optional(),
+  FIELD_MODEL: z.string().min(1).default("claude-sonnet-5-5"),
+  FIELD_TIMEOUT_MS: z.coerce.number().int().min(1000).max(120_000).default(30_000),
+  FIELD_READS_PER_DAY: z.coerce.number().int().min(0).default(200),
   R2_ACCOUNT_ID: optional,
   R2_ACCESS_KEY_ID: optional,
   R2_SECRET_ACCESS_KEY: optional,
@@ -212,6 +227,7 @@ export function loadConfig(env: NodeJS.ProcessEnv): AppConfig {
     if ((e.IP_HASH_SALT ?? "").length < 32)
       fail("IP_HASH_SALT must be a random secret of at least 32 characters in production");
     if (verifier === "fake") fail("AUTH_VERIFIER=fake is for tests only");
+    if (e.FIELD_AI === "fake") fail("FIELD_AI=fake is for tests only");
     if (e.REVALIDATE_URL && (e.REVALIDATE_SECRET ?? "").length < 32)
       fail("REVALIDATE_SECRET must be at least 32 characters when REVALIDATE_URL is set");
     // The shared secret travels in a header: never in clear text across the internet.
@@ -265,6 +281,17 @@ export function loadConfig(env: NodeJS.ProcessEnv): AppConfig {
           : null,
       bucket: e.R2_MEDIA_BUCKET,
       mediaUrl: e.MEDIA_URL,
+    },
+    field: {
+      ai:
+        e.FIELD_AI === "fake"
+          ? "fake"
+          : (e.FIELD_AI ?? "anthropic") === "anthropic" && e.ANTHROPIC_API_KEY
+            ? "anthropic"
+            : "off",
+      model: e.FIELD_MODEL,
+      timeoutMs: e.FIELD_TIMEOUT_MS,
+      readsPerDay: e.FIELD_READS_PER_DAY,
     },
     search: {
       redisUrl: e.REDIS_URL,

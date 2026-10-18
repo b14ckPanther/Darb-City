@@ -20,6 +20,7 @@ export default defineConfig({
       RESEND_API_KEY: "",
       // The join lookup never reaches the model, OpenStreetMap or R2 (src/join tests inject fakes).
       JOIN_AI: "off",
+      FIELD_AI: "off",
       JOIN_GEOCODER: "off",
       R2_ACCOUNT_ID: "",
       // Admin tests sign in with fake tokens (src/auth/fake-token-verifier.ts).

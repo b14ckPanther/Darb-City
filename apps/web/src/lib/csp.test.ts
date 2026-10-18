@@ -36,7 +36,7 @@ it("admin pages: a nonce with strict-dynamic, and Clerk's origin", () => {
   expect(directive(csp, "connect-src")).toBe("connect-src 'self' https://clerk.darb.co.il");
   expect(directive(csp, "frame-src")).toBe("frame-src https://challenges.cloudflare.com");
   expect(directive(csp, "img-src")).toBe(
-    "img-src 'self' data: https://img.clerk.com https://media.darb.co.il",
+    "img-src 'self' data: blob: https://img.clerk.com https://media.darb.co.il",
   );
 });
 

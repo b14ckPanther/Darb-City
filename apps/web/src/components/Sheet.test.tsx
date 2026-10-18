@@ -144,11 +144,10 @@ describe("Sheet", () => {
   it("moves between snap points from the keyboard", () => {
     renderSheet();
     const dialog = screen.getByRole("dialog");
-    const handle = screen.getByRole("button", { name: "Resize, half" });
-    expect(dialog.getAttribute("data-snap")).toBe("half");
-    fireEvent.keyDown(handle, { key: "ArrowUp" });
+    const handle = screen.getByRole("button", { name: "Resize, full" });
     expect(dialog.getAttribute("data-snap")).toBe("full");
     fireEvent.keyDown(handle, { key: "ArrowDown" });
+    expect(dialog.getAttribute("data-snap")).toBe("half");
     fireEvent.keyDown(handle, { key: "ArrowDown" });
     expect(dialog.getAttribute("data-snap")).toBe("peek");
     expect(handle.getAttribute("aria-label")).toBe("Resize, small");
@@ -157,14 +156,14 @@ describe("Sheet", () => {
   it("cycles the snap points with Enter and Space and names the current one", () => {
     renderSheet();
     const dialog = screen.getByRole("dialog");
-    const handle = screen.getByRole("button", { name: "Resize, half" });
+    const handle = screen.getByRole("button", { name: "Resize, full" });
+    fireEvent.keyDown(handle, { key: "Enter" });
+    expect(dialog.getAttribute("data-snap")).toBe("peek");
+    expect(handle.getAttribute("aria-label")).toBe("Resize, small");
+    fireEvent.keyDown(handle, { key: " " });
+    expect(dialog.getAttribute("data-snap")).toBe("half");
     fireEvent.keyDown(handle, { key: "Enter" });
     expect(dialog.getAttribute("data-snap")).toBe("full");
-    expect(handle.getAttribute("aria-label")).toBe("Resize, full");
-    fireEvent.keyDown(handle, { key: " " });
-    expect(dialog.getAttribute("data-snap")).toBe("peek");
-    fireEvent.keyDown(handle, { key: "Enter" });
-    expect(dialog.getAttribute("data-snap")).toBe("half");
   });
 });
 
