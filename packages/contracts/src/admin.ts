@@ -38,6 +38,7 @@ import {
   FieldStatusSchema,
 } from "./field.js";
 import { JOIN_SOURCES, JOIN_STATUSES, JoinSuggestionSchema } from "./join.js";
+import { LocateQuerySchema, LocateResultSchema } from "./locate.js";
 import { LocaleSchema, MissingReportSchema, ReportQuerySchema } from "./search.js";
 
 const c = initContract();
@@ -679,6 +680,13 @@ export const adminContract = c.router({
       responses: { 200: FieldCapturesSchema, ...guarded },
     },
   }),
+  /** Find the place: an address or a map link to a point for the pin. Never fails loudly. */
+  locate: {
+    method: "POST",
+    path: "/admin/locate",
+    body: LocateQuerySchema,
+    responses: { 200: LocateResultSchema, 400: AdminErrorSchema, ...guarded },
+  },
   inquiries: c.router({
     list: {
       method: "GET",

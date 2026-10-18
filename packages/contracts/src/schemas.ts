@@ -3,6 +3,7 @@ import {
   CARD_ICON_STYLES,
   DIETARY,
   facebookUrl,
+  googleMapsUrl,
   instagramUrl,
   isSlug,
   PLACE_STATUSES,
@@ -65,14 +66,16 @@ export const LinksSchema = z.object({
   facebook: z.string().url().optional(),
   tiktok: z.string().url().optional(),
   waze: z.string().url().optional(),
+  /** The business's Google Maps page, only ever a link out (its reviews are never read). */
+  google: z.string().url().optional(),
 });
 export type LinksDto = z.infer<typeof LinksSchema>;
 
-const linkInput = (normalize: (raw: string) => string | null, what: string) =>
+const linkInput = (normalize: (raw: string) => string | null, what: string, max = 300) =>
   z
     .string()
     .trim()
-    .max(300)
+    .max(max)
     .transform((raw, ctx) => {
       const url = normalize(raw);
       if (!url) {
@@ -88,6 +91,8 @@ export const LinksInputSchema = z
     facebook: linkInput(facebookUrl, "a Facebook").optional(),
     tiktok: linkInput(tiktokUrl, "a TikTok").optional(),
     waze: linkInput(wazeUrl, "a Waze").optional(),
+    // A Google Maps place link carries its whole place record in the URL: long ones are normal.
+    google: linkInput(googleMapsUrl, "a Google Maps", 2000).optional(),
   })
   .strict();
 

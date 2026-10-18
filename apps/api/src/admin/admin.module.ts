@@ -20,10 +20,14 @@ import { AdminPlansController, PlansAdmin } from "./plans.admin.js";
 import { AdminSectorsController, SectorsAdmin } from "./sectors.admin.js";
 import { WebRevalidator } from "./revalidator.js";
 import { AdminTextsController, TextsAdmin } from "./texts.admin.js";
+import { JoinModule } from "../join/join.module.js";
+import { RateLimiter } from "../search/rate-limiter.js";
+import { AdminLocateController, LocateAdmin } from "./locate.admin.js";
+import { Overpass } from "./locate/overpass.js";
 
 /** Spec §6.2 Admin: guarded by Clerk and the admin flag. */
 @Module({
-  imports: [AuthModule, SearchIndexModule, MediaModule],
+  imports: [AuthModule, SearchIndexModule, MediaModule, JoinModule],
   controllers: [
     AdminPlacesController,
     AdminSectorsController,
@@ -36,6 +40,7 @@ import { AdminTextsController, TextsAdmin } from "./texts.admin.js";
     AdminJoinController,
     AdminFieldController,
     AdminFieldUploadsController,
+    AdminLocateController,
   ],
   providers: [
     AdminWriter,
@@ -53,6 +58,9 @@ import { AdminTextsController, TextsAdmin } from "./texts.admin.js";
     ReportRepository,
     FieldService,
     ModelBudget,
+    LocateAdmin,
+    Overpass,
+    RateLimiter,
     {
       provide: SIGN_READER,
       inject: [APP_CONFIG],

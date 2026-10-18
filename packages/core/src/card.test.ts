@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   CARD_ACCENTS,
   facebookUrl,
+  googleMapsUrl,
   instagramUrl,
   latinize,
   normalizeLinks,
@@ -51,6 +52,28 @@ describe("links", () => {
       "https://waze.com/ul?ll=32.860000,35.300000&navigate=yes",
     );
   });
+
+  it.each([
+    "https://www.google.com/maps/place/Falafel/@32.8,35.0,17z/data=!3d32.8!4d35.0",
+    "https://google.co.il/maps/place/Falafel",
+    "https://maps.google.com/?cid=123",
+    "maps.app.goo.gl/AbC123",
+    "https://goo.gl/maps/AbC123",
+  ])("a Google Maps link %s is kept", (raw) => {
+    expect(googleMapsUrl(raw)).toMatch(/^https:\/\//);
+  });
+
+  it.each([
+    "https://www.google.com/search?q=falafel",
+    "https://google.com/",
+    "https://goo.gl/AbC123",
+    "https://maps.app.goo.gl/",
+    "https://evil.example/maps/place/x",
+    "https://maps.google.evil.example/x",
+    "https://google.com.evil.example/maps/x",
+    "javascript:alert(1)",
+    "not a link",
+  ])("refuses %s as a Google Maps link", (raw) => expect(googleMapsUrl(raw)).toBeNull());
 
   it("normalizes a set and drops the rest", () => {
     expect(

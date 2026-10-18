@@ -22,5 +22,7 @@ import { LOOKUP_AI, lookupAiFor } from "./lookup-ai.js";
         lookupAiFor({ ...config.join, apiKey: config.search.anthropicApiKey }),
     },
   ],
+  /** One Nominatim queue for the whole process (its one-a-second policy): admin's Find the place too. */
+  exports: [Geocoder],
 })
 export class JoinModule {}

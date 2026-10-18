@@ -36,7 +36,12 @@ export interface LocationPickerProps {
   labels: LocationPickerLabels;
   /** The form fields that carry the point. */
   names?: { lat: string; lng: string };
+  /** Fly the map here, close in (a found address); a new `key` flies again to the same point. */
+  flyTo?: { point: LatLng; key: number } | null;
 }
+
+/** Close enough to see the doors on a street. */
+const FLY_ZOOM = 17.5;
 
 type Mode = "waiting" | "map" | "numbers";
 
@@ -52,6 +57,7 @@ export function LocationPicker({
   near = null,
   labels,
   names = { lat: "lat", lng: "lng" },
+  flyTo = null,
 }: LocationPickerProps) {
   const id = useId();
   const host = useRef<HTMLDivElement>(null);
@@ -141,6 +147,10 @@ export function LocationPicker({
   useEffect(() => {
     map.current?.setPin(value);
   }, [value, mode]);
+
+  useEffect(() => {
+    if (flyTo) map.current?.centreOn(flyTo.point, FLY_ZOOM);
+  }, [flyTo?.key, mode]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // A place chosen before the first pin: open over it.
   useEffect(() => {

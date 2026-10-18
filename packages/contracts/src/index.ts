@@ -6,3 +6,4 @@ export * from "./inquiry.js";
 export * from "./admin.js";
 export * from "./join.js";
 export * from "./field.js";
+export * from "./locate.js";

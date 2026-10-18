@@ -21,6 +21,50 @@ interface NominatimPlace {
   lon: string;
   display_name?: string;
   address?: NominatimAddress;
+  /** jsonv2: "house", "building", "road", "city"… */
+  addresstype?: string;
+  category?: string;
+  type?: string;
+  /** [south, north, west, east] as strings. */
+  boundingbox?: string[];
+}
+
+/** One of Nominatim's answers to a search, as Find the place reads it. */
+export interface NominatimHit {
+  point: LatLng;
+  /** A house or building (rather than a street, a town or a shop's area). */
+  house: boolean;
+  houseNumber: string | null;
+  road: string | null;
+  town: string | null;
+  /** The part of town, to tell two pieces of one street apart. */
+  area: string | null;
+  label: string;
+  /** [south, west, north, east]. */
+  box: [number, number, number, number] | null;
+}
+
+const HOUSE_TYPES = new Set(["house", "building", "residential", "apartments", "detached"]);
+
+function toHit(p: NominatimPlace): NominatimHit | null {
+  const g = toGeocoded(p);
+  if (!g) return null;
+  const a = p.address ?? {};
+  const b = p.boundingbox?.map(Number);
+  return {
+    point: g.point,
+    house:
+      Boolean(a.house_number) &&
+      (HOUSE_TYPES.has(p.addresstype ?? "") ||
+        p.category === "building" ||
+        HOUSE_TYPES.has(p.type ?? "")),
+    houseNumber: a.house_number ?? null,
+    road: a.road ?? a.pedestrian ?? null,
+    town: g.town,
+    area: a.neighbourhood ?? a.suburb ?? null,
+    label: g.address,
+    box: b && b.length === 4 && b.every(Number.isFinite) ? [b[0]!, b[2]!, b[1]!, b[3]!] : null,
+  };
 }
 
 export interface Geocoded {
@@ -89,6 +133,41 @@ export class Geocoder {
     });
     const found = await this.get<NominatimPlace[]>("search", params, locale);
     return Array.isArray(found) && found[0] ? toGeocoded(found[0]) : null;
+  }
+
+  /**
+   * Up to five answers for a structured search (street = "68 Street", city) or a free one (q),
+   * kept near `near` when given (a bias, not a fence). Null when Nominatim failed or is off.
+   */
+  async find(
+    query: { street: string; city?: string } | { q: string },
+    locale: Locale,
+    near?: LatLng,
+  ): Promise<NominatimHit[] | null> {
+    const params = new URLSearchParams({
+      format: "jsonv2",
+      countrycodes: "il",
+      limit: "5",
+      addressdetails: "1",
+    });
+    if ("q" in query) params.set("q", query.q.trim().slice(0, 200));
+    else {
+      params.set("street", query.street.trim().slice(0, 150));
+      if (query.city) params.set("city", query.city.trim().slice(0, 80));
+    }
+    if (near) {
+      const d = 0.08;
+      params.set(
+        "viewbox",
+        [near.lng - d, near.lat + d, near.lng + d, near.lat - d].map((n) => n.toFixed(5)).join(","),
+      );
+    }
+    const found = await this.get<NominatimPlace[]>("search", params, locale);
+    if (!Array.isArray(found)) return null;
+    return found.flatMap((p) => {
+      const hit = toHit(p);
+      return hit ? [hit] : [];
+    });
   }
 
   private get<T>(path: string, params: URLSearchParams, locale: Locale): Promise<T | null> {

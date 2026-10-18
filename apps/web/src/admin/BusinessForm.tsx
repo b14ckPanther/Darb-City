@@ -91,6 +91,7 @@ export function BusinessForm({
         legend={at(locale, "fieldLocation")}
         value={b ? { lat: b.lat, lng: b.lng } : null}
         followPlace={!b}
+        placeSlug={b?.placeSlug}
         labels={{
           map: at(locale, "pinMap"),
           pin: at(locale, "pinPin"),
@@ -182,6 +183,7 @@ export function BusinessForm({
             ["facebook", "fieldFacebook"],
             ["tiktok", "fieldTiktok"],
             ["waze", "fieldWaze"],
+            ["google", "fieldGoogle"],
           ] as const
         ).map(([key, label]) => (
           <TextField
