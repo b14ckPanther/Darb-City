@@ -86,6 +86,18 @@ it("localizes the four shortcuts, each with a committed 96 px icon", () => {
     }
 });
 
+it("offers narrow and wide screenshots in the locale's language, all committed", () => {
+  for (const locale of LOCALES) {
+    const shots = manifest(locale).screenshots;
+    expect(shots.filter((s) => s.form_factor === "narrow")).toHaveLength(2);
+    expect(shots.filter((s) => s.form_factor === "wide")).toHaveLength(1);
+    for (const s of shots) {
+      expect(s.src).toContain(`-${locale}-`);
+      expect(existsSync(onDisk(s.src)), s.src).toBe(true);
+    }
+  }
+});
+
 it("names the home screen app with the brand alone, in the page's language", () => {
   const titles = Object.fromEntries(
     LOCALES.map((l) => {
