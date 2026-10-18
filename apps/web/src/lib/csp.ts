@@ -75,7 +75,8 @@ export function adminCsp({
       ...(tilesOrigin ? [tilesOrigin] : []),
       ...(dev ? ["ws:"] : []),
     ],
-    "img-src": ["'self'", "data:", "https://img.clerk.com", MEDIA_ORIGIN],
+    // blob: the street capture's preview of the photo just taken (a local object URL).
+    "img-src": ["'self'", "data:", "blob:", "https://img.clerk.com", MEDIA_ORIGIN],
     "frame-src": ["https://challenges.cloudflare.com"],
     "worker-src": ["'self'", "blob:"],
   });

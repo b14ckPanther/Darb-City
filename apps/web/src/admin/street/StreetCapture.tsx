@@ -101,6 +101,11 @@ export function StreetCapture({
   const [message, setMessage] = useState("");
   const [queue, setQueue] = useState<QueuedCapture[]>([]);
   const [persistent, setPersistent] = useState(true);
+  /** Bumped when likely duplicates turn up: their heading takes the focus once it is drawn. */
+  const [focusDup, setFocusDup] = useState(0);
+  useEffect(() => {
+    if (focusDup) dupHeading.current?.focus();
+  }, [focusDup]);
 
   const locate = useCallback(() => {
     if (typeof navigator === "undefined" || !navigator.geolocation) {
@@ -258,7 +263,7 @@ export function StreetCapture({
           setMatches({ key, list });
           if (list.length) {
             setChecking(false);
-            requestAnimationFrame(() => dupHeading.current?.focus());
+            setFocusDup((n) => n + 1);
             return;
           }
         }
@@ -476,9 +481,6 @@ export function StreetCapture({
               },
             }}
           />
-          <button type="button" className={styles.ghost} onClick={locate} disabled={locating}>
-            {t("streetLocate")}
-          </button>
         </fieldset>
 
         <label className={styles.field}>
