@@ -82,7 +82,8 @@ export function Sheet({ closeHref, labelledBy, returnFocusTo, labels, children }
   const panel = useRef<HTMLDivElement>(null);
   const closeButton = useRef<HTMLButtonElement>(null);
   const drag = useRef<{ startY: number } | null>(null);
-  const [snap, setSnap] = useState<Snap>("half");
+  // Opens full: the whole card at once, with the close button to back out.
+  const [snap, setSnap] = useState<Snap>("full");
   const desktop = useMedia(DESKTOP);
 
   const close = () => router.push(closeHref, { scroll: false });
