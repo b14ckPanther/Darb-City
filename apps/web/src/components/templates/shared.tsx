@@ -1,6 +1,7 @@
 import { LOCALES, pickText, type Locale, type Localized } from "@darb/core";
 import type { ScreenDto } from "@darb/contracts";
 import { matchKey, splitList } from "@darb/search-text";
+import { Glyph, glyphFor } from "./glyphs";
 import styles from "./templates.module.css";
 
 export interface TemplateProps {
@@ -27,18 +28,24 @@ export function itemKeys(item: { label: Localized; meta?: Localized | undefined 
   return [...keys].join(" ");
 }
 
-/** Tags as pills; `variant` changes only their look. */
+/**
+ * Tags as chips, each with its glyph when its English names one (Takeaway, Outdoor seating, a
+ * time, an amount) and a plain dot otherwise; `variant` changes only their look, `className` lets
+ * a template place them.
+ */
 export function Tags({
   screen,
   locale,
   variant = "pill",
-}: TemplateProps & { variant?: "pill" | "slot" | "amount" }) {
+  className,
+}: TemplateProps & { variant?: "pill" | "slot" | "amount"; className?: string | undefined }) {
   if (!screen.tags || screen.tags.length === 0) return null;
   return (
-    <ul className={`${styles.tags} ${styles[variant]}`}>
+    <ul className={[styles.tags, styles[variant], className].filter(Boolean).join(" ")}>
       {screen.tags.map((tag, i) => (
         <li key={i} data-match-keys={itemKeys({ label: tag })}>
-          {text(tag, locale)}
+          <Glyph name={glyphFor(tag.en) ?? "dot"} className={styles.tagGlyph} />
+          <span>{text(tag, locale)}</span>
         </li>
       ))}
     </ul>

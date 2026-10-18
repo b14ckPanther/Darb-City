@@ -1,0 +1,304 @@
+/* A place to eat (templates/Menu.tsx): a menu card by day, a chalkboard at night. */
+
+.board {
+  position: relative;
+  display: grid;
+  gap: var(--space-4);
+  margin: var(--space-3);
+  padding: var(--space-5) var(--space-4) var(--space-4);
+  border-radius: 20px;
+  /* The card's double rule, and a faint grain: paper by day, chalk dust at night. */
+  background:
+    radial-gradient(
+      120% 55% at 50% 0%,
+      color-mix(in srgb, var(--t-accent) 11%, transparent),
+      transparent 70%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      color-mix(in srgb, var(--t-ink) 2.5%, transparent) 0 1px,
+      transparent 1px 5px
+    );
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--t-accent-ink) 45%, transparent),
+    inset 0 0 0 5px var(--t-bg),
+    inset 0 0 0 6px color-mix(in srgb, var(--t-accent-ink) 22%, transparent);
+}
+
+/* The board's sign: an emblem of what it serves, the title between two ruled lines. */
+.head {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  text-align: center;
+}
+
+.emblem {
+  position: relative;
+  display: grid;
+  place-items: center;
+  inline-size: 68px;
+  block-size: 68px;
+  border-radius: 50%;
+  color: var(--t-accent-ink);
+  background: color-mix(in srgb, var(--t-accent) 10%, var(--t-bg));
+  box-shadow:
+    inset 0 0 0 1.5px color-mix(in srgb, var(--t-accent-ink) 70%, transparent),
+    inset 0 0 0 5px var(--t-bg),
+    inset 0 0 0 6px color-mix(in srgb, var(--t-accent-ink) 30%, transparent);
+}
+
+.emblemGlyph {
+  inline-size: 32px;
+  block-size: 32px;
+}
+
+/* A café's cup keeps steaming, softly. */
+.steam {
+  position: absolute;
+  inset-block-start: -14px;
+  inset-inline-start: calc(50% - 11px);
+  inline-size: 22px;
+  block-size: 18px;
+  background: var(--t-accent-ink);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 18'%3E%3Cpath d='M7 17c-3-3 3-5 0-8s3-5 0-8M15 17c-3-3 3-5 0-8s3-5 0-8' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 18'%3E%3Cpath d='M7 17c-3-3 3-5 0-8s3-5 0-8M15 17c-3-3 3-5 0-8s3-5 0-8' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+  opacity: 0;
+  animation: steam 3.6s ease-in-out infinite;
+}
+
+@keyframes steam {
+  0% {
+    opacity: 0;
+    transform: translateY(5px) scaleY(0.8);
+  }
+  40% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-6px) scaleY(1.05);
+  }
+}
+
+.title {
+  display: grid;
+  grid-template-columns: minmax(16px, 1fr) auto minmax(16px, 1fr);
+  align-items: center;
+  gap: var(--space-3);
+  inline-size: 100%;
+  margin: 0;
+  font-size: var(--step-2);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.title::before,
+.title::after {
+  content: "";
+  block-size: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--t-accent-ink) 70%, transparent) 50%,
+    transparent
+  );
+}
+
+.subtitle {
+  margin: 0;
+  max-inline-size: 32ch;
+  font-size: var(--step--1);
+  opacity: 0.8;
+}
+
+/* The first dish, plated. */
+.featured {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4) var(--space-3) var(--space-3);
+  border-radius: 22px;
+  background: var(--t-surface);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--t-ink) 7%, transparent),
+    0 14px 30px -22px rgb(0 0 0 / 0.55);
+}
+
+.plate {
+  display: grid;
+  place-items: center;
+  inline-size: 84px;
+  block-size: 84px;
+  border-radius: 50%;
+  color: var(--t-accent-ink);
+  background: radial-gradient(
+    circle,
+    var(--t-bg) 0 55%,
+    color-mix(in srgb, var(--t-ink) 5%, var(--t-bg)) 56% 100%
+  );
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--t-accent-ink) 40%, transparent),
+    inset 0 0 0 9px color-mix(in srgb, var(--t-ink) 4%, var(--t-bg)),
+    inset 0 0 0 10px color-mix(in srgb, var(--t-accent-ink) 22%, transparent),
+    0 10px 22px -12px rgb(0 0 0 / 0.45);
+  animation: plate-in 700ms var(--ease-out) both;
+}
+
+@keyframes plate-in {
+  from {
+    opacity: 0;
+    transform: rotate(-24deg) scale(0.9);
+  }
+}
+
+.plateGlyph {
+  inline-size: 38px;
+  block-size: 38px;
+}
+
+.featuredText {
+  display: grid;
+  gap: 4px;
+  min-inline-size: 0;
+}
+
+.featuredName {
+  font-size: var(--step-1);
+  font-weight: 800;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.bigPrice {
+  color: var(--t-accent-ink);
+  font-size: var(--step-2);
+  font-weight: 900;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.note {
+  font-size: var(--step--1);
+  line-height: 1.4;
+  opacity: 0.82;
+}
+
+.note [data-fact="time"],
+.note [data-fact="duration"],
+.lineNote [data-fact="time"],
+.lineNote [data-fact="duration"] {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Priced dishes as menu lines: name, leader, price; the rest of the meta under the name. */
+.lines {
+  display: grid;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lines li {
+  display: grid;
+  grid-template-columns: auto minmax(12px, 1fr) auto;
+  align-items: baseline;
+  column-gap: var(--space-2);
+  padding-block: var(--space-2);
+}
+
+.lineName {
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.leader {
+  border-block-end: 2px dotted color-mix(in srgb, var(--t-accent-ink) 45%, transparent);
+  translate: 0 -0.3em;
+}
+
+.linePrice {
+  color: var(--t-accent-ink);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.lineNote {
+  grid-column: 1 / -1;
+  font-size: var(--step--1);
+  opacity: 0.78;
+}
+
+/* Bare dishes as a tray of tiles, each with its own glyph. */
+.tray {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 136px), 1fr));
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tray li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-inline-size: 0;
+  padding: var(--space-2) var(--space-3) var(--space-2) var(--space-2);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--t-surface) 70%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--t-ink) 8%, transparent);
+}
+
+.badge {
+  display: grid;
+  flex: none;
+  place-items: center;
+  inline-size: 38px;
+  block-size: 38px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--t-accent) 16%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--t-accent-ink) 38%, transparent);
+  color: var(--t-accent-ink);
+}
+
+.badgeGlyph {
+  inline-size: 20px;
+  block-size: 20px;
+}
+
+.trayText {
+  display: grid;
+  gap: 2px;
+  min-inline-size: 0;
+}
+
+.trayName {
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+/* What the place offers, at the foot of the card. */
+.amenities {
+  justify-content: center;
+  padding-block-start: var(--space-3);
+  border-block-start: 1px dashed color-mix(in srgb, var(--t-ink) 18%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .steam {
+    animation: none;
+    opacity: 0.6;
+  }
+
+  .plate {
+    animation: none;
+  }
+}

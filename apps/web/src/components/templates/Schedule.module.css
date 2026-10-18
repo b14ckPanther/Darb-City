@@ -1,0 +1,190 @@
+/* A place that runs on times (templates/Schedule.tsx): a departure board. */
+
+.board {
+  display: grid;
+  gap: var(--space-4);
+  margin: var(--space-3);
+  padding: var(--space-4);
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--t-ink) 5%, var(--t-bg));
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--t-ink) 10%, transparent),
+    inset 0 2px 10px rgb(0 0 0 / 0.12);
+}
+
+.head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  column-gap: var(--space-3);
+  row-gap: var(--space-1);
+}
+
+/* The board's lamp: the glyph in a lit round window. */
+.lamp {
+  display: grid;
+  grid-row: span 2;
+  place-items: center;
+  inline-size: 48px;
+  block-size: 48px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 35%,
+    color-mix(in srgb, var(--t-accent) 30%, var(--t-bg)),
+    var(--t-bg) 70%
+  );
+  color: var(--t-accent-ink);
+  box-shadow:
+    inset 0 0 0 2px color-mix(in srgb, var(--t-accent-ink) 55%, transparent),
+    0 0 18px -4px color-mix(in srgb, var(--t-accent) 60%, transparent);
+}
+
+.lampGlyph {
+  inline-size: 24px;
+  block-size: 24px;
+}
+
+/* The title on split flaps: one flap per word, a hairline where the flap folds. */
+.title {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 0;
+  font-size: var(--step-1);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.flap,
+.clock [data-fact] {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 5px;
+  background:
+    linear-gradient(
+      180deg,
+      transparent calc(50% - 0.5px),
+      color-mix(in srgb, var(--t-ink) 28%, transparent) calc(50% - 0.5px) calc(50% + 0.5px),
+      transparent calc(50% + 0.5px)
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--t-ink) 4%, var(--t-surface)) 0 50%,
+      var(--t-surface) 50%
+    );
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--t-ink) 10%, transparent),
+    0 2px 3px -1px rgb(0 0 0 / 0.3);
+  transform-origin: 50% 50%;
+  animation: flap 520ms var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 0.07s);
+}
+
+@keyframes flap {
+  from {
+    transform: perspective(200px) rotateX(-90deg);
+  }
+}
+
+.subtitle {
+  margin: 0;
+  font-size: var(--step--1);
+  opacity: 0.8;
+}
+
+.days {
+  gap: 4px;
+}
+
+.days li {
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+/* The rows: glyph, what, and when in flap digits. */
+.rows {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rows li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-3);
+  padding-block: var(--space-3);
+  border-block-start: 1px solid color-mix(in srgb, var(--t-ink) 10%, transparent);
+}
+
+.rows li:last-child {
+  padding-block-end: 0;
+}
+
+.badge {
+  display: grid;
+  place-items: center;
+  inline-size: 36px;
+  block-size: 36px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--t-accent) 15%, transparent);
+  color: var(--t-accent-ink);
+}
+
+.badgeGlyph {
+  inline-size: 20px;
+  block-size: 20px;
+}
+
+.what {
+  display: grid;
+  gap: 2px;
+  min-inline-size: 0;
+}
+
+.name {
+  font-weight: 700;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.note {
+  font-size: var(--step--1);
+  opacity: 0.78;
+}
+
+.clock {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 4px;
+  max-inline-size: 11rem;
+}
+
+.clock [data-sep] {
+  display: none;
+}
+
+.clock [data-fact] {
+  padding: 4px 8px;
+  color: var(--t-accent-ink);
+  font-size: var(--step-1);
+  font-weight: 800;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* A time's own word ("iqama 05:10") rides smaller under the big one. */
+.clock [data-fact] + [data-sep] + [data-fact] {
+  font-size: var(--step--1);
+  color: var(--t-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flap,
+  .clock [data-fact] {
+    animation: none;
+  }
+}

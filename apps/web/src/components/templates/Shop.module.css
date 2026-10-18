@@ -1,0 +1,255 @@
+/* A shop (templates/Shop.tsx): its shelf, with what it sells hanging as swing tags. */
+
+.shop {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-4) var(--space-5);
+}
+
+.head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* The shop's sign: a tile with an awning stripe across its top. */
+.sign {
+  position: relative;
+  display: grid;
+  place-items: center;
+  inline-size: 52px;
+  block-size: 52px;
+  padding-block-start: 8px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--t-surface);
+  color: var(--t-accent-ink);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--t-ink) 10%, transparent);
+}
+
+.sign::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  block-size: 12px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--t-accent) 0 8px,
+    color-mix(in srgb, var(--t-accent) 30%, var(--t-bg)) 8px 16px
+  );
+  -webkit-mask: radial-gradient(circle at 4px 12px, transparent 4px, black 4.5px) 0 0 / 8px 12px;
+  mask: radial-gradient(circle at 4px 12px, transparent 4px, black 4.5px) 0 0 / 8px 12px;
+}
+
+.signGlyph {
+  inline-size: 24px;
+  block-size: 24px;
+}
+
+.headText {
+  display: grid;
+  gap: 2px;
+  min-inline-size: 0;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--step-2);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: var(--step--1);
+  opacity: 0.8;
+}
+
+/* A chain's name, as a round sticker slapped on the sign. */
+.sticker {
+  display: grid;
+  place-content: center;
+  inline-size: 76px;
+  block-size: 76px;
+  margin: 0;
+  padding: 6px;
+  border-radius: 50%;
+  background: var(--t-accent);
+  color: var(--t-on-accent);
+  text-align: center;
+  rotate: 8deg;
+  box-shadow:
+    inset 0 0 0 3px color-mix(in srgb, var(--t-on-accent) 18%, transparent),
+    0 8px 16px -8px rgb(0 0 0 / 0.5);
+}
+
+.stickerLabel {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+}
+
+.stickerName {
+  font-size: 0.8rem;
+  font-weight: 900;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+
+/* The shelf: a rail the tags hang from, and a plank below them. */
+.shelf {
+  position: relative;
+  display: grid;
+  padding-block-start: 10px;
+}
+
+.rail {
+  position: absolute;
+  inset-inline: -4px;
+  inset-block-start: 0;
+  block-size: 6px;
+  border-radius: 3px;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--t-ink) 35%, var(--t-bg)),
+    color-mix(in srgb, var(--t-ink) 60%, var(--t-bg))
+  );
+  box-shadow: 0 3px 6px -2px rgb(0 0 0 / 0.35);
+}
+
+.plank {
+  block-size: 12px;
+  margin-inline: -4px;
+  margin-block-start: var(--space-3);
+  border-radius: 3px 3px 6px 6px;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--t-accent) 40%, var(--t-surface)),
+    color-mix(in srgb, var(--t-accent) 22%, var(--t-bg))
+  );
+  box-shadow: 0 10px 18px -10px rgb(0 0 0 / 0.55);
+}
+
+.tags {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 132px), 1fr));
+  gap: var(--space-3) var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tags[data-count="1"] {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.tags li {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  padding-block-start: 22px;
+  /* Each tag hangs from its own string, a little crooked, and settles when the screen opens. */
+  transform-origin: 50% 0;
+  rotate: calc((var(--i) - 1) * 1.6deg);
+  animation: swing 700ms var(--ease-out) both;
+  animation-delay: calc(var(--i) * 0.09s);
+}
+
+.tags li::before {
+  content: "";
+  position: absolute;
+  inset-block-start: 0;
+  inline-size: 1.5px;
+  block-size: 30px;
+  background: color-mix(in srgb, var(--t-ink) 45%, transparent);
+}
+
+@keyframes swing {
+  0% {
+    transform: rotate(9deg);
+  }
+  35% {
+    transform: rotate(-5deg);
+  }
+  65% {
+    transform: rotate(2.5deg);
+  }
+}
+
+/* The tag: a card with clipped shoulders and a punched hole. */
+.tag {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 6px;
+  inline-size: 100%;
+  min-block-size: 132px;
+  padding: 26px var(--space-3) var(--space-4);
+  background: var(--t-surface);
+  text-align: center;
+  clip-path: polygon(22% 0, 78% 0, 100% 14px, 100% 100%, 0 100%, 0 14px);
+  box-shadow: inset 0 -3px 0 var(--t-accent);
+}
+
+.tags[data-count="1"] .tag {
+  clip-path: polygon(38% 0, 62% 0, 100% 14px, 100% 100%, 0 100%, 0 14px);
+}
+
+.hole {
+  position: absolute;
+  inset-block-start: 7px;
+  inline-size: 10px;
+  block-size: 10px;
+  border-radius: 50%;
+  background: var(--t-bg);
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--t-ink) 30%, transparent);
+}
+
+.tagGlyph {
+  inline-size: 30px;
+  block-size: 30px;
+  color: var(--t-accent-ink);
+}
+
+.tags li:first-child .tagGlyph {
+  inline-size: 38px;
+  block-size: 38px;
+}
+
+.price {
+  color: var(--t-accent-ink);
+  font-size: var(--step-2);
+  font-weight: 900;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.name {
+  font-weight: 800;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.tags li:first-child .name {
+  font-size: var(--step-1);
+}
+
+.facts {
+  font-size: var(--step--1);
+  opacity: 0.8;
+}
+
+.amenities {
+  justify-content: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tags li {
+    animation: none;
+  }
+}

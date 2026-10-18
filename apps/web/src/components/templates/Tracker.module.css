@@ -1,0 +1,253 @@
+/* A job you follow (templates/Tracker.tsx): a live tracker, stop by stop. */
+
+.tracker {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-4) var(--space-5);
+}
+
+.head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.headText {
+  display: grid;
+  gap: 2px;
+  min-inline-size: 0;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--step-2);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: var(--step--1);
+  opacity: 0.8;
+}
+
+.headGlyph {
+  position: relative;
+  inline-size: 24px;
+  block-size: 24px;
+}
+
+/* Not a vehicle: the glyph with a live pulse around it. */
+.pulse {
+  position: relative;
+  display: grid;
+  place-items: center;
+  inline-size: 52px;
+  block-size: 52px;
+  border-radius: 50%;
+  background: var(--t-accent);
+  color: var(--t-on-accent);
+}
+
+.pulse::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--t-accent);
+  animation: pulse 2.4s ease-out infinite;
+}
+
+@keyframes pulse {
+  from {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.6);
+  }
+}
+
+/* A vehicle: a dashboard dial, its needle sweeping up once. */
+.dial {
+  position: relative;
+  display: grid;
+  place-items: end center;
+  inline-size: 76px;
+  block-size: 52px;
+  padding-block-end: 2px;
+  border-radius: 76px 76px 10px 10px;
+  background: conic-gradient(
+    from -90deg at 50% 100%,
+    color-mix(in srgb, var(--t-accent) 85%, transparent) 0 110deg,
+    color-mix(in srgb, var(--t-ink) 14%, transparent) 110deg 180deg,
+    transparent 180deg
+  );
+  -webkit-mask:
+    radial-gradient(circle at 50% 100%, transparent 0 25px, black 26px 38px, transparent 39px),
+    linear-gradient(black, black) 50% 100% / 34px 26px no-repeat;
+  mask:
+    radial-gradient(circle at 50% 100%, transparent 0 25px, black 26px 38px, transparent 39px),
+    linear-gradient(black, black) 50% 100% / 34px 26px no-repeat;
+  color: var(--t-accent-ink);
+}
+
+.needle {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline-start: calc(50% - 1px);
+  inline-size: 2px;
+  block-size: 36px;
+  border-radius: 2px;
+  background: var(--t-ink);
+  transform-origin: 50% 100%;
+  rotate: 30deg;
+  animation: needle 700ms var(--ease-out) both 0.2s;
+}
+
+@keyframes needle {
+  from {
+    transform: rotate(-118deg);
+  }
+}
+
+/* The track: one stop per item on a line. */
+.track {
+  position: relative;
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.track li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-3);
+  min-block-size: 56px;
+}
+
+.track li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  inset-block: 44px calc(-1 * var(--space-2));
+  inset-inline-start: 21px;
+  inline-size: 2px;
+  background: color-mix(in srgb, var(--t-accent) 45%, transparent);
+}
+
+.track li[data-state="next"]::after,
+.track li[data-state="now"]::after {
+  background: repeating-linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--t-ink) 25%, transparent) 0 4px,
+    transparent 4px 8px
+  );
+}
+
+.node {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  inline-size: 44px;
+  block-size: 44px;
+  border-radius: 50%;
+  background: var(--t-surface);
+  color: var(--t-accent-ink);
+  box-shadow:
+    inset 0 0 0 2px color-mix(in srgb, var(--t-accent) 70%, transparent),
+    0 0 14px -4px color-mix(in srgb, var(--t-accent) 50%, transparent);
+}
+
+.track li[data-state="done"] .node {
+  background: var(--t-accent);
+  color: var(--t-on-accent);
+}
+
+.track li[data-state="now"] .node {
+  box-shadow:
+    inset 0 0 0 2px var(--t-accent),
+    0 0 0 5px color-mix(in srgb, var(--t-accent) 25%, transparent);
+}
+
+.track li[data-state="next"] .node {
+  color: color-mix(in srgb, var(--t-ink) 60%, transparent);
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--t-ink) 22%, transparent);
+}
+
+.nodeGlyph {
+  inline-size: 22px;
+  block-size: 22px;
+}
+
+.body {
+  display: grid;
+  gap: 4px;
+  min-inline-size: 0;
+  padding: var(--space-3);
+  border-radius: 14px;
+  background: var(--t-surface);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--t-ink) 7%, transparent);
+}
+
+.name {
+  font-weight: 700;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.facts {
+  font-size: var(--step--1);
+  opacity: 0.85;
+  font-variant-numeric: tabular-nums;
+}
+
+.facts [data-fact="price"] {
+  color: var(--t-accent-ink);
+  font-weight: 800;
+}
+
+.bar {
+  display: block;
+  block-size: 6px;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--t-ink) 10%, transparent);
+  overflow: hidden;
+}
+
+.fill {
+  display: block;
+  inline-size: var(--p);
+  block-size: 100%;
+  border-radius: inherit;
+  background: var(--t-accent);
+  transform-origin: left center;
+  animation: fill 700ms var(--ease-out) both;
+  animation-delay: calc(0.2s + var(--i) * 0.15s);
+}
+
+:global([dir="rtl"]) .fill {
+  transform-origin: right center;
+}
+
+@keyframes fill {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse::before,
+  .needle,
+  .fill {
+    animation: none;
+  }
+}

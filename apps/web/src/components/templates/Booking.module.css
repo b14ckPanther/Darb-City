@@ -1,0 +1,218 @@
+/* A place you book (templates/Booking.tsx): a page of its appointment book. */
+
+.book {
+  position: relative;
+  display: grid;
+  gap: var(--space-4);
+  margin: var(--space-3);
+  padding: 0 var(--space-4) var(--space-4);
+  border-radius: 6px 6px 18px 18px;
+  background:
+    linear-gradient(color-mix(in srgb, var(--t-accent) 8%, transparent), transparent 120px),
+    var(--t-bg);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--t-ink) 10%, transparent),
+    0 1px 0 color-mix(in srgb, var(--t-ink) 8%, transparent),
+    0 4px 0 -1px color-mix(in srgb, var(--t-ink) 6%, var(--t-bg)),
+    0 7px 0 -2px color-mix(in srgb, var(--t-ink) 5%, var(--t-bg));
+}
+
+/* Binder rings along the top edge. */
+.rings {
+  display: block;
+  block-size: 22px;
+  margin-inline: calc(-1 * var(--space-4));
+  border-block-end: 1px solid color-mix(in srgb, var(--t-ink) 10%, transparent);
+  background: radial-gradient(
+      circle at 50% 50%,
+      color-mix(in srgb, var(--t-ink) 55%, var(--t-bg)) 0 3.5px,
+      color-mix(in srgb, var(--t-ink) 16%, transparent) 4px 5.5px,
+      transparent 6px
+    )
+    center / 30px 22px repeat-x;
+}
+
+.head {
+  position: relative;
+  display: grid;
+  gap: var(--space-1);
+  padding-inline-end: 64px;
+  padding-block-start: var(--space-2);
+}
+
+/* The bookmark: a ribbon in the business's colour, hanging over the page. */
+.bookmark {
+  position: absolute;
+  inset-block-start: calc(-1 * var(--space-2) - 22px);
+  inset-inline-end: 4px;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  inline-size: 44px;
+  block-size: 76px;
+  padding-block-start: 30px;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--t-accent) 82%, black),
+    var(--t-accent) 30%
+  );
+  color: var(--t-on-accent);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 84%, 0 100%);
+  filter: drop-shadow(0 6px 6px rgb(0 0 0 / 0.25));
+  animation: bookmark-in 700ms var(--ease-out) both;
+}
+
+@keyframes bookmark-in {
+  from {
+    transform: translateY(-30px);
+  }
+}
+
+.bookmarkGlyph {
+  inline-size: 22px;
+  block-size: 22px;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--step-2);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: var(--step--1);
+  opacity: 0.8;
+}
+
+/* Open slots: the first one is picked. */
+.slots li:first-child {
+  background: var(--t-accent);
+  box-shadow: none;
+  color: var(--t-on-accent);
+}
+
+.slots li:first-child svg {
+  color: inherit;
+}
+
+/* The entries, written on ruled lines beside the margin. */
+.entries {
+  position: relative;
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: none;
+}
+
+.entries::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 52px;
+  inline-size: 1.5px;
+  background: color-mix(in srgb, var(--t-accent) 55%, transparent);
+}
+
+.entries li {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: var(--space-4);
+  min-block-size: 58px;
+  padding-block: var(--space-2);
+  border-block-end: 1px solid color-mix(in srgb, var(--t-ink) 11%, transparent);
+}
+
+.entries li:first-child {
+  border-block-start: 1px solid color-mix(in srgb, var(--t-ink) 11%, transparent);
+}
+
+/* Each service's stamp, pressed a little crooked like an ink stamp. */
+.stamp {
+  display: grid;
+  place-items: center;
+  inline-size: 40px;
+  block-size: 40px;
+  border-radius: 50%;
+  color: var(--t-accent-ink);
+  box-shadow:
+    inset 0 0 0 1.5px color-mix(in srgb, var(--t-accent-ink) 75%, transparent),
+    inset 0 0 0 4px var(--t-bg),
+    inset 0 0 0 5px color-mix(in srgb, var(--t-accent-ink) 30%, transparent);
+  rotate: -8deg;
+}
+
+.entries li:nth-child(even) .stamp {
+  rotate: 6deg;
+}
+
+.stampGlyph {
+  inline-size: 20px;
+  block-size: 20px;
+}
+
+.entry {
+  display: grid;
+  gap: 4px;
+  min-inline-size: 0;
+}
+
+.name {
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--step--1);
+}
+
+.facts [data-sep] {
+  display: none;
+}
+
+.facts [data-fact] {
+  padding: 1px 8px;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--t-ink) 6%, transparent);
+}
+
+.facts [data-fact="duration"],
+.facts [data-fact="time"] {
+  font-variant-numeric: tabular-nums;
+}
+
+.facts [data-fact="duration"]::before,
+.facts [data-fact="time"]::before {
+  content: "";
+  display: inline-block;
+  inline-size: 0.8em;
+  block-size: 0.8em;
+  margin-inline-end: 4px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1.5px currentColor;
+  vertical-align: -0.05em;
+  opacity: 0.7;
+}
+
+.price {
+  color: var(--t-accent-ink);
+  font-size: var(--step-1);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bookmark {
+    animation: none;
+  }
+}

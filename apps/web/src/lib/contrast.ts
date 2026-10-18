@@ -17,3 +17,23 @@ export function readableOn(background: string): "#000000" | "#ffffff" {
     ? "#000000"
     : "#ffffff";
 }
+
+const hex = (n: number) => Math.round(n).toString(16).padStart(2, "0");
+
+/** `a` moved toward `b` by `t` (0..1), in sRGB. */
+export function mix(a: string, b: string, t: number): string {
+  const ch = (h: string, i: number) => parseInt(h.slice(i, i + 2), 16);
+  return `#${[1, 3, 5].map((i) => hex(ch(a, i) + (ch(b, i) - ch(a, i)) * t)).join("")}`;
+}
+
+/**
+ * The accent as text on `background`: the accent itself when it reads (WCAG AA, 4.5:1), else the
+ * accent moved toward `ink` just until it does, so it keeps its hue.
+ */
+export function readableAccent(accent: string, background: string, ink: string): string {
+  for (let t = 0; t <= 1; t += 0.05) {
+    const c = mix(accent, ink, t);
+    if (contrastRatio(c, background) >= 4.5) return c;
+  }
+  return ink;
+}

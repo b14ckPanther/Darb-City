@@ -3,8 +3,12 @@ import { pickText, type Locale } from "@darb/core";
 import type { BusinessDetailDto, KindDto } from "@darb/contracts";
 import { t } from "@darb/i18n";
 import { card as cardCopy } from "@/content/card";
+import { CHAIN_APPS } from "@/content/chain-apps";
 import { cardFromBusiness } from "@/lib/card";
+import { safeHttpUrl } from "@/lib/links";
 import { href, paths } from "@/lib/routes";
+import { AppPreview } from "./app-preview/AppPreview";
+import { OwnerLine } from "./app-preview/OwnerLine";
 import { BusinessCard } from "./card/BusinessCard";
 import { ChainApp } from "./ChainApp";
 import { LocaleSwitch } from "./CityBar";
@@ -50,11 +54,20 @@ export function ExperienceView({
     ctaLabel: screen ? pickText(screen.cta, locale) : null,
     shareUrl,
   });
+  // A Darb client's own app (darb tier only, like the card's main button).
+  const app = business.tier === "darb" ? safeHttpUrl(business.apps.web) : null;
+  // Owners of ordinary listings hear about their own app once: here, or in a chain's invitation.
+  const owners =
+    business.tier !== "darb" &&
+    business.tier !== "example" &&
+    !(business.brandSlug && CHAIN_APPS[business.brandSlug]);
   return (
     <article className={styles.view}>
       <LocaleSwitch locale={locale} segments={segments} />
       <BusinessCard locale={locale} copy={copy} card={card} renderedAt={now.getTime()} />
+      {app ? <AppPreview locale={locale} name={card.name} url={app} screen={screen} /> : null}
       {screen ? <ScreenView screen={screen} template={kind.template} locale={locale} /> : null}
+      {owners ? <OwnerLine locale={locale} /> : null}
       <ChainApp locale={locale} brand={business.brandSlug} ours={business.tier === "darb"} />
       {business.tier === "darb" ? (
         // Every Darb client's listing invites other business owners (Task 28).

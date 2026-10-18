@@ -1,54 +1,78 @@
+/*
+ * The frame every business screen shares (ScreenView): its palette, app bar and tags. Each
+ * template's own look lives in its own module.
+ */
+
 .screen {
-  margin-block: var(--space-5);
+  margin: 0;
   border-radius: var(--radius-l);
   overflow: hidden;
   background: var(--t-bg);
   color: var(--t-ink);
   font-family: var(--t-font), var(--font-body);
-  box-shadow: var(--shadow-panel);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--t-ink) 9%, transparent),
+    var(--shadow-panel);
+}
+
+/* Darb's own palette follows the site: paper by day (the default) ... */
+.screen[data-palette="darb"] {
+  --t-bg: var(--day-bg);
+  --t-surface: var(--day-surface);
+  --t-ink: var(--day-ink);
+  --t-accent-ink: var(--day-accent-ink);
+}
+
+/* ... and forest at night, when the visitor or the device asks for it. */
+:global(:root[data-theme="dark"]) .screen[data-palette="darb"],
+:global([data-scheme="night"]) .screen[data-palette="darb"] {
+  --t-bg: var(--night-bg);
+  --t-surface: var(--night-surface);
+  --t-ink: var(--night-ink);
+  --t-accent-ink: var(--night-accent-ink);
+}
+
+@media (prefers-color-scheme: dark) {
+  :global(:root:not([data-theme="light"])) .screen[data-palette="darb"] {
+    --t-bg: var(--night-bg);
+    --t-surface: var(--night-surface);
+    --t-ink: var(--night-ink);
+    --t-accent-ink: var(--night-accent-ink);
+  }
 }
 
 .appBar {
   display: flex;
   align-items: center;
-  min-block-size: 48px;
+  gap: var(--space-2);
+  min-block-size: 52px;
   padding-inline: var(--space-4);
   background: var(--t-surface);
   border-block-end: 3px solid var(--t-accent);
 }
 
-.brand {
-  font-weight: 700;
-}
-
-.hero {
-  padding: var(--space-5) var(--space-4) var(--space-2);
-}
-
-.title {
-  margin: 0;
-  font-size: var(--step-2);
-  font-weight: 700;
-  line-height: 1.25;
-}
-
-.subtitle {
-  margin: var(--space-1) 0 0;
-  font-size: var(--step--1);
-}
-
-.body {
+.monogram {
   display: grid;
-  gap: var(--space-4);
-  padding: var(--space-3) var(--space-4) var(--space-5);
+  place-items: center;
+  flex: none;
+  inline-size: 28px;
+  block-size: 28px;
+  border-radius: 9px;
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--t-accent) 80%, white),
+    var(--t-accent)
+  );
+  color: var(--t-on-accent);
+  font-size: 0.875rem;
+  font-weight: 800;
+  line-height: 1;
 }
 
-.strong {
+.brand {
+  min-inline-size: 0;
   font-weight: 700;
-}
-
-.meta {
-  font-size: var(--step--1);
+  overflow-wrap: anywhere;
 }
 
 .tags {
@@ -61,206 +85,39 @@
 }
 
 .tags li {
-  padding: var(--space-1) var(--space-3);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px 5px 10px;
   border-radius: var(--radius-pill);
-  background: var(--t-surface);
+  background: color-mix(in srgb, var(--t-ink) 6%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--t-ink) 12%, transparent);
   font-size: var(--step--1);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.tagGlyph {
+  flex: none;
+  inline-size: 16px;
+  block-size: 16px;
+  color: var(--t-accent-ink);
 }
 
 .slot li {
-  border: 1px solid var(--t-accent);
   border-radius: var(--radius-s);
   font-variant-numeric: tabular-nums;
 }
 
 .amount li {
   background: var(--t-accent);
+  box-shadow: none;
   color: var(--t-on-accent);
-  font-weight: 700;
+  font-weight: 800;
 }
 
-.pill li {
-  border: 1px solid transparent;
-}
-
-.menu,
-.cards,
-.grid,
-.gallery,
-.timeline,
-.steps,
-.stepper,
-.options {
-  display: grid;
-  gap: var(--space-2);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.menu li {
-  display: flex;
-  align-items: baseline;
-  gap: var(--space-2);
-  padding-block: var(--space-2);
-}
-
-.leader {
-  flex: 1;
-  border-block-end: 1px dotted var(--t-ink);
-}
-
-.card,
-.tile,
-.gallery li,
-.steps li,
-.options li,
-.timeline li,
-.stepper li {
-  display: grid;
-  gap: 2px;
-  padding: var(--space-3);
-  border-radius: var(--radius-m);
-  background: var(--t-surface);
-}
-
-.grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.swatch {
-  block-size: 56px;
-  border-radius: var(--radius-s);
-  background: var(--t-accent);
-  margin-block-end: var(--space-2);
-}
-
-.gallery {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.frame {
-  aspect-ratio: 4 / 3;
-  border-radius: var(--radius-s);
-  background: linear-gradient(135deg, var(--t-accent), var(--t-bg));
-  margin-block-end: var(--space-2);
-}
-
-.specs,
-.fields {
-  display: grid;
-  margin: 0;
-}
-
-.specs div,
-.fields div {
-  display: flex;
-  justify-content: space-between;
-  gap: var(--space-3);
-  padding-block: var(--space-2);
-  border-block-end: 1px solid var(--t-surface);
-}
-
-.specs dd,
-.fields dd {
-  margin: 0;
-  font-weight: 700;
-}
-
-.when {
-  font-size: var(--step--1);
-  font-variant-numeric: tabular-nums;
-  border-inline-start: 3px solid var(--t-accent);
-  padding-inline-start: var(--space-2);
-}
-
-.steps li {
-  grid-template-columns: auto 1fr;
-  column-gap: var(--space-3);
-}
-
-.steps .meta {
-  grid-column: 2;
-}
-
-.number {
-  grid-row: span 2;
-  display: grid;
-  place-items: center;
-  inline-size: 28px;
-  block-size: 28px;
-  border-radius: 50%;
-  background: var(--t-accent);
-  color: var(--t-on-accent);
-  font-weight: 700;
-}
-
-.stepper li {
-  grid-template-columns: auto 1fr;
-  column-gap: var(--space-3);
-}
-
-.stepper .meta {
-  grid-column: 2;
-}
-
-.marker {
-  grid-row: span 2;
-  inline-size: 14px;
-  block-size: 14px;
-  margin-block-start: 4px;
-  border-radius: 50%;
-  border: 2px solid var(--t-accent);
-}
-
-.stepper li[data-reached] .marker {
-  background: var(--t-accent);
-}
-
-.pass {
-  display: grid;
-  gap: var(--space-4);
-  padding: var(--space-4);
-  border-radius: var(--radius-m);
-  background: var(--t-surface);
-  border-inline-start: 6px solid var(--t-accent);
-}
-
-.code {
-  display: grid;
-  grid-template-columns: repeat(7, 12px);
-  gap: 2px;
-  justify-content: center;
-}
-
-.code span {
-  block-size: 12px;
-  background: var(--t-bg);
-}
-
-.code span[data-on] {
-  background: var(--t-ink);
-}
-
-.options li {
-  grid-template-columns: auto 1fr;
-  column-gap: var(--space-3);
-}
-
-.options .meta {
-  grid-column: 2;
-}
-
-.check {
-  grid-row: span 2;
-  inline-size: 20px;
-  block-size: 20px;
-  border-radius: 6px;
-  border: 2px solid var(--t-accent);
-}
-
-.check[data-checked] {
-  background: var(--t-accent);
+.amount .tagGlyph {
+  color: inherit;
 }
 
 /* Opened from a search: the matched item wears the screen's accent, with a soft fade in. */

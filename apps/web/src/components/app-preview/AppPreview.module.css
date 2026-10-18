@@ -1,0 +1,407 @@
+/* A Darb built app on its business's card (AppPreview), in the business's own palette (--a-*). */
+
+.stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-4) var(--space-5) var(--space-5);
+  border-radius: var(--radius-l);
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(
+      60% 70% at 18% 55%,
+      color-mix(in srgb, var(--a-accent) 26%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      80% 60% at 100% 0%,
+      color-mix(in srgb, var(--a-accent) 12%, transparent),
+      transparent 70%
+    ),
+    var(--a-bg);
+  color: var(--a-ink);
+  font-family: var(--a-font), var(--font-body);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--a-accent) 30%, transparent),
+    var(--shadow-panel);
+}
+
+:global([dir="rtl"]) .stage {
+  background:
+    radial-gradient(
+      60% 70% at 82% 55%,
+      color-mix(in srgb, var(--a-accent) 26%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      80% 60% at 0% 0%,
+      color-mix(in srgb, var(--a-accent) 12%, transparent),
+      transparent 70%
+    ),
+    var(--a-bg);
+}
+
+.stage:has([data-live]) {
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  text-align: center;
+}
+
+/* A ribbon in the business's accent, flowing behind the phone. */
+.ribbon {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  inline-size: 100%;
+  block-size: 100%;
+  pointer-events: none;
+}
+
+.ribbonBody,
+.ribbonShine {
+  fill: none;
+  stroke-linecap: round;
+  animation: ribbon-in 700ms var(--ease-out) both;
+}
+
+.ribbonBody {
+  stroke: color-mix(in srgb, var(--a-accent) 55%, transparent);
+  stroke-width: 16;
+}
+
+.ribbonShine {
+  stroke: color-mix(in srgb, var(--a-accent) 35%, white);
+  stroke-width: 2.5;
+  opacity: 0.55;
+  translate: 0 -3px;
+}
+
+@keyframes ribbon-in {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+}
+
+.copy {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-2);
+  min-inline-size: 0;
+}
+
+.stage:has([data-live]) .copy {
+  justify-items: center;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  color: var(--a-accent-ink);
+  font-size: var(--step--1);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.spark {
+  position: relative;
+  flex: none;
+  inline-size: 8px;
+  block-size: 8px;
+  border-radius: 50%;
+  background: var(--a-accent);
+}
+
+/* A soft ring that keeps leaving the spark: the app is live. */
+.spark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1.5px var(--a-accent);
+  animation: spark 2.4s ease-out infinite;
+}
+
+@keyframes spark {
+  from {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(3);
+  }
+}
+
+.name {
+  margin: 0;
+  font-size: var(--step-3);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+}
+
+.tagline {
+  margin: 0;
+  max-inline-size: 26ch;
+  font-size: var(--step--1);
+  line-height: 1.45;
+  opacity: 0.85;
+}
+
+.open {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-block-start: var(--space-2);
+  padding: 11px 18px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--a-accent) 82%, white),
+    var(--a-accent)
+  );
+  color: var(--a-on-accent);
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow:
+    0 8px 20px -8px color-mix(in srgb, var(--a-accent) 70%, transparent),
+    inset 0 1px 0 rgb(255 255 255 / 0.35);
+  transition: transform 400ms var(--ease-out);
+}
+
+.open:hover {
+  transform: translateY(-1px);
+}
+
+.open:focus-visible {
+  outline: 2px solid var(--a-ink);
+  outline-offset: 3px;
+}
+
+.open svg {
+  flex: none;
+}
+
+:global([dir="rtl"]) .open svg {
+  transform: scaleX(-1);
+}
+
+/* The phone: a dark frame with its island, the app's screen inside. */
+.device {
+  position: relative;
+  inline-size: clamp(132px, 38vw, 168px);
+  aspect-ratio: 390 / 844;
+  padding: 6px;
+  border-radius: 28px;
+  background: linear-gradient(160deg, #2a2a2c, #0b0b0c 40%);
+  box-shadow:
+    inset 0 0 0 1px rgb(255 255 255 / 0.12),
+    0 0 0 1px rgb(0 0 0 / 0.5),
+    0 24px 48px -18px rgb(0 0 0 / 0.7),
+    0 0 60px -10px color-mix(in srgb, var(--a-accent) 45%, transparent);
+  rotate: -3deg;
+  animation: device-in 700ms var(--ease-out) both;
+}
+
+:global([dir="rtl"]) .device {
+  rotate: 3deg;
+}
+
+@keyframes device-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+.device[data-live] {
+  inline-size: 300px;
+  max-inline-size: 100%;
+  aspect-ratio: auto;
+  rotate: 0deg;
+}
+
+.island {
+  position: absolute;
+  z-index: 2;
+  inset-block-start: 11px;
+  inset-inline-start: 50%;
+  inline-size: 30%;
+  block-size: 9px;
+  border-radius: 9px;
+  background: #000;
+  translate: -50% 0;
+}
+
+:global([dir="rtl"]) .island {
+  translate: 50% 0;
+}
+
+.glass {
+  position: relative;
+  block-size: 100%;
+  border-radius: 22px;
+  overflow: hidden;
+  background: var(--a-bg);
+}
+
+.device[data-live] .glass {
+  /* The live app at 390px wide, scaled into a 288px screen from its top corner. */
+  block-size: calc(844px * 288 / 390);
+  direction: ltr;
+}
+
+.shot {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.frame {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  inline-size: 390px;
+  block-size: 844px;
+  border: 0;
+  transform: scale(calc(288 / 390));
+  transform-origin: 0 0;
+}
+
+.live {
+  position: absolute;
+  inset-block-end: 12px;
+  inset-inline-start: 50%;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: rgb(0 0 0 / 0.72);
+  color: #fff;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  translate: -50% 0;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.18);
+}
+
+:global([dir="rtl"]) .live {
+  translate: 50% 0;
+}
+
+.live:focus-visible {
+  outline: 2px solid var(--a-accent);
+  outline-offset: 2px;
+}
+
+.liveDot {
+  inline-size: 7px;
+  block-size: 7px;
+  border-radius: 50%;
+  background: #4ade80;
+}
+
+/* An app not in the showroom: a poster drawn from its own screen. */
+.poster {
+  display: grid;
+  align-content: center;
+  gap: 6px;
+  block-size: 100%;
+  padding: 18px 12px;
+  background:
+    radial-gradient(
+      90% 50% at 50% 20%,
+      color-mix(in srgb, var(--a-accent) 35%, transparent),
+      transparent
+    ),
+    var(--a-bg);
+  text-align: center;
+}
+
+.posterName {
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.posterTitle {
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+
+/* The owner line under an ordinary business's screen. */
+.owner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-m);
+  box-shadow: inset 0 0 0 1px var(--line);
+  color: var(--text-soft);
+  font-size: var(--step--1);
+  line-height: 1.45;
+}
+
+.glimpse {
+  flex: none;
+  inline-size: 24px;
+  block-size: 50px;
+  padding: 2px;
+  border-radius: 7px;
+  background: #111;
+  overflow: hidden;
+  rotate: -6deg;
+  box-shadow: 0 6px 14px -6px rgb(0 0 0 / 0.5);
+}
+
+.glimpse img {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  border-radius: 5px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.ownerText {
+  flex: 1;
+  min-inline-size: 0;
+}
+
+.ownerText strong {
+  color: var(--text);
+}
+
+.ownerLink {
+  flex: none;
+  color: var(--link);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ribbonBody,
+  .ribbonShine,
+  .device,
+  .spark::after {
+    animation: none;
+  }
+
+  .open {
+    transition: none;
+  }
+}

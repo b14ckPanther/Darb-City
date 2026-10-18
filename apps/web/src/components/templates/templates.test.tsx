@@ -2,6 +2,7 @@ import { render } from "@testing-library/react";
 import { TEMPLATES } from "@darb/core";
 import type { ScreenDto } from "@darb/contracts";
 import { describe, expect, it, vi } from "vitest";
+import { contrastRatio } from "@/lib/contrast";
 import { parseScreen, TEMPLATE_BODIES } from "./index";
 import { ScreenView } from "./ScreenView";
 
@@ -25,15 +26,33 @@ describe.each(TEMPLATES)("%s template", (template) => {
     const root = container.querySelector(`[data-template="${template}"]`);
     expect(root).not.toBeNull();
     expect(container.querySelectorAll("[data-item]")).toHaveLength(2);
+    // A price may be set apart from the rest of its meta (a menu line's price column).
     for (const text of [
       "Samer's Barbershop",
       "A chair in two taps",
       "Haircut",
       "Cut and beard",
-      "₪60 · 30 min",
+      "₪60",
+      "30 min",
       "16:00",
     ])
       expect(container.textContent).toContain(text);
+  });
+  it("draws no empty price column or leader for an item without a meta", () => {
+    const bare: ScreenDto = {
+      ...screen,
+      items: [{ label: { en: "Coffee" } }, { label: { en: "Home food" } }],
+    };
+    const { container } = render(<ScreenView screen={bare} template={template} locale="en" />);
+    for (const item of container.querySelectorAll("[data-item]")) {
+      expect(item.querySelector("[data-facts]")).toBeNull();
+      expect(item.textContent?.trim()).not.toBe("");
+    }
+  });
+  it("hides every glyph from screen readers", () => {
+    const { container } = render(<ScreenView screen={screen} template={template} locale="en" />);
+    for (const svg of container.querySelectorAll("svg"))
+      expect(svg.closest('[aria-hidden="true"]')).not.toBeNull();
   });
   it("falls back from Arabic to Hebrew, never to blank", () => {
     const { container } = render(<ScreenView screen={screen} template={template} locale="ar" />);
@@ -102,5 +121,35 @@ describe("the item a search matched", () => {
     }
     const { container } = render(<ScreenView screen={caramel} template="menu" locale="en" />);
     expect(container.querySelectorAll("[data-highlight]")).toHaveLength(0);
+  });
+});
+
+describe("theme", () => {
+  const darb = { bg: "#0E1B15", surface: "#172A21", ink: "#F6EFE0", accent: "#9FB86A" };
+  const style = (palette: ScreenDto["palette"]) => {
+    const { container } = render(
+      <ScreenView screen={{ ...screen, palette }} template="menu" locale="en" />,
+    );
+    return container.firstElementChild as HTMLElement;
+  };
+  it("lets a screen in Darb's own palette follow the site, by day and by night", () => {
+    const el = style(darb);
+    expect(el.getAttribute("data-palette")).toBe("darb");
+    expect(el.style.getPropertyValue("--t-bg")).toBe("");
+    expect(el.style.getPropertyValue("--night-bg")).toBe("#0E1B15");
+    expect(el.style.getPropertyValue("--day-bg")).toBe("#fffdf8");
+  });
+  it("keeps a business's own palette, with an accent that reads as text on it", () => {
+    const el = style(screen.palette);
+    expect(el.getAttribute("data-palette")).toBe("own");
+    expect(el.style.getPropertyValue("--t-bg")).toBe("#efe3cf");
+    expect(
+      contrastRatio(el.style.getPropertyValue("--t-accent-ink"), screen.palette.surface),
+    ).toBeGreaterThanOrEqual(4.5);
+  });
+  it("darkens a pale accent for text on paper, and keeps its hue", () => {
+    const day = style(darb).style.getPropertyValue("--day-accent-ink");
+    expect(contrastRatio(day, "#f5eddc")).toBeGreaterThanOrEqual(4.5);
+    expect(day).not.toBe("#14281f");
   });
 });
