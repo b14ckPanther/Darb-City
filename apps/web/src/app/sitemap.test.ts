@@ -87,12 +87,18 @@ const mod = await import("./sitemap");
 const { default: sitemap, generateSitemaps } = mod;
 afterEach(() => vi.unstubAllEnvs());
 
-it("has one sitemap per locale with places, sectors, kinds and real businesses", async () => {
+it("per locale: a sitemap of pages and slices of real businesses", async () => {
   vi.stubEnv("SITE_URL", "https://darb.co.il");
-  expect(await generateSitemaps()).toEqual([{ id: 0 }, { id: 1 }, { id: 2 }]);
-  const en = await sitemap({ id: Promise.resolve("2") });
-  const urls = en.map((e) => e.url);
-  expect(urls).toEqual([
+  expect(await generateSitemaps()).toEqual([
+    { id: 0 },
+    { id: 1 },
+    { id: 100 },
+    { id: 101 },
+    { id: 200 },
+    { id: 201 },
+  ]);
+  const en = await sitemap({ id: Promise.resolve("200") });
+  expect(en.map((e) => e.url)).toEqual([
     "https://darb.co.il/en",
     "https://darb.co.il/en/accessibility",
     "https://darb.co.il/en/terms",
@@ -100,16 +106,19 @@ it("has one sitemap per locale with places, sectors, kinds and real businesses",
     "https://darb.co.il/en/sakhnin",
     "https://darb.co.il/en/sakhnin/food",
     "https://darb.co.il/en/k/restaurants",
-    "https://darb.co.il/en/sakhnin/food/restaurants/caramel",
   ]);
   expect(en[1]?.alternates?.languages).toMatchObject({ he: "https://darb.co.il/accessibility" });
   expect(en[4]?.alternates?.languages).toMatchObject({ he: "https://darb.co.il/sakhnin" });
-  expect(en[7]?.lastModified).toBe("2026-10-13T00:00:00.000Z");
+  const businesses = await sitemap({ id: Promise.resolve("201") });
+  expect(businesses.map((e) => e.url)).toEqual([
+    "https://darb.co.il/en/sakhnin/food/restaurants/caramel",
+  ]);
+  expect(businesses[0]?.lastModified).toBe("2026-10-13T00:00:00.000Z");
 });
 
 it("leaves out places, sectors and kinds that have no published business", async () => {
   vi.stubEnv("SITE_URL", "https://darb.co.il");
-  const urls = (await sitemap({ id: Promise.resolve("2") })).map((e) => e.url);
+  const urls = (await sitemap({ id: Promise.resolve("200") })).map((e) => e.url);
   expect(urls.some((u) => u.includes("tamra"))).toBe(false);
   expect(urls.some((u) => u.includes("beauty") || u.includes("empty"))).toBe(false);
 });

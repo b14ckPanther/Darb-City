@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { headers } from "next/headers";
-import { LOCALES } from "@darb/core";
+import { getSitemapBusinesses } from "@/lib/api";
+import { sitemapIds } from "@/lib/sitemap-ids";
 import { indexable, siteUrl } from "@/lib/site";
 
 /** Read at request time, so a preview never serves the production rules a build baked in. */
@@ -27,6 +28,8 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
         ],
       },
     ],
-    sitemap: LOCALES.map((_, i) => `${site}/sitemap/${i}.xml`),
+    sitemap: sitemapIds((await getSitemapBusinesses()).length).map(
+      (id) => `${site}/sitemap/${id}.xml`,
+    ),
   };
 }

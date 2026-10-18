@@ -13,7 +13,8 @@ export function shallow(url, site) {
 
 async function main(site) {
   const urls = [];
-  for (const i of [0, 1, 2]) {
+  // The page sitemaps (ids 0, 100, 200: lib/sitemap-ids): business slices hold no shallow page.
+  for (const i of [0, 100, 200]) {
     const res = await fetch(`${site}/sitemap/${i}.xml`);
     if (!res.ok) throw new Error(`sitemap ${i}: ${res.status}`);
     urls.push(...locs(await res.text()).filter((u) => shallow(u, site)));

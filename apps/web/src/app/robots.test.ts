@@ -4,6 +4,8 @@ import robots, { dynamic } from "./robots";
 
 let host = "darb.co.il";
 vi.mock("next/headers", () => ({ headers: async () => new Headers({ host }) }));
+// 2,501 businesses: two business slices per language besides its page sitemap.
+vi.mock("@/lib/api", () => ({ getSitemapBusinesses: async () => Array.from({ length: 2501 }) }));
 
 afterEach(() => {
   vi.unstubAllEnvs();
@@ -42,7 +44,9 @@ it("opens production except admin, api and search, and lists the sitemaps", asyn
       ],
     },
   ]);
-  expect(r.sitemap).toEqual([0, 1, 2].map((i) => `https://darb.co.il/sitemap/${i}.xml`));
+  expect(r.sitemap).toEqual(
+    [0, 1, 2, 100, 101, 102, 200, 201, 202].map((i) => `https://darb.co.il/sitemap/${i}.xml`),
+  );
 });
 
 it("reads the deployment at request time, not at build", () => {
