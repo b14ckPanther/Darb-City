@@ -220,12 +220,23 @@ test.describe("desktop", () => {
 
   test("navigation during a camera move ends where the URL ends", async ({ page }) => {
     await stageAt(page, LEVELS.country);
+    // Back while the camera is still flying into the place. Watched from inside the page and
+    // pressed in the same task, so a quick flight can't land between the check and the press.
+    await page.evaluate((place) => {
+      const el = document.querySelector<HTMLElement>("[data-stage-host]")!;
+      const watch = new MutationObserver(() => {
+        if (location.pathname !== place || !el.hasAttribute("data-stage-moving")) return;
+        watch.disconnect();
+        Object.assign(window, { pathWhenBack: el.getAttribute("data-stage-path") });
+        history.back();
+      });
+      watch.observe(el, { attributes: true });
+    }, LEVELS.place);
     await page.locator('#places a[href="/sakhnin"]').click();
-    await expect(page).toHaveURL(LEVELS.place);
-    // Back while the camera is still flying into the place.
-    await expect(host(page)).toHaveAttribute("data-stage-moving", "");
-    expect(await host(page).getAttribute("data-stage-path")).not.toBe(LEVELS.place);
-    await page.goBack();
+    await expect.poll(() => page.evaluate(() => "pathWhenBack" in window)).toBe(true);
+    expect(
+      await page.evaluate(() => (window as { pathWhenBack?: string | null }).pathWhenBack),
+    ).not.toBe(LEVELS.place);
     await expect(page).toHaveURL(LEVELS.country);
     await expect(host(page)).toHaveAttribute("data-stage-path", LEVELS.country);
     await expect(host(page)).toHaveAttribute("data-stage-level", "0");
