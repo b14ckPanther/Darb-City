@@ -99,7 +99,7 @@ describe("latinize", () => {
 
 describe("more links", () => {
   it("reads LinkedIn pages and refuses other hosts or bare names", async () => {
-    const { linkedinUrl } = await import("./card");
+    const { linkedinUrl } = await import("./card.js");
     expect(linkedinUrl("linkedin.com/in/samer-k")).toBe("https://www.linkedin.com/in/samer-k/");
     expect(linkedinUrl("https://il.linkedin.com/company/darb?trk=x")).toBe(
       "https://www.linkedin.com/company/darb/",
@@ -109,7 +109,7 @@ describe("more links", () => {
   });
 
   it("reads YouTube, X and Telegram handles and links", async () => {
-    const { telegramUrl, xUrl, youtubeUrl } = await import("./card");
+    const { telegramUrl, xUrl, youtubeUrl } = await import("./card.js");
     expect(youtubeUrl("@darbcity")).toBe("https://www.youtube.com/@darbcity");
     expect(youtubeUrl("youtu.be/abc123")).toBe("https://youtu.be/abc123");
     expect(youtubeUrl("https://youtube.com/")).toBeNull();
@@ -122,7 +122,7 @@ describe("more links", () => {
   });
 
   it("reads an email, a delivery page and a second phone", async () => {
-    const { emailHref, phoneHref, tenbisUrl, woltUrl } = await import("./card");
+    const { emailHref, phoneHref, tenbisUrl, woltUrl } = await import("./card.js");
     expect(emailHref(" Hello@Darb.co.il ")).toBe("mailto:hello@darb.co.il");
     expect(emailHref("mailto:a@b.co")).toBe("mailto:a@b.co");
     expect(emailHref("not an email")).toBeNull();
@@ -139,7 +139,7 @@ describe("more links", () => {
   });
 
   it("normalises every new key, and drops what does not read", async () => {
-    const { normalizeLinks } = await import("./card");
+    const { normalizeLinks } = await import("./card.js");
     expect(
       normalizeLinks({
         x: "@darb",
