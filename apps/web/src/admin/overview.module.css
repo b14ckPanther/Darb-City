@@ -1,0 +1,231 @@
+/* The overview: numbers on top, then what needs the admin, what happened, and search gaps. */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 12px;
+  margin-block-end: 16px;
+}
+.stat {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 2px;
+  min-block-size: 112px;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface-1);
+  color: var(--text);
+  text-decoration: none;
+  overflow: hidden;
+  transition:
+    border-color 120ms,
+    transform 120ms;
+}
+a.stat:hover {
+  border-color: var(--line-strong);
+  transform: translateY(-1px);
+}
+.stat[data-tone="gold"] {
+  background: linear-gradient(160deg, var(--tint) 0%, var(--surface-1) 70%);
+  border-color: var(--line-strong);
+}
+.statLabel {
+  font-size: 0.875rem;
+  color: var(--text-soft);
+  font-weight: 500;
+}
+.statValue {
+  font-size: 2rem;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.statNote {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+.spark {
+  position: absolute;
+  inset-inline-end: 16px;
+  inset-block-end: 16px;
+  inline-size: 96px;
+  block-size: 28px;
+  fill: var(--accent);
+  opacity: 0.85;
+}
+.columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+  gap: 0 16px;
+  align-items: start;
+}
+.queue,
+.feed,
+.gaps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.queue {
+  display: grid;
+  gap: 4px;
+}
+.queueRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-block-size: 48px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  color: var(--text);
+  text-decoration: none;
+}
+.queueRow:hover {
+  background: var(--wash-strong);
+}
+.queueIcon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  inline-size: 34px;
+  block-size: 34px;
+  border-radius: 9px;
+  background: var(--surface-3);
+  color: var(--text-soft);
+}
+.queueRow[data-tone="gold"] .queueIcon {
+  background: var(--tint-strong);
+  color: var(--accent-text);
+}
+.queueText {
+  flex: 1;
+  min-inline-size: 0;
+}
+.queueCount {
+  font-weight: 700;
+}
+.chev {
+  color: var(--text-muted);
+  flex: none;
+}
+[dir="rtl"] .chev {
+  transform: scaleX(-1);
+}
+.allClear {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  color: var(--open);
+}
+.feed {
+  display: grid;
+  gap: 0;
+}
+.feedRow {
+  display: flex;
+  gap: 12px;
+  padding-block: 8px;
+  border-block-end: 1px solid var(--line-soft);
+}
+.feedRow:last-child {
+  border: 0;
+}
+.feedDot {
+  flex: none;
+  inline-size: 8px;
+  block-size: 8px;
+  margin-block-start: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.feedDot[data-action="status"] {
+  background: var(--open);
+}
+.feedDot[data-action="delete"] {
+  background: var(--danger);
+}
+.feedDot[data-action="release"] {
+  background: var(--closed);
+}
+.feedText {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2px 12px;
+  flex: 1;
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
+}
+.feedTime {
+  color: var(--text-muted);
+  font-size: 0.8125rem;
+  white-space: nowrap;
+}
+.gaps {
+  display: grid;
+}
+.gap {
+  padding-block: 8px;
+  border-block-end: 1px solid var(--line-soft);
+}
+.gap:last-child {
+  border: 0;
+}
+.gapMain {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+}
+.gapTerm {
+  font-weight: 500;
+  flex: 1 1 140px;
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
+}
+.gapCount {
+  color: var(--text-muted);
+  min-inline-size: 3ch;
+}
+.gapActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.gapForm {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 8px;
+  margin-block-start: 8px;
+  padding: 12px;
+  border-radius: 10px;
+  background: var(--surface-3);
+}
+.gapForm label {
+  flex: 1 1 220px;
+  margin: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .stat {
+    transition: none;
+  }
+}
+@media (max-width: 640px) {
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .stat {
+    min-block-size: 0;
+    padding: 12px 14px;
+  }
+  .stat:last-child {
+    grid-column: 1 / -1;
+  }
+  .statValue {
+    font-size: 1.625rem;
+  }
+}
