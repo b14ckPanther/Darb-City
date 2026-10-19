@@ -11,15 +11,20 @@ const fieldMine = vi.fn(async () => ({
   status: 200,
   body: { today: 3, total: 3, live: 0, items: [] },
 }));
+const moments = vi.fn(async () => ({
+  status: 200,
+  body: { asOf: new Date().toISOString(), milestone: null, wentLive: null } as object,
+}));
 vi.mock("@/helpers/api", () => ({
   helperOrSignIn: session,
-  helperApi: async () => ({ field: { status: fieldStatus, mine: fieldMine } }),
+  helperApi: async () => ({ field: { status: fieldStatus, mine: fieldMine }, moments }),
   canAdd: (me: HelperMeDto) => me.isAdmin || me.status === "approved",
 }));
 vi.mock("@/helpers/actions", () => ({
   applyHelper: vi.fn(),
   locateForHelper: vi.fn(),
   fakeHelperSignOut: vi.fn(),
+  markHelperSeen: vi.fn(async () => undefined),
 }));
 vi.mock("@/admin/mode", () => ({ adminAuthMode: () => "fake" }));
 vi.mock("@/lib/api", () => ({
@@ -139,4 +144,32 @@ it("says so when sign-in is off or Darb cannot be reached", async () => {
   expect(screen.getByText("Sign in is not set up on this deployment.")).toBeTruthy();
   await open(null, "unavailable");
   expect(screen.getByText("Darb cannot be reached right now. Try again in a moment.")).toBeTruthy();
+});
+
+it("tells a helper what went live since yesterday, and celebrates a milestone", async () => {
+  const asOf = new Date().toISOString();
+  moments.mockResolvedValueOnce({
+    status: 200,
+    body: {
+      asOf,
+      milestone: { count: 100, live: 72, placeName: { en: "Sakhnin" } },
+      wentLive: { count: 3, since: new Date(Date.now() - 86_400_000).toISOString() },
+    },
+  });
+  await open(me({ status: "approved" }));
+  expect(screen.getByText(/3 of yours went live since yesterday\./)).toBeTruthy();
+  const dialog = screen.getByRole("dialog", { name: "A milestone" });
+  expect(dialog.textContent).toContain("businesses you added");
+  expect(dialog.textContent).toContain("The most in Sakhnin.");
+  expect(dialog.textContent).toContain("72 of them are on the map because of you.");
+  expect(capture).toHaveBeenCalled();
+});
+
+it("never asks an admin for moments, and adding works when they cannot be read", async () => {
+  await open(me({ isAdmin: true, dailyLimit: null }));
+  expect(moments).not.toHaveBeenCalled();
+  moments.mockRejectedValueOnce(new Error("down"));
+  await open(me({ status: "approved" }));
+  expect(capture).toHaveBeenCalledTimes(2);
+  expect(screen.queryByRole("dialog")).toBeNull();
 });

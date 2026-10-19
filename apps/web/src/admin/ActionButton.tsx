@@ -17,6 +17,7 @@ export function ActionButton({
   confirm,
   done,
   icon,
+  celebrate = false,
   children,
 }: {
   action: (state: ActionState, fd: FormData) => Promise<ActionState>;
@@ -27,14 +28,26 @@ export function ActionButton({
   /** Said in a toast once it worked (the action's own message, when it gives one, wins). */
   done?: string;
   icon?: ReactNode;
+  /**
+   * Something goes live (an approval): once it worked, the toast stamps a gold seal. Said from the
+   * action's own answer, so it shows even when the page's new state no longer has this button.
+   */
+  celebrate?: boolean;
   className?: string;
   /** Shown after the button, e.g. a hint. */
   children?: ReactNode;
 }) {
-  const [state, formAction, pending] = useActionState(action, idle);
+  const run = celebrate
+    ? async (prev: ActionState, fd: FormData) => {
+        const next = await action(prev, fd);
+        if (next.ok && (next.message || done)) toast(next.message || done!, "ok", true);
+        return next;
+      }
+    : action;
+  const [state, formAction, pending] = useActionState(run, idle);
   useEffect(() => {
-    if (state.ok && (state.message || done)) toast(state.message || done!);
-  }, [state, done]);
+    if (!celebrate && state.ok && (state.message || done)) toast(state.message || done!);
+  }, [state, done, celebrate]);
   return (
     <form action={formAction} aria-busy={pending} className={styles.actions}>
       {Object.entries(fields).map(([name, value]) => (

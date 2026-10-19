@@ -9,6 +9,8 @@ import { ht } from "@/helpers/copy";
 import { HelperShell, HelperSignOut } from "@/helpers/HelperShell";
 import { incomingFrom } from "@/helpers/incoming";
 import { InstallCard } from "@/helpers/InstallCard";
+import { Moments } from "@/helpers/Moments";
+import { momentsView, type MomentsView } from "@/helpers/moment-view";
 import { helperHref } from "@/helpers/routes";
 import { getPlaces, getTaxonomy } from "@/lib/api";
 import { foldText } from "@/lib/fold-text";
@@ -106,10 +108,17 @@ async function applyScreen(locale: Locale, me: HelperMeDto) {
 /** The capture, for approved helpers and admins, with today's count against the day's cap. */
 async function captureScreen(locale: Locale, me: HelperMeDto, incoming: QuickAdd["incoming"]) {
   const api = await helperApi();
-  const [taxonomy, status, mine] = await Promise.all([
+  const [taxonomy, status, mine, moments] = await Promise.all([
     getTaxonomy(),
     api.field.status(),
     api.field.mine(),
+    // A milestone and what went live: helpers only (admins approve their own). Never blocks adding.
+    me.isAdmin
+      ? null
+      : Promise.resolve()
+          .then(() => api.moments())
+          .then((r): MomentsView | null => (r.status === 200 ? momentsView(locale, r.body) : null))
+          .catch(() => null),
   ]);
   if (status.status !== 200 || mine.status !== 200)
     return <Note locale={locale} title={ht(locale, "title")} lead={ht(locale, "offline")} tabs />;
@@ -122,6 +131,18 @@ async function captureScreen(locale: Locale, me: HelperMeDto, incoming: QuickAdd
   return (
     <HelperShell locale={locale} tab="add" tabs>
       <h1 className={styles.screenTitle}>{ht(locale, "addTitle")}</h1>
+      {moments ? (
+        <Moments
+          view={moments}
+          seeHref={helperHref(locale, "/mine")}
+          copy={{
+            label: ht(locale, "milestoneLabel"),
+            go: ht(locale, "milestoneGo"),
+            see: ht(locale, "wentLiveSee"),
+            close: ht(locale, "wentLiveClose"),
+          }}
+        />
+      ) : null}
       <StreetCapture
         locale={locale}
         kinds={kinds}

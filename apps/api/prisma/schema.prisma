@@ -275,6 +275,10 @@ model User {
   helperDecidedAt  DateTime?
   /// additions and sign readings a day: null is the default (150), 0 is no cap, else that cap.
   helperDailyLimit Int?
+  /// The highest milestone (10, 50, 100, 500 additions) the helper was celebrated for; 0 none yet.
+  helperMilestone  Int          @default(0)
+  /// When the helper app last told them what went live; null until their first visit.
+  helperSeenAt     DateTime?
 
   @@index([helperStatus, helperAppliedAt])
 }

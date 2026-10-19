@@ -116,15 +116,38 @@ test.describe("darb helpers", () => {
     await expect(mine.getByText("Waiting for review")).toBeVisible();
 
     // In the admin's queue, marked as from the field with the helper's name; approve it.
+    // The installed app's badge is watched (the App Badging API, stubbed): it follows the approval.
+    await admin.context().addInitScript(() => {
+      const calls: number[] = [];
+      Object.assign(window, { __badge: calls });
+      Object.assign(navigator, {
+        setAppBadge: async (n: number) => void calls.push(n),
+        clearAppBadge: async () => void calls.push(0),
+      });
+    });
+    const badge = () =>
+      admin.evaluate(() => (window as unknown as { __badge: number[] }).__badge.at(-1));
     await admin.goto("/en/admin/join-requests?status=pending");
     const row = admin.locator('[data-list="join-requests"] li').filter({ hasText: shop });
     await expect(row.getByText(`From the field · ${helperName}`)).toBeVisible();
     await row.getByRole("link", { name: shop }).click();
+    await expect.poll(badge).toBeGreaterThan(0);
+    const before = await badge();
     await admin.getByRole("button", { name: "Approve and publish" }).click();
     await expect(admin.getByText("Approved", { exact: true }).first()).toBeVisible();
+    // A gold seal stamps in with the toast.
+    const sealed = admin.locator("[data-toasts] p").filter({ hasText: "Published." });
+    await expect(sealed.locator("[data-seal]")).toBeVisible();
+    await expect.poll(badge).not.toBe(before);
+
+    // Back in the helper app: a note says it went live (once), and leads to the list.
+    await helper.goto("/en/helpers");
+    const wentLive = helper.locator("[data-went-live]");
+    await expect(wentLive).toHaveText(/One of yours went live today\./);
+    await wentLive.getByRole("link", { name: "See them" }).click();
+    await expect(helper).toHaveURL(/\/en\/helpers\/mine$/);
 
     // Live now: the card names no one until the helper turns the credit on.
-    await helper.reload();
     await expect(helper.getByText(/^You added 1 · 1 live$/)).toBeVisible();
     const open = mine.getByRole("link", { name: "Open the card" });
     const cardUrl = (await open.getAttribute("href"))!;
@@ -132,6 +155,11 @@ test.describe("darb helpers", () => {
     await visitor.goto(cardUrl);
     await expect(visitor.getByRole("heading", { name: shop })).toBeVisible();
     await expect(visitor.locator("[data-added-by]")).toHaveCount(0);
+
+    await helper.goto("/en/helpers");
+    await expect(helper.getByRole("heading", { name: "Add a business" })).toBeVisible();
+    await expect(helper.locator("[data-went-live]")).toHaveCount(0);
+    await helper.goBack();
 
     await helper.getByRole("link", { name: "Profile" }).click();
     await helper.getByLabel(/Show my name on businesses I added/).check();
@@ -196,6 +224,23 @@ test.describe("darb helpers", () => {
         await page.locator("form").getByRole("textbox").first().waitFor();
         expect((await axe()).violations).toEqual([]);
       });
+
+  test("My additions counts up, and holds still with reduced motion", async ({
+    browser,
+    baseURL,
+  }) => {
+    const page = await personAt(browser, baseURL!, ADMIN);
+    const animation = () =>
+      page
+        .locator("[data-summary] [data-count]")
+        .first()
+        .evaluate((el) => getComputedStyle(el).animationName);
+    await page.goto("/en/helpers/mine");
+    expect(await animation()).not.toBe("none");
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.reload();
+    expect(await animation()).toBe("none");
+  });
 
   test("the helper app stays out of search engines and installs on its own scope", async ({
     request,

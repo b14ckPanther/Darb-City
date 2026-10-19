@@ -562,3 +562,140 @@ describe("public credit", () => {
     expect((await card()).body.addedBy).toBeNull();
   });
 });
+
+describe("moments: milestones and what went live", () => {
+  const moments = (auth: string) => http().get("/helpers/moments").set("authorization", auth);
+  const seen = (auth: string, body: object) =>
+    http().post("/helpers/moments/seen").set("authorization", auth).send(body);
+  const add = (auth: string, count: number) =>
+    Array.from({ length: count }).reduce<Promise<unknown>>(
+      (p) =>
+        p.then(() =>
+          http().post("/helpers/field/captures").set("authorization", auth).send(capture()),
+        ),
+      Promise.resolve(),
+    );
+  const approve = async (id: string) =>
+    http().post(`/admin/join-requests/${id}/approve`).set("authorization", ADMIN).send({});
+
+  it("celebrates 10 additions once, with the busiest town and how many are live", async () => {
+    const a = await as("approved");
+    await add(a.auth, 9);
+    expect((await moments(a.auth)).body.milestone).toBeNull();
+    await add(a.auth, 1);
+    const first = await prisma.joinRequest.findFirstOrThrow({ where: { createdById: a.id } });
+    await approve(first.id);
+
+    const res = await moments(a.auth);
+    expect(res.status).toBe(200);
+    expect(res.headers["cache-control"]).toBe("no-store");
+    expect(res.body.milestone).toEqual({
+      count: 10,
+      live: 1,
+      placeName: { he: "סח'נין", ar: "سخنين", en: "Sakhnin" },
+    });
+    // Asking again before it was shown says it again; once seen, never.
+    expect((await moments(a.auth)).body.milestone).toMatchObject({ count: 10 });
+    expect((await seen(a.auth, { asOf: res.body.asOf, milestone: 10 })).status).toBe(204);
+    expect((await moments(a.auth)).body.milestone).toBeNull();
+    await add(a.auth, 1);
+    expect((await moments(a.auth)).body.milestone).toBeNull();
+  });
+
+  it("counts only the helper's own additions, and never takes a milestone not reached", async () => {
+    const a = await as("approved");
+    const b = await as("approved", "other");
+    await add(b.auth, 10);
+    expect((await moments(a.auth)).body.milestone).toBeNull();
+    await add(a.auth, 3);
+    const asOf = new Date().toISOString();
+    // Marking 10 seen with only 3 additions changes nothing: it is still celebrated at 10.
+    expect((await seen(a.auth, { asOf, milestone: 10 })).status).toBe(204);
+    await add(a.auth, 7);
+    expect((await moments(a.auth)).body.milestone).toMatchObject({ count: 10, live: 0 });
+    // Only the milestones exist.
+    expect((await seen(a.auth, { asOf, milestone: 11 })).status).toBe(400);
+  });
+
+  it("jumping past two milestones celebrates the highest, once", async () => {
+    const a = await as("approved");
+    const user = await prisma.user.findUniqueOrThrow({ where: { id: a.id } });
+    const business = await prisma.business.findFirstOrThrow();
+    await prisma.joinRequest.createMany({
+      data: Array.from({ length: 52 }, (_, i) => ({
+        businessId: i === 0 ? business.id : null,
+        businessName: { en: `Shop ${i}` },
+        ownerName: "",
+        ownerPhone: "",
+        locale: "en",
+        source: "field" as const,
+        createdById: user.id,
+      })),
+    });
+    const res = await moments(a.auth);
+    expect(res.body.milestone).toMatchObject({ count: 50 });
+    await seen(a.auth, { asOf: res.body.asOf, milestone: 50 });
+    expect((await moments(a.auth)).body.milestone).toBeNull();
+    // A lower one is never said after a higher one was.
+    await seen(a.auth, { asOf: res.body.asOf, milestone: 10 });
+    expect((await prisma.user.findUniqueOrThrow({ where: { id: a.id } })).helperMilestone).toBe(50);
+  });
+
+  it("says what went live since the last visit: only their own, once, never on the first", async () => {
+    const a = await as("approved");
+    const b = await as("approved", "other");
+    await add(a.auth, 3);
+    await add(b.auth, 1);
+    // The very first visit says nothing, even with approvals before it.
+    const [one, two, three] = await prisma.joinRequest.findMany({
+      where: { createdById: a.id },
+      orderBy: { createdAt: "asc" },
+    });
+    await approve(one!.id);
+    const first = await moments(a.auth);
+    expect(first.body.wentLive).toBeNull();
+    await seen(a.auth, { asOf: first.body.asOf });
+
+    await approve(two!.id);
+    await approve(three!.id);
+    const theirs = await prisma.joinRequest.findFirstOrThrow({ where: { createdById: b.id } });
+    await approve(theirs.id);
+    const next = await moments(a.auth);
+    expect(next.body.wentLive).toEqual({ count: 2, since: expect.any(String) });
+    expect(Date.parse(next.body.wentLive.since)).toBe(Date.parse(first.body.asOf));
+    await seen(a.auth, { asOf: next.body.asOf });
+    expect((await moments(a.auth)).body.wentLive).toBeNull();
+  });
+
+  it("an approval after the count is still told next time; a rejection never is", async () => {
+    const a = await as("approved");
+    await add(a.auth, 2);
+    const first = await moments(a.auth);
+    await seen(a.auth, { asOf: first.body.asOf });
+    const counted = await moments(a.auth);
+    const [x, y] = await prisma.joinRequest.findMany({ where: { createdById: a.id } });
+    await approve(x!.id);
+    await http()
+      .post(`/admin/join-requests/${y!.id}/reject`)
+      .set("authorization", ADMIN)
+      .send({ reason: "Closed" });
+    // Seen up to the earlier count only (and a time in the future is held to now).
+    await seen(a.auth, { asOf: counted.body.asOf });
+    expect((await moments(a.auth)).body.wentLive).toMatchObject({ count: 1 });
+    await seen(a.auth, { asOf: new Date(Date.now() + 86_400_000).toISOString() });
+    const after = await prisma.user.findUniqueOrThrow({ where: { id: a.id } });
+    expect(after.helperSeenAt!.getTime()).toBeLessThanOrEqual(Date.now());
+  });
+
+  it("is for approved helpers only; admins get neither", async () => {
+    for (const status of ["none", "pending", "paused"] as const) {
+      const { auth } = await as(status);
+      expect((await moments(auth)).status, status).toBe(403);
+      expect((await seen(auth, { asOf: new Date().toISOString() })).status, status).toBe(403);
+    }
+    expect((await http().get("/helpers/moments")).status).toBe(401);
+    for (let i = 0; i < 10; i++)
+      await http().post("/admin/field/captures").set("authorization", ADMIN).send(capture());
+    expect((await moments(ADMIN)).body).toMatchObject({ milestone: null, wentLive: null });
+  });
+});

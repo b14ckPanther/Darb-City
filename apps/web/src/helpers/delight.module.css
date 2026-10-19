@@ -1,0 +1,236 @@
+/*
+ * The helper app's small moments: numbers that count up, a gold shine on what is live, the
+ * went-live note and the milestone screen. Short and quiet; with reduced motion every one of them
+ * is its final state, still.
+ */
+
+/* A number that counts up from 0 (CSS only, no script): the digits are drawn by a counter. */
+@property --darb-n {
+  syntax: "<integer>";
+  inherits: false;
+  initial-value: 0;
+}
+.count {
+  --darb-n: var(--to);
+  counter-reset: darb-n var(--darb-n);
+  font-variant-numeric: tabular-nums;
+  animation: count 560ms var(--ease-out) both;
+}
+.count::after {
+  content: counter(darb-n);
+  content: counter(darb-n) / "";
+}
+/* The number itself stays in the page for screen readers and without styles. */
+.count > span {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+@keyframes count {
+  from {
+    --darb-n: 0;
+  }
+}
+
+/* A gold light that passes once over what is live. */
+.shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    100deg,
+    transparent 25%,
+    color-mix(in srgb, var(--accent-bright) 85%, transparent) 50%,
+    transparent 75%
+  );
+  transform: translateX(-110%);
+  /* One after another: about a fifteenth of a second apart. */
+  animation: shine 680ms var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 400ms / 6);
+  pointer-events: none;
+}
+:global([dir="rtl"]) .shine::after {
+  transform: translateX(110%);
+  animation-name: shine-rtl;
+}
+@keyframes shine {
+  to {
+    transform: translateX(110%);
+  }
+}
+@keyframes shine-rtl {
+  to {
+    transform: translateX(-110%);
+  }
+}
+
+/* "3 of yours went live since yesterday": above the capture, gone with its close button. */
+.note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 14px;
+  padding: 6px 4px 6px 12px;
+  border-radius: 16px;
+  background: var(--tint);
+  border: 1px solid var(--line-strong);
+  animation: note-in 400ms var(--ease-out) both;
+}
+:global([dir="rtl"]) .note {
+  padding: 6px 12px 6px 4px;
+}
+.note p {
+  flex: 1;
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+.note a {
+  color: var(--accent-text);
+  white-space: nowrap;
+}
+.noteSeal {
+  flex: none;
+  inline-size: 30px;
+  block-size: 30px;
+  color: var(--accent-text);
+}
+.noteClose {
+  flex: none;
+  display: grid;
+  place-items: center;
+  inline-size: 44px;
+  block-size: 44px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--text-soft);
+  cursor: pointer;
+}
+.noteClose:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+@keyframes note-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+/* The milestone: one full screen, once, gone with one tap anywhere. */
+.milestone {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: max(16px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom));
+  background: var(--scrim);
+  backdrop-filter: blur(6px);
+  animation: fade 400ms var(--ease-out) both;
+}
+.milestoneCard {
+  box-sizing: border-box;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  inline-size: min(100%, 360px);
+  padding: 28px 22px 22px;
+  border-radius: 28px;
+  background: var(--surface-1);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-panel);
+  text-align: center;
+  animation: rise 480ms var(--ease-out) both;
+}
+.milestoneSeal {
+  inline-size: 84px;
+  block-size: 84px;
+  margin-block-end: 6px;
+  color: var(--accent);
+  transform: rotate(-8deg);
+  animation: stamp 600ms cubic-bezier(0.2, 1.5, 0.4, 1) both;
+}
+.milestoneHead {
+  display: grid;
+  gap: 0;
+  margin: 0;
+}
+.milestoneHead strong {
+  font-size: 3.5rem;
+  line-height: 1;
+  font-weight: 700;
+  color: var(--accent-text);
+}
+.milestoneUnit {
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+.milestoneLine {
+  margin: 0;
+  color: var(--text-soft);
+  line-height: 1.45;
+}
+.milestoneGo {
+  justify-self: stretch;
+  margin-block-start: 14px;
+  min-block-size: 52px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--primary);
+  color: var(--on-primary);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.milestoneGo:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.96);
+  }
+}
+/* The seal waits for the card, then lands. */
+@keyframes stamp {
+  0%,
+  25% {
+    opacity: 0;
+    transform: scale(1.7) rotate(-20deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-8deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .count,
+  .note,
+  .milestone,
+  .milestoneCard,
+  .milestoneSeal {
+    animation: none;
+  }
+  .shine::after {
+    display: none;
+  }
+}

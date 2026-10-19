@@ -28,6 +28,12 @@ const MOTION_PROPS = new Set(["opacity", "transform"]);
  */
 const ONE_TIME_DRAWING = new Set(["stroke-dashoffset", "clip-path"]);
 const drawsOnce = (file: string) => file.endsWith(join("landing", "Landing.module.css"));
+/**
+ * The helper app's numbers count up once as a screen opens (My additions, a milestone): a short
+ * animation of one registered integer (--darb-n) on a few elements, drawn by a CSS counter.
+ */
+const countsOnce = (file: string, property: string) =>
+  file.endsWith(join("helpers", "delight.module.css")) && property === "--darb-n";
 
 describe.each(cssFiles(SRC))("%s", (file) => {
   const css = readFileSync(file, "utf8");
@@ -50,7 +56,9 @@ describe.each(cssFiles(SRC))("%s", (file) => {
     for (const [, body] of css.matchAll(/@keyframes[^{]+\{([\s\S]*?\})\s*\}/g)) {
       for (const [, property] of body!.matchAll(/([a-z-]+)\s*:/g)) {
         const allowed =
-          MOTION_PROPS.has(property!) || (drawsOnce(file) && ONE_TIME_DRAWING.has(property!));
+          MOTION_PROPS.has(property!) ||
+          (drawsOnce(file) && ONE_TIME_DRAWING.has(property!)) ||
+          countsOnce(file, property!);
         expect(allowed, property).toBe(true);
       }
     }

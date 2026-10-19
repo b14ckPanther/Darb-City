@@ -13,6 +13,7 @@ import {
   type ReactNode,
 } from "react";
 import { applyTheme, currentTheme, type Theme } from "@/lib/theme";
+import { Seal } from "@/components/Seal";
 import { AdminIcon } from "./AdminIcon";
 import type { PaletteLabels } from "./CommandPalette";
 import { adminHintCookie } from "./marker";
@@ -281,7 +282,11 @@ export function Toaster() {
     <div className={styles.toasts} role="status" aria-live="polite" data-toasts="">
       {items.map((t) => (
         <p key={t.id} className={styles.toast} data-tone={t.tone ?? "ok"}>
-          <AdminIcon name={t.tone === "error" ? "alert" : "check"} size={18} />
+          {t.seal ? (
+            <Seal className={styles.toastSeal} size={26} />
+          ) : (
+            <AdminIcon name={t.tone === "error" ? "alert" : "check"} size={18} />
+          )}
           {t.message}
         </p>
       ))}

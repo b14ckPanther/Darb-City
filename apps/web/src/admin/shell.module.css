@@ -682,6 +682,23 @@
 .toast[data-tone="error"] svg {
   color: var(--danger);
 }
+/* An approval: a small gold seal stamps in as the toast arrives. */
+.toast .toastSeal {
+  margin-block: -4px;
+  transform: rotate(-10deg);
+  animation: sealIn 560ms cubic-bezier(0.3, 1.5, 0.5, 1) both;
+}
+@keyframes sealIn {
+  0%,
+  20% {
+    opacity: 0;
+    transform: scale(2) rotate(-30deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-10deg);
+  }
+}
 @keyframes toastIn {
   from {
     opacity: 0;
@@ -689,7 +706,8 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .toast {
+  .toast,
+  .toast .toastSeal {
     animation: none;
   }
 }

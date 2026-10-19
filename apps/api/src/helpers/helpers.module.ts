@@ -6,6 +6,7 @@ import { AdminHelpersController, HelpersAdmin } from "./helpers.admin.js";
 import {
   HelperFieldController,
   HelperFieldUploadsController,
+  HelperMomentsController,
   HelpersController,
 } from "./helpers.controller.js";
 import { HelpersService } from "./helpers.service.js";
@@ -20,6 +21,7 @@ import { HelpersService } from "./helpers.service.js";
     HelpersController,
     HelperFieldController,
     HelperFieldUploadsController,
+    HelperMomentsController,
     AdminHelpersController,
   ],
   providers: [HelpersService, HelpersAdmin],
