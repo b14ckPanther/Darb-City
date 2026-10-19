@@ -93,6 +93,8 @@ export interface CardModel {
   address: string | null;
   photos: { src: string; alt: string }[];
   social: CardSocial[];
+  /** "Added to Darb by …": a helper who chose to be named; null otherwise. */
+  addedBy: string | null;
 }
 
 const SOCIAL = [
@@ -287,6 +289,7 @@ export function cardFromBusiness({
       const href = safeHttpUrl(business.links?.[key] ?? null);
       return href ? [{ key, label, href }] : [];
     }),
+    addedBy: business.addedBy?.trim() || null,
   };
 }
 
@@ -372,5 +375,6 @@ export function cardFromDraft(
     address: d.address.trim() || null,
     photos: d.photoUrls.map((src) => ({ src, alt: "" })),
     social,
+    addedBy: null,
   };
 }

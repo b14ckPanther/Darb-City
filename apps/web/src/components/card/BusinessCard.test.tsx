@@ -47,3 +47,29 @@ it("names the button in each language", () => {
   draw({ google: GOOGLE }, "ar");
   expect(screen.getByRole("link", { name: /تقييمات بجوجل/ })).toBeTruthy();
 });
+
+it("names the helper who added it only when the API sends a name", () => {
+  const card = (addedBy: string | null, locale: "he" | "ar" | "en" = "en") =>
+    render(
+      <BusinessCard
+        locale={locale}
+        copy={copy[locale]}
+        renderedAt={Date.UTC(2026, 9, 18, 9)}
+        card={cardFromBusiness({
+          locale,
+          copy: copy[locale],
+          business: detail({ addedBy }),
+          kindName: "Restaurants",
+          placeName: "Akko",
+          sectorAccent: "#d6a473",
+          ctaLabel: null,
+          shareUrl: "https://darb.co.il/en/akko/food/restaurants/caramel",
+        })}
+      />,
+    );
+  const { container, unmount } = card(null);
+  expect(container.querySelector("[data-added-by]")).toBeNull();
+  unmount();
+  card("Rami");
+  expect(screen.getByText("Rami").closest("p")?.textContent).toBe("Added to Darb by Rami");
+});
