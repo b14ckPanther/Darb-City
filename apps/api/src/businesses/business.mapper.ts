@@ -38,8 +38,15 @@ export function toBusinessSummary(row: Business, place: PlaceRef, now: Date): Bu
   };
 }
 
+/** A helper's street capture behind the business, with whether they choose to be credited. */
+type AddedBy = { createdBy: { helperName: string | null; helperCredit: boolean } | null };
+
 export function toBusinessDetail(
-  row: Business & { kinds: { kindId: string }[]; brand?: { slug: string } | null },
+  row: Business & {
+    kinds: { kindId: string }[];
+    brand?: { slug: string } | null;
+    joinRequests?: AddedBy[];
+  },
   place: PlaceRef,
   now: Date,
 ): BusinessDetailDto {
@@ -60,5 +67,12 @@ export function toBusinessDetail(
     apps: row.apps as BusinessDetailDto["apps"],
     brandId: row.brandId,
     brandSlug: row.brand?.slug ?? null,
+    addedBy: addedBy(row.joinRequests),
   };
+}
+
+/** "Added by <name>" only while that helper keeps the credit on and has a name to show. */
+function addedBy(requests: AddedBy[] | undefined): string | null {
+  const by = requests?.[0]?.createdBy;
+  return by?.helperCredit && by.helperName?.trim() ? by.helperName.trim() : null;
 }

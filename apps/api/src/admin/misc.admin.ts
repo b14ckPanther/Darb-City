@@ -29,7 +29,8 @@ export class MiscAdmin {
       at: r.at.toISOString(),
       actor: r.actor.clerkUserId,
       action: r.action,
-      entityType: r.entityType,
+      // The where above keeps to the asked entity type, never a helper's.
+      entityType: r.entityType as AdminEntity,
       entityId: r.entityId,
       fields: r.fields,
     }));

@@ -83,6 +83,7 @@ export class OverviewAdmin {
       kinds,
       pendingJoins,
       streetPending,
+      helpersWaiting,
       newInquiries,
       added,
       noPhone,
@@ -103,6 +104,7 @@ export class OverviewAdmin {
       this.prisma.kind.groupBy({ by: ["status"], _count: { _all: true } }),
       this.prisma.joinRequest.count({ where: { status: "pending" } }),
       this.prisma.joinRequest.count({ where: { status: "pending", source: "field" } }),
+      this.prisma.user.count({ where: { helperStatus: "pending" } }),
       this.prisma.inquiry.count({ where: { status: "new" } }),
       this.prisma.business.findMany({
         where: { ...real, source: { not: "seed" }, createdAt: { gte: since } },
@@ -112,7 +114,9 @@ export class OverviewAdmin {
       this.issueCount("no-hours"),
       this.issueCount("pin-at-centre"),
       this.issueCount("pin-outside"),
+      // Site content only: helper decisions have their own screen.
       this.prisma.auditLog.findMany({
+        where: { entityType: { not: "helper" } },
         orderBy: [{ at: "desc" }, { id: "desc" }],
         take: ACTIVITY,
         include: { actor: { select: { clerkUserId: true } } },
@@ -125,7 +129,10 @@ export class OverviewAdmin {
     const days = Array.from({ length: ADDED_DAYS }, (_, i) =>
       israelDay(new Date(now.getTime() - (ADDED_DAYS - 1 - i) * DAY_MS)),
     );
-    const names = await this.names(audit.map((a) => ({ type: a.entityType, id: a.entityId })));
+    const content = audit.filter(
+      (a): a is (typeof audit)[number] & { entityType: AdminEntity } => a.entityType !== "helper",
+    );
+    const names = await this.names(content.map((a) => ({ type: a.entityType, id: a.entityId })));
     return {
       counts: {
         published: status("published"),
@@ -138,6 +145,7 @@ export class OverviewAdmin {
         kindsHidden: kinds.find((k) => k.status === "hidden")?._count._all ?? 0,
         pendingJoins,
         streetPending,
+        helpersWaiting,
         newInquiries,
       },
       attention: {
@@ -147,7 +155,7 @@ export class OverviewAdmin {
         "pin-outside": outside,
       },
       added: days.map((day) => ({ day, count: perDay.get(day) ?? 0 })),
-      activity: audit.map((a) => ({
+      activity: content.map((a) => ({
         id: a.id,
         at: a.at.toISOString(),
         actor: a.actor.clerkUserId,

@@ -20,9 +20,11 @@ import { webTags } from "./tags.js";
 
 type Row = JoinRequest & {
   business: { place: { slug: string; name: unknown }; photos: unknown } | null;
+  createdBy: { id: string; isAdmin: boolean; helperName: string | null } | null;
 };
 const include = {
   business: { select: { place: { select: { slug: true, name: true } }, photos: true } },
+  createdBy: { select: { id: true, isAdmin: true, helperName: true } },
 } as const;
 
 /** The IP hash stays in the database: the admin never needs it. */
@@ -44,6 +46,11 @@ export const toAdminJoinRequest = (r: Row): AdminJoinRequestDto => ({
   rejectReason: r.rejectReason,
   createdAt: r.createdAt.toISOString(),
   decidedAt: r.decidedAt?.toISOString() ?? null,
+  // An admin's own capture stays "from the street"; anyone else who captured is a helper.
+  helper:
+    r.createdBy && !r.createdBy.isAdmin
+      ? { id: r.createdBy.id, name: r.createdBy.helperName ?? "" }
+      : null,
 });
 
 /**
@@ -65,7 +72,10 @@ export class JoinAdmin {
     const offset = decodeCursor(query.cursor) ?? 0;
     const [rows, newCount] = await Promise.all([
       this.prisma.joinRequest.findMany({
-        where: query.status ? { status: query.status } : {},
+        where: {
+          ...(query.status ? { status: query.status } : {}),
+          ...(query.helper ? { createdById: query.helper, source: "field" as const } : {}),
+        },
         include,
         // The enum's order: pending first, then approved and rejected, newest first in each.
         orderBy: [{ status: "asc" }, { createdAt: "desc" }, { id: "desc" }],

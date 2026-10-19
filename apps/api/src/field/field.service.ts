@@ -1,5 +1,6 @@
-import { ConflictException, Inject, Injectable, Logger } from "@nestjs/common";
+import { ConflictException, HttpException, Inject, Injectable, Logger } from "@nestjs/common";
 import {
+  HELPER_DAILY,
   PhoneSchema,
   type FieldCaptureCreateDto,
   type FieldCaptureDto,
@@ -28,8 +29,19 @@ import { SIGN_READER, type SignReader } from "./sign-reader.js";
 
 /** A similar name within this many metres is probably the same shop. */
 export const NEAR_METRES = 50;
+/** A strong match: the same phone, or a similar name this close. A helper must say why it differs. */
+export const STRONG_METRES = 25;
 const DAY_KEY = (day: string) => `darb:field:reads:${day}`;
+const HELPER_DAY_KEY = (day: string, userId: string) => `darb:field:reads:${day}:${userId}`;
 const MINE = 30;
+
+/**
+ * Who captures: an admin, or a helper. `limited` (a helper who is not an admin) adds the helper's
+ * own daily caps (HELPER_DAILY) and the note a strong duplicate needs.
+ */
+export type FieldActor = AdminActor & { limited?: boolean };
+
+export const isStrong = (m: FieldMatchDto) => m.reason === "phone" || m.metres <= STRONG_METRES;
 
 const someText = (l: Record<string, string | null | undefined>) =>
   Object.fromEntries(
@@ -43,6 +55,31 @@ export const toFieldCapture = (r: JoinRequest): FieldCaptureDto => ({
   status: r.status,
   businessId: r.businessId,
   createdAt: r.createdAt.toISOString(),
+  rejectReason: r.rejectReason,
+  live: null,
+});
+
+type MineRow = JoinRequest & {
+  business: {
+    slug: string;
+    status: string;
+    place: { slug: string };
+    primaryKind: { slug: string; status: string; sector: { slug: string } };
+  } | null;
+};
+
+/** One of the actor's own captures, with the public card's path while it is live. */
+const toMine = (r: MineRow): FieldCaptureDto => ({
+  ...toFieldCapture(r),
+  live:
+    r.business?.status === "published" && r.business.primaryKind.status === "active"
+      ? {
+          place: r.business.place.slug,
+          sector: r.business.primaryKind.sector.slug,
+          kind: r.business.primaryKind.slug,
+          business: r.business.slug,
+        }
+      : null,
 });
 
 /**
@@ -74,14 +111,25 @@ export class FieldService {
 
   /** One of the day's sign readings, across every replica; a Redis failure means none. */
   private async takeRead(now = new Date()): Promise<boolean> {
-    const key = DAY_KEY(now.toISOString().slice(0, 10));
+    return this.takeFrom(DAY_KEY(now.toISOString().slice(0, 10)), this.config.field.readsPerDay);
+  }
+
+  /** One of a helper's own readings for the day (HELPER_DAILY.reads). */
+  private async takeHelperRead(userId: string, now = new Date()): Promise<boolean> {
+    return this.takeFrom(
+      HELPER_DAY_KEY(now.toISOString().slice(0, 10), userId),
+      HELPER_DAILY.reads,
+    );
+  }
+
+  private async takeFrom(key: string, cap: number): Promise<boolean> {
     try {
       const res = await this.redis
         .multi()
         .incr(key)
         .expire(key, 2 * 86_400)
         .exec();
-      return Number(res?.[0]?.[1] ?? Infinity) <= this.config.field.readsPerDay;
+      return Number(res?.[0]?.[1] ?? Infinity) <= cap;
     } catch {
       return false;
     }
@@ -95,9 +143,14 @@ export class FieldService {
     });
   }
 
-  /** `image` is already a WebP without metadata. Never throws: the form works without it. */
-  async read(image: Buffer): Promise<FieldReadResultDto> {
+  /**
+   * `image` is already a WebP without metadata. Never throws: the form works without it. A helper's
+   * own day runs out first (budget), before it can spend the deployment's.
+   */
+  async read(image: Buffer, actor?: FieldActor): Promise<FieldReadResultDto> {
     if (!this.readingOn) return { reading: null, reason: "off" };
+    if (actor?.limited && !(await this.takeHelperRead(actor.userId)))
+      return { reading: null, reason: "budget" };
     if (!(await this.takeRead()) || !(await this.budget.take()))
       return { reading: null, reason: "budget" };
     const kinds = await this.activeKinds();
@@ -201,21 +254,63 @@ export class FieldService {
     for (let n = 2; ; n++) if (!taken.has(`${base}-${n}`)) return `${base}-${n}`;
   }
 
+  /** Captures this person made today, in Israel. */
+  private async today(userId: string): Promise<number> {
+    const rows = await this.prisma.$queryRaw<{ n: bigint }[]>`
+      SELECT count(*) AS n FROM "JoinRequest"
+      WHERE "createdById" = ${userId}::uuid AND source = 'field'
+        AND ("createdAt" AT TIME ZONE 'UTC' AT TIME ZONE 'Asia/Jerusalem')::date
+          = (now() AT TIME ZONE 'Asia/Jerusalem')::date`;
+    return Number(rows[0]?.n ?? 0);
+  }
+
   /**
    * The capture as a draft business (source admin, never public until approved) and its request,
-   * audited, in one transaction. The same clientId answers the capture it already made.
+   * audited, in one transaction. The same clientId answers the capture it already made (only the
+   * one who made it). A helper has HELPER_DAILY.captures a day and must say why a strong duplicate
+   * is another place.
    */
   async create(
-    actor: AdminActor,
+    actor: FieldActor,
     dto: FieldCaptureCreateDto,
   ): Promise<
     | { status: 200 | 201; body: FieldCaptureDto }
-    | { status: 400; body: { message: string; code: string } }
+    | { status: 400 | 409; body: { message: string; code: string } }
   > {
     const existing = await this.prisma.joinRequest.findUnique({
       where: { clientId: dto.clientId },
     });
-    if (existing) return { status: 200, body: toFieldCapture(existing) };
+    if (existing) {
+      if (existing.createdById !== actor.userId)
+        return { status: 409, body: { message: "This id is taken", code: "already_exists" } };
+      return { status: 200, body: toFieldCapture(existing) };
+    }
+    if (actor.limited) {
+      if ((await this.today(actor.userId)) >= HELPER_DAILY.captures)
+        throw new HttpException(
+          { message: "Today's additions are used up; it is sent tomorrow", code: "daily_limit" },
+          429,
+        );
+      const distinct = dto.distinct?.trim() ?? "";
+      if (distinct.length < 3) {
+        const strong = (
+          await this.duplicates({
+            lat: dto.lat,
+            lng: dto.lng,
+            name: dto.name,
+            phone: dto.phone ?? undefined,
+          })
+        ).filter(isStrong);
+        if (strong.length)
+          return {
+            status: 400,
+            body: {
+              message: "Darb may already have this place; say how it is a different one",
+              code: "duplicate_note_needed",
+            },
+          };
+      }
+    }
     const [place, kind] = await Promise.all([
       this.nearestPlace(dto.lat, dto.lng),
       this.prisma.kind.findFirst({ where: { slug: dto.kindSlug, status: "active" } }),
@@ -274,7 +369,7 @@ export class FieldService {
               businessName: json(name),
               ownerName: "",
               ownerPhone: "",
-              note: dto.note || null,
+              note: noteOf(dto),
               locale: dto.locale,
               source: "field",
               lookup: reading ? json(reading) : undefined,
@@ -298,22 +393,45 @@ export class FieldService {
     }
   }
 
-  /** The admin's own captures, newest first, and how many were added today in Israel. */
+  /**
+   * The actor's own captures (never anyone else's), newest first; how many were added today in
+   * Israel, in all, and live on Darb now.
+   */
   async mine(actor: AdminActor): Promise<FieldCapturesDto> {
-    const [rows, today] = await Promise.all([
+    const own = { createdById: actor.userId, source: "field" as const };
+    const [rows, today, total, live] = await Promise.all([
       this.prisma.joinRequest.findMany({
-        where: { createdById: actor.userId, source: "field" },
+        where: own,
         orderBy: [{ createdAt: "desc" }, { id: "desc" }],
         take: MINE,
+        include: {
+          business: {
+            select: {
+              slug: true,
+              status: true,
+              place: { select: { slug: true } },
+              primaryKind: {
+                select: { slug: true, status: true, sector: { select: { slug: true } } },
+              },
+            },
+          },
+        },
       }),
-      this.prisma.$queryRaw<{ n: bigint }[]>`
-        SELECT count(*) AS n FROM "JoinRequest"
-        WHERE "createdById" = ${actor.userId}::uuid AND source = 'field'
-          AND ("createdAt" AT TIME ZONE 'UTC' AT TIME ZONE 'Asia/Jerusalem')::date
-            = (now() AT TIME ZONE 'Asia/Jerusalem')::date`,
+      this.today(actor.userId),
+      this.prisma.joinRequest.count({ where: own }),
+      this.prisma.joinRequest.count({
+        where: { ...own, business: { is: { status: "published" } } },
+      }),
     ]);
-    return { today: Number(today[0]?.n ?? 0), items: rows.map(toFieldCapture) };
+    return { today, total, live, items: rows.map(toMine) };
   }
+}
+
+/** The review's note: the capture's own, then why it is not the likely duplicate. */
+function noteOf(dto: FieldCaptureCreateDto): string | null {
+  const distinct = dto.distinct?.trim();
+  const note = [dto.note?.trim(), distinct ? `≠ ${distinct}` : ""].filter(Boolean).join("\n");
+  return note ? note.slice(0, 1300) : null;
 }
 
 /** When the phone took it (a queued capture may arrive hours later), never in the future. */

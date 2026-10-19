@@ -13,11 +13,11 @@ import { AdminGuard, type AdminRequest } from "../auth/admin.guard.js";
 import { MAX_UPLOAD_BYTES, MediaStore, pendingKey, toWebp } from "../media/media.js";
 import { FieldService } from "./field.service.js";
 
-type UploadRequest = AdminRequest & AsyncIterable<Buffer>;
-type Res = { res?: { setHeader(k: string, v: string): void } };
+export type UploadRequest = AdminRequest & AsyncIterable<Buffer>;
+export type Res = { res?: { setHeader(k: string, v: string): void } };
 
 /** The request body as one image, refused past MAX_UPLOAD_BYTES and when it is not an image. */
-async function webpOf(req: UploadRequest): Promise<Buffer> {
+export async function webpOf(req: UploadRequest): Promise<Buffer> {
   const declared = Number(req.headers["content-length"] ?? 0);
   if (declared > MAX_UPLOAD_BYTES)
     throw new HttpException({ message: "Too large", reason: "too-large" }, 413);
@@ -38,6 +38,14 @@ async function webpOf(req: UploadRequest): Promise<Buffer> {
  * Add from the street, for admins only. The photo and the sign reading take the image as the raw
  * request body (the web's /admin/field-api routes forward the browser's file alone).
  */
+/** Kept under pending/ like a /join photo; null when uploads are off. */
+export async function storePhoto(media: MediaStore, webp: Buffer): Promise<FieldPhotoResultDto> {
+  if (!media.enabled) return { key: null };
+  const key = pendingKey();
+  if (!(await media.put(key, webp))) throw new ServiceUnavailableException({ reason: "storage" });
+  return { key };
+}
+
 @Controller()
 @UseGuards(AdminGuard)
 export class AdminFieldUploadsController {
@@ -50,12 +58,7 @@ export class AdminFieldUploadsController {
   @Post("admin/field/photo")
   @HttpCode(201)
   async photo(@Req() req: UploadRequest): Promise<FieldPhotoResultDto> {
-    const webp = await webpOf(req);
-    if (!this.media.enabled) return { key: null };
-    const key = pendingKey();
-    if (!(await this.media.put(key, webp)))
-      throw new ServiceUnavailableException({ reason: "storage" });
-    return { key };
+    return storePhoto(this.media, await webpOf(req));
   }
 
   /** Reads the sign. The image goes to the model as the metadata-free WebP, never the original. */

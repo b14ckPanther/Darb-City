@@ -125,6 +125,8 @@ model Place {
   /// Set by every admin write; null means the seed loader owns the row (Plan 4).
   editedAt   DateTime?
   businesses Business[]
+  /// Helpers who named this as their home town.
+  helpers    User[]
 
   @@index([point], type: Gist)
   @@index([path])
@@ -255,8 +257,31 @@ model User {
   claims        Claim[]       @relation("ClaimUser")
   reviewed      Claim[]       @relation("ClaimReviewer")
   audits        AuditLog[]
-  /// Businesses this admin added from the street (join requests with source field).
+  /// Businesses this admin or helper added from the street (join requests with source field).
   fieldCaptures JoinRequest[]
+
+  /// Darb Helpers: friends who add businesses from their own towns. An admin approves them first.
+  helperStatus    HelperStatus @default(none)
+  /// The name the helper chose; shown publicly only while helperCredit is on.
+  helperName      String?
+  helperPhone     String?
+  /// Their home town, as information for the admin only (helpers may add anywhere).
+  helperPlaceId   String?      @db.Uuid
+  helperPlace     Place?       @relation(fields: [helperPlaceId], references: [id], onDelete: SetNull)
+  helperNote      String?
+  /// "Added by <helperName>" on the public cards of their published additions, read at render time.
+  helperCredit    Boolean      @default(false)
+  helperAppliedAt DateTime?
+  helperDecidedAt DateTime?
+
+  @@index([helperStatus, helperAppliedAt])
+}
+
+enum HelperStatus {
+  none
+  pending
+  approved
+  paused
 }
 
 model Membership {
@@ -525,6 +550,8 @@ enum AuditEntity {
   business
   plan
   text
+  /// A helper's approval, pause or resume (entityId is the User id).
+  helper
 }
 
 /// Who changed what, and when. Field names only: values live in the rows themselves.

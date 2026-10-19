@@ -115,6 +115,13 @@ export class BusinessesRepository {
         kinds: { where: { kind: { is: { status: "active" } } }, select: { kindId: true } },
         place: { select: { slug: true, path: true, lat: true, lng: true } },
         brand: { select: { slug: true } },
+        // A helper's credit, read now: turning it off hides it on every card at once.
+        joinRequests: {
+          where: { source: "field", createdBy: { is: { isAdmin: false, helperCredit: true } } },
+          select: { createdBy: { select: { helperName: true, helperCredit: true } } },
+          orderBy: { createdAt: "asc" },
+          take: 1,
+        },
       },
     });
     return closestInSubtree(rows, placePath);
