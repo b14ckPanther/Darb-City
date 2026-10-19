@@ -2,6 +2,7 @@ import { clerkMiddleware } from "@clerk/nextjs/server";
 import { NextResponse, type NextFetchEvent, type NextRequest } from "next/server";
 import { adminAuthMode, clerkOrigin } from "./admin/mode";
 import { adminRoute } from "./admin/routes";
+import { helperRoute } from "./helpers/routes";
 import { adminCsp, publicCsp, securityHeaders } from "./lib/csp";
 import { routeLocale } from "./lib/locale-path";
 import { indexable } from "./lib/site";
@@ -18,9 +19,18 @@ function withHeaders(res: NextResponse, host: string): NextResponse {
   return res;
 }
 
-/** /admin renders per request: a fresh nonce, noindex, no-store, rewritten to app/admin/[locale]. */
+/** The two signed-in apps: the admin and the helper app, each rewritten to app/<app>/[locale]. */
+type App = "admin" | "helpers";
+const appOf = (pathname: string): App | null =>
+  adminRoute(pathname) ? "admin" : helperRoute(pathname) ? "helpers" : null;
+
+/**
+ * /admin and /helpers render per request: a fresh nonce, noindex, no-store, rewritten to
+ * app/admin/[locale] or app/helpers/[locale].
+ */
 function adminResponse(request: NextRequest): NextResponse {
-  const route = adminRoute(request.nextUrl.pathname)!;
+  const app = appOf(request.nextUrl.pathname)!;
+  const route = (app === "admin" ? adminRoute : helperRoute)(request.nextUrl.pathname)!;
   const nonce = btoa(crypto.randomUUID());
   const csp = adminCsp({
     nonce,
@@ -32,9 +42,9 @@ function adminResponse(request: NextRequest): NextResponse {
   headers.set("x-nonce", nonce);
   headers.set("content-security-policy", csp);
   // The shell needs the public path (/ar/admin/x) to mark the current section and switch language.
-  headers.set("x-darb-admin-path", request.nextUrl.pathname);
+  headers.set(`x-darb-${app === "admin" ? "admin" : "helper"}-path`, request.nextUrl.pathname);
   const url = request.nextUrl.clone();
-  url.pathname = `/admin/${route.locale}${route.rest}`;
+  url.pathname = `/${app}/${route.locale}${route.rest}`;
   const res = NextResponse.rewrite(url, { request: { headers } });
   res.headers.set("content-security-policy", csp);
   res.headers.set("x-robots-tag", "noindex, nofollow");
@@ -42,8 +52,8 @@ function adminResponse(request: NextRequest): NextResponse {
   for (const [k, v] of Object.entries(securityHeaders())) res.headers.set(k, v);
   return res;
 }
-/** The internal shape the rewrite targets (app/admin/[locale]); reachable only through adminResponse. */
-const INTERNAL_ADMIN = /^\/admin\/(?:he|ar|en)(?:\/|$)/;
+/** The internal shape the rewrite targets (app/<app>/[locale]); reachable only through adminResponse. */
+const INTERNAL_ADMIN = /^\/(?:admin|helpers)\/(?:he|ar|en)(?:\/|$)/;
 function internalAdminNotFound(): NextResponse {
   const res = new NextResponse("Not found", { status: 404 });
   res.headers.set("x-robots-tag", "noindex, nofollow");
@@ -58,8 +68,8 @@ export async function proxy(
   event?: NextFetchEvent,
 ): Promise<NextResponse | Response> {
   if (INTERNAL_ADMIN.test(request.nextUrl.pathname)) return internalAdminNotFound();
-  if (adminRoute(request.nextUrl.pathname)) {
-    // Clerk runs only on admin requests: public pages never load or call Clerk.
+  if (appOf(request.nextUrl.pathname)) {
+    // Clerk runs only on admin and helper requests: public pages never load or call Clerk.
     if (adminAuthMode() === "clerk" && event)
       return (await clerkAdmin(request, event)) ?? adminResponse(request);
     return adminResponse(request);
@@ -77,8 +87,8 @@ export async function proxy(
 
 export const config = {
   // Route handlers, Next internals, brand files and anything with a file extension skip the proxy,
-  // except admin paths: a dot in an admin path (/admin/businesses/x.y) must still get the nonce
-  // CSP and noindex, and the internal /admin/<locale> shape must still 404.
+  // except admin and helper paths: a dot in one (/admin/businesses/x.y) must still get the nonce
+  // CSP and noindex, and the internal /admin/<locale> and /helpers/<locale> shapes must still 404.
   // /__clerk/ is Clerk's frontend API proxy path, kept for later.
   matcher: [
     "/((?!api/|_next/|brand/|.*\\..*).*)",
@@ -86,6 +96,10 @@ export const config = {
     "/admin/:path*",
     "/(ar|en)/admin",
     "/(ar|en)/admin/:path*",
+    "/helpers",
+    "/helpers/:path*",
+    "/(ar|en)/helpers",
+    "/(ar|en)/helpers/:path*",
     "/__clerk/(.*)",
   ],
 };
