@@ -120,6 +120,7 @@ export default async function JoinRequestsPage({
                 label={at(locale, "joinApproveAll", { count: page.helperPending })}
                 className={styles.primary}
                 icon={<AdminIcon name="check" size={18} />}
+                celebrate
                 confirm={at(locale, "joinApproveAllConfirm", {
                   count: page.helperPending,
                   name: helperName || at(locale, "helperNoName"),

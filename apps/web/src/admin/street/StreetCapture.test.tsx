@@ -250,7 +250,18 @@ describe("quick add (the helper app)", () => {
     expect(await screen.findByText("Sent. 4 today, on to the next one.")).toBeTruthy();
     expect(screen.getByRole("heading", { name: "Point at the sign" })).toBeTruthy();
     expect(screen.getByText("Today 4 of 40")).toBeTruthy();
-    expect(vibrate).toHaveBeenCalled();
+    // The gold stamp lands on the card just sent, over a screen already reset (and takes no taps).
+    const stamp = document.querySelector<HTMLElement>("[data-stamp]")!;
+    expect(stamp.getAttribute("aria-hidden")).toBe("true");
+    expect(stamp.textContent).toContain("Abu Samir Salon");
+    expect(stamp.querySelector("img")!.getAttribute("src")).toBe("blob:sign");
+    expect(stamp.querySelector("[data-seal]")).toBeTruthy();
+    expect(screen.getByLabelText("Photograph the sign")).toBeTruthy();
+    // A short tap of the phone as it lands; gone within 700 ms.
+    await waitFor(() => expect(vibrate).toHaveBeenCalledWith(24));
+    await waitFor(() => expect(document.querySelector("[data-stamp]")).toBeNull(), {
+      timeout: 1000,
+    });
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(4));
     expect(fetchMock.mock.calls[3]![0]).toBe("/en/helpers/field-api/captures");
   });
@@ -273,6 +284,8 @@ describe("quick add (the helper app)", () => {
         await screen.findByText("Kept on the phone. It goes out once you are online."),
       ).toBeTruthy();
       expect(await store.all()).toHaveLength(1);
+      // Kept, not sent: no stamp.
+      expect(document.querySelector("[data-stamp]")).toBeNull();
     } finally {
       Object.defineProperty(navigator, "onLine", { configurable: true, value: true });
     }

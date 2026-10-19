@@ -3,6 +3,7 @@
 import {
   HelperApplySchema,
   HelperPatchSchema,
+  HelperSeenSchema,
   LocateQuerySchema,
   type LocateResultDto,
 } from "@darb/contracts";
@@ -113,4 +114,14 @@ export async function fakeHelperSignOut(fd: FormData): Promise<void> {
   jar.delete(FAKE_COOKIE);
   jar.delete(ADMIN_HINT_COOKIE);
   redirect(helperHref(localeOf(fd), "/sign-in"));
+}
+
+/**
+ * The helper saw the app (up to when its moments were counted) and, once shown, a milestone: each
+ * is said once. Best effort: a miss only says it again next time.
+ */
+export async function markHelperSeen(input: { asOf: string; milestone?: number }): Promise<void> {
+  const parsed = HelperSeenSchema.safeParse(input);
+  if (!parsed.success) return;
+  await (await helperApi()).seen({ body: parsed.data }).catch(() => null);
 }

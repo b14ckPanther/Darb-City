@@ -147,6 +147,15 @@ filtered by one helper offer **Approve all** for their waiting additions: each r
 approval (published, audited per business), up to 200 per press. The Overview flags a helper with
 more than 100 additions in the last hour (`BURST_PER_HOUR`), with a link to them and Pause.
 
+Small moments keep helpers going. A send stamps a gold seal on the card just sent (680 ms, over
+a screen already reset, with a short buzz where the phone has one). At 10, 50, 100 and 500
+additions a full screen says so once, with their busiest town and how many are live
+(`GET /helpers/moments`; `User.helperMilestone` keeps the highest one shown). On opening, a note
+says how many of their additions went live since their last visit (`User.helperSeenAt`, set by
+`POST /helpers/moments/seen` up to the moment the app counted). Admins get neither. My additions
+counts its numbers up and passes a gold shine over what is live; approving in Join requests (one,
+or Approve all) stamps a gold seal on the toast. With reduced motion, each is its final state.
+
 The install sheet screenshots come from
 `WEB_URL=… HELPER_TOKEN=… node apps/web/scripts/shoot-helper-pwa.mjs` against a local server with
 fake sign-in.

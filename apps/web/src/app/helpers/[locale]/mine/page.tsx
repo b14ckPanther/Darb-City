@@ -1,4 +1,5 @@
 import { notFound, redirect } from "next/navigation";
+import type { CSSProperties } from "react";
 import type { FieldCaptureDto } from "@darb/contracts";
 import { pickText, type Locale } from "@darb/core";
 import { receivedAt } from "@/admin/join-view";
@@ -9,6 +10,16 @@ import { helperHref } from "@/helpers/routes";
 import { isLocale } from "@/lib/locale";
 import { href, paths } from "@/lib/routes";
 import styles from "@/helpers/helpers.module.css";
+import d from "@/helpers/delight.module.css";
+
+/** A number that counts up from 0 as the screen opens (CSS only; still with reduced motion). */
+function Count({ value }: { value: number }) {
+  return (
+    <strong className={d.count} style={{ "--to": value } as CSSProperties} data-count={value}>
+      <span>{value}</span>
+    </strong>
+  );
+}
 
 const STATE: Record<"pending" | "live" | "rejected" | "approved", HelperKey> = {
   pending: "mineWaiting",
@@ -17,13 +28,29 @@ const STATE: Record<"pending" | "live" | "rejected" | "approved", HelperKey> = {
   rejected: "mineNotAdded",
 };
 
-function Addition({ locale, item }: { locale: Locale; item: FieldCaptureDto }) {
+/** Live ones get a gold light passing over them, one after another (the first few only). */
+const SHINE_MAX = 8;
+
+function Addition({
+  locale,
+  item,
+  shine,
+}: {
+  locale: Locale;
+  item: FieldCaptureDto;
+  /** Its place among the live ones on screen, for the shine's order; null when not shown. */
+  shine: number | null;
+}) {
   const state = item.live ? "live" : item.status;
   return (
     <li className={styles.item} data-addition={item.id}>
       <div className={styles.itemHead}>
         <bdi className={styles.itemName}>{pickText(item.businessName, locale)}</bdi>
-        <span className={styles.pill} data-state={state}>
+        <span
+          className={shine === null ? styles.pill : `${styles.pill} ${d.shine}`}
+          data-state={state}
+          style={shine === null ? undefined : ({ "--i": shine } as CSSProperties)}
+        >
           {ht(locale, STATE[state])}
         </span>
       </div>
@@ -61,6 +88,8 @@ export default async function MinePage({ params }: { params: Promise<{ locale: s
   if (res.status === 401) redirect(helperHref(locale, "/sign-in"));
   if (res.status !== 200) redirect(helperHref(locale));
   const mine = res.body;
+  // How many live ones are drawn so far: the shine passes over them in order.
+  let shown = 0;
   return (
     <HelperShell locale={locale} tab="mine" tabs>
       <h1 className={styles.title}>{ht(locale, "mineTitle")}</h1>
@@ -69,15 +98,15 @@ export default async function MinePage({ params }: { params: Promise<{ locale: s
           {ht(locale, "mineSummary", { total: mine.total, live: mine.live })}
         </p>
         <div aria-hidden="true">
-          <strong>{mine.total}</strong>
+          <Count value={mine.total} />
           <span>{ht(locale, "mineAdded")}</span>
         </div>
-        <div aria-hidden="true" data-live="">
-          <strong>{mine.live}</strong>
+        <div aria-hidden="true" data-live="" className={mine.live > 0 ? d.shine : undefined}>
+          <Count value={mine.live} />
           <span>{ht(locale, "mineLiveCount")}</span>
         </div>
         <div aria-hidden="true">
-          <strong>{mine.today}</strong>
+          <Count value={mine.today} />
           <span>{ht(locale, "mineTodayCount")}</span>
         </div>
       </div>
@@ -107,9 +136,17 @@ export default async function MinePage({ params }: { params: Promise<{ locale: s
         </section>
       ) : (
         <ul className={styles.list} role="list" aria-label={ht(locale, "mineTitle")}>
-          {mine.items.map((item) => (
-            <Addition key={item.id} locale={locale} item={item} />
-          ))}
+          {mine.items.map((item) => {
+            const order = item.live ? shown++ : null;
+            return (
+              <Addition
+                key={item.id}
+                locale={locale}
+                item={item}
+                shine={order !== null && order < SHINE_MAX ? order + 1 : null}
+              />
+            );
+          })}
         </ul>
       )}
     </HelperShell>

@@ -25,6 +25,7 @@ import { adminHref } from "../routes";
 import { downscale } from "./photo";
 import { flushQueue, openQueue, type QueueStore, type QueuedCapture } from "./queue";
 import styles from "../admin.module.css";
+import { Seal } from "@/components/Seal";
 import { buzz, takeSharedPhoto } from "./quick";
 import own from "./street.module.css";
 
@@ -80,6 +81,10 @@ export interface QuickAdd {
   /** Shown under the steps while nothing is being added (the install card). */
   aside?: ReactNode;
 }
+
+/** The send stamp: the seal lands at about a third, and the card is gone by the end. */
+export const STAMP_MS = 680;
+const STAMP_LANDS_MS = 230;
 
 const online = () => typeof navigator === "undefined" || navigator.onLine !== false;
 
@@ -174,7 +179,21 @@ export function StreetCapture({
   const [connected, setConnected] = useState(true);
   const [linkMissed, setLinkMissed] = useState(false);
   const [shared, setShared] = useState(Boolean(incoming?.link || incoming?.name));
+  /** The gold seal that lands on the card just sent, over the fresh screen (never in its way). */
+  const [stamp, setStamp] = useState<{ n: number; label: string; photo: string | null } | null>(
+    null,
+  );
   const today = Math.max(quick?.today ?? 0, added);
+  useEffect(() => {
+    if (!stamp) return;
+    // The phone taps as the seal lands; the card is gone by 700 ms.
+    const thud = setTimeout(() => buzz(24), STAMP_LANDS_MS);
+    const gone = setTimeout(() => setStamp(null), STAMP_MS);
+    return () => {
+      clearTimeout(thud);
+      clearTimeout(gone);
+    };
+  }, [stamp]);
   useEffect(() => {
     if (!toast) return;
     const gone = setTimeout(() => setToast(null), 4000);
@@ -249,7 +268,8 @@ export function StreetCapture({
 
   useEffect(
     () => () => {
-      if (preview) URL.revokeObjectURL(preview);
+      // The sent card's stamp may still show this photo for a moment.
+      if (preview) setTimeout(() => URL.revokeObjectURL(preview), STAMP_MS + 300);
     },
     [preview],
   );
@@ -455,7 +475,8 @@ export function StreetCapture({
       // Reset at once and say so; the queue sends in the background.
       const n = today + 1;
       setAdded(n);
-      buzz(online() ? [20, 50, 20] : 20);
+      if (online()) setStamp({ n, label, photo: preview });
+      else buzz(20);
       setToast(
         online()
           ? { text: t("quickSent", { count: n }), kind: "sent", n }
@@ -788,6 +809,20 @@ export function StreetCapture({
             </p>
           ) : null}
         </div>
+        {stamp ? (
+          <div key={stamp.n} className={own.stamp} aria-hidden="true" data-stamp="">
+            <div className={own.stampCard}>
+              {stamp.photo ? (
+                // eslint-disable-next-line @next/next/no-img-element -- the local photo just sent
+                <img className={own.stampThumb} src={stamp.photo} alt="" />
+              ) : (
+                <span className={own.stampThumb}>{cameraIcon}</span>
+              )}
+              <bdi className={own.stampName}>{stamp.label}</bdi>
+              <Seal className={own.stampSeal} />
+            </div>
+          </div>
+        ) : null}
         {!connected ? <p className={own.offline}>{t("quickOffline")}</p> : null}
         {!persistent ? <p className={styles.warning}>{t("streetNoStorage")}</p> : null}
 

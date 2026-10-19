@@ -16,7 +16,10 @@ const localeOf = (fd: FormData): Locale => {
   return isLocale(l) ? l : "he";
 };
 
-/** Publishes the join request's draft as it is saved now; the nav's count follows. */
+/**
+ * Publishes the join request's draft as it is saved now. The page and the nav's count (and the
+ * installed app's badge) render again from the revalidation; the button stamps its gold seal.
+ */
 export async function approveJoin(_prev: ActionState, fd: FormData): Promise<ActionState> {
   const locale = localeOf(fd);
   const id = text(fd, "id");
@@ -27,7 +30,7 @@ export async function approveJoin(_prev: ActionState, fd: FormData): Promise<Act
   if (res.status === 401) redirect(adminHref(locale, "/sign-in"));
   if (res.status !== 200) return actionFailed(locale, "errJoinNotDecided", res);
   revalidatePath("/admin/[locale]", "layout");
-  redirect(adminHref(locale, `/join-requests/${id}`));
+  return { ok: true, message: null, errors: [] };
 }
 
 /** Deletes the draft and its photos; the request stays with the reason. */

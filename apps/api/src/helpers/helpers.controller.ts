@@ -49,6 +49,31 @@ export class HelpersController {
   }
 }
 
+/** The helper app's small moments: a milestone, and what went live since the last visit. */
+@Controller()
+@UseGuards(HelperGuard)
+export class HelperMomentsController {
+  constructor(private readonly helpers: HelpersService) {}
+
+  @TsRestHandler(contract.helpers.moments)
+  moments(@Req() req: Req_) {
+    noStore(req);
+    return tsRestHandler(contract.helpers.moments, async () => ({
+      status: 200,
+      body: await this.helpers.moments(req.helper!),
+    }));
+  }
+
+  @TsRestHandler(contract.helpers.seen)
+  seen(@Req() req: Req_) {
+    noStore(req);
+    return tsRestHandler(contract.helpers.seen, async ({ body }) => {
+      await this.helpers.seen(req.helper!, body);
+      return { status: 204, body: undefined };
+    });
+  }
+}
+
 /**
  * Add from the street for helpers: the admin's field routes mounted a second time, on the same
  * FieldService. An approved helper (or an admin) adds; a paused one still reads their own list.

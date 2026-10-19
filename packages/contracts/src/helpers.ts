@@ -83,6 +83,54 @@ export const HelperPatchSchema = z
   .refine((p) => p.name !== undefined || p.credit !== undefined, { message: "Nothing to change" });
 export type HelperPatchDto = z.infer<typeof HelperPatchSchema>;
 
+/** The total additions a helper is celebrated at, once each. */
+export const HELPER_MILESTONES = [10, 50, 100, 500] as const;
+
+/** The highest milestone a total of additions reached, or 0 before the first. */
+export function milestoneOf(total: number): number {
+  return HELPER_MILESTONES.reduce<number>((best, m) => (total >= m ? m : best), 0);
+}
+
+/**
+ * What the helper app has to tell them on opening: a milestone not celebrated yet, and how many of
+ * their additions went live since they last opened it. Both null for admins (they approve their own).
+ */
+export const HelperMomentsSchema = z.object({
+  /** The server's time when these were counted: marking them seen never skips a later approval. */
+  asOf: z.string(),
+  milestone: z
+    .object({
+      /** The milestone (10, 50, 100 or 500), never the exact total. */
+      count: z.number().int().positive(),
+      /** Of all their additions, live on Darb now. */
+      live: z.number().int().nonnegative(),
+      /** The town with the most of their additions; null when none has a town yet. */
+      placeName: LocalizedSchema.nullable(),
+    })
+    .nullable(),
+  wentLive: z
+    .object({
+      count: z.number().int().positive(),
+      /** Their previous visit: the note says "today", "since yesterday" or "since your last visit". */
+      since: z.string(),
+    })
+    .nullable(),
+});
+export type HelperMomentsDto = z.infer<typeof HelperMomentsSchema>;
+
+/** Seen: their visit (up to asOf) and, once it was shown, the milestone. */
+export const HelperSeenSchema = z
+  .object({
+    asOf: z.string().datetime(),
+    milestone: z
+      .number()
+      .int()
+      .refine((m) => (HELPER_MILESTONES as readonly number[]).includes(m))
+      .optional(),
+  })
+  .strict();
+export type HelperSeenDto = z.infer<typeof HelperSeenSchema>;
+
 const signedIn = { 401: AdminErrorSchema, 403: AdminErrorSchema } as const;
 /** 429: the helper's additions for today are used up (code daily_limit). */
 const captureErrors = {
@@ -108,6 +156,19 @@ export const helpersContract = c.router({
     path: "/helpers/me",
     body: HelperPatchSchema,
     responses: { 200: HelperMeSchema, 400: AdminErrorSchema, 409: AdminErrorSchema, ...signedIn },
+  },
+  /** A milestone to celebrate and what went live since their last visit (approved helpers). */
+  moments: {
+    method: "GET",
+    path: "/helpers/moments",
+    responses: { 200: HelperMomentsSchema, ...signedIn },
+  },
+  /** Marks the visit and a shown milestone seen, so each is said once. */
+  seen: {
+    method: "POST",
+    path: "/helpers/moments/seen",
+    body: HelperSeenSchema,
+    responses: { 204: c.noBody(), 400: AdminErrorSchema, ...signedIn },
   },
   /**
    * The street capture for approved helpers (and admins): the admin's field routes mounted again.

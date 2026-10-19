@@ -1,9 +1,12 @@
 import { Injectable, Logger } from "@nestjs/common";
 import {
   helperDailyLimit,
+  milestoneOf,
   type HelperApplyDto,
   type HelperMeDto,
+  type HelperMomentsDto,
   type HelperPatchDto,
+  type HelperSeenDto,
 } from "@darb/contracts";
 import type { Localized } from "@darb/core";
 import { WebRevalidator } from "../admin/revalidator.js";
@@ -93,6 +96,90 @@ export class HelpersService {
     const shown = (u: User) => (u.helperCredit ? u.helperName : null);
     if (shown(before) !== shown(row)) void this.refreshCards(actor.userId);
     return { status: 200 as const, body: toMe(row) };
+  }
+
+  /**
+   * What the app tells a helper on opening: the highest milestone their additions reached that was
+   * not celebrated yet, and how many of their additions an admin published since their last visit
+   * (none on the very first). Only their own additions count. Admins get neither.
+   */
+  async moments(actor: HelperActor): Promise<HelperMomentsDto> {
+    const asOf = new Date();
+    const user = await this.prisma.user.findUniqueOrThrow({ where: { id: actor.userId } });
+    if (user.isAdmin) return { asOf: asOf.toISOString(), milestone: null, wentLive: null };
+    const own = { createdById: actor.userId, source: "field" as const };
+    const [total, wentLive] = await Promise.all([
+      this.prisma.joinRequest.count({ where: own }),
+      user.helperSeenAt
+        ? this.prisma.joinRequest.count({
+            where: {
+              ...own,
+              status: "approved",
+              decidedAt: { gt: user.helperSeenAt, lte: asOf },
+              business: { is: { status: "published" } },
+            },
+          })
+        : 0,
+    ]);
+    const reached = milestoneOf(total);
+    return {
+      asOf: asOf.toISOString(),
+      milestone:
+        reached > user.helperMilestone ? await this.milestone(actor.userId, reached) : null,
+      wentLive:
+        wentLive > 0 && user.helperSeenAt
+          ? { count: wentLive, since: user.helperSeenAt.toISOString() }
+          : null,
+    };
+  }
+
+  /** The milestone's words: how many of their additions are live, and their busiest town. */
+  private async milestone(userId: string, count: number) {
+    const own = { createdById: userId, source: "field" as const };
+    const [live, towns] = await Promise.all([
+      this.prisma.joinRequest.count({
+        where: { ...own, business: { is: { status: "published" } } },
+      }),
+      this.prisma.business.groupBy({
+        by: ["placeId"],
+        where: { joinRequests: { some: own } },
+        _count: { _all: true },
+        orderBy: [{ _count: { placeId: "desc" } }, { placeId: "asc" }],
+        take: 1,
+      }),
+    ]);
+    const top = towns[0]
+      ? await this.prisma.place.findUnique({
+          where: { id: towns[0].placeId },
+          select: { name: true },
+        })
+      : null;
+    return { count, live, placeName: (top?.name as Localized | undefined) ?? null };
+  }
+
+  /**
+   * Their visit, up to the moment the app counted (never later, so an approval in between is
+   * still told next time), and a milestone once it was shown. Never moves either backwards, and a
+   * milestone counts only when their additions reached it.
+   */
+  async seen(actor: HelperActor, dto: HelperSeenDto): Promise<void> {
+    const asOf = new Date(Math.min(Date.parse(dto.asOf), Date.now()));
+    await this.prisma.user.updateMany({
+      where: {
+        id: actor.userId,
+        OR: [{ helperSeenAt: null }, { helperSeenAt: { lt: asOf } }],
+      },
+      data: { helperSeenAt: asOf },
+    });
+    if (dto.milestone === undefined) return;
+    const total = await this.prisma.joinRequest.count({
+      where: { createdById: actor.userId, source: "field" },
+    });
+    if (total < dto.milestone) return;
+    await this.prisma.user.updateMany({
+      where: { id: actor.userId, helperMilestone: { lt: dto.milestone } },
+      data: { helperMilestone: dto.milestone },
+    });
   }
 
   /** Best effort: a missed refresh only leaves the old line until the page's own timer. */

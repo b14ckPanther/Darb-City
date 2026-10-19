@@ -63,6 +63,7 @@ export default async function JoinRequestPage({
               className={styles.primary}
               icon={<AdminIcon name="check" size={18} />}
               done={at(locale, "donePublished")}
+              celebrate
             />
           ) : null
         }
