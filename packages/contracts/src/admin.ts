@@ -92,19 +92,48 @@ export const AdminListQuerySchema = z.object({
   cursor: z.string().max(200).optional(),
   limit: z.coerce.number().int().min(1).max(100).default(50),
 });
+/** Where a business came from, as the admin filters it. */
+export const BUSINESS_ORIGINS = ["imported", "edited", "street", "join"] as const;
+/** Gaps the overview counts and the businesses list filters by. */
+export const BUSINESS_ISSUES = ["no-phone", "no-hours", "pin-at-centre", "pin-outside"] as const;
+export type BusinessIssue = (typeof BUSINESS_ISSUES)[number];
+const SortDir = z.enum(["asc", "desc"]);
+/** 1-based page number; wins over `cursor` when both are given. */
+const pageNumber = z.coerce.number().int().min(1).max(2000);
 export const AdminBusinessListQuerySchema = AdminListQuerySchema.extend({
   place: SlugSchema.optional(),
   kind: SlugSchema.optional(),
   /** Showroom examples are left out unless asked for ("1"). */
   examples: z.enum(["0", "1"]).optional(),
+  sector: SlugSchema.optional(),
+  tier: z.enum(TIERS).optional(),
+  source: z.enum(BUSINESS_ORIGINS).optional(),
+  issue: z.enum(BUSINESS_ISSUES).optional(),
+  sort: z.enum(["updated", "created", "name"]).optional(),
+  dir: SortDir.optional(),
+  page: pageNumber.optional(),
+  /** The name's language for sort=name. */
+  locale: LocaleSchema.optional(),
+});
+export const AdminPlaceListQuerySchema = AdminListQuerySchema.extend({
+  type: z.enum(PLACE_TYPES).optional(),
+  sort: z.enum(["name", "population", "businesses"]).optional(),
+  dir: SortDir.optional(),
+  page: pageNumber.optional(),
+  locale: LocaleSchema.optional(),
 });
 export const AdminKindListQuerySchema = z.object({
   q: z.string().trim().max(80).optional(),
   status: z.enum(["active", "hidden"]).optional(),
   sector: id.optional(),
 });
+/** `total` counts every match (lists that report it); `nextCursor` stays for older callers. */
 const page = <T extends z.ZodTypeAny>(item: T) =>
-  z.object({ items: z.array(item), nextCursor: z.string().nullable() });
+  z.object({
+    items: z.array(item),
+    nextCursor: z.string().nullable(),
+    total: z.number().int().nonnegative().optional(),
+  });
 
 // Places
 export const AdminPlaceSchema = z.object({
@@ -122,6 +151,9 @@ export const AdminPlaceSchema = z.object({
   status: z.enum(PLACE_STATUSES),
   editedAt: stamp,
   seedSource,
+  /** List rows only: the parent's name and how many real businesses the place holds. */
+  parentName: LocalizedSchema.nullable().optional(),
+  businessCount: z.number().int().nonnegative().optional(),
 });
 const placeFields = z.object({
   name: LocalizedSchema,
@@ -151,6 +183,8 @@ export const AdminSectorSchema = z.object({
   order: z.number().int(),
   editedAt: stamp,
   seedSource,
+  kindCount: z.number().int().nonnegative().optional(),
+  businessCount: z.number().int().nonnegative().optional(),
 });
 const sectorFields = z.object({
   name: LocalizedSchema,
@@ -219,6 +253,11 @@ export const AdminBusinessRowSchema = z.object({
   editedAt: stamp,
   updatedAt: z.string(),
   seedSource,
+  /** List rows: readable place and kind names, a thumbnail key (logo, else first photo). */
+  placeName: LocalizedSchema.optional(),
+  kindName: LocalizedSchema.optional(),
+  thumb: z.string().nullable().optional(),
+  createdAt: z.string().optional(),
 });
 const AppsSchema = z
   .object({ web: httpUrl.optional(), ios: httpUrl.optional(), android: httpUrl.optional() })
@@ -264,6 +303,26 @@ export const AdminBusinessPatchSchema = businessFields.partial().strict();
 export const AdminStatusSchema = z.object({
   status: BusinessStatus,
   immediate: z.boolean().optional(),
+});
+export const BULK_ACTIONS = ["publish", "draft", "suspend", "kind"] as const;
+/** One change to many businesses; each one is written and audited on its own. */
+export const AdminBulkSchema = z
+  .object({
+    ids: z.array(id).min(1).max(100),
+    action: z.enum(BULK_ACTIONS),
+    kindId: id.optional(),
+  })
+  .strict()
+  .refine((b) => (b.action === "kind") === Boolean(b.kindId), {
+    message: "kindId goes with the kind action, and only with it",
+  });
+export const AdminBulkResultSchema = z.object({
+  changed: z.number().int().nonnegative(),
+  unchanged: z.number().int().nonnegative(),
+  /** Ids that do not exist (or could not change). */
+  failed: z.array(id),
+  /** Takedowns: false when the web did not confirm it dropped every page. */
+  revalidated: z.boolean().optional(),
 });
 
 // Plans (/pricing)
@@ -387,6 +446,55 @@ export const AuditRowSchema = z.object({
 });
 export const AdminMeSchema = z.object({ clerkUserId: z.string(), userId: id });
 
+/** One search word added to a kind (from the search gaps), in the language it was typed in. */
+export const AdminSynonymSchema = z
+  .object({ locale: LocaleSchema, word: z.string().trim().min(1).max(80) })
+  .strict();
+
+// Overview and the command palette
+export const AdminOverviewSchema = z.object({
+  counts: z.object({
+    published: z.number().int(),
+    draft: z.number().int(),
+    suspended: z.number().int(),
+    /** Created this week by people (admin, join form, street), not by the seed import. */
+    addedThisWeek: z.number().int(),
+    placesLive: z.number().int(),
+    placesTotal: z.number().int(),
+    kindsActive: z.number().int(),
+    kindsHidden: z.number().int(),
+    pendingJoins: z.number().int(),
+    streetPending: z.number().int(),
+    newInquiries: z.number().int(),
+  }),
+  /** Published businesses with a gap, by issue. */
+  attention: z.record(z.enum(BUSINESS_ISSUES), z.number().int()),
+  /** Businesses added by people per day, oldest first, last 14 days (Asia/Jerusalem days). */
+  added: z.array(z.object({ day: z.string(), count: z.number().int() })),
+  activity: z.array(
+    AuditRowSchema.extend({
+      /** The entity's readable name, null once it is gone. */
+      name: LocalizedSchema.nullable(),
+      self: z.boolean(),
+    }),
+  ),
+  generatedAt: z.string(),
+});
+export const AdminSearchQuerySchema = z.object({ q: z.string().trim().min(1).max(80) });
+const hit = z.object({ id, slug: z.string(), name: LocalizedSchema });
+export const AdminSearchSchema = z.object({
+  businesses: z.array(
+    hit.extend({
+      placeName: LocalizedSchema,
+      status: BusinessStatus,
+      thumb: z.string().nullable(),
+    }),
+  ),
+  places: z.array(hit.extend({ status: z.enum(PLACE_STATUSES), type: z.enum(PLACE_TYPES) })),
+  kinds: z.array(hit.extend({ status: z.enum(["active", "hidden"]) })),
+  sectors: z.array(hit.extend({ accent: z.string() })),
+});
+
 export type AdminPlaceDto = z.infer<typeof AdminPlaceSchema>;
 export type AdminPlaceCreateDto = z.infer<typeof AdminPlaceCreateSchema>;
 export type AdminPlacePatchDto = z.infer<typeof AdminPlacePatchSchema>;
@@ -417,6 +525,12 @@ export type AdminJoinListQueryDto = z.infer<typeof AdminJoinListQuerySchema>;
 export type AdminJoinPageDto = z.infer<typeof AdminJoinPageSchema>;
 export type AuditRowDto = z.infer<typeof AuditRowSchema>;
 export type AdminErrorDto = z.infer<typeof AdminErrorSchema>;
+export type AdminPlaceListQueryDto = z.infer<typeof AdminPlaceListQuerySchema>;
+export type AdminBulkDto = z.infer<typeof AdminBulkSchema>;
+export type AdminBulkResultDto = z.infer<typeof AdminBulkResultSchema>;
+export type AdminOverviewDto = z.infer<typeof AdminOverviewSchema>;
+export type AdminSearchDto = z.infer<typeof AdminSearchSchema>;
+export type AdminSynonymDto = z.infer<typeof AdminSynonymSchema>;
 
 const byId = z.object({ id });
 const empty = z.object({}).strict();
@@ -456,6 +570,19 @@ export const adminContract = c.router({
       body: empty,
       responses: { 200: z.object({ released: z.literal(true) }), ...writeErrors },
     },
+    /** The dashboard's numbers, queue and activity (cached briefly by the API). */
+    overview: {
+      method: "GET",
+      path: "/admin/overview",
+      responses: { 200: AdminOverviewSchema, ...guarded },
+    },
+    /** The command palette: a few of each, by name or address. */
+    search: {
+      method: "GET",
+      path: "/admin/search",
+      query: AdminSearchQuerySchema,
+      responses: { 200: AdminSearchSchema, 400: AdminErrorSchema, ...guarded },
+    },
     /** Retry: asks the web again to drop the entity's pages at once, and waits for the answer. */
     revalidate: {
       method: "POST",
@@ -469,7 +596,7 @@ export const adminContract = c.router({
     list: {
       method: "GET",
       path: "/admin/places",
-      query: AdminListQuerySchema,
+      query: AdminPlaceListQuerySchema,
       responses: { 200: page(AdminPlaceSchema), ...guarded },
     },
     get: {
@@ -538,6 +665,14 @@ export const adminContract = c.router({
       body: AdminKindPatchSchema,
       responses: { 200: AdminKindSchema.extend(revalidated), ...writeErrors },
     },
+    /** Adds one search word (a search gap) to the kind's words, audited like any update. */
+    synonym: {
+      method: "POST",
+      path: "/admin/kinds/:id/synonym",
+      pathParams: byId,
+      body: AdminSynonymSchema,
+      responses: { 200: AdminKindSchema, ...writeErrors },
+    },
   }),
   businesses: c.router({
     list: {
@@ -571,6 +706,13 @@ export const adminContract = c.router({
       pathParams: byId,
       body: AdminStatusSchema,
       responses: { 200: AdminBusinessSchema.extend(revalidated), ...writeErrors },
+    },
+    /** Publish, back to draft, suspend or move to another kind, many at once. */
+    bulk: {
+      method: "POST",
+      path: "/admin/businesses/bulk",
+      body: AdminBulkSchema,
+      responses: { 200: AdminBulkResultSchema, ...writeErrors },
     },
     /** Only drafts the admin created; everything else is suspended instead. */
     remove: {

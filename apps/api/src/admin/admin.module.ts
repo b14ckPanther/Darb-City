@@ -15,6 +15,7 @@ import { APP_CONFIG, type AppConfig } from "../config.js";
 import { ModelBudget } from "../search/model-budget.js";
 import { MediaModule } from "../media/media.js";
 import { AdminMiscController, MiscAdmin } from "./misc.admin.js";
+import { OverviewAdmin } from "./overview.admin.js";
 import { AdminKindsController, KindsAdmin } from "./kinds.admin.js";
 import { AdminPlacesController, PlacesAdmin } from "./places.admin.js";
 import { AdminPlansController, PlansAdmin } from "./plans.admin.js";
@@ -52,6 +53,7 @@ import { Overpass } from "./locate/overpass.js";
     BusinessesAdmin,
     ExperienceValidator,
     MiscAdmin,
+    OverviewAdmin,
     PlansAdmin,
     TextsAdmin,
     InquiriesAdmin,

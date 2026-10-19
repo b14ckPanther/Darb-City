@@ -5,6 +5,7 @@ import {
   type AdminKindDto,
   type AdminKindListQueryDto,
   type AdminKindPatchDto,
+  type AdminSynonymDto,
 } from "@darb/contracts";
 import type { Localized } from "@darb/core";
 import { SCREEN_SCHEMA } from "@darb/seed";
@@ -185,6 +186,33 @@ export class KindsAdmin {
     );
     return { status: 200 as const, body: { ...toAdminKind(row), ...outcome(revalidated) } };
   }
+
+  /** One more search word, from the search gaps; a word it already has changes nothing. */
+  async synonym(actor: AdminActor, id: string, dto: AdminSynonymDto) {
+    const before = await this.prisma.kind.findUnique({ where: { id }, include: withCount });
+    if (!before) return notFound("kind");
+    const synonyms = before.synonyms as AdminKindDto["synonyms"];
+    const list = synonyms[dto.locale] ?? [];
+    if (list.some((w) => w.toLowerCase() === dto.word.toLowerCase()))
+      return { status: 200 as const, body: toAdminKind(before) };
+    if (list.length >= 80) return invalid("This kind already has the most words it can hold");
+    const next = { ...synonyms, [dto.locale]: [...list, dto.word] };
+    const row = await this.writer.write(actor, "update", "kind", async (tx) => {
+      const k = await tx.kind.update({
+        where: { id },
+        data: { synonyms: json(next), editedAt: new Date() },
+        include: withCount,
+      });
+      return {
+        row: k,
+        entityId: id,
+        fields: ["synonyms"],
+        tags: webTags.kind(),
+        search: [{ entity: "kind" as const, ids: [id] }],
+      };
+    });
+    return { status: 200 as const, body: toAdminKind(row) };
+  }
 }
 
 @Controller()
@@ -200,6 +228,7 @@ export class AdminKindsController {
       get: async ({ params }) => this.kinds.get(params.id),
       create: async ({ body }) => this.kinds.create(actor, body),
       update: async ({ params, body }) => this.kinds.update(actor, params.id, body),
+      synonym: async ({ params, body }) => this.kinds.synonym(actor, params.id, body),
     });
   }
 }

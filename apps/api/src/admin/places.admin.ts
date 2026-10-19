@@ -1,12 +1,12 @@
 import { Controller, Injectable, Req, UseGuards } from "@nestjs/common";
 import {
   contract,
-  type AdminListQueryDto,
+  type AdminPlaceListQueryDto,
   type AdminPlaceCreateDto,
   type AdminPlaceDto,
   type AdminPlacePatchDto,
 } from "@darb/contracts";
-import type { Localized } from "@darb/core";
+import { pickText, type Localized } from "@darb/core";
 import { TsRestHandler, tsRestHandler } from "@ts-rest/nest";
 import { AdminGuard, type AdminActor, type AdminRequest } from "../auth/admin.guard.js";
 import { decodeCursor, encodeCursor } from "../businesses/cursor.js";
@@ -20,6 +20,8 @@ import { webTags } from "./tags.js";
 import { seedSource } from "./seed-source.js";
 
 const STATUSES = new Set(["live", "soon"]);
+/** Every place there is, with room to grow; a list never reads more. */
+const PLACE_LIST_CAP = 5000;
 
 export const toAdminPlace = (p: Place): AdminPlaceDto => ({
   id: p.id,
@@ -51,23 +53,65 @@ export class PlacesAdmin {
     private readonly writer: AdminWriter,
   ) {}
 
-  async list(query: AdminListQueryDto) {
-    const offset = decodeCursor(query.cursor) ?? 0;
+  /**
+   * Places are few (about 1,100), so a list reads every match once, counts businesses per place,
+   * sorts in memory (names in the asked language) and returns one page with the total.
+   */
+  async list(query: AdminPlaceListQueryDto) {
+    const offset = query.page ? (query.page - 1) * query.limit : (decodeCursor(query.cursor) ?? 0);
     const where: Prisma.PlaceWhereInput = {
       ...(query.q ? { OR: nameOrSlug(query.q) } : {}),
       ...(query.status && STATUSES.has(query.status)
         ? { status: query.status as "live" | "soon" }
         : {}),
+      ...(query.type ? { type: query.type } : {}),
     };
-    const rows = await this.prisma.place.findMany({
-      where,
-      orderBy: { slug: "asc" },
-      skip: offset,
-      take: query.limit + 1,
-    });
+    const [rows, counts] = await Promise.all([
+      this.prisma.place.findMany({ where, orderBy: { slug: "asc" }, take: PLACE_LIST_CAP }),
+      this.prisma.business.groupBy({
+        by: ["placeId"],
+        where: { tier: { not: "example" } },
+        _count: { _all: true },
+      }),
+    ]);
+    const count = new Map(counts.map((c) => [c.placeId, c._count._all]));
+    const parentIds = [...new Set(rows.flatMap((r) => (r.parentId ? [r.parentId] : [])))];
+    const parents = new Map(
+      (
+        await this.prisma.place.findMany({
+          where: { id: { in: parentIds } },
+          select: { id: true, name: true },
+        })
+      ).map((p) => [p.id, p.name as Localized]),
+    );
+    const locale = query.locale ?? "he";
+    const name = (p: Place) => pickText(p.name as Localized, locale);
+    // No sort asked for: by address, as this list always was.
+    const sort = query.sort;
+    const dir = (query.dir ?? (sort === "name" || !sort ? "asc" : "desc")) === "asc" ? 1 : -1;
+    const collator = new Intl.Collator(locale);
+    const key = (p: Place) =>
+      sort === "population"
+        ? (p.population ?? -1)
+        : sort === "businesses"
+          ? (count.get(p.id) ?? 0)
+          : 0;
+    const sorted = [...rows].sort((a, b) =>
+      !sort
+        ? dir * (a.slug < b.slug ? -1 : a.slug > b.slug ? 1 : 0)
+        : sort === "name"
+          ? dir * collator.compare(name(a), name(b))
+          : dir * (key(a) - key(b)) || collator.compare(name(a), name(b)),
+    );
+    const page = sorted.slice(offset, offset + query.limit);
     return {
-      items: rows.slice(0, query.limit).map(toAdminPlace),
-      nextCursor: rows.length > query.limit ? encodeCursor(offset + query.limit) : null,
+      items: page.map((p) => ({
+        ...toAdminPlace(p),
+        parentName: p.parentId ? (parents.get(p.parentId) ?? null) : null,
+        businessCount: count.get(p.id) ?? 0,
+      })),
+      nextCursor: sorted.length > offset + query.limit ? encodeCursor(offset + query.limit) : null,
+      total: sorted.length,
     };
   }
 

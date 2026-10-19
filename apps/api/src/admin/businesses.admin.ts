@@ -6,6 +6,8 @@ import {
   type AdminBusinessListQueryDto,
   type AdminBusinessPatchDto,
   type AdminBusinessRowDto,
+  type AdminBulkDto,
+  type BusinessIssue,
   type AdminStatusDto,
 } from "@darb/contracts";
 import type { Hours, Localized } from "@darb/core";
@@ -23,9 +25,31 @@ import { webTags } from "./tags.js";
 import { nameOrSlugFilters } from "./text-search.js";
 import { seedSource } from "./seed-source.js";
 
-type Row = Business & { place: { slug: string }; kinds: { kindId: string }[] };
-const include = { place: { select: { slug: true } }, kinds: { select: { kindId: true } } } as const;
+type Row = Business & {
+  place: { slug: string; name: unknown };
+  primaryKind: { name: unknown };
+  kinds: { kindId: string }[];
+};
+const include = {
+  place: { select: { slug: true, name: true } },
+  primaryKind: { select: { name: true } },
+  kinds: { select: { kindId: true } },
+} as const;
+/** The list's thumbnail: the logo, else the first photo; a media key, or null. */
+export const thumbOf = (logo: unknown, photos: unknown): string | null => {
+  const key = (v: unknown) =>
+    v && typeof v === "object" && typeof (v as { key?: unknown }).key === "string"
+      ? (v as { key: string }).key
+      : null;
+  return key(logo) ?? (Array.isArray(photos) ? key(photos[0]) : null);
+};
+/** Pins further than this from their place's centre count as outside it (no boundaries yet). */
+export const PLACE_RADIUS_SQL = Prisma.sql`CASE p.type
+  WHEN 'city' THEN 10000 WHEN 'town' THEN 6000 WHEN 'village' THEN 4000
+  WHEN 'neighbourhood' THEN 3000 ELSE 30000 END`;
 const STATUSES = new Set(["draft", "published", "suspended"]);
+/** Bulk writes run this many at a time: quick, without crowding the database. */
+const BULK_CONCURRENCY = 4;
 
 export const toAdminBusinessRow = (b: Row): AdminBusinessRowDto => ({
   id: b.id,
@@ -40,6 +64,10 @@ export const toAdminBusinessRow = (b: Row): AdminBusinessRowDto => ({
   editedAt: b.editedAt?.toISOString() ?? null,
   updatedAt: b.updatedAt.toISOString(),
   seedSource: seedSource.business(b.place.slug, b.slug),
+  placeName: b.place.name as Localized,
+  kindName: b.primaryKind.name as Localized,
+  thumb: thumbOf(b.logo, b.photos),
+  createdAt: b.createdAt.toISOString(),
 });
 export const toAdminBusiness = (b: Row): AdminBusinessDto => ({
   ...toAdminBusinessRow(b),
@@ -89,40 +117,154 @@ export class BusinessesAdmin {
     private readonly experience: ExperienceValidator,
   ) {}
 
+  /** Ids of real, published businesses with one of the overview's gaps (raw: JSON and geography). */
+  async issueIds(issue: BusinessIssue): Promise<string[] | null> {
+    if (issue === "no-phone") return null;
+    const rows =
+      issue === "no-hours"
+        ? await this.prisma.$queryRaw<{ id: string }[]>`
+            SELECT b.id FROM "Business" b
+            WHERE b.tier <> 'example' AND b.hours -> 'weekly' = '{}'::jsonb
+              AND COALESCE((b.hours ->> 'byAppointment')::boolean, false) = false`
+        : issue === "pin-at-centre"
+          ? await this.prisma.$queryRaw<{ id: string }[]>`
+            SELECT b.id FROM "Business" b JOIN "Place" p ON p.id = b."placeId"
+            WHERE b.tier <> 'example' AND b.lat = p.lat AND b.lng = p.lng`
+          : await this.prisma.$queryRaw<{ id: string }[]>`
+            SELECT b.id FROM "Business" b JOIN "Place" p ON p.id = b."placeId"
+            WHERE b.tier <> 'example' AND NOT ST_DWithin(b.point, p.point, ${PLACE_RADIUS_SQL})`;
+    return rows.map((r) => r.id);
+  }
+
   async list(query: AdminBusinessListQueryDto) {
-    const offset = decodeCursor(query.cursor) ?? 0;
-    const place = query.place
-      ? await this.prisma.place.findUnique({ where: { slug: query.place } })
-      : null;
-    const kind = query.kind
-      ? await this.prisma.kind.findUnique({ where: { slug: query.kind } })
-      : null;
-    if ((query.place && !place) || (query.kind && !kind)) return { items: [], nextCursor: null };
+    const offset = query.page ? (query.page - 1) * query.limit : (decodeCursor(query.cursor) ?? 0);
+    const [place, kind, sector] = await Promise.all([
+      query.place ? this.prisma.place.findUnique({ where: { slug: query.place } }) : null,
+      query.kind ? this.prisma.kind.findUnique({ where: { slug: query.kind } }) : null,
+      query.sector ? this.prisma.sector.findUnique({ where: { slug: query.sector } }) : null,
+    ]);
+    const empty = { items: [], nextCursor: null, total: 0 };
+    if ((query.place && !place) || (query.kind && !kind) || (query.sector && !sector)) return empty;
+    const issueIds = query.issue ? await this.issueIds(query.issue) : null;
     const q = query.q;
+    const origin: Prisma.BusinessWhereInput =
+      query.source === "imported"
+        ? { source: "seed", editedAt: null }
+        : query.source === "edited"
+          ? { editedAt: { not: null } }
+          : query.source === "street"
+            ? { joinRequests: { some: { source: "field" } } }
+            : query.source === "join"
+              ? { joinRequests: { some: { source: { in: ["lookup", "manual"] } } } }
+              : {};
     const where: Prisma.BusinessWhereInput = {
       ...(place ? { placeId: place.id } : {}),
       ...(kind ? { primaryKindId: kind.id } : {}),
+      ...(sector ? { primaryKind: { sectorId: sector.id } } : {}),
       // The admin works on real businesses; examples only when asked for.
-      ...(query.examples === "1" ? {} : { tier: { not: "example" as const } }),
+      ...(query.tier
+        ? { tier: query.tier }
+        : query.examples === "1"
+          ? {}
+          : { tier: { not: "example" as const } }),
       ...(query.status && STATUSES.has(query.status)
         ? { status: query.status as Business["status"] }
         : {}),
-      ...(q
-        ? {
-            OR: nameOrSlugFilters(q),
-          }
-        : {}),
+      ...(query.issue === "no-phone" ? { phone: null, whatsapp: null } : {}),
+      ...(issueIds ? { id: { in: issueIds } } : {}),
+      ...origin,
+      ...(q ? { OR: nameOrSlugFilters(q) } : {}),
     };
-    const rows = await this.prisma.business.findMany({
-      where,
-      include,
-      orderBy: [{ updatedAt: "desc" }, { id: "asc" }],
-      skip: offset,
-      take: query.limit + 1,
-    });
+    const dir = query.dir ?? (query.sort === "name" ? "asc" : "desc");
+    if (query.sort === "name") {
+      const ids = (await this.prisma.business.findMany({ where, select: { id: true } })).map(
+        (r) => r.id,
+      );
+      const locale = query.locale ?? "he";
+      const order = dir === "asc" ? Prisma.sql`ASC` : Prisma.sql`DESC`;
+      const pageIds = (
+        await this.prisma.$queryRaw<{ id: string }[]>`
+          SELECT id FROM "Business" WHERE id = ANY(${ids}::uuid[])
+          ORDER BY lower(COALESCE(NULLIF(name ->> ${locale}, ''), name ->> 'he', name ->> 'ar',
+            name ->> 'en', slug)) ${order}, id
+          LIMIT ${query.limit} OFFSET ${offset}`
+      ).map((r) => r.id);
+      const rows = await this.prisma.business.findMany({
+        where: { id: { in: pageIds } },
+        include,
+      });
+      const byId = new Map(rows.map((r) => [r.id, r]));
+      return {
+        items: pageIds.flatMap((id) => (byId.has(id) ? [toAdminBusinessRow(byId.get(id)!)] : [])),
+        nextCursor: ids.length > offset + query.limit ? encodeCursor(offset + query.limit) : null,
+        total: ids.length,
+      };
+    }
+    const orderBy: Prisma.BusinessOrderByWithRelationInput[] =
+      query.sort === "created"
+        ? [{ createdAt: dir }, { id: "asc" }]
+        : [{ updatedAt: dir }, { id: "asc" }];
+    const [rows, total] = await Promise.all([
+      this.prisma.business.findMany({
+        where,
+        include,
+        orderBy,
+        skip: offset,
+        take: query.limit + 1,
+      }),
+      this.prisma.business.count({ where }),
+    ]);
     return {
       items: rows.slice(0, query.limit).map(toAdminBusinessRow),
       nextCursor: rows.length > query.limit ? encodeCursor(offset + query.limit) : null,
+      total,
+    };
+  }
+
+  /**
+   * One change to many businesses. Each goes through the same audited write as a single one
+   * (status or kind), a few at a time; one that is already so is left alone and counted.
+   */
+  async bulk(actor: AdminActor, body: AdminBulkDto) {
+    const ids = [...new Set(body.ids)];
+    const rows = await this.prisma.business.findMany({
+      where: { id: { in: ids } },
+      select: { id: true, status: true, primaryKindId: true },
+    });
+    const found = new Map(rows.map((r) => [r.id, r]));
+    const result = { changed: 0, unchanged: 0, failed: [] as string[] };
+    let revalidated: boolean | undefined;
+    const status =
+      body.action === "publish"
+        ? ("published" as const)
+        : body.action === "draft"
+          ? ("draft" as const)
+          : body.action === "suspend"
+            ? ("suspended" as const)
+            : null;
+    if (
+      body.action === "kind" &&
+      !(await this.prisma.kind.findUnique({ where: { id: body.kindId } }))
+    )
+      return notFound("kind");
+    const one = async (id: string) => {
+      const row = found.get(id);
+      if (!row) return void result.failed.push(id);
+      if (status ? row.status === status : row.primaryKindId === body.kindId)
+        return void result.unchanged++;
+      const res = status
+        ? await this.status(actor, id, { status })
+        : await this.update(actor, id, { primaryKindId: body.kindId! });
+      if (res.status !== 200) return void result.failed.push(id);
+      result.changed++;
+      const r = (res.body as { revalidated?: boolean }).revalidated;
+      if (r !== undefined) revalidated = (revalidated ?? true) && r;
+    };
+    for (let i = 0; i < ids.length; i += BULK_CONCURRENCY)
+      await Promise.all(ids.slice(i, i + BULK_CONCURRENCY).map(one));
+    return {
+      status: 200 as const,
+      body: { ...result, ...(revalidated === undefined ? {} : { revalidated }) },
     };
   }
 
@@ -337,6 +479,7 @@ export class AdminBusinessesController {
     const actor = req.admin!;
     return tsRestHandler(contract.admin.businesses, {
       list: async ({ query }) => ({ status: 200, body: await this.businesses.list(query) }),
+      bulk: async ({ body }) => this.businesses.bulk(actor, body),
       get: async ({ params }) => this.businesses.get(params.id),
       create: async ({ body }) => this.businesses.create(actor, body),
       update: async ({ params, body }) => this.businesses.update(actor, params.id, body),
