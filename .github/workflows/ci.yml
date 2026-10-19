@@ -13,9 +13,10 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  ci:
+  # Everything except the browser tests, in one job.
+  checks:
     runs-on: ubuntu-24.04
-    timeout-minutes: 45
+    timeout-minutes: 30
     env:
       DATABASE_URL: postgresql://darb:darb@localhost:5433/darb
       TEST_DATABASE_URL: postgresql://darb:darb@localhost:5433/darb_test
@@ -52,7 +53,7 @@ jobs:
       # apps/web/playwright.config.ts). This keeps the fixture equal to what its generator writes.
       - name: Map test tiles are reproducible
         run: pnpm --filter @darb/web exec node scripts/tiles/make-test-tiles.mjs --check
-      - name: Migrate and seed the e2e database
+      - name: Migrate and seed the database
         run: pnpm --filter @darb/api db:deploy && pnpm --filter @darb/api db:seed
       - name: The migrated database matches the Prisma schema (no drift)
         run: pnpm --filter @darb/api exec prisma migrate diff --from-config-datasource --to-schema prisma/schema.prisma --exit-code
@@ -60,14 +61,58 @@ jobs:
         run: pnpm --filter @darb/api search:quality
       - name: First-load JS, lazy stage and lazy search budgets
         run: pnpm --filter @darb/web budget
+
+  # The browser tests, split four ways so they run side by side instead of one after another.
+  e2e:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4]
+    env:
+      DATABASE_URL: postgresql://darb:darb@localhost:5433/darb
+      TEST_DATABASE_URL: postgresql://darb:darb@localhost:5433/darb_test
+      API_URL: http://localhost:4000
+      SITE_URL: http://localhost:3000
+      NEXT_TELEMETRY_DISABLED: "1"
+      TURBO_TELEMETRY_DISABLED: "1"
+      SEARCH_PROXY_KEY: ci-proxy-key
+      # Production builds serve the map from the 1 KB fixture via /api/tiles (no R2 in CI).
+      NEXT_PUBLIC_LOCAL_TILES: "1"
+      # No network and no keys: the model is replayed from recordings, embeddings are an offline hash.
+      INTENT_PROVIDER: recorded
+      EMBEDDING_PROVIDER: hash
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Postgres with PostGIS and pgvector (infra/postgres/Dockerfile), and Redis
+        run: docker compose -f infra/docker-compose.yml up -d --wait postgres redis
+      - run: cp apps/api/.env.example apps/api/.env
+      - run: pnpm build
+      - name: Migrate and seed the e2e database
+        run: pnpm --filter @darb/api db:deploy && pnpm --filter @darb/api db:seed
       - run: pnpm --filter @darb/web exec playwright install --with-deps chromium
-      - name: End-to-end, accessibility and LCP
-        run: pnpm --filter @darb/web e2e
+      - name: End-to-end, accessibility and LCP (shard ${{ matrix.shard }} of 4)
+        run: pnpm --filter @darb/web e2e --shard=${{ matrix.shard }}/4
       - if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v7
         with:
-          name: playwright
+          name: playwright-${{ matrix.shard }}
           path: |
             apps/web/playwright-report
             apps/web/test-results
           retention-days: 14
+
+  # The one check main's branch rule and Railway wait for: green only when every part is.
+  ci:
+    if: ${{ always() }}
+    needs: [checks, e2e]
+    runs-on: ubuntu-24.04
+    steps:
+      - run: test "${{ needs.checks.result }}" = success && test "${{ needs.e2e.result }}" = success
