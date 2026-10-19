@@ -1,13 +1,16 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import type {
-  AdminKindDto,
-  AdminOverviewDto,
-  BusinessIssue,
-  MissingReportDto,
+import {
+  BURST_PER_HOUR,
+  type AdminKindDto,
+  type AdminOverviewDto,
+  type BusinessIssue,
+  type MissingReportDto,
 } from "@darb/contracts";
 import { pickText, type Locale } from "@darb/core";
+import { ActionButton } from "@/admin/ActionButton";
 import { AdminIcon, type AdminIconName } from "@/admin/AdminIcon";
+import { decideHelper } from "@/admin/helper-actions";
 import { adminApi, okOr } from "@/admin/api";
 import { at, type AdminKey } from "@/admin/copy";
 import { SearchGaps } from "@/admin/SearchGaps";
@@ -196,6 +199,60 @@ export default async function AdminHome({ params }: { params: Promise<{ locale: 
           <Spark days={overview.added} />
         </div>
       </section>
+
+      {overview.bursts.length ? (
+        // A helper sending far more than a person walking a street could: look, and maybe pause.
+        <section className={o.burst} aria-labelledby="burst" data-burst="">
+          <div className={o.burstHead}>
+            <span className={o.burstIcon} aria-hidden="true">
+              <AdminIcon name="alert" size={18} />
+            </span>
+            <div>
+              <h2 id="burst" className={styles.h2}>
+                {t("burstTitle")}
+              </h2>
+              <p className={styles.hint}>{t("burstHint", { limit: n.format(BURST_PER_HOUR) })}</p>
+            </div>
+          </div>
+          <ul className={o.burstList} role="list">
+            {overview.bursts.map((b) => {
+              const name = b.name || t("helperNoName");
+              return (
+                <li key={b.id} className={o.burstRow} data-helper={b.id}>
+                  <span className={o.burstWho}>
+                    <bdi className={o.burstName}>{name}</bdi>
+                    <span className={`${o.burstCount} ${styles.num}`}>
+                      {t("burstCount", { count: n.format(b.count) })}
+                    </span>
+                  </span>
+                  <span className={o.burstActions}>
+                    <Link
+                      href={href(`/join-requests?helper=${b.id}&status=pending`)}
+                      className={`${styles.ghost} ${styles.sm}`}
+                    >
+                      <AdminIcon name="inbox" size={16} />
+                      {t("burstSee")}
+                    </Link>
+                    {b.status === "approved" ? (
+                      <ActionButton
+                        action={decideHelper}
+                        fields={{ id: b.id, locale, move: "pause" }}
+                        label={t("helperPause")}
+                        className={`${styles.ghost} ${styles.sm}`}
+                        icon={<AdminIcon name="close" size={16} />}
+                        confirm={t("helperPauseConfirm", { name })}
+                        done={t("helperPausedDone")}
+                      />
+                    ) : (
+                      <span className={o.burstPaused}>{t("helpersPaused")}</span>
+                    )}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      ) : null}
 
       <div className={o.columns}>
         <section className={styles.panel} aria-labelledby="attention">

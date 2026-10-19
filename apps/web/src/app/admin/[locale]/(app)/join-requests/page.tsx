@@ -2,6 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { AdminJoinPageDto, AdminJoinRequestDto } from "@darb/contracts";
 import { pickText, type Locale } from "@darb/core";
+import { ActionButton } from "@/admin/ActionButton";
+import { approveHelperJoins } from "@/admin/join-actions";
 import { AdminIcon } from "@/admin/AdminIcon";
 import { adminApi, okOr } from "@/admin/api";
 import { at, type AdminKey } from "@/admin/copy";
@@ -109,10 +111,26 @@ export default async function JoinRequestsPage({
             : at(locale, "joinHint")
         }
         actions={
-          <Link href={adminHref(locale, "/field")} className={styles.ghost}>
-            <AdminIcon name="camera" size={18} />
-            {at(locale, "navStreet")}
-          </Link>
+          <>
+            {helper && page.helperPending ? (
+              // One helper's waiting additions, all at once (each audited as a single approval).
+              <ActionButton
+                action={approveHelperJoins}
+                fields={{ helper, locale }}
+                label={at(locale, "joinApproveAll", { count: page.helperPending })}
+                className={styles.primary}
+                icon={<AdminIcon name="check" size={18} />}
+                confirm={at(locale, "joinApproveAllConfirm", {
+                  count: page.helperPending,
+                  name: helperName || at(locale, "helperNoName"),
+                })}
+              />
+            ) : null}
+            <Link href={adminHref(locale, "/field")} className={styles.ghost}>
+              <AdminIcon name="camera" size={18} />
+              {at(locale, "navStreet")}
+            </Link>
+          </>
         }
       />
       <StatusTabs

@@ -1,6 +1,5 @@
 import { ConflictException, HttpException, Inject, Injectable, Logger } from "@nestjs/common";
 import {
-  HELPER_DAILY,
   isStrongMatch,
   PhoneSchema,
   type FieldCaptureCreateDto,
@@ -35,10 +34,11 @@ const HELPER_DAY_KEY = (day: string, userId: string) => `darb:field:reads:${day}
 const MINE = 30;
 
 /**
- * Who captures: an admin, or a helper. `limited` (a helper who is not an admin) adds the helper's
- * own daily caps (HELPER_DAILY) and the note a strong duplicate needs.
+ * Who captures: an admin, or a helper. `limited` (a helper who is not an admin) adds the note a
+ * strong duplicate needs; `dailyLimit` is their own cap on additions and sign readings a day
+ * (null or absent: none, as for an admin or a helper whose cap an admin lifted).
  */
-export type FieldActor = AdminActor & { limited?: boolean };
+export type FieldActor = AdminActor & { limited?: boolean; dailyLimit?: number | null };
 
 const someText = (l: Record<string, string | null | undefined>) =>
   Object.fromEntries(
@@ -111,12 +111,9 @@ export class FieldService {
     return this.takeFrom(DAY_KEY(now.toISOString().slice(0, 10)), this.config.field.readsPerDay);
   }
 
-  /** One of a helper's own readings for the day (HELPER_DAILY.reads). */
-  private async takeHelperRead(userId: string, now = new Date()): Promise<boolean> {
-    return this.takeFrom(
-      HELPER_DAY_KEY(now.toISOString().slice(0, 10), userId),
-      HELPER_DAILY.reads,
-    );
+  /** One of a helper's own readings for the day (their dailyLimit). */
+  private async takeHelperRead(userId: string, cap: number, now = new Date()): Promise<boolean> {
+    return this.takeFrom(HELPER_DAY_KEY(now.toISOString().slice(0, 10), userId), cap);
   }
 
   private async takeFrom(key: string, cap: number): Promise<boolean> {
@@ -146,7 +143,8 @@ export class FieldService {
    */
   async read(image: Buffer, actor?: FieldActor): Promise<FieldReadResultDto> {
     if (!this.readingOn) return { reading: null, reason: "off" };
-    if (actor?.limited && !(await this.takeHelperRead(actor.userId)))
+    const cap = actor?.dailyLimit;
+    if (cap != null && !(await this.takeHelperRead(actor!.userId, cap)))
       return { reading: null, reason: "budget" };
     if (!(await this.takeRead()) || !(await this.budget.take()))
       return { reading: null, reason: "budget" };
@@ -264,7 +262,7 @@ export class FieldService {
   /**
    * The capture as a draft business (source admin, never public until approved) and its request,
    * audited, in one transaction. The same clientId answers the capture it already made (only the
-   * one who made it). A helper has HELPER_DAILY.captures a day and must say why a strong duplicate
+   * one who made it). A helper has their dailyLimit a day and must say why a strong duplicate
    * is another place.
    */
   async create(
@@ -282,12 +280,12 @@ export class FieldService {
         return { status: 409, body: { message: "This id is taken", code: "already_exists" } };
       return { status: 200, body: toFieldCapture(existing) };
     }
+    if (actor.dailyLimit != null && (await this.today(actor.userId)) >= actor.dailyLimit)
+      throw new HttpException(
+        { message: "Today's additions are used up; it is sent tomorrow", code: "daily_limit" },
+        429,
+      );
     if (actor.limited) {
-      if ((await this.today(actor.userId)) >= HELPER_DAILY.captures)
-        throw new HttpException(
-          { message: "Today's additions are used up; it is sent tomorrow", code: "daily_limit" },
-          429,
-        );
       const distinct = dto.distinct?.trim() ?? "";
       if (distinct.length < 3) {
         const strong = (

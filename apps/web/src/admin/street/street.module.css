@@ -137,3 +137,392 @@
   font-size: 0.875rem;
   color: var(--text-soft);
 }
+
+/*
+ * Quick add (the helper app): one big camera action at the bottom, within the thumb's reach; after
+ * the photo, what the sign filled in to check, the pin as one line, the rest folded; Send docked.
+ */
+.quick {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-inline-size: 0;
+}
+.today {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-soft);
+  font-variant-numeric: tabular-nums;
+}
+.meter {
+  flex: 1;
+  block-size: 6px;
+  border-radius: 999px;
+  background: var(--wash-strong);
+  overflow: hidden;
+}
+.meter > span {
+  display: block;
+  block-size: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+  transform-origin: left;
+  transition: transform 400ms var(--ease-out);
+}
+:global([dir="rtl"]) .meter > span {
+  transform-origin: right;
+}
+.hero {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 8px;
+  padding: 28px 20px 22px;
+  border-radius: 20px;
+  background: var(--surface-1);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-1);
+}
+.heroIcon {
+  display: grid;
+  place-items: center;
+  inline-size: 72px;
+  block-size: 72px;
+  border-radius: 50%;
+  background: var(--tint);
+  color: var(--accent-text);
+  margin-block-end: 4px;
+}
+.heroIcon svg {
+  inline-size: 34px;
+  block-size: 34px;
+}
+.heroTitle {
+  margin: 0;
+  font-size: 1.375rem;
+  line-height: 1.25;
+}
+.heroLead {
+  margin: 0;
+  max-inline-size: 30ch;
+  color: var(--text-soft);
+  font-size: 1rem;
+}
+.steps {
+  list-style: none;
+  counter-reset: step;
+  display: flex;
+  gap: 6px;
+  padding: 0;
+  margin: 10px 0 0;
+}
+.steps li {
+  counter-increment: step;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding-block: 6px;
+  padding-inline: 6px 12px;
+  border-radius: 999px;
+  background: var(--wash);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-soft);
+}
+.steps li::before {
+  content: counter(step);
+  display: grid;
+  place-items: center;
+  inline-size: 22px;
+  block-size: 22px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--line-strong);
+  font-size: 0.75rem;
+}
+.steps li[data-on] {
+  background: var(--tint);
+  color: var(--text);
+}
+.steps li[data-on]::before {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+/* The bottom dock: sticks just above the tabs, over a fade of the page. */
+.dock {
+  position: sticky;
+  inset-block-end: var(--tabs-h, 0px);
+  z-index: 1;
+  display: flex;
+  gap: 10px;
+  margin-block-start: auto;
+  margin-inline: -16px;
+  padding: 18px 16px 12px;
+  background: linear-gradient(to bottom, transparent, var(--bg) 18px);
+}
+.dock[data-start] {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+}
+.shoot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-block-size: 68px;
+  border-radius: 20px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 700;
+  font-size: 1.1875rem;
+  cursor: pointer;
+  box-shadow:
+    0 10px 24px -10px rgb(var(--shadow) / 0.4),
+    var(--shadow-1);
+  -webkit-tap-highlight-color: transparent;
+}
+.shoot:active {
+  transform: scale(0.98);
+}
+.shoot:focus-within,
+.retake:focus-within {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+.manual,
+.more,
+.discard {
+  min-block-size: 44px;
+  padding: 0 12px;
+  border: 0;
+  background: transparent;
+  color: var(--accent-text);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.more {
+  justify-self: start;
+  padding-inline: 0;
+  text-decoration: none;
+}
+.discard {
+  flex: none;
+  color: var(--text-soft);
+}
+.send {
+  flex: 1;
+  min-block-size: 56px;
+  border: 0;
+  border-radius: 16px;
+  background: var(--primary);
+  color: var(--on-primary);
+  font: inherit;
+  font-weight: 700;
+  font-size: 1.125rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-1);
+  -webkit-tap-highlight-color: transparent;
+}
+.send:active {
+  transform: scale(0.98);
+}
+.send:disabled {
+  opacity: 0.65;
+  cursor: progress;
+}
+.shot {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.thumb,
+.thumbEmpty {
+  flex: none;
+  inline-size: 96px;
+  block-size: 96px;
+  border-radius: 14px;
+  object-fit: cover;
+  background: var(--surface-3);
+  border: 1px solid var(--line);
+}
+.thumbEmpty {
+  display: grid;
+  place-items: center;
+  color: var(--text-muted);
+}
+.shotText {
+  display: grid;
+  gap: 6px;
+  min-inline-size: 0;
+  flex: 1;
+}
+.shotText > p {
+  margin: 0;
+}
+/* Beside the photo, the reading's word is a plain line, not a box. */
+.shotText > p:not(:last-child) {
+  padding: 0;
+  border: 0;
+  background: none;
+  display: block;
+  font-size: 0.9375rem;
+}
+.retake {
+  position: relative;
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  font-weight: 600;
+  cursor: pointer;
+}
+.checkTitle {
+  margin: 4px 0 0;
+  font-size: 1.125rem;
+}
+.pinRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: var(--surface-1);
+  border: 1px solid var(--line);
+}
+.pinRow > svg {
+  flex: none;
+  color: var(--accent-text);
+}
+.pinText {
+  display: grid;
+  flex: 1;
+  min-inline-size: 0;
+  font-size: 0.875rem;
+  color: var(--text-soft);
+}
+.pinText strong {
+  color: var(--text);
+  font-size: 0.9375rem;
+}
+.pinWarn {
+  color: var(--danger);
+}
+.pinButton {
+  flex: none;
+  min-block-size: 44px;
+  padding: 0 12px;
+  font-size: 0.875rem;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.mapBox {
+  display: grid;
+  gap: 8px;
+  margin-block-start: 10px;
+}
+.extras {
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--surface-1);
+}
+.extras summary {
+  display: flex;
+  align-items: center;
+  min-block-size: 48px;
+  padding: 0 14px;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+.extras summary::-webkit-details-marker {
+  display: none;
+}
+.extras summary::after {
+  content: "+";
+  margin-inline-start: auto;
+  font-size: 1.25rem;
+  color: var(--accent-text);
+}
+.extras[open] summary::after {
+  content: "−";
+}
+.extrasBody {
+  padding: 0 14px 4px;
+}
+.offline {
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: var(--surface-3);
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+/* The toast floats over the top of the screen; its slot is the live region, always there. */
+.toastSlot {
+  position: fixed;
+  inset-inline: 12px;
+  inset-block-start: calc(env(safe-area-inset-top) + 64px);
+  z-index: 5;
+  display: grid;
+  justify-items: center;
+  pointer-events: none;
+}
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  max-inline-size: 440px;
+  padding: 12px 18px;
+  border-radius: 16px;
+  background: var(--primary);
+  color: var(--on-primary);
+  font-weight: 600;
+  box-shadow: 0 14px 30px -12px rgb(0 0 0 / 0.45);
+  animation: toast-in 400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.toast[data-kind="kept"] {
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1px solid var(--line-strong);
+}
+.toast svg {
+  flex: none;
+  padding: 3px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
+}
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.96);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .toast {
+    animation: none;
+  }
+  .meter > span {
+    transition: none;
+  }
+}

@@ -99,3 +99,13 @@ it("gives the helper app the admin's treatment: rewrite, nonce CSP, noindex, no-
   expect(runs("/en/helpers")).toBe(true);
   expect(runs("/api/helpers/manifest/he")).toBe(false);
 });
+
+it("lets the installed admin read its own manifest: a same-origin route the proxy skips", async () => {
+  const runs = (path: string) =>
+    unstable_doesMiddlewareMatch({ config, url: `http://localhost:3000${path}` });
+  for (const locale of ["he", "ar", "en"])
+    expect(runs(`/api/admin/manifest/${locale}`), locale).toBe(false);
+  const res = await admin("http://localhost:3000/en/admin");
+  expect(res.headers.get("content-security-policy")).toMatch(/manifest-src 'self'/);
+  expect(res.headers.get("cache-control")).toBe("no-store");
+});

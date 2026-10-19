@@ -32,3 +32,24 @@ export async function decideHelper(_prev: ActionState, fd: FormData): Promise<Ac
   revalidatePath("/admin/[locale]", "layout");
   return { ok: true, message: "", errors: [] };
 }
+
+/** The caps an admin may pick on a helper's card, as the form sends them. */
+const LIMITS = { "150": 150, "500": 500, none: null } as const;
+
+/** One helper's cap on additions and sign readings a day (audited by the API). */
+export async function setHelperLimit(_prev: ActionState, fd: FormData): Promise<ActionState> {
+  const raw = text(fd, "locale");
+  const locale: Locale = isLocale(raw) ? raw : "he";
+  const id = text(fd, "id");
+  const picked = text(fd, "limit");
+  if (!Object.hasOwn(LIMITS, picked)) return actionFailed(locale, "errHelperLimit");
+  const limit = LIMITS[picked as keyof typeof LIMITS];
+  const res = await answered(async () =>
+    (await adminApi()).helpers.limit({ params: { id }, body: { limit } }),
+  );
+  if (!res) return actionFailed(locale, "errHelperLimit");
+  if (res.status === 401) redirect(adminHref(locale, "/sign-in"));
+  if (res.status !== 200) return actionFailed(locale, "errHelperLimit", res);
+  revalidatePath("/admin/[locale]/helpers", "page");
+  return { ok: true, message: "", errors: [] };
+}

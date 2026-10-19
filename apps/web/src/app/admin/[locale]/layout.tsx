@@ -8,6 +8,8 @@ import type { Locale } from "@darb/core";
 import { dir } from "@darb/i18n";
 import { adminAuthMode } from "@/admin/mode";
 import { at } from "@/admin/copy";
+import { ADMIN_ICONS } from "@/admin/manifest";
+import { adminManifestHref } from "@/admin/routes";
 import { fontStack } from "@/lib/font-stack";
 import { isLocale } from "@/lib/locale";
 import { tokensCss } from "@/lib/tokens-css";
@@ -34,6 +36,8 @@ export const viewport: Viewport = {
     { media: "(prefers-color-scheme: dark)", color: themeColor.night },
   ],
   colorScheme: "light dark",
+  // Installed on an iPhone: the shell pads itself by the safe areas (shell.module.css).
+  viewportFit: "cover",
 };
 
 export async function generateMetadata({
@@ -41,10 +45,31 @@ export async function generateMetadata({
 }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale: raw } = await params;
+  const locale: Locale = isLocale(raw) ? raw : "he";
+  const appName = at(locale, "title");
+  const tab = (theme: "light" | "dark") => ({
+    url: `${ADMIN_ICONS}/admin-favicon-${theme}-32.png`,
+    sizes: "32x32",
+    type: "image/png",
+    media: `(prefers-color-scheme: ${theme})`,
+  });
+  // The admin's own name, manifest and icons, so it installs apart from the site and the helpers.
   return {
-    title: at(isLocale(locale) ? locale : "he", "title"),
+    title: appName,
     robots: { index: false, follow: false },
+    applicationName: appName,
+    manifest: adminManifestHref(locale),
+    appleWebApp: { capable: true, title: appName, statusBarStyle: "default" },
+    formatDetection: { telephone: false },
+    icons: {
+      icon: [tab("light"), tab("dark")],
+      apple: {
+        url: `${ADMIN_ICONS}/admin-apple-touch-icon-light.png`,
+        sizes: "180x180",
+        type: "image/png",
+      },
+    },
   };
 }
 

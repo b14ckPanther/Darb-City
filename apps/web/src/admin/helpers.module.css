@@ -75,3 +75,58 @@
   font-variant-numeric: tabular-nums;
   color: var(--text-soft);
 }
+/* A helper's cap a day: three pressed-or-not buttons, like the editor's segmented choices. */
+.limit {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 4px;
+}
+.limitRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 12px;
+}
+.limitLabel {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.limitHint {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--text-soft);
+}
+.segmented {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 12px;
+  background: var(--surface-3);
+}
+.segmented button {
+  min-block-size: 36px;
+  min-inline-size: 52px;
+  padding-inline: 14px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--text-soft);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+}
+.segmented button[aria-pressed="true"] {
+  background: var(--surface-2);
+  color: var(--text);
+  font-weight: 700;
+  box-shadow: var(--shadow-1);
+  cursor: default;
+}
+.segmented button:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 1px;
+}
+.segmented button:disabled:not([aria-pressed="true"]) {
+  opacity: 0.6;
+}

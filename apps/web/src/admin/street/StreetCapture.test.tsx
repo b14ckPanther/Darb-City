@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import { beforeEach, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { LocationPickerProps } from "@/components/LocationPicker";
 import { memoryStore, type QueueStore } from "./queue";
 
@@ -18,7 +18,14 @@ vi.mock("./queue", async (real) => ({
   ...(await real<typeof import("./queue")>()),
   openQueue: async () => store,
 }));
+const sharedPhoto = vi.fn(async (): Promise<File | null> => null);
+vi.mock("./quick", async (real) => ({
+  ...(await real<typeof import("./quick")>()),
+  takeSharedPhoto: () => sharedPhoto(),
+}));
+const finder = vi.fn();
 const { StreetCapture } = await import("./StreetCapture");
+type QuickAdd = import("./StreetCapture").QuickAdd;
 
 const KINDS = [
   { slug: "bakeries", label: "Bakeries" },
@@ -172,4 +179,150 @@ it("keeps a capture in the visible queue while offline, and retries it", async (
   fireEvent.click(screen.getByRole("button", { name: "Try again" }));
   await waitFor(async () => expect(await store.all()).toHaveLength(0));
   await waitFor(() => expect(screen.queryByText("Waiting to send")).toBeNull());
+});
+
+describe("quick add (the helper app)", () => {
+  const quick = (patch: Partial<QuickAdd> = {}) =>
+    render(
+      <StreetCapture
+        locale="en"
+        kinds={KINDS}
+        reading
+        uploads
+        base="/en/helpers/field-api"
+        locate={finder}
+        matchLinks="none"
+        distinct
+        quick={{ today: 3, limit: 40, ...patch }}
+      />,
+    );
+  let vibrate: ReturnType<typeof vi.fn>;
+  beforeEach(() => {
+    finder.mockReset();
+    vibrate = vi.fn();
+    Object.defineProperty(navigator, "vibrate", { configurable: true, value: vibrate });
+    window.history.replaceState(null, "", "/en/helpers");
+  });
+
+  it("opens on the camera and the day's count, with the form folded away", async () => {
+    quick();
+    expect(screen.getByRole("heading", { name: "Point at the sign" })).toBeTruthy();
+    expect(screen.getByText("Today 3 of 40")).toBeTruthy();
+    expect(screen.getByLabelText("Photograph the sign")).toBeTruthy();
+    expect(screen.queryByLabelText("Name in A B C letters")).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "No sign? Fill it in by hand" }));
+    expect(screen.getByLabelText("Name in A B C letters")).toBeTruthy();
+    // Only the screen's own letters until asked; the map stays folded while the location is good.
+    expect(screen.queryByLabelText("Name in א ב ג letters")).toBeNull();
+    expect(await screen.findByText("Accurate to about 12 m")).toBeTruthy();
+    expect(screen.queryByText(/^pin /)).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "Move the pin" }));
+    expect(screen.getByText("pin 32.864,35.303")).toBeTruthy();
+  });
+
+  it("photo, check, send: resets at once, counts it, and says so with a buzz", async () => {
+    fetchMock
+      .mockResolvedValueOnce(
+        reply(200, {
+          reading: {
+            name: { he: null, ar: "صالون أبو سمير", en: "Abu Samir Salon" },
+            phone: "04-674-1234",
+            kindSlug: "barbershops",
+            confidence: 0.9,
+          },
+        }),
+      )
+      .mockResolvedValueOnce(reply(200, { matches: [] }))
+      .mockResolvedValueOnce(reply(201, { key: "field/sign.jpg" }))
+      .mockResolvedValueOnce(reply(201, { id: "x" }));
+    quick();
+    await screen.findByText("Accurate to about 12 m").catch(() => undefined);
+    shoot();
+    expect(await screen.findByText(/Filled in from the sign/)).toBeTruthy();
+    expect((screen.getByLabelText("Name in A B C letters") as HTMLInputElement).value).toBe(
+      "Abu Samir Salon",
+    );
+    // A name the sign gave in other letters is shown too.
+    expect((screen.getByLabelText("Name in أ ب ت letters") as HTMLInputElement).value).toBe(
+      "صالون أبو سمير",
+    );
+    fireEvent.click(screen.getByRole("button", { name: "Send" }));
+    expect(await screen.findByText("Sent. 4 today, on to the next one.")).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "Point at the sign" })).toBeTruthy();
+    expect(screen.getByText("Today 4 of 40")).toBeTruthy();
+    expect(vibrate).toHaveBeenCalled();
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(4));
+    expect(fetchMock.mock.calls[3]![0]).toBe("/en/helpers/field-api/captures");
+  });
+
+  it("says a capture is kept on the phone while offline", async () => {
+    Object.defineProperty(navigator, "onLine", { configurable: true, value: false });
+    try {
+      quick({ limit: null });
+      expect(screen.getByText(/No connection right now/)).toBeTruthy();
+      expect(screen.getByText("Today 3")).toBeTruthy();
+      fireEvent.click(screen.getByRole("button", { name: "No sign? Fill it in by hand" }));
+      await screen.findByText("Accurate to about 12 m");
+      fireEvent.change(screen.getByLabelText("Name in A B C letters"), {
+        target: { value: "Corner Bakery" },
+      });
+      fireEvent.change(screen.getByLabelText("Kind"), { target: { value: "bakeries" } });
+      fetchMock.mockRejectedValue(new TypeError("Failed to fetch"));
+      fireEvent.click(screen.getByRole("button", { name: "Send" }));
+      expect(
+        await screen.findByText("Kept on the phone. It goes out once you are online."),
+      ).toBeTruthy();
+      expect(await store.all()).toHaveLength(1);
+    } finally {
+      Object.defineProperty(navigator, "onLine", { configurable: true, value: true });
+    }
+  });
+
+  it("asks for the pin with the map open when the location is missing", async () => {
+    Object.defineProperty(navigator, "geolocation", {
+      configurable: true,
+      value: {
+        getCurrentPosition: (_ok: PositionCallback, no: PositionErrorCallback) =>
+          no({} as GeolocationPositionError),
+      },
+    });
+    quick();
+    fireEvent.click(screen.getByRole("button", { name: "No sign? Fill it in by hand" }));
+    // No location: the map opens by itself.
+    expect(await screen.findByText("no pin")).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "Send" }));
+    expect((await screen.findByRole("alert")).textContent).toContain("Put the pin on the shop");
+  });
+
+  it("opens a shared map link on its pin, with the shared name filled in", async () => {
+    finder.mockResolvedValueOnce({
+      found: { point: { lat: 32.98, lng: 35.17 }, precision: "link", label: "Abu Samir" },
+      alternatives: [],
+      address: null,
+      googleLink: null,
+    });
+    const geo = vi.fn();
+    Object.defineProperty(navigator, "geolocation", {
+      configurable: true,
+      value: { getCurrentPosition: geo },
+    });
+    window.history.replaceState(null, "", "/en/helpers?url=x");
+    quick({ incoming: { link: "https://maps.app.goo.gl/abc", name: "Abu Samir Salon" } });
+    expect(await screen.findByText("Pinned on the map")).toBeTruthy();
+    expect(finder).toHaveBeenCalledWith({ query: "https://maps.app.goo.gl/abc", locale: "en" });
+    expect((screen.getByLabelText("Name in A B C letters") as HTMLInputElement).value).toBe(
+      "Abu Samir Salon",
+    );
+    expect(screen.getByText(/Opened from what you shared/)).toBeTruthy();
+    expect(geo).not.toHaveBeenCalled();
+    expect(window.location.search).toBe("");
+  });
+
+  it("takes a photo shared into the app and reads it", async () => {
+    sharedPhoto.mockResolvedValueOnce(new File(["jpeg"], "shared.jpg", { type: "image/jpeg" }));
+    fetchMock.mockResolvedValueOnce(reply(200, { reading: null, reason: "unreadable" }));
+    quick({ incoming: { photo: true } });
+    expect(await screen.findByAltText("The photo of the sign")).toBeTruthy();
+    await waitFor(() => expect(fetchMock.mock.calls[0]![0]).toBe("/en/helpers/field-api/read"));
+  });
 });

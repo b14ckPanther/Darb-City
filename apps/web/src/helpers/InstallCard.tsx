@@ -15,6 +15,9 @@ export interface InstallCardCopy {
   lead: string;
   button: string;
   ios: string;
+  /** iOS, as two steps: Safari's Share button (drawn as it looks), then Add to Home Screen. */
+  iosShare: string;
+  iosAdd: string;
   dismiss: string;
 }
 
@@ -58,7 +61,37 @@ export function InstallCard({ copy }: { copy: InstallCardCopy }) {
       <h2 id="helper-install" className={styles.installTitle}>
         {copy.title}
       </h2>
-      <p className={styles.muted}>{mode === "ios" ? copy.ios : copy.lead}</p>
+      {mode === "ios" ? (
+        <ol className={styles.installSteps} aria-label={copy.ios}>
+          <li>
+            <span>{copy.iosShare}</span>
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22">
+              <path
+                d="M12 3v12M8 7l4-4 4 4M6 11H5v10h14V11h-1"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </li>
+          <li>
+            <span>{copy.iosAdd}</span>
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22">
+              <path
+                d="M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Zm7 4v8m-4-4h8"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+              />
+            </svg>
+          </li>
+        </ol>
+      ) : (
+        <p className={styles.muted}>{copy.lead}</p>
+      )}
       <div className={styles.row}>
         {mode === "prompt" ? (
           <button

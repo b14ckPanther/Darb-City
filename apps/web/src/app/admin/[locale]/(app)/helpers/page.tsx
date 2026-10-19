@@ -6,8 +6,9 @@ import { ActionButton } from "@/admin/ActionButton";
 import { AdminIcon } from "@/admin/AdminIcon";
 import { adminApi, okOr } from "@/admin/api";
 import { at, type AdminKey } from "@/admin/copy";
-import { decideHelper } from "@/admin/helper-actions";
-import { acceptance } from "@/admin/helper-view";
+import { decideHelper, setHelperLimit } from "@/admin/helper-actions";
+import { LimitPicker } from "@/admin/LimitPicker";
+import { acceptance, limitChoice } from "@/admin/helper-view";
 import { telHref } from "@/admin/join-view";
 import { one, withParams, type SearchParams } from "@/admin/params";
 import { adminHref } from "@/admin/routes";
@@ -81,6 +82,20 @@ function Helper({ locale, item }: { locale: Locale; item: AdminHelperDto }) {
           </>
         ) : null}
       </dl>
+      {item.status === "pending" ? null : (
+        <LimitPicker
+          action={setHelperLimit}
+          id={item.id}
+          locale={locale}
+          current={limitChoice(item.dailyLimit)}
+          labels={{
+            group: t("helperLimitLabel"),
+            hint: t("helperLimitHint"),
+            none: t("helperLimitNone"),
+            saved: t("helperLimitSaved"),
+          }}
+        />
+      )}
       <div className={h.foot}>
         <ActionButton
           action={decideHelper}

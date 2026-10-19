@@ -10,7 +10,8 @@ import { themeColor } from "@darb/tokens";
 import { adminAuthMode } from "@/admin/mode";
 import { ht } from "@/helpers/copy";
 import { HELPER_ICONS } from "@/helpers/manifest";
-import { helperManifestHref } from "@/helpers/routes";
+import { HelperWorker } from "@/helpers/HelperWorker";
+import { helperHref, helperManifestHref } from "@/helpers/routes";
 import { fontStack } from "@/lib/font-stack";
 import { installBootScript } from "@/lib/install";
 import { isLocale } from "@/lib/locale";
@@ -98,7 +99,10 @@ export default async function HelperRootLayout({
         <script nonce={nonce} dangerouslySetInnerHTML={{ __html: themeBootScript() }} />
         <script nonce={nonce} dangerouslySetInnerHTML={{ __html: installBootScript() }} />
       </head>
-      <body className={styles.body}>{children}</body>
+      <body className={styles.body}>
+        {children}
+        <HelperWorker scope={helperHref(locale)} />
+      </body>
     </html>
   );
   return adminAuthMode() === "clerk" ? (

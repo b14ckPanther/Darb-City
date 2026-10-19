@@ -261,18 +261,20 @@ model User {
   fieldCaptures JoinRequest[]
 
   /// Darb Helpers: friends who add businesses from their own towns. An admin approves them first.
-  helperStatus    HelperStatus @default(none)
+  helperStatus     HelperStatus @default(none)
   /// The name the helper chose; shown publicly only while helperCredit is on.
-  helperName      String?
-  helperPhone     String?
+  helperName       String?
+  helperPhone      String?
   /// Their home town, as information for the admin only (helpers may add anywhere).
-  helperPlaceId   String?      @db.Uuid
-  helperPlace     Place?       @relation(fields: [helperPlaceId], references: [id], onDelete: SetNull)
-  helperNote      String?
+  helperPlaceId    String?      @db.Uuid
+  helperPlace      Place?       @relation(fields: [helperPlaceId], references: [id], onDelete: SetNull)
+  helperNote       String?
   /// "Added by <helperName>" on the public cards of their published additions, read at render time.
-  helperCredit    Boolean      @default(false)
-  helperAppliedAt DateTime?
-  helperDecidedAt DateTime?
+  helperCredit     Boolean      @default(false)
+  helperAppliedAt  DateTime?
+  helperDecidedAt  DateTime?
+  /// additions and sign readings a day: null is the default (150), 0 is no cap, else that cap.
+  helperDailyLimit Int?
 
   @@index([helperStatus, helperAppliedAt])
 }

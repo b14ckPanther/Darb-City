@@ -36,3 +36,8 @@ export function takedownHref(
   if (back === "list") return adminHref(locale, stale ? `${list}?stale=${flag}` : list);
   return adminHref(locale, `${list}/${flag}${stale ? "?stale=1" : ""}`);
 }
+
+/** The admin app's own web manifest, one per locale (outside the app's scope, like an API). */
+export function adminManifestHref(locale: Locale): string {
+  return `/api/admin/manifest/${locale}`;
+}

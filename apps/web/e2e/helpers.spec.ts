@@ -1,4 +1,5 @@
 import { fileURLToPath } from "node:url";
+import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Browser, type Page } from "@playwright/test";
 
 /**
@@ -62,16 +63,18 @@ test.describe("darb helpers", () => {
     // Back in the helper app, it opens straight into adding.
     await helper.goto("/en/helpers");
     await expect(helper.getByRole("heading", { name: "Add a business" })).toBeVisible();
-    await expect(helper.getByText("Accurate to about 8 m")).toBeVisible();
+    // Quick add: the camera at the bottom and the day's count; the form opens with the photo.
+    await expect(helper.getByText("Today 0 of 150")).toBeVisible();
     await helper.getByLabel("Photograph the sign").setInputFiles(SIGN);
     await expect(
       helper.getByText("Filled in from the sign. Check it before saving."),
     ).toBeVisible();
+    await expect(helper.getByText("Accurate to about 8 m")).toBeVisible();
     await helper.getByLabel("Name in A B C letters").fill(shop);
-    await helper.getByRole("button", { name: "Save and next shop" }).click();
+    await helper.getByRole("button", { name: "Send", exact: true }).click();
     // Earlier runs captured the same phone number: a helper must say how this one differs.
     const distinct = helper.getByLabel("How is it a different place?");
-    const saved = helper.getByText("Saved. Ready for the next shop.");
+    const saved = helper.getByText("Sent. 1 today, on to the next one.");
     await expect(distinct.or(saved)).toBeVisible();
     if (await distinct.isVisible()) {
       await helper.getByRole("button", { name: "Save as a different place" }).click();
@@ -80,6 +83,32 @@ test.describe("darb helpers", () => {
       await helper.getByRole("button", { name: "Save as a different place" }).click();
     }
     await expect(saved).toBeVisible();
+    // Ready for the next shop at once.
+    await expect(helper.getByLabel("Photograph the sign")).toBeAttached();
+    await expect(helper.getByText("Today 1 of 150")).toBeVisible();
+
+    // The admin raises their day to 500, then lifts the cap: the bar follows, without a max.
+    await admin.goto("/en/admin/helpers?status=approved");
+    const active = admin.locator('[data-list="helpers"] li').filter({ hasText: helperName });
+    const limit = active.getByRole("group", { name: "Additions a day" });
+    await expect(limit.getByRole("button", { name: "150" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    await limit.getByRole("button", { name: "500" }).click();
+    await expect(limit.getByRole("button", { name: "500" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    await helper.reload();
+    await expect(helper.getByText("Today 1 of 500")).toBeVisible();
+    await limit.getByRole("button", { name: "No limit" }).click();
+    await expect(limit.getByRole("button", { name: "No limit" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    await helper.reload();
+    await expect(helper.getByText("Today 1", { exact: true })).toBeVisible();
 
     await helper.getByRole("link", { name: "My additions" }).click();
     await expect(helper.getByText(/^You added 1 · 0 live$/)).toBeVisible();
@@ -123,6 +152,51 @@ test.describe("darb helpers", () => {
     }).toPass({ timeout: 15_000 });
   });
 
+  test("a map link shared into the app opens a capture on its pin, with the name", async ({
+    browser,
+    baseURL,
+    request,
+  }) => {
+    // The share target's POST (no service worker here) carries the text into the capture.
+    const form = new FormData();
+    form.set("title", "Shared Salon");
+    form.set("text", "https://www.google.com/maps/place/Shared+Salon/@32.9795,35.165,17z");
+    const res = await request.post("/en/helpers/share", { multipart: form, maxRedirects: 0 });
+    expect(res.status()).toBe(303);
+    const to = new URL(res.headers()["location"]!, baseURL);
+    expect(to.pathname).toBe("/en/helpers");
+
+    const admin = await personAt(browser, baseURL!, ADMIN);
+    await admin.goto(to.pathname + to.search);
+    await expect(
+      admin.getByText("Opened from what you shared. Check it, then send."),
+    ).toBeVisible();
+    await expect(admin.getByText("Pinned on the map")).toBeVisible();
+    await expect(admin.getByLabel("Name in A B C letters")).toHaveValue("Shared Salon");
+    // The address bar loses the shared text.
+    await expect(admin).toHaveURL(/\/en\/helpers$/);
+  });
+
+  for (const locale of ["he", "ar", "en"] as const)
+    for (const scheme of ["light", "dark"] as const)
+      test(`${locale} quick add, start and check, has no WCAG A/AA violations (${scheme})`, async ({
+        browser,
+        baseURL,
+      }) => {
+        const page = await personAt(browser, baseURL!, ADMIN);
+        await page.emulateMedia({ colorScheme: scheme });
+        await page.goto(`${locale === "he" ? "" : `/${locale}`}/helpers`);
+        await page.waitForLoadState("networkidle");
+        const axe = () =>
+          new AxeBuilder({ page })
+            .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"])
+            .analyze();
+        expect((await axe()).violations).toEqual([]);
+        await page.locator('input[type="file"]').setInputFiles(SIGN);
+        await page.locator("form").getByRole("textbox").first().waitFor();
+        expect((await axe()).violations).toEqual([]);
+      });
+
   test("the helper app stays out of search engines and installs on its own scope", async ({
     request,
   }) => {
@@ -131,5 +205,19 @@ test.describe("darb helpers", () => {
     expect(res.headers()["cache-control"]).toBe("no-store");
     const manifest = await (await request.get("/api/helpers/manifest/en")).json();
     expect(manifest).toMatchObject({ start_url: "/en/helpers", scope: "/en/helpers" });
+    expect(manifest.share_target.action).toBe("/en/helpers/share");
+    // The admin installs apart from both: its own manifest, scope and shortcuts.
+    const adminApp = await (await request.get("/api/admin/manifest/ar")).json();
+    expect(adminApp).toMatchObject({ id: "/ar/admin", start_url: "/ar/admin", scope: "/ar/admin" });
+    expect(adminApp.shortcuts.map((s: { url: string }) => s.url)).toEqual([
+      "/ar/admin/field",
+      "/ar/admin/join-requests",
+      "/ar/admin/helpers",
+    ]);
+    for (const icon of adminApp.icons)
+      expect((await request.get(icon.src)).ok(), icon.src).toBe(true);
+    const worker = await request.get("/helper-sw.js");
+    expect(worker.ok()).toBe(true);
+    expect(worker.headers()["content-type"]).toContain("javascript");
   });
 });

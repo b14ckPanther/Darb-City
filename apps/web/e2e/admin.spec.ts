@@ -60,6 +60,19 @@ test.describe("admin", () => {
     expect(res?.headers()["x-robots-tag"]).toBe("noindex, nofollow");
     expect(res?.headers()["cache-control"]).toContain("no-store");
     expect(res?.headers()["content-security-policy"]).toMatch(/'nonce-[^']+' 'strict-dynamic'/);
+    // Installable as its own app: the manifest (allowed by manifest-src 'self') and iOS icon.
+    expect(res?.headers()["content-security-policy"]).toMatch(/manifest-src 'self'/);
+    await expect(page.locator('link[rel="manifest"]')).toHaveAttribute(
+      "href",
+      "/api/admin/manifest/he",
+    );
+    await expect(page.locator('link[rel="apple-touch-icon"]')).toHaveAttribute(
+      "href",
+      /admin-apple-touch-icon-light\.png$/,
+    );
+    const manifest = await page.request.get("/api/admin/manifest/he");
+    expect(manifest.ok()).toBe(true);
+    expect((await manifest.json()).scope).toBe("/admin");
   });
 
   test("the location map draws under the admin CSP, and the arrow keys move the pin", async ({

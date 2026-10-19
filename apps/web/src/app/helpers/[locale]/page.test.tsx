@@ -54,13 +54,21 @@ const me = (patch: Partial<HelperMeDto> = {}): HelperMeDto => ({
   note: null,
   credit: false,
   isAdmin: false,
+  dailyLimit: 150,
   appliedAt: null,
   ...patch,
 });
 
-async function open(m: HelperMeDto | null, status = "ok", locale = "en") {
+async function open(
+  m: HelperMeDto | null,
+  status = "ok",
+  locale = "en",
+  query: Record<string, string> = {},
+) {
   session.mockResolvedValue(m ? { status, me: m } : { status });
-  render(await HelperHome({ params: Promise.resolve({ locale }) }));
+  render(
+    await HelperHome({ params: Promise.resolve({ locale }), searchParams: Promise.resolve(query) }),
+  );
 }
 
 it("asks someone who never applied for the one-screen form", async () => {
@@ -90,13 +98,40 @@ it("tells a paused helper their access is paused, and keeps My additions in reac
 it("opens an approved helper (and an admin) straight into the capture, on the helper routes", async () => {
   await open(me({ status: "approved" }), "ok", "ar");
   expect(capture).toHaveBeenCalledWith(
-    expect.objectContaining({ base: "/ar/helpers/field-api", distinct: true, reading: true }),
+    expect.objectContaining({
+      base: "/ar/helpers/field-api",
+      distinct: true,
+      reading: true,
+      quick: expect.objectContaining({ today: 3, limit: 150 }),
+    }),
     undefined,
   );
-  expect(screen.getByText("ضفت اليوم: 3 من 40")).toBeTruthy();
   capture.mockClear();
-  await open(me({ isAdmin: true }));
-  expect(capture).toHaveBeenCalled();
+  // An admin has no daily cap; a home screen shortcut asks for the camera.
+  await open(me({ isAdmin: true, dailyLimit: null }), "ok", "en", { camera: "1" });
+  expect(capture).toHaveBeenCalledWith(
+    expect.objectContaining({
+      quick: expect.objectContaining({
+        limit: null,
+        incoming: expect.objectContaining({ camera: true }),
+      }),
+    }),
+    undefined,
+  );
+});
+
+it("gives the bar the helper's own cap: 500, or none when an admin lifted it", async () => {
+  await open(me({ status: "approved", dailyLimit: 500 }));
+  expect(capture).toHaveBeenCalledWith(
+    expect.objectContaining({ quick: expect.objectContaining({ limit: 500 }) }),
+    undefined,
+  );
+  capture.mockClear();
+  await open(me({ status: "approved", dailyLimit: null }));
+  expect(capture).toHaveBeenCalledWith(
+    expect.objectContaining({ quick: expect.objectContaining({ limit: null }) }),
+    undefined,
+  );
 });
 
 it("says so when sign-in is off or Darb cannot be reached", async () => {

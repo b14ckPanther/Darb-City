@@ -1,6 +1,14 @@
 "use client";
 
-import { useCallback, useEffect, useId, useRef, useState, type FormEvent } from "react";
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type FormEvent,
+  type ReactNode,
+} from "react";
 import { useRouter } from "next/navigation";
 import {
   isStrongMatch,
@@ -11,12 +19,13 @@ import {
 import { pickText, type LatLng, type Locale } from "@darb/core";
 import { LocationPicker } from "@/components/LocationPicker";
 import { at, type AdminKey } from "../copy";
-import { PlaceFinder } from "../PlaceFinder";
+import { PlaceFinder, scriptOf } from "../PlaceFinder";
 import type { locatePlace } from "../locate-actions";
 import { adminHref } from "../routes";
 import { downscale } from "./photo";
 import { flushQueue, openQueue, type QueueStore, type QueuedCapture } from "./queue";
 import styles from "../admin.module.css";
+import { buzz, takeSharedPhoto } from "./quick";
 import own from "./street.module.css";
 
 export interface StreetKind {
@@ -58,6 +67,20 @@ function uuid(): string {
   return `${h.slice(0, 8)}-${h.slice(8, 12)}-${h.slice(12, 16)}-${h.slice(16, 20)}-${h.slice(20)}`;
 }
 
+/**
+ * The helper app's quick add: the camera is the one big action, everything the sign fills in is
+ * there to check, the rest folds away, and sending resets for the next shop at once.
+ */
+export interface QuickAdd {
+  /** Added today so far, and the day's cap (null: no cap, an admin). */
+  today: number;
+  limit: number | null;
+  /** Opened from a home screen shortcut (camera) or from something shared into the app. */
+  incoming?: { camera?: boolean; photo?: boolean; link?: string | null; name?: string | null };
+  /** Shown under the steps while nothing is being added (the install card). */
+  aside?: ReactNode;
+}
+
 const online = () => typeof navigator === "undefined" || navigator.onLine !== false;
 
 /**
@@ -74,6 +97,7 @@ export function StreetCapture({
   locate: finder,
   matchLinks = "admin",
   distinct: needsDistinct = false,
+  quick,
 }: {
   locale: Locale;
   kinds: StreetKind[];
@@ -87,6 +111,8 @@ export function StreetCapture({
   matchLinks?: "admin" | "none";
   /** A helper must say how it differs to save past a strong match (the API insists too). */
   distinct?: boolean;
+  /** The helper app's phone-first layout (the admin keeps the full form). */
+  quick?: QuickAdd;
 }) {
   const t = (key: AdminKey, vars?: Record<string, string | number>) => at(locale, key, vars);
   const router = useRouter();
@@ -108,7 +134,12 @@ export function StreetCapture({
   const [preview, setPreview] = useState<string | null>(null);
   const [reading, setReading] = useState<Reading>({ state: "idle" });
   const [suggested, setSuggested] = useState<FieldReadingDto | null>(null);
-  const [names, setNames] = useState<Names>(EMPTY);
+  // A name shared into the helper app goes into the field for its letters.
+  const [names, setNames] = useState<Names>(() =>
+    quick?.incoming?.name
+      ? { ...EMPTY, [scriptOf(quick.incoming.name)]: quick.incoming.name }
+      : EMPTY,
+  );
   const [phone, setPhone] = useState("");
   const [kind, setKind] = useState("");
   const [hours, setHours] = useState("");
@@ -130,6 +161,36 @@ export function StreetCapture({
   useEffect(() => {
     if (focusDup) dupHeading.current?.focus();
   }, [focusDup]);
+  // Quick add only: the form opens with a photo (or by hand); the map and the extras fold away.
+  const incoming = quick?.incoming;
+  const sharedLink = incoming?.link ?? null;
+  const [manual, setManual] = useState(Boolean(incoming?.link || incoming?.name));
+  const [mapOpen, setMapOpen] = useState(false);
+  const [otherNames, setOtherNames] = useState(false);
+  const [added, setAdded] = useState(quick?.today ?? 0);
+  const [toast, setToast] = useState<{ text: string; kind: "sent" | "kept"; n: number } | null>(
+    null,
+  );
+  const [connected, setConnected] = useState(true);
+  const [linkMissed, setLinkMissed] = useState(false);
+  const [shared, setShared] = useState(Boolean(incoming?.link || incoming?.name));
+  const today = Math.max(quick?.today ?? 0, added);
+  useEffect(() => {
+    if (!toast) return;
+    const gone = setTimeout(() => setToast(null), 4000);
+    return () => clearTimeout(gone);
+  }, [toast]);
+  useEffect(() => {
+    if (!quick) return;
+    const sync = () => setConnected(online());
+    sync();
+    window.addEventListener("online", sync);
+    window.addEventListener("offline", sync);
+    return () => {
+      window.removeEventListener("online", sync);
+      window.removeEventListener("offline", sync);
+    };
+  }, [quick]);
 
   const locate = useCallback(() => {
     if (typeof navigator === "undefined" || !navigator.geolocation) {
@@ -166,8 +227,9 @@ export function StreetCapture({
   }, [base]);
 
   useEffect(() => {
-    // The location is asked for as the screen opens: the admin is standing at the shop.
-    const asked = setTimeout(locate, 0);
+    // The location is asked for as the screen opens: the admin is standing at the shop. A shared
+    // map link places the pin itself (the phone's location only if the link gives none).
+    const asked = setTimeout(sharedLink ? () => undefined : locate, 0);
     let gone = false;
     void openQueue().then(async (s) => {
       if (gone) return;
@@ -183,7 +245,7 @@ export function StreetCapture({
       clearTimeout(asked);
       window.removeEventListener("online", back);
     };
-  }, [locate, flush]);
+  }, [locate, flush, sharedLink]);
 
   useEffect(
     () => () => {
@@ -237,6 +299,38 @@ export function StreetCapture({
     }
   };
 
+  // Opened from a shortcut or a share: once, then the address bar loses the query.
+  const handled = useRef(false);
+  const onPhotoRef = useRef(onPhoto);
+  useEffect(() => {
+    onPhotoRef.current = onPhoto;
+  });
+  useEffect(() => {
+    if (!incoming || handled.current) return;
+    handled.current = true;
+    if (incoming.camera || incoming.photo || incoming.link || incoming.name)
+      window.history.replaceState(null, "", window.location.pathname);
+    if (incoming.photo)
+      void takeSharedPhoto().then((file) => {
+        if (file) void onPhotoRef.current(file);
+      });
+    else if (incoming.camera) camera.current?.click();
+    if (incoming.link && finder !== undefined) {
+      void finder({ query: incoming.link, locale }).then((answer) => {
+        const hit = answer.found;
+        if (hit) {
+          setPoint(hit.point);
+          setAccuracy(null);
+          setFlyTo((f) => ({ point: hit.point, key: (f?.key ?? 0) + 1 }));
+        } else {
+          setLinkMissed(true);
+          setMapOpen(true);
+          locate();
+        }
+      });
+    }
+  }, [incoming, finder, locale, locate]);
+
   const dupKey = () => JSON.stringify([names, phone.trim(), point]);
 
   const reset = () => {
@@ -252,6 +346,11 @@ export function StreetCapture({
     setDifferent("");
     setMatches(null);
     setErrors([]);
+    setManual(false);
+    setMapOpen(false);
+    setOtherNames(false);
+    setLinkMissed(false);
+    setShared(false);
     if (camera.current) camera.current.value = "";
     locate();
     camera.current?.focus();
@@ -266,7 +365,12 @@ export function StreetCapture({
     if (!point) missing.push(t("streetPointNeeded"));
     if (phone.trim() && !PHONE.test(phone.trim())) missing.push(t("streetPhoneBad"));
     setErrors(missing);
-    if (missing.length || !point) return;
+    if (missing.length || !point) {
+      buzz(40);
+      if (!point) setMapOpen(true);
+      if (!kind || !Object.values(names).some((v) => v.trim())) setOtherNames(true);
+      return;
+    }
 
     const key = dupKey();
     if (matches?.key !== key && online()) {
@@ -288,6 +392,7 @@ export function StreetCapture({
           setMatches({ key, list });
           if (list.length) {
             setChecking(false);
+            buzz([30, 60, 30]);
             setFocusDup((n) => n + 1);
             return;
           }
@@ -302,6 +407,7 @@ export function StreetCapture({
     const strongNow =
       needsDistinct && (matches?.key === key ? matches.list : []).some(isStrongMatch);
     if (strongNow && different.trim().length < 3) {
+      buzz(40);
       setErrors([t("streetDistinctNeeded")]);
       return;
     }
@@ -345,10 +451,31 @@ export function StreetCapture({
       setQueue(await s.all());
     }
     reset();
-    setMessage(t("streetQueued"));
+    if (quick) {
+      // Reset at once and say so; the queue sends in the background.
+      const n = today + 1;
+      setAdded(n);
+      buzz(online() ? [20, 50, 20] : 20);
+      setToast(
+        online()
+          ? { text: t("quickSent", { count: n }), kind: "sent", n }
+          : { text: t("quickKept"), kind: "kept", n },
+      );
+    } else setMessage(t("streetQueued"));
     await flush();
-    const left = s ? (await s.all()).some((i) => i.clientId === item.clientId) : true;
-    setMessage(t(left ? "streetQueued" : "streetSaved"));
+    const still = s ? (await s.all()).find((i) => i.clientId === item.clientId) : item;
+    const left = Boolean(still);
+    if (quick) {
+      // Still on the phone: waiting for a connection, or held back (the list below says why).
+      if (still)
+        setToast((v) =>
+          v?.kind !== "sent"
+            ? v
+            : still.state === "waiting"
+              ? { ...v, text: t("quickKept"), kind: "kept" }
+              : null,
+        );
+    } else setMessage(t(left ? "streetQueued" : "streetSaved"));
   };
 
   const remove = async (clientId: string) => {
@@ -372,6 +499,443 @@ export function StreetCapture({
             ? t("streetQueueLimit")
             : t("streetQueueWaiting");
 
+  const cameraIcon = (
+    <svg aria-hidden="true" viewBox="0 0 24 24" width="28" height="28" focusable="false">
+      <path
+        fill="currentColor"
+        d="M9 3 7.2 5H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3.2L15 3H9Zm3 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"
+      />
+    </svg>
+  );
+  const cameraInput = (
+    <input
+      ref={camera}
+      type="file"
+      accept="image/*"
+      capture="environment"
+      className={own.cameraInput}
+      onChange={(e) => void onPhoto(e.target.files?.[0])}
+    />
+  );
+  const readingNote =
+    reading.state === "reading" ? (
+      <p className={`${styles.notice} ${own.reading}`} aria-hidden="true">
+        {t("streetReading")}
+      </p>
+    ) : reading.state === "done" ? (
+      <p className={styles.notice}>
+        {t("streetReadDone")}
+        {reading.confidence !== null ? (
+          <>
+            {" "}
+            <span className={styles.hint}>
+              {t("streetReadSure", { percent: Math.round(reading.confidence * 100) })}
+            </span>
+          </>
+        ) : null}
+      </p>
+    ) : reading.state === "none" ? (
+      <p className={reading.key === "streetReadExcluded" ? styles.warning : styles.hint}>
+        {t(reading.key)}
+      </p>
+    ) : null;
+  const nameField = ([l, letters, dir]: (typeof LETTERS)[number]) => (
+    <label key={l} className={styles.field}>
+      <span>{t("streetNameIn", { letters })}</span>
+      <input
+        lang={l}
+        dir={dir}
+        value={names[l]}
+        autoComplete="off"
+        onChange={(e) => setNames((n) => ({ ...n, [l]: e.target.value }))}
+      />
+    </label>
+  );
+  const phoneAndKind = (
+    <div className={styles.row}>
+      <label className={styles.field}>
+        <span>{t("fieldPhone")}</span>
+        <input
+          type="tel"
+          dir="ltr"
+          inputMode="tel"
+          autoComplete="off"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+        />
+      </label>
+      {/* Not a wrapping label: its name would take in every option's text. */}
+      <div className={styles.field}>
+        <label htmlFor={`${id}-kind`} className={own.label}>
+          {t("fieldPrimaryKind")}
+        </label>
+        <select id={`${id}-kind`} value={kind} onChange={(e) => setKind(e.target.value)} required>
+          <option value="">{t("streetKindPick")}</option>
+          {kinds.map((k) => (
+            <option key={k.slug} value={k.slug}>
+              {k.label}
+            </option>
+          ))}
+        </select>
+      </div>
+    </div>
+  );
+  const accuracyText = locating
+    ? t("streetLocating")
+    : noLocation && !point
+      ? t("streetNoLocation")
+      : accuracy !== null
+        ? `${t("streetAccuracy", { metres: accuracy })}${rough ? `. ${t("streetAccuracyWeak")}` : ""}`
+        : "";
+  const finderAndMap = (
+    <>
+      <PlaceFinder
+        locale={locale}
+        {...(finder ? { locate: finder } : {})}
+        onFound={(p) => {
+          setPoint(p);
+          setAccuracy(null);
+          setFlyTo((f) => ({ point: p, key: (f?.key ?? 0) + 1 }));
+        }}
+      />
+      <LocationPicker
+        value={point}
+        flyTo={flyTo}
+        onChange={(p) => {
+          setPoint(p);
+          setAccuracy(null);
+        }}
+        locale={locale}
+        names={{ lat: "street-lat", lng: "street-lng" }}
+        labels={{
+          map: t("pinMap"),
+          pin: t("pinPin"),
+          hint: t("pinHint"),
+          centre: t("pinCentre"),
+          locate: t("pinLocate"),
+          locating: t("pinLocating"),
+          noLocation: t("pinNoLocation"),
+          outside: t("pinOutside"),
+          editNumbers: t("pinEditNumbers"),
+          lat: t("fieldLat"),
+          lng: t("fieldLng"),
+          noMap: t("pinNoMap"),
+          mapData: t("pinMapData"),
+          gestures: {
+            windows: t("pinGestureWindows"),
+            mac: t("pinGestureMac"),
+            mobile: t("pinGestureMobile"),
+          },
+        }}
+      />
+    </>
+  );
+  const extras = (
+    <>
+      <label className={styles.field}>
+        <span>{t("streetHours")}</span>
+        <input
+          value={hours}
+          dir="auto"
+          aria-describedby={`${id}-hours`}
+          onChange={(e) => setHours(e.target.value)}
+        />
+        <small id={`${id}-hours`} className={styles.hint}>
+          {t("streetHoursHint")}
+        </small>
+      </label>
+      <label className={styles.field}>
+        <span>{t("streetNote")}</span>
+        <textarea
+          value={note}
+          dir="auto"
+          rows={2}
+          className={own.note}
+          onChange={(e) => setNote(e.target.value)}
+        />
+      </label>
+    </>
+  );
+  const duplicates = dupList.length ? (
+    <section className={styles.warning} aria-labelledby={`${id}-dup`}>
+      <h3 id={`${id}-dup`} ref={dupHeading} tabIndex={-1} className={own.dupTitle}>
+        {t("streetDupTitle")}
+      </h3>
+      {strong ? null : (
+        <p>{t(dupList.some((m) => linkOf(m)) ? "streetDupHint" : "streetDupHintPlain")}</p>
+      )}
+      <ul className={own.dupList}>
+        {dupList.map((m) => (
+          <li key={m.id}>
+            {linkOf(m) ? (
+              <a href={linkOf(m)!} target="_blank" rel="noopener">
+                <bdi>{pickText(m.name, locale) || m.placeSlug}</bdi>
+              </a>
+            ) : (
+              <bdi>{pickText(m.name, locale) || m.placeSlug}</bdi>
+            )}{" "}
+            <span className={styles.hint}>
+              {m.reason === "phone"
+                ? t("streetDupPhone")
+                : t("streetDupName", { metres: m.metres })}
+              {" · "}
+              {t(
+                m.status === "published"
+                  ? "statusPublished"
+                  : m.status === "draft"
+                    ? "statusDraft"
+                    : "statusSuspended",
+              )}
+            </span>
+          </li>
+        ))}
+      </ul>
+      {strong ? (
+        <label className={styles.field}>
+          <span>{t("streetDistinct")}</span>
+          <textarea
+            value={different}
+            dir="auto"
+            rows={2}
+            maxLength={300}
+            required
+            aria-describedby={`${id}-distinct`}
+            className={own.note}
+            onChange={(e) => setDifferent(e.target.value)}
+          />
+          <small id={`${id}-distinct`} className={styles.hint}>
+            {t("streetDistinctHint")}
+          </small>
+        </label>
+      ) : null}
+    </section>
+  ) : null;
+  const errorList = errors.length ? (
+    <ul className={styles.error} role="alert">
+      {errors.map((e) => (
+        <li key={e}>{e}</li>
+      ))}
+    </ul>
+  ) : null;
+  const queueList = queue.length ? (
+    <section className={styles.card} aria-labelledby={`${id}-queue`}>
+      <div className={styles.actions}>
+        <h2 id={`${id}-queue`} className={styles.h2}>
+          {t("streetQueue")}
+        </h2>
+        <button type="button" className={styles.ghost} onClick={() => void flush()}>
+          {t("streetRetry")}
+        </button>
+      </div>
+      <ul className={own.queue}>
+        {queue.map((q) => (
+          <li key={q.clientId} className={own.queueItem}>
+            <bdi className={own.queueName}>{q.label}</bdi>
+            <span className={q.state === "refused" ? styles.error : styles.hint}>
+              {stateText(q)}
+            </span>
+            {q.state === "refused" || q.state === "failed" ? (
+              <button
+                type="button"
+                className={styles.ghost}
+                onClick={() => void remove(q.clientId)}
+                aria-label={t("streetRemoveOne", { name: q.label })}
+              >
+                {t("remove")}
+              </button>
+            ) : null}
+          </li>
+        ))}
+      </ul>
+    </section>
+  ) : null;
+
+  if (quick) {
+    const open = Boolean(preview) || manual;
+    const showMap = mapOpen || rough || (noLocation && !point) || linkMissed;
+    const shownNames = LETTERS.filter(([l]) => otherNames || l === locale || names[l].trim());
+    const hiddenNames = LETTERS.length - shownNames.length;
+    const progress = quick.limit ? Math.min(1, today / quick.limit) : null;
+    return (
+      <div className={own.quick} data-quick={open ? "check" : "start"}>
+        <p className={styles.srOnly} role="status" aria-live="polite">
+          {reading.state === "reading" ? t("streetReading") : ""}
+        </p>
+        <div className={own.toastSlot} role="status" aria-live="polite">
+          {toast ? (
+            <p key={toast.n} className={own.toast} data-kind={toast.kind}>
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22">
+                {toast.kind === "sent" ? (
+                  <path
+                    d="M5 12.5 10 17.5 19 7"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                ) : (
+                  <path
+                    d="M12 7v5l3 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                )}
+              </svg>
+              <span>{toast.text}</span>
+            </p>
+          ) : null}
+        </div>
+        {!connected ? <p className={own.offline}>{t("quickOffline")}</p> : null}
+        {!persistent ? <p className={styles.warning}>{t("streetNoStorage")}</p> : null}
+
+        <div className={own.today}>
+          <span>
+            {quick.limit
+              ? t("quickToday", { count: today, limit: quick.limit })
+              : t("quickTodayOpen", { count: today })}
+          </span>
+          {progress !== null ? (
+            <span className={own.meter} aria-hidden="true">
+              <span style={{ transform: `scaleX(${progress})` }} />
+            </span>
+          ) : null}
+        </div>
+
+        {open ? (
+          <>
+            <section className={own.shot} aria-labelledby={`${id}-sign`}>
+              <h2 id={`${id}-sign`} className={styles.srOnly}>
+                {t("streetSign")}
+              </h2>
+              {preview ? (
+                // eslint-disable-next-line @next/next/no-img-element -- a local object URL, never optimised
+                <img className={own.thumb} src={preview} alt={t("streetPhotoAlt")} />
+              ) : (
+                <span className={own.thumbEmpty} aria-hidden="true">
+                  {cameraIcon}
+                </span>
+              )}
+              <div className={own.shotText}>
+                {shared ? <p className={styles.hint}>{t("quickShared")}</p> : null}
+                {readingNote}
+                <label className={own.retake}>
+                  {cameraInput}
+                  {t(preview ? "streetRetake" : "streetTakePhoto")}
+                </label>
+              </div>
+            </section>
+
+            <form className={own.form} onSubmit={(e) => void save(e)} noValidate>
+              <h2 className={own.checkTitle}>{t("quickCheckTitle")}</h2>
+              <fieldset className={own.group}>
+                <legend className={styles.srOnly}>{t("streetNames")}</legend>
+                {shownNames.map(nameField)}
+                {hiddenNames > 0 ? (
+                  <button
+                    type="button"
+                    className={own.more}
+                    aria-expanded="false"
+                    onClick={() => setOtherNames(true)}
+                  >
+                    + {t("quickMoreNames")}
+                  </button>
+                ) : null}
+              </fieldset>
+              {phoneAndKind}
+
+              <fieldset className={own.group}>
+                <legend className={styles.srOnly}>{t("streetLocation")}</legend>
+                <div className={own.pinRow}>
+                  <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22">
+                    <path
+                      fill="currentColor"
+                      d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"
+                    />
+                  </svg>
+                  <div className={own.pinText}>
+                    <strong>
+                      {point
+                        ? t(accuracy !== null ? "quickPinned" : "quickPinnedMap")
+                        : t("streetLocation")}
+                    </strong>
+                    <span className={rough ? own.pinWarn : undefined} aria-live="polite">
+                      {linkMissed ? t("quickLinkMissed") : accuracyText}
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    className={own.pinButton}
+                    aria-expanded={showMap}
+                    onClick={() => setMapOpen(!showMap)}
+                  >
+                    {t(showMap ? "quickPinDone" : "quickMovePin")}
+                  </button>
+                </div>
+                {showMap ? <div className={own.mapBox}>{finderAndMap}</div> : null}
+              </fieldset>
+
+              <details className={own.extras}>
+                <summary>{t("quickMore")}</summary>
+                <div className={own.extrasBody}>{extras}</div>
+              </details>
+
+              {duplicates}
+              {errorList}
+              {!uploads ? <p className={styles.hint}>{t("streetUploadsOff")}</p> : null}
+              <div className={own.dock}>
+                <button type="button" className={own.discard} onClick={reset}>
+                  {t("quickDiscard")}
+                </button>
+                <button type="submit" className={own.send} disabled={checking}>
+                  {t(
+                    strong
+                      ? "streetSaveDistinct"
+                      : dupList.length
+                        ? "quickSendAnyway"
+                        : "quickSend",
+                  )}
+                </button>
+              </div>
+            </form>
+          </>
+        ) : (
+          <>
+            <section className={own.hero} aria-labelledby={`${id}-hero`}>
+              <span className={own.heroIcon} aria-hidden="true">
+                {cameraIcon}
+              </span>
+              <h2 id={`${id}-hero`} className={own.heroTitle}>
+                {t("quickHeroTitle")}
+              </h2>
+              <p className={own.heroLead}>{t("quickHeroLead")}</p>
+              <ol className={own.steps}>
+                <li data-on="">{t("quickStepPhoto")}</li>
+                <li>{t("quickStepCheck")}</li>
+                <li>{t("quickStepSend")}</li>
+              </ol>
+            </section>
+            {quick.aside}
+            {queueList}
+            <div className={own.dock} data-start="">
+              <label className={own.shoot}>
+                {cameraInput}
+                {cameraIcon}
+                <span>{t("streetTakePhoto")}</span>
+              </label>
+              <button type="button" className={own.manual} onClick={() => setManual(true)}>
+                {t("quickManual")}
+              </button>
+            </div>
+          </>
+        )}
+        {open ? queueList : null}
+      </div>
+    );
+  }
+
   return (
     <div className={own.layout}>
       <p className={styles.srOnly} role="status" aria-live="polite">
@@ -385,272 +949,41 @@ export function StreetCapture({
           {t("streetSign")}
         </h2>
         <label className={own.camera}>
-          <input
-            ref={camera}
-            type="file"
-            accept="image/*"
-            capture="environment"
-            className={own.cameraInput}
-            onChange={(e) => void onPhoto(e.target.files?.[0])}
-          />
-          <svg aria-hidden="true" viewBox="0 0 24 24" width="28" height="28" focusable="false">
-            <path
-              fill="currentColor"
-              d="M9 3 7.2 5H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3.2L15 3H9Zm3 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"
-            />
-          </svg>
+          {cameraInput}
+          {cameraIcon}
           <span>{t(preview ? "streetRetake" : "streetTakePhoto")}</span>
         </label>
         {preview ? (
           // eslint-disable-next-line @next/next/no-img-element -- a local object URL, never optimised
           <img className={own.preview} src={preview} alt={t("streetPhotoAlt")} />
         ) : null}
-        {reading.state === "reading" ? (
-          <p className={`${styles.notice} ${own.reading}`} aria-hidden="true">
-            {t("streetReading")}
-          </p>
-        ) : reading.state === "done" ? (
-          <p className={styles.notice}>
-            {t("streetReadDone")}
-            {reading.confidence !== null ? (
-              <>
-                {" "}
-                <span className={styles.hint}>
-                  {t("streetReadSure", { percent: Math.round(reading.confidence * 100) })}
-                </span>
-              </>
-            ) : null}
-          </p>
-        ) : reading.state === "none" ? (
-          <p className={reading.key === "streetReadExcluded" ? styles.warning : styles.hint}>
-            {t(reading.key)}
-          </p>
-        ) : null}
+        {readingNote}
       </section>
 
       <form className={own.form} onSubmit={(e) => void save(e)} noValidate>
         <fieldset className={own.group}>
           <legend className={own.legend}>{t("streetNames")}</legend>
-          {LETTERS.map(([l, letters, dir]) => (
-            <label key={l} className={styles.field}>
-              <span>{t("streetNameIn", { letters })}</span>
-              <input
-                lang={l}
-                dir={dir}
-                value={names[l]}
-                autoComplete="off"
-                onChange={(e) => setNames((n) => ({ ...n, [l]: e.target.value }))}
-              />
-            </label>
-          ))}
+          {LETTERS.map(nameField)}
         </fieldset>
-        <div className={styles.row}>
-          <label className={styles.field}>
-            <span>{t("fieldPhone")}</span>
-            <input
-              type="tel"
-              dir="ltr"
-              inputMode="tel"
-              autoComplete="off"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-            />
-          </label>
-          {/* Not a wrapping label: its name would take in every option's text. */}
-          <div className={styles.field}>
-            <label htmlFor={`${id}-kind`} className={own.label}>
-              {t("fieldPrimaryKind")}
-            </label>
-            <select
-              id={`${id}-kind`}
-              value={kind}
-              onChange={(e) => setKind(e.target.value)}
-              required
-            >
-              <option value="">{t("streetKindPick")}</option>
-              {kinds.map((k) => (
-                <option key={k.slug} value={k.slug}>
-                  {k.label}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
+        {phoneAndKind}
 
         <fieldset className={own.group}>
           <legend className={own.legend}>{t("streetLocation")}</legend>
           <p className={rough ? styles.warning : styles.hint} aria-live="polite">
-            {locating
-              ? t("streetLocating")
-              : noLocation && !point
-                ? t("streetNoLocation")
-                : accuracy !== null
-                  ? `${t("streetAccuracy", { metres: accuracy })}${rough ? `. ${t("streetAccuracyWeak")}` : ""}`
-                  : ""}
+            {accuracyText}
           </p>
-          <PlaceFinder
-            locale={locale}
-            {...(finder ? { locate: finder } : {})}
-            onFound={(p) => {
-              setPoint(p);
-              setAccuracy(null);
-              setFlyTo((f) => ({ point: p, key: (f?.key ?? 0) + 1 }));
-            }}
-          />
-          <LocationPicker
-            value={point}
-            flyTo={flyTo}
-            onChange={(p) => {
-              setPoint(p);
-              setAccuracy(null);
-            }}
-            locale={locale}
-            names={{ lat: "street-lat", lng: "street-lng" }}
-            labels={{
-              map: t("pinMap"),
-              pin: t("pinPin"),
-              hint: t("pinHint"),
-              centre: t("pinCentre"),
-              locate: t("pinLocate"),
-              locating: t("pinLocating"),
-              noLocation: t("pinNoLocation"),
-              outside: t("pinOutside"),
-              editNumbers: t("pinEditNumbers"),
-              lat: t("fieldLat"),
-              lng: t("fieldLng"),
-              noMap: t("pinNoMap"),
-              mapData: t("pinMapData"),
-              gestures: {
-                windows: t("pinGestureWindows"),
-                mac: t("pinGestureMac"),
-                mobile: t("pinGestureMobile"),
-              },
-            }}
-          />
+          {finderAndMap}
         </fieldset>
 
-        <label className={styles.field}>
-          <span>{t("streetHours")}</span>
-          <input
-            value={hours}
-            dir="auto"
-            aria-describedby={`${id}-hours`}
-            onChange={(e) => setHours(e.target.value)}
-          />
-          <small id={`${id}-hours`} className={styles.hint}>
-            {t("streetHoursHint")}
-          </small>
-        </label>
-        <label className={styles.field}>
-          <span>{t("streetNote")}</span>
-          <textarea
-            value={note}
-            dir="auto"
-            rows={2}
-            className={own.note}
-            onChange={(e) => setNote(e.target.value)}
-          />
-        </label>
-
-        {dupList.length ? (
-          <section className={styles.warning} aria-labelledby={`${id}-dup`}>
-            <h3 id={`${id}-dup`} ref={dupHeading} tabIndex={-1} className={own.dupTitle}>
-              {t("streetDupTitle")}
-            </h3>
-            {strong ? null : (
-              <p>{t(dupList.some((m) => linkOf(m)) ? "streetDupHint" : "streetDupHintPlain")}</p>
-            )}
-            <ul className={own.dupList}>
-              {dupList.map((m) => (
-                <li key={m.id}>
-                  {linkOf(m) ? (
-                    <a href={linkOf(m)!} target="_blank" rel="noopener">
-                      <bdi>{pickText(m.name, locale) || m.placeSlug}</bdi>
-                    </a>
-                  ) : (
-                    <bdi>{pickText(m.name, locale) || m.placeSlug}</bdi>
-                  )}{" "}
-                  <span className={styles.hint}>
-                    {m.reason === "phone"
-                      ? t("streetDupPhone")
-                      : t("streetDupName", { metres: m.metres })}
-                    {" · "}
-                    {t(
-                      m.status === "published"
-                        ? "statusPublished"
-                        : m.status === "draft"
-                          ? "statusDraft"
-                          : "statusSuspended",
-                    )}
-                  </span>
-                </li>
-              ))}
-            </ul>
-            {strong ? (
-              <label className={styles.field}>
-                <span>{t("streetDistinct")}</span>
-                <textarea
-                  value={different}
-                  dir="auto"
-                  rows={2}
-                  maxLength={300}
-                  required
-                  aria-describedby={`${id}-distinct`}
-                  className={own.note}
-                  onChange={(e) => setDifferent(e.target.value)}
-                />
-                <small id={`${id}-distinct`} className={styles.hint}>
-                  {t("streetDistinctHint")}
-                </small>
-              </label>
-            ) : null}
-          </section>
-        ) : null}
-
-        {errors.length ? (
-          <ul className={styles.error} role="alert">
-            {errors.map((e) => (
-              <li key={e}>{e}</li>
-            ))}
-          </ul>
-        ) : null}
+        {extras}
+        {duplicates}
+        {errorList}
         <button type="submit" className={`${styles.primary} ${own.save}`} disabled={checking}>
           {t(strong ? "streetSaveDistinct" : dupList.length ? "streetSaveAnyway" : "streetSave")}
         </button>
       </form>
 
-      {queue.length ? (
-        <section className={styles.card} aria-labelledby={`${id}-queue`}>
-          <div className={styles.actions}>
-            <h2 id={`${id}-queue`} className={styles.h2}>
-              {t("streetQueue")}
-            </h2>
-            <button type="button" className={styles.ghost} onClick={() => void flush()}>
-              {t("streetRetry")}
-            </button>
-          </div>
-          <ul className={own.queue}>
-            {queue.map((q) => (
-              <li key={q.clientId} className={own.queueItem}>
-                <bdi className={own.queueName}>{q.label}</bdi>
-                <span className={q.state === "refused" ? styles.error : styles.hint}>
-                  {stateText(q)}
-                </span>
-                {q.state === "refused" || q.state === "failed" ? (
-                  <button
-                    type="button"
-                    className={styles.ghost}
-                    onClick={() => void remove(q.clientId)}
-                    aria-label={t("streetRemoveOne", { name: q.label })}
-                  >
-                    {t("remove")}
-                  </button>
-                ) : null}
-              </li>
-            ))}
-          </ul>
-        </section>
-      ) : null}
+      {queueList}
     </div>
   );
 }

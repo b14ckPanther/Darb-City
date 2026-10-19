@@ -23,8 +23,27 @@ const c = initContract();
 export const HELPER_STATUSES = ["none", "pending", "approved", "paused"] as const;
 export type HelperStatus = (typeof HELPER_STATUSES)[number];
 
-/** A helper's (not an admin's) day: additions, and sign readings (each one costs money). */
-export const HELPER_DAILY = { captures: 40, reads: 20 } as const;
+/**
+ * A helper's (not an admin's) day: the same cap on additions and on sign readings (each reading
+ * costs money). An admin may raise one helper's cap or lift it; admins themselves have none.
+ */
+export const HELPER_DAILY_DEFAULT = 150;
+/** The caps an admin may give a helper; null is no cap at all. */
+export const HELPER_LIMITS = [150, 500, null] as const;
+export type HelperLimit = (typeof HELPER_LIMITS)[number];
+/**
+ * How User.helperDailyLimit is stored: null is the default (HELPER_DAILY_DEFAULT), 0 is no cap,
+ * any other number is that cap. Returns the day's cap, or null for none.
+ */
+export function helperDailyLimit(stored: number | null | undefined): number | null {
+  if (stored === null || stored === undefined) return HELPER_DAILY_DEFAULT;
+  return stored === 0 ? null : stored;
+}
+/** The stored value for a cap an admin picked: the default is stored as null, no cap as 0. */
+export function storedHelperLimit(limit: HelperLimit): number | null {
+  if (limit === null) return 0;
+  return limit === HELPER_DAILY_DEFAULT ? null : limit;
+}
 
 const HelperNameSchema = z.string().trim().min(2).max(60);
 
@@ -40,6 +59,8 @@ export const HelperMeSchema = z.object({
   credit: z.boolean(),
   /** Admins are helpers too, without applying. */
   isAdmin: z.boolean(),
+  /** Their cap on additions (and sign readings) a day; null is no cap (admins, or lifted). */
+  dailyLimit: z.number().int().positive().nullable(),
   appliedAt: z.string().nullable(),
 });
 export type HelperMeDto = z.infer<typeof HelperMeSchema>;

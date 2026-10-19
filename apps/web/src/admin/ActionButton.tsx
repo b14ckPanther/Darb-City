@@ -24,7 +24,7 @@ export function ActionButton({
   label: string;
   /** Asked first (destructive actions); the action runs only on yes. */
   confirm?: string;
-  /** Said in a toast once it worked. */
+  /** Said in a toast once it worked (the action's own message, when it gives one, wins). */
   done?: string;
   icon?: ReactNode;
   className?: string;
@@ -33,7 +33,7 @@ export function ActionButton({
 }) {
   const [state, formAction, pending] = useActionState(action, idle);
   useEffect(() => {
-    if (state.ok && done) toast(done);
+    if (state.ok && (state.message || done)) toast(state.message || done!);
   }, [state, done]);
   return (
     <form action={formAction} aria-busy={pending} className={styles.actions}>

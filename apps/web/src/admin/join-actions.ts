@@ -48,3 +48,34 @@ export async function rejectJoin(_prev: ActionState, fd: FormData): Promise<Acti
   revalidatePath("/admin/[locale]", "layout");
   redirect(adminHref(locale, `/join-requests/${id}`));
 }
+
+/**
+ * Approves every waiting addition of one helper (the API runs the single approval for each, each
+ * one audited). Says how many went live, and whether any failed or more still wait.
+ */
+export async function approveHelperJoins(_prev: ActionState, fd: FormData): Promise<ActionState> {
+  const locale = localeOf(fd);
+  const helper = text(fd, "helper");
+  const res = await answered(async () =>
+    (await adminApi()).joinRequests.approveHelper({ body: { helper } }),
+  );
+  if (!res) return actionFailed(locale, "errJoinBulk");
+  if (res.status === 401) redirect(adminHref(locale, "/sign-in"));
+  if (res.status !== 200) return actionFailed(locale, "errJoinBulk", res);
+  revalidatePath("/admin/[locale]", "layout");
+  const { approved, failed, remaining } = res.body;
+  if (approved === 0 && failed > 0) return actionFailed(locale, "errJoinBulk");
+  if (failed > 0)
+    return {
+      ok: false,
+      message: at(locale, "joinApproveAllPartial", { approved, failed }),
+      errors: [],
+    };
+  const done = at(locale, "joinApproveAllDone", { count: approved });
+  return {
+    ok: true,
+    message:
+      remaining > 0 ? `${done} ${at(locale, "joinApproveAllMore", { count: remaining })}` : done,
+    errors: [],
+  };
+}

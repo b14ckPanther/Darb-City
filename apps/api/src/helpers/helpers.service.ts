@@ -1,5 +1,10 @@
 import { Injectable, Logger } from "@nestjs/common";
-import type { HelperApplyDto, HelperMeDto, HelperPatchDto } from "@darb/contracts";
+import {
+  helperDailyLimit,
+  type HelperApplyDto,
+  type HelperMeDto,
+  type HelperPatchDto,
+} from "@darb/contracts";
 import type { Localized } from "@darb/core";
 import { WebRevalidator } from "../admin/revalidator.js";
 import { conflict, notFound } from "../admin/outcome.js";
@@ -20,6 +25,7 @@ const toMe = (u: Row): HelperMeDto => ({
   note: u.helperNote,
   credit: u.helperCredit,
   isAdmin: u.isAdmin,
+  dailyLimit: u.isAdmin ? null : helperDailyLimit(u.helperDailyLimit),
   appliedAt: u.helperAppliedAt?.toISOString() ?? null,
 });
 
