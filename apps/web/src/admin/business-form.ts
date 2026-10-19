@@ -1,5 +1,12 @@
 import type { AdminBusinessPatchDto } from "@darb/contracts";
-import { CARD_ACCENTS, type CardAccent, type Localized } from "@darb/core";
+import {
+  CARD_ACCENTS,
+  emailHref,
+  LINK_KEYS,
+  phoneHref,
+  type CardAccent,
+  type Localized,
+} from "@darb/core";
 import { lines, localized, text } from "./form-data";
 import { parseExceptions } from "./hours-form";
 
@@ -93,8 +100,11 @@ export function businessFromForm(fd: FormData): {
   );
   const name = localized(fd, "name");
   const links = Object.fromEntries(
-    (["instagram", "facebook", "tiktok", "waze", "google"] as const).flatMap((k) => {
-      const v = text(fd, `links.${k}`);
+    LINK_KEYS.flatMap((k) => {
+      const raw = text(fd, `links.${k}`);
+      // Shown without their scheme; stored as mailto: and tel:, so an untouched one compares equal.
+      const v =
+        k === "email" ? (emailHref(raw) ?? raw) : k === "phone2" ? (phoneHref(raw) ?? raw) : raw;
       return v ? [[k, v]] : [];
     }),
   );

@@ -95,6 +95,20 @@ export function LiveCard({
     instagram: v["links.instagram"] ?? "",
     facebook: v["links.facebook"] ?? "",
     tiktok: v["links.tiktok"] ?? "",
+    links: Object.fromEntries(
+      [
+        "youtube",
+        "linkedin",
+        "x",
+        "telegram",
+        "booking",
+        "order",
+        "wolt",
+        "tenbis",
+        "email",
+        "phone2",
+      ].map((k) => [k, v[`links.${k}`] ?? ""]),
+    ),
     hours,
   });
   return (

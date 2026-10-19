@@ -26,7 +26,15 @@ export type IconName =
   | "leaf"
   | "chevron"
   | "close"
-  | "star";
+  | "star"
+  | "linkedin"
+  | "youtube"
+  | "x"
+  | "telegram"
+  | "mail"
+  | "bag"
+  | "delivery"
+  | "more";
 
 interface Drawing {
   /** The outline: stroked in line, filled in solid. */
@@ -121,6 +129,37 @@ const DRAWINGS: Record<IconName, Drawing> = {
   close: { lines: ["M6 6l12 12", "M18 6 6 18"] },
   star: {
     shape: "M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9Z",
+  },
+  linkedin: {
+    shape: "M6.5 3.5h11a3 3 0 0 1 3 3v11a3 3 0 0 1-3 3h-11a3 3 0 0 1-3-3v-11a3 3 0 0 1 3-3Z",
+    cuts: ["M8 10.5V16.5", "M11.5 16.5v-6", "M11.5 13c0-1.7 1-2.6 2.3-2.6 1.4 0 2.2.9 2.2 2.6v3.5"],
+    dots: [circle(8, 7.8, 1.1)],
+  },
+  youtube: {
+    shape:
+      "M6 5.5h12a3.5 3.5 0 0 1 3.5 3.5v6a3.5 3.5 0 0 1-3.5 3.5H6A3.5 3.5 0 0 1 2.5 15V9A3.5 3.5 0 0 1 6 5.5Z",
+    dots: ["M10 9v6l5-3Z"],
+  },
+  x: { lines: ["M5 4.5l14 15", "M19 4.5l-14 15"] },
+  telegram: {
+    shape: "M3 11.5 20.5 4l-3 16-5.5-4.2-3 2.7v-4.7L17 7.5l-9.6 6Z",
+  },
+  mail: {
+    shape: "M5 5.5h14A2 2 0 0 1 21 7.5v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2Z",
+    cuts: ["M3.5 7l8.5 6 8.5-6"],
+  },
+  bag: {
+    shape: "M5 8h14l-1 12.5H6Z",
+    lines: ["M9 8V6.5a3 3 0 0 1 6 0V8"],
+  },
+  delivery: {
+    shape: "M3 7.5h10v8H3Z",
+    lines: ["M13 10.5h4l3 3v2h-7"],
+    marks: [circle(7, 17.5, 1.8), circle(17, 17.5, 1.8)],
+    mirror: true,
+  },
+  more: {
+    marks: [circle(6, 12, 1.6), circle(12, 12, 1.6), circle(18, 12, 1.6)],
   },
 };
 

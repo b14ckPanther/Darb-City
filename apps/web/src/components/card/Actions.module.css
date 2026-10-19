@@ -99,3 +99,49 @@
     transition: none;
   }
 }
+
+/* Many ways to reach a business: the rest fold under More, a small list over the card. */
+.actions {
+  position: relative;
+}
+.more {
+  display: contents;
+}
+.more > summary {
+  list-style: none;
+  cursor: pointer;
+}
+.more > summary::-webkit-details-marker {
+  display: none;
+}
+.moreList {
+  position: absolute;
+  inset-inline: 0;
+  z-index: 3;
+  margin: var(--space-2) 0 0;
+  padding: var(--space-2);
+  list-style: none;
+  display: grid;
+  gap: 2px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  background: var(--surface-1);
+  box-shadow: var(--shadow-panel);
+}
+.moreItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-block-size: var(--tap);
+  padding-inline: var(--space-3);
+  border-radius: var(--radius-s);
+  color: var(--text);
+  text-decoration: none;
+}
+a.moreItem:hover {
+  background: var(--wash-strong);
+}
+.moreIcon {
+  display: inline-grid;
+  color: var(--card-accent);
+}

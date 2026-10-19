@@ -1,5 +1,13 @@
 import {
+  emailHref,
   facebookUrl,
+  linkedinUrl,
+  phoneHref,
+  telegramUrl,
+  tenbisUrl,
+  woltUrl,
+  xUrl,
+  youtubeUrl,
   googleMapsUrl,
   instagramUrl,
   isByAppointment,
@@ -31,14 +39,27 @@ import {
 
 /** One round button under the main one: an icon, a short word, a place to go. */
 export interface CardAction {
-  key: "call" | "whatsapp" | "waze" | "maps" | "website" | "app" | "reviews";
+  key:
+    | "call"
+    | "whatsapp"
+    | "waze"
+    | "maps"
+    | "website"
+    | "app"
+    | "reviews"
+    | "booking"
+    | "order"
+    | "wolt"
+    | "tenbis"
+    | "email"
+    | "phone2";
   icon: IconName;
   label: string;
   href: string;
 }
 
 export interface CardSocial {
-  key: "instagram" | "facebook" | "tiktok";
+  key: "instagram" | "facebook" | "tiktok" | "linkedin" | "youtube" | "x" | "telegram";
   label: string;
   href: string;
 }
@@ -78,6 +99,10 @@ const SOCIAL = [
   ["instagram", "Instagram"],
   ["facebook", "Facebook"],
   ["tiktok", "TikTok"],
+  ["youtube", "YouTube"],
+  ["linkedin", "LinkedIn"],
+  ["x", "X"],
+  ["telegram", "Telegram"],
 ] as const;
 
 export const mediaUrl = (key: string) => `${MEDIA_ORIGIN}/${key}`;
@@ -123,9 +148,14 @@ export function cardActions(
     apps: string[];
     /** The business's Google Maps page: a link out to its reviews, nothing read from it. */
     reviews?: string | null;
+    /** The newer links (booking, ordering, delivery, email, a second phone), already safe. */
+    more?: Partial<
+      Record<"booking" | "order" | "wolt" | "tenbis" | "email" | "phone2", string | null>
+    >;
   },
   primary: PrimaryAction,
 ): CardAction[] {
+  const m = links.more ?? {};
   const main = "href" in primary ? primary.href : null;
   const all: (Omit<CardAction, "href"> & { href: string | null })[] = [
     { key: "call", icon: "phone", label: t(locale, "call"), href: links.call },
@@ -139,6 +169,12 @@ export function cardActions(
       label: copy.app,
       href,
     })),
+    { key: "booking", icon: "calendar", label: copy.booking, href: m.booking ?? null },
+    { key: "order", icon: "bag", label: copy.order, href: m.order ?? null },
+    { key: "wolt", icon: "delivery", label: copy.wolt, href: m.wolt ?? null },
+    { key: "tenbis", icon: "delivery", label: copy.tenbis, href: m.tenbis ?? null },
+    { key: "phone2", icon: "phone", label: copy.phone2, href: m.phone2 ?? null },
+    { key: "email", icon: "mail", label: copy.email, href: m.email ?? null },
     { key: "reviews", icon: "star", label: copy.googleReviews, href: links.reviews ?? null },
   ];
   const seen = new Set(main ? [main] : []);
@@ -146,6 +182,34 @@ export function cardActions(
     if (!a.href || seen.has(a.href)) return [];
     seen.add(a.href);
     return [{ ...a, href: a.href }];
+  });
+}
+
+/** The newer stored links as the card links them: https pages, a mailto: and a tel: only. */
+export function moreLinks(links: Partial<Record<string, string>> | null | undefined) {
+  const l = links ?? {};
+  const mail = l.email && /^mailto:[^\s@]+@[^\s@]+\.[^\s@]+$/i.test(l.email) ? l.email : null;
+  const tel = l.phone2 && /^tel:\+?[0-9]{6,15}$/.test(l.phone2) ? l.phone2 : null;
+  return {
+    booking: safeHttpUrl(l.booking),
+    order: safeHttpUrl(l.order),
+    wolt: safeHttpUrl(l.wolt),
+    tenbis: safeHttpUrl(l.tenbis),
+    email: mail,
+    phone2: tel,
+  };
+}
+
+/** The newer links as typed in a form, read the way the API will store them. */
+export function moreFromDraft(raw: Partial<Record<string, string>>) {
+  const read = (fn: (v: string) => string | null, v: string | undefined) => (v ? fn(v) : null);
+  return moreLinks({
+    booking: read(websiteUrl, raw.booking) ?? undefined,
+    order: read(websiteUrl, raw.order) ?? undefined,
+    wolt: read(woltUrl, raw.wolt) ?? undefined,
+    tenbis: read(tenbisUrl, raw.tenbis) ?? undefined,
+    email: read(emailHref, raw.email) ?? undefined,
+    phone2: read(phoneHref, raw.phone2) ?? undefined,
   });
 }
 
@@ -212,6 +276,7 @@ export function cardFromBusiness({
         apps,
         // A map page shows the street: a home business keeps it private here too.
         reviews: !hidden && business.links?.google ? googleMapsUrl(business.links.google) : null,
+        more: moreLinks(business.links),
       },
       primary,
     ),
@@ -249,6 +314,8 @@ export function cardFromDraft(
     facebook: string;
     tiktok: string;
     hours: Hours;
+    /** The newer links, as typed (the admin's editor). */
+    links?: Partial<Record<string, string>>;
   },
 ): CardModel {
   const greeting = t(locale, "whatsappGreeting", { name: d.name });
@@ -266,6 +333,10 @@ export function cardFromDraft(
       ["instagram", "Instagram", instagramUrl(d.instagram)],
       ["facebook", "Facebook", facebookUrl(d.facebook)],
       ["tiktok", "TikTok", tiktokUrl(d.tiktok)],
+      ["youtube", "YouTube", d.links?.youtube ? youtubeUrl(d.links.youtube) : null],
+      ["linkedin", "LinkedIn", d.links?.linkedin ? linkedinUrl(d.links.linkedin) : null],
+      ["x", "X", d.links?.x ? xUrl(d.links.x) : null],
+      ["telegram", "Telegram", d.links?.telegram ? telegramUrl(d.links.telegram) : null],
     ] as const
   ).flatMap(([key, label, href]) => (href ? [{ key, label, href }] : []));
   return {
@@ -293,6 +364,7 @@ export function cardFromDraft(
         maps: d.point ? directionsHref(d.point.lat, d.point.lng) : null,
         website: websiteUrl(d.website),
         apps: [],
+        more: d.links ? moreFromDraft(d.links) : undefined,
       },
       primary,
     ),

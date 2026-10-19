@@ -200,6 +200,42 @@ export function BusinessForm({
             dir="ltr"
           />
         </div>
+        <div className={styles.row}>
+          <TextField
+            label={t("fieldPhone2")}
+            name="links.phone2"
+            type="tel"
+            defaultValue={b?.links.phone2?.replace(/^tel:/, "")}
+            dir="ltr"
+          />
+          <TextField
+            label={t("fieldEmail")}
+            name="links.email"
+            type="email"
+            defaultValue={b?.links.email?.replace(/^mailto:/, "")}
+            dir="ltr"
+          />
+        </div>
+        <SubHead>{t("fieldOrdering")}</SubHead>
+        <div className={styles.row}>
+          {(
+            [
+              ["booking", "fieldBooking", "hintBooking"],
+              ["order", "fieldOrder2", "hintOrder"],
+              ["wolt", "fieldWolt", "hintLink"],
+              ["tenbis", "fieldTenbis", "hintLink"],
+            ] as const
+          ).map(([key, label, hint]) => (
+            <TextField
+              key={key}
+              label={t(label)}
+              name={`links.${key}`}
+              defaultValue={b?.links[key]}
+              dir="ltr"
+              hint={t(hint)}
+            />
+          ))}
+        </div>
         <SubHead>{t("fieldLinks")}</SubHead>
         <div className={styles.row}>
           {(
@@ -208,6 +244,10 @@ export function BusinessForm({
               ["instagram", "fieldInstagram", "hintHandle"],
               ["facebook", "fieldFacebook", "hintHandle"],
               ["tiktok", "fieldTiktok", "hintHandle"],
+              ["youtube", "fieldYoutube", "hintHandle"],
+              ["linkedin", "fieldLinkedin", "hintLink"],
+              ["x", "fieldX", "hintHandle"],
+              ["telegram", "fieldTelegram", "hintHandle"],
               ["waze", "fieldWaze", undefined],
             ] as const
           ).map(([key, label, hint]) => (

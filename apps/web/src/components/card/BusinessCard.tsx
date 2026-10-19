@@ -110,10 +110,13 @@ export function BusinessCard({
             <Icon key={a.href} name={a.icon} variant={card.icons} />
           )),
           share: <Icon name="share" variant={card.icons} />,
+          more: <Icon name="more" variant={card.icons} />,
         }}
         preview={preview}
         labels={{
           share: label("share"),
+          more: copy.more,
+          moreWays: copy.moreWays,
           contactWays: copy.contactWays,
           exampleNotice: label("exampleNotice"),
           linkCopied: label("linkCopied"),

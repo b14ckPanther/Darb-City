@@ -147,3 +147,20 @@ it("reads links, photos named after the business, the logo and the card look", (
   const none = businessFromForm(form({ logo: "", "cardStyle.accent": "#123456" })).data;
   expect([none.logo, none.cardStyle, none.photos]).toEqual([null, {}, []]);
 });
+
+it("reads the newer links, storing email and a second phone with their scheme", () => {
+  const { data } = businessFromForm(
+    form({
+      "links.email": "Hi@Darb.co.il",
+      "links.phone2": "04-674 0000",
+      "links.booking": "book.example.com",
+      "links.linkedin": "",
+    }),
+  );
+  expect(data.links).toMatchObject({
+    email: "mailto:hi@darb.co.il",
+    phone2: "tel:+97246740000",
+    booking: "book.example.com",
+  });
+  expect(data.links).not.toHaveProperty("linkedin");
+});

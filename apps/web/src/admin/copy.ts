@@ -530,6 +530,20 @@ const en = {
   secIncluded: "What is included",
   secButton: "Button",
   secShow: "Small print and showing",
+  fieldYoutube: "YouTube",
+  fieldLinkedin: "LinkedIn",
+  fieldX: "X (Twitter)",
+  fieldTelegram: "Telegram",
+  fieldPhone2: "Second phone",
+  fieldEmail: "Email",
+  fieldOrdering: "Booking, ordering and delivery",
+  fieldBooking: "Booking link",
+  fieldOrder2: "Ordering link",
+  fieldWolt: "Wolt",
+  fieldTenbis: "10bis",
+  hintLink: "Paste the page's link",
+  hintBooking: "Where customers book a turn or a table",
+  hintOrder: "Its own online shop or menu",
 } as const;
 
 export type AdminKey = keyof typeof en;
@@ -1057,6 +1071,20 @@ const he: Messages = {
   secIncluded: "מה כלול",
   secButton: "כפתור",
   secShow: "אותיות קטנות ותצוגה",
+  fieldYoutube: "יוטיוב",
+  fieldLinkedin: "לינקדאין",
+  fieldX: "X (טוויטר)",
+  fieldTelegram: "טלגרם",
+  fieldPhone2: "טלפון נוסף",
+  fieldEmail: "אימייל",
+  fieldOrdering: "תורים, הזמנות ומשלוחים",
+  fieldBooking: "קישור לקביעת תור",
+  fieldOrder2: "קישור להזמנה",
+  fieldWolt: "וולט",
+  fieldTenbis: "תן ביס",
+  hintLink: "הדבקת הקישור לעמוד",
+  hintBooking: "איפה לקוחות קובעים תור או שולחן",
+  hintOrder: "החנות או התפריט שלו ברשת",
 };
 
 const ar: Messages = {
@@ -1583,6 +1611,20 @@ const ar: Messages = {
   secIncluded: "شو مشمول",
   secButton: "الزر",
   secShow: "الكلام الزغير والعرض",
+  fieldYoutube: "يوتيوب",
+  fieldLinkedin: "لينكدإن",
+  fieldX: "X (تويتر)",
+  fieldTelegram: "تيليجرام",
+  fieldPhone2: "تلفون تاني",
+  fieldEmail: "إيميل",
+  fieldOrdering: "حجز، طلبات وتوصيل",
+  fieldBooking: "رابط الحجز",
+  fieldOrder2: "رابط الطلب",
+  fieldWolt: "وولت",
+  fieldTenbis: "تن بيس",
+  hintLink: "الصق رابط الصفحة",
+  hintBooking: "وين الزباين بيحجزوا دور أو طاولة",
+  hintOrder: "محله أو المنيو تبعه عالنت",
 };
 
 export const adminCopy: Record<Locale, Messages> = { he, ar, en };
