@@ -272,6 +272,10 @@ test.describe("edit from the public card", () => {
     // The admin: signing in leaves the marker, and the card offers Edit.
     await signInAs(context, baseURL!, ADMIN);
     await page.goto("/en/admin");
+    // The shell writes the marker after it hydrates; leaving before then leaves no cookie.
+    await expect
+      .poll(async () => (await context.cookies()).some((c) => c.name === "darb_admin_hint"))
+      .toBe(true);
     await page.goto(PUBLIC(slug));
     await page.locator("[data-admin-edit]").click();
     const panel = page.locator("[data-quick-editor]");
