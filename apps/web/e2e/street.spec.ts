@@ -70,11 +70,11 @@ test.describe("add from the street", () => {
     // In the existing queue, marked as from the street; nothing published.
     await mine.getByRole("link", { name: first }).click();
     await expect(page.getByRole("heading", { name: first })).toBeVisible();
-    await expect(page.getByText("From the street").first()).toBeVisible();
-    await expect(page.getByText("Waiting").first()).toBeVisible();
+    await expect(page.getByText("From the street", { exact: true }).first()).toBeVisible();
+    await expect(page.getByText("Waiting", { exact: true }).first()).toBeVisible();
     await expect(page.getByRole("button", { name: "Approve and publish" })).toBeVisible();
     await page.goto("/en/admin/join-requests?status=pending");
-    const card = page.getByRole("article").filter({ hasText: first });
+    const card = page.locator('[data-list="join-requests"] li').filter({ hasText: first });
     await expect(card.getByText("From the street")).toBeVisible();
   });
 

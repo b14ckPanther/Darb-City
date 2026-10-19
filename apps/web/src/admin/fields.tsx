@@ -13,10 +13,14 @@ export function TextField(p: {
   step?: string;
 }) {
   const hintId = p.hint ? `${p.name}-hint` : undefined;
+  const id = `field-${p.name}`;
   return (
-    <label className={styles.field}>
-      <span>{p.label}</span>
+    <div className={styles.field}>
+      <label htmlFor={id}>
+        <span className={styles.label}>{p.label}</span>
+      </label>
       <input
+        id={id}
         name={p.name}
         type={p.type ?? "text"}
         defaultValue={p.defaultValue ?? ""}
@@ -30,7 +34,7 @@ export function TextField(p: {
           {p.hint}
         </small>
       ) : null}
-    </label>
+    </div>
   );
 }
 
@@ -43,10 +47,14 @@ export function TextArea(p: {
   rows?: number;
 }) {
   const hintId = p.hint ? `${p.name}-hint` : undefined;
+  const id = `field-${p.name}`;
   return (
-    <label className={styles.field}>
-      <span>{p.label}</span>
+    <div className={styles.field}>
+      <label htmlFor={id}>
+        <span className={styles.label}>{p.label}</span>
+      </label>
       <textarea
+        id={id}
         name={p.name}
         defaultValue={p.defaultValue ?? ""}
         dir={p.dir}
@@ -58,7 +66,7 @@ export function TextArea(p: {
           {p.hint}
         </small>
       ) : null}
-    </label>
+    </div>
   );
 }
 

@@ -1,6 +1,13 @@
 "use client";
 
-import { useActionState, useEffect, useRef, useState, type ReactNode } from "react";
+import {
+  startTransition,
+  useActionState,
+  useEffect,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
 import { AdminIcon } from "./AdminIcon";
 import { idle, type ActionState } from "./action-state";
 import { snapshot } from "./editor-state";
@@ -176,7 +183,13 @@ export function EditorShell({
         <form
           id={id}
           ref={form}
-          action={formAction}
+          // Submitted by hand, not through the action prop: React would reset every field to
+          // its first value after a save, and the admin keeps what they see.
+          onSubmit={(ev) => {
+            ev.preventDefault();
+            const fd = new FormData(ev.currentTarget);
+            startTransition(() => formAction(fd));
+          }}
           aria-busy={pending}
           className={styles.form}
           noValidate
