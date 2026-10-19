@@ -419,9 +419,13 @@ export const AdminJoinRequestSchema = z.object({
   rejectReason: z.string().nullable(),
   createdAt: z.string(),
   decidedAt: stamp,
+  /** A helper's street capture (its creator is not an admin): who added it. */
+  helper: z.object({ id, name: z.string() }).nullable().default(null),
 });
 export const AdminJoinListQuerySchema = z.object({
   status: z.enum(JOIN_STATUSES).optional(),
+  /** Only this helper's additions (from the Helpers screen). */
+  helper: id.optional(),
   cursor: z.string().max(200).optional(),
   limit: z.coerce.number().int().min(1).max(100).default(50),
 });
@@ -434,6 +438,36 @@ export const AdminJoinPageSchema = z.object({
 export const AdminJoinRejectSchema = z
   .object({ reason: z.string().trim().min(2).max(500) })
   .strict();
+
+// Helpers (friends who add businesses from their towns)
+export const ADMIN_HELPER_STATUSES = ["pending", "approved", "paused"] as const;
+export const AdminHelperSchema = z.object({
+  id,
+  status: z.enum(ADMIN_HELPER_STATUSES),
+  name: z.string(),
+  phone: z.string().nullable(),
+  placeName: LocalizedSchema.nullable(),
+  note: z.string().nullable(),
+  credit: z.boolean(),
+  appliedAt: stamp,
+  decidedAt: stamp,
+  /** Their street captures: every one, and how the review went (the acceptance rate). */
+  added: z.number().int().nonnegative(),
+  approved: z.number().int().nonnegative(),
+  rejected: z.number().int().nonnegative(),
+});
+export const AdminHelperListQuerySchema = z.object({
+  status: z.enum(ADMIN_HELPER_STATUSES).default("pending"),
+});
+/** One tab's helpers (waiting: oldest first; the rest: newest decision first), and every tab's count. */
+export const AdminHelperPageSchema = z.object({
+  items: z.array(AdminHelperSchema),
+  counts: z.object({
+    pending: z.number().int().nonnegative(),
+    approved: z.number().int().nonnegative(),
+    paused: z.number().int().nonnegative(),
+  }),
+});
 
 // Audit and identity
 export const AuditRowSchema = z.object({
@@ -466,6 +500,8 @@ export const AdminOverviewSchema = z.object({
     kindsHidden: z.number().int(),
     pendingJoins: z.number().int(),
     streetPending: z.number().int(),
+    /** People who applied to be helpers and wait for an answer. */
+    helpersWaiting: z.number().int(),
     newInquiries: z.number().int(),
   }),
   /** Published businesses with a gap, by issue. */
@@ -524,6 +560,9 @@ export type AdminInquiryPageDto = z.infer<typeof AdminInquiryPageSchema>;
 export type AdminJoinRequestDto = z.infer<typeof AdminJoinRequestSchema>;
 export type AdminJoinListQueryDto = z.infer<typeof AdminJoinListQuerySchema>;
 export type AdminJoinPageDto = z.infer<typeof AdminJoinPageSchema>;
+export type AdminHelperDto = z.infer<typeof AdminHelperSchema>;
+export type AdminHelperListQueryDto = z.infer<typeof AdminHelperListQuerySchema>;
+export type AdminHelperPageDto = z.infer<typeof AdminHelperPageSchema>;
 export type AuditRowDto = z.infer<typeof AuditRowSchema>;
 export type AdminErrorDto = z.infer<typeof AdminErrorSchema>;
 export type AdminPlaceListQueryDto = z.infer<typeof AdminPlaceListQuerySchema>;
@@ -821,6 +860,36 @@ export const adminContract = c.router({
       method: "GET",
       path: "/admin/field/captures",
       responses: { 200: FieldCapturesSchema, ...guarded },
+    },
+  }),
+  /** Helpers: approve a waiting one, pause an active one, resume a paused one; audited. */
+  helpers: c.router({
+    list: {
+      method: "GET",
+      path: "/admin/helpers",
+      query: AdminHelperListQuerySchema,
+      responses: { 200: AdminHelperPageSchema, ...guarded },
+    },
+    approve: {
+      method: "POST",
+      path: "/admin/helpers/:id/approve",
+      pathParams: byId,
+      body: empty,
+      responses: { 200: AdminHelperSchema, ...writeErrors },
+    },
+    pause: {
+      method: "POST",
+      path: "/admin/helpers/:id/pause",
+      pathParams: byId,
+      body: empty,
+      responses: { 200: AdminHelperSchema, ...writeErrors },
+    },
+    resume: {
+      method: "POST",
+      path: "/admin/helpers/:id/resume",
+      pathParams: byId,
+      body: empty,
+      responses: { 200: AdminHelperSchema, ...writeErrors },
     },
   }),
   /** Find the place: an address or a map link to a point for the pin. Never fails loudly. */

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import type {
   AdminBusinessDto,
@@ -68,7 +69,16 @@ export default async function JoinRequestPage({
       >
         <div className={styles.statusLine}>
           <Status locale={locale} status={r.status} />
-          <span>{at(locale, joinSourceKey(r.source))}</span>
+          <span>
+            {r.helper ? (
+              <>
+                {at(locale, "helperFrom")} ·{" "}
+                <bdi>{r.helper.name || at(locale, "helperNoName")}</bdi>
+              </>
+            ) : (
+              at(locale, joinSourceKey(r.source))
+            )}
+          </span>
           <time dateTime={r.createdAt}>{receivedAt(locale, r.createdAt)}</time>
         </div>
       </PageHead>
@@ -78,7 +88,16 @@ export default async function JoinRequestPage({
             <h2 id="join-sign" className={styles.h2}>
               {at(locale, "streetSign")}
             </h2>
-            <p className={styles.hint}>{at(locale, "streetAddedBy")}</p>
+            {r.helper ? (
+              <p className={styles.hint}>
+                {at(locale, "helperFrom")} ·{" "}
+                <Link href={adminHref(locale, `/join-requests?helper=${r.helper.id}`)}>
+                  <bdi>{r.helper.name || at(locale, "helperNoName")}</bdi>
+                </Link>
+              </p>
+            ) : (
+              <p className={styles.hint}>{at(locale, "streetAddedBy")}</p>
+            )}
             {r.photo ? (
               <a href={mediaUrl(r.photo)} target="_blank" rel="noopener noreferrer">
                 {/* eslint-disable-next-line @next/next/no-img-element -- the full photo from the bucket */}

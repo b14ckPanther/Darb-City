@@ -120,6 +120,22 @@ Protomaps (BSD-3-Clause), MapLibre GL JS, pmtiles and go-pmtiles (BSD-3-Clause),
 glyphs (SIL OFL 1.1, `apps/web/map-assets/glyphs/OFL.txt`). The map always shows
 "Map data: © OpenStreetMap · Protomaps".
 
+## Darb Helpers
+
+Friends add businesses from their towns with the street capture, in their own installable app at
+`/helpers` (`/ar/helpers`, `/en/helpers`; spec: `docs/superpowers/specs/2026-10-19-darb-helpers-design.md`).
+It runs through the proxy like `/admin` (Clerk, nonce CSP, noindex, no-store) on the same Clerk app.
+Anyone signed in may apply (`POST /helpers/apply`); an admin approves, pauses or resumes them on the
+admin's Helpers screen (audited as entity `helper`). Approved helpers and admins capture through
+`/helpers/field/*`, the admin's `FieldService` mounted again behind `HelperGuard`. A helper (not an
+admin) has 40 additions and 20 sign readings a day (`HELPER_DAILY`), must say how a capture differs
+from a strong duplicate, and only ever sees their own additions. Nothing they add is public until it
+is approved in Join requests. A published card says "Added to Darb by <name>" only while that
+helper's credit toggle is on (read at render time; toggling refreshes their cards).
+
+Locally, `ADMIN_FAKE_AUTH=1` gives `/helpers/sign-in` the same fake sign-in as the admin. The helper
+app's icons are drawn by `pnpm --filter @darb/web icons` beside the site's.
+
 ## Deploy
 
 Hosting, release flow and fallback: `docs/launch/hosting.md`. Variables per environment: `docs/launch/environments.md`. Launch and rollback: `docs/launch/runbook.md`. What exists in each provider, and the careful DNS move to Cloudflare: `docs/launch/accounts.md`.

@@ -30,5 +30,6 @@ export const detail = (over: Partial<BusinessDetailDto> = {}): BusinessDetailDto
   apps: {},
   brandId: null,
   brandSlug: null,
+  addedBy: null,
   ...over,
 });

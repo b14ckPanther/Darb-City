@@ -104,6 +104,28 @@ describe("flushQueue", () => {
     ]);
     expect(seen.flat()).toContain("B:sending");
   });
+
+  it("keeps a helper's capture past the day's limit for a later day, and stops there", async () => {
+    const store = memoryStore();
+    await store.put(item({ photo: null }));
+    await store.put(
+      item({ clientId: "b", createdAt: "2026-10-18T09:05:00.000Z", photo: null, label: "B" }),
+    );
+    const fetch = vi.fn().mockResolvedValue(reply(429, { code: "daily_limit" }));
+    const out = await flushQueue({ fetch, base: "/helpers/field-api", store });
+    expect(out).toEqual({ sent: 0, offline: false });
+    expect(fetch).toHaveBeenCalledTimes(1);
+    expect((await store.all()).map((i) => [i.label, i.state])).toEqual([
+      ["Abu Samir", "limited"],
+      ["B", "waiting"],
+    ]);
+    // The next day it goes: a limited item is sent again, never dropped.
+    const later = vi.fn().mockResolvedValue(reply(201));
+    expect(await flushQueue({ fetch: later, base: "", store })).toEqual({
+      sent: 2,
+      offline: false,
+    });
+  });
 });
 
 describe("storage", () => {

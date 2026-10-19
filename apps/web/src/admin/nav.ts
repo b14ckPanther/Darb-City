@@ -7,7 +7,7 @@ export interface NavItem {
   label: AdminKey;
   icon: AdminIconName;
   /** Which count, if any, rides on the item. */
-  badge?: "joins" | "inquiries";
+  badge?: "joins" | "inquiries" | "helpers";
   /** On the phone's bottom bar (the rest are under More). */
   tab?: boolean;
   /** A shorter name for the bottom bar. */
@@ -46,6 +46,7 @@ export const NAV: NavGroup[] = [
         short: "tabJoin",
       },
       { href: "/field", label: "navStreet", icon: "camera", tab: true, short: "tabStreet" },
+      { href: "/helpers", label: "navHelpers", icon: "people", badge: "helpers" },
       { href: "/inquiries", label: "navInquiries", icon: "mail", badge: "inquiries" },
       { href: "/report", label: "navReport", icon: "searchGap" },
     ],

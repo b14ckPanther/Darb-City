@@ -226,6 +226,11 @@ export const BusinessDetailSchema = BusinessSummarySchema.extend({
   brandId: z.string().nullable(),
   /** The chain it belongs to ("paz"), so a card can say what Darb built for that chain. */
   brandSlug: z.string().nullable().default(null),
+  /**
+   * The helper who added it from the street, while they choose to be credited ("Added by …");
+   * read at render time, never copied into the business.
+   */
+  addedBy: z.string().nullable().default(null),
 });
 export type BusinessDetailDto = z.infer<typeof BusinessDetailSchema>;
 

@@ -25,7 +25,7 @@ it("blocks production's *.vercel.app host", async () => {
   expect((await robots()).rules).toEqual([{ userAgent: "*", disallow: "/" }]);
 });
 
-it("opens production except admin, api and search, and lists the sitemaps", async () => {
+it("opens production except admin, helpers, api and search, and lists the sitemaps", async () => {
   vi.stubEnv("VERCEL_ENV", "production");
   vi.stubEnv("SITE_URL", "https://darb.co.il");
   const r = await robots();
@@ -37,6 +37,9 @@ it("opens production except admin, api and search, and lists the sitemaps", asyn
         "/admin",
         "/ar/admin",
         "/en/admin",
+        "/helpers",
+        "/ar/helpers",
+        "/en/helpers",
         "/api/",
         "/search",
         "/ar/search",

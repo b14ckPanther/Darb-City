@@ -319,6 +319,31 @@ async function shortcut(name, theme) {
     .toBuffer();
 }
 
+/**
+ * The helper app's badge: the join shortcut's gold disc and plus, on a ring of the tile's own colour
+ * so it reads apart from the mark it overlaps. `at` and `r` are shares of the tile.
+ */
+function badgeSvg(theme, size, { at, r }) {
+  const cx = size * at;
+  const ring = theme === "dark" ? TILES.dark.bottom : TILES.light.top;
+  const arm = r * size * 0.48;
+  const stroke = Math.max(1.5, r * size * 0.24);
+  return Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}">
+  <circle cx="${cx}" cy="${cx}" r="${r * size * 1.22}" fill="${ring}"/>
+  <circle cx="${cx}" cy="${cx}" r="${r * size}" fill="${GOLD}"/>
+  <path d="M${cx} ${cx - arm}V${cx + arm}M${cx - arm} ${cx}H${cx + arm}" fill="none" stroke="${FOREST}" stroke-width="${stroke}" stroke-linecap="round"/>
+</svg>`);
+}
+
+/** The Darb mark's tile with the helper badge on its lower corner (the helper app's icon). */
+async function helperTile(theme, size, tile, badge) {
+  const base = await markTile(theme, size, tile);
+  return sharp(base)
+    .composite([{ input: badgeSvg(theme, size, badge) }])
+    .png(PNG)
+    .toBuffer();
+}
+
 /** A .ico holding PNG images (Vista and later read PNG entries). */
 function ico(images) {
   const head = Buffer.alloc(6);
@@ -364,6 +389,35 @@ export async function renderIcons() {
       files[`shortcut-${name}-${theme}.png`] = await shortcut(name, theme);
   }
   files["monochrome-512.png"] = await monochrome(512);
+  // The helper app (/helpers): the same tiles with a badge. Maskable keeps it inside the safe circle.
+  const corner = { at: 0.74, r: 0.13 };
+  for (const theme of ["light", "dark"]) {
+    files[`helper-favicon-${theme}-32.png`] = await helperTile(
+      theme,
+      32,
+      { fill: 0.82, radius: 0.22, lift: 0 },
+      { at: 0.72, r: 0.2 },
+    );
+    files[`helper-apple-touch-icon-${theme}.png`] = await helperTile(
+      theme,
+      180,
+      { fill: 0.62 },
+      corner,
+    );
+    for (const size of [192, 512])
+      files[`helper-icon-${theme}-${size}.png`] = await helperTile(
+        theme,
+        size,
+        { fill: 0.64, radius: 0.22 },
+        corner,
+      );
+    files[`helper-maskable-${theme}-512.png`] = await helperTile(
+      theme,
+      512,
+      { fill: 0.58 },
+      { at: 0.68, r: 0.12 },
+    );
+  }
   const icoImages = [];
   for (const size of FAVICON_SIZES)
     icoImages.push({ size, data: files[`favicon-light-${size}.png`] });

@@ -34,6 +34,8 @@ export interface CardCopy {
   /** The round button that opens the rest when there are many. */
   more: string;
   moreWays: string;
+  /** The helper who added it from the street, while they choose to be named. */
+  addedBy: string;
 }
 
 export const card: Record<Locale, CardCopy> = {
@@ -64,6 +66,7 @@ export const card: Record<Locale, CardCopy> = {
     phone2: "טלפון נוסף",
     more: "עוד",
     moreWays: "עוד דרכים ליצירת קשר",
+    addedBy: "נוסף לדרב על ידי {name}",
   },
   ar: {
     openUntil: "فاتح للساعة {time}",
@@ -92,6 +95,7 @@ export const card: Record<Locale, CardCopy> = {
     phone2: "تلفون تاني",
     more: "كمان",
     moreWays: "طرق تواصل كمان",
+    addedBy: "ضافها على درب {name}",
   },
   en: {
     openUntil: "Open until {time}",
@@ -120,5 +124,6 @@ export const card: Record<Locale, CardCopy> = {
     phone2: "Other phone",
     more: "More",
     moreWays: "More ways to reach them",
+    addedBy: "Added to Darb by {name}",
   },
 };

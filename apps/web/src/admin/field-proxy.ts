@@ -25,14 +25,16 @@ export function sameOrigin(request: Request): boolean {
 }
 
 /**
- * The phone's calls for Add from the street, forwarded to the API with the admin's own token (the
- * API's AdminGuard decides). Images go on as raw bytes; everything else as JSON.
+ * The phone's calls for Add from the street, forwarded to the API with the signed-in person's own
+ * token (the API's guard decides: AdminGuard under /admin/field, HelperGuard under
+ * /helpers/field). Images go on as raw bytes; everything else as JSON.
  */
 export async function forwardField(
   action: string,
   request: Request,
   fetchImpl: typeof fetch = fetch,
   token: () => Promise<string | null> = adminToken,
+  apiPath: "/admin/field" | "/helpers/field" = "/admin/field",
 ): Promise<Response> {
   if (!(FIELD_ACTIONS as readonly string[]).includes(action)) return answer(404, {});
   const method = request.method;
@@ -57,7 +59,7 @@ export async function forwardField(
     body = await request.text();
   }
   try {
-    const res = await fetchImpl(`${base}/admin/field/${action}`, {
+    const res = await fetchImpl(`${base}${apiPath}/${action}`, {
       method,
       headers,
       body,

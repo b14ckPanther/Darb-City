@@ -79,6 +79,12 @@ export const FieldMatchSchema = z.object({
 });
 export const FieldDuplicatesSchema = z.object({ matches: z.array(FieldMatchSchema) });
 export type FieldMatchDto = z.infer<typeof FieldMatchSchema>;
+
+/** A similar name this close is a strong match (as the same phone number always is). */
+export const STRONG_MATCH_METRES = 25;
+/** A helper (not an admin) must say how a capture differs from a strong match to save it. */
+export const isStrongMatch = (m: Pick<FieldMatchDto, "reason" | "metres">) =>
+  m.reason === "phone" || m.metres <= STRONG_MATCH_METRES;
 export type FieldDuplicatesDto = z.infer<typeof FieldDuplicatesSchema>;
 
 /** One capture as the phone sends it, once it can (the queue retries with the same clientId). */
@@ -97,6 +103,11 @@ export const FieldCaptureCreateSchema = z
     note: z.string().trim().max(1000).optional(),
     /** What reading the sign suggested, kept beside what the admin saved. */
     reading: FieldReadingSchema.nullable().default(null),
+    /**
+     * Why this is not the likely duplicate the check found. A helper (not an admin) must write it
+     * to save past a strong match; it reaches the review with the note.
+     */
+    distinct: z.string().trim().max(300).optional(),
     capturedAt: z.string().datetime().optional(),
     locale: LocaleSchema,
   })
@@ -115,12 +126,24 @@ export const FieldCaptureSchema = z.object({
   status: z.enum(JOIN_STATUSES),
   businessId: z.string().uuid().nullable(),
   createdAt: z.string(),
+  /** The admin's reason, once a capture was not added. */
+  rejectReason: z.string().nullable().default(null),
+  /** The public card's path segments while the business is live; null otherwise. */
+  live: z
+    .object({ place: SlugSchema, sector: SlugSchema, kind: SlugSchema, business: SlugSchema })
+    .nullable()
+    .default(null),
 });
 export type FieldCaptureDto = z.infer<typeof FieldCaptureSchema>;
 
-/** The admin's own street captures, newest first, and how many were added today (Israel time). */
+/**
+ * The admin's (or helper's) own street captures, newest first, how many were added today (Israel
+ * time), and in all: every capture, and those live on Darb now.
+ */
 export const FieldCapturesSchema = z.object({
   today: z.number().int().nonnegative(),
+  total: z.number().int().nonnegative().default(0),
+  live: z.number().int().nonnegative().default(0),
   items: z.array(FieldCaptureSchema),
 });
 export type FieldCapturesDto = z.infer<typeof FieldCapturesSchema>;

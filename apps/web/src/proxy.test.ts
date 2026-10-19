@@ -82,3 +82,20 @@ it("404s the internal /admin/<locale> shape asked for directly", async () => {
   // Admin sections that merely start with a locale's letters are still admin pages.
   expect((await admin("http://localhost:3000/admin/enquiries")).status).not.toBe(404);
 });
+
+it("gives the helper app the admin's treatment: rewrite, nonce CSP, noindex, no-store", async () => {
+  const res = await admin("http://localhost:3000/ar/helpers/mine");
+  expect(res.headers.get("x-middleware-rewrite")).toBe("http://localhost:3000/helpers/ar/mine");
+  expect(res.headers.get("content-security-policy")).toMatch(/'nonce-[^']+' 'strict-dynamic'/);
+  expect(res.headers.get("x-robots-tag")).toBe("noindex, nofollow");
+  expect(res.headers.get("cache-control")).toBe("no-store");
+  const he = await admin("http://localhost:3000/helpers");
+  expect(he.headers.get("x-middleware-rewrite")).toBe("http://localhost:3000/helpers/he");
+  for (const path of ["/helpers/en", "/helpers/he/mine"])
+    expect((await admin(`http://localhost:3000${path}`)).status, path).toBe(404);
+  const runs = (path: string) =>
+    unstable_doesMiddlewareMatch({ config, url: `http://localhost:3000${path}` });
+  expect(runs("/helpers/x.y")).toBe(true);
+  expect(runs("/en/helpers")).toBe(true);
+  expect(runs("/api/helpers/manifest/he")).toBe(false);
+});

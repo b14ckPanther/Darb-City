@@ -42,6 +42,7 @@ Email for `founder@darb.co.il` and the current site depend on today's records. A
 - Sign-in: **email only** (no social, no phone).
 - Access mode: **Invite-only**. The Allowlist feature needs Clerk Pro, so it is **not** used; the API's own `ADMIN_EMAILS` and `User.isAdmin` are the real gate.
 - Invited: `founder@darb.co.il` and `nmcryptoinvest@gmail.com`.
+- [ ] Darb Helpers (`/helpers`) needs open sign-up: anyone signs up, then waits for an admin's approval (the API's `User.helperStatus` is the gate, as `User.isAdmin` is for the admin). Until the access mode is switched from **Invite-only** to **Public**, only invited people can become helpers. The spec also allows phone and Google sign-in; both are optional dashboard switches (a helper without an email still works; only `ADMIN_EMAILS` needs one).
 - Session token claims saved: `{"email": "{{user.primary_email_address}}", "email_verified": "{{user.email_verified}}"}`. The preview showed `email_verified` rendered as the boolean `true`, which is what the admin guard needs.
 - [ ] At cut-over: create the **Production** instance (domain `darb.co.il`, DNS records such as `clerk.darb.co.il` added in Cloudflare after the DNS move; every Clerk record there must be **DNS only**, the grey cloud, never proxied: Clerk verifies the CNAMEs and issues certificates itself, and the orange cloud breaks both), set the same email-only sign-in, Invite-only mode and session token claims, and **re-invite both** addresses (invitations do not carry over from Development).
 

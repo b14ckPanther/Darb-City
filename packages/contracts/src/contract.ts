@@ -38,6 +38,7 @@ import {
   JoinSuggestionSchema,
 } from "./join.js";
 import { PricingSchema } from "./pricing.js";
+import { helpersContract } from "./helpers.js";
 
 const c = initContract();
 
@@ -230,4 +231,5 @@ export const contract = c.router({
     },
   },
   admin: adminContract,
+  helpers: helpersContract,
 });

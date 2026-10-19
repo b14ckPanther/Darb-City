@@ -123,6 +123,13 @@
   color: var(--text-soft);
 }
 
+/* A helper who chose to be named: a quiet last line, never a badge. */
+.addedBy {
+  margin: 0;
+  font-size: var(--step--1);
+  color: var(--text-soft);
+}
+
 .address svg {
   flex: none;
   color: var(--card-accent);

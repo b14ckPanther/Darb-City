@@ -72,6 +72,6 @@ import { Overpass } from "./locate/overpass.js";
         signReaderFor({ ...config.field, apiKey: config.search.anthropicApiKey }),
     },
   ],
-  exports: [AdminWriter, WebRevalidator],
+  exports: [AdminWriter, WebRevalidator, FieldService, LocateAdmin],
 })
 export class AdminModule {}

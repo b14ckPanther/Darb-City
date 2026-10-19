@@ -185,6 +185,21 @@ export function BusinessCard({
       {preview && !hasHours ? null : (
         <HoursTable locale={locale} hours={card.hours} todayLabel={copy.today} />
       )}
+
+      {card.addedBy ? (
+        <p className={styles.addedBy} data-added-by="">
+          {copy.addedBy.split("{name}").map((part, i) =>
+            i ? (
+              <span key={i}>
+                <bdi>{card.addedBy}</bdi>
+                {part}
+              </span>
+            ) : (
+              part
+            ),
+          )}
+        </p>
+      ) : null}
     </div>
   );
 }

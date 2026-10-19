@@ -2,11 +2,17 @@
 
 import { useCallback, useEffect, useId, useRef, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import type { FieldMatchDto, FieldReadResultDto, FieldReadingDto } from "@darb/contracts";
+import {
+  isStrongMatch,
+  type FieldMatchDto,
+  type FieldReadResultDto,
+  type FieldReadingDto,
+} from "@darb/contracts";
 import { pickText, type LatLng, type Locale } from "@darb/core";
 import { LocationPicker } from "@/components/LocationPicker";
 import { at, type AdminKey } from "../copy";
 import { PlaceFinder } from "../PlaceFinder";
+import type { locatePlace } from "../locate-actions";
 import { adminHref } from "../routes";
 import { downscale } from "./photo";
 import { flushQueue, openQueue, type QueueStore, type QueuedCapture } from "./queue";
@@ -56,18 +62,31 @@ const online = () => typeof navigator === "undefined" || navigator.onLine !== fa
 
 /**
  * Add from the street: photograph the sign, let it be read, check, save, next. Every capture is
- * queued on the phone first and sent when it can be; nothing here publishes anything.
+ * queued on the phone first and sent when it can be; nothing here publishes anything. The admin's
+ * screen and the helper app draw this same form; the helper app passes its own routes.
  */
 export function StreetCapture({
   locale,
   kinds,
   reading: readingOn,
   uploads,
+  base: baseProp,
+  locate: finder,
+  matchLinks = "admin",
+  distinct: needsDistinct = false,
 }: {
   locale: Locale;
   kinds: StreetKind[];
   reading: boolean;
   uploads: boolean;
+  /** Where the phone's calls go: /admin/field-api by default, /helpers/field-api for helpers. */
+  base?: string;
+  /** How the place finder asks (the admin's server action by default). */
+  locate?: typeof locatePlace;
+  /** A likely duplicate links to the admin's business page, or (helpers) to nothing. */
+  matchLinks?: "admin" | "none";
+  /** A helper must say how it differs to save past a strong match (the API insists too). */
+  distinct?: boolean;
 }) {
   const t = (key: AdminKey, vars?: Record<string, string | number>) => at(locale, key, vars);
   const router = useRouter();
@@ -77,7 +96,9 @@ export function StreetCapture({
     routerRef.current = router;
   });
   const id = useId();
-  const base = adminHref(locale, "/field-api");
+  const base = baseProp ?? adminHref(locale, "/field-api");
+  const linkOf = (m: FieldMatchDto) =>
+    matchLinks === "admin" ? adminHref(locale, `/businesses/${m.id}`) : null;
   const camera = useRef<HTMLInputElement>(null);
   const dupHeading = useRef<HTMLHeadingElement>(null);
   const store = useRef<QueueStore | null>(null);
@@ -92,6 +113,7 @@ export function StreetCapture({
   const [kind, setKind] = useState("");
   const [hours, setHours] = useState("");
   const [note, setNote] = useState("");
+  const [different, setDifferent] = useState("");
   const [point, setPoint] = useState<LatLng | null>(null);
   const [flyTo, setFlyTo] = useState<{ point: LatLng; key: number } | null>(null);
   const [accuracy, setAccuracy] = useState<number | null>(null);
@@ -227,6 +249,7 @@ export function StreetCapture({
     setKind("");
     setHours("");
     setNote("");
+    setDifferent("");
     setMatches(null);
     setErrors([]);
     if (camera.current) camera.current.value = "";
@@ -275,6 +298,13 @@ export function StreetCapture({
       setChecking(false);
     }
 
+    // Past a strong match a helper must say how this is another place (the API refuses otherwise).
+    const strongNow =
+      needsDistinct && (matches?.key === key ? matches.list : []).some(isStrongMatch);
+    if (strongNow && different.trim().length < 3) {
+      setErrors([t("streetDistinctNeeded")]);
+      return;
+    }
     const label = pickText(
       Object.fromEntries(Object.entries(names).filter(([, v]) => v.trim())),
       locale,
@@ -303,6 +333,7 @@ export function StreetCapture({
         accuracy,
         ...(noteText ? { note: noteText.slice(0, 1000) } : {}),
         reading: suggested,
+        ...(strongNow ? { distinct: different.trim().slice(0, 300) } : {}),
         capturedAt: new Date().toISOString(),
         locale,
       },
@@ -329,6 +360,7 @@ export function StreetCapture({
 
   const rough = accuracy !== null && accuracy > ROUGH_METRES;
   const dupList = matches && matches.key === dupKey() ? matches.list : [];
+  const strong = needsDistinct && dupList.some(isStrongMatch);
   const stateText = (q: QueuedCapture) =>
     q.state === "sending"
       ? t("streetQueueSending")
@@ -336,7 +368,9 @@ export function StreetCapture({
         ? t("streetQueueRefused", { reason: q.error ?? "" })
         : q.state === "failed"
           ? t("streetQueueFailed")
-          : t("streetQueueWaiting");
+          : q.state === "limited"
+            ? t("streetQueueLimit")
+            : t("streetQueueWaiting");
 
   return (
     <div className={own.layout}>
@@ -456,6 +490,7 @@ export function StreetCapture({
           </p>
           <PlaceFinder
             locale={locale}
+            {...(finder ? { locate: finder } : {})}
             onFound={(p) => {
               setPoint(p);
               setAccuracy(null);
@@ -522,13 +557,19 @@ export function StreetCapture({
             <h3 id={`${id}-dup`} ref={dupHeading} tabIndex={-1} className={own.dupTitle}>
               {t("streetDupTitle")}
             </h3>
-            <p>{t("streetDupHint")}</p>
+            {strong ? null : (
+              <p>{t(dupList.some((m) => linkOf(m)) ? "streetDupHint" : "streetDupHintPlain")}</p>
+            )}
             <ul className={own.dupList}>
               {dupList.map((m) => (
                 <li key={m.id}>
-                  <a href={adminHref(locale, `/businesses/${m.id}`)} target="_blank" rel="noopener">
+                  {linkOf(m) ? (
+                    <a href={linkOf(m)!} target="_blank" rel="noopener">
+                      <bdi>{pickText(m.name, locale) || m.placeSlug}</bdi>
+                    </a>
+                  ) : (
                     <bdi>{pickText(m.name, locale) || m.placeSlug}</bdi>
-                  </a>{" "}
+                  )}{" "}
                   <span className={styles.hint}>
                     {m.reason === "phone"
                       ? t("streetDupPhone")
@@ -545,6 +586,24 @@ export function StreetCapture({
                 </li>
               ))}
             </ul>
+            {strong ? (
+              <label className={styles.field}>
+                <span>{t("streetDistinct")}</span>
+                <textarea
+                  value={different}
+                  dir="auto"
+                  rows={2}
+                  maxLength={300}
+                  required
+                  aria-describedby={`${id}-distinct`}
+                  className={own.note}
+                  onChange={(e) => setDifferent(e.target.value)}
+                />
+                <small id={`${id}-distinct`} className={styles.hint}>
+                  {t("streetDistinctHint")}
+                </small>
+              </label>
+            ) : null}
           </section>
         ) : null}
 
@@ -556,7 +615,7 @@ export function StreetCapture({
           </ul>
         ) : null}
         <button type="submit" className={`${styles.primary} ${own.save}`} disabled={checking}>
-          {t(dupList.length ? "streetSaveAnyway" : "streetSave")}
+          {t(strong ? "streetSaveDistinct" : dupList.length ? "streetSaveAnyway" : "streetSave")}
         </button>
       </form>
 
