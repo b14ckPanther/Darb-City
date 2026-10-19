@@ -69,6 +69,7 @@ test("a recorded sentence gets chips, and removing one re-runs retrieval in plac
   page,
 }) => {
   await page.goto("/en/search?q=where+can+I+get+falafel+in+nazareth%3F");
+  await expect(page.locator("[data-search-refining]")).toHaveCount(0);
   await expect(page.locator('[data-chip="kind:hummus"]')).toBeVisible();
   await expect(page.locator('[data-chip="place:nazareth"]')).toBeVisible();
   const before = await page.locator("[data-business-list] li").count();
@@ -85,6 +86,8 @@ test("an unrecorded query still gets results from lane 1, with nothing unusual o
   page,
 }) => {
   await page.goto("/en/search?q=barbershop+in+sakhnin+for+my+little+brother");
+  // The full search streams in over the quick one: until it lands, a hidden copy waits beside it.
+  await expect(page.locator("[data-search-refining]")).toHaveCount(0);
   await expect(page.locator('[data-chip="place:sakhnin"]')).toBeVisible();
   await expect(page.locator(`[data-business="${BUSINESS_KEY}"]`)).toBeVisible();
   await expect(page.locator("[data-search-fallback]")).toHaveCount(0);
