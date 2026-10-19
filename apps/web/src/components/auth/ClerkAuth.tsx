@@ -1,7 +1,6 @@
 "use client";
 
 import { useSignIn, useSignUp } from "@clerk/nextjs";
-import { useRouter } from "next/navigation";
 import { useMemo } from "react";
 import type { Locale } from "@darb/core";
 import { authMessages } from "./auth-copy";
@@ -17,22 +16,18 @@ type Props = {
   initialEmail?: string;
 };
 
-/** Clerk's decorated URL may be absolute (Safari's cookie refresh); then the page loads it. */
-function useGo(): Go {
-  const router = useRouter();
-  return (url) => {
-    if (/^https?:/i.test(url)) window.location.assign(url);
-    else router.push(url);
-  };
-}
+/**
+ * A full page load, never a client navigation: the app's home was rendered (and cached by the
+ * router) while signed out as a redirect to this page, so a soft push lands right back here. The
+ * load also carries the fresh session cookie to the server on its first request.
+ */
+const go: Go = (url) => window.location.assign(url);
 
 /** Darb's sign-in on Clerk's sign-in resource. */
 export function ClerkSignIn({ locale, target, other, initialEmail }: Props) {
   const { signIn } = useSignIn();
-  const go = useGo();
-  const router = useRouter();
   // The signal's signIn is a stable proxy over Clerk's live attempt.
-  const backend = useMemo(() => signInBackend(signIn, target, go), [signIn, target]); // eslint-disable-line react-hooks/exhaustive-deps
+  const backend = useMemo(() => signInBackend(signIn, target, go), [signIn, target]);
   return (
     <AuthFlow
       kind="sign-in"
@@ -40,7 +35,7 @@ export function ClerkSignIn({ locale, target, other, initialEmail }: Props) {
       copy={authMessages(locale)}
       other={other}
       initialEmail={initialEmail}
-      onSignedIn={() => router.replace(target)}
+      onSignedIn={() => window.location.replace(target)}
     />
   );
 }
@@ -48,9 +43,7 @@ export function ClerkSignIn({ locale, target, other, initialEmail }: Props) {
 /** Darb's sign-up on Clerk's sign-up resource. */
 export function ClerkSignUp({ locale, target, other, initialEmail }: Props) {
   const { signUp } = useSignUp();
-  const go = useGo();
-  const router = useRouter();
-  const backend = useMemo(() => signUpBackend(signUp, target, go), [signUp, target]); // eslint-disable-line react-hooks/exhaustive-deps
+  const backend = useMemo(() => signUpBackend(signUp, target, go), [signUp, target]);
   return (
     <AuthFlow
       kind="sign-up"
@@ -58,7 +51,7 @@ export function ClerkSignUp({ locale, target, other, initialEmail }: Props) {
       copy={authMessages(locale)}
       other={other}
       initialEmail={initialEmail}
-      onSignedIn={() => router.replace(target)}
+      onSignedIn={() => window.location.replace(target)}
     />
   );
 }
