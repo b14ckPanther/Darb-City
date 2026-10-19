@@ -13,6 +13,8 @@ import { HELPER_ICONS } from "@/helpers/manifest";
 import { HelperWorker } from "@/helpers/HelperWorker";
 import { helperHref, helperManifestHref } from "@/helpers/routes";
 import { fontStack } from "@/lib/font-stack";
+import { splashBootScript } from "@/splash/boot";
+import { startupImages } from "@/splash/links";
 import { installBootScript } from "@/lib/install";
 import { isLocale } from "@/lib/locale";
 import { themeBootScript } from "@/lib/theme";
@@ -61,7 +63,12 @@ export async function generateMetadata({
     robots: { index: false, follow: false },
     applicationName: appName,
     manifest: helperManifestHref(locale),
-    appleWebApp: { capable: true, title: appName, statusBarStyle: "default" },
+    appleWebApp: {
+      capable: true,
+      title: appName,
+      statusBarStyle: "default",
+      startupImage: startupImages(),
+    },
     formatDetection: { telephone: false },
     icons: {
       icon: [tab("light"), tab("dark")],
@@ -97,6 +104,10 @@ export default async function HelperRootLayout({
       <head>
         <style dangerouslySetInnerHTML={{ __html: tokensCss() }} />
         <script nonce={nonce} dangerouslySetInnerHTML={{ __html: themeBootScript() }} />
+        <script
+          nonce={nonce}
+          dangerouslySetInnerHTML={{ __html: splashBootScript("helpers", ht(locale, "appName")) }}
+        />
         <script nonce={nonce} dangerouslySetInnerHTML={{ __html: installBootScript() }} />
       </head>
       <body className={styles.body}>

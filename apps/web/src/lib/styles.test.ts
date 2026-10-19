@@ -27,7 +27,10 @@ const MOTION_PROPS = new Set(["opacity", "transform"]);
  * painted in (clip-path). Both run once, for about a second, on a few small elements.
  */
 const ONE_TIME_DRAWING = new Set(["stroke-dashoffset", "clip-path"]);
-const drawsOnce = (file: string) => file.endsWith(join("landing", "Landing.module.css"));
+/** The installed app's launch reveal draws its road and check once per session, too. */
+const LAUNCH_REVEAL = join("splash", "reveal.css");
+const drawsOnce = (file: string) =>
+  file.endsWith(join("landing", "Landing.module.css")) || file.endsWith(LAUNCH_REVEAL);
 /**
  * The helper app's numbers count up once as a screen opens (My additions, a milestone): a short
  * animation of one registered integer (--darb-n) on a few elements, drawn by a CSS counter.
@@ -65,6 +68,9 @@ describe.each(cssFiles(SRC))("%s", (file) => {
   });
 
   it("keeps literal durations between 400 and 700 ms (1 ms only for reduced motion)", () => {
+    // The launch reveal is one choreographed sequence (its delays are its score), held instead to
+    // ending within 900 ms and to a still frame under reduced motion (src/splash/reveal.test.ts).
+    if (file.endsWith(LAUNCH_REVEAL)) return;
     for (const [, ms] of css.matchAll(/(\d+)ms/g)) {
       const n = Number(ms);
       expect(n === 1 || (n >= 400 && n <= 700), `${n}ms`).toBe(true);

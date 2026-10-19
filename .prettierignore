@@ -19,3 +19,5 @@ apps/web/map-assets
 apps/web/e2e/tiles
 # Written by search:record, one case per line.
 apps/api/test/search-quality/cases.json
+# Minified by scripts/make-splash.mjs (the source is apps/web/src/splash/reveal.css).
+packages/tokens/assets/brand/splash/*.css

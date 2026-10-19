@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { Locale } from "@darb/core";
 import { dir, t } from "@darb/i18n";
 import { themeColor } from "@darb/tokens";
+import { startupImages } from "@/splash/links";
 import { href, paths } from "./routes";
 
 /** Where the generated app icons are served (packages/tokens/assets/brand/icons, see make-icons). */
@@ -152,7 +153,12 @@ export function appMetadata(locale: Locale): Metadata {
   return {
     applicationName: appName,
     manifest: manifestHref(locale),
-    appleWebApp: { capable: true, title: appName, statusBarStyle: "default" },
+    appleWebApp: {
+      capable: true,
+      title: appName,
+      statusBarStyle: "default",
+      startupImage: startupImages(),
+    },
     formatDetection: { telephone: false },
     icons: {
       icon: [tab("light", 32), tab("light", 16), tab("dark", 32), tab("dark", 16)],

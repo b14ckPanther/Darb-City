@@ -171,6 +171,25 @@ badge (`navigator.setAppBadge`, where supported) shows the join requests and hel
 the counts the shell already loads. Nothing is cached offline: there is no admin service worker and
 every admin page stays `no-store`.
 
+## Launch screen of the installed apps
+
+Opened from the home screen, Darb, Darb helpers and Darb admin start on the same frame: the mark on
+the day paper (or the night forest), from the iOS launch image to the page's first paint. On a cold
+start (once per session) the page plays a short reveal over it while it hydrates: a gold road comes
+to the mark's doorway, the doorway lights up, each app lands its own beat (the helpers' gold plus,
+the admin's shield and check) and the page opens through the doorway, all within 900 ms. A tap or a
+key skips it; under reduced motion the still frame only fades. A browser tab never plays it: the
+inline boot script (`apps/web/src/splash/boot.ts`) checks the display mode first and loads nothing
+else, so the public pages' JS and LCP are untouched.
+
+- `pnpm --filter @darb/web splash` draws the iOS launch images (`apple-touch-startup-image`, every
+  current iPhone and iPad, day and night) into `packages/tokens/assets/brand/splash` and publishes
+  the reveal's stylesheet there (`apps/web/src/splash/reveal.css`, the mark inlined, named by its
+  hash). Run it after changing the CSS, the geometry (`apps/web/src/splash/geometry.mjs`) or the
+  mark; `--check` (and the unit test) fails when the committed files are stale.
+- `WEB_URL=… node apps/web/scripts/shoot-splash.mjs` records the reveal of each app, day and night,
+  as frames and video into `apps/web/.screens/splash`, with the installed display mode emulated.
+
 ## Deploy
 
 Hosting, release flow and fallback: `docs/launch/hosting.md`. Variables per environment: `docs/launch/environments.md`. Launch and rollback: `docs/launch/runbook.md`. What exists in each provider, and the careful DNS move to Cloudflare: `docs/launch/accounts.md`.

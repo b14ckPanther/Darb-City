@@ -15,7 +15,8 @@
     "budget": "node scripts/check-budget.mjs",
     "tiles:israel": "node scripts/tiles/extract-israel.mjs",
     "tiles:test": "node scripts/tiles/make-test-tiles.mjs",
-    "icons": "node scripts/make-icons.mjs"
+    "icons": "node scripts/make-icons.mjs",
+    "splash": "node scripts/make-splash.mjs"
   },
   "dependencies": {
     "@clerk/localizations": "catalog:",

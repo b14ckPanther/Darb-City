@@ -11,6 +11,8 @@ import { at } from "@/admin/copy";
 import { ADMIN_ICONS } from "@/admin/manifest";
 import { adminManifestHref } from "@/admin/routes";
 import { fontStack } from "@/lib/font-stack";
+import { splashBootScript } from "@/splash/boot";
+import { startupImages } from "@/splash/links";
 import { isLocale } from "@/lib/locale";
 import { tokensCss } from "@/lib/tokens-css";
 import { themeBootScript } from "@/lib/theme";
@@ -60,7 +62,12 @@ export async function generateMetadata({
     robots: { index: false, follow: false },
     applicationName: appName,
     manifest: adminManifestHref(locale),
-    appleWebApp: { capable: true, title: appName, statusBarStyle: "default" },
+    appleWebApp: {
+      capable: true,
+      title: appName,
+      statusBarStyle: "default",
+      startupImage: startupImages(),
+    },
     formatDetection: { telephone: false },
     icons: {
       icon: [tab("light"), tab("dark")],
@@ -95,6 +102,10 @@ export default async function AdminRootLayout({
       <head>
         <style dangerouslySetInnerHTML={{ __html: tokensCss() }} />
         <script nonce={nonce} dangerouslySetInnerHTML={{ __html: themeBootScript() }} />
+        <script
+          nonce={nonce}
+          dangerouslySetInnerHTML={{ __html: splashBootScript("admin", at(locale, "title")) }}
+        />
       </head>
       <body className={styles.body}>{children}</body>
     </html>

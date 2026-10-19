@@ -28,8 +28,8 @@ const config: NextConfig = {
     formats: ["image/webp"],
     minimumCacheTTL: 60 * 60 * 24 * 30,
   },
-  // /map/vendor paths carry the MapLibre version and /search-index files their content hash, so
-  // they never change; glyphs change rarely.
+  // /map/vendor paths carry the MapLibre version, and /search-index files and the launch reveal's
+  // stylesheet their content hash, so they never change; glyphs change rarely.
   headers: async () => [
     {
       source: "/map/vendor/:path*",
@@ -41,6 +41,11 @@ const config: NextConfig = {
     },
     {
       source: "/search-index/:path*",
+      headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+    },
+    // The launch reveal's stylesheet carries its content hash (scripts/make-splash.mjs).
+    {
+      source: "/brand/splash/:file(reveal\\.[0-9a-f]+\\.css)",
       headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
     },
   ],
