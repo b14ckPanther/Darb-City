@@ -2261,6 +2261,160 @@
       }
     },
     {
+      "slug": "hamakhalla-lminahal-haifa",
+      "place": "haifa",
+      "brand": null,
+      "primaryKind": "universities",
+      "kinds": [
+        "universities"
+      ],
+      "name": {
+        "he": "המכללה למינהל חיפה",
+        "ar": "كلية الإدارة حيفا",
+        "en": "College of Management Haifa"
+      },
+      "tagline": {
+        "he": "אוניברסיטה ומכללה אקדמית בחיפה",
+        "ar": "جامعة وكلية في حيفا",
+        "en": "University and college in Haifa"
+      },
+      "address": {
+        "he": "חיפה",
+        "ar": "حيفا",
+        "en": "Haifa"
+      },
+      "lat": 32.7910257,
+      "lng": 35.0366825,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/194003799"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "המכללה למינהל חיפה",
+          "ar": "كلية الإدارة حيفا",
+          "en": "College of Management Haifa"
+        },
+        "title": {
+          "he": "אוניברסיטה ומכללה אקדמית",
+          "ar": "جامعة وكلية",
+          "en": "University and college"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "אוניברסיטה ומכללה אקדמית",
+              "ar": "جامعة وكلية",
+              "en": "University and college"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
+      "slug": "technion-israel-institute-of-technology",
+      "place": "haifa",
+      "brand": null,
+      "primaryKind": "universities",
+      "kinds": [
+        "universities"
+      ],
+      "name": {
+        "he": "הטכניון - מכון טכנולוגי לישראל",
+        "ar": "التخنيون",
+        "en": "Technion - Israel Institute of Technology"
+      },
+      "tagline": {
+        "he": "אוניברסיטה ומכללה אקדמית בחיפה",
+        "ar": "جامعة وكلية في حيفا",
+        "en": "University and college in Haifa"
+      },
+      "address": {
+        "he": "חיפה",
+        "ar": "حيفا",
+        "en": "Haifa"
+      },
+      "lat": 32.7765694,
+      "lng": 35.0224915,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/66098525"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "הטכניון - מכון טכנולוגי לישראל",
+          "ar": "التخنيون",
+          "en": "Technion - Israel Institute of Technology"
+        },
+        "title": {
+          "he": "אוניברסיטה ומכללה אקדמית",
+          "ar": "جامعة وكلية",
+          "en": "University and college"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "אוניברסיטה ומכללה אקדמית",
+              "ar": "جامعة وكلية",
+              "en": "University and college"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
       "slug": "ulpan-etzion-carmel",
       "place": "haifa",
       "brand": null,
@@ -2338,12 +2492,89 @@
       }
     },
     {
+      "slug": "university-of-haifa",
+      "place": "haifa",
+      "brand": null,
+      "primaryKind": "universities",
+      "kinds": [
+        "universities"
+      ],
+      "name": {
+        "he": "אוניברסיטת חיפה",
+        "ar": "جامعة حيفا",
+        "en": "University of Haifa"
+      },
+      "tagline": {
+        "he": "אוניברסיטה ומכללה אקדמית בחיפה",
+        "ar": "جامعة وكلية في حيفا",
+        "en": "University and college in Haifa"
+      },
+      "address": {
+        "he": "חיפה",
+        "ar": "حيفا",
+        "en": "Haifa"
+      },
+      "lat": 32.7610825,
+      "lng": 35.0202675,
+      "hours": {
+        "weekly": {},
+        "exceptions": []
+      },
+      "attributes": {
+        "primaryAction": "directions",
+        "osmId": "way/55001924"
+      },
+      "tier": "basic",
+      "phone": null,
+      "whatsapp": null,
+      "website": null,
+      "apps": {},
+      "experience": {
+        "brand": {
+          "he": "אוניברסיטת חיפה",
+          "ar": "جامعة حيفا",
+          "en": "University of Haifa"
+        },
+        "title": {
+          "he": "אוניברסיטה ומכללה אקדמית",
+          "ar": "جامعة وكلية",
+          "en": "University and college"
+        },
+        "items": [
+          {
+            "label": {
+              "he": "אוניברסיטה ומכללה אקדמית",
+              "ar": "جامعة وكلية",
+              "en": "University and college"
+            }
+          }
+        ],
+        "cta": {
+          "he": "ניווט למקום",
+          "ar": "خذني لهناك",
+          "en": "Navigate there"
+        },
+        "palette": {
+          "bg": "#0E1B15",
+          "surface": "#172A21",
+          "ink": "#F6EFE0",
+          "accent": "#6FA8DC"
+        },
+        "font": "Heebo"
+      },
+      "links": {},
+      "cardStyle": {
+        "accent": "#6fa8dc",
+        "icons": "solid"
+      }
+    },
+    {
       "slug": "yasharal-college",
       "place": "haifa",
       "brand": null,
-      "primaryKind": "vocational",
+      "primaryKind": "universities",
       "kinds": [
-        "vocational"
+        "universities"
       ],
       "name": {
         "he": "מכללת ישראל",
@@ -2351,9 +2582,9 @@
         "en": "Yasharal College"
       },
       "tagline": {
-        "he": "מכללה והכשרה מקצועית בחיפה",
-        "ar": "كلية وتأهيل مهني في حيفا",
-        "en": "College and vocational training in Haifa"
+        "he": "אוניברסיטה ומכללה אקדמית בחיפה",
+        "ar": "جامعة وكلية في حيفا",
+        "en": "University and college in Haifa"
       },
       "address": {
         "he": "חיפה",
@@ -2382,16 +2613,16 @@
           "en": "Yasharal College"
         },
         "title": {
-          "he": "מכללה והכשרה מקצועית",
-          "ar": "كلية وتأهيل مهني",
-          "en": "College and vocational training"
+          "he": "אוניברסיטה ומכללה אקדמית",
+          "ar": "جامعة وكلية",
+          "en": "University and college"
         },
         "items": [
           {
             "label": {
-              "he": "מכללה והכשרה מקצועית",
-              "ar": "كلية وتأهيل مهني",
-              "en": "College and vocational training"
+              "he": "אוניברסיטה ומכללה אקדמית",
+              "ar": "جامعة وكلية",
+              "en": "University and college"
             }
           }
         ],
@@ -2418,19 +2649,19 @@
       "slug": "klia-mar-alias",
       "place": "ibilin",
       "brand": null,
-      "primaryKind": "vocational",
+      "primaryKind": "universities",
       "kinds": [
-        "vocational"
+        "universities"
       ],
       "name": {
-        "he": "כליה מאר אליאס",
+        "he": "המכללה האקדמית מאר אליאס",
         "ar": "كلية مار إلياس",
-        "en": "Klia Mar Alias"
+        "en": "Mar Elias College"
       },
       "tagline": {
-        "he": "מכללה והכשרה מקצועית באעבלין",
-        "ar": "كلية وتأهيل مهني في إعبلين",
-        "en": "College and vocational training in Ibilin"
+        "he": "אוניברסיטה ומכללה אקדמית באעבלין",
+        "ar": "جامعة وكلية في إعبلين",
+        "en": "University and college in Ibilin"
       },
       "address": {
         "he": "אעבלין",
@@ -2454,21 +2685,21 @@
       "apps": {},
       "experience": {
         "brand": {
-          "he": "כליה מאר אליאס",
+          "he": "המכללה האקדמית מאר אליאס",
           "ar": "كلية مار إلياس",
-          "en": "Klia Mar Alias"
+          "en": "Mar Elias College"
         },
         "title": {
-          "he": "מכללה והכשרה מקצועית",
-          "ar": "كلية وتأهيل مهني",
-          "en": "College and vocational training"
+          "he": "אוניברסיטה ומכללה אקדמית",
+          "ar": "جامعة وكلية",
+          "en": "University and college"
         },
         "items": [
           {
             "label": {
-              "he": "מכללה והכשרה מקצועית",
-              "ar": "كلية وتأهيل مهني",
-              "en": "College and vocational training"
+              "he": "אוניברסיטה ומכללה אקדמית",
+              "ar": "جامعة وكلية",
+              "en": "University and college"
             }
           }
         ],
@@ -2495,9 +2726,9 @@
       "slug": "carmel-college",
       "place": "isfiya",
       "brand": null,
-      "primaryKind": "vocational",
+      "primaryKind": "universities",
       "kinds": [
-        "vocational"
+        "universities"
       ],
       "name": {
         "he": "מכללת הכרמל",
@@ -2505,9 +2736,9 @@
         "en": "Carmel College"
       },
       "tagline": {
-        "he": "מכללה והכשרה מקצועית בעספיא",
-        "ar": "كلية وتأهيل مهني في عسفيا",
-        "en": "College and vocational training in Isfiya"
+        "he": "אוניברסיטה ומכללה אקדמית בעספיא",
+        "ar": "جامعة وكلية في عسفيا",
+        "en": "University and college in Isfiya"
       },
       "address": {
         "he": "עספיא",
@@ -2536,16 +2767,16 @@
           "en": "Carmel College"
         },
         "title": {
-          "he": "מכללה והכשרה מקצועית",
-          "ar": "كلية وتأهيل مهني",
-          "en": "College and vocational training"
+          "he": "אוניברסיטה ומכללה אקדמית",
+          "ar": "جامعة وكلية",
+          "en": "University and college"
         },
         "items": [
           {
             "label": {
-              "he": "מכללה והכשרה מקצועית",
-              "ar": "كلية وتأهيل مهني",
-              "en": "College and vocational training"
+              "he": "אוניברסיטה ומכללה אקדמית",
+              "ar": "جامعة وكلية",
+              "en": "University and college"
             }
           }
         ],
@@ -5158,83 +5389,6 @@
       }
     },
     {
-      "slug": "hamakhalla-lminahal-haifa",
-      "place": "nesher",
-      "brand": null,
-      "primaryKind": "universities",
-      "kinds": [
-        "universities"
-      ],
-      "name": {
-        "he": "המכללה למינהל חיפה",
-        "ar": "كلية الإدارة حيفا",
-        "en": "College of Management Haifa"
-      },
-      "tagline": {
-        "he": "אוניברסיטה ומכללה אקדמית בנשר",
-        "ar": "جامعة وكلية في نيشر",
-        "en": "University and college in Nesher"
-      },
-      "address": {
-        "he": "נשר",
-        "ar": "نيشر",
-        "en": "Nesher"
-      },
-      "lat": 32.7910257,
-      "lng": 35.0366825,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "way/194003799"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "המכללה למינהל חיפה",
-          "ar": "كلية الإدارة حيفا",
-          "en": "College of Management Haifa"
-        },
-        "title": {
-          "he": "אוניברסיטה ומכללה אקדמית",
-          "ar": "جامعة وكلية",
-          "en": "University and college"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "אוניברסיטה ומכללה אקדמית",
-              "ar": "جامعة وكلية",
-              "en": "University and college"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
       "slug": "hashra-parah-takhnion-centre",
       "place": "nesher",
       "brand": null,
@@ -5355,83 +5509,6 @@
       }
     },
     {
-      "slug": "technion-israel-institute-of-technology",
-      "place": "nesher",
-      "brand": null,
-      "primaryKind": "universities",
-      "kinds": [
-        "universities"
-      ],
-      "name": {
-        "he": "הטכניון - מכון טכנולוגי לישראל",
-        "ar": "التخنيون",
-        "en": "Technion - Israel Institute of Technology"
-      },
-      "tagline": {
-        "he": "אוניברסיטה ומכללה אקדמית בנשר",
-        "ar": "جامعة وكلية في نيشر",
-        "en": "University and college in Nesher"
-      },
-      "address": {
-        "he": "נשר",
-        "ar": "نيشر",
-        "en": "Nesher"
-      },
-      "lat": 32.7765694,
-      "lng": 35.0224915,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "way/66098525"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "הטכניון - מכון טכנולוגי לישראל",
-          "ar": "التخنيون",
-          "en": "Technion - Israel Institute of Technology"
-        },
-        "title": {
-          "he": "אוניברסיטה ומכללה אקדמית",
-          "ar": "جامعة وكلية",
-          "en": "University and college"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "אוניברסיטה ומכללה אקדמית",
-              "ar": "جامعة وكلية",
-              "en": "University and college"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
       "slug": "tel-ran",
       "place": "nesher",
       "brand": null,
@@ -5509,99 +5586,22 @@
       }
     },
     {
-      "slug": "university-of-haifa",
-      "place": "nesher",
+      "slug": "natzrat-ilit-college",
+      "place": "nof-hagalil",
       "brand": null,
       "primaryKind": "universities",
       "kinds": [
         "universities"
       ],
       "name": {
-        "he": "אוניברסיטת חיפה",
-        "ar": "جامعة حيفا",
-        "en": "University of Haifa"
-      },
-      "tagline": {
-        "he": "אוניברסיטה ומכללה אקדמית בנשר",
-        "ar": "جامعة وكلية في نيشر",
-        "en": "University and college in Nesher"
-      },
-      "address": {
-        "he": "נשר",
-        "ar": "نيشر",
-        "en": "Nesher"
-      },
-      "lat": 32.7610825,
-      "lng": 35.0202675,
-      "hours": {
-        "weekly": {},
-        "exceptions": []
-      },
-      "attributes": {
-        "primaryAction": "directions",
-        "osmId": "way/55001924"
-      },
-      "tier": "basic",
-      "phone": null,
-      "whatsapp": null,
-      "website": null,
-      "apps": {},
-      "experience": {
-        "brand": {
-          "he": "אוניברסיטת חיפה",
-          "ar": "جامعة حيفا",
-          "en": "University of Haifa"
-        },
-        "title": {
-          "he": "אוניברסיטה ומכללה אקדמית",
-          "ar": "جامعة وكلية",
-          "en": "University and college"
-        },
-        "items": [
-          {
-            "label": {
-              "he": "אוניברסיטה ומכללה אקדמית",
-              "ar": "جامعة وكلية",
-              "en": "University and college"
-            }
-          }
-        ],
-        "cta": {
-          "he": "ניווט למקום",
-          "ar": "خذني لهناك",
-          "en": "Navigate there"
-        },
-        "palette": {
-          "bg": "#0E1B15",
-          "surface": "#172A21",
-          "ink": "#F6EFE0",
-          "accent": "#6FA8DC"
-        },
-        "font": "Heebo"
-      },
-      "links": {},
-      "cardStyle": {
-        "accent": "#6fa8dc",
-        "icons": "solid"
-      }
-    },
-    {
-      "slug": "natzrat-ilit-college",
-      "place": "nof-hagalil",
-      "brand": null,
-      "primaryKind": "vocational",
-      "kinds": [
-        "vocational"
-      ],
-      "name": {
         "he": "מכללת נצרת עילית",
         "ar": "كلية الناصرة العليا",
-        "en": "Natzrat Ilit college"
+        "en": "Nof HaGalil College"
       },
       "tagline": {
-        "he": "מכללה והכשרה מקצועית בנוף הגליל",
-        "ar": "كلية وتأهيل مهني في نوف هجليل",
-        "en": "College and vocational training in Nof HaGalil"
+        "he": "אוניברסיטה ומכללה אקדמית בנוף הגליל",
+        "ar": "جامعة وكلية في نوف هجليل",
+        "en": "University and college in Nof HaGalil"
       },
       "address": {
         "he": "נוף הגליל",
@@ -5627,19 +5627,19 @@
         "brand": {
           "he": "מכללת נצרת עילית",
           "ar": "كلية الناصرة العليا",
-          "en": "Natzrat Ilit college"
+          "en": "Nof HaGalil College"
         },
         "title": {
-          "he": "מכללה והכשרה מקצועית",
-          "ar": "كلية وتأهيل مهني",
-          "en": "College and vocational training"
+          "he": "אוניברסיטה ומכללה אקדמית",
+          "ar": "جامعة وكلية",
+          "en": "University and college"
         },
         "items": [
           {
             "label": {
-              "he": "מכללה והכשרה מקצועית",
-              "ar": "كلية وتأهيل مهني",
-              "en": "College and vocational training"
+              "he": "אוניברסיטה ומכללה אקדמית",
+              "ar": "جامعة وكلية",
+              "en": "University and college"
             }
           }
         ],
@@ -6640,19 +6640,19 @@
       "slug": "hamakhalla-harvit",
       "place": "sakhnin",
       "brand": null,
-      "primaryKind": "vocational",
+      "primaryKind": "universities",
       "kinds": [
-        "vocational"
+        "universities"
       ],
       "name": {
         "he": "המכללה הערבית",
         "ar": "الكلية العربية",
-        "en": "Hamakhalla Harvit"
+        "en": "The Arab College, Sakhnin"
       },
       "tagline": {
-        "he": "מכללה והכשרה מקצועית בסח'נין",
-        "ar": "كلية وتأهيل مهني في سخنين",
-        "en": "College and vocational training in Sakhnin"
+        "he": "אוניברסיטה ומכללה אקדמית בסח'נין",
+        "ar": "جامعة وكلية في سخنين",
+        "en": "University and college in Sakhnin"
       },
       "address": {
         "he": "طريق الجليل",
@@ -6678,19 +6678,19 @@
         "brand": {
           "he": "המכללה הערבית",
           "ar": "الكلية العربية",
-          "en": "Hamakhalla Harvit"
+          "en": "The Arab College, Sakhnin"
         },
         "title": {
-          "he": "מכללה והכשרה מקצועית",
-          "ar": "كلية وتأهيل مهني",
-          "en": "College and vocational training"
+          "he": "אוניברסיטה ומכללה אקדמית",
+          "ar": "جامعة وكلية",
+          "en": "University and college"
         },
         "items": [
           {
             "label": {
-              "he": "מכללה והכשרה מקצועית",
-              "ar": "كلية وتأهيل مهني",
-              "en": "College and vocational training"
+              "he": "אוניברסיטה ומכללה אקדמית",
+              "ar": "جامعة وكلية",
+              "en": "University and college"
             }
           }
         ],
