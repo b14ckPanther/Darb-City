@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   looksLikeEmail,
@@ -15,7 +14,10 @@ import { one, withParams, type SearchParams } from "@/admin/params";
 import { adminHref } from "@/admin/routes";
 import { Pager } from "@/admin/Toolbar";
 import { INTL_TAG, isLocale } from "@/lib/locale";
+import { Empty, PageHead, Status, StatusTabs } from "@/admin/ui";
 import styles from "@/admin/admin.module.css";
+
+const LOCALE_NAMES: Record<Locale, string> = { he: "עברית", ar: "العربية", en: "English" };
 
 const TOPIC: Record<InquiryTopic, AdminKey> = {
   general: "topicGeneral",
@@ -44,9 +46,7 @@ function Inquiry({ locale, item }: { locale: Locale; item: AdminInquiryDto }) {
         <h2 id={`inquiry-${item.id}`} className={styles.h2}>
           <bdi>{item.name}</bdi>
         </h2>
-        <span className={fresh ? `${styles.badge} ${styles.badgeGold}` : styles.badge}>
-          {at(locale, fresh ? "inquiryNew" : "inquiryHandled")}
-        </span>
+        <Status locale={locale} status={item.status} />
         <time dateTime={item.createdAt} className={styles.hint}>
           {at(locale, "inquiryReceived")}: {received}
         </time>
@@ -75,7 +75,7 @@ function Inquiry({ locale, item }: { locale: Locale; item: AdminInquiryDto }) {
           </>
         ) : null}
         <dt>{at(locale, "inquiryLocale")}</dt>
-        <dd dir="ltr">{item.locale}</dd>
+        <dd>{LOCALE_NAMES[item.locale]}</dd>
       </dl>
       <p className={styles.message} dir="auto">
         {item.message}
@@ -117,30 +117,21 @@ export default async function InquiriesPage({
     ["handled", "inquiryHandled"],
   ];
   return (
-    <>
-      <div className={styles.actions}>
-        <h1 className={styles.h1}>{at(locale, "navInquiries")}</h1>
-        {page.newCount > 0 ? (
-          <span className={`${styles.badge} ${styles.badgeGold}`}>
-            {at(locale, "inquiryNewCount", { count: page.newCount })}
-          </span>
-        ) : null}
-      </div>
-      <p className={styles.hint}>{at(locale, "inquiriesHint")}</p>
-      <nav className={styles.actions} aria-label={at(locale, "status")}>
-        {filters.map(([value, key]) => (
-          <Link
-            key={key}
-            href={withParams(base, { status: value })}
-            className={styles.ghost}
-            aria-current={status === value ? "page" : undefined}
-          >
-            {at(locale, key)}
-          </Link>
-        ))}
-      </nav>
+    <div className={styles.narrow}>
+      <PageHead title={at(locale, "navInquiries")} sub={at(locale, "inquiriesHint")} />
+      <StatusTabs
+        label={at(locale, "status")}
+        tabs={filters.map(([value, key]) => ({
+          href: withParams(base, { status: value }),
+          label: at(locale, key),
+          current: status === value,
+          count: value === "new" ? page.newCount : undefined,
+        }))}
+      />
       {page.items.length === 0 ? (
-        <p>{at(locale, "empty")}</p>
+        <div className={styles.tableWrap}>
+          <Empty icon="mail" title={at(locale, "inquiriesEmpty")} />
+        </div>
       ) : (
         page.items.map((item) => <Inquiry key={item.id} locale={locale} item={item} />)
       )}
@@ -148,6 +139,6 @@ export default async function InquiriesPage({
         locale={locale}
         href={page.nextCursor ? withParams(base, { status, cursor: page.nextCursor }) : null}
       />
-    </>
+    </div>
   );
 }

@@ -12,9 +12,12 @@ export interface SheetActionsProps {
   actions: CardAction[];
   share: { url: string; title: string } | null;
   /** The icons, drawn by the caller: one for the main button, one per action in order, Share's. */
-  glyphs: { primary: ReactNode; actions: ReactNode[]; share: ReactNode };
+  glyphs: { primary: ReactNode; actions: ReactNode[]; share: ReactNode; more?: ReactNode };
   labels: {
     share: string;
+    /** The round button holding the rest when there are many (and its list's name). */
+    more?: string;
+    moreWays?: string;
     contactWays: string;
     exampleNotice: string;
     linkCopied: string;
@@ -25,6 +28,8 @@ export interface SheetActionsProps {
 }
 
 const external = { target: "_blank", rel: "noopener noreferrer" } as const;
+/** Round buttons in one row before the rest fold under More. */
+export const ACTIONS_SHOWN = 6;
 
 /**
  * The main button, then a row of round icon buttons, each with its short word under it. Plain
@@ -39,6 +44,7 @@ export function SheetActions({
   labels,
   preview = false,
 }: SheetActionsProps) {
+  const fold = actions.length > ACTIONS_SHOWN && Boolean(glyphs.more);
   const bubble = (glyph: ReactNode) => <span className={styles.bubble}>{glyph}</span>;
   const face = (glyph: ReactNode, label: string) => (
     <>
@@ -80,7 +86,7 @@ export function SheetActions({
         </a>
       )}
       <ul className={styles.row} aria-label={labels.contactWays}>
-        {actions.map((a, i) => (
+        {(fold ? actions.slice(0, ACTIONS_SHOWN - 1) : actions).map((a, i) => (
           <li key={a.href}>
             {preview ? (
               <span className={styles.action} data-action={a.key}>
@@ -92,13 +98,51 @@ export function SheetActions({
                 className={styles.action}
                 data-action={a.key}
                 {...(a.key === "app" ? { "data-open-app": "" } : {})}
-                {...(a.key === "call" ? {} : external)}
+                {...(a.key === "call" || a.key === "phone2" || a.key === "email" ? {} : external)}
               >
                 {face(glyphs.actions[i], a.label)}
               </a>
             )}
           </li>
         ))}
+        {fold ? (
+          <li>
+            <details className={styles.more} data-more-actions="">
+              <summary className={styles.action}>{face(glyphs.more, labels.more ?? "")}</summary>
+              <ul className={styles.moreList} aria-label={labels.moreWays}>
+                {actions.slice(ACTIONS_SHOWN - 1).map((a, j) => {
+                  const i = ACTIONS_SHOWN - 1 + j;
+                  const inner = (
+                    <>
+                      <span className={styles.moreIcon}>{glyphs.actions[i]}</span>
+                      {a.label}
+                    </>
+                  );
+                  return (
+                    <li key={a.href}>
+                      {preview ? (
+                        <span className={styles.moreItem} data-action={a.key}>
+                          {inner}
+                        </span>
+                      ) : (
+                        <a
+                          href={a.href}
+                          className={styles.moreItem}
+                          data-action={a.key}
+                          {...(a.key === "call" || a.key === "phone2" || a.key === "email"
+                            ? {}
+                            : external)}
+                        >
+                          {inner}
+                        </a>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            </details>
+          </li>
+        ) : null}
         {share ? (
           <li>
             {preview ? (

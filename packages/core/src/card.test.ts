@@ -96,3 +96,63 @@ describe("latinize", () => {
     expect(toSlug(latinize("Café سمير 2"))).toBe("cafe-smyr-2");
   });
 });
+
+describe("more links", () => {
+  it("reads LinkedIn pages and refuses other hosts or bare names", async () => {
+    const { linkedinUrl } = await import("./card.js");
+    expect(linkedinUrl("linkedin.com/in/samer-k")).toBe("https://www.linkedin.com/in/samer-k/");
+    expect(linkedinUrl("https://il.linkedin.com/company/darb?trk=x")).toBe(
+      "https://www.linkedin.com/company/darb/",
+    );
+    expect(linkedinUrl("samer")).toBeNull();
+    expect(linkedinUrl("https://evil.com/in/samer")).toBeNull();
+  });
+
+  it("reads YouTube, X and Telegram handles and links", async () => {
+    const { telegramUrl, xUrl, youtubeUrl } = await import("./card.js");
+    expect(youtubeUrl("@darbcity")).toBe("https://www.youtube.com/@darbcity");
+    expect(youtubeUrl("youtu.be/abc123")).toBe("https://youtu.be/abc123");
+    expect(youtubeUrl("https://youtube.com/")).toBeNull();
+    expect(xUrl("@darb_city")).toBe("https://x.com/darb_city");
+    expect(xUrl("https://twitter.com/darb_city/")).toBe("https://x.com/darb_city");
+    expect(xUrl("https://x.com/a/status/1")).toBeNull();
+    expect(telegramUrl("@darbcity")).toBe("https://t.me/darbcity");
+    expect(telegramUrl("t.me/darbcity")).toBe("https://t.me/darbcity");
+    expect(telegramUrl("abc")).toBeNull();
+  });
+
+  it("reads an email, a delivery page and a second phone", async () => {
+    const { emailHref, phoneHref, tenbisUrl, woltUrl } = await import("./card.js");
+    expect(emailHref(" Hello@Darb.co.il ")).toBe("mailto:hello@darb.co.il");
+    expect(emailHref("mailto:a@b.co")).toBe("mailto:a@b.co");
+    expect(emailHref("not an email")).toBeNull();
+    expect(woltUrl("wolt.com/he/isr/haifa/restaurant/samer")).toBe(
+      "https://wolt.com/he/isr/haifa/restaurant/samer",
+    );
+    expect(woltUrl("https://example.com/wolt")).toBeNull();
+    expect(tenbisUrl("https://www.10bis.co.il/next/restaurants/menu/delivery/1/samer")).toBe(
+      "https://www.10bis.co.il/next/restaurants/menu/delivery/1/samer",
+    );
+    expect(phoneHref("04-674 0000")).toBe("tel:+97246740000");
+    expect(phoneHref("+972 50 123 4567")).toBe("tel:+972501234567");
+    expect(phoneHref("call me")).toBeNull();
+  });
+
+  it("normalises every new key, and drops what does not read", async () => {
+    const { normalizeLinks } = await import("./card.js");
+    expect(
+      normalizeLinks({
+        x: "@darb",
+        email: "a@b.co",
+        booking: "book.example.com/samer",
+        order: "nope nope",
+        phone2: "050-1234567",
+      }),
+    ).toEqual({
+      x: "https://x.com/darb",
+      email: "mailto:a@b.co",
+      booking: "https://book.example.com/samer",
+      phone2: "tel:+972501234567",
+    });
+  });
+});

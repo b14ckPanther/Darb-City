@@ -25,6 +25,15 @@ export interface CardCopy {
   openPhoto: string;
   previousPhoto: string;
   nextPhoto: string;
+  email: string;
+  booking: string;
+  order: string;
+  wolt: string;
+  tenbis: string;
+  phone2: string;
+  /** The round button that opens the rest when there are many. */
+  more: string;
+  moreWays: string;
 }
 
 export const card: Record<Locale, CardCopy> = {
@@ -47,6 +56,14 @@ export const card: Record<Locale, CardCopy> = {
     openPhoto: "פתיחת תמונה {n}",
     previousPhoto: "התמונה הקודמת",
     nextPhoto: "התמונה הבאה",
+    email: "אימייל",
+    booking: "הזמנת תור",
+    order: "הזמנה",
+    wolt: "וולט",
+    tenbis: "תן ביס",
+    phone2: "טלפון נוסף",
+    more: "עוד",
+    moreWays: "עוד דרכים ליצירת קשר",
   },
   ar: {
     openUntil: "فاتح للساعة {time}",
@@ -67,6 +84,14 @@ export const card: Record<Locale, CardCopy> = {
     openPhoto: "افتح صورة {n}",
     previousPhoto: "الصورة اللي قبل",
     nextPhoto: "الصورة اللي بعد",
+    email: "إيميل",
+    booking: "حجز دور",
+    order: "اطلب",
+    wolt: "وولت",
+    tenbis: "تن بيس",
+    phone2: "تلفون تاني",
+    more: "كمان",
+    moreWays: "طرق تواصل كمان",
   },
   en: {
     openUntil: "Open until {time}",
@@ -87,5 +112,13 @@ export const card: Record<Locale, CardCopy> = {
     openPhoto: "Open photo {n}",
     previousPhoto: "Previous photo",
     nextPhoto: "Next photo",
+    email: "Email",
+    booking: "Book",
+    order: "Order",
+    wolt: "Wolt",
+    tenbis: "10bis",
+    phone2: "Other phone",
+    more: "More",
+    moreWays: "More ways to reach them",
   },
 };

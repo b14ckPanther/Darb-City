@@ -8,6 +8,7 @@ import { JOIN_STATUS_KEY, receivedAt } from "@/admin/join-view";
 import { adminHref } from "@/admin/routes";
 import { StreetCapture } from "@/admin/street/StreetCapture";
 import { INTL_TAG, isLocale } from "@/lib/locale";
+import { PageHead } from "@/admin/ui";
 import styles from "@/admin/admin.module.css";
 import own from "@/admin/street/street.module.css";
 
@@ -29,14 +30,16 @@ export default async function StreetPage({ params }: { params: Promise<{ locale:
     .map((k) => ({ slug: k.slug, label: pickText(k.name, locale) || k.slug }))
     .sort((a, b) => collator.compare(a.label, b.label));
   return (
-    <>
-      <div className={styles.actions}>
-        <h1 className={styles.h1}>{at(locale, "navStreet")}</h1>
-        <p className={own.today} aria-live="polite">
-          {at(locale, "streetToday", { count: mine.today })}
-        </p>
-      </div>
-      <p className={styles.hint}>{at(locale, "streetIntro")}</p>
+    <div className={styles.narrow}>
+      <PageHead
+        title={at(locale, "navStreet")}
+        sub={at(locale, "streetIntro")}
+        actions={
+          <p className={own.today} aria-live="polite">
+            {at(locale, "streetToday", { count: mine.today })}
+          </p>
+        }
+      />
       <StreetCapture
         locale={locale}
         kinds={options}
@@ -73,6 +76,6 @@ export default async function StreetPage({ params }: { params: Promise<{ locale:
           </ul>
         </section>
       ) : null}
-    </>
+    </div>
   );
 }

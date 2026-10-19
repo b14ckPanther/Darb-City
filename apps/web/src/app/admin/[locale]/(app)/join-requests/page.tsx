@@ -2,83 +2,67 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { AdminJoinPageDto, AdminJoinRequestDto } from "@darb/contracts";
 import { pickText, type Locale } from "@darb/core";
+import { AdminIcon } from "@/admin/AdminIcon";
 import { adminApi, okOr } from "@/admin/api";
 import { at, type AdminKey } from "@/admin/copy";
 import { one, withParams, type SearchParams } from "@/admin/params";
 import { adminHref } from "@/admin/routes";
 import { Pager } from "@/admin/Toolbar";
 import { isLocale } from "@/lib/locale";
-import { JOIN_STATUS_KEY, joinSourceKey, receivedAt, telHref } from "@/admin/join-view";
+import { telHref } from "@/admin/join-view";
+import { Empty, Monogram, PageHead, relativeTime, Status, StatusTabs } from "@/admin/ui";
 import { mediaUrl } from "@/lib/card";
 import styles from "@/admin/admin.module.css";
+import j from "@/admin/queue.module.css";
 
 function Request({ locale, item }: { locale: Locale; item: AdminJoinRequestDto }) {
-  const waiting = item.status === "pending";
   const street = item.source === "field";
+  const name = pickText(item.businessName, locale);
+  const href = adminHref(locale, `/join-requests/${item.id}`);
   return (
-    <article
-      className={waiting ? `${styles.card} ${styles.inquiry} ${styles.inquiryNew}` : styles.card}
-      aria-labelledby={`join-${item.id}`}
+    <li
+      className={j.row}
+      data-waiting={item.status === "pending" ? "" : undefined}
+      data-row={item.id}
     >
-      <header className={styles.inquiryHead}>
-        <h2 id={`join-${item.id}`} className={styles.h2}>
-          <Link href={adminHref(locale, `/join-requests/${item.id}`)}>
-            <bdi>{pickText(item.businessName, locale)}</bdi>
-          </Link>
-        </h2>
-        <span className={waiting ? `${styles.badge} ${styles.badgeGold}` : styles.badge}>
-          {at(locale, JOIN_STATUS_KEY[item.status])}
-        </span>
-        {street ? <span className={styles.badge}>{at(locale, "streetBadge")}</span> : null}
-        <time dateTime={item.createdAt} className={styles.hint}>
-          {at(locale, "inquiryReceived")}: {receivedAt(locale, item.createdAt)}
-        </time>
-      </header>
-      {street && item.photo ? (
+      {item.photo ? (
         // eslint-disable-next-line @next/next/no-img-element -- an admin thumbnail straight from the bucket
         <img
           src={mediaUrl(item.photo)}
-          alt={at(locale, "streetPhotoAlt")}
-          className={styles.thumb}
+          alt={street ? at(locale, "streetPhotoAlt") : ""}
+          className={j.photo}
           loading="lazy"
         />
-      ) : null}
-      <dl className={styles.facts}>
-        {street ? null : (
-          <>
-            <dt>{at(locale, "joinOwner")}</dt>
-            <dd>
-              <bdi>{item.ownerName}</bdi>
-            </dd>
-            <dt>{at(locale, "joinOwnerPhone")}</dt>
-            <dd>
-              <a href={telHref(item.ownerPhone)} dir="ltr">
-                {item.ownerPhone}
-              </a>
-            </dd>
-          </>
-        )}
-        {item.placeSlug ? (
-          <>
-            <dt>{at(locale, "fieldPlace")}</dt>
-            <dd dir="ltr">{item.placeSlug}</dd>
-          </>
-        ) : null}
-        {/* A street capture says so in its badge. */}
-        {street ? null : (
-          <>
-            <dt>{at(locale, "joinSource")}</dt>
-            <dd>{at(locale, joinSourceKey(item.source))}</dd>
-          </>
-        )}
-      </dl>
-      <Link
-        className={waiting ? styles.primary : styles.ghost}
-        href={adminHref(locale, `/join-requests/${item.id}`)}
-      >
-        {at(locale, "joinOpen")}
-      </Link>
-    </article>
+      ) : (
+        <Monogram name={name} locale={locale} />
+      )}
+      <div className={j.text}>
+        <Link href={href} className={styles.rowLink}>
+          <bdi>{name}</bdi>
+        </Link>
+        <span className={styles.secondary}>
+          {[
+            item.placeName ? pickText(item.placeName, locale) : item.placeSlug,
+            street ? at(locale, "streetBadge") : item.ownerName,
+            relativeTime(locale, item.createdAt),
+          ]
+            .filter(Boolean)
+            .map((part, i) => (
+              <span key={i}>
+                {i ? " · " : ""}
+                <bdi>{part}</bdi>
+              </span>
+            ))}
+        </span>
+      </div>
+      {street ? null : (
+        <a href={telHref(item.ownerPhone)} dir="ltr" className={j.phone}>
+          {item.ownerPhone}
+        </a>
+      )}
+      <Status locale={locale} status={item.status} />
+      <AdminIcon name="chevron" size={16} className={j.chev} />
+    </li>
   );
 }
 
@@ -107,37 +91,41 @@ export default async function JoinRequestsPage({
     ["rejected", "joinRejected"],
   ];
   return (
-    <>
-      <div className={styles.actions}>
-        <h1 className={styles.h1}>{at(locale, "navJoin")}</h1>
-        {page.newCount > 0 ? (
-          <span className={`${styles.badge} ${styles.badgeGold}`}>
-            {at(locale, "joinPendingCount", { count: page.newCount })}
-          </span>
-        ) : null}
-      </div>
-      <p className={styles.hint}>{at(locale, "joinHint")}</p>
-      <nav className={styles.actions} aria-label={at(locale, "status")}>
-        {filters.map(([value, key]) => (
-          <Link
-            key={key}
-            href={withParams(base, { status: value })}
-            className={styles.ghost}
-            aria-current={status === value ? "page" : undefined}
-          >
-            {at(locale, key)}
+    <div className={styles.narrow}>
+      <PageHead
+        title={at(locale, "navJoin")}
+        sub={at(locale, "joinHint")}
+        actions={
+          <Link href={adminHref(locale, "/field")} className={styles.ghost}>
+            <AdminIcon name="camera" size={18} />
+            {at(locale, "navStreet")}
           </Link>
-        ))}
-      </nav>
+        }
+      />
+      <StatusTabs
+        label={at(locale, "status")}
+        tabs={filters.map(([value, key]) => ({
+          href: withParams(base, { status: value }),
+          label: at(locale, key),
+          current: status === value,
+          count: value === "pending" ? page.newCount : undefined,
+        }))}
+      />
       {page.items.length === 0 ? (
-        <p>{at(locale, "empty")}</p>
+        <div className={styles.tableWrap}>
+          <Empty icon="inbox" title={at(locale, "joinEmpty")} />
+        </div>
       ) : (
-        page.items.map((item) => <Request key={item.id} locale={locale} item={item} />)
+        <ul className={j.list} role="list" data-list="join-requests">
+          {page.items.map((item) => (
+            <Request key={item.id} locale={locale} item={item} />
+          ))}
+        </ul>
       )}
       <Pager
         locale={locale}
         href={page.nextCursor ? withParams(base, { status, cursor: page.nextCursor }) : null}
       />
-    </>
+    </div>
   );
 }

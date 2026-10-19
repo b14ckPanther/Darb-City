@@ -35,10 +35,24 @@ export class SectorsAdmin {
     private readonly writer: AdminWriter,
   ) {}
 
+  /** Each sector with how many kinds it has and how many real businesses those kinds hold. */
   async list() {
-    return (await this.prisma.sector.findMany({ orderBy: { order: "asc" }, take: LIST_CAP })).map(
-      toAdminSector,
-    );
+    const [sectors, kinds, businesses] = await Promise.all([
+      this.prisma.sector.findMany({ orderBy: { order: "asc" }, take: LIST_CAP }),
+      this.prisma.kind.groupBy({ by: ["sectorId"], _count: { _all: true } }),
+      this.prisma.$queryRaw<{ sectorId: string; count: number }[]>`
+        SELECT k."sectorId", COUNT(*)::int AS count FROM "Business" b
+        JOIN "Kind" k ON k.id = b."primaryKindId"
+        WHERE b.tier <> 'example'
+        GROUP BY k."sectorId"`,
+    ]);
+    const kindCount = new Map(kinds.map((k) => [k.sectorId, k._count._all]));
+    const businessCount = new Map(businesses.map((b) => [b.sectorId, b.count]));
+    return sectors.map((s) => ({
+      ...toAdminSector(s),
+      kindCount: kindCount.get(s.id) ?? 0,
+      businessCount: businessCount.get(s.id) ?? 0,
+    }));
   }
 
   async create(actor: AdminActor, dto: AdminSectorCreateDto) {

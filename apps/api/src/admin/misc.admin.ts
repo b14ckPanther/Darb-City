@@ -6,6 +6,7 @@ import { PrismaService } from "../prisma/prisma.service.js";
 import { ReportRepository } from "../search/report.repository.js";
 import { AdminWriter } from "./admin-writer.js";
 import { conflict, notFound } from "./outcome.js";
+import { OverviewAdmin } from "./overview.admin.js";
 import { seedSource } from "./seed-source.js";
 import { webTags } from "./tags.js";
 
@@ -126,6 +127,7 @@ export class AdminMiscController {
   constructor(
     private readonly misc: MiscAdmin,
     private readonly reports: ReportRepository,
+    private readonly overview: OverviewAdmin,
   ) {}
 
   @TsRestHandler(contract.admin.misc)
@@ -152,6 +154,14 @@ export class AdminMiscController {
       },
       release: async ({ params }) => this.misc.release(actor, params.entity, params.id),
       revalidate: async ({ params }) => this.misc.revalidate(params.entity, params.id),
+      overview: async () => {
+        req.res?.setHeader("cache-control", "no-store");
+        return { status: 200, body: await this.overview.overview(actor) };
+      },
+      search: async ({ query }) => {
+        req.res?.setHeader("cache-control", "no-store");
+        return { status: 200, body: await this.overview.search(query.q) };
+      },
     });
   }
 }

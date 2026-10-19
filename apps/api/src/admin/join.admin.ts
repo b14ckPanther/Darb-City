@@ -18,9 +18,11 @@ import { BusinessesAdmin } from "./businesses.admin.js";
 import { conflict, notFound, outcome } from "./outcome.js";
 import { webTags } from "./tags.js";
 
-type Row = JoinRequest & { business: { place: { slug: string }; photos: unknown } | null };
+type Row = JoinRequest & {
+  business: { place: { slug: string; name: unknown }; photos: unknown } | null;
+};
 const include = {
-  business: { select: { place: { select: { slug: true } }, photos: true } },
+  business: { select: { place: { select: { slug: true, name: true } }, photos: true } },
 } as const;
 
 /** The IP hash stays in the database: the admin never needs it. */
@@ -36,6 +38,7 @@ export const toAdminJoinRequest = (r: Row): AdminJoinRequestDto => ({
   businessName: r.businessName as Localized,
   businessId: r.businessId,
   placeSlug: r.business?.place.slug ?? null,
+  placeName: (r.business?.place.name as Localized | undefined) ?? null,
   photo: (r.business?.photos as { key: string }[] | undefined)?.[0]?.key ?? null,
   lookup: (r.lookup as JoinSuggestionDto | null) ?? null,
   rejectReason: r.rejectReason,

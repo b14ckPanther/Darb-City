@@ -5,6 +5,14 @@ import {
   facebookUrl,
   googleMapsUrl,
   instagramUrl,
+  linkedinUrl,
+  youtubeUrl,
+  xUrl,
+  telegramUrl,
+  emailHref,
+  woltUrl,
+  tenbisUrl,
+  phoneHref,
   isSlug,
   PLACE_STATUSES,
   PLACE_TYPES,
@@ -12,6 +20,7 @@ import {
   tiktokUrl,
   TIERS,
   wazeUrl,
+  websiteUrl,
 } from "@darb/core";
 import { z } from "zod";
 
@@ -68,6 +77,18 @@ export const LinksSchema = z.object({
   waze: z.string().url().optional(),
   /** The business's Google Maps page, only ever a link out (its reviews are never read). */
   google: z.string().url().optional(),
+  linkedin: z.string().url().optional(),
+  youtube: z.string().url().optional(),
+  x: z.string().url().optional(),
+  telegram: z.string().url().optional(),
+  /** mailto: */
+  email: z.string().url().optional(),
+  booking: z.string().url().optional(),
+  order: z.string().url().optional(),
+  wolt: z.string().url().optional(),
+  tenbis: z.string().url().optional(),
+  /** tel: */
+  phone2: z.string().url().optional(),
 });
 export type LinksDto = z.infer<typeof LinksSchema>;
 
@@ -93,6 +114,16 @@ export const LinksInputSchema = z
     waze: linkInput(wazeUrl, "a Waze").optional(),
     // A Google Maps place link carries its whole place record in the URL: long ones are normal.
     google: linkInput(googleMapsUrl, "a Google Maps", 2000).optional(),
+    linkedin: linkInput(linkedinUrl, "a LinkedIn").optional(),
+    youtube: linkInput(youtubeUrl, "a YouTube").optional(),
+    x: linkInput(xUrl, "an X").optional(),
+    telegram: linkInput(telegramUrl, "a Telegram").optional(),
+    email: linkInput(emailHref, "an email", 200).optional(),
+    booking: linkInput(websiteUrl, "a booking", 500).optional(),
+    order: linkInput(websiteUrl, "an ordering", 500).optional(),
+    wolt: linkInput(woltUrl, "a Wolt", 500).optional(),
+    tenbis: linkInput(tenbisUrl, "a 10bis", 500).optional(),
+    phone2: linkInput(phoneHref, "a phone", 40).optional(),
   })
   .strict();
 

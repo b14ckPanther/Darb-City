@@ -1,12 +1,14 @@
 import { notFound } from "next/navigation";
 import type { AdminSectorDto } from "@darb/contracts";
 import { pickText } from "@darb/core";
-import { saveSector } from "@/admin/actions";
-import { ActionForm } from "@/admin/ActionForm";
+import { AdminIcon } from "@/admin/AdminIcon";
 import { adminApi, okOr } from "@/admin/api";
 import { at } from "@/admin/copy";
+import { Section } from "@/admin/editor-parts";
 import { EntityMeta } from "@/admin/EntityMeta";
-import { LocalizedFields, TextField } from "@/admin/fields";
+import { adminHref } from "@/admin/routes";
+import { SectorForm } from "@/admin/SectorForm";
+import { numberFormat, PageHead } from "@/admin/ui";
 import { isLocale } from "@/lib/locale";
 import styles from "@/admin/admin.module.css";
 
@@ -17,54 +19,44 @@ export default async function EditSector({
 }) {
   const { locale, id } = await params;
   if (!isLocale(locale)) notFound();
+  // There is no single-sector GET: the list is short.
   const s = okOr<AdminSectorDto[]>(await (await adminApi()).sectors.list(), locale).find(
     (x) => x.id === id,
   );
   if (!s) notFound();
+  const n = numberFormat(locale);
   return (
     <>
-      <h1 className={styles.h1}>{pickText(s.name, locale)}</h1>
-      <ActionForm
-        action={saveSector}
-        submit={at(locale, "save")}
-        labels={{ fix: at(locale, "errorFix") }}
+      <PageHead
+        title={<bdi>{pickText(s.name, locale)}</bdi>}
+        back={{ href: adminHref(locale, "/sectors"), label: at(locale, "navSectors") }}
       >
-        <input type="hidden" name="locale" value={locale} />
-        <input type="hidden" name="id" value={s.id} />
-        <LocalizedFields
-          locale={locale}
-          label={at(locale, "fieldName")}
-          name="name"
-          value={s.name}
-        />
-        <LocalizedFields
-          locale={locale}
-          label={at(locale, "fieldTagline")}
-          name="tagline"
-          value={s.tagline}
-        />
-        <div className={styles.row}>
-          <TextField
-            label={at(locale, "fieldAccent")}
-            name="accent"
-            defaultValue={s.accent}
-            dir="ltr"
-          />
-          <TextField
-            label={at(locale, "fieldOrder")}
-            name="order"
-            type="number"
-            defaultValue={s.order}
-            dir="ltr"
-          />
+        <div className={styles.statusLine}>
+          <span className={styles.swatch} style={{ background: s.accent }} aria-hidden="true" />
+          <a href={adminHref(locale, `/kinds?sector=${s.slug}`)}>
+            <AdminIcon name="tag" size={15} />
+            {at(locale, "kindsCount", { count: n.format(s.kindCount ?? 0) })}
+          </a>
+          <a href={adminHref(locale, `/businesses?sector=${s.slug}`)}>
+            <AdminIcon name="store" size={15} />
+            {at(locale, "businessesCount", { count: n.format(s.businessCount ?? 0) })}
+          </a>
         </div>
-      </ActionForm>
-      <EntityMeta
+      </PageHead>
+      <SectorForm
         locale={locale}
-        entity="sector"
-        id={s.id}
-        editedAt={s.editedAt}
-        seedSource={s.seedSource}
+        sector={s}
+        after={
+          <Section id="advanced" title={at(locale, "secAdvanced")}>
+            <EntityMeta
+              locale={locale}
+              entity="sector"
+              id={s.id}
+              editedAt={s.editedAt}
+              seedSource={s.seedSource}
+            />
+          </Section>
+        }
       />
     </>
   );

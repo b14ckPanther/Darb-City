@@ -1,0 +1,76 @@
+/* Categories: tiles in the city's order, each edged in its own colour. */
+.tiles {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: 12px;
+}
+.tile {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 4px 12px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface-1);
+  overflow: hidden;
+}
+.tile::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  inline-size: 4px;
+  background: var(--tile);
+}
+.tile:hover {
+  border-color: var(--line-strong);
+}
+.order {
+  display: grid;
+  place-items: center;
+  inline-size: 36px;
+  block-size: 36px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--tile) 22%, var(--surface-2));
+  color: var(--text);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  font-family: var(--font-latin), var(--font-body);
+}
+.tileText {
+  display: grid;
+  gap: 2px;
+  min-inline-size: 0;
+}
+.tileText .secondary {
+  white-space: normal;
+}
+.counts {
+  grid-column: 2 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-block-start: 6px;
+}
+.count {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 32px;
+  padding-inline: 10px;
+  border-radius: 999px;
+  background: var(--surface-3);
+  color: var(--text-soft);
+  font-size: 0.8125rem;
+  text-decoration: none;
+}
+.count:hover {
+  color: var(--text);
+  background: var(--wash-strong);
+}

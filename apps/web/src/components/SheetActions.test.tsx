@@ -136,3 +136,44 @@ it("opens an app or directions as the primary link, in a new tab (Task 28)", () 
   expect(screen.getByRole("link", { name: "Book a chair" }).getAttribute("target")).toBe("_blank");
   expect(screen.queryByRole("link", { name: "Maps" })).toBeNull();
 });
+
+it("keeps the row tidy: past six ways, the rest fold under More", () => {
+  const keys = [
+    "call",
+    "whatsapp",
+    "waze",
+    "maps",
+    "website",
+    "booking",
+    "order",
+    "email",
+  ] as const;
+  const actions = keys.map((key, i) => ({
+    key,
+    icon: "phone" as const,
+    label: key,
+    href: key === "email" ? "mailto:a@b.co" : `https://x.test/${i}`,
+  }));
+  const { container } = render(
+    <SheetActions
+      {...base}
+      primary={{ kind: "none" }}
+      actions={actions}
+      glyphs={{ ...base.glyphs, actions: actions.map(() => null), more: <span /> }}
+      labels={{ ...base.labels, more: "More", moreWays: "More ways" }}
+    />,
+  );
+  const more = container.querySelector("[data-more-actions]")!;
+  expect(more.querySelector("summary")?.textContent).toBe("More");
+  const folded = [...more.querySelectorAll("[data-action]")].map((a) =>
+    a.getAttribute("data-action"),
+  );
+  expect(folded).toEqual(["booking", "order", "email"]);
+  // An email opens the mail app in place, never a new tab.
+  expect(more.querySelector('[data-action="email"]')?.getAttribute("target")).toBeNull();
+});
+
+it("shows every way in the row when there are few", () => {
+  const { container } = render(<SheetActions {...base} />);
+  expect(container.querySelector("[data-more-actions]")).toBeNull();
+});

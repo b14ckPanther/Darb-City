@@ -33,8 +33,40 @@ export interface BusinessLinks {
   waze?: string;
   /** The business's own Google Maps page: only a link out to its reviews, nothing is read from it. */
   google?: string;
+  linkedin?: string;
+  youtube?: string;
+  /** X (formerly Twitter). */
+  x?: string;
+  telegram?: string;
+  /** A mailto: link. */
+  email?: string;
+  /** Booking an appointment or a table: any https page. */
+  booking?: string;
+  /** Ordering online (its own shop or menu): any https page. */
+  order?: string;
+  /** Delivery apps: the business's page there. */
+  wolt?: string;
+  tenbis?: string;
+  /** A second phone line, as a tel: link. */
+  phone2?: string;
 }
-export const LINK_KEYS = ["instagram", "facebook", "tiktok", "waze", "google"] as const;
+export const LINK_KEYS = [
+  "instagram",
+  "facebook",
+  "tiktok",
+  "waze",
+  "google",
+  "linkedin",
+  "youtube",
+  "x",
+  "telegram",
+  "email",
+  "booking",
+  "order",
+  "wolt",
+  "tenbis",
+  "phone2",
+] as const;
 
 /** The WHATWG URL every runtime Darb runs on has (Node 22, browsers); core's lib is ES only. */
 interface WebUrl {
@@ -134,6 +166,93 @@ export function googleMapsUrl(raw: string): string | null {
   return ok ? parsed.toString() : null;
 }
 
+/** A linkedin.com profile or company page (a bare name is ambiguous between the two). */
+export function linkedinUrl(raw: string): string | null {
+  const u = websiteUrl(raw);
+  const parsed: WebUrl | null = u ? new URL(u) : null;
+  if (!parsed || !onHost(parsed, ["linkedin.com"])) return null;
+  const m = /^\/(in|company|school)\/([A-Za-z0-9_%.-]{2,100})\/?/.exec(parsed.pathname);
+  return m ? `https://www.linkedin.com/${m[1]}/${m[2]}/` : null;
+}
+
+/** "@name" or a youtube.com / youtu.be link to an https YouTube URL. */
+export function youtubeUrl(raw: string): string | null {
+  const v = raw.trim();
+  const handle = /^@([A-Za-z0-9._-]{3,30})$/.exec(v)?.[1];
+  if (handle) return `https://www.youtube.com/@${handle}`;
+  const u = websiteUrl(v);
+  const parsed: WebUrl | null = u ? new URL(u) : null;
+  if (!parsed || !onHost(parsed, ["youtube.com", "youtu.be"])) return null;
+  if (parsed.pathname === "/" || parsed.pathname === "") return null;
+  return parsed.toString();
+}
+
+/** "@name", "name" or an x.com / twitter.com link to https://x.com/name. */
+export function xUrl(raw: string): string | null {
+  const v = raw.trim();
+  const handle = /^@?([A-Za-z0-9_]{1,15})$/.exec(v)?.[1];
+  if (handle) return `https://x.com/${handle}`;
+  const u = websiteUrl(v);
+  const parsed: WebUrl | null = u ? new URL(u) : null;
+  if (!parsed || !onHost(parsed, ["x.com", "twitter.com"])) return null;
+  const name = /^\/([A-Za-z0-9_]{1,15})\/?$/.exec(parsed.pathname)?.[1];
+  return name ? `https://x.com/${name}` : null;
+}
+
+/** "@name", "name" or a t.me / telegram.me link to https://t.me/name. */
+export function telegramUrl(raw: string): string | null {
+  const v = raw.trim();
+  const handle = /^@?([A-Za-z0-9_]{5,32})$/.exec(v)?.[1];
+  if (handle) return `https://t.me/${handle}`;
+  const u = websiteUrl(v);
+  const parsed: WebUrl | null = u ? new URL(u) : null;
+  if (!parsed || !onHost(parsed, ["t.me", "telegram.me"])) return null;
+  const name = /^\/([A-Za-z0-9_+]{5,64})\/?$/.exec(parsed.pathname)?.[1];
+  return name ? `https://t.me/${name}` : null;
+}
+
+/** An email address (or a mailto: link) to a mailto: link, lower-cased; anything else is null. */
+export function emailHref(raw: string): string | null {
+  const v = raw
+    .trim()
+    .replace(/^mailto:/i, "")
+    .toLowerCase();
+  return /^[a-z0-9._%+-]+@[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}$/.test(v) && v.length <= 200
+    ? `mailto:${v}`
+    : null;
+}
+
+/** A Wolt link (any wolt.com page) as an https URL. */
+export function woltUrl(raw: string): string | null {
+  const u = websiteUrl(raw);
+  const parsed: WebUrl | null = u ? new URL(u) : null;
+  return parsed && onHost(parsed, ["wolt.com"]) && parsed.pathname.length > 1
+    ? parsed.toString()
+    : null;
+}
+
+/** A 10bis link (10bis.co.il) as an https URL. */
+export function tenbisUrl(raw: string): string | null {
+  const u = websiteUrl(raw);
+  const parsed: WebUrl | null = u ? new URL(u) : null;
+  return parsed && onHost(parsed, ["10bis.co.il"]) && parsed.pathname.length > 1
+    ? parsed.toString()
+    : null;
+}
+
+/**
+ * A phone number as people write it ("04-674 0000", "+972 50 123 4567") to a tel: link; Israeli
+ * local numbers become +972. Null when it is not a phone number.
+ */
+export function phoneHref(raw: string): string | null {
+  const v = raw.trim().replace(/^tel:/i, "");
+  if (!/^\+?[0-9][0-9 ()-]{5,19}$/.test(v)) return null;
+  const digits = v.replace(/[^0-9]/g, "");
+  if (v.startsWith("+")) return `tel:+${digits}`;
+  if (digits.startsWith("0")) return `tel:+972${digits.slice(1)}`;
+  return `tel:${digits}`;
+}
+
 /** Driving directions to a point in Waze. */
 export const wazeDirections = (lat: number, lng: number): string =>
   `https://waze.com/ul?ll=${lat.toFixed(6)},${lng.toFixed(6)}&navigate=yes`;
@@ -147,6 +266,16 @@ export function normalizeLinks(raw: Partial<Record<keyof BusinessLinks, string |
     tiktok: tiktokUrl,
     waze: wazeUrl,
     google: googleMapsUrl,
+    linkedin: linkedinUrl,
+    youtube: youtubeUrl,
+    x: xUrl,
+    telegram: telegramUrl,
+    email: emailHref,
+    booking: websiteUrl,
+    order: websiteUrl,
+    wolt: woltUrl,
+    tenbis: tenbisUrl,
+    phone2: phoneHref,
   };
   for (const key of LINK_KEYS) {
     const v = raw[key];

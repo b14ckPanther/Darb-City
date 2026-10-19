@@ -1,0 +1,24 @@
+/* The admin's Edit button on a card: small, quiet, out of a visitor's way (only admins see it). */
+.edit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  justify-self: start;
+  min-block-size: 40px;
+  padding-inline: 14px;
+  border: 1px dashed var(--line-strong);
+  border-radius: 999px;
+  background: var(--surface-1);
+  color: var(--text-soft);
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+.edit:hover {
+  color: var(--text);
+  border-style: solid;
+}
+.edit:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}

@@ -3,6 +3,7 @@
 import { isLocale } from "@/lib/locale";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { ADMIN_HINT_COOKIE } from "./marker";
 import { adminAuthMode, FAKE_COOKIE } from "./mode";
 import { adminHref } from "./routes";
 
@@ -25,6 +26,8 @@ export async function fakeSignIn(formData: FormData): Promise<void> {
 
 export async function fakeSignOut(formData: FormData): Promise<void> {
   const raw = String(formData.get("locale") ?? "he");
-  (await cookies()).delete(FAKE_COOKIE);
+  const jar = await cookies();
+  jar.delete(FAKE_COOKIE);
+  jar.delete(ADMIN_HINT_COOKIE);
   redirect(adminHref(isLocale(raw) ? raw : "he", "/sign-in"));
 }

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { contract } from "./contract.js";
+import { LinksInputSchema, LinksSchema } from "./schemas.js";
 import {
   BusinessDetailSchema,
   BusinessPageSchema,
@@ -239,5 +240,29 @@ describe("hours by appointment (Task 28)", () => {
     const hours = { weekly: {}, exceptions: [], byAppointment: true };
     expect(HoursSchema.parse(hours)).toEqual(hours);
     expect(HoursSchema.parse({ weekly: {}, exceptions: [] }).byAppointment).toBeUndefined();
+  });
+});
+
+describe("the newer link fields", () => {
+  it("normalise as typed and refuse what does not read", () => {
+    const ok = LinksInputSchema.parse({
+      linkedin: "linkedin.com/in/samer",
+      youtube: "@darbcity",
+      x: "@darb",
+      telegram: "@darbcity",
+      email: "Hi@Darb.co.il",
+      booking: "book.example.com",
+      wolt: "wolt.com/he/isr/haifa/restaurant/samer",
+      phone2: "04-674 0000",
+    });
+    expect(ok).toMatchObject({
+      linkedin: "https://www.linkedin.com/in/samer/",
+      email: "mailto:hi@darb.co.il",
+      booking: "https://book.example.com/",
+      phone2: "tel:+97246740000",
+    });
+    expect(LinksSchema.parse(ok)).toEqual(ok);
+    expect(LinksInputSchema.safeParse({ tenbis: "example.com" }).success).toBe(false);
+    expect(LinksInputSchema.safeParse({ email: "nope" }).success).toBe(false);
   });
 });

@@ -1,7 +1,8 @@
-import { headers } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { notFound, redirect } from "next/navigation";
 import type { ReactNode } from "react";
 import { AdminShell } from "@/admin/AdminShell";
+import { RAIL_COOKIE } from "@/admin/nav";
 import { adminApi, adminSession } from "@/admin/api";
 import { at } from "@/admin/copy";
 import { adminAuthMode } from "@/admin/mode";
@@ -44,6 +45,7 @@ export default async function AdminAppLayout({
       locale={locale}
       path={adminRoute(original)?.rest ?? ""}
       mode={adminAuthMode()}
+      rail={(await cookies()).get(RAIL_COOKIE)?.value === "1"}
       newInquiries={newInquiries}
       pendingJoins={pendingJoins}
     >

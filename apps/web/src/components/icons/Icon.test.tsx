@@ -19,6 +19,14 @@ const NAMES: IconName[] = [
   "leaf",
   "chevron",
   "close",
+  "linkedin",
+  "youtube",
+  "x",
+  "telegram",
+  "mail",
+  "bag",
+  "delivery",
+  "more",
 ];
 
 describe("the card icons", () => {
