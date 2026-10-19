@@ -306,6 +306,18 @@ test.describe("admin redesign", () => {
     await expect(page.getByRole("button", { name: /Status: Published/ })).toBeVisible();
   });
 
+  test("the sidebar marks the page it moved to", async ({ page }, info) => {
+    test.skip(info.project.name === "phone", "the sidebar is the desktop's");
+    await page.goto("/en/admin");
+    const current = page.locator('nav [aria-current="page"]:visible');
+    await expect(current).toHaveAttribute("data-nav", "/");
+    await page.locator('[data-nav="/sectors"]:visible').click();
+    await expect(page).toHaveURL(/\/en\/admin\/sectors$/);
+    await expect(current).toHaveAttribute("data-nav", "/sectors");
+    await page.locator('[data-nav="/businesses"]:visible').click();
+    await expect(current).toHaveAttribute("data-nav", "/businesses");
+  });
+
   test("the palette jumps to a screen and finds a place by name", async ({ page }) => {
     await page.goto("/en/admin");
     await page.locator("[data-open-palette]:visible").first().click();

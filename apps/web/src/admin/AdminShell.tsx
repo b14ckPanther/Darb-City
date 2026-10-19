@@ -5,13 +5,14 @@ import { DOOR_PATH } from "@darb/tokens";
 import { AdminIcon } from "./AdminIcon";
 import { at, type AdminKey } from "./copy";
 import type { AdminAuthMode } from "./mode";
-import { activeItem, NAV, NAV_ITEMS, type NavItem } from "./nav";
+import { NAV, NAV_ITEMS, type NavItem } from "./nav";
 import type { PaletteHit } from "./palette";
 import { adminHref } from "./routes";
 import { fakeSignOut } from "./session-actions";
 import {
   AdminMarker,
   MoreSheet,
+  NavLink,
   PaletteHost,
   RailToggle,
   SearchButton,
@@ -86,7 +87,6 @@ export function AdminShell({
   children: ReactNode;
 }) {
   const t = (key: AdminKey, vars?: Record<string, string | number>) => at(locale, key, vars);
-  const current = activeItem(path);
   const count = (item: NavItem) =>
     item.badge === "joins" ? pendingJoins : item.badge === "inquiries" ? newInquiries : 0;
   const countLabel = (item: NavItem, n: number) =>
@@ -102,10 +102,10 @@ export function AdminShell({
     const n = count(item);
     const label = t(item.label);
     return (
-      <Link
+      <NavLink
         key={`${variant}${item.href}`}
         href={adminHref(locale, item.href)}
-        aria-current={current === item ? "page" : undefined}
+        item={item.href}
         className={className}
         title={variant === "side" ? label : undefined}
         data-nav={item.href || "/"}
@@ -122,7 +122,7 @@ export function AdminShell({
           {variant === "tab" && item.short ? t(item.short) : label}
         </span>
         {n > 0 ? <span className={styles.srOnly}>, {countLabel(item, n)}</span> : null}
-      </Link>
+      </NavLink>
     );
   };
 
@@ -210,12 +210,7 @@ export function AdminShell({
 
       <nav aria-label={t("tabNav")} className={styles.tabbar}>
         {NAV_ITEMS.filter((i) => i.tab).map((item) => link(item, styles.tab, "tab"))}
-        <MoreSheet
-          label={t("more")}
-          closeLabel={t("close")}
-          className={styles.tab}
-          active={Boolean(current && !current.tab)}
-        >
+        <MoreSheet label={t("more")} closeLabel={t("close")} className={styles.tab}>
           <nav aria-label={t("mainNav")} className={styles.sheetNav}>
             {NAV.map((g) => (
               <div key={g.label} className={styles.group}>

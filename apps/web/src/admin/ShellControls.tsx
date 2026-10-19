@@ -1,7 +1,17 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { adminRoute } from "./routes";
 import dynamic from "next/dynamic";
-import { useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  type ComponentProps,
+  type ReactNode,
+} from "react";
 import { applyTheme, currentTheme, type Theme } from "@/lib/theme";
 import { AdminIcon } from "./AdminIcon";
 import type { PaletteLabels } from "./CommandPalette";
@@ -13,7 +23,7 @@ import styles from "./shell.module.css";
 /** Loaded on the first ⌘K or tap on search, never with the page. */
 const CommandPalette = dynamic(() => import("./CommandPalette"), { ssr: false });
 
-import { RAIL_COOKIE } from "./nav";
+import { activeItem, RAIL_COOKIE } from "./nav";
 
 const OPEN_PALETTE = "darb-admin-palette";
 const noSubscribe = () => () => {};
@@ -177,21 +187,39 @@ export function ThemeButton({
 }
 
 /** The phone's More sheet: everything not on the bottom bar. A modal dialog. */
+/**
+ * The admin path after the locale, from the browser's address: the shell is a layout, which keeps
+ * its first render across navigations, so the current item is worked out here, not on the server.
+ */
+function useCurrent() {
+  return activeItem(adminRoute(usePathname() ?? "")?.rest ?? "");
+}
+
+/** A nav link that marks itself current as the admin moves between pages. */
+export function NavLink({
+  href,
+  item,
+  ...rest
+}: Omit<ComponentProps<typeof Link>, "aria-current"> & { item: string }) {
+  const current = useCurrent();
+  return <Link href={href} aria-current={current?.href === item ? "page" : undefined} {...rest} />;
+}
+
 export function MoreSheet({
   label,
   closeLabel,
   className,
-  active = false,
   children,
 }: {
   label: string;
   closeLabel: string;
   className?: string;
-  /** The current page lives under More: the tab shows it. */
-  active?: boolean;
   children: ReactNode;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
+  // The current page lives under More: the tab shows it.
+  const current = useCurrent();
+  const active = Boolean(current && !current.tab);
   return (
     <>
       <button
