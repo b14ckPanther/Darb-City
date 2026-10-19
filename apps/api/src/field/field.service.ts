@@ -40,7 +40,6 @@ const MINE = 30;
  */
 export type FieldActor = AdminActor & { limited?: boolean };
 
-
 const someText = (l: Record<string, string | null | undefined>) =>
   Object.fromEntries(
     Object.entries(l).filter((e): e is [string, string] => Boolean(e[1]?.trim())),

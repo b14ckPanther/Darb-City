@@ -43,7 +43,9 @@ test.describe("darb helpers", () => {
     await helper.getByRole("combobox", { name: "Your home town" }).fill("Amqa");
     await helper.getByRole("option", { name: /Amqa/ }).first().click();
     await helper.getByRole("button", { name: "Send" }).click();
-    await expect(helper.getByRole("heading", { name: "Thanks, we will let you know" })).toBeVisible();
+    await expect(
+      helper.getByRole("heading", { name: "Thanks, we will let you know" }),
+    ).toBeVisible();
 
     // The admin sees them waiting and approves them.
     const admin = await personAt(browser, baseURL!, ADMIN);
@@ -62,7 +64,9 @@ test.describe("darb helpers", () => {
     await expect(helper.getByRole("heading", { name: "Add a business" })).toBeVisible();
     await expect(helper.getByText("Accurate to about 8 m")).toBeVisible();
     await helper.getByLabel("Photograph the sign").setInputFiles(SIGN);
-    await expect(helper.getByText("Filled in from the sign. Check it before saving.")).toBeVisible();
+    await expect(
+      helper.getByText("Filled in from the sign. Check it before saving."),
+    ).toBeVisible();
     await helper.getByLabel("Name in A B C letters").fill(shop);
     await helper.getByRole("button", { name: "Save and next shop" }).click();
     // Earlier runs captured the same phone number: a helper must say how this one differs.
