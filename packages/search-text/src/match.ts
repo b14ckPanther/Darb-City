@@ -99,7 +99,8 @@ export function tokenScore(
   )
     return 0.85;
   // A doubled or undoubled letter ("piza", "hummus" for "humus").
-  if (query.length >= 4 && dedupe(query) === dedupe(term)) return 0.85;
+  // (Collapsing keeps the first letter, so a different one can't match: checked first, it's cheap.)
+  if (query.length >= 4 && query[0] === term[0] && dedupe(query) === dedupe(term)) return 0.85;
   if (query.length >= 2 && term.startsWith(query))
     return place
       ? 0.4 + 0.45 * (query.length / term.length)
