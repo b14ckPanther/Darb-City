@@ -1,0 +1,395 @@
+/*
+ * The launch reveal of Darb's installed apps (src/splash/boot.ts builds its few nodes; the boot
+ * script sets the --dsp-* lengths from src/splash/geometry.mjs). scripts/make-splash.mjs inlines the
+ * mark (__MARK__) and publishes this file as /brand/splash/reveal.<hash>.css, which the boot script
+ * writes into <head> only on an installed app's cold start: no browser tab ever loads it.
+ *
+ * The idea: Darb is a road. A gold road comes to the mark's doorway, the doorway lights up, and you
+ * go through it into the app. 0 ms is the iOS launch image exactly; everything ends by 900 ms.
+ *
+ *   0    hold: the launch image, pixel for pixel
+ *   90   the doorway's gold catches light; a glint crosses the mark; the name rises
+ *   100  a gold road draws in from the edge of the screen to the door; a spark runs up it
+ *   300  each app's own beat where the road arrives (helpers: the gold plus and its pulse; admin:
+ *        the shield settles and its check draws; Darb: the doorway at its brightest)
+ *   480  through the door: the mark grows around the lit doorway until its light is the screen
+ *   740  the light gives way to the page
+ *   900  gone
+ */
+.dsp {
+  --mark: url("__MARK__");
+  --ground: #f7f1e4;
+  --halo: rgb(255 255 255 / 0.55);
+  --ink: #6f786e;
+  --road: #b9852f;
+  --spark: #fff6dc;
+  --badge: #d9a54c;
+  --badge-ink: #14281f;
+  --shield: #14281f;
+  --check: #d9a54c;
+  --bloom: rgb(255 226 168 / 0.55);
+  --bloom-edge: rgb(255 236 200 / 0.2);
+  --ease-light: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-draw: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-through: cubic-bezier(0.55, 0, 0.8, 0.35);
+  /* The boot script hides the overlay inline until this sheet has loaded. */
+  display: block !important;
+  /* The frame is artwork laid out on the screen (the mark never mirrors): left to right in every
+     language, so its logical sides are its physical ones. The name keeps its own direction. */
+  direction: ltr;
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  overflow: hidden;
+  contain: strict;
+  pointer-events: auto;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  background: radial-gradient(
+      circle var(--dsp-hr) at var(--dsp-hx) var(--dsp-hy),
+      var(--halo),
+      transparent
+    )
+    var(--ground);
+  animation: dsp-out 160ms cubic-bezier(0.4, 0, 1, 1) 740ms both;
+}
+
+@media (prefers-color-scheme: dark) {
+  .dsp {
+    --ground: #03110c;
+    --halo: rgb(217 165 76 / 0.12);
+    --ink: #8b8f87;
+    --road: #d9a54c;
+    --spark: #fbe7bd;
+    --shield: #d9a54c;
+    --check: #03110c;
+    --bloom: rgb(240 199 122 / 0.5);
+    --bloom-edge: rgb(217 165 76 / 0.16);
+  }
+}
+
+.dsp *,
+.dsp *::before,
+.dsp *::after {
+  box-sizing: border-box;
+}
+
+/* The mark and everything drawn on it move together: into the doorway, at the end. */
+.dsp-stage {
+  position: absolute;
+  inset-inline-start: var(--dsp-ml);
+  top: var(--dsp-mt);
+  width: var(--dsp-mw);
+  height: var(--dsp-mh);
+  transform-origin: var(--dsp-dx) var(--dsp-dy);
+  animation: dsp-through 420ms var(--ease-through) 480ms both;
+}
+
+.dsp-mark,
+.dsp-light,
+.dsp-glint {
+  position: absolute;
+  inset: 0;
+}
+
+.dsp-mark {
+  background: var(--mark) center / 100% 100% no-repeat;
+}
+
+/* Light behind the mark: it spills from the doorway onto the ground around it. */
+.dsp-bloom {
+  position: absolute;
+  inset-inline-start: var(--dsp-dx);
+  top: var(--dsp-dy);
+  width: calc(var(--dsp-mw) * 2.4);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%) scale(0.35);
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--bloom), var(--bloom-edge) 45%, transparent);
+  opacity: 0;
+  animation: dsp-bloom 520ms var(--ease-light) 90ms both;
+}
+
+/* The doorway lights up: warm light drawn only where the mark is (masked by the mark itself). */
+.dsp-light {
+  -webkit-mask: var(--mark) center / 100% 100% no-repeat;
+  mask: var(--mark) center / 100% 100% no-repeat;
+  background: radial-gradient(
+    circle calc(var(--dsp-mw) * 0.5) at var(--dsp-dx) var(--dsp-dy),
+    rgb(255 240 200 / 0.78),
+    rgb(240 199 122 / 0.42) 40%,
+    rgb(217 165 76 / 0) 100%
+  );
+  mix-blend-mode: screen;
+  mix-blend-mode: plus-lighter;
+  opacity: 0;
+  animation: dsp-light 470ms var(--ease-light) 90ms both;
+  will-change: opacity;
+}
+
+/* One glint across the mark, low and quick, like the sun on the arch. */
+.dsp-glint {
+  -webkit-mask: var(--mark) center / 100% 100% no-repeat;
+  mask: var(--mark) center / 100% 100% no-repeat;
+  overflow: hidden;
+}
+
+.dsp-glint::before {
+  content: "";
+  position: absolute;
+  inset: -10% -60%;
+  background: linear-gradient(
+    105deg,
+    transparent 38%,
+    rgb(255 250 236 / 0.5) 48%,
+    rgb(255 250 236 / 0.75) 50%,
+    rgb(255 250 236 / 0.5) 52%,
+    transparent 62%
+  );
+  mix-blend-mode: soft-light;
+  transform: translateX(-70%);
+  animation: dsp-glint 520ms var(--ease-draw) 120ms both;
+}
+
+/* The road: one gold line out of the doorway, drawn toward you, with a spark running down it. */
+.dsp-road {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  fill: none;
+  stroke-linecap: round;
+  animation: dsp-fade 140ms linear 520ms forwards;
+}
+
+.dsp-road path {
+  stroke: var(--road);
+  stroke-width: 3;
+  stroke-dasharray: 1 1.2;
+  stroke-dashoffset: 1.05;
+  animation: dsp-draw 360ms var(--ease-draw) 100ms both;
+}
+
+.dsp-road path + path {
+  stroke: var(--spark);
+  stroke-width: 4;
+  stroke-dasharray: 0.07 1.2;
+  stroke-dashoffset: 0.08;
+  opacity: 0;
+  animation: dsp-spark 420ms cubic-bezier(0.45, 0, 0.2, 1) 200ms both;
+}
+
+.dsp-name {
+  position: absolute;
+  inset-inline: 0;
+  top: var(--dsp-nt);
+  margin: 0;
+  font: 500 var(--dsp-ns) / 1.4 var(--font-body, system-ui, sans-serif);
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: var(--ink);
+  white-space: nowrap;
+  unicode-bidi: plaintext;
+  opacity: 0;
+  animation:
+    dsp-name 430ms var(--ease-light) 110ms both,
+    dsp-fade 100ms linear 470ms forwards;
+}
+
+/* The last beat, on the mark's lower corner where the app's icon wears its badge. */
+.dsp-badge {
+  position: absolute;
+  inset-inline-start: var(--dsp-bx);
+  top: var(--dsp-by);
+  width: calc(var(--dsp-mw) * 0.3);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  overflow: visible;
+}
+
+.dsp-badge circle {
+  fill: var(--badge);
+}
+
+.dsp[data-app="helpers"] .dsp-badge {
+  transform: translate(-50%, -50%) scale(0);
+  animation:
+    dsp-pop 280ms cubic-bezier(0.34, 1.56, 0.64, 1) 300ms both,
+    dsp-fade 90ms linear 500ms forwards;
+}
+
+.dsp[data-app="helpers"] .dsp-badge path {
+  stroke: var(--badge-ink);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+}
+
+.dsp-ring {
+  position: absolute;
+  inset-inline-start: var(--dsp-bx);
+  top: var(--dsp-by);
+  width: calc(var(--dsp-mw) * 0.3);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border: 2px solid var(--badge);
+  border-radius: 50%;
+  opacity: 0;
+  animation: dsp-ring 380ms var(--ease-light) 380ms forwards;
+}
+
+.dsp[data-app="admin"] .dsp-badge {
+  opacity: 0;
+  animation:
+    dsp-settle 300ms cubic-bezier(0.22, 1.2, 0.36, 1) 280ms both,
+    dsp-fade 90ms linear 590ms forwards;
+}
+
+.dsp[data-app="admin"] .dsp-badge .dsp-shield {
+  fill: var(--shield);
+  stroke: var(--shield);
+  stroke-width: 1.2;
+  stroke-linejoin: round;
+}
+
+.dsp[data-app="admin"] .dsp-badge .dsp-check {
+  fill: none;
+  stroke: var(--check);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1 1.2;
+  stroke-dashoffset: 1.05;
+  animation: dsp-draw 160ms var(--ease-draw) 430ms both;
+}
+
+/* A tap (or a key) skips: everything left fades at once. */
+.dsp.dsp-skip,
+.dsp.dsp-skip * {
+  animation-play-state: paused;
+}
+
+.dsp.dsp-skip {
+  pointer-events: none;
+  animation: dsp-out 140ms linear both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dsp *,
+  .dsp *::before {
+    animation: none !important;
+  }
+
+  .dsp-name,
+  .dsp-badge,
+  .dsp-ring,
+  .dsp-road {
+    display: none;
+  }
+
+  .dsp,
+  .dsp.dsp-skip {
+    animation: dsp-out 180ms linear 60ms both;
+  }
+}
+
+@keyframes dsp-bloom {
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes dsp-light {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes dsp-glint {
+  to {
+    transform: translateX(70%);
+  }
+}
+
+@keyframes dsp-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dsp-spark {
+  0% {
+    opacity: 0;
+    stroke-dashoffset: 0.08;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    stroke-dashoffset: -1;
+  }
+}
+
+@keyframes dsp-name {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes dsp-pop {
+  to {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes dsp-ring {
+  0% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2.4);
+  }
+}
+
+@keyframes dsp-settle {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -110%) scale(1.35) rotate(-8deg);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes dsp-through {
+  to {
+    transform: scale(18);
+  }
+}
+
+@keyframes dsp-fade {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes dsp-out {
+  to {
+    opacity: 0;
+  }
+}

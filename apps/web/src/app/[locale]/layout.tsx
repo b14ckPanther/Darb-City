@@ -17,6 +17,7 @@ import { StageMount } from "@/components/StageMount";
 import { stageBootScript } from "@/lib/stage-boot";
 import { themeBootScript } from "@/lib/theme";
 import { installBootScript } from "@/lib/install";
+import { splashBootScript } from "@/splash/boot";
 import { TILES_URL } from "@/stage/vendor";
 import type { StageLabels } from "@/stage/types";
 import "../globals.css";
@@ -104,6 +105,10 @@ export default async function RootLayout({ children, params }: LayoutProps) {
         <style id="darb-tokens" dangerouslySetInnerHTML={{ __html: tokensCss() }} />
         <script id="darb-theme-boot" dangerouslySetInnerHTML={{ __html: themeBootScript() }} />
         <script id="darb-install-boot" dangerouslySetInnerHTML={{ __html: installBootScript() }} />
+        <script
+          id="darb-splash-boot"
+          dangerouslySetInnerHTML={{ __html: splashBootScript("darb", t(locale, "appName")) }}
+        />
         {stage ? (
           <script id="darb-stage-boot" dangerouslySetInnerHTML={{ __html: stageBootScript() }} />
         ) : null}
