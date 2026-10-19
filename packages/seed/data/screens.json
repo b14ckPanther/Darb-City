@@ -6619,6 +6619,107 @@
     },
     "font": "Assistant"
   },
+  "universities": {
+    "brand": {
+      "he": "המכללה האקדמית אופק",
+      "ar": "كلية أفق الأكاديمية",
+      "en": "Ofek Academic College"
+    },
+    "title": {
+      "he": "ההרשמה לשנת הלימודים פתוחה",
+      "ar": "التسجيل للسنة الدراسية مفتوح",
+      "en": "Registration for the new year is open"
+    },
+    "subtitle": {
+      "he": "תואר ראשון ושני · 14 חוגים",
+      "ar": "لقب أول وثاني · 14 تخصص",
+      "en": "Bachelor's and master's · 14 departments"
+    },
+    "tags": [
+      {
+        "he": "הכול",
+        "ar": "الكل",
+        "en": "All"
+      },
+      {
+        "he": "תואר ראשון",
+        "ar": "لقب أول",
+        "en": "Bachelor's"
+      },
+      {
+        "he": "תואר שני",
+        "ar": "لقب ثاني",
+        "en": "Master's"
+      },
+      {
+        "he": "מכינה",
+        "ar": "تحضيري",
+        "en": "Preparatory year"
+      }
+    ],
+    "items": [
+      {
+        "label": {
+          "he": "הנדסת תוכנה, תואר ראשון",
+          "ar": "هندسة برمجيات، لقب أول",
+          "en": "Software engineering, bachelor's"
+        },
+        "meta": {
+          "he": "4 שנים · לימודי בוקר",
+          "ar": "4 سنين · دوام صباحي",
+          "en": "4 years · daytime"
+        }
+      },
+      {
+        "label": {
+          "he": "סיעוד, תואר ראשון",
+          "ar": "تمريض، لقب أول",
+          "en": "Nursing, bachelor's"
+        },
+        "meta": {
+          "he": "4 שנים כולל התנסות קלינית",
+          "ar": "4 سنين مع تدريب بالمستشفى",
+          "en": "4 years with clinical training"
+        }
+      },
+      {
+        "label": {
+          "he": "חינוך והוראה, תואר שני",
+          "ar": "تربية وتعليم، لقب ثاني",
+          "en": "Education and teaching, master's"
+        },
+        "meta": {
+          "he": "שנתיים · לימודי ערב",
+          "ar": "سنتين · دوام مسائي",
+          "en": "2 years · evenings"
+        }
+      },
+      {
+        "label": {
+          "he": "מעונות סטודנטים",
+          "ar": "سكن طلاب",
+          "en": "Student housing"
+        },
+        "meta": {
+          "he": "בתוך הקמפוס",
+          "ar": "جوّا الحرم",
+          "en": "on campus"
+        }
+      }
+    ],
+    "cta": {
+      "he": "להגשת מועמדות",
+      "ar": "قدّم طلبك",
+      "en": "Apply now"
+    },
+    "palette": {
+      "bg": "#f3f0ea",
+      "surface": "#ffffff",
+      "ink": "#24262b",
+      "accent": "#7a2f3b"
+    },
+    "font": "Assistant"
+  },
   "vocational": {
     "brand": {
       "he": "מכללת אל מוסתקבל",
