@@ -25,6 +25,8 @@ export interface PlaceFinderProps {
   onFillAddress?: (lang: Locale, address: string) => void;
   /** A Google Maps link was pasted: keep it on the business. True when it was kept. */
   onGoogleLink?: (url: string) => boolean;
+  /** How to ask (the admin's server action by default; the public card's quick editor fetches). */
+  locate?: typeof locatePlace;
 }
 
 type Shown =
@@ -53,6 +55,7 @@ export function PlaceFinder({
   canFillAddress,
   onFillAddress,
   onGoogleLink,
+  locate = locatePlace,
 }: PlaceFinderProps) {
   const t = (key: AdminKey, vars?: Record<string, string | number>) => at(locale, key, vars);
   const id = useId();
@@ -69,7 +72,7 @@ export function PlaceFinder({
     setFilled(null);
     let answer: LocateAnswer;
     try {
-      answer = await locatePlace({ query: q, locale, placeSlug: placeSlug?.() });
+      answer = await locate({ query: q, locale, placeSlug: placeSlug?.() });
     } catch {
       answer = { found: null, reason: "error" };
     }

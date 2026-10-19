@@ -1,4 +1,10 @@
-import { expect, test, type BrowserContext, type Page } from "@playwright/test";
+import {
+  expect,
+  test,
+  type APIRequestContext,
+  type BrowserContext,
+  type Page,
+} from "@playwright/test";
 
 const ADMIN = "fake.user_e2e.e2e-admin@darb.test";
 const signInAs = (context: BrowserContext, baseURL: string, value: string) =>
@@ -188,6 +194,99 @@ test.describe("admin", () => {
     await page.goto("/ar/admin/report");
     await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
     await expect(page.getByRole("note")).toContainText("عاملها كمعلومات خاصة");
+  });
+});
+
+const API = () => process.env.API_URL ?? "http://localhost:4100";
+const AUTH = { authorization: `Bearer ${ADMIN}` };
+/** A fresh business through the admin API (upholstery in amqa, which no other spec reads). */
+async function createBusiness(request: APIRequestContext, slug: string, name: string) {
+  const kinds = await (
+    await request.get(`${API()}/admin/kinds?q=upholstery`, { headers: AUTH })
+  ).json();
+  const places = await (
+    await request.get(`${API()}/admin/places?q=${PLACE}`, { headers: AUTH })
+  ).json();
+  const res = await request.post(`${API()}/admin/businesses`, {
+    headers: AUTH,
+    data: {
+      slug,
+      placeId: places.items.find((p: { slug: string }) => p.slug === PLACE).id,
+      name: { en: name },
+      tagline: { en: "Sofas made new" },
+      address: { en: "Main street" },
+      primaryKindId: kinds.find((k: { slug: string }) => k.slug === "upholstery").id,
+      kindIds: [],
+      lat: 32.79,
+      lng: 35.16,
+      phone: "04-6000000",
+      whatsapp: null,
+      website: null,
+      hours: { weekly: {}, exceptions: [] },
+      attributes: {},
+      experience: {
+        brand: { en: "Business name" },
+        title: { en: "Welcome" },
+        items: [{ label: { en: "First item" } }],
+        cta: { en: "Contact us" },
+        palette: { bg: "#08241a", surface: "#0e3527", ink: "#fbf7ec", accent: "#d9a54c" },
+        font: "Heebo",
+      },
+      tier: "basic",
+      apps: {},
+    },
+  });
+  expect(res.status(), await res.text()).toBe(201);
+  return (await res.json()) as { id: string };
+}
+
+test.describe("edit from the public card", () => {
+  test("a visitor never sees Edit; an admin edits the phone in place and sees it at once", async ({
+    page,
+    context,
+    baseURL,
+    request,
+  }) => {
+    test.slow();
+    const slug = `e2e-quick-${test.info().project.name}-${Date.now().toString(36)}`;
+    const { id } = await createBusiness(request, slug, "Quick Upholstery");
+    const pub = await request.post(`${API()}/admin/businesses/${id}/status`, {
+      headers: AUTH,
+      data: { status: "published" },
+    });
+    expect(pub.status()).toBe(200);
+    await expect
+      .poll(async () => (await request.get(PUBLIC(slug))).status(), { timeout: 15_000 })
+      .toBe(200);
+
+    // A visitor: no Edit button, and no editor code requested.
+    const asked: string[] = [];
+    page.on("request", (r) => {
+      if (r.url().includes("/admin/")) asked.push(r.url());
+    });
+    await page.goto(PUBLIC(slug));
+    await expect(page.locator("[data-business-card]").first()).toBeVisible();
+    await expect(page.locator("[data-admin-edit]")).toHaveCount(0);
+    expect(asked).toEqual([]);
+
+    // The admin: signing in leaves the marker, and the card offers Edit.
+    await signInAs(context, baseURL!, ADMIN);
+    await page.goto("/en/admin");
+    await page.goto(PUBLIC(slug));
+    await page.locator("[data-admin-edit]").click();
+    const panel = page.locator("[data-quick-editor]");
+    await expect(panel).toBeVisible();
+    const phone = panel.getByLabel("Phone", { exact: true });
+    await expect(phone).toHaveValue("04-6000000");
+    await phone.fill("04-6111111");
+    await panel.getByRole("button", { name: "Save", exact: true }).click();
+    await expect(page.locator('[data-business-card] a[href^="tel:"]').first()).toHaveAttribute(
+      "href",
+      /6111111/,
+      {
+        timeout: 20_000,
+      },
+    );
   });
 });
 

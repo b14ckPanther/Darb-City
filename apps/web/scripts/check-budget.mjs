@@ -103,10 +103,27 @@ const worker = gz(join(VENDOR, "maplibre-gl-worker.mjs"));
 const LAZY = [
   { name: "stage", marker: "darb:stage-chunk", limit: 340 * 1024, extra: maplibre, required: true },
   { name: "search", marker: "darb:search-chunk", limit: 30 * 1024, extra: 0, required: true },
+  // The admin's quick editor on a public card: loaded by import() only after an admin presses Edit.
+  {
+    name: "admin quick edit",
+    marker: "darb:quick-edit-chunk",
+    limit: 140 * 1024,
+    extra: 0,
+    required: true,
+    scan: true,
+  },
 ];
+/** Chunks loaded by a plain import() (not next/dynamic): found by their marker in the build. */
+const scanned = (marker) =>
+  new Set(
+    readdirSync(join(NEXT, "static/chunks"))
+      .filter((f) => f.endsWith(".js"))
+      .map((f) => `static/chunks/${f}`)
+      .filter((f) => code(f).includes(marker)),
+  );
 
 for (const group of LAZY) {
-  const files = groupFiles(loadable, group.marker, code);
+  const files = group.scan ? scanned(group.marker) : groupFiles(loadable, group.marker, code);
   const leaked = [...initial].filter((f) => code(f).includes(group.marker));
   const own = sum(files);
   const total = own + group.extra;

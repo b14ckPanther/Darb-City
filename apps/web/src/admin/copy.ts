@@ -544,6 +544,15 @@ const en = {
   hintLink: "Paste the page's link",
   hintBooking: "Where customers book a turn or a table",
   hintOrder: "Its own online shop or menu",
+  quickEyebrow: "Quick edit",
+  quickTitle: "Edit the business",
+  quickSaved: "Saved. Loading the page again…",
+  quickSignIn: "Sign in to the admin to edit here.",
+  quickUnpublish: "Unpublish",
+  quickCopy: "Copy link",
+  quickCopied: "Link copied.",
+  quickNotCopied: "The link was not copied.",
+  quickOpenAdmin: "Open in admin",
 } as const;
 
 export type AdminKey = keyof typeof en;
@@ -1085,6 +1094,15 @@ const he: Messages = {
   hintLink: "הדבקת הקישור לעמוד",
   hintBooking: "איפה לקוחות קובעים תור או שולחן",
   hintOrder: "החנות או התפריט שלו ברשת",
+  quickEyebrow: "עריכה מהירה",
+  quickTitle: "עריכת העסק",
+  quickSaved: "נשמר. טוענים את העמוד מחדש…",
+  quickSignIn: "כדי לערוך כאן צריך להיכנס לניהול.",
+  quickUnpublish: "הסרת פרסום",
+  quickCopy: "העתקת קישור",
+  quickCopied: "הקישור הועתק.",
+  quickNotCopied: "הקישור לא הועתק.",
+  quickOpenAdmin: "פתיחה בניהול",
 };
 
 const ar: Messages = {
@@ -1625,6 +1643,15 @@ const ar: Messages = {
   hintLink: "الصق رابط الصفحة",
   hintBooking: "وين الزباين بيحجزوا دور أو طاولة",
   hintOrder: "محله أو المنيو تبعه عالنت",
+  quickEyebrow: "تعديل سريع",
+  quickTitle: "تعديل المصلحة",
+  quickSaved: "انحفظ. عم نحمّل الصفحة من جديد…",
+  quickSignIn: "لتعدّل هون لازم تدخل للإدارة.",
+  quickUnpublish: "إلغاء النشر",
+  quickCopy: "انسخ الرابط",
+  quickCopied: "الرابط انتسخ.",
+  quickNotCopied: "الرابط ما انتسخ.",
+  quickOpenAdmin: "افتح بالإدارة",
 };
 
 export const adminCopy: Record<Locale, Messages> = { he, ar, en };

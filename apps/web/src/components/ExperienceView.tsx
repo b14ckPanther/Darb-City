@@ -1,3 +1,4 @@
+import { AdminEdit } from "./AdminEdit";
 import Link from "next/link";
 import { pickText, type Locale } from "@darb/core";
 import type { BusinessDetailDto, KindDto } from "@darb/contracts";
@@ -65,6 +66,7 @@ export function ExperienceView({
     <article className={styles.view}>
       <LocaleSwitch locale={locale} segments={segments} />
       <BusinessCard locale={locale} copy={copy} card={card} renderedAt={now.getTime()} />
+      <AdminEdit locale={locale} id={business.id} />
       {app ? <AppPreview locale={locale} name={card.name} url={app} screen={screen} /> : null}
       {screen ? <ScreenView screen={screen} template={kind.template} locale={locale} /> : null}
       {owners ? <OwnerLine locale={locale} /> : null}
