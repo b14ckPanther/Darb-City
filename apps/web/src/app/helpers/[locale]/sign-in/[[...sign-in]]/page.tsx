@@ -33,7 +33,7 @@ export default async function HelperSignInPage({
           appearance={CLERK_LTR_FIELDS}
         />
       ) : mode === "fake" ? (
-        <form action={fakeHelperSignIn} className={styles.state}>
+        <form action={fakeHelperSignIn} className={styles.formCard}>
           <input type="hidden" name="locale" value={locale} />
           <label className={admin.field}>
             <span>{ht(locale, "fakeUser")}</span>
@@ -43,7 +43,7 @@ export default async function HelperSignInPage({
             <span>{ht(locale, "fakeEmail")}</span>
             <input name="email" type="email" defaultValue="helper@darb.test" required dir="ltr" />
           </label>
-          <button className={styles.primary} type="submit">
+          <button className={`${styles.primary} ${styles.wide}`} type="submit">
             {ht(locale, "signIn")}
           </button>
         </form>

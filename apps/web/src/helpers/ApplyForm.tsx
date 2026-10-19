@@ -94,7 +94,7 @@ export function ApplyForm({
           {err("form")}
         </p>
       ) : null}
-      <button type="submit" className={styles.primary} disabled={pending}>
+      <button type="submit" className={`${styles.primary} ${styles.wide}`} disabled={pending}>
         {t(pending ? "applySending" : "applySend")}
       </button>
     </form>

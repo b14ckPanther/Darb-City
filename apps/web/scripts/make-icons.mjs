@@ -31,6 +31,7 @@ const MARK_BOX = { left: 26, top: 26, width: 428, height: 507 };
 /** Every file this script writes, by name. */
 export const FAVICON_SIZES = [16, 32, 48];
 export const SHORTCUTS = ["near", "search", "map", "join"];
+export const HELPER_SHORTCUTS = ["add", "mine"];
 
 const PNG = { compressionLevel: 9, adaptiveFiltering: false, palette: false, effort: 10 };
 
@@ -303,6 +304,16 @@ function glyphSvg(name, theme) {
     case "join":
       return `<circle cx="48" cy="48" r="21" fill="${fillGold}"/>
         <path d="M48 38V58M38 48H58" fill="none" stroke="${FOREST}" stroke-width="${sw}" stroke-linecap="round"/>`;
+    // The helper app's shortcuts: a camera with a gold lens (add a business), a list of cards.
+    case "helper-add":
+      return `<path d="M30 36H38L42 30H54L58 36H66A4 4 0 0 1 70 40V62A4 4 0 0 1 66 66H30A4 4 0 0 1 26 62V40A4 4 0 0 1 30 36Z" ${line}/>
+        <circle cx="48" cy="51" r="9.5" fill="${fillGold}"/>
+        <path d="M48 46.5V55.5M43.5 51H52.5" fill="none" stroke="${FOREST}" stroke-width="3.2" stroke-linecap="round"/>`;
+    case "helper-mine":
+      return `<rect x="28" y="28" width="40" height="40" rx="7" ${line}/>
+        <circle cx="38" cy="40" r="3.5" fill="${fillGold}"/>
+        <circle cx="38" cy="56" r="3.5" fill="${fillGold}"/>
+        <path d="M46 40H59M46 56H59" ${line}/>`;
     default:
       throw new Error(`no glyph ${name}`);
   }
@@ -411,6 +422,8 @@ export async function renderIcons() {
         { fill: 0.64, radius: 0.22 },
         corner,
       );
+    for (const name of HELPER_SHORTCUTS)
+      files[`helper-shortcut-${name}-${theme}.png`] = await shortcut(`helper-${name}`, theme);
     files[`helper-maskable-${theme}-512.png`] = await helperTile(
       theme,
       512,

@@ -136,6 +136,14 @@ helper's credit toggle is on (read at render time; toggling refreshes their card
 Locally, `ADMIN_FAKE_AUTH=1` gives `/helpers/sign-in` the same fake sign-in as the admin. The helper
 app's icons are drawn by `pnpm --filter @darb/web icons` beside the site's.
 
+The capture opens as quick add (photo, check, send; the map and extras fold away). The manifest has
+two long press shortcuts (`?camera=1`, My additions) and a share target: a shared map link or text
+POSTs to `/helpers/share`, which opens the capture on that pin; a shared photo is kept by
+`public/helper-sw.js` (registered on the helper scope only, it caches nothing else) for the capture
+to read. The install sheet screenshots come from
+`WEB_URL=… HELPER_TOKEN=… node apps/web/scripts/shoot-helper-pwa.mjs` against a local server with
+fake sign-in.
+
 ## Deploy
 
 Hosting, release flow and fallback: `docs/launch/hosting.md`. Variables per environment: `docs/launch/environments.md`. Launch and rollback: `docs/launch/runbook.md`. What exists in each provider, and the careful DNS move to Cloudflare: `docs/launch/accounts.md`.

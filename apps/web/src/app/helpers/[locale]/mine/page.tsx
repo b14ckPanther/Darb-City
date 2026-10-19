@@ -2,7 +2,7 @@ import { notFound, redirect } from "next/navigation";
 import type { FieldCaptureDto } from "@darb/contracts";
 import { pickText, type Locale } from "@darb/core";
 import { receivedAt } from "@/admin/join-view";
-import { canReadOwn, helperApi, helperOrSignIn } from "@/helpers/api";
+import { canAdd, canReadOwn, helperApi, helperOrSignIn } from "@/helpers/api";
 import { ht, type HelperKey } from "@/helpers/copy";
 import { HelperShell } from "@/helpers/HelperShell";
 import { helperHref } from "@/helpers/routes";
@@ -64,11 +64,47 @@ export default async function MinePage({ params }: { params: Promise<{ locale: s
   return (
     <HelperShell locale={locale} tab="mine" tabs>
       <h1 className={styles.title}>{ht(locale, "mineTitle")}</h1>
-      <p className={styles.summary} data-summary="">
-        {ht(locale, "mineSummary", { total: mine.total, live: mine.live })}
-      </p>
+      <div className={styles.stats} data-summary="">
+        <p className={styles.srOnly}>
+          {ht(locale, "mineSummary", { total: mine.total, live: mine.live })}
+        </p>
+        <div aria-hidden="true">
+          <strong>{mine.total}</strong>
+          <span>{ht(locale, "mineAdded")}</span>
+        </div>
+        <div aria-hidden="true" data-live="">
+          <strong>{mine.live}</strong>
+          <span>{ht(locale, "mineLiveCount")}</span>
+        </div>
+        <div aria-hidden="true">
+          <strong>{mine.today}</strong>
+          <span>{ht(locale, "mineTodayCount")}</span>
+        </div>
+      </div>
       {mine.items.length === 0 ? (
-        <p className={styles.muted}>{ht(locale, "mineEmpty")}</p>
+        <section className={styles.empty}>
+          <span className={styles.stateIcon} aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="30" height="30">
+              <path
+                d="M12 21s-7-6.4-7-11.5a7 7 0 0 1 14 0C19 14.6 12 21 12 21Zm0-14.5v6m-3-3h6"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </span>
+          <p className={styles.muted}>{ht(locale, "mineEmpty")}</p>
+          {canAdd(session.me) ? (
+            <a
+              href={helperHref(locale, "?camera=1")}
+              className={`${styles.primary} ${styles.wide}`}
+            >
+              {ht(locale, "mineEmptyAction")}
+            </a>
+          ) : null}
+        </section>
       ) : (
         <ul className={styles.list} role="list" aria-label={ht(locale, "mineTitle")}>
           {mine.items.map((item) => (

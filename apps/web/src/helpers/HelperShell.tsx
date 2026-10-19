@@ -9,6 +9,12 @@ import { ClerkHelperSignOut } from "./SignOut";
 import styles from "./helpers.module.css";
 
 export type HelperTab = "add" | "mine" | "profile";
+/** The tabs' glyphs: a camera with a plus, a stack of cards, a person. Never the arch. */
+const ICON: Record<HelperTab, string> = {
+  add: "M9 4 7.6 6H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-2.6L15 4H9Zm3 5v3m0 0v3m0-3H9m3 0h3",
+  mine: "M4 6h16M4 12h16M4 18h10",
+  profile: "M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 8c.8-3.5 3.6-5.5 7-5.5s6.2 2 7 5.5",
+};
 const TABS: [HelperTab, string, HelperKey][] = [
   ["add", "", "navAdd"],
   ["mine", "/mine", "navMine"],
@@ -49,7 +55,17 @@ export function HelperShell({
               className={styles.tab}
               aria-current={tab === key ? "page" : undefined}
             >
-              {ht(locale, label)}
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24" focusable="false">
+                <path
+                  d={ICON[key]}
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.9"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <span>{ht(locale, label)}</span>
             </Link>
           ))}
         </nav>
