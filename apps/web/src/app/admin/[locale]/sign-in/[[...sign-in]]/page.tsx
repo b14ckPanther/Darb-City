@@ -11,6 +11,11 @@ import styles from "@/admin/admin.module.css";
 const LTR_FIELDS = {
   elements: {
     formFieldInput: { direction: "ltr" },
+    // The code row itself runs left to right: in an RTL page the first digit lands on the right
+    // and typing moves leftward unless the boxes' container is LTR too.
+    otpCodeField: { direction: "ltr" },
+    otpCodeFieldInputs: { direction: "ltr" },
+    otpCodeFieldInputContainer: { direction: "ltr" },
     otpCodeFieldInput: { direction: "ltr" },
     identityPreviewText: { direction: "ltr" },
   },
