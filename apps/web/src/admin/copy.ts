@@ -365,13 +365,6 @@ const en = {
   attnNoHours: "Published without hours",
   activityTitle: "Recent activity",
   activityEmpty: "No changes yet. Edits made in admin show up here.",
-  actYou: "You",
-  actSomeone: "An admin",
-  actCreate: "created",
-  actUpdate: "edited",
-  actStatus: "changed the status of",
-  actRelease: "returned to seed data",
-  actDelete: "deleted",
   entBusiness: "business",
   entPlace: "place",
   entKind: "kind",
@@ -553,6 +546,8 @@ const en = {
   quickCopied: "Link copied.",
   quickNotCopied: "The link was not copied.",
   quickOpenAdmin: "Open in admin",
+  byYou: "by you",
+  byAnotherAdmin: "by another admin",
 } as const;
 
 export type AdminKey = keyof typeof en;
@@ -915,13 +910,6 @@ const he: Messages = {
   attnNoHours: "מפורסמים בלי שעות פתיחה",
   activityTitle: "פעילות אחרונה",
   activityEmpty: "עוד אין שינויים. עריכות בניהול יופיעו כאן.",
-  actYou: "את/ה",
-  actSomeone: "מנהל/ת",
-  actCreate: "יצר/ה",
-  actUpdate: "ערך/ה",
-  actStatus: "שינה/תה מצב של",
-  actRelease: "החזיר/ה לנתוני הבסיס את",
-  actDelete: "מחק/ה",
   entBusiness: "עסק",
   entPlace: "מקום",
   entKind: "סוג",
@@ -1103,6 +1091,8 @@ const he: Messages = {
   quickCopied: "הקישור הועתק.",
   quickNotCopied: "הקישור לא הועתק.",
   quickOpenAdmin: "פתיחה בניהול",
+  byYou: "על ידך",
+  byAnotherAdmin: "על ידי מנהל אחר",
 };
 
 const ar: Messages = {
@@ -1464,13 +1454,6 @@ const ar: Messages = {
   attnNoHours: "منشورة بلا ساعات دوام",
   activityTitle: "آخر النشاط",
   activityEmpty: "لسا ما في تغييرات. التعديلات بالإدارة بتطلع هون.",
-  actYou: "إنت",
-  actSomeone: "مدير",
-  actCreate: "عمل",
-  actUpdate: "عدّل",
-  actStatus: "غيّر حالة",
-  actRelease: "رجّع للبيانات الأساسية",
-  actDelete: "محا",
   entBusiness: "مصلحة",
   entPlace: "مكان",
   entKind: "نوع",
@@ -1652,6 +1635,8 @@ const ar: Messages = {
   quickCopied: "الرابط انتسخ.",
   quickNotCopied: "الرابط ما انتسخ.",
   quickOpenAdmin: "افتح بالإدارة",
+  byYou: "منك",
+  byAnotherAdmin: "من مدير تاني",
 };
 
 export const adminCopy: Record<Locale, Messages> = { he, ar, en };

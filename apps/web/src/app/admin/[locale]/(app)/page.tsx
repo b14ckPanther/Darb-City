@@ -25,12 +25,12 @@ const ENTITY_PATH: Record<string, string> = {
   plan: "/plans",
   text: "/plans/texts",
 };
-const ACTION_KEY: Record<string, AdminKey> = {
-  create: "actCreate",
-  update: "actUpdate",
-  status: "actStatus",
-  release: "actRelease",
-  delete: "actDelete",
+const HIST_KEY: Record<string, AdminKey> = {
+  create: "histCreate",
+  update: "histUpdate",
+  status: "histStatus",
+  release: "histRelease",
+  delete: "histDelete",
 };
 const ENTITY_KEY: Record<string, AdminKey> = {
   business: "entBusiness",
@@ -235,10 +235,6 @@ export default async function AdminHome({ params }: { params: Promise<{ locale: 
                   <span className={o.feedDot} data-action={a.action} aria-hidden="true" />
                   <span className={o.feedText}>
                     <span>
-                      {t(a.self ? "actYou" : "actSomeone")} {t(ACTION_KEY[a.action] ?? "actUpdate")}{" "}
-                      <span className={styles.muted}>
-                        {t(ENTITY_KEY[a.entityType] ?? "entBusiness")}
-                      </span>{" "}
                       {a.name && a.action !== "delete" ? (
                         <Link
                           href={href(
@@ -251,7 +247,14 @@ export default async function AdminHome({ params }: { params: Promise<{ locale: 
                         </Link>
                       ) : a.name ? (
                         <bdi>{pickText(a.name, locale as Locale)}</bdi>
-                      ) : null}
+                      ) : (
+                        t(ENTITY_KEY[a.entityType] ?? "entBusiness")
+                      )}
+                      <span className={o.feedWhat}>
+                        {t(HIST_KEY[a.action] ?? "histUpdate")} ·{" "}
+                        {t(ENTITY_KEY[a.entityType] ?? "entBusiness")} ·{" "}
+                        {t(a.self ? "byYou" : "byAnotherAdmin")}
+                      </span>
                     </span>
                     <time dateTime={a.at} className={o.feedTime}>
                       {relativeTime(locale, a.at, new Date(overview.generatedAt).getTime())}

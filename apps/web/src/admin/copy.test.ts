@@ -23,3 +23,11 @@ it("labels every pricing text in every locale, and shows an unknown key as it is
   expect(textLabel("en", "pricing.title")).toBe("Title");
   expect(textLabel("en", "home.hero")).toBe("home.hero");
 });
+
+it("never uses long dashes or maqaf, and never says AI", () => {
+  for (const locale of ["he", "ar", "en"] as const)
+    for (const v of Object.values(adminCopy[locale])) {
+      expect(v).not.toMatch(/[–—־]/);
+      expect(v).not.toMatch(/\bAI\b|هلأ|هلقيت/);
+    }
+});

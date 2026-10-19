@@ -68,7 +68,7 @@ export async function EntityMeta({
               <span className={styles.timelineDot} data-action={a.action} aria-hidden="true" />
               <div>
                 <span>
-                  {t(ACTION[a.action] ?? "actUpdate")}
+                  {t(ACTION[a.action] ?? "histUpdate")}
                   {a.fields.length && a.action !== "status" ? (
                     <span className={styles.muted}>
                       {" "}

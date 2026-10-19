@@ -224,3 +224,8 @@ a.stat:hover {
     font-size: 1.625rem;
   }
 }
+.feedWhat {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.8125rem;
+}
