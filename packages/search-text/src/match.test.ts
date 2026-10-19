@@ -56,7 +56,16 @@ describe("tokenScore", () => {
   it("ranks exact over prefix over typo", () => {
     expect(tokenScore("barber", "barber")).toBe(1);
     expect(tokenScore("barb", "barber")).toBeGreaterThan(0.6);
-    expect(tokenScore("barbr", "barber")).toBe(0.7);
+    expect(tokenScore("barbr", "barber")).toBe(0.85); // sound-alike: one dropped vowel
+    expect(tokenScore("barbar", "barber")).toBe(0.85);
+    expect(tokenScore("pizzza", "pizza")).toBe(0.85); // a letter doubled
+    expect(tokenScore("shawarna", "shawarma")).toBe(0.8); // one slip in a long word
+    expect(tokenScore("piza", "pizza")).toBe(0.85);
+    expect(tokenScore("burgr", "burger")).toBeGreaterThanOrEqual(STRONG);
+    expect(tokenScore("שוורמה", "שווארמה")).toBeGreaterThanOrEqual(STRONG);
+    expect(tokenScore("مطعن", "مطعم")).toBe(0.8); // one slip
+    expect(tokenScore("הולדת", "מולדת")).toBe(0.7); // another first letter: another word
+    expect(tokenScore("knafe", "kanaf", "knf", "knf", true)).toBeLessThan(STRONG); // place
     expect(tokenScore("b", "barber")).toBe(0);
     expect(tokenScore("cat", "dog")).toBe(0);
   });
@@ -110,6 +119,20 @@ describe("matchInstant", () => {
   it("reads Arabizi", () => {
     expect(top("7allaq").kind).toBe("barbershops");
   });
+  it("reads a Levantine 2 as ق and a glued preposition (7ala2, b3akka)", () => {
+    expect(top("7ala2").kind).toBe("barbershops");
+    const r = matchInstant(prepared, "wen fi 7ala2 bi 7aifa");
+    expect(r.kinds[0]?.entry.s).toBe("barbershops");
+    expect(r.kinds[0]?.score).toBeGreaterThanOrEqual(STRONG);
+    expect(r.places[0]?.entry.s).toBe("haifa");
+    expect(r.unmatched).toEqual([]);
+  });
+  it("never makes a strong place of a word that only starts its name", () => {
+    // "زيت" (oil) begins "زيتان"; "kid" begins "Kidmat Tzvi"; "אני" (I) begins "אניעם".
+    const r = matchInstant(prepared, "hai");
+    expect(r.places[0]?.entry.s).toBe("haifa"); // still offered while typing
+    expect(r.places[0]?.score).toBeLessThan(STRONG);
+  });
   it("reads 7 for خ in Arabizi (the dot of 7' is dropped with the apostrophe)", () => {
     expect(top("7allaq sa7nin")).toMatchObject({ kind: "barbershops", place: "sakhnin" });
     expect(top("sa7'nin").place).toBe("sakhnin");
@@ -140,7 +163,7 @@ describe("matchInstant", () => {
   it("forgives a Hebrew word written without its yod or vav", () => {
     expect(top("מספרה בחפה")).toMatchObject({ kind: "barbershops", place: "haifa" });
     expect(top("חפה").r.places[0]?.score).toBeGreaterThanOrEqual(0.7);
-    expect(tokenScore("חפה", "חיפה")).toBe(0.7);
+    expect(tokenScore("חפה", "חיפה")).toBe(0.8);
     expect(tokenScore("ספר", "סיפור")).toBe(0); // two letters short is another word
   });
   it("never lets a weak place hide a strong kind on the same word", () => {

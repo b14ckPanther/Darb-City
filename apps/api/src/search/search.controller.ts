@@ -55,7 +55,11 @@ export class SearchController {
         };
       },
       search: async ({ body }) => {
-        const gate = await this.limiter.hit("search", ip(), this.config.search.rateLimit);
+        // The quick first answer comes with a full search right after it: it counts against the
+        // results limit, so one search is one hit on the search limit.
+        const gate = body.instant
+          ? await this.limiter.hit("results", ip(), this.config.search.resultsRateLimit)
+          : await this.limiter.hit("search", ip(), this.config.search.rateLimit);
         if (!gate.ok) return tooMany(gate.retryAfter);
         return { status: 200, body: await this.smart.search(body) };
       },

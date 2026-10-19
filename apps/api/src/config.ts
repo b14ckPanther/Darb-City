@@ -123,7 +123,8 @@ const schema = z.object({
   SEARCH_CLICK_RATE_LIMIT: z.coerce.number().int().positive().default(120),
   INTENT_PROVIDER: z.enum(["anthropic", "recorded", "off"]).optional(),
   INTENT_MODEL: z.string().min(1).default("claude-haiku-5-5"),
-  INTENT_TIMEOUT_MS: z.coerce.number().int().min(100).max(10_000).default(1500),
+  // Haiku answers in about 1 to 3 s from Railway: at 1.5 s most searches fell back to lane 1.
+  INTENT_TIMEOUT_MS: z.coerce.number().int().min(100).max(10_000).default(5000),
   ANTHROPIC_API_KEY: optional,
   EMBEDDING_PROVIDER: z.enum(["voyage", "hash"]).optional(),
   EMBEDDING_MODEL: z.string().min(1).default("voyage-4-lite"),

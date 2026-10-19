@@ -30,6 +30,8 @@ const body = (i = intent): SearchResponseDto => ({
   nearest: [],
   fallback: null,
   searched: null,
+  suggestions: [],
+  refining: false,
 });
 
 it("runs the full search for a fresh query", async () => {
@@ -67,4 +69,11 @@ it("is null when smart search cannot answer (down or rate-limited)", async () =>
   expect(await runSearch({ locale: "en", q: "x", edited: intent, ip: "x" })).toBeNull();
   postSearch.mockRejectedValue(new Error("bug"));
   await expect(runSearch({ locale: "en", q: "x", edited: null, ip: "x" })).rejects.toThrow("bug");
+});
+
+it("asks for the quick answer when told to, and says whether more is coming", async () => {
+  postSearch.mockResolvedValue({ status: 200, body: { ...body(), refining: true } });
+  const view = await runSearch({ locale: "en", q: "x", edited: null, ip: "i", instant: true });
+  expect(postSearch).toHaveBeenCalledWith({ q: "x", locale: "en", instant: true }, "i");
+  expect(view?.refining).toBe(true);
 });

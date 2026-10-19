@@ -72,6 +72,11 @@ export const SearchRequestSchema = z.object({
   q: z.string().trim().min(1).max(200),
   locale: LocaleSchema,
   near: PointSchema.optional(),
+  /**
+   * Answer now without waiting for the model (cached answers still count): the page shows this
+   * first, then the full search replaces it. `refining` in the response says one is coming.
+   */
+  instant: z.boolean().optional(),
 });
 export type SearchRequestDto = z.infer<typeof SearchRequestSchema>;
 
@@ -114,6 +119,16 @@ export const SearchResponseSchema = z.object({
   fallback: z.enum(["wider", "related"]).nullable().default(null),
   /** The thing looked for inside the cards, in the query's words ("shawarma"); null if none. */
   searched: z.string().max(60).nullable().default(null),
+  /**
+   * When nothing (or nothing exact) answered: the kinds closest to what was typed, by spelling
+   * or by meaning, to search instead ("did you mean").
+   */
+  suggestions: z
+    .array(z.object({ slug: z.string(), name: LocalizedSchema }))
+    .max(4)
+    .default([]),
+  /** An `instant` answer that the full search (with the model) may still refine. */
+  refining: z.boolean().default(false),
 });
 export type SearchResponseDto = z.infer<typeof SearchResponseSchema>;
 
@@ -165,6 +180,14 @@ export const MissingReportSchema = z.object({
   missingKinds: z.array(ReportRowSchema),
   missingPlaces: z.array(ReportRowSchema),
   noResults: z.array(ReportRowSchema),
+  /**
+   * Lane 2 per UTC day, newest first: how each search's intent was decided (instant, cached,
+   * answered, empty, timeout, error, budget, negative), model calls, their total milliseconds
+   * and latency buckets (le500 to gt5000). Counts only, never queries.
+   */
+  intent: z
+    .array(z.object({ day: z.string(), counts: z.record(z.string(), z.number()) }))
+    .default([]),
 });
 export type MissingReportDto = z.infer<typeof MissingReportSchema>;
 

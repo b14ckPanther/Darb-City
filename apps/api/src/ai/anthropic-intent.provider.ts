@@ -25,7 +25,14 @@ export class AnthropicIntentProvider implements IntentProvider {
     if (this.memo?.key !== key)
       this.memo = {
         key,
-        system: [{ type: "text", text: systemPrompt(kinds), cache_control: { type: "ephemeral" } }],
+        system: [
+          {
+            type: "text",
+            text: systemPrompt(kinds),
+            // An hour, not five minutes: searches come in bursts, and a cold prefix is the slow call.
+            cache_control: { type: "ephemeral", ttl: "1h" },
+          },
+        ],
       };
     return this.memo.system;
   }

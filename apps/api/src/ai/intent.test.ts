@@ -76,7 +76,7 @@ describe("Anthropic intent provider", () => {
       {
         type: "text",
         text: systemPrompt(["cafes", "sweets"]),
-        cache_control: { type: "ephemeral" },
+        cache_control: { type: "ephemeral", ttl: "1h" },
       },
     ]);
     expect(params.messages).toEqual([{ role: "user", content: userMessage(request) }]);
@@ -112,7 +112,9 @@ describe("prompts", () => {
   it("never mention halal or religion, and list the active kinds", () => {
     const text = `${systemPrompt(["sweets"])} ${JSON.stringify(INTENT_TOOL)}`;
     expect(text).not.toMatch(/halal|religio|islam|kosher/i);
-    expect(systemPrompt(["sweets", "cafes"])).toContain("sweets, cafes");
+    expect(systemPrompt(["sweets: Knafeh & sweets", "cafes: Cafés"])).toContain(
+      "sweets: Knafeh & sweets\ncafes: Cafés",
+    );
   });
   it("send the query and the candidates only", () => {
     expect(JSON.parse(userMessage(request))).toEqual({

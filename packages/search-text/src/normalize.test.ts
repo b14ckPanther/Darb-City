@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { arabicSkeleton, arabiziKey, normalize } from "./normalize.js";
+import { arabicSkeleton, arabiziKey, arabiziKeys, normalize, phonetic } from "./normalize.js";
 
 describe("normalize: Hebrew", () => {
   it("strips niqqud and cantillation", () => {
@@ -71,5 +71,21 @@ describe("Arabizi", () => {
     expect(arabicSkeleton(normalize("حلاق"))).toBe(arabiziKey("7allaq"));
     expect(arabicSkeleton(normalize("خبز"))).toBe(arabiziKey("5obz"));
     expect(arabicSkeleton(normalize("كعك"))).toBe(arabiziKey("ka3k"));
+  });
+});
+
+describe("arabiziKeys and phonetic", () => {
+  it("reads 2 as hamza or ق, and drops a glued preposition", () => {
+    expect(arabiziKeys("7ala2")).toEqual(["حلء", "حلق"]);
+    expect(arabiziKeys("b3akka")).toContain("عك");
+    expect(arabiziKeys("haifa")).toEqual([]);
+  });
+  it("folds letters people confuse by ear", () => {
+    expect(phonetic("burgr")).toBe(phonetic("burger"));
+    expect(phonetic("shawerma")).toBe(phonetic("shawarma"));
+    expect(phonetic(normalize("שוורמה"))).not.toBe(phonetic(normalize("ספר")));
+    expect(phonetic(normalize("טיפולים"))).toBe(phonetic(normalize("תיפולים")));
+    expect(phonetic(normalize("صالون"))).toBe(phonetic(normalize("سالون")));
+    expect(phonetic(normalize("مطعم"))).not.toBe(phonetic(normalize("مطبخ")));
   });
 });

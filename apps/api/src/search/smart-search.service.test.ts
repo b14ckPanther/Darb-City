@@ -121,3 +121,51 @@ describe("SmartSearchService.results (chip edits)", () => {
     expect(edited?.items.map((b) => b.slug)).toEqual(searched.items.map((b) => b.slug));
   });
 });
+
+describe("the quick answer and the fallbacks without the model", () => {
+  it("answers at once without logging when asked not to wait, and says more is coming", async () => {
+    const seen: boolean[] = [];
+    const { svc } = service(async (q) => ({
+      intent: EMPTY_INTENT,
+      lane: "instant",
+      blocked: false,
+      instant: await instant.match(q),
+      skipped: true,
+    }));
+    const intents = (svc as unknown as { intents: { resolve: (...a: unknown[]) => unknown } })
+      .intents;
+    const resolve = intents.resolve;
+    intents.resolve = (...a: unknown[]) => {
+      seen.push(a[2] as boolean);
+      return resolve(...a);
+    };
+    const before = await prisma.searchQuery.count();
+    const res = await svc.search({ q: "somebody for my hair", locale: "en", instant: true });
+    expect(seen).toEqual([false]);
+    expect(res).toMatchObject({ refining: true, queryId: null, lane: "instant" });
+    expect(await prisma.searchQuery.count()).toBe(before);
+  });
+  it("offers the closest kinds when nothing answered", async () => {
+    const { svc } = service(async (q) => ({
+      intent: EMPTY_INTENT,
+      lane: "smart",
+      blocked: false,
+      instant: await instant.match(q),
+    }));
+    // "barbe" only starts the barbers' name: too weak to search by, close enough to offer.
+    const res = await svc.search({ q: "barbe zzqx", locale: "en" });
+    expect(res.items).toEqual([]);
+    expect(res.suggestions.map((k) => k.slug)).toContain("barbershops");
+  });
+  it("takes the kind closest in meaning when the model gave nothing", async () => {
+    const { svc } = service(async (q) => ({
+      intent: { ...EMPTY_INTENT, freeText: "barbershops haircuts" },
+      lane: "instant",
+      blocked: false,
+      instant: { ...(await instant.match(q)), unmatched: ["barbershops", "haircuts"] },
+    }));
+    const res = await svc.search({ q: "barbershops haircuts", locale: "en" });
+    // The hash embeddings share the words with the barbershops kind's own offerings.
+    expect(res.intent.kinds.length).toBeGreaterThan(0);
+  });
+});

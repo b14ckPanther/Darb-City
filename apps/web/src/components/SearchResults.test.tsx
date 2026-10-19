@@ -48,6 +48,7 @@ const view: SearchView = {
   narrowest: null,
   withoutOpenNow: null,
   fallback: null,
+  suggestions: [],
 };
 const labels = {
   removeChip: "Remove {chip}",
@@ -73,6 +74,10 @@ const labels = {
     locale: "en",
   },
   matchedOn: "Has",
+  didYouMean: "Did you mean:",
+  nothingFound: "Nothing matches that yet.",
+  refining: "Refining the results…",
+  refined: "Results updated",
 };
 
 describe("SearchResults", () => {
@@ -167,6 +172,38 @@ describe("SearchResults", () => {
       "/en/akko/food/sweets",
     );
     expect(screen.getByRole("link", { name: /Haifa/ })).toBeTruthy();
+  });
+});
+
+describe("quick results, refined results and did you mean", () => {
+  it("dims the quick results and says, politely, that they are being refined", () => {
+    render(<SearchResults locale="en" initial={view} labels={labels} refining />);
+    expect(screen.getByRole("status").textContent).toBe("Refining the results…");
+    const section = document.querySelector("[data-search-results]")!;
+    expect(section.getAttribute("aria-busy")).toBe("true");
+    expect(section.hasAttribute("data-search-refining")).toBe(true);
+  });
+  it("marks the full search's answer as refined, and says so to screen readers only", () => {
+    render(<SearchResults locale="en" initial={view} labels={labels} refined />);
+    expect(document.querySelector("[data-search-refined]")).toBeTruthy();
+    expect(screen.getByRole("status").className).toContain("visually-hidden");
+  });
+  it("offers the closest kinds when nothing answered, and says nothing was found", () => {
+    render(
+      <SearchResults
+        locale="en"
+        initial={{
+          ...view,
+          chips: [],
+          rows: [],
+          suggestions: [{ key: "technicians", label: "Electricians & plumbers", href: "/en/k" }],
+        }}
+        labels={labels}
+      />,
+    );
+    expect(screen.getByText("Nothing matches that yet.")).toBeTruthy();
+    const nav = screen.getByRole("navigation", { name: "Did you mean:" });
+    expect(nav.querySelector("a")?.getAttribute("href")).toBe("/en/k");
   });
 });
 

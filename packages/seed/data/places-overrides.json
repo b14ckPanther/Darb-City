@@ -3861,6 +3861,38 @@
       "name": {
         "ar": "بنيامينا-جفعت عدا"
       }
+    },
+    "7300": {
+      "aliases": [
+        "Nasra",
+        "Natzrat",
+        "Nasira"
+      ]
+    },
+    "4000": {
+      "aliases": [
+        "Hayfa",
+        "Heifa"
+      ]
+    },
+    "8800": {
+      "aliases": [
+        "Shfaram",
+        "Shefa Amr",
+        "Shfa Amr",
+        "شفاعمرو"
+      ]
+    },
+    "7500": {
+      "aliases": [
+        "Sakhneen",
+        "Sachnin"
+      ]
+    },
+    "1139": {
+      "aliases": [
+        "Carmiel"
+      ]
     }
   },
   "extra": [

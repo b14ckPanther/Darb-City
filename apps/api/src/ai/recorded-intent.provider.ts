@@ -21,7 +21,8 @@ export interface RecordedCase {
    * Deep search cases name the business that must come first (`first`, "place/slug"), a dietary
    * fact the first result must have (`firstHas`), and words its matched thing must show (`matched`).
    * `orKinds` are other kinds that answer the query as well (Hebrew "מספרה" is a men's barber or
-   * a women's salon).
+   * a women's salon). A null `place` accepts results anywhere. `notKinds` and `everyHas` check
+   * precision over the whole list, not only the top 3.
    */
   expect: {
     kind: string | null;
@@ -32,6 +33,10 @@ export interface RecordedCase {
     first?: string;
     firstHas?: "gluten_free";
     matched?: string;
+    /** Kinds that must not appear anywhere in the list (a burger search shows no grills). */
+    notKinds?: string[];
+    /** Every result's matched thing or name must contain one of these, in any language. */
+    everyHas?: string[];
   };
   /** A mocked "Near me" point, for near-me cases. */
   near?: { lat: number; lng: number };

@@ -8,7 +8,13 @@ import type { IntentProvider, RawIntentInput } from "../ai/intent.js";
 import { loadConfig } from "../config.js";
 import { createRedis } from "../redis/redis.module.js";
 import { InstantService } from "./instant.service.js";
-import { IntentService, describeModelError, intentCacheKey } from "./intent.service.js";
+import { IntentMetrics, metricsKey } from "./intent-metrics.js";
+import {
+  IntentService,
+  describeModelError,
+  intentCacheKey,
+  resolvePlace,
+} from "./intent.service.js";
 import type { ModelBudget } from "./model-budget.js";
 
 const prisma = testPrisma();
@@ -27,7 +33,10 @@ const answer: RawIntentInput = {
 
 function service(extract: IntentProvider["extract"]) {
   const provider: IntentProvider = { name: "fake", extract: vi.fn(extract) };
-  return { svc: new IntentService(instant, provider, redis, config, open), provider };
+  return {
+    svc: new IntentService(instant, provider, redis, config, open, new IntentMetrics(redis)),
+    provider,
+  };
 }
 
 beforeAll(async () => {
@@ -36,7 +45,7 @@ beforeAll(async () => {
   redis = await createRedis(config.search.redisUrl);
 });
 beforeEach(async () => {
-  const keys = await redis.keys("darb:intent:*");
+  const keys = [...(await redis.keys("darb:intent:*")), ...(await redis.keys("darb:metrics:*"))];
   if (keys.length) await redis.del(...keys);
 });
 afterAll(async () => {
@@ -105,6 +114,7 @@ describe("IntentService", () => {
       down,
       config,
       open,
+      new IntentMetrics(down),
     );
     expect((await svc.resolve(Q, "en")).lane).toBe("smart");
     down.disconnect();
@@ -144,7 +154,14 @@ describe("IntentService with the Anthropic SDK's typed errors", () => {
         client as unknown as Pick<Anthropic, "messages">,
         "claude-haiku-5-5",
       );
-      const svc = new IntentService(instant, provider, redis, config, open);
+      const svc = new IntentService(
+        instant,
+        provider,
+        redis,
+        config,
+        open,
+        new IntentMetrics(redis),
+      );
       const r = await svc.resolve(Q, "en");
       expect(client.messages.create).toHaveBeenCalledTimes(1);
       expect(r).toMatchObject({
@@ -162,7 +179,14 @@ describe("IntentService with the Anthropic SDK's typed errors", () => {
         throw new Anthropic.AuthenticationError(401, { type: "error" }, "bad key", headers);
       },
     };
-    const r = await new IntentService(instant, provider, redis, config, open).resolve(Q, "en");
+    const r = await new IntentService(
+      instant,
+      provider,
+      redis,
+      config,
+      open,
+      new IntentMetrics(redis),
+    ).resolve(Q, "en");
     expect(r.lane).toBe("instant");
   });
   it("names non-SDK failures without reading their message", () => {
@@ -200,7 +224,14 @@ describe("budget and negative cache", () => {
   it("answers from lane 1 without calling the model when the budget is spent", async () => {
     const provider: IntentProvider = { name: "fake", extract: vi.fn(async () => answer) };
     const closed = { take: async () => false } as unknown as ModelBudget;
-    const svc = new IntentService(instant, provider, redis, config, closed);
+    const svc = new IntentService(
+      instant,
+      provider,
+      redis,
+      config,
+      closed,
+      new IntentMetrics(redis),
+    );
     const r = await svc.resolve(Q, "en");
     expect(r.lane).toBe("instant");
     expect(provider.extract).not.toHaveBeenCalled();
@@ -223,5 +254,42 @@ describe("budget and negative cache", () => {
     await svc.resolve(q, "en");
     await svc.resolve(q, "en");
     expect(provider.extract).toHaveBeenCalledTimes(2);
+  });
+});
+
+describe("lane 2 metrics and the model's place", () => {
+  const today = () => new Date().toISOString().slice(0, 10);
+  it("counts a timeout and its milliseconds, never the query", async () => {
+    const { svc } = service(
+      (_r, signal) =>
+        new Promise((_, reject) => signal.addEventListener("abort", () => reject(new Error("x")))),
+    );
+    expect((await svc.resolve("a sentence for the timeout count", "en")).lane).toBe("instant");
+    const counts = await redis.hgetall(metricsKey(today()));
+    expect(counts).toMatchObject({ timeout: "1", calls: "1", le500: "1" });
+    expect(Number(counts["ms_total"])).toBeGreaterThanOrEqual(90);
+    expect(JSON.stringify(counts)).not.toContain("sentence");
+  });
+  it("counts answers and cache hits", async () => {
+    const { svc } = service(async () => answer);
+    await svc.resolve(Q, "en");
+    await svc.resolve(Q, "en");
+    expect(await redis.hgetall(metricsKey(today()))).toMatchObject({ answered: "1", cached: "1" });
+  });
+  it("takes a place only when the query's own words name it, by slug or by name", async () => {
+    const world = await instant.world();
+    expect(resolvePlace({ place: "sakhnin", placeWords: "bsakhnin" }, "fade bsakhnin", world)).toBe(
+      "sakhnin",
+    );
+    expect(resolvePlace({ place: "Sakhnin", placeWords: "سخنين" }, "حلاق سخنين", world)).toBe(
+      "sakhnin",
+    );
+    // Words that are not in the query: an invented place.
+    expect(resolvePlace({ place: "sakhnin", placeWords: "sakhnin" }, "a fade", world)).toBeNull();
+    // Recorded before placeWords: the slug stands.
+    expect(resolvePlace({ place: "sakhnin" }, "a fade", world)).toBe("sakhnin");
+    expect(
+      resolvePlace({ place: "Atlantis", placeWords: "atlantis" }, "atlantis", world),
+    ).toBeNull();
   });
 });

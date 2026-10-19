@@ -9,6 +9,9 @@ import { PrismaService } from "../prisma/prisma.service.js";
  * Spec §5.2: business names by prefix and trigram. Normalized text has no LIKE wildcards
  * (normalize() turns punctuation, % and _ included, into spaces), so it is safe in patterns.
  */
+/** Trigram word similarity a business name needs to be suggested for a misspelled query. */
+export const SUGGEST_SIMILARITY = 0.45;
+
 @Injectable()
 export class SuggestRepository {
   constructor(private readonly prisma: PrismaService) {}
@@ -24,7 +27,7 @@ export class SuggestRepository {
     const here = options.place
       ? Prisma.sql`(d."placePath" LIKE (SELECT path FROM "Place" WHERE slug = ${options.place}) || '%') DESC,`
       : Prisma.empty;
-    const rows = await this.prisma.$queryRaw<
+    const query = this.prisma.$queryRaw<
       {
         slug: string;
         placeSlug: string;
@@ -48,6 +51,13 @@ export class SuggestRepository {
                word_similarity(${n}, d."nameText") DESC,
                d.tier DESC NULLS LAST, d.slug ASC, p.slug ASC
       LIMIT ${limit}`;
+    // A name typed by ear ("מקדולנדס", "hamburgr") shares fewer trigrams than pg_trgm's 0.6
+    // default asks; exact and prefix matches still come first.
+    const [, rows] = await this.prisma.$transaction([
+      this.prisma
+        .$executeRaw`SELECT set_config('pg_trgm.word_similarity_threshold', ${String(SUGGEST_SIMILARITY)}, true)`,
+      query,
+    ]);
     return rows;
   }
 }

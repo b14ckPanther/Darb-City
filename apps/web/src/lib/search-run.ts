@@ -15,15 +15,21 @@ export async function runSearch(input: {
   q: string;
   edited: IntentDto | null;
   ip: string;
-}): Promise<SearchView | null> {
-  const { locale, q, edited, ip } = input;
+  /** The quick first answer (lane 1 and cached answers, no model): `refining` says more comes. */
+  instant?: boolean;
+}): Promise<(SearchView & { refining: boolean }) | null> {
+  const { locale, q, edited, ip, instant } = input;
   try {
     let res: SearchCall | null = edited
       ? await postResults({ q, locale, intent: edited }, ip)
       : null;
-    if (!res || res.status === 400) res = await postSearch({ q, locale }, ip);
+    if (!res || res.status === 400)
+      res = await postSearch({ q, locale, ...(instant ? { instant: true } : {}) }, ip);
     if (res.status !== 200) return null;
-    return toSearchView(res.body, q, await viewContext(locale, res.body.intent));
+    return {
+      ...toSearchView(res.body, q, await viewContext(locale, res.body.intent)),
+      refining: res.body.refining ?? false,
+    };
   } catch (error) {
     if (error instanceof ApiUnavailableError) return null;
     throw error;

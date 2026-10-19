@@ -35,9 +35,25 @@ overwrites the row again.
   a static index of places and kinds in the browser (`apps/web/public/search-index/instant.<hash>.json`,
   built from `@darb/seed` by `next.config.ts`). Business names come from `GET /search/suggest`.
 - Lane 2 (smart): `POST /search` asks Claude Haiku (`INTENT_MODEL`, default `claude-haiku-5-5`) for
-  an intent through a strict tool, with a 1.5 s budget, a 7-day Redis cache and 30 searches per
-  minute per IP. Blocked kinds never reach the model. Chip edits use `POST /search/results`, which
-  never calls the model.
+  an intent through a strict tool, with a 5 s budget (`INTENT_TIMEOUT_MS`), a 7-day Redis cache and
+  30 searches per minute per IP. The prompt teaches dialect, Arabizi and needs-to-kind reading
+  (cached prefix, one hour); the model names the place in the query's own words, and a place the
+  query does not name is dropped. Blocked kinds never reach the model. Chip edits use
+  `POST /search/results`, which never calls the model.
+- The search page answers in two steps: `POST /search` with `instant: true` (lane 1 and cached
+  intents, no model, counted on the results limit) renders at once, and when its `refining` is
+  true the full search streams over it (React Suspense) with a quiet "refining" line.
+- Without a model answer (slow, down, over budget), a query lane 1 cannot place gets the kinds
+  closest in meaning to its embedding (`RANKING.semantic`), and a search that finds nothing offers
+  the closest kinds ("did you mean").
+- Precision: when the words name a thing (burger, pizza), only businesses with evidence of it on
+  their card or in their name are results; nothing is padded in. If none has it, related
+  businesses come under an honest line instead.
+- Typos: lane 1 forgives one slip, doubled letters and sound-alike spellings in every script
+  (`phonetic()` in `packages/search-text`), reads a Levantine Arabizi `2` as ق and glued prepositions
+  ("b3akka"); a prefix of a place name is never a strong place.
+- `GET /search/report` also returns lane 2's daily counts (`intent`: instant, cached, answered,
+  empty, timeout, error, budget, negative, calls, total ms and latency buckets), never queries.
 - Embeddings: Voyage (`VOYAGE_API_KEY`, `EMBEDDING_MODEL`, default `voyage-4-lite`, 512 dimensions).
   Without a key, an offline hash embedding is used (CI and local development).
 - `pnpm --filter @darb/api search:reindex` rebuilds every search document;

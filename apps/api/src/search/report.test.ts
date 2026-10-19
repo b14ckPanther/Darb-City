@@ -2,6 +2,7 @@ import { afterAll, beforeAll, expect, it } from "vitest";
 import { EMPTY_INTENT } from "@darb/contracts";
 import { resetDatabase, testPrisma } from "../../test/db.js";
 import { seedFixtures } from "../../test/fixtures.js";
+import type { IntentMetrics } from "./intent-metrics.js";
 import { ReportRepository } from "./report.repository.js";
 
 const prisma = testPrisma();
@@ -41,7 +42,10 @@ beforeAll(async () => {
 afterAll(() => prisma.$disconnect());
 
 it("reports missing kinds, missing places and searches with no results", async () => {
-  const report = await new ReportRepository(prisma).report(30, 10, NOW);
+  const intent = [{ day: "2026-10-12", counts: { answered: 4, timeout: 1, calls: 5 } }];
+  const metrics = { days: async () => intent } as unknown as IntentMetrics;
+  const report = await new ReportRepository(prisma, metrics).report(30, 10, NOW);
+  expect(report.intent).toEqual(intent);
   expect(report.missingKinds).toEqual([
     { term: "tailor", count: 2 },
     { term: "upholstery", count: 1 },

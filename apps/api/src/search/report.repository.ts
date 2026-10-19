@@ -1,13 +1,17 @@
 import { Injectable } from "@nestjs/common";
 import type { MissingReportDto } from "@darb/contracts";
 import { PrismaService } from "../prisma/prisma.service.js";
+import { IntentMetrics } from "./intent-metrics.js";
 
 type Row = { term: string; count: number };
 
 /** Spec §4.7: feeds the admin's Missing kinds and places screen (Plan 4). */
 @Injectable()
 export class ReportRepository {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly metrics: IntentMetrics,
+  ) {}
 
   async report(days: number, limit: number, now: Date): Promise<MissingReportDto> {
     const since = new Date(now.getTime() - days * 86_400_000);
@@ -35,6 +39,7 @@ export class ReportRepository {
         WHERE "createdAt" >= ${since} AND lane <> 'blocked' AND "resultCount" = 0
         GROUP BY normalized ORDER BY count DESC, term ASC LIMIT ${limit}`,
     ]);
-    return { since: since.toISOString(), missingKinds, missingPlaces, noResults };
+    const intent = await this.metrics.days(days, now);
+    return { since: since.toISOString(), missingKinds, missingPlaces, noResults, intent };
   }
 }

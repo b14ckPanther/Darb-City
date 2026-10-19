@@ -52,3 +52,62 @@
   color: var(--text);
   font-size: var(--step-0);
 }
+
+/* The quick results while the full search reads the words: dimmed a touch, one quiet line. */
+.refining {
+  margin-block: 0 var(--space-3);
+  color: var(--text-soft);
+  font-size: var(--step--1);
+}
+
+.refiningList {
+  opacity: 0.72;
+  transition: opacity 0.3s ease;
+}
+
+/* The full search's answer settles in place of the quick one. */
+.refined {
+  animation: refined 0.35s ease-out;
+}
+
+@keyframes refined {
+  from {
+    opacity: 0.6;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .refined {
+    animation: none;
+  }
+  .refiningList {
+    transition: none;
+  }
+}
+
+/* "Did you mean": the closest kinds as plain links, below the honest line. */
+.suggest {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  margin-block: 0 var(--space-4);
+  padding: 0;
+  list-style: none;
+}
+
+.suggest a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: var(--tap);
+  padding-inline: var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  color: var(--accent-text);
+  text-decoration: none;
+}

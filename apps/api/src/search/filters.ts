@@ -87,7 +87,11 @@ export function intentCandidates(r: InstantResult, locale: Locale): IntentReques
   const name = (n: [string, string, string]) => n[LOCALE_INDEX[locale]] || n[2] || n[0] || n[1];
   return {
     kinds: r.kinds.map((k) => ({ slug: k.entry.s, name: name(k.entry.n) })),
-    places: r.places.map((p) => ({ slug: p.entry.s, name: name(p.entry.n) })),
+    // Only places the words really name: a look-alike ("אני" for Ani'am, "kid" for Kidmat Tzvi)
+    // offered as a candidate is one the model may pick. A place lane 1 missed, the model names.
+    places: r.places
+      .filter((p) => p.score >= STRONG)
+      .map((p) => ({ slug: p.entry.s, name: name(p.entry.n) })),
   };
 }
 

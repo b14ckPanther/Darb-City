@@ -78,7 +78,7 @@ Required in production (startup fails without them): `DATABASE_URL`; `SEARCH_PRO
 | `SUGGEST_RATE_LIMIT` | 240 | Suggest requests per minute per visitor. |
 | `INTENT_PROVIDER` | unset, derived | `anthropic`, `recorded` or `off`. Anthropic when a key is set. |
 | `INTENT_MODEL` | `claude-haiku-5-5` | |
-| `INTENT_TIMEOUT_MS` | 1500 | 100 to 10000. Model call timeout before falling back. |
+| `INTENT_TIMEOUT_MS` | 5000 | 100 to 10000. Model call timeout before falling back (the page shows quick results meanwhile). |
 | `INTENT_NEGATIVE_CACHE_SECONDS` | 3600 | How long a failed intent is remembered. |
 | `EMBEDDING_PROVIDER` | unset, derived | `voyage` or `hash`. |
 | `EMBEDDING_MODEL` | `voyage-4-lite` | 512 dimensions. |

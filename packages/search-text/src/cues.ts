@@ -24,6 +24,11 @@ const PHRASES: Record<keyof Cues, string[]> = {
     "مفتوح هسا",
     "مفتوح",
     "فاتح",
+    // Levantine "now" on its own ("شو في اشي ناكله هلق"): what is open at this hour.
+    "هلق",
+    "هلأ",
+    "هسا",
+    "هسه",
   ],
   delivers: [
     "delivery",
