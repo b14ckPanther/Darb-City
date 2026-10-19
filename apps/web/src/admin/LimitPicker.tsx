@@ -7,7 +7,6 @@ import { toast } from "./toast";
 import styles from "./admin.module.css";
 import h from "./helpers.module.css";
 
-
 /**
  * A helper's cap a day as three pressed-or-not buttons: one press saves it (audited by the API),
  * a toast says so, and a refusal shows next to it.
