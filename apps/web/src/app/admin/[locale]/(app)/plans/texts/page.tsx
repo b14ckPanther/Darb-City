@@ -60,16 +60,18 @@ export default async function PageTexts({ params }: { params: Promise<{ locale: 
               <legend>
                 {textLabel(locale, t.key)} <Owner locale={locale} editedAt={t.editedAt} />
               </legend>
-              {langs.map(([l, key, dir]) => (
-                <TextArea
-                  key={l}
-                  label={at(locale, key)}
-                  name={`text.${t.id}.${l}`}
-                  defaultValue={t.value[l]}
-                  dir={dir}
-                  rows={LONG.has(t.key) ? 8 : 2}
-                />
-              ))}
+              <div className={styles.localized}>
+                {langs.map(([l, key, dir]) => (
+                  <TextArea
+                    key={l}
+                    label={at(locale, key)}
+                    name={`text.${t.id}.${l}`}
+                    defaultValue={t.value[l]}
+                    dir={dir}
+                    rows={LONG.has(t.key) ? 8 : 2}
+                  />
+                ))}
+              </div>
             </fieldset>
           ))}
         </ActionForm>

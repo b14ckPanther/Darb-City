@@ -217,7 +217,6 @@
   box-sizing: border-box;
   inline-size: 100%;
   max-inline-size: 100%;
-  transition: border-color 120ms;
 }
 .field input:hover,
 .field select:hover,
@@ -307,9 +306,6 @@
   text-decoration: none;
   white-space: nowrap;
   box-sizing: border-box;
-  transition:
-    background-color 120ms,
-    border-color 120ms;
 }
 .primary {
   background: var(--primary);
@@ -676,22 +672,6 @@
   color: var(--text);
   font-size: 1rem;
 }
-.skeleton {
-  border-radius: 10px;
-  background: linear-gradient(
-    90deg,
-    var(--surface-3) 0%,
-    var(--wash-strong) 50%,
-    var(--surface-3) 100%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 1.2s linear infinite;
-}
-@keyframes shimmer {
-  to {
-    background-position: -200% 0;
-  }
-}
 
 /* Legacy tiles and lists still used by smaller screens */
 .grid {
@@ -806,11 +786,7 @@
     margin-block-end: 16px;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  .skeleton {
-    animation: none;
-  }
-}
+
 /* The sign-in page's title. */
 .brand {
   margin: 0;
@@ -845,9 +821,6 @@
 }
 /* One page text: its name, then a box per alphabet. */
 .textGroup {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 0 14px;
   padding-block: 16px 2px;
   border-block-start: 1px solid var(--line-soft);
 }
@@ -856,8 +829,6 @@
   padding-block-start: 0;
 }
 .textGroup > legend {
-  float: inline-start;
-  inline-size: 100%;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -868,4 +839,111 @@
   inline-size: 4px;
   block-size: 32px;
   border-radius: 4px;
+}
+/* Actions in a page head sit in a row; their forms add no margin there. */
+.headActions form {
+  margin: 0;
+}
+.headWide {
+  flex-basis: 100%;
+}
+.meta {
+  display: grid;
+  gap: 12px;
+}
+.ownerLine {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  color: var(--text-soft);
+}
+.ownerLine p {
+  margin: 2px 0 0;
+}
+.ownerLine strong {
+  color: var(--text);
+}
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+}
+.timeline li {
+  position: relative;
+  display: flex;
+  gap: 12px;
+  padding-block: 8px;
+}
+.timeline li > div {
+  display: grid;
+  gap: 2px;
+  min-inline-size: 0;
+}
+.timeline li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  inset-inline-start: 4px;
+  inset-block: 24px -8px;
+  inline-size: 1px;
+  background: var(--line);
+}
+.timelineDot {
+  flex: none;
+  inline-size: 9px;
+  block-size: 9px;
+  margin-block-start: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.timelineDot[data-action="status"] {
+  background: var(--open);
+}
+.timelineDot[data-action="release"],
+.timelineDot[data-action="delete"] {
+  background: var(--closed);
+}
+.statusLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+  margin-block-start: 6px;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+.statusLine a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+/* A join request: who sent it and what the lookup found, side by side above the draft. */
+.joinTop {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+  gap: 0 16px;
+  max-inline-size: 1180px;
+  margin-inline: auto;
+}
+.joinTop + .notice,
+.joinTop ~ .notice {
+  max-inline-size: 1180px;
+  margin-inline: auto;
+  margin-block-end: 16px;
+}
+/* A name in three alphabets: one row on wide screens, the alphabet as a small tag. */
+.localized {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr));
+  gap: 0 12px;
+}
+.alphabet {
+  font-size: 0.75rem !important;
+  letter-spacing: 0.08em;
+  color: var(--text-muted) !important;
+}
+.field input.colorInput {
+  inline-size: 88px;
+  padding: 4px;
+  cursor: pointer;
 }

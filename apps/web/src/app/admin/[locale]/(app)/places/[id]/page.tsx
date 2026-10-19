@@ -1,15 +1,17 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { AdminPlaceDto } from "@darb/contracts";
 import { pickText } from "@darb/core";
-import { savePlace } from "@/admin/actions";
-import { ActionForm } from "@/admin/ActionForm";
+import { AdminIcon } from "@/admin/AdminIcon";
 import { adminApi, okOr } from "@/admin/api";
 import { at } from "@/admin/copy";
+import { Section } from "@/admin/editor-parts";
 import { EntityMeta } from "@/admin/EntityMeta";
-import { TakedownWarning } from "@/admin/TakedownWarning";
+import { PLACE_TYPE_KEY } from "@/admin/labels";
 import { one, type SearchParams } from "@/admin/params";
-import { LocalizedFields, SelectField, TextArea, TextField } from "@/admin/fields";
+import { PlaceForm } from "@/admin/PlaceForm";
+import { adminHref } from "@/admin/routes";
+import { TakedownWarning } from "@/admin/TakedownWarning";
+import { PageHead, Status } from "@/admin/ui";
 import { isLocale } from "@/lib/locale";
 import { href } from "@/lib/routes";
 import styles from "@/admin/admin.module.css";
@@ -27,77 +29,40 @@ export default async function EditPlace({
   const p = okOr<AdminPlaceDto>(await (await adminApi()).places.get({ params: { id } }), locale);
   return (
     <>
-      <div className={styles.actions}>
-        <h1 className={styles.h1}>{pickText(p.name, locale)}</h1>
-        <Link className={styles.ghost} href={href(locale, [p.slug])} target="_blank" rel="noopener">
-          {at(locale, "openPublic")}
-        </Link>
-      </div>
-      <p className={styles.hint} dir="ltr">
-        {p.path} · {p.type}
-        {p.cbsCode ? ` · CBS ${p.cbsCode}` : ""}
-      </p>
-      {stale ? <TakedownWarning locale={locale} entity="place" id={p.id} back="page" /> : null}
-      <ActionForm
-        action={savePlace}
-        submit={at(locale, "save")}
-        labels={{ fix: at(locale, "errorFix") }}
+      <PageHead
+        title={<bdi>{pickText(p.name, locale)}</bdi>}
+        back={{ href: adminHref(locale, "/places"), label: at(locale, "navPlaces") }}
+        actions={
+          <a className={styles.ghost} href={href(locale, [p.slug])} target="_blank" rel="noopener">
+            <AdminIcon name="external" size={18} />
+            {at(locale, "openPublic")}
+          </a>
+        }
       >
-        <input type="hidden" name="locale" value={locale} />
-        <input type="hidden" name="id" value={p.id} />
-        <LocalizedFields
-          locale={locale}
-          label={at(locale, "fieldName")}
-          name="name"
-          value={p.name}
-        />
-        <TextArea
-          label={at(locale, "fieldAliases")}
-          name="aliases"
-          defaultValue={p.aliases.join("\n")}
-          dir="auto"
-        />
-        <div className={styles.row}>
-          <TextField
-            label={at(locale, "fieldLat")}
-            name="lat"
-            type="number"
-            step="any"
-            defaultValue={p.lat}
-            dir="ltr"
-          />
-          <TextField
-            label={at(locale, "fieldLng")}
-            name="lng"
-            type="number"
-            step="any"
-            defaultValue={p.lng}
-            dir="ltr"
-          />
-          <TextField
-            label={at(locale, "fieldPopulation")}
-            name="population"
-            type="number"
-            defaultValue={p.population}
-            dir="ltr"
-          />
-          <SelectField
-            label={at(locale, "status")}
-            name="status"
-            defaultValue={p.status}
-            options={[
-              ["live", at(locale, "statusLive")],
-              ["soon", at(locale, "statusSoon")],
-            ]}
-          />
+        <div className={styles.statusLine}>
+          <Status locale={locale} status={p.status} />
+          <span>{at(locale, PLACE_TYPE_KEY[p.type])}</span>
+          <a href={adminHref(locale, `/businesses?place=${p.slug}`)}>
+            <AdminIcon name="store" size={15} />
+            {at(locale, "navBusinesses")}
+          </a>
         </div>
-      </ActionForm>
-      <EntityMeta
+      </PageHead>
+      {stale ? <TakedownWarning locale={locale} entity="place" id={p.id} back="page" /> : null}
+      <PlaceForm
         locale={locale}
-        entity="place"
-        id={p.id}
-        editedAt={p.editedAt}
-        seedSource={p.seedSource}
+        place={p}
+        after={
+          <Section id="advanced" title={at(locale, "secAdvanced")}>
+            <EntityMeta
+              locale={locale}
+              entity="place"
+              id={p.id}
+              editedAt={p.editedAt}
+              seedSource={p.seedSource}
+            />
+          </Section>
+        }
       />
     </>
   );

@@ -1,3 +1,7 @@
+import { at } from "@/admin/copy";
+import { Section } from "@/admin/editor-parts";
+import { adminHref } from "@/admin/routes";
+import { PageHead, Status } from "@/admin/ui";
 import { notFound } from "next/navigation";
 import type { AdminPlanDto } from "@darb/contracts";
 import { pickText } from "@darb/core";
@@ -17,17 +21,28 @@ export default async function EditPlan({
   const p = okOr<AdminPlanDto>(await (await adminApi()).plans.get({ params: { id } }), locale);
   return (
     <>
-      <h1 className={styles.h1}>{pickText(p.name, locale)}</h1>
-      <p className={styles.hint} dir="ltr">
-        {p.slug}
-      </p>
-      <PlanForm locale={locale} plan={p} />
-      <EntityMeta
+      <PageHead
+        title={<bdi>{pickText(p.name, locale)}</bdi>}
+        back={{ href: adminHref(locale, "/plans"), label: at(locale, "navPlans") }}
+      >
+        <div className={styles.statusLine}>
+          <Status locale={locale} status={p.status} />
+        </div>
+      </PageHead>
+      <PlanForm
         locale={locale}
-        entity="plan"
-        id={p.id}
-        editedAt={p.editedAt}
-        seedSource={p.seedSource}
+        plan={p}
+        after={
+          <Section id="advanced" title={at(locale, "secAdvanced")}>
+            <EntityMeta
+              locale={locale}
+              entity="plan"
+              id={p.id}
+              editedAt={p.editedAt}
+              seedSource={p.seedSource}
+            />
+          </Section>
+        }
       />
     </>
   );

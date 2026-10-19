@@ -663,7 +663,7 @@
   color: var(--ivory);
   box-shadow: var(--shadow-panel);
   font-size: 0.9375rem;
-  animation: toastIn 200ms var(--ease-out);
+  animation: toastIn 400ms var(--ease-out);
 }
 .toast svg {
   flex: none;

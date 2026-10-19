@@ -18,13 +18,9 @@
   color: var(--text);
   text-decoration: none;
   overflow: hidden;
-  transition:
-    border-color 120ms,
-    transform 120ms;
 }
 a.stat:hover {
   border-color: var(--line-strong);
-  transform: translateY(-1px);
 }
 .stat[data-tone="gold"] {
   background: linear-gradient(160deg, var(--tint) 0%, var(--surface-1) 70%);
@@ -210,7 +206,6 @@ a.stat:hover {
 }
 @media (prefers-reduced-motion: reduce) {
   .stat {
-    transition: none;
   }
 }
 @media (max-width: 640px) {

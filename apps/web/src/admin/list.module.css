@@ -48,7 +48,7 @@
 }
 .toolbar[data-pending] ~ * {
   opacity: 0.6;
-  transition: opacity 150ms 120ms;
+  transition: opacity 400ms;
 }
 .chips {
   display: flex;
