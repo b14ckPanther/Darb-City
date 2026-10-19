@@ -25,7 +25,7 @@ it("writes a content-hashed index under 120 KB gzip and removes stale ones", () 
   expect(gunzipSync(gzipSync(body)).length).toBe(first.bytes);
   const index = JSON.parse(body.toString("utf8"));
   expect(index.v).toBe(1);
-  expect(index.kinds.length).toBe(211);
+  expect(index.kinds.length).toBe(212);
   expect(index.places.some((p: { s: string }) => p.s === "sakhnin")).toBe(true);
   // Same seed, same file.
   expect(writeSearchIndex(pub).url).toBe(first.url);

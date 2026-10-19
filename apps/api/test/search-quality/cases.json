@@ -1465,5 +1465,47 @@
       "freeText": ""
     },
     "source": "authored"
+  },
+  {
+    "query": "جامعة في حيفا",
+    "locale": "ar",
+    "expect": { "kind": "universities", "place": "haifa" },
+    "recorded": {
+      "kinds": ["universities"],
+      "place": "haifa",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "מכללה בכרמיאל",
+    "locale": "he",
+    "expect": { "kind": "universities", "place": "karmiel" },
+    "recorded": {
+      "kinds": ["universities"],
+      "place": "karmiel",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
+  },
+  {
+    "query": "university in haifa",
+    "locale": "en",
+    "expect": { "kind": "universities", "place": "haifa" },
+    "recorded": {
+      "kinds": ["universities"],
+      "place": "haifa",
+      "nearMe": false,
+      "openNow": false,
+      "attributes": { "delivers": false },
+      "freeText": ""
+    },
+    "source": "authored"
   }
 ]

@@ -480,19 +480,19 @@
       "slug": "west-galilee-college",
       "place": "akko",
       "brand": null,
-      "primaryKind": "vocational",
+      "primaryKind": "universities",
       "kinds": [
-        "vocational"
+        "universities"
       ],
       "name": {
         "he": "המכללה האקדמית גליל מערבי",
-        "ar": "همكللا هاكدميت الجليل معربي",
-        "en": "West Galilee college"
+        "ar": "الكلية الأكاديمية الجليل الغربي",
+        "en": "Western Galilee College"
       },
       "tagline": {
-        "he": "מכללה והכשרה מקצועית בעכו",
-        "ar": "كلية وتأهيل مهني في عكا",
-        "en": "College and vocational training in Akko"
+        "he": "אוניברסיטה ומכללה אקדמית בעכו",
+        "ar": "جامعة وكلية في عكا",
+        "en": "University and college in Akko"
       },
       "address": {
         "he": "עכו",
@@ -517,20 +517,20 @@
       "experience": {
         "brand": {
           "he": "המכללה האקדמית גליל מערבי",
-          "ar": "همكللا هاكدميت الجليل معربي",
-          "en": "West Galilee college"
+          "ar": "الكلية الأكاديمية الجليل الغربي",
+          "en": "Western Galilee College"
         },
         "title": {
-          "he": "מכללה והכשרה מקצועית",
-          "ar": "كلية وتأهيل مهني",
-          "en": "College and vocational training"
+          "he": "אוניברסיטה ומכללה אקדמית",
+          "ar": "جامعة وكلية",
+          "en": "University and college"
         },
         "items": [
           {
             "label": {
-              "he": "מכללה והכשרה מקצועית",
-              "ar": "كلية وتأهيل مهني",
-              "en": "College and vocational training"
+              "he": "אוניברסיטה ומכללה אקדמית",
+              "ar": "جامعة وكلية",
+              "en": "University and college"
             }
           }
         ],
@@ -711,9 +711,9 @@
       "slug": "al-qasemi",
       "place": "baqa-al-gharbiyye",
       "brand": null,
-      "primaryKind": "vocational",
+      "primaryKind": "universities",
       "kinds": [
-        "vocational"
+        "universities"
       ],
       "name": {
         "he": "אלקאסמי",
@@ -721,9 +721,9 @@
         "en": "Al-Qasemi"
       },
       "tagline": {
-        "he": "מכללה והכשרה מקצועית בבאקה אל-גרביה",
-        "ar": "كلية وتأهيل مهني في باقة الغربية",
-        "en": "College and vocational training in Baqa al-Gharbiyye"
+        "he": "אוניברסיטה ומכללה אקדמית בבאקה אל-גרביה",
+        "ar": "جامعة وكلية في باقة الغربية",
+        "en": "University and college in Baqa al-Gharbiyye"
       },
       "address": {
         "he": "באקה אל-גרביה",
@@ -752,16 +752,16 @@
           "en": "Al-Qasemi"
         },
         "title": {
-          "he": "מכללה והכשרה מקצועית",
-          "ar": "كلية وتأهيل مهني",
-          "en": "College and vocational training"
+          "he": "אוניברסיטה ומכללה אקדמית",
+          "ar": "جامعة وكلية",
+          "en": "University and college"
         },
         "items": [
           {
             "label": {
-              "he": "מכללה והכשרה מקצועית",
-              "ar": "كلية وتأهيل مهني",
-              "en": "College and vocational training"
+              "he": "אוניברסיטה ומכללה אקדמית",
+              "ar": "جامعة وكلية",
+              "en": "University and college"
             }
           }
         ],
@@ -1486,9 +1486,9 @@
       "slug": "holy-spirit-university-of-kaslik-in-rmeich",
       "place": "dovev",
       "brand": null,
-      "primaryKind": "vocational",
+      "primaryKind": "universities",
       "kinds": [
-        "vocational"
+        "universities"
       ],
       "name": {
         "he": "Holy Spirit University of Kaslik in Rmeich",
@@ -1496,9 +1496,9 @@
         "en": "Holy Spirit University of Kaslik in Rmeich"
       },
       "tagline": {
-        "he": "מכללה והכשרה מקצועית בדוב\"ב",
-        "ar": "كلية وتأهيل مهني في دوڤيڤ",
-        "en": "College and vocational training in Dovev"
+        "he": "אוניברסיטה ומכללה אקדמית בדוב\"ב",
+        "ar": "جامعة وكلية في دوڤيڤ",
+        "en": "University and college in Dovev"
       },
       "address": {
         "he": "דוב\"ב",
@@ -1527,16 +1527,16 @@
           "en": "Holy Spirit University of Kaslik in Rmeich"
         },
         "title": {
-          "he": "מכללה והכשרה מקצועית",
-          "ar": "كلية وتأهيل مهني",
-          "en": "College and vocational training"
+          "he": "אוניברסיטה ומכללה אקדמית",
+          "ar": "جامعة وكلية",
+          "en": "University and college"
         },
         "items": [
           {
             "label": {
-              "he": "מכללה והכשרה מקצועית",
-              "ar": "كلية وتأهيل مهني",
-              "en": "College and vocational training"
+              "he": "אוניברסיטה ומכללה אקדמית",
+              "ar": "جامعة وكلية",
+              "en": "University and college"
             }
           }
         ],
@@ -2110,19 +2110,19 @@
       "slug": "gordon-college-of-education",
       "place": "haifa",
       "brand": null,
-      "primaryKind": "vocational",
+      "primaryKind": "universities",
       "kinds": [
-        "vocational"
+        "universities"
       ],
       "name": {
         "he": "האקדמית גורדון",
-        "ar": "هاكدميت جوردون",
+        "ar": "كلية جوردون الأكاديمية",
         "en": "Gordon College of Education"
       },
       "tagline": {
-        "he": "מכללה והכשרה מקצועית בחיפה",
-        "ar": "كلية وتأهيل مهني في حيفا",
-        "en": "College and vocational training in Haifa"
+        "he": "אוניברסיטה ומכללה אקדמית בחיפה",
+        "ar": "جامعة وكلية في حيفا",
+        "en": "University and college in Haifa"
       },
       "address": {
         "he": "טשרניחובסקי 73",
@@ -2147,20 +2147,20 @@
       "experience": {
         "brand": {
           "he": "האקדמית גורדון",
-          "ar": "هاكدميت جوردون",
+          "ar": "كلية جوردون الأكاديمية",
           "en": "Gordon College of Education"
         },
         "title": {
-          "he": "מכללה והכשרה מקצועית",
-          "ar": "كلية وتأهيل مهني",
-          "en": "College and vocational training"
+          "he": "אוניברסיטה ומכללה אקדמית",
+          "ar": "جامعة وكلية",
+          "en": "University and college"
         },
         "items": [
           {
             "label": {
-              "he": "מכללה והכשרה מקצועית",
-              "ar": "كلية وتأهيل مهني",
-              "en": "College and vocational training"
+              "he": "אוניברסיטה ומכללה אקדמית",
+              "ar": "جامعة وكلية",
+              "en": "University and college"
             }
           }
         ],
@@ -2187,19 +2187,19 @@
       "slug": "hadarion-building-technion",
       "place": "haifa",
       "brand": null,
-      "primaryKind": "vocational",
+      "primaryKind": "universities",
       "kinds": [
-        "vocational"
+        "universities"
       ],
       "name": {
         "he": "בניין ההדריון (טכניון)",
-        "ar": "بنين ههدريون طكنيون",
+        "ar": "مبنى الهدريون (التخنيون)",
         "en": "Hadarion Building (Technion)"
       },
       "tagline": {
-        "he": "מכללה והכשרה מקצועית בחיפה",
-        "ar": "كلية وتأهيل مهني في حيفا",
-        "en": "College and vocational training in Haifa"
+        "he": "אוניברסיטה ומכללה אקדמית בחיפה",
+        "ar": "جامعة وكلية في حيفا",
+        "en": "University and college in Haifa"
       },
       "address": {
         "he": "חיפה",
@@ -2224,20 +2224,20 @@
       "experience": {
         "brand": {
           "he": "בניין ההדריון (טכניון)",
-          "ar": "بنين ههدريون طكنيون",
+          "ar": "مبنى الهدريون (التخنيون)",
           "en": "Hadarion Building (Technion)"
         },
         "title": {
-          "he": "מכללה והכשרה מקצועית",
-          "ar": "كلية وتأهيل مهني",
-          "en": "College and vocational training"
+          "he": "אוניברסיטה ומכללה אקדמית",
+          "ar": "جامعة وكلية",
+          "en": "University and college"
         },
         "items": [
           {
             "label": {
-              "he": "מכללה והכשרה מקצועית",
-              "ar": "كلية وتأهيل مهني",
-              "en": "College and vocational training"
+              "he": "אוניברסיטה ומכללה אקדמית",
+              "ar": "جامعة وكلية",
+              "en": "University and college"
             }
           }
         ],
@@ -2844,19 +2844,19 @@
       "slug": "ort-braude-college",
       "place": "karmiel",
       "brand": null,
-      "primaryKind": "vocational",
+      "primaryKind": "universities",
       "kinds": [
-        "vocational"
+        "universities"
       ],
       "name": {
         "he": "מכללת אורט בראודה",
-        "ar": "كلية اورط براودا",
+        "ar": "كلية أورط براودة",
         "en": "Ort Braude College"
       },
       "tagline": {
-        "he": "מכללה והכשרה מקצועית בכרמיאל",
-        "ar": "كلية وتأهيل مهني في كرميئيل",
-        "en": "College and vocational training in Karmiel"
+        "he": "אוניברסיטה ומכללה אקדמית בכרמיאל",
+        "ar": "جامعة وكلية في كرميئيل",
+        "en": "University and college in Karmiel"
       },
       "address": {
         "he": "כרמיאל",
@@ -2881,20 +2881,20 @@
       "experience": {
         "brand": {
           "he": "מכללת אורט בראודה",
-          "ar": "كلية اورط براودا",
+          "ar": "كلية أورط براودة",
           "en": "Ort Braude College"
         },
         "title": {
-          "he": "מכללה והכשרה מקצועית",
-          "ar": "كلية وتأهيل مهني",
-          "en": "College and vocational training"
+          "he": "אוניברסיטה ומכללה אקדמית",
+          "ar": "جامعة وكلية",
+          "en": "University and college"
         },
         "items": [
           {
             "label": {
-              "he": "מכללה והכשרה מקצועית",
-              "ar": "كلية وتأهيل مهني",
-              "en": "College and vocational training"
+              "he": "אוניברסיטה ומכללה אקדמית",
+              "ar": "جامعة وكلية",
+              "en": "University and college"
             }
           }
         ],
@@ -3482,19 +3482,19 @@
       "slug": "tel-chai-college-eastern-campus",
       "place": "kfar-giladi",
       "brand": null,
-      "primaryKind": "vocational",
+      "primaryKind": "universities",
       "kinds": [
-        "vocational"
+        "universities"
       ],
       "name": {
         "he": "אוניברסיטת קריית שמונה בגליל קמפוס רודברג מזרחי",
-        "ar": "جامعة كريات شمونة بجليل كمفوس رودبرج مزرحي",
+        "ar": "جامعة كريات شمونة في الجليل، الحرم الشرقي",
         "en": "Tel Chai College, Eastern Campus"
       },
       "tagline": {
-        "he": "מכללה והכשרה מקצועית בכפר גלעדי",
-        "ar": "كلية وتأهيل مهني في كفار جلعادي",
-        "en": "College and vocational training in Kfar Giladi"
+        "he": "אוניברסיטה ומכללה אקדמית בכפר גלעדי",
+        "ar": "جامعة وكلية في كفار جلعادي",
+        "en": "University and college in Kfar Giladi"
       },
       "address": {
         "he": "כפר גלעדי",
@@ -3520,20 +3520,20 @@
       "experience": {
         "brand": {
           "he": "אוניברסיטת קריית שמונה בגליל קמפוס רודברג מזרחי",
-          "ar": "جامعة كريات شمونة بجليل كمفوس رودبرج مزرحي",
+          "ar": "جامعة كريات شمونة في الجليل، الحرم الشرقي",
           "en": "Tel Chai College, Eastern Campus"
         },
         "title": {
-          "he": "מכללה והכשרה מקצועית",
-          "ar": "كلية وتأهيل مهني",
-          "en": "College and vocational training"
+          "he": "אוניברסיטה ומכללה אקדמית",
+          "ar": "جامعة وكلية",
+          "en": "University and college"
         },
         "items": [
           {
             "label": {
-              "he": "מכללה והכשרה מקצועית",
-              "ar": "كلية وتأهيل مهني",
-              "en": "College and vocational training"
+              "he": "אוניברסיטה ומכללה אקדמית",
+              "ar": "جامعة وكلية",
+              "en": "University and college"
             }
           },
           {
@@ -3567,19 +3567,19 @@
       "slug": "tel-hai",
       "place": "kfar-giladi",
       "brand": null,
-      "primaryKind": "vocational",
+      "primaryKind": "universities",
       "kinds": [
-        "vocational"
+        "universities"
       ],
       "name": {
         "he": "אוניברסיטת קריית שמונה בגליל קמפוס מערבי",
-        "ar": "جامعة كريات شمونة بجليل كمفوس معربي",
+        "ar": "جامعة كريات شمونة في الجليل، الحرم الغربي",
         "en": "Tel Hai"
       },
       "tagline": {
-        "he": "מכללה והכשרה מקצועית בכפר גלעדי",
-        "ar": "كلية وتأهيل مهني في كفار جلعادي",
-        "en": "College and vocational training in Kfar Giladi"
+        "he": "אוניברסיטה ומכללה אקדמית בכפר גלעדי",
+        "ar": "جامعة وكلية في كفار جلعادي",
+        "en": "University and college in Kfar Giladi"
       },
       "address": {
         "he": "כפר גלעדי",
@@ -3604,20 +3604,20 @@
       "experience": {
         "brand": {
           "he": "אוניברסיטת קריית שמונה בגליל קמפוס מערבי",
-          "ar": "جامعة كريات شمونة بجليل كمفوس معربي",
+          "ar": "جامعة كريات شمونة في الجليل، الحرم الغربي",
           "en": "Tel Hai"
         },
         "title": {
-          "he": "מכללה והכשרה מקצועית",
-          "ar": "كلية وتأهيل مهني",
-          "en": "College and vocational training"
+          "he": "אוניברסיטה ומכללה אקדמית",
+          "ar": "جامعة وكلية",
+          "en": "University and college"
         },
         "items": [
           {
             "label": {
-              "he": "מכללה והכשרה מקצועית",
-              "ar": "كلية وتأهيل مهني",
-              "en": "College and vocational training"
+              "he": "אוניברסיטה ומכללה אקדמית",
+              "ar": "جامعة وكلية",
+              "en": "University and college"
             }
           }
         ],
@@ -3952,19 +3952,19 @@
       "slug": "kinneret-college",
       "place": "maagan",
       "brand": null,
-      "primaryKind": "vocational",
+      "primaryKind": "universities",
       "kinds": [
-        "vocational"
+        "universities"
       ],
       "name": {
         "he": "המכללה האקדמית כנרת בעמק הירדן",
-        "ar": "همكللا هاكدميت كنيرت الطيبة الزعبية هيردن",
-        "en": "Kinneret college"
+        "ar": "الكلية الأكاديمية كنيرت في غور الأردن",
+        "en": "Kinneret Academic College"
       },
       "tagline": {
-        "he": "מכללה והכשרה מקצועית במעגן",
-        "ar": "كلية وتأهيل مهني في معغان",
-        "en": "College and vocational training in Maagan"
+        "he": "אוניברסיטה ומכללה אקדמית במעגן",
+        "ar": "جامعة وكلية في معغان",
+        "en": "University and college in Maagan"
       },
       "address": {
         "he": "מעגן",
@@ -3989,20 +3989,20 @@
       "experience": {
         "brand": {
           "he": "המכללה האקדמית כנרת בעמק הירדן",
-          "ar": "همكللا هاكدميت كنيرت الطيبة الزعبية هيردن",
-          "en": "Kinneret college"
+          "ar": "الكلية الأكاديمية كنيرت في غور الأردن",
+          "en": "Kinneret Academic College"
         },
         "title": {
-          "he": "מכללה והכשרה מקצועית",
-          "ar": "كلية وتأهيل مهني",
-          "en": "College and vocational training"
+          "he": "אוניברסיטה ומכללה אקדמית",
+          "ar": "جامعة وكلية",
+          "en": "University and college"
         },
         "items": [
           {
             "label": {
-              "he": "מכללה והכשרה מקצועית",
-              "ar": "كلية وتأهيل مهني",
-              "en": "College and vocational training"
+              "he": "אוניברסיטה ומכללה אקדמית",
+              "ar": "جامعة وكلية",
+              "en": "University and college"
             }
           }
         ],
@@ -4568,19 +4568,19 @@
       "slug": "emek-israel-college",
       "place": "mizra",
       "brand": null,
-      "primaryKind": "vocational",
+      "primaryKind": "universities",
       "kinds": [
-        "vocational"
+        "universities"
       ],
       "name": {
         "he": "מכללת עמק יזרעאל",
         "ar": "كلية عيمك يزراعيل",
-        "en": "Emek Israel college"
+        "en": "Emek Yezreel College"
       },
       "tagline": {
-        "he": "מכללה והכשרה מקצועית במזרע",
-        "ar": "كلية وتأهيل مهني في ميزراع",
-        "en": "College and vocational training in Mizra"
+        "he": "אוניברסיטה ומכללה אקדמית במזרע",
+        "ar": "جامعة وكلية في ميزراع",
+        "en": "University and college in Mizra"
       },
       "address": {
         "he": "מזרע",
@@ -4606,19 +4606,19 @@
         "brand": {
           "he": "מכללת עמק יזרעאל",
           "ar": "كلية عيمك يزراعيل",
-          "en": "Emek Israel college"
+          "en": "Emek Yezreel College"
         },
         "title": {
-          "he": "מכללה והכשרה מקצועית",
-          "ar": "كلية وتأهيل مهني",
-          "en": "College and vocational training"
+          "he": "אוניברסיטה ומכללה אקדמית",
+          "ar": "جامعة وكلية",
+          "en": "University and college"
         },
         "items": [
           {
             "label": {
-              "he": "מכללה והכשרה מקצועית",
-              "ar": "كلية وتأهيل مهني",
-              "en": "College and vocational training"
+              "he": "אוניברסיטה ומכללה אקדמית",
+              "ar": "جامعة وكلية",
+              "en": "University and college"
             }
           }
         ],
@@ -5238,19 +5238,19 @@
       "slug": "hamakhalla-lminahal-haifa",
       "place": "nesher",
       "brand": null,
-      "primaryKind": "vocational",
+      "primaryKind": "universities",
       "kinds": [
-        "vocational"
+        "universities"
       ],
       "name": {
         "he": "המכללה למינהל חיפה",
-        "ar": "همكللا لمينهل حيفا",
-        "en": "Hamakhalla Lminahal Haifa"
+        "ar": "كلية الإدارة حيفا",
+        "en": "College of Management Haifa"
       },
       "tagline": {
-        "he": "מכללה והכשרה מקצועית בנשר",
-        "ar": "كلية وتأهيل مهني في نيشر",
-        "en": "College and vocational training in Nesher"
+        "he": "אוניברסיטה ומכללה אקדמית בנשר",
+        "ar": "جامعة وكلية في نيشر",
+        "en": "University and college in Nesher"
       },
       "address": {
         "he": "נשר",
@@ -5275,20 +5275,20 @@
       "experience": {
         "brand": {
           "he": "המכללה למינהל חיפה",
-          "ar": "همكللا لمينهل حيفا",
-          "en": "Hamakhalla Lminahal Haifa"
+          "ar": "كلية الإدارة حيفا",
+          "en": "College of Management Haifa"
         },
         "title": {
-          "he": "מכללה והכשרה מקצועית",
-          "ar": "كلية وتأهيل مهني",
-          "en": "College and vocational training"
+          "he": "אוניברסיטה ומכללה אקדמית",
+          "ar": "جامعة وكلية",
+          "en": "University and college"
         },
         "items": [
           {
             "label": {
-              "he": "מכללה והכשרה מקצועית",
-              "ar": "كلية وتأهيل مهني",
-              "en": "College and vocational training"
+              "he": "אוניברסיטה ומכללה אקדמית",
+              "ar": "جامعة وكلية",
+              "en": "University and college"
             }
           }
         ],
@@ -5435,19 +5435,19 @@
       "slug": "technion-israel-institute-of-technology",
       "place": "nesher",
       "brand": null,
-      "primaryKind": "vocational",
+      "primaryKind": "universities",
       "kinds": [
-        "vocational"
+        "universities"
       ],
       "name": {
         "he": "הטכניון - מכון טכנולוגי לישראל",
-        "ar": "‏التخنيون‎",
+        "ar": "التخنيون",
         "en": "Technion - Israel Institute of Technology"
       },
       "tagline": {
-        "he": "מכללה והכשרה מקצועית בנשר",
-        "ar": "كلية وتأهيل مهني في نيشر",
-        "en": "College and vocational training in Nesher"
+        "he": "אוניברסיטה ומכללה אקדמית בנשר",
+        "ar": "جامعة وكلية في نيشر",
+        "en": "University and college in Nesher"
       },
       "address": {
         "he": "נשר",
@@ -5472,20 +5472,20 @@
       "experience": {
         "brand": {
           "he": "הטכניון - מכון טכנולוגי לישראל",
-          "ar": "‏التخنيون‎",
+          "ar": "التخنيون",
           "en": "Technion - Israel Institute of Technology"
         },
         "title": {
-          "he": "מכללה והכשרה מקצועית",
-          "ar": "كلية وتأهيل مهني",
-          "en": "College and vocational training"
+          "he": "אוניברסיטה ומכללה אקדמית",
+          "ar": "جامعة وكلية",
+          "en": "University and college"
         },
         "items": [
           {
             "label": {
-              "he": "מכללה והכשרה מקצועית",
-              "ar": "كلية وتأهيل مهني",
-              "en": "College and vocational training"
+              "he": "אוניברסיטה ומכללה אקדמית",
+              "ar": "جامعة وكلية",
+              "en": "University and college"
             }
           }
         ],
@@ -5589,19 +5589,19 @@
       "slug": "university-of-haifa",
       "place": "nesher",
       "brand": null,
-      "primaryKind": "vocational",
+      "primaryKind": "universities",
       "kinds": [
-        "vocational"
+        "universities"
       ],
       "name": {
         "he": "אוניברסיטת חיפה",
-        "ar": "جامعة",
+        "ar": "جامعة حيفا",
         "en": "University of Haifa"
       },
       "tagline": {
-        "he": "מכללה והכשרה מקצועית בנשר",
-        "ar": "كلية وتأهيل مهني في نيشر",
-        "en": "College and vocational training in Nesher"
+        "he": "אוניברסיטה ומכללה אקדמית בנשר",
+        "ar": "جامعة وكلية في نيشر",
+        "en": "University and college in Nesher"
       },
       "address": {
         "he": "נשר",
@@ -5626,20 +5626,20 @@
       "experience": {
         "brand": {
           "he": "אוניברסיטת חיפה",
-          "ar": "جامعة",
+          "ar": "جامعة حيفا",
           "en": "University of Haifa"
         },
         "title": {
-          "he": "מכללה והכשרה מקצועית",
-          "ar": "كلية وتأهيل مهني",
-          "en": "College and vocational training"
+          "he": "אוניברסיטה ומכללה אקדמית",
+          "ar": "جامعة وكلية",
+          "en": "University and college"
         },
         "items": [
           {
             "label": {
-              "he": "מכללה והכשרה מקצועית",
-              "ar": "كلية وتأهيل مهني",
-              "en": "College and vocational training"
+              "he": "אוניברסיטה ומכללה אקדמית",
+              "ar": "جامعة وكلية",
+              "en": "University and college"
             }
           }
         ],
@@ -5897,9 +5897,9 @@
       "slug": "oranim",
       "place": "oranim",
       "brand": null,
-      "primaryKind": "vocational",
+      "primaryKind": "universities",
       "kinds": [
-        "vocational"
+        "universities"
       ],
       "name": {
         "he": "אורנים",
@@ -5907,9 +5907,9 @@
         "en": "Oranim"
       },
       "tagline": {
-        "he": "מכללה והכשרה מקצועית באורנים",
-        "ar": "كلية وتأهيل مهني في أورانيم",
-        "en": "College and vocational training in Oranim"
+        "he": "אוניברסיטה ומכללה אקדמית באורנים",
+        "ar": "جامعة وكلية في أورانيم",
+        "en": "University and college in Oranim"
       },
       "address": {
         "he": "אורנים",
@@ -5938,16 +5938,16 @@
           "en": "Oranim"
         },
         "title": {
-          "he": "מכללה והכשרה מקצועית",
-          "ar": "كلية وتأهيل مهني",
-          "en": "College and vocational training"
+          "he": "אוניברסיטה ומכללה אקדמית",
+          "ar": "جامعة وكلية",
+          "en": "University and college"
         },
         "items": [
           {
             "label": {
-              "he": "מכללה והכשרה מקצועית",
-              "ar": "كلية وتأهيل مهني",
-              "en": "College and vocational training"
+              "he": "אוניברסיטה ומכללה אקדמית",
+              "ar": "جامعة وكلية",
+              "en": "University and college"
             }
           }
         ],
@@ -5974,9 +5974,9 @@
       "slug": "oranim-2",
       "place": "oranim",
       "brand": null,
-      "primaryKind": "vocational",
+      "primaryKind": "universities",
       "kinds": [
-        "vocational"
+        "universities"
       ],
       "name": {
         "he": "אורנים",
@@ -5984,9 +5984,9 @@
         "en": "Oranim"
       },
       "tagline": {
-        "he": "מכללה והכשרה מקצועית באורנים",
-        "ar": "كلية وتأهيل مهني في أورانيم",
-        "en": "College and vocational training in Oranim"
+        "he": "אוניברסיטה ומכללה אקדמית באורנים",
+        "ar": "جامعة وكلية في أورانيم",
+        "en": "University and college in Oranim"
       },
       "address": {
         "he": "אורנים",
@@ -6015,16 +6015,16 @@
           "en": "Oranim"
         },
         "title": {
-          "he": "מכללה והכשרה מקצועית",
-          "ar": "كلية وتأهيل مهني",
-          "en": "College and vocational training"
+          "he": "אוניברסיטה ומכללה אקדמית",
+          "ar": "جامعة وكلية",
+          "en": "University and college"
         },
         "items": [
           {
             "label": {
-              "he": "מכללה והכשרה מקצועית",
-              "ar": "كلية وتأهيل مهني",
-              "en": "College and vocational training"
+              "he": "אוניברסיטה ומכללה אקדמית",
+              "ar": "جامعة وكلية",
+              "en": "University and college"
             }
           }
         ],
@@ -6563,19 +6563,19 @@
       "slug": "faculty-of-medicine-in-the-galilee",
       "place": "safed",
       "brand": null,
-      "primaryKind": "vocational",
+      "primaryKind": "universities",
       "kinds": [
-        "vocational"
+        "universities"
       ],
       "name": {
         "he": "הפקולטה לרפואה בגליל",
-        "ar": "هفكولطا لرفواا بجليل",
+        "ar": "كلية الطب في الجليل",
         "en": "Faculty of Medicine in the Galilee"
       },
       "tagline": {
-        "he": "מכללה והכשרה מקצועית בצפת",
-        "ar": "كلية وتأهيل مهني في صفد",
-        "en": "College and vocational training in Safed"
+        "he": "אוניברסיטה ומכללה אקדמית בצפת",
+        "ar": "جامعة وكلية في صفد",
+        "en": "University and college in Safed"
       },
       "address": {
         "he": "הנרייטה סולד 8",
@@ -6600,20 +6600,20 @@
       "experience": {
         "brand": {
           "he": "הפקולטה לרפואה בגליל",
-          "ar": "هفكولطا لرفواا بجليل",
+          "ar": "كلية الطب في الجليل",
           "en": "Faculty of Medicine in the Galilee"
         },
         "title": {
-          "he": "מכללה והכשרה מקצועית",
-          "ar": "كلية وتأهيل مهني",
-          "en": "College and vocational training"
+          "he": "אוניברסיטה ומכללה אקדמית",
+          "ar": "جامعة وكلية",
+          "en": "University and college"
         },
         "items": [
           {
             "label": {
-              "he": "מכללה והכשרה מקצועית",
-              "ar": "كلية وتأهيل مهني",
-              "en": "College and vocational training"
+              "he": "אוניברסיטה ומכללה אקדמית",
+              "ar": "جامعة وكلية",
+              "en": "University and college"
             }
           }
         ],
@@ -6640,19 +6640,19 @@
       "slug": "safed-college",
       "place": "safed",
       "brand": null,
-      "primaryKind": "vocational",
+      "primaryKind": "universities",
       "kinds": [
-        "vocational"
+        "universities"
       ],
       "name": {
         "he": "מכללת צפת",
         "ar": "كلية صفد",
-        "en": "Safed college"
+        "en": "Safed College"
       },
       "tagline": {
-        "he": "מכללה והכשרה מקצועית בצפת",
-        "ar": "كلية وتأهيل مهني في صفد",
-        "en": "College and vocational training in Safed"
+        "he": "אוניברסיטה ומכללה אקדמית בצפת",
+        "ar": "جامعة وكلية في صفد",
+        "en": "University and college in Safed"
       },
       "address": {
         "he": "צפת",
@@ -6678,19 +6678,19 @@
         "brand": {
           "he": "מכללת צפת",
           "ar": "كلية صفد",
-          "en": "Safed college"
+          "en": "Safed College"
         },
         "title": {
-          "he": "מכללה והכשרה מקצועית",
-          "ar": "كلية وتأهيل مهني",
-          "en": "College and vocational training"
+          "he": "אוניברסיטה ומכללה אקדמית",
+          "ar": "جامعة وكلية",
+          "en": "University and college"
         },
         "items": [
           {
             "label": {
-              "he": "מכללה והכשרה מקצועית",
-              "ar": "كلية وتأهيل مهني",
-              "en": "College and vocational training"
+              "he": "אוניברסיטה ומכללה אקדמית",
+              "ar": "جامعة وكلية",
+              "en": "University and college"
             }
           }
         ],
@@ -6871,19 +6871,19 @@
       "slug": "sakhnin-lahakhasharat-ovdi-horaa-college",
       "place": "sakhnin",
       "brand": null,
-      "primaryKind": "vocational",
+      "primaryKind": "universities",
       "kinds": [
-        "vocational"
+        "universities"
       ],
       "name": {
         "he": "מכללת סכנין להכשרת עובדי הוראה",
         "ar": "كلية سخنين لتأهيل المعلمين",
-        "en": "Sakhnin Lahakhasharat Ovdi Horaa College"
+        "en": "Sakhnin College for Teacher Education"
       },
       "tagline": {
-        "he": "מכללה והכשרה מקצועית בסח'נין",
-        "ar": "كلية وتأهيل مهني في سخنين",
-        "en": "College and vocational training in Sakhnin"
+        "he": "אוניברסיטה ומכללה אקדמית בסח'נין",
+        "ar": "جامعة وكلية في سخنين",
+        "en": "University and college in Sakhnin"
       },
       "address": {
         "he": "סח'נין",
@@ -6909,19 +6909,19 @@
         "brand": {
           "he": "מכללת סכנין להכשרת עובדי הוראה",
           "ar": "كلية سخنين لتأهيل المعلمين",
-          "en": "Sakhnin Lahakhasharat Ovdi Horaa College"
+          "en": "Sakhnin College for Teacher Education"
         },
         "title": {
-          "he": "מכללה והכשרה מקצועית",
-          "ar": "كلية وتأهيل مهني",
-          "en": "College and vocational training"
+          "he": "אוניברסיטה ומכללה אקדמית",
+          "ar": "جامعة وكلية",
+          "en": "University and college"
         },
         "items": [
           {
             "label": {
-              "he": "מכללה והכשרה מקצועית",
-              "ar": "كلية وتأهيل مهني",
-              "en": "College and vocational training"
+              "he": "אוניברסיטה ומכללה אקדמית",
+              "ar": "جامعة وكلية",
+              "en": "University and college"
             }
           }
         ],

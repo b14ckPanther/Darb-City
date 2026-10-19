@@ -2694,6 +2694,58 @@
     "status": "active"
   },
   {
+    "slug": "universities",
+    "sector": "education",
+    "parent": null,
+    "name": {
+      "he": "אוניברסיטאות ומכללות",
+      "ar": "جامعات وكليات",
+      "en": "Universities and colleges"
+    },
+    "synonyms": {
+      "he": [
+        "אוניברסיטה",
+        "מכללה",
+        "מכללה אקדמית",
+        "אקדמיה",
+        "קמפוס",
+        "טכניון",
+        "תואר",
+        "תואר ראשון",
+        "תואר שני",
+        "סטודנטים"
+      ],
+      "ar": [
+        "جامعة",
+        "جامعه",
+        "كلية",
+        "كليه",
+        "كلية أكاديمية",
+        "حرم",
+        "حرم جامعي",
+        "تخنيون",
+        "لقب أول",
+        "طلاب جامعة"
+      ],
+      "en": [
+        "university",
+        "college",
+        "campus",
+        "academic",
+        "degree",
+        "uni",
+        "technion",
+        "bachelor's degree",
+        "students"
+      ]
+    },
+    "template": "listing",
+    "attributes": [],
+    "icon": null,
+    "order": 13,
+    "status": "active"
+  },
+  {
     "slug": "software-studios",
     "sector": "tech",
     "parent": null,

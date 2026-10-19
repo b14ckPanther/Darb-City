@@ -568,6 +568,14 @@
     }
   },
   {
+    "slug": "ofek-academic-college",
+    "name": {
+      "he": "המכללה האקדמית אופק",
+      "ar": "كلية أفق الأكاديمية",
+      "en": "Ofek Academic College"
+    }
+  },
+  {
     "slug": "karma-studio",
     "name": {
       "he": "סטודיו כרמה",

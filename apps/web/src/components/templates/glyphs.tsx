@@ -297,7 +297,7 @@ export const GLYPH_RULES: [GlyphName, RegExp][] = [
   ["scales", /law|lawyer|legal|attorney|notary|mazoun/i],
   [
     "cap",
-    /school|college|vocational|course|tutor|study|education|primary|high school|middle school|ulpana|academy/i,
+    /school|college|universit|campus|degree|vocational|course|tutor|study|education|primary|high school|middle school|ulpana|academy/i,
   ],
   [
     "candle",
