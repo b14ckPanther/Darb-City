@@ -1,6 +1,7 @@
 import { ConflictException, HttpException, Inject, Injectable, Logger } from "@nestjs/common";
 import {
   HELPER_DAILY,
+  isStrongMatch,
   PhoneSchema,
   type FieldCaptureCreateDto,
   type FieldCaptureDto,
@@ -29,8 +30,6 @@ import { SIGN_READER, type SignReader } from "./sign-reader.js";
 
 /** A similar name within this many metres is probably the same shop. */
 export const NEAR_METRES = 50;
-/** A strong match: the same phone, or a similar name this close. A helper must say why it differs. */
-export const STRONG_METRES = 25;
 const DAY_KEY = (day: string) => `darb:field:reads:${day}`;
 const HELPER_DAY_KEY = (day: string, userId: string) => `darb:field:reads:${day}:${userId}`;
 const MINE = 30;
@@ -41,7 +40,6 @@ const MINE = 30;
  */
 export type FieldActor = AdminActor & { limited?: boolean };
 
-export const isStrong = (m: FieldMatchDto) => m.reason === "phone" || m.metres <= STRONG_METRES;
 
 const someText = (l: Record<string, string | null | undefined>) =>
   Object.fromEntries(
@@ -300,7 +298,7 @@ export class FieldService {
             name: dto.name,
             phone: dto.phone ?? undefined,
           })
-        ).filter(isStrong);
+        ).filter(isStrongMatch);
         if (strong.length)
           return {
             status: 400,

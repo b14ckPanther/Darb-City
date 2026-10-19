@@ -79,6 +79,12 @@ export const FieldMatchSchema = z.object({
 });
 export const FieldDuplicatesSchema = z.object({ matches: z.array(FieldMatchSchema) });
 export type FieldMatchDto = z.infer<typeof FieldMatchSchema>;
+
+/** A similar name this close is a strong match (as the same phone number always is). */
+export const STRONG_MATCH_METRES = 25;
+/** A helper (not an admin) must say how a capture differs from a strong match to save it. */
+export const isStrongMatch = (m: Pick<FieldMatchDto, "reason" | "metres">) =>
+  m.reason === "phone" || m.metres <= STRONG_MATCH_METRES;
 export type FieldDuplicatesDto = z.infer<typeof FieldDuplicatesSchema>;
 
 /** One capture as the phone sends it, once it can (the queue retries with the same clientId). */
