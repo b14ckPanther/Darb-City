@@ -53,6 +53,9 @@ beforeAll(async () => {
   process.env["INTENT_PROVIDER"] = "recorded";
   process.env["EMBEDDING_PROVIDER"] = "hash";
   process.env["SEARCH_RATE_LIMIT"] = "100000";
+  // Every case may ask the (recorded) model: the per-minute budget must not turn some into lane 1.
+  process.env["MODEL_CALLS_PER_MINUTE"] = "100000";
+  process.env["MODEL_CALLS_PER_DAY"] = "100000";
   process.env["SEARCH_INDEX_WORKER"] = "false";
   const moduleRef = await Test.createTestingModule({ imports: [AppModule] })
     .overrideProvider(CLOCK)
@@ -117,9 +120,10 @@ it("expects only kinds and places the seed has (an unknown place would match any
       ...[c.expect.kind, ...(c.expect.orKinds ?? [])].flatMap((k) =>
         k !== null && kinds.has(k) ? [] : [`kind ${k}`],
       ),
-      ...(c.expect.place !== null && placePath.has(c.expect.place)
+      ...(c.expect.place === null || placePath.has(c.expect.place)
         ? []
         : [`place ${c.expect.place}`]),
+      ...(c.expect.notKinds ?? []).flatMap((k) => (kinds.has(k) ? [] : [`not kind ${k}`])),
     ].map((what) => `${c.locale} "${c.query}": ${what}`),
   );
   expect(unknown).toEqual([]);
@@ -136,15 +140,19 @@ async function check(on: INestApplication, c: RecordedCase): Promise<string | nu
     .send({ q: c.query, locale: c.locale, ...(c.near ? { near: c.near } : {}) });
   if (c.expect.blocked)
     return res.body.status === "blocked" ? null : `${c.locale} "${c.query}": not blocked`;
-  const top = (res.body.items ?? []).slice(0, 3) as {
+  const all = (res.body.items ?? []) as {
     primaryKindId: string;
     placeSlug: string;
     slug: string;
+    name: Record<string, string>;
     dietary: string[];
     matched?: { label: Record<string, string> };
   }[];
-  const root = placePath.get(c.expect.place ?? "");
-  if (!root || !c.expect.kind) throw new Error(`${c.locale} "${c.query}": unknown place or kind`);
+  const top = all.slice(0, 3);
+  // A null place: anywhere.
+  const root = c.expect.place === null ? "" : placePath.get(c.expect.place);
+  if (root === undefined || !c.expect.kind)
+    throw new Error(`${c.locale} "${c.query}": unknown place or kind`);
   // Deep search: the exact business first, safe for the diet asked, showing the asked thing.
   const first = top[0];
   const said = `${c.locale} "${c.query}" (${res.body.lane})`;
@@ -154,6 +162,21 @@ async function check(on: INestApplication, c: RecordedCase): Promise<string | nu
     return `${said}: the first result is not ${c.expect.firstHas}`;
   if (c.expect.matched && !(first?.matched?.label[c.locale] ?? "").includes(c.expect.matched))
     return `${said}: the first result does not show "${c.expect.matched}" as its match`;
+  // Precision over the whole list: no kind that was ruled out, and the asked thing on every row.
+  const ruledOut = all.filter((b) => c.expect.notKinds?.includes(kindSlug.get(b.primaryKindId)!));
+  if (ruledOut.length)
+    return `${said}: shows ${ruledOut.map((b) => `${kindSlug.get(b.primaryKindId)}@${b.slug}`).join(", ")}`;
+  const words = (c.expect.everyHas ?? []).map((w) => normalize(w));
+  const lacking = words.length
+    ? all.filter((b) => {
+        const text = normalize(
+          [...Object.values(b.name), ...Object.values(b.matched?.label ?? {})].join(" "),
+        );
+        return !words.some((w) => text.includes(w));
+      })
+    : [];
+  if (lacking.length)
+    return `${said}: ${lacking.map((b) => b.slug).join(", ")} show no ${c.expect.everyHas![0]}`;
   const wanted = [c.expect.kind, ...(c.expect.orKinds ?? [])];
   const hit = top.some(
     (b) =>

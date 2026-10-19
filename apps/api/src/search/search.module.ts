@@ -2,6 +2,7 @@ import { Module } from "@nestjs/common";
 import { BusinessesModule } from "../businesses/businesses.module.js";
 import { PlacesModule } from "../places/places.module.js";
 import { TaxonomyModule } from "../taxonomy/taxonomy.module.js";
+import { IntentMetrics } from "./intent-metrics.js";
 import { IntentService } from "./intent.service.js";
 import { ModelBudget } from "./model-budget.js";
 import { RateLimiter } from "./rate-limiter.js";
@@ -20,6 +21,7 @@ import { SuggestRepository } from "./suggest.repository.js";
   controllers: [SearchController],
   providers: [
     IntentService,
+    IntentMetrics,
     ModelBudget,
     RateLimiter,
     ReportRepository,

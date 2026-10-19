@@ -34,6 +34,8 @@ export interface SearchView {
    * beyond the place, or related businesses that meet every must).
    */
   fallback: { type: "wider" | "related"; line: string } | null;
+  /** "Did you mean": the closest kinds, each linking to its list (in the searched place). */
+  suggestions: { key: string; label: string; href: string }[];
 }
 export interface ViewContext {
   locale: Locale;
@@ -259,7 +261,31 @@ export function toSearchView(res: SearchResponseDto, q: string, ctx: ViewContext
     narrowest: rows.length === 0 ? narrowestChip(chips) : null,
     withoutOpenNow,
     fallback: fallbackLine(res, rows, ctx),
+    suggestions: suggestionsOf(res, ctx),
   };
+}
+
+/** Each suggested kind's list: in the searched place when it is live, else nationwide. */
+function suggestionsOf(res: SearchResponseDto, ctx: ViewContext): SearchView["suggestions"] {
+  if (res.status !== "ok") return [];
+  return (res.suggestions ?? []).flatMap((s) => {
+    const kind = ctx.index.kindBySlug.get(s.slug);
+    const sector = kind ? ctx.index.sectorById.get(kind.sectorId) : undefined;
+    if (!kind || !sector) return [];
+    const local = res.intent.place && ctx.place && !ctx.placeSoon;
+    return [
+      {
+        key: s.slug,
+        label: pickText(kind.name, ctx.locale),
+        href: href(
+          ctx.locale,
+          local
+            ? paths.kind(res.intent.place!, sector.slug, kind.slug)
+            : paths.nationalKind(kind.slug),
+        ),
+      },
+    ];
+  });
 }
 
 /*

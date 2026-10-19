@@ -27,6 +27,10 @@ export interface ResultsLabels {
   nothingOpen: string;
   /** Said (unseen) before a row's matched thing: "Has shawarma". */
   matchedOn: string;
+  didYouMean: string;
+  nothingFound: string;
+  refining: string;
+  refined: string;
   rows: RowLabels;
 }
 
@@ -51,10 +55,16 @@ export function SearchResults({
   locale,
   initial,
   labels,
+  refining = false,
+  refined = false,
 }: {
   locale: Locale;
   initial: SearchView;
   labels: ResultsLabels;
+  /** Quick results: the full search's answer is on its way and will replace them. */
+  refining?: boolean;
+  /** The full search's answer, just streamed over the quick one. */
+  refined?: boolean;
 }) {
   const [view, setView] = useState(initial);
   const [state, setState] = useState<"idle" | "loading" | "locating" | "denied" | "error">("idle");
@@ -136,7 +146,10 @@ export function SearchResults({
     <section
       aria-labelledby="search-results-title"
       data-search-results=""
-      aria-busy={state === "loading"}
+      data-search-refining={refining ? "" : undefined}
+      data-search-refined={refined ? "" : undefined}
+      className={refined ? styles.refined : undefined}
+      aria-busy={state === "loading" || refining}
     >
       <StageData level={view.stage} />
       <h2 id="search-results-title" ref={title} tabIndex={-1} className="visually-hidden">
@@ -186,10 +199,35 @@ export function SearchResults({
           {view.fallback.line}
         </p>
       ) : null}
+      {refining ? (
+        <p role="status" className={styles.refining}>
+          {labels.refining}
+        </p>
+      ) : refined ? (
+        <p role="status" className="visually-hidden">
+          {labels.refined}
+        </p>
+      ) : null}
+      {view.suggestions.length > 0 ? (
+        <nav aria-label={labels.didYouMean} data-search-suggestions="">
+          <ul className={styles.suggest}>
+            <li aria-hidden="true">{labels.didYouMean}</li>
+            {view.suggestions.map((s) => (
+              <li key={s.key}>
+                <Link href={s.href}>{s.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      ) : null}
       {state === "denied" ? <p role="status">{labels.locationDenied}</p> : null}
       {state === "error" ? <p role="status">{labels.unreachable}</p> : null}
       {view.rows.length > 0 ? (
-        <ul ref={results} className={list.list} data-business-list="">
+        <ul
+          ref={results}
+          className={refining ? `${list.list} ${styles.refiningList}` : list.list}
+          data-business-list=""
+        >
           {view.rows.map((row, i) => (
             <BusinessRow
               key={row.key}
@@ -216,7 +254,9 @@ export function SearchResults({
             <p className={styles.empty}>
               {fill(labels.noResults, "chip", unquoted(view.narrowest.label))}
             </p>
-          ) : null}
+          ) : refining ? null : (
+            <p className={styles.empty}>{labels.nothingFound}</p>
+          )}
           {view.nearest.length > 0 ? (
             <NoneYet title={labels.nearestPlaces} subtitle="" places={view.nearest} />
           ) : null}

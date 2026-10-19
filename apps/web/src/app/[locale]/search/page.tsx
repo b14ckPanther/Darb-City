@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import Link from "next/link";
-import type { ReactNode } from "react";
+import { Suspense, type ReactNode } from "react";
+import type { Locale } from "@darb/core";
 import { t } from "@darb/i18n";
 import { rowLabels } from "@/components/BusinessList";
 import { CityBar } from "@/components/CityBar";
 import { SearchFallback } from "@/components/SearchFallback";
 import { SearchQuery } from "@/components/SearchQuery";
-import { SearchResults } from "@/components/SearchResults";
+import { SearchResults, type ResultsLabels } from "@/components/SearchResults";
 import { deepSearch } from "@/content/deep-search";
 import { StageData } from "@/components/StageData";
 import { searchLabels } from "@/components/SearchBar";
@@ -55,7 +56,76 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   };
 }
 
-/** Decision 6: results on the server from ?q= (no JavaScript needed), stage kept (M7). */
+function resultsLabels(locale: Locale): ResultsLabels {
+  return {
+    removeChip: t(locale, "removeChip"),
+    resultCount: t(locale, "resultCount"),
+    noResults: t(locale, "noResults"),
+    blocked: t(locale, "blocked"),
+    places: t(locale, "places"),
+    placesHref: `${href(locale)}#places`,
+    nearMe: t(locale, "nearMe"),
+    locating: t(locale, "locating"),
+    locationDenied: t(locale, "locationDenied"),
+    unreachable: t(locale, "unreachable"),
+    nearestPlaces: t(locale, "nearestPlaces"),
+    nothingOpen: t(locale, "nothingOpen"),
+    matchedOn: deepSearch[locale].matchedOn,
+    didYouMean: deepSearch[locale].didYouMean,
+    nothingFound: deepSearch[locale].nothingFound,
+    refining: deepSearch[locale].refining,
+    refined: deepSearch[locale].refined,
+    rows: rowLabels(locale),
+  };
+}
+
+function Unavailable({ locale, q }: { locale: Locale; q: string }) {
+  return (
+    <>
+      {/* Lane 1 links have no pins: the map shows the country. */}
+      <StageData level={COUNTRY_STAGE} />
+      <SearchFallback
+        locale={locale}
+        q={q}
+        labels={{
+          ...searchLabels(locale),
+          notice: t(locale, "searchUnavailable"),
+          retry: t(locale, "retry"),
+        }}
+      />
+    </>
+  );
+}
+
+/**
+ * The full search (the model may read the words), streamed in place of the quick results once
+ * it answers. If it cannot answer (down or rate-limited), the quick results stay.
+ */
+async function Refined(props: {
+  locale: Locale;
+  q: string;
+  ip: string;
+  chips: string;
+  quick: NonNullable<Awaited<ReturnType<typeof runSearch>>>;
+}) {
+  const { locale, q, ip, chips, quick } = props;
+  const view = (await runSearch({ locale, q, edited: null, ip })) ?? quick;
+  return (
+    <SearchResults
+      key={`${q}\n${chips}`}
+      locale={locale}
+      initial={view}
+      labels={resultsLabels(locale)}
+      refined={view !== quick}
+    />
+  );
+}
+
+/**
+ * Decision 6: results on the server from ?q= (no JavaScript needed), stage kept (M7). A fresh
+ * query shows the quick answer at once (lane 1, cached answers) and streams the full search's
+ * answer over it when the model has read the words.
+ */
 export default async function SearchPage({ params, searchParams }: Props) {
   const locale = localeOrNotFound((await params).locale);
   const query = await searchParams;
@@ -79,45 +149,30 @@ export default async function SearchPage({ params, searchParams }: Props) {
       </>
     );
   } else {
-    const view = await runSearch({ locale, q, edited, ip: clientIpFrom(await headers()) });
-    body = view ? (
-      <SearchResults
-        // A new query (the header box navigates in place) starts a new results list.
-        key={`${q}\n${first(query.chips) ?? ""}`}
-        locale={locale}
-        initial={view}
-        labels={{
-          removeChip: t(locale, "removeChip"),
-          resultCount: t(locale, "resultCount"),
-          noResults: t(locale, "noResults"),
-          blocked: t(locale, "blocked"),
-          places: t(locale, "places"),
-          placesHref: `${href(locale)}#places`,
-          nearMe: t(locale, "nearMe"),
-          locating: t(locale, "locating"),
-          locationDenied: t(locale, "locationDenied"),
-          unreachable: t(locale, "unreachable"),
-          nearestPlaces: t(locale, "nearestPlaces"),
-          nothingOpen: t(locale, "nothingOpen"),
-          matchedOn: deepSearch[locale].matchedOn,
-          rows: rowLabels(locale),
-        }}
-      />
-    ) : (
-      <>
-        {/* Lane 1 links have no pins: the map shows the country. */}
-        <StageData level={COUNTRY_STAGE} />
-        <SearchFallback
+    const ip = clientIpFrom(await headers());
+    const chips = first(query.chips) ?? "";
+    // An edited search never asks the model; a fresh one answers quickly first.
+    const view = await runSearch({ locale, q, edited, ip, instant: edited === null });
+    if (!view) body = <Unavailable locale={locale} q={q} />;
+    else {
+      const results = (
+        <SearchResults
+          // A new query (the header box navigates in place) starts a new results list.
+          key={`${q}\n${chips}`}
           locale={locale}
-          q={q}
-          labels={{
-            ...searchLabels(locale),
-            notice: t(locale, "searchUnavailable"),
-            retry: t(locale, "retry"),
-          }}
+          initial={view}
+          labels={resultsLabels(locale)}
+          refining={view.refining}
         />
-      </>
-    );
+      );
+      body = view.refining ? (
+        <Suspense fallback={results}>
+          <Refined locale={locale} q={q} ip={ip} chips={chips} quick={view} />
+        </Suspense>
+      ) : (
+        results
+      );
+    }
   }
   return (
     <>

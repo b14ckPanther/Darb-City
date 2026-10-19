@@ -6474,7 +6474,9 @@
       "en": "Haifa"
     },
     "aliases": [
-      "HAIFA"
+      "HAIFA",
+      "Hayfa",
+      "Heifa"
     ],
     "lat": 32.8191218,
     "lng": 34.9983856,
@@ -8123,7 +8125,8 @@
       "en": "Karmiel"
     },
     "aliases": [
-      "KARMI'EL"
+      "KARMI'EL",
+      "Carmiel"
     ],
     "lat": 32.9159104,
     "lng": 35.293429,
@@ -12135,7 +12138,10 @@
       "en": "Nazareth"
     },
     "aliases": [
-      "NAZARETH"
+      "NAZARETH",
+      "Nasra",
+      "Natzrat",
+      "Nasira"
     ],
     "lat": 32.7066289,
     "lng": 35.3048495,
@@ -15450,7 +15456,9 @@
       "en": "Sakhnin"
     },
     "aliases": [
-      "SAKHNIN"
+      "SAKHNIN",
+      "Sakhneen",
+      "Sachnin"
     ],
     "lat": 32.8638052,
     "lng": 35.3023184,
@@ -16419,7 +16427,11 @@
       "en": "Shefaram"
     },
     "aliases": [
-      "SHEFAR'AM"
+      "SHEFAR'AM",
+      "Shfaram",
+      "Shefa Amr",
+      "Shfa Amr",
+      "شفاعمرو"
     ],
     "lat": 32.8045765,
     "lng": 35.1723866,

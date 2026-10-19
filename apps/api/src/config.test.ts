@@ -19,7 +19,7 @@ it("reads and defaults the environment", () => {
       clickRateLimit: 120,
       intentProvider: "off",
       intentModel: "claude-haiku-5-5",
-      intentTimeoutMs: 1500,
+      intentTimeoutMs: 5000,
       anthropicApiKey: null,
       embeddingProvider: "hash",
       embeddingModel: "voyage-4-lite",

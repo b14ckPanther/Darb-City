@@ -92,6 +92,8 @@ const response: SearchResponseDto = {
   nearest: [],
   fallback: null,
   searched: null,
+  suggestions: [],
+  refining: false,
 };
 
 describe("search view", () => {
@@ -366,5 +368,25 @@ describe("deep search (the thing inside the card)", () => {
     expect(intentFromUrl("items", undefined, ["  ", "x".repeat(99)])?.items).toEqual([
       "x".repeat(60),
     ]);
+  });
+});
+
+describe("did you mean", () => {
+  it("links each suggested kind to its list, in the searched place or across Israel", () => {
+    const empty = {
+      ...response,
+      items: [],
+      suggestions: [
+        { slug: "sweets", name: { en: "Knafeh and Arabic sweets" } },
+        { slug: "gone", name: { en: "Gone" } },
+      ],
+    };
+    expect(toSearchView(empty, "knafe", ctx).suggestions).toEqual([
+      { key: "sweets", label: "Knafeh and Arabic sweets", href: "/en/akko/food/sweets" },
+    ]);
+    const anywhere = { ...empty, intent: { ...empty.intent, place: null } };
+    expect(toSearchView(anywhere, "knafe", { ...ctx, place: null }).suggestions[0]?.href).toBe(
+      "/en/k/sweets",
+    );
   });
 });

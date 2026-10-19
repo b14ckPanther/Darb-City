@@ -34,6 +34,12 @@ export const RANKING = {
   exampleBandKm: 2,
   /** Per stated wish ("ideally open now") a result meets: a small lift, never a filter. */
   niceBoost: 0.03,
+  /**
+   * Query embeddings against the offerings that name kinds (Voyage cosine). When the model gives
+   * no answer, a kind at least `useKind` close becomes the search's kind; one at least `suggest`
+   * close is offered as "did you mean" when nothing answered.
+   */
+  semantic: { useKind: 0.62, suggest: 0.45, band: 0.03, maxKinds: 2 },
   offerings: {
     /** How much an offering's match counts, by where on the card it comes from. */
     sourceWeight: { item: 1, part: 1, tag: 0.9, tagline: 0.6, kind: 0.8 } as Record<string, number>,
@@ -49,5 +55,17 @@ export const RANKING = {
     vectorPool: 200,
     /** Below this, the best offering is not shown as "the matched thing" on the row. */
     showMatch: 0.5,
+    /**
+     * Below this, an offering is no evidence that the business has the asked thing: "burger"
+     * half-matching a grill's "Shawarma & grill" never makes the grill a burger place.
+     */
+    evidence: 0.45,
+    /**
+     * A business of another kind than the one asked answers only on a close match on its card:
+     * a swimming school's "Swimming lessons" is not "driving lessons".
+     */
+    otherKindEvidence: 0.7,
+    /** A business's own name is evidence only this close: "Hushi" is not "sushi". */
+    nameEvidence: 0.7,
   },
 };

@@ -72,6 +72,12 @@ export interface Candidate {
 }
 
 export const CANDIDATE_LIMIT = 300;
+
+/** A kind near a query in meaning, through the offerings that name it (kinds, items, tags). */
+export interface NearKind {
+  kindId: string;
+  similarity: number;
+}
 const MAX_PROBES = 6;
 
 /** Spec §5.3 step 2: one Postgres query that filters and scores; ranking happens in rank(). */
@@ -81,6 +87,33 @@ export class RetrievalRepository {
   candidateLimit = CANDIDATE_LIMIT;
 
   constructor(private readonly prisma: PrismaService) {}
+
+  /**
+   * The kinds closest in meaning to a query's embedding: the nearest distinct offering texts
+   * (kind names and synonyms, items, tags) by vector, each kind scored by its closest one. What
+   * lane 2 falls back to when the model gives no answer ("someone to fix my AC" is near the
+   * technicians' "air conditioning repair" whatever the words).
+   */
+  async nearestKinds(embedding: number[], limit: number): Promise<NearKind[]> {
+    if (!embedding.some((x) => x !== 0) || !embedding.every(Number.isFinite)) return [];
+    const vec = Prisma.sql`${vectorLiteral(embedding)}::vector`;
+    const rows = await this.prisma.$queryRaw<{ kindId: string; similarity: number }[]>`
+      WITH near AS (
+        SELECT hash, 1 - (embedding <=> ${vec}) AS v FROM "SearchEmbedding"
+        ORDER BY embedding <=> ${vec} LIMIT ${RANKING.offerings.vectorPool}
+      ),
+      per AS (
+        SELECT kid, max(near.v) AS v
+        FROM near JOIN "SearchOffering" o ON o."embedHash" = near.hash
+        CROSS JOIN LATERAL unnest(o."kindIds") AS kid
+        WHERE o.source IN ('kind', 'item', 'part', 'tag')
+        GROUP BY kid
+      )
+      SELECT k.id AS "kindId", per.v::float8 AS similarity
+      FROM per JOIN "Kind" k ON k.id = per.kid AND k.status = 'active'
+      ORDER BY similarity DESC, k.id LIMIT ${limit}`;
+    return rows.map((r) => ({ kindId: r.kindId, similarity: Number(r.similarity) }));
+  }
 
   async retrieve(f: RetrievalFilters): Promise<Candidate[]> {
     const items = (f.items ?? []).filter(Boolean).slice(0, MAX_PROBES);

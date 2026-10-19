@@ -250,6 +250,7 @@ describe("GET /search/report", () => {
       .set("x-darb-report-key", "report-key");
     expect(res.status).toBe(200);
     expect(Object.keys(res.body).sort()).toEqual([
+      "intent",
       "missingKinds",
       "missingPlaces",
       "noResults",
@@ -368,7 +369,13 @@ describe("gluten-free search in lane 1 (Task 27b)", () => {
       ] as const) {
         const res = await post("/search", { q, locale }, "10.27.0.1");
         expect(res.status).toBe(200);
-        expect(res.body).toMatchObject({ lane: "instant", intent: { dietary: ["gluten_free"] } });
+        expect(
+          { lane: res.body.lane, intent: res.body.intent, items: res.body.items.length },
+          `${q}`,
+        ).toMatchObject({
+          lane: "instant",
+          intent: { dietary: ["gluten_free"] },
+        });
         expect(res.body.items.map((b: { slug: string }) => b.slug)).toEqual(["tamra-barber"]);
         expect(res.body.items[0].dietary).toEqual(["gluten_free"]);
         await redis.del(...(await redis.keys("darb:*")));

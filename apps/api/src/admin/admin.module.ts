@@ -2,6 +2,7 @@ import { Module } from "@nestjs/common";
 import { AuthModule } from "../auth/auth.module.js";
 import { SearchIndexModule } from "../search/search-index.module.js";
 import { AdminWriter } from "./admin-writer.js";
+import { IntentMetrics } from "../search/intent-metrics.js";
 import { ReportRepository } from "../search/report.repository.js";
 import { AdminBusinessesController, BusinessesAdmin } from "./businesses.admin.js";
 import { ExperienceValidator } from "./experience.js";
@@ -56,6 +57,7 @@ import { Overpass } from "./locate/overpass.js";
     InquiriesAdmin,
     JoinAdmin,
     ReportRepository,
+    IntentMetrics,
     FieldService,
     ModelBudget,
     LocateAdmin,

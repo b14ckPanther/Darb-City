@@ -302,6 +302,27 @@ describe("smart search never ends at nothing", () => {
     expect(res.items.map((b) => b.slug)).toContain("north-fuel");
     expect(res.fallback).toBeNull();
   });
+  it("shows only businesses that have the asked dish, never a grill that lacks it", async () => {
+    // A burger in Sakhnin: the grill house (shawarma only) is a restaurant-ish kind but no answer.
+    const res = await service({
+      ...EMPTY_INTENT,
+      kinds: ["grill"],
+      place: "sakhnin",
+      items: ["burger"],
+    }).search({ q: "burger in sakhnin", locale: "en" });
+    expect(res.items.filter((b) => res.fallback === null && b.slug === "grill-house")).toEqual([]);
+    // When nothing has it, the grill is offered only as a clearly labelled related answer.
+    if (res.items.length) expect(res.fallback).toBe("related");
+  });
+  it("reads the words alone as the ask when there is no kind, never padding the list", async () => {
+    // "veal" names no kind: only the card that lists it answers, not every business in Sakhnin.
+    const res = await service({ ...EMPTY_INTENT, place: "sakhnin", items: [] }).search({
+      q: "veal sakhnin",
+      locale: "en",
+    });
+    expect(res.items.map((b) => b.slug)).toEqual(["grill-house"]);
+    expect(res.items[0]!.matched).toBeDefined();
+  });
   it("lifts a wish instead of filtering by it", async () => {
     const res = await service({
       ...EMPTY_INTENT,
