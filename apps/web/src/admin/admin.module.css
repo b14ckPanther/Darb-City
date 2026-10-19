@@ -817,3 +817,55 @@
   font-size: 1.5rem;
   color: var(--accent-text);
 }
+/* Shown only where the table folds into cards. */
+.phoneOnly {
+  display: none;
+}
+@media (max-width: 767px) {
+  .phoneOnly {
+    display: inline;
+  }
+}
+/* A short list of words and their counts (search gaps). */
+.terms {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+}
+.terms li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-block: 8px;
+  border-block-end: 1px solid var(--line-soft);
+}
+.terms li:last-child {
+  border: 0;
+}
+/* One page text: its name, then a box per alphabet. */
+.textGroup {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0 14px;
+  padding-block: 16px 2px;
+  border-block-start: 1px solid var(--line-soft);
+}
+.textGroup:first-of-type {
+  border: 0;
+  padding-block-start: 0;
+}
+.textGroup > legend {
+  float: inline-start;
+  inline-size: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+/* A category's colour beside a kind: a slim bar, never mistaken for a checkbox. */
+.colorBar {
+  flex: none;
+  inline-size: 4px;
+  block-size: 32px;
+  border-radius: 4px;
+}

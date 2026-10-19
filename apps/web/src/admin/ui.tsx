@@ -172,3 +172,28 @@ export function relativeTime(locale: Locale, iso: string, now = Date.now()): str
   if (abs < 86_400 * 365) return rtf.format(Math.round(s / (86_400 * 30)), "month");
   return rtf.format(Math.round(s / (86_400 * 365)), "year");
 }
+
+/** Tabs that filter a list by status: links, with the current one marked and optional counts. */
+export function StatusTabs({
+  label,
+  tabs,
+}: {
+  label: string;
+  tabs: { href: string; label: string; current: boolean; count?: number }[];
+}) {
+  return (
+    <nav className={styles.tabs} aria-label={label}>
+      {tabs.map((tab) => (
+        <Link
+          key={tab.href}
+          href={tab.href}
+          className={styles.tabLink}
+          aria-current={tab.current ? "page" : undefined}
+        >
+          {tab.label}
+          {tab.count ? <span className={styles.count}>{tab.count}</span> : null}
+        </Link>
+      ))}
+    </nav>
+  );
+}

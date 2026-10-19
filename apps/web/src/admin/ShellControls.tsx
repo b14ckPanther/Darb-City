@@ -181,11 +181,14 @@ export function MoreSheet({
   label,
   closeLabel,
   className,
+  active = false,
   children,
 }: {
   label: string;
   closeLabel: string;
   className?: string;
+  /** The current page lives under More: the tab shows it. */
+  active?: boolean;
   children: ReactNode;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
@@ -195,6 +198,7 @@ export function MoreSheet({
         type="button"
         className={className}
         aria-haspopup="dialog"
+        data-active={active ? "" : undefined}
         onClick={() => ref.current?.showModal()}
         data-more-button=""
       >

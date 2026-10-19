@@ -210,7 +210,12 @@ export function AdminShell({
 
       <nav aria-label={t("tabNav")} className={styles.tabbar}>
         {NAV_ITEMS.filter((i) => i.tab).map((item) => link(item, styles.tab, "tab"))}
-        <MoreSheet label={t("more")} closeLabel={t("close")} className={styles.tab}>
+        <MoreSheet
+          label={t("more")}
+          closeLabel={t("close")}
+          className={styles.tab}
+          active={Boolean(current && !current.tab)}
+        >
           <nav aria-label={t("mainNav")} className={styles.sheetNav}>
             {NAV.map((g) => (
               <div key={g.label} className={styles.group}>

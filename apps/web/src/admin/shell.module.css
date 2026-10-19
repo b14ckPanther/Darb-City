@@ -418,9 +418,13 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  .tab[aria-current="page"] {
+  .tab[aria-current="page"],
+  .tab[data-active] {
     color: var(--text);
     font-weight: 700;
+  }
+  .tab[data-active] svg {
+    color: var(--accent-text);
   }
   .tab[aria-current="page"] .navIcon {
     color: var(--accent-text);

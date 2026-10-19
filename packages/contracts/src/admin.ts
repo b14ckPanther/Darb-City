@@ -412,6 +412,7 @@ export const AdminJoinRequestSchema = z.object({
   /** The draft (then published) business; null once a rejection deleted it. */
   businessId: id.nullable(),
   placeSlug: SlugSchema.nullable(),
+  placeName: LocalizedSchema.nullable().optional(),
   /** The draft's first photo (for a street capture, the photo of its sign); null without one. */
   photo: z.string().nullable(),
   lookup: JoinSuggestionSchema.nullable(),
