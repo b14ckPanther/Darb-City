@@ -1,0 +1,77 @@
+/* The Helpers screen: one card per person, actions at its foot; a single column on the phone. */
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px 14px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface-1);
+}
+.card[data-waiting] {
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+[dir="rtl"] .card[data-waiting] {
+  box-shadow: inset -3px 0 0 var(--accent);
+}
+.who {
+  display: grid;
+  gap: 2px;
+  min-inline-size: 0;
+}
+.name {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.note {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: var(--wash);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.stats {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--text-soft);
+}
+.stats dt {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.stats dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+/* A helper whose additions are mostly turned down stands out. */
+.low {
+  color: var(--danger);
+  font-weight: 600;
+}
+.foot {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+}
+.phone {
+  font-variant-numeric: tabular-nums;
+  color: var(--text-soft);
+}

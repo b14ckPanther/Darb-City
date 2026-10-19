@@ -29,6 +29,7 @@ it("keeps every existing admin screen in the menu, in four groups, with five pho
       "/kinds",
       "/join-requests",
       "/field",
+      "/helpers",
       "/inquiries",
       "/report",
       "/plans",

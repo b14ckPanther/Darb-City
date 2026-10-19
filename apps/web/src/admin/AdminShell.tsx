@@ -76,6 +76,7 @@ export function AdminShell({
   rail = false,
   newInquiries = 0,
   pendingJoins = 0,
+  waitingHelpers = 0,
   children,
 }: {
   locale: Locale;
@@ -84,15 +85,25 @@ export function AdminShell({
   rail?: boolean;
   newInquiries?: number;
   pendingJoins?: number;
+  /** People who applied to be helpers and wait for an answer. */
+  waitingHelpers?: number;
   children: ReactNode;
 }) {
   const t = (key: AdminKey, vars?: Record<string, string | number>) => at(locale, key, vars);
   const count = (item: NavItem) =>
-    item.badge === "joins" ? pendingJoins : item.badge === "inquiries" ? newInquiries : 0;
+    item.badge === "joins"
+      ? pendingJoins
+      : item.badge === "inquiries"
+        ? newInquiries
+        : item.badge === "helpers"
+          ? waitingHelpers
+          : 0;
   const countLabel = (item: NavItem, n: number) =>
     item.badge === "joins"
       ? t("joinPendingCount", { count: n })
-      : t("inquiryNewCount", { count: n });
+      : item.badge === "helpers"
+        ? t("helpersWaitingCount", { count: n })
+        : t("inquiryNewCount", { count: n });
 
   const link = (
     item: NavItem,

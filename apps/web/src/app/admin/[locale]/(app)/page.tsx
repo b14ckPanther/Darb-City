@@ -134,6 +134,13 @@ export default async function AdminHome({ params }: { params: Promise<{ locale: 
       tone: "gold" as const,
     },
     {
+      icon: "people" as const,
+      key: "attnHelpers" as const,
+      count: c.helpersWaiting,
+      href: href("/helpers"),
+      tone: "gold" as const,
+    },
+    {
       icon: "mail" as const,
       key: "attnInquiries" as const,
       count: c.newInquiries,

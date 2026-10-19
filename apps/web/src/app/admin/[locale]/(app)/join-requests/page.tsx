@@ -43,7 +43,11 @@ function Request({ locale, item }: { locale: Locale; item: AdminJoinRequestDto }
         <span className={styles.secondary}>
           {[
             item.placeName ? pickText(item.placeName, locale) : item.placeSlug,
-            street ? at(locale, "streetBadge") : item.ownerName,
+            item.helper
+              ? `${at(locale, "helperFrom")} · ${item.helper.name || at(locale, "helperNoName")}`
+              : street
+                ? at(locale, "streetBadge")
+                : item.ownerName,
             relativeTime(locale, item.createdAt),
           ]
             .filter(Boolean)
@@ -79,11 +83,16 @@ export default async function JoinRequestsPage({
   const sp = await searchParams;
   const raw = one(sp.status);
   const status = raw === "pending" || raw === "approved" || raw === "rejected" ? raw : undefined;
+  // One helper's additions, from the Helpers screen.
+  const helper = /^[0-9a-f-]{36}$/i.test(one(sp.helper) ?? "") ? one(sp.helper) : undefined;
   const page = okOr<AdminJoinPageDto>(
-    await (await adminApi()).joinRequests.list({ query: { status, cursor: one(sp.cursor) } }),
+    await (
+      await adminApi()
+    ).joinRequests.list({ query: { status, helper, cursor: one(sp.cursor) } }),
     locale,
   );
   const base = adminHref(locale, "/join-requests");
+  const helperName = helper ? page.items.find((i) => i.helper)?.helper?.name : undefined;
   const filters: [string | undefined, AdminKey][] = [
     [undefined, "all"],
     ["pending", "joinPending"],
@@ -94,7 +103,11 @@ export default async function JoinRequestsPage({
     <div className={styles.narrow}>
       <PageHead
         title={at(locale, "navJoin")}
-        sub={at(locale, "joinHint")}
+        sub={
+          helper
+            ? at(locale, "helperAdditionsBy", { name: helperName || at(locale, "helperNoName") })
+            : at(locale, "joinHint")
+        }
         actions={
           <Link href={adminHref(locale, "/field")} className={styles.ghost}>
             <AdminIcon name="camera" size={18} />
@@ -105,7 +118,7 @@ export default async function JoinRequestsPage({
       <StatusTabs
         label={at(locale, "status")}
         tabs={filters.map(([value, key]) => ({
-          href: withParams(base, { status: value }),
+          href: withParams(base, { status: value, helper }),
           label: at(locale, key),
           current: status === value,
           count: value === "pending" ? page.newCount : undefined,
@@ -124,7 +137,9 @@ export default async function JoinRequestsPage({
       )}
       <Pager
         locale={locale}
-        href={page.nextCursor ? withParams(base, { status, cursor: page.nextCursor }) : null}
+        href={
+          page.nextCursor ? withParams(base, { status, helper, cursor: page.nextCursor }) : null
+        }
       />
     </div>
   );

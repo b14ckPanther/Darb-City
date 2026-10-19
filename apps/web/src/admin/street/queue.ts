@@ -6,7 +6,8 @@ import type { FieldCaptureCreateInput } from "@darb/contracts";
  * storage), a memory store keeps them for as long as the page is open, and the page says so.
  */
 
-export type QueueState = "waiting" | "sending" | "failed" | "refused";
+/** "limited": a helper's additions for today are used up; it goes on a later day. */
+export type QueueState = "waiting" | "sending" | "failed" | "refused" | "limited";
 
 export interface QueuedCapture {
   clientId: string;
@@ -108,10 +109,11 @@ export type SendOutcome =
   | { kind: "offline" }
   | { kind: "failed" }
   | { kind: "refused"; message: string }
+  | { kind: "limited" }
   | { kind: "signed-out" };
 
 export interface SendDeps {
-  /** The admin's own routes (/admin/field-api/…), or a fake in tests. */
+  /** The admin's or the helper's own routes (/admin/field-api/…, /helpers/field-api/…), or a fake. */
   fetch: typeof fetch;
   base: string;
   store: QueueStore;
@@ -155,6 +157,7 @@ export async function sendCapture(item: QueuedCapture, deps: SendDeps): Promise<
       return { kind: "sent" };
     }
     if (res.status === 401) return { kind: "signed-out" };
+    if (res.status === 429) return { kind: "limited" };
     if (res.status === 400) {
       const message = messageOf(await res.json().catch(() => null)) || String(res.status);
       await deps.store.put({ ...current, state: "refused", error: message });
@@ -168,8 +171,8 @@ export async function sendCapture(item: QueuedCapture, deps: SendDeps): Promise<
 }
 
 /**
- * Sends everything waiting, oldest first; stops at the first sign of no connection (the rest would
- * fail the same way). Refused items stay for the admin to remove.
+ * Sends everything waiting, oldest first; stops at the first sign of no connection or of the day's
+ * limit (the rest would fail the same way). Refused items stay for the admin to remove.
  */
 export async function flushQueue(
   deps: SendDeps,
@@ -184,10 +187,13 @@ export async function flushQueue(
     if (out.kind === "sent") sent++;
     else if (out.kind !== "refused") {
       const latest = (await deps.store.all()).find((i) => i.clientId === item.clientId) ?? item;
-      await deps.store.put({ ...latest, state: out.kind === "offline" ? "waiting" : "failed" });
+      const state =
+        out.kind === "offline" ? "waiting" : out.kind === "limited" ? "limited" : "failed";
+      await deps.store.put({ ...latest, state });
     }
     onChange(await deps.store.all());
     if (out.kind === "offline" || out.kind === "signed-out") return { sent, offline: true };
+    if (out.kind === "limited") return { sent, offline: false };
   }
   return { sent, offline: false };
 }
