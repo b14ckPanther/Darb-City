@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import type { Locale } from "@darb/core";
 import { DOOR_PATH } from "@darb/tokens";
 import { AdminIcon } from "./AdminIcon";
+import { AppBadge } from "./AppBadge";
 import { at, type AdminKey } from "./copy";
 import type { AdminAuthMode } from "./mode";
 import { NAV, NAV_ITEMS, type NavItem } from "./nav";
@@ -274,6 +275,8 @@ export function AdminShell({
       />
       <Toaster />
       <AdminMarker />
+      {/* The installed app's icon: requests and helpers waiting for an answer. */}
+      <AppBadge count={pendingJoins + waitingHelpers} />
     </div>
   );
 }

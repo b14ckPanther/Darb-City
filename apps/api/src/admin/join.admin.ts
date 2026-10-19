@@ -1,6 +1,7 @@
 import { Controller, Injectable, Req, UseGuards } from "@nestjs/common";
 import {
   contract,
+  type AdminJoinBulkResultDto,
   type AdminJoinListQueryDto,
   type AdminJoinPageDto,
   type AdminJoinRequestDto,
@@ -26,6 +27,17 @@ const include = {
   business: { select: { place: { select: { slug: true, name: true } }, photos: true } },
   createdBy: { select: { id: true, isAdmin: true, helperName: true } },
 } as const;
+
+/** How many one bulk approval publishes at most; the rest wait for the next press. */
+export const BULK_APPROVE = 200;
+
+/** One helper's waiting street additions (never an admin's own, never the /join form's). */
+const byHelper = (helper: string) => ({
+  createdById: helper,
+  source: "field" as const,
+  status: "pending" as const,
+  createdBy: { isAdmin: false },
+});
 
 /** The IP hash stays in the database: the admin never needs it. */
 export const toAdminJoinRequest = (r: Row): AdminJoinRequestDto => ({
@@ -70,7 +82,7 @@ export class JoinAdmin {
 
   async list(query: AdminJoinListQueryDto): Promise<AdminJoinPageDto> {
     const offset = decodeCursor(query.cursor) ?? 0;
-    const [rows, newCount] = await Promise.all([
+    const [rows, newCount, helperPending] = await Promise.all([
       this.prisma.joinRequest.findMany({
         where: {
           ...(query.status ? { status: query.status } : {}),
@@ -83,12 +95,39 @@ export class JoinAdmin {
         take: query.limit + 1,
       }),
       this.prisma.joinRequest.count({ where: { status: "pending" } }),
+      query.helper
+        ? this.prisma.joinRequest.count({ where: byHelper(query.helper) })
+        : Promise.resolve(undefined),
     ]);
     return {
       items: rows.slice(0, query.limit).map(toAdminJoinRequest),
       nextCursor: rows.length > query.limit ? encodeCursor(offset + query.limit) : null,
       newCount,
+      ...(helperPending !== undefined ? { helperPending } : {}),
     };
+  }
+
+  /**
+   * Every waiting street addition of one helper, approved one by one through approve() (so each
+   * business is published, audited and revalidated exactly as a single approval), oldest first,
+   * BULK_APPROVE at a time. One that fails (decided meanwhile, or refused) is counted and skipped.
+   */
+  async approveHelper(actor: AdminActor, helper: string): Promise<AdminJoinBulkResultDto> {
+    const rows = await this.prisma.joinRequest.findMany({
+      where: byHelper(helper),
+      orderBy: [{ createdAt: "asc" }, { id: "asc" }],
+      take: BULK_APPROVE,
+      select: { id: true },
+    });
+    let approved = 0;
+    let failed = 0;
+    for (const r of rows) {
+      const res = await this.approve(actor, r.id).catch(() => null);
+      if (res?.status === 200) approved++;
+      else failed++;
+    }
+    const remaining = await this.prisma.joinRequest.count({ where: byHelper(helper) });
+    return { approved, failed, remaining };
   }
 
   async get(id: string) {
@@ -179,6 +218,10 @@ export class AdminJoinController {
         return this.join.get(params.id);
       },
       approve: async ({ params }) => this.join.approve(actor, params.id),
+      approveHelper: async ({ body }) => ({
+        status: 200 as const,
+        body: await this.join.approveHelper(actor, body.helper),
+      }),
       reject: async ({ params, body }) => this.join.reject(actor, params.id, body.reason),
     });
   }

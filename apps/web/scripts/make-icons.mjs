@@ -32,6 +32,7 @@ const MARK_BOX = { left: 26, top: 26, width: 428, height: 507 };
 export const FAVICON_SIZES = [16, 32, 48];
 export const SHORTCUTS = ["near", "search", "map", "join"];
 export const HELPER_SHORTCUTS = ["add", "mine"];
+export const ADMIN_SHORTCUTS = ["street", "join", "helpers"];
 
 const PNG = { compressionLevel: 9, adaptiveFiltering: false, palette: false, effort: 10 };
 
@@ -314,6 +315,20 @@ function glyphSvg(name, theme) {
         <circle cx="38" cy="40" r="3.5" fill="${fillGold}"/>
         <circle cx="38" cy="56" r="3.5" fill="${fillGold}"/>
         <path d="M46 40H59M46 56H59" ${line}/>`;
+    // The admin app's shortcuts: a camera on a pin (add from the street), a tray, two people.
+    case "admin-street":
+      return `<path d="M30 34H37L41 28H55L59 34H66A4 4 0 0 1 70 38V58A4 4 0 0 1 66 62H30A4 4 0 0 1 26 58V38A4 4 0 0 1 30 34Z" ${line}/>
+        <circle cx="48" cy="47" r="8" fill="${fillGold}"/>
+        <path d="M48 62V71" ${line}/>`;
+    case "admin-join":
+      return `<path d="M27 52L33 31H63L69 52V64A4 4 0 0 1 65 68H31A4 4 0 0 1 27 64Z" ${line}/>
+        <path d="M27 52H39L42 58H54L57 52H69" ${line}/>
+        <circle cx="48" cy="42" r="5" fill="${fillGold}"/>`;
+    case "admin-helpers":
+      return `<circle cx="40" cy="38" r="8" ${line}/>
+        <path d="M25 66C25 56.6 31.7 50 40 50S55 56.6 55 66" ${line}/>
+        <circle cx="59" cy="41" r="6.5" fill="${fillGold}"/>
+        <path d="M58 52.5C65.5 52.8 71 58.3 71 66" fill="none" stroke="${gold}" stroke-width="${sw}" stroke-linecap="round"/>`;
     default:
       throw new Error(`no glyph ${name}`);
   }
@@ -351,6 +366,36 @@ async function helperTile(theme, size, tile, badge) {
   const base = await markTile(theme, size, tile);
   return sharp(base)
     .composite([{ input: badgeSvg(theme, size, badge) }])
+    .png(PNG)
+    .toBuffer();
+}
+
+/**
+ * The admin app's badge: a forest shield with a gold check, on a ring of the tile's own colour.
+ * The helper's badge is a gold disc with a plus; a shield and a check (not a disc, not a plus) and
+ * the inverted colours tell the two apart at a glance, even at 60 px on a home screen.
+ */
+function adminBadgeSvg(theme, size, { at, r }) {
+  const cx = size * at;
+  const s = (r * size) / 10; // the shield is drawn on a 20 x 20 grid around its centre
+  const ring = theme === "dark" ? TILES.dark.bottom : TILES.light.top;
+  // On the forest night tile a forest shield would vanish: it turns gold, the check forest.
+  const fill = theme === "dark" ? GOLD : FOREST;
+  const check = theme === "dark" ? FOREST : GOLD;
+  const shield = (k) =>
+    `M${cx} ${cx - 10.5 * k}L${cx + 9 * k} ${cx - 7 * k}V${cx - 0.5 * k}C${cx + 9 * k} ${cx + 5.5 * k} ${cx + 5 * k} ${cx + 9.5 * k} ${cx} ${cx + 11.5 * k}C${cx - 5 * k} ${cx + 9.5 * k} ${cx - 9 * k} ${cx + 5.5 * k} ${cx - 9 * k} ${cx - 0.5 * k}V${cx - 7 * k}Z`;
+  return Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}">
+  <path d="${shield(s * 1.24)}" fill="${ring}" stroke="${ring}" stroke-width="${s * 1.2}" stroke-linejoin="round"/>
+  <path d="${shield(s)}" fill="${fill}" stroke="${fill}" stroke-width="${s * 0.6}" stroke-linejoin="round"/>
+  <path d="M${cx - 4.2 * s} ${cx + 0.3 * s}L${cx - 1 * s} ${cx + 3.6 * s}L${cx + 4.6 * s} ${cx - 3.2 * s}" fill="none" stroke="${check}" stroke-width="${Math.max(1.4, s * 2.3)}" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`);
+}
+
+/** The Darb mark's tile with the admin badge on its lower corner (the admin app's icon). */
+async function adminTile(theme, size, tile, badge) {
+  const base = await markTile(theme, size, tile);
+  return sharp(base)
+    .composite([{ input: adminBadgeSvg(theme, size, badge) }])
     .png(PNG)
     .toBuffer();
 }
@@ -429,6 +474,37 @@ export async function renderIcons() {
       512,
       { fill: 0.58 },
       { at: 0.68, r: 0.12 },
+    );
+  }
+  // The admin app (/admin): the same tiles with the shield badge, a touch larger than the helper's.
+  const shieldCorner = { at: 0.74, r: 0.15 };
+  for (const theme of ["light", "dark"]) {
+    files[`admin-favicon-${theme}-32.png`] = await adminTile(
+      theme,
+      32,
+      { fill: 0.82, radius: 0.22, lift: 0 },
+      { at: 0.71, r: 0.24 },
+    );
+    files[`admin-apple-touch-icon-${theme}.png`] = await adminTile(
+      theme,
+      180,
+      { fill: 0.62 },
+      shieldCorner,
+    );
+    for (const size of [192, 512])
+      files[`admin-icon-${theme}-${size}.png`] = await adminTile(
+        theme,
+        size,
+        { fill: 0.64, radius: 0.22 },
+        shieldCorner,
+      );
+    for (const name of ADMIN_SHORTCUTS)
+      files[`admin-shortcut-${name}-${theme}.png`] = await shortcut(`admin-${name}`, theme);
+    files[`admin-maskable-${theme}-512.png`] = await adminTile(
+      theme,
+      512,
+      { fill: 0.58 },
+      { at: 0.68, r: 0.13 },
     );
   }
   const icoImages = [];

@@ -229,3 +229,80 @@ a.stat:hover {
   color: var(--text-muted);
   font-size: 0.8125rem;
 }
+
+/* A helper sending far more than usual in the last hour: above everything else, until it passes. */
+.burst {
+  display: grid;
+  gap: 10px;
+  margin-block-end: 16px;
+  padding: 14px 16px;
+  border: 1px solid var(--line-strong);
+  border-inline-start: 3px solid var(--danger);
+  border-radius: 14px;
+  background: var(--danger-bg);
+}
+.burstHead {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.burstHead .h2,
+.burstHead h2 {
+  margin: 0;
+}
+.burstHead p {
+  margin: 2px 0 0;
+}
+.burstIcon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  inline-size: 34px;
+  block-size: 34px;
+  border-radius: 9px;
+  background: var(--surface-1);
+  color: var(--danger);
+}
+.burstList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+.burstRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: var(--surface-1);
+}
+.burstWho {
+  display: grid;
+  min-inline-size: 0;
+}
+.burstName {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.burstCount {
+  font-size: 0.875rem;
+  color: var(--danger);
+  font-weight: 600;
+}
+.burstActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.burstActions form {
+  margin: 0;
+}
+.burstPaused {
+  font-size: 0.875rem;
+  color: var(--text-soft);
+}

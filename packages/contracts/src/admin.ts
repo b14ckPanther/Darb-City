@@ -429,11 +429,23 @@ export const AdminJoinListQuerySchema = z.object({
   cursor: z.string().max(200).optional(),
   limit: z.coerce.number().int().min(1).max(100).default(50),
 });
-/** Pending first, then newest; `newCount` is every pending request (the nav's badge). */
+/**
+ * Pending first, then newest; `newCount` is every pending request (the nav's badge).
+ * `helperPending`: with the helper filter, how many of theirs wait (the approve all button).
+ */
 export const AdminJoinPageSchema = z.object({
   items: z.array(AdminJoinRequestSchema),
   nextCursor: z.string().nullable(),
   newCount: z.number().int().nonnegative(),
+  helperPending: z.number().int().nonnegative().optional(),
+});
+/** Approve every waiting addition of one helper (each one audited like a single approval). */
+export const AdminJoinApproveHelperSchema = z.object({ helper: id }).strict();
+/** How many were published, how many failed, and how many still wait (over the cap per call). */
+export const AdminJoinBulkResultSchema = z.object({
+  approved: z.number().int().nonnegative(),
+  failed: z.number().int().nonnegative(),
+  remaining: z.number().int().nonnegative(),
 });
 export const AdminJoinRejectSchema = z
   .object({ reason: z.string().trim().min(2).max(500) })
@@ -455,7 +467,13 @@ export const AdminHelperSchema = z.object({
   added: z.number().int().nonnegative(),
   approved: z.number().int().nonnegative(),
   rejected: z.number().int().nonnegative(),
+  /** Their cap on additions and sign readings a day; null is no cap. */
+  dailyLimit: z.number().int().positive().nullable(),
 });
+/** One of the caps on offer (150, 500, or null for none). */
+export const AdminHelperLimitSchema = z
+  .object({ limit: z.union([z.literal(150), z.literal(500), z.null()]) })
+  .strict();
 export const AdminHelperListQuerySchema = z.object({
   status: z.enum(ADMIN_HELPER_STATUSES).default("pending"),
 });
@@ -487,6 +505,8 @@ export const AdminSynonymSchema = z
   .strict();
 
 // Overview and the command palette
+/** More additions than this from one helper in the last hour is flagged on the Overview. */
+export const BURST_PER_HOUR = 100;
 export const AdminOverviewSchema = z.object({
   counts: z.object({
     published: z.number().int(),
@@ -504,6 +524,20 @@ export const AdminOverviewSchema = z.object({
     helpersWaiting: z.number().int(),
     newInquiries: z.number().int(),
   }),
+  /**
+   * Helpers (not admins) who sent more than BURST_PER_HOUR additions in the last hour: a runaway
+   * script or a careless batch, to look at and maybe pause.
+   */
+  bursts: z
+    .array(
+      z.object({
+        id,
+        name: z.string(),
+        count: z.number().int(),
+        status: z.enum(ADMIN_HELPER_STATUSES),
+      }),
+    )
+    .default([]),
   /** Published businesses with a gap, by issue. */
   attention: z.record(z.enum(BUSINESS_ISSUES), z.number().int()),
   /** Businesses added by people per day, oldest first, last 14 days (Asia/Jerusalem days). */
@@ -561,6 +595,8 @@ export type AdminJoinRequestDto = z.infer<typeof AdminJoinRequestSchema>;
 export type AdminJoinListQueryDto = z.infer<typeof AdminJoinListQuerySchema>;
 export type AdminJoinPageDto = z.infer<typeof AdminJoinPageSchema>;
 export type AdminHelperDto = z.infer<typeof AdminHelperSchema>;
+export type AdminHelperLimitDto = z.infer<typeof AdminHelperLimitSchema>;
+export type AdminJoinBulkResultDto = z.infer<typeof AdminJoinBulkResultSchema>;
 export type AdminHelperListQueryDto = z.infer<typeof AdminHelperListQuerySchema>;
 export type AdminHelperPageDto = z.infer<typeof AdminHelperPageSchema>;
 export type AuditRowDto = z.infer<typeof AuditRowSchema>;
@@ -824,6 +860,16 @@ export const adminContract = c.router({
       body: empty,
       responses: { 200: AdminJoinRequestSchema.extend(revalidated), ...writeErrors },
     },
+    /**
+     * Approves every waiting street addition of one helper, one by one through the single approval
+     * (each audited per business), up to a cap per call.
+     */
+    approveHelper: {
+      method: "POST",
+      path: "/admin/join-requests/approve-helper",
+      body: AdminJoinApproveHelperSchema,
+      responses: { 200: AdminJoinBulkResultSchema, ...writeErrors },
+    },
     /** Deletes the draft and its photos; the request stays, with the reason. */
     reject: {
       method: "POST",
@@ -889,6 +935,14 @@ export const adminContract = c.router({
       path: "/admin/helpers/:id/resume",
       pathParams: byId,
       body: empty,
+      responses: { 200: AdminHelperSchema, ...writeErrors },
+    },
+    /** Their cap a day (150, 500 or none), audited. */
+    limit: {
+      method: "POST",
+      path: "/admin/helpers/:id/limit",
+      pathParams: byId,
+      body: AdminHelperLimitSchema,
       responses: { 200: AdminHelperSchema, ...writeErrors },
     },
   }),

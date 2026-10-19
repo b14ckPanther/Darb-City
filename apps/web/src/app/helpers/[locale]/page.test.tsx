@@ -54,6 +54,7 @@ const me = (patch: Partial<HelperMeDto> = {}): HelperMeDto => ({
   note: null,
   credit: false,
   isAdmin: false,
+  dailyLimit: 150,
   appliedAt: null,
   ...patch,
 });
@@ -101,13 +102,13 @@ it("opens an approved helper (and an admin) straight into the capture, on the he
       base: "/ar/helpers/field-api",
       distinct: true,
       reading: true,
-      quick: expect.objectContaining({ today: 3, limit: 40 }),
+      quick: expect.objectContaining({ today: 3, limit: 150 }),
     }),
     undefined,
   );
   capture.mockClear();
   // An admin has no daily cap; a home screen shortcut asks for the camera.
-  await open(me({ isAdmin: true }), "ok", "en", { camera: "1" });
+  await open(me({ isAdmin: true, dailyLimit: null }), "ok", "en", { camera: "1" });
   expect(capture).toHaveBeenCalledWith(
     expect.objectContaining({
       quick: expect.objectContaining({
@@ -115,6 +116,20 @@ it("opens an approved helper (and an admin) straight into the capture, on the he
         incoming: expect.objectContaining({ camera: true }),
       }),
     }),
+    undefined,
+  );
+});
+
+it("gives the bar the helper's own cap: 500, or none when an admin lifted it", async () => {
+  await open(me({ status: "approved", dailyLimit: 500 }));
+  expect(capture).toHaveBeenCalledWith(
+    expect.objectContaining({ quick: expect.objectContaining({ limit: 500 }) }),
+    undefined,
+  );
+  capture.mockClear();
+  await open(me({ status: "approved", dailyLimit: null }));
+  expect(capture).toHaveBeenCalledWith(
+    expect.objectContaining({ quick: expect.objectContaining({ limit: null }) }),
     undefined,
   );
 });

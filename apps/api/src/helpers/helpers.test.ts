@@ -1,10 +1,11 @@
 import type { INestApplication } from "@nestjs/common";
-import { HELPER_DAILY } from "@darb/contracts";
+import { BURST_PER_HOUR, HELPER_DAILY_DEFAULT } from "@darb/contracts";
 import type { Redis } from "ioredis";
 import sharp from "sharp";
 import request from "supertest";
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi, type Mock } from "vitest";
 import { ADMIN, createAdminTestApp } from "../../test/admin.js";
+import { OverviewAdmin, OVERVIEW_TTL_MS } from "../admin/overview.admin.js";
 import { resetDatabase } from "../../test/db.js";
 import { seedFixtures, type Fixtures } from "../../test/fixtures.js";
 import { SIGN_READER, type SignReading } from "../field/sign-reader.js";
@@ -284,52 +285,210 @@ describe("captures", () => {
     expect(admin.status).toBe(201);
   });
 
-  it(`stops a helper at ${HELPER_DAILY.captures} additions a day, never an admin`, async () => {
+  /** `count` of their street additions made now (no drafts: only the day's count matters). */
+  const madeToday = (createdById: string, count: number) =>
+    madeTodayAt(createdById, count, new Date());
+  const add = (auth: string) =>
+    http().post("/helpers/field/captures").set("authorization", auth).send(capture());
+
+  it(`stops a helper at ${HELPER_DAILY_DEFAULT} additions a day by default, never an admin`, async () => {
     const { id, auth } = await as("approved");
-    const today = new Date();
-    for (let i = 0; i < HELPER_DAILY.captures; i++)
-      await prisma.joinRequest.create({
-        data: {
-          businessName: { en: `Old ${i}` },
-          ownerName: "",
-          ownerPhone: "",
-          locale: "en",
-          source: "field",
-          createdById: id,
-          createdAt: today,
-        },
-      });
-    const res = await http()
-      .post("/helpers/field/captures")
-      .set("authorization", auth)
-      .send(capture());
+    expect((await http().get("/helpers/me").set("authorization", auth)).body.dailyLimit).toBe(
+      HELPER_DAILY_DEFAULT,
+    );
+    await madeToday(id, HELPER_DAILY_DEFAULT - 1);
+    expect((await add(auth)).status).toBe(201);
+    const res = await add(auth);
     expect(res.status).toBe(429);
     expect(res.body.code).toBe("daily_limit");
     await prisma.user.update({ where: { id }, data: { isAdmin: true } });
-    const asAdmin = await http()
-      .post("/helpers/field/captures")
-      .set("authorization", auth)
-      .send(capture());
-    expect(asAdmin.status).toBe(201);
+    expect((await add(auth)).status).toBe(201);
+    expect((await http().get("/helpers/me").set("authorization", auth)).body.dailyLimit).toBeNull();
   });
 
-  it(`gives a helper ${HELPER_DAILY.reads} sign readings a day`, async () => {
-    const { auth } = await as("approved");
-    const read = () =>
-      http()
-        .post("/helpers/field/read")
-        .set("authorization", auth)
-        .set("content-type", "application/octet-stream")
-        .send(jpeg);
-    for (let i = 0; i < HELPER_DAILY.reads; i++)
-      expect((await read()).body.reason).toBe("unreadable");
-    expect((await read()).body).toEqual({ reading: null, reason: "budget" });
+  it("raises one helper to 500 a day, or lifts the cap, from the admin", async () => {
+    const { id, auth } = await as("approved");
+    const limit = (value: number | null) =>
+      http().post(`/admin/helpers/${id}/limit`).set("authorization", ADMIN).send({ limit: value });
+    expect((await limit(500)).body).toMatchObject({ id, dailyLimit: 500 });
+    expect((await prisma.user.findUniqueOrThrow({ where: { id } })).helperDailyLimit).toBe(500);
+    await madeToday(id, 499);
+    expect((await add(auth)).status).toBe(201);
+    expect((await add(auth)).status).toBe(429);
+    expect((await limit(null)).body.dailyLimit).toBeNull();
+    expect((await prisma.user.findUniqueOrThrow({ where: { id } })).helperDailyLimit).toBe(0);
+    expect((await add(auth)).status).toBe(201);
+    expect((await http().get("/helpers/me").set("authorization", auth)).body.dailyLimit).toBeNull();
+    // Back to the default: stored as null, so a later change of the default reaches them.
+    expect((await limit(150)).body.dailyLimit).toBe(150);
+    expect((await prisma.user.findUniqueOrThrow({ where: { id } })).helperDailyLimit).toBeNull();
+    const audit = await prisma.auditLog.findMany({ where: { entityType: "helper", entityId: id } });
+    expect(audit).toHaveLength(3);
+    expect(audit.every((a) => a.action === "update" && a.fields[0] === "helperDailyLimit")).toBe(
+      true,
+    );
+  });
+
+  it("offers only 150, 500 or no cap, to admins only, for a helper only", async () => {
+    const { id, auth } = await as("approved");
+    const set = (body: object, who = ADMIN, target = id) =>
+      http().post(`/admin/helpers/${target}/limit`).set("authorization", who).send(body);
+    expect((await set({ limit: 40 })).status).toBe(400);
+    expect((await set({ limit: 0 })).status).toBe(400);
+    expect((await set({})).status).toBe(400);
+    expect((await set({ limit: 500 }, auth)).status).toBe(403);
+    expect((await http().post(`/admin/helpers/${id}/limit`).send({ limit: 500 })).status).toBe(401);
+    const { id: nobody } = await as("none");
+    expect((await set({ limit: 500 }, ADMIN, nobody)).status).toBe(404);
+  });
+
+  /** Their readings so far today, as the API counts them. */
+  const usedReads = async (userId: string, n: number) =>
+    app
+      .get<Redis>(REDIS)
+      .set(`darb:field:reads:${new Date().toISOString().slice(0, 10)}:${userId}`, n);
+  const read = (auth: string) =>
+    http()
+      .post("/helpers/field/read")
+      .set("authorization", auth)
+      .set("content-type", "application/octet-stream")
+      .send(jpeg);
+
+  it(`gives a helper ${HELPER_DAILY_DEFAULT} sign readings a day, 500 or none when raised`, async () => {
+    const { id, auth } = await as("approved");
+    await usedReads(id, HELPER_DAILY_DEFAULT - 1);
+    expect((await read(auth)).body.reason).toBe("unreadable");
+    expect((await read(auth)).body).toEqual({ reading: null, reason: "budget" });
+    await prisma.user.update({ where: { id }, data: { helperDailyLimit: 500 } });
+    await usedReads(id, 499);
+    expect((await read(auth)).body.reason).toBe("unreadable");
+    expect((await read(auth)).body.reason).toBe("budget");
+    await prisma.user.update({ where: { id }, data: { helperDailyLimit: 0 } });
+    expect((await read(auth)).body.reason).toBe("unreadable");
     const admin = await http()
       .post("/admin/field/read")
       .set("authorization", ADMIN)
       .set("content-type", "application/octet-stream")
       .send(jpeg);
     expect(admin.body.reason).toBe("unreadable");
+  });
+});
+
+describe("approve all from one helper", () => {
+  const bulk = (helper: string, who = ADMIN) =>
+    http().post("/admin/join-requests/approve-helper").set("authorization", who).send({ helper });
+
+  it("publishes only that helper's waiting additions, each one audited", async () => {
+    const a = await as("approved", "a");
+    const b = await as("approved", "b");
+    for (let i = 0; i < 3; i++)
+      await http().post("/helpers/field/captures").set("authorization", a.auth).send(capture());
+    const other = await http()
+      .post("/helpers/field/captures")
+      .set("authorization", b.auth)
+      .send(capture());
+    const own = await http()
+      .post("/admin/field/captures")
+      .set("authorization", ADMIN)
+      .send(capture());
+    // One of theirs was already rejected: it stays rejected.
+    const [first] = await prisma.joinRequest.findMany({
+      where: { createdById: a.id },
+      orderBy: { createdAt: "asc" },
+    });
+    await http()
+      .post(`/admin/join-requests/${first!.id}/reject`)
+      .set("authorization", ADMIN)
+      .send({ reason: "Already on Darb" });
+
+    const list = await http()
+      .get(`/admin/join-requests?helper=${a.id}&status=pending`)
+      .set("authorization", ADMIN);
+    expect(list.body.helperPending).toBe(2);
+    expect(
+      (await http().get("/admin/join-requests").set("authorization", ADMIN)).body.helperPending,
+    ).toBeUndefined();
+
+    const res = await bulk(a.id);
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({ approved: 2, failed: 0, remaining: 0 });
+    const theirs = await prisma.joinRequest.findMany({
+      where: { createdById: a.id },
+      include: { business: true },
+    });
+    expect(theirs.map((r) => r.status).sort()).toEqual(["approved", "approved", "rejected"]);
+    const published = theirs.filter((r) => r.status === "approved");
+    expect(published.every((r) => r.business?.status === "published")).toBe(true);
+    const audit = await prisma.auditLog.findMany({
+      where: { action: "status", entityId: { in: published.map((r) => r.businessId!) } },
+    });
+    expect(audit).toHaveLength(2);
+    expect(
+      (await prisma.joinRequest.findUniqueOrThrow({ where: { id: other.body.id } })).status,
+    ).toBe("pending");
+    expect(
+      (await prisma.joinRequest.findUniqueOrThrow({ where: { id: own.body.id } })).status,
+    ).toBe("pending");
+    // Nothing left: a second press changes nothing.
+    expect((await bulk(a.id)).body).toEqual({ approved: 0, failed: 0, remaining: 0 });
+  });
+
+  it("is for admins only, and needs a helper id", async () => {
+    const a = await as("approved", "a");
+    expect(
+      (await http().post("/admin/join-requests/approve-helper").send({ helper: a.id })).status,
+    ).toBe(401);
+    expect((await bulk(a.id, a.auth)).status).toBe(403);
+    expect(
+      (
+        await http()
+          .post("/admin/join-requests/approve-helper")
+          .set("authorization", ADMIN)
+          .send({ helper: "nope" })
+      ).status,
+    ).toBe(400);
+  });
+});
+
+/** `count` street additions by one person, all made at `at`. */
+const madeTodayAt = (createdById: string, count: number, at: Date) =>
+  prisma.joinRequest.createMany({
+    data: Array.from({ length: count }, (_, i) => ({
+      businessName: { en: `Burst ${i}` },
+      ownerName: "",
+      ownerPhone: "",
+      locale: "en",
+      source: "field" as const,
+      createdById,
+      createdAt: at,
+    })),
+  });
+
+describe("burst alert", () => {
+  it(`flags a helper with more than ${BURST_PER_HOUR} additions in the last hour, never an admin`, async () => {
+    const fast = await as("approved", "fast");
+    const steady = await as("approved", "steady");
+    const admin = await as("approved", "boss");
+    await prisma.user.update({ where: { id: admin.id }, data: { isAdmin: true } });
+    const now = new Date();
+    const minutesAgo = (m: number) => new Date(now.getTime() - m * 60_000);
+    await madeTodayAt(fast.id, BURST_PER_HOUR + 1, minutesAgo(20));
+    // Exactly the threshold, or older than an hour, is not a burst.
+    await madeTodayAt(steady.id, BURST_PER_HOUR, minutesAgo(10));
+    await madeTodayAt(steady.id, 50, minutesAgo(70));
+    await madeTodayAt(admin.id, 300, minutesAgo(5));
+    const overview = app.get(OverviewAdmin);
+    expect(await overview.bursts(now)).toEqual([
+      { id: fast.id, name: "fast name", count: BURST_PER_HOUR + 1, status: "approved" },
+    ]);
+    // Read (and cached) as of long ago, so the next test's overview reads afresh.
+    overview.now = () => Date.now() - 10 * OVERVIEW_TTL_MS;
+    try {
+      const res = await http().get("/admin/overview").set("authorization", ADMIN);
+      expect(res.body.bursts.map((b: { id: string }) => b.id)).toEqual([fast.id]);
+    } finally {
+      overview.now = () => Date.now();
+    }
   });
 });
 

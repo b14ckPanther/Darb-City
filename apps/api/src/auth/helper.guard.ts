@@ -5,6 +5,7 @@ import {
   type CanActivate,
   type ExecutionContext,
 } from "@nestjs/common";
+import { helperDailyLimit } from "@darb/contracts";
 import { APP_CONFIG, type AppConfig } from "../config.js";
 import type { HelperStatus } from "../generated/prisma/enums.js";
 import { PrismaService } from "../prisma/prisma.service.js";
@@ -14,12 +15,14 @@ import { TOKEN_VERIFIER, type TokenVerifier } from "./token-verifier.js";
 
 /**
  * Whoever is signed in, as the helper routes see them. `limited` is a helper who is not an admin:
- * the day's caps and the duplicate note apply to them (admins keep today's limits).
+ * the duplicate note applies to them, and `dailyLimit` caps their additions and sign readings a
+ * day (null: no cap, for admins and for helpers an admin lifted the cap for).
  */
 export interface HelperActor extends AdminActor {
   isAdmin: boolean;
   helperStatus: HelperStatus;
   limited: boolean;
+  dailyLimit: number | null;
 }
 export interface HelperRequest extends AdminRequest {
   helper?: HelperActor;
@@ -48,6 +51,7 @@ abstract class SignedIn implements CanActivate {
       isAdmin: user.isAdmin,
       helperStatus: user.helperStatus,
       limited: !user.isAdmin,
+      dailyLimit: user.isAdmin ? null : helperDailyLimit(user.helperDailyLimit),
     };
     if (!this.allows(actor)) throw new ForbiddenException("This account is not an active helper");
     req.helper = actor;

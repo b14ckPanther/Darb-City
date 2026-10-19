@@ -64,7 +64,7 @@ test.describe("darb helpers", () => {
     await helper.goto("/en/helpers");
     await expect(helper.getByRole("heading", { name: "Add a business" })).toBeVisible();
     // Quick add: the camera at the bottom and the day's count; the form opens with the photo.
-    await expect(helper.getByText("Today 0 of 40")).toBeVisible();
+    await expect(helper.getByText("Today 0 of 150")).toBeVisible();
     await helper.getByLabel("Photograph the sign").setInputFiles(SIGN);
     await expect(
       helper.getByText("Filled in from the sign. Check it before saving."),
@@ -85,7 +85,30 @@ test.describe("darb helpers", () => {
     await expect(saved).toBeVisible();
     // Ready for the next shop at once.
     await expect(helper.getByLabel("Photograph the sign")).toBeAttached();
-    await expect(helper.getByText("Today 1 of 40")).toBeVisible();
+    await expect(helper.getByText("Today 1 of 150")).toBeVisible();
+
+    // The admin raises their day to 500, then lifts the cap: the bar follows, without a max.
+    await admin.goto("/en/admin/helpers?status=approved");
+    const active = admin.locator('[data-list="helpers"] li').filter({ hasText: helperName });
+    const limit = active.getByRole("group", { name: "Additions a day" });
+    await expect(limit.getByRole("button", { name: "150" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    await limit.getByRole("button", { name: "500" }).click();
+    await expect(limit.getByRole("button", { name: "500" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    await helper.reload();
+    await expect(helper.getByText("Today 1 of 500")).toBeVisible();
+    await limit.getByRole("button", { name: "No limit" }).click();
+    await expect(limit.getByRole("button", { name: "No limit" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    await helper.reload();
+    await expect(helper.getByText("Today 1", { exact: true })).toBeVisible();
 
     await helper.getByRole("link", { name: "My additions" }).click();
     await expect(helper.getByText(/^You added 1 · 0 live$/)).toBeVisible();
@@ -183,6 +206,16 @@ test.describe("darb helpers", () => {
     const manifest = await (await request.get("/api/helpers/manifest/en")).json();
     expect(manifest).toMatchObject({ start_url: "/en/helpers", scope: "/en/helpers" });
     expect(manifest.share_target.action).toBe("/en/helpers/share");
+    // The admin installs apart from both: its own manifest, scope and shortcuts.
+    const adminApp = await (await request.get("/api/admin/manifest/ar")).json();
+    expect(adminApp).toMatchObject({ id: "/ar/admin", start_url: "/ar/admin", scope: "/ar/admin" });
+    expect(adminApp.shortcuts.map((s: { url: string }) => s.url)).toEqual([
+      "/ar/admin/field",
+      "/ar/admin/join-requests",
+      "/ar/admin/helpers",
+    ]);
+    for (const icon of adminApp.icons)
+      expect((await request.get(icon.src)).ok(), icon.src).toBe(true);
     const worker = await request.get("/helper-sw.js");
     expect(worker.ok()).toBe(true);
     expect(worker.headers()["content-type"]).toContain("javascript");

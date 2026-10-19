@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { HELPER_DAILY, type HelperMeDto } from "@darb/contracts";
+import type { HelperMeDto } from "@darb/contracts";
 import { pickText, type Locale, type Localized } from "@darb/core";
 import { StreetCapture, type QuickAdd, type StreetKind } from "@/admin/street/StreetCapture";
 import { ApplyForm, type TownOption } from "@/helpers/ApplyForm";
@@ -133,7 +133,8 @@ async function captureScreen(locale: Locale, me: HelperMeDto, incoming: QuickAdd
         distinct
         quick={{
           today: mine.body.today,
-          limit: me.isAdmin ? null : HELPER_DAILY.captures,
+          // Their own cap; with none (admins, or lifted by an admin) the bar shows only the count.
+          limit: me.dailyLimit,
           incoming,
           aside: (
             <InstallCard

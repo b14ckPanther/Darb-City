@@ -1,7 +1,10 @@
 import { Controller, Injectable, Req, UseGuards } from "@nestjs/common";
 import {
   contract,
+  helperDailyLimit,
+  storedHelperLimit,
   type AdminHelperDto,
+  type HelperLimit,
   type AdminHelperListQueryDto,
   type AdminHelperPageDto,
 } from "@darb/contracts";
@@ -31,6 +34,8 @@ const toAdminHelper = (u: Row, stats: Stats): AdminHelperDto => ({
   appliedAt: u.helperAppliedAt?.toISOString() ?? null,
   decidedAt: u.helperDecidedAt?.toISOString() ?? null,
   ...stats,
+  // An admin who is also listed here keeps no cap, like everywhere else.
+  dailyLimit: u.isAdmin ? null : helperDailyLimit(u.helperDailyLimit),
 });
 
 /** Which decision moves a helper from where to where. */
@@ -116,6 +121,27 @@ export class HelpersAdmin {
     const stats = await this.stats([id]);
     return { status: 200 as const, body: toAdminHelper(row, stats.get(id) ?? NONE) };
   }
+
+  /**
+   * One helper's cap on additions and sign readings a day: 150 (the default, stored as null), 500,
+   * or none (stored as 0). Audited; it holds from their next addition.
+   */
+  async setLimit(actor: AdminActor, id: string, limit: HelperLimit) {
+    const user = await this.prisma.user.findUnique({ where: { id } });
+    if (!user || user.helperStatus === "none") return notFound("helper");
+    const row = await this.writer.write(actor, "update", "helper", async (tx) => ({
+      row: await tx.user.update({
+        where: { id },
+        data: { helperDailyLimit: storedHelperLimit(limit) },
+        include,
+      }),
+      entityId: id,
+      fields: ["helperDailyLimit"],
+      tags: [],
+    }));
+    const stats = await this.stats([id]);
+    return { status: 200 as const, body: toAdminHelper(row, stats.get(id) ?? NONE) };
+  }
 }
 
 @Controller()
@@ -133,6 +159,7 @@ export class AdminHelpersController {
       approve: async ({ params }) => this.helpers.decide(actor, params.id, "approve"),
       pause: async ({ params }) => this.helpers.decide(actor, params.id, "pause"),
       resume: async ({ params }) => this.helpers.decide(actor, params.id, "resume"),
+      limit: async ({ params, body }) => this.helpers.setLimit(actor, params.id, body.limit),
     });
   }
 }

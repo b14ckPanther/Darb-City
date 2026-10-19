@@ -125,7 +125,7 @@ export class HelperFieldUploadsController {
     return storePhoto(this.media, await webpOf(req));
   }
 
-  /** A helper's own day of readings runs out first (HELPER_DAILY.reads). */
+  /** A helper's own day of readings runs out first (their dailyLimit). */
   @Post("helpers/field/read")
   @HttpCode(200)
   async read(@Req() req: UploadRequest & HelperRequest & Res): Promise<FieldReadResultDto> {

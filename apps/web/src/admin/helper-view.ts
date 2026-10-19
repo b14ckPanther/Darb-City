@@ -17,3 +17,10 @@ export function acceptance(
     low: decided >= MIN_DECIDED && share < LOW_ACCEPTANCE,
   };
 }
+
+/** The caps on offer on a helper's card, as the form sends them ("none" is no cap). */
+export const LIMIT_CHOICES = ["150", "500", "none"] as const;
+export type LimitChoice = (typeof LIMIT_CHOICES)[number];
+/** Which choice a helper's cap shows as (anything from 500 up reads as 500). */
+export const limitChoice = (dailyLimit: number | null): LimitChoice =>
+  dailyLimit === null ? "none" : dailyLimit >= 500 ? "500" : "150";

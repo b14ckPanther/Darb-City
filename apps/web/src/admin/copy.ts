@@ -606,6 +606,24 @@ const en = {
   quickOffline: "No connection right now. Keep adding, it all goes out later.",
   quickShared: "Opened from what you shared. Check it, then send.",
   quickLinkMissed: "The link did not give a place. Put the pin on the shop yourself.",
+  appDescription: "Run Darb from your phone: the queue, the helpers and adding from the street.",
+  appBadgeLabel: "{count} waiting for you",
+  helperLimitLabel: "Additions a day",
+  helperLimitHint: "Sign readings follow the same limit.",
+  helperLimitNone: "No limit",
+  helperLimitSaved: "Daily limit saved.",
+  errHelperLimit: "The limit was not saved.",
+  joinApproveAll: "Approve all ({count})",
+  joinApproveAllConfirm:
+    "Publish all {count} waiting additions from {name}? Each one goes live on Darb now.",
+  joinApproveAllDone: "{count} published.",
+  joinApproveAllPartial: "{approved} published, {failed} were not. Open those one by one.",
+  joinApproveAllMore: "{count} more wait. Press again for the next batch.",
+  errJoinBulk: "Nothing was approved.",
+  burstTitle: "Unusual pace",
+  burstHint: "More than {limit} additions in the last hour.",
+  burstCount: "{count} in the last hour",
+  burstSee: "See them",
 } as const;
 
 export type AdminKey = keyof typeof en;
@@ -1208,6 +1226,23 @@ const he: Messages = {
   quickOffline: "אין חיבור כרגע. ממשיכים להוסיף, הכול יישלח אחר כך.",
   quickShared: "נפתח ממה ששיתפת. בודקים ושולחים.",
   quickLinkMissed: "לא מצאנו מקום מהקישור. שימו את הסיכה על העסק בעצמכם.",
+  appDescription: "מנהלים את דרב מהטלפון: התור, העוזרים והוספה מהרחוב.",
+  appBadgeLabel: "{count} מחכים לך",
+  helperLimitLabel: "תוספות ביום",
+  helperLimitHint: "גם קריאת שלטים לפי אותה מגבלה.",
+  helperLimitNone: "בלי הגבלה",
+  helperLimitSaved: "המגבלה היומית נשמרה.",
+  errHelperLimit: "המגבלה לא נשמרה.",
+  joinApproveAll: "אישור כולן ({count})",
+  joinApproveAllConfirm: "לפרסם את כל {count} התוספות של {name} שממתינות? כל אחת עולה לדרב עכשיו.",
+  joinApproveAllDone: "{count} פורסמו.",
+  joinApproveAllPartial: "{approved} פורסמו, {failed} לא. פותחים אותן אחת אחת.",
+  joinApproveAllMore: "עוד {count} ממתינות. לוחצים שוב לקבוצה הבאה.",
+  errJoinBulk: "שום דבר לא אושר.",
+  burstTitle: "קצב חריג",
+  burstHint: "מעל {limit} תוספות בשעה האחרונה.",
+  burstCount: "{count} בשעה האחרונה",
+  burstSee: "לצפייה",
 };
 
 const ar: Messages = {
@@ -1809,6 +1844,24 @@ const ar: Messages = {
   quickOffline: "ما في إنترنت حاليًا. كمّل ضيف، كل إشي بينبعت بعدين.",
   quickShared: "فتحناها من اللي شاركته. شيّك وابعت.",
   quickLinkMissed: "ما لقينا مكان من الرابط. حط الدبوس عالمصلحة بإيدك.",
+  appDescription: "إدارة درب من تلفونك: الطلبات والمساعدين والإضافة من الشارع.",
+  appBadgeLabel: "{count} بستنّوك",
+  helperLimitLabel: "إضافات باليوم",
+  helperLimitHint: "قراءة اليافطات كمان بنفس الحد.",
+  helperLimitNone: "بلا حد",
+  helperLimitSaved: "انحفظ الحد اليومي.",
+  errHelperLimit: "الحد ما انحفظ.",
+  joinApproveAll: "وافق عالكل ({count})",
+  joinApproveAllConfirm:
+    "تنشر كل الـ{count} إضافات اللي بستنّوا من {name}؟ كل وحدة بتطلع على درب على طول.",
+  joinApproveAllDone: "{count} طلعوا على درب.",
+  joinApproveAllPartial: "{approved} طلعوا، {failed} لأ. افتحهم وحدة وحدة.",
+  joinApproveAllMore: "في كمان {count} بستنّوا. اكبس كمان مرة للدفعة الجاية.",
+  errJoinBulk: "ولا إشي انقبل.",
+  burstTitle: "سرعة مش طبيعية",
+  burstHint: "أكتر من {limit} إضافة بآخر ساعة.",
+  burstCount: "{count} بآخر ساعة",
+  burstSee: "شوفهم",
 };
 
 export const adminCopy: Record<Locale, Messages> = { he, ar, en };

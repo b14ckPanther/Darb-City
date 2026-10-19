@@ -128,7 +128,7 @@ It runs through the proxy like `/admin` (Clerk, nonce CSP, noindex, no-store) on
 Anyone signed in may apply (`POST /helpers/apply`); an admin approves, pauses or resumes them on the
 admin's Helpers screen (audited as entity `helper`). Approved helpers and admins capture through
 `/helpers/field/*`, the admin's `FieldService` mounted again behind `HelperGuard`. A helper (not an
-admin) has 40 additions and 20 sign readings a day (`HELPER_DAILY`), must say how a capture differs
+admin) has 150 additions and 150 sign readings a day by default (`HELPER_DAILY_DEFAULT`), must say how a capture differs
 from a strong duplicate, and only ever sees their own additions. Nothing they add is public until it
 is approved in Join requests. A published card says "Added to Darb by <name>" only while that
 helper's credit toggle is on (read at render time; toggling refreshes their cards).
@@ -140,9 +140,27 @@ The capture opens as quick add (photo, check, send; the map and extras fold away
 two long press shortcuts (`?camera=1`, My additions) and a share target: a shared map link or text
 POSTs to `/helpers/share`, which opens the capture on that pin; a shared photo is kept by
 `public/helper-sw.js` (registered on the helper scope only, it caches nothing else) for the capture
-to read. The install sheet screenshots come from
+to read. An admin can raise one helper to 500 a day, or lift the cap, on the Helpers screen (audited).
+`User.helperDailyLimit` stores it: `NULL` is the default (150), `0` is no cap, any other number is
+that cap (`helperDailyLimit()` and `storedHelperLimit()` in `@darb/contracts`). Join requests
+filtered by one helper offer **Approve all** for their waiting additions: each runs the single
+approval (published, audited per business), up to 200 per press. The Overview flags a helper with
+more than 100 additions in the last hour (`BURST_PER_HOUR`), with a link to them and Pause.
+
+The install sheet screenshots come from
 `WEB_URL=… HELPER_TOKEN=… node apps/web/scripts/shoot-helper-pwa.mjs` against a local server with
 fake sign-in.
+
+## Darb admin as an installed app
+
+`/admin` installs as its own app, "Darb admin", with its own manifest per locale
+(`/api/admin/manifest/<locale>`, `apps/web/src/admin/manifest.ts`): id, start_url and scope on
+`/admin` (`/ar/admin`, `/en/admin`), the Darb mark with a shield badge (the helper app has a gold
+plus), and long press shortcuts to Add from the street, Join requests and Helpers. Its icons are
+drawn by `pnpm --filter @darb/web icons` beside the site's and the helpers'. The installed icon's
+badge (`navigator.setAppBadge`, where supported) shows the join requests and helpers waiting, from
+the counts the shell already loads. Nothing is cached offline: there is no admin service worker and
+every admin page stays `no-store`.
 
 ## Deploy
 

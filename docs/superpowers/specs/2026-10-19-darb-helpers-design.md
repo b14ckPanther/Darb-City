@@ -72,7 +72,7 @@ exactly as admin captures are today. The admin queue tells them apart by the cre
 
 ### Limits for helpers (admins keep today's limits)
 
-- 40 additions per helper per day, 20 sign readings per helper per day (the sign reader costs money).
+- 150 additions per helper per day, 150 sign readings per helper per day by default (the sign reader costs money; raised from 40 and 20 on 2026-10-19). An admin may raise one helper to 500 a day or lift the cap.
 - The duplicate check is mandatory before submit: a helper cannot skip a strong match, only mark
   "this is a different place" with a required note.
 - Uploads keep today's size cap and metadata-free WebP conversion.

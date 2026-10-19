@@ -1,5 +1,11 @@
 import { Injectable } from "@nestjs/common";
-import type { AdminEntity, AdminOverviewDto, AdminSearchDto, BusinessIssue } from "@darb/contracts";
+import {
+  BURST_PER_HOUR,
+  type AdminEntity,
+  type AdminOverviewDto,
+  type AdminSearchDto,
+  type BusinessIssue,
+} from "@darb/contracts";
 import type { Localized } from "@darb/core";
 import type { AdminActor } from "../auth/admin.guard.js";
 import { Prisma } from "../generated/prisma/client.js";
@@ -73,6 +79,31 @@ export class OverviewAdmin {
     return rows[0]?.n ?? 0;
   }
 
+  /**
+   * Helpers (never admins) with more than BURST_PER_HOUR street additions in the hour before `now`,
+   * most first. A burst is a glance, not an alarm: the admin looks and maybe pauses.
+   */
+  async bursts(now: Date): Promise<AdminOverviewDto["bursts"]> {
+    const since = new Date(now.getTime() - 3_600_000);
+    const rows = await this.prisma.$queryRaw<
+      { id: string; name: string | null; status: string; count: number }[]
+    >`
+      SELECT u.id, u."helperName" AS name, u."helperStatus"::text AS status, COUNT(*)::int AS count
+      FROM "JoinRequest" j JOIN "User" u ON u.id = j."createdById"
+      WHERE j.source = 'field' AND j."createdAt" > ${since} AND j."createdAt" <= ${now}
+        AND u."isAdmin" = false AND u."helperStatus" <> 'none'
+      GROUP BY u.id
+      HAVING COUNT(*) > ${BURST_PER_HOUR}
+      ORDER BY count DESC, u.id
+      LIMIT 10`;
+    return rows.map((r) => ({
+      id: r.id,
+      name: r.name ?? "",
+      count: r.count,
+      status: r.status as AdminOverviewDto["bursts"][number]["status"],
+    }));
+  }
+
   private async read(now: Date): Promise<Base> {
     const real = { tier: { not: "example" as const } };
     const since = new Date(now.getTime() - ADDED_DAYS * DAY_MS);
@@ -91,6 +122,7 @@ export class OverviewAdmin {
       atCentre,
       outside,
       audit,
+      bursts,
     ] = await Promise.all([
       this.prisma.business.groupBy({ by: ["status"], where: real, _count: { _all: true } }),
       this.prisma.business.count({
@@ -121,6 +153,7 @@ export class OverviewAdmin {
         take: ACTIVITY,
         include: { actor: { select: { clerkUserId: true } } },
       }),
+      this.bursts(now),
     ]);
     const status = (s: string) => byStatus.find((r) => r.status === s)?._count._all ?? 0;
     const perDay = new Map<string, number>();
@@ -148,6 +181,7 @@ export class OverviewAdmin {
         helpersWaiting,
         newInquiries,
       },
+      bursts,
       attention: {
         "no-phone": noPhone,
         "no-hours": noHours,
