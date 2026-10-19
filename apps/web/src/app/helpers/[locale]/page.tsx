@@ -114,7 +114,7 @@ async function captureScreen(locale: Locale) {
         uploads={status.body.uploads}
         base={helperHref(locale, "/field-api")}
         locate={locateForHelper}
-        matchHref={() => null}
+        matchLinks="none"
         distinct
       />
     </HelperShell>

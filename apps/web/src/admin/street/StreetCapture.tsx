@@ -72,7 +72,7 @@ export function StreetCapture({
   uploads,
   base: baseProp,
   locate: finder,
-  matchHref,
+  matchLinks = "admin",
   distinct: needsDistinct = false,
 }: {
   locale: Locale;
@@ -83,8 +83,8 @@ export function StreetCapture({
   base?: string;
   /** How the place finder asks (the admin's server action by default). */
   locate?: typeof locatePlace;
-  /** Where a likely duplicate links: the admin's business page by default; null for no link. */
-  matchHref?: (m: FieldMatchDto) => string | null;
+  /** A likely duplicate links to the admin's business page, or (helpers) to nothing. */
+  matchLinks?: "admin" | "none";
   /** A helper must say how it differs to save past a strong match (the API insists too). */
   distinct?: boolean;
 }) {
@@ -97,7 +97,8 @@ export function StreetCapture({
   });
   const id = useId();
   const base = baseProp ?? adminHref(locale, "/field-api");
-  const linkOf = matchHref ?? ((m: FieldMatchDto) => adminHref(locale, `/businesses/${m.id}`));
+  const linkOf = (m: FieldMatchDto) =>
+    matchLinks === "admin" ? adminHref(locale, `/businesses/${m.id}`) : null;
   const camera = useRef<HTMLInputElement>(null);
   const dupHeading = useRef<HTMLHeadingElement>(null);
   const store = useRef<QueueStore | null>(null);
