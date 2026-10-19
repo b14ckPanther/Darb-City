@@ -1,7 +1,8 @@
 "use client";
 
-import { useActionState, type ReactNode } from "react";
+import { useActionState, useEffect, type ReactNode } from "react";
 import { idle, type ActionState } from "./action-state";
+import { toast } from "./toast";
 import styles from "./admin.module.css";
 
 /**
@@ -13,22 +14,41 @@ export function ActionButton({
   fields,
   label,
   className,
+  confirm,
+  done,
+  icon,
   children,
 }: {
   action: (state: ActionState, fd: FormData) => Promise<ActionState>;
   fields: Record<string, string>;
   label: string;
+  /** Asked first (destructive actions); the action runs only on yes. */
+  confirm?: string;
+  /** Said in a toast once it worked. */
+  done?: string;
+  icon?: ReactNode;
   className?: string;
   /** Shown after the button, e.g. a hint. */
   children?: ReactNode;
 }) {
   const [state, formAction, pending] = useActionState(action, idle);
+  useEffect(() => {
+    if (state.ok && done) toast(done);
+  }, [state, done]);
   return (
     <form action={formAction} aria-busy={pending} className={styles.actions}>
       {Object.entries(fields).map(([name, value]) => (
         <input key={name} type="hidden" name={name} value={value} />
       ))}
-      <button type="submit" className={className} disabled={pending}>
+      <button
+        type="submit"
+        className={className}
+        disabled={pending}
+        onClick={(e) => {
+          if (confirm && !window.confirm(confirm)) e.preventDefault();
+        }}
+      >
+        {icon}
         {label}
       </button>
       {children}

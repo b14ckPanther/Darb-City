@@ -73,6 +73,7 @@ export async function saveBusiness(_prev: ActionState, fd: FormData): Promise<Ac
     res = await api.businesses.update({ params: { id }, body: parsed.data });
   } else {
     const place = await findPlace(api, text(fd, "place"));
+    if (!place) return fail(locale, [`place: ${at(locale, "errChoosePlace")}`]);
     const parsed = AdminBusinessCreateSchema.safeParse({
       ...data,
       kindIds,

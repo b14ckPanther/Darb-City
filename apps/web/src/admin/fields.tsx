@@ -86,7 +86,10 @@ export function SelectField(p: {
   );
 }
 
-/** One input per language, each in its own direction, so Arabic and Hebrew type naturally. */
+/**
+ * One input per alphabet, each in its own direction, so Arabic and Hebrew type naturally. The
+ * label shows the alphabet; screen readers hear the field's name with it ("Name · A B C").
+ */
 export function LocalizedFields({
   locale,
   label,
@@ -104,17 +107,19 @@ export function LocalizedFields({
     ["en", "langEn", "ltr"],
   ] as const;
   return (
-    <fieldset className={styles.row} style={{ border: 0, padding: 0, margin: 0 }}>
-      <legend className={styles.hint}>{label}</legend>
-      {langs.map(([l, key, dir]) => (
-        <TextField
-          key={l}
-          label={`${label} · ${at(locale, key)}`}
-          name={`${name}.${l}`}
-          defaultValue={value[l]}
-          dir={dir}
-        />
-      ))}
+    <fieldset className={styles.fieldset}>
+      <legend>{label}</legend>
+      <div className={styles.localized}>
+        {langs.map(([l, key, dir]) => (
+          <label key={l} className={styles.field}>
+            <span className={styles.alphabet}>
+              <span className={styles.srOnly}>{label} · </span>
+              {at(locale, key)}
+            </span>
+            <input name={`${name}.${l}`} defaultValue={value[l] ?? ""} dir={dir} lang={l} />
+          </label>
+        ))}
+      </div>
     </fieldset>
   );
 }

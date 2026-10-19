@@ -94,9 +94,9 @@ test.describe("admin", () => {
     await page.goto("/en/admin/businesses/new");
     await page.getByLabel("Web address (slug)").fill(slug);
     await page.getByLabel("Place", { exact: true }).fill(PLACE);
-    await page.getByLabel("Name · English").fill("E2E Upholstery");
-    await page.getByLabel("Tagline · English").fill("Sofas made new");
-    await page.getByLabel("Street address · English").fill("Main street");
+    await page.getByLabel("Name · A B C").fill("E2E Upholstery");
+    await page.getByLabel("Tagline · A B C").fill("Sofas made new");
+    await page.getByLabel("Street address · A B C").fill("Main street");
     const kindId = await page
       .locator('select[name="primaryKindId"] option', { hasText: "(upholstery)" })
       .getAttribute("value");
@@ -117,7 +117,7 @@ test.describe("admin", () => {
       .poll(async () => (await request.get(PUBLIC(slug))).status(), { timeout: 15_000 })
       .toBe(200);
 
-    await page.getByLabel("Tagline · English").fill("Sofas and chairs made new");
+    await page.getByLabel("Tagline · A B C").fill("Sofas and chairs made new");
     // Drag the pin a little; the saved point is where it was dropped.
     await pickerMap(page);
     const before = Number(await pinField(page, "lat").inputValue());
@@ -160,9 +160,9 @@ test.describe("admin", () => {
       .getByLabel("Web address (slug)")
       .fill(`e2e-bad-${test.info().project.name}-${Date.now().toString(36)}`);
     await page.getByLabel("Place", { exact: true }).fill(PLACE);
-    await page.getByLabel("Name · English").fill("Bad");
-    await page.getByLabel("Tagline · English").fill("x");
-    await page.getByLabel("Street address · English").fill("x");
+    await page.getByLabel("Name · A B C").fill("Bad");
+    await page.getByLabel("Tagline · A B C").fill("x");
+    await page.getByLabel("Street address · A B C").fill("x");
     // The numbers, one disclosure under the map, still work for a keyboard or an exact point.
     await pickerMap(page);
     await page.getByText("Edit numbers").click();

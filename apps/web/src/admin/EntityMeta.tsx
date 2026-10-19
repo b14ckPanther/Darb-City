@@ -3,8 +3,8 @@ import type { Locale } from "@darb/core";
 import { adminApi, okOr } from "./api";
 import { ActionButton } from "./ActionButton";
 import { releaseEntity } from "./actions";
-import { OwnerBadge } from "./Badges";
-import { at } from "./copy";
+import { AdminIcon } from "./AdminIcon";
+import { at, type AdminKey } from "./copy";
 import styles from "./admin.module.css";
 
 /**
@@ -34,36 +34,90 @@ export async function EntityMeta({
     timeStyle: "short",
     timeZone: "Asia/Jerusalem",
   });
+  const t = (key: AdminKey) => at(locale, key);
   return (
-    <section className={styles.card} aria-labelledby="history">
-      <p>
-        <OwnerBadge locale={locale} editedAt={editedAt} />
-      </p>
+    <div className={styles.meta} data-entity-meta="">
+      <div className={styles.ownerLine}>
+        <AdminIcon name={editedAt ? "edit" : "sparkle"} size={18} />
+        <div>
+          <strong>{t(editedAt ? "edited" : "seedOwned")}</strong>
+          <p className={styles.hint}>{t(editedAt ? "editedHint" : "seedOwnedHint")}</p>
+        </div>
+      </div>
       {editedAt && seedSource ? (
         <ActionButton
           action={releaseEntity}
           fields={{ locale, entity, id }}
-          label={at(locale, "release")}
-          className={styles.ghost}
+          label={t("release")}
+          className={`${styles.ghost} ${styles.sm}`}
+          confirm={t("releaseConfirm")}
+          done={t("releaseDone")}
         >
-          <small className={styles.hint}>{at(locale, "releaseHint")}</small>
+          <small className={styles.hint}>{t("releaseHint")}</small>
         </ActionButton>
       ) : null}
-      <h2 id="history" className={styles.h2}>
-        {at(locale, "history")}
-      </h2>
+      <h3 id={`history-${id}`} className={styles.h3}>
+        {t("history")}
+      </h3>
       {audit.length === 0 ? (
-        <p>{at(locale, "historyEmpty")}</p>
+        <p className={styles.muted}>{t("historyEmpty")}</p>
       ) : (
-        <ul className={styles.plain}>
+        <ol className={styles.timeline} aria-labelledby={`history-${id}`}>
           {audit.map((a) => (
             <li key={a.id}>
-              {when.format(new Date(a.at))} · <bdi dir="ltr">{a.actor}</bdi> · {a.action}
-              {a.fields.length ? ` · ${a.fields.join(", ")}` : ""}
+              <span className={styles.timelineDot} data-action={a.action} aria-hidden="true" />
+              <div>
+                <span>
+                  {t(ACTION[a.action] ?? "actUpdate")}
+                  {a.fields.length && a.action !== "status" ? (
+                    <span className={styles.muted}>
+                      {" "}
+                      · {a.fields.map((f) => fieldName(locale, f)).join(", ")}
+                    </span>
+                  ) : null}
+                </span>
+                <span className={styles.secondary}>
+                  <time dateTime={a.at}>{when.format(new Date(a.at))}</time> ·{" "}
+                  <bdi dir="ltr">{a.actor}</bdi>
+                </span>
+              </div>
             </li>
           ))}
-        </ul>
+        </ol>
       )}
-    </section>
+    </div>
   );
 }
+
+const ACTION: Record<string, AdminKey> = {
+  create: "histCreate",
+  update: "histUpdate",
+  status: "histStatus",
+  release: "histRelease",
+  delete: "histDelete",
+};
+/** A changed field's name in words when the admin copy has one; the code otherwise. */
+function fieldName(locale: Locale, field: string): string {
+  const key = FIELD[field];
+  return key ? at(locale, key) : field;
+}
+const FIELD: Record<string, AdminKey> = {
+  name: "fieldName",
+  tagline: "fieldTagline",
+  address: "fieldAddress",
+  phone: "fieldPhone",
+  whatsapp: "fieldWhatsapp",
+  website: "fieldWebsite",
+  hours: "secHours",
+  links: "fieldLinks",
+  lat: "fieldLocation",
+  lng: "fieldLocation",
+  tier: "fieldTier",
+  primaryKindId: "fieldPrimaryKind",
+  kindIds: "fieldKinds",
+  photos: "fieldPhotos",
+  logo: "fieldLogo",
+  cardStyle: "fieldCardStyle",
+  synonyms: "fieldWords",
+  status: "status",
+};
