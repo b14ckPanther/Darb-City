@@ -1,0 +1,609 @@
+/*
+ * Darb's sign-in and sign-up (admin and helpers): one centred column, phone first, under a warm
+ * light from above, like an open door at dusk. Theme roles only (day and night come from tokens).
+ */
+.stage {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  justify-items: center;
+  min-block-size: 100dvh;
+  padding-block: max(28px, env(safe-area-inset-top)) max(28px, env(safe-area-inset-bottom));
+  padding-inline: max(16px, env(safe-area-inset-left)) max(16px, env(safe-area-inset-right));
+  box-sizing: border-box;
+  overflow-x: clip;
+}
+.glow {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: -1;
+  block-size: min(620px, 90dvh);
+  pointer-events: none;
+  background:
+    radial-gradient(
+      60% 55% at 50% 0%,
+      color-mix(in srgb, var(--accent) 26%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      90% 70% at 50% -10%,
+      color-mix(in srgb, var(--accent-bright) 12%, transparent),
+      transparent 75%
+    );
+}
+.column {
+  display: grid;
+  gap: 20px;
+  align-content: start;
+  inline-size: 100%;
+  max-inline-size: 440px;
+}
+
+/* Hero: mark, app name, headline, lead. Centred, so it lines up with the card below. */
+.hero {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 6px;
+}
+.markWrap {
+  position: relative;
+  display: grid;
+  place-items: center;
+  inline-size: 112px;
+  block-size: 112px;
+  margin-block-end: 6px;
+}
+.halo {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--accent-bright) 55%, transparent),
+    color-mix(in srgb, var(--accent) 18%, transparent) 60%,
+    transparent
+  );
+  animation: breathe 6s var(--ease-in-out) infinite;
+  transition:
+    transform 700ms var(--ease-out),
+    opacity 700ms var(--ease-out);
+}
+.mark {
+  position: relative;
+  inline-size: 66px;
+  block-size: auto;
+  filter: drop-shadow(0 10px 18px rgb(var(--shadow) / calc(var(--shadow-k) * 0.12)));
+  transition: transform 700ms var(--ease-out);
+}
+.eyebrow {
+  margin: 0;
+  color: var(--accent-text);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.title {
+  margin: 0;
+  font-size: clamp(1.625rem, 6.4vw, 2.125rem);
+  line-height: 1.2;
+  font-weight: 700;
+  text-wrap: balance;
+}
+.lead {
+  margin: 2px 0 0;
+  max-inline-size: 34ch;
+  color: var(--text-soft);
+  font-size: 1rem;
+  text-wrap: pretty;
+}
+
+/* How it works: three stops along a dashed gold road. */
+.steps {
+  position: relative;
+  justify-self: center;
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.steps::before {
+  content: "";
+  position: absolute;
+  inset-block: 16px;
+  inset-inline-start: 15px;
+  border-inline-start: 2px dashed color-mix(in srgb, var(--accent) 55%, transparent);
+}
+.steps li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.stop {
+  display: grid;
+  place-items: center;
+  flex: none;
+  inline-size: 32px;
+  block-size: 32px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  color: var(--accent-text);
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.steps li:last-child .stop {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.stepText {
+  display: grid;
+  line-height: 1.35;
+}
+.stepText strong {
+  font-size: 0.9375rem;
+}
+.stepText span {
+  color: var(--text-muted);
+  font-size: 0.8125rem;
+}
+
+/* The card that holds the one question of the moment. */
+.card {
+  padding: 22px 20px 20px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--surface-1);
+  box-shadow: var(--shadow-panel);
+}
+.flow {
+  display: grid;
+  gap: 4px;
+}
+.road {
+  display: flex;
+  gap: 6px;
+  margin-block-end: 18px;
+}
+.road i {
+  flex: 1;
+  block-size: 4px;
+  border-radius: 999px;
+  background: var(--wash-strong);
+  overflow: hidden;
+}
+.road i::after {
+  content: "";
+  display: block;
+  block-size: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent), var(--accent-bright));
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 500ms var(--ease-out);
+}
+:global(html[dir="rtl"]) .road i::after {
+  transform-origin: right center;
+}
+.road i[data-lit]::after {
+  transform: scaleX(1);
+}
+.step {
+  display: grid;
+  gap: 10px;
+  animation: rise 400ms var(--ease-out) both;
+}
+.question {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+.hint {
+  margin: -4px 0 4px;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+.email {
+  font-weight: 700;
+  color: var(--accent-text);
+  overflow-wrap: anywhere;
+}
+.who {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 12px;
+  margin: 0 0 4px;
+  padding-block: 4px;
+  padding-inline: 14px 6px;
+  border-radius: 14px;
+  background: var(--wash);
+  font-size: 0.9375rem;
+}
+.input {
+  inline-size: 100%;
+  min-block-size: 56px;
+  padding: 0 16px;
+  box-sizing: border-box;
+  border: 1.5px solid var(--field-line);
+  border-radius: 16px;
+  background: var(--field);
+  color: var(--text);
+  font: inherit;
+  font-size: 1.0625rem;
+  text-align: start;
+}
+.input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+.input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--tint-strong);
+}
+.input[aria-invalid="true"] {
+  border-color: var(--danger);
+}
+.password {
+  position: relative;
+}
+/* The wrapper is left to right like the field, so the eye sits on its right edge on every page. */
+.reveal {
+  position: absolute;
+  inset-block: 6px;
+  inset-inline-end: 6px;
+  display: grid;
+  place-items: center;
+  inline-size: 44px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+.reveal:hover {
+  background: var(--wash);
+  color: var(--text);
+}
+.password .input {
+  padding-inline: 16px 56px;
+}
+
+/* The main button: gold, like the helper app's, with an arrow that points the way of reading. */
+.submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  inline-size: 100%;
+  min-block-size: 54px;
+  margin-block-start: 6px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--accent-bright), var(--accent));
+  color: var(--on-accent);
+  font: inherit;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.35) inset,
+    0 8px 20px color-mix(in srgb, var(--accent) 30%, transparent);
+  transition: transform 400ms var(--ease-out);
+}
+.submit:hover {
+  filter: brightness(1.04);
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.35) inset,
+    0 10px 26px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.submit:active {
+  transform: translateY(1px) scale(0.99);
+}
+.submit:disabled {
+  cursor: progress;
+  filter: saturate(0.7);
+  opacity: 0.8;
+}
+.submit:focus-visible,
+.textButton:focus-visible,
+.reveal:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+.arrow {
+  transition: transform 400ms var(--ease-out);
+}
+.submit:hover .arrow {
+  transform: translateX(3px);
+}
+:global(html[dir="rtl"]) .arrow {
+  transform: scaleX(-1);
+}
+:global(html[dir="rtl"]) .submit:hover .arrow {
+  transform: scaleX(-1) translateX(3px);
+}
+
+.textButton {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 40px;
+  padding: 0 4px;
+  border: 0;
+  background: none;
+  color: var(--link);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+.textButton:disabled {
+  color: var(--text-muted);
+  text-decoration: none;
+  cursor: default;
+}
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 18px;
+  margin-block-start: 4px;
+}
+.error {
+  margin: 0;
+  color: var(--danger);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+.error:empty {
+  display: none;
+}
+.errorLink {
+  color: var(--link);
+  white-space: nowrap;
+}
+.notice {
+  margin: 0;
+  text-align: center;
+  color: var(--text-soft);
+  font-size: 0.875rem;
+}
+.notice:empty {
+  display: none;
+}
+.other {
+  margin: 18px 0 0;
+  padding-block-start: 16px;
+  border-block-start: 1px solid var(--line-soft);
+  text-align: center;
+  color: var(--text-soft);
+}
+.other a {
+  color: var(--link);
+  font-weight: 700;
+  text-underline-offset: 4px;
+}
+.captcha:empty {
+  display: none;
+}
+.captcha {
+  margin-block-start: 12px;
+}
+
+/* The code: six big cells, always left to right. One real input lies over them. */
+.code {
+  position: relative;
+  margin-block: 4px;
+}
+.codeInput {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  inline-size: 100%;
+  block-size: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  font-size: 16px;
+  color: transparent;
+  caret-color: transparent;
+  background: transparent;
+  cursor: text;
+}
+.cells {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) 6px repeat(3, 1fr);
+  gap: 8px;
+  direction: ltr;
+}
+.cell {
+  position: relative;
+  display: grid;
+  place-items: center;
+  block-size: clamp(52px, 15vw, 64px);
+  border: 1.5px solid var(--field-line);
+  border-radius: 14px;
+  background: var(--field);
+  color: var(--text);
+  font-size: clamp(1.5rem, 7vw, 1.875rem);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  transition: transform 400ms var(--ease-out);
+}
+.cell:nth-child(4) {
+  grid-column: 5;
+}
+.cell[data-filled] {
+  border-color: var(--line-strong);
+  background: var(--tint);
+  animation: pop 400ms var(--ease-out);
+}
+.cell[data-active] {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--tint-strong);
+}
+.cell[data-active]:not([data-filled])::after {
+  content: "";
+  inline-size: 2px;
+  block-size: 42%;
+  border-radius: 2px;
+  background: var(--accent);
+  animation: blink 1s steps(2, start) infinite;
+}
+.code[data-invalid] .cell {
+  border-color: var(--danger);
+}
+.shake[data-shake="a"] {
+  animation: shakeA 420ms var(--ease-out);
+}
+.shake[data-shake="b"] {
+  animation: shakeB 420ms var(--ease-out);
+}
+
+/* The gold moment: you are in. */
+.done {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  padding-block: 18px 8px;
+  text-align: center;
+  animation: rise 400ms var(--ease-out) both;
+}
+.done p {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.doneMark {
+  display: grid;
+  place-items: center;
+  inline-size: 64px;
+  block-size: 64px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, var(--accent-bright), var(--accent));
+  color: var(--on-accent);
+  box-shadow: 0 0 0 10px var(--tint);
+  animation: ring 600ms var(--ease-out) both;
+}
+.stage:has([data-auth-done]) .halo {
+  transform: scale(1.55);
+  opacity: 1;
+  animation: none;
+}
+.stage:has([data-auth-done]) .mark {
+  transform: translateY(-4px) scale(1.06);
+}
+
+/* The local e2e form and the "not set up" note, in the same card. */
+.fakeForm {
+  display: grid;
+  gap: 12px;
+}
+.label {
+  display: grid;
+  gap: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-soft);
+}
+.note {
+  margin: 0;
+  text-align: center;
+  color: var(--text-soft);
+}
+
+@media (min-width: 720px) {
+  .stage {
+    align-items: center;
+    padding-block: 48px;
+  }
+  .column {
+    max-inline-size: 460px;
+    gap: 24px;
+  }
+  .card {
+    padding: 28px 28px 24px;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+@keyframes pop {
+  50% {
+    transform: scale(1.06);
+  }
+}
+@keyframes blink {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes shakeA {
+  20%,
+  60% {
+    transform: translateX(-6px);
+  }
+  40%,
+  80% {
+    transform: translateX(6px);
+  }
+}
+@keyframes shakeB {
+  20%,
+  60% {
+    transform: translateX(-6px);
+  }
+  40%,
+  80% {
+    transform: translateX(6px);
+  }
+}
+@keyframes breathe {
+  50% {
+    transform: scale(1.08);
+    opacity: 0.85;
+  }
+}
+@keyframes ring {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .halo,
+  .step,
+  .done,
+  .doneMark,
+  .cell,
+  .cell[data-filled],
+  .shake[data-shake],
+  .cell[data-active]:not([data-filled])::after {
+    animation: none;
+  }
+  .halo,
+  .mark,
+  .cell,
+  .road i::after,
+  .submit,
+  .arrow {
+    transition: none;
+  }
+}

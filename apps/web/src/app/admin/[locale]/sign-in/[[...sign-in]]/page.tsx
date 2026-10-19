@@ -1,50 +1,53 @@
-import { SignIn } from "@clerk/nextjs";
 import { notFound } from "next/navigation";
 import { at } from "@/admin/copy";
 import { adminAuthMode } from "@/admin/mode";
 import { adminHref } from "@/admin/routes";
 import { fakeSignIn } from "@/admin/session-actions";
+import { AuthStage, authStyles } from "@/components/auth/AuthStage";
+import { ClerkSignIn } from "@/components/auth/ClerkAuth";
 import { isLocale } from "@/lib/locale";
-import styles from "@/admin/admin.module.css";
 
-/** Emails, passwords and codes read left to right, also in the Hebrew and Arabic sign-in. */
-const LTR_FIELDS = {
-  elements: {
-    formFieldInput: { direction: "ltr" },
-    // The code row itself runs left to right: in an RTL page the first digit lands on the right
-    // and typing moves leftward unless the boxes' container is LTR too.
-    otpCodeField: { direction: "ltr" },
-    otpCodeFieldInputs: { direction: "ltr" },
-    otpCodeFieldInputContainer: { direction: "ltr" },
-    otpCodeFieldInput: { direction: "ltr" },
-    identityPreviewText: { direction: "ltr" },
-  },
-} as const;
-
-export default async function SignInPage({ params }: { params: Promise<{ locale: string }> }) {
+/** Darb's own sign-in for the admin: sign-in only (accounts are made by the founder). */
+export default async function SignInPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ locale: string }>;
+  searchParams: Promise<{ email?: string | string[] }>;
+}) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
+  const { email } = await searchParams;
   const mode = adminAuthMode();
   return (
-    <main className={styles.center}>
-      <h1 className={styles.brand}>{at(locale, "signInTitle")}</h1>
+    <AuthStage
+      eyebrow={at(locale, "title")}
+      title={at(locale, "signInTitle")}
+      lead={at(locale, "signInLead")}
+    >
       {mode === "clerk" ? (
-        <SignIn
-          routing="path"
-          path={adminHref(locale, "/sign-in")}
-          forceRedirectUrl={adminHref(locale)}
-          appearance={LTR_FIELDS}
+        <ClerkSignIn
+          locale={locale}
+          target={adminHref(locale)}
+          initialEmail={typeof email === "string" ? email : ""}
         />
       ) : mode === "fake" ? (
-        <form action={fakeSignIn} className={styles.card}>
+        <form action={fakeSignIn} className={authStyles.fakeForm}>
           <input type="hidden" name="locale" value={locale} />
-          <label className={styles.field}>
+          <label className={authStyles.label}>
             <span>{at(locale, "fakeUser")}</span>
-            <input name="user" defaultValue="user_e2e" required />
+            <input
+              className={authStyles.input}
+              name="user"
+              defaultValue="user_e2e"
+              required
+              dir="ltr"
+            />
           </label>
-          <label className={styles.field}>
+          <label className={authStyles.label}>
             <span>Email</span>
             <input
+              className={authStyles.input}
               name="email"
               type="email"
               defaultValue="e2e-admin@darb.test"
@@ -52,13 +55,13 @@ export default async function SignInPage({ params }: { params: Promise<{ locale:
               dir="ltr"
             />
           </label>
-          <button className={styles.primary} type="submit">
+          <button className={authStyles.submit} type="submit">
             {at(locale, "signIn")}
           </button>
         </form>
       ) : (
-        <p className={styles.notice}>{at(locale, "notConfigured")}</p>
+        <p className={authStyles.note}>{at(locale, "notConfigured")}</p>
       )}
-    </main>
+    </AuthStage>
   );
 }
