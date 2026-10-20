@@ -26,14 +26,14 @@ const reduced = css.slice(css.indexOf("@media (prefers-reduced-motion: reduce)")
 const reducedBlock = reduced.slice(0, reduced.indexOf("@keyframes"));
 const motion = css.replace(reducedBlock, "");
 
-it("finishes every run within 900 ms", () => {
+it("finishes every run within SPLASH_MS", () => {
   const all = runs(motion);
   expect(all.length).toBeGreaterThan(10);
   for (const [name, duration, delay] of all)
     expect(delay + duration, `${name} ends at ${delay + duration} ms`).toBeLessThanOrEqual(
       SPLASH_MS,
     );
-  // The overlay itself is the last thing to go, and goes by 900 ms.
+  // The overlay itself is the last thing to go, and goes by SPLASH_MS.
   expect(Math.max(...all.map(([, d, l]) => d + l))).toBe(SPLASH_MS);
 });
 

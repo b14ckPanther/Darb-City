@@ -5,16 +5,16 @@
  * writes into <head> only on an installed app's cold start: no browser tab ever loads it.
  *
  * The idea: Darb is a road. A gold road comes to the mark's doorway, the doorway lights up, and you
- * go through it into the app. 0 ms is the iOS launch image exactly; everything ends by 900 ms.
+ * go through it into the app. 0 ms is the iOS launch image exactly; everything ends by 2000 ms.
  *
  *   0    hold: the launch image, pixel for pixel
- *   90   the doorway's gold catches light; a glint crosses the mark; the name rises
- *   100  a gold road draws in from the edge of the screen to the door; a spark runs up it
- *   300  each app's own beat where the road arrives (helpers: the gold plus and its pulse; admin:
+ *   200  the doorway's gold catches light; a glint crosses the mark; the name rises
+ *   220  a gold road draws in from the edge of the screen to the door; a spark runs up it
+ *   660  each app's own beat where the road arrives (helpers: the gold plus and its pulse; admin:
  *        the shield settles and its check draws; Darb: the doorway at its brightest)
- *   480  through the door: the mark grows around the lit doorway until its light is the screen
- *   740  the light gives way to the page
- *   900  gone
+ *   1060 through the door: the mark grows around the lit doorway until its light is the screen
+ *   1640 the light gives way to the page
+ *   2000 gone
  */
 .dsp {
   --mark: url("__MARK__");
@@ -53,7 +53,7 @@
       transparent
     )
     var(--ground);
-  animation: dsp-out 160ms cubic-bezier(0.4, 0, 1, 1) 740ms both;
+  animation: dsp-out 360ms cubic-bezier(0.4, 0, 1, 1) 1640ms both;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -84,7 +84,7 @@
   width: var(--dsp-mw);
   height: var(--dsp-mh);
   transform-origin: var(--dsp-dx) var(--dsp-dy);
-  animation: dsp-through 420ms var(--ease-through) 480ms both;
+  animation: dsp-through 920ms var(--ease-through) 1060ms both;
 }
 
 .dsp-mark,
@@ -109,7 +109,7 @@
   border-radius: 50%;
   background: radial-gradient(closest-side, var(--bloom), var(--bloom-edge) 45%, transparent);
   opacity: 0;
-  animation: dsp-bloom 520ms var(--ease-light) 90ms both;
+  animation: dsp-bloom 1140ms var(--ease-light) 200ms both;
 }
 
 /* The doorway lights up: warm light drawn only where the mark is (masked by the mark itself). */
@@ -125,7 +125,7 @@
   mix-blend-mode: screen;
   mix-blend-mode: plus-lighter;
   opacity: 0;
-  animation: dsp-light 470ms var(--ease-light) 90ms both;
+  animation: dsp-light 1030ms var(--ease-light) 200ms both;
   will-change: opacity;
 }
 
@@ -150,7 +150,7 @@
   );
   mix-blend-mode: soft-light;
   transform: translateX(-70%);
-  animation: dsp-glint 520ms var(--ease-draw) 120ms both;
+  animation: dsp-glint 1140ms var(--ease-draw) 260ms both;
 }
 
 /* The road: one gold line out of the doorway, drawn toward you, with a spark running down it. */
@@ -162,7 +162,7 @@
   overflow: visible;
   fill: none;
   stroke-linecap: round;
-  animation: dsp-fade 140ms linear 520ms forwards;
+  animation: dsp-fade 310ms linear 1140ms forwards;
 }
 
 .dsp-road path {
@@ -170,7 +170,7 @@
   stroke-width: 3;
   stroke-dasharray: 1 1.2;
   stroke-dashoffset: 1.05;
-  animation: dsp-draw 360ms var(--ease-draw) 100ms both;
+  animation: dsp-draw 790ms var(--ease-draw) 220ms both;
 }
 
 .dsp-road path + path {
@@ -179,7 +179,7 @@
   stroke-dasharray: 0.07 1.2;
   stroke-dashoffset: 0.08;
   opacity: 0;
-  animation: dsp-spark 420ms cubic-bezier(0.45, 0, 0.2, 1) 200ms both;
+  animation: dsp-spark 920ms cubic-bezier(0.45, 0, 0.2, 1) 440ms both;
 }
 
 .dsp-name {
@@ -195,8 +195,8 @@
   unicode-bidi: plaintext;
   opacity: 0;
   animation:
-    dsp-name 430ms var(--ease-light) 110ms both,
-    dsp-fade 100ms linear 470ms forwards;
+    dsp-name 950ms var(--ease-light) 240ms both,
+    dsp-fade 220ms linear 1030ms forwards;
 }
 
 /* The last beat, on the mark's lower corner where the app's icon wears its badge. */
@@ -217,8 +217,8 @@
 .dsp[data-app="helpers"] .dsp-badge {
   transform: translate(-50%, -50%) scale(0);
   animation:
-    dsp-pop 280ms cubic-bezier(0.34, 1.56, 0.64, 1) 300ms both,
-    dsp-fade 90ms linear 500ms forwards;
+    dsp-pop 620ms cubic-bezier(0.34, 1.56, 0.64, 1) 660ms both,
+    dsp-fade 200ms linear 1100ms forwards;
 }
 
 .dsp[data-app="helpers"] .dsp-badge path {
@@ -237,14 +237,14 @@
   border: 2px solid var(--badge);
   border-radius: 50%;
   opacity: 0;
-  animation: dsp-ring 380ms var(--ease-light) 380ms forwards;
+  animation: dsp-ring 840ms var(--ease-light) 840ms forwards;
 }
 
 .dsp[data-app="admin"] .dsp-badge {
   opacity: 0;
   animation:
-    dsp-settle 300ms cubic-bezier(0.22, 1.2, 0.36, 1) 280ms both,
-    dsp-fade 90ms linear 590ms forwards;
+    dsp-settle 660ms cubic-bezier(0.22, 1.2, 0.36, 1) 620ms both,
+    dsp-fade 200ms linear 1300ms forwards;
 }
 
 .dsp[data-app="admin"] .dsp-badge .dsp-shield {
@@ -262,7 +262,7 @@
   stroke-linejoin: round;
   stroke-dasharray: 1 1.2;
   stroke-dashoffset: 1.05;
-  animation: dsp-draw 160ms var(--ease-draw) 430ms both;
+  animation: dsp-draw 350ms var(--ease-draw) 950ms both;
 }
 
 /* A tap (or a key) skips: everything left fades at once. */

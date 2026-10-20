@@ -19,8 +19,8 @@ export type SplashApp = "darb" | "helpers" | "admin";
 export const SPLASH_KEY = "darb-splash";
 
 /** The reveal's longest run, then the safety net that removes it whatever happened. */
-export const SPLASH_MS = 900;
-export const SPLASH_SAFETY_MS = 1200;
+export const SPLASH_MS = 2000;
+export const SPLASH_SAFETY_MS = 2400;
 
 export type SplashConfig = {
   key: string;
