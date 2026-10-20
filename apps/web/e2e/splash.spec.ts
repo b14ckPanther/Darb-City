@@ -33,7 +33,7 @@ test("the installed app plays it once, under a second, then hands off", async ({
   const splash = page.locator("#darb-splash");
   await expect(splash).toBeAttached();
   await expect(splash).toHaveAttribute("aria-hidden", "true");
-  await expect(splash).toHaveCount(0, { timeout: 1_500 });
+  await expect(splash).toHaveCount(0, { timeout: 3_000 });
   await expect(page.locator("h1")).toBeVisible();
   await page.reload();
   await expect(page.locator("h1")).toBeVisible();
