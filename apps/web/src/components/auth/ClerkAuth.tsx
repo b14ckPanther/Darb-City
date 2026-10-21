@@ -1,7 +1,7 @@
 "use client";
 
 import { useAuth, useSignIn, useSignUp } from "@clerk/nextjs";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import type { Locale } from "@darb/core";
 import { authMessages } from "./auth-copy";
 import { AuthFlow } from "./AuthFlow";
@@ -37,8 +37,34 @@ const finishOnce = (backend: AuthBackend): AuthBackend => ({
   },
 });
 
-function useWelcome() {
+/** How long after one forward to the app another counts as a loop (the app sent them back). */
+const FORWARD_GAP_MS = 20_000;
+const FORWARDED = "darb-auth-forwarded";
+
+/**
+ * Already signed in when this page opens: the app's server can miss a session made a moment ago
+ * (Safari, private browsing) and send the person back here, where the form asked for the email
+ * again. Clerk knows the session, so go on to the app; only once per FORWARD_GAP_MS, so an app
+ * that keeps refusing the session leaves the form here instead of bouncing between the two.
+ */
+function forwardOnce(target: string): boolean {
+  try {
+    const last = Number(sessionStorage.getItem(FORWARDED) ?? 0);
+    if (Date.now() - last < FORWARD_GAP_MS) return false;
+    sessionStorage.setItem(FORWARDED, String(Date.now()));
+  } catch {
+    // Storage blocked: forward anyway; at worst the person signs in by hand.
+  }
+  finishing = true;
+  go(target);
+  return true;
+}
+
+function useWelcome(target: string) {
   const { isSignedIn } = useAuth();
+  useEffect(() => {
+    if (isSignedIn && !finishing) forwardOnce(target);
+  }, [isSignedIn, target]);
   return Boolean(isSignedIn) && finishing;
 }
 
@@ -47,7 +73,7 @@ export function ClerkSignIn({ locale, target, other, initialEmail }: Props) {
   const { signIn } = useSignIn();
   // The signal's signIn is a stable proxy over Clerk's live attempt.
   const backend = useMemo(() => finishOnce(signInBackend(signIn, target, go)), [signIn, target]);
-  const welcome = useWelcome();
+  const welcome = useWelcome(target);
   return (
     <AuthFlow
       kind="sign-in"
@@ -65,7 +91,7 @@ export function ClerkSignIn({ locale, target, other, initialEmail }: Props) {
 export function ClerkSignUp({ locale, target, other, initialEmail }: Props) {
   const { signUp } = useSignUp();
   const backend = useMemo(() => finishOnce(signUpBackend(signUp, target, go)), [signUp, target]);
-  const welcome = useWelcome();
+  const welcome = useWelcome(target);
   return (
     <AuthFlow
       kind="sign-up"
