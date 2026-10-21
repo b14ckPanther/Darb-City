@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { hasClerkSession } from "@/admin/signed-in";
 import { ClerkSignIn } from "@/components/auth/ClerkAuth";
 import { HelperAuth } from "@/helpers/HelperAuth";
 import { helperHref } from "@/helpers/routes";
@@ -22,6 +23,7 @@ export default async function HelperSignInPage({
         target={helperHref(locale)}
         other={helperHref(locale, "/sign-up")}
         initialEmail={typeof email === "string" ? email : ""}
+        signedIn={await hasClerkSession()}
       />
     </HelperAuth>
   );

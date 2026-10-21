@@ -1,7 +1,7 @@
 "use client";
 
 import { useAuth, useSignIn, useSignUp } from "@clerk/nextjs";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { Locale } from "@darb/core";
 import { authMessages } from "./auth-copy";
 import { AuthFlow } from "./AuthFlow";
@@ -14,6 +14,8 @@ type Props = {
   /** The other flow's page; none means no sign-up from here. */
   other?: string | null;
   initialEmail?: string;
+  /** The server saw a Clerk session on this request: show the welcome from the first paint. */
+  signedIn?: boolean;
 };
 
 /**
@@ -47,33 +49,46 @@ const FORWARDED = "darb-auth-forwarded";
  * again. Clerk knows the session, so go on to the app; only once per FORWARD_GAP_MS, so an app
  * that keeps refusing the session leaves the form here instead of bouncing between the two.
  */
-function forwardOnce(target: string): boolean {
+/** Whether a forward now would be the second within FORWARD_GAP_MS (the app sent them back). */
+function forwardedLately(): boolean {
   try {
-    const last = Number(sessionStorage.getItem(FORWARDED) ?? 0);
-    if (Date.now() - last < FORWARD_GAP_MS) return false;
+    return Date.now() - Number(sessionStorage.getItem(FORWARDED) ?? 0) < FORWARD_GAP_MS;
+  } catch {
+    return false;
+  }
+}
+
+function forward(target: string) {
+  try {
     sessionStorage.setItem(FORWARDED, String(Date.now()));
   } catch {
     // Storage blocked: forward anyway; at worst the person signs in by hand.
   }
   finishing = true;
   go(target);
-  return true;
 }
 
-function useWelcome(target: string) {
-  const { isSignedIn } = useAuth();
+/**
+ * The welcome instead of the form while this page is finishing, or while it is about to forward a
+ * person who is already signed in. Until Clerk loads, the server's view decides, so a signed-in
+ * person never sees the form flash before the app.
+ */
+function useWelcome(target: string, serverSignedIn: boolean) {
+  const { isLoaded, isSignedIn } = useAuth();
+  const signedIn = isLoaded ? Boolean(isSignedIn) : serverSignedIn;
+  const [lately] = useState(() => typeof window !== "undefined" && forwardedLately());
   useEffect(() => {
-    if (isSignedIn && !finishing) forwardOnce(target);
-  }, [isSignedIn, target]);
-  return Boolean(isSignedIn) && finishing;
+    if (isLoaded && isSignedIn && !finishing && !lately) forward(target);
+  }, [isLoaded, isSignedIn, lately, target]);
+  return signedIn && (finishing || !lately);
 }
 
 /** Darb's sign-in on Clerk's sign-in resource. */
-export function ClerkSignIn({ locale, target, other, initialEmail }: Props) {
+export function ClerkSignIn({ locale, target, other, initialEmail, signedIn = false }: Props) {
   const { signIn } = useSignIn();
   // The signal's signIn is a stable proxy over Clerk's live attempt.
   const backend = useMemo(() => finishOnce(signInBackend(signIn, target, go)), [signIn, target]);
-  const welcome = useWelcome(target);
+  const welcome = useWelcome(target, signedIn);
   return (
     <AuthFlow
       kind="sign-in"
@@ -88,10 +103,10 @@ export function ClerkSignIn({ locale, target, other, initialEmail }: Props) {
 }
 
 /** Darb's sign-up on Clerk's sign-up resource. */
-export function ClerkSignUp({ locale, target, other, initialEmail }: Props) {
+export function ClerkSignUp({ locale, target, other, initialEmail, signedIn = false }: Props) {
   const { signUp } = useSignUp();
   const backend = useMemo(() => finishOnce(signUpBackend(signUp, target, go)), [signUp, target]);
-  const welcome = useWelcome(target);
+  const welcome = useWelcome(target, signedIn);
   return (
     <AuthFlow
       kind="sign-up"

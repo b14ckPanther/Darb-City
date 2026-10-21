@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { at } from "@/admin/copy";
 import { adminAuthMode } from "@/admin/mode";
 import { adminHref } from "@/admin/routes";
+import { hasClerkSession } from "@/admin/signed-in";
 import { fakeSignIn } from "@/admin/session-actions";
 import { AuthStage, authStyles } from "@/components/auth/AuthStage";
 import { ClerkSignIn } from "@/components/auth/ClerkAuth";
@@ -30,6 +31,7 @@ export default async function SignInPage({
           locale={locale}
           target={adminHref(locale)}
           initialEmail={typeof email === "string" ? email : ""}
+          signedIn={await hasClerkSession()}
         />
       ) : mode === "fake" ? (
         <form action={fakeSignIn} className={authStyles.fakeForm}>
