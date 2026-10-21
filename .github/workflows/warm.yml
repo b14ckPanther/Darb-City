@@ -1,7 +1,8 @@
 name: Warm production pages
 
+# Manual only: warming after every deploy rendered about 3,400 pages each time, and a busy week of
+# merges spent the database's whole monthly network allowance (Neon, 2026-10-20).
 on:
-  deployment_status:
   workflow_dispatch:
 
 permissions:
@@ -9,13 +10,7 @@ permissions:
 
 jobs:
   warm:
-    # Off until the cut-over sets the WARM_SITE_URL variable: before it, darb.co.il is the old site,
-    # which has no sitemap, and a failed run here makes Railway skip API deploys of that commit.
-    if: >-
-      vars.WARM_SITE_URL != '' && (
-        github.event_name == 'workflow_dispatch' ||
-        (github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Production')
-      )
+    if: vars.WARM_SITE_URL != ''
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
