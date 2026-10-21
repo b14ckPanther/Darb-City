@@ -146,6 +146,12 @@ it("leaves at once when this browser is already signed in", async () => {
   await waitFor(() => expect(onSignedIn).toHaveBeenCalled());
 });
 
+it("keeps the welcome, not the email, when the page redraws after the session is on", () => {
+  render(<AuthFlow kind="sign-in" backend={backend()} copy={copy} signedIn onSignedIn={vi.fn()} />);
+  expect(screen.getByRole("status").textContent).toContain(copy.done);
+  expect(screen.queryByLabelText(copy.emailLabel)).toBeNull();
+});
+
 it("goes back to the email and resets Clerk's attempt", async () => {
   const b = backend();
   await toCode(b);

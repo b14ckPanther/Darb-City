@@ -40,6 +40,7 @@ export function AuthFlow({
   copy,
   other,
   initialEmail = "",
+  signedIn = false,
   onSignedIn,
 }: {
   kind: "sign-in" | "sign-up";
@@ -47,10 +48,13 @@ export function AuthFlow({
   copy: Record<AuthKey, string>;
   other?: string | null;
   initialEmail?: string;
+  /** Clerk has a session here: the page may redraw while it leaves, so keep showing the welcome. */
+  signedIn?: boolean;
   /** Called when Clerk says this browser is already signed in. */
   onSignedIn: () => void;
 }) {
-  const [step, setStep] = useState<Step>("email");
+  const [own, setStep] = useState<Step>("email");
+  const step: Step = signedIn ? "done" : own;
   const [email, setEmail] = useState(initialEmail);
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);

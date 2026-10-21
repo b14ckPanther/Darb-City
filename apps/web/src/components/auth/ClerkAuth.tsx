@@ -1,11 +1,11 @@
 "use client";
 
-import { useSignIn, useSignUp } from "@clerk/nextjs";
+import { useAuth, useSignIn, useSignUp } from "@clerk/nextjs";
 import { useMemo } from "react";
 import type { Locale } from "@darb/core";
 import { authMessages } from "./auth-copy";
 import { AuthFlow } from "./AuthFlow";
-import { signInBackend, signUpBackend, type Go } from "./backend";
+import { signInBackend, signUpBackend, type AuthBackend, type Go } from "./backend";
 
 type Props = {
   locale: Locale;
@@ -23,11 +23,31 @@ type Props = {
  */
 const go: Go = (url) => window.location.assign(url);
 
+/**
+ * Set when this page starts finishing a sign-in. Turning the session on makes Clerk redraw the page
+ * before the browser leaves it, which started the form over at the email; a module flag outlives
+ * that redraw, so the flow keeps its welcome until the app loads.
+ */
+let finishing = false;
+const finishOnce = (backend: AuthBackend): AuthBackend => ({
+  ...backend,
+  finish() {
+    finishing = true;
+    return backend.finish();
+  },
+});
+
+function useWelcome() {
+  const { isSignedIn } = useAuth();
+  return Boolean(isSignedIn) && finishing;
+}
+
 /** Darb's sign-in on Clerk's sign-in resource. */
 export function ClerkSignIn({ locale, target, other, initialEmail }: Props) {
   const { signIn } = useSignIn();
   // The signal's signIn is a stable proxy over Clerk's live attempt.
-  const backend = useMemo(() => signInBackend(signIn, target, go), [signIn, target]);
+  const backend = useMemo(() => finishOnce(signInBackend(signIn, target, go)), [signIn, target]);
+  const welcome = useWelcome();
   return (
     <AuthFlow
       kind="sign-in"
@@ -35,6 +55,7 @@ export function ClerkSignIn({ locale, target, other, initialEmail }: Props) {
       copy={authMessages(locale)}
       other={other}
       initialEmail={initialEmail}
+      signedIn={welcome}
       onSignedIn={() => window.location.replace(target)}
     />
   );
@@ -43,7 +64,8 @@ export function ClerkSignIn({ locale, target, other, initialEmail }: Props) {
 /** Darb's sign-up on Clerk's sign-up resource. */
 export function ClerkSignUp({ locale, target, other, initialEmail }: Props) {
   const { signUp } = useSignUp();
-  const backend = useMemo(() => signUpBackend(signUp, target, go), [signUp, target]);
+  const backend = useMemo(() => finishOnce(signUpBackend(signUp, target, go)), [signUp, target]);
+  const welcome = useWelcome();
   return (
     <AuthFlow
       kind="sign-up"
@@ -51,6 +73,7 @@ export function ClerkSignUp({ locale, target, other, initialEmail }: Props) {
       copy={authMessages(locale)}
       other={other}
       initialEmail={initialEmail}
+      signedIn={welcome}
       onSignedIn={() => window.location.replace(target)}
     />
   );
