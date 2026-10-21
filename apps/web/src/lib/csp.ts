@@ -47,6 +47,8 @@ export function publicCsp({
  * /admin renders per request, so it gets a real nonce (Clerk's script loads under strict-dynamic).
  * The business location picker reads the same tiles as the city, from R2 in production.
  */
+const CLERK_PROTECT = "https://*.client.protect.clerk.com:*";
+
 export function adminCsp({
   nonce,
   clerkOrigin,
@@ -69,9 +71,12 @@ export function adminCsp({
       "https://challenges.cloudflare.com",
       ...(dev ? ["'unsafe-eval'"] : []),
     ],
+    // Clerk's bot protection probes its own hosts on several ports during sign-up; blocked, the
+    // sign-up waits on a "protect_check" forever and every new account fails.
     "connect-src": [
       "'self'",
       ...clerk,
+      ...(clerkOrigin ? [CLERK_PROTECT] : []),
       ...(tilesOrigin ? [tilesOrigin] : []),
       ...(dev ? ["ws:"] : []),
     ],
