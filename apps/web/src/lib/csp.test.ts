@@ -33,7 +33,9 @@ it("admin pages: a nonce with strict-dynamic, and Clerk's origin", () => {
   expect(directive(csp, "script-src")).toBe(
     "script-src 'self' 'nonce-abc' 'strict-dynamic' https://clerk.darb.co.il https://challenges.cloudflare.com",
   );
-  expect(directive(csp, "connect-src")).toBe("connect-src 'self' https://clerk.darb.co.il");
+  expect(directive(csp, "connect-src")).toBe(
+    "connect-src 'self' https://clerk.darb.co.il https://*.client.protect.clerk.com:*",
+  );
   expect(directive(csp, "frame-src")).toBe("frame-src https://challenges.cloudflare.com");
   expect(directive(csp, "img-src")).toBe(
     "img-src 'self' data: blob: https://img.clerk.com https://media.darb.co.il",
@@ -48,7 +50,7 @@ it("admin pages read the map tiles from R2 for the location picker, workers from
     dev: false,
   });
   expect(directive(csp, "connect-src")).toBe(
-    "connect-src 'self' https://clerk.darb.co.il https://tiles.darb.co.il",
+    "connect-src 'self' https://clerk.darb.co.il https://*.client.protect.clerk.com:* https://tiles.darb.co.il",
   );
   expect(directive(csp, "worker-src")).toBe("worker-src 'self' blob:");
 });
