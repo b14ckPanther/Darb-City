@@ -142,6 +142,7 @@ describe("sign-up", () => {
   function fakeSignUp(missing: string[]) {
     const u = {
       status: "missing_requirements" as string | null,
+      emailAddress: null as string | null,
       missingFields: missing,
       unverifiedFields: ["email_address"] as string[],
       create: vi.fn(ok),
@@ -181,6 +182,17 @@ describe("sign-up", () => {
       return ok();
     });
     expect(await b.password("a long password")).toMatchObject({ step: "code" });
+    expect(u.password).toHaveBeenCalledWith({
+      password: "a long password",
+      emailAddress: "new@example.com",
+    });
+  });
+
+  it("sends the attempt's email with the password when the page rebuilt the backend", async () => {
+    const u = fakeSignUp(["password"]);
+    await signUpBackend(u, "/helpers", vi.fn()).start("new@example.com");
+    u.emailAddress = "new@example.com";
+    await signUpBackend(u, "/helpers", vi.fn()).password("a long password");
     expect(u.password).toHaveBeenCalledWith({
       password: "a long password",
       emailAddress: "new@example.com",

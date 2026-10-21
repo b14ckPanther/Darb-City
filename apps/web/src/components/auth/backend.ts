@@ -72,6 +72,7 @@ export interface SignInLike {
 /** The parts of Clerk's SignUpFutureResource this flow uses. */
 export interface SignUpLike {
   readonly status: string | null;
+  readonly emailAddress: string | null;
   readonly missingFields: readonly string[];
   readonly unverifiedFields: readonly string[];
   create(params: { emailAddress: string }): Result;
@@ -272,7 +273,10 @@ export function signUpBackend(signUp: SignUpLike, target: string, go: Go): AuthB
       return err ? fail(err) : next();
     },
     async password(password) {
-      const err = await run(signUp.password({ password, emailAddress }));
+      // The page rebuilds this backend whenever Clerk's resource changes, which empties
+      // `emailAddress`; the attempt itself still holds it. Sending "" fails with "Enter email address".
+      const email = emailAddress || signUp.emailAddress || "";
+      const err = await run(signUp.password({ password, emailAddress: email }));
       return err ? fail(err) : next();
     },
     async code(code) {
